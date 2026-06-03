@@ -431,6 +431,7 @@ Dialog v1 behavior:
 - RTL is inherited from `dir` on the document, page region, or preview wrapper. Dialog v1 should document `h.Dir("rtl")` composition and must not add direction to Dialog model state.
 - AlertDialog remains a separate future component. Do not add AlertDialog variants, model fields, messages, or registry dependencies to Dialog v1.
 - Command Dialog remains a separate future component. Do not add search, filtering, active option, or command/listbox keyboard state to Dialog v1.
+- Drawer remains a separate future component. Do not add side, placement, or responsive drawer sizing props to Dialog v1.
 
 ## Styling Policy
 

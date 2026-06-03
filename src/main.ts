@@ -1205,6 +1205,53 @@ const dialogDocsView = (model: Model): Html => {
             [
               h.h2(
                 [h.Class("text-xl font-semibold text-gray-950")],
+                ["Drawer policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Drawer is not a Dialog v1 variant. It needs its own component because edge placement, slide-in motion, responsive sizing, and navigation-style use cases are separate presentation contracts.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Do not add side, placement, or drawer sizing props to Dialog v1.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "A future Drawer can reuse modal concepts, but should own its own examples, animation proof, and responsive behavior tests.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Use Dialog for centered modal confirmation and form flows; use the future Drawer for edge-mounted panels.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
                 ["Command Dialog policy"]
               ),
               h.p(
@@ -1731,7 +1778,12 @@ ShowDialog({
                   "Command Dialog: separate future component policy documented in the Command Dialog policy section.",
                 ]
               ),
-              h.li([], ["Drawer: deferred decision list."]),
+              h.li(
+                [],
+                [
+                  "Drawer: separate future component policy documented in the Drawer policy section.",
+                ]
+              ),
             ]
           ),
         ]

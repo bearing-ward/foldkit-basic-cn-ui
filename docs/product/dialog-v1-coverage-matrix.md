@@ -121,7 +121,7 @@ These behaviors should not block the first slice:
 | Nested dialogs                                     | Unsupported in v1. Keep one active Dialog per flow; future modal stacking needs a coordinator or separate component.   |
 | Scrollable content and sticky footer examples      | Included through `dialog-scrollable`.                                                                                  |
 | RTL behavior                                       | Supported as inherited layout context through `h.Dir("rtl")`; no Dialog model state or registry example in v1.         |
-| Drawer dialog                                      | Separate component or example later.                                                                                   |
+| Drawer                                             | Separate future component, not a Dialog v1 variant; edge placement and responsive panel behavior need dedicated tests. |
 | Command Dialog                                     | Separate future component, not a Dialog v1 example or variant; command/listbox behavior needs its own model and tests. |
 | AlertDialog                                        | Separate future component, not a Dialog v1 variant, message, model field, or registry dependency.                      |
 
