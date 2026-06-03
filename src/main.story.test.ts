@@ -12,6 +12,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as InputBasicExample from "../registry/default/examples/input-basic/main";
+import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -36,6 +38,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [inputBasicExample] = InputBasicExample.init();
+const [inputDisabledExample] = InputDisabledExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
 const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
@@ -57,6 +61,8 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  inputBasicExample,
+  inputDisabledExample,
   listboxBasicExample,
   listboxAnimatedExample,
   menuBasicExample,
@@ -368,6 +374,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/input resolves to InputDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/input"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputDocs");
+        })
+      );
+    });
+
+    test("/docs/components/input/examples/basic resolves to InputBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/input/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/input/examples/disabled resolves to InputDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/input/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputDisabledExample");
+        })
+      );
+    });
+
     test("/docs/components/listbox/examples/basic resolves to ListboxBasicExample", () => {
       Story.story(
         update,
@@ -652,6 +707,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ListboxBasicExample");
+        })
+      );
+    });
+
+    test("/examples/input-basic resolves to InputBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/input-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputBasicExample");
+        })
+      );
+    });
+
+    test("/examples/input-disabled resolves to InputDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/input-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputDisabledExample");
         })
       );
     });

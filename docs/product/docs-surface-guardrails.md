@@ -82,3 +82,8 @@ Current enforced examples:
 - `docs-example-block-button-basic-actions`
 - `docs-example-block-button-disabled`
 - `docs-example-block-button-disabled-actions`
+- `docs-example-block-input-basic`
+- `docs-example-block-input-basic-preview`
+- `docs-example-block-input-basic-actions`
+- `docs-example-block-input-disabled`
+- `docs-example-block-input-disabled-actions`

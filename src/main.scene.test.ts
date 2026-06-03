@@ -10,6 +10,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as InputBasicExample from "../registry/default/examples/input-basic/main";
+import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -40,6 +42,9 @@ import {
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
   HomeRoute,
+  InputBasicExampleRoute,
+  InputDisabledExampleRoute,
+  InputDocsRoute,
   InputRoute,
   ListboxAnimatedExampleRoute,
   ListboxBasicExampleRoute,
@@ -75,6 +80,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [inputBasicExample] = InputBasicExample.init();
+const [inputDisabledExample] = InputDisabledExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
 const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
@@ -96,6 +103,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  inputBasicExample,
+  inputDisabledExample,
   listboxBasicExample,
   listboxAnimatedExample,
   menuBasicExample,
@@ -162,6 +171,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Scrollable Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Input Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Input Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Input Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Listbox Docs" })).toExist(),
       Scene.expect(
@@ -385,6 +401,70 @@ describe("scene", () => {
           name: "Open standalone Dialog Scrollable example",
         })
       ).toExist()
+    );
+  });
+
+  test("the Input docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(InputDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Input" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Name" })).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Disabled name" })
+      ).toBeDisabled(),
+      Scene.expect(Scene.testId("docs-example-block-input-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Input Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Input Disabled example" })
+      ).toExist()
+    );
+  });
+
+  test("the Input Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(InputBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Input Basic" })).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Name" })).toExist()
+    );
+  });
+
+  test("the Input Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(InputDisabledExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Input Disabled" })).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Disabled name" })
+      ).toBeDisabled()
     );
   });
 

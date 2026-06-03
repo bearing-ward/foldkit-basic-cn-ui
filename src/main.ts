@@ -19,6 +19,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as InputBasicExample from "../registry/default/examples/input-basic/main";
+import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -61,6 +63,9 @@ export const DragAndDropRoute = r("DragAndDrop");
 export const FieldsetRoute = r("Fieldset");
 export const FileDropRoute = r("FileDrop");
 export const InputRoute = r("Input");
+export const InputDocsRoute = r("InputDocs");
+export const InputBasicExampleRoute = r("InputBasicExample");
+export const InputDisabledExampleRoute = r("InputDisabledExample");
 export const ListboxRoute = r("Listbox");
 export const ListboxDocsRoute = r("ListboxDocs");
 export const ListboxBasicExampleRoute = r("ListboxBasicExample");
@@ -113,6 +118,9 @@ const AppRoute = S.Union([
   FieldsetRoute,
   FileDropRoute,
   InputRoute,
+  InputDocsRoute,
+  InputBasicExampleRoute,
+  InputDisabledExampleRoute,
   ListboxRoute,
   ListboxDocsRoute,
   ListboxBasicExampleRoute,
@@ -299,6 +307,38 @@ const dragAndDropRouter = pipe(
 const fieldsetRouter = pipe(literal("fieldset"), Route.mapTo(FieldsetRoute));
 const fileDropRouter = pipe(literal("file-drop"), Route.mapTo(FileDropRoute));
 const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
+const inputDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input")),
+  Route.mapTo(InputDocsRoute)
+);
+const inputBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(InputBasicExampleRoute)
+);
+const inputDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(InputDisabledExampleRoute)
+);
+const inputBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-basic")),
+  Route.mapTo(InputBasicExampleRoute)
+);
+const inputDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-disabled")),
+  Route.mapTo(InputDisabledExampleRoute)
+);
 const listboxRouter = pipe(literal("listbox"), Route.mapTo(ListboxRoute));
 const listboxDocsRouter = pipe(
   literal("docs"),
@@ -480,6 +520,11 @@ const routeParser = Route.oneOf(
   fieldsetRouter,
   fileDropRouter,
   inputRouter,
+  inputBasicExampleRouter,
+  inputDisabledExampleRouter,
+  inputBasicStandaloneExampleRouter,
+  inputDisabledStandaloneExampleRouter,
+  inputDocsRouter,
   listboxRouter,
   listboxBasicExampleRouter,
   listboxAnimatedExampleRouter,
@@ -532,6 +577,8 @@ export const Model = S.Struct({
   dialogDestructiveExample: DialogDestructiveExample.Model,
   dialogFocusExample: DialogFocusExample.Model,
   dialogScrollableExample: DialogScrollableExample.Model,
+  inputBasicExample: InputBasicExample.Model,
+  inputDisabledExample: InputDisabledExample.Model,
   listboxBasicExample: ListboxBasicExample.Model,
   listboxAnimatedExample: ListboxAnimatedExample.Model,
   menuBasicExample: MenuBasicExample.Model,
@@ -600,6 +647,15 @@ export const GotDialogScrollableExampleMessage = m(
     message: DialogScrollableExample.Message,
   }
 );
+export const GotInputBasicExampleMessage = m("GotInputBasicExampleMessage", {
+  message: InputBasicExample.Message,
+});
+export const GotInputDisabledExampleMessage = m(
+  "GotInputDisabledExampleMessage",
+  {
+    message: InputDisabledExample.Message,
+  }
+);
 export const GotListboxBasicExampleMessage = m(
   "GotListboxBasicExampleMessage",
   {
@@ -658,6 +714,8 @@ export const Message = S.Union([
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
   GotDialogScrollableExampleMessage,
+  GotInputBasicExampleMessage,
+  GotInputDisabledExampleMessage,
   GotListboxBasicExampleMessage,
   GotListboxAnimatedExampleMessage,
   GotMenuBasicExampleMessage,
@@ -719,6 +777,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogFocusExample.init();
   const [dialogScrollableExample, dialogScrollableExampleCommands] =
     DialogScrollableExample.init();
+  const [inputBasicExample, inputBasicExampleCommands] =
+    InputBasicExample.init();
+  const [inputDisabledExample, inputDisabledExampleCommands] =
+    InputDisabledExample.init();
   const [listboxBasicExample, listboxBasicExampleCommands] =
     ListboxBasicExample.init();
   const [listboxAnimatedExample, listboxAnimatedExampleCommands] =
@@ -748,6 +810,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogDestructiveExample,
       dialogFocusExample,
       dialogScrollableExample,
+      inputBasicExample,
+      inputDisabledExample,
       listboxBasicExample,
       listboxAnimatedExample,
       menuBasicExample,
@@ -787,6 +851,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogScrollableExampleCommands, (message) =>
         GotDialogScrollableExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputBasicExampleCommands, (message) =>
+        GotInputBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputDisabledExampleCommands, (message) =>
+        GotInputDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(listboxBasicExampleCommands, (message) =>
         GotListboxBasicExampleMessage({ message })
@@ -1006,6 +1076,30 @@ export const update = (
         ];
       },
 
+      GotInputBasicExampleMessage: ({ message }) => {
+        const [inputBasicExample, inputBasicExampleCommands] =
+          InputBasicExample.update(model.inputBasicExample, message);
+
+        return [
+          evo(model, { inputBasicExample: () => inputBasicExample }),
+          Command.mapMessages(inputBasicExampleCommands, (message) =>
+            GotInputBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotInputDisabledExampleMessage: ({ message }) => {
+        const [inputDisabledExample, inputDisabledExampleCommands] =
+          InputDisabledExample.update(model.inputDisabledExample, message);
+
+        return [
+          evo(model, { inputDisabledExample: () => inputDisabledExample }),
+          Command.mapMessages(inputDisabledExampleCommands, (message) =>
+            GotInputDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotListboxBasicExampleMessage: ({ message }) => {
         const [listboxBasicExample, listboxBasicExampleCommands] =
           ListboxBasicExample.update(model.listboxBasicExample, message);
@@ -1197,6 +1291,17 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Fieldset", routeTag: "Fieldset", href: fieldsetRouter() },
   { label: "File Drop", routeTag: "FileDrop", href: fileDropRouter() },
   { label: "Input", routeTag: "Input", href: inputRouter() },
+  { label: "Input Docs", routeTag: "InputDocs", href: inputDocsRouter() },
+  {
+    label: "Input Basic Example",
+    routeTag: "InputBasicExample",
+    href: inputBasicExampleRouter(),
+  },
+  {
+    label: "Input Disabled Example",
+    routeTag: "InputDisabledExample",
+    href: inputDisabledExampleRouter(),
+  },
   { label: "Listbox", routeTag: "Listbox", href: listboxRouter() },
   {
     label: "Listbox Docs",
@@ -1953,6 +2058,34 @@ const comboboxMultiExamplePreview = (
   });
 };
 
+const inputBasicExamplePreview = (
+  model: InputBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: InputBasicExample.view,
+    toParentMessage: (message) => GotInputBasicExampleMessage({ message }),
+  });
+};
+
+const inputDisabledExamplePreview = (
+  model: InputDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: InputDisabledExample.view,
+    toParentMessage: (message) => GotInputDisabledExampleMessage({ message }),
+  });
+};
+
 const buttonDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2052,6 +2185,116 @@ ClickedSave: () => [
         coverageItems: [
           "Registry scene tests verify click message dispatch and disabled state.",
           "Example scene tests verify parent-owned click feedback and disabled explanatory copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const inputDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Input"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Input slice built on the official Foldkit Ui.Input primitive. It keeps native text input semantics while centralizing labels, descriptions, placeholders, typed input messages, disabled state, invalid state, and reusable field classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/input" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Input v1 documents the stateless text-entry path: parent-owned value, typed input messages, accessible label and description helpers, and disabled state styling."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-input-basic",
+                preview: inputBasicExamplePreview(
+                  model.inputBasicExample,
+                  "input-docs-basic-preview"
+                ),
+                href: inputBasicExampleRouter(),
+                linkText: "Open standalone Input Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-input-disabled",
+                preview: inputDisabledExamplePreview(
+                  model.inputDisabledExample,
+                  "input-docs-disabled-preview"
+                ),
+                href: inputDisabledExampleRouter(),
+                linkText: "Open standalone Input Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/input.json\nbunx shadcn@latest add <registry-url>/input-basic.json\nbunx shadcn@latest add <registry-url>/input-disabled.json",
+        usageBody:
+          "Store the input value in the parent model, map `onInput` into a verb-first Foldkit message, and render a native input with the supplied attributes.",
+        usageCode: `import * as Input from "./ui/input";
+
+Input.view<Message>({
+  id: "name-input",
+  value: model.name,
+  onInput: (value) => UpdatedName({ value }),
+  toView: (attributes) => h.input(attributes.input),
+});`,
+        integrationCode: `// Model
+name: S.String;
+
+// Message
+UpdatedName({ value: S.String });
+
+// Update
+UpdatedName: ({ value }) => [
+  evo(model, { name: () => value }),
+  [],
+];`,
+        apiItems: [
+          "view(config): renders a native input through the supplied toView callback.",
+          "descriptionId(id): returns the generated description id for custom composition.",
+          "InputAttributes: grouped input, label, and description attributes.",
+          "ViewConfig: id, value, onInput, isDisabled, isInvalid, isAutofocus, name, type, and placeholder.",
+        ],
+        accessibilityItems: [
+          "The label attributes bind the input to a visible label.",
+          "The description attributes provide aria-describedby for explanatory copy.",
+          "Disabled and invalid states stay on the native control so browser semantics are preserved.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify label, description, placeholder, input messages, and disabled state.",
+          "Example scene tests verify parent-owned value feedback and disabled documentation copy.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -3438,6 +3681,71 @@ const buttonDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const inputBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Input Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable input-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          inputBasicExamplePreview(
+            model.inputBasicExample,
+            "input-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const inputDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Input Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable input-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          inputDisabledExamplePreview(
+            model.inputDisabledExample,
+            "input-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const dialogBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3973,6 +4281,9 @@ const contentView = (model: Model): Html => {
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),
       FileDrop: () => embedUi("ui-file-drop", View.fileDrop),
       Input: () => embedUi("ui-input", View.input),
+      InputDocs: () => inputDocsView(model),
+      InputBasicExample: () => inputBasicExampleRouteView(model),
+      InputDisabledExample: () => inputDisabledExampleRouteView(model),
       Listbox: () => embedUi("ui-listbox", View.listbox),
       ListboxDocs: () => listboxDocsView(model),
       ListboxBasicExample: () => listboxBasicExampleRouteView(model),
