@@ -25,6 +25,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
+import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
@@ -86,6 +88,9 @@ export const DialogDestructiveExampleRoute = r("DialogDestructiveExample");
 export const DialogFocusExampleRoute = r("DialogFocusExample");
 export const DialogScrollableExampleRoute = r("DialogScrollableExample");
 export const DisclosureRoute = r("Disclosure");
+export const DisclosureDocsRoute = r("DisclosureDocs");
+export const DisclosureBasicExampleRoute = r("DisclosureBasicExample");
+export const DisclosureDisabledExampleRoute = r("DisclosureDisabledExample");
 export const DragAndDropRoute = r("DragAndDrop");
 export const FieldsetRoute = r("Fieldset");
 export const FieldsetDocsRoute = r("FieldsetDocs");
@@ -167,6 +172,9 @@ const AppRoute = S.Union([
   DialogFocusExampleRoute,
   DialogScrollableExampleRoute,
   DisclosureRoute,
+  DisclosureDocsRoute,
+  DisclosureBasicExampleRoute,
+  DisclosureDisabledExampleRoute,
   DragAndDropRoute,
   FieldsetRoute,
   FieldsetDocsRoute,
@@ -463,6 +471,38 @@ const dialogScrollableStandaloneExampleRouter = pipe(
 const disclosureRouter = pipe(
   literal("disclosure"),
   Route.mapTo(DisclosureRoute)
+);
+const disclosureDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("disclosure")),
+  Route.mapTo(DisclosureDocsRoute)
+);
+const disclosureBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("disclosure")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DisclosureBasicExampleRoute)
+);
+const disclosureDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("disclosure")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(DisclosureDisabledExampleRoute)
+);
+const disclosureBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("disclosure-basic")),
+  Route.mapTo(DisclosureBasicExampleRoute)
+);
+const disclosureDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("disclosure-disabled")),
+  Route.mapTo(DisclosureDisabledExampleRoute)
 );
 const dragAndDropRouter = pipe(
   literal("drag-and-drop"),
@@ -855,6 +895,11 @@ const routeParser = Route.oneOf(
   dialogScrollableStandaloneExampleRouter,
   dialogDocsRouter,
   disclosureRouter,
+  disclosureBasicExampleRouter,
+  disclosureDisabledExampleRouter,
+  disclosureBasicStandaloneExampleRouter,
+  disclosureDisabledStandaloneExampleRouter,
+  disclosureDocsRouter,
   dragAndDropRouter,
   fieldsetRouter,
   fieldsetBasicExampleRouter,
@@ -947,6 +992,8 @@ export const Model = S.Struct({
   dialogDestructiveExample: DialogDestructiveExample.Model,
   dialogFocusExample: DialogFocusExample.Model,
   dialogScrollableExample: DialogScrollableExample.Model,
+  disclosureBasicExample: DisclosureBasicExample.Model,
+  disclosureDisabledExample: DisclosureDisabledExample.Model,
   fieldsetBasicExample: FieldsetBasicExample.Model,
   fieldsetDisabledExample: FieldsetDisabledExample.Model,
   fileDropBasicExample: FileDropBasicExample.Model,
@@ -1061,6 +1108,18 @@ export const GotDialogScrollableExampleMessage = m(
   "GotDialogScrollableExampleMessage",
   {
     message: DialogScrollableExample.Message,
+  }
+);
+export const GotDisclosureBasicExampleMessage = m(
+  "GotDisclosureBasicExampleMessage",
+  {
+    message: DisclosureBasicExample.Message,
+  }
+);
+export const GotDisclosureDisabledExampleMessage = m(
+  "GotDisclosureDisabledExampleMessage",
+  {
+    message: DisclosureDisabledExample.Message,
   }
 );
 export const GotFieldsetBasicExampleMessage = m(
@@ -1193,6 +1252,8 @@ export const Message = S.Union([
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
   GotDialogScrollableExampleMessage,
+  GotDisclosureBasicExampleMessage,
+  GotDisclosureDisabledExampleMessage,
   GotFieldsetBasicExampleMessage,
   GotFieldsetDisabledExampleMessage,
   GotFileDropBasicExampleMessage,
@@ -1278,6 +1339,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogFocusExample.init();
   const [dialogScrollableExample, dialogScrollableExampleCommands] =
     DialogScrollableExample.init();
+  const [disclosureBasicExample, disclosureBasicExampleCommands] =
+    DisclosureBasicExample.init();
+  const [disclosureDisabledExample, disclosureDisabledExampleCommands] =
+    DisclosureDisabledExample.init();
   const [fieldsetBasicExample, fieldsetBasicExampleCommands] =
     FieldsetBasicExample.init();
   const [fieldsetDisabledExample, fieldsetDisabledExampleCommands] =
@@ -1337,6 +1402,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogDestructiveExample,
       dialogFocusExample,
       dialogScrollableExample,
+      disclosureBasicExample,
+      disclosureDisabledExample,
       fieldsetBasicExample,
       fieldsetDisabledExample,
       fileDropBasicExample,
@@ -1406,6 +1473,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogScrollableExampleCommands, (message) =>
         GotDialogScrollableExampleMessage({ message })
+      ),
+      ...Command.mapMessages(disclosureBasicExampleCommands, (message) =>
+        GotDisclosureBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(disclosureDisabledExampleCommands, (message) =>
+        GotDisclosureDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(fieldsetBasicExampleCommands, (message) =>
         GotFieldsetBasicExampleMessage({ message })
@@ -1741,6 +1814,35 @@ export const update = (
           }),
           Command.mapMessages(dialogScrollableExampleCommands, (message) =>
             GotDialogScrollableExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDisclosureBasicExampleMessage: ({ message }) => {
+        const [disclosureBasicExample, disclosureBasicExampleCommands] =
+          DisclosureBasicExample.update(model.disclosureBasicExample, message);
+
+        return [
+          evo(model, { disclosureBasicExample: () => disclosureBasicExample }),
+          Command.mapMessages(disclosureBasicExampleCommands, (message) =>
+            GotDisclosureBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDisclosureDisabledExampleMessage: ({ message }) => {
+        const [disclosureDisabledExample, disclosureDisabledExampleCommands] =
+          DisclosureDisabledExample.update(
+            model.disclosureDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            disclosureDisabledExample: () => disclosureDisabledExample,
+          }),
+          Command.mapMessages(disclosureDisabledExampleCommands, (message) =>
+            GotDisclosureDisabledExampleMessage({ message })
           ),
         ];
       },
@@ -2147,6 +2249,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: dialogScrollableExampleRouter(),
   },
   { label: "Disclosure", routeTag: "Disclosure", href: disclosureRouter() },
+  {
+    label: "Disclosure Docs",
+    routeTag: "DisclosureDocs",
+    href: disclosureDocsRouter(),
+  },
+  {
+    label: "Disclosure Basic Example",
+    routeTag: "DisclosureBasicExample",
+    href: disclosureBasicExampleRouter(),
+  },
+  {
+    label: "Disclosure Disabled Example",
+    routeTag: "DisclosureDisabledExample",
+    href: disclosureDisabledExampleRouter(),
+  },
   {
     label: "Drag and Drop",
     routeTag: "DragAndDrop",
@@ -2935,6 +3052,35 @@ const dialogScrollableExamplePreview = (
     view: DialogScrollableExample.view,
     toParentMessage: (message) =>
       GotDialogScrollableExampleMessage({ message }),
+  });
+};
+
+const disclosureBasicExamplePreview = (
+  model: DisclosureBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DisclosureBasicExample.view,
+    toParentMessage: (message) => GotDisclosureBasicExampleMessage({ message }),
+  });
+};
+
+const disclosureDisabledExamplePreview = (
+  model: DisclosureDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DisclosureDisabledExample.view,
+    toParentMessage: (message) =>
+      GotDisclosureDisabledExampleMessage({ message }),
   });
 };
 
@@ -3842,6 +3988,132 @@ h.submodel({
         coverageItems: [
           "Registry scene tests verify opening, popover mount resolution, disabled date attributes, selected-date OutMessages, close focus, and mount cleanup.",
           "Example scene tests verify parent-visible selected date and bounded-date feedback.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const disclosureDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Disclosure"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Disclosure slice built on the official Foldkit Ui.Disclosure primitive. It preserves accessible toggle semantics, parent-visible open-state facts, focus restoration on close, disabled state, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/disclosure" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Disclosure v1 documents the collapsible content path: child-owned open state, parent-visible ToggledOpenState facts, disabled trigger semantics, and focus restoration after close."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-disclosure-basic",
+                preview: disclosureBasicExamplePreview(
+                  model.disclosureBasicExample,
+                  "disclosure-docs-basic-preview"
+                ),
+                href: disclosureBasicExampleRouter(),
+                linkText: "Open standalone Disclosure Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-disclosure-disabled",
+                preview: disclosureDisabledExamplePreview(
+                  model.disclosureDisabledExample,
+                  "disclosure-docs-disabled-preview"
+                ),
+                href: disclosureDisabledExampleRouter(),
+                linkText: "Open standalone Disclosure Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/disclosure.json\nbunx shadcn@latest add <registry-url>/disclosure-basic.json\nbunx shadcn@latest add <registry-url>/disclosure-disabled.json",
+        usageBody:
+          "Initialize the Disclosure child model, delegate child messages through `h.submodel`, and handle ToggledOpenState in the parent update.",
+        usageCode: `import * as Disclosure from "./ui/disclosure";
+
+const [disclosure] = Disclosure.init({
+  id: "faq-disclosure",
+});`,
+        integrationCode: `// Model
+disclosure: Disclosure.Model;
+
+// Message
+GotDisclosureMessage({ message: Disclosure.Message });
+
+// Update
+const [disclosure, commands, maybeOutMessage] =
+  Disclosure.update(model.disclosure, message);
+
+// View
+h.submodel({
+  slotId: model.disclosure.id,
+  model: model.disclosure,
+  view: Disclosure.view,
+  viewInputs: {
+    toView: (attributes) =>
+      Disclosure.disclosureView({
+        attributes,
+        isOpen: model.disclosure.isOpen,
+        title: "Question",
+        body: "Answer",
+      }),
+  },
+  toParentMessage: (message) => GotDisclosureMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id and isOpen.",
+          "init(config): creates a Disclosure model and returns the registry init tuple.",
+          "update(model, message): returns model, commands, and an optional OutMessage.",
+          "ToggledOpenState: parent-visible open-state fact emitted after toggles and close.",
+          "toggle, close, and reflectOpenState: helpers for parent-driven disclosure changes.",
+          "ViewInputs and DisclosureAttributes: button and panel attribute bundles for custom composition.",
+          "Class helpers: root, button, button content, chevron, panel, and disclosureView.",
+        ],
+        accessibilityItems: [
+          "The primitive supplies aria-expanded and aria-controls on the trigger button.",
+          "The helper adds an aria-label matching the visible title for stable accessible names.",
+          "Disabled state exposes aria-disabled and prevents click dispatch.",
+          "Closing emits a FocusButton command so focus returns to the disclosure trigger.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify open/close behavior, parent-visible OutMessages, panel rendering, and FocusButton resolution.",
+          "Example scene tests verify basic toggling, disabled trigger semantics, and parent-visible status feedback.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -6510,6 +6782,74 @@ const dialogScrollableExampleRouteView = (model: Model): Html => {
   );
 };
 
+const disclosureBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Disclosure Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable disclosure-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          disclosureBasicExamplePreview(
+            model.disclosureBasicExample,
+            "disclosure-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const disclosureDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Disclosure Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable disclosure-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          disclosureDisabledExamplePreview(
+            model.disclosureDisabledExample,
+            "disclosure-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const listboxBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -6955,6 +7295,10 @@ const contentView = (model: Model): Html => {
       DialogFocusExample: () => dialogFocusExampleRouteView(model),
       DialogScrollableExample: () => dialogScrollableExampleRouteView(model),
       Disclosure: () => embedUi("ui-disclosure", View.disclosure),
+      DisclosureDocs: () => disclosureDocsView(model),
+      DisclosureBasicExample: () => disclosureBasicExampleRouteView(model),
+      DisclosureDisabledExample: () =>
+        disclosureDisabledExampleRouteView(model),
       DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),
       FieldsetDocs: () => fieldsetDocsView(model),

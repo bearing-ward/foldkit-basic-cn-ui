@@ -18,6 +18,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
+import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
@@ -60,6 +62,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [disclosureBasicExample] = DisclosureBasicExample.init();
+const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
@@ -99,6 +103,8 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  disclosureBasicExample,
+  disclosureDisabledExample,
   fieldsetBasicExample,
   fieldsetDisabledExample,
   fileDropBasicExample,
@@ -471,6 +477,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogScrollableExample");
+        })
+      );
+    });
+
+    test("/docs/components/disclosure resolves to DisclosureDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/disclosure"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DisclosureDocs");
+        })
+      );
+    });
+
+    test("/docs/components/disclosure/examples/basic resolves to DisclosureBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/disclosure/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DisclosureBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/disclosure/examples/disabled resolves to DisclosureDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/disclosure/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DisclosureDisabledExample");
         })
       );
     });
@@ -1102,6 +1157,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogScrollableExample");
+        })
+      );
+    });
+
+    test("/examples/disclosure-basic resolves to DisclosureBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/disclosure-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DisclosureBasicExample");
+        })
+      );
+    });
+
+    test("/examples/disclosure-disabled resolves to DisclosureDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/disclosure-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DisclosureDisabledExample");
         })
       );
     });

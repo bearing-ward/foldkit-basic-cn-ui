@@ -1500,6 +1500,93 @@
           "example": "bounds"
         }
       }
+    },
+    {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "title": "Disclosure",
+      "description": "A Foldkit Disclosure wrapper with typed open state, toggle/close messages, ToggledOpenState OutMessages, focus restoration, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/disclosure/index.ts",
+          "target": "src/ui/disclosure/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/disclosure/view.ts",
+          "target": "src/ui/disclosure/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/disclosure/disclosure.scene.test.ts",
+          "target": "src/ui/disclosure/disclosure.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Disclosure",
+          "primitive": "Ui.Disclosure",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "disclosure-basic",
+      "type": "registry:example",
+      "title": "Disclosure Basic",
+      "description": "A runnable Foldkit example showing Disclosure toggle state, panel content, and parent-visible open-state feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["disclosure"],
+      "files": [
+        {
+          "path": "registry/default/examples/disclosure-basic/main.ts",
+          "target": "src/examples/disclosure-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/disclosure-basic/disclosure-basic.scene.test.ts",
+          "target": "src/examples/disclosure-basic/disclosure-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Disclosure",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "disclosure-disabled",
+      "type": "registry:example",
+      "title": "Disclosure Disabled",
+      "description": "A runnable Foldkit example showing disabled Disclosure trigger semantics.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["disclosure"],
+      "files": [
+        {
+          "path": "registry/default/examples/disclosure-disabled/main.ts",
+          "target": "src/examples/disclosure-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/disclosure-disabled/disclosure-disabled.scene.test.ts",
+          "target": "src/examples/disclosure-disabled/disclosure-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Disclosure",
+          "example": "disabled"
+        }
+      }
     }
   ]
 }

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "disclosure-disabled",
+  "type": "registry:example",
+  "title": "Disclosure Disabled",
+  "description": "A runnable Foldkit example showing disabled Disclosure trigger semantics.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["disclosure"],
+  "files": [
+    {
+      "path": "registry/default/examples/disclosure-disabled/main.ts",
+      "target": "src/examples/disclosure-disabled/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Disclosure from \"../../ui/disclosure\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  disclosure: Disclosure.Model,\n  status: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotDisclosureMessage = m(\"GotDisclosureMessage\", {\n  message: Disclosure.Message,\n});\n\nexport const Message = S.Union([GotDisclosureMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [disclosure, commands] = Disclosure.init({\n    id: \"disclosure-disabled\",\n  });\n\n  return [\n    {\n      disclosure,\n      status: \"Disclosure is locked.\",\n    },\n    Command.mapMessages(commands, (message) =>\n      GotDisclosureMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotDisclosureMessage: ({ message }) => {\n        const [disclosure, commands, maybeOutMessage] = Disclosure.update(\n          model.disclosure,\n          message\n        );\n\n        const status = Option.match(maybeOutMessage, {\n          onNone: () => model.status,\n          onSome: M.type<Disclosure.OutMessage>().pipe(\n            M.tagsExhaustive({\n              ToggledOpenState: ({ isOpen }) =>\n                `Disclosure is ${isOpen ? \"open\" : \"closed\"}.`,\n            })\n          ),\n        });\n\n        return [\n          evo(model, {\n            disclosure: () => disclosure,\n            status: () => status,\n          }),\n          Command.mapMessages(commands, (message) =>\n            GotDisclosureMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.disclosure.id,\n        model: model.disclosure,\n        view: Disclosure.view,\n        viewInputs: {\n          isDisabled: true,\n          toView: (attributes) =>\n            Disclosure.disclosureView({\n              attributes,\n              isOpen: model.disclosure.isOpen,\n              title: \"Locked disclosure\",\n              body: \"This content remains unavailable while the disclosure is disabled.\",\n            }),\n        },\n        toParentMessage: (message) => GotDisclosureMessage({ message }),\n      }),\n      h.p([h.Class(\"text-sm text-gray-700\")], [model.status]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/disclosure-disabled/disclosure-disabled.scene.test.ts",
+      "target": "src/examples/disclosure-disabled/disclosure-disabled.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as DisclosureDisabledExample from \"./main\";\n\ndescribe(\"Disclosure Disabled example\", () => {\n  test(\"renders disabled trigger without opening content\", () => {\n    Scene.scene(\n      {\n        update: DisclosureDisabledExample.update,\n        view: DisclosureDisabledExample.view,\n      },\n      Scene.with(DisclosureDisabledExample.init()[0]),\n      Scene.expect(Scene.text(\"Disclosure is locked.\")).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Locked disclosure\" })\n      ).toHaveAttr(\"aria-disabled\", \"true\"),\n      Scene.expect(\n        Scene.text(\n          \"This content remains unavailable while the disclosure is disabled.\"\n        )\n      ).not.toExist(),\n      Scene.expect(Scene.text(\"Disclosure is locked.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Disclosure",
+      "example": "disabled"
+    }
+  }
+}

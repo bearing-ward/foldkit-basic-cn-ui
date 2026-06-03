@@ -97,6 +97,11 @@ Current enforced examples:
 - `docs-example-block-date-picker-basic-actions`
 - `docs-example-block-date-picker-bounds`
 - `docs-example-block-date-picker-bounds-actions`
+- `docs-example-block-disclosure-basic`
+- `docs-example-block-disclosure-basic-preview`
+- `docs-example-block-disclosure-basic-actions`
+- `docs-example-block-disclosure-disabled`
+- `docs-example-block-disclosure-disabled-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`

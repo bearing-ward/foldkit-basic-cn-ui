@@ -16,6 +16,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
+import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
@@ -62,6 +64,9 @@ import {
   DialogDocsRoute,
   DialogFocusExampleRoute,
   DialogScrollableExampleRoute,
+  DisclosureBasicExampleRoute,
+  DisclosureDisabledExampleRoute,
+  DisclosureDocsRoute,
   DisclosureRoute,
   FieldsetRoute,
   FieldsetBasicExampleRoute,
@@ -126,6 +131,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [disclosureBasicExample] = DisclosureBasicExample.init();
+const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
@@ -165,6 +172,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  disclosureBasicExample,
+  disclosureDisabledExample,
   fieldsetBasicExample,
   fieldsetDisabledExample,
   fileDropBasicExample,
@@ -264,6 +273,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Scrollable Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Disclosure Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Disclosure Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Disclosure Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Fieldset Docs" })).toExist(),
       Scene.expect(
@@ -1193,6 +1209,72 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Review permissions" })
       ).toExist()
+    );
+  });
+
+  test("the Disclosure docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DisclosureDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Disclosure" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.text("Disclosure is closed.")).toExist(),
+      Scene.expect(Scene.text("Disclosure is locked.")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-disclosure-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-disclosure-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-disclosure-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-disclosure-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-disclosure-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Disclosure Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Disclosure Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Disclosure Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DisclosureBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Disclosure Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Disclosure is closed.")).toExist()
+    );
+  });
+
+  test("the Disclosure Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DisclosureDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Disclosure Disabled" })
+      ).toExist(),
+      Scene.expect(Scene.text("Disclosure is locked.")).toExist()
     );
   });
 
