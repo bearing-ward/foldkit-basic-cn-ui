@@ -8705,10 +8705,28 @@ export const view = (model: Model): Document => {
 
 // SUBSCRIPTION
 
-export const subscriptions = Subscription.lift(UiSubscriptions.subscriptions)<
+const uiSubscriptions = Subscription.lift(UiSubscriptions.subscriptions)<
   Model,
   Message
 >({
   toChildModel: (model) => model.uiModel,
   toParentMessage: (message) => GotUiMessage({ message }),
 });
+
+const dragAndDropBasicExampleSubscriptions = Subscription.lift({
+  dragAndDropBasicPointer: Ui.DragAndDrop.subscriptions.documentPointer,
+  dragAndDropBasicEscape: Ui.DragAndDrop.subscriptions.documentEscape,
+  dragAndDropBasicKeyboard: Ui.DragAndDrop.subscriptions.documentKeyboard,
+  dragAndDropBasicAutoScroll: Ui.DragAndDrop.subscriptions.autoScroll,
+})<Model, Message>({
+  toChildModel: (model) => model.dragAndDropBasicExample.dragAndDrop,
+  toParentMessage: (message) =>
+    GotDragAndDropBasicExampleMessage({
+      message: DragAndDropBasicExample.GotDragAndDropMessage({ message }),
+    }),
+});
+
+export const subscriptions = Subscription.aggregate<Model, Message>()(
+  uiSubscriptions,
+  dragAndDropBasicExampleSubscriptions
+);
