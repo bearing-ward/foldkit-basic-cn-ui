@@ -1203,6 +1203,53 @@ const dialogDocsView = (model: Model): Html => {
           h.div(
             [h.Class("space-y-3")],
             [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["AlertDialog policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Dialog v1 keeps AlertDialog out of the Dialog API. Destructive styling is allowed for ordinary confirmation flows, but alert semantics should ship as a separate component later.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Use dialog-destructive when the interaction is still a standard Dialog with cancel and confirm actions.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Do not add AlertDialog variants, messages, model fields, or registry dependencies to Dialog v1.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Future AlertDialog work should define its own component, examples, accessibility expectations, and tests.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
               h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Usage"]),
               h.p(
                 [h.Class("text-sm text-gray-600")],
@@ -1628,9 +1675,10 @@ ShowDialog({
               h.li(
                 [],
                 [
-                  "Drawer, command dialog, and AlertDialog: deferred decision list.",
+                  "AlertDialog: separate future component policy documented in the AlertDialog policy section.",
                 ]
               ),
+              h.li([], ["Drawer and command dialog: deferred decision list."]),
             ]
           ),
         ]

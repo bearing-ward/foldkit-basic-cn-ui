@@ -415,7 +415,7 @@ Dialog v1 styling variants:
 
 Variants are view styling intent, not model state.
 
-`AlertDialog` should be a separate component later, not a Dialog v1 variant.
+`AlertDialog` should be a separate component later, not a Dialog v1 variant. Destructive Dialog styling is for standard cancel/confirm flows only; it is not an alert semantics substitute.
 
 Dialog v1 behavior:
 
@@ -429,6 +429,7 @@ Dialog v1 behavior:
 - `h.OnClickFocus` should be documented for iOS keyboard warmup flows where a trigger opens a dialog containing a text input.
 - Nested or stacked dialogs are unsupported in Dialog v1. Keep one active Dialog per flow; true modal stacking should be a future coordinator or separate component with its own state, focus, and escape-key tests.
 - RTL is inherited from `dir` on the document, page region, or preview wrapper. Dialog v1 should document `h.Dir("rtl")` composition and must not add direction to Dialog model state.
+- AlertDialog remains a separate future component. Do not add AlertDialog variants, model fields, messages, or registry dependencies to Dialog v1.
 
 ## Styling Policy
 

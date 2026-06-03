@@ -77,7 +77,7 @@ The first docs page should match the format expectations users bring from Base U
 | Installation        | Show the shadcn-compatible registry command using the public registry URL placeholder.                        |
 | Anatomy             | Show `Dialog` imports, trigger, root/content, title, description, footer, and close actions.                  |
 | Basic example       | Runnable example with trigger, title, description, cancel, and confirm.                                       |
-| Destructive example | Confirmation dialog using destructive styling only, not an `AlertDialog` API.                                 |
+| Destructive example | Confirmation dialog using destructive styling only, not an `AlertDialog` API or semantic substitute.          |
 | Animated example    | `isAnimated: true` example using the default animated docs behavior.                                          |
 | Focus example       | Document `focusSelector` and `h.OnClickFocus` for iOS keyboard warmup flows.                                  |
 | Scrollable example  | Show long content inside a constrained body region while footer actions stay available.                       |
@@ -123,7 +123,7 @@ These behaviors should not block the first slice:
 | RTL behavior                                       | Supported as inherited layout context through `h.Dir("rtl")`; no Dialog model state or registry example in v1.       |
 | Drawer dialog                                      | Separate component or example later.                                                                                 |
 | Command dialog                                     | Separate component or example later.                                                                                 |
-| Alert dialog                                       | Separate component later, not a v1 Dialog variant.                                                                   |
+| AlertDialog                                        | Separate future component, not a Dialog v1 variant, message, model field, or registry dependency.                    |
 
 ## First TDD Order
 
