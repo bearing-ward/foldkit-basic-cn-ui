@@ -11,6 +11,8 @@ import * as CheckboxBasicExample from "../registry/default/examples/checkbox-bas
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
+import * as DatePickerBasicExample from "../registry/default/examples/date-picker-basic/main";
+import * as DatePickerBoundsExample from "../registry/default/examples/date-picker-bounds/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
@@ -51,6 +53,8 @@ const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
+const [datePickerBasicExample] = DatePickerBasicExample.init();
+const [datePickerBoundsExample] = DatePickerBoundsExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -88,6 +92,8 @@ const initialModel: Model = {
   checkboxIndeterminateExample,
   comboboxBasicExample,
   comboboxMultiExample,
+  datePickerBasicExample,
+  datePickerBoundsExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
@@ -267,6 +273,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DatePicker");
+        })
+      );
+    });
+
+    test("/docs/components/date-picker resolves to DatePickerDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/date-picker"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DatePickerDocs");
+        })
+      );
+    });
+
+    test("/docs/components/date-picker/examples/basic resolves to DatePickerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/date-picker/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DatePickerBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/date-picker/examples/bounds resolves to DatePickerBoundsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/date-picker/examples/bounds"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DatePickerBoundsExample");
         })
       );
     });
@@ -1152,6 +1207,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("CalendarBoundsExample");
+        })
+      );
+    });
+
+    test("/examples/date-picker-basic resolves to DatePickerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/date-picker-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DatePickerBasicExample");
+        })
+      );
+    });
+
+    test("/examples/date-picker-bounds resolves to DatePickerBoundsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/date-picker-bounds"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DatePickerBoundsExample");
         })
       );
     });

@@ -9,6 +9,8 @@ import * as CheckboxBasicExample from "../registry/default/examples/checkbox-bas
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
+import * as DatePickerBasicExample from "../registry/default/examples/date-picker-basic/main";
+import * as DatePickerBoundsExample from "../registry/default/examples/date-picker-bounds/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
@@ -51,6 +53,9 @@ import {
   ComboboxBasicExampleRoute,
   ComboboxDocsRoute,
   ComboboxMultiExampleRoute,
+  DatePickerBasicExampleRoute,
+  DatePickerBoundsExampleRoute,
+  DatePickerDocsRoute,
   DialogAnimatedExampleRoute,
   DialogBasicExampleRoute,
   DialogDestructiveExampleRoute,
@@ -114,6 +119,8 @@ const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
+const [datePickerBasicExample] = DatePickerBasicExample.init();
+const [datePickerBoundsExample] = DatePickerBoundsExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -151,6 +158,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   checkboxIndeterminateExample,
   comboboxBasicExample,
   comboboxMultiExample,
+  datePickerBasicExample,
+  datePickerBoundsExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
@@ -234,6 +243,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Combobox Multi Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Date Picker Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Date Picker Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Date Picker Bounds Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Dialog" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Dialog Docs" })).toExist(),
@@ -458,6 +474,74 @@ describe("scene", () => {
       Scene.with(modelForRoute(CalendarBoundsExampleRoute())),
       Scene.expect(
         Scene.role("heading", { name: "Calendar Bounds" })
+      ).toExist(),
+      Scene.expect(Scene.text("Selected bounded date: None")).toExist()
+    );
+  });
+
+  test("the Date Picker docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DatePickerDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Date Picker" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.text("Selected date: None")).toExist(),
+      Scene.expect(Scene.text("Selected bounded date: None")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-date-picker-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-date-picker-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-date-picker-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-date-picker-bounds")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-date-picker-bounds-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Date Picker Basic example",
+        })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Date Picker Bounds example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Date Picker Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DatePickerBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Date Picker Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Selected date: None")).toExist()
+    );
+  });
+
+  test("the Date Picker Bounds example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DatePickerBoundsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Date Picker Bounds" })
       ).toExist(),
       Scene.expect(Scene.text("Selected bounded date: None")).toExist()
     );

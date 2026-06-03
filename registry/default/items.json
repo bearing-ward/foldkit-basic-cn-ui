@@ -1409,5 +1409,92 @@
         "example": "bounds"
       }
     }
+  },
+  {
+    "name": "date-picker",
+    "type": "registry:ui",
+    "title": "Date Picker",
+    "description": "A Foldkit DatePicker wrapper combining trigger, popover, embedded Calendar, selected-date OutMessages, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["calendar", "popover"],
+    "files": [
+      {
+        "path": "registry/default/ui/date-picker/index.ts",
+        "target": "src/ui/date-picker/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/date-picker/view.ts",
+        "target": "src/ui/date-picker/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/date-picker/date-picker.scene.test.ts",
+        "target": "src/ui/date-picker/date-picker.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DatePicker",
+        "primitive": "Ui.DatePicker",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "date-picker-basic",
+    "type": "registry:example",
+    "title": "Date Picker Basic",
+    "description": "A runnable Foldkit example showing DatePicker open, selected-date feedback, and hidden input naming.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["date-picker"],
+    "files": [
+      {
+        "path": "registry/default/examples/date-picker-basic/main.ts",
+        "target": "src/examples/date-picker-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/date-picker-basic/date-picker-basic.scene.test.ts",
+        "target": "src/examples/date-picker-basic/date-picker-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DatePicker",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "date-picker-bounds",
+    "type": "registry:example",
+    "title": "Date Picker Bounds",
+    "description": "A runnable Foldkit example showing bounded DatePicker selection and disabled date feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["date-picker"],
+    "files": [
+      {
+        "path": "registry/default/examples/date-picker-bounds/main.ts",
+        "target": "src/examples/date-picker-bounds/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/date-picker-bounds/date-picker-bounds.scene.test.ts",
+        "target": "src/examples/date-picker-bounds/date-picker-bounds.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DatePicker",
+        "example": "bounds"
+      }
+    }
   }
 ]

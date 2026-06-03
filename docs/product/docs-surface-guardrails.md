@@ -92,6 +92,11 @@ Current enforced examples:
 - `docs-example-block-calendar-basic-actions`
 - `docs-example-block-calendar-bounds`
 - `docs-example-block-calendar-bounds-actions`
+- `docs-example-block-date-picker-basic`
+- `docs-example-block-date-picker-basic-preview`
+- `docs-example-block-date-picker-basic-actions`
+- `docs-example-block-date-picker-bounds`
+- `docs-example-block-date-picker-bounds-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`

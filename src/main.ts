@@ -18,6 +18,8 @@ import * as CheckboxBasicExample from "../registry/default/examples/checkbox-bas
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
+import * as DatePickerBasicExample from "../registry/default/examples/date-picker-basic/main";
+import * as DatePickerBoundsExample from "../registry/default/examples/date-picker-bounds/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
@@ -73,6 +75,9 @@ export const ComboboxDocsRoute = r("ComboboxDocs");
 export const ComboboxBasicExampleRoute = r("ComboboxBasicExample");
 export const ComboboxMultiExampleRoute = r("ComboboxMultiExample");
 export const DatePickerRoute = r("DatePicker");
+export const DatePickerDocsRoute = r("DatePickerDocs");
+export const DatePickerBasicExampleRoute = r("DatePickerBasicExample");
+export const DatePickerBoundsExampleRoute = r("DatePickerBoundsExample");
 export const DialogRoute = r("Dialog");
 export const DialogDocsRoute = r("DialogDocs");
 export const DialogBasicExampleRoute = r("DialogBasicExample");
@@ -151,6 +156,9 @@ const AppRoute = S.Union([
   ComboboxBasicExampleRoute,
   ComboboxMultiExampleRoute,
   DatePickerRoute,
+  DatePickerDocsRoute,
+  DatePickerBasicExampleRoute,
+  DatePickerBoundsExampleRoute,
   DialogRoute,
   DialogDocsRoute,
   DialogBasicExampleRoute,
@@ -347,6 +355,38 @@ const comboboxMultiStandaloneExampleRouter = pipe(
 const datePickerRouter = pipe(
   literal("date-picker"),
   Route.mapTo(DatePickerRoute)
+);
+const datePickerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("date-picker")),
+  Route.mapTo(DatePickerDocsRoute)
+);
+const datePickerBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("date-picker")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DatePickerBasicExampleRoute)
+);
+const datePickerBoundsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("date-picker")),
+  slash(literal("examples")),
+  slash(literal("bounds")),
+  Route.mapTo(DatePickerBoundsExampleRoute)
+);
+const datePickerBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("date-picker-basic")),
+  Route.mapTo(DatePickerBasicExampleRoute)
+);
+const datePickerBoundsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("date-picker-bounds")),
+  Route.mapTo(DatePickerBoundsExampleRoute)
 );
 const dialogRouter = pipe(literal("dialog"), Route.mapTo(DialogRoute));
 const dialogDocsRouter = pipe(
@@ -797,6 +837,11 @@ const routeParser = Route.oneOf(
   comboboxMultiStandaloneExampleRouter,
   comboboxDocsRouter,
   datePickerRouter,
+  datePickerBasicExampleRouter,
+  datePickerBoundsExampleRouter,
+  datePickerBasicStandaloneExampleRouter,
+  datePickerBoundsStandaloneExampleRouter,
+  datePickerDocsRouter,
   dialogRouter,
   dialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
@@ -895,6 +940,8 @@ export const Model = S.Struct({
   checkboxIndeterminateExample: CheckboxIndeterminateExample.Model,
   comboboxBasicExample: ComboboxBasicExample.Model,
   comboboxMultiExample: ComboboxMultiExample.Model,
+  datePickerBasicExample: DatePickerBasicExample.Model,
+  datePickerBoundsExample: DatePickerBoundsExample.Model,
   dialogBasicExample: DialogBasicExample.Model,
   dialogAnimatedExample: DialogAnimatedExample.Model,
   dialogDestructiveExample: DialogDestructiveExample.Model,
@@ -978,6 +1025,18 @@ export const GotComboboxMultiExampleMessage = m(
   "GotComboboxMultiExampleMessage",
   {
     message: ComboboxMultiExample.Message,
+  }
+);
+export const GotDatePickerBasicExampleMessage = m(
+  "GotDatePickerBasicExampleMessage",
+  {
+    message: DatePickerBasicExample.Message,
+  }
+);
+export const GotDatePickerBoundsExampleMessage = m(
+  "GotDatePickerBoundsExampleMessage",
+  {
+    message: DatePickerBoundsExample.Message,
   }
 );
 export const GotDialogBasicExampleMessage = m("GotDialogBasicExampleMessage", {
@@ -1127,6 +1186,8 @@ export const Message = S.Union([
   GotCheckboxIndeterminateExampleMessage,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
+  GotDatePickerBasicExampleMessage,
+  GotDatePickerBoundsExampleMessage,
   GotDialogBasicExampleMessage,
   GotDialogAnimatedExampleMessage,
   GotDialogDestructiveExampleMessage,
@@ -1203,6 +1264,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ComboboxBasicExample.init();
   const [comboboxMultiExample, comboboxMultiExampleCommands] =
     ComboboxMultiExample.init();
+  const [datePickerBasicExample, datePickerBasicExampleCommands] =
+    DatePickerBasicExample.init();
+  const [datePickerBoundsExample, datePickerBoundsExampleCommands] =
+    DatePickerBoundsExample.init();
   const [dialogBasicExample, dialogBasicExampleCommands] =
     DialogBasicExample.init();
   const [dialogAnimatedExample, dialogAnimatedExampleCommands] =
@@ -1265,6 +1330,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       checkboxIndeterminateExample,
       comboboxBasicExample,
       comboboxMultiExample,
+      datePickerBasicExample,
+      datePickerBoundsExample,
       dialogBasicExample,
       dialogAnimatedExample,
       dialogDestructiveExample,
@@ -1318,6 +1385,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(comboboxMultiExampleCommands, (message) =>
         GotComboboxMultiExampleMessage({ message })
+      ),
+      ...Command.mapMessages(datePickerBasicExampleCommands, (message) =>
+        GotDatePickerBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(datePickerBoundsExampleCommands, (message) =>
+        GotDatePickerBoundsExampleMessage({ message })
       ),
       ...Command.mapMessages(dialogBasicExampleCommands, (message) =>
         GotDialogBasicExampleMessage({ message })
@@ -1567,6 +1640,35 @@ export const update = (
           }),
           Command.mapMessages(comboboxMultiExampleCommands, (message) =>
             GotComboboxMultiExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDatePickerBasicExampleMessage: ({ message }) => {
+        const [datePickerBasicExample, datePickerBasicExampleCommands] =
+          DatePickerBasicExample.update(model.datePickerBasicExample, message);
+
+        return [
+          evo(model, { datePickerBasicExample: () => datePickerBasicExample }),
+          Command.mapMessages(datePickerBasicExampleCommands, (message) =>
+            GotDatePickerBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDatePickerBoundsExampleMessage: ({ message }) => {
+        const [datePickerBoundsExample, datePickerBoundsExampleCommands] =
+          DatePickerBoundsExample.update(
+            model.datePickerBoundsExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            datePickerBoundsExample: () => datePickerBoundsExample,
+          }),
+          Command.mapMessages(datePickerBoundsExampleCommands, (message) =>
+            GotDatePickerBoundsExampleMessage({ message })
           ),
         ];
       },
@@ -2002,6 +2104,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: comboboxMultiExampleRouter(),
   },
   { label: "Date Picker", routeTag: "DatePicker", href: datePickerRouter() },
+  {
+    label: "Date Picker Docs",
+    routeTag: "DatePickerDocs",
+    href: datePickerDocsRouter(),
+  },
+  {
+    label: "Date Picker Basic Example",
+    routeTag: "DatePickerBasicExample",
+    href: datePickerBasicExampleRouter(),
+  },
+  {
+    label: "Date Picker Bounds Example",
+    routeTag: "DatePickerBoundsExample",
+    href: datePickerBoundsExampleRouter(),
+  },
   { label: "Dialog", routeTag: "Dialog", href: dialogRouter() },
   { label: "Dialog Docs", routeTag: "DialogDocs", href: dialogDocsRouter() },
   {
@@ -3048,6 +3165,35 @@ const comboboxMultiExamplePreview = (
   });
 };
 
+const datePickerBasicExamplePreview = (
+  model: DatePickerBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DatePickerBasicExample.view,
+    toParentMessage: (message) => GotDatePickerBasicExampleMessage({ message }),
+  });
+};
+
+const datePickerBoundsExamplePreview = (
+  model: DatePickerBoundsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DatePickerBoundsExample.view,
+    toParentMessage: (message) =>
+      GotDatePickerBoundsExampleMessage({ message }),
+  });
+};
+
 const inputBasicExamplePreview = (
   model: InputBasicExample.Model,
   slotId: string
@@ -3574,6 +3720,128 @@ h.submodel({
         coverageItems: [
           "Registry scene tests verify selectable dates, disabled date attributes, and mode switching with FocusGrid resolution.",
           "Example scene tests verify parent-visible selected date, viewed month, and bounded-date feedback.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const datePickerDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Date Picker"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit DatePicker slice built on the official Foldkit Ui.DatePicker primitive. It composes a trigger, popover, embedded Calendar, selected-date OutMessages, hidden input support, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/date-picker" },
+        { label: "Examples", value: "basic, bounds" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "DatePicker v1 documents the popover-backed date-selection path: trigger labeling, child-owned open state, mounted popover positioning, parent-visible selected-date facts, bounded dates, and disabled date styling."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-date-picker-basic",
+                preview: datePickerBasicExamplePreview(
+                  model.datePickerBasicExample,
+                  "date-picker-docs-basic-preview"
+                ),
+                href: datePickerBasicExampleRouter(),
+                linkText: "Open standalone Date Picker Basic example",
+              }),
+              docsExampleBlock({
+                title: "Bounds",
+                testId: "docs-example-block-date-picker-bounds",
+                preview: datePickerBoundsExamplePreview(
+                  model.datePickerBoundsExample,
+                  "date-picker-docs-bounds-preview"
+                ),
+                href: datePickerBoundsExampleRouter(),
+                linkText: "Open standalone Date Picker Bounds example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/date-picker.json\nbunx shadcn@latest add <registry-url>/date-picker-basic.json\nbunx shadcn@latest add <registry-url>/date-picker-bounds.json",
+        usageBody:
+          "Initialize the DatePicker child model, delegate child messages through `h.submodel`, and handle SelectedDate or ChangedViewMonth in the parent update.",
+        usageCode: `import * as DatePicker from "./ui/date-picker";
+
+const datePicker = DatePicker.init({
+  id: "appointment-date",
+  today,
+});`,
+        integrationCode: `// Model
+datePicker: DatePicker.Model;
+selectedDate: Option.Option<CalendarDate>;
+
+// Message
+GotDatePickerMessage({ message: DatePicker.Message });
+
+// Update
+const [datePicker, commands, maybeOutMessage] =
+  DatePicker.update(model.datePicker, message);
+
+// View
+h.submodel({
+  slotId: model.datePicker.id,
+  model: model.datePicker,
+  view: DatePicker.view,
+  viewInputs: DatePicker.datePickerViewInputs({
+    name: "appointment-date",
+  }),
+  toParentMessage: (message) => GotDatePickerMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed DatePicker state with selected date, embedded Calendar state, and embedded Popover state.",
+          "init(config): creates a DatePicker model with today, optional selected date, animation, locale, min/max dates, and disabled dates.",
+          "update(model, message): returns model, commands, and an optional OutMessage.",
+          "SelectedDate and ChangedViewMonth: parent-visible picker facts.",
+          "open, close, selectDate, clear, and reflectSelectedDate: helpers for parent-driven picker changes.",
+          "datePickerViewInputs(overrides): standard trigger, panel, anchor, and embedded calendar rendering inputs.",
+          "Class helpers: wrapper, trigger, trigger content, placeholder, panel, backdrop, and formatDate.",
+        ],
+        accessibilityItems: [
+          "The helper provides a stable trigger aria-label for screen readers and tests.",
+          "The popover mount focuses the embedded calendar grid after opening.",
+          "Disabled dates expose aria-disabled through the embedded Calendar.",
+          "When name is provided, the primitive renders a hidden input for native form submission.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify opening, popover mount resolution, disabled date attributes, selected-date OutMessages, close focus, and mount cleanup.",
+          "Example scene tests verify parent-visible selected date and bounded-date feedback.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -5608,6 +5876,74 @@ const calendarBoundsExampleRouteView = (model: Model): Html => {
   );
 };
 
+const datePickerBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Date Picker Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable date-picker-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          datePickerBasicExamplePreview(
+            model.datePickerBasicExample,
+            "date-picker-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const datePickerBoundsExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Date Picker Bounds"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable date-picker-bounds registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          datePickerBoundsExamplePreview(
+            model.datePickerBoundsExample,
+            "date-picker-bounds-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const checkboxBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -6608,6 +6944,9 @@ const contentView = (model: Model): Html => {
       ComboboxBasicExample: () => comboboxBasicExampleRouteView(model),
       ComboboxMultiExample: () => comboboxMultiExampleRouteView(model),
       DatePicker: () => embedUi("ui-date-picker", View.datePicker),
+      DatePickerDocs: () => datePickerDocsView(model),
+      DatePickerBasicExample: () => datePickerBasicExampleRouteView(model),
+      DatePickerBoundsExample: () => datePickerBoundsExampleRouteView(model),
       Dialog: () => embedUi("ui-dialog", View.dialog),
       DialogDocs: () => dialogDocsView(model),
       DialogBasicExample: () => dialogBasicExampleRouteView(model),
