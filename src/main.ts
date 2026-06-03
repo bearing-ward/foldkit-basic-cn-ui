@@ -21,6 +21,8 @@ import * as MenuAnimatedExample from "../registry/default/examples/menu-animated
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
+import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -63,6 +65,9 @@ export const PopoverBasicExampleRoute = r("PopoverBasicExample");
 export const PopoverAnimatedExampleRoute = r("PopoverAnimatedExample");
 export const RadioGroupRoute = r("RadioGroup");
 export const SelectRoute = r("Select");
+export const SelectDocsRoute = r("SelectDocs");
+export const SelectBasicExampleRoute = r("SelectBasicExample");
+export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
 export const SwitchRoute = r("Switch");
 export const TabsRoute = r("Tabs");
@@ -106,6 +111,9 @@ const AppRoute = S.Union([
   PopoverAnimatedExampleRoute,
   RadioGroupRoute,
   SelectRoute,
+  SelectDocsRoute,
+  SelectBasicExampleRoute,
+  SelectDisabledExampleRoute,
   SliderRoute,
   SwitchRoute,
   TabsRoute,
@@ -315,6 +323,38 @@ const radioGroupRouter = pipe(
   Route.mapTo(RadioGroupRoute)
 );
 const selectRouter = pipe(literal("select"), Route.mapTo(SelectRoute));
+const selectDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("select")),
+  Route.mapTo(SelectDocsRoute)
+);
+const selectBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("select")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SelectBasicExampleRoute)
+);
+const selectDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("select")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(SelectDisabledExampleRoute)
+);
+const selectBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("select-basic")),
+  Route.mapTo(SelectBasicExampleRoute)
+);
+const selectDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("select-disabled")),
+  Route.mapTo(SelectDisabledExampleRoute)
+);
 const sliderRouter = pipe(literal("slider"), Route.mapTo(SliderRoute));
 const switchRouter = pipe(literal("switch"), Route.mapTo(SwitchRoute));
 const tabsRouter = pipe(literal("tabs"), Route.mapTo(TabsRoute));
@@ -370,6 +410,11 @@ const routeParser = Route.oneOf(
   popoverDocsRouter,
   radioGroupRouter,
   selectRouter,
+  selectBasicExampleRouter,
+  selectDisabledExampleRouter,
+  selectBasicStandaloneExampleRouter,
+  selectDisabledStandaloneExampleRouter,
+  selectDocsRouter,
   sliderRouter,
   switchRouter,
   tabsRouter,
@@ -399,6 +444,8 @@ export const Model = S.Struct({
   menuAnimatedExample: MenuAnimatedExample.Model,
   popoverBasicExample: PopoverBasicExample.Model,
   popoverAnimatedExample: PopoverAnimatedExample.Model,
+  selectBasicExample: SelectBasicExample.Model,
+  selectDisabledExample: SelectDisabledExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -471,6 +518,15 @@ export const GotPopoverAnimatedExampleMessage = m(
     message: PopoverAnimatedExample.Message,
   }
 );
+export const GotSelectBasicExampleMessage = m("GotSelectBasicExampleMessage", {
+  message: SelectBasicExample.Message,
+});
+export const GotSelectDisabledExampleMessage = m(
+  "GotSelectDisabledExampleMessage",
+  {
+    message: SelectDisabledExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -489,6 +545,8 @@ export const Message = S.Union([
   GotMenuAnimatedExampleMessage,
   GotPopoverBasicExampleMessage,
   GotPopoverAnimatedExampleMessage,
+  GotSelectBasicExampleMessage,
+  GotSelectDisabledExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -545,6 +603,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     PopoverBasicExample.init();
   const [popoverAnimatedExample, popoverAnimatedExampleCommands] =
     PopoverAnimatedExample.init();
+  const [selectBasicExample, selectBasicExampleCommands] =
+    SelectBasicExample.init();
+  const [selectDisabledExample, selectDisabledExampleCommands] =
+    SelectDisabledExample.init();
 
   return [
     {
@@ -561,6 +623,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       menuAnimatedExample,
       popoverBasicExample,
       popoverAnimatedExample,
+      selectBasicExample,
+      selectDisabledExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -598,6 +662,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(popoverAnimatedExampleCommands, (message) =>
         GotPopoverAnimatedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(selectBasicExampleCommands, (message) =>
+        GotSelectBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(selectDisabledExampleCommands, (message) =>
+        GotSelectDisabledExampleMessage({ message })
       ),
     ],
   ];
@@ -824,6 +894,34 @@ export const update = (
           ),
         ];
       },
+
+      GotSelectBasicExampleMessage: ({ message }) => {
+        const [selectBasicExample, selectBasicExampleCommands] =
+          SelectBasicExample.update(model.selectBasicExample, message);
+
+        return [
+          evo(model, {
+            selectBasicExample: () => selectBasicExample,
+          }),
+          Command.mapMessages(selectBasicExampleCommands, (message) =>
+            GotSelectBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotSelectDisabledExampleMessage: ({ message }) => {
+        const [selectDisabledExample, selectDisabledExampleCommands] =
+          SelectDisabledExample.update(model.selectDisabledExample, message);
+
+        return [
+          evo(model, {
+            selectDisabledExample: () => selectDisabledExample,
+          }),
+          Command.mapMessages(selectDisabledExampleCommands, (message) =>
+            GotSelectDisabledExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -920,6 +1018,17 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   { label: "Radio Group", routeTag: "RadioGroup", href: radioGroupRouter() },
   { label: "Select", routeTag: "Select", href: selectRouter() },
+  { label: "Select Docs", routeTag: "SelectDocs", href: selectDocsRouter() },
+  {
+    label: "Select Basic Example",
+    routeTag: "SelectBasicExample",
+    href: selectBasicExampleRouter(),
+  },
+  {
+    label: "Select Disabled Example",
+    routeTag: "SelectDisabledExample",
+    href: selectDisabledExampleRouter(),
+  },
   { label: "Slider", routeTag: "Slider", href: sliderRouter() },
   { label: "Switch", routeTag: "Switch", href: switchRouter() },
   { label: "Tabs", routeTag: "Tabs", href: tabsRouter() },
@@ -1537,6 +1646,144 @@ const popoverAnimatedExamplePreview = (
     view: PopoverAnimatedExample.view,
     toParentMessage: (message) => GotPopoverAnimatedExampleMessage({ message }),
   });
+};
+
+const selectBasicExamplePreview = (
+  model: SelectBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SelectBasicExample.view,
+    toParentMessage: (message) => GotSelectBasicExampleMessage({ message }),
+  });
+};
+
+const selectDisabledExamplePreview = (
+  model: SelectDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SelectDisabledExample.view,
+    toParentMessage: (message) => GotSelectDisabledExampleMessage({ message }),
+  });
+};
+
+const selectDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Select"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Select slice built on the official Foldkit Ui.Select primitive. It keeps native select semantics while centralizing label, description, disabled, invalid, value, and onChange wiring.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/select" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Select v1 documents the native select path: parent-owned value, typed onChange messages, accessible label and description helpers, and disabled state styling."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-select-basic",
+                preview: selectBasicExamplePreview(
+                  model.selectBasicExample,
+                  "select-docs-basic-preview"
+                ),
+                href: selectBasicExampleRouter(),
+                linkText: "Open standalone Select Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-select-disabled",
+                preview: selectDisabledExamplePreview(
+                  model.selectDisabledExample,
+                  "select-docs-disabled-preview"
+                ),
+                href: selectDisabledExampleRouter(),
+                linkText: "Open standalone Select Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/select.json\nbunx shadcn@latest add <registry-url>/select-basic.json\nbunx shadcn@latest add <registry-url>/select-disabled.json",
+        usageBody:
+          "Store the selected value in the parent model, map Ui.Select onChange into a verb-first Foldkit message, and render native options inside the supplied select attributes.",
+        usageCode: `import * as Select from "./ui/select";
+
+Select.view<Message>({
+  id: "region-select",
+  value: model.region,
+  onChange: (value) => UpdatedRegion({ value }),
+  toView: (attributes) => h.select(attributes.select, options),
+});`,
+        integrationCode: `// Model
+region: S.String;
+
+// Message
+UpdatedRegion({ value: S.String });
+
+// Update
+UpdatedRegion: ({ value }) => [
+  evo(model, { region: () => value }),
+  [],
+];`,
+        apiItems: [
+          "view(config): renders the native select through the supplied toView callback.",
+          "descriptionId(id): returns the generated description id for custom composition.",
+          "SelectAttributes: grouped select, label, and description attributes.",
+          "ViewConfig: id, value, onChange, isDisabled, isInvalid, isAutofocus, and name.",
+        ],
+        accessibilityItems: [
+          "The label attributes bind the select to a visible label.",
+          "The description attributes provide aria-describedby for explanatory copy.",
+          "Disabled and invalid states stay on the native control so browser semantics are preserved.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify label, description, change messages, and disabled state.",
+          "Example scene tests verify parent-owned value feedback and disabled documentation copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
 };
 
 const listboxDocsView = (model: Model): Html => {
@@ -3002,6 +3249,71 @@ const popoverAnimatedExampleRouteView = (model: Model): Html => {
   );
 };
 
+const selectBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Select Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable select-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          selectBasicExamplePreview(
+            model.selectBasicExample,
+            "select-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const selectDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Select Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable select-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          selectDisabledExamplePreview(
+            model.selectDisabledExample,
+            "select-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const contentView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3047,6 +3359,9 @@ const contentView = (model: Model): Html => {
       PopoverAnimatedExample: () => popoverAnimatedExampleRouteView(model),
       RadioGroup: () => embedUi("ui-radio-group", View.radioGroup),
       Select: () => embedUi("ui-select", View.select),
+      SelectDocs: () => selectDocsView(model),
+      SelectBasicExample: () => selectBasicExampleRouteView(model),
+      SelectDisabledExample: () => selectDisabledExampleRouteView(model),
       Slider: () => embedUi("ui-slider", View.slider),
       Switch: () => embedUi("ui-switch", View.switch_),
       Tabs: () => embedUi("ui-tabs", View.tabs),

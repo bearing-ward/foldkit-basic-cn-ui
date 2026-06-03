@@ -451,6 +451,93 @@
           "example": "animated"
         }
       }
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A Foldkit Select wrapper for native select controls with accessible label and description helpers, typed onChange messages, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/select/index.ts",
+          "target": "src/ui/select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/select/view.ts",
+          "target": "src/ui/select/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/select/select.scene.test.ts",
+          "target": "src/ui/select/select.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "primitive": "Ui.Select",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "select-basic",
+      "type": "registry:example",
+      "title": "Select Basic",
+      "description": "A runnable Foldkit example showing a native Select with parent-owned value, typed onChange message, label, description, and selected-value feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/default/examples/select-basic/main.ts",
+          "target": "src/examples/select-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/select-basic/select-basic.scene.test.ts",
+          "target": "src/examples/select-basic/select-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "select-disabled",
+      "type": "registry:example",
+      "title": "Select Disabled",
+      "description": "A runnable Foldkit example showing disabled Select styling and accessible explanatory text.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/default/examples/select-disabled/main.ts",
+          "target": "src/examples/select-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/select-disabled/select-disabled.scene.test.ts",
+          "target": "src/examples/select-disabled/select-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "example": "disabled"
+        }
+      }
     }
   ]
 }

@@ -12,6 +12,8 @@ import * as MenuAnimatedExample from "../registry/default/examples/menu-animated
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
+import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import {
   AnimationRoute,
   ButtonRoute,
@@ -37,6 +39,9 @@ import {
   PopoverBasicExampleRoute,
   PopoverDocsRoute,
   RadioGroupRoute,
+  SelectBasicExampleRoute,
+  SelectDisabledExampleRoute,
+  SelectDocsRoute,
   SelectRoute,
   SwitchRoute,
   TextareaRoute,
@@ -59,6 +64,8 @@ const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
+const [selectBasicExample] = SelectBasicExample.init();
+const [selectDisabledExample] = SelectDisabledExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -74,6 +81,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   menuAnimatedExample,
   popoverBasicExample,
   popoverAnimatedExample,
+  selectBasicExample,
+  selectDisabledExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -119,6 +128,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Popover Animated Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Select Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Select Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Select Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
@@ -437,6 +453,70 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Choose animated person" })
       ).toExist()
+    );
+  });
+
+  test("the Select docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SelectDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Select" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("combobox", { name: "Region" })).toExist(),
+      Scene.expect(Scene.role("combobox", { name: "Plan" })).toBeDisabled(),
+      Scene.expect(Scene.testId("docs-example-block-select-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-select-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-select-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-select-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-select-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Select Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Select Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Select Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SelectBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Select Basic" })).toExist(),
+      Scene.expect(Scene.role("combobox", { name: "Region" })).toExist()
+    );
+  });
+
+  test("the Select Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SelectDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Select Disabled" })
+      ).toExist(),
+      Scene.expect(Scene.role("combobox", { name: "Plan" })).toBeDisabled()
     );
   });
 

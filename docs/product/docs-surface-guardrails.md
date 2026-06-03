@@ -67,3 +67,8 @@ Current enforced examples:
 - `docs-example-block-menu-animated`
 - `docs-example-block-menu-animated-preview`
 - `docs-example-block-menu-animated-actions`
+- `docs-example-block-select-basic`
+- `docs-example-block-select-basic-preview`
+- `docs-example-block-select-basic-actions`
+- `docs-example-block-select-disabled`
+- `docs-example-block-select-disabled-actions`

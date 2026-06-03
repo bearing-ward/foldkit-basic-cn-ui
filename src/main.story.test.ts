@@ -14,6 +14,8 @@ import * as MenuAnimatedExample from "../registry/default/examples/menu-animated
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
+import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -32,6 +34,8 @@ const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
+const [selectBasicExample] = SelectBasicExample.init();
+const [selectDisabledExample] = SelectDisabledExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -47,6 +51,8 @@ const initialModel: Model = {
   menuAnimatedExample,
   popoverBasicExample,
   popoverAnimatedExample,
+  selectBasicExample,
+  selectDisabledExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -282,6 +288,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ListboxAnimatedExample");
+        })
+      );
+    });
+
+    test("/docs/components/select resolves to SelectDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/select"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SelectDocs");
+        })
+      );
+    });
+
+    test("/docs/components/select/examples/basic resolves to SelectBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/select/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SelectBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/select/examples/disabled resolves to SelectDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/select/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SelectDisabledExample");
         })
       );
     });

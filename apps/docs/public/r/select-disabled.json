@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-disabled",
+  "type": "registry:example",
+  "title": "Select Disabled",
+  "description": "A runnable Foldkit example showing disabled Select styling and accessible explanatory text.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["select"],
+  "files": [
+    {
+      "path": "registry/default/examples/select-disabled/main.ts",
+      "target": "src/examples/select-disabled/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command} from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Select from \"../../ui/select\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  value: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedPlan = m(\"UpdatedPlan\", { value: S.String });\n\nexport const Message = S.Union([UpdatedPlan]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ value: \"team\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedPlan: ({ value }) => [evo(model, { value: () => value }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"max-w-sm space-y-2\")],\n    [\n      Select.view<Message>({\n        id: \"plan-select\",\n        value: model.value,\n        isDisabled: true,\n        toView: (attributes) =>\n          h.div(\n            [h.Class(\"space-y-2\")],\n            [\n              h.label(attributes.label, [\"Plan\"]),\n              h.div(\n                [h.Class(Select.selectWrapperClassName)],\n                [\n                  h.select(\n                    [...attributes.select, h.Class(Select.selectClassName)],\n                    [\n                      h.option([h.Value(\"team\")], [\"Team\"]),\n                      h.option([h.Value(\"enterprise\")], [\"Enterprise\"]),\n                    ]\n                  ),\n                  h.span([h.Class(Select.chevronClassName)], [\"v\"]),\n                ]\n              ),\n              h.p(attributes.description, [\"Plan changes are locked.\"]),\n            ]\n          ),\n      }),\n      h.p([h.Class(\"text-sm text-gray-700\")], [\"Current plan: Team\"]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/select-disabled/select-disabled.scene.test.ts",
+      "target": "src/examples/select-disabled/select-disabled.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as SelectDisabledExample from \"./main\";\n\ndescribe(\"Select Disabled example\", () => {\n  test(\"renders disabled state with description\", () => {\n    Scene.scene(\n      {\n        update: SelectDisabledExample.update,\n        view: SelectDisabledExample.view,\n      },\n      Scene.with(SelectDisabledExample.init()[0]),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Plan\" })).toBeDisabled(),\n      Scene.expect(Scene.text(\"Plan changes are locked.\")).toExist(),\n      Scene.expect(Scene.text(\"Current plan: Team\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Select",
+      "example": "disabled"
+    }
+  }
+}
