@@ -1088,6 +1088,7 @@ const codeBlock = (code: string): Html => {
 
 type DocsExampleBlockInput = Readonly<{
   title: string;
+  description?: string;
   testId: string;
   preview: Html;
   href: string;
@@ -1096,6 +1097,7 @@ type DocsExampleBlockInput = Readonly<{
 
 const docsExampleBlock = ({
   title,
+  description,
   testId,
   preview,
   href,
@@ -1112,6 +1114,9 @@ const docsExampleBlock = ({
     ],
     [
       h.h3([h.Class("text-base font-semibold text-gray-950")], [title]),
+      description === undefined
+        ? h.empty
+        : h.p([h.Class("mt-3 text-sm text-gray-600")], [description]),
       h.div(
         [
           h.Class("flex min-h-20 items-start pt-6"),
@@ -1434,58 +1439,26 @@ const popoverDocsView = (model: Model): Html => {
           h.div(
             [h.Class("grid gap-4 lg:grid-cols-2")],
             [
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-base font-semibold text-gray-950")],
-                    ["Basic"]
-                  ),
-                  popoverBasicExamplePreview(
-                    model.popoverBasicExample,
-                    "popover-docs-basic-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(popoverBasicExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Popover Basic example"]
-                  ),
-                ]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-base font-semibold text-gray-950")],
-                    ["Animated"]
-                  ),
-                  popoverAnimatedExamplePreview(
-                    model.popoverAnimatedExample,
-                    "popover-docs-animated-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(popoverAnimatedExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Popover Animated example"]
-                  ),
-                ]
-              ),
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-popover-basic",
+                preview: popoverBasicExamplePreview(
+                  model.popoverBasicExample,
+                  "popover-docs-basic-preview"
+                ),
+                href: popoverBasicExampleRouter(),
+                linkText: "Open standalone Popover Basic example",
+              }),
+              docsExampleBlock({
+                title: "Animated",
+                testId: "docs-example-block-popover-animated",
+                preview: popoverAnimatedExamplePreview(
+                  model.popoverAnimatedExample,
+                  "popover-docs-animated-preview"
+                ),
+                href: popoverAnimatedExampleRouter(),
+                linkText: "Open standalone Popover Animated example",
+              }),
             ]
           ),
         ]
@@ -1589,166 +1562,66 @@ const dialogDocsView = (model: Model): Html => {
           h.div(
             [h.Class("grid gap-4 lg:grid-cols-2")],
             [
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-sm font-semibold text-gray-900")],
-                    ["Basic"]
-                  ),
-                  h.p(
-                    [h.Class("text-sm text-gray-600")],
-                    [
-                      "A parent-owned trigger sends RequestedOpen and receives close results through OutMessage.",
-                    ]
-                  ),
-                  dialogBasicExamplePreview(
-                    model.dialogBasicExample,
-                    "dialog-docs-basic-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(dialogBasicExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Dialog Basic example"]
-                  ),
-                ]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-sm font-semibold text-gray-900")],
-                    ["Animated"]
-                  ),
-                  h.p(
-                    [h.Class("text-sm text-gray-600")],
-                    [
-                      "The animated variant keeps the dialog surface mounted while Foldkit animation state settles.",
-                    ]
-                  ),
-                  dialogAnimatedExamplePreview(
-                    model.dialogAnimatedExample,
-                    "dialog-docs-animated-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(dialogAnimatedExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Dialog Animated example"]
-                  ),
-                ]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-sm font-semibold text-gray-900")],
-                    ["Destructive"]
-                  ),
-                  h.p(
-                    [h.Class("text-sm text-gray-600")],
-                    [
-                      "A destructive confirmation uses the existing Dialog flow with a red confirm action.",
-                    ]
-                  ),
-                  dialogDestructiveExamplePreview(
-                    model.dialogDestructiveExample,
-                    "dialog-docs-destructive-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(dialogDestructiveExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Dialog Destructive example"]
-                  ),
-                ]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-sm font-semibold text-gray-900")],
-                    ["Focus"]
-                  ),
-                  h.p(
-                    [h.Class("text-sm text-gray-600")],
-                    [
-                      "A focus-targeted dialog warms up and focuses the first field for input-heavy flows.",
-                    ]
-                  ),
-                  dialogFocusExamplePreview(
-                    model.dialogFocusExample,
-                    "dialog-docs-focus-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(dialogFocusExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Dialog Focus example"]
-                  ),
-                ]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-sm font-semibold text-gray-900")],
-                    ["Scrollable"]
-                  ),
-                  h.p(
-                    [h.Class("text-sm text-gray-600")],
-                    [
-                      "A long-content dialog constrains the body scroll region while keeping footer actions visible.",
-                    ]
-                  ),
-                  dialogScrollableExamplePreview(
-                    model.dialogScrollableExample,
-                    "dialog-docs-scrollable-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(dialogScrollableExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Dialog Scrollable example"]
-                  ),
-                ]
-              ),
+              docsExampleBlock({
+                title: "Basic",
+                description:
+                  "A parent-owned trigger sends RequestedOpen and receives close results through OutMessage.",
+                testId: "docs-example-block-dialog-basic",
+                preview: dialogBasicExamplePreview(
+                  model.dialogBasicExample,
+                  "dialog-docs-basic-preview"
+                ),
+                href: dialogBasicExampleRouter(),
+                linkText: "Open standalone Dialog Basic example",
+              }),
+              docsExampleBlock({
+                title: "Animated",
+                description:
+                  "The animated variant keeps the dialog surface mounted while Foldkit animation state settles.",
+                testId: "docs-example-block-dialog-animated",
+                preview: dialogAnimatedExamplePreview(
+                  model.dialogAnimatedExample,
+                  "dialog-docs-animated-preview"
+                ),
+                href: dialogAnimatedExampleRouter(),
+                linkText: "Open standalone Dialog Animated example",
+              }),
+              docsExampleBlock({
+                title: "Destructive",
+                description:
+                  "A destructive confirmation uses the existing Dialog flow with a red confirm action.",
+                testId: "docs-example-block-dialog-destructive",
+                preview: dialogDestructiveExamplePreview(
+                  model.dialogDestructiveExample,
+                  "dialog-docs-destructive-preview"
+                ),
+                href: dialogDestructiveExampleRouter(),
+                linkText: "Open standalone Dialog Destructive example",
+              }),
+              docsExampleBlock({
+                title: "Focus",
+                description:
+                  "A focus-targeted dialog warms up and focuses the first field for input-heavy flows.",
+                testId: "docs-example-block-dialog-focus",
+                preview: dialogFocusExamplePreview(
+                  model.dialogFocusExample,
+                  "dialog-docs-focus-preview"
+                ),
+                href: dialogFocusExampleRouter(),
+                linkText: "Open standalone Dialog Focus example",
+              }),
+              docsExampleBlock({
+                title: "Scrollable",
+                description:
+                  "A long-content dialog constrains the body scroll region while keeping footer actions visible.",
+                testId: "docs-example-block-dialog-scrollable",
+                preview: dialogScrollableExamplePreview(
+                  model.dialogScrollableExample,
+                  "dialog-docs-scrollable-preview"
+                ),
+                href: dialogScrollableExampleRouter(),
+                linkText: "Open standalone Dialog Scrollable example",
+              }),
             ]
           ),
         ]

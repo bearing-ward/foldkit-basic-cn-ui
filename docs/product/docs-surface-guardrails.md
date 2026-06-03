@@ -20,8 +20,21 @@ Implementation guardrail:
 - Add `data-testid` hooks for the block, preview region, and action row.
 - Scene tests must assert the block uses vertical stacking and that the action row is separated from the preview.
 
-The Menu docs route is the first enforced example:
+Current enforced examples:
 
+- `docs-example-block-dialog-basic`
+- `docs-example-block-dialog-basic-preview`
+- `docs-example-block-dialog-basic-actions`
+- `docs-example-block-dialog-animated`
+- `docs-example-block-dialog-animated-actions`
+- `docs-example-block-dialog-destructive`
+- `docs-example-block-dialog-focus-actions`
+- `docs-example-block-dialog-scrollable-preview`
+- `docs-example-block-popover-basic`
+- `docs-example-block-popover-basic-preview`
+- `docs-example-block-popover-basic-actions`
+- `docs-example-block-popover-animated`
+- `docs-example-block-popover-animated-actions`
 - `docs-example-block-menu-basic`
 - `docs-example-block-menu-basic-preview`
 - `docs-example-block-menu-basic-actions`

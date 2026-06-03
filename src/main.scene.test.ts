@@ -178,6 +178,30 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Traceability checklist" })
       ).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-dialog-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-animated")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-animated-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-destructive")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-focus-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-dialog-scrollable-preview")
+      ).toHaveClass("pt-6"),
       Scene.expect(Scene.role("button", { name: "Open dialog" })).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open animated dialog" })
@@ -354,6 +378,21 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Open animated popover" })
       ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-popover-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-popover-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-popover-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-popover-animated")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-popover-animated-actions")
+      ).toHaveClass("border-t"),
       Scene.expect(
         Scene.role("link", { name: "Open standalone Popover Basic example" })
       ).toExist(),
