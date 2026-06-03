@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset-basic",
+  "type": "registry:example",
+  "title": "Fieldset Basic",
+  "description": "A runnable Foldkit example showing grouped profile fields with parent-visible input feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["fieldset"],
+  "files": [
+    {
+      "path": "registry/default/examples/fieldset-basic/main.ts",
+      "target": "src/examples/fieldset-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Fieldset from \"../../ui/fieldset\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  name: S.String,\n  bio: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedName = m(\"UpdatedName\", { value: S.String });\nexport const UpdatedBio = m(\"UpdatedBio\", { value: S.String });\n\nexport const Message = S.Union([UpdatedName, UpdatedBio]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ name: \"\", bio: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedName: ({ value }) => [evo(model, { name: () => value }), []],\n      UpdatedBio: ({ value }) => [evo(model, { bio: () => value }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"max-w-md space-y-3\")],\n    [\n      Fieldset.view<Message>({\n        id: \"profile-fieldset\",\n        toView: (attributes) =>\n          h.fieldset(\n            [...attributes.fieldset, h.Class(Fieldset.fieldsetClassName)],\n            [\n              h.legend(\n                [...attributes.legend, h.Class(Fieldset.legendClassName)],\n                [\"Profile\"]\n              ),\n              h.p(\n                [\n                  ...attributes.description,\n                  h.Class(Fieldset.descriptionClassName),\n                ],\n                [\"Keep public profile details grouped for form review.\"]\n              ),\n              h.div(\n                [h.Class(Fieldset.fieldsClassName)],\n                [\n                  h.label(\n                    [h.Class(Fieldset.fieldClassName)],\n                    [\n                      h.span([h.Class(Fieldset.labelClassName)], [\"Name\"]),\n                      h.input([\n                        h.AriaLabel(\"Name\"),\n                        h.Value(model.name),\n                        h.Placeholder(\"Ada Lovelace\"),\n                        h.OnInput((value) => UpdatedName({ value })),\n                        h.Class(Fieldset.inputClassName),\n                      ]),\n                    ]\n                  ),\n                  h.label(\n                    [h.Class(Fieldset.fieldClassName)],\n                    [\n                      h.span([h.Class(Fieldset.labelClassName)], [\"Bio\"]),\n                      h.textarea(\n                        [\n                          h.AriaLabel(\"Bio\"),\n                          h.Value(model.bio),\n                          h.Placeholder(\"Short introduction\"),\n                          h.OnInput((value) => UpdatedBio({ value })),\n                          h.Class(Fieldset.textareaClassName),\n                        ],\n                        []\n                      ),\n                    ]\n                  ),\n                ]\n              ),\n            ]\n          ),\n      }),\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [`Profile: ${model.name || \"No name\"} / ${model.bio || \"No bio\"}`]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/fieldset-basic/fieldset-basic.scene.test.ts",
+      "target": "src/examples/fieldset-basic/fieldset-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as FieldsetBasicExample from \"./main\";\n\ndescribe(\"Fieldset Basic example\", () => {\n  test(\"updates grouped field feedback\", () => {\n    Scene.scene(\n      {\n        update: FieldsetBasicExample.update,\n        view: FieldsetBasicExample.view,\n      },\n      Scene.with(FieldsetBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"group\", { name: \"Profile\" })).toExist(),\n      Scene.type(Scene.role(\"textbox\", { name: \"Name\" }), \"Ada\"),\n      Scene.type(Scene.role(\"textbox\", { name: \"Bio\" }), \"Engineer\"),\n      Scene.expect(Scene.text(\"Profile: Ada / Engineer\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Fieldset",
+      "example": "basic"
+    }
+  }
+}

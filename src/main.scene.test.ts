@@ -12,6 +12,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
+import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
@@ -50,6 +52,9 @@ import {
   DialogScrollableExampleRoute,
   DisclosureRoute,
   FieldsetRoute,
+  FieldsetBasicExampleRoute,
+  FieldsetDisabledExampleRoute,
+  FieldsetDocsRoute,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
   HomeRoute,
@@ -102,6 +107,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [fieldsetBasicExample] = FieldsetBasicExample.init();
+const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
@@ -133,6 +140,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  fieldsetBasicExample,
+  fieldsetDisabledExample,
   inputBasicExample,
   inputDisabledExample,
   listboxBasicExample,
@@ -214,6 +223,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Scrollable Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Fieldset Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Fieldset Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Fieldset Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Input Docs" })).toExist(),
       Scene.expect(
@@ -609,6 +625,74 @@ describe("scene", () => {
           name: "Open standalone Dialog Scrollable example",
         })
       ).toExist()
+    );
+  });
+
+  test("the Fieldset docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(FieldsetDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Fieldset" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Profile" })).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Locked name" })
+      ).toBeDisabled(),
+      Scene.expect(
+        Scene.testId("docs-example-block-fieldset-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-fieldset-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-fieldset-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-fieldset-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-fieldset-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Fieldset Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Fieldset Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Fieldset Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(FieldsetBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Fieldset Basic" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Profile" })).toExist()
+    );
+  });
+
+  test("the Fieldset Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(FieldsetDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Fieldset Disabled" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Locked name" })
+      ).toBeDisabled()
     );
   });
 

@@ -14,6 +14,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
+import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
@@ -48,6 +50,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [fieldsetBasicExample] = FieldsetBasicExample.init();
+const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
@@ -79,6 +83,8 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  fieldsetBasicExample,
+  fieldsetDisabledExample,
   inputBasicExample,
   inputDisabledExample,
   listboxBasicExample,
@@ -409,6 +415,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDocs");
+        })
+      );
+    });
+
+    test("/docs/components/fieldset resolves to FieldsetDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/fieldset"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldsetDocs");
+        })
+      );
+    });
+
+    test("/docs/components/fieldset/examples/basic resolves to FieldsetBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/fieldset/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldsetBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/fieldset/examples/disabled resolves to FieldsetDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/fieldset/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldsetDisabledExample");
         })
       );
     });
@@ -957,6 +1012,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/fieldset-basic resolves to FieldsetBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/fieldset-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldsetBasicExample");
+        })
+      );
+    });
+
+    test("/examples/fieldset-disabled resolves to FieldsetDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/fieldset-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldsetDisabledExample");
         })
       );
     });

@@ -21,6 +21,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
+import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
@@ -74,6 +76,9 @@ export const DialogScrollableExampleRoute = r("DialogScrollableExample");
 export const DisclosureRoute = r("Disclosure");
 export const DragAndDropRoute = r("DragAndDrop");
 export const FieldsetRoute = r("Fieldset");
+export const FieldsetDocsRoute = r("FieldsetDocs");
+export const FieldsetBasicExampleRoute = r("FieldsetBasicExample");
+export const FieldsetDisabledExampleRoute = r("FieldsetDisabledExample");
 export const FileDropRoute = r("FileDrop");
 export const InputRoute = r("Input");
 export const InputDocsRoute = r("InputDocs");
@@ -143,6 +148,9 @@ const AppRoute = S.Union([
   DisclosureRoute,
   DragAndDropRoute,
   FieldsetRoute,
+  FieldsetDocsRoute,
+  FieldsetBasicExampleRoute,
+  FieldsetDisabledExampleRoute,
   FileDropRoute,
   InputRoute,
   InputDocsRoute,
@@ -373,6 +381,38 @@ const dragAndDropRouter = pipe(
   Route.mapTo(DragAndDropRoute)
 );
 const fieldsetRouter = pipe(literal("fieldset"), Route.mapTo(FieldsetRoute));
+const fieldsetDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("fieldset")),
+  Route.mapTo(FieldsetDocsRoute)
+);
+const fieldsetBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("fieldset")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(FieldsetBasicExampleRoute)
+);
+const fieldsetDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("fieldset")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(FieldsetDisabledExampleRoute)
+);
+const fieldsetBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("fieldset-basic")),
+  Route.mapTo(FieldsetBasicExampleRoute)
+);
+const fieldsetDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("fieldset-disabled")),
+  Route.mapTo(FieldsetDisabledExampleRoute)
+);
 const fileDropRouter = pipe(literal("file-drop"), Route.mapTo(FileDropRoute));
 const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
 const inputDocsRouter = pipe(
@@ -687,6 +727,11 @@ const routeParser = Route.oneOf(
   disclosureRouter,
   dragAndDropRouter,
   fieldsetRouter,
+  fieldsetBasicExampleRouter,
+  fieldsetDisabledExampleRouter,
+  fieldsetBasicStandaloneExampleRouter,
+  fieldsetDisabledStandaloneExampleRouter,
+  fieldsetDocsRouter,
   fileDropRouter,
   inputRouter,
   inputBasicExampleRouter,
@@ -763,6 +808,8 @@ export const Model = S.Struct({
   dialogDestructiveExample: DialogDestructiveExample.Model,
   dialogFocusExample: DialogFocusExample.Model,
   dialogScrollableExample: DialogScrollableExample.Model,
+  fieldsetBasicExample: FieldsetBasicExample.Model,
+  fieldsetDisabledExample: FieldsetDisabledExample.Model,
   inputBasicExample: InputBasicExample.Model,
   inputDisabledExample: InputDisabledExample.Model,
   listboxBasicExample: ListboxBasicExample.Model,
@@ -849,6 +896,18 @@ export const GotDialogScrollableExampleMessage = m(
   "GotDialogScrollableExampleMessage",
   {
     message: DialogScrollableExample.Message,
+  }
+);
+export const GotFieldsetBasicExampleMessage = m(
+  "GotFieldsetBasicExampleMessage",
+  {
+    message: FieldsetBasicExample.Message,
+  }
+);
+export const GotFieldsetDisabledExampleMessage = m(
+  "GotFieldsetDisabledExampleMessage",
+  {
+    message: FieldsetDisabledExample.Message,
   }
 );
 export const GotInputBasicExampleMessage = m("GotInputBasicExampleMessage", {
@@ -953,6 +1012,8 @@ export const Message = S.Union([
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
   GotDialogScrollableExampleMessage,
+  GotFieldsetBasicExampleMessage,
+  GotFieldsetDisabledExampleMessage,
   GotInputBasicExampleMessage,
   GotInputDisabledExampleMessage,
   GotListboxBasicExampleMessage,
@@ -1026,6 +1087,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogFocusExample.init();
   const [dialogScrollableExample, dialogScrollableExampleCommands] =
     DialogScrollableExample.init();
+  const [fieldsetBasicExample, fieldsetBasicExampleCommands] =
+    FieldsetBasicExample.init();
+  const [fieldsetDisabledExample, fieldsetDisabledExampleCommands] =
+    FieldsetDisabledExample.init();
   const [inputBasicExample, inputBasicExampleCommands] =
     InputBasicExample.init();
   const [inputDisabledExample, inputDisabledExampleCommands] =
@@ -1073,6 +1138,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogDestructiveExample,
       dialogFocusExample,
       dialogScrollableExample,
+      fieldsetBasicExample,
+      fieldsetDisabledExample,
       inputBasicExample,
       inputDisabledExample,
       listboxBasicExample,
@@ -1126,6 +1193,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogScrollableExampleCommands, (message) =>
         GotDialogScrollableExampleMessage({ message })
+      ),
+      ...Command.mapMessages(fieldsetBasicExampleCommands, (message) =>
+        GotFieldsetBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(fieldsetDisabledExampleCommands, (message) =>
+        GotFieldsetDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(inputBasicExampleCommands, (message) =>
         GotInputBasicExampleMessage({ message })
@@ -1396,6 +1469,35 @@ export const update = (
           }),
           Command.mapMessages(dialogScrollableExampleCommands, (message) =>
             GotDialogScrollableExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotFieldsetBasicExampleMessage: ({ message }) => {
+        const [fieldsetBasicExample, fieldsetBasicExampleCommands] =
+          FieldsetBasicExample.update(model.fieldsetBasicExample, message);
+
+        return [
+          evo(model, { fieldsetBasicExample: () => fieldsetBasicExample }),
+          Command.mapMessages(fieldsetBasicExampleCommands, (message) =>
+            GotFieldsetBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotFieldsetDisabledExampleMessage: ({ message }) => {
+        const [fieldsetDisabledExample, fieldsetDisabledExampleCommands] =
+          FieldsetDisabledExample.update(
+            model.fieldsetDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            fieldsetDisabledExample: () => fieldsetDisabledExample,
+          }),
+          Command.mapMessages(fieldsetDisabledExampleCommands, (message) =>
+            GotFieldsetDisabledExampleMessage({ message })
           ),
         ];
       },
@@ -1720,6 +1822,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: dragAndDropRouter(),
   },
   { label: "Fieldset", routeTag: "Fieldset", href: fieldsetRouter() },
+  {
+    label: "Fieldset Docs",
+    routeTag: "FieldsetDocs",
+    href: fieldsetDocsRouter(),
+  },
+  {
+    label: "Fieldset Basic Example",
+    routeTag: "FieldsetBasicExample",
+    href: fieldsetBasicExampleRouter(),
+  },
+  {
+    label: "Fieldset Disabled Example",
+    routeTag: "FieldsetDisabledExample",
+    href: fieldsetDisabledExampleRouter(),
+  },
   { label: "File Drop", routeTag: "FileDrop", href: fileDropRouter() },
   { label: "Input", routeTag: "Input", href: inputRouter() },
   { label: "Input Docs", routeTag: "InputDocs", href: inputDocsRouter() },
@@ -2447,6 +2564,35 @@ const dialogScrollableExamplePreview = (
   });
 };
 
+const fieldsetBasicExamplePreview = (
+  model: FieldsetBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: FieldsetBasicExample.view,
+    toParentMessage: (message) => GotFieldsetBasicExampleMessage({ message }),
+  });
+};
+
+const fieldsetDisabledExamplePreview = (
+  model: FieldsetDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: FieldsetDisabledExample.view,
+    toParentMessage: (message) =>
+      GotFieldsetDisabledExampleMessage({ message }),
+  });
+};
+
 const listboxBasicExamplePreview = (
   model: ListboxBasicExample.Model,
   slotId: string
@@ -3021,6 +3167,125 @@ ClickedSave: () => [
         coverageItems: [
           "Registry scene tests verify click message dispatch and disabled state.",
           "Example scene tests verify parent-owned click feedback and disabled explanatory copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const fieldsetDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Fieldset"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Fieldset slice built on the official Foldkit Ui.Fieldset primitive. It groups related form controls with accessible legend, description, disabled state, and reusable layout classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/fieldset" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Fieldset v1 documents the stateless grouped-form path: consumers render native controls inside the primitive-provided fieldset, legend, and description attributes while the wrapper centralizes styling and IDs."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-fieldset-basic",
+                preview: fieldsetBasicExamplePreview(
+                  model.fieldsetBasicExample,
+                  "fieldset-docs-basic-preview"
+                ),
+                href: fieldsetBasicExampleRouter(),
+                linkText: "Open standalone Fieldset Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-fieldset-disabled",
+                preview: fieldsetDisabledExamplePreview(
+                  model.fieldsetDisabledExample,
+                  "fieldset-docs-disabled-preview"
+                ),
+                href: fieldsetDisabledExampleRouter(),
+                linkText: "Open standalone Fieldset Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/fieldset.json\nbunx shadcn@latest add <registry-url>/fieldset-basic.json\nbunx shadcn@latest add <registry-url>/fieldset-disabled.json",
+        usageBody:
+          "Render Fieldset.view with a stable id, then spread the supplied fieldset, legend, and description attributes onto native elements.",
+        usageCode: `import * as Fieldset from "./ui/fieldset";
+
+Fieldset.view<Message>({
+  id: "profile-fieldset",
+  toView: (attributes) =>
+    h.fieldset(attributes.fieldset, [
+      h.legend(attributes.legend, ["Profile"]),
+      h.p(attributes.description, ["Public profile details."]),
+      children,
+    ]),
+});`,
+        integrationCode: `// Message
+UpdatedName({ value: S.String });
+
+// Update
+UpdatedName: ({ value }) => [
+  evo(model, { name: () => value }),
+  [],
+];
+
+// View
+Fieldset.view<Message>({
+  id: "profile-fieldset",
+  isDisabled: model.isArchived,
+  toView,
+});`,
+        apiItems: [
+          "view(config): renders an accessible fieldset through the supplied toView callback.",
+          "legendId(id): returns the generated legend id for custom composition.",
+          "descriptionId(id): returns the generated description id for custom composition.",
+          "FieldsetAttributes: grouped fieldset, legend, and description attributes.",
+          "ViewConfig: id, toView, and optional isDisabled.",
+          "Class helpers: fieldset, legend, description, fields, field, label, input, and textarea classes.",
+        ],
+        accessibilityItems: [
+          "The primitive binds fieldset aria-labelledby to the legend attributes.",
+          "The primitive binds fieldset aria-describedby to the description attributes.",
+          "Disabled state is applied to the native fieldset so grouped controls inherit disabled behavior.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify grouped label/description wiring and disabled fieldset behavior.",
+          "Example scene tests verify parent-owned field feedback and disabled grouped fields.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -4884,6 +5149,74 @@ const switchDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const fieldsetBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Fieldset Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable fieldset-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          fieldsetBasicExamplePreview(
+            model.fieldsetBasicExample,
+            "fieldset-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const fieldsetDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Fieldset Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable fieldset-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          fieldsetDisabledExamplePreview(
+            model.fieldsetDisabledExample,
+            "fieldset-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const inputBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -5622,6 +5955,9 @@ const contentView = (model: Model): Html => {
       Disclosure: () => embedUi("ui-disclosure", View.disclosure),
       DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),
+      FieldsetDocs: () => fieldsetDocsView(model),
+      FieldsetBasicExample: () => fieldsetBasicExampleRouteView(model),
+      FieldsetDisabledExample: () => fieldsetDisabledExampleRouteView(model),
       FileDrop: () => embedUi("ui-file-drop", View.fileDrop),
       Input: () => embedUi("ui-input", View.input),
       InputDocs: () => inputDocsView(model),

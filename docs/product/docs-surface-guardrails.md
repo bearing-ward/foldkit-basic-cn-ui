@@ -97,6 +97,11 @@ Current enforced examples:
 - `docs-example-block-checkbox-basic-actions`
 - `docs-example-block-checkbox-indeterminate`
 - `docs-example-block-checkbox-indeterminate-actions`
+- `docs-example-block-fieldset-basic`
+- `docs-example-block-fieldset-basic-preview`
+- `docs-example-block-fieldset-basic-actions`
+- `docs-example-block-fieldset-disabled`
+- `docs-example-block-fieldset-disabled-actions`
 - `docs-example-block-textarea-basic`
 - `docs-example-block-textarea-basic-preview`
 - `docs-example-block-textarea-basic-actions`

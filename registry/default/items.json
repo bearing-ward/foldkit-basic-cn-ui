@@ -1148,5 +1148,92 @@
         "example": "horizontal"
       }
     }
+  },
+  {
+    "name": "fieldset",
+    "type": "registry:ui",
+    "title": "Fieldset",
+    "description": "A Foldkit Fieldset wrapper for accessible grouped form controls with legend, description, disabled state, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/fieldset/index.ts",
+        "target": "src/ui/fieldset/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/fieldset/view.ts",
+        "target": "src/ui/fieldset/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/fieldset/fieldset.scene.test.ts",
+        "target": "src/ui/fieldset/fieldset.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Fieldset",
+        "primitive": "Ui.Fieldset",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "fieldset-basic",
+    "type": "registry:example",
+    "title": "Fieldset Basic",
+    "description": "A runnable Foldkit example showing grouped profile fields with parent-visible input feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["fieldset"],
+    "files": [
+      {
+        "path": "registry/default/examples/fieldset-basic/main.ts",
+        "target": "src/examples/fieldset-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/fieldset-basic/fieldset-basic.scene.test.ts",
+        "target": "src/examples/fieldset-basic/fieldset-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Fieldset",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "fieldset-disabled",
+    "type": "registry:example",
+    "title": "Fieldset Disabled",
+    "description": "A runnable Foldkit example showing disabled grouped fields.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["fieldset"],
+    "files": [
+      {
+        "path": "registry/default/examples/fieldset-disabled/main.ts",
+        "target": "src/examples/fieldset-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/fieldset-disabled/fieldset-disabled.scene.test.ts",
+        "target": "src/examples/fieldset-disabled/fieldset-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Fieldset",
+        "example": "disabled"
+      }
+    }
   }
 ]
