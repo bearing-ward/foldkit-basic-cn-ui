@@ -613,7 +613,7 @@ The first `Dialog` slice is done when all of this exists and passes together:
 - `apps/docs/` has a Dialog docs page rendered by Foldkit.
 - The Dialog docs page has inline previews using the same registry examples.
 - Standalone Dialog example routes exist.
-- The Dialog docs page includes Foldkit integration, accessibility, browser focus proof, and traceability checklist sections.
+- The Dialog docs page includes Foldkit integration, accessibility, composition, RTL, AlertDialog, Command Dialog, Drawer, browser focus proof, and traceability checklist sections.
 - `apps/docs/public/r/dialog.json` is generated and committed.
 - `apps/docs/public/r/dialog-basic.json` is generated and committed.
 - `apps/docs/public/r/dialog-animated.json` is generated and committed.

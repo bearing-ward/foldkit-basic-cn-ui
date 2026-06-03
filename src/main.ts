@@ -1203,147 +1203,6 @@ const dialogDocsView = (model: Model): Html => {
           h.div(
             [h.Class("space-y-3")],
             [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Drawer policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Drawer is not a Dialog v1 variant. It needs its own component because edge placement, slide-in motion, responsive sizing, and navigation-style use cases are separate presentation contracts.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Do not add side, placement, or drawer sizing props to Dialog v1.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "A future Drawer can reuse modal concepts, but should own its own examples, animation proof, and responsive behavior tests.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Use Dialog for centered modal confirmation and form flows; use the future Drawer for edge-mounted panels.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Command Dialog policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Command Dialog is not a Dialog v1 example or variant. It needs its own component because search, filtering, active option state, and keyboard command navigation are separate behavior contracts.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Do not add command palette messages, list state, or search input state to Dialog v1.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "A future Command Dialog should compose modal presentation with command/listbox behavior under its own model and tests.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Dialog examples may show ordinary form or confirmation flows, but not searchable command selection.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["AlertDialog policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Dialog v1 keeps AlertDialog out of the Dialog API. Destructive styling is allowed for ordinary confirmation flows, but alert semantics should ship as a separate component later.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Use dialog-destructive when the interaction is still a standard Dialog with cancel and confirm actions.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Do not add AlertDialog variants, messages, model fields, or registry dependencies to Dialog v1.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Future AlertDialog work should define its own component, examples, accessibility expectations, and tests.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
               h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Usage"]),
               h.p(
                 [h.Class("text-sm text-gray-600")],
@@ -1511,6 +1370,147 @@ Dialog.descriptionId;`),
                 [],
                 [
                   'RTL is inherited from the surrounding document or container through h.Dir("rtl"); Dialog does not store direction in its model.',
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["AlertDialog policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Dialog v1 keeps AlertDialog out of the Dialog API. Destructive styling is allowed for ordinary confirmation flows, but alert semantics should ship as a separate component later.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Use dialog-destructive when the interaction is still a standard Dialog with cancel and confirm actions.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Do not add AlertDialog variants, messages, model fields, or registry dependencies to Dialog v1.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Future AlertDialog work should define its own component, examples, accessibility expectations, and tests.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["Command Dialog policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Command Dialog is not a Dialog v1 example or variant. It needs its own component because search, filtering, active option state, and keyboard command navigation are separate behavior contracts.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Do not add command palette messages, list state, or search input state to Dialog v1.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "A future Command Dialog should compose modal presentation with command/listbox behavior under its own model and tests.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Dialog examples may show ordinary form or confirmation flows, but not searchable command selection.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["Drawer policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Drawer is not a Dialog v1 variant. It needs its own component because edge placement, slide-in motion, responsive sizing, and navigation-style use cases are separate presentation contracts.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Do not add side, placement, or drawer sizing props to Dialog v1.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "A future Drawer can reuse modal concepts, but should own its own examples, animation proof, and responsive behavior tests.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Use Dialog for centered modal confirmation and form flows; use the future Drawer for edge-mounted panels.",
                 ]
               ),
             ]
@@ -1709,7 +1709,7 @@ ShowDialog({
               h.p(
                 [h.Class("text-sm text-gray-600")],
                 [
-                  "Each documented behavior maps to a concrete proof or an explicit deferred note.",
+                  "Each documented behavior maps to a concrete proof or an explicit policy decision.",
                 ]
               ),
             ]

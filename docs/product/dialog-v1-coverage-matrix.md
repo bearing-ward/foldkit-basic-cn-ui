@@ -84,7 +84,7 @@ The first docs page should match the format expectations users bring from Base U
 | API reference       | List `Model`, `Message`, `OutMessage`, `init`, `update`, `open`, `close`, `view`, `titleId`, `descriptionId`. |
 | Accessibility       | Document title/description wiring, Escape close, backdrop close, and native dialog behavior.                  |
 | Browser focus proof | Verify the focus example carries `#dialog-focus-name` through the runtime `ShowDialog` command.               |
-| Traceability        | Map each documented behavior to Story, Scene, browser, registry, or deferred proof.                           |
+| Traceability        | Map each documented behavior to Story, Scene, browser, registry, or an explicit policy decision.              |
 | Tests               | Link or describe the story and scene tests that cover documented behavior.                                    |
 
 ## V1 Included Reference Behavior
