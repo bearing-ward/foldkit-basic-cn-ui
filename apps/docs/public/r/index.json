@@ -267,6 +267,98 @@
           "example": "animated"
         }
       }
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "A Foldkit menu component with typed item unions, messages, commands, mount-aware positioning, typeahead, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/menu/index.ts",
+          "target": "src/ui/menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/menu/view.ts",
+          "target": "src/ui/menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/menu/menu.story.test.ts",
+          "target": "src/ui/menu/menu.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/menu/menu.scene.test.ts",
+          "target": "src/ui/menu/menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "primitive": "Ui.Menu",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "menu-basic",
+      "type": "registry:example",
+      "title": "Menu Basic",
+      "description": "A runnable Foldkit example showing a typed Menu trigger, anchored items, backdrop close, and mount resolution coverage.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/menu-basic/main.ts",
+          "target": "src/examples/menu-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/menu-basic/menu-basic.scene.test.ts",
+          "target": "src/examples/menu-basic/menu-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "menu-animated",
+      "type": "registry:example",
+      "title": "Menu Animated",
+      "description": "A runnable Foldkit example showing Menu with isAnimated enabled and animation lifecycle coverage.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/menu-animated/main.ts",
+          "target": "src/examples/menu-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/menu-animated/menu-animated.scene.test.ts",
+          "target": "src/examples/menu-animated/menu-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "example": "animated"
+        }
+      }
     }
   ]
 }

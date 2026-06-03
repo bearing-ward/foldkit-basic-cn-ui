@@ -6,6 +6,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
+import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import {
@@ -22,6 +24,9 @@ import {
   FieldsetRoute,
   HomeRoute,
   InputRoute,
+  MenuAnimatedExampleRoute,
+  MenuBasicExampleRoute,
+  MenuDocsRoute,
   NotFoundRoute,
   PopoverAnimatedExampleRoute,
   PopoverBasicExampleRoute,
@@ -43,6 +48,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [menuBasicExample] = MenuBasicExample.init();
+const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 
@@ -54,6 +61,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  menuBasicExample,
+  menuAnimatedExample,
   popoverBasicExample,
   popoverAnimatedExample,
 });
@@ -80,6 +89,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Scrollable Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Menu Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Menu Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Menu Animated Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Popover Docs" })).toExist(),
       Scene.expect(
@@ -252,6 +268,49 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Review permissions" })
+      ).toExist()
+    );
+  });
+
+  test("the Menu docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(MenuDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Menu" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open menu" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Open animated menu" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Menu Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Menu Animated example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Menu Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(MenuBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Menu Basic" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open menu" })).toExist()
+    );
+  });
+
+  test("the Menu Animated example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(MenuAnimatedExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Menu Animated" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Open animated menu" })
       ).toExist()
     );
   });

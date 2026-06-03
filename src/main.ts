@@ -15,6 +15,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
+import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as Icon from "./icon";
@@ -47,6 +49,9 @@ export const FileDropRoute = r("FileDrop");
 export const InputRoute = r("Input");
 export const ListboxRoute = r("Listbox");
 export const MenuRoute = r("Menu");
+export const MenuDocsRoute = r("MenuDocs");
+export const MenuBasicExampleRoute = r("MenuBasicExample");
+export const MenuAnimatedExampleRoute = r("MenuAnimatedExample");
 export const PopoverRoute = r("Popover");
 export const PopoverDocsRoute = r("PopoverDocs");
 export const PopoverBasicExampleRoute = r("PopoverBasicExample");
@@ -84,6 +89,9 @@ const AppRoute = S.Union([
   InputRoute,
   ListboxRoute,
   MenuRoute,
+  MenuDocsRoute,
+  MenuBasicExampleRoute,
+  MenuAnimatedExampleRoute,
   PopoverRoute,
   PopoverDocsRoute,
   PopoverBasicExampleRoute,
@@ -197,6 +205,38 @@ const fileDropRouter = pipe(literal("file-drop"), Route.mapTo(FileDropRoute));
 const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
 const listboxRouter = pipe(literal("listbox"), Route.mapTo(ListboxRoute));
 const menuRouter = pipe(literal("menu"), Route.mapTo(MenuRoute));
+const menuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("menu")),
+  Route.mapTo(MenuDocsRoute)
+);
+const menuBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("menu")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(MenuBasicExampleRoute)
+);
+const menuAnimatedExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("menu")),
+  slash(literal("examples")),
+  slash(literal("animated")),
+  Route.mapTo(MenuAnimatedExampleRoute)
+);
+const menuBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("menu-basic")),
+  Route.mapTo(MenuBasicExampleRoute)
+);
+const menuAnimatedStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("menu-animated")),
+  Route.mapTo(MenuAnimatedExampleRoute)
+);
 const popoverRouter = pipe(literal("popover"), Route.mapTo(PopoverRoute));
 const popoverDocsRouter = pipe(
   literal("docs"),
@@ -272,6 +312,11 @@ const routeParser = Route.oneOf(
   inputRouter,
   listboxRouter,
   menuRouter,
+  menuBasicExampleRouter,
+  menuAnimatedExampleRouter,
+  menuBasicStandaloneExampleRouter,
+  menuAnimatedStandaloneExampleRouter,
+  menuDocsRouter,
   popoverRouter,
   popoverBasicExampleRouter,
   popoverAnimatedExampleRouter,
@@ -303,6 +348,8 @@ export const Model = S.Struct({
   dialogDestructiveExample: DialogDestructiveExample.Model,
   dialogFocusExample: DialogFocusExample.Model,
   dialogScrollableExample: DialogScrollableExample.Model,
+  menuBasicExample: MenuBasicExample.Model,
+  menuAnimatedExample: MenuAnimatedExample.Model,
   popoverBasicExample: PopoverBasicExample.Model,
   popoverAnimatedExample: PopoverAnimatedExample.Model,
 });
@@ -344,6 +391,15 @@ export const GotDialogScrollableExampleMessage = m(
     message: DialogScrollableExample.Message,
   }
 );
+export const GotMenuBasicExampleMessage = m("GotMenuBasicExampleMessage", {
+  message: MenuBasicExample.Message,
+});
+export const GotMenuAnimatedExampleMessage = m(
+  "GotMenuAnimatedExampleMessage",
+  {
+    message: MenuAnimatedExample.Message,
+  }
+);
 export const GotPopoverBasicExampleMessage = m(
   "GotPopoverBasicExampleMessage",
   {
@@ -368,6 +424,8 @@ export const Message = S.Union([
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
   GotDialogScrollableExampleMessage,
+  GotMenuBasicExampleMessage,
+  GotMenuAnimatedExampleMessage,
   GotPopoverBasicExampleMessage,
   GotPopoverAnimatedExampleMessage,
 ]);
@@ -415,6 +473,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogFocusExample.init();
   const [dialogScrollableExample, dialogScrollableExampleCommands] =
     DialogScrollableExample.init();
+  const [menuBasicExample, menuBasicExampleCommands] = MenuBasicExample.init();
+  const [menuAnimatedExample, menuAnimatedExampleCommands] =
+    MenuAnimatedExample.init();
   const [popoverBasicExample, popoverBasicExampleCommands] =
     PopoverBasicExample.init();
   const [popoverAnimatedExample, popoverAnimatedExampleCommands] =
@@ -429,6 +490,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogDestructiveExample,
       dialogFocusExample,
       dialogScrollableExample,
+      menuBasicExample,
+      menuAnimatedExample,
       popoverBasicExample,
       popoverAnimatedExample,
     },
@@ -450,6 +513,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogScrollableExampleCommands, (message) =>
         GotDialogScrollableExampleMessage({ message })
+      ),
+      ...Command.mapMessages(menuBasicExampleCommands, (message) =>
+        GotMenuBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(menuAnimatedExampleCommands, (message) =>
+        GotMenuAnimatedExampleMessage({ message })
       ),
       ...Command.mapMessages(popoverBasicExampleCommands, (message) =>
         GotPopoverBasicExampleMessage({ message })
@@ -599,6 +668,34 @@ export const update = (
         ];
       },
 
+      GotMenuBasicExampleMessage: ({ message }) => {
+        const [menuBasicExample, menuBasicExampleCommands] =
+          MenuBasicExample.update(model.menuBasicExample, message);
+
+        return [
+          evo(model, {
+            menuBasicExample: () => menuBasicExample,
+          }),
+          Command.mapMessages(menuBasicExampleCommands, (message) =>
+            GotMenuBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotMenuAnimatedExampleMessage: ({ message }) => {
+        const [menuAnimatedExample, menuAnimatedExampleCommands] =
+          MenuAnimatedExample.update(model.menuAnimatedExample, message);
+
+        return [
+          evo(model, {
+            menuAnimatedExample: () => menuAnimatedExample,
+          }),
+          Command.mapMessages(menuAnimatedExampleCommands, (message) =>
+            GotMenuAnimatedExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotPopoverBasicExampleMessage: ({ message }) => {
         const [popoverBasicExample, popoverBasicExampleCommands] =
           PopoverBasicExample.update(model.popoverBasicExample, message);
@@ -682,6 +779,17 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Input", routeTag: "Input", href: inputRouter() },
   { label: "Listbox", routeTag: "Listbox", href: listboxRouter() },
   { label: "Menu", routeTag: "Menu", href: menuRouter() },
+  { label: "Menu Docs", routeTag: "MenuDocs", href: menuDocsRouter() },
+  {
+    label: "Menu Basic Example",
+    routeTag: "MenuBasicExample",
+    href: menuBasicExampleRouter(),
+  },
+  {
+    label: "Menu Animated Example",
+    routeTag: "MenuAnimatedExample",
+    href: menuAnimatedExampleRouter(),
+  },
   { label: "Popover", routeTag: "Popover", href: popoverRouter() },
   { label: "Popover Docs", routeTag: "PopoverDocs", href: popoverDocsRouter() },
   {
@@ -1050,6 +1158,34 @@ const dialogScrollableExamplePreview = (
   });
 };
 
+const menuBasicExamplePreview = (
+  model: MenuBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: MenuBasicExample.view,
+    toParentMessage: (message) => GotMenuBasicExampleMessage({ message }),
+  });
+};
+
+const menuAnimatedExamplePreview = (
+  model: MenuAnimatedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: MenuAnimatedExample.view,
+    toParentMessage: (message) => GotMenuAnimatedExampleMessage({ message }),
+  });
+};
+
 const popoverBasicExamplePreview = (
   model: PopoverBasicExample.Model,
   slotId: string
@@ -1076,6 +1212,141 @@ const popoverAnimatedExamplePreview = (
     view: PopoverAnimatedExample.view,
     toParentMessage: (message) => GotPopoverAnimatedExampleMessage({ message }),
   });
+};
+
+const menuDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Menu"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Menu slice built on the official Foldkit Ui.Menu primitive. It preserves typed item unions, command and mount effects, animation lifecycle, and Selected OutMessage flow while adding a shadcn-style source layout.",
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p([h.Class("font-medium text-gray-950")], ["Source"]),
+              h.p([], ["registry/default/ui/menu"]),
+            ]
+          ),
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
+              h.p([], ["basic, animated"]),
+            ]
+          ),
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p([h.Class("font-medium text-gray-950")], ["Proof"]),
+              h.p([], ["story tests, scene tests, generated registry JSON"]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              h.div(
+                [
+                  h.Class(
+                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
+                  ),
+                ],
+                [
+                  h.h3(
+                    [h.Class("text-base font-semibold text-gray-950")],
+                    ["Basic"]
+                  ),
+                  menuBasicExamplePreview(
+                    model.menuBasicExample,
+                    "menu-docs-basic-preview"
+                  ),
+                  h.a(
+                    [
+                      h.Href(menuBasicExampleRouter()),
+                      h.Class(
+                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
+                      ),
+                    ],
+                    ["Open standalone Menu Basic example"]
+                  ),
+                ]
+              ),
+              h.div(
+                [
+                  h.Class(
+                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
+                  ),
+                ],
+                [
+                  h.h3(
+                    [h.Class("text-base font-semibold text-gray-950")],
+                    ["Animated"]
+                  ),
+                  menuAnimatedExamplePreview(
+                    model.menuAnimatedExample,
+                    "menu-docs-animated-preview"
+                  ),
+                  h.a(
+                    [
+                      h.Href(menuAnimatedExampleRouter()),
+                      h.Class(
+                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
+                      ),
+                    ],
+                    ["Open standalone Menu Animated example"]
+                  ),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h2(
+            [h.Class("text-xl font-semibold text-gray-950")],
+            ["Installation"]
+          ),
+          codeBlock(
+            "bunx shadcn@latest add <registry-url>/menu.json\nbunx shadcn@latest add <registry-url>/menu-basic.json\nbunx shadcn@latest add <registry-url>/menu-animated.json"
+          ),
+        ]
+      ),
+    ]
+  );
 };
 
 const popoverDocsView = (model: Model): Html => {
@@ -2261,6 +2532,71 @@ const dialogScrollableExampleRouteView = (model: Model): Html => {
   );
 };
 
+const menuBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Menu Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable menu-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          menuBasicExamplePreview(
+            model.menuBasicExample,
+            "menu-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const menuAnimatedExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Menu Animated"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable menu-animated registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          menuAnimatedExamplePreview(
+            model.menuAnimatedExample,
+            "menu-animated-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const popoverBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2362,6 +2698,9 @@ const contentView = (model: Model): Html => {
       Input: () => embedUi("ui-input", View.input),
       Listbox: () => embedUi("ui-listbox", View.listbox),
       Menu: () => embedUi("ui-menu", View.menu),
+      MenuDocs: () => menuDocsView(model),
+      MenuBasicExample: () => menuBasicExampleRouteView(model),
+      MenuAnimatedExample: () => menuAnimatedExampleRouteView(model),
       Popover: () => embedUi("ui-popover", View.popover),
       PopoverDocs: () => popoverDocsView(model),
       PopoverBasicExample: () => popoverBasicExampleRouteView(model),

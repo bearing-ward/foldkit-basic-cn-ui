@@ -223,9 +223,9 @@ import * as Dialog from "./ui/dialog";
 | Component | Status          | Notes                                                                                                                                      |
 | --------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Dialog    | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.     |
-| Popover   | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
-| Menu      | Next candidate  | Shares overlay, animation, pointer, search, and roving focus concerns with Popover/Listbox.                                                |
-| Listbox   | Next candidate  | Shares selection and active-item semantics with Menu and Combobox.                                                                         |
+| Popover   | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete. |
+| Menu      | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
+| Listbox   | Next candidate  | Shares selection and active-item semantics with Menu, Combobox, and Select.                                                                |
 
 Stateful component `init` returns `[Model, Commands]`:
 

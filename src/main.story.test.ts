@@ -8,6 +8,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
+import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
@@ -22,6 +24,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [menuBasicExample] = MenuBasicExample.init();
+const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 
@@ -33,6 +37,8 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  menuBasicExample,
+  menuAnimatedExample,
   popoverBasicExample,
   popoverAnimatedExample,
 };
@@ -210,6 +216,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/menu resolves to MenuDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/menu"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenuDocs");
+        })
+      );
+    });
+
+    test("/docs/components/menu/examples/basic resolves to MenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/menu/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenuBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/menu/examples/animated resolves to MenuAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/menu/examples/animated"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenuAnimatedExample");
+        })
+      );
+    });
+
     test("/docs/components/popover/examples/basic resolves to PopoverBasicExample", () => {
       Story.story(
         update,
@@ -347,6 +402,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("PopoverBasicExample");
+        })
+      );
+    });
+
+    test("/examples/menu-basic resolves to MenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/menu-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenuBasicExample");
+        })
+      );
+    });
+
+    test("/examples/menu-animated resolves to MenuAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/menu-animated"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenuAnimatedExample");
         })
       );
     });
