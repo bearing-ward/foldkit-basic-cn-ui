@@ -87,6 +87,11 @@ Current enforced examples:
 - `docs-example-block-button-basic-actions`
 - `docs-example-block-button-disabled`
 - `docs-example-block-button-disabled-actions`
+- `docs-example-block-calendar-basic`
+- `docs-example-block-calendar-basic-preview`
+- `docs-example-block-calendar-basic-actions`
+- `docs-example-block-calendar-bounds`
+- `docs-example-block-calendar-bounds-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`

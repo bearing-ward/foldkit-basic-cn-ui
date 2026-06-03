@@ -1326,6 +1326,93 @@
           "example": "disabled"
         }
       }
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A Foldkit Calendar wrapper with selectable dates, view-month OutMessages, disabled date attributes, and reusable day/month/year view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/calendar/index.ts",
+          "target": "src/ui/calendar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/calendar/view.ts",
+          "target": "src/ui/calendar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/calendar/calendar.scene.test.ts",
+          "target": "src/ui/calendar/calendar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Calendar",
+          "primitive": "Ui.Calendar",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "calendar-basic",
+      "type": "registry:example",
+      "title": "Calendar Basic",
+      "description": "A runnable Foldkit example showing date selection and viewed-month feedback from Calendar OutMessages.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["calendar"],
+      "files": [
+        {
+          "path": "registry/default/examples/calendar-basic/main.ts",
+          "target": "src/examples/calendar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/calendar-basic/calendar-basic.scene.test.ts",
+          "target": "src/examples/calendar-basic/calendar-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Calendar",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "calendar-bounds",
+      "type": "registry:example",
+      "title": "Calendar Bounds",
+      "description": "A runnable Foldkit example showing bounded Calendar selection and disabled date feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["calendar"],
+      "files": [
+        {
+          "path": "registry/default/examples/calendar-bounds/main.ts",
+          "target": "src/examples/calendar-bounds/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/calendar-bounds/calendar-bounds.scene.test.ts",
+          "target": "src/examples/calendar-bounds/calendar-bounds.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Calendar",
+          "example": "bounds"
+        }
+      }
     }
   ]
 }

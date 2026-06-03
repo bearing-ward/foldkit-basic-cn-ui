@@ -12,6 +12,8 @@ import { Url, toString as urlToString } from "foldkit/url";
 
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
+import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
@@ -57,6 +59,9 @@ export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
 export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
 export const CalendarRoute = r("Calendar");
+export const CalendarDocsRoute = r("CalendarDocs");
+export const CalendarBasicExampleRoute = r("CalendarBasicExample");
+export const CalendarBoundsExampleRoute = r("CalendarBoundsExample");
 export const CheckboxRoute = r("Checkbox");
 export const CheckboxDocsRoute = r("CheckboxDocs");
 export const CheckboxBasicExampleRoute = r("CheckboxBasicExample");
@@ -134,6 +139,9 @@ const AppRoute = S.Union([
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
   CalendarRoute,
+  CalendarDocsRoute,
+  CalendarBasicExampleRoute,
+  CalendarBoundsExampleRoute,
   CheckboxRoute,
   CheckboxDocsRoute,
   CheckboxBasicExampleRoute,
@@ -238,6 +246,38 @@ const buttonDisabledStandaloneExampleRouter = pipe(
   Route.mapTo(ButtonDisabledExampleRoute)
 );
 const calendarRouter = pipe(literal("calendar"), Route.mapTo(CalendarRoute));
+const calendarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("calendar")),
+  Route.mapTo(CalendarDocsRoute)
+);
+const calendarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("calendar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CalendarBasicExampleRoute)
+);
+const calendarBoundsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("calendar")),
+  slash(literal("examples")),
+  slash(literal("bounds")),
+  Route.mapTo(CalendarBoundsExampleRoute)
+);
+const calendarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("calendar-basic")),
+  Route.mapTo(CalendarBasicExampleRoute)
+);
+const calendarBoundsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("calendar-bounds")),
+  Route.mapTo(CalendarBoundsExampleRoute)
+);
 const checkboxRouter = pipe(literal("checkbox"), Route.mapTo(CheckboxRoute));
 const checkboxDocsRouter = pipe(
   literal("docs"),
@@ -739,6 +779,11 @@ const routeParser = Route.oneOf(
   buttonDisabledStandaloneExampleRouter,
   buttonDocsRouter,
   calendarRouter,
+  calendarBasicExampleRouter,
+  calendarBoundsExampleRouter,
+  calendarBasicStandaloneExampleRouter,
+  calendarBoundsStandaloneExampleRouter,
+  calendarDocsRouter,
   checkboxRouter,
   checkboxBasicExampleRouter,
   checkboxIndeterminateExampleRouter,
@@ -844,6 +889,8 @@ export const Model = S.Struct({
   uiModel: UiModel,
   buttonBasicExample: ButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
+  calendarBasicExample: CalendarBasicExample.Model,
+  calendarBoundsExample: CalendarBoundsExample.Model,
   checkboxBasicExample: CheckboxBasicExample.Model,
   checkboxIndeterminateExample: CheckboxIndeterminateExample.Model,
   comboboxBasicExample: ComboboxBasicExample.Model,
@@ -895,6 +942,18 @@ export const GotButtonDisabledExampleMessage = m(
   "GotButtonDisabledExampleMessage",
   {
     message: ButtonDisabledExample.Message,
+  }
+);
+export const GotCalendarBasicExampleMessage = m(
+  "GotCalendarBasicExampleMessage",
+  {
+    message: CalendarBasicExample.Message,
+  }
+);
+export const GotCalendarBoundsExampleMessage = m(
+  "GotCalendarBoundsExampleMessage",
+  {
+    message: CalendarBoundsExample.Message,
   }
 );
 export const GotCheckboxBasicExampleMessage = m(
@@ -1062,6 +1121,8 @@ export const Message = S.Union([
   GotUiMessage,
   GotButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
+  GotCalendarBasicExampleMessage,
+  GotCalendarBoundsExampleMessage,
   GotCheckboxBasicExampleMessage,
   GotCheckboxIndeterminateExampleMessage,
   GotComboboxBasicExampleMessage,
@@ -1130,6 +1191,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
     ButtonDisabledExample.init();
+  const [calendarBasicExample, calendarBasicExampleCommands] =
+    CalendarBasicExample.init();
+  const [calendarBoundsExample, calendarBoundsExampleCommands] =
+    CalendarBoundsExample.init();
   const [checkboxBasicExample, checkboxBasicExampleCommands] =
     CheckboxBasicExample.init();
   const [checkboxIndeterminateExample, checkboxIndeterminateExampleCommands] =
@@ -1194,6 +1259,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       uiModel: initialUiModel,
       buttonBasicExample,
       buttonDisabledExample,
+      calendarBasicExample,
+      calendarBoundsExample,
       checkboxBasicExample,
       checkboxIndeterminateExample,
       comboboxBasicExample,
@@ -1233,6 +1300,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(buttonDisabledExampleCommands, (message) =>
         GotButtonDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(calendarBasicExampleCommands, (message) =>
+        GotCalendarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(calendarBoundsExampleCommands, (message) =>
+        GotCalendarBoundsExampleMessage({ message })
       ),
       ...Command.mapMessages(checkboxBasicExampleCommands, (message) =>
         GotCheckboxBasicExampleMessage({ message })
@@ -1411,6 +1484,30 @@ export const update = (
           evo(model, { buttonDisabledExample: () => buttonDisabledExample }),
           Command.mapMessages(buttonDisabledExampleCommands, (message) =>
             GotButtonDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCalendarBasicExampleMessage: ({ message }) => {
+        const [calendarBasicExample, calendarBasicExampleCommands] =
+          CalendarBasicExample.update(model.calendarBasicExample, message);
+
+        return [
+          evo(model, { calendarBasicExample: () => calendarBasicExample }),
+          Command.mapMessages(calendarBasicExampleCommands, (message) =>
+            GotCalendarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCalendarBoundsExampleMessage: ({ message }) => {
+        const [calendarBoundsExample, calendarBoundsExampleCommands] =
+          CalendarBoundsExample.update(model.calendarBoundsExample, message);
+
+        return [
+          evo(model, { calendarBoundsExample: () => calendarBoundsExample }),
+          Command.mapMessages(calendarBoundsExampleCommands, (message) =>
+            GotCalendarBoundsExampleMessage({ message })
           ),
         ];
       },
@@ -1857,6 +1954,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: buttonDisabledExampleRouter(),
   },
   { label: "Calendar", routeTag: "Calendar", href: calendarRouter() },
+  {
+    label: "Calendar Docs",
+    routeTag: "CalendarDocs",
+    href: calendarDocsRouter(),
+  },
+  {
+    label: "Calendar Basic Example",
+    routeTag: "CalendarBasicExample",
+    href: calendarBasicExampleRouter(),
+  },
+  {
+    label: "Calendar Bounds Example",
+    routeTag: "CalendarBoundsExample",
+    href: calendarBoundsExampleRouter(),
+  },
   { label: "Checkbox", routeTag: "Checkbox", href: checkboxRouter() },
   {
     label: "Checkbox Docs",
@@ -2549,6 +2661,34 @@ const buttonDisabledExamplePreview = (
     model,
     view: ButtonDisabledExample.view,
     toParentMessage: (message) => GotButtonDisabledExampleMessage({ message }),
+  });
+};
+
+const calendarBasicExamplePreview = (
+  model: CalendarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CalendarBasicExample.view,
+    toParentMessage: (message) => GotCalendarBasicExampleMessage({ message }),
+  });
+};
+
+const calendarBoundsExamplePreview = (
+  model: CalendarBoundsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CalendarBoundsExample.view,
+    toParentMessage: (message) => GotCalendarBoundsExampleMessage({ message }),
   });
 };
 
@@ -3313,6 +3453,127 @@ ClickedSave: () => [
         coverageItems: [
           "Registry scene tests verify click message dispatch and disabled state.",
           "Example scene tests verify parent-owned click feedback and disabled explanatory copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const calendarDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Calendar"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Calendar slice built on the official Foldkit Ui.Calendar primitive. It preserves date selection, view-month OutMessages, disabled date attributes, and reusable day, month, and year mode view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/calendar" },
+        { label: "Examples", value: "basic, bounds" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Calendar v1 documents the date-selection path: child-owned calendar state, parent-visible selected-date facts, month navigation feedback, bounded dates, and disabled date styling."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-calendar-basic",
+                preview: calendarBasicExamplePreview(
+                  model.calendarBasicExample,
+                  "calendar-docs-basic-preview"
+                ),
+                href: calendarBasicExampleRouter(),
+                linkText: "Open standalone Calendar Basic example",
+              }),
+              docsExampleBlock({
+                title: "Bounds",
+                testId: "docs-example-block-calendar-bounds",
+                preview: calendarBoundsExamplePreview(
+                  model.calendarBoundsExample,
+                  "calendar-docs-bounds-preview"
+                ),
+                href: calendarBoundsExampleRouter(),
+                linkText: "Open standalone Calendar Bounds example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/calendar.json\nbunx shadcn@latest add <registry-url>/calendar-basic.json\nbunx shadcn@latest add <registry-url>/calendar-bounds.json",
+        usageBody:
+          "Initialize the Calendar child model, delegate child messages through `h.submodel`, and handle SelectedDate or ChangedViewMonth in the parent update.",
+        usageCode: `import * as Calendar from "./ui/calendar";
+
+const calendar = Calendar.init({
+  id: "booking-calendar",
+  today,
+  initialSelectedDate: today,
+});`,
+        integrationCode: `// Model
+calendar: Calendar.Model;
+selectedDate: CalendarDate;
+
+// Message
+GotCalendarMessage({ message: Calendar.Message });
+
+// Update
+const [calendar, commands, maybeOutMessage] =
+  Calendar.update(model.calendar, message);
+
+// View
+h.submodel({
+  slotId: model.calendar.id,
+  model: model.calendar,
+  view: Calendar.view,
+  viewInputs: { toView: Calendar.calendarView },
+  toParentMessage: (message) => GotCalendarMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed calendar state with current view mode, focused date, selected date, and constraints.",
+          "init(config): creates a Calendar model with today, optional selected date, locale, min/max dates, and disabled dates.",
+          "update(model, message): returns model, commands, and an optional OutMessage.",
+          "SelectedDate and ChangedViewMonth: parent-visible calendar facts.",
+          "selectDate and reflectSelectedDate: helpers for parent-driven selection changes.",
+          "ViewInputs and CalendarAttributes: mode-specific attributes for custom day, month, and year rendering.",
+          "Class helpers: container, header, nav, grid, day cell, and month/year cell classes.",
+        ],
+        accessibilityItems: [
+          "The primitive provides full-date accessible names for day buttons.",
+          "Disabled dates expose aria-disabled for assistive technology and styling.",
+          "Heading buttons expose view-switch labels for days, months, and years modes.",
+          "FocusGrid commands keep keyboard focus behavior in the child command lifecycle.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify selectable dates, disabled date attributes, and mode switching with FocusGrid resolution.",
+          "Example scene tests verify parent-visible selected date, viewed month, and bounded-date feedback.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -5279,6 +5540,74 @@ const buttonDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const calendarBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Calendar Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable calendar-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          calendarBasicExamplePreview(
+            model.calendarBasicExample,
+            "calendar-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const calendarBoundsExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Calendar Bounds"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable calendar-bounds registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          calendarBoundsExamplePreview(
+            model.calendarBoundsExample,
+            "calendar-bounds-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const checkboxBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -6266,6 +6595,9 @@ const contentView = (model: Model): Html => {
       ButtonBasicExample: () => buttonBasicExampleRouteView(model),
       ButtonDisabledExample: () => buttonDisabledExampleRouteView(model),
       Calendar: () => embedUi("ui-calendar", View.calendar),
+      CalendarDocs: () => calendarDocsView(model),
+      CalendarBasicExample: () => calendarBasicExampleRouteView(model),
+      CalendarBoundsExample: () => calendarBoundsExampleRouteView(model),
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
       CheckboxDocs: () => checkboxDocsView(model),
       CheckboxBasicExample: () => checkboxBasicExampleRouteView(model),

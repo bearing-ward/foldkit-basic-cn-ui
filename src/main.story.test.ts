@@ -5,6 +5,8 @@ import { describe, expect, test } from "vitest";
 
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
+import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
@@ -43,6 +45,8 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
+const [calendarBasicExample] = CalendarBasicExample.init();
+const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
@@ -78,6 +82,8 @@ const initialModel: Model = {
   uiModel: initialUiModel,
   buttonBasicExample,
   buttonDisabledExample,
+  calendarBasicExample,
+  calendarBoundsExample,
   checkboxBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
@@ -199,6 +205,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("Calendar");
+        })
+      );
+    });
+
+    test("/docs/components/calendar resolves to CalendarDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/calendar"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CalendarDocs");
+        })
+      );
+    });
+
+    test("/docs/components/calendar/examples/basic resolves to CalendarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/calendar/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CalendarBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/calendar/examples/bounds resolves to CalendarBoundsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/calendar/examples/bounds"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CalendarBoundsExample");
         })
       );
     });
@@ -1067,6 +1122,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/calendar-basic resolves to CalendarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/calendar-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CalendarBasicExample");
+        })
+      );
+    });
+
+    test("/examples/calendar-bounds resolves to CalendarBoundsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/calendar-bounds"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CalendarBoundsExample");
         })
       );
     });

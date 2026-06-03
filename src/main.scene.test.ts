@@ -3,6 +3,8 @@ import { describe, test } from "vitest";
 
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
+import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
@@ -39,6 +41,9 @@ import {
   ButtonDisabledExampleRoute,
   ButtonDocsRoute,
   ButtonRoute,
+  CalendarBasicExampleRoute,
+  CalendarBoundsExampleRoute,
+  CalendarDocsRoute,
   CheckboxBasicExampleRoute,
   CheckboxDocsRoute,
   CheckboxIndeterminateExampleRoute,
@@ -103,6 +108,8 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
+const [calendarBasicExample] = CalendarBasicExample.init();
+const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
@@ -138,6 +145,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   uiModel: initialUiModel,
   buttonBasicExample,
   buttonDisabledExample,
+  calendarBasicExample,
+  calendarBoundsExample,
   checkboxBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
@@ -205,6 +214,13 @@ describe("scene", () => {
         Scene.role("link", { name: "Button Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Calendar Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Calendar Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Calendar Bounds Example" })
+      ).toExist(),
       Scene.expect(Scene.role("link", { name: "Checkbox Docs" })).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Checkbox Basic Example" })
@@ -382,6 +398,68 @@ describe("scene", () => {
         Scene.role("heading", { name: "Button Disabled" })
       ).toExist(),
       Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled()
+    );
+  });
+
+  test("the Calendar docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CalendarDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Calendar" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.text("Selected date: 2026-04-16")).toExist(),
+      Scene.expect(Scene.text("Selected bounded date: None")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-calendar-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-calendar-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-calendar-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-calendar-bounds")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-calendar-bounds-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Calendar Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Calendar Bounds example" })
+      ).toExist()
+    );
+  });
+
+  test("the Calendar Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CalendarBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Calendar Basic" })).toExist(),
+      Scene.expect(Scene.text("Selected date: 2026-04-16")).toExist()
+    );
+  });
+
+  test("the Calendar Bounds example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CalendarBoundsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Calendar Bounds" })
+      ).toExist(),
+      Scene.expect(Scene.text("Selected bounded date: None")).toExist()
     );
   });
 

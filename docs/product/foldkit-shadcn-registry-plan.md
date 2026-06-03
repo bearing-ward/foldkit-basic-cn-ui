@@ -223,6 +223,7 @@ import * as Dialog from "./ui/dialog";
 | Component  | Status          | Notes                                                                                                                                           |
 | ---------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | Button     | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Calendar   | Active v1 slice | Registry wrapper, basic example, bounds example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
 | Checkbox   | Active v1 slice | Registry wrapper, basic example, indeterminate example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
 | Dialog     | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.          |
 | Fieldset   | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
