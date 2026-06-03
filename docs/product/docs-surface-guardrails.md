@@ -92,3 +92,8 @@ Current enforced examples:
 - `docs-example-block-checkbox-basic-actions`
 - `docs-example-block-checkbox-indeterminate`
 - `docs-example-block-checkbox-indeterminate-actions`
+- `docs-example-block-textarea-basic`
+- `docs-example-block-textarea-basic-preview`
+- `docs-example-block-textarea-basic-actions`
+- `docs-example-block-textarea-disabled`
+- `docs-example-block-textarea-disabled-actions`

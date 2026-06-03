@@ -31,6 +31,8 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
+import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -94,6 +96,9 @@ export const SliderRoute = r("Slider");
 export const SwitchRoute = r("Switch");
 export const TabsRoute = r("Tabs");
 export const TextareaRoute = r("Textarea");
+export const TextareaDocsRoute = r("TextareaDocs");
+export const TextareaBasicExampleRoute = r("TextareaBasicExample");
+export const TextareaDisabledExampleRoute = r("TextareaDisabledExample");
 export const ToastRoute = r("Toast");
 export const TooltipRoute = r("Tooltip");
 export const AnimationRoute = r("Animation");
@@ -152,6 +157,9 @@ const AppRoute = S.Union([
   SwitchRoute,
   TabsRoute,
   TextareaRoute,
+  TextareaDocsRoute,
+  TextareaBasicExampleRoute,
+  TextareaDisabledExampleRoute,
   ToastRoute,
   TooltipRoute,
   AnimationRoute,
@@ -521,6 +529,38 @@ const sliderRouter = pipe(literal("slider"), Route.mapTo(SliderRoute));
 const switchRouter = pipe(literal("switch"), Route.mapTo(SwitchRoute));
 const tabsRouter = pipe(literal("tabs"), Route.mapTo(TabsRoute));
 const textareaRouter = pipe(literal("textarea"), Route.mapTo(TextareaRoute));
+const textareaDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("textarea")),
+  Route.mapTo(TextareaDocsRoute)
+);
+const textareaBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("textarea")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(TextareaBasicExampleRoute)
+);
+const textareaDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("textarea")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(TextareaDisabledExampleRoute)
+);
+const textareaBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("textarea-basic")),
+  Route.mapTo(TextareaBasicExampleRoute)
+);
+const textareaDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("textarea-disabled")),
+  Route.mapTo(TextareaDisabledExampleRoute)
+);
 const toastRouter = pipe(literal("toast"), Route.mapTo(ToastRoute));
 const tooltipRouter = pipe(literal("tooltip"), Route.mapTo(TooltipRoute));
 const animationRouter = pipe(literal("animation"), Route.mapTo(AnimationRoute));
@@ -601,6 +641,11 @@ const routeParser = Route.oneOf(
   switchRouter,
   tabsRouter,
   textareaRouter,
+  textareaBasicExampleRouter,
+  textareaDisabledExampleRouter,
+  textareaBasicStandaloneExampleRouter,
+  textareaDisabledStandaloneExampleRouter,
+  textareaDocsRouter,
   toastRouter,
   tooltipRouter,
   animationRouter,
@@ -636,6 +681,8 @@ export const Model = S.Struct({
   popoverAnimatedExample: PopoverAnimatedExample.Model,
   selectBasicExample: SelectBasicExample.Model,
   selectDisabledExample: SelectDisabledExample.Model,
+  textareaBasicExample: TextareaBasicExample.Model,
+  textareaDisabledExample: TextareaDisabledExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -759,6 +806,18 @@ export const GotSelectDisabledExampleMessage = m(
     message: SelectDisabledExample.Message,
   }
 );
+export const GotTextareaBasicExampleMessage = m(
+  "GotTextareaBasicExampleMessage",
+  {
+    message: TextareaBasicExample.Message,
+  }
+);
+export const GotTextareaDisabledExampleMessage = m(
+  "GotTextareaDisabledExampleMessage",
+  {
+    message: TextareaDisabledExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -787,6 +846,8 @@ export const Message = S.Union([
   GotPopoverAnimatedExampleMessage,
   GotSelectBasicExampleMessage,
   GotSelectDisabledExampleMessage,
+  GotTextareaBasicExampleMessage,
+  GotTextareaDisabledExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -863,6 +924,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     SelectBasicExample.init();
   const [selectDisabledExample, selectDisabledExampleCommands] =
     SelectDisabledExample.init();
+  const [textareaBasicExample, textareaBasicExampleCommands] =
+    TextareaBasicExample.init();
+  const [textareaDisabledExample, textareaDisabledExampleCommands] =
+    TextareaDisabledExample.init();
 
   return [
     {
@@ -889,6 +954,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       popoverAnimatedExample,
       selectBasicExample,
       selectDisabledExample,
+      textareaBasicExample,
+      textareaDisabledExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -956,6 +1023,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(selectDisabledExampleCommands, (message) =>
         GotSelectDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(textareaBasicExampleCommands, (message) =>
+        GotTextareaBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(textareaDisabledExampleCommands, (message) =>
+        GotTextareaDisabledExampleMessage({ message })
       ),
     ],
   ];
@@ -1317,6 +1390,37 @@ export const update = (
           ),
         ];
       },
+
+      GotTextareaBasicExampleMessage: ({ message }) => {
+        const [textareaBasicExample, textareaBasicExampleCommands] =
+          TextareaBasicExample.update(model.textareaBasicExample, message);
+
+        return [
+          evo(model, {
+            textareaBasicExample: () => textareaBasicExample,
+          }),
+          Command.mapMessages(textareaBasicExampleCommands, (message) =>
+            GotTextareaBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotTextareaDisabledExampleMessage: ({ message }) => {
+        const [textareaDisabledExample, textareaDisabledExampleCommands] =
+          TextareaDisabledExample.update(
+            model.textareaDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            textareaDisabledExample: () => textareaDisabledExample,
+          }),
+          Command.mapMessages(textareaDisabledExampleCommands, (message) =>
+            GotTextareaDisabledExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -1480,6 +1584,21 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Switch", routeTag: "Switch", href: switchRouter() },
   { label: "Tabs", routeTag: "Tabs", href: tabsRouter() },
   { label: "Textarea", routeTag: "Textarea", href: textareaRouter() },
+  {
+    label: "Textarea Docs",
+    routeTag: "TextareaDocs",
+    href: textareaDocsRouter(),
+  },
+  {
+    label: "Textarea Basic Example",
+    routeTag: "TextareaBasicExample",
+    href: textareaBasicExampleRouter(),
+  },
+  {
+    label: "Textarea Disabled Example",
+    routeTag: "TextareaDisabledExample",
+    href: textareaDisabledExampleRouter(),
+  },
   { label: "Toast", routeTag: "Toast", href: toastRouter() },
   { label: "Tooltip", routeTag: "Tooltip", href: tooltipRouter() },
   {
@@ -2236,6 +2355,35 @@ const inputDisabledExamplePreview = (
   });
 };
 
+const textareaBasicExamplePreview = (
+  model: TextareaBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: TextareaBasicExample.view,
+    toParentMessage: (message) => GotTextareaBasicExampleMessage({ message }),
+  });
+};
+
+const textareaDisabledExamplePreview = (
+  model: TextareaDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: TextareaDisabledExample.view,
+    toParentMessage: (message) =>
+      GotTextareaDisabledExampleMessage({ message }),
+  });
+};
+
 const checkboxDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2569,6 +2717,117 @@ UpdatedName: ({ value }) => [
         coverageItems: [
           "Registry scene tests verify label, description, placeholder, input messages, and disabled state.",
           "Example scene tests verify parent-owned value feedback and disabled documentation copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const textareaDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Textarea"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Textarea slice built on the official Foldkit Ui.Textarea primitive. It keeps native multi-line text semantics while centralizing labels, descriptions, placeholders, rows, typed input messages, disabled state, invalid state, and reusable field classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/textarea" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Textarea v1 documents the stateless multi-line text-entry path: parent-owned value, typed input messages, accessible label and description helpers, row sizing, and disabled state styling."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-textarea-basic",
+                preview: textareaBasicExamplePreview(
+                  model.textareaBasicExample,
+                  "textarea-docs-basic-preview"
+                ),
+                href: textareaBasicExampleRouter(),
+                linkText: "Open standalone Textarea Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-textarea-disabled",
+                preview: textareaDisabledExamplePreview(
+                  model.textareaDisabledExample,
+                  "textarea-docs-disabled-preview"
+                ),
+                href: textareaDisabledExampleRouter(),
+                linkText: "Open standalone Textarea Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/textarea.json\nbunx shadcn@latest add <registry-url>/textarea-basic.json\nbunx shadcn@latest add <registry-url>/textarea-disabled.json",
+        usageBody:
+          "Store the textarea value in the parent model, map `onInput` into a verb-first Foldkit message, and render a native textarea with the supplied attributes.",
+        usageCode: `import * as Textarea from "./ui/textarea";
+
+Textarea.view<Message>({
+  id: "bio-textarea",
+  value: model.bio,
+  rows: 4,
+  onInput: (value) => UpdatedBio({ value }),
+  toView: (attributes) => h.textarea(attributes.textarea, []),
+});`,
+        integrationCode: `// Model
+bio: S.String;
+
+// Message
+UpdatedBio({ value: S.String });
+
+// Update
+UpdatedBio: ({ value }) => [
+  evo(model, { bio: () => value }),
+  [],
+];`,
+        apiItems: [
+          "view(config): renders a native textarea through the supplied toView callback.",
+          "descriptionId(id): returns the generated description id for custom composition.",
+          "TextareaAttributes: grouped textarea, label, and description attributes.",
+          "ViewConfig: id, value, onInput, isDisabled, isInvalid, isAutofocus, name, rows, and placeholder.",
+        ],
+        accessibilityItems: [
+          "The label attributes bind the textarea to a visible label.",
+          "The description attributes provide aria-describedby for explanatory copy.",
+          "Disabled and invalid states stay on the native control so browser semantics are preserved.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify label, description, placeholder, rows, input messages, and disabled state.",
+          "Example scene tests verify parent-owned character count feedback and disabled documentation copy.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -4088,6 +4347,74 @@ const inputDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const textareaBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Textarea Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable textarea-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          textareaBasicExamplePreview(
+            model.textareaBasicExample,
+            "textarea-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const textareaDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Textarea Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable textarea-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          textareaDisabledExamplePreview(
+            model.textareaDisabledExample,
+            "textarea-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const dialogBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -4651,6 +4978,9 @@ const contentView = (model: Model): Html => {
       Switch: () => embedUi("ui-switch", View.switch_),
       Tabs: () => embedUi("ui-tabs", View.tabs),
       Textarea: () => embedUi("ui-textarea", View.textarea),
+      TextareaDocs: () => textareaDocsView(model),
+      TextareaBasicExample: () => textareaBasicExampleRouteView(model),
+      TextareaDisabledExample: () => textareaDisabledExampleRouteView(model),
       Toast: () => embedUi("ui-toast", View.toast),
       Tooltip: () => embedUi("ui-tooltip", View.tooltip),
       Animation: () => embedUi("ui-animation", View.animation),

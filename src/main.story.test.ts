@@ -24,6 +24,8 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
+import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -52,6 +54,8 @@ const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [textareaBasicExample] = TextareaBasicExample.init();
+const [textareaDisabledExample] = TextareaDisabledExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -77,6 +81,8 @@ const initialModel: Model = {
   popoverAnimatedExample,
   selectBasicExample,
   selectDisabledExample,
+  textareaBasicExample,
+  textareaDisabledExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -478,6 +484,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/textarea resolves to TextareaDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/textarea"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TextareaDocs");
+        })
+      );
+    });
+
+    test("/docs/components/textarea/examples/basic resolves to TextareaBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/textarea/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TextareaBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/textarea/examples/disabled resolves to TextareaDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/textarea/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TextareaDisabledExample");
+        })
+      );
+    });
+
     test("/docs/components/listbox/examples/basic resolves to ListboxBasicExample", () => {
       Story.story(
         update,
@@ -792,6 +847,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/textarea-basic resolves to TextareaBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/textarea-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TextareaBasicExample");
+        })
+      );
+    });
+
+    test("/examples/textarea-disabled resolves to TextareaDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/textarea-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TextareaDisabledExample");
         })
       );
     });

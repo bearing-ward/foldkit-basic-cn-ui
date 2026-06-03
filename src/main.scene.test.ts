@@ -22,6 +22,8 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
+import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as Combobox from "../registry/default/ui/combobox";
 import {
   AnimationRoute,
@@ -67,6 +69,9 @@ import {
   SelectDocsRoute,
   SelectRoute,
   SwitchRoute,
+  TextareaBasicExampleRoute,
+  TextareaDisabledExampleRoute,
+  TextareaDocsRoute,
   TextareaRoute,
   update,
   view,
@@ -97,6 +102,8 @@ const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [textareaBasicExample] = TextareaBasicExample.init();
+const [textareaDisabledExample] = TextareaDisabledExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -122,6 +129,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   popoverAnimatedExample,
   selectBasicExample,
   selectDisabledExample,
+  textareaBasicExample,
+  textareaDisabledExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -222,6 +231,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Select Disabled Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Textarea Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Textarea Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Textarea Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
@@ -552,6 +568,74 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Input Disabled" })).toExist(),
       Scene.expect(
         Scene.role("textbox", { name: "Disabled name" })
+      ).toBeDisabled()
+    );
+  });
+
+  test("the Textarea docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TextareaDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Textarea" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Bio" })).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Disabled bio" })
+      ).toBeDisabled(),
+      Scene.expect(
+        Scene.testId("docs-example-block-textarea-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-textarea-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-textarea-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-textarea-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-textarea-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Textarea Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Textarea Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Textarea Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TextareaBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Textarea Basic" })).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Bio" })).toExist()
+    );
+  });
+
+  test("the Textarea Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TextareaDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Textarea Disabled" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Disabled bio" })
       ).toBeDisabled()
     );
   });

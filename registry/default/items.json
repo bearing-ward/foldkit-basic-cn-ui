@@ -887,5 +887,92 @@
         "example": "indeterminate"
       }
     }
+  },
+  {
+    "name": "textarea",
+    "type": "registry:ui",
+    "title": "Textarea",
+    "description": "A Foldkit Textarea wrapper for multi-line native text input with accessible label and description helpers, typed input messages, disabled/invalid state, rows, placeholders, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/textarea/index.ts",
+        "target": "src/ui/textarea/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/textarea/view.ts",
+        "target": "src/ui/textarea/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/textarea/textarea.scene.test.ts",
+        "target": "src/ui/textarea/textarea.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "primitive": "Ui.Textarea",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "textarea-basic",
+    "type": "registry:example",
+    "title": "Textarea Basic",
+    "description": "A runnable Foldkit example showing typed Textarea messages with parent-owned character count feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/textarea-basic/main.ts",
+        "target": "src/examples/textarea-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/textarea-basic/textarea-basic.scene.test.ts",
+        "target": "src/examples/textarea-basic/textarea-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "textarea-disabled",
+    "type": "registry:example",
+    "title": "Textarea Disabled",
+    "description": "A runnable Foldkit example showing disabled Textarea styling and native disabled semantics.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/textarea-disabled/main.ts",
+        "target": "src/examples/textarea-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/textarea-disabled/textarea-disabled.scene.test.ts",
+        "target": "src/examples/textarea-disabled/textarea-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "disabled"
+      }
+    }
   }
 ]
