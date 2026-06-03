@@ -56,6 +56,11 @@ Current enforced examples:
 - `docs-example-block-popover-basic-actions`
 - `docs-example-block-popover-animated`
 - `docs-example-block-popover-animated-actions`
+- `docs-example-block-radio-group-basic`
+- `docs-example-block-radio-group-basic-preview`
+- `docs-example-block-radio-group-basic-actions`
+- `docs-example-block-radio-group-horizontal`
+- `docs-example-block-radio-group-horizontal-actions`
 - `docs-example-block-listbox-basic`
 - `docs-example-block-listbox-basic-preview`
 - `docs-example-block-listbox-basic-actions`

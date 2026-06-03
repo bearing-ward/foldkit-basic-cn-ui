@@ -20,6 +20,8 @@ import * as MenuAnimatedExample from "../registry/default/examples/menu-animated
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
+import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
@@ -65,6 +67,9 @@ import {
   PopoverAnimatedExampleRoute,
   PopoverBasicExampleRoute,
   PopoverDocsRoute,
+  RadioGroupBasicExampleRoute,
+  RadioGroupDocsRoute,
+  RadioGroupHorizontalExampleRoute,
   RadioGroupRoute,
   SelectBasicExampleRoute,
   SelectDisabledExampleRoute,
@@ -105,6 +110,8 @@ const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
+const [radioGroupBasicExample] = RadioGroupBasicExample.init();
+const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
@@ -134,6 +141,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   menuAnimatedExample,
   popoverBasicExample,
   popoverAnimatedExample,
+  radioGroupBasicExample,
+  radioGroupHorizontalExample,
   selectBasicExample,
   selectDisabledExample,
   switchBasicExample,
@@ -233,6 +242,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Popover Animated Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Radio Group Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Radio Group Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Radio Group Horizontal Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Select Docs" })).toExist(),
       Scene.expect(
@@ -975,6 +991,74 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Choose animated person" })
       ).toExist()
+    );
+  });
+
+  test("the Radio Group docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(RadioGroupDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Radio Group" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("radio", { name: "Startup" })).toExist(),
+      Scene.expect(Scene.role("radio", { name: "Spacious" })).toBeDisabled(),
+      Scene.expect(
+        Scene.testId("docs-example-block-radio-group-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-radio-group-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-radio-group-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-radio-group-horizontal")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-radio-group-horizontal-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Radio Group Basic example",
+        })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Radio Group Horizontal example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Radio Group Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(RadioGroupBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Radio Group Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("radio", { name: "Startup" })).toExist()
+    );
+  });
+
+  test("the Radio Group Horizontal example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(RadioGroupHorizontalExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Radio Group Horizontal" })
+      ).toExist(),
+      Scene.expect(Scene.role("radio", { name: "Spacious" })).toBeDisabled()
     );
   });
 

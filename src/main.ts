@@ -29,6 +29,8 @@ import * as MenuAnimatedExample from "../registry/default/examples/menu-animated
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
+import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
@@ -90,6 +92,11 @@ export const PopoverDocsRoute = r("PopoverDocs");
 export const PopoverBasicExampleRoute = r("PopoverBasicExample");
 export const PopoverAnimatedExampleRoute = r("PopoverAnimatedExample");
 export const RadioGroupRoute = r("RadioGroup");
+export const RadioGroupDocsRoute = r("RadioGroupDocs");
+export const RadioGroupBasicExampleRoute = r("RadioGroupBasicExample");
+export const RadioGroupHorizontalExampleRoute = r(
+  "RadioGroupHorizontalExample"
+);
 export const SelectRoute = r("Select");
 export const SelectDocsRoute = r("SelectDocs");
 export const SelectBasicExampleRoute = r("SelectBasicExample");
@@ -154,6 +161,9 @@ const AppRoute = S.Union([
   PopoverBasicExampleRoute,
   PopoverAnimatedExampleRoute,
   RadioGroupRoute,
+  RadioGroupDocsRoute,
+  RadioGroupBasicExampleRoute,
+  RadioGroupHorizontalExampleRoute,
   SelectRoute,
   SelectDocsRoute,
   SelectBasicExampleRoute,
@@ -500,6 +510,38 @@ const radioGroupRouter = pipe(
   literal("radio-group"),
   Route.mapTo(RadioGroupRoute)
 );
+const radioGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("radio-group")),
+  Route.mapTo(RadioGroupDocsRoute)
+);
+const radioGroupBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("radio-group")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(RadioGroupBasicExampleRoute)
+);
+const radioGroupHorizontalExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("radio-group")),
+  slash(literal("examples")),
+  slash(literal("horizontal")),
+  Route.mapTo(RadioGroupHorizontalExampleRoute)
+);
+const radioGroupBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("radio-group-basic")),
+  Route.mapTo(RadioGroupBasicExampleRoute)
+);
+const radioGroupHorizontalStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("radio-group-horizontal")),
+  Route.mapTo(RadioGroupHorizontalExampleRoute)
+);
 const selectRouter = pipe(literal("select"), Route.mapTo(SelectRoute));
 const selectDocsRouter = pipe(
   literal("docs"),
@@ -671,6 +713,11 @@ const routeParser = Route.oneOf(
   popoverAnimatedStandaloneExampleRouter,
   popoverDocsRouter,
   radioGroupRouter,
+  radioGroupBasicExampleRouter,
+  radioGroupHorizontalExampleRouter,
+  radioGroupBasicStandaloneExampleRouter,
+  radioGroupHorizontalStandaloneExampleRouter,
+  radioGroupDocsRouter,
   selectRouter,
   selectBasicExampleRouter,
   selectDisabledExampleRouter,
@@ -724,6 +771,8 @@ export const Model = S.Struct({
   menuAnimatedExample: MenuAnimatedExample.Model,
   popoverBasicExample: PopoverBasicExample.Model,
   popoverAnimatedExample: PopoverAnimatedExample.Model,
+  radioGroupBasicExample: RadioGroupBasicExample.Model,
+  radioGroupHorizontalExample: RadioGroupHorizontalExample.Model,
   selectBasicExample: SelectBasicExample.Model,
   selectDisabledExample: SelectDisabledExample.Model,
   switchBasicExample: SwitchBasicExample.Model,
@@ -844,6 +893,18 @@ export const GotPopoverAnimatedExampleMessage = m(
     message: PopoverAnimatedExample.Message,
   }
 );
+export const GotRadioGroupBasicExampleMessage = m(
+  "GotRadioGroupBasicExampleMessage",
+  {
+    message: RadioGroupBasicExample.Message,
+  }
+);
+export const GotRadioGroupHorizontalExampleMessage = m(
+  "GotRadioGroupHorizontalExampleMessage",
+  {
+    message: RadioGroupHorizontalExample.Message,
+  }
+);
 export const GotSelectBasicExampleMessage = m("GotSelectBasicExampleMessage", {
   message: SelectBasicExample.Message,
 });
@@ -900,6 +961,8 @@ export const Message = S.Union([
   GotMenuAnimatedExampleMessage,
   GotPopoverBasicExampleMessage,
   GotPopoverAnimatedExampleMessage,
+  GotRadioGroupBasicExampleMessage,
+  GotRadioGroupHorizontalExampleMessage,
   GotSelectBasicExampleMessage,
   GotSelectDisabledExampleMessage,
   GotSwitchBasicExampleMessage,
@@ -978,6 +1041,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     PopoverBasicExample.init();
   const [popoverAnimatedExample, popoverAnimatedExampleCommands] =
     PopoverAnimatedExample.init();
+  const [radioGroupBasicExample, radioGroupBasicExampleCommands] =
+    RadioGroupBasicExample.init();
+  const [radioGroupHorizontalExample, radioGroupHorizontalExampleCommands] =
+    RadioGroupHorizontalExample.init();
   const [selectBasicExample, selectBasicExampleCommands] =
     SelectBasicExample.init();
   const [selectDisabledExample, selectDisabledExampleCommands] =
@@ -1014,6 +1081,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       menuAnimatedExample,
       popoverBasicExample,
       popoverAnimatedExample,
+      radioGroupBasicExample,
+      radioGroupHorizontalExample,
       selectBasicExample,
       selectDisabledExample,
       switchBasicExample,
@@ -1081,6 +1150,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(popoverAnimatedExampleCommands, (message) =>
         GotPopoverAnimatedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(radioGroupBasicExampleCommands, (message) =>
+        GotRadioGroupBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(radioGroupHorizontalExampleCommands, (message) =>
+        GotRadioGroupHorizontalExampleMessage({ message })
       ),
       ...Command.mapMessages(selectBasicExampleCommands, (message) =>
         GotSelectBasicExampleMessage({ message })
@@ -1433,6 +1508,39 @@ export const update = (
         ];
       },
 
+      GotRadioGroupBasicExampleMessage: ({ message }) => {
+        const [radioGroupBasicExample, radioGroupBasicExampleCommands] =
+          RadioGroupBasicExample.update(model.radioGroupBasicExample, message);
+
+        return [
+          evo(model, {
+            radioGroupBasicExample: () => radioGroupBasicExample,
+          }),
+          Command.mapMessages(radioGroupBasicExampleCommands, (message) =>
+            GotRadioGroupBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotRadioGroupHorizontalExampleMessage: ({ message }) => {
+        const [
+          radioGroupHorizontalExample,
+          radioGroupHorizontalExampleCommands,
+        ] = RadioGroupHorizontalExample.update(
+          model.radioGroupHorizontalExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            radioGroupHorizontalExample: () => radioGroupHorizontalExample,
+          }),
+          Command.mapMessages(radioGroupHorizontalExampleCommands, (message) =>
+            GotRadioGroupHorizontalExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSelectBasicExampleMessage: ({ message }) => {
         const [selectBasicExample, selectBasicExampleCommands] =
           SelectBasicExample.update(model.selectBasicExample, message);
@@ -1666,6 +1774,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: popoverAnimatedExampleRouter(),
   },
   { label: "Radio Group", routeTag: "RadioGroup", href: radioGroupRouter() },
+  {
+    label: "Radio Group Docs",
+    routeTag: "RadioGroupDocs",
+    href: radioGroupDocsRouter(),
+  },
+  {
+    label: "Radio Group Basic Example",
+    routeTag: "RadioGroupBasicExample",
+    href: radioGroupBasicExampleRouter(),
+  },
+  {
+    label: "Radio Group Horizontal Example",
+    routeTag: "RadioGroupHorizontalExample",
+    href: radioGroupHorizontalExampleRouter(),
+  },
   { label: "Select", routeTag: "Select", href: selectRouter() },
   { label: "Select Docs", routeTag: "SelectDocs", href: selectDocsRouter() },
   {
@@ -2405,6 +2528,35 @@ const popoverAnimatedExamplePreview = (
     model,
     view: PopoverAnimatedExample.view,
     toParentMessage: (message) => GotPopoverAnimatedExampleMessage({ message }),
+  });
+};
+
+const radioGroupBasicExamplePreview = (
+  model: RadioGroupBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: RadioGroupBasicExample.view,
+    toParentMessage: (message) => GotRadioGroupBasicExampleMessage({ message }),
+  });
+};
+
+const radioGroupHorizontalExamplePreview = (
+  model: RadioGroupHorizontalExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: RadioGroupHorizontalExample.view,
+    toParentMessage: (message) =>
+      GotRadioGroupHorizontalExampleMessage({ message }),
   });
 };
 
@@ -3196,6 +3348,129 @@ const [cityCombobox, commands, maybeOutMessage] =
         coverageItems: [
           "Story tests cover init config, single-select helper behavior, and multi-select add/remove out-messages.",
           "Scene tests cover input filtering, mount resolution, selection close behavior, and multi example tag rendering.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const radioGroupDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Radio Group"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit RadioGroup slice built on the official Foldkit Ui.RadioGroup primitive. It preserves typed grouped selection, disabled options, hidden input attributes, vertical and horizontal layout, and parent-visible selected feedback.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/radio-group" },
+        { label: "Examples", value: "basic, horizontal" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "RadioGroup v1 documents the stateful grouped-selection path: one selected string value, typed option rendering, optional hidden input form participation, disabled group or option state, and vertical/horizontal layout helpers."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-radio-group-basic",
+                preview: radioGroupBasicExamplePreview(
+                  model.radioGroupBasicExample,
+                  "radio-group-docs-basic-preview"
+                ),
+                href: radioGroupBasicExampleRouter(),
+                linkText: "Open standalone Radio Group Basic example",
+              }),
+              docsExampleBlock({
+                title: "Horizontal",
+                testId: "docs-example-block-radio-group-horizontal",
+                preview: radioGroupHorizontalExamplePreview(
+                  model.radioGroupHorizontalExample,
+                  "radio-group-docs-horizontal-preview"
+                ),
+                href: radioGroupHorizontalExampleRouter(),
+                linkText: "Open standalone Radio Group Horizontal example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/radio-group.json\nbunx shadcn@latest add <registry-url>/radio-group-basic.json\nbunx shadcn@latest add <registry-url>/radio-group-horizontal.json",
+        usageBody:
+          "Create a typed RadioGroup factory, initialize the child model in the parent, delegate child messages through `h.submodel`, and render each option from the primitive-provided attributes.",
+        usageCode: `import * as RadioGroup from "./ui/radio-group";
+
+type Plan = "Startup" | "Business" | "Enterprise";
+const PlanRadioGroup = RadioGroup.create<Plan>();
+
+const [radioGroup, radioGroupCommands] = RadioGroup.init({
+  id: "plan-radio-group",
+  selectedValue: "Startup",
+});`,
+        integrationCode: `// Model
+radioGroup: RadioGroup.Model;
+
+// Message
+GotRadioGroupMessage({ message: RadioGroup.Message });
+
+// Update
+const [radioGroup, commands] =
+  PlanRadioGroup.update(model.radioGroup, message);
+
+// View
+h.submodel({
+  slotId: model.radioGroup.id,
+  model: model.radioGroup,
+  view: PlanRadioGroup.view,
+  viewInputs,
+  toParentMessage: (message) => GotRadioGroupMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id, selectedValue, orientation, and disabled state.",
+          "Orientation type: vertical or horizontal orientation value accepted through init config and view inputs.",
+          "init(config): creates a RadioGroup model and empty command list for registry consistency.",
+          "create<Value>(): returns typed view, update, and focus helpers for string option values.",
+          "FocusOption: command helper for moving focus to a specific option.",
+          "Selected and OutMessage: typed parent-visible selected value facts.",
+          "ViewInputs: options, labels, descriptions, disabled predicates, hidden input metadata, and custom toView composition.",
+          "Class helpers: vertical/horizontal group classes, option classes, label text, description text, metadata text, and check icon helpers.",
+        ],
+        accessibilityItems: [
+          "The Foldkit primitive owns radiogroup and radio role attributes.",
+          "Option labels and descriptions bind visible text to each radio item.",
+          "Disabled group and disabled option state are exposed through ARIA and data attributes.",
+          "The hiddenInput attributes preserve form participation when a name is supplied.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify checked state, selection updates, parent-visible feedback, and disabled group behavior.",
+          "Example scene tests verify vertical selection, horizontal layout, and disabled option state.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -5107,6 +5382,74 @@ const popoverAnimatedExampleRouteView = (model: Model): Html => {
   );
 };
 
+const radioGroupBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Radio Group Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable radio-group-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          radioGroupBasicExamplePreview(
+            model.radioGroupBasicExample,
+            "radio-group-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const radioGroupHorizontalExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Radio Group Horizontal"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable radio-group-horizontal registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          radioGroupHorizontalExamplePreview(
+            model.radioGroupHorizontalExample,
+            "radio-group-horizontal-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const selectBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -5297,6 +5640,10 @@ const contentView = (model: Model): Html => {
       PopoverBasicExample: () => popoverBasicExampleRouteView(model),
       PopoverAnimatedExample: () => popoverAnimatedExampleRouteView(model),
       RadioGroup: () => embedUi("ui-radio-group", View.radioGroup),
+      RadioGroupDocs: () => radioGroupDocsView(model),
+      RadioGroupBasicExample: () => radioGroupBasicExampleRouteView(model),
+      RadioGroupHorizontalExample: () =>
+        radioGroupHorizontalExampleRouteView(model),
       Select: () => embedUi("ui-select", View.select),
       SelectDocs: () => selectDocsView(model),
       SelectBasicExample: () => selectBasicExampleRouteView(model),

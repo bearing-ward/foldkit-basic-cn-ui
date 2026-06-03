@@ -1061,5 +1061,92 @@
         "example": "disabled"
       }
     }
+  },
+  {
+    "name": "radio-group",
+    "type": "registry:ui",
+    "title": "Radio Group",
+    "description": "A Foldkit RadioGroup wrapper for typed grouped selection with vertical/horizontal orientation, disabled options, hidden input attributes, selected OutMessages, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/radio-group/index.ts",
+        "target": "src/ui/radio-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/radio-group/view.ts",
+        "target": "src/ui/radio-group/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/radio-group/radio-group.scene.test.ts",
+        "target": "src/ui/radio-group/radio-group.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "primitive": "Ui.RadioGroup",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "radio-group-basic",
+    "type": "registry:example",
+    "title": "Radio Group Basic",
+    "description": "A runnable Foldkit example showing vertical RadioGroup selection with typed parent-visible feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/radio-group-basic/main.ts",
+        "target": "src/examples/radio-group-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/radio-group-basic/radio-group-basic.scene.test.ts",
+        "target": "src/examples/radio-group-basic/radio-group-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "radio-group-horizontal",
+    "type": "registry:example",
+    "title": "Radio Group Horizontal",
+    "description": "A runnable Foldkit example showing horizontal RadioGroup layout and disabled option state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/radio-group-horizontal/main.ts",
+        "target": "src/examples/radio-group-horizontal/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/radio-group-horizontal/radio-group-horizontal.scene.test.ts",
+        "target": "src/examples/radio-group-horizontal/radio-group-horizontal.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "horizontal"
+      }
+    }
   }
 ]

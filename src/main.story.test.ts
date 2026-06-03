@@ -22,6 +22,8 @@ import * as MenuAnimatedExample from "../registry/default/examples/menu-animated
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
+import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
@@ -54,6 +56,8 @@ const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
+const [radioGroupBasicExample] = RadioGroupBasicExample.init();
+const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
@@ -83,6 +87,8 @@ const initialModel: Model = {
   menuAnimatedExample,
   popoverBasicExample,
   popoverAnimatedExample,
+  radioGroupBasicExample,
+  radioGroupHorizontalExample,
   selectBasicExample,
   selectDisabledExample,
   switchBasicExample,
@@ -671,6 +677,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/radio-group resolves to RadioGroupDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/radio-group"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioGroupDocs");
+        })
+      );
+    });
+
+    test("/docs/components/radio-group/examples/basic resolves to RadioGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/radio-group/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioGroupBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/radio-group/examples/horizontal resolves to RadioGroupHorizontalExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/radio-group/examples/horizontal"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioGroupHorizontalExample");
+        })
+      );
+    });
+
     test("/docs/components/menu/examples/basic resolves to MenuBasicExample", () => {
       Story.story(
         update,
@@ -1037,6 +1092,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("PopoverAnimatedExample");
+        })
+      );
+    });
+
+    test("/examples/radio-group-basic resolves to RadioGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/radio-group-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioGroupBasicExample");
+        })
+      );
+    });
+
+    test("/examples/radio-group-horizontal resolves to RadioGroupHorizontalExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/radio-group-horizontal"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioGroupHorizontalExample");
         })
       );
     });
