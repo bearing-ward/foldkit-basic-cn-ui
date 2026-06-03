@@ -1,0 +1,99 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "foldkit-cn",
+  "homepage": "https://github.com/binarytide/foldkit-basic-cn-ui",
+  "items": [
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A Foldkit dialog component with typed state, messages, commands, accessible title and description helpers, and styled view helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/dialog/index.ts",
+          "target": "src/ui/dialog/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/dialog/view.ts",
+          "target": "src/ui/dialog/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/dialog/dialog.story.test.ts",
+          "target": "src/ui/dialog/dialog.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/dialog/dialog.scene.test.ts",
+          "target": "src/ui/dialog/dialog.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "primitive": "Ui.Dialog",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "dialog-basic",
+      "type": "registry:example",
+      "title": "Dialog Basic",
+      "description": "A runnable Foldkit example showing a parent-owned trigger, dialog submodel, accessible title and description, cancel, and confirm actions.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/dialog-basic/main.ts",
+          "target": "src/examples/dialog-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/dialog-basic/dialog-basic.scene.test.ts",
+          "target": "src/examples/dialog-basic/dialog-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "dialog-animated",
+      "type": "registry:example",
+      "title": "Dialog Animated",
+      "description": "A runnable Foldkit example showing Dialog with isAnimated enabled and styled enter/leave transition classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/dialog-animated/main.ts",
+          "target": "src/examples/dialog-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/dialog-animated/dialog-animated.scene.test.ts",
+          "target": "src/examples/dialog-animated/dialog-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "animated"
+        }
+      }
+    }
+  ]
+}
