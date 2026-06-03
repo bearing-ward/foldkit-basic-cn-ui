@@ -58,6 +58,8 @@ import * as ToastBasicExample from "../registry/default/examples/toast-basic/mai
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
 import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
 import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
+import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
+import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -168,6 +170,9 @@ export const AnimationRoute = r("Animation");
 export const AnimationDocsRoute = r("AnimationDocs");
 export const AnimationBasicExampleRoute = r("AnimationBasicExample");
 export const VirtualListRoute = r("VirtualList");
+export const VirtualListDocsRoute = r("VirtualListDocs");
+export const VirtualListBasicExampleRoute = r("VirtualListBasicExample");
+export const VirtualListVariableExampleRoute = r("VirtualListVariableExample");
 export const NotFoundRoute = r("NotFound", { path: S.String });
 
 const AppRoute = S.Union([
@@ -267,6 +272,9 @@ const AppRoute = S.Union([
   AnimationDocsRoute,
   AnimationBasicExampleRoute,
   VirtualListRoute,
+  VirtualListDocsRoute,
+  VirtualListBasicExampleRoute,
+  VirtualListVariableExampleRoute,
   NotFoundRoute,
 ]);
 
@@ -1074,6 +1082,38 @@ const virtualListRouter = pipe(
   literal("virtual-list"),
   Route.mapTo(VirtualListRoute)
 );
+const virtualListDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("virtual-list")),
+  Route.mapTo(VirtualListDocsRoute)
+);
+const virtualListBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("virtual-list")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(VirtualListBasicExampleRoute)
+);
+const virtualListVariableExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("virtual-list")),
+  slash(literal("examples")),
+  slash(literal("variable")),
+  Route.mapTo(VirtualListVariableExampleRoute)
+);
+const virtualListBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("virtual-list-basic")),
+  Route.mapTo(VirtualListBasicExampleRoute)
+);
+const virtualListVariableStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("virtual-list-variable")),
+  Route.mapTo(VirtualListVariableExampleRoute)
+);
 
 const routeParser = Route.oneOf(
   buttonRouter,
@@ -1219,6 +1259,11 @@ const routeParser = Route.oneOf(
   animationBasicStandaloneExampleRouter,
   animationDocsRouter,
   virtualListRouter,
+  virtualListBasicExampleRouter,
+  virtualListVariableExampleRouter,
+  virtualListBasicStandaloneExampleRouter,
+  virtualListVariableStandaloneExampleRouter,
+  virtualListDocsRouter,
   homeRouter
 );
 
@@ -1277,6 +1322,8 @@ export const Model = S.Struct({
   toastVariantsExample: ToastVariantsExample.Model,
   tooltipBasicExample: TooltipBasicExample.Model,
   tooltipNoDelayExample: TooltipNoDelayExample.Model,
+  virtualListBasicExample: VirtualListBasicExample.Model,
+  virtualListVariableExample: VirtualListVariableExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -1547,6 +1594,18 @@ export const GotTooltipNoDelayExampleMessage = m(
     message: TooltipNoDelayExample.Message,
   }
 );
+export const GotVirtualListBasicExampleMessage = m(
+  "GotVirtualListBasicExampleMessage",
+  {
+    message: VirtualListBasicExample.Message,
+  }
+);
+export const GotVirtualListVariableExampleMessage = m(
+  "GotVirtualListVariableExampleMessage",
+  {
+    message: VirtualListVariableExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -1602,6 +1661,8 @@ export const Message = S.Union([
   GotToastVariantsExampleMessage,
   GotTooltipBasicExampleMessage,
   GotTooltipNoDelayExampleMessage,
+  GotVirtualListBasicExampleMessage,
+  GotVirtualListVariableExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -1731,6 +1792,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     TooltipBasicExample.init();
   const [tooltipNoDelayExample, tooltipNoDelayExampleCommands] =
     TooltipNoDelayExample.init();
+  const [virtualListBasicExample, virtualListBasicExampleCommands] =
+    VirtualListBasicExample.init();
+  const [virtualListVariableExample, virtualListVariableExampleCommands] =
+    VirtualListVariableExample.init();
 
   return [
     {
@@ -1784,6 +1849,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       toastVariantsExample,
       tooltipBasicExample,
       tooltipNoDelayExample,
+      virtualListBasicExample,
+      virtualListVariableExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -1932,6 +1999,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(tooltipNoDelayExampleCommands, (message) =>
         GotTooltipNoDelayExampleMessage({ message })
+      ),
+      ...Command.mapMessages(virtualListBasicExampleCommands, (message) =>
+        GotVirtualListBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(virtualListVariableExampleCommands, (message) =>
+        GotVirtualListVariableExampleMessage({ message })
       ),
     ],
   ];
@@ -2667,6 +2740,40 @@ export const update = (
           ),
         ];
       },
+
+      GotVirtualListBasicExampleMessage: ({ message }) => {
+        const [virtualListBasicExample, virtualListBasicExampleCommands] =
+          VirtualListBasicExample.update(
+            model.virtualListBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            virtualListBasicExample: () => virtualListBasicExample,
+          }),
+          Command.mapMessages(virtualListBasicExampleCommands, (message) =>
+            GotVirtualListBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotVirtualListVariableExampleMessage: ({ message }) => {
+        const [virtualListVariableExample, virtualListVariableExampleCommands] =
+          VirtualListVariableExample.update(
+            model.virtualListVariableExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            virtualListVariableExample: () => virtualListVariableExample,
+          }),
+          Command.mapMessages(virtualListVariableExampleCommands, (message) =>
+            GotVirtualListVariableExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -3025,6 +3132,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Virtual List",
     routeTag: "VirtualList",
     href: virtualListRouter(),
+  },
+  {
+    label: "Virtual List Docs",
+    routeTag: "VirtualListDocs",
+    href: virtualListDocsRouter(),
+  },
+  {
+    label: "VirtualList Basic Example",
+    routeTag: "VirtualListBasicExample",
+    href: virtualListBasicExampleRouter(),
+  },
+  {
+    label: "VirtualList Variable Example",
+    routeTag: "VirtualListVariableExample",
+    href: virtualListVariableExampleRouter(),
   },
 ];
 
@@ -3686,6 +3808,36 @@ const tooltipNoDelayExamplePreview = (
     model,
     view: TooltipNoDelayExample.view,
     toParentMessage: (message) => GotTooltipNoDelayExampleMessage({ message }),
+  });
+};
+
+const virtualListBasicExamplePreview = (
+  model: VirtualListBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: VirtualListBasicExample.view,
+    toParentMessage: (message) =>
+      GotVirtualListBasicExampleMessage({ message }),
+  });
+};
+
+const virtualListVariableExamplePreview = (
+  model: VirtualListVariableExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: VirtualListVariableExample.view,
+    toParentMessage: (message) =>
+      GotVirtualListVariableExampleMessage({ message }),
   });
 };
 
@@ -4645,6 +4797,148 @@ h.submodel({
           "Registry scene tests verify Showed, Hid, RequestFrame, defaultLeaveCommand, and WaitForAnimationSettled resolution.",
           "Example scene tests verify parent toggle flow, rendered content, and transition completion feedback.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const virtualListDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Virtual List"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit VirtualList slice built on the official Foldkit Ui.VirtualList primitive. It preserves subscription-driven measurement, scroll tracking, fixed-height windows, variable-height windows, and programmatic scroll commands.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/virtual-list" },
+        { label: "Examples", value: "basic, variable" },
+        { label: "Proof", value: "scene tests, registry JSON, browser scroll" },
+      ]),
+      docsOverviewBlock(
+        "VirtualList v1 documents high-volume list rendering: parent-owned data, child-owned scroll and measurement state, h.submodel row rendering, lifted container subscriptions, and command-backed scroll-to-index behavior."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                description:
+                  "Fixed row heights with direct index-to-offset math.",
+                testId: "docs-example-block-virtual-list-basic",
+                preview: virtualListBasicExamplePreview(
+                  model.virtualListBasicExample,
+                  "virtual-list-docs-basic-preview"
+                ),
+                href: virtualListBasicExampleRouter(),
+                linkText: "Open standalone VirtualList Basic example",
+              }),
+              docsExampleBlock({
+                title: "Variable",
+                description:
+                  "Variable row heights with per-item height callbacks.",
+                testId: "docs-example-block-virtual-list-variable",
+                preview: virtualListVariableExamplePreview(
+                  model.virtualListVariableExample,
+                  "virtual-list-docs-variable-preview"
+                ),
+                href: virtualListVariableExampleRouter(),
+                linkText: "Open standalone VirtualList Variable example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/virtual-list.json\nbunx shadcn@latest add <registry-url>/virtual-list-basic.json\nbunx shadcn@latest add <registry-url>/virtual-list-variable.json",
+        usageBody:
+          "Initialize the VirtualList child model, lift `VirtualList.subscriptions.containerEvents` into the parent subscriptions, delegate child messages through `h.submodel`, and provide row key and row view callbacks.",
+        usageCode: `import * as VirtualList from "./ui/virtual-list";
+
+const virtualList = VirtualList.init({
+  id: "activity-feed",
+  rowHeightPx: 56,
+});
+
+h.submodel({
+  slotId: model.virtualList.id,
+  model: model.virtualList,
+  view: VirtualList.view<Activity>(),
+  viewInputs: {
+    items,
+    itemToKey: (activity) => activity.id,
+    itemToView: (activity) => activityRow(activity),
+    containerClassName: VirtualList.activityListContainerClassName,
+  },
+  toParentMessage: (message) => GotVirtualListMessage({ message }),
+});`,
+        integrationCode: `// Model
+virtualList: VirtualList.Model;
+
+// Message
+GotVirtualListMessage({ message: VirtualList.Message });
+
+// Update
+GotVirtualListMessage: ({ message }) => {
+  const [virtualList, commands] = VirtualList.update(model.virtualList, message);
+
+  return [
+    evo(model, { virtualList: () => virtualList }),
+    Command.mapMessages(commands, (message) => GotVirtualListMessage({ message })),
+  ];
+};
+
+// Subscriptions
+Subscription.lift({
+  virtualListContainerEvents: VirtualList.subscriptions.containerEvents,
+})({
+  toChildModel: (model) => model.virtualList,
+  toParentMessage: (message) => GotVirtualListMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed id, rowHeightPx, scrollTop, measurement, pendingScroll, and pendingScrollVersion.",
+          "init(config): creates an unmeasured VirtualList model.",
+          "update(model, message): handles ScrolledContainer, MeasuredContainer, and CompletedApplyScroll messages.",
+          "scrollToIndex(model, index): computes fixed-height scroll offset and emits ApplyScroll.",
+          "scrollToIndexVariable(model, items, itemToRowHeightPx, index): computes variable-height scroll offset and emits ApplyScroll.",
+          "visibleWindow and visibleWindowVariable: compute mounted range and spacer heights for fixed or variable rows.",
+          "subscriptions.containerEvents: attaches scroll and ResizeObserver streams to the list container by id.",
+        ],
+        accessibilityItems: [
+          "The primitive preserves caller-owned row markup, so list semantics belong to the row renderer.",
+          "The scroll container remains a native scroll region with stable physical height and overscan rows.",
+          "Programmatic scroll uses a command and then returns through normal messages rather than mutating parent state from the view.",
+          "Row keys keep mounted row identity stable as the visible window changes.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify measurement, fixed visible-window math, variable visible-window math, and ApplyScroll command resolution.",
+          "Example scene tests verify fixed and variable jump-to-middle flows through the real scroll command.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+          "Browser probes verify rendered docs previews and standalone routes after registry generation.",
         ],
       }),
     ]
@@ -7563,6 +7857,74 @@ const animationBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+const virtualListBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["VirtualList Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable virtual-list-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          virtualListBasicExamplePreview(
+            model.virtualListBasicExample,
+            "virtual-list-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const virtualListVariableExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["VirtualList Variable"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable virtual-list-variable registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          virtualListVariableExamplePreview(
+            model.virtualListVariableExample,
+            "virtual-list-variable-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const buttonBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -9241,6 +9603,10 @@ const contentView = (model: Model): Html => {
       AnimationDocs: () => animationDocsView(model),
       AnimationBasicExample: () => animationBasicExampleRouteView(model),
       VirtualList: () => embedUi("ui-virtual-list", View.virtualList),
+      VirtualListDocs: () => virtualListDocsView(model),
+      VirtualListBasicExample: () => virtualListBasicExampleRouteView(model),
+      VirtualListVariableExample: () =>
+        virtualListVariableExampleRouteView(model),
       NotFound: ({ path }) => notFoundView(path),
     })
   );
@@ -9295,7 +9661,30 @@ const dragAndDropBasicExampleSubscriptions = Subscription.lift({
     }),
 });
 
+const virtualListBasicExampleSubscriptions = Subscription.lift({
+  virtualListBasicContainerEvents: Ui.VirtualList.subscriptions.containerEvents,
+})<Model, Message>({
+  toChildModel: (model) => model.virtualListBasicExample.virtualList,
+  toParentMessage: (message) =>
+    GotVirtualListBasicExampleMessage({
+      message: VirtualListBasicExample.GotVirtualListMessage({ message }),
+    }),
+});
+
+const virtualListVariableExampleSubscriptions = Subscription.lift({
+  virtualListVariableExampleContainerEvents:
+    Ui.VirtualList.subscriptions.containerEvents,
+})<Model, Message>({
+  toChildModel: (model) => model.virtualListVariableExample.virtualList,
+  toParentMessage: (message) =>
+    GotVirtualListVariableExampleMessage({
+      message: VirtualListVariableExample.GotVirtualListMessage({ message }),
+    }),
+});
+
 export const subscriptions = Subscription.aggregate<Model, Message>()(
   uiSubscriptions,
-  dragAndDropBasicExampleSubscriptions
+  dragAndDropBasicExampleSubscriptions,
+  virtualListBasicExampleSubscriptions,
+  virtualListVariableExampleSubscriptions
 );

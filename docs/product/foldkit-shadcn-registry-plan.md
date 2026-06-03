@@ -245,6 +245,7 @@ import * as Dialog from "./ui/dialog";
 | Textarea    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Toast       | Active v1 slice | Registry wrapper, basic example, variants example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Tooltip     | Active v1 slice | Registry wrapper, basic example, no-delay example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| VirtualList | Active v1 slice | Registry wrapper, basic example, variable example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 
 Stateful component `init` returns `[Model, Commands]`:
 

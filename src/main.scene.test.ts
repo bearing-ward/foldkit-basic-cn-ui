@@ -49,6 +49,8 @@ import * as ToastBasicExample from "../registry/default/examples/toast-basic/mai
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
 import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
 import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
+import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
+import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
 import * as Combobox from "../registry/default/ui/combobox";
 import {
   AnimationRoute,
@@ -133,6 +135,9 @@ import {
   TooltipBasicExampleRoute,
   TooltipDocsRoute,
   TooltipNoDelayExampleRoute,
+  VirtualListBasicExampleRoute,
+  VirtualListDocsRoute,
+  VirtualListVariableExampleRoute,
   update,
   view,
 } from "./main";
@@ -189,6 +194,8 @@ const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
 const [tooltipBasicExample] = TooltipBasicExample.init();
 const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
+const [virtualListBasicExample] = VirtualListBasicExample.init();
+const [virtualListVariableExample] = VirtualListVariableExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -241,6 +248,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   toastVariantsExample,
   tooltipBasicExample,
   tooltipNoDelayExample,
+  virtualListBasicExample,
+  virtualListVariableExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -426,7 +435,14 @@ describe("scene", () => {
         Scene.role("link", { name: "Textarea Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
-      Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
+      Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Virtual List Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "VirtualList Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "VirtualList Variable Example" })
+      ).toExist()
     );
   });
 
@@ -484,6 +500,75 @@ describe("scene", () => {
         Scene.role("heading", { name: "Animation Basic" })
       ).toExist(),
       Scene.expect(Scene.role("button", { name: "Show content" })).toExist()
+    );
+  });
+
+  test("the VirtualList docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(VirtualListDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Virtual List" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-virtual-list-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-virtual-list-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-virtual-list-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-virtual-list-variable")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-virtual-list-variable-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-virtual-list-variable-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone VirtualList Basic example",
+        })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone VirtualList Variable example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the VirtualList Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(VirtualListBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "VirtualList Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Jump to middle" })).toExist()
+    );
+  });
+
+  test("the VirtualList Variable example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(VirtualListVariableExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "VirtualList Variable" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Jump to middle" })).toExist()
     );
   });
 

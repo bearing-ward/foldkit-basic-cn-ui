@@ -2082,6 +2082,93 @@
           "example": "basic"
         }
       }
+    },
+    {
+      "name": "virtual-list",
+      "type": "registry:ui",
+      "title": "VirtualList",
+      "description": "A Foldkit VirtualList wrapper with subscription-driven measurement, scroll tracking, fixed and variable visible-window helpers, programmatic scroll commands, and reusable activity feed view helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/virtual-list/index.ts",
+          "target": "src/ui/virtual-list/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/virtual-list/view.ts",
+          "target": "src/ui/virtual-list/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/virtual-list/virtual-list.scene.test.ts",
+          "target": "src/ui/virtual-list/virtual-list.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "VirtualList",
+          "primitive": "Ui.VirtualList",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "virtual-list-basic",
+      "type": "registry:example",
+      "title": "VirtualList Basic",
+      "description": "A runnable Foldkit example showing fixed-height VirtualList rendering and command-backed scroll-to-index behavior.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["virtual-list"],
+      "files": [
+        {
+          "path": "registry/default/examples/virtual-list-basic/main.ts",
+          "target": "src/examples/virtual-list-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/virtual-list-basic/virtual-list-basic.scene.test.ts",
+          "target": "src/examples/virtual-list-basic/virtual-list-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "VirtualList",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "virtual-list-variable",
+      "type": "registry:example",
+      "title": "VirtualList Variable",
+      "description": "A runnable Foldkit example showing variable-height VirtualList rendering and variable scroll-to-index behavior.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["virtual-list"],
+      "files": [
+        {
+          "path": "registry/default/examples/virtual-list-variable/main.ts",
+          "target": "src/examples/virtual-list-variable/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/virtual-list-variable/virtual-list-variable.scene.test.ts",
+          "target": "src/examples/virtual-list-variable/virtual-list-variable.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "VirtualList",
+          "example": "variable"
+        }
+      }
     }
   ]
 }

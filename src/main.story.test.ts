@@ -51,6 +51,8 @@ import * as ToastBasicExample from "../registry/default/examples/toast-basic/mai
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
 import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
 import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
+import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
+import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -106,6 +108,8 @@ const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
 const [tooltipBasicExample] = TooltipBasicExample.init();
 const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
+const [virtualListBasicExample] = VirtualListBasicExample.init();
+const [virtualListVariableExample] = VirtualListVariableExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -158,6 +162,8 @@ const initialModel: Model = {
   toastVariantsExample,
   tooltipBasicExample,
   tooltipNoDelayExample,
+  virtualListBasicExample,
+  virtualListVariableExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -235,6 +241,85 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("AnimationBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/virtual-list resolves to VirtualListDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/virtual-list"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("VirtualListDocs");
+        })
+      );
+    });
+
+    test("/docs/components/virtual-list/examples/basic resolves to VirtualListBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/virtual-list/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("VirtualListBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/virtual-list/examples/variable resolves to VirtualListVariableExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/virtual-list/examples/variable"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("VirtualListVariableExample");
+        })
+      );
+    });
+
+    test("/examples/virtual-list-basic resolves to VirtualListBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/virtual-list-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("VirtualListBasicExample");
+        })
+      );
+    });
+
+    test("/examples/virtual-list-variable resolves to VirtualListVariableExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/virtual-list-variable"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("VirtualListVariableExample");
         })
       );
     });

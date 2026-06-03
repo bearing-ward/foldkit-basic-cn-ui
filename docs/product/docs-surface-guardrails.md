@@ -101,6 +101,12 @@ Current enforced examples:
 - `docs-example-block-animation-basic`
 - `docs-example-block-animation-basic-preview`
 - `docs-example-block-animation-basic-actions`
+- `docs-example-block-virtual-list-basic`
+- `docs-example-block-virtual-list-basic-preview`
+- `docs-example-block-virtual-list-basic-actions`
+- `docs-example-block-virtual-list-variable`
+- `docs-example-block-virtual-list-variable-preview`
+- `docs-example-block-virtual-list-variable-actions`
 - `docs-example-block-disclosure-basic`
 - `docs-example-block-disclosure-basic-preview`
 - `docs-example-block-disclosure-basic-actions`
