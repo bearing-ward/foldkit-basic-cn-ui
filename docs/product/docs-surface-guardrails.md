@@ -87,3 +87,8 @@ Current enforced examples:
 - `docs-example-block-input-basic-actions`
 - `docs-example-block-input-disabled`
 - `docs-example-block-input-disabled-actions`
+- `docs-example-block-checkbox-basic`
+- `docs-example-block-checkbox-basic-preview`
+- `docs-example-block-checkbox-basic-actions`
+- `docs-example-block-checkbox-indeterminate`
+- `docs-example-block-checkbox-indeterminate-actions`

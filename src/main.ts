@@ -12,6 +12,8 @@ import { Url, toString as urlToString } from "foldkit/url";
 
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
+import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -46,6 +48,11 @@ export const ButtonBasicExampleRoute = r("ButtonBasicExample");
 export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
 export const CalendarRoute = r("Calendar");
 export const CheckboxRoute = r("Checkbox");
+export const CheckboxDocsRoute = r("CheckboxDocs");
+export const CheckboxBasicExampleRoute = r("CheckboxBasicExample");
+export const CheckboxIndeterminateExampleRoute = r(
+  "CheckboxIndeterminateExample"
+);
 export const ComboboxRoute = r("Combobox");
 export const ComboboxDocsRoute = r("ComboboxDocs");
 export const ComboboxBasicExampleRoute = r("ComboboxBasicExample");
@@ -101,6 +108,9 @@ const AppRoute = S.Union([
   ButtonDisabledExampleRoute,
   CalendarRoute,
   CheckboxRoute,
+  CheckboxDocsRoute,
+  CheckboxBasicExampleRoute,
+  CheckboxIndeterminateExampleRoute,
   ComboboxRoute,
   ComboboxDocsRoute,
   ComboboxBasicExampleRoute,
@@ -187,6 +197,38 @@ const buttonDisabledStandaloneExampleRouter = pipe(
 );
 const calendarRouter = pipe(literal("calendar"), Route.mapTo(CalendarRoute));
 const checkboxRouter = pipe(literal("checkbox"), Route.mapTo(CheckboxRoute));
+const checkboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("checkbox")),
+  Route.mapTo(CheckboxDocsRoute)
+);
+const checkboxBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("checkbox")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CheckboxBasicExampleRoute)
+);
+const checkboxIndeterminateExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("checkbox")),
+  slash(literal("examples")),
+  slash(literal("indeterminate")),
+  Route.mapTo(CheckboxIndeterminateExampleRoute)
+);
+const checkboxBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("checkbox-basic")),
+  Route.mapTo(CheckboxBasicExampleRoute)
+);
+const checkboxIndeterminateStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("checkbox-indeterminate")),
+  Route.mapTo(CheckboxIndeterminateExampleRoute)
+);
 const comboboxRouter = pipe(literal("combobox"), Route.mapTo(ComboboxRoute));
 const comboboxDocsRouter = pipe(
   literal("docs"),
@@ -496,6 +538,11 @@ const routeParser = Route.oneOf(
   buttonDocsRouter,
   calendarRouter,
   checkboxRouter,
+  checkboxBasicExampleRouter,
+  checkboxIndeterminateExampleRouter,
+  checkboxBasicStandaloneExampleRouter,
+  checkboxIndeterminateStandaloneExampleRouter,
+  checkboxDocsRouter,
   comboboxRouter,
   comboboxBasicExampleRouter,
   comboboxMultiExampleRouter,
@@ -570,6 +617,8 @@ export const Model = S.Struct({
   uiModel: UiModel,
   buttonBasicExample: ButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
+  checkboxBasicExample: CheckboxBasicExample.Model,
+  checkboxIndeterminateExample: CheckboxIndeterminateExample.Model,
   comboboxBasicExample: ComboboxBasicExample.Model,
   comboboxMultiExample: ComboboxMultiExample.Model,
   dialogBasicExample: DialogBasicExample.Model,
@@ -609,6 +658,18 @@ export const GotButtonDisabledExampleMessage = m(
   "GotButtonDisabledExampleMessage",
   {
     message: ButtonDisabledExample.Message,
+  }
+);
+export const GotCheckboxBasicExampleMessage = m(
+  "GotCheckboxBasicExampleMessage",
+  {
+    message: CheckboxBasicExample.Message,
+  }
+);
+export const GotCheckboxIndeterminateExampleMessage = m(
+  "GotCheckboxIndeterminateExampleMessage",
+  {
+    message: CheckboxIndeterminateExample.Message,
   }
 );
 export const GotComboboxBasicExampleMessage = m(
@@ -707,6 +768,8 @@ export const Message = S.Union([
   GotUiMessage,
   GotButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
+  GotCheckboxBasicExampleMessage,
+  GotCheckboxIndeterminateExampleMessage,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
   GotDialogBasicExampleMessage,
@@ -763,6 +826,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
     ButtonDisabledExample.init();
+  const [checkboxBasicExample, checkboxBasicExampleCommands] =
+    CheckboxBasicExample.init();
+  const [checkboxIndeterminateExample, checkboxIndeterminateExampleCommands] =
+    CheckboxIndeterminateExample.init();
   const [comboboxBasicExample, comboboxBasicExampleCommands] =
     ComboboxBasicExample.init();
   const [comboboxMultiExample, comboboxMultiExampleCommands] =
@@ -803,6 +870,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       uiModel: initialUiModel,
       buttonBasicExample,
       buttonDisabledExample,
+      checkboxBasicExample,
+      checkboxIndeterminateExample,
       comboboxBasicExample,
       comboboxMultiExample,
       dialogBasicExample,
@@ -830,6 +899,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(buttonDisabledExampleCommands, (message) =>
         GotButtonDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(checkboxBasicExampleCommands, (message) =>
+        GotCheckboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(checkboxIndeterminateExampleCommands, (message) =>
+        GotCheckboxIndeterminateExampleMessage({ message })
       ),
       ...Command.mapMessages(comboboxBasicExampleCommands, (message) =>
         GotComboboxBasicExampleMessage({ message })
@@ -972,6 +1047,37 @@ export const update = (
           evo(model, { buttonDisabledExample: () => buttonDisabledExample }),
           Command.mapMessages(buttonDisabledExampleCommands, (message) =>
             GotButtonDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCheckboxBasicExampleMessage: ({ message }) => {
+        const [checkboxBasicExample, checkboxBasicExampleCommands] =
+          CheckboxBasicExample.update(model.checkboxBasicExample, message);
+
+        return [
+          evo(model, { checkboxBasicExample: () => checkboxBasicExample }),
+          Command.mapMessages(checkboxBasicExampleCommands, (message) =>
+            GotCheckboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCheckboxIndeterminateExampleMessage: ({ message }) => {
+        const [
+          checkboxIndeterminateExample,
+          checkboxIndeterminateExampleCommands,
+        ] = CheckboxIndeterminateExample.update(
+          model.checkboxIndeterminateExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            checkboxIndeterminateExample: () => checkboxIndeterminateExample,
+          }),
+          Command.mapMessages(checkboxIndeterminateExampleCommands, (message) =>
+            GotCheckboxIndeterminateExampleMessage({ message })
           ),
         ];
       },
@@ -1238,6 +1344,21 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   { label: "Calendar", routeTag: "Calendar", href: calendarRouter() },
   { label: "Checkbox", routeTag: "Checkbox", href: checkboxRouter() },
+  {
+    label: "Checkbox Docs",
+    routeTag: "CheckboxDocs",
+    href: checkboxDocsRouter(),
+  },
+  {
+    label: "Checkbox Basic Example",
+    routeTag: "CheckboxBasicExample",
+    href: checkboxBasicExampleRouter(),
+  },
+  {
+    label: "Checkbox Indeterminate Example",
+    routeTag: "CheckboxIndeterminateExample",
+    href: checkboxIndeterminateExampleRouter(),
+  },
   { label: "Combobox", routeTag: "Combobox", href: comboboxRouter() },
   {
     label: "Combobox Docs",
@@ -1846,6 +1967,35 @@ const buttonDisabledExamplePreview = (
   });
 };
 
+const checkboxBasicExamplePreview = (
+  model: CheckboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CheckboxBasicExample.view,
+    toParentMessage: (message) => GotCheckboxBasicExampleMessage({ message }),
+  });
+};
+
+const checkboxIndeterminateExamplePreview = (
+  model: CheckboxIndeterminateExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CheckboxIndeterminateExample.view,
+    toParentMessage: (message) =>
+      GotCheckboxIndeterminateExampleMessage({ message }),
+  });
+};
+
 const dialogBasicExamplePreview = (
   model: DialogBasicExample.Model,
   slotId: string
@@ -2084,6 +2234,130 @@ const inputDisabledExamplePreview = (
     view: InputDisabledExample.view,
     toParentMessage: (message) => GotInputDisabledExampleMessage({ message }),
   });
+};
+
+const checkboxDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Checkbox"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Checkbox slice built on the official Foldkit Ui.Checkbox primitive. It keeps checked state in a child model while exposing typed messages, OutMessage-compatible state changes, hidden input attributes, disabled state, indeterminate state, and reusable field classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/checkbox" },
+        { label: "Examples", value: "basic, indeterminate" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Checkbox v1 documents the stateful boolean-selection path: child-owned checked state, parent message delegation, grouped indeterminate state, and styled control parts that preserve the Foldkit primitive attributes."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-checkbox-basic",
+                preview: checkboxBasicExamplePreview(
+                  model.checkboxBasicExample,
+                  "checkbox-docs-basic-preview"
+                ),
+                href: checkboxBasicExampleRouter(),
+                linkText: "Open standalone Checkbox Basic example",
+              }),
+              docsExampleBlock({
+                title: "Indeterminate",
+                testId: "docs-example-block-checkbox-indeterminate",
+                preview: checkboxIndeterminateExamplePreview(
+                  model.checkboxIndeterminateExample,
+                  "checkbox-docs-indeterminate-preview"
+                ),
+                href: checkboxIndeterminateExampleRouter(),
+                linkText: "Open standalone Checkbox Indeterminate example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/checkbox.json\nbunx shadcn@latest add <registry-url>/checkbox-basic.json\nbunx shadcn@latest add <registry-url>/checkbox-indeterminate.json",
+        usageBody:
+          "Initialize the checkbox child model in the parent model, delegate child messages through `h.submodel`, and render the supplied checkbox, label, description, and hidden input attributes.",
+        usageCode: `import * as Checkbox from "./ui/checkbox";
+
+const [checkbox, checkboxCommands] = Checkbox.init({
+  id: "terms-checkbox",
+});
+
+h.submodel({
+  slotId: model.checkbox.id,
+  model: model.checkbox,
+  view: Checkbox.view,
+  viewInputs: {
+    toView: (attributes) => h.button(attributes.checkbox, ["Accept"]),
+  },
+  toParentMessage: (message) => GotCheckboxMessage({ message }),
+});`,
+        integrationCode: `// Model
+checkbox: Checkbox.Model;
+
+// Message
+GotCheckboxMessage({ message: Checkbox.Message });
+
+// Update
+GotCheckboxMessage: ({ message }) => {
+  const [checkbox, commands] = Checkbox.update(model.checkbox, message);
+
+  return [
+    evo(model, { checkbox: () => checkbox }),
+    Command.mapMessages(commands, (message) => GotCheckboxMessage({ message })),
+  ];
+};`,
+        apiItems: [
+          "Model: schema-backed state containing id and isChecked.",
+          "init(config): creates a Checkbox model and empty command list for registry consistency.",
+          "update(model, message): delegates to Ui.Checkbox.update and returns model, commands, and OutMessage.",
+          "setChecked(model, isChecked): programmatically assigns checked state and emits the same OutMessage as user toggles.",
+          "reflectChecked(model, isChecked): mirrors external checked state without emitting OutMessage.",
+          "view: h.submodel view that exposes checkbox, label, description, and hiddenInput attribute groups.",
+        ],
+        accessibilityItems: [
+          "The visible control receives the Foldkit checkbox role, checked, disabled, and indeterminate attributes.",
+          "The label attributes bind the visible label to the checkbox control.",
+          "The description attributes provide aria-describedby for explanatory copy.",
+          "The hiddenInput attributes preserve form participation when a name and value are supplied.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify label, description, checked toggling, hidden input composition, and disabled state.",
+          "Example scene tests verify parent-visible checked feedback and grouped indeterminate behavior.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
 };
 
 const buttonDocsView = (model: Model): Html => {
@@ -3681,6 +3955,74 @@ const buttonDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const checkboxBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Checkbox Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable checkbox-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          checkboxBasicExamplePreview(
+            model.checkboxBasicExample,
+            "checkbox-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const checkboxIndeterminateExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Checkbox Indeterminate"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable checkbox-indeterminate registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          checkboxIndeterminateExamplePreview(
+            model.checkboxIndeterminateExample,
+            "checkbox-indeterminate-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const inputBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -4264,6 +4606,10 @@ const contentView = (model: Model): Html => {
       ButtonDisabledExample: () => buttonDisabledExampleRouteView(model),
       Calendar: () => embedUi("ui-calendar", View.calendar),
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
+      CheckboxDocs: () => checkboxDocsView(model),
+      CheckboxBasicExample: () => checkboxBasicExampleRouteView(model),
+      CheckboxIndeterminateExample: () =>
+        checkboxIndeterminateExampleRouteView(model),
       Combobox: () => embedUi("ui-combobox", View.combobox),
       ComboboxDocs: () => comboboxDocsView(model),
       ComboboxBasicExample: () => comboboxBasicExampleRouteView(model),

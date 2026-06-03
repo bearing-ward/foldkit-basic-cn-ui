@@ -3,6 +3,8 @@ import { describe, test } from "vitest";
 
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
+import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -27,6 +29,9 @@ import {
   ButtonDisabledExampleRoute,
   ButtonDocsRoute,
   ButtonRoute,
+  CheckboxBasicExampleRoute,
+  CheckboxDocsRoute,
+  CheckboxIndeterminateExampleRoute,
   CheckboxRoute,
   ComboboxBasicExampleRoute,
   ComboboxDocsRoute,
@@ -73,6 +78,8 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
+const [checkboxBasicExample] = CheckboxBasicExample.init();
+const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
@@ -96,6 +103,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   uiModel: initialUiModel,
   buttonBasicExample,
   buttonDisabledExample,
+  checkboxBasicExample,
+  checkboxIndeterminateExample,
   comboboxBasicExample,
   comboboxMultiExample,
   dialogBasicExample,
@@ -151,6 +160,13 @@ describe("scene", () => {
         Scene.role("link", { name: "Button Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Checkbox Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Checkbox Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Checkbox Indeterminate Example" })
+      ).toExist(),
       Scene.expect(Scene.role("link", { name: "Combobox Docs" })).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Combobox Basic Example" })
@@ -286,6 +302,78 @@ describe("scene", () => {
         Scene.role("heading", { name: "Button Disabled" })
       ).toExist(),
       Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled()
+    );
+  });
+
+  test("the Checkbox docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CheckboxDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Checkbox" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "All notification channels" })
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-checkbox-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-checkbox-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-checkbox-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-checkbox-indeterminate")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-checkbox-indeterminate-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Checkbox Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Checkbox Indeterminate example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Checkbox Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CheckboxBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Checkbox Basic" })).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toExist()
+    );
+  });
+
+  test("the Checkbox Indeterminate example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CheckboxIndeterminateExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Checkbox Indeterminate" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "All notification channels" })
+      ).toExist()
     );
   });
 

@@ -5,6 +5,8 @@ import { describe, expect, test } from "vitest";
 
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
+import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -31,6 +33,8 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
+const [checkboxBasicExample] = CheckboxBasicExample.init();
+const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
@@ -54,6 +58,8 @@ const initialModel: Model = {
   uiModel: initialUiModel,
   buttonBasicExample,
   buttonDisabledExample,
+  checkboxBasicExample,
+  checkboxIndeterminateExample,
   comboboxBasicExample,
   comboboxMultiExample,
   dialogBasicExample,
@@ -385,6 +391,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDocs");
+        })
+      );
+    });
+
+    test("/docs/components/checkbox resolves to CheckboxDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/checkbox"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxDocs");
+        })
+      );
+    });
+
+    test("/docs/components/checkbox/examples/basic resolves to CheckboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/checkbox/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/checkbox/examples/indeterminate resolves to CheckboxIndeterminateExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/checkbox/examples/indeterminate"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxIndeterminateExample");
         })
       );
     });
@@ -737,6 +792,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/checkbox-basic resolves to CheckboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/checkbox-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxBasicExample");
+        })
+      );
+    });
+
+    test("/examples/checkbox-indeterminate resolves to CheckboxIndeterminateExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/checkbox-indeterminate"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxIndeterminateExample");
         })
       );
     });

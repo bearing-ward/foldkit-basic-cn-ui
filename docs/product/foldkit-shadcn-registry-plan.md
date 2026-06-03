@@ -220,16 +220,17 @@ import * as Dialog from "./ui/dialog";
 
 ## Component Slice Status
 
-| Component | Status          | Notes                                                                                                                                      |
-| --------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Button    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
-| Dialog    | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.     |
-| Input     | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
-| Popover   | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete. |
-| Menu      | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete. |
-| Listbox   | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
-| Select    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
-| Combobox  | Active v1 slice | Registry wrapper, basic example, multi example, docs page, route coverage, generated registry output, and coverage matrix are in place.    |
+| Component | Status          | Notes                                                                                                                                           |
+| --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Button    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Checkbox  | Active v1 slice | Registry wrapper, basic example, indeterminate example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
+| Dialog    | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.          |
+| Input     | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Popover   | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
+| Menu      | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
+| Listbox   | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Select    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Combobox  | Active v1 slice | Registry wrapper, basic example, multi example, docs page, route coverage, generated registry output, and coverage matrix are in place.         |
 
 Stateful component `init` returns `[Model, Commands]`:
 

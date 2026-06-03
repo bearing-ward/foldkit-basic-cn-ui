@@ -804,6 +804,93 @@
           "example": "disabled"
         }
       }
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A Foldkit Checkbox wrapper for checked, unchecked, disabled, and indeterminate states with accessible label and description helpers, hidden input attributes, typed messages, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/checkbox/index.ts",
+          "target": "src/ui/checkbox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/checkbox/view.ts",
+          "target": "src/ui/checkbox/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/checkbox/checkbox.scene.test.ts",
+          "target": "src/ui/checkbox/checkbox.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox",
+          "primitive": "Ui.Checkbox",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "checkbox-basic",
+      "type": "registry:example",
+      "title": "Checkbox Basic",
+      "description": "A runnable Foldkit example showing a typed Checkbox message with parent-visible checked feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["checkbox"],
+      "files": [
+        {
+          "path": "registry/default/examples/checkbox-basic/main.ts",
+          "target": "src/examples/checkbox-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/checkbox-basic/checkbox-basic.scene.test.ts",
+          "target": "src/examples/checkbox-basic/checkbox-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "checkbox-indeterminate",
+      "type": "registry:example",
+      "title": "Checkbox Indeterminate",
+      "description": "A runnable Foldkit example showing grouped Checkbox state and an indeterminate parent control.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["checkbox"],
+      "files": [
+        {
+          "path": "registry/default/examples/checkbox-indeterminate/main.ts",
+          "target": "src/examples/checkbox-indeterminate/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/checkbox-indeterminate/checkbox-indeterminate.scene.test.ts",
+          "target": "src/examples/checkbox-indeterminate/checkbox-indeterminate.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox",
+          "example": "indeterminate"
+        }
+      }
     }
   ]
 }
