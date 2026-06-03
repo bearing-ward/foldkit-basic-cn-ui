@@ -120,7 +120,7 @@ These behaviors should not block the first slice:
 | Base UI trigger reparenting and Fast Refresh tests | Not applicable to the Foldkit v1 registry wrapper.                                                                   |
 | Nested dialogs                                     | Unsupported in v1. Keep one active Dialog per flow; future modal stacking needs a coordinator or separate component. |
 | Scrollable content and sticky footer examples      | Included through `dialog-scrollable`.                                                                                |
-| RTL example                                        | Styling verification follow-up after first v1 slice.                                                                 |
+| RTL behavior                                       | Supported as inherited layout context through `h.Dir("rtl")`; no Dialog model state or registry example in v1.       |
 | Drawer dialog                                      | Separate component or example later.                                                                                 |
 | Command dialog                                     | Separate component or example later.                                                                                 |
 | Alert dialog                                       | Separate component later, not a v1 Dialog variant.                                                                   |

@@ -1366,6 +1366,12 @@ Dialog.descriptionId;`),
                   "Nested or stacked dialogs are unsupported in v1; keep one active Dialog per flow.",
                 ]
               ),
+              h.li(
+                [],
+                [
+                  'RTL is inherited from the surrounding document or container through h.Dir("rtl"); Dialog does not store direction in its model.',
+                ]
+              ),
             ]
           ),
         ]
@@ -1411,6 +1417,48 @@ Dialog.descriptionId;`),
                 [],
                 [
                   "If a product needs modal stacking, treat it as a future coordinator or separate component with its own tests.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["RTL policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Dialog v1 treats direction as layout context. Set direction on the document, page region, or preview wrapper; the Dialog model and messages stay direction-agnostic.",
+                ]
+              ),
+            ]
+          ),
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              codeBlock(`const rtlPreview = h.div(
+  [h.Dir("rtl")],
+  [
+    Dialog.trigger({ ... }),
+    h.submodel({ ... })
+  ]
+);`),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "The registry view helpers avoid text-alignment props and keep direction-specific copy in the consuming app. Dedicated RTL visual snapshots can be added later when the docs site has screenshot coverage.",
                 ]
               ),
             ]
@@ -1562,6 +1610,12 @@ ShowDialog({
               h.li(
                 [],
                 [
+                  'RTL behavior: documented as inherited layout context through h.Dir("rtl").',
+                ]
+              ),
+              h.li(
+                [],
+                [
                   "Generated install artifacts: build:registry and check:registry.",
                 ]
               ),
@@ -1574,7 +1628,7 @@ ShowDialog({
               h.li(
                 [],
                 [
-                  "RTL, drawer, command dialog, and AlertDialog: deferred decision list.",
+                  "Drawer, command dialog, and AlertDialog: deferred decision list.",
                 ]
               ),
             ]

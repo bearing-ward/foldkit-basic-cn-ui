@@ -428,6 +428,7 @@ Dialog v1 behavior:
 - `focusSelector` is part of the documented API.
 - `h.OnClickFocus` should be documented for iOS keyboard warmup flows where a trigger opens a dialog containing a text input.
 - Nested or stacked dialogs are unsupported in Dialog v1. Keep one active Dialog per flow; true modal stacking should be a future coordinator or separate component with its own state, focus, and escape-key tests.
+- RTL is inherited from `dir` on the document, page region, or preview wrapper. Dialog v1 should document `h.Dir("rtl")` composition and must not add direction to Dialog model state.
 
 ## Styling Policy
 

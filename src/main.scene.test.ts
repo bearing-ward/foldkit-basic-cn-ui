@@ -132,6 +132,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Composition policy" })
       ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "RTL policy" })).toExist(),
       Scene.expect(
         Scene.role("heading", { name: "Browser focus proof" })
       ).toExist(),
