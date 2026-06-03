@@ -121,6 +121,33 @@
           "example": "destructive"
         }
       }
+    },
+    {
+      "name": "dialog-focus",
+      "type": "registry:example",
+      "title": "Dialog Focus",
+      "description": "A runnable Foldkit example showing Dialog focusSelector and trigger-time OnClickFocus for input-first flows.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/dialog-focus/main.ts",
+          "target": "src/examples/dialog-focus/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/dialog-focus/dialog-focus.scene.test.ts",
+          "target": "src/examples/dialog-focus/dialog-focus.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "focus"
+        }
+      }
     }
   ]
 }

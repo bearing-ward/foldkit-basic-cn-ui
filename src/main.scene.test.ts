@@ -4,6 +4,7 @@ import { describe, test } from "vitest";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
+import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import {
   AnimationRoute,
   ButtonRoute,
@@ -12,6 +13,7 @@ import {
   DialogBasicExampleRoute,
   DialogDestructiveExampleRoute,
   DialogDocsRoute,
+  DialogFocusExampleRoute,
   DisclosureRoute,
   FieldsetRoute,
   HomeRoute,
@@ -32,6 +34,7 @@ const [initialUiModel] = uiInit(today);
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
+const [dialogFocusExample] = DialogFocusExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -39,6 +42,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
+  dialogFocusExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -57,6 +61,9 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Destructive Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Dialog Focus Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
@@ -120,6 +127,9 @@ describe("scene", () => {
         Scene.role("button", { name: "Open delete dialog" })
       ).toExist(),
       Scene.expect(
+        Scene.role("button", { name: "Open focus dialog" })
+      ).toExist(),
+      Scene.expect(
         Scene.role("link", { name: "Open standalone Dialog Basic example" })
       ).toExist(),
       Scene.expect(
@@ -129,6 +139,9 @@ describe("scene", () => {
         Scene.role("link", {
           name: "Open standalone Dialog Destructive example",
         })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Dialog Focus example" })
       ).toExist()
     );
   });
@@ -164,6 +177,17 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open delete dialog" })
+      ).toExist()
+    );
+  });
+
+  test("the Dialog Focus example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DialogFocusExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Dialog Focus" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Open focus dialog" })
       ).toExist()
     );
   });

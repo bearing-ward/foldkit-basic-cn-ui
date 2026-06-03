@@ -13,6 +13,7 @@ import { Url, toString as urlToString } from "foldkit/url";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
+import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -34,6 +35,7 @@ export const DialogDocsRoute = r("DialogDocs");
 export const DialogBasicExampleRoute = r("DialogBasicExample");
 export const DialogAnimatedExampleRoute = r("DialogAnimatedExample");
 export const DialogDestructiveExampleRoute = r("DialogDestructiveExample");
+export const DialogFocusExampleRoute = r("DialogFocusExample");
 export const DisclosureRoute = r("Disclosure");
 export const DragAndDropRoute = r("DragAndDrop");
 export const FieldsetRoute = r("Fieldset");
@@ -66,6 +68,7 @@ const AppRoute = S.Union([
   DialogBasicExampleRoute,
   DialogAnimatedExampleRoute,
   DialogDestructiveExampleRoute,
+  DialogFocusExampleRoute,
   DisclosureRoute,
   DragAndDropRoute,
   FieldsetRoute,
@@ -119,6 +122,11 @@ const dialogDestructiveExampleRouter = pipe(
   slash(literal("dialog-destructive")),
   Route.mapTo(DialogDestructiveExampleRoute)
 );
+const dialogFocusExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-focus")),
+  Route.mapTo(DialogFocusExampleRoute)
+);
 const disclosureRouter = pipe(
   literal("disclosure"),
   Route.mapTo(DisclosureRoute)
@@ -161,6 +169,7 @@ const routeParser = Route.oneOf(
   dialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
   dialogDestructiveExampleRouter,
+  dialogFocusExampleRouter,
   disclosureRouter,
   dragAndDropRouter,
   fieldsetRouter,
@@ -192,6 +201,7 @@ export const Model = S.Struct({
   dialogBasicExample: DialogBasicExample.Model,
   dialogAnimatedExample: DialogAnimatedExample.Model,
   dialogDestructiveExample: DialogDestructiveExample.Model,
+  dialogFocusExample: DialogFocusExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -222,6 +232,9 @@ export const GotDialogDestructiveExampleMessage = m(
     message: DialogDestructiveExample.Message,
   }
 );
+export const GotDialogFocusExampleMessage = m("GotDialogFocusExampleMessage", {
+  message: DialogFocusExample.Message,
+});
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -232,6 +245,7 @@ export const Message = S.Union([
   GotDialogBasicExampleMessage,
   GotDialogAnimatedExampleMessage,
   GotDialogDestructiveExampleMessage,
+  GotDialogFocusExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -273,6 +287,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogAnimatedExample.init();
   const [dialogDestructiveExample, dialogDestructiveExampleCommands] =
     DialogDestructiveExample.init();
+  const [dialogFocusExample, dialogFocusExampleCommands] =
+    DialogFocusExample.init();
 
   return [
     {
@@ -281,6 +297,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogBasicExample,
       dialogAnimatedExample,
       dialogDestructiveExample,
+      dialogFocusExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -294,6 +311,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogDestructiveExampleCommands, (message) =>
         GotDialogDestructiveExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dialogFocusExampleCommands, (message) =>
+        GotDialogFocusExampleMessage({ message })
       ),
     ],
   ];
@@ -405,6 +425,20 @@ export const update = (
           ),
         ];
       },
+
+      GotDialogFocusExampleMessage: ({ message }) => {
+        const [dialogFocusExample, dialogFocusExampleCommands] =
+          DialogFocusExample.update(model.dialogFocusExample, message);
+
+        return [
+          evo(model, {
+            dialogFocusExample: () => dialogFocusExample,
+          }),
+          Command.mapMessages(dialogFocusExampleCommands, (message) =>
+            GotDialogFocusExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -439,6 +473,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dialog Destructive Example",
     routeTag: "DialogDestructiveExample",
     href: dialogDestructiveExampleRouter(),
+  },
+  {
+    label: "Dialog Focus Example",
+    routeTag: "DialogFocusExample",
+    href: dialogFocusExampleRouter(),
   },
   { label: "Disclosure", routeTag: "Disclosure", href: disclosureRouter() },
   {
@@ -779,6 +818,20 @@ const dialogDestructiveExamplePreview = (
   });
 };
 
+const dialogFocusExamplePreview = (
+  model: DialogFocusExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DialogFocusExample.view,
+    toParentMessage: (message) => GotDialogFocusExampleMessage({ message }),
+  });
+};
+
 const dialogDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -829,7 +882,7 @@ const dialogDocsView = (model: Model): Html => {
             [h.Class("space-y-1")],
             [
               h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
-              h.p([], ["basic, animated, destructive"]),
+              h.p([], ["basic, animated, destructive, focus"]),
             ]
           ),
           h.div(
@@ -860,7 +913,7 @@ const dialogDocsView = (model: Model): Html => {
             ]
           ),
           h.div(
-            [h.Class("grid gap-4 xl:grid-cols-3")],
+            [h.Class("grid gap-4 lg:grid-cols-2")],
             [
               h.div(
                 [
@@ -958,6 +1011,38 @@ const dialogDocsView = (model: Model): Html => {
                   ),
                 ]
               ),
+              h.div(
+                [
+                  h.Class(
+                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
+                  ),
+                ],
+                [
+                  h.h3(
+                    [h.Class("text-sm font-semibold text-gray-900")],
+                    ["Focus"]
+                  ),
+                  h.p(
+                    [h.Class("text-sm text-gray-600")],
+                    [
+                      "A focus-targeted dialog warms up and focuses the first field for input-heavy flows.",
+                    ]
+                  ),
+                  dialogFocusExamplePreview(
+                    model.dialogFocusExample,
+                    "dialog-docs-focus-preview"
+                  ),
+                  h.a(
+                    [
+                      h.Href(dialogFocusExampleRouter()),
+                      h.Class(
+                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
+                      ),
+                    ],
+                    ["Open standalone Dialog Focus example"]
+                  ),
+                ]
+              ),
             ]
           ),
         ]
@@ -988,7 +1073,7 @@ const dialogDocsView = (model: Model): Html => {
             [h.Class("space-y-3")],
             [
               codeBlock(
-                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json"
+                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json"
               ),
               h.p(
                 [h.Class("text-sm text-gray-600")],
@@ -1265,6 +1350,37 @@ const dialogDestructiveExampleRouteView = (model: Model): Html => {
   );
 };
 
+const dialogFocusExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Dialog Focus"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable dialog-focus registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          dialogFocusExamplePreview(
+            model.dialogFocusExample,
+            "dialog-focus-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const contentView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1289,6 +1405,7 @@ const contentView = (model: Model): Html => {
       DialogBasicExample: () => dialogBasicExampleRouteView(model),
       DialogAnimatedExample: () => dialogAnimatedExampleRouteView(model),
       DialogDestructiveExample: () => dialogDestructiveExampleRouteView(model),
+      DialogFocusExample: () => dialogFocusExampleRouteView(model),
       Disclosure: () => embedUi("ui-disclosure", View.disclosure),
       DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),

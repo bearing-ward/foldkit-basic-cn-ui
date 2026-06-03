@@ -6,6 +6,7 @@ import { describe, expect, test } from "vitest";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
+import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -16,6 +17,7 @@ const [initialUiModel] = uiInit(today);
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
+const [dialogFocusExample] = DialogFocusExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -23,6 +25,7 @@ const initialModel: Model = {
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
+  dialogFocusExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -137,6 +140,21 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogDestructiveExample");
+        })
+      );
+    });
+
+    test("/examples/dialog-focus resolves to DialogFocusExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-focus"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogFocusExample");
         })
       );
     });
