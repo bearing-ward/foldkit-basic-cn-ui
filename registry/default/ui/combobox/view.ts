@@ -1,3 +1,6 @@
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+
 export const inputClassName =
   "w-full rounded-lg border border-gray-300 bg-white py-2 pl-3 pr-10 text-base text-gray-900 outline-none focus:ring-2 focus:ring-accent-500";
 
@@ -17,7 +20,7 @@ export const wrapperClassName = "relative w-full max-w-72";
 export const inputWrapperClassName = "relative";
 
 export const selectedIconClassName =
-  "h-4 w-4 shrink-0 text-gray-900 data-[selected=false]:invisible";
+  "invisible h-4 w-4 shrink-0 text-gray-900 data-[selected=true]:visible";
 
 export const tagClassName =
   "inline-flex items-center gap-1 rounded-md bg-gray-200 px-2 py-0.5 text-sm text-gray-700";
@@ -28,4 +31,31 @@ export const defaultAnchor = {
   placement: "bottom-start" as const,
   gap: 8,
   padding: 8,
+};
+
+export const selectedIcon = (isSelected: boolean): Html => {
+  const h = html();
+
+  return h.svg(
+    [
+      h.AriaHidden(true),
+      h.Class(selectedIconClassName),
+      h.DataAttribute("selected", String(isSelected)),
+      h.Xmlns("http://www.w3.org/2000/svg"),
+      h.Fill("none"),
+      h.ViewBox("0 0 24 24"),
+      h.StrokeWidth("2"),
+      h.Stroke("currentColor"),
+    ],
+    [
+      h.path(
+        [
+          h.StrokeLinecap("round"),
+          h.StrokeLinejoin("round"),
+          h.D("M4.5 12.75l6 6 9-13.5"),
+        ],
+        []
+      ),
+    ]
+  );
 };

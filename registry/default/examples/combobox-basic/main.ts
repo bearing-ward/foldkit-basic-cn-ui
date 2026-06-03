@@ -90,16 +90,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
       className: Combobox.itemClassName,
       content: h.div(
         [h.Class("flex items-center gap-2")],
-        [
-          h.span(
-            [
-              h.Class(Combobox.selectedIconClassName),
-              h.DataAttribute("selected", String(context.isSelected)),
-            ],
-            ["check"]
-          ),
-          h.span([], [city]),
-        ]
+        [Combobox.selectedIcon(context.isSelected), h.span([], [city])]
       ),
     }),
     itemToValue: (city) => city,

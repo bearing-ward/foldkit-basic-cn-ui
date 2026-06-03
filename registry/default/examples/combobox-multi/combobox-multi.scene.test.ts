@@ -44,6 +44,7 @@ describe("Combobox Multi example", () => {
       resolvePreventBlurMount(),
       Scene.type(Scene.placeholder("Search cities..."), "ox"),
       resolveComboboxMounts(),
+      Scene.expect(Scene.text("check")).not.toExist(),
       Scene.click(Scene.text("Oxford")),
       Scene.expect(Scene.text("Oxford")).toExist()
     );

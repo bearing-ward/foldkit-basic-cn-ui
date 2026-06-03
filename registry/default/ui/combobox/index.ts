@@ -81,6 +81,7 @@ export {
   inputWrapperClassName,
   itemClassName,
   itemsClassName,
+  selectedIcon,
   selectedIconClassName,
   tagClassName,
   wrapperClassName,

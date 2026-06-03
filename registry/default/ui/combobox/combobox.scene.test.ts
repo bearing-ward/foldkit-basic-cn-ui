@@ -95,6 +95,7 @@ describe("Combobox registry view", () => {
       resolvePreventBlurMount(),
       Scene.type(Scene.placeholder("Search cities..."), "o"),
       resolveComboboxMounts(),
+      Scene.expect(Scene.text("check")).not.toExist(),
       Scene.expect(Scene.text("Oxford")).toExist(),
       Scene.expect(Scene.text("Quito")).toExist(),
       Scene.expect(Scene.text("Kyiv")).not.toExist()
