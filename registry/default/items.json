@@ -1235,5 +1235,92 @@
         "example": "disabled"
       }
     }
+  },
+  {
+    "name": "file-drop",
+    "type": "registry:ui",
+    "title": "File Drop",
+    "description": "A Foldkit FileDrop wrapper for drag-and-drop and file-input uploads with drag-over state, received/rejected OutMessages, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/file-drop/index.ts",
+        "target": "src/ui/file-drop/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/file-drop/view.ts",
+        "target": "src/ui/file-drop/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/file-drop/file-drop.scene.test.ts",
+        "target": "src/ui/file-drop/file-drop.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "FileDrop",
+        "primitive": "Ui.FileDrop",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "file-drop-basic",
+    "type": "registry:example",
+    "title": "File Drop Basic",
+    "description": "A runnable Foldkit example showing file input/drop handling with parent-visible file list feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["file-drop"],
+    "files": [
+      {
+        "path": "registry/default/examples/file-drop-basic/main.ts",
+        "target": "src/examples/file-drop-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/file-drop-basic/file-drop-basic.scene.test.ts",
+        "target": "src/examples/file-drop-basic/file-drop-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "FileDrop",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "file-drop-disabled",
+    "type": "registry:example",
+    "title": "File Drop Disabled",
+    "description": "A runnable Foldkit example showing disabled file drop and input state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["file-drop"],
+    "files": [
+      {
+        "path": "registry/default/examples/file-drop-disabled/main.ts",
+        "target": "src/examples/file-drop-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/file-drop-disabled/file-drop-disabled.scene.test.ts",
+        "target": "src/examples/file-drop-disabled/file-drop-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "FileDrop",
+        "example": "disabled"
+      }
+    }
   }
 ]

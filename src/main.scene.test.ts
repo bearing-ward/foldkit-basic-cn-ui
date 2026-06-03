@@ -14,6 +14,8 @@ import * as DialogFocusExample from "../registry/default/examples/dialog-focus/m
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
+import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
+import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
@@ -55,6 +57,9 @@ import {
   FieldsetBasicExampleRoute,
   FieldsetDisabledExampleRoute,
   FieldsetDocsRoute,
+  FileDropBasicExampleRoute,
+  FileDropDisabledExampleRoute,
+  FileDropDocsRoute,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
   HomeRoute,
@@ -109,6 +114,8 @@ const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
+const [fileDropBasicExample] = FileDropBasicExample.init();
+const [fileDropDisabledExample] = FileDropDisabledExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
@@ -142,6 +149,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogScrollableExample,
   fieldsetBasicExample,
   fieldsetDisabledExample,
+  fileDropBasicExample,
+  fileDropDisabledExample,
   inputBasicExample,
   inputDisabledExample,
   listboxBasicExample,
@@ -230,6 +239,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Fieldset Disabled Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "File Drop Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "File Drop Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "File Drop Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Input Docs" })).toExist(),
       Scene.expect(
@@ -693,6 +709,72 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("textbox", { name: "Locked name" })
       ).toBeDisabled()
+    );
+  });
+
+  test("the File Drop docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(FileDropDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "File Drop" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.text("Drop files or click to browse")).toExist(),
+      Scene.expect(Scene.text("File uploads disabled")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-file-drop-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-file-drop-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-file-drop-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-file-drop-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-file-drop-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone File Drop Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone File Drop Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the File Drop Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(FileDropBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "File Drop Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Drop files or click to browse")).toExist()
+    );
+  });
+
+  test("the File Drop Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(FileDropDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "File Drop Disabled" })
+      ).toExist(),
+      Scene.expect(Scene.label("Upload files")).toBeDisabled()
     );
   });
 

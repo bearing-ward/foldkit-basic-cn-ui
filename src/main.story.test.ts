@@ -16,6 +16,8 @@ import * as DialogFocusExample from "../registry/default/examples/dialog-focus/m
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
+import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
+import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
@@ -52,6 +54,8 @@ const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
+const [fileDropBasicExample] = FileDropBasicExample.init();
+const [fileDropDisabledExample] = FileDropDisabledExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
@@ -85,6 +89,8 @@ const initialModel: Model = {
   dialogScrollableExample,
   fieldsetBasicExample,
   fieldsetDisabledExample,
+  fileDropBasicExample,
+  fileDropDisabledExample,
   inputBasicExample,
   inputDisabledExample,
   listboxBasicExample,
@@ -464,6 +470,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("FieldsetDisabledExample");
+        })
+      );
+    });
+
+    test("/docs/components/file-drop resolves to FileDropDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/file-drop"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FileDropDocs");
+        })
+      );
+    });
+
+    test("/docs/components/file-drop/examples/basic resolves to FileDropBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/file-drop/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FileDropBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/file-drop/examples/disabled resolves to FileDropDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/file-drop/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FileDropDisabledExample");
         })
       );
     });
@@ -1042,6 +1097,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("FieldsetDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/file-drop-basic resolves to FileDropBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/file-drop-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FileDropBasicExample");
+        })
+      );
+    });
+
+    test("/examples/file-drop-disabled resolves to FileDropDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/file-drop-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FileDropDisabledExample");
         })
       );
     });

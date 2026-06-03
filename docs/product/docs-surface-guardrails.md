@@ -102,6 +102,11 @@ Current enforced examples:
 - `docs-example-block-fieldset-basic-actions`
 - `docs-example-block-fieldset-disabled`
 - `docs-example-block-fieldset-disabled-actions`
+- `docs-example-block-file-drop-basic`
+- `docs-example-block-file-drop-basic-preview`
+- `docs-example-block-file-drop-basic-actions`
+- `docs-example-block-file-drop-disabled`
+- `docs-example-block-file-drop-disabled-actions`
 - `docs-example-block-textarea-basic`
 - `docs-example-block-textarea-basic-preview`
 - `docs-example-block-textarea-basic-actions`

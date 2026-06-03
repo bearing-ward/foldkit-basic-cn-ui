@@ -23,6 +23,8 @@ import * as DialogFocusExample from "../registry/default/examples/dialog-focus/m
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
+import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
+import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
@@ -80,6 +82,9 @@ export const FieldsetDocsRoute = r("FieldsetDocs");
 export const FieldsetBasicExampleRoute = r("FieldsetBasicExample");
 export const FieldsetDisabledExampleRoute = r("FieldsetDisabledExample");
 export const FileDropRoute = r("FileDrop");
+export const FileDropDocsRoute = r("FileDropDocs");
+export const FileDropBasicExampleRoute = r("FileDropBasicExample");
+export const FileDropDisabledExampleRoute = r("FileDropDisabledExample");
 export const InputRoute = r("Input");
 export const InputDocsRoute = r("InputDocs");
 export const InputBasicExampleRoute = r("InputBasicExample");
@@ -152,6 +157,9 @@ const AppRoute = S.Union([
   FieldsetBasicExampleRoute,
   FieldsetDisabledExampleRoute,
   FileDropRoute,
+  FileDropDocsRoute,
+  FileDropBasicExampleRoute,
+  FileDropDisabledExampleRoute,
   InputRoute,
   InputDocsRoute,
   InputBasicExampleRoute,
@@ -414,6 +422,38 @@ const fieldsetDisabledStandaloneExampleRouter = pipe(
   Route.mapTo(FieldsetDisabledExampleRoute)
 );
 const fileDropRouter = pipe(literal("file-drop"), Route.mapTo(FileDropRoute));
+const fileDropDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("file-drop")),
+  Route.mapTo(FileDropDocsRoute)
+);
+const fileDropBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("file-drop")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(FileDropBasicExampleRoute)
+);
+const fileDropDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("file-drop")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(FileDropDisabledExampleRoute)
+);
+const fileDropBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("file-drop-basic")),
+  Route.mapTo(FileDropBasicExampleRoute)
+);
+const fileDropDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("file-drop-disabled")),
+  Route.mapTo(FileDropDisabledExampleRoute)
+);
 const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
 const inputDocsRouter = pipe(
   literal("docs"),
@@ -733,6 +773,11 @@ const routeParser = Route.oneOf(
   fieldsetDisabledStandaloneExampleRouter,
   fieldsetDocsRouter,
   fileDropRouter,
+  fileDropBasicExampleRouter,
+  fileDropDisabledExampleRouter,
+  fileDropBasicStandaloneExampleRouter,
+  fileDropDisabledStandaloneExampleRouter,
+  fileDropDocsRouter,
   inputRouter,
   inputBasicExampleRouter,
   inputDisabledExampleRouter,
@@ -810,6 +855,8 @@ export const Model = S.Struct({
   dialogScrollableExample: DialogScrollableExample.Model,
   fieldsetBasicExample: FieldsetBasicExample.Model,
   fieldsetDisabledExample: FieldsetDisabledExample.Model,
+  fileDropBasicExample: FileDropBasicExample.Model,
+  fileDropDisabledExample: FileDropDisabledExample.Model,
   inputBasicExample: InputBasicExample.Model,
   inputDisabledExample: InputDisabledExample.Model,
   listboxBasicExample: ListboxBasicExample.Model,
@@ -908,6 +955,18 @@ export const GotFieldsetDisabledExampleMessage = m(
   "GotFieldsetDisabledExampleMessage",
   {
     message: FieldsetDisabledExample.Message,
+  }
+);
+export const GotFileDropBasicExampleMessage = m(
+  "GotFileDropBasicExampleMessage",
+  {
+    message: FileDropBasicExample.Message,
+  }
+);
+export const GotFileDropDisabledExampleMessage = m(
+  "GotFileDropDisabledExampleMessage",
+  {
+    message: FileDropDisabledExample.Message,
   }
 );
 export const GotInputBasicExampleMessage = m("GotInputBasicExampleMessage", {
@@ -1014,6 +1073,8 @@ export const Message = S.Union([
   GotDialogScrollableExampleMessage,
   GotFieldsetBasicExampleMessage,
   GotFieldsetDisabledExampleMessage,
+  GotFileDropBasicExampleMessage,
+  GotFileDropDisabledExampleMessage,
   GotInputBasicExampleMessage,
   GotInputDisabledExampleMessage,
   GotListboxBasicExampleMessage,
@@ -1091,6 +1152,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     FieldsetBasicExample.init();
   const [fieldsetDisabledExample, fieldsetDisabledExampleCommands] =
     FieldsetDisabledExample.init();
+  const [fileDropBasicExample, fileDropBasicExampleCommands] =
+    FileDropBasicExample.init();
+  const [fileDropDisabledExample, fileDropDisabledExampleCommands] =
+    FileDropDisabledExample.init();
   const [inputBasicExample, inputBasicExampleCommands] =
     InputBasicExample.init();
   const [inputDisabledExample, inputDisabledExampleCommands] =
@@ -1140,6 +1205,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogScrollableExample,
       fieldsetBasicExample,
       fieldsetDisabledExample,
+      fileDropBasicExample,
+      fileDropDisabledExample,
       inputBasicExample,
       inputDisabledExample,
       listboxBasicExample,
@@ -1199,6 +1266,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(fieldsetDisabledExampleCommands, (message) =>
         GotFieldsetDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(fileDropBasicExampleCommands, (message) =>
+        GotFileDropBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(fileDropDisabledExampleCommands, (message) =>
+        GotFileDropDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(inputBasicExampleCommands, (message) =>
         GotInputBasicExampleMessage({ message })
@@ -1498,6 +1571,35 @@ export const update = (
           }),
           Command.mapMessages(fieldsetDisabledExampleCommands, (message) =>
             GotFieldsetDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotFileDropBasicExampleMessage: ({ message }) => {
+        const [fileDropBasicExample, fileDropBasicExampleCommands] =
+          FileDropBasicExample.update(model.fileDropBasicExample, message);
+
+        return [
+          evo(model, { fileDropBasicExample: () => fileDropBasicExample }),
+          Command.mapMessages(fileDropBasicExampleCommands, (message) =>
+            GotFileDropBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotFileDropDisabledExampleMessage: ({ message }) => {
+        const [fileDropDisabledExample, fileDropDisabledExampleCommands] =
+          FileDropDisabledExample.update(
+            model.fileDropDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            fileDropDisabledExample: () => fileDropDisabledExample,
+          }),
+          Command.mapMessages(fileDropDisabledExampleCommands, (message) =>
+            GotFileDropDisabledExampleMessage({ message })
           ),
         ];
       },
@@ -1838,6 +1940,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: fieldsetDisabledExampleRouter(),
   },
   { label: "File Drop", routeTag: "FileDrop", href: fileDropRouter() },
+  {
+    label: "File Drop Docs",
+    routeTag: "FileDropDocs",
+    href: fileDropDocsRouter(),
+  },
+  {
+    label: "File Drop Basic Example",
+    routeTag: "FileDropBasicExample",
+    href: fileDropBasicExampleRouter(),
+  },
+  {
+    label: "File Drop Disabled Example",
+    routeTag: "FileDropDisabledExample",
+    href: fileDropDisabledExampleRouter(),
+  },
   { label: "Input", routeTag: "Input", href: inputRouter() },
   { label: "Input Docs", routeTag: "InputDocs", href: inputDocsRouter() },
   {
@@ -2593,6 +2710,35 @@ const fieldsetDisabledExamplePreview = (
   });
 };
 
+const fileDropBasicExamplePreview = (
+  model: FileDropBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: FileDropBasicExample.view,
+    toParentMessage: (message) => GotFileDropBasicExampleMessage({ message }),
+  });
+};
+
+const fileDropDisabledExamplePreview = (
+  model: FileDropDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: FileDropDisabledExample.view,
+    toParentMessage: (message) =>
+      GotFileDropDisabledExampleMessage({ message }),
+  });
+};
+
 const listboxBasicExamplePreview = (
   model: ListboxBasicExample.Model,
   slotId: string
@@ -3286,6 +3432,123 @@ Fieldset.view<Message>({
         coverageItems: [
           "Registry scene tests verify grouped label/description wiring and disabled fieldset behavior.",
           "Example scene tests verify parent-owned field feedback and disabled grouped fields.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const fileDropDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["File Drop"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit FileDrop slice built on the official Foldkit Ui.FileDrop primitive. It preserves drag-over state, file input selection, dropped-file OutMessages, rejected non-file drops, and reusable drop-zone classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/file-drop" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "FileDrop v1 documents the upload-intake path: child-owned drag state, parent-visible received-file facts, optional multiple selection, optional accept filters, and disabled drop/input behavior."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-file-drop-basic",
+                preview: fileDropBasicExamplePreview(
+                  model.fileDropBasicExample,
+                  "file-drop-docs-basic-preview"
+                ),
+                href: fileDropBasicExampleRouter(),
+                linkText: "Open standalone File Drop Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-file-drop-disabled",
+                preview: fileDropDisabledExamplePreview(
+                  model.fileDropDisabledExample,
+                  "file-drop-docs-disabled-preview"
+                ),
+                href: fileDropDisabledExampleRouter(),
+                linkText: "Open standalone File Drop Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/file-drop.json\nbunx shadcn@latest add <registry-url>/file-drop-basic.json\nbunx shadcn@latest add <registry-url>/file-drop-disabled.json",
+        usageBody:
+          "Initialize the FileDrop child model, delegate child messages through `h.submodel`, and handle ReceivedFiles or RejectedNonFiles in the parent update.",
+        usageCode: `import * as FileDrop from "./ui/file-drop";
+
+const [fileDrop] = FileDrop.init({ id: "documents-file-drop" });`,
+        integrationCode: `// Model
+fileDrop: FileDrop.Model;
+files: S.Array(File.File);
+
+// Message
+GotFileDropMessage({ message: FileDrop.Message });
+
+// Update
+const [fileDrop, commands, maybeOutMessage] =
+  FileDrop.update(model.fileDrop, message);
+
+// View
+h.submodel({
+  slotId: model.fileDrop.id,
+  model: model.fileDrop,
+  view: FileDrop.view,
+  viewInputs,
+  toParentMessage: (message) => GotFileDropMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id and isDragOver.",
+          "init(config): creates a FileDrop model.",
+          "update(model, message): returns model, commands, and an optional OutMessage.",
+          "view: h.submodel view that exposes root and input attribute groups.",
+          "ReceivedFiles and RejectedNonFiles: parent-visible upload facts.",
+          "ViewInputs: toView, accept, multiple, and isDisabled.",
+          "Class helpers: drop zone, primary text, secondary text, file list, file row, file name, file size, and formatFileSize.",
+        ],
+        accessibilityItems: [
+          "The drop zone is composed as a label wrapping a hidden file input.",
+          "The file input should receive a clear accessible label for keyboard and test access.",
+          "Disabled state is applied through primitive attributes to prevent file input interaction.",
+          "Drag-over state is exposed through data attributes for visual feedback.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify dropped files, input-selected files, file metadata rendering, and disabled state.",
+          "Example scene tests verify parent-visible file list feedback, removal, and disabled upload input.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -5217,6 +5480,74 @@ const fieldsetDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const fileDropBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["File Drop Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable file-drop-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          fileDropBasicExamplePreview(
+            model.fileDropBasicExample,
+            "file-drop-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const fileDropDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["File Drop Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable file-drop-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          fileDropDisabledExamplePreview(
+            model.fileDropDisabledExample,
+            "file-drop-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const inputBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -5959,6 +6290,9 @@ const contentView = (model: Model): Html => {
       FieldsetBasicExample: () => fieldsetBasicExampleRouteView(model),
       FieldsetDisabledExample: () => fieldsetDisabledExampleRouteView(model),
       FileDrop: () => embedUi("ui-file-drop", View.fileDrop),
+      FileDropDocs: () => fileDropDocsView(model),
+      FileDropBasicExample: () => fileDropBasicExampleRouteView(model),
+      FileDropDisabledExample: () => fileDropDisabledExampleRouteView(model),
       Input: () => embedUi("ui-input", View.input),
       InputDocs: () => inputDocsView(model),
       InputBasicExample: () => inputBasicExampleRouteView(model),

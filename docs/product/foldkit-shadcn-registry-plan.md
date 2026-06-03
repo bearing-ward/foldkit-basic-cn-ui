@@ -226,6 +226,7 @@ import * as Dialog from "./ui/dialog";
 | Checkbox   | Active v1 slice | Registry wrapper, basic example, indeterminate example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
 | Dialog     | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.          |
 | Fieldset   | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| FileDrop   | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Input      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Popover    | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
 | Menu       | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
