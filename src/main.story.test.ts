@@ -5,6 +5,7 @@ import { describe, expect, test } from "vitest";
 
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
+import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -14,12 +15,14 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
+const [dialogDestructiveExample] = DialogDestructiveExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
   dialogBasicExample,
   dialogAnimatedExample,
+  dialogDestructiveExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -119,6 +122,21 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogAnimatedExample");
+        })
+      );
+    });
+
+    test("/examples/dialog-destructive resolves to DialogDestructiveExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-destructive"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogDestructiveExample");
         })
       );
     });

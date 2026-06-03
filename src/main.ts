@@ -12,6 +12,7 @@ import { Url, toString as urlToString } from "foldkit/url";
 
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
+import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -32,6 +33,7 @@ export const DialogRoute = r("Dialog");
 export const DialogDocsRoute = r("DialogDocs");
 export const DialogBasicExampleRoute = r("DialogBasicExample");
 export const DialogAnimatedExampleRoute = r("DialogAnimatedExample");
+export const DialogDestructiveExampleRoute = r("DialogDestructiveExample");
 export const DisclosureRoute = r("Disclosure");
 export const DragAndDropRoute = r("DragAndDrop");
 export const FieldsetRoute = r("Fieldset");
@@ -63,6 +65,7 @@ const AppRoute = S.Union([
   DialogDocsRoute,
   DialogBasicExampleRoute,
   DialogAnimatedExampleRoute,
+  DialogDestructiveExampleRoute,
   DisclosureRoute,
   DragAndDropRoute,
   FieldsetRoute,
@@ -111,6 +114,11 @@ const dialogAnimatedExampleRouter = pipe(
   slash(literal("dialog-animated")),
   Route.mapTo(DialogAnimatedExampleRoute)
 );
+const dialogDestructiveExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-destructive")),
+  Route.mapTo(DialogDestructiveExampleRoute)
+);
 const disclosureRouter = pipe(
   literal("disclosure"),
   Route.mapTo(DisclosureRoute)
@@ -152,6 +160,7 @@ const routeParser = Route.oneOf(
   dialogDocsRouter,
   dialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
+  dialogDestructiveExampleRouter,
   disclosureRouter,
   dragAndDropRouter,
   fieldsetRouter,
@@ -182,6 +191,7 @@ export const Model = S.Struct({
   uiModel: UiModel,
   dialogBasicExample: DialogBasicExample.Model,
   dialogAnimatedExample: DialogAnimatedExample.Model,
+  dialogDestructiveExample: DialogDestructiveExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -206,6 +216,12 @@ export const GotDialogAnimatedExampleMessage = m(
     message: DialogAnimatedExample.Message,
   }
 );
+export const GotDialogDestructiveExampleMessage = m(
+  "GotDialogDestructiveExampleMessage",
+  {
+    message: DialogDestructiveExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -215,6 +231,7 @@ export const Message = S.Union([
   GotUiMessage,
   GotDialogBasicExampleMessage,
   GotDialogAnimatedExampleMessage,
+  GotDialogDestructiveExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -254,6 +271,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogBasicExample.init();
   const [dialogAnimatedExample, dialogAnimatedExampleCommands] =
     DialogAnimatedExample.init();
+  const [dialogDestructiveExample, dialogDestructiveExampleCommands] =
+    DialogDestructiveExample.init();
 
   return [
     {
@@ -261,6 +280,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       uiModel: initialUiModel,
       dialogBasicExample,
       dialogAnimatedExample,
+      dialogDestructiveExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -271,6 +291,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogAnimatedExampleCommands, (message) =>
         GotDialogAnimatedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dialogDestructiveExampleCommands, (message) =>
+        GotDialogDestructiveExampleMessage({ message })
       ),
     ],
   ];
@@ -365,6 +388,23 @@ export const update = (
           ),
         ];
       },
+
+      GotDialogDestructiveExampleMessage: ({ message }) => {
+        const [dialogDestructiveExample, dialogDestructiveExampleCommands] =
+          DialogDestructiveExample.update(
+            model.dialogDestructiveExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dialogDestructiveExample: () => dialogDestructiveExample,
+          }),
+          Command.mapMessages(dialogDestructiveExampleCommands, (message) =>
+            GotDialogDestructiveExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -394,6 +434,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dialog Animated Example",
     routeTag: "DialogAnimatedExample",
     href: dialogAnimatedExampleRouter(),
+  },
+  {
+    label: "Dialog Destructive Example",
+    routeTag: "DialogDestructiveExample",
+    href: dialogDestructiveExampleRouter(),
   },
   { label: "Disclosure", routeTag: "Disclosure", href: disclosureRouter() },
   {
@@ -719,6 +764,21 @@ const dialogAnimatedExamplePreview = (
   });
 };
 
+const dialogDestructiveExamplePreview = (
+  model: DialogDestructiveExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DialogDestructiveExample.view,
+    toParentMessage: (message) =>
+      GotDialogDestructiveExampleMessage({ message }),
+  });
+};
+
 const dialogDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -769,7 +829,7 @@ const dialogDocsView = (model: Model): Html => {
             [h.Class("space-y-1")],
             [
               h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
-              h.p([], ["basic, animated"]),
+              h.p([], ["basic, animated, destructive"]),
             ]
           ),
           h.div(
@@ -800,7 +860,7 @@ const dialogDocsView = (model: Model): Html => {
             ]
           ),
           h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [h.Class("grid gap-4 xl:grid-cols-3")],
             [
               h.div(
                 [
@@ -866,6 +926,38 @@ const dialogDocsView = (model: Model): Html => {
                   ),
                 ]
               ),
+              h.div(
+                [
+                  h.Class(
+                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
+                  ),
+                ],
+                [
+                  h.h3(
+                    [h.Class("text-sm font-semibold text-gray-900")],
+                    ["Destructive"]
+                  ),
+                  h.p(
+                    [h.Class("text-sm text-gray-600")],
+                    [
+                      "A destructive confirmation uses the existing Dialog flow with a red confirm action.",
+                    ]
+                  ),
+                  dialogDestructiveExamplePreview(
+                    model.dialogDestructiveExample,
+                    "dialog-docs-destructive-preview"
+                  ),
+                  h.a(
+                    [
+                      h.Href(dialogDestructiveExampleRouter()),
+                      h.Class(
+                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
+                      ),
+                    ],
+                    ["Open standalone Dialog Destructive example"]
+                  ),
+                ]
+              ),
             ]
           ),
         ]
@@ -896,7 +988,7 @@ const dialogDocsView = (model: Model): Html => {
             [h.Class("space-y-3")],
             [
               codeBlock(
-                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json"
+                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json"
               ),
               h.p(
                 [h.Class("text-sm text-gray-600")],
@@ -1139,6 +1231,40 @@ const dialogAnimatedExampleRouteView = (model: Model): Html => {
   );
 };
 
+const dialogDestructiveExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Dialog Destructive"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable dialog-destructive registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          dialogDestructiveExamplePreview(
+            model.dialogDestructiveExample,
+            "dialog-destructive-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const contentView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1162,6 +1288,7 @@ const contentView = (model: Model): Html => {
       DialogDocs: () => dialogDocsView(model),
       DialogBasicExample: () => dialogBasicExampleRouteView(model),
       DialogAnimatedExample: () => dialogAnimatedExampleRouteView(model),
+      DialogDestructiveExample: () => dialogDestructiveExampleRouteView(model),
       Disclosure: () => embedUi("ui-disclosure", View.disclosure),
       DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),

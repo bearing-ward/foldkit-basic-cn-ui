@@ -94,6 +94,33 @@
           "example": "animated"
         }
       }
+    },
+    {
+      "name": "dialog-destructive",
+      "type": "registry:example",
+      "title": "Dialog Destructive",
+      "description": "A runnable Foldkit example showing destructive confirmation styling with the standard Dialog message flow.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/dialog-destructive/main.ts",
+          "target": "src/examples/dialog-destructive/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/dialog-destructive/dialog-destructive.scene.test.ts",
+          "target": "src/examples/dialog-destructive/dialog-destructive.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "destructive"
+        }
+      }
     }
   ]
 }

@@ -3,12 +3,14 @@ import { describe, test } from "vitest";
 
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
+import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import {
   AnimationRoute,
   ButtonRoute,
   CheckboxRoute,
   DialogAnimatedExampleRoute,
   DialogBasicExampleRoute,
+  DialogDestructiveExampleRoute,
   DialogDocsRoute,
   DisclosureRoute,
   FieldsetRoute,
@@ -29,12 +31,14 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
+const [dialogDestructiveExample] = DialogDestructiveExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
   dialogBasicExample,
   dialogAnimatedExample,
+  dialogDestructiveExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -50,6 +54,9 @@ describe("scene", () => {
       Scene.expect(Scene.role("link", { name: "Dialog Docs" })).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Animated Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Dialog Destructive Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
@@ -110,10 +117,18 @@ describe("scene", () => {
         Scene.role("button", { name: "Open animated dialog" })
       ).toExist(),
       Scene.expect(
+        Scene.role("button", { name: "Open delete dialog" })
+      ).toExist(),
+      Scene.expect(
         Scene.role("link", { name: "Open standalone Dialog Basic example" })
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Open standalone Dialog Animated example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Dialog Destructive example",
+        })
       ).toExist()
     );
   });
@@ -136,6 +151,19 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open animated dialog" })
+      ).toExist()
+    );
+  });
+
+  test("the Dialog Destructive example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DialogDestructiveExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dialog Destructive" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Open delete dialog" })
       ).toExist()
     );
   });
