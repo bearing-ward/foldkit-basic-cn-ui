@@ -3,6 +3,8 @@ import { Calendar, Story, Ui } from "foldkit";
 import { fromString } from "foldkit/url";
 import { describe, expect, test } from "vitest";
 
+import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
+import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
@@ -23,6 +25,8 @@ import { GotMobileMenuDialogMessage } from "./ui/message";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [comboboxBasicExample] = ComboboxBasicExample.init();
+const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -40,6 +44,8 @@ const [selectDisabledExample] = SelectDisabledExample.init();
 const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
+  comboboxBasicExample,
+  comboboxMultiExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
@@ -109,6 +115,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DatePicker");
+        })
+      );
+    });
+
+    test("/docs/components/combobox resolves to ComboboxDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/combobox"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ComboboxDocs");
+        })
+      );
+    });
+
+    test("/docs/components/combobox/examples/basic resolves to ComboboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/combobox/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ComboboxBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/combobox/examples/multi resolves to ComboboxMultiExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/combobox/examples/multi"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ComboboxMultiExample");
         })
       );
     });

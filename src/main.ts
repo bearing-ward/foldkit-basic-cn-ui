@@ -10,6 +10,8 @@ import { literal, r, slash } from "foldkit/route";
 import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
+import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
+import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
@@ -38,6 +40,9 @@ export const ButtonRoute = r("Button");
 export const CalendarRoute = r("Calendar");
 export const CheckboxRoute = r("Checkbox");
 export const ComboboxRoute = r("Combobox");
+export const ComboboxDocsRoute = r("ComboboxDocs");
+export const ComboboxBasicExampleRoute = r("ComboboxBasicExample");
+export const ComboboxMultiExampleRoute = r("ComboboxMultiExample");
 export const DatePickerRoute = r("DatePicker");
 export const DialogRoute = r("Dialog");
 export const DialogDocsRoute = r("DialogDocs");
@@ -84,6 +89,9 @@ const AppRoute = S.Union([
   CalendarRoute,
   CheckboxRoute,
   ComboboxRoute,
+  ComboboxDocsRoute,
+  ComboboxBasicExampleRoute,
+  ComboboxMultiExampleRoute,
   DatePickerRoute,
   DialogRoute,
   DialogDocsRoute,
@@ -132,6 +140,38 @@ const buttonRouter = pipe(literal("button"), Route.mapTo(ButtonRoute));
 const calendarRouter = pipe(literal("calendar"), Route.mapTo(CalendarRoute));
 const checkboxRouter = pipe(literal("checkbox"), Route.mapTo(CheckboxRoute));
 const comboboxRouter = pipe(literal("combobox"), Route.mapTo(ComboboxRoute));
+const comboboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("combobox")),
+  Route.mapTo(ComboboxDocsRoute)
+);
+const comboboxBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("combobox")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ComboboxBasicExampleRoute)
+);
+const comboboxMultiExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("combobox")),
+  slash(literal("examples")),
+  slash(literal("multi")),
+  Route.mapTo(ComboboxMultiExampleRoute)
+);
+const comboboxBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("combobox-basic")),
+  Route.mapTo(ComboboxBasicExampleRoute)
+);
+const comboboxMultiStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("combobox-multi")),
+  Route.mapTo(ComboboxMultiExampleRoute)
+);
 const datePickerRouter = pipe(
   literal("date-picker"),
   Route.mapTo(DatePickerRoute)
@@ -372,6 +412,11 @@ const routeParser = Route.oneOf(
   calendarRouter,
   checkboxRouter,
   comboboxRouter,
+  comboboxBasicExampleRouter,
+  comboboxMultiExampleRouter,
+  comboboxBasicStandaloneExampleRouter,
+  comboboxMultiStandaloneExampleRouter,
+  comboboxDocsRouter,
   datePickerRouter,
   dialogRouter,
   dialogBasicExampleRouter,
@@ -433,6 +478,8 @@ const urlToAppRoute = Route.parseUrlWithFallback(routeParser, NotFoundRoute);
 export const Model = S.Struct({
   route: AppRoute,
   uiModel: UiModel,
+  comboboxBasicExample: ComboboxBasicExample.Model,
+  comboboxMultiExample: ComboboxMultiExample.Model,
   dialogBasicExample: DialogBasicExample.Model,
   dialogAnimatedExample: DialogAnimatedExample.Model,
   dialogDestructiveExample: DialogDestructiveExample.Model,
@@ -461,6 +508,18 @@ export const ChangedUrl = m("ChangedUrl", { url: Url });
 export const GotUiMessage = m("GotUiMessage", {
   message: UiMessage,
 });
+export const GotComboboxBasicExampleMessage = m(
+  "GotComboboxBasicExampleMessage",
+  {
+    message: ComboboxBasicExample.Message,
+  }
+);
+export const GotComboboxMultiExampleMessage = m(
+  "GotComboboxMultiExampleMessage",
+  {
+    message: ComboboxMultiExample.Message,
+  }
+);
 export const GotDialogBasicExampleMessage = m("GotDialogBasicExampleMessage", {
   message: DialogBasicExample.Message,
 });
@@ -534,6 +593,8 @@ export const Message = S.Union([
   ClickedLink,
   ChangedUrl,
   GotUiMessage,
+  GotComboboxBasicExampleMessage,
+  GotComboboxMultiExampleMessage,
   GotDialogBasicExampleMessage,
   GotDialogAnimatedExampleMessage,
   GotDialogDestructiveExampleMessage,
@@ -582,6 +643,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   url: Url
 ) => {
   const [initialUiModel, uiCommands] = uiInit(flags.today);
+  const [comboboxBasicExample, comboboxBasicExampleCommands] =
+    ComboboxBasicExample.init();
+  const [comboboxMultiExample, comboboxMultiExampleCommands] =
+    ComboboxMultiExample.init();
   const [dialogBasicExample, dialogBasicExampleCommands] =
     DialogBasicExample.init();
   const [dialogAnimatedExample, dialogAnimatedExampleCommands] =
@@ -612,6 +677,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     {
       route: urlToAppRoute(url),
       uiModel: initialUiModel,
+      comboboxBasicExample,
+      comboboxMultiExample,
       dialogBasicExample,
       dialogAnimatedExample,
       dialogDestructiveExample,
@@ -629,6 +696,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     [
       ...Command.mapMessages(uiCommands, (message) =>
         GotUiMessage({ message })
+      ),
+      ...Command.mapMessages(comboboxBasicExampleCommands, (message) =>
+        GotComboboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(comboboxMultiExampleCommands, (message) =>
+        GotComboboxMultiExampleMessage({ message })
       ),
       ...Command.mapMessages(dialogBasicExampleCommands, (message) =>
         GotDialogBasicExampleMessage({ message })
@@ -735,6 +808,34 @@ export const update = (
           evo(model, { uiModel: () => nextUiModel }),
           Command.mapMessages(uiCommands, (message) =>
             GotUiMessage({ message })
+          ),
+        ];
+      },
+
+      GotComboboxBasicExampleMessage: ({ message }) => {
+        const [comboboxBasicExample, comboboxBasicExampleCommands] =
+          ComboboxBasicExample.update(model.comboboxBasicExample, message);
+
+        return [
+          evo(model, {
+            comboboxBasicExample: () => comboboxBasicExample,
+          }),
+          Command.mapMessages(comboboxBasicExampleCommands, (message) =>
+            GotComboboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotComboboxMultiExampleMessage: ({ message }) => {
+        const [comboboxMultiExample, comboboxMultiExampleCommands] =
+          ComboboxMultiExample.update(model.comboboxMultiExample, message);
+
+        return [
+          evo(model, {
+            comboboxMultiExample: () => comboboxMultiExample,
+          }),
+          Command.mapMessages(comboboxMultiExampleCommands, (message) =>
+            GotComboboxMultiExampleMessage({ message })
           ),
         ];
       },
@@ -939,6 +1040,21 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Calendar", routeTag: "Calendar", href: calendarRouter() },
   { label: "Checkbox", routeTag: "Checkbox", href: checkboxRouter() },
   { label: "Combobox", routeTag: "Combobox", href: comboboxRouter() },
+  {
+    label: "Combobox Docs",
+    routeTag: "ComboboxDocs",
+    href: comboboxDocsRouter(),
+  },
+  {
+    label: "Combobox Basic Example",
+    routeTag: "ComboboxBasicExample",
+    href: comboboxBasicExampleRouter(),
+  },
+  {
+    label: "Combobox Multi Example",
+    routeTag: "ComboboxMultiExample",
+    href: comboboxMultiExampleRouter(),
+  },
   { label: "Date Picker", routeTag: "DatePicker", href: datePickerRouter() },
   { label: "Dialog", routeTag: "Dialog", href: dialogRouter() },
   { label: "Dialog Docs", routeTag: "DialogDocs", href: dialogDocsRouter() },
@@ -1674,6 +1790,140 @@ const selectDisabledExamplePreview = (
     view: SelectDisabledExample.view,
     toParentMessage: (message) => GotSelectDisabledExampleMessage({ message }),
   });
+};
+
+const comboboxBasicExamplePreview = (
+  model: ComboboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ComboboxBasicExample.view,
+    toParentMessage: (message) => GotComboboxBasicExampleMessage({ message }),
+  });
+};
+
+const comboboxMultiExamplePreview = (
+  model: ComboboxMultiExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ComboboxMultiExample.view,
+    toParentMessage: (message) => GotComboboxMultiExampleMessage({ message }),
+  });
+};
+
+const comboboxDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Combobox"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Combobox slice built on the official Foldkit Ui.Combobox primitive. It preserves input filtering, typed Selected OutMessage flow, multi-select state, command effects, and mount-aware positioning.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/combobox" },
+        { label: "Examples", value: "basic, multi" },
+        { label: "Proof", value: "story tests, scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Combobox v1 documents the single-select and multi-select paths: input-driven filtering, typed selection messages, selected display text, and selected tag rendering."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-combobox-basic",
+                preview: comboboxBasicExamplePreview(
+                  model.comboboxBasicExample,
+                  "combobox-docs-basic-preview"
+                ),
+                href: comboboxBasicExampleRouter(),
+                linkText: "Open standalone Combobox Basic example",
+              }),
+              docsExampleBlock({
+                title: "Multi",
+                testId: "docs-example-block-combobox-multi",
+                preview: comboboxMultiExamplePreview(
+                  model.comboboxMultiExample,
+                  "combobox-docs-multi-preview"
+                ),
+                href: comboboxMultiExampleRouter(),
+                linkText: "Open standalone Combobox Multi example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/combobox.json\nbunx shadcn@latest add <registry-url>/combobox-basic.json\nbunx shadcn@latest add <registry-url>/combobox-multi.json",
+        usageBody:
+          "Create a typed Combobox factory, keep the model in the parent, filter items from the current input value, and handle Selected OutMessage values in the parent update.",
+        usageCode: `import * as Combobox from "./ui/combobox";
+
+type City = "Kyiv" | "Oxford" | "Quito";
+const CityCombobox = Combobox.create<City>();
+
+const [comboboxModel] = Combobox.init({ id: "city-combobox" });`,
+        integrationCode: `// Model
+cityCombobox: Combobox.Model;
+
+// Message
+GotComboboxMessage({ message: Combobox.Message });
+
+// Update
+const [cityCombobox, commands, maybeOutMessage] =
+  CityCombobox.update(model.cityCombobox, message);`,
+        apiItems: [
+          "init(config): returns a model and empty startup command list for single-select comboboxes.",
+          "create<Item>(): returns typed view, update, open, close, selectItem, and reflectSelectedItem helpers.",
+          "Multi.create<Item>(): returns typed multi-select view, update, selectItem, and reflectSelectedItems helpers.",
+          "ViewInputs: item rendering, filtering inputs, anchor, groups, disabled items, and form metadata.",
+        ],
+        accessibilityItems: [
+          "The Foldkit primitive owns combobox roles, active item state, keyboard navigation, and selected item semantics.",
+          "Input attributes should include a clear accessible label or visible label composition.",
+          "Backdrop, anchor, and prevent-blur mounts must be resolved in scene tests when the popup opens.",
+        ],
+        coverageItems: [
+          "Story tests cover init config, single-select helper behavior, and multi-select add/remove out-messages.",
+          "Scene tests cover input filtering, mount resolution, selection close behavior, and multi example tag rendering.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
 };
 
 const selectDocsView = (model: Model): Html => {
@@ -3314,6 +3564,74 @@ const selectDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const comboboxBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Combobox Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable combobox-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          comboboxBasicExamplePreview(
+            model.comboboxBasicExample,
+            "combobox-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const comboboxMultiExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Combobox Multi"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable combobox-multi registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          comboboxMultiExamplePreview(
+            model.comboboxMultiExample,
+            "combobox-multi-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const contentView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3332,6 +3650,9 @@ const contentView = (model: Model): Html => {
       Calendar: () => embedUi("ui-calendar", View.calendar),
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
       Combobox: () => embedUi("ui-combobox", View.combobox),
+      ComboboxDocs: () => comboboxDocsView(model),
+      ComboboxBasicExample: () => comboboxBasicExampleRouteView(model),
+      ComboboxMultiExample: () => comboboxMultiExampleRouteView(model),
       DatePicker: () => embedUi("ui-date-picker", View.datePicker),
       Dialog: () => embedUi("ui-dialog", View.dialog),
       DialogDocs: () => dialogDocsView(model),

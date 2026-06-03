@@ -534,5 +534,97 @@
         "example": "disabled"
       }
     }
+  },
+  {
+    "name": "combobox",
+    "type": "registry:ui",
+    "title": "Combobox",
+    "description": "A Foldkit combobox component with typed selection out-messages, input filtering, commands, mount-aware positioning, multi-select support, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/combobox/index.ts",
+        "target": "src/ui/combobox/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/combobox/view.ts",
+        "target": "src/ui/combobox/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/combobox/combobox.story.test.ts",
+        "target": "src/ui/combobox/combobox.story.test.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/combobox/combobox.scene.test.ts",
+        "target": "src/ui/combobox/combobox.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Combobox",
+        "primitive": "Ui.Combobox",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "combobox-basic",
+    "type": "registry:example",
+    "title": "Combobox Basic",
+    "description": "A runnable Foldkit example showing single-select Combobox filtering, typed parent message routing, and selected-value feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["combobox"],
+    "files": [
+      {
+        "path": "registry/default/examples/combobox-basic/main.ts",
+        "target": "src/examples/combobox-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/combobox-basic/combobox-basic.scene.test.ts",
+        "target": "src/examples/combobox-basic/combobox-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Combobox",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "combobox-multi",
+    "type": "registry:example",
+    "title": "Combobox Multi",
+    "description": "A runnable Foldkit example showing multi-select Combobox filtering with selected item tags.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["combobox"],
+    "files": [
+      {
+        "path": "registry/default/examples/combobox-multi/main.ts",
+        "target": "src/examples/combobox-multi/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/combobox-multi/combobox-multi.scene.test.ts",
+        "target": "src/examples/combobox-multi/combobox-multi.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Combobox",
+        "example": "multi"
+      }
+    }
   }
 ]

@@ -72,3 +72,8 @@ Current enforced examples:
 - `docs-example-block-select-basic-actions`
 - `docs-example-block-select-disabled`
 - `docs-example-block-select-disabled-actions`
+- `docs-example-block-combobox-basic`
+- `docs-example-block-combobox-basic-preview`
+- `docs-example-block-combobox-basic-actions`
+- `docs-example-block-combobox-multi`
+- `docs-example-block-combobox-multi-actions`

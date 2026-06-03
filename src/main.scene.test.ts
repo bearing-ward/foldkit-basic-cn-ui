@@ -1,6 +1,8 @@
 import { Calendar, Scene } from "foldkit";
 import { describe, test } from "vitest";
 
+import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
+import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
@@ -14,10 +16,14 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as Combobox from "../registry/default/ui/combobox";
 import {
   AnimationRoute,
   ButtonRoute,
   CheckboxRoute,
+  ComboboxBasicExampleRoute,
+  ComboboxDocsRoute,
+  ComboboxMultiExampleRoute,
   DialogAnimatedExampleRoute,
   DialogBasicExampleRoute,
   DialogDestructiveExampleRoute,
@@ -26,6 +32,8 @@ import {
   DialogScrollableExampleRoute,
   DisclosureRoute,
   FieldsetRoute,
+  GotComboboxBasicExampleMessage,
+  GotComboboxMultiExampleMessage,
   HomeRoute,
   InputRoute,
   ListboxAnimatedExampleRoute,
@@ -53,6 +61,8 @@ import { uiInit } from "./ui/init";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [comboboxBasicExample] = ComboboxBasicExample.init();
+const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -70,6 +80,8 @@ const [selectDisabledExample] = SelectDisabledExample.init();
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
+  comboboxBasicExample,
+  comboboxMultiExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
@@ -87,6 +99,26 @@ const modelForRoute = (route: Model["route"]): Model => ({
 
 const homeModel = modelForRoute(HomeRoute());
 
+const resolveComboboxBasicPreventBlurMount = () =>
+  Scene.Mount.resolve(
+    Combobox.AttachComboboxPreventBlur,
+    Combobox.CompletedAttachComboboxPreventBlur(),
+    (message) =>
+      GotComboboxBasicExampleMessage({
+        message: ComboboxBasicExample.GotComboboxMessage({ message }),
+      })
+  );
+
+const resolveComboboxMultiPreventBlurMount = () =>
+  Scene.Mount.resolve(
+    Combobox.AttachComboboxPreventBlur,
+    Combobox.CompletedAttachComboboxPreventBlur(),
+    (message) =>
+      GotComboboxMultiExampleMessage({
+        message: ComboboxMultiExample.GotComboboxMessage({ message }),
+      })
+  );
+
 describe("scene", () => {
   test("the sidebar nav lists a sample of every component link", () => {
     Scene.scene(
@@ -94,6 +126,13 @@ describe("scene", () => {
       Scene.with(homeModel),
       Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Combobox Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Combobox Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Combobox Multi Example" })
+      ).toExist(),
       Scene.expect(Scene.role("link", { name: "Dialog" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Dialog Docs" })).toExist(),
       Scene.expect(
@@ -268,6 +307,71 @@ describe("scene", () => {
           name: "Open standalone Dialog Scrollable example",
         })
       ).toExist()
+    );
+  });
+
+  test("the Combobox docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ComboboxDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Combobox" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.placeholder("Search cities...")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-combobox-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-combobox-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-combobox-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-combobox-multi")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-combobox-multi-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Combobox Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Combobox Multi example",
+        })
+      ).toExist(),
+      resolveComboboxBasicPreventBlurMount(),
+      resolveComboboxMultiPreventBlurMount()
+    );
+  });
+
+  test("the Combobox Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ComboboxBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Combobox Basic" })).toExist(),
+      Scene.expect(Scene.placeholder("Search cities...")).toExist(),
+      resolveComboboxBasicPreventBlurMount()
+    );
+  });
+
+  test("the Combobox Multi example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ComboboxMultiExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Combobox Multi" })).toExist(),
+      Scene.expect(Scene.placeholder("Search cities...")).toExist(),
+      resolveComboboxMultiPreventBlurMount()
     );
   });
 

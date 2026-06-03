@@ -227,6 +227,7 @@ import * as Dialog from "./ui/dialog";
 | Menu      | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete. |
 | Listbox   | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
 | Select    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
+| Combobox  | Active v1 slice | Registry wrapper, basic example, multi example, docs page, route coverage, generated registry output, and coverage matrix are in place.    |
 
 Stateful component `init` returns `[Model, Commands]`:
 
