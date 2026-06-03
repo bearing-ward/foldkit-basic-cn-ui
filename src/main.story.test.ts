@@ -20,6 +20,8 @@ import * as DialogFocusExample from "../registry/default/examples/dialog-focus/m
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
 import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
+import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-drop-basic/main";
+import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
@@ -64,6 +66,8 @@ const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
 const [disclosureBasicExample] = DisclosureBasicExample.init();
 const [disclosureDisabledExample] = DisclosureDisabledExample.init();
+const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
+const [dragAndDropDisabledExample] = DragAndDropDisabledExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
@@ -105,6 +109,8 @@ const initialModel: Model = {
   dialogScrollableExample,
   disclosureBasicExample,
   disclosureDisabledExample,
+  dragAndDropBasicExample,
+  dragAndDropDisabledExample,
   fieldsetBasicExample,
   fieldsetDisabledExample,
   fileDropBasicExample,
@@ -526,6 +532,85 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DisclosureDisabledExample");
+        })
+      );
+    });
+
+    test("/docs/components/drag-and-drop resolves to DragAndDropDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/drag-and-drop"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DragAndDropDocs");
+        })
+      );
+    });
+
+    test("/docs/components/drag-and-drop/examples/basic resolves to DragAndDropBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/drag-and-drop/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DragAndDropBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/drag-and-drop/examples/disabled resolves to DragAndDropDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/drag-and-drop/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DragAndDropDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/drag-and-drop-basic resolves to DragAndDropBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/drag-and-drop-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DragAndDropBasicExample");
+        })
+      );
+    });
+
+    test("/examples/drag-and-drop-disabled resolves to DragAndDropDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/drag-and-drop-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DragAndDropDisabledExample");
         })
       );
     });

@@ -1587,6 +1587,93 @@
           "example": "disabled"
         }
       }
+    },
+    {
+      "name": "drag-and-drop",
+      "type": "registry:ui",
+      "title": "Drag and Drop",
+      "description": "A Foldkit DragAndDrop wrapper with typed drag state, keyboard reorder messages, parent-visible Reordered OutMessages, and reusable sortable list classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/drag-and-drop/index.ts",
+          "target": "src/ui/drag-and-drop/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/drag-and-drop/view.ts",
+          "target": "src/ui/drag-and-drop/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/drag-and-drop/drag-and-drop.scene.test.ts",
+          "target": "src/ui/drag-and-drop/drag-and-drop.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DragAndDrop",
+          "primitive": "Ui.DragAndDrop",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "drag-and-drop-basic",
+      "type": "registry:example",
+      "title": "Drag and Drop Basic",
+      "description": "A runnable Foldkit example showing DragAndDrop keyboard reorder messages and parent-visible task order feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["drag-and-drop"],
+      "files": [
+        {
+          "path": "registry/default/examples/drag-and-drop-basic/main.ts",
+          "target": "src/examples/drag-and-drop-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/drag-and-drop-basic/drag-and-drop-basic.scene.test.ts",
+          "target": "src/examples/drag-and-drop-basic/drag-and-drop-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DragAndDrop",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "drag-and-drop-disabled",
+      "type": "registry:example",
+      "title": "Drag and Drop Disabled",
+      "description": "A runnable Foldkit example showing a locked DragAndDrop list presentation without binding drag messages.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["drag-and-drop"],
+      "files": [
+        {
+          "path": "registry/default/examples/drag-and-drop-disabled/main.ts",
+          "target": "src/examples/drag-and-drop-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/drag-and-drop-disabled/drag-and-drop-disabled.scene.test.ts",
+          "target": "src/examples/drag-and-drop-disabled/drag-and-drop-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DragAndDrop",
+          "example": "disabled"
+        }
+      }
     }
   ]
 }

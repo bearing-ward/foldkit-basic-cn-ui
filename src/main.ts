@@ -27,6 +27,8 @@ import * as DialogFocusExample from "../registry/default/examples/dialog-focus/m
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
 import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
+import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-drop-basic/main";
+import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
@@ -92,6 +94,9 @@ export const DisclosureDocsRoute = r("DisclosureDocs");
 export const DisclosureBasicExampleRoute = r("DisclosureBasicExample");
 export const DisclosureDisabledExampleRoute = r("DisclosureDisabledExample");
 export const DragAndDropRoute = r("DragAndDrop");
+export const DragAndDropDocsRoute = r("DragAndDropDocs");
+export const DragAndDropBasicExampleRoute = r("DragAndDropBasicExample");
+export const DragAndDropDisabledExampleRoute = r("DragAndDropDisabledExample");
 export const FieldsetRoute = r("Fieldset");
 export const FieldsetDocsRoute = r("FieldsetDocs");
 export const FieldsetBasicExampleRoute = r("FieldsetBasicExample");
@@ -176,6 +181,9 @@ const AppRoute = S.Union([
   DisclosureBasicExampleRoute,
   DisclosureDisabledExampleRoute,
   DragAndDropRoute,
+  DragAndDropDocsRoute,
+  DragAndDropBasicExampleRoute,
+  DragAndDropDisabledExampleRoute,
   FieldsetRoute,
   FieldsetDocsRoute,
   FieldsetBasicExampleRoute,
@@ -507,6 +515,38 @@ const disclosureDisabledStandaloneExampleRouter = pipe(
 const dragAndDropRouter = pipe(
   literal("drag-and-drop"),
   Route.mapTo(DragAndDropRoute)
+);
+const dragAndDropDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("drag-and-drop")),
+  Route.mapTo(DragAndDropDocsRoute)
+);
+const dragAndDropBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("drag-and-drop")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DragAndDropBasicExampleRoute)
+);
+const dragAndDropDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("drag-and-drop")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(DragAndDropDisabledExampleRoute)
+);
+const dragAndDropBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("drag-and-drop-basic")),
+  Route.mapTo(DragAndDropBasicExampleRoute)
+);
+const dragAndDropDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("drag-and-drop-disabled")),
+  Route.mapTo(DragAndDropDisabledExampleRoute)
 );
 const fieldsetRouter = pipe(literal("fieldset"), Route.mapTo(FieldsetRoute));
 const fieldsetDocsRouter = pipe(
@@ -901,6 +941,11 @@ const routeParser = Route.oneOf(
   disclosureDisabledStandaloneExampleRouter,
   disclosureDocsRouter,
   dragAndDropRouter,
+  dragAndDropBasicExampleRouter,
+  dragAndDropDisabledExampleRouter,
+  dragAndDropBasicStandaloneExampleRouter,
+  dragAndDropDisabledStandaloneExampleRouter,
+  dragAndDropDocsRouter,
   fieldsetRouter,
   fieldsetBasicExampleRouter,
   fieldsetDisabledExampleRouter,
@@ -994,6 +1039,8 @@ export const Model = S.Struct({
   dialogScrollableExample: DialogScrollableExample.Model,
   disclosureBasicExample: DisclosureBasicExample.Model,
   disclosureDisabledExample: DisclosureDisabledExample.Model,
+  dragAndDropBasicExample: DragAndDropBasicExample.Model,
+  dragAndDropDisabledExample: DragAndDropDisabledExample.Model,
   fieldsetBasicExample: FieldsetBasicExample.Model,
   fieldsetDisabledExample: FieldsetDisabledExample.Model,
   fileDropBasicExample: FileDropBasicExample.Model,
@@ -1120,6 +1167,18 @@ export const GotDisclosureDisabledExampleMessage = m(
   "GotDisclosureDisabledExampleMessage",
   {
     message: DisclosureDisabledExample.Message,
+  }
+);
+export const GotDragAndDropBasicExampleMessage = m(
+  "GotDragAndDropBasicExampleMessage",
+  {
+    message: DragAndDropBasicExample.Message,
+  }
+);
+export const GotDragAndDropDisabledExampleMessage = m(
+  "GotDragAndDropDisabledExampleMessage",
+  {
+    message: DragAndDropDisabledExample.Message,
   }
 );
 export const GotFieldsetBasicExampleMessage = m(
@@ -1254,6 +1313,8 @@ export const Message = S.Union([
   GotDialogScrollableExampleMessage,
   GotDisclosureBasicExampleMessage,
   GotDisclosureDisabledExampleMessage,
+  GotDragAndDropBasicExampleMessage,
+  GotDragAndDropDisabledExampleMessage,
   GotFieldsetBasicExampleMessage,
   GotFieldsetDisabledExampleMessage,
   GotFileDropBasicExampleMessage,
@@ -1343,6 +1404,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DisclosureBasicExample.init();
   const [disclosureDisabledExample, disclosureDisabledExampleCommands] =
     DisclosureDisabledExample.init();
+  const [dragAndDropBasicExample, dragAndDropBasicExampleCommands] =
+    DragAndDropBasicExample.init();
+  const [dragAndDropDisabledExample, dragAndDropDisabledExampleCommands] =
+    DragAndDropDisabledExample.init();
   const [fieldsetBasicExample, fieldsetBasicExampleCommands] =
     FieldsetBasicExample.init();
   const [fieldsetDisabledExample, fieldsetDisabledExampleCommands] =
@@ -1404,6 +1469,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogScrollableExample,
       disclosureBasicExample,
       disclosureDisabledExample,
+      dragAndDropBasicExample,
+      dragAndDropDisabledExample,
       fieldsetBasicExample,
       fieldsetDisabledExample,
       fileDropBasicExample,
@@ -1479,6 +1546,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(disclosureDisabledExampleCommands, (message) =>
         GotDisclosureDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dragAndDropBasicExampleCommands, (message) =>
+        GotDragAndDropBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dragAndDropDisabledExampleCommands, (message) =>
+        GotDragAndDropDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(fieldsetBasicExampleCommands, (message) =>
         GotFieldsetBasicExampleMessage({ message })
@@ -1843,6 +1916,40 @@ export const update = (
           }),
           Command.mapMessages(disclosureDisabledExampleCommands, (message) =>
             GotDisclosureDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDragAndDropBasicExampleMessage: ({ message }) => {
+        const [dragAndDropBasicExample, dragAndDropBasicExampleCommands] =
+          DragAndDropBasicExample.update(
+            model.dragAndDropBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dragAndDropBasicExample: () => dragAndDropBasicExample,
+          }),
+          Command.mapMessages(dragAndDropBasicExampleCommands, (message) =>
+            GotDragAndDropBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDragAndDropDisabledExampleMessage: ({ message }) => {
+        const [dragAndDropDisabledExample, dragAndDropDisabledExampleCommands] =
+          DragAndDropDisabledExample.update(
+            model.dragAndDropDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dragAndDropDisabledExample: () => dragAndDropDisabledExample,
+          }),
+          Command.mapMessages(dragAndDropDisabledExampleCommands, (message) =>
+            GotDragAndDropDisabledExampleMessage({ message })
           ),
         ];
       },
@@ -2268,6 +2375,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Drag and Drop",
     routeTag: "DragAndDrop",
     href: dragAndDropRouter(),
+  },
+  {
+    label: "Drag and Drop Docs",
+    routeTag: "DragAndDropDocs",
+    href: dragAndDropDocsRouter(),
+  },
+  {
+    label: "Drag and Drop Basic Example",
+    routeTag: "DragAndDropBasicExample",
+    href: dragAndDropBasicExampleRouter(),
+  },
+  {
+    label: "Drag and Drop Disabled Example",
+    routeTag: "DragAndDropDisabledExample",
+    href: dragAndDropDisabledExampleRouter(),
   },
   { label: "Fieldset", routeTag: "Fieldset", href: fieldsetRouter() },
   {
@@ -3081,6 +3203,36 @@ const disclosureDisabledExamplePreview = (
     view: DisclosureDisabledExample.view,
     toParentMessage: (message) =>
       GotDisclosureDisabledExampleMessage({ message }),
+  });
+};
+
+const dragAndDropBasicExamplePreview = (
+  model: DragAndDropBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DragAndDropBasicExample.view,
+    toParentMessage: (message) =>
+      GotDragAndDropBasicExampleMessage({ message }),
+  });
+};
+
+const dragAndDropDisabledExamplePreview = (
+  model: DragAndDropDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DragAndDropDisabledExample.view,
+    toParentMessage: (message) =>
+      GotDragAndDropDisabledExampleMessage({ message }),
   });
 };
 
@@ -4114,6 +4266,130 @@ h.submodel({
         coverageItems: [
           "Registry scene tests verify open/close behavior, parent-visible OutMessages, panel rendering, and FocusButton resolution.",
           "Example scene tests verify basic toggling, disabled trigger semantics, and parent-visible status feedback.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const dragAndDropDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Drag and Drop"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit DragAndDrop slice built on the official Foldkit Ui.DragAndDrop primitive. It preserves schema-backed drag state, keyboard reorder messages, parent-visible reorder facts, and reusable sortable list classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/drag-and-drop" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "DragAndDrop v1 documents sortable list behavior: parent-owned item order, child-owned drag state, deterministic keyboard reorder commands, and read-only presentation for locked lists."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-drag-and-drop-basic",
+                preview: dragAndDropBasicExamplePreview(
+                  model.dragAndDropBasicExample,
+                  "drag-and-drop-docs-basic-preview"
+                ),
+                href: dragAndDropBasicExampleRouter(),
+                linkText: "Open standalone Drag and Drop Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-drag-and-drop-disabled",
+                preview: dragAndDropDisabledExamplePreview(
+                  model.dragAndDropDisabledExample,
+                  "drag-and-drop-docs-disabled-preview"
+                ),
+                href: dragAndDropDisabledExampleRouter(),
+                linkText: "Open standalone Drag and Drop Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/drag-and-drop.json\nbunx shadcn@latest add <registry-url>/drag-and-drop-basic.json\nbunx shadcn@latest add <registry-url>/drag-and-drop-disabled.json",
+        usageBody:
+          "Initialize the DragAndDrop child model, delegate child messages through the sortable list helper, and apply Reordered OutMessages in the parent update.",
+        usageCode: `import * as DragAndDrop from "./ui/drag-and-drop";
+
+const [dragAndDrop] = DragAndDrop.init({
+  id: "task-order",
+  orientation: "Vertical",
+});`,
+        integrationCode: `// Model
+dragAndDrop: DragAndDrop.Model;
+
+// Message
+GotDragAndDropMessage({ message: DragAndDrop.Message });
+
+// Update
+const [dragAndDrop, commands, maybeOutMessage] =
+  DragAndDrop.update(model.dragAndDrop, message);
+
+// View
+DragAndDrop.sortableListView({
+  model: model.dragAndDrop,
+  containerId: "tasks",
+  items: model.tasks,
+  label: "Task order",
+  status: model.status,
+  toParentMessage: (message) =>
+    GotDragAndDropMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id, orientation, activation threshold, and drag state.",
+          "init(config): creates a DragAndDrop model and returns the registry init tuple.",
+          "update(model, message): returns model, commands, and an optional OutMessage.",
+          "Reordered: parent-visible fact containing item id, source container/index, and target container/index.",
+          "FocusItem and ResolveKeyboardMove: commands used after keyboard drag confirmation and arrow-key movement.",
+          "draggable, droppable, sortable, ghostStyle, isDragging, maybeDraggedItemId, and maybeDropTarget: primitive helpers re-exported from Foldkit.",
+          "Class helpers and sortableListView: reusable list composition for installable examples.",
+        ],
+        accessibilityItems: [
+          "The primitive supplies keyboard activation and arrow-key movement messages for sortable items.",
+          "Droppable containers include role and label attributes from the Foldkit helper.",
+          "Sortable items are focusable through the primitive draggable attributes.",
+          "The disabled example uses aria-disabled on read-only rows and avoids binding drag messages.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify sortable rendering, keyboard reorder update flow, ResolveKeyboardMove command emission, and FocusItem command emission.",
+          "Example scene tests verify the installable basic reorder flow and locked-list rendering.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -6850,6 +7126,74 @@ const disclosureDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const dragAndDropBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Drag and Drop Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable drag-and-drop-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          dragAndDropBasicExamplePreview(
+            model.dragAndDropBasicExample,
+            "drag-and-drop-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const dragAndDropDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Drag and Drop Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable drag-and-drop-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          dragAndDropDisabledExamplePreview(
+            model.dragAndDropDisabledExample,
+            "drag-and-drop-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const listboxBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -7300,6 +7644,10 @@ const contentView = (model: Model): Html => {
       DisclosureDisabledExample: () =>
         disclosureDisabledExampleRouteView(model),
       DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
+      DragAndDropDocs: () => dragAndDropDocsView(model),
+      DragAndDropBasicExample: () => dragAndDropBasicExampleRouteView(model),
+      DragAndDropDisabledExample: () =>
+        dragAndDropDisabledExampleRouteView(model),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),
       FieldsetDocs: () => fieldsetDocsView(model),
       FieldsetBasicExample: () => fieldsetBasicExampleRouteView(model),

@@ -102,6 +102,11 @@ Current enforced examples:
 - `docs-example-block-disclosure-basic-actions`
 - `docs-example-block-disclosure-disabled`
 - `docs-example-block-disclosure-disabled-actions`
+- `docs-example-block-drag-and-drop-basic`
+- `docs-example-block-drag-and-drop-basic-preview`
+- `docs-example-block-drag-and-drop-basic-actions`
+- `docs-example-block-drag-and-drop-disabled`
+- `docs-example-block-drag-and-drop-disabled-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`

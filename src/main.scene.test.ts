@@ -18,6 +18,8 @@ import * as DialogFocusExample from "../registry/default/examples/dialog-focus/m
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
 import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
+import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-drop-basic/main";
+import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
@@ -68,6 +70,9 @@ import {
   DisclosureDisabledExampleRoute,
   DisclosureDocsRoute,
   DisclosureRoute,
+  DragAndDropBasicExampleRoute,
+  DragAndDropDisabledExampleRoute,
+  DragAndDropDocsRoute,
   FieldsetRoute,
   FieldsetBasicExampleRoute,
   FieldsetDisabledExampleRoute,
@@ -133,6 +138,8 @@ const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
 const [disclosureBasicExample] = DisclosureBasicExample.init();
 const [disclosureDisabledExample] = DisclosureDisabledExample.init();
+const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
+const [dragAndDropDisabledExample] = DragAndDropDisabledExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
@@ -174,6 +181,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogScrollableExample,
   disclosureBasicExample,
   disclosureDisabledExample,
+  dragAndDropBasicExample,
+  dragAndDropDisabledExample,
   fieldsetBasicExample,
   fieldsetDisabledExample,
   fileDropBasicExample,
@@ -280,6 +289,15 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Disclosure Disabled Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Drag and Drop Docs" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Drag and Drop Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Drag and Drop Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Fieldset Docs" })).toExist(),
       Scene.expect(
@@ -1275,6 +1293,74 @@ describe("scene", () => {
         Scene.role("heading", { name: "Disclosure Disabled" })
       ).toExist(),
       Scene.expect(Scene.text("Disclosure is locked.")).toExist()
+    );
+  });
+
+  test("the Drag and Drop docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DragAndDropDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Drag and Drop" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.text("Task order: Plan, Build, Verify")).toExist(),
+      Scene.expect(Scene.text("Task order is locked.")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-drag-and-drop-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-drag-and-drop-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-drag-and-drop-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-drag-and-drop-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-drag-and-drop-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Drag and Drop Basic example",
+        })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Drag and Drop Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Drag and Drop Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DragAndDropBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Drag and Drop Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Task order: Plan, Build, Verify")).toExist()
+    );
+  });
+
+  test("the Drag and Drop Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DragAndDropDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Drag and Drop Disabled" })
+      ).toExist(),
+      Scene.expect(Scene.text("Task order is locked.")).toExist()
     );
   });
 
