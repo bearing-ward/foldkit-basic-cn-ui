@@ -48,6 +48,8 @@ import * as TextareaBasicExample from "../registry/default/examples/textarea-bas
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
+import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
+import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -100,6 +102,8 @@ const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
 const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
+const [tooltipBasicExample] = TooltipBasicExample.init();
+const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -149,6 +153,8 @@ const initialModel: Model = {
   textareaDisabledExample,
   toastBasicExample,
   toastVariantsExample,
+  tooltipBasicExample,
+  tooltipNoDelayExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -1763,6 +1769,85 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("MenuAnimatedExample");
+        })
+      );
+    });
+
+    test("/docs/components/tooltip resolves to TooltipDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/tooltip"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TooltipDocs");
+        })
+      );
+    });
+
+    test("/docs/components/tooltip/examples/basic resolves to TooltipBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/tooltip/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TooltipBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/tooltip/examples/no-delay resolves to TooltipNoDelayExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/tooltip/examples/no-delay"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TooltipNoDelayExample");
+        })
+      );
+    });
+
+    test("/examples/tooltip-basic resolves to TooltipBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/tooltip-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TooltipBasicExample");
+        })
+      );
+    });
+
+    test("/examples/tooltip-no-delay resolves to TooltipNoDelayExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/tooltip-no-delay"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TooltipNoDelayExample");
         })
       );
     });

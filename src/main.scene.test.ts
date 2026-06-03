@@ -46,6 +46,8 @@ import * as TextareaBasicExample from "../registry/default/examples/textarea-bas
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
+import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
+import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
 import * as Combobox from "../registry/default/ui/combobox";
 import {
   AnimationRoute,
@@ -125,6 +127,9 @@ import {
   TextareaDisabledExampleRoute,
   TextareaDocsRoute,
   TextareaRoute,
+  TooltipBasicExampleRoute,
+  TooltipDocsRoute,
+  TooltipNoDelayExampleRoute,
   update,
   view,
 } from "./main";
@@ -178,6 +183,8 @@ const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
 const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
+const [tooltipBasicExample] = TooltipBasicExample.init();
+const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -227,6 +234,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   textareaDisabledExample,
   toastBasicExample,
   toastVariantsExample,
+  tooltipBasicExample,
+  tooltipNoDelayExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -893,6 +902,77 @@ describe("scene", () => {
       Scene.with(modelForRoute(TabsManualExampleRoute())),
       Scene.expect(Scene.role("heading", { name: "Tabs Manual" })).toExist(),
       Scene.expect(Scene.role("tab", { name: "Billing" })).toBeDisabled()
+    );
+  });
+
+  test("the Tooltip docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TooltipDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Tooltip" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Hover or focus me" })
+      ).toHaveAttr("aria-describedby", "tooltip-basic-panel"),
+      Scene.expect(Scene.role("button", { name: "No delay" })).toHaveAttr(
+        "aria-describedby",
+        "tooltip-no-delay-panel"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-tooltip-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-tooltip-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-tooltip-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-tooltip-no-delay")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-tooltip-no-delay-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Tooltip Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Tooltip No Delay example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Tooltip Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TooltipBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Tooltip Basic" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Hover or focus me" })
+      ).toExist()
+    );
+  });
+
+  test("the Tooltip No Delay example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TooltipNoDelayExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Tooltip No Delay" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "No delay" })).toExist()
     );
   });
 

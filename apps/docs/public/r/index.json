@@ -1935,6 +1935,93 @@
           "example": "manual"
         }
       }
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A Foldkit Tooltip wrapper with delayed hover opening, focus opening, Shown and Hidden OutMessages, anchor positioning mounts, disabled state, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/tooltip/index.ts",
+          "target": "src/ui/tooltip/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/tooltip/view.ts",
+          "target": "src/ui/tooltip/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/tooltip/tooltip.scene.test.ts",
+          "target": "src/ui/tooltip/tooltip.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tooltip",
+          "primitive": "Ui.Tooltip",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "tooltip-basic",
+      "type": "registry:example",
+      "title": "Tooltip Basic",
+      "description": "A runnable Foldkit example showing delayed Tooltip hover opening and parent-visible visibility feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["tooltip"],
+      "files": [
+        {
+          "path": "registry/default/examples/tooltip-basic/main.ts",
+          "target": "src/examples/tooltip-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/tooltip-basic/tooltip-basic.scene.test.ts",
+          "target": "src/examples/tooltip-basic/tooltip-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tooltip",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "tooltip-no-delay",
+      "type": "registry:example",
+      "title": "Tooltip No Delay",
+      "description": "A runnable Foldkit example showing immediate Tooltip focus opening with zero hover delay configuration.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["tooltip"],
+      "files": [
+        {
+          "path": "registry/default/examples/tooltip-no-delay/main.ts",
+          "target": "src/examples/tooltip-no-delay/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/tooltip-no-delay/tooltip-no-delay.scene.test.ts",
+          "target": "src/examples/tooltip-no-delay/tooltip-no-delay.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tooltip",
+          "example": "no-delay"
+        }
+      }
     }
   ]
 }

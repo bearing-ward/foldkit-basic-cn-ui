@@ -55,6 +55,8 @@ import * as TextareaBasicExample from "../registry/default/examples/textarea-bas
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
+import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
+import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -158,6 +160,9 @@ export const ToastDocsRoute = r("ToastDocs");
 export const ToastBasicExampleRoute = r("ToastBasicExample");
 export const ToastVariantsExampleRoute = r("ToastVariantsExample");
 export const TooltipRoute = r("Tooltip");
+export const TooltipDocsRoute = r("TooltipDocs");
+export const TooltipBasicExampleRoute = r("TooltipBasicExample");
+export const TooltipNoDelayExampleRoute = r("TooltipNoDelayExample");
 export const AnimationRoute = r("Animation");
 export const VirtualListRoute = r("VirtualList");
 export const NotFoundRoute = r("NotFound", { path: S.String });
@@ -252,6 +257,9 @@ const AppRoute = S.Union([
   ToastBasicExampleRoute,
   ToastVariantsExampleRoute,
   TooltipRoute,
+  TooltipDocsRoute,
+  TooltipBasicExampleRoute,
+  TooltipNoDelayExampleRoute,
   AnimationRoute,
   VirtualListRoute,
   NotFoundRoute,
@@ -1005,6 +1013,38 @@ const toastVariantsStandaloneExampleRouter = pipe(
   Route.mapTo(ToastVariantsExampleRoute)
 );
 const tooltipRouter = pipe(literal("tooltip"), Route.mapTo(TooltipRoute));
+const tooltipDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("tooltip")),
+  Route.mapTo(TooltipDocsRoute)
+);
+const tooltipBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("tooltip")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(TooltipBasicExampleRoute)
+);
+const tooltipNoDelayExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("tooltip")),
+  slash(literal("examples")),
+  slash(literal("no-delay")),
+  Route.mapTo(TooltipNoDelayExampleRoute)
+);
+const tooltipBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("tooltip-basic")),
+  Route.mapTo(TooltipBasicExampleRoute)
+);
+const tooltipNoDelayStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("tooltip-no-delay")),
+  Route.mapTo(TooltipNoDelayExampleRoute)
+);
 const animationRouter = pipe(literal("animation"), Route.mapTo(AnimationRoute));
 const virtualListRouter = pipe(
   literal("virtual-list"),
@@ -1145,6 +1185,11 @@ const routeParser = Route.oneOf(
   toastVariantsStandaloneExampleRouter,
   toastDocsRouter,
   tooltipRouter,
+  tooltipBasicExampleRouter,
+  tooltipNoDelayExampleRouter,
+  tooltipBasicStandaloneExampleRouter,
+  tooltipNoDelayStandaloneExampleRouter,
+  tooltipDocsRouter,
   animationRouter,
   virtualListRouter,
   homeRouter
@@ -1202,6 +1247,8 @@ export const Model = S.Struct({
   textareaDisabledExample: TextareaDisabledExample.Model,
   toastBasicExample: ToastBasicExample.Model,
   toastVariantsExample: ToastVariantsExample.Model,
+  tooltipBasicExample: TooltipBasicExample.Model,
+  tooltipNoDelayExample: TooltipNoDelayExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -1454,6 +1501,18 @@ export const GotToastVariantsExampleMessage = m(
     message: ToastVariantsExample.Message,
   }
 );
+export const GotTooltipBasicExampleMessage = m(
+  "GotTooltipBasicExampleMessage",
+  {
+    message: TooltipBasicExample.Message,
+  }
+);
+export const GotTooltipNoDelayExampleMessage = m(
+  "GotTooltipNoDelayExampleMessage",
+  {
+    message: TooltipNoDelayExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -1506,6 +1565,8 @@ export const Message = S.Union([
   GotTextareaDisabledExampleMessage,
   GotToastBasicExampleMessage,
   GotToastVariantsExampleMessage,
+  GotTooltipBasicExampleMessage,
+  GotTooltipNoDelayExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -1629,6 +1690,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ToastBasicExample.init();
   const [toastVariantsExample, toastVariantsExampleCommands] =
     ToastVariantsExample.init();
+  const [tooltipBasicExample, tooltipBasicExampleCommands] =
+    TooltipBasicExample.init();
+  const [tooltipNoDelayExample, tooltipNoDelayExampleCommands] =
+    TooltipNoDelayExample.init();
 
   return [
     {
@@ -1679,6 +1744,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       textareaDisabledExample,
       toastBasicExample,
       toastVariantsExample,
+      tooltipBasicExample,
+      tooltipNoDelayExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -1818,6 +1885,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(toastVariantsExampleCommands, (message) =>
         GotToastVariantsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(tooltipBasicExampleCommands, (message) =>
+        GotTooltipBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(tooltipNoDelayExampleCommands, (message) =>
+        GotTooltipNoDelayExampleMessage({ message })
       ),
     ],
   ];
@@ -2517,6 +2590,30 @@ export const update = (
           ),
         ];
       },
+
+      GotTooltipBasicExampleMessage: ({ message }) => {
+        const [tooltipBasicExample, tooltipBasicExampleCommands] =
+          TooltipBasicExample.update(model.tooltipBasicExample, message);
+
+        return [
+          evo(model, { tooltipBasicExample: () => tooltipBasicExample }),
+          Command.mapMessages(tooltipBasicExampleCommands, (message) =>
+            GotTooltipBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotTooltipNoDelayExampleMessage: ({ message }) => {
+        const [tooltipNoDelayExample, tooltipNoDelayExampleCommands] =
+          TooltipNoDelayExample.update(model.tooltipNoDelayExample, message);
+
+        return [
+          evo(model, { tooltipNoDelayExample: () => tooltipNoDelayExample }),
+          Command.mapMessages(tooltipNoDelayExampleCommands, (message) =>
+            GotTooltipNoDelayExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -2846,6 +2943,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: toastVariantsExampleRouter(),
   },
   { label: "Tooltip", routeTag: "Tooltip", href: tooltipRouter() },
+  {
+    label: "Tooltip Docs",
+    routeTag: "TooltipDocs",
+    href: tooltipDocsRouter(),
+  },
+  {
+    label: "Tooltip Basic Example",
+    routeTag: "TooltipBasicExample",
+    href: tooltipBasicExampleRouter(),
+  },
+  {
+    label: "Tooltip No Delay Example",
+    routeTag: "TooltipNoDelayExample",
+    href: tooltipNoDelayExampleRouter(),
+  },
   {
     label: "Virtual List",
     routeTag: "VirtualList",
@@ -3469,6 +3581,34 @@ const tabsManualExamplePreview = (
     model,
     view: TabsManualExample.view,
     toParentMessage: (message) => GotTabsManualExampleMessage({ message }),
+  });
+};
+
+const tooltipBasicExamplePreview = (
+  model: TooltipBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: TooltipBasicExample.view,
+    toParentMessage: (message) => GotTooltipBasicExampleMessage({ message }),
+  });
+};
+
+const tooltipNoDelayExamplePreview = (
+  model: TooltipNoDelayExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: TooltipNoDelayExample.view,
+    toParentMessage: (message) => GotTooltipNoDelayExampleMessage({ message }),
   });
 };
 
@@ -5623,6 +5763,140 @@ h.submodel({
         coverageItems: [
           "Registry scene tests verify live region rendering, sticky show, dismiss control attributes, and animation command resolution.",
           "Example scene tests verify basic show/dismiss flow and status/alert variant rendering.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const tooltipDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tooltip"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Tooltip slice built on the official Foldkit Ui.Tooltip primitive. It preserves delayed hover opening, focus opening, Escape and blur dismissal, anchor positioning mounts, Shown and Hidden OutMessages, disabled trigger semantics, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/tooltip" },
+        { label: "Examples", value: "basic, no-delay" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Tooltip v1 documents transient non-interactive help content: delayed hover disclosure, immediate keyboard focus disclosure, hidden panel state, mount-positioned placement, and parent-visible visibility feedback."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-tooltip-basic",
+                preview: tooltipBasicExamplePreview(
+                  model.tooltipBasicExample,
+                  "tooltip-docs-basic-preview"
+                ),
+                href: tooltipBasicExampleRouter(),
+                linkText: "Open standalone Tooltip Basic example",
+              }),
+              docsExampleBlock({
+                title: "No delay",
+                testId: "docs-example-block-tooltip-no-delay",
+                preview: tooltipNoDelayExamplePreview(
+                  model.tooltipNoDelayExample,
+                  "tooltip-docs-no-delay-preview"
+                ),
+                href: tooltipNoDelayExampleRouter(),
+                linkText: "Open standalone Tooltip No Delay example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/tooltip.json\nbunx shadcn@latest add <registry-url>/tooltip-basic.json\nbunx shadcn@latest add <registry-url>/tooltip-no-delay.json",
+        usageBody:
+          "Initialize the Tooltip child model, delegate child messages through `h.submodel`, render the trigger and conditional panel from the supplied attribute bundles, and handle Shown or Hidden when parent state needs visibility feedback.",
+        usageCode: `import * as Tooltip from "./ui/tooltip";
+
+const [tooltip] = Tooltip.init({
+  id: "save-tooltip",
+});
+
+h.submodel({
+  slotId: model.tooltip.id,
+  model: model.tooltip,
+  view: Tooltip.view,
+  viewInputs: {
+    anchor: Tooltip.tooltipAnchor,
+    toView: (render) =>
+      Tooltip.tooltipView({
+        render,
+        triggerLabel: "Hover or focus me",
+        panelText: "This is a tooltip",
+      }),
+  },
+  toParentMessage: (message) => GotTooltipMessage({ message }),
+});`,
+        integrationCode: `// Model
+tooltip: Tooltip.Model;
+
+// Message
+GotTooltipMessage({ message: Tooltip.Message });
+
+// Update
+const [tooltip, commands, maybeOutMessage] =
+  Tooltip.update(model.tooltip, message);
+
+// View
+h.submodel({
+  slotId: model.tooltip.id,
+  model: model.tooltip,
+  view: Tooltip.view,
+  viewInputs,
+  toParentMessage: (message) => GotTooltipMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id, open state, hover/focus state, dismissal state, showDelay, and pending timer version.",
+          "init(config): creates a Tooltip model and returns the registry init tuple.",
+          "update(model, message): returns model, commands, and an optional Shown or Hidden OutMessage.",
+          "ShowAfterDelay: command emitted when hover should open after the configured delay.",
+          "AnchorTooltip: mount emitted by the panel to position it relative to the trigger.",
+          "reflectShowDelay: mirrors externally controlled delay configuration without emitting OutMessage.",
+          "ViewInputs and RenderInfo: trigger attributes, panel attributes, visibility, disabled state, and anchor configuration for custom composition.",
+        ],
+        accessibilityItems: [
+          "The trigger receives aria-describedby pointing to the tooltip panel id.",
+          "The panel receives role tooltip and stays non-interactive with pointer events disabled.",
+          "Keyboard focus opens immediately and Escape hides an open tooltip.",
+          "Disabled tooltips remove hover, focus, keyboard, and pointer handlers while preserving disabled data attributes.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify trigger attributes, hover delay command resolution, focus opening, blur hiding, and AnchorTooltip mount lifecycle.",
+          "Example scene tests verify basic hover-delay behavior and no-delay focus behavior with parent-visible status feedback.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -7862,6 +8136,74 @@ const toastVariantsExampleRouteView = (model: Model): Html => {
   );
 };
 
+const tooltipBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Tooltip Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable tooltip-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          tooltipBasicExamplePreview(
+            model.tooltipBasicExample,
+            "tooltip-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const tooltipNoDelayExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Tooltip No Delay"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable tooltip-no-delay registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          tooltipNoDelayExamplePreview(
+            model.tooltipNoDelayExample,
+            "tooltip-no-delay-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const dialogBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -8670,6 +9012,9 @@ const contentView = (model: Model): Html => {
       ToastBasicExample: () => toastBasicExampleRouteView(model),
       ToastVariantsExample: () => toastVariantsExampleRouteView(model),
       Tooltip: () => embedUi("ui-tooltip", View.tooltip),
+      TooltipDocs: () => tooltipDocsView(model),
+      TooltipBasicExample: () => tooltipBasicExampleRouteView(model),
+      TooltipNoDelayExample: () => tooltipNoDelayExampleRouteView(model),
       Animation: () => embedUi("ui-animation", View.animation),
       VirtualList: () => embedUi("ui-virtual-list", View.virtualList),
       NotFound: ({ path }) => notFoundView(path),

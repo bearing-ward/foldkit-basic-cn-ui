@@ -118,6 +118,12 @@ Current enforced examples:
 - `docs-example-block-tabs-basic-actions`
 - `docs-example-block-tabs-manual`
 - `docs-example-block-tabs-manual-actions`
+- `docs-example-block-tooltip-basic`
+- `docs-example-block-tooltip-basic-preview`
+- `docs-example-block-tooltip-basic-actions`
+- `docs-example-block-tooltip-no-delay`
+- `docs-example-block-tooltip-no-delay-preview`
+- `docs-example-block-tooltip-no-delay-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`
