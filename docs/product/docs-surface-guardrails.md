@@ -40,6 +40,7 @@ Implementation guardrail:
 - Use `docsExampleBlock` for component docs examples in `src/main.ts`.
 - Add `data-testid` hooks for the block, preview region, and action row.
 - Scene tests must assert the block uses vertical stacking and that the action row is separated from the preview.
+- Every `registry:example` item must ship a `.scene.test.ts` file that exercises behavior through Scene interactions, command or mount resolution, or explicitly asserts disabled/inert state. `bun run check:registry` enforces this via `scripts/check-example-tests.mjs`.
 
 Current enforced examples:
 

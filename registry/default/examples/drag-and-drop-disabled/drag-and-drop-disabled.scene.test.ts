@@ -14,9 +14,17 @@ describe("DragAndDrop Disabled example", () => {
       },
       Scene.with(initialModel),
       Scene.expect(Scene.text("Task order is locked.")).toExist(),
+      Scene.expect(Scene.role("list", { name: "Locked task order" })).toExist(),
       Scene.expect(Scene.text("Plan")).toExist(),
       Scene.expect(Scene.text("Build")).toExist(),
-      Scene.expect(Scene.text("Verify")).toExist()
+      Scene.expect(Scene.text("Verify")).toExist(),
+      Scene.expect(Scene.role("listitem", { name: /Plan/u })).toHaveAttr(
+        "aria-disabled",
+        "true"
+      ),
+      Scene.expect(Scene.role("listitem", { name: /Plan/u })).not.toHaveAttr(
+        "data-draggable-id"
+      )
     );
   });
 });

@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
-    "check:registry": "bun scripts/build-registry.mjs --check",
+    "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-example-tests.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "format": "ultracite fix",

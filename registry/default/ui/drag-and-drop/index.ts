@@ -58,6 +58,8 @@ export {
   dragHandleClassName,
   dragItemClassName,
   dragListClassName,
+  dragGhostClassName,
+  dragPlaceholderClassName,
   dragRootClassName,
   dragStatusClassName,
   sortableListView,
