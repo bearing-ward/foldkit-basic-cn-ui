@@ -6,6 +6,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
+import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import {
   AnimationRoute,
   ButtonRoute,
@@ -21,6 +23,9 @@ import {
   HomeRoute,
   InputRoute,
   NotFoundRoute,
+  PopoverAnimatedExampleRoute,
+  PopoverBasicExampleRoute,
+  PopoverDocsRoute,
   RadioGroupRoute,
   SelectRoute,
   SwitchRoute,
@@ -38,6 +43,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [popoverBasicExample] = PopoverBasicExample.init();
+const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -47,6 +54,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  popoverBasicExample,
+  popoverAnimatedExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -71,6 +80,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Scrollable Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Popover Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Popover Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Popover Animated Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
@@ -236,6 +252,51 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Review permissions" })
+      ).toExist()
+    );
+  });
+
+  test("the Popover docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(PopoverDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Popover" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open popover" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Open animated popover" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Popover Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Popover Animated example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Popover Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(PopoverBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Popover Basic" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open popover" })).toExist()
+    );
+  });
+
+  test("the Popover Animated example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(PopoverAnimatedExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Popover Animated" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Open animated popover" })
       ).toExist()
     );
   });

@@ -8,6 +8,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
+import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -20,6 +22,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [popoverBasicExample] = PopoverBasicExample.init();
+const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -29,6 +33,8 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  popoverBasicExample,
+  popoverAnimatedExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -189,6 +195,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/popover resolves to PopoverDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/popover"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PopoverDocs");
+        })
+      );
+    });
+
+    test("/docs/components/popover/examples/basic resolves to PopoverBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/popover/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PopoverBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/popover/examples/animated resolves to PopoverAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/popover/examples/animated"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PopoverAnimatedExample");
+        })
+      );
+    });
+
     test("an unknown path resolves to NotFound", () => {
       Story.story(
         update,
@@ -277,6 +332,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogScrollableExample");
+        })
+      );
+    });
+
+    test("/examples/popover-basic resolves to PopoverBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/popover-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PopoverBasicExample");
+        })
+      );
+    });
+
+    test("/examples/popover-animated resolves to PopoverAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/popover-animated"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PopoverAnimatedExample");
         })
       );
     });

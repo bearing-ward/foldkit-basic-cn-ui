@@ -175,6 +175,98 @@
           "example": "scrollable"
         }
       }
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A Foldkit popover component with typed state, messages, commands, mount-aware positioning, and styled view helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/popover/index.ts",
+          "target": "src/ui/popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/popover/view.ts",
+          "target": "src/ui/popover/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/popover/popover.story.test.ts",
+          "target": "src/ui/popover/popover.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/popover/popover.scene.test.ts",
+          "target": "src/ui/popover/popover.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "primitive": "Ui.Popover",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "popover-basic",
+      "type": "registry:example",
+      "title": "Popover Basic",
+      "description": "A runnable Foldkit example showing a Popover trigger, anchored panel, backdrop close, and mount resolution coverage.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["popover"],
+      "files": [
+        {
+          "path": "registry/default/examples/popover-basic/main.ts",
+          "target": "src/examples/popover-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/popover-basic/popover-basic.scene.test.ts",
+          "target": "src/examples/popover-basic/popover-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "popover-animated",
+      "type": "registry:example",
+      "title": "Popover Animated",
+      "description": "A runnable Foldkit example showing Popover with isAnimated enabled and animation lifecycle coverage.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["popover"],
+      "files": [
+        {
+          "path": "registry/default/examples/popover-animated/main.ts",
+          "target": "src/examples/popover-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/popover-animated/popover-animated.scene.test.ts",
+          "target": "src/examples/popover-animated/popover-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "example": "animated"
+        }
+      }
     }
   ]
 }

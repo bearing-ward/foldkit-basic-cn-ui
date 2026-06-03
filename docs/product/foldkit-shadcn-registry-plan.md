@@ -218,6 +218,15 @@ Every component exposes a public `index.ts` barrel as the canonical import path:
 import * as Dialog from "./ui/dialog";
 ```
 
+## Component Slice Status
+
+| Component | Status          | Notes                                                                                                                                      |
+| --------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Dialog    | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.     |
+| Popover   | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
+| Menu      | Next candidate  | Shares overlay, animation, pointer, search, and roving focus concerns with Popover/Listbox.                                                |
+| Listbox   | Next candidate  | Shares selection and active-item semantics with Menu and Combobox.                                                                         |
+
 Stateful component `init` returns `[Model, Commands]`:
 
 ```ts
