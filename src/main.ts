@@ -151,6 +151,31 @@ const dialogScrollableExampleRouter = pipe(
   slash(literal("scrollable")),
   Route.mapTo(DialogScrollableExampleRoute)
 );
+const dialogBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-basic")),
+  Route.mapTo(DialogBasicExampleRoute)
+);
+const dialogAnimatedStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-animated")),
+  Route.mapTo(DialogAnimatedExampleRoute)
+);
+const dialogDestructiveStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-destructive")),
+  Route.mapTo(DialogDestructiveExampleRoute)
+);
+const dialogFocusStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-focus")),
+  Route.mapTo(DialogFocusExampleRoute)
+);
+const dialogScrollableStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dialog-scrollable")),
+  Route.mapTo(DialogScrollableExampleRoute)
+);
 const disclosureRouter = pipe(
   literal("disclosure"),
   Route.mapTo(DisclosureRoute)
@@ -194,6 +219,11 @@ const routeParser = Route.oneOf(
   dialogDestructiveExampleRouter,
   dialogFocusExampleRouter,
   dialogScrollableExampleRouter,
+  dialogBasicStandaloneExampleRouter,
+  dialogAnimatedStandaloneExampleRouter,
+  dialogDestructiveStandaloneExampleRouter,
+  dialogFocusStandaloneExampleRouter,
+  dialogScrollableStandaloneExampleRouter,
   dialogDocsRouter,
   disclosureRouter,
   dragAndDropRouter,

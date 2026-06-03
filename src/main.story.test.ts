@@ -205,6 +205,81 @@ describe(update, () => {
         })
       );
     });
+
+    test("/examples/dialog-basic resolves to DialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogBasicExample");
+        })
+      );
+    });
+
+    test("/examples/dialog-animated resolves to DialogAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-animated"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogAnimatedExample");
+        })
+      );
+    });
+
+    test("/examples/dialog-destructive resolves to DialogDestructiveExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-destructive"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogDestructiveExample");
+        })
+      );
+    });
+
+    test("/examples/dialog-focus resolves to DialogFocusExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-focus"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogFocusExample");
+        })
+      );
+    });
+
+    test("/examples/dialog-scrollable resolves to DialogScrollableExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dialog-scrollable"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogScrollableExample");
+        })
+      );
+    });
   });
 
   describe("mobile menu", () => {
