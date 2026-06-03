@@ -31,6 +31,8 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
+import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as Icon from "./icon";
@@ -94,6 +96,9 @@ export const SelectBasicExampleRoute = r("SelectBasicExample");
 export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
 export const SwitchRoute = r("Switch");
+export const SwitchDocsRoute = r("SwitchDocs");
+export const SwitchBasicExampleRoute = r("SwitchBasicExample");
+export const SwitchDisabledExampleRoute = r("SwitchDisabledExample");
 export const TabsRoute = r("Tabs");
 export const TextareaRoute = r("Textarea");
 export const TextareaDocsRoute = r("TextareaDocs");
@@ -155,6 +160,9 @@ const AppRoute = S.Union([
   SelectDisabledExampleRoute,
   SliderRoute,
   SwitchRoute,
+  SwitchDocsRoute,
+  SwitchBasicExampleRoute,
+  SwitchDisabledExampleRoute,
   TabsRoute,
   TextareaRoute,
   TextareaDocsRoute,
@@ -527,6 +535,38 @@ const selectDisabledStandaloneExampleRouter = pipe(
 );
 const sliderRouter = pipe(literal("slider"), Route.mapTo(SliderRoute));
 const switchRouter = pipe(literal("switch"), Route.mapTo(SwitchRoute));
+const switchDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("switch")),
+  Route.mapTo(SwitchDocsRoute)
+);
+const switchBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("switch")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SwitchBasicExampleRoute)
+);
+const switchDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("switch")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(SwitchDisabledExampleRoute)
+);
+const switchBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("switch-basic")),
+  Route.mapTo(SwitchBasicExampleRoute)
+);
+const switchDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("switch-disabled")),
+  Route.mapTo(SwitchDisabledExampleRoute)
+);
 const tabsRouter = pipe(literal("tabs"), Route.mapTo(TabsRoute));
 const textareaRouter = pipe(literal("textarea"), Route.mapTo(TextareaRoute));
 const textareaDocsRouter = pipe(
@@ -639,6 +679,11 @@ const routeParser = Route.oneOf(
   selectDocsRouter,
   sliderRouter,
   switchRouter,
+  switchBasicExampleRouter,
+  switchDisabledExampleRouter,
+  switchBasicStandaloneExampleRouter,
+  switchDisabledStandaloneExampleRouter,
+  switchDocsRouter,
   tabsRouter,
   textareaRouter,
   textareaBasicExampleRouter,
@@ -681,6 +726,8 @@ export const Model = S.Struct({
   popoverAnimatedExample: PopoverAnimatedExample.Model,
   selectBasicExample: SelectBasicExample.Model,
   selectDisabledExample: SelectDisabledExample.Model,
+  switchBasicExample: SwitchBasicExample.Model,
+  switchDisabledExample: SwitchDisabledExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
   textareaDisabledExample: TextareaDisabledExample.Model,
 });
@@ -806,6 +853,15 @@ export const GotSelectDisabledExampleMessage = m(
     message: SelectDisabledExample.Message,
   }
 );
+export const GotSwitchBasicExampleMessage = m("GotSwitchBasicExampleMessage", {
+  message: SwitchBasicExample.Message,
+});
+export const GotSwitchDisabledExampleMessage = m(
+  "GotSwitchDisabledExampleMessage",
+  {
+    message: SwitchDisabledExample.Message,
+  }
+);
 export const GotTextareaBasicExampleMessage = m(
   "GotTextareaBasicExampleMessage",
   {
@@ -846,6 +902,8 @@ export const Message = S.Union([
   GotPopoverAnimatedExampleMessage,
   GotSelectBasicExampleMessage,
   GotSelectDisabledExampleMessage,
+  GotSwitchBasicExampleMessage,
+  GotSwitchDisabledExampleMessage,
   GotTextareaBasicExampleMessage,
   GotTextareaDisabledExampleMessage,
 ]);
@@ -924,6 +982,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     SelectBasicExample.init();
   const [selectDisabledExample, selectDisabledExampleCommands] =
     SelectDisabledExample.init();
+  const [switchBasicExample, switchBasicExampleCommands] =
+    SwitchBasicExample.init();
+  const [switchDisabledExample, switchDisabledExampleCommands] =
+    SwitchDisabledExample.init();
   const [textareaBasicExample, textareaBasicExampleCommands] =
     TextareaBasicExample.init();
   const [textareaDisabledExample, textareaDisabledExampleCommands] =
@@ -954,6 +1016,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       popoverAnimatedExample,
       selectBasicExample,
       selectDisabledExample,
+      switchBasicExample,
+      switchDisabledExample,
       textareaBasicExample,
       textareaDisabledExample,
     },
@@ -1023,6 +1087,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(selectDisabledExampleCommands, (message) =>
         GotSelectDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(switchBasicExampleCommands, (message) =>
+        GotSwitchBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(switchDisabledExampleCommands, (message) =>
+        GotSwitchDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(textareaBasicExampleCommands, (message) =>
         GotTextareaBasicExampleMessage({ message })
@@ -1391,6 +1461,34 @@ export const update = (
         ];
       },
 
+      GotSwitchBasicExampleMessage: ({ message }) => {
+        const [switchBasicExample, switchBasicExampleCommands] =
+          SwitchBasicExample.update(model.switchBasicExample, message);
+
+        return [
+          evo(model, {
+            switchBasicExample: () => switchBasicExample,
+          }),
+          Command.mapMessages(switchBasicExampleCommands, (message) =>
+            GotSwitchBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotSwitchDisabledExampleMessage: ({ message }) => {
+        const [switchDisabledExample, switchDisabledExampleCommands] =
+          SwitchDisabledExample.update(model.switchDisabledExample, message);
+
+        return [
+          evo(model, {
+            switchDisabledExample: () => switchDisabledExample,
+          }),
+          Command.mapMessages(switchDisabledExampleCommands, (message) =>
+            GotSwitchDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotTextareaBasicExampleMessage: ({ message }) => {
         const [textareaBasicExample, textareaBasicExampleCommands] =
           TextareaBasicExample.update(model.textareaBasicExample, message);
@@ -1582,6 +1680,17 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   { label: "Slider", routeTag: "Slider", href: sliderRouter() },
   { label: "Switch", routeTag: "Switch", href: switchRouter() },
+  { label: "Switch Docs", routeTag: "SwitchDocs", href: switchDocsRouter() },
+  {
+    label: "Switch Basic Example",
+    routeTag: "SwitchBasicExample",
+    href: switchBasicExampleRouter(),
+  },
+  {
+    label: "Switch Disabled Example",
+    routeTag: "SwitchDisabledExample",
+    href: switchDisabledExampleRouter(),
+  },
   { label: "Tabs", routeTag: "Tabs", href: tabsRouter() },
   { label: "Textarea", routeTag: "Textarea", href: textareaRouter() },
   {
@@ -2115,6 +2224,34 @@ const checkboxIndeterminateExamplePreview = (
   });
 };
 
+const switchBasicExamplePreview = (
+  model: SwitchBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SwitchBasicExample.view,
+    toParentMessage: (message) => GotSwitchBasicExampleMessage({ message }),
+  });
+};
+
+const switchDisabledExamplePreview = (
+  model: SwitchDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SwitchDisabledExample.view,
+    toParentMessage: (message) => GotSwitchDisabledExampleMessage({ message }),
+  });
+};
+
 const dialogBasicExamplePreview = (
   model: DialogBasicExample.Model,
   slotId: string
@@ -2501,6 +2638,131 @@ GotCheckboxMessage: ({ message }) => {
         coverageItems: [
           "Registry scene tests verify label, description, checked toggling, hidden input composition, and disabled state.",
           "Example scene tests verify parent-visible checked feedback and grouped indeterminate behavior.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const switchDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Switch"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Switch slice built on the official Foldkit Ui.Switch primitive. It keeps checked state in a child model while exposing typed messages, OutMessage-compatible state changes, disabled state, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/switch" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Switch v1 documents the stateful boolean-setting path: child-owned checked state, parent message delegation, native switch semantics, and styled control parts that preserve the Foldkit primitive attributes."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-switch-basic",
+                preview: switchBasicExamplePreview(
+                  model.switchBasicExample,
+                  "switch-docs-basic-preview"
+                ),
+                href: switchBasicExampleRouter(),
+                linkText: "Open standalone Switch Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-switch-disabled",
+                preview: switchDisabledExamplePreview(
+                  model.switchDisabledExample,
+                  "switch-docs-disabled-preview"
+                ),
+                href: switchDisabledExampleRouter(),
+                linkText: "Open standalone Switch Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/switch.json\nbunx shadcn@latest add <registry-url>/switch-basic.json\nbunx shadcn@latest add <registry-url>/switch-disabled.json",
+        usageBody:
+          "Initialize the switch child model in the parent model, delegate child messages through `h.submodel`, and render the supplied button, label, and description attributes.",
+        usageCode: `import * as Switch from "./ui/switch";
+
+const [switchModel, switchCommands] = Switch.init({
+  id: "notifications-switch",
+});
+
+h.submodel({
+  slotId: model.switchModel.id,
+  model: model.switchModel,
+  view: Switch.view,
+  viewInputs: {
+    toView: (attributes) => h.button(attributes.button, [
+      Switch.switchKnob(model.switchModel.isChecked),
+    ]),
+  },
+  toParentMessage: (message) => GotSwitchMessage({ message }),
+});`,
+        integrationCode: `// Model
+switchModel: Switch.Model;
+
+// Message
+GotSwitchMessage({ message: Switch.Message });
+
+// Update
+GotSwitchMessage: ({ message }) => {
+  const [switchModel, commands] = Switch.update(model.switchModel, message);
+
+  return [
+    evo(model, { switchModel: () => switchModel }),
+    Command.mapMessages(commands, (message) => GotSwitchMessage({ message })),
+  ];
+};`,
+        apiItems: [
+          "Model: schema-backed state containing id and isChecked.",
+          "init(config): creates a Switch model and empty command list for registry consistency.",
+          "update(model, message): delegates to Ui.Switch.update and returns model, commands, and OutMessage.",
+          "setChecked(model, isChecked): programmatically assigns checked state and emits the same OutMessage as user toggles.",
+          "reflectChecked(model, isChecked): mirrors external checked state without emitting OutMessage.",
+          "view: h.submodel view that exposes button, label, and description attribute groups.",
+        ],
+        accessibilityItems: [
+          "The visible control receives the Foldkit switch role, checked, and disabled attributes.",
+          "The label attributes bind the visible label to the switch control.",
+          "The description attributes provide aria-describedby for explanatory copy.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify label, description, checked toggling, and disabled state.",
+          "Example scene tests verify parent-visible checked feedback and disabled documentation copy.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -4282,6 +4544,71 @@ const checkboxIndeterminateExampleRouteView = (model: Model): Html => {
   );
 };
 
+const switchBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Switch Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable switch-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          switchBasicExamplePreview(
+            model.switchBasicExample,
+            "switch-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const switchDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Switch Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable switch-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          switchDisabledExamplePreview(
+            model.switchDisabledExample,
+            "switch-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const inputBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -4976,6 +5303,9 @@ const contentView = (model: Model): Html => {
       SelectDisabledExample: () => selectDisabledExampleRouteView(model),
       Slider: () => embedUi("ui-slider", View.slider),
       Switch: () => embedUi("ui-switch", View.switch_),
+      SwitchDocs: () => switchDocsView(model),
+      SwitchBasicExample: () => switchBasicExampleRouteView(model),
+      SwitchDisabledExample: () => switchDisabledExampleRouteView(model),
       Tabs: () => embedUi("ui-tabs", View.tabs),
       Textarea: () => embedUi("ui-textarea", View.textarea),
       TextareaDocs: () => textareaDocsView(model),

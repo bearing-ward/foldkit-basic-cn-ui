@@ -22,6 +22,8 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
+import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as Combobox from "../registry/default/ui/combobox";
@@ -68,6 +70,9 @@ import {
   SelectDisabledExampleRoute,
   SelectDocsRoute,
   SelectRoute,
+  SwitchBasicExampleRoute,
+  SwitchDisabledExampleRoute,
+  SwitchDocsRoute,
   SwitchRoute,
   TextareaBasicExampleRoute,
   TextareaDisabledExampleRoute,
@@ -102,6 +107,8 @@ const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [switchBasicExample] = SwitchBasicExample.init();
+const [switchDisabledExample] = SwitchDisabledExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
 
@@ -129,6 +136,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   popoverAnimatedExample,
   selectBasicExample,
   selectDisabledExample,
+  switchBasicExample,
+  switchDisabledExample,
   textareaBasicExample,
   textareaDisabledExample,
 });
@@ -231,6 +240,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Select Disabled Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Switch Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Switch Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Switch Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Textarea Docs" })).toExist(),
       Scene.expect(
@@ -390,6 +406,78 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("checkbox", { name: "All notification channels" })
       ).toExist()
+    );
+  });
+
+  test("the Switch docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SwitchDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Switch" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(
+        Scene.role("switch", { name: "Enable notifications" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("switch", { name: "Locked notifications" })
+      ).toBeDisabled(),
+      Scene.expect(Scene.testId("docs-example-block-switch-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-switch-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-switch-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-switch-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-switch-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Switch Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Switch Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Switch Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SwitchBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Switch Basic" })).toExist(),
+      Scene.expect(
+        Scene.role("switch", { name: "Enable notifications" })
+      ).toExist()
+    );
+  });
+
+  test("the Switch Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SwitchDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Switch Disabled" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("switch", { name: "Locked notifications" })
+      ).toBeDisabled()
     );
   });
 

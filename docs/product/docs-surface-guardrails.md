@@ -97,3 +97,8 @@ Current enforced examples:
 - `docs-example-block-textarea-basic-actions`
 - `docs-example-block-textarea-disabled`
 - `docs-example-block-textarea-disabled-actions`
+- `docs-example-block-switch-basic`
+- `docs-example-block-switch-basic-preview`
+- `docs-example-block-switch-basic-actions`
+- `docs-example-block-switch-disabled`
+- `docs-example-block-switch-disabled-actions`

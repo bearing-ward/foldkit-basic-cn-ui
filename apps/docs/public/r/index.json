@@ -978,6 +978,93 @@
           "example": "disabled"
         }
       }
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A Foldkit Switch wrapper for checked, unchecked, and disabled states with accessible label and description helpers, typed messages, OutMessage state changes, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/switch/index.ts",
+          "target": "src/ui/switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/switch/view.ts",
+          "target": "src/ui/switch/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/switch/switch.scene.test.ts",
+          "target": "src/ui/switch/switch.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "primitive": "Ui.Switch",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "switch-basic",
+      "type": "registry:example",
+      "title": "Switch Basic",
+      "description": "A runnable Foldkit example showing typed Switch messages with parent-visible checked feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["switch"],
+      "files": [
+        {
+          "path": "registry/default/examples/switch-basic/main.ts",
+          "target": "src/examples/switch-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/switch-basic/switch-basic.scene.test.ts",
+          "target": "src/examples/switch-basic/switch-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "switch-disabled",
+      "type": "registry:example",
+      "title": "Switch Disabled",
+      "description": "A runnable Foldkit example showing disabled Switch styling and native disabled semantics.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["switch"],
+      "files": [
+        {
+          "path": "registry/default/examples/switch-disabled/main.ts",
+          "target": "src/examples/switch-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/switch-disabled/switch-disabled.scene.test.ts",
+          "target": "src/examples/switch-disabled/switch-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "example": "disabled"
+        }
+      }
     }
   ]
 }

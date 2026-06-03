@@ -24,6 +24,8 @@ import * as PopoverAnimatedExample from "../registry/default/examples/popover-an
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
+import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
@@ -54,6 +56,8 @@ const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [switchBasicExample] = SwitchBasicExample.init();
+const [switchDisabledExample] = SwitchDisabledExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
 
@@ -81,6 +85,8 @@ const initialModel: Model = {
   popoverAnimatedExample,
   selectBasicExample,
   selectDisabledExample,
+  switchBasicExample,
+  switchDisabledExample,
   textareaBasicExample,
   textareaDisabledExample,
 };
@@ -533,6 +539,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/switch resolves to SwitchDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/switch"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SwitchDocs");
+        })
+      );
+    });
+
+    test("/docs/components/switch/examples/basic resolves to SwitchBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/switch/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SwitchBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/switch/examples/disabled resolves to SwitchDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/switch/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SwitchDisabledExample");
+        })
+      );
+    });
+
     test("/docs/components/listbox/examples/basic resolves to ListboxBasicExample", () => {
       Story.story(
         update,
@@ -877,6 +932,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("TextareaDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/switch-basic resolves to SwitchBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/switch-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SwitchBasicExample");
+        })
+      );
+    });
+
+    test("/examples/switch-disabled resolves to SwitchDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/switch-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SwitchDisabledExample");
         })
       );
     });
