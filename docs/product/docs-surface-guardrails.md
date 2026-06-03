@@ -1,5 +1,26 @@
 # Docs Surface Guardrails
 
+## Component Docs Page
+
+Every registry component docs page must expose the same core section set:
+
+| Section             | Expectation                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| Overview            | Defines the component's v1 scope and behavior boundary.                             |
+| Installation        | Shows component install first, then example installs in registry item order.        |
+| Examples            | Renders installable examples through `docsExampleBlock`.                            |
+| Usage               | Shows the minimal consumer import/init shape.                                       |
+| Foldkit integration | Shows parent model, message, update, and `h.submodel` wiring.                       |
+| API                 | Lists the wrapper exports or factory surface a consumer should reach for.           |
+| Accessibility       | Names the accessibility behavior delegated to the Foldkit primitive.                |
+| Coverage            | Maps the docs claims to story tests, scene tests, registry checks, and route tests. |
+
+Implementation guardrail:
+
+- Use `docsMetaGrid` for source/example/proof metadata.
+- Use `docsOverviewBlock`, `docsInstallBlock`, `docsUsageBlock`, `docsFoldkitIntegrationBlock`, `docsApiList`, and `docsTextListSection` for standard sections.
+- Scene tests must assert the required section headings on every component docs route.
+
 ## Example Block
 
 An example block is the reusable card surface for a component docs example.

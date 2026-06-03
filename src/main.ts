@@ -1202,6 +1202,128 @@ const codeBlock = (code: string): Html => {
   );
 };
 
+type DocsMetaItem = Readonly<{
+  label: string;
+  value: string;
+}>;
+
+const docsMetaGrid = (items: readonly DocsMetaItem[]): Html => {
+  const h = html<Message>();
+
+  return h.section(
+    [
+      h.Class(
+        "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
+      ),
+    ],
+    items.map((item) =>
+      h.div(
+        [h.Class("space-y-1")],
+        [
+          h.p([h.Class("font-medium text-gray-950")], [item.label]),
+          h.p([], [item.value]),
+        ]
+      )
+    )
+  );
+};
+
+const docsSection = (title: string, children: readonly Html[]): Html => {
+  const h = html<Message>();
+
+  return h.section(
+    [h.Class("space-y-3 border-t border-gray-200 pt-8")],
+    [
+      h.h2([h.Class("text-xl font-semibold text-gray-950")], [title]),
+      ...children,
+    ]
+  );
+};
+
+const docsOverviewBlock = (body: string): Html => {
+  const h = html<Message>();
+
+  return docsSection("Overview", [
+    h.p([h.Class("max-w-2xl text-sm text-gray-600")], [body]),
+  ]);
+};
+
+const docsInstallBlock = (commands: string): Html =>
+  docsSection("Installation", [codeBlock(commands)]);
+
+const docsUsageBlock = (body: string, code: string): Html => {
+  const h = html<Message>();
+
+  return docsSection("Usage", [
+    h.p([h.Class("max-w-2xl text-sm text-gray-600")], [body]),
+    codeBlock(code),
+  ]);
+};
+
+const docsFoldkitIntegrationBlock = (code: string): Html =>
+  (() => {
+    const h = html<Message>();
+
+    return docsSection("Foldkit integration", [
+      h.p(
+        [h.Class("max-w-2xl text-sm text-gray-600")],
+        [
+          "Stateful registry components compose as ordinary Foldkit children: parent-owned model field, parent message wrapper, init command mapping, update delegation, and h.submodel view wiring.",
+        ]
+      ),
+      codeBlock(code),
+    ]);
+  })();
+
+const docsApiList = (items: readonly string[]): Html => {
+  const h = html<Message>();
+
+  return docsSection("API", [
+    h.ul(
+      [h.Class("grid gap-1 text-sm text-gray-700 sm:grid-cols-2")],
+      items.map((item) => h.li([], [item]))
+    ),
+  ]);
+};
+
+const docsTextListSection = (title: string, items: readonly string[]): Html => {
+  const h = html<Message>();
+
+  return docsSection(title, [
+    h.ul(
+      [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+      items.map((item) => h.li([], [item]))
+    ),
+  ]);
+};
+
+type DocsStandardComponentSectionsInput = Readonly<{
+  installCommands: string;
+  usageBody: string;
+  usageCode: string;
+  integrationCode: string;
+  apiItems: readonly string[];
+  accessibilityItems: readonly string[];
+  coverageItems: readonly string[];
+}>;
+
+const docsStandardComponentSections = ({
+  installCommands,
+  usageBody,
+  usageCode,
+  integrationCode,
+  apiItems,
+  accessibilityItems,
+  coverageItems,
+}: DocsStandardComponentSectionsInput): readonly Html[] => [
+  docsInstallBlock(installCommands),
+  docsUsageBlock(usageBody, usageCode),
+  docsFoldkitIntegrationBlock(integrationCode),
+  docsApiList(apiItems),
+  docsTextListSection("Accessibility", accessibilityItems),
+  docsTextListSection("Coverage", coverageItems),
+];
+
 type DocsExampleBlockInput = Readonly<{
   title: string;
   description?: string;
@@ -1443,35 +1565,13 @@ const listboxDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Source"]),
-              h.p([], ["registry/default/ui/listbox"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
-              h.p([], ["basic, animated"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Proof"]),
-              h.p([], ["story tests, scene tests, generated registry JSON"]),
-            ]
-          ),
-        ]
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/listbox" },
+        { label: "Examples", value: "basic, animated" },
+        { label: "Proof", value: "story tests, scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Listbox v1 documents the single-select path: local component interaction state, parent-observed Selected OutMessage, anchored panel positioning, and optional animation."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -1504,18 +1604,62 @@ const listboxDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [h.Class("space-y-3")],
-        [
-          h.h2(
-            [h.Class("text-xl font-semibold text-gray-950")],
-            ["Installation"]
-          ),
-          codeBlock(
-            "bunx shadcn@latest add <registry-url>/listbox.json\nbunx shadcn@latest add <registry-url>/listbox-basic.json\nbunx shadcn@latest add <registry-url>/listbox-animated.json"
-          ),
-        ]
-      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/listbox.json\nbunx shadcn@latest add <registry-url>/listbox-basic.json\nbunx shadcn@latest add <registry-url>/listbox-animated.json",
+        usageBody:
+          "Create a typed Listbox factory, store the model in the parent, and render with item configs that expose selected and active state through data attributes.",
+        usageCode: `import * as Listbox from "./ui/listbox";
+
+type Person = "Michael Bluth" | "Lindsay Funke" | "Gob Bluth";
+const PersonListbox = Listbox.create<Person>();
+
+const [listboxModel] = Listbox.init({ id: "people-listbox" });`,
+        integrationCode: `// Model
+peopleListbox: Listbox.Model;
+
+// Message
+GotListboxMessage({ message: Listbox.Message });
+
+// Update
+const [peopleListbox, commands, maybeOutMessage] =
+  PersonListbox.update(model.peopleListbox, message);
+
+// View
+h.submodel({
+  slotId: model.peopleListbox.id,
+  model: model.peopleListbox,
+  view: PersonListbox.view,
+  viewInputs,
+  toParentMessage: GotListboxMessage,
+});`,
+        apiItems: [
+          "Model",
+          "Message",
+          "OutMessage",
+          "Selected",
+          "init",
+          "create",
+          "open",
+          "close",
+          "selectItem",
+          "reflectSelectedItem",
+          "AnchorListbox",
+          "PortalListboxBackdrop",
+        ],
+        accessibilityItems: [
+          "Button and items attributes come from Ui.Listbox.view.",
+          "Active and selected state are exposed through data attributes for styling.",
+          "Typeahead, keyboard activation, and focus return stay inside the primitive.",
+          "Modal mode can lock scroll and inert outside content.",
+        ],
+        coverageItems: [
+          "Wrapper story tests cover init, helper API, modal commands, and selection reflection.",
+          "Scene tests cover trigger, choices, backdrop close, mounts, and animation lifecycle.",
+          "Docs route tests cover examples, install text, and example-block guardrails.",
+          "Registry checks validate generated listbox JSON artifacts.",
+        ],
+      }),
     ]
   );
 };
@@ -1546,35 +1690,13 @@ const menuDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Source"]),
-              h.p([], ["registry/default/ui/menu"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
-              h.p([], ["basic, animated"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Proof"]),
-              h.p([], ["story tests, scene tests, generated registry JSON"]),
-            ]
-          ),
-        ]
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/menu" },
+        { label: "Examples", value: "basic, animated" },
+        { label: "Proof", value: "story tests, scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Menu v1 documents transient command selection: typed item unions, anchored items, typeahead, pointer and keyboard activation, and a semantic Selected OutMessage."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -1607,18 +1729,61 @@ const menuDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [h.Class("space-y-3")],
-        [
-          h.h2(
-            [h.Class("text-xl font-semibold text-gray-950")],
-            ["Installation"]
-          ),
-          codeBlock(
-            "bunx shadcn@latest add <registry-url>/menu.json\nbunx shadcn@latest add <registry-url>/menu-basic.json\nbunx shadcn@latest add <registry-url>/menu-animated.json"
-          ),
-        ]
-      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/menu.json\nbunx shadcn@latest add <registry-url>/menu-basic.json\nbunx shadcn@latest add <registry-url>/menu-animated.json",
+        usageBody:
+          "Create a typed Menu factory and render transient action items. Parent code receives semantic selection through the factory update result.",
+        usageCode: `import * as Menu from "./ui/menu";
+
+type Action = "Edit" | "Duplicate" | "Delete";
+const ActionMenu = Menu.create<Action>();
+
+const [menuModel] = Menu.init({ id: "actions-menu" });`,
+        integrationCode: `// Model
+actionsMenu: Menu.Model;
+
+// Message
+GotMenuMessage({ message: Menu.Message });
+
+// Update
+const [actionsMenu, commands, maybeOutMessage] =
+  ActionMenu.update(model.actionsMenu, message);
+
+// View
+h.submodel({
+  slotId: model.actionsMenu.id,
+  model: model.actionsMenu,
+  view: ActionMenu.view,
+  viewInputs,
+  toParentMessage: GotMenuMessage,
+});`,
+        apiItems: [
+          "Model",
+          "Message",
+          "OutMessage",
+          "Selected",
+          "init",
+          "create",
+          "open",
+          "close",
+          "selectItem",
+          "AnchorMenu",
+          "PortalMenuBackdrop",
+        ],
+        accessibilityItems: [
+          "Button and menu items attributes come from Ui.Menu.view.",
+          "Keyboard navigation, typeahead, and focus return stay inside the primitive.",
+          "Disabled and active item state are exposed through data attributes for styling.",
+          "Modal mode can lock scroll and inert outside content.",
+        ],
+        coverageItems: [
+          "Wrapper story tests cover init, helper API, modal commands, and typed selection.",
+          "Scene tests cover trigger, items, backdrop close, mounts, and animation lifecycle.",
+          "Docs route tests cover examples, install text, and example-block guardrails.",
+          "Registry checks validate generated menu JSON artifacts.",
+        ],
+      }),
     ]
   );
 };
@@ -1649,35 +1814,13 @@ const popoverDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Source"]),
-              h.p([], ["registry/default/ui/popover"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
-              h.p([], ["basic, animated"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Proof"]),
-              h.p([], ["story tests, scene tests, generated registry JSON"]),
-            ]
-          ),
-        ]
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/popover" },
+        { label: "Examples", value: "basic, animated" },
+        { label: "Proof", value: "story tests, scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Popover v1 documents anchored non-selection content: local open state, mount-aware positioning, backdrop close, optional modal behavior, and optional animation."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -1710,18 +1853,59 @@ const popoverDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [h.Class("space-y-3")],
-        [
-          h.h2(
-            [h.Class("text-xl font-semibold text-gray-950")],
-            ["Installation"]
-          ),
-          codeBlock(
-            "bunx shadcn@latest add <registry-url>/popover.json\nbunx shadcn@latest add <registry-url>/popover-basic.json\nbunx shadcn@latest add <registry-url>/popover-animated.json"
-          ),
-        ]
-      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/popover.json\nbunx shadcn@latest add <registry-url>/popover-basic.json\nbunx shadcn@latest add <registry-url>/popover-animated.json",
+        usageBody:
+          "Store Popover model in the parent and render anchored content through the registry view helpers.",
+        usageCode: `import * as Popover from "./ui/popover";
+
+const [popoverModel] = Popover.init({
+  id: "details-popover",
+});`,
+        integrationCode: `// Model
+detailsPopover: Popover.Model;
+
+// Message
+GotPopoverMessage({ message: Popover.Message });
+
+// Update
+const [detailsPopover, commands, maybeOutMessage] =
+  Popover.update(model.detailsPopover, message);
+
+// View
+h.submodel({
+  slotId: model.detailsPopover.id,
+  model: model.detailsPopover,
+  view: Popover.view,
+  viewInputs,
+  toParentMessage: GotPopoverMessage,
+});`,
+        apiItems: [
+          "Model",
+          "Message",
+          "OutMessage",
+          "init",
+          "update",
+          "open",
+          "close",
+          "view",
+          "AnchorPopover",
+          "PortalPopoverBackdrop",
+        ],
+        accessibilityItems: [
+          "Trigger and panel attributes come from Ui.Popover.view.",
+          "Backdrop close and Escape close route through Popover messages.",
+          "Content focus can be configured through primitive init options.",
+          "Modal mode can lock scroll and inert outside content.",
+        ],
+        coverageItems: [
+          "Wrapper story tests cover init, open, close, and modal commands.",
+          "Scene tests cover trigger, panel content, backdrop close, mounts, and animation lifecycle.",
+          "Docs route tests cover examples, install text, and example-block guardrails.",
+          "Registry checks validate generated popover JSON artifacts.",
+        ],
+      }),
     ]
   );
 };
@@ -1758,35 +1942,16 @@ const dialogDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Source"]),
-              h.p([], ["registry/default/ui/dialog"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
-              h.p([], ["basic, animated, destructive, focus"]),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-1")],
-            [
-              h.p([h.Class("font-medium text-gray-950")], ["Proof"]),
-              h.p([], ["story tests, scene tests, generated registry JSON"]),
-            ]
-          ),
-        ]
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/dialog" },
+        {
+          label: "Examples",
+          value: "basic, animated, destructive, focus, scrollable",
+        },
+        { label: "Proof", value: "story tests, scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Dialog v1 documents centered modal presentation: parent-owned trigger flow, accessible title and description wiring, scroll lock commands, focus management, and optional animation."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -1873,43 +2038,8 @@ const dialogDocsView = (model: Model): Html => {
           ),
         ]
       ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Installation"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Install the component source first, then add any examples you want to keep in your app.",
-                ]
-              ),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              codeBlock(
-                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json\nbunx shadcn@latest add <registry-url>/dialog-scrollable.json"
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "The generated files are served from apps/docs/public/r during local docs development.",
-                ]
-              ),
-            ]
-          ),
-        ]
+      docsInstallBlock(
+        "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json\nbunx shadcn@latest add <registry-url>/dialog-scrollable.json"
       ),
       h.section(
         [
@@ -1998,10 +2128,7 @@ h.submodel({
           h.div(
             [h.Class("space-y-3")],
             [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["API reference"]
-              ),
+              h.h2([h.Class("text-xl font-semibold text-gray-950")], ["API"]),
               h.p(
                 [h.Class("text-sm text-gray-600")],
                 [

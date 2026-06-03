@@ -169,14 +169,16 @@ describe("scene", () => {
       Scene.with(modelForRoute(DialogDocsRoute())),
       Scene.expect(Scene.role("heading", { name: "Dialog" })).toExist(),
       Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
         Scene.role("heading", { name: "Composition policy" })
       ).toExist(),
@@ -318,8 +320,16 @@ describe("scene", () => {
       Scene.with(modelForRoute(MenuDocsRoute())),
       Scene.expect(Scene.role("heading", { name: "Menu" })).toExist(),
       Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Open menu" })).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open animated menu" })
@@ -368,8 +378,16 @@ describe("scene", () => {
       Scene.with(modelForRoute(ListboxDocsRoute())),
       Scene.expect(Scene.role("heading", { name: "Listbox" })).toExist(),
       Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Choose person" })).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Choose animated person" })
@@ -448,8 +466,16 @@ describe("scene", () => {
       Scene.with(modelForRoute(PopoverDocsRoute())),
       Scene.expect(Scene.role("heading", { name: "Popover" })).toExist(),
       Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Open popover" })).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open animated popover" })
