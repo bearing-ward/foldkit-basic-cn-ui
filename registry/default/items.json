@@ -1757,5 +1757,92 @@
         "example": "disabled"
       }
     }
+  },
+  {
+    "name": "tabs",
+    "type": "registry:ui",
+    "title": "Tabs",
+    "description": "A Foldkit Tabs wrapper with typed tab values, automatic and manual activation, disabled tabs, Selected OutMessages, focus commands, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/tabs/index.ts",
+        "target": "src/ui/tabs/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/tabs/view.ts",
+        "target": "src/ui/tabs/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/tabs/tabs.scene.test.ts",
+        "target": "src/ui/tabs/tabs.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tabs",
+        "primitive": "Ui.Tabs",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "tabs-basic",
+    "type": "registry:example",
+    "title": "Tabs Basic",
+    "description": "A runnable Foldkit example showing automatic Tabs selection and parent-visible selected-tab feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["tabs"],
+    "files": [
+      {
+        "path": "registry/default/examples/tabs-basic/main.ts",
+        "target": "src/examples/tabs-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/tabs-basic/tabs-basic.scene.test.ts",
+        "target": "src/examples/tabs-basic/tabs-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tabs",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "tabs-manual",
+    "type": "registry:example",
+    "title": "Tabs Manual",
+    "description": "A runnable Foldkit example showing manual Tabs activation with a disabled tab.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["tabs"],
+    "files": [
+      {
+        "path": "registry/default/examples/tabs-manual/main.ts",
+        "target": "src/examples/tabs-manual/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/tabs-manual/tabs-manual.scene.test.ts",
+        "target": "src/examples/tabs-manual/tabs-manual.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tabs",
+        "example": "manual"
+      }
+    }
   }
 ]

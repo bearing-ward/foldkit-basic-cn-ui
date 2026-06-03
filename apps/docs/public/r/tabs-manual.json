@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-manual",
+  "type": "registry:example",
+  "title": "Tabs Manual",
+  "description": "A runnable Foldkit example showing manual Tabs activation with a disabled tab.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["tabs"],
+  "files": [
+    {
+      "path": "registry/default/examples/tabs-manual/main.ts",
+      "target": "src/examples/tabs-manual/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Tabs from \"../../ui/tabs\";\n\ntype Tab = \"Preview\" | \"Details\" | \"Billing\";\nconst DemoTabs = Tabs.create<Tab>();\nconst tabValues: readonly Tab[] = [\"Preview\", \"Details\", \"Billing\"];\nconst panelContent: Record<Tab, string> = {\n  Preview: \"Preview remains selected until a tab is explicitly activated.\",\n  Details: \"Details can receive focus before selection in manual mode.\",\n  Billing: \"Billing is unavailable in this example.\",\n};\n\nexport const Model = S.Struct({\n  tabs: Tabs.Model,\n  status: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\nexport const GotTabsMessage = m(\"GotTabsMessage\", {\n  message: Tabs.Message,\n});\n\nexport const Message = S.Union([GotTabsMessage]);\nexport type Message = typeof Message.Type;\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [tabs, commands] = Tabs.initialize({\n    id: \"tabs-manual\",\n    activationMode: \"Manual\",\n  });\n\n  return [\n    { tabs, status: \"Selected tab: Preview\" },\n    Command.mapMessages(commands, (message) => GotTabsMessage({ message })),\n  ];\n};\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotTabsMessage: ({ message }) => {\n        const [tabs, commands, maybeOutMessage] = DemoTabs.update(\n          model.tabs,\n          message\n        );\n        const status = Option.match(maybeOutMessage, {\n          onNone: () => model.status,\n          onSome: M.type<Tabs.OutMessage<Tab>>().pipe(\n            M.tagsExhaustive({\n              Selected: ({ value }) => `Selected tab: ${value}`,\n            })\n          ),\n        });\n\n        return [\n          evo(model, { tabs: () => tabs, status: () => status }),\n          Command.mapMessages(commands, (message) =>\n            GotTabsMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.tabs.id,\n        model: model.tabs,\n        view: DemoTabs.view,\n        viewInputs: {\n          tabs: tabValues,\n          ariaLabel: \"Account sections\",\n          isTabDisabled: (value) => value === \"Billing\",\n          toView: (render) => Tabs.tabsView({ render, panelContent }),\n        },\n        toParentMessage: (message) => GotTabsMessage({ message }),\n      }),\n      h.p([h.Class(\"text-sm text-gray-700\")], [model.status]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/tabs-manual/tabs-manual.scene.test.ts",
+      "target": "src/examples/tabs-manual/tabs-manual.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as TabsManualExample from \"./main\";\n\ndescribe(\"Tabs Manual example\", () => {\n  test(\"renders manual tabs with a disabled tab\", () => {\n    const [initialModel] = TabsManualExample.init();\n\n    Scene.scene(\n      { update: TabsManualExample.update, view: TabsManualExample.view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"tab\", { name: \"Preview\" })).toHaveAttr(\n        \"aria-selected\",\n        \"true\"\n      ),\n      Scene.expect(Scene.role(\"tab\", { name: \"Billing\" })).toBeDisabled(),\n      Scene.expect(Scene.text(\"Selected tab: Preview\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Tabs",
+      "example": "manual"
+    }
+  }
+}

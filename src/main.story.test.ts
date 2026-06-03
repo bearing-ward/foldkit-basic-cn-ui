@@ -42,6 +42,8 @@ import * as SliderBasicExample from "../registry/default/examples/slider-basic/m
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
+import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main";
+import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
@@ -90,6 +92,8 @@ const [sliderBasicExample] = SliderBasicExample.init();
 const [sliderDisabledExample] = SliderDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
+const [tabsBasicExample] = TabsBasicExample.init();
+const [tabsManualExample] = TabsManualExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
 
@@ -135,6 +139,8 @@ const initialModel: Model = {
   sliderDisabledExample,
   switchBasicExample,
   switchDisabledExample,
+  tabsBasicExample,
+  tabsManualExample,
   textareaBasicExample,
   textareaDisabledExample,
 };
@@ -1043,6 +1049,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/tabs resolves to TabsDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/tabs"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TabsDocs");
+        })
+      );
+    });
+
+    test("/docs/components/tabs/examples/basic resolves to TabsBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/tabs/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TabsBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/tabs/examples/manual resolves to TabsManualExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/tabs/examples/manual"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TabsManualExample");
+        })
+      );
+    });
+
     test("/docs/components/select resolves to SelectDocs", () => {
       Story.story(
         update,
@@ -1612,6 +1667,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("SwitchDisabledExample");
+        })
+      );
+    });
+
+    test("/examples/tabs-basic resolves to TabsBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/tabs-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TabsBasicExample");
+        })
+      );
+    });
+
+    test("/examples/tabs-manual resolves to TabsManualExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/tabs-manual"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TabsManualExample");
         })
       );
     });

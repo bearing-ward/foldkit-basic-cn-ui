@@ -49,6 +49,8 @@ import * as SliderBasicExample from "../registry/default/examples/slider-basic/m
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
+import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main";
+import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as Icon from "./icon";
@@ -142,6 +144,9 @@ export const SwitchDocsRoute = r("SwitchDocs");
 export const SwitchBasicExampleRoute = r("SwitchBasicExample");
 export const SwitchDisabledExampleRoute = r("SwitchDisabledExample");
 export const TabsRoute = r("Tabs");
+export const TabsDocsRoute = r("TabsDocs");
+export const TabsBasicExampleRoute = r("TabsBasicExample");
+export const TabsManualExampleRoute = r("TabsManualExample");
 export const TextareaRoute = r("Textarea");
 export const TextareaDocsRoute = r("TextareaDocs");
 export const TextareaBasicExampleRoute = r("TextareaBasicExample");
@@ -230,6 +235,9 @@ const AppRoute = S.Union([
   SwitchBasicExampleRoute,
   SwitchDisabledExampleRoute,
   TabsRoute,
+  TabsDocsRoute,
+  TabsBasicExampleRoute,
+  TabsManualExampleRoute,
   TextareaRoute,
   TextareaDocsRoute,
   TextareaBasicExampleRoute,
@@ -890,6 +898,38 @@ const switchDisabledStandaloneExampleRouter = pipe(
   Route.mapTo(SwitchDisabledExampleRoute)
 );
 const tabsRouter = pipe(literal("tabs"), Route.mapTo(TabsRoute));
+const tabsDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("tabs")),
+  Route.mapTo(TabsDocsRoute)
+);
+const tabsBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("tabs")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(TabsBasicExampleRoute)
+);
+const tabsManualExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("tabs")),
+  slash(literal("examples")),
+  slash(literal("manual")),
+  Route.mapTo(TabsManualExampleRoute)
+);
+const tabsBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("tabs-basic")),
+  Route.mapTo(TabsBasicExampleRoute)
+);
+const tabsManualStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("tabs-manual")),
+  Route.mapTo(TabsManualExampleRoute)
+);
 const textareaRouter = pipe(literal("textarea"), Route.mapTo(TextareaRoute));
 const textareaDocsRouter = pipe(
   literal("docs"),
@@ -1047,6 +1087,11 @@ const routeParser = Route.oneOf(
   switchDisabledStandaloneExampleRouter,
   switchDocsRouter,
   tabsRouter,
+  tabsBasicExampleRouter,
+  tabsManualExampleRouter,
+  tabsBasicStandaloneExampleRouter,
+  tabsManualStandaloneExampleRouter,
+  tabsDocsRouter,
   textareaRouter,
   textareaBasicExampleRouter,
   textareaDisabledExampleRouter,
@@ -1106,6 +1151,8 @@ export const Model = S.Struct({
   sliderDisabledExample: SliderDisabledExample.Model,
   switchBasicExample: SwitchBasicExample.Model,
   switchDisabledExample: SwitchDisabledExample.Model,
+  tabsBasicExample: TabsBasicExample.Model,
+  tabsManualExample: TabsManualExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
   textareaDisabledExample: TextareaDisabledExample.Model,
 });
@@ -1333,6 +1380,12 @@ export const GotSwitchDisabledExampleMessage = m(
     message: SwitchDisabledExample.Message,
   }
 );
+export const GotTabsBasicExampleMessage = m("GotTabsBasicExampleMessage", {
+  message: TabsBasicExample.Message,
+});
+export const GotTabsManualExampleMessage = m("GotTabsManualExampleMessage", {
+  message: TabsManualExample.Message,
+});
 export const GotTextareaBasicExampleMessage = m(
   "GotTextareaBasicExampleMessage",
   {
@@ -1391,6 +1444,8 @@ export const Message = S.Union([
   GotSliderDisabledExampleMessage,
   GotSwitchBasicExampleMessage,
   GotSwitchDisabledExampleMessage,
+  GotTabsBasicExampleMessage,
+  GotTabsManualExampleMessage,
   GotTextareaBasicExampleMessage,
   GotTextareaDisabledExampleMessage,
 ]);
@@ -1505,6 +1560,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     SwitchBasicExample.init();
   const [switchDisabledExample, switchDisabledExampleCommands] =
     SwitchDisabledExample.init();
+  const [tabsBasicExample, tabsBasicExampleCommands] = TabsBasicExample.init();
+  const [tabsManualExample, tabsManualExampleCommands] =
+    TabsManualExample.init();
   const [textareaBasicExample, textareaBasicExampleCommands] =
     TextareaBasicExample.init();
   const [textareaDisabledExample, textareaDisabledExampleCommands] =
@@ -1553,6 +1611,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       sliderDisabledExample,
       switchBasicExample,
       switchDisabledExample,
+      tabsBasicExample,
+      tabsManualExample,
       textareaBasicExample,
       textareaDisabledExample,
     },
@@ -1676,6 +1736,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(switchDisabledExampleCommands, (message) =>
         GotSwitchDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(tabsBasicExampleCommands, (message) =>
+        GotTabsBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(tabsManualExampleCommands, (message) =>
+        GotTabsManualExampleMessage({ message })
       ),
       ...Command.mapMessages(textareaBasicExampleCommands, (message) =>
         GotTextareaBasicExampleMessage({ message })
@@ -2303,6 +2369,30 @@ export const update = (
         ];
       },
 
+      GotTabsBasicExampleMessage: ({ message }) => {
+        const [tabsBasicExample, tabsBasicExampleCommands] =
+          TabsBasicExample.update(model.tabsBasicExample, message);
+
+        return [
+          evo(model, { tabsBasicExample: () => tabsBasicExample }),
+          Command.mapMessages(tabsBasicExampleCommands, (message) =>
+            GotTabsBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotTabsManualExampleMessage: ({ message }) => {
+        const [tabsManualExample, tabsManualExampleCommands] =
+          TabsManualExample.update(model.tabsManualExample, message);
+
+        return [
+          evo(model, { tabsManualExample: () => tabsManualExample }),
+          Command.mapMessages(tabsManualExampleCommands, (message) =>
+            GotTabsManualExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotTextareaBasicExampleMessage: ({ message }) => {
         const [textareaBasicExample, textareaBasicExampleCommands] =
           TextareaBasicExample.update(model.textareaBasicExample, message);
@@ -2622,6 +2712,17 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: switchDisabledExampleRouter(),
   },
   { label: "Tabs", routeTag: "Tabs", href: tabsRouter() },
+  { label: "Tabs Docs", routeTag: "TabsDocs", href: tabsDocsRouter() },
+  {
+    label: "Tabs Basic Example",
+    routeTag: "TabsBasicExample",
+    href: tabsBasicExampleRouter(),
+  },
+  {
+    label: "Tabs Manual Example",
+    routeTag: "TabsManualExample",
+    href: tabsManualExampleRouter(),
+  },
   { label: "Textarea", routeTag: "Textarea", href: textareaRouter() },
   {
     label: "Textarea Docs",
@@ -3235,6 +3336,34 @@ const sliderDisabledExamplePreview = (
     model,
     view: SliderDisabledExample.view,
     toParentMessage: (message) => GotSliderDisabledExampleMessage({ message }),
+  });
+};
+
+const tabsBasicExamplePreview = (
+  model: TabsBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: TabsBasicExample.view,
+    toParentMessage: (message) => GotTabsBasicExampleMessage({ message }),
+  });
+};
+
+const tabsManualExamplePreview = (
+  model: TabsManualExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: TabsManualExample.view,
+    toParentMessage: (message) => GotTabsManualExampleMessage({ message }),
   });
 };
 
@@ -4999,6 +5128,131 @@ UpdatedName: ({ value }) => [
         coverageItems: [
           "Registry scene tests verify label, description, placeholder, input messages, and disabled state.",
           "Example scene tests verify parent-owned value feedback and disabled documentation copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const tabsDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tabs"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Tabs slice built on the official Foldkit Ui.Tabs primitive. It preserves typed values, automatic and manual activation, disabled tabs, focus commands, Selected OutMessages, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/tabs" },
+        { label: "Examples", value: "basic, manual" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Tabs v1 documents tabbed content with child-owned active and focused indices, parent-visible Selected facts, automatic activation, manual activation, disabled tab semantics, and focus command resolution."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-tabs-basic",
+                preview: tabsBasicExamplePreview(
+                  model.tabsBasicExample,
+                  "tabs-docs-basic-preview"
+                ),
+                href: tabsBasicExampleRouter(),
+                linkText: "Open standalone Tabs Basic example",
+              }),
+              docsExampleBlock({
+                title: "Manual",
+                testId: "docs-example-block-tabs-manual",
+                preview: tabsManualExamplePreview(
+                  model.tabsManualExample,
+                  "tabs-docs-manual-preview"
+                ),
+                href: tabsManualExampleRouter(),
+                linkText: "Open standalone Tabs Manual example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/tabs.json\nbunx shadcn@latest add <registry-url>/tabs-basic.json\nbunx shadcn@latest add <registry-url>/tabs-manual.json",
+        usageBody:
+          "Create a typed Tabs entry point, initialize the child model, delegate messages through `h.submodel`, and handle Selected in the parent update.",
+        usageCode: `import * as Tabs from "./ui/tabs";
+
+type Tab = "Overview" | "Usage";
+const DemoTabs = Tabs.create<Tab>();
+
+const [tabs] = Tabs.initialize({
+  id: "docs-tabs",
+});`,
+        integrationCode: `// Model
+tabs: Tabs.Model;
+
+// Message
+GotTabsMessage({ message: Tabs.Message });
+
+// Update
+const [tabs, commands, maybeOutMessage] =
+  DemoTabs.update(model.tabs, message);
+
+// View
+h.submodel({
+  slotId: model.tabs.id,
+  model: model.tabs,
+  view: DemoTabs.view,
+  viewInputs: {
+    tabs: ["Overview", "Usage"],
+    ariaLabel: "Documentation sections",
+    toView: (render) => Tabs.tabsView({ render, panelContent }),
+  },
+  toParentMessage: (message) => GotTabsMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id, activeIndex, focusedIndex, and activationMode.",
+          "create<Value>(): typed view/update/select entry point for string-literal tab values.",
+          "initialize(config): creates a Tabs model and returns the registry init tuple.",
+          "update(model, message): returns model, commands, and an optional Selected OutMessage.",
+          "FocusTab: command emitted when selection or focus should move to a tab button.",
+          "reflectSelectedTab and selectTab: helpers for external or programmatic selection flows.",
+          "ViewInputs and RenderInfo: tablist attributes plus per-tab tab and panel bundles.",
+        ],
+        accessibilityItems: [
+          "The primitive supplies tablist, tab, tabpanel, aria-selected, aria-controls, and aria-labelledby attributes.",
+          "Keyboard navigation follows orientation and activation mode.",
+          "Disabled tabs expose disabled and aria-disabled and are skipped by keyboard navigation.",
+          "FocusTab commands keep DOM focus aligned with the model after selection and manual focus movement.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify selection, Selected OutMessage feedback, and FocusTab resolution.",
+          "Example scene tests verify automatic selection feedback and manual-mode disabled tab rendering.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -6888,6 +7142,68 @@ const sliderDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const tabsBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tabs Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable tabs-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          tabsBasicExamplePreview(
+            model.tabsBasicExample,
+            "tabs-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const tabsManualExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tabs Manual"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable tabs-manual registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          tabsManualExamplePreview(
+            model.tabsManualExample,
+            "tabs-manual-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const switchBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -8018,6 +8334,9 @@ const contentView = (model: Model): Html => {
       SwitchBasicExample: () => switchBasicExampleRouteView(model),
       SwitchDisabledExample: () => switchDisabledExampleRouteView(model),
       Tabs: () => embedUi("ui-tabs", View.tabs),
+      TabsDocs: () => tabsDocsView(model),
+      TabsBasicExample: () => tabsBasicExampleRouteView(model),
+      TabsManualExample: () => tabsManualExampleRouteView(model),
       Textarea: () => embedUi("ui-textarea", View.textarea),
       TextareaDocs: () => textareaDocsView(model),
       TextareaBasicExample: () => textareaBasicExampleRouteView(model),

@@ -240,6 +240,7 @@ import * as Dialog from "./ui/dialog";
 | RadioGroup  | Active v1 slice | Registry wrapper, basic example, horizontal example, docs page, route coverage, generated registry output, and coverage matrix are in place.    |
 | Slider      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Switch      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Tabs        | Active v1 slice | Registry wrapper, basic example, manual example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
 | Textarea    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 
 Stateful component `init` returns `[Model, Commands]`:

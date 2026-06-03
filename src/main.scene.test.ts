@@ -40,6 +40,8 @@ import * as SliderBasicExample from "../registry/default/examples/slider-basic/m
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
+import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main";
+import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as Combobox from "../registry/default/ui/combobox";
@@ -114,6 +116,9 @@ import {
   SwitchDisabledExampleRoute,
   SwitchDocsRoute,
   SwitchRoute,
+  TabsBasicExampleRoute,
+  TabsDocsRoute,
+  TabsManualExampleRoute,
   TextareaBasicExampleRoute,
   TextareaDisabledExampleRoute,
   TextareaDocsRoute,
@@ -165,6 +170,8 @@ const [sliderBasicExample] = SliderBasicExample.init();
 const [sliderDisabledExample] = SliderDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
+const [tabsBasicExample] = TabsBasicExample.init();
+const [tabsManualExample] = TabsManualExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
 
@@ -210,6 +217,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   sliderDisabledExample,
   switchBasicExample,
   switchDisabledExample,
+  tabsBasicExample,
+  tabsManualExample,
   textareaBasicExample,
   textareaDisabledExample,
 });
@@ -377,6 +386,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Switch Disabled Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Tabs Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Tabs Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Tabs Manual Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Textarea Docs" })).toExist(),
       Scene.expect(
@@ -808,6 +824,69 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("switch", { name: "Locked notifications" })
       ).toBeDisabled()
+    );
+  });
+
+  test("the Tabs docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TabsDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Tabs" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("tab", { name: "Overview" })).toHaveAttr(
+        "aria-selected",
+        "true"
+      ),
+      Scene.expect(Scene.role("tab", { name: "Billing" })).toBeDisabled(),
+      Scene.expect(Scene.testId("docs-example-block-tabs-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-tabs-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-tabs-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(Scene.testId("docs-example-block-tabs-manual")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-tabs-manual-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Tabs Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Tabs Manual example" })
+      ).toExist()
+    );
+  });
+
+  test("the Tabs Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TabsBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Tabs Basic" })).toExist(),
+      Scene.expect(Scene.text("Selected tab: Overview")).toExist()
+    );
+  });
+
+  test("the Tabs Manual example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(TabsManualExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Tabs Manual" })).toExist(),
+      Scene.expect(Scene.role("tab", { name: "Billing" })).toBeDisabled()
     );
   });
 

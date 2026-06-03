@@ -112,6 +112,11 @@ Current enforced examples:
 - `docs-example-block-slider-basic-actions`
 - `docs-example-block-slider-disabled`
 - `docs-example-block-slider-disabled-actions`
+- `docs-example-block-tabs-basic`
+- `docs-example-block-tabs-basic-preview`
+- `docs-example-block-tabs-basic-actions`
+- `docs-example-block-tabs-manual`
+- `docs-example-block-tabs-manual-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`
