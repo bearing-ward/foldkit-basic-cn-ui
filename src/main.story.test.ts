@@ -7,6 +7,7 @@ import * as DialogAnimatedExample from "../registry/default/examples/dialog-anim
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
+import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -18,6 +19,7 @@ const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
+const [dialogScrollableExample] = DialogScrollableExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -26,6 +28,7 @@ const initialModel: Model = {
   dialogAnimatedExample,
   dialogDestructiveExample,
   dialogFocusExample,
+  dialogScrollableExample,
 };
 
 const urlOrThrow = (raw: string) =>
@@ -165,6 +168,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogFocusExample");
+        })
+      );
+    });
+
+    test("/docs/components/dialog/examples/scrollable resolves to DialogScrollableExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/dialog/examples/scrollable"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DialogScrollableExample");
         })
       );
     });

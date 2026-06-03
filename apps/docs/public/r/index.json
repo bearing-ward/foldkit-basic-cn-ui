@@ -148,6 +148,33 @@
           "example": "focus"
         }
       }
+    },
+    {
+      "name": "dialog-scrollable",
+      "type": "registry:example",
+      "title": "Dialog Scrollable",
+      "description": "A runnable Foldkit example showing long Dialog content with a constrained scroll body and persistent footer actions.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/dialog-scrollable/main.ts",
+          "target": "src/examples/dialog-scrollable/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/dialog-scrollable/dialog-scrollable.scene.test.ts",
+          "target": "src/examples/dialog-scrollable/dialog-scrollable.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "scrollable"
+        }
+      }
     }
   ]
 }

@@ -14,6 +14,7 @@ import * as DialogAnimatedExample from "../registry/default/examples/dialog-anim
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
+import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -36,6 +37,7 @@ export const DialogBasicExampleRoute = r("DialogBasicExample");
 export const DialogAnimatedExampleRoute = r("DialogAnimatedExample");
 export const DialogDestructiveExampleRoute = r("DialogDestructiveExample");
 export const DialogFocusExampleRoute = r("DialogFocusExample");
+export const DialogScrollableExampleRoute = r("DialogScrollableExample");
 export const DisclosureRoute = r("Disclosure");
 export const DragAndDropRoute = r("DragAndDrop");
 export const FieldsetRoute = r("Fieldset");
@@ -69,6 +71,7 @@ const AppRoute = S.Union([
   DialogAnimatedExampleRoute,
   DialogDestructiveExampleRoute,
   DialogFocusExampleRoute,
+  DialogScrollableExampleRoute,
   DisclosureRoute,
   DragAndDropRoute,
   FieldsetRoute,
@@ -140,6 +143,14 @@ const dialogFocusExampleRouter = pipe(
   slash(literal("focus")),
   Route.mapTo(DialogFocusExampleRoute)
 );
+const dialogScrollableExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dialog")),
+  slash(literal("examples")),
+  slash(literal("scrollable")),
+  Route.mapTo(DialogScrollableExampleRoute)
+);
 const disclosureRouter = pipe(
   literal("disclosure"),
   Route.mapTo(DisclosureRoute)
@@ -182,6 +193,7 @@ const routeParser = Route.oneOf(
   dialogAnimatedExampleRouter,
   dialogDestructiveExampleRouter,
   dialogFocusExampleRouter,
+  dialogScrollableExampleRouter,
   dialogDocsRouter,
   disclosureRouter,
   dragAndDropRouter,
@@ -215,6 +227,7 @@ export const Model = S.Struct({
   dialogAnimatedExample: DialogAnimatedExample.Model,
   dialogDestructiveExample: DialogDestructiveExample.Model,
   dialogFocusExample: DialogFocusExample.Model,
+  dialogScrollableExample: DialogScrollableExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -248,6 +261,12 @@ export const GotDialogDestructiveExampleMessage = m(
 export const GotDialogFocusExampleMessage = m("GotDialogFocusExampleMessage", {
   message: DialogFocusExample.Message,
 });
+export const GotDialogScrollableExampleMessage = m(
+  "GotDialogScrollableExampleMessage",
+  {
+    message: DialogScrollableExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -259,6 +278,7 @@ export const Message = S.Union([
   GotDialogAnimatedExampleMessage,
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
+  GotDialogScrollableExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -302,6 +322,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogDestructiveExample.init();
   const [dialogFocusExample, dialogFocusExampleCommands] =
     DialogFocusExample.init();
+  const [dialogScrollableExample, dialogScrollableExampleCommands] =
+    DialogScrollableExample.init();
 
   return [
     {
@@ -311,6 +333,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogAnimatedExample,
       dialogDestructiveExample,
       dialogFocusExample,
+      dialogScrollableExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -327,6 +350,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogFocusExampleCommands, (message) =>
         GotDialogFocusExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dialogScrollableExampleCommands, (message) =>
+        GotDialogScrollableExampleMessage({ message })
       ),
     ],
   ];
@@ -452,6 +478,23 @@ export const update = (
           ),
         ];
       },
+
+      GotDialogScrollableExampleMessage: ({ message }) => {
+        const [dialogScrollableExample, dialogScrollableExampleCommands] =
+          DialogScrollableExample.update(
+            model.dialogScrollableExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dialogScrollableExample: () => dialogScrollableExample,
+          }),
+          Command.mapMessages(dialogScrollableExampleCommands, (message) =>
+            GotDialogScrollableExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -491,6 +534,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dialog Focus Example",
     routeTag: "DialogFocusExample",
     href: dialogFocusExampleRouter(),
+  },
+  {
+    label: "Dialog Scrollable Example",
+    routeTag: "DialogScrollableExample",
+    href: dialogScrollableExampleRouter(),
   },
   { label: "Disclosure", routeTag: "Disclosure", href: disclosureRouter() },
   {
@@ -845,6 +893,21 @@ const dialogFocusExamplePreview = (
   });
 };
 
+const dialogScrollableExamplePreview = (
+  model: DialogScrollableExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DialogScrollableExample.view,
+    toParentMessage: (message) =>
+      GotDialogScrollableExampleMessage({ message }),
+  });
+};
+
 const dialogDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1056,6 +1119,38 @@ const dialogDocsView = (model: Model): Html => {
                   ),
                 ]
               ),
+              h.div(
+                [
+                  h.Class(
+                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
+                  ),
+                ],
+                [
+                  h.h3(
+                    [h.Class("text-sm font-semibold text-gray-900")],
+                    ["Scrollable"]
+                  ),
+                  h.p(
+                    [h.Class("text-sm text-gray-600")],
+                    [
+                      "A long-content dialog constrains the body scroll region while keeping footer actions visible.",
+                    ]
+                  ),
+                  dialogScrollableExamplePreview(
+                    model.dialogScrollableExample,
+                    "dialog-docs-scrollable-preview"
+                  ),
+                  h.a(
+                    [
+                      h.Href(dialogScrollableExampleRouter()),
+                      h.Class(
+                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
+                      ),
+                    ],
+                    ["Open standalone Dialog Scrollable example"]
+                  ),
+                ]
+              ),
             ]
           ),
         ]
@@ -1086,7 +1181,7 @@ const dialogDocsView = (model: Model): Html => {
             [h.Class("space-y-3")],
             [
               codeBlock(
-                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json"
+                "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json\nbunx shadcn@latest add <registry-url>/dialog-scrollable.json"
               ),
               h.p(
                 [h.Class("text-sm text-gray-600")],
@@ -1348,6 +1443,12 @@ ShowDialog({
               h.li(
                 [],
                 [
+                  "The scrollable example covers long content with a constrained scroll body and persistent footer actions.",
+                ]
+              ),
+              h.li(
+                [],
+                [
                   "Generated registry JSON includes source and test files for installation.",
                 ]
               ),
@@ -1408,13 +1509,19 @@ ShowDialog({
               h.li(
                 [],
                 [
+                  "Scrollable content and footer persistence: dialog-scrollable.scene.test.ts.",
+                ]
+              ),
+              h.li(
+                [],
+                [
                   "Generated install artifacts: build:registry and check:registry.",
                 ]
               ),
               h.li(
                 [],
                 [
-                  "Nested dialogs, RTL, scrollable content, drawer, command dialog, and AlertDialog: deferred decision list.",
+                  "Nested dialogs, RTL, drawer, command dialog, and AlertDialog: deferred decision list.",
                 ]
               ),
             ]
@@ -1555,6 +1662,40 @@ const dialogFocusExampleRouteView = (model: Model): Html => {
   );
 };
 
+const dialogScrollableExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Dialog Scrollable"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable dialog-scrollable registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          dialogScrollableExamplePreview(
+            model.dialogScrollableExample,
+            "dialog-scrollable-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const contentView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1580,6 +1721,7 @@ const contentView = (model: Model): Html => {
       DialogAnimatedExample: () => dialogAnimatedExampleRouteView(model),
       DialogDestructiveExample: () => dialogDestructiveExampleRouteView(model),
       DialogFocusExample: () => dialogFocusExampleRouteView(model),
+      DialogScrollableExample: () => dialogScrollableExampleRouteView(model),
       Disclosure: () => embedUi("ui-disclosure", View.disclosure),
       DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),

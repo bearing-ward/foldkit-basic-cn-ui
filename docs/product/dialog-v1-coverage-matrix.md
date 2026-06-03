@@ -80,6 +80,7 @@ The first docs page should match the format expectations users bring from Base U
 | Destructive example | Confirmation dialog using destructive styling only, not an `AlertDialog` API.                                 |
 | Animated example    | `isAnimated: true` example using the default animated docs behavior.                                          |
 | Focus example       | Document `focusSelector` and `h.OnClickFocus` for iOS keyboard warmup flows.                                  |
+| Scrollable example  | Show long content inside a constrained body region while footer actions stay available.                       |
 | API reference       | List `Model`, `Message`, `OutMessage`, `init`, `update`, `open`, `close`, `view`, `titleId`, `descriptionId`. |
 | Accessibility       | Document title/description wiring, Escape close, backdrop close, and native dialog behavior.                  |
 | Browser focus proof | Verify the focus example carries `#dialog-focus-name` through the runtime `ShowDialog` command.               |
@@ -103,6 +104,7 @@ These reference behaviors are in scope for the first `Dialog` slice:
 - Foldkit `focusSelector` support.
 - Foldkit `h.OnClickFocus` documentation for trigger-to-input flows.
 - Animated dialog examples using Foldkit animation support.
+- Scrollable dialog content with persistent footer actions.
 - Detached trigger in the Foldkit sense: the trigger is parent-owned and sends `Dialog.RequestedOpen()`.
 
 ## Deferred Or Not Applicable In V1

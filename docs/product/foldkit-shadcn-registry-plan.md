@@ -471,6 +471,7 @@ Docs route taxonomy:
 /docs/components/dialog/examples/animated
 /docs/components/dialog/examples/destructive
 /docs/components/dialog/examples/focus
+/docs/components/dialog/examples/scrollable
 /docs/components/button
 /docs/components/input
 /docs/guides/foldkit-integration
@@ -603,7 +604,7 @@ The first implementation slice is a complete `Dialog` vertical slice, not a broa
 The first `Dialog` slice is done when all of this exists and passes together:
 
 - `registry/default/ui/dialog/` contains public source, tests, and a public `index.ts`.
-- `registry/default/examples/dialog-basic/`, `dialog-animated/`, `dialog-destructive/`, and `dialog-focus/` contain runnable examples importing the registry `Dialog` source.
+- `registry/default/examples/dialog-basic/`, `dialog-animated/`, `dialog-destructive/`, `dialog-focus/`, and `dialog-scrollable/` contain runnable examples importing the registry `Dialog` source.
 - `apps/docs/` has a Dialog docs page rendered by Foldkit.
 - The Dialog docs page has inline previews using the same registry examples.
 - Standalone Dialog example routes exist.
@@ -613,6 +614,7 @@ The first `Dialog` slice is done when all of this exists and passes together:
 - `apps/docs/public/r/dialog-animated.json` is generated and committed.
 - `apps/docs/public/r/dialog-destructive.json` is generated and committed.
 - `apps/docs/public/r/dialog-focus.json` is generated and committed.
+- `apps/docs/public/r/dialog-scrollable.json` is generated and committed.
 
 Required verification:
 

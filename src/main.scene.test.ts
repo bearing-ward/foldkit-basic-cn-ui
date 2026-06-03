@@ -5,6 +5,7 @@ import * as DialogAnimatedExample from "../registry/default/examples/dialog-anim
 import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
+import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
 import {
   AnimationRoute,
   ButtonRoute,
@@ -14,6 +15,7 @@ import {
   DialogDestructiveExampleRoute,
   DialogDocsRoute,
   DialogFocusExampleRoute,
+  DialogScrollableExampleRoute,
   DisclosureRoute,
   FieldsetRoute,
   HomeRoute,
@@ -35,6 +37,7 @@ const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
+const [dialogScrollableExample] = DialogScrollableExample.init();
 
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
@@ -43,6 +46,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogAnimatedExample,
   dialogDestructiveExample,
   dialogFocusExample,
+  dialogScrollableExample,
 });
 
 const homeModel = modelForRoute(HomeRoute());
@@ -64,6 +68,9 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Focus Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Dialog Scrollable Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist()
@@ -139,6 +146,9 @@ describe("scene", () => {
         Scene.role("button", { name: "Open focus dialog" })
       ).toExist(),
       Scene.expect(
+        Scene.role("button", { name: "Review permissions" })
+      ).toExist(),
+      Scene.expect(
         Scene.role("link", { name: "Open standalone Dialog Basic example" })
       ).toExist(),
       Scene.expect(
@@ -151,6 +161,11 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Open standalone Dialog Focus example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Dialog Scrollable example",
+        })
       ).toExist()
     );
   });
@@ -197,6 +212,19 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Dialog Focus" })).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open focus dialog" })
+      ).toExist()
+    );
+  });
+
+  test("the Dialog Scrollable example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DialogScrollableExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dialog Scrollable" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Review permissions" })
       ).toExist()
     );
   });
