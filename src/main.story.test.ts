@@ -86,12 +86,14 @@ describe(update, () => {
       );
     });
 
-    test("/docs/dialog resolves to DialogDocs", () => {
+    test("/docs/components/dialog resolves to DialogDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
         Story.message(
-          ChangedUrl({ url: urlOrThrow("http://localhost/docs/dialog") })
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/dialog"),
+          })
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogDocs");
@@ -99,13 +101,15 @@ describe(update, () => {
       );
     });
 
-    test("/examples/dialog-basic resolves to DialogBasicExample", () => {
+    test("/docs/components/dialog/examples/basic resolves to DialogBasicExample", () => {
       Story.story(
         update,
         Story.with(initialModel),
         Story.message(
           ChangedUrl({
-            url: urlOrThrow("http://localhost/examples/dialog-basic"),
+            url: urlOrThrow(
+              "http://localhost/docs/components/dialog/examples/basic"
+            ),
           })
         ),
         Story.model((model) => {
@@ -114,13 +118,15 @@ describe(update, () => {
       );
     });
 
-    test("/examples/dialog-animated resolves to DialogAnimatedExample", () => {
+    test("/docs/components/dialog/examples/animated resolves to DialogAnimatedExample", () => {
       Story.story(
         update,
         Story.with(initialModel),
         Story.message(
           ChangedUrl({
-            url: urlOrThrow("http://localhost/examples/dialog-animated"),
+            url: urlOrThrow(
+              "http://localhost/docs/components/dialog/examples/animated"
+            ),
           })
         ),
         Story.model((model) => {
@@ -129,13 +135,15 @@ describe(update, () => {
       );
     });
 
-    test("/examples/dialog-destructive resolves to DialogDestructiveExample", () => {
+    test("/docs/components/dialog/examples/destructive resolves to DialogDestructiveExample", () => {
       Story.story(
         update,
         Story.with(initialModel),
         Story.message(
           ChangedUrl({
-            url: urlOrThrow("http://localhost/examples/dialog-destructive"),
+            url: urlOrThrow(
+              "http://localhost/docs/components/dialog/examples/destructive"
+            ),
           })
         ),
         Story.model((model) => {
@@ -144,13 +152,15 @@ describe(update, () => {
       );
     });
 
-    test("/examples/dialog-focus resolves to DialogFocusExample", () => {
+    test("/docs/components/dialog/examples/focus resolves to DialogFocusExample", () => {
       Story.story(
         update,
         Story.with(initialModel),
         Story.message(
           ChangedUrl({
-            url: urlOrThrow("http://localhost/examples/dialog-focus"),
+            url: urlOrThrow(
+              "http://localhost/docs/components/dialog/examples/focus"
+            ),
           })
         ),
         Story.model((model) => {

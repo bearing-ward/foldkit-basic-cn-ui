@@ -104,27 +104,40 @@ const datePickerRouter = pipe(
 const dialogRouter = pipe(literal("dialog"), Route.mapTo(DialogRoute));
 const dialogDocsRouter = pipe(
   literal("docs"),
+  slash(literal("components")),
   slash(literal("dialog")),
   Route.mapTo(DialogDocsRoute)
 );
 const dialogBasicExampleRouter = pipe(
-  literal("examples"),
-  slash(literal("dialog-basic")),
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dialog")),
+  slash(literal("examples")),
+  slash(literal("basic")),
   Route.mapTo(DialogBasicExampleRoute)
 );
 const dialogAnimatedExampleRouter = pipe(
-  literal("examples"),
-  slash(literal("dialog-animated")),
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dialog")),
+  slash(literal("examples")),
+  slash(literal("animated")),
   Route.mapTo(DialogAnimatedExampleRoute)
 );
 const dialogDestructiveExampleRouter = pipe(
-  literal("examples"),
-  slash(literal("dialog-destructive")),
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dialog")),
+  slash(literal("examples")),
+  slash(literal("destructive")),
   Route.mapTo(DialogDestructiveExampleRoute)
 );
 const dialogFocusExampleRouter = pipe(
-  literal("examples"),
-  slash(literal("dialog-focus")),
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dialog")),
+  slash(literal("examples")),
+  slash(literal("focus")),
   Route.mapTo(DialogFocusExampleRoute)
 );
 const disclosureRouter = pipe(
@@ -165,11 +178,11 @@ const routeParser = Route.oneOf(
   comboboxRouter,
   datePickerRouter,
   dialogRouter,
-  dialogDocsRouter,
   dialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
   dialogDestructiveExampleRouter,
   dialogFocusExampleRouter,
+  dialogDocsRouter,
   disclosureRouter,
   dragAndDropRouter,
   fieldsetRouter,
@@ -1130,6 +1143,50 @@ Dialog.view({
             [
               h.h2(
                 [h.Class("text-xl font-semibold text-gray-950")],
+                ["Foldkit integration"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Stateful registry components compose like any Foldkit child: parent-owned model field, parent message wrapper, init command mapping, update command mapping, and h.submodel view wiring.",
+                ]
+              ),
+            ]
+          ),
+          codeBlock(`// Model
+dialog: Dialog.Model;
+
+// Message
+GotDialogMessage({ message: Dialog.Message });
+
+// Init
+const [dialog, dialogCommands] = Dialog.init({ id: "settings-dialog" });
+Command.mapMessages(dialogCommands, GotDialogMessage);
+
+// Update
+const [dialog, dialogCommands] = Dialog.update(model.dialog, message);
+
+// View
+h.submodel({
+  slotId: model.dialog.id,
+  model: model.dialog,
+  view: Dialog.view,
+  toParentMessage: GotDialogMessage,
+});`),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
                 ["API reference"]
               ),
               h.p(
@@ -1188,16 +1245,67 @@ Dialog.descriptionId;`),
               h.li([], ["Escape and backdrop close emit RequestedClose."]),
               h.li(
                 [],
+                ["Trigger, cancel, and confirm controls have accessible names."]
+              ),
+              h.li(
+                [],
                 [
                   "titleId and descriptionId connect visible copy to the dialog surface.",
                 ]
               ),
               h.li(
                 [],
-                ["focusSelector can direct initial focus for custom flows."]
+                [
+                  "focusSelector directs post-open focus, and h.OnClickFocus supports iOS keyboard warmup for input-first dialogs.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "ShowDialog and CloseDialog own body scroll lock through the Foldkit primitive commands.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Nested or stacked dialogs are unverified in v1 and remain a documented policy decision.",
+                ]
               ),
             ]
           ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["Browser focus proof"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "The focus example is the browser-check target for focusSelector and h.OnClickFocus behavior. Open the standalone route, trigger the dialog, and verify the ShowDialog command carries #dialog-focus-name.",
+                ]
+              ),
+            ]
+          ),
+          codeBlock(`Route:
+/docs/components/dialog/examples/focus
+
+Expected runtime proof:
+GotDialogFocusExampleMessage.RequestedOpen
+ShowDialog({
+  id: "dialog-focus",
+  maybeFocusSelector: Some("#dialog-focus-name")
+})`),
         ]
       ),
       h.section(
@@ -1234,13 +1342,79 @@ Dialog.descriptionId;`),
               h.li(
                 [],
                 [
-                  "Scene tests cover trigger, accessible dialog labelling, cancel, confirm, and animated open.",
+                  "Scene tests cover trigger, accessible dialog labelling, cancel, confirm, animated open, destructive confirm, and focus-target configuration.",
                 ]
               ),
               h.li(
                 [],
                 [
                   "Generated registry JSON includes source and test files for installation.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["Traceability checklist"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Each documented behavior maps to a concrete proof or an explicit deferred note.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Open, close, repeated open, repeated close: dialog.story.test.ts.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Accessible role, title, description, cancel, confirm: dialog.scene.test.ts and dialog-basic.scene.test.ts.",
+                ]
+              ),
+              h.li([], ["Animated lifecycle: dialog-animated.scene.test.ts."]),
+              h.li(
+                [],
+                [
+                  "Destructive confirm styling: dialog-destructive.scene.test.ts.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "focusSelector and OnClickFocus: dialog-focus.scene.test.ts plus browser focus proof.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Generated install artifacts: build:registry and check:registry.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Nested dialogs, RTL, scrollable content, drawer, command dialog, and AlertDialog: deferred decision list.",
                 ]
               ),
             ]

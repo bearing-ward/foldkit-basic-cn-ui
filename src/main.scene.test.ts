@@ -117,8 +117,17 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
       Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Browser focus proof" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Traceability checklist" })
+      ).toExist(),
       Scene.expect(Scene.role("button", { name: "Open dialog" })).toExist(),
       Scene.expect(
         Scene.role("button", { name: "Open animated dialog" })
