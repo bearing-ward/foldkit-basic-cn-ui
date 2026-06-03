@@ -45,6 +45,8 @@ import * as RadioGroupBasicExample from "../registry/default/examples/radio-grou
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
+import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
@@ -132,6 +134,9 @@ export const SelectDocsRoute = r("SelectDocs");
 export const SelectBasicExampleRoute = r("SelectBasicExample");
 export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
+export const SliderDocsRoute = r("SliderDocs");
+export const SliderBasicExampleRoute = r("SliderBasicExample");
+export const SliderDisabledExampleRoute = r("SliderDisabledExample");
 export const SwitchRoute = r("Switch");
 export const SwitchDocsRoute = r("SwitchDocs");
 export const SwitchBasicExampleRoute = r("SwitchBasicExample");
@@ -217,6 +222,9 @@ const AppRoute = S.Union([
   SelectBasicExampleRoute,
   SelectDisabledExampleRoute,
   SliderRoute,
+  SliderDocsRoute,
+  SliderBasicExampleRoute,
+  SliderDisabledExampleRoute,
   SwitchRoute,
   SwitchDocsRoute,
   SwitchBasicExampleRoute,
@@ -816,6 +824,38 @@ const selectDisabledStandaloneExampleRouter = pipe(
   Route.mapTo(SelectDisabledExampleRoute)
 );
 const sliderRouter = pipe(literal("slider"), Route.mapTo(SliderRoute));
+const sliderDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("slider")),
+  Route.mapTo(SliderDocsRoute)
+);
+const sliderBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("slider")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SliderBasicExampleRoute)
+);
+const sliderDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("slider")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(SliderDisabledExampleRoute)
+);
+const sliderBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("slider-basic")),
+  Route.mapTo(SliderBasicExampleRoute)
+);
+const sliderDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("slider-disabled")),
+  Route.mapTo(SliderDisabledExampleRoute)
+);
 const switchRouter = pipe(literal("switch"), Route.mapTo(SwitchRoute));
 const switchDocsRouter = pipe(
   literal("docs"),
@@ -995,6 +1035,11 @@ const routeParser = Route.oneOf(
   selectDisabledStandaloneExampleRouter,
   selectDocsRouter,
   sliderRouter,
+  sliderBasicExampleRouter,
+  sliderDisabledExampleRouter,
+  sliderBasicStandaloneExampleRouter,
+  sliderDisabledStandaloneExampleRouter,
+  sliderDocsRouter,
   switchRouter,
   switchBasicExampleRouter,
   switchDisabledExampleRouter,
@@ -1057,6 +1102,8 @@ export const Model = S.Struct({
   radioGroupHorizontalExample: RadioGroupHorizontalExample.Model,
   selectBasicExample: SelectBasicExample.Model,
   selectDisabledExample: SelectDisabledExample.Model,
+  sliderBasicExample: SliderBasicExample.Model,
+  sliderDisabledExample: SliderDisabledExample.Model,
   switchBasicExample: SwitchBasicExample.Model,
   switchDisabledExample: SwitchDisabledExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
@@ -1268,6 +1315,15 @@ export const GotSelectDisabledExampleMessage = m(
     message: SelectDisabledExample.Message,
   }
 );
+export const GotSliderBasicExampleMessage = m("GotSliderBasicExampleMessage", {
+  message: SliderBasicExample.Message,
+});
+export const GotSliderDisabledExampleMessage = m(
+  "GotSliderDisabledExampleMessage",
+  {
+    message: SliderDisabledExample.Message,
+  }
+);
 export const GotSwitchBasicExampleMessage = m("GotSwitchBasicExampleMessage", {
   message: SwitchBasicExample.Message,
 });
@@ -1331,6 +1387,8 @@ export const Message = S.Union([
   GotRadioGroupHorizontalExampleMessage,
   GotSelectBasicExampleMessage,
   GotSelectDisabledExampleMessage,
+  GotSliderBasicExampleMessage,
+  GotSliderDisabledExampleMessage,
   GotSwitchBasicExampleMessage,
   GotSwitchDisabledExampleMessage,
   GotTextareaBasicExampleMessage,
@@ -1439,6 +1497,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     SelectBasicExample.init();
   const [selectDisabledExample, selectDisabledExampleCommands] =
     SelectDisabledExample.init();
+  const [sliderBasicExample, sliderBasicExampleCommands] =
+    SliderBasicExample.init();
+  const [sliderDisabledExample, sliderDisabledExampleCommands] =
+    SliderDisabledExample.init();
   const [switchBasicExample, switchBasicExampleCommands] =
     SwitchBasicExample.init();
   const [switchDisabledExample, switchDisabledExampleCommands] =
@@ -1487,6 +1549,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       radioGroupHorizontalExample,
       selectBasicExample,
       selectDisabledExample,
+      sliderBasicExample,
+      sliderDisabledExample,
       switchBasicExample,
       switchDisabledExample,
       textareaBasicExample,
@@ -1600,6 +1664,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(selectDisabledExampleCommands, (message) =>
         GotSelectDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sliderBasicExampleCommands, (message) =>
+        GotSliderBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sliderDisabledExampleCommands, (message) =>
+        GotSliderDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(switchBasicExampleCommands, (message) =>
         GotSwitchBasicExampleMessage({ message })
@@ -2181,6 +2251,30 @@ export const update = (
         ];
       },
 
+      GotSliderBasicExampleMessage: ({ message }) => {
+        const [sliderBasicExample, sliderBasicExampleCommands] =
+          SliderBasicExample.update(model.sliderBasicExample, message);
+
+        return [
+          evo(model, { sliderBasicExample: () => sliderBasicExample }),
+          Command.mapMessages(sliderBasicExampleCommands, (message) =>
+            GotSliderBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotSliderDisabledExampleMessage: ({ message }) => {
+        const [sliderDisabledExample, sliderDisabledExampleCommands] =
+          SliderDisabledExample.update(model.sliderDisabledExample, message);
+
+        return [
+          evo(model, { sliderDisabledExample: () => sliderDisabledExample }),
+          Command.mapMessages(sliderDisabledExampleCommands, (message) =>
+            GotSliderDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSwitchBasicExampleMessage: ({ message }) => {
         const [switchBasicExample, switchBasicExampleCommands] =
           SwitchBasicExample.update(model.switchBasicExample, message);
@@ -2504,6 +2598,17 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: selectDisabledExampleRouter(),
   },
   { label: "Slider", routeTag: "Slider", href: sliderRouter() },
+  { label: "Slider Docs", routeTag: "SliderDocs", href: sliderDocsRouter() },
+  {
+    label: "Slider Basic Example",
+    routeTag: "SliderBasicExample",
+    href: sliderBasicExampleRouter(),
+  },
+  {
+    label: "Slider Disabled Example",
+    routeTag: "SliderDisabledExample",
+    href: sliderDisabledExampleRouter(),
+  },
   { label: "Switch", routeTag: "Switch", href: switchRouter() },
   { label: "Switch Docs", routeTag: "SwitchDocs", href: switchDocsRouter() },
   {
@@ -3105,6 +3210,34 @@ const switchDisabledExamplePreview = (
   });
 };
 
+const sliderBasicExamplePreview = (
+  model: SliderBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SliderBasicExample.view,
+    toParentMessage: (message) => GotSliderBasicExampleMessage({ message }),
+  });
+};
+
+const sliderDisabledExamplePreview = (
+  model: SliderDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SliderDisabledExample.view,
+    toParentMessage: (message) => GotSliderDisabledExampleMessage({ message }),
+  });
+};
+
 const dialogBasicExamplePreview = (
   model: DialogBasicExample.Model,
   slotId: string
@@ -3666,6 +3799,136 @@ GotCheckboxMessage: ({ message }) => {
         coverageItems: [
           "Registry scene tests verify label, description, checked toggling, hidden input composition, and disabled state.",
           "Example scene tests verify parent-visible checked feedback and grouped indeterminate behavior.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const sliderDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Slider"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Slider slice built on the official Foldkit Ui.Slider primitive. It preserves typed value state, keyboard and pointer messages, ChangedValue OutMessages, disabled state, hidden input support, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/slider" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Slider v1 documents the single-value range path: child-owned value and drag state, parent-visible ChangedValue facts, keyboard increments, disabled slider semantics, and form participation through hidden input attributes."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-slider-basic",
+                preview: sliderBasicExamplePreview(
+                  model.sliderBasicExample,
+                  "slider-docs-basic-preview"
+                ),
+                href: sliderBasicExampleRouter(),
+                linkText: "Open standalone Slider Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-slider-disabled",
+                preview: sliderDisabledExamplePreview(
+                  model.sliderDisabledExample,
+                  "slider-docs-disabled-preview"
+                ),
+                href: sliderDisabledExampleRouter(),
+                linkText: "Open standalone Slider Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/slider.json\nbunx shadcn@latest add <registry-url>/slider-basic.json\nbunx shadcn@latest add <registry-url>/slider-disabled.json",
+        usageBody:
+          "Initialize the Slider child model, delegate child messages through `h.submodel`, and handle ChangedValue in the parent update when the value changes.",
+        usageCode: `import * as Slider from "./ui/slider";
+
+const [slider] = Slider.init({
+  id: "rating-slider",
+  min: 0,
+  max: 10,
+  step: 1,
+  initialValue: 4,
+});`,
+        integrationCode: `// Model
+slider: Slider.Model;
+
+// Message
+GotSliderMessage({ message: Slider.Message });
+
+// Update
+const [slider, commands, maybeOutMessage] =
+  Slider.update(model.slider, message);
+
+// View
+h.submodel({
+  slotId: model.slider.id,
+  model: model.slider,
+  view: Slider.view,
+  viewInputs: {
+    formatValue: (value) => \`\${value} of 10\`,
+    toView: (attributes) =>
+      Slider.sliderFieldView({
+        attributes,
+        label: "Rating",
+        valueText: \`\${model.slider.value} of 10\`,
+      }),
+  },
+  toParentMessage: (message) => GotSliderMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id, value, min, max, step, and drag state.",
+          "init(config): creates a Slider model and returns the registry init tuple.",
+          "update(model, message): returns model, commands, and an optional ChangedValue OutMessage.",
+          "reflectValue and reflectRange: mirror externally driven value/range changes without user-originated OutMessages.",
+          "fractionOfValue: computes the filled-track fraction for custom layouts.",
+          "subscriptions and subscriptionsForRoot: pointer-drag subscriptions for document and Shadow DOM roots.",
+          "ViewInputs and SliderAttributes: root, track, filledTrack, thumb, label, and hiddenInput attribute bundles for custom composition.",
+        ],
+        accessibilityItems: [
+          "The primitive supplies role=slider, aria-valuemin, aria-valuemax, aria-valuenow, and keyboard navigation handlers.",
+          "The label attributes provide the accessible name when no explicit aria label is supplied.",
+          "The disabled example exposes aria-disabled and removes pointer and keyboard interaction handlers.",
+          "The hiddenInput attributes preserve form participation when a name is supplied.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify accessible slider rendering, keyboard increment behavior, and parent-visible ChangedValue feedback.",
+          "Example scene tests verify basic keyboard value changes and disabled slider semantics.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -6560,6 +6823,71 @@ const checkboxIndeterminateExampleRouteView = (model: Model): Html => {
   );
 };
 
+const sliderBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Slider Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable slider-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          sliderBasicExamplePreview(
+            model.sliderBasicExample,
+            "slider-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const sliderDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Slider Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable slider-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          sliderDisabledExamplePreview(
+            model.sliderDisabledExample,
+            "slider-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const switchBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -7682,6 +8010,9 @@ const contentView = (model: Model): Html => {
       SelectBasicExample: () => selectBasicExampleRouteView(model),
       SelectDisabledExample: () => selectDisabledExampleRouteView(model),
       Slider: () => embedUi("ui-slider", View.slider),
+      SliderDocs: () => sliderDocsView(model),
+      SliderBasicExample: () => sliderBasicExampleRouteView(model),
+      SliderDisabledExample: () => sliderDisabledExampleRouteView(model),
       Switch: () => embedUi("ui-switch", View.switch_),
       SwitchDocs: () => switchDocsView(model),
       SwitchBasicExample: () => switchBasicExampleRouteView(model),

@@ -238,6 +238,7 @@ import * as Dialog from "./ui/dialog";
 | Select      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Combobox    | Active v1 slice | Registry wrapper, basic example, multi example, docs page, route coverage, generated registry output, and coverage matrix are in place.         |
 | RadioGroup  | Active v1 slice | Registry wrapper, basic example, horizontal example, docs page, route coverage, generated registry output, and coverage matrix are in place.    |
+| Slider      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Switch      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 | Textarea    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 

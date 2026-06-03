@@ -1670,5 +1670,92 @@
         "example": "disabled"
       }
     }
+  },
+  {
+    "name": "slider",
+    "type": "registry:ui",
+    "title": "Slider",
+    "description": "A Foldkit Slider wrapper with typed value state, ChangedValue OutMessages, keyboard and pointer messages, disabled state, hidden input support, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/slider/index.ts",
+        "target": "src/ui/slider/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/slider/view.ts",
+        "target": "src/ui/slider/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/slider/slider.scene.test.ts",
+        "target": "src/ui/slider/slider.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Slider",
+        "primitive": "Ui.Slider",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "slider-basic",
+    "type": "registry:example",
+    "title": "Slider Basic",
+    "description": "A runnable Foldkit example showing Slider keyboard value changes and parent-visible rating feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["slider"],
+    "files": [
+      {
+        "path": "registry/default/examples/slider-basic/main.ts",
+        "target": "src/examples/slider-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/slider-basic/slider-basic.scene.test.ts",
+        "target": "src/examples/slider-basic/slider-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Slider",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "slider-disabled",
+    "type": "registry:example",
+    "title": "Slider Disabled",
+    "description": "A runnable Foldkit example showing disabled Slider semantics and locked value feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["slider"],
+    "files": [
+      {
+        "path": "registry/default/examples/slider-disabled/main.ts",
+        "target": "src/examples/slider-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/slider-disabled/slider-disabled.scene.test.ts",
+        "target": "src/examples/slider-disabled/slider-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Slider",
+        "example": "disabled"
+      }
+    }
   }
 ]

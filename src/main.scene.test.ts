@@ -36,6 +36,8 @@ import * as RadioGroupBasicExample from "../registry/default/examples/radio-grou
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
+import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
@@ -105,6 +107,9 @@ import {
   SelectDisabledExampleRoute,
   SelectDocsRoute,
   SelectRoute,
+  SliderBasicExampleRoute,
+  SliderDisabledExampleRoute,
+  SliderDocsRoute,
   SwitchBasicExampleRoute,
   SwitchDisabledExampleRoute,
   SwitchDocsRoute,
@@ -156,6 +161,8 @@ const [radioGroupBasicExample] = RadioGroupBasicExample.init();
 const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [sliderBasicExample] = SliderBasicExample.init();
+const [sliderDisabledExample] = SliderDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
@@ -199,6 +206,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   radioGroupHorizontalExample,
   selectBasicExample,
   selectDisabledExample,
+  sliderBasicExample,
+  sliderDisabledExample,
   switchBasicExample,
   switchDisabledExample,
   textareaBasicExample,
@@ -354,6 +363,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Select Disabled Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Slider Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Slider Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Slider Disabled Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Switch Docs" })).toExist(),
       Scene.expect(
@@ -650,6 +666,76 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("checkbox", { name: "All notification channels" })
       ).toExist()
+    );
+  });
+
+  test("the Slider docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SliderDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Slider" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("slider", { name: "Rating" })).toHaveAttr(
+        "aria-valuenow",
+        "4"
+      ),
+      Scene.expect(Scene.role("slider", { name: "Volume" })).toHaveAttr(
+        "aria-disabled",
+        "true"
+      ),
+      Scene.expect(Scene.testId("docs-example-block-slider-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-slider-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-slider-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-slider-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-slider-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Slider Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Slider Disabled example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Slider Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SliderBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Slider Basic" })).toExist(),
+      Scene.expect(Scene.text("Rating: 4 of 10")).toExist()
+    );
+  });
+
+  test("the Slider Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SliderDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Slider Disabled" })
+      ).toExist(),
+      Scene.expect(Scene.text("Volume is locked.")).toExist()
     );
   });
 

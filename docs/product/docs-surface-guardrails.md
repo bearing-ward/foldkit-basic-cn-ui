@@ -107,6 +107,11 @@ Current enforced examples:
 - `docs-example-block-drag-and-drop-basic-actions`
 - `docs-example-block-drag-and-drop-disabled`
 - `docs-example-block-drag-and-drop-disabled-actions`
+- `docs-example-block-slider-basic`
+- `docs-example-block-slider-basic-preview`
+- `docs-example-block-slider-basic-actions`
+- `docs-example-block-slider-disabled`
+- `docs-example-block-slider-disabled-actions`
 - `docs-example-block-input-basic`
 - `docs-example-block-input-basic-preview`
 - `docs-example-block-input-basic-actions`

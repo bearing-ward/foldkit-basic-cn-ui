@@ -38,6 +38,8 @@ import * as RadioGroupBasicExample from "../registry/default/examples/radio-grou
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
+import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
@@ -84,6 +86,8 @@ const [radioGroupBasicExample] = RadioGroupBasicExample.init();
 const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [sliderBasicExample] = SliderBasicExample.init();
+const [sliderDisabledExample] = SliderDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
@@ -127,6 +131,8 @@ const initialModel: Model = {
   radioGroupHorizontalExample,
   selectBasicExample,
   selectDisabledExample,
+  sliderBasicExample,
+  sliderDisabledExample,
   switchBasicExample,
   switchDisabledExample,
   textareaBasicExample,
@@ -920,6 +926,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/slider resolves to SliderDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/slider"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SliderDocs");
+        })
+      );
+    });
+
+    test("/docs/components/slider/examples/basic resolves to SliderBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/slider/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SliderBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/slider/examples/disabled resolves to SliderDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/slider/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SliderDisabledExample");
+        })
+      );
+    });
+
     test("/docs/components/switch/examples/basic resolves to SwitchBasicExample", () => {
       Story.story(
         update,
@@ -1512,6 +1567,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("SwitchBasicExample");
+        })
+      );
+    });
+
+    test("/examples/slider-basic resolves to SliderBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/slider-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SliderBasicExample");
+        })
+      );
+    });
+
+    test("/examples/slider-disabled resolves to SliderDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/slider-disabled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SliderDisabledExample");
         })
       );
     });
