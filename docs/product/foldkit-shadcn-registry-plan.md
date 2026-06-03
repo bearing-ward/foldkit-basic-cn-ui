@@ -427,6 +427,7 @@ Dialog v1 behavior:
 - Examples default to animated dialogs with `isAnimated: true`.
 - `focusSelector` is part of the documented API.
 - `h.OnClickFocus` should be documented for iOS keyboard warmup flows where a trigger opens a dialog containing a text input.
+- Nested or stacked dialogs are unsupported in Dialog v1. Keep one active Dialog per flow; true modal stacking should be a future coordinator or separate component with its own state, focus, and escape-key tests.
 
 ## Styling Policy
 
@@ -533,7 +534,7 @@ For `Dialog`, specifically:
 - backdrop or close button closes if supported
 - focus returns to trigger after close where Foldkit supports it
 - body scroll lock behavior is documented
-- nested or stacked dialog policy is documented, even if unsupported in v1
+- nested or stacked dialog policy is documented as unsupported in v1
 
 Foldkit `0.104.0` adds `h.OnClickFocus(focusSelector, message)` for click handlers that must synchronously focus an existing element before dispatching their message. Dialog docs should still document `focusSelector` as the post-open target, and should also document `OnClickFocus` for iOS keyboard warmup flows where a trigger opens a dialog containing a text input.
 

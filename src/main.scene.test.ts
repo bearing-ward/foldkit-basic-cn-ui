@@ -130,6 +130,9 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(
+        Scene.role("heading", { name: "Composition policy" })
+      ).toExist(),
+      Scene.expect(
         Scene.role("heading", { name: "Browser focus proof" })
       ).toExist(),
       Scene.expect(

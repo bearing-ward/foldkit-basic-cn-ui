@@ -1363,7 +1363,54 @@ Dialog.descriptionId;`),
               h.li(
                 [],
                 [
-                  "Nested or stacked dialogs are unverified in v1 and remain a documented policy decision.",
+                  "Nested or stacked dialogs are unsupported in v1; keep one active Dialog per flow.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["Composition policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Dialog v1 documents a single active dialog per user flow. It does not add a stack manager, nested focus handoff, or parent-child modal coordination on top of Foldkit Ui.Dialog.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Open a second step by closing the current Dialog and rendering the next Dialog state from the parent model.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Do not mount a Dialog trigger or Dialog surface inside another Dialog panel in v1 examples.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "If a product needs modal stacking, treat it as a future coordinator or separate component with its own tests.",
                 ]
               ),
             ]
@@ -1521,7 +1568,13 @@ ShowDialog({
               h.li(
                 [],
                 [
-                  "Nested dialogs, RTL, drawer, command dialog, and AlertDialog: deferred decision list.",
+                  "Nested or stacked dialogs: unsupported v1 policy documented in the Composition policy section.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "RTL, drawer, command dialog, and AlertDialog: deferred decision list.",
                 ]
               ),
             ]

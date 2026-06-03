@@ -111,19 +111,19 @@ These reference behaviors are in scope for the first `Dialog` slice:
 
 These behaviors should not block the first slice:
 
-| Reference Behavior                                 | V1 Decision                                                                                                      |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Base UI `Portal` and `Viewport` parts              | Deferred. Foldkit v1 uses native dialog rendering from `Ui.Dialog.view`.                                         |
-| Base UI uncontained dialog demos                   | Deferred until docs need explicit positioning variants.                                                          |
-| Base UI controlled `open` and `onOpenChange`       | Not applicable as a public API shape. Foldkit owns state through `Model`, `Message`, `update`, and `OutMessage`. |
-| Base UI detached trigger payload tests             | Deferred. React payload-driven detached triggers do not map directly to v1 Foldkit Dialog.                       |
-| Base UI trigger reparenting and Fast Refresh tests | Not applicable to the Foldkit v1 registry wrapper.                                                               |
-| Nested dialogs                                     | Deferred and should be documented as unsupported or unverified until tested.                                     |
-| Scrollable content and sticky footer examples      | Docs follow-up after basic and destructive examples pass.                                                        |
-| RTL example                                        | Styling verification follow-up after first v1 slice.                                                             |
-| Drawer dialog                                      | Separate component or example later.                                                                             |
-| Command dialog                                     | Separate component or example later.                                                                             |
-| Alert dialog                                       | Separate component later, not a v1 Dialog variant.                                                               |
+| Reference Behavior                                 | V1 Decision                                                                                                          |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Base UI `Portal` and `Viewport` parts              | Deferred. Foldkit v1 uses native dialog rendering from `Ui.Dialog.view`.                                             |
+| Base UI uncontained dialog demos                   | Deferred until docs need explicit positioning variants.                                                              |
+| Base UI controlled `open` and `onOpenChange`       | Not applicable as a public API shape. Foldkit owns state through `Model`, `Message`, `update`, and `OutMessage`.     |
+| Base UI detached trigger payload tests             | Deferred. React payload-driven detached triggers do not map directly to v1 Foldkit Dialog.                           |
+| Base UI trigger reparenting and Fast Refresh tests | Not applicable to the Foldkit v1 registry wrapper.                                                                   |
+| Nested dialogs                                     | Unsupported in v1. Keep one active Dialog per flow; future modal stacking needs a coordinator or separate component. |
+| Scrollable content and sticky footer examples      | Included through `dialog-scrollable`.                                                                                |
+| RTL example                                        | Styling verification follow-up after first v1 slice.                                                                 |
+| Drawer dialog                                      | Separate component or example later.                                                                                 |
+| Command dialog                                     | Separate component or example later.                                                                                 |
+| Alert dialog                                       | Separate component later, not a v1 Dialog variant.                                                                   |
 
 ## First TDD Order
 
