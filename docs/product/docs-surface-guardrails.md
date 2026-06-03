@@ -35,6 +35,11 @@ Current enforced examples:
 - `docs-example-block-popover-basic-actions`
 - `docs-example-block-popover-animated`
 - `docs-example-block-popover-animated-actions`
+- `docs-example-block-listbox-basic`
+- `docs-example-block-listbox-basic-preview`
+- `docs-example-block-listbox-basic-actions`
+- `docs-example-block-listbox-animated`
+- `docs-example-block-listbox-animated-actions`
 - `docs-example-block-menu-basic`
 - `docs-example-block-menu-basic-preview`
 - `docs-example-block-menu-basic-actions`

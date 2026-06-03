@@ -6,6 +6,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
+import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
@@ -24,6 +26,9 @@ import {
   FieldsetRoute,
   HomeRoute,
   InputRoute,
+  ListboxAnimatedExampleRoute,
+  ListboxBasicExampleRoute,
+  ListboxDocsRoute,
   MenuAnimatedExampleRoute,
   MenuBasicExampleRoute,
   MenuDocsRoute,
@@ -48,6 +53,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [listboxBasicExample] = ListboxBasicExample.init();
+const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
@@ -61,6 +68,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  listboxBasicExample,
+  listboxAnimatedExample,
   menuBasicExample,
   menuAnimatedExample,
   popoverBasicExample,
@@ -89,6 +98,13 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(
         Scene.role("link", { name: "Dialog Scrollable Example" })
+      ).toExist(),
+      Scene.expect(Scene.role("link", { name: "Listbox Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Listbox Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Listbox Animated Example" })
       ).toExist(),
       Scene.expect(Scene.role("link", { name: "Menu Docs" })).toExist(),
       Scene.expect(
@@ -342,6 +358,66 @@ describe("scene", () => {
         Scene.role("link", {
           name: "Open standalone Menu Animated example",
         })
+      ).toExist()
+    );
+  });
+
+  test("the Listbox docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ListboxDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Listbox" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Choose person" })).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Choose animated person" })
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-listbox-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-listbox-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-listbox-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-listbox-animated")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-listbox-animated-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Listbox Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", {
+          name: "Open standalone Listbox Animated example",
+        })
+      ).toExist()
+    );
+  });
+
+  test("the Listbox Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ListboxBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Listbox Basic" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Choose person" })).toExist()
+    );
+  });
+
+  test("the Listbox Animated example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ListboxAnimatedExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Listbox Animated" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Choose animated person" })
       ).toExist()
     );
   });

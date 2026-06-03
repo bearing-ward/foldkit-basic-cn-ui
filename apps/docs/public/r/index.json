@@ -359,6 +359,98 @@
           "example": "animated"
         }
       }
+    },
+    {
+      "name": "listbox",
+      "type": "registry:ui",
+      "title": "Listbox",
+      "description": "A Foldkit listbox component with single-select state, typed selection out-messages, commands, mount-aware positioning, typeahead, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/listbox/index.ts",
+          "target": "src/ui/listbox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/listbox/view.ts",
+          "target": "src/ui/listbox/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/listbox/listbox.story.test.ts",
+          "target": "src/ui/listbox/listbox.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/listbox/listbox.scene.test.ts",
+          "target": "src/ui/listbox/listbox.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Listbox",
+          "primitive": "Ui.Listbox",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "listbox-basic",
+      "type": "registry:example",
+      "title": "Listbox Basic",
+      "description": "A runnable Foldkit example showing a typed single-select Listbox trigger, selected label, anchored items, backdrop close, and mount resolution coverage.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["listbox"],
+      "files": [
+        {
+          "path": "registry/default/examples/listbox-basic/main.ts",
+          "target": "src/examples/listbox-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/listbox-basic/listbox-basic.scene.test.ts",
+          "target": "src/examples/listbox-basic/listbox-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Listbox",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "listbox-animated",
+      "type": "registry:example",
+      "title": "Listbox Animated",
+      "description": "A runnable Foldkit example showing Listbox with isAnimated enabled and animation lifecycle coverage.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["listbox"],
+      "files": [
+        {
+          "path": "registry/default/examples/listbox-animated/main.ts",
+          "target": "src/examples/listbox-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/listbox-animated/listbox-animated.scene.test.ts",
+          "target": "src/examples/listbox-animated/listbox-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Listbox",
+          "example": "animated"
+        }
+      }
     }
   ]
 }

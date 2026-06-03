@@ -8,6 +8,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
+import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
@@ -24,6 +26,8 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [listboxBasicExample] = ListboxBasicExample.init();
+const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
@@ -37,6 +41,8 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  listboxBasicExample,
+  listboxAnimatedExample,
   menuBasicExample,
   menuAnimatedExample,
   popoverBasicExample,
@@ -231,6 +237,55 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/listbox resolves to ListboxDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/listbox"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ListboxDocs");
+        })
+      );
+    });
+
+    test("/docs/components/listbox/examples/basic resolves to ListboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/listbox/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ListboxBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/listbox/examples/animated resolves to ListboxAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/listbox/examples/animated"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ListboxAnimatedExample");
+        })
+      );
+    });
+
     test("/docs/components/menu/examples/basic resolves to MenuBasicExample", () => {
       Story.story(
         update,
@@ -417,6 +472,36 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("MenuBasicExample");
+        })
+      );
+    });
+
+    test("/examples/listbox-basic resolves to ListboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/listbox-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ListboxBasicExample");
+        })
+      );
+    });
+
+    test("/examples/listbox-animated resolves to ListboxAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/listbox-animated"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ListboxAnimatedExample");
         })
       );
     });

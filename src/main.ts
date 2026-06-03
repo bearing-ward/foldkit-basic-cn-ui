@@ -15,6 +15,8 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
+import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
@@ -48,6 +50,9 @@ export const FieldsetRoute = r("Fieldset");
 export const FileDropRoute = r("FileDrop");
 export const InputRoute = r("Input");
 export const ListboxRoute = r("Listbox");
+export const ListboxDocsRoute = r("ListboxDocs");
+export const ListboxBasicExampleRoute = r("ListboxBasicExample");
+export const ListboxAnimatedExampleRoute = r("ListboxAnimatedExample");
 export const MenuRoute = r("Menu");
 export const MenuDocsRoute = r("MenuDocs");
 export const MenuBasicExampleRoute = r("MenuBasicExample");
@@ -88,6 +93,9 @@ const AppRoute = S.Union([
   FileDropRoute,
   InputRoute,
   ListboxRoute,
+  ListboxDocsRoute,
+  ListboxBasicExampleRoute,
+  ListboxAnimatedExampleRoute,
   MenuRoute,
   MenuDocsRoute,
   MenuBasicExampleRoute,
@@ -204,6 +212,38 @@ const fieldsetRouter = pipe(literal("fieldset"), Route.mapTo(FieldsetRoute));
 const fileDropRouter = pipe(literal("file-drop"), Route.mapTo(FileDropRoute));
 const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
 const listboxRouter = pipe(literal("listbox"), Route.mapTo(ListboxRoute));
+const listboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("listbox")),
+  Route.mapTo(ListboxDocsRoute)
+);
+const listboxBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("listbox")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ListboxBasicExampleRoute)
+);
+const listboxAnimatedExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("listbox")),
+  slash(literal("examples")),
+  slash(literal("animated")),
+  Route.mapTo(ListboxAnimatedExampleRoute)
+);
+const listboxBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("listbox-basic")),
+  Route.mapTo(ListboxBasicExampleRoute)
+);
+const listboxAnimatedStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("listbox-animated")),
+  Route.mapTo(ListboxAnimatedExampleRoute)
+);
 const menuRouter = pipe(literal("menu"), Route.mapTo(MenuRoute));
 const menuDocsRouter = pipe(
   literal("docs"),
@@ -311,6 +351,11 @@ const routeParser = Route.oneOf(
   fileDropRouter,
   inputRouter,
   listboxRouter,
+  listboxBasicExampleRouter,
+  listboxAnimatedExampleRouter,
+  listboxBasicStandaloneExampleRouter,
+  listboxAnimatedStandaloneExampleRouter,
+  listboxDocsRouter,
   menuRouter,
   menuBasicExampleRouter,
   menuAnimatedExampleRouter,
@@ -348,6 +393,8 @@ export const Model = S.Struct({
   dialogDestructiveExample: DialogDestructiveExample.Model,
   dialogFocusExample: DialogFocusExample.Model,
   dialogScrollableExample: DialogScrollableExample.Model,
+  listboxBasicExample: ListboxBasicExample.Model,
+  listboxAnimatedExample: ListboxAnimatedExample.Model,
   menuBasicExample: MenuBasicExample.Model,
   menuAnimatedExample: MenuAnimatedExample.Model,
   popoverBasicExample: PopoverBasicExample.Model,
@@ -391,6 +438,18 @@ export const GotDialogScrollableExampleMessage = m(
     message: DialogScrollableExample.Message,
   }
 );
+export const GotListboxBasicExampleMessage = m(
+  "GotListboxBasicExampleMessage",
+  {
+    message: ListboxBasicExample.Message,
+  }
+);
+export const GotListboxAnimatedExampleMessage = m(
+  "GotListboxAnimatedExampleMessage",
+  {
+    message: ListboxAnimatedExample.Message,
+  }
+);
 export const GotMenuBasicExampleMessage = m("GotMenuBasicExampleMessage", {
   message: MenuBasicExample.Message,
 });
@@ -424,6 +483,8 @@ export const Message = S.Union([
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
   GotDialogScrollableExampleMessage,
+  GotListboxBasicExampleMessage,
+  GotListboxAnimatedExampleMessage,
   GotMenuBasicExampleMessage,
   GotMenuAnimatedExampleMessage,
   GotPopoverBasicExampleMessage,
@@ -473,6 +534,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DialogFocusExample.init();
   const [dialogScrollableExample, dialogScrollableExampleCommands] =
     DialogScrollableExample.init();
+  const [listboxBasicExample, listboxBasicExampleCommands] =
+    ListboxBasicExample.init();
+  const [listboxAnimatedExample, listboxAnimatedExampleCommands] =
+    ListboxAnimatedExample.init();
   const [menuBasicExample, menuBasicExampleCommands] = MenuBasicExample.init();
   const [menuAnimatedExample, menuAnimatedExampleCommands] =
     MenuAnimatedExample.init();
@@ -490,6 +555,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       dialogDestructiveExample,
       dialogFocusExample,
       dialogScrollableExample,
+      listboxBasicExample,
+      listboxAnimatedExample,
       menuBasicExample,
       menuAnimatedExample,
       popoverBasicExample,
@@ -513,6 +580,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(dialogScrollableExampleCommands, (message) =>
         GotDialogScrollableExampleMessage({ message })
+      ),
+      ...Command.mapMessages(listboxBasicExampleCommands, (message) =>
+        GotListboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(listboxAnimatedExampleCommands, (message) =>
+        GotListboxAnimatedExampleMessage({ message })
       ),
       ...Command.mapMessages(menuBasicExampleCommands, (message) =>
         GotMenuBasicExampleMessage({ message })
@@ -668,6 +741,34 @@ export const update = (
         ];
       },
 
+      GotListboxBasicExampleMessage: ({ message }) => {
+        const [listboxBasicExample, listboxBasicExampleCommands] =
+          ListboxBasicExample.update(model.listboxBasicExample, message);
+
+        return [
+          evo(model, {
+            listboxBasicExample: () => listboxBasicExample,
+          }),
+          Command.mapMessages(listboxBasicExampleCommands, (message) =>
+            GotListboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotListboxAnimatedExampleMessage: ({ message }) => {
+        const [listboxAnimatedExample, listboxAnimatedExampleCommands] =
+          ListboxAnimatedExample.update(model.listboxAnimatedExample, message);
+
+        return [
+          evo(model, {
+            listboxAnimatedExample: () => listboxAnimatedExample,
+          }),
+          Command.mapMessages(listboxAnimatedExampleCommands, (message) =>
+            GotListboxAnimatedExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotMenuBasicExampleMessage: ({ message }) => {
         const [menuBasicExample, menuBasicExampleCommands] =
           MenuBasicExample.update(model.menuBasicExample, message);
@@ -778,6 +879,21 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "File Drop", routeTag: "FileDrop", href: fileDropRouter() },
   { label: "Input", routeTag: "Input", href: inputRouter() },
   { label: "Listbox", routeTag: "Listbox", href: listboxRouter() },
+  {
+    label: "Listbox Docs",
+    routeTag: "ListboxDocs",
+    href: listboxDocsRouter(),
+  },
+  {
+    label: "Listbox Basic Example",
+    routeTag: "ListboxBasicExample",
+    href: listboxBasicExampleRouter(),
+  },
+  {
+    label: "Listbox Animated Example",
+    routeTag: "ListboxAnimatedExample",
+    href: listboxAnimatedExampleRouter(),
+  },
   { label: "Menu", routeTag: "Menu", href: menuRouter() },
   { label: "Menu Docs", routeTag: "MenuDocs", href: menuDocsRouter() },
   {
@@ -1217,6 +1333,34 @@ const dialogScrollableExamplePreview = (
   });
 };
 
+const listboxBasicExamplePreview = (
+  model: ListboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ListboxBasicExample.view,
+    toParentMessage: (message) => GotListboxBasicExampleMessage({ message }),
+  });
+};
+
+const listboxAnimatedExamplePreview = (
+  model: ListboxAnimatedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ListboxAnimatedExample.view,
+    toParentMessage: (message) => GotListboxAnimatedExampleMessage({ message }),
+  });
+};
+
 const menuBasicExamplePreview = (
   model: MenuBasicExample.Model,
   slotId: string
@@ -1271,6 +1415,109 @@ const popoverAnimatedExamplePreview = (
     view: PopoverAnimatedExample.view,
     toParentMessage: (message) => GotPopoverAnimatedExampleMessage({ message }),
   });
+};
+
+const listboxDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Listbox"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Listbox slice built on the official Foldkit Ui.Listbox primitive. It preserves single-select state, typed Selected OutMessage flow, command and mount effects, typeahead, and animation lifecycle.",
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p([h.Class("font-medium text-gray-950")], ["Source"]),
+              h.p([], ["registry/default/ui/listbox"]),
+            ]
+          ),
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p([h.Class("font-medium text-gray-950")], ["Examples"]),
+              h.p([], ["basic, animated"]),
+            ]
+          ),
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p([h.Class("font-medium text-gray-950")], ["Proof"]),
+              h.p([], ["story tests, scene tests, generated registry JSON"]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-listbox-basic",
+                preview: listboxBasicExamplePreview(
+                  model.listboxBasicExample,
+                  "listbox-docs-basic-preview"
+                ),
+                href: listboxBasicExampleRouter(),
+                linkText: "Open standalone Listbox Basic example",
+              }),
+              docsExampleBlock({
+                title: "Animated",
+                testId: "docs-example-block-listbox-animated",
+                preview: listboxAnimatedExamplePreview(
+                  model.listboxAnimatedExample,
+                  "listbox-docs-animated-preview"
+                ),
+                href: listboxAnimatedExampleRouter(),
+                linkText: "Open standalone Listbox Animated example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h2(
+            [h.Class("text-xl font-semibold text-gray-950")],
+            ["Installation"]
+          ),
+          codeBlock(
+            "bunx shadcn@latest add <registry-url>/listbox.json\nbunx shadcn@latest add <registry-url>/listbox-basic.json\nbunx shadcn@latest add <registry-url>/listbox-animated.json"
+          ),
+        ]
+      ),
+    ]
+  );
 };
 
 const menuDocsView = (model: Model): Html => {
@@ -2427,6 +2674,74 @@ const dialogScrollableExampleRouteView = (model: Model): Html => {
   );
 };
 
+const listboxBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Listbox Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable listbox-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          listboxBasicExamplePreview(
+            model.listboxBasicExample,
+            "listbox-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const listboxAnimatedExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Listbox Animated"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable listbox-animated registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          listboxAnimatedExamplePreview(
+            model.listboxAnimatedExample,
+            "listbox-animated-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const menuBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2592,6 +2907,9 @@ const contentView = (model: Model): Html => {
       FileDrop: () => embedUi("ui-file-drop", View.fileDrop),
       Input: () => embedUi("ui-input", View.input),
       Listbox: () => embedUi("ui-listbox", View.listbox),
+      ListboxDocs: () => listboxDocsView(model),
+      ListboxBasicExample: () => listboxBasicExampleRouteView(model),
+      ListboxAnimatedExample: () => listboxAnimatedExampleRouteView(model),
       Menu: () => embedUi("ui-menu", View.menu),
       MenuDocs: () => menuDocsView(model),
       MenuBasicExample: () => menuBasicExampleRouteView(model),
