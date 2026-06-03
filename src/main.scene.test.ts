@@ -284,6 +284,33 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Open animated menu" })
       ).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-menu-basic")).toHaveClass(
+        "flex"
+      ),
+      Scene.expect(Scene.testId("docs-example-block-menu-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-basic-preview")
+      ).toHaveClass("pt-6"),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-basic-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-animated")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-animated-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-menu-animated-actions")
+      ).toHaveClass("mt-auto"),
       Scene.expect(
         Scene.role("link", { name: "Open standalone Menu Basic example" })
       ).toExist(),

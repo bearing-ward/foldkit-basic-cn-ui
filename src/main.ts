@@ -1086,6 +1086,60 @@ const codeBlock = (code: string): Html => {
   );
 };
 
+type DocsExampleBlockInput = Readonly<{
+  title: string;
+  testId: string;
+  preview: Html;
+  href: string;
+  linkText: string;
+}>;
+
+const docsExampleBlock = ({
+  title,
+  testId,
+  preview,
+  href,
+  linkText,
+}: DocsExampleBlockInput): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.Class(
+        "flex h-full min-h-56 flex-col rounded-lg border border-gray-200 bg-white p-4"
+      ),
+      h.DataAttribute("testid", testId),
+    ],
+    [
+      h.h3([h.Class("text-base font-semibold text-gray-950")], [title]),
+      h.div(
+        [
+          h.Class("flex min-h-20 items-start pt-6"),
+          h.DataAttribute("testid", `${testId}-preview`),
+        ],
+        [preview]
+      ),
+      h.div(
+        [
+          h.Class("mt-auto border-t border-gray-100 pt-4"),
+          h.DataAttribute("testid", `${testId}-actions`),
+        ],
+        [
+          h.a(
+            [
+              h.Href(href),
+              h.Class(
+                "inline-flex text-sm font-medium text-accent-700 hover:underline"
+              ),
+            ],
+            [linkText]
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const dialogBasicExamplePreview = (
   model: DialogBasicExample.Model,
   slotId: string
@@ -1277,58 +1331,26 @@ const menuDocsView = (model: Model): Html => {
           h.div(
             [h.Class("grid gap-4 lg:grid-cols-2")],
             [
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-base font-semibold text-gray-950")],
-                    ["Basic"]
-                  ),
-                  menuBasicExamplePreview(
-                    model.menuBasicExample,
-                    "menu-docs-basic-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(menuBasicExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Menu Basic example"]
-                  ),
-                ]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "space-y-3 rounded-lg border border-gray-200 bg-white p-4"
-                  ),
-                ],
-                [
-                  h.h3(
-                    [h.Class("text-base font-semibold text-gray-950")],
-                    ["Animated"]
-                  ),
-                  menuAnimatedExamplePreview(
-                    model.menuAnimatedExample,
-                    "menu-docs-animated-preview"
-                  ),
-                  h.a(
-                    [
-                      h.Href(menuAnimatedExampleRouter()),
-                      h.Class(
-                        "inline-flex text-sm font-medium text-accent-700 hover:underline"
-                      ),
-                    ],
-                    ["Open standalone Menu Animated example"]
-                  ),
-                ]
-              ),
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-menu-basic",
+                preview: menuBasicExamplePreview(
+                  model.menuBasicExample,
+                  "menu-docs-basic-preview"
+                ),
+                href: menuBasicExampleRouter(),
+                linkText: "Open standalone Menu Basic example",
+              }),
+              docsExampleBlock({
+                title: "Animated",
+                testId: "docs-example-block-menu-animated",
+                preview: menuAnimatedExamplePreview(
+                  model.menuAnimatedExample,
+                  "menu-docs-animated-preview"
+                ),
+                href: menuAnimatedExampleRouter(),
+                linkText: "Open standalone Menu Animated example",
+              }),
             ]
           ),
         ]
