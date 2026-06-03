@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-disabled",
+  "type": "registry:example",
+  "title": "Button Disabled",
+  "description": "A runnable Foldkit example showing disabled Button styling and native disabled semantics.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "registry/default/examples/button-disabled/main.ts",
+      "target": "src/examples/button-disabled/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Button from \"../../ui/button\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedDisabledButton = m(\"ClickedDisabledButton\");\n\nexport const Message = S.Union([ClickedDisabledButton]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedDisabledButton: () => [model, []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-2\")],\n    [\n      Button.view<Message>({\n        isDisabled: true,\n        onClick: ClickedDisabledButton(),\n        toView: (attributes) =>\n          h.button(\n            [...attributes.button, h.Class(Button.buttonClassName)],\n            [\"Disabled\"]\n          ),\n      }),\n      h.span(\n        [h.Class(\"text-sm text-gray-600\")],\n        [\"Disabled buttons keep native disabled semantics.\"]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/button-disabled/button-disabled.scene.test.ts",
+      "target": "src/examples/button-disabled/button-disabled.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ButtonDisabledExample from \"./main\";\n\ndescribe(\"Button Disabled example\", () => {\n  test(\"renders disabled button state\", () => {\n    Scene.scene(\n      {\n        update: ButtonDisabledExample.update,\n        view: ButtonDisabledExample.view,\n      },\n      Scene.with(ButtonDisabledExample.init()[0]),\n      Scene.expect(Scene.role(\"button\", { name: \"Disabled\" })).toBeDisabled(),\n      Scene.expect(\n        Scene.text(\"Disabled buttons keep native disabled semantics.\")\n      ).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Button",
+      "example": "disabled"
+    }
+  }
+}

@@ -3,6 +3,8 @@ import { Calendar, Story, Ui } from "foldkit";
 import { fromString } from "foldkit/url";
 import { describe, expect, test } from "vitest";
 
+import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
+import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -25,6 +27,8 @@ import { GotMobileMenuDialogMessage } from "./ui/message";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [buttonBasicExample] = ButtonBasicExample.init();
+const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
@@ -44,6 +48,8 @@ const [selectDisabledExample] = SelectDisabledExample.init();
 const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
+  buttonBasicExample,
+  buttonDisabledExample,
   comboboxBasicExample,
   comboboxMultiExample,
   dialogBasicExample,
@@ -89,6 +95,55 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("Button");
+        })
+      );
+    });
+
+    test("/docs/components/button resolves to ButtonDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/button"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonDocs");
+        })
+      );
+    });
+
+    test("/docs/components/button/examples/basic resolves to ButtonBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/button/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/button/examples/disabled resolves to ButtonDisabledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/button/examples/disabled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonDisabledExample");
         })
       );
     });

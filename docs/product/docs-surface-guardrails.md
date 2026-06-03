@@ -77,3 +77,8 @@ Current enforced examples:
 - `docs-example-block-combobox-basic-actions`
 - `docs-example-block-combobox-multi`
 - `docs-example-block-combobox-multi-actions`
+- `docs-example-block-button-basic`
+- `docs-example-block-button-basic-preview`
+- `docs-example-block-button-basic-actions`
+- `docs-example-block-button-disabled`
+- `docs-example-block-button-disabled-actions`

@@ -626,5 +626,92 @@
         "example": "multi"
       }
     }
+  },
+  {
+    "name": "button",
+    "type": "registry:ui",
+    "title": "Button",
+    "description": "A Foldkit Button wrapper for native button controls with typed click messages, disabled state, type/autofocus support, and reusable view classes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/button/index.ts",
+        "target": "src/ui/button/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/button/view.ts",
+        "target": "src/ui/button/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/button/button.scene.test.ts",
+        "target": "src/ui/button/button.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "primitive": "Ui.Button",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "button-basic",
+    "type": "registry:example",
+    "title": "Button Basic",
+    "description": "A runnable Foldkit example showing a typed Button click message with parent-owned feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/default/examples/button-basic/main.ts",
+        "target": "src/examples/button-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/button-basic/button-basic.scene.test.ts",
+        "target": "src/examples/button-basic/button-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "basic"
+      }
+    }
+  },
+  {
+    "name": "button-disabled",
+    "type": "registry:example",
+    "title": "Button Disabled",
+    "description": "A runnable Foldkit example showing disabled Button styling and native disabled semantics.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/default/examples/button-disabled/main.ts",
+        "target": "src/examples/button-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/button-disabled/button-disabled.scene.test.ts",
+        "target": "src/examples/button-disabled/button-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "disabled"
+      }
+    }
   }
 ]

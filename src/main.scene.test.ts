@@ -1,6 +1,8 @@
 import { Calendar, Scene } from "foldkit";
 import { describe, test } from "vitest";
 
+import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
+import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -19,6 +21,9 @@ import * as SelectDisabledExample from "../registry/default/examples/select-disa
 import * as Combobox from "../registry/default/ui/combobox";
 import {
   AnimationRoute,
+  ButtonBasicExampleRoute,
+  ButtonDisabledExampleRoute,
+  ButtonDocsRoute,
   ButtonRoute,
   CheckboxRoute,
   ComboboxBasicExampleRoute,
@@ -61,6 +66,8 @@ import { uiInit } from "./ui/init";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [buttonBasicExample] = ButtonBasicExample.init();
+const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
@@ -80,6 +87,8 @@ const [selectDisabledExample] = SelectDisabledExample.init();
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
+  buttonBasicExample,
+  buttonDisabledExample,
   comboboxBasicExample,
   comboboxMultiExample,
   dialogBasicExample,
@@ -125,6 +134,13 @@ describe("scene", () => {
       { update, view },
       Scene.with(homeModel),
       Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Button Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Button Basic Example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Button Disabled Example" })
+      ).toExist(),
       Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Combobox Docs" })).toExist(),
       Scene.expect(
@@ -192,6 +208,68 @@ describe("scene", () => {
           exact: false,
         })
       ).toExist()
+    );
+  });
+
+  test("the Button docs route renders docs and inline previews", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ButtonDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Button" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Click me" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled(),
+      Scene.expect(Scene.testId("docs-example-block-button-basic")).toHaveClass(
+        "flex-col"
+      ),
+      Scene.expect(
+        Scene.testId("docs-example-block-button-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-button-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.testId("docs-example-block-button-disabled")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-button-disabled-actions")
+      ).toHaveClass("border-t"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Button Basic example" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Button Disabled example" })
+      ).toExist()
+    );
+  });
+
+  test("the Button Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ButtonBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Button Basic" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Click me" })).toExist()
+    );
+  });
+
+  test("the Button Disabled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ButtonDisabledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Button Disabled" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled()
     );
   });
 

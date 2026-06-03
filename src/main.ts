@@ -10,6 +10,8 @@ import { literal, r, slash } from "foldkit/route";
 import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
+import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
+import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -37,6 +39,9 @@ import * as View from "./ui/view";
 
 export const HomeRoute = r("Home");
 export const ButtonRoute = r("Button");
+export const ButtonDocsRoute = r("ButtonDocs");
+export const ButtonBasicExampleRoute = r("ButtonBasicExample");
+export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
 export const CalendarRoute = r("Calendar");
 export const CheckboxRoute = r("Checkbox");
 export const ComboboxRoute = r("Combobox");
@@ -86,6 +91,9 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 const AppRoute = S.Union([
   HomeRoute,
   ButtonRoute,
+  ButtonDocsRoute,
+  ButtonBasicExampleRoute,
+  ButtonDisabledExampleRoute,
   CalendarRoute,
   CheckboxRoute,
   ComboboxRoute,
@@ -137,6 +145,38 @@ type AppRoute = typeof AppRoute.Type;
 
 const homeRouter = pipe(Route.root, Route.mapTo(HomeRoute));
 const buttonRouter = pipe(literal("button"), Route.mapTo(ButtonRoute));
+const buttonDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button")),
+  Route.mapTo(ButtonDocsRoute)
+);
+const buttonBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ButtonBasicExampleRoute)
+);
+const buttonDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(ButtonDisabledExampleRoute)
+);
+const buttonBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-basic")),
+  Route.mapTo(ButtonBasicExampleRoute)
+);
+const buttonDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-disabled")),
+  Route.mapTo(ButtonDisabledExampleRoute)
+);
 const calendarRouter = pipe(literal("calendar"), Route.mapTo(CalendarRoute));
 const checkboxRouter = pipe(literal("checkbox"), Route.mapTo(CheckboxRoute));
 const comboboxRouter = pipe(literal("combobox"), Route.mapTo(ComboboxRoute));
@@ -409,6 +449,11 @@ const virtualListRouter = pipe(
 
 const routeParser = Route.oneOf(
   buttonRouter,
+  buttonBasicExampleRouter,
+  buttonDisabledExampleRouter,
+  buttonBasicStandaloneExampleRouter,
+  buttonDisabledStandaloneExampleRouter,
+  buttonDocsRouter,
   calendarRouter,
   checkboxRouter,
   comboboxRouter,
@@ -478,6 +523,8 @@ const urlToAppRoute = Route.parseUrlWithFallback(routeParser, NotFoundRoute);
 export const Model = S.Struct({
   route: AppRoute,
   uiModel: UiModel,
+  buttonBasicExample: ButtonBasicExample.Model,
+  buttonDisabledExample: ButtonDisabledExample.Model,
   comboboxBasicExample: ComboboxBasicExample.Model,
   comboboxMultiExample: ComboboxMultiExample.Model,
   dialogBasicExample: DialogBasicExample.Model,
@@ -508,6 +555,15 @@ export const ChangedUrl = m("ChangedUrl", { url: Url });
 export const GotUiMessage = m("GotUiMessage", {
   message: UiMessage,
 });
+export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
+  message: ButtonBasicExample.Message,
+});
+export const GotButtonDisabledExampleMessage = m(
+  "GotButtonDisabledExampleMessage",
+  {
+    message: ButtonDisabledExample.Message,
+  }
+);
 export const GotComboboxBasicExampleMessage = m(
   "GotComboboxBasicExampleMessage",
   {
@@ -593,6 +649,8 @@ export const Message = S.Union([
   ClickedLink,
   ChangedUrl,
   GotUiMessage,
+  GotButtonBasicExampleMessage,
+  GotButtonDisabledExampleMessage,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
   GotDialogBasicExampleMessage,
@@ -643,6 +701,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   url: Url
 ) => {
   const [initialUiModel, uiCommands] = uiInit(flags.today);
+  const [buttonBasicExample, buttonBasicExampleCommands] =
+    ButtonBasicExample.init();
+  const [buttonDisabledExample, buttonDisabledExampleCommands] =
+    ButtonDisabledExample.init();
   const [comboboxBasicExample, comboboxBasicExampleCommands] =
     ComboboxBasicExample.init();
   const [comboboxMultiExample, comboboxMultiExampleCommands] =
@@ -677,6 +739,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     {
       route: urlToAppRoute(url),
       uiModel: initialUiModel,
+      buttonBasicExample,
+      buttonDisabledExample,
       comboboxBasicExample,
       comboboxMultiExample,
       dialogBasicExample,
@@ -696,6 +760,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     [
       ...Command.mapMessages(uiCommands, (message) =>
         GotUiMessage({ message })
+      ),
+      ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
+        GotButtonBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonDisabledExampleCommands, (message) =>
+        GotButtonDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(comboboxBasicExampleCommands, (message) =>
         GotComboboxBasicExampleMessage({ message })
@@ -808,6 +878,30 @@ export const update = (
           evo(model, { uiModel: () => nextUiModel }),
           Command.mapMessages(uiCommands, (message) =>
             GotUiMessage({ message })
+          ),
+        ];
+      },
+
+      GotButtonBasicExampleMessage: ({ message }) => {
+        const [buttonBasicExample, buttonBasicExampleCommands] =
+          ButtonBasicExample.update(model.buttonBasicExample, message);
+
+        return [
+          evo(model, { buttonBasicExample: () => buttonBasicExample }),
+          Command.mapMessages(buttonBasicExampleCommands, (message) =>
+            GotButtonBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotButtonDisabledExampleMessage: ({ message }) => {
+        const [buttonDisabledExample, buttonDisabledExampleCommands] =
+          ButtonDisabledExample.update(model.buttonDisabledExample, message);
+
+        return [
+          evo(model, { buttonDisabledExample: () => buttonDisabledExample }),
+          Command.mapMessages(buttonDisabledExampleCommands, (message) =>
+            GotButtonDisabledExampleMessage({ message })
           ),
         ];
       },
@@ -1037,6 +1131,17 @@ type NavItem = Readonly<{
 const NAV_ITEMS: readonly NavItem[] = [
   { label: "Animation", routeTag: "Animation", href: animationRouter() },
   { label: "Button", routeTag: "Button", href: buttonRouter() },
+  { label: "Button Docs", routeTag: "ButtonDocs", href: buttonDocsRouter() },
+  {
+    label: "Button Basic Example",
+    routeTag: "ButtonBasicExample",
+    href: buttonBasicExampleRouter(),
+  },
+  {
+    label: "Button Disabled Example",
+    routeTag: "ButtonDisabledExample",
+    href: buttonDisabledExampleRouter(),
+  },
   { label: "Calendar", routeTag: "Calendar", href: calendarRouter() },
   { label: "Checkbox", routeTag: "Checkbox", href: checkboxRouter() },
   { label: "Combobox", routeTag: "Combobox", href: comboboxRouter() },
@@ -1608,6 +1713,34 @@ const docsExampleBlock = ({
   );
 };
 
+const buttonBasicExamplePreview = (
+  model: ButtonBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ButtonBasicExample.view,
+    toParentMessage: (message) => GotButtonBasicExampleMessage({ message }),
+  });
+};
+
+const buttonDisabledExamplePreview = (
+  model: ButtonDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ButtonDisabledExample.view,
+    toParentMessage: (message) => GotButtonDisabledExampleMessage({ message }),
+  });
+};
+
 const dialogBasicExamplePreview = (
   model: DialogBasicExample.Model,
   slotId: string
@@ -1818,6 +1951,112 @@ const comboboxMultiExamplePreview = (
     view: ComboboxMultiExample.view,
     toParentMessage: (message) => GotComboboxMultiExampleMessage({ message }),
   });
+};
+
+const buttonDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Button"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Button slice built on the official Foldkit Ui.Button primitive. It keeps native button semantics while centralizing typed click messages, disabled state, button type, autofocus, and reusable class variants.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/button" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Button v1 documents the stateless action path: parent-owned click handling, native disabled semantics, and styled variants that preserve the Foldkit primitive attributes."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-button-basic",
+                preview: buttonBasicExamplePreview(
+                  model.buttonBasicExample,
+                  "button-docs-basic-preview"
+                ),
+                href: buttonBasicExampleRouter(),
+                linkText: "Open standalone Button Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-button-disabled",
+                preview: buttonDisabledExamplePreview(
+                  model.buttonDisabledExample,
+                  "button-docs-disabled-preview"
+                ),
+                href: buttonDisabledExampleRouter(),
+                linkText: "Open standalone Button Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/button.json\nbunx shadcn@latest add <registry-url>/button-basic.json\nbunx shadcn@latest add <registry-url>/button-disabled.json",
+        usageBody:
+          "Map the button click to a verb-first Foldkit message and render a native button with the supplied button attributes.",
+        usageCode: `import * as Button from "./ui/button";
+
+Button.view<Message>({
+  onClick: ClickedSave(),
+  toView: (attributes) =>
+    h.button(attributes.button, ["Save changes"]),
+});`,
+        integrationCode: `// Message
+ClickedSave();
+
+// Update
+ClickedSave: () => [
+  evo(model, { saveCount: (count) => count + 1 }),
+  [],
+];`,
+        apiItems: [
+          "view(config): renders a native button through the supplied toView callback.",
+          "ButtonAttributes: grouped button attributes that include click, disabled, type, and autofocus behavior.",
+          "ViewConfig: onClick, isDisabled, type, isAutofocus, and toView.",
+          "Class helpers: primary, secondary, and destructive button class names.",
+        ],
+        accessibilityItems: [
+          "The primitive applies native disabled state so disabled buttons do not dispatch clicks.",
+          "Consumers provide visible button text or an accessible name through their rendered button.",
+          "Button type can be set explicitly for form submit/reset behavior.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify click message dispatch and disabled state.",
+          "Example scene tests verify parent-owned click feedback and disabled explanatory copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
 };
 
 const comboboxDocsView = (model: Model): Html => {
@@ -3134,6 +3373,71 @@ ShowDialog({
   );
 };
 
+const buttonBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Button Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable button-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          buttonBasicExamplePreview(
+            model.buttonBasicExample,
+            "button-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const buttonDisabledExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Button Disabled"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable button-disabled registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          buttonDisabledExamplePreview(
+            model.buttonDisabledExample,
+            "button-disabled-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const dialogBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3647,6 +3951,9 @@ const contentView = (model: Model): Html => {
     M.tagsExhaustive({
       Home: homeView,
       Button: () => embedUi("ui-button", View.button),
+      ButtonDocs: () => buttonDocsView(model),
+      ButtonBasicExample: () => buttonBasicExampleRouteView(model),
+      ButtonDisabledExample: () => buttonDisabledExampleRouteView(model),
       Calendar: () => embedUi("ui-calendar", View.calendar),
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
       Combobox: () => embedUi("ui-combobox", View.combobox),
