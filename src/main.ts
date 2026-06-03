@@ -53,6 +53,8 @@ import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main"
 import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
+import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
+import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
 import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
@@ -152,6 +154,9 @@ export const TextareaDocsRoute = r("TextareaDocs");
 export const TextareaBasicExampleRoute = r("TextareaBasicExample");
 export const TextareaDisabledExampleRoute = r("TextareaDisabledExample");
 export const ToastRoute = r("Toast");
+export const ToastDocsRoute = r("ToastDocs");
+export const ToastBasicExampleRoute = r("ToastBasicExample");
+export const ToastVariantsExampleRoute = r("ToastVariantsExample");
 export const TooltipRoute = r("Tooltip");
 export const AnimationRoute = r("Animation");
 export const VirtualListRoute = r("VirtualList");
@@ -243,6 +248,9 @@ const AppRoute = S.Union([
   TextareaBasicExampleRoute,
   TextareaDisabledExampleRoute,
   ToastRoute,
+  ToastDocsRoute,
+  ToastBasicExampleRoute,
+  ToastVariantsExampleRoute,
   TooltipRoute,
   AnimationRoute,
   VirtualListRoute,
@@ -964,6 +972,38 @@ const textareaDisabledStandaloneExampleRouter = pipe(
   Route.mapTo(TextareaDisabledExampleRoute)
 );
 const toastRouter = pipe(literal("toast"), Route.mapTo(ToastRoute));
+const toastDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toast")),
+  Route.mapTo(ToastDocsRoute)
+);
+const toastBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toast")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ToastBasicExampleRoute)
+);
+const toastVariantsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toast")),
+  slash(literal("examples")),
+  slash(literal("variants")),
+  Route.mapTo(ToastVariantsExampleRoute)
+);
+const toastBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("toast-basic")),
+  Route.mapTo(ToastBasicExampleRoute)
+);
+const toastVariantsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("toast-variants")),
+  Route.mapTo(ToastVariantsExampleRoute)
+);
 const tooltipRouter = pipe(literal("tooltip"), Route.mapTo(TooltipRoute));
 const animationRouter = pipe(literal("animation"), Route.mapTo(AnimationRoute));
 const virtualListRouter = pipe(
@@ -1099,6 +1139,11 @@ const routeParser = Route.oneOf(
   textareaDisabledStandaloneExampleRouter,
   textareaDocsRouter,
   toastRouter,
+  toastBasicExampleRouter,
+  toastVariantsExampleRouter,
+  toastBasicStandaloneExampleRouter,
+  toastVariantsStandaloneExampleRouter,
+  toastDocsRouter,
   tooltipRouter,
   animationRouter,
   virtualListRouter,
@@ -1155,6 +1200,8 @@ export const Model = S.Struct({
   tabsManualExample: TabsManualExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
   textareaDisabledExample: TextareaDisabledExample.Model,
+  toastBasicExample: ToastBasicExample.Model,
+  toastVariantsExample: ToastVariantsExample.Model,
 });
 
 export type Model = typeof Model.Type;
@@ -1398,6 +1445,15 @@ export const GotTextareaDisabledExampleMessage = m(
     message: TextareaDisabledExample.Message,
   }
 );
+export const GotToastBasicExampleMessage = m("GotToastBasicExampleMessage", {
+  message: ToastBasicExample.Message,
+});
+export const GotToastVariantsExampleMessage = m(
+  "GotToastVariantsExampleMessage",
+  {
+    message: ToastVariantsExample.Message,
+  }
+);
 
 export const Message = S.Union([
   CompletedNavigateInternal,
@@ -1448,6 +1504,8 @@ export const Message = S.Union([
   GotTabsManualExampleMessage,
   GotTextareaBasicExampleMessage,
   GotTextareaDisabledExampleMessage,
+  GotToastBasicExampleMessage,
+  GotToastVariantsExampleMessage,
 ]);
 export type Message = typeof Message.Type;
 
@@ -1567,6 +1625,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     TextareaBasicExample.init();
   const [textareaDisabledExample, textareaDisabledExampleCommands] =
     TextareaDisabledExample.init();
+  const [toastBasicExample, toastBasicExampleCommands] =
+    ToastBasicExample.init();
+  const [toastVariantsExample, toastVariantsExampleCommands] =
+    ToastVariantsExample.init();
 
   return [
     {
@@ -1615,6 +1677,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       tabsManualExample,
       textareaBasicExample,
       textareaDisabledExample,
+      toastBasicExample,
+      toastVariantsExample,
     },
     [
       ...Command.mapMessages(uiCommands, (message) =>
@@ -1748,6 +1812,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(textareaDisabledExampleCommands, (message) =>
         GotTextareaDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(toastBasicExampleCommands, (message) =>
+        GotToastBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(toastVariantsExampleCommands, (message) =>
+        GotToastVariantsExampleMessage({ message })
       ),
     ],
   ];
@@ -2423,6 +2493,30 @@ export const update = (
           ),
         ];
       },
+
+      GotToastBasicExampleMessage: ({ message }) => {
+        const [toastBasicExample, toastBasicExampleCommands] =
+          ToastBasicExample.update(model.toastBasicExample, message);
+
+        return [
+          evo(model, { toastBasicExample: () => toastBasicExample }),
+          Command.mapMessages(toastBasicExampleCommands, (message) =>
+            GotToastBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotToastVariantsExampleMessage: ({ message }) => {
+        const [toastVariantsExample, toastVariantsExampleCommands] =
+          ToastVariantsExample.update(model.toastVariantsExample, message);
+
+        return [
+          evo(model, { toastVariantsExample: () => toastVariantsExample }),
+          Command.mapMessages(toastVariantsExampleCommands, (message) =>
+            GotToastVariantsExampleMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -2740,6 +2834,17 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: textareaDisabledExampleRouter(),
   },
   { label: "Toast", routeTag: "Toast", href: toastRouter() },
+  { label: "Toast Docs", routeTag: "ToastDocs", href: toastDocsRouter() },
+  {
+    label: "Toast Basic Example",
+    routeTag: "ToastBasicExample",
+    href: toastBasicExampleRouter(),
+  },
+  {
+    label: "Toast Variants Example",
+    routeTag: "ToastVariantsExample",
+    href: toastVariantsExampleRouter(),
+  },
   { label: "Tooltip", routeTag: "Tooltip", href: tooltipRouter() },
   {
     label: "Virtual List",
@@ -3808,6 +3913,34 @@ const textareaDisabledExamplePreview = (
     view: TextareaDisabledExample.view,
     toParentMessage: (message) =>
       GotTextareaDisabledExampleMessage({ message }),
+  });
+};
+
+const toastBasicExamplePreview = (
+  model: ToastBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ToastBasicExample.view,
+    toParentMessage: (message) => GotToastBasicExampleMessage({ message }),
+  });
+};
+
+const toastVariantsExamplePreview = (
+  model: ToastVariantsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ToastVariantsExample.view,
+    toParentMessage: (message) => GotToastVariantsExampleMessage({ message }),
   });
 };
 
@@ -5364,6 +5497,132 @@ UpdatedBio: ({ value }) => [
         coverageItems: [
           "Registry scene tests verify label, description, placeholder, rows, input messages, and disabled state.",
           "Example scene tests verify parent-owned character count feedback and disabled documentation copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const toastDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Toast"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Toast slice built on the official Foldkit Ui.Toast primitive. It binds a typed payload schema to the toast stack while preserving variant roles, animation lifecycle commands, hover pause behavior, sticky entries, and parent-visible dismissal OutMessages.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/toast" },
+        { label: "Examples", value: "basic, variants" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Toast v1 documents the typed notification stack path: payload-owned title and description rendering, status and alert variants, sticky entries, dismiss controls, and animation command resolution."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-toast-basic",
+                preview: toastBasicExamplePreview(
+                  model.toastBasicExample,
+                  "toast-docs-basic-preview"
+                ),
+                href: toastBasicExampleRouter(),
+                linkText: "Open standalone Toast Basic example",
+              }),
+              docsExampleBlock({
+                title: "Variants",
+                testId: "docs-example-block-toast-variants",
+                preview: toastVariantsExamplePreview(
+                  model.toastVariantsExample,
+                  "toast-docs-variants-preview"
+                ),
+                href: toastVariantsExampleRouter(),
+                linkText: "Open standalone Toast Variants example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/toast.json\nbunx shadcn@latest add <registry-url>/toast-basic.json\nbunx shadcn@latest add <registry-url>/toast-variants.json",
+        usageBody:
+          "Keep the toast model in the parent, call Toast.show from update events, delegate child messages through h.submodel, and render entries with the supplied dismiss handlers.",
+        usageCode: `import * as Toast from "./ui/toast";
+
+const toast = Toast.init({ id: "app-toast" });
+
+Toast.show(toast, {
+  variant: "Success",
+  payload: {
+    title: "Saved",
+    maybeDescription: Option.some("Changes are live."),
+  },
+});`,
+        integrationCode: `// Model
+toast: Toast.Model;
+
+// Message
+GotToastMessage({ message: Toast.Message });
+
+// Update
+const [toast, commands, maybeOutMessage] =
+  Toast.update(model.toast, message);
+
+// View
+h.submodel({
+  slotId: model.toast.id,
+  model: model.toast,
+  view: Toast.view,
+  viewInputs: {
+    position: "BottomRight",
+    entryToView: Toast.toastEntryView,
+  },
+  toParentMessage: (message) => GotToastMessage({ message }),
+});`,
+        apiItems: [
+          "ToastPayload: schema-backed title and optional description for registry examples.",
+          "init(config): creates an empty toast stack model with a default duration.",
+          "show(model, input): appends a typed entry and starts the animation/timer lifecycle.",
+          "dismiss and dismissAll: begin leave animation for one entry or all entries.",
+          "update(model, message): returns model, commands, and an optional DismissedToast OutMessage.",
+          "toastEntryView: reusable styled entry renderer that spreads EntryHandlers.dismiss onto the close button.",
+        ],
+        accessibilityItems: [
+          "The primitive renders a persistent aria-live region labelled Notifications.",
+          "Info and Success variants use status; Warning and Error variants use alert.",
+          "Each toast entry is aria-atomic so screen readers announce the full notification.",
+          "Dismiss controls have entry-specific accessible names.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify live region rendering, sticky show, dismiss control attributes, and animation command resolution.",
+          "Example scene tests verify basic show/dismiss flow and status/alert variant rendering.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -7538,6 +7797,71 @@ const textareaDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+const toastBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Toast Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable toast-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          toastBasicExamplePreview(
+            model.toastBasicExample,
+            "toast-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+const toastVariantsExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Toast Variants"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable toast-variants registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          toastVariantsExamplePreview(
+            model.toastVariantsExample,
+            "toast-variants-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const dialogBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -8342,6 +8666,9 @@ const contentView = (model: Model): Html => {
       TextareaBasicExample: () => textareaBasicExampleRouteView(model),
       TextareaDisabledExample: () => textareaDisabledExampleRouteView(model),
       Toast: () => embedUi("ui-toast", View.toast),
+      ToastDocs: () => toastDocsView(model),
+      ToastBasicExample: () => toastBasicExampleRouteView(model),
+      ToastVariantsExample: () => toastVariantsExampleRouteView(model),
       Tooltip: () => embedUi("ui-tooltip", View.tooltip),
       Animation: () => embedUi("ui-animation", View.animation),
       VirtualList: () => embedUi("ui-virtual-list", View.virtualList),

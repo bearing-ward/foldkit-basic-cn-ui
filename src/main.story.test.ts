@@ -46,6 +46,8 @@ import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main"
 import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
+import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
+import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
@@ -96,6 +98,8 @@ const [tabsBasicExample] = TabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
+const [toastBasicExample] = ToastBasicExample.init();
+const [toastVariantsExample] = ToastVariantsExample.init();
 
 const initialModel: Model = {
   route: HomeRoute(),
@@ -143,6 +147,8 @@ const initialModel: Model = {
   tabsManualExample,
   textareaBasicExample,
   textareaDisabledExample,
+  toastBasicExample,
+  toastVariantsExample,
 };
 
 const urlOrThrow = (raw: string) =>

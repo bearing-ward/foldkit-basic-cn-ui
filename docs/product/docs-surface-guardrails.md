@@ -142,6 +142,11 @@ Current enforced examples:
 - `docs-example-block-textarea-basic-actions`
 - `docs-example-block-textarea-disabled`
 - `docs-example-block-textarea-disabled-actions`
+- `docs-example-block-toast-basic`
+- `docs-example-block-toast-basic-preview`
+- `docs-example-block-toast-basic-actions`
+- `docs-example-block-toast-variants`
+- `docs-example-block-toast-variants-actions`
 - `docs-example-block-switch-basic`
 - `docs-example-block-switch-basic-preview`
 - `docs-example-block-switch-basic-actions`

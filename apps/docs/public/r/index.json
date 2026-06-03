@@ -980,6 +980,93 @@
       }
     },
     {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A Foldkit Toast wrapper for typed notification stacks with payload rendering, variants, sticky entries, dismiss controls, animation lifecycle commands, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/toast/index.ts",
+          "target": "src/ui/toast/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toast/view.ts",
+          "target": "src/ui/toast/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toast/toast.scene.test.ts",
+          "target": "src/ui/toast/toast.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toast",
+          "primitive": "Ui.Toast",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "toast-basic",
+      "type": "registry:example",
+      "title": "Toast Basic",
+      "description": "A runnable Foldkit example showing a sticky success toast with typed payload rendering and manual dismissal.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["toast"],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-basic/main.ts",
+          "target": "src/examples/toast-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toast-basic/toast-basic.scene.test.ts",
+          "target": "src/examples/toast-basic/toast-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toast",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "toast-variants",
+      "type": "registry:example",
+      "title": "Toast Variants",
+      "description": "A runnable Foldkit example showing Info, Success, Warning, and Error toast variants with status and alert semantics.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["toast"],
+      "files": [
+        {
+          "path": "registry/default/examples/toast-variants/main.ts",
+          "target": "src/examples/toast-variants/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toast-variants/toast-variants.scene.test.ts",
+          "target": "src/examples/toast-variants/toast-variants.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toast",
+          "example": "variants"
+        }
+      }
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
