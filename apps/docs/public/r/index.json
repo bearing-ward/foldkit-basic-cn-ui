@@ -2022,6 +2022,66 @@
           "example": "no-delay"
         }
       }
+    },
+    {
+      "name": "animation",
+      "type": "registry:ui",
+      "title": "Animation",
+      "description": "A Foldkit Animation wrapper with enter and leave lifecycle messages, frame advancement, settled-transition commands, size animation, and reusable view classes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/animation/index.ts",
+          "target": "src/ui/animation/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/animation/view.ts",
+          "target": "src/ui/animation/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/animation/animation.scene.test.ts",
+          "target": "src/ui/animation/animation.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Animation",
+          "primitive": "Ui.Animation",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "animation-basic",
+      "type": "registry:example",
+      "title": "Animation Basic",
+      "description": "A runnable Foldkit example showing toggle-driven Animation enter and leave lifecycle command resolution.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["animation"],
+      "files": [
+        {
+          "path": "registry/default/examples/animation-basic/main.ts",
+          "target": "src/examples/animation-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/animation-basic/animation-basic.scene.test.ts",
+          "target": "src/examples/animation-basic/animation-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Animation",
+          "example": "basic"
+        }
+      }
     }
   ]
 }

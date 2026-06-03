@@ -1,6 +1,7 @@
 import { Calendar, Scene } from "foldkit";
 import { describe, test } from "vitest";
 
+import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
@@ -51,6 +52,8 @@ import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-
 import * as Combobox from "../registry/default/ui/combobox";
 import {
   AnimationRoute,
+  AnimationBasicExampleRoute,
+  AnimationDocsRoute,
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
   ButtonDocsRoute,
@@ -138,6 +141,7 @@ import { uiInit } from "./ui/init";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [animationBasicExample] = AnimationBasicExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
@@ -189,6 +193,7 @@ const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
+  animationBasicExample,
   buttonBasicExample,
   buttonDisabledExample,
   calendarBasicExample,
@@ -265,6 +270,10 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(homeModel),
+      Scene.expect(Scene.role("link", { name: "Animation Docs" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Animation Basic Example" })
+      ).toExist(),
       Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Button Docs" })).toExist(),
       Scene.expect(
@@ -433,6 +442,48 @@ describe("scene", () => {
           exact: false,
         })
       ).toExist()
+    );
+  });
+
+  test("the Animation docs route renders docs and inline preview", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AnimationDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Animation" })).toExist(),
+      Scene.expect(Scene.text("Registry component")).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Examples" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Foldkit integration" })
+      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-animation-basic")
+      ).toHaveClass("flex-col"),
+      Scene.expect(
+        Scene.testId("docs-example-block-animation-basic-preview")
+      ).toHaveClass("min-h-20"),
+      Scene.expect(
+        Scene.testId("docs-example-block-animation-basic-actions")
+      ).toHaveClass("mt-auto"),
+      Scene.expect(
+        Scene.role("link", { name: "Open standalone Animation Basic example" })
+      ).toExist()
+    );
+  });
+
+  test("the Animation Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AnimationBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Animation Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Show content" })).toExist()
     );
   });
 

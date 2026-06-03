@@ -10,6 +10,7 @@ import { literal, r, slash } from "foldkit/route";
 import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
+import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
@@ -164,6 +165,8 @@ export const TooltipDocsRoute = r("TooltipDocs");
 export const TooltipBasicExampleRoute = r("TooltipBasicExample");
 export const TooltipNoDelayExampleRoute = r("TooltipNoDelayExample");
 export const AnimationRoute = r("Animation");
+export const AnimationDocsRoute = r("AnimationDocs");
+export const AnimationBasicExampleRoute = r("AnimationBasicExample");
 export const VirtualListRoute = r("VirtualList");
 export const NotFoundRoute = r("NotFound", { path: S.String });
 
@@ -261,6 +264,8 @@ const AppRoute = S.Union([
   TooltipBasicExampleRoute,
   TooltipNoDelayExampleRoute,
   AnimationRoute,
+  AnimationDocsRoute,
+  AnimationBasicExampleRoute,
   VirtualListRoute,
   NotFoundRoute,
 ]);
@@ -1046,6 +1051,25 @@ const tooltipNoDelayStandaloneExampleRouter = pipe(
   Route.mapTo(TooltipNoDelayExampleRoute)
 );
 const animationRouter = pipe(literal("animation"), Route.mapTo(AnimationRoute));
+const animationDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("animation")),
+  Route.mapTo(AnimationDocsRoute)
+);
+const animationBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("animation")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AnimationBasicExampleRoute)
+);
+const animationBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("animation-basic")),
+  Route.mapTo(AnimationBasicExampleRoute)
+);
 const virtualListRouter = pipe(
   literal("virtual-list"),
   Route.mapTo(VirtualListRoute)
@@ -1191,6 +1215,9 @@ const routeParser = Route.oneOf(
   tooltipNoDelayStandaloneExampleRouter,
   tooltipDocsRouter,
   animationRouter,
+  animationBasicExampleRouter,
+  animationBasicStandaloneExampleRouter,
+  animationDocsRouter,
   virtualListRouter,
   homeRouter
 );
@@ -1202,6 +1229,7 @@ const urlToAppRoute = Route.parseUrlWithFallback(routeParser, NotFoundRoute);
 export const Model = S.Struct({
   route: AppRoute,
   uiModel: UiModel,
+  animationBasicExample: AnimationBasicExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
   calendarBasicExample: CalendarBasicExample.Model,
@@ -1264,6 +1292,12 @@ export const ChangedUrl = m("ChangedUrl", { url: Url });
 export const GotUiMessage = m("GotUiMessage", {
   message: UiMessage,
 });
+export const GotAnimationBasicExampleMessage = m(
+  "GotAnimationBasicExampleMessage",
+  {
+    message: AnimationBasicExample.Message,
+  }
+);
 export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
   message: ButtonBasicExample.Message,
 });
@@ -1520,6 +1554,7 @@ export const Message = S.Union([
   ClickedLink,
   ChangedUrl,
   GotUiMessage,
+  GotAnimationBasicExampleMessage,
   GotButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
   GotCalendarBasicExampleMessage,
@@ -1602,6 +1637,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   url: Url
 ) => {
   const [initialUiModel, uiCommands] = uiInit(flags.today);
+  const [animationBasicExample, animationBasicExampleCommands] =
+    AnimationBasicExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
     ButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
@@ -1699,6 +1736,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     {
       route: urlToAppRoute(url),
       uiModel: initialUiModel,
+      animationBasicExample,
       buttonBasicExample,
       buttonDisabledExample,
       calendarBasicExample,
@@ -1750,6 +1788,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     [
       ...Command.mapMessages(uiCommands, (message) =>
         GotUiMessage({ message })
+      ),
+      ...Command.mapMessages(animationBasicExampleCommands, (message) =>
+        GotAnimationBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
         GotButtonBasicExampleMessage({ message })
@@ -1958,6 +1999,18 @@ export const update = (
           evo(model, { uiModel: () => nextUiModel }),
           Command.mapMessages(uiCommands, (message) =>
             GotUiMessage({ message })
+          ),
+        ];
+      },
+
+      GotAnimationBasicExampleMessage: ({ message }) => {
+        const [animationBasicExample, animationBasicExampleCommands] =
+          AnimationBasicExample.update(model.animationBasicExample, message);
+
+        return [
+          evo(model, { animationBasicExample: () => animationBasicExample }),
+          Command.mapMessages(animationBasicExampleCommands, (message) =>
+            GotAnimationBasicExampleMessage({ message })
           ),
         ];
       },
@@ -2627,6 +2680,16 @@ type NavItem = Readonly<{
 
 const NAV_ITEMS: readonly NavItem[] = [
   { label: "Animation", routeTag: "Animation", href: animationRouter() },
+  {
+    label: "Animation Docs",
+    routeTag: "AnimationDocs",
+    href: animationDocsRouter(),
+  },
+  {
+    label: "Animation Basic Example",
+    routeTag: "AnimationBasicExample",
+    href: animationBasicExampleRouter(),
+  },
   { label: "Button", routeTag: "Button", href: buttonRouter() },
   { label: "Button Docs", routeTag: "ButtonDocs", href: buttonDocsRouter() },
   {
@@ -3413,6 +3476,20 @@ const docsExampleBlock = ({
       ),
     ]
   );
+};
+
+const animationBasicExamplePreview = (
+  model: AnimationBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: AnimationBasicExample.view,
+    toParentMessage: (message) => GotAnimationBasicExampleMessage({ message }),
+  });
 };
 
 const buttonBasicExamplePreview = (
@@ -4456,6 +4533,117 @@ GotSwitchMessage: ({ message }) => {
         coverageItems: [
           "Registry scene tests verify label, description, checked toggling, and disabled state.",
           "Example scene tests verify parent-visible checked feedback and disabled documentation copy.",
+          "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const animationDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Animation"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A styled, installable Foldkit Animation slice built on the official Foldkit Ui.Animation primitive. It preserves enter and leave lifecycle messages, double-frame coordination, CSS transition settlement commands, size animation, and reusable view classes.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/animation" },
+        { label: "Examples", value: "basic" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Animation v1 documents headless lifecycle coordination for animated content: parent-owned visibility intent, child-owned transition state, enter frame advancement, leave settlement, and parent-visible transition completion."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-animation-basic",
+                preview: animationBasicExamplePreview(
+                  model.animationBasicExample,
+                  "animation-docs-basic-preview"
+                ),
+                href: animationBasicExampleRouter(),
+                linkText: "Open standalone Animation Basic example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/animation.json\nbunx shadcn@latest add <registry-url>/animation-basic.json",
+        usageBody:
+          "Keep the Animation child model in the parent, send Showed or Hid when visibility intent changes, delegate child messages through h.submodel, and schedule defaultLeaveCommand when StartedLeaveAnimating is emitted.",
+        usageCode: `import * as Animation from "./ui/animation";
+
+const [animation] = Animation.init({
+  id: "details-animation",
+});`,
+        integrationCode: `// Model
+animation: Animation.Model;
+
+// Message
+GotAnimationMessage({ message: Animation.Message });
+
+// Update
+const [animation, commands, maybeOutMessage] =
+  Animation.update(model.animation, message);
+
+// View
+h.submodel({
+  slotId: model.animation.id,
+  model: model.animation,
+  view: Animation.view,
+  viewInputs: {
+    animateSize: true,
+    className: Animation.animationContentClassName,
+    content,
+  },
+  toParentMessage: (message) => GotAnimationMessage({ message }),
+});`,
+        apiItems: [
+          "Model: schema-backed state containing id, isShowing, and transitionState.",
+          "init(config): creates an Animation model and returns the registry init tuple.",
+          "update(model, message): returns model, commands, and an optional StartedLeaveAnimating or TransitionedOut OutMessage.",
+          "RequestFrame: command emitted to advance enter or leave from start to animating state after paint.",
+          "WaitForAnimationSettled and defaultLeaveCommand: detect CSS transition or keyframe completion for leave cleanup.",
+          "ViewInputs: content, className, attributes, element, and animateSize options for custom composition.",
+        ],
+        accessibilityItems: [
+          "Animation is headless and does not assign roles; semantics belong to the animated content.",
+          "The wrapper keeps content mounted while enter or leave animation state settles.",
+          "Data attributes expose closed, enter, leave, and transition phases for CSS without imperative DOM mutation.",
+          "animateSize uses a grid wrapper so height transitions do not require measuring content in application code.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify Showed, Hid, RequestFrame, defaultLeaveCommand, and WaitForAnimationSettled resolution.",
+          "Example scene tests verify parent toggle flow, rendered content, and transition completion feedback.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
         ],
       }),
@@ -7341,6 +7529,40 @@ ShowDialog({
   );
 };
 
+const animationBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Animation Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable animation-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          animationBasicExamplePreview(
+            model.animationBasicExample,
+            "animation-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const buttonBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -9016,6 +9238,8 @@ const contentView = (model: Model): Html => {
       TooltipBasicExample: () => tooltipBasicExampleRouteView(model),
       TooltipNoDelayExample: () => tooltipNoDelayExampleRouteView(model),
       Animation: () => embedUi("ui-animation", View.animation),
+      AnimationDocs: () => animationDocsView(model),
+      AnimationBasicExample: () => animationBasicExampleRouteView(model),
       VirtualList: () => embedUi("ui-virtual-list", View.virtualList),
       NotFound: ({ path }) => notFoundView(path),
     })

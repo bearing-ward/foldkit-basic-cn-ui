@@ -3,6 +3,7 @@ import { Calendar, Story, Ui } from "foldkit";
 import { fromString } from "foldkit/url";
 import { describe, expect, test } from "vitest";
 
+import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
@@ -57,6 +58,7 @@ import { GotMobileMenuDialogMessage } from "./ui/message";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [animationBasicExample] = AnimationBasicExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
@@ -108,6 +110,7 @@ const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
 const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
+  animationBasicExample,
   buttonBasicExample,
   buttonDisabledExample,
   calendarBasicExample,
@@ -185,6 +188,53 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("Button");
+        })
+      );
+    });
+
+    test("/docs/components/animation resolves to AnimationDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/animation"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AnimationDocs");
+        })
+      );
+    });
+
+    test("/docs/components/animation/examples/basic resolves to AnimationBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/animation/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AnimationBasicExample");
+        })
+      );
+    });
+
+    test("/examples/animation-basic resolves to AnimationBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/animation-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AnimationBasicExample");
         })
       );
     });
