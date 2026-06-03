@@ -137,6 +137,9 @@ describe("scene", () => {
         Scene.role("heading", { name: "AlertDialog policy" })
       ).toExist(),
       Scene.expect(
+        Scene.role("heading", { name: "Command Dialog policy" })
+      ).toExist(),
+      Scene.expect(
         Scene.role("heading", { name: "Browser focus proof" })
       ).toExist(),
       Scene.expect(

@@ -430,6 +430,7 @@ Dialog v1 behavior:
 - Nested or stacked dialogs are unsupported in Dialog v1. Keep one active Dialog per flow; true modal stacking should be a future coordinator or separate component with its own state, focus, and escape-key tests.
 - RTL is inherited from `dir` on the document, page region, or preview wrapper. Dialog v1 should document `h.Dir("rtl")` composition and must not add direction to Dialog model state.
 - AlertDialog remains a separate future component. Do not add AlertDialog variants, model fields, messages, or registry dependencies to Dialog v1.
+- Command Dialog remains a separate future component. Do not add search, filtering, active option, or command/listbox keyboard state to Dialog v1.
 
 ## Styling Policy
 

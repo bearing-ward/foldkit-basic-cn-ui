@@ -1205,6 +1205,53 @@ const dialogDocsView = (model: Model): Html => {
             [
               h.h2(
                 [h.Class("text-xl font-semibold text-gray-950")],
+                ["Command Dialog policy"]
+              ),
+              h.p(
+                [h.Class("text-sm text-gray-600")],
+                [
+                  "Command Dialog is not a Dialog v1 example or variant. It needs its own component because search, filtering, active option state, and keyboard command navigation are separate behavior contracts.",
+                ]
+              ),
+            ]
+          ),
+          h.ul(
+            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+            [
+              h.li(
+                [],
+                [
+                  "Do not add command palette messages, list state, or search input state to Dialog v1.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "A future Command Dialog should compose modal presentation with command/listbox behavior under its own model and tests.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Dialog examples may show ordinary form or confirmation flows, but not searchable command selection.",
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [
+          h.Class(
+            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          ),
+        ],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
                 ["AlertDialog policy"]
               ),
               h.p(
@@ -1678,7 +1725,13 @@ ShowDialog({
                   "AlertDialog: separate future component policy documented in the AlertDialog policy section.",
                 ]
               ),
-              h.li([], ["Drawer and command dialog: deferred decision list."]),
+              h.li(
+                [],
+                [
+                  "Command Dialog: separate future component policy documented in the Command Dialog policy section.",
+                ]
+              ),
+              h.li([], ["Drawer: deferred decision list."]),
             ]
           ),
         ]
