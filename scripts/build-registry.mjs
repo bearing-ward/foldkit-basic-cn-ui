@@ -3,6 +3,15 @@ import path from "node:path";
 
 const rootDir = path.resolve(import.meta.dirname, "..");
 const itemsPath = path.join(rootDir, "registry/default/items.json");
+const configPath = path.join(rootDir, "registry/config.json");
+const componentsTemplatePath = path.join(
+  rootDir,
+  "registry/templates/components.json"
+);
+const componentsOutputPath = path.join(
+  rootDir,
+  "apps/docs/public/components.json"
+);
 const outputDir = path.join(rootDir, "apps/docs/public/r");
 const itemSchemaUrl = "https://ui.shadcn.com/schema/registry-item.json";
 const registrySchemaUrl = "https://ui.shadcn.com/schema/registry.json";
@@ -147,11 +156,12 @@ const writeOrCheck = async (filePath, content) => {
 };
 
 const sourceItems = await readJson(itemsPath);
+const registryConfig = await readJson(configPath);
 const items = await Promise.all(sourceItems.map(expandItem));
 const index = {
   $schema: registrySchemaUrl,
-  name: "foldkit-cn",
-  homepage: "https://github.com/binarytide/foldkit-basic-cn-ui",
+  name: registryConfig.name,
+  homepage: registryConfig.homepage,
   items: items.map((item) => ({
     name: item.name,
     type: item.type,
@@ -166,6 +176,15 @@ const index = {
 };
 
 await writeOrCheck(path.join(outputDir, "index.json"), stableJson(index));
+
+const componentsTemplate = await readFile(componentsTemplatePath, "utf-8");
+await writeOrCheck(
+  componentsOutputPath,
+  componentsTemplate.replaceAll(
+    "{{registryBaseUrl}}",
+    registryConfig.registryBaseUrl
+  )
+);
 
 for (const item of items) {
   await writeOrCheck(

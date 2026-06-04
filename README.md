@@ -1,15 +1,50 @@
-# My Foldkit App
+# Foldkit CN
 
-A Foldkit application built with Effect.
+Foldkit CN is a shadcn-style registry of styled, installable Foldkit component slices, examples, tests, and documentation. It packages source on top of Foldkit UI primitives so teams can copy components into a Foldkit app and keep ownership of the code.
 
-## Getting Started
+Foldkit CN is not the official Foldkit UI documentation. Foldkit UI is the headless component layer built into Foldkit; this repo provides styled registry items on top.
 
-```bash
-pnpm install
-pnpm dev
+## Public Registry
+
+The docs app serves the generated registry from:
+
+```text
+https://binarytide.github.io/foldkit-basic-cn-ui/r/{name}.json
 ```
 
-## Learn More
+Consumer `components.json` config is published at:
 
-- [Foldkit Documentation](https://github.com/foldkit/foldkit)
-- [Effect Documentation](https://effect.website)
+```text
+https://binarytide.github.io/foldkit-basic-cn-ui/components.json
+```
+
+Install a component directly:
+
+```bash
+bunx shadcn@latest add https://binarytide.github.io/foldkit-basic-cn-ui/r/dialog.json
+```
+
+Or copy `components.json` into a Foldkit app and install through the registry alias:
+
+```bash
+bunx shadcn@latest add @foldkit-cn/dialog
+```
+
+## Development
+
+```bash
+bun install
+bun run dev
+```
+
+## Verification
+
+```bash
+bun run typecheck
+bun run build:registry
+bun run check:registry
+bun run lint
+bun run test
+bun run build
+bun run test:e2e
+```

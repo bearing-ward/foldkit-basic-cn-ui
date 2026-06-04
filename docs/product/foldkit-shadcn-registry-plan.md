@@ -134,20 +134,20 @@ apps/docs/public/r/dialog-basic.json
 
 The docs app imports registry source directly. Generated JSON is for external consumers.
 
-The public registry should use GitHub Pages-compatible static URLs, with the concrete base URL kept configurable until the final owner, repo name, and host are settled:
+The public registry uses GitHub Pages-compatible static URLs. Keep the concrete base URL in `registry/config.json`:
 
 ```ts
 export const registryConfig = {
   name: "foldkit-cn",
-  homepage: "https://<host>",
-  registryBaseUrl: "https://<host>/r",
+  homepage: "https://binarytide.github.io/foldkit-basic-cn-ui",
+  registryBaseUrl: "https://binarytide.github.io/foldkit-basic-cn-ui/r",
 };
 ```
 
 The likely public URL shape is:
 
 ```text
-https://<github-owner>.github.io/<repo-name>/r/{name}.json
+https://binarytide.github.io/foldkit-basic-cn-ui/r/{name}.json
 ```
 
 The consumer config template should be maintained as source and published with the docs site:
