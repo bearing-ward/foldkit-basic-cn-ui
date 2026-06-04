@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "foldkit-cn",
-  "homepage": "https://binarytide.github.io/foldkit-basic-cn-ui",
+  "homepage": "https://bearing-ward.github.io/foldkit-basic-cn-ui",
   "items": [
     {
       "name": "dialog",

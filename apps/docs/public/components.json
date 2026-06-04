@@ -15,6 +15,6 @@
     "lib": "src/lib"
   },
   "registries": {
-    "@foldkit-cn": "https://binarytide.github.io/foldkit-basic-cn-ui/r/{name}.json"
+    "@foldkit-cn": "https://bearing-ward.github.io/foldkit-basic-cn-ui/r/{name}.json"
   }
 }

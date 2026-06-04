@@ -9,19 +9,19 @@ Foldkit CN is not the official Foldkit UI documentation. Foldkit UI is the headl
 The docs app serves the generated registry from:
 
 ```text
-https://binarytide.github.io/foldkit-basic-cn-ui/r/{name}.json
+https://bearing-ward.github.io/foldkit-basic-cn-ui/r/{name}.json
 ```
 
 Consumer `components.json` config is published at:
 
 ```text
-https://binarytide.github.io/foldkit-basic-cn-ui/components.json
+https://bearing-ward.github.io/foldkit-basic-cn-ui/components.json
 ```
 
 Install a component directly:
 
 ```bash
-bunx shadcn@latest add https://binarytide.github.io/foldkit-basic-cn-ui/r/dialog.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/dialog.json
 ```
 
 Or copy `components.json` into a Foldkit app and install through the registry alias:

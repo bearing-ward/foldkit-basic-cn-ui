@@ -3567,7 +3567,7 @@ const docsOverviewBlock = (body: string): Html => {
 };
 
 const publicRegistryBaseUrl =
-  "https://binarytide.github.io/foldkit-basic-cn-ui/r";
+  "https://bearing-ward.github.io/foldkit-basic-cn-ui/r";
 
 const docsInstallBlock = (commands: string): Html =>
   docsSection("Installation", [
