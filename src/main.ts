@@ -11,6 +11,7 @@ import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
@@ -71,6 +72,9 @@ import * as View from "./ui/view";
 // ROUTE
 
 export const HomeRoute = r("Home");
+export const BadgeRoute = r("Badge");
+export const BadgeDocsRoute = r("BadgeDocs");
+export const BadgeBasicExampleRoute = r("BadgeBasicExample");
 export const ButtonRoute = r("Button");
 export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
@@ -177,6 +181,9 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 
 const AppRoute = S.Union([
   HomeRoute,
+  BadgeRoute,
+  BadgeDocsRoute,
+  BadgeBasicExampleRoute,
   ButtonRoute,
   ButtonDocsRoute,
   ButtonBasicExampleRoute,
@@ -281,6 +288,26 @@ const AppRoute = S.Union([
 type AppRoute = typeof AppRoute.Type;
 
 const homeRouter = pipe(Route.root, Route.mapTo(HomeRoute));
+const badgeRouter = pipe(literal("badge"), Route.mapTo(BadgeRoute));
+const badgeDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  Route.mapTo(BadgeDocsRoute)
+);
+const badgeBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BadgeBasicExampleRoute)
+);
+const badgeBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("badge-basic")),
+  Route.mapTo(BadgeBasicExampleRoute)
+);
 const buttonRouter = pipe(literal("button"), Route.mapTo(ButtonRoute));
 const buttonDocsRouter = pipe(
   literal("docs"),
@@ -1116,6 +1143,10 @@ const virtualListVariableStandaloneExampleRouter = pipe(
 );
 
 const routeParser = Route.oneOf(
+  badgeRouter,
+  badgeBasicExampleRouter,
+  badgeBasicStandaloneExampleRouter,
+  badgeDocsRouter,
   buttonRouter,
   buttonBasicExampleRouter,
   buttonDisabledExampleRouter,
@@ -1310,6 +1341,7 @@ export const Model = S.Struct({
   route: AppRoute,
   uiModel: UiModel,
   animationBasicExample: AnimationBasicExample.Model,
+  badgeBasicExample: BadgeBasicExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
   calendarBasicExample: CalendarBasicExample.Model,
@@ -1380,6 +1412,9 @@ export const GotAnimationBasicExampleMessage = m(
     message: AnimationBasicExample.Message,
   }
 );
+export const GotBadgeBasicExampleMessage = m("GotBadgeBasicExampleMessage", {
+  message: BadgeBasicExample.Message,
+});
 export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
   message: ButtonBasicExample.Message,
 });
@@ -1649,6 +1684,7 @@ export const Message = S.Union([
   ChangedUrl,
   GotUiMessage,
   GotAnimationBasicExampleMessage,
+  GotBadgeBasicExampleMessage,
   GotButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
   GotCalendarBasicExampleMessage,
@@ -1735,6 +1771,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [initialUiModel, uiCommands] = uiInit(flags.today);
   const [animationBasicExample, animationBasicExampleCommands] =
     AnimationBasicExample.init();
+  const [badgeBasicExample, badgeBasicExampleCommands] =
+    BadgeBasicExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
     ButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
@@ -1837,6 +1875,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
       animationBasicExample,
+      badgeBasicExample,
       buttonBasicExample,
       buttonDisabledExample,
       calendarBasicExample,
@@ -1893,6 +1932,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(animationBasicExampleCommands, (message) =>
         GotAnimationBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(badgeBasicExampleCommands, (message) =>
+        GotBadgeBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
         GotButtonBasicExampleMessage({ message })
@@ -2119,6 +2161,18 @@ export const update = (
           evo(model, { animationBasicExample: () => animationBasicExample }),
           Command.mapMessages(animationBasicExampleCommands, (message) =>
             GotAnimationBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBadgeBasicExampleMessage: ({ message }) => {
+        const [badgeBasicExample, badgeBasicExampleCommands] =
+          BadgeBasicExample.update(model.badgeBasicExample, message);
+
+        return [
+          evo(model, { badgeBasicExample: () => badgeBasicExample }),
+          Command.mapMessages(badgeBasicExampleCommands, (message) =>
+            GotBadgeBasicExampleMessage({ message })
           ),
         ];
       },
@@ -2832,6 +2886,13 @@ const NAV_ITEMS: readonly NavItem[] = [
     routeTag: "AnimationBasicExample",
     href: animationBasicExampleRouter(),
   },
+  { label: "Badge", routeTag: "Badge", href: badgeRouter() },
+  { label: "Badge Docs", routeTag: "BadgeDocs", href: badgeDocsRouter() },
+  {
+    label: "Badge Basic Example",
+    routeTag: "BadgeBasicExample",
+    href: badgeBasicExampleRouter(),
+  },
   { label: "Button", routeTag: "Button", href: buttonRouter() },
   { label: "Button Docs", routeTag: "ButtonDocs", href: buttonDocsRouter() },
   {
@@ -3190,6 +3251,7 @@ const publicPath = (path: string): string =>
 
 const EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF: Record<string, string> = {
   [animationBasicExampleRouter()]: "sources/animation-basic.txt",
+  [badgeBasicExampleRouter()]: "sources/badge-basic.txt",
   [buttonBasicExampleRouter()]: "sources/button-basic.txt",
   [buttonDisabledExampleRouter()]: "sources/button-disabled.txt",
   [calendarBasicExampleRouter()]: "sources/calendar-basic.txt",
@@ -3858,6 +3920,20 @@ const animationBasicExamplePreview = (
     model,
     view: AnimationBasicExample.view,
     toParentMessage: (message) => GotAnimationBasicExampleMessage({ message }),
+  });
+};
+
+const badgeBasicExamplePreview = (
+  model: BadgeBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BadgeBasicExample.view,
+    toParentMessage: (message) => GotBadgeBasicExampleMessage({ message }),
   });
 };
 
@@ -5186,6 +5262,105 @@ Subscription.lift({
           "Example scene tests verify fixed and variable jump-to-middle flows through the real scroll command.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
           "Browser probes verify rendered docs previews and standalone routes after registry generation.",
+        ],
+      }),
+    ]
+  );
+};
+
+const badgeDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Badge"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A small installable status label for shadcn-style presentation surfaces. It keeps behavior parent-owned while centralizing badge variants and class helpers for Foldkit views.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/badge" },
+        { label: "Examples", value: "basic" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Badge v1 documents the first non-primitive registry slice: stateless variant styling, parent-owned state changes, and installable presentation helpers that can be used inside any Foldkit view."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-badge-basic",
+                preview: badgeBasicExamplePreview(
+                  model.badgeBasicExample,
+                  "badge-docs-basic-preview"
+                ),
+                href: badgeBasicExampleRouter(),
+                linkText: "Open standalone Badge Basic example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/badge.json\nbunx shadcn@latest add <registry-url>/badge-basic.json",
+        usageBody:
+          "Render Badge.view wherever a compact status label is needed. The parent model owns any status changes and passes the label plus optional variant into the view helper.",
+        usageCode: `import * as Badge from "./ui/badge";
+
+Badge.view<Message>({
+  label: "Published",
+  variant: "Default",
+});`,
+        integrationCode: `// Model
+status: S.Literal("Draft", "Published");
+
+// Message
+ClickedToggleStatus();
+
+// Update
+ClickedToggleStatus: () => [
+  evo(model, {
+    status: (status) => (status === "Draft" ? "Published" : "Draft"),
+  }),
+  [],
+];`,
+        apiItems: [
+          "view(config): renders a span badge with a label and optional variant.",
+          "ViewConfig: label, variant, and className.",
+          'BadgeVariant: "Default", "Secondary", "Destructive", or "Outline".',
+          "Class helpers: default, secondary, destructive, outline, and badgeClassNameByVariant.",
+        ],
+        accessibilityItems: [
+          "Badges are presentational text, so the visible label must carry the useful status.",
+          "Do not use color alone to communicate critical state; pair the variant with clear text.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify all documented variants render.",
+          "Example scene tests verify the parent-owned status toggle and variant copy.",
+          "Docs e2e tests verify the shared page sections, example block layout, and source viewer readability.",
         ],
       }),
     ]
@@ -8177,6 +8352,37 @@ const virtualListVariableExampleRouteView = (model: Model): Html => {
   );
 };
 
+const badgeBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Badge Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable badge-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          badgeBasicExamplePreview(
+            model.badgeBasicExample,
+            "badge-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const buttonBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -9756,6 +9962,9 @@ const contentView = (model: Model): Html => {
   return M.value(model.route).pipe(
     M.tagsExhaustive({
       Home: homeView,
+      Badge: () => embedUi("ui-badge", View.badge),
+      BadgeDocs: () => badgeDocsView(model),
+      BadgeBasicExample: () => badgeBasicExampleRouteView(model),
       Button: () => embedUi("ui-button", View.button),
       ButtonDocs: () => buttonDocsView(model),
       ButtonBasicExample: () => buttonBasicExampleRouteView(model),

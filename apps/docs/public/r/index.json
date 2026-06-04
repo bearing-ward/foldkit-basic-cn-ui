@@ -632,6 +632,66 @@
       }
     },
     {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small Foldkit presentation helper for shadcn-style status labels with reusable variants and parent-owned behavior.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/badge/index.ts",
+          "target": "src/ui/badge/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/badge/view.ts",
+          "target": "src/ui/badge/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/badge/badge.scene.test.ts",
+          "target": "src/ui/badge/badge.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Badge",
+          "source": "shadcn",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "badge-basic",
+      "type": "registry:example",
+      "title": "Badge Basic",
+      "description": "A runnable Foldkit example showing badge variants with parent-owned status changes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["badge"],
+      "files": [
+        {
+          "path": "registry/default/examples/badge-basic/main.ts",
+          "target": "src/examples/badge-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/badge-basic/badge-basic.scene.test.ts",
+          "target": "src/examples/badge-basic/badge-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Badge",
+          "example": "basic"
+        }
+      }
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",

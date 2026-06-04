@@ -4,6 +4,7 @@ import { fromString } from "foldkit/url";
 import { describe, expect, test } from "vitest";
 
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
@@ -61,6 +62,7 @@ import { GotMobileMenuDialogMessage } from "./ui/message";
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [animationBasicExample] = AnimationBasicExample.init();
+const [badgeBasicExample] = BadgeBasicExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
@@ -115,6 +117,7 @@ const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
   animationBasicExample,
+  badgeBasicExample,
   buttonBasicExample,
   buttonDisabledExample,
   calendarBasicExample,

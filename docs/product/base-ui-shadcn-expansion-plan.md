@@ -13,6 +13,7 @@ JSON, and public install smoke compatibility.
 Current registry UI items:
 
 - animation
+- badge
 - button
 - calendar
 - checkbox
@@ -62,7 +63,6 @@ Gaps compared with the current shadcn components page:
 - alert-dialog
 - aspect-ratio
 - avatar
-- badge
 - breadcrumb
 - button-group
 - card
@@ -178,3 +178,10 @@ Reasoning:
   adding larger interactive Base UI parity items.
 - Avatar was already visually present in earlier docs review context, so it is a
   natural bridge into richer shadcn-style components.
+
+## Progress
+
+- Completed `badge` as the first shadcn-style non-primitive registry item:
+  installable UI slice, basic example, docs page, source snapshot, generated
+  registry JSON, scene coverage, and docs e2e coverage.
+- Next recommended item: `avatar`.

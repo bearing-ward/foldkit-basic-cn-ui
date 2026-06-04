@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "A small Foldkit presentation helper for shadcn-style status labels with reusable variants and parent-owned behavior.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/badge/index.ts",
+      "target": "src/ui/badge/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { badgeClassNameByVariant } from \"./view\";\nimport type { BadgeVariant } from \"./view\";\n\nexport type { BadgeVariant };\n\nexport {\n  badgeClassName,\n  badgeClassNameByVariant,\n  destructiveBadgeClassName,\n  outlineBadgeClassName,\n  secondaryBadgeClassName,\n} from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  label: string;\n  variant?: BadgeVariant;\n  className?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  label,\n  variant = \"Default\",\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [badgeClassNameByVariant(variant), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(classNames)], [label]);\n};\n"
+    },
+    {
+      "path": "registry/default/ui/badge/view.ts",
+      "target": "src/ui/badge/view.ts",
+      "type": "registry:ui",
+      "content": "export type BadgeVariant = \"Default\" | \"Secondary\" | \"Destructive\" | \"Outline\";\n\nexport const badgeClassName =\n  \"inline-flex items-center rounded-md bg-accent-600 px-2 py-1 text-xs font-medium text-white\";\n\nexport const secondaryBadgeClassName =\n  \"inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700\";\n\nexport const destructiveBadgeClassName =\n  \"inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-xs font-medium text-white\";\n\nexport const outlineBadgeClassName =\n  \"inline-flex items-center rounded-md border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700\";\n\nexport const badgeClassNameByVariant = (\n  variant: BadgeVariant = \"Default\"\n): string => {\n  if (variant === \"Secondary\") {\n    return secondaryBadgeClassName;\n  }\n\n  if (variant === \"Destructive\") {\n    return destructiveBadgeClassName;\n  }\n\n  if (variant === \"Outline\") {\n    return outlineBadgeClassName;\n  }\n\n  return badgeClassName;\n};\n"
+    },
+    {
+      "path": "registry/default/ui/badge/badge.scene.test.ts",
+      "target": "src/ui/badge/badge.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Badge from \"./index\";\n\nconst view = (): Html => {\n  const h = html<never>();\n\n  return h.div(\n    [h.Class(\"flex flex-wrap gap-2\")],\n    [\n      Badge.view({ label: \"Default\" }),\n      Badge.view({ label: \"Secondary\", variant: \"Secondary\" }),\n      Badge.view({ label: \"Destructive\", variant: \"Destructive\" }),\n      Badge.view({ label: \"Outline\", variant: \"Outline\" }),\n    ]\n  );\n};\n\ndescribe(\"Badge registry view\", () => {\n  test(\"renders every documented variant\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.text(\"Default\")).toExist(),\n      Scene.expect(Scene.text(\"Secondary\")).toExist(),\n      Scene.expect(Scene.text(\"Destructive\")).toExist(),\n      Scene.expect(Scene.text(\"Outline\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Badge",
+      "source": "shadcn",
+      "stateful": false
+    }
+  }
+}
