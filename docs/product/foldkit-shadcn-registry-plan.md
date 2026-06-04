@@ -157,6 +157,8 @@ registry/templates/components.json
 apps/docs/public/components.json
 ```
 
+GitHub Pages deployment is owned by `.github/workflows/pages.yml`. The workflow runs the registry checks before building the docs app with `GITHUB_PAGES=true`, which makes Vite emit assets under `/foldkit-basic-cn-ui/`.
+
 Recommended starter config:
 
 ```json

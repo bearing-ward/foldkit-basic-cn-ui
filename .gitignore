@@ -5,6 +5,7 @@ repos/
 # Build outputs
 dist/
 build/
+test-results/
 
 # Environment variables
 .env

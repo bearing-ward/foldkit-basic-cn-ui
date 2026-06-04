@@ -37,6 +37,13 @@ bun install
 bun run dev
 ```
 
+## Deployment
+
+The `Deploy docs and registry` GitHub Actions workflow builds the registry,
+builds the docs app with the GitHub Pages asset base, and publishes `dist`.
+Update `registry/config.json` before changing repository ownership, repository
+name, or the public registry host.
+
 ## Verification
 
 ```bash

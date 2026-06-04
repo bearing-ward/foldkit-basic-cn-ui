@@ -105,3 +105,126 @@ test("Menu docs examples open, expose items, and dismiss", async ({ page }) => {
   await page.getByRole("menuitem", { name: "Delete" }).click();
   await expect(page.getByRole("menu")).toBeHidden();
 });
+
+test("Select and Listbox docs examples update selected values", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/select");
+
+  const selectBasic = page.getByTestId("docs-example-block-select-basic");
+  const region = selectBasic.locator("#region-select");
+
+  await expect(region).toHaveValue("na");
+  await region.selectOption("apac");
+  await expect(region).toHaveValue("apac");
+  await expect(selectBasic.getByText("Selected region: apac")).toBeVisible();
+
+  const selectDisabled = page.getByTestId("docs-example-block-select-disabled");
+
+  await expect(selectDisabled.locator("#plan-select")).toBeDisabled();
+  await expect(selectDisabled.getByText("Current plan: Team")).toBeVisible();
+
+  await page.goto("/docs/components/listbox");
+
+  const listboxBasic = page.getByTestId("docs-example-block-listbox-basic");
+
+  await listboxBasic.getByRole("button", { name: "Choose person" }).click();
+  await expect(page.getByRole("listbox")).toBeVisible();
+  await page.getByRole("option", { name: "Lindsay Funke" }).click();
+  await expect(
+    listboxBasic.getByRole("button", { name: "Lindsay Funke" })
+  ).toBeVisible();
+
+  const listboxAnimated = page.getByTestId(
+    "docs-example-block-listbox-animated"
+  );
+
+  await listboxAnimated
+    .getByRole("button", { name: "Choose animated person" })
+    .click();
+  await expect(page.getByRole("listbox")).toBeVisible();
+  await page.getByRole("option", { name: "Gob Bluth" }).click();
+  await expect(
+    listboxAnimated.getByRole("button", { name: "Gob Bluth" })
+  ).toBeVisible();
+});
+
+test("Slider, Tabs, and Disclosure docs examples respond to input", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/slider");
+
+  const sliderBasic = page.getByTestId("docs-example-block-slider-basic");
+  const rating = sliderBasic.getByRole("slider");
+
+  await expect(rating).toHaveAttribute("aria-valuenow", "4");
+  await rating.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(rating).toHaveAttribute("aria-valuenow", "5");
+  await expect(sliderBasic.getByText("Rating: 5 of 10")).toBeVisible();
+
+  await page.goto("/docs/components/tabs");
+
+  const tabsBasic = page.getByTestId("docs-example-block-tabs-basic");
+  const usageTab = tabsBasic.getByRole("tab", { name: "Usage" });
+
+  await usageTab.click();
+  await expect(usageTab).toHaveAttribute("aria-selected", "true");
+  await expect(
+    tabsBasic.getByText(
+      "Use keyboard navigation or click a tab to change panels."
+    )
+  ).toBeVisible();
+  await expect(tabsBasic.getByText("Selected tab: Usage")).toBeVisible();
+
+  await page.goto("/docs/components/disclosure");
+
+  const disclosureBasic = page.getByTestId(
+    "docs-example-block-disclosure-basic"
+  );
+  const disclosureButton = disclosureBasic.getByRole("button", {
+    name: "What is Foldkit?",
+  });
+
+  await expect(disclosureButton).toHaveAttribute("aria-expanded", "false");
+  await disclosureButton.click();
+  await expect(disclosureButton).toHaveAttribute("aria-expanded", "true");
+  await expect(
+    disclosureBasic.getByText(
+      "Foldkit is an Elm-inspired UI framework powered by Effect."
+    )
+  ).toBeVisible();
+  await expect(disclosureBasic.getByText("Disclosure is open.")).toBeVisible();
+
+  const disclosureDisabled = page.getByTestId(
+    "docs-example-block-disclosure-disabled"
+  );
+  const disabledButton = disclosureDisabled.getByRole("button", {
+    name: "Locked disclosure",
+  });
+
+  await expect(disabledButton).toHaveAttribute("aria-disabled", "true");
+  await expect(disabledButton).toHaveAttribute("aria-expanded", "false");
+  await expect(
+    disclosureDisabled.getByText("Disclosure is locked.")
+  ).toBeVisible();
+});
+
+test("Toast docs variants show and dismiss notifications", async ({ page }) => {
+  await page.goto("/docs/components/toast");
+
+  const variants = page.getByTestId("docs-example-block-toast-variants");
+
+  await variants.getByRole("button", { name: "Show variants" }).click();
+  await expect(variants.getByText("Shown notifications: 4")).toBeVisible();
+  await expect(variants.getByText("Queued")).toBeVisible();
+  await expect(variants.getByText("Published")).toBeVisible();
+  await expect(variants.getByText("Review needed")).toBeVisible();
+  await expect(variants.getByText("Failed")).toBeVisible();
+
+  await variants.getByRole("button", { name: "Dismiss all" }).click();
+  await expect(variants.getByText("Queued")).toBeHidden();
+  await expect(variants.getByText("Published")).toBeHidden();
+  await expect(variants.getByText("Review needed")).toBeHidden();
+  await expect(variants.getByText("Failed")).toBeHidden();
+});
