@@ -220,32 +220,32 @@ import * as Dialog from "./ui/dialog";
 
 ## Component Slice Status
 
-| Component   | Status          | Notes                                                                                                                                           |
-| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Animation   | Active v1 slice | Registry wrapper, basic example, docs page, route coverage, generated registry output, and coverage matrix are in place.                        |
-| Button      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Calendar    | Active v1 slice | Registry wrapper, basic example, bounds example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
-| Checkbox    | Active v1 slice | Registry wrapper, basic example, indeterminate example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
-| DatePicker  | Active v1 slice | Registry wrapper, basic example, bounds example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
-| Dialog      | Frozen for v1   | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.          |
-| Disclosure  | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| DragAndDrop | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Fieldset    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| FileDrop    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Input       | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Popover     | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
-| Menu        | Frozen for v1   | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
-| Listbox     | Active v1 slice | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Select      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Combobox    | Active v1 slice | Registry wrapper, basic example, multi example, docs page, route coverage, generated registry output, and coverage matrix are in place.         |
-| RadioGroup  | Active v1 slice | Registry wrapper, basic example, horizontal example, docs page, route coverage, generated registry output, and coverage matrix are in place.    |
-| Slider      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Switch      | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Tabs        | Active v1 slice | Registry wrapper, basic example, manual example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
-| Textarea    | Active v1 slice | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Toast       | Active v1 slice | Registry wrapper, basic example, variants example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| Tooltip     | Active v1 slice | Registry wrapper, basic example, no-delay example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
-| VirtualList | Active v1 slice | Registry wrapper, basic example, variable example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Component   | Status      | Notes                                                                                                                                           |
+| ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Animation   | Complete v1 | Registry wrapper, basic example, docs page, route coverage, generated registry output, and coverage matrix are in place.                        |
+| Button      | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Calendar    | Complete v1 | Registry wrapper, basic example, bounds example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
+| Checkbox    | Complete v1 | Registry wrapper, basic example, indeterminate example, docs page, route coverage, generated registry output, and coverage matrix are in place. |
+| DatePicker  | Complete v1 | Registry wrapper, basic example, bounds example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
+| Dialog      | Complete v1 | Registry wrapper, basic, animated, destructive, focus, scrollable examples, docs page, route probes, and coverage matrix are complete.          |
+| Disclosure  | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| DragAndDrop | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Fieldset    | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| FileDrop    | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Input       | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Popover     | Complete v1 | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
+| Menu        | Complete v1 | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are complete.      |
+| Listbox     | Complete v1 | Registry wrapper, basic example, animated example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Select      | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Combobox    | Complete v1 | Registry wrapper, basic example, multi example, docs page, route coverage, generated registry output, and coverage matrix are in place.         |
+| RadioGroup  | Complete v1 | Registry wrapper, basic example, horizontal example, docs page, route coverage, generated registry output, and coverage matrix are in place.    |
+| Slider      | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Switch      | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Tabs        | Complete v1 | Registry wrapper, basic example, manual example, docs page, route coverage, generated registry output, and coverage matrix are in place.        |
+| Textarea    | Complete v1 | Registry wrapper, basic example, disabled example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Toast       | Complete v1 | Registry wrapper, basic example, variants example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| Tooltip     | Complete v1 | Registry wrapper, basic example, no-delay example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
+| VirtualList | Complete v1 | Registry wrapper, basic example, variable example, docs page, route coverage, generated registry output, and coverage matrix are in place.      |
 
 Stateful component `init` returns `[Model, Commands]`:
 
