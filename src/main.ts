@@ -3825,7 +3825,7 @@ const docsExampleBlock = ({
               h.div(
                 [
                   h.Class(
-                    "mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-950"
+                    "mt-4 overflow-hidden rounded-lg border border-gray-200 bg-white"
                   ),
                 ],
                 [
@@ -3833,7 +3833,7 @@ const docsExampleBlock = ({
                     [
                       h.Src(sourceHref),
                       h.Title(`${title} source code`),
-                      h.Class("h-96 w-full bg-gray-950 text-gray-50"),
+                      h.Class("h-96 w-full bg-white"),
                     ],
                     []
                   ),

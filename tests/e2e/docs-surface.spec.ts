@@ -65,6 +65,38 @@ for (const viewport of viewports) {
             )
             .first()
         ).toHaveAttribute("src", /\/sources\/.+\.txt/u);
+        const sourceFrame = page
+          .locator(
+            '[data-testid^="docs-example-block-"][data-testid$="-actions"] iframe'
+          )
+          .first();
+        await expect
+          .poll(() =>
+            sourceFrame.evaluate((iframe) => {
+              const frame = iframe as HTMLIFrameElement;
+              const body = frame.contentDocument?.body;
+
+              return body?.textContent?.trim().length ?? 0;
+            })
+          )
+          .toBeGreaterThan(100);
+        const sourceViewer = await sourceFrame.evaluate((iframe) => {
+          const frame = iframe as HTMLIFrameElement;
+          const frameStyles = getComputedStyle(frame);
+          const body = frame.contentDocument?.body;
+          const bodyStyles =
+            body === undefined || body === null
+              ? undefined
+              : getComputedStyle(body);
+
+          return {
+            frameBackground: frameStyles.backgroundColor,
+            textColor: bodyStyles?.color,
+          };
+        });
+
+        expect(sourceViewer.frameBackground).toBe("rgb(255, 255, 255)");
+        expect(sourceViewer.textColor).toBe("rgb(0, 0, 0)");
 
         const pageOverflow = await page.evaluate(
           () =>
