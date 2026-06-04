@@ -7,6 +7,8 @@
     "build": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
     "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-example-tests.mjs && bun scripts/check-primitive-coverage.mjs",
+    "smoke:public-install": "bun scripts/smoke-public-install.mjs",
+    "smoke:public-site": "bun scripts/smoke-public-site.mjs",
     "preview": "vite preview",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",

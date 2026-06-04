@@ -10,7 +10,7 @@ test("public registry config resolves installable component items", async ({
   const components = await componentsResponse.json();
 
   expect(components.registries["@foldkit-cn"]).toBe(
-    "https://binarytide.github.io/foldkit-basic-cn-ui/r/{name}.json"
+    "https://bearing-ward.github.io/foldkit-basic-cn-ui/r/{name}.json"
   );
 
   const registryResponse = await request.get("/r/dialog.json");

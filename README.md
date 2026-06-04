@@ -30,6 +30,10 @@ Or copy `components.json` into a Foldkit app and install through the registry al
 bunx shadcn@latest add @foldkit-cn/dialog
 ```
 
+Consumer projects need a valid `components.json`, `tsconfig.json`, and existing
+source root. The published config maps registry files into project source
+folders so installed components stay project-owned.
+
 ## Development
 
 ```bash
@@ -41,6 +45,8 @@ bun run dev
 
 The `Deploy docs and registry` GitHub Actions workflow builds the registry,
 builds the docs app with the GitHub Pages asset base, and publishes `dist`.
+After deployment it smoke-tests the public docs, registry JSON, source viewer
+assets, and a real `shadcn add` install from the public registry.
 Update `registry/config.json` before changing repository ownership, repository
 name, or the public registry host.
 
@@ -54,4 +60,6 @@ bun run lint
 bun run test
 bun run build
 bun run test:e2e
+bun run smoke:public-site
+bun run smoke:public-install
 ```
