@@ -19,7 +19,9 @@ const requiredSections = [
   "Installation",
   "Usage",
   "Foldkit integration",
-  "API",
+  "Styling",
+  "Keyboard interaction",
+  "API reference",
   "Accessibility",
   "Coverage",
 ];
@@ -51,6 +53,18 @@ for (const viewport of viewports) {
             `${registryConfig.registryBaseUrl}/${componentName}.json`
           )
         ).toBeVisible();
+        await expect(page.getByText(/Open standalone/u)).toHaveCount(0);
+        const firstCodeToggle = page.getByText("View code").first();
+
+        await expect(firstCodeToggle).toBeVisible();
+        await firstCodeToggle.click();
+        await expect(
+          page
+            .locator(
+              '[data-testid^="docs-example-block-"][data-testid$="-actions"] iframe'
+            )
+            .first()
+        ).toHaveAttribute("src", /\/sources\/.+\.ts/u);
 
         const pageOverflow = await page.evaluate(
           () =>
@@ -83,18 +97,20 @@ for (const viewport of viewports) {
             const blockRect = block.getBoundingClientRect();
             const previewRect = preview?.getBoundingClientRect();
             const actionsRect = actions?.getBoundingClientRect();
-            const actionLinks = actions
-              ? [...actions.querySelectorAll("a")]
-              : [];
-            const linkIssues = actionLinks.flatMap((link) => {
-              const rect = link.getBoundingClientRect();
+            const codeToggle = actions?.querySelector("summary");
+            const actionLinks = actions?.querySelectorAll("a") ?? [];
+            const codeToggleIssues =
+              codeToggle === undefined || codeToggle === null
+                ? [`${testId}: missing code toggle`]
+                : (() => {
+                    const rect = codeToggle.getBoundingClientRect();
 
-              if (rect.height < 40) {
-                return [`${testId}: action link below 40px hit target`];
-              }
+                    if (rect.height < 40) {
+                      return [`${testId}: code toggle below 40px hit target`];
+                    }
 
-              return [];
-            });
+                    return [];
+                  })();
 
             return [
               preview === null
@@ -109,7 +125,10 @@ for (const viewport of viewports) {
               actionsRect.top < previewRect.bottom - 1
                 ? `${testId}: actions overlap preview`
                 : undefined,
-              ...linkIssues,
+              actionLinks.length > 0
+                ? `${testId}: standalone example link rendered`
+                : undefined,
+              ...codeToggleIssues,
             ].filter((issue): issue is string => issue !== undefined);
           });
         });

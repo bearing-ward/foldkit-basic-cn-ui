@@ -275,174 +275,43 @@ const resolveComboboxMultiPreventBlurMount = () =>
   );
 
 describe("scene", () => {
-  test("the sidebar nav lists a sample of every component link", () => {
+  test("the sidebar nav lists component docs links only", () => {
     Scene.scene(
       { update, view },
       Scene.with(homeModel),
-      Scene.expect(Scene.role("link", { name: "Animation Docs" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Animation" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Checkbox" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Combobox" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Date Picker" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Dialog" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Disclosure" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Drag and Drop" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Fieldset" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "File Drop" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Input" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Listbox" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Menu" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Popover" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Radio Group" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Select" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Slider" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Switch" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Tabs" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Textarea" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Tooltip" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: "Animation Docs" })
+      ).not.toExist(),
       Scene.expect(
         Scene.role("link", { name: "Animation Basic Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
-      Scene.expect(Scene.role("link", { name: "Button Docs" })).toExist(),
+      ).not.toExist(),
       Scene.expect(
         Scene.role("link", { name: "Button Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Button Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
-      Scene.expect(Scene.role("link", { name: "Calendar Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Calendar Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Calendar Bounds Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Checkbox Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Checkbox Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Checkbox Indeterminate Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Combobox Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Combobox Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Combobox Multi Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Date Picker Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Date Picker Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Date Picker Bounds Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Dialog" })).toExist(),
-      Scene.expect(Scene.role("link", { name: "Dialog Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Dialog Animated Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Dialog Destructive Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Dialog Focus Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Dialog Scrollable Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Disclosure Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Disclosure Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Disclosure Disabled Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Drag and Drop Docs" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Drag and Drop Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Drag and Drop Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Fieldset Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Fieldset Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Fieldset Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "File Drop Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "File Drop Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "File Drop Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Input Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Input Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Input Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Listbox Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Listbox Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Listbox Animated Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Menu Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Menu Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Menu Animated Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Popover Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Popover Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Popover Animated Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Radio Group Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Radio Group Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Radio Group Horizontal Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Select Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Select Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Select Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Slider Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Slider Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Slider Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Switch Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Switch Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Switch Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Tabs Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Tabs Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Tabs Manual Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Textarea Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Textarea Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Textarea Disabled Example" })
-      ).toExist(),
-      Scene.expect(Scene.role("link", { name: "Toast" })).toExist(),
-      Scene.expect(Scene.role("link", { name: "Virtual List" })).toExist(),
-      Scene.expect(Scene.role("link", { name: "Virtual List Docs" })).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "VirtualList Basic Example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "VirtualList Variable Example" })
-      ).toExist()
+      ).not.toExist()
     );
   });
 
@@ -474,7 +343,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
@@ -486,9 +355,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-animation-basic-actions")
       ).toHaveClass("mt-auto"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Animation Basic example" })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -516,7 +383,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
@@ -537,16 +404,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-virtual-list-variable-actions")
       ).toHaveClass("mt-auto"),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone VirtualList Basic example",
-        })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone VirtualList Variable example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -585,7 +444,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Click me" })).toExist(),
@@ -605,12 +464,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-button-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Button Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Button Disabled example" })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -647,7 +502,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.text("Selected date: 2026-04-16")).toExist(),
@@ -667,12 +522,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-calendar-bounds-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Calendar Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Calendar Bounds example" })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -709,7 +560,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.text("Selected date: None")).toExist(),
@@ -729,16 +580,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-date-picker-bounds-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Date Picker Basic example",
-        })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Date Picker Bounds example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -777,7 +620,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
@@ -801,14 +644,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-checkbox-indeterminate-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Checkbox Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Checkbox Indeterminate example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -849,7 +686,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("slider", { name: "Rating" })).toHaveAttr(
@@ -875,14 +712,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-slider-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Slider Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Slider Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -919,7 +750,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
@@ -943,14 +774,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-switch-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Switch Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Switch Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -991,7 +816,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("tab", { name: "Overview" })).toHaveAttr(
@@ -1014,12 +839,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-tabs-manual-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Tabs Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Tabs Manual example" })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1054,7 +875,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
@@ -1079,14 +900,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-tooltip-no-delay-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Tooltip Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Tooltip No Delay example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1148,7 +963,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(
@@ -1205,25 +1020,11 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Review permissions" })
       ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Dialog Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Dialog Animated example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Dialog Destructive example",
-        })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Dialog Focus example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Dialog Scrollable example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1240,7 +1041,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("group", { name: "Profile" })).toExist(),
@@ -1262,14 +1063,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-fieldset-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Fieldset Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Fieldset Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1308,7 +1103,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.text("Drop files or click to browse")).toExist(),
@@ -1328,14 +1123,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-file-drop-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone File Drop Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone File Drop Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1374,7 +1163,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("textbox", { name: "Name" })).toExist(),
@@ -1396,12 +1185,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-input-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Input Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Input Disabled example" })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1438,7 +1223,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("textbox", { name: "Bio" })).toExist(),
@@ -1460,14 +1245,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-textarea-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Textarea Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Textarea Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1506,7 +1285,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.placeholder("Search cities...")).toExist(),
@@ -1525,14 +1304,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-combobox-multi-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Combobox Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Combobox Multi example",
-        })
-      ).toExist(),
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist(),
       resolveComboboxBasicPreventBlurMount(),
       resolveComboboxMultiPreventBlurMount()
     );
@@ -1630,7 +1403,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.text("Disclosure is closed.")).toExist(),
@@ -1650,14 +1423,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-disclosure-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Disclosure Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Disclosure Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1696,7 +1463,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.text("Task order: Plan, Build, Verify")).toExist(),
@@ -1716,16 +1483,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-drag-and-drop-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Drag and Drop Basic example",
-        })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Drag and Drop Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1764,7 +1523,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Open menu" })).toExist(),
@@ -1798,14 +1557,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-menu-animated-actions")
       ).toHaveClass("mt-auto"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Menu Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Menu Animated example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1822,7 +1575,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Choose person" })).toExist(),
@@ -1844,14 +1597,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-listbox-animated-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Listbox Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Listbox Animated example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1890,7 +1637,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("radio", { name: "Startup" })).toExist(),
@@ -1910,16 +1657,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-radio-group-horizontal-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Radio Group Basic example",
-        })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Radio Group Horizontal example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -1958,7 +1697,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("combobox", { name: "Region" })).toExist(),
@@ -1978,14 +1717,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-select-disabled-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Select Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Select Disabled example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 
@@ -2042,7 +1775,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Foldkit integration" })
       ).toExist(),
-      Scene.expect(Scene.role("heading", { name: "API" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Accessibility" })).toExist(),
       Scene.expect(Scene.role("heading", { name: "Coverage" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Open popover" })).toExist(),
@@ -2064,14 +1797,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-popover-animated-actions")
       ).toHaveClass("border-t"),
-      Scene.expect(
-        Scene.role("link", { name: "Open standalone Popover Basic example" })
-      ).toExist(),
-      Scene.expect(
-        Scene.role("link", {
-          name: "Open standalone Popover Animated example",
-        })
-      ).toExist()
+      Scene.expect(Scene.text("View code")).toExist(),
+      Scene.expect(Scene.text("View code")).toExist()
     );
   });
 

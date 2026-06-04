@@ -40,11 +40,19 @@ test("Tooltip docs examples show and hide from focus", async ({ page }) => {
   await basicTrigger.focus();
   await expect(basicPanel).toHaveRole("tooltip");
   await expect(basicPanel.getByText("This is a tooltip")).toBeVisible();
-  await expect(basic.getByText("Tooltip shown.")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-tooltip-basic-preview")
+      .getByText("Tooltip shown.")
+  ).toBeVisible();
 
   await basicTrigger.blur();
   await expect(basicPanel).toBeHidden();
-  await expect(basic.getByText("Tooltip hidden.")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-tooltip-basic-preview")
+      .getByText("Tooltip hidden.")
+  ).toBeVisible();
 
   const noDelay = page.getByTestId("docs-example-block-tooltip-no-delay");
   const noDelayPanel = page.locator("#tooltip-no-delay-panel");
@@ -53,7 +61,11 @@ test("Tooltip docs examples show and hide from focus", async ({ page }) => {
 
   await expect(noDelayPanel).toHaveRole("tooltip");
   await expect(noDelayPanel.getByText("Shows immediately")).toBeVisible();
-  await expect(noDelay.getByText("Tooltip shown immediately.")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-tooltip-no-delay-preview")
+      .getByText("Tooltip shown immediately.")
+  ).toBeVisible();
 });
 
 test("Combobox docs examples filter and select single and multiple values", async ({
@@ -73,17 +85,25 @@ test("Combobox docs examples filter and select single and multiple values", asyn
   const multi = page.getByTestId("docs-example-block-combobox-multi");
   const citiesInput = multi.getByRole("combobox", { name: "Cities" });
 
-  await expect(multi.getByText("No cities selected")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-combobox-multi-preview")
+      .getByText("No cities selected")
+  ).toBeVisible();
 
   await citiesInput.fill("Ky");
   await page.getByRole("option", { name: "Kyiv" }).click();
 
-  await expect(multi.getByText("Kyiv")).toBeVisible();
+  const multiPreview = page.getByTestId(
+    "docs-example-block-combobox-multi-preview"
+  );
+
+  await expect(multiPreview.getByText("Kyiv")).toBeVisible();
 
   await citiesInput.fill("Qu");
   await page.getByRole("option", { name: "Quito" }).click();
 
-  await expect(multi.getByText("Quito")).toBeVisible();
+  await expect(multiPreview.getByText("Quito")).toBeVisible();
 });
 
 test("Menu docs examples open, expose items, and dismiss", async ({ page }) => {
@@ -122,7 +142,11 @@ test("Select and Listbox docs examples update selected values", async ({
   const selectDisabled = page.getByTestId("docs-example-block-select-disabled");
 
   await expect(selectDisabled.locator("#plan-select")).toBeDisabled();
-  await expect(selectDisabled.getByText("Current plan: Team")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-select-disabled-preview")
+      .getByText("Current plan: Team")
+  ).toBeVisible();
 
   await page.goto("/docs/components/listbox");
 
@@ -163,6 +187,21 @@ test("Slider, Tabs, and Disclosure docs examples respond to input", async ({
   await expect(rating).toHaveAttribute("aria-valuenow", "5");
   await expect(sliderBasic.getByText("Rating: 5 of 10")).toBeVisible();
 
+  const track = sliderBasic.locator('[data-slider-track-id="slider-basic"]');
+  const trackBox = await track.boundingBox();
+
+  expect(trackBox).not.toBeNull();
+
+  if (trackBox !== null) {
+    await page.mouse.click(
+      trackBox.x + trackBox.width * 0.8,
+      trackBox.y + trackBox.height / 2
+    );
+  }
+
+  await expect(rating).toHaveAttribute("aria-valuenow", "8");
+  await expect(sliderBasic.getByText("Rating: 8 of 10")).toBeVisible();
+
   await page.goto("/docs/components/tabs");
 
   const tabsBasic = page.getByTestId("docs-example-block-tabs-basic");
@@ -171,11 +210,21 @@ test("Slider, Tabs, and Disclosure docs examples respond to input", async ({
   await usageTab.click();
   await expect(usageTab).toHaveAttribute("aria-selected", "true");
   await expect(
-    tabsBasic.getByText(
-      "Use keyboard navigation or click a tab to change panels."
-    )
+    page
+      .getByRole("tabpanel", {
+        name: "Usage",
+      })
+      .getByText("Use keyboard navigation or click a tab to change panels.")
   ).toBeVisible();
   await expect(tabsBasic.getByText("Selected tab: Usage")).toBeVisible();
+
+  const tabsManual = page.getByTestId("docs-example-block-tabs-manual");
+
+  await expect(
+    tabsManual.getByRole("tablist", { name: "Account sections" })
+  ).toHaveAttribute("aria-orientation", "vertical");
+  await tabsManual.getByRole("tab", { name: "Details" }).click();
+  await expect(tabsManual.getByText("Selected tab: Details")).toBeVisible();
 
   await page.goto("/docs/components/disclosure");
 
@@ -190,11 +239,15 @@ test("Slider, Tabs, and Disclosure docs examples respond to input", async ({
   await disclosureButton.click();
   await expect(disclosureButton).toHaveAttribute("aria-expanded", "true");
   await expect(
-    disclosureBasic.getByText(
-      "Foldkit is an Elm-inspired UI framework powered by Effect."
-    )
+    page
+      .getByTestId("docs-example-block-disclosure-basic-preview")
+      .getByText("Foldkit is an Elm-inspired UI framework powered by Effect.")
   ).toBeVisible();
-  await expect(disclosureBasic.getByText("Disclosure is open.")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-disclosure-basic-preview")
+      .getByText("Disclosure is open.")
+  ).toBeVisible();
 
   const disclosureDisabled = page.getByTestId(
     "docs-example-block-disclosure-disabled"
@@ -206,7 +259,9 @@ test("Slider, Tabs, and Disclosure docs examples respond to input", async ({
   await expect(disabledButton).toHaveAttribute("aria-disabled", "true");
   await expect(disabledButton).toHaveAttribute("aria-expanded", "false");
   await expect(
-    disclosureDisabled.getByText("Disclosure is locked.")
+    page
+      .getByTestId("docs-example-block-disclosure-disabled-preview")
+      .getByText("Disclosure is locked.")
   ).toBeVisible();
 });
 
@@ -217,16 +272,20 @@ test("Toast docs variants show and dismiss notifications", async ({ page }) => {
 
   await variants.getByRole("button", { name: "Show variants" }).click();
   await expect(variants.getByText("Shown notifications: 4")).toBeVisible();
-  await expect(variants.getByText("Queued")).toBeVisible();
-  await expect(variants.getByText("Published")).toBeVisible();
-  await expect(variants.getByText("Review needed")).toBeVisible();
-  await expect(variants.getByText("Failed")).toBeVisible();
+  const variantsPreview = page.getByTestId(
+    "docs-example-block-toast-variants-preview"
+  );
+
+  await expect(variantsPreview.getByText("Queued")).toBeVisible();
+  await expect(variantsPreview.getByText("Published")).toBeVisible();
+  await expect(variantsPreview.getByText("Review needed")).toBeVisible();
+  await expect(variantsPreview.getByText("Failed")).toBeVisible();
 
   await variants.getByRole("button", { name: "Dismiss all" }).click();
-  await expect(variants.getByText("Queued")).toBeHidden();
-  await expect(variants.getByText("Published")).toBeHidden();
-  await expect(variants.getByText("Review needed")).toBeHidden();
-  await expect(variants.getByText("Failed")).toBeHidden();
+  await expect(variantsPreview.getByText("Queued")).toBeHidden();
+  await expect(variantsPreview.getByText("Published")).toBeHidden();
+  await expect(variantsPreview.getByText("Review needed")).toBeHidden();
+  await expect(variantsPreview.getByText("Failed")).toBeHidden();
 });
 
 test("Checkbox, Switch, and RadioGroup docs examples update state", async ({
@@ -375,7 +434,11 @@ test("FileDrop docs examples accept selected files and preserve disabled state",
   const disabled = page.getByTestId("docs-example-block-file-drop-disabled");
 
   await expect(disabled.locator("#file-drop-disabled")).toBeDisabled();
-  await expect(disabled.getByText("File uploads disabled")).toBeVisible();
+  await expect(
+    page
+      .getByTestId("docs-example-block-file-drop-disabled-preview")
+      .getByText("File uploads disabled")
+  ).toBeVisible();
 });
 
 test("Popover and Dialog docs examples open and dismiss portal surfaces", async ({
@@ -414,9 +477,13 @@ test("Popover and Dialog docs examples open and dismiss portal surfaces", async 
   const dialogBasic = page.getByTestId("docs-example-block-dialog-basic");
 
   await dialogBasic.getByRole("button", { name: "Open dialog" }).click();
-  await expect(page.getByText("Edit profile")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Edit profile" })
+  ).toBeVisible();
   await page.getByRole("button", { name: "Save changes" }).click();
-  await expect(page.getByText("Edit profile")).toBeHidden();
+  await expect(
+    page.getByRole("heading", { name: "Edit profile" })
+  ).toBeHidden();
 
   const dialogAnimated = page.getByTestId("docs-example-block-dialog-animated");
 

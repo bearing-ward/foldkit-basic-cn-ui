@@ -1268,6 +1268,41 @@ const routeParser = Route.oneOf(
 );
 
 const urlToAppRoute = Route.parseUrlWithFallback(routeParser, NotFoundRoute);
+const appBasePath = import.meta.env.BASE_URL;
+
+const appPath = (path: string): string => {
+  if (path === "/") {
+    return appBasePath;
+  }
+
+  return `${appBasePath}${path.replace(/^\//u, "")}`;
+};
+
+const stripAppBasePath = (pathname: string): string => {
+  if (appBasePath === "/") {
+    return pathname;
+  }
+
+  const basePath = appBasePath.endsWith("/")
+    ? appBasePath.slice(0, -1)
+    : appBasePath;
+
+  if (pathname === basePath) {
+    return "/";
+  }
+
+  if (pathname.startsWith(appBasePath)) {
+    return `/${pathname.slice(appBasePath.length)}`;
+  }
+
+  return pathname;
+};
+
+const urlToBaseAwareAppRoute = (url: Url): AppRoute =>
+  urlToAppRoute({
+    ...url,
+    pathname: stripAppBasePath(url.pathname),
+  });
 
 // MODEL
 
@@ -1799,7 +1834,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
 
   return [
     {
-      route: urlToAppRoute(url),
+      route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
       animationBasicExample,
       buttonBasicExample,
@@ -2053,7 +2088,7 @@ export const update = (
 
         return [
           evo(model, {
-            route: () => urlToAppRoute(url),
+            route: () => urlToBaseAwareAppRoute(url),
             uiModel: (uiModel) =>
               evo(uiModel, {
                 mobileMenuDialog: () => closedDialog,
@@ -3150,6 +3185,69 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
 ];
 
+const publicPath = (path: string): string =>
+  `${import.meta.env.BASE_URL}${path}`;
+
+const EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF: Record<string, string> = {
+  [animationBasicExampleRouter()]: "sources/animation-basic.ts",
+  [buttonBasicExampleRouter()]: "sources/button-basic.ts",
+  [buttonDisabledExampleRouter()]: "sources/button-disabled.ts",
+  [calendarBasicExampleRouter()]: "sources/calendar-basic.ts",
+  [calendarBoundsExampleRouter()]: "sources/calendar-bounds.ts",
+  [checkboxBasicExampleRouter()]: "sources/checkbox-basic.ts",
+  [checkboxIndeterminateExampleRouter()]: "sources/checkbox-indeterminate.ts",
+  [comboboxBasicExampleRouter()]: "sources/combobox-basic.ts",
+  [comboboxMultiExampleRouter()]: "sources/combobox-multi.ts",
+  [datePickerBasicExampleRouter()]: "sources/date-picker-basic.ts",
+  [datePickerBoundsExampleRouter()]: "sources/date-picker-bounds.ts",
+  [dialogAnimatedExampleRouter()]: "sources/dialog-animated.ts",
+  [dialogBasicExampleRouter()]: "sources/dialog-basic.ts",
+  [dialogDestructiveExampleRouter()]: "sources/dialog-destructive.ts",
+  [dialogFocusExampleRouter()]: "sources/dialog-focus.ts",
+  [dialogScrollableExampleRouter()]: "sources/dialog-scrollable.ts",
+  [disclosureBasicExampleRouter()]: "sources/disclosure-basic.ts",
+  [disclosureDisabledExampleRouter()]: "sources/disclosure-disabled.ts",
+  [dragAndDropBasicExampleRouter()]: "sources/drag-and-drop-basic.ts",
+  [dragAndDropDisabledExampleRouter()]: "sources/drag-and-drop-disabled.ts",
+  [fieldsetBasicExampleRouter()]: "sources/fieldset-basic.ts",
+  [fieldsetDisabledExampleRouter()]: "sources/fieldset-disabled.ts",
+  [fileDropBasicExampleRouter()]: "sources/file-drop-basic.ts",
+  [fileDropDisabledExampleRouter()]: "sources/file-drop-disabled.ts",
+  [inputBasicExampleRouter()]: "sources/input-basic.ts",
+  [inputDisabledExampleRouter()]: "sources/input-disabled.ts",
+  [listboxAnimatedExampleRouter()]: "sources/listbox-animated.ts",
+  [listboxBasicExampleRouter()]: "sources/listbox-basic.ts",
+  [menuAnimatedExampleRouter()]: "sources/menu-animated.ts",
+  [menuBasicExampleRouter()]: "sources/menu-basic.ts",
+  [popoverAnimatedExampleRouter()]: "sources/popover-animated.ts",
+  [popoverBasicExampleRouter()]: "sources/popover-basic.ts",
+  [radioGroupBasicExampleRouter()]: "sources/radio-group-basic.ts",
+  [radioGroupHorizontalExampleRouter()]: "sources/radio-group-horizontal.ts",
+  [selectBasicExampleRouter()]: "sources/select-basic.ts",
+  [selectDisabledExampleRouter()]: "sources/select-disabled.ts",
+  [sliderBasicExampleRouter()]: "sources/slider-basic.ts",
+  [sliderDisabledExampleRouter()]: "sources/slider-disabled.ts",
+  [switchBasicExampleRouter()]: "sources/switch-basic.ts",
+  [switchDisabledExampleRouter()]: "sources/switch-disabled.ts",
+  [tabsBasicExampleRouter()]: "sources/tabs-basic.ts",
+  [tabsManualExampleRouter()]: "sources/tabs-manual.ts",
+  [textareaBasicExampleRouter()]: "sources/textarea-basic.ts",
+  [textareaDisabledExampleRouter()]: "sources/textarea-disabled.ts",
+  [toastBasicExampleRouter()]: "sources/toast-basic.ts",
+  [toastVariantsExampleRouter()]: "sources/toast-variants.ts",
+  [tooltipBasicExampleRouter()]: "sources/tooltip-basic.ts",
+  [tooltipNoDelayExampleRouter()]: "sources/tooltip-no-delay.ts",
+  [virtualListBasicExampleRouter()]: "sources/virtual-list-basic.ts",
+  [virtualListVariableExampleRouter()]: "sources/virtual-list-variable.ts",
+};
+
+const DOCS_NAV_ITEMS = NAV_ITEMS.filter((navItem) =>
+  navItem.routeTag.endsWith("Docs")
+).map((navItem) => ({
+  ...navItem,
+  label: navItem.label.replace(/ Docs$/u, ""),
+}));
+
 const navLinkClassName = (isActive: boolean): string =>
   clsx(
     "block px-3 py-1.5 rounded-md text-sm transition-colors",
@@ -3180,7 +3278,7 @@ const sidebarView = (currentRoute: AppRoute): Html => {
         [h.Class("mb-6")],
         [
           h.a(
-            [h.Href(homeRouter()), h.Class("block")],
+            [h.Href(appPath(homeRouter())), h.Class("block")],
             [h.h1([h.Class("text-lg font-bold text-gray-900")], ["Foldkit UI"])]
           ),
           h.span([h.Class("text-xs text-gray-500")], ["Component Showcase"]),
@@ -3188,13 +3286,13 @@ const sidebarView = (currentRoute: AppRoute): Html => {
       ),
       h.ul(
         [h.Class("flex flex-col gap-0.5")],
-        NAV_ITEMS.map((navItem) =>
+        DOCS_NAV_ITEMS.map((navItem) =>
           h.li(
             [],
             [
               h.a(
                 [
-                  h.Href(navItem.href),
+                  h.Href(appPath(navItem.href)),
                   h.Class(
                     navLinkClassName(currentRoute._tag === navItem.routeTag)
                   ),
@@ -3223,7 +3321,7 @@ const mobileMenuContent = (currentRoute: AppRoute): Html => {
         ],
         [
           h.a(
-            [h.Href(homeRouter()), h.Class("block")],
+            [h.Href(appPath(homeRouter())), h.Class("block")],
             [
               h.div(
                 [h.Class("flex flex-col")],
@@ -3261,13 +3359,13 @@ const mobileMenuContent = (currentRoute: AppRoute): Html => {
         [
           h.ul(
             [h.Class("flex flex-col gap-0.5")],
-            NAV_ITEMS.map((navItem) =>
+            DOCS_NAV_ITEMS.map((navItem) =>
               h.li(
                 [],
                 [
                   h.a(
                     [
-                      h.Href(navItem.href),
+                      h.Href(appPath(navItem.href)),
                       h.Class(
                         mobileNavLinkClassName(
                           currentRoute._tag === navItem.routeTag
@@ -3297,7 +3395,7 @@ const mobileHeaderView = (model: Model): Html => {
     ],
     [
       h.a(
-        [h.Href(homeRouter()), h.Class("block")],
+        [h.Href(appPath(homeRouter())), h.Class("block")],
         [
           h.div(
             [h.Class("flex flex-col")],
@@ -3399,7 +3497,10 @@ const notFoundView = (path: string): Html => {
         [`The path "${path}" was not found.`]
       ),
       h.a(
-        [h.Href(homeRouter()), h.Class("text-accent-600 hover:underline")],
+        [
+          h.Href(appPath(homeRouter())),
+          h.Class("text-accent-600 hover:underline"),
+        ],
         ["Go Home"]
       ),
     ]
@@ -3473,6 +3574,78 @@ const docsInstallBlock = (commands: string): Html =>
     codeBlock(commands.replaceAll("<registry-url>", publicRegistryBaseUrl)),
   ]);
 
+const docsStylingBlock = (): Html => {
+  const h = html<Message>();
+
+  return docsSection("Styling", [
+    h.p(
+      [h.Class("max-w-2xl text-sm text-gray-600")],
+      [
+        "Styled registry slices keep presentation in registry/default/ui/{component}/view.ts. Foldkit UI publishes semantic attribute bundles for each part; the registry view spreads those attributes first, then applies local class tokens so consumers can replace the markup without losing ARIA, ids, or event wiring.",
+      ]
+    ),
+    h.ul(
+      [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+      [
+        h.li(
+          [],
+          [
+            "Class-name exports are the stable styling surface for the generated examples.",
+          ]
+        ),
+        h.li(
+          [],
+          [
+            "Consumers can keep the primitive update/model contract and swap only the view callback.",
+          ]
+        ),
+        h.li(
+          [],
+          [
+            "Hidden inputs, labels, descriptions, portals, and panels stay wired through primitive attributes rather than ad hoc DOM selectors.",
+          ]
+        ),
+      ]
+    ),
+  ]);
+};
+
+const docsKeyboardInteractionBlock = (): Html => {
+  const h = html<Message>();
+
+  return docsSection("Keyboard interaction", [
+    h.p(
+      [h.Class("max-w-2xl text-sm text-gray-600")],
+      [
+        "Keyboard behavior is owned by the Foldkit UI primitive and represented as Foldkit messages, not imperative handlers in the docs shell. The examples exercise the applicable focus, arrow-key, Escape, Enter, Space, typeahead, and disabled-state paths for each interactive component.",
+      ]
+    ),
+    h.ul(
+      [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
+      [
+        h.li(
+          [],
+          [
+            "Buttons, inputs, selects, and textareas rely on native HTML behavior.",
+          ]
+        ),
+        h.li(
+          [],
+          [
+            "Composite widgets expose roving focus, selection, dismissal, or drag subscriptions through Foldkit UI.",
+          ]
+        ),
+        h.li(
+          [],
+          [
+            "Browser tests cover the interaction contract for promoted primitives so regressions fail before deployment.",
+          ]
+        ),
+      ]
+    ),
+  ]);
+};
+
 const docsUsageBlock = (body: string, code: string): Html => {
   const h = html<Message>();
 
@@ -3500,10 +3673,54 @@ const docsFoldkitIntegrationBlock = (code: string): Html =>
 const docsApiList = (items: readonly string[]): Html => {
   const h = html<Message>();
 
-  return docsSection("API", [
+  const parseApiItem = (
+    item: string
+  ): Readonly<{ name: string; description: string }> => {
+    const separatorIndex = item.indexOf(":");
+
+    if (separatorIndex === -1) {
+      return { name: item, description: "" };
+    }
+
+    return {
+      name: item.slice(0, separatorIndex),
+      description: item.slice(separatorIndex + 1).trim(),
+    };
+  };
+
+  return docsSection("API reference", [
+    h.p(
+      [h.Class("max-w-2xl text-sm text-gray-600")],
+      [
+        "Use these exports from the registry component module. Stateful primitives keep Foldkit model and message contracts explicit; view helpers expose attribute bundles so apps own markup and styling.",
+      ]
+    ),
     h.ul(
-      [h.Class("grid gap-1 text-sm text-gray-700 sm:grid-cols-2")],
-      items.map((item) => h.li([], [item]))
+      [h.Class("grid gap-3 text-sm sm:grid-cols-2")],
+      items.map((item) => {
+        const parsedItem = parseApiItem(item);
+
+        return h.li(
+          [
+            h.Class(
+              "rounded-lg border border-gray-200 bg-white p-3 text-gray-700"
+            ),
+          ],
+          [
+            h.code(
+              [
+                h.Class(
+                  "text-sm font-semibold text-gray-950 [overflow-wrap:anywhere]"
+                ),
+              ],
+              [parsedItem.name]
+            ),
+            parsedItem.description === ""
+              ? h.empty
+              : h.p([h.Class("mt-1 leading-6")], [parsedItem.description]),
+          ]
+        );
+      })
     ),
   ]);
 };
@@ -3541,6 +3758,8 @@ const docsStandardComponentSections = ({
   docsInstallBlock(installCommands),
   docsUsageBlock(usageBody, usageCode),
   docsFoldkitIntegrationBlock(integrationCode),
+  docsStylingBlock(),
+  docsKeyboardInteractionBlock(),
   docsApiList(apiItems),
   docsTextListSection("Accessibility", accessibilityItems),
   docsTextListSection("Coverage", coverageItems),
@@ -3561,9 +3780,11 @@ const docsExampleBlock = ({
   testId,
   preview,
   href,
-  linkText,
 }: DocsExampleBlockInput): Html => {
   const h = html<Message>();
+  const sourceHref = publicPath(
+    EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF[href] ?? ""
+  );
 
   return h.div(
     [
@@ -3590,14 +3811,35 @@ const docsExampleBlock = ({
           h.DataAttribute("testid", `${testId}-actions`),
         ],
         [
-          h.a(
+          h.details(
+            [h.Class("group")],
             [
-              h.Href(href),
-              h.Class(
-                "inline-flex min-h-10 items-center text-sm font-medium text-accent-700 hover:underline"
+              h.summary(
+                [
+                  h.Class(
+                    "inline-flex min-h-10 cursor-pointer list-none items-center rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600"
+                  ),
+                ],
+                ["View code"]
               ),
-            ],
-            [linkText]
+              h.div(
+                [
+                  h.Class(
+                    "mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-950"
+                  ),
+                ],
+                [
+                  h.iframe(
+                    [
+                      h.Src(sourceHref),
+                      h.Title(`${title} source code`),
+                      h.Class("h-96 w-full bg-gray-950 text-gray-50"),
+                    ],
+                    []
+                  ),
+                ]
+              ),
+            ]
           ),
         ]
       ),
@@ -5923,7 +6165,7 @@ const tabsDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/tabs" },
-        { label: "Examples", value: "basic, manual" },
+        { label: "Examples", value: "basic, vertical" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -5947,7 +6189,7 @@ const tabsDocsView = (model: Model): Html => {
                 linkText: "Open standalone Tabs Basic example",
               }),
               docsExampleBlock({
-                title: "Manual",
+                title: "Vertical",
                 testId: "docs-example-block-tabs-manual",
                 preview: tabsManualExamplePreview(
                   model.tabsManualExample,
@@ -7232,6 +7474,8 @@ const dialogDocsView = (model: Model): Html => {
       docsInstallBlock(
         "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json\nbunx shadcn@latest add <registry-url>/dialog-scrollable.json"
       ),
+      docsStylingBlock(),
+      docsKeyboardInteractionBlock(),
       h.section(
         [
           h.Class(
@@ -7319,7 +7563,10 @@ h.submodel({
           h.div(
             [h.Class("space-y-3")],
             [
-              h.h2([h.Class("text-xl font-semibold text-gray-950")], ["API"]),
+              h.h2(
+                [h.Class("text-xl font-semibold text-gray-950")],
+                ["API reference"]
+              ),
               h.p(
                 [h.Class("text-sm text-gray-600")],
                 [
@@ -9666,6 +9913,17 @@ const dragAndDropBasicExampleSubscriptions = Subscription.lift({
     }),
 });
 
+const sliderBasicExampleSubscriptions = Subscription.lift({
+  sliderBasicDragPointer: Ui.Slider.subscriptions.dragPointer,
+  sliderBasicDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.sliderBasicExample.slider,
+  toParentMessage: (message) =>
+    GotSliderBasicExampleMessage({
+      message: SliderBasicExample.GotSliderMessage({ message }),
+    }),
+});
+
 const virtualListBasicExampleSubscriptions = Subscription.lift({
   virtualListBasicContainerEvents: Ui.VirtualList.subscriptions.containerEvents,
 })<Model, Message>({
@@ -9690,6 +9948,7 @@ const virtualListVariableExampleSubscriptions = Subscription.lift({
 export const subscriptions = Subscription.aggregate<Model, Message>()(
   uiSubscriptions,
   dragAndDropBasicExampleSubscriptions,
+  sliderBasicExampleSubscriptions,
   virtualListBasicExampleSubscriptions,
   virtualListVariableExampleSubscriptions
 );

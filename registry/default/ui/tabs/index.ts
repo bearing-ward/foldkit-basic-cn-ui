@@ -48,5 +48,7 @@ export {
   tabListClassName,
   tabsRootClassName,
   tabsView,
+  verticalTabListClassName,
+  verticalTabsRootClassName,
 } from "./view";
 export type { TabsViewInput } from "./view";

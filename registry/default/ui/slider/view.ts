@@ -2,7 +2,7 @@ import type { Ui } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-export const fieldClassName = "flex w-full max-w-sm flex-col gap-2";
+export const fieldClassName = "flex w-full min-w-64 max-w-sm flex-col gap-2";
 
 export const headerClassName =
   "flex items-center justify-between text-sm text-gray-900";

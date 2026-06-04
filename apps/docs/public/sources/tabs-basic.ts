@@ -7,14 +7,16 @@ import { evo } from "foldkit/struct";
 
 import * as Tabs from "../../ui/tabs";
 
-type Tab = "Preview" | "Details" | "Billing";
+type Tab = "Overview" | "Usage" | "API";
 const DemoTabs = Tabs.create<Tab>();
-const tabValues: readonly Tab[] = ["Preview", "Details", "Billing"];
+const tabValues: readonly Tab[] = ["Overview", "Usage", "API"];
 const panelContent: Record<Tab, string> = {
-  Preview: "Preview remains selected until a tab is explicitly activated.",
-  Details: "Details can receive focus before selection in manual mode.",
-  Billing: "Billing is unavailable in this example.",
+  Overview: "Tabs organize related content into one visible panel.",
+  Usage: "Use keyboard navigation or click a tab to change panels.",
+  API: "The parent receives a typed Selected OutMessage.",
 };
+
+// MODEL
 
 export const Model = S.Struct({
   tabs: Tabs.Model,
@@ -23,6 +25,8 @@ export const Model = S.Struct({
 
 export type Model = typeof Model.Type;
 
+// MESSAGE
+
 export const GotTabsMessage = m("GotTabsMessage", {
   message: Tabs.Message,
 });
@@ -30,20 +34,21 @@ export const GotTabsMessage = m("GotTabsMessage", {
 export const Message = S.Union([GotTabsMessage]);
 export type Message = typeof Message.Type;
 
+// INIT
+
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
 ] => {
-  const [tabs, commands] = Tabs.initialize({
-    id: "tabs-manual",
-    activationMode: "Manual",
-  });
+  const [tabs, commands] = Tabs.initialize({ id: "tabs-basic" });
 
   return [
-    { tabs, status: "Selected tab: Preview" },
+    { tabs, status: "Selected tab: Overview" },
     Command.mapMessages(commands, (message) => GotTabsMessage({ message })),
   ];
 };
+
+// UPDATE
 
 export const update = (
   model: Model,
@@ -76,6 +81,8 @@ export const update = (
     })
   );
 
+// VIEW
+
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
@@ -88,11 +95,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         view: DemoTabs.view,
         viewInputs: {
           tabs: tabValues,
-          ariaLabel: "Account sections",
-          orientation: "Vertical",
-          isTabDisabled: (value) => value === "Billing",
-          toView: (render) =>
-            Tabs.tabsView({ render, panelContent, orientation: "Vertical" }),
+          ariaLabel: "Documentation sections",
+          toView: (render) => Tabs.tabsView({ render, panelContent }),
         },
         toParentMessage: (message) => GotTabsMessage({ message }),
       }),
