@@ -1,0 +1,113 @@
+import { Match as M, Schema as S } from "effect";
+import type { Command } from "foldkit";
+import { Submodel } from "foldkit";
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+import { m } from "foldkit/message";
+import { evo } from "foldkit/struct";
+
+import * as Avatar from "../../ui/avatar";
+
+// MODEL
+
+export const FeaturedPerson = S.Union([
+  S.Literal("Ada Lovelace"),
+  S.Literal("Grace Hopper"),
+]);
+
+export const Model = S.Struct({
+  featuredPerson: FeaturedPerson,
+});
+
+export type Model = typeof Model.Type;
+
+// MESSAGE
+
+export const ClickedToggleFeaturedPerson = m("ClickedToggleFeaturedPerson");
+
+export const Message = S.Union([ClickedToggleFeaturedPerson]);
+export type Message = typeof Message.Type;
+
+// INIT
+
+export const init = (): readonly [
+  Model,
+  readonly Command.Command<Message>[],
+] => [{ featuredPerson: "Ada Lovelace" }, []];
+
+// UPDATE
+
+export const update = (
+  model: Model,
+  message: Message
+): readonly [Model, readonly Command.Command<Message>[]] =>
+  M.value(message).pipe(
+    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
+    M.tagsExhaustive({
+      ClickedToggleFeaturedPerson: () => [
+        evo(model, {
+          featuredPerson: (featuredPerson) =>
+            featuredPerson === "Ada Lovelace" ? "Grace Hopper" : "Ada Lovelace",
+        }),
+        [],
+      ],
+    })
+  );
+
+// VIEW
+
+const adaImageSrc =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%234f46e5'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' font-family='Arial' fill='white'%3EAL%3C/text%3E%3C/svg%3E";
+
+export const view = Submodel.defineView<Model, Message>((model): Html => {
+  const h = html<Message>();
+  const featuredInitials =
+    model.featuredPerson === "Ada Lovelace" ? "AL" : "GH";
+
+  return h.div(
+    [h.Class("flex flex-col items-start gap-4")],
+    [
+      Avatar.groupView<Message>([
+        Avatar.view<Message>({
+          alt: "Ada Lovelace",
+          fallback: "AL",
+          src: adaImageSrc,
+        }),
+        Avatar.view<Message>({ fallback: "GH" }),
+        Avatar.view<Message>({ fallback: "HT" }),
+        Avatar.countView<Message>({ count: 4 }),
+      ]),
+      h.div(
+        [h.Class("flex items-center gap-3")],
+        [
+          Avatar.view<Message>({
+            fallback: featuredInitials,
+            size: "Large",
+            ...(model.featuredPerson === "Ada Lovelace"
+              ? { alt: "Ada Lovelace", src: adaImageSrc }
+              : {}),
+          }),
+          h.div(
+            [h.Class("space-y-1")],
+            [
+              h.p(
+                [h.Class("text-sm font-medium text-gray-900")],
+                [model.featuredPerson]
+              ),
+              h.p([h.Class("text-sm text-gray-600")], ["Featured contributor"]),
+            ]
+          ),
+        ]
+      ),
+      h.button(
+        [
+          h.OnClick(ClickedToggleFeaturedPerson()),
+          h.Class(
+            "inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600"
+          ),
+        ],
+        ["Toggle featured avatar"]
+      ),
+    ]
+  );
+});

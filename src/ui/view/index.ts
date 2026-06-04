@@ -1,3 +1,4 @@
+export { view as avatar } from "./avatar";
 export { view as badge } from "./badge";
 export { view as button } from "./button";
 export { view as calendar } from "./calendar";

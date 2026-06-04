@@ -2,6 +2,7 @@ import { Calendar, Scene } from "foldkit";
 import { describe, test } from "vitest";
 
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
@@ -148,6 +149,7 @@ import { uiInit } from "./ui/init";
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [animationBasicExample] = AnimationBasicExample.init();
+const [avatarBasicExample] = AvatarBasicExample.init();
 const [badgeBasicExample] = BadgeBasicExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
@@ -203,6 +205,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
   animationBasicExample,
+  avatarBasicExample,
   badgeBasicExample,
   buttonBasicExample,
   buttonDisabledExample,
@@ -283,6 +286,7 @@ describe("scene", () => {
       { update, view },
       Scene.with(homeModel),
       Scene.expect(Scene.role("link", { name: "Animation" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Avatar" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Badge" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),

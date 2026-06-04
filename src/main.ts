@@ -11,6 +11,7 @@ import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
@@ -72,6 +73,9 @@ import * as View from "./ui/view";
 // ROUTE
 
 export const HomeRoute = r("Home");
+export const AvatarRoute = r("Avatar");
+export const AvatarDocsRoute = r("AvatarDocs");
+export const AvatarBasicExampleRoute = r("AvatarBasicExample");
 export const BadgeRoute = r("Badge");
 export const BadgeDocsRoute = r("BadgeDocs");
 export const BadgeBasicExampleRoute = r("BadgeBasicExample");
@@ -181,6 +185,9 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 
 const AppRoute = S.Union([
   HomeRoute,
+  AvatarRoute,
+  AvatarDocsRoute,
+  AvatarBasicExampleRoute,
   BadgeRoute,
   BadgeDocsRoute,
   BadgeBasicExampleRoute,
@@ -288,6 +295,26 @@ const AppRoute = S.Union([
 type AppRoute = typeof AppRoute.Type;
 
 const homeRouter = pipe(Route.root, Route.mapTo(HomeRoute));
+const avatarRouter = pipe(literal("avatar"), Route.mapTo(AvatarRoute));
+const avatarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("avatar")),
+  Route.mapTo(AvatarDocsRoute)
+);
+const avatarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("avatar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AvatarBasicExampleRoute)
+);
+const avatarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("avatar-basic")),
+  Route.mapTo(AvatarBasicExampleRoute)
+);
 const badgeRouter = pipe(literal("badge"), Route.mapTo(BadgeRoute));
 const badgeDocsRouter = pipe(
   literal("docs"),
@@ -1143,6 +1170,10 @@ const virtualListVariableStandaloneExampleRouter = pipe(
 );
 
 const routeParser = Route.oneOf(
+  avatarRouter,
+  avatarBasicExampleRouter,
+  avatarBasicStandaloneExampleRouter,
+  avatarDocsRouter,
   badgeRouter,
   badgeBasicExampleRouter,
   badgeBasicStandaloneExampleRouter,
@@ -1341,6 +1372,7 @@ export const Model = S.Struct({
   route: AppRoute,
   uiModel: UiModel,
   animationBasicExample: AnimationBasicExample.Model,
+  avatarBasicExample: AvatarBasicExample.Model,
   badgeBasicExample: BadgeBasicExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
@@ -1412,6 +1444,9 @@ export const GotAnimationBasicExampleMessage = m(
     message: AnimationBasicExample.Message,
   }
 );
+export const GotAvatarBasicExampleMessage = m("GotAvatarBasicExampleMessage", {
+  message: AvatarBasicExample.Message,
+});
 export const GotBadgeBasicExampleMessage = m("GotBadgeBasicExampleMessage", {
   message: BadgeBasicExample.Message,
 });
@@ -1684,6 +1719,7 @@ export const Message = S.Union([
   ChangedUrl,
   GotUiMessage,
   GotAnimationBasicExampleMessage,
+  GotAvatarBasicExampleMessage,
   GotBadgeBasicExampleMessage,
   GotButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
@@ -1771,6 +1807,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [initialUiModel, uiCommands] = uiInit(flags.today);
   const [animationBasicExample, animationBasicExampleCommands] =
     AnimationBasicExample.init();
+  const [avatarBasicExample, avatarBasicExampleCommands] =
+    AvatarBasicExample.init();
   const [badgeBasicExample, badgeBasicExampleCommands] =
     BadgeBasicExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
@@ -1875,6 +1913,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
       animationBasicExample,
+      avatarBasicExample,
       badgeBasicExample,
       buttonBasicExample,
       buttonDisabledExample,
@@ -1932,6 +1971,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(animationBasicExampleCommands, (message) =>
         GotAnimationBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(avatarBasicExampleCommands, (message) =>
+        GotAvatarBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(badgeBasicExampleCommands, (message) =>
         GotBadgeBasicExampleMessage({ message })
@@ -2161,6 +2203,18 @@ export const update = (
           evo(model, { animationBasicExample: () => animationBasicExample }),
           Command.mapMessages(animationBasicExampleCommands, (message) =>
             GotAnimationBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAvatarBasicExampleMessage: ({ message }) => {
+        const [avatarBasicExample, avatarBasicExampleCommands] =
+          AvatarBasicExample.update(model.avatarBasicExample, message);
+
+        return [
+          evo(model, { avatarBasicExample: () => avatarBasicExample }),
+          Command.mapMessages(avatarBasicExampleCommands, (message) =>
+            GotAvatarBasicExampleMessage({ message })
           ),
         ];
       },
@@ -2899,6 +2953,13 @@ const NAV_ITEMS: readonly NavItem[] = [
     routeTag: "AnimationBasicExample",
     href: animationBasicExampleRouter(),
   },
+  { label: "Avatar", routeTag: "Avatar", href: avatarRouter() },
+  { label: "Avatar Docs", routeTag: "AvatarDocs", href: avatarDocsRouter() },
+  {
+    label: "Avatar Basic Example",
+    routeTag: "AvatarBasicExample",
+    href: avatarBasicExampleRouter(),
+  },
   { label: "Badge", routeTag: "Badge", href: badgeRouter() },
   { label: "Badge Docs", routeTag: "BadgeDocs", href: badgeDocsRouter() },
   {
@@ -3264,6 +3325,7 @@ const publicPath = (path: string): string =>
 
 const EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF: Record<string, string> = {
   [animationBasicExampleRouter()]: "sources/animation-basic.txt",
+  [avatarBasicExampleRouter()]: "sources/avatar-basic.txt",
   [badgeBasicExampleRouter()]: "sources/badge-basic.txt",
   [buttonBasicExampleRouter()]: "sources/button-basic.txt",
   [buttonDisabledExampleRouter()]: "sources/button-disabled.txt",
@@ -3317,7 +3379,9 @@ const EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF: Record<string, string> = {
 };
 
 const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
-  navItem.routeTag === "BadgeDocs" ? "shadcn" : "Foldkit";
+  navItem.routeTag === "AvatarDocs" || navItem.routeTag === "BadgeDocs"
+    ? "shadcn"
+    : "Foldkit";
 
 const DOCS_NAV_ITEMS = NAV_ITEMS.filter((navItem) =>
   navItem.routeTag.endsWith("Docs")
@@ -3677,6 +3741,10 @@ const componentNameFromSlug = (slug: string): string =>
     .join("");
 
 const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
+  avatar: {
+    artifact: "component",
+    origin: "shadcn",
+  },
   badge: {
     artifact: "component",
     origin: "shadcn",
@@ -4060,6 +4128,20 @@ const animationBasicExamplePreview = (
     model,
     view: AnimationBasicExample.view,
     toParentMessage: (message) => GotAnimationBasicExampleMessage({ message }),
+  });
+};
+
+const avatarBasicExamplePreview = (
+  model: AvatarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: AvatarBasicExample.view,
+    toParentMessage: (message) => GotAvatarBasicExampleMessage({ message }),
   });
 };
 
@@ -5501,6 +5583,113 @@ ClickedToggleStatus: () => [
           "Registry scene tests verify all documented variants render.",
           "Example scene tests verify the parent-owned status toggle and variant copy.",
           "Docs e2e tests verify the shared page sections, example block layout, and source viewer readability.",
+        ],
+      }),
+    ]
+  );
+};
+
+const avatarDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Avatar"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A shadcn-style identity component for profile images, fallback initials, grouped contributors, and overflow counts. It stays presentational while giving apps reusable size, image, fallback, group, and count helpers.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/avatar" },
+        { label: "Examples", value: "basic" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Avatar v1 documents image and fallback rendering, deterministic grouped avatars, accessible image labels, overflow count labels, and reusable class helpers without introducing component-owned state."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-avatar-basic",
+                preview: avatarBasicExamplePreview(
+                  model.avatarBasicExample,
+                  "avatar-docs-basic-preview"
+                ),
+                href: avatarBasicExampleRouter(),
+                linkText: "Open standalone Avatar Basic example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/avatar.json\nbunx shadcn@latest add <registry-url>/avatar-basic.json",
+        usageBody:
+          "Render Avatar.view for an individual person. Use fallback text when no source image exists, and use groupView plus countView for compact collaborator stacks.",
+        usageCode: `import * as Avatar from "./ui/avatar";
+
+Avatar.groupView<Message>([
+  Avatar.view<Message>({
+    alt: "Ada Lovelace",
+    fallback: "AL",
+    src: adaImageSrc,
+  }),
+  Avatar.view<Message>({ fallback: "GH" }),
+  Avatar.countView<Message>({ count: 4 }),
+]);`,
+        integrationCode: `// Model
+featuredPerson: S.Literal("Ada Lovelace", "Grace Hopper");
+
+// Message
+ClickedToggleFeaturedPerson();
+
+// Update
+ClickedToggleFeaturedPerson: () => [
+  evo(model, {
+    featuredPerson: (person) =>
+      person === "Ada Lovelace" ? "Grace Hopper" : "Ada Lovelace",
+  }),
+  [],
+];`,
+        apiItems: [
+          "view(config): renders an image avatar when src is present, otherwise fallback initials.",
+          "groupView(children, className): renders overlapping avatar groups.",
+          "countView(config): renders an accessible overflow count.",
+          'AvatarSize: "Small", "Default", or "Large".',
+          "Class helpers: avatar base, image, fallback, group, count, and size helpers.",
+        ],
+        accessibilityItems: [
+          "Images require useful alt text when the person identity is meaningful.",
+          "Fallback initials must match nearby visible identity text when the avatar conveys a person.",
+          "Overflow counts expose an accessible image label such as `4 more people`.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify image, fallback, group, and count rendering.",
+          "Example scene tests verify parent-owned featured-person state and fallback changes.",
+          "Docs e2e tests verify the shared page sections, source viewer, and layout contract.",
         ],
       }),
     ]
@@ -8523,6 +8712,37 @@ const badgeBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+const avatarBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Avatar Basic"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable avatar-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          avatarBasicExamplePreview(
+            model.avatarBasicExample,
+            "avatar-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 const buttonBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -10102,6 +10322,9 @@ const contentView = (model: Model): Html => {
   return M.value(model.route).pipe(
     M.tagsExhaustive({
       Home: homeView,
+      Avatar: () => embedUi("ui-avatar", View.avatar),
+      AvatarDocs: () => avatarDocsView(model),
+      AvatarBasicExample: () => avatarBasicExampleRouteView(model),
       Badge: () => embedUi("ui-badge", View.badge),
       BadgeDocs: () => badgeDocsView(model),
       BadgeBasicExample: () => badgeBasicExampleRouteView(model),

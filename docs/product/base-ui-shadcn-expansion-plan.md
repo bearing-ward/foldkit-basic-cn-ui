@@ -226,4 +226,8 @@ Reasoning:
 - Completed `badge` as the first shadcn-style non-primitive registry item:
   installable UI slice, basic example, docs page, source snapshot, generated
   registry JSON, scene coverage, and docs e2e coverage.
-- Next recommended item: `avatar`.
+- Completed `avatar` as the second shadcn-style non-primitive registry item:
+  image/fallback rendering, grouped avatars, overflow count helpers, docs page,
+  source snapshot, generated registry JSON, scene coverage, and docs e2e
+  coverage.
+- Next recommended item: `card`.

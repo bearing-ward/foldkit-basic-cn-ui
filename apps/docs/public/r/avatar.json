@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "A small shadcn-style identity component for profile images, fallback initials, grouped contributors, and overflow counts.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/avatar/index.ts",
+      "target": "src/ui/avatar/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  avatarClassNameBySize,\n  avatarGroupClassName,\n  avatarGroupCountClassName,\n} from \"./view\";\nimport type { AvatarSize } from \"./view\";\n\nexport type { AvatarSize };\n\nexport {\n  avatarBaseClassName,\n  avatarClassNameBySize,\n  avatarFallbackClassName,\n  avatarGroupClassName,\n  avatarGroupCountClassName,\n  avatarImageClassName,\n  avatarSizeClassNameBySize,\n} from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  fallback: string;\n  src?: string;\n  alt?: string;\n  size?: AvatarSize;\n  className?: string;\n}>;\n\nexport type CountConfig = Readonly<{\n  count: number;\n  label?: string;\n  className?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  fallback,\n  src,\n  alt,\n  size = \"Default\",\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [avatarClassNameBySize(size), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span(\n    [h.Class(classNames)],\n    src === undefined\n      ? [\n          h.span(\n            [h.Class(\"flex h-full w-full items-center justify-center\")],\n            [fallback]\n          ),\n        ]\n      : [\n          h.img([\n            h.Src(src),\n            h.Alt(alt ?? fallback),\n            h.Class(\"h-full w-full object-cover\"),\n          ]),\n        ]\n  );\n};\n\nexport const groupView = <ParentMessage>(\n  children: readonly Html[],\n  className?: string\n): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [avatarGroupClassName, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.div([h.Class(classNames)], children);\n};\n\nexport const countView = <ParentMessage>({\n  count,\n  label,\n  className,\n}: CountConfig): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [avatarGroupCountClassName, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span(\n    [\n      h.Class(classNames),\n      h.AriaLabel(label ?? `${count} more people`),\n      h.Attribute(\"role\", \"img\"),\n    ],\n    [`+${count}`]\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/avatar/view.ts",
+      "target": "src/ui/avatar/view.ts",
+      "type": "registry:ui",
+      "content": "export type AvatarSize = \"Small\" | \"Default\" | \"Large\";\n\nexport const avatarBaseClassName =\n  \"relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-100 font-medium text-gray-700 ring-2 ring-white\";\n\nexport const avatarImageClassName = \"h-full w-full object-cover\";\n\nexport const avatarFallbackClassName =\n  \"flex h-full w-full items-center justify-center bg-gray-100 text-gray-700\";\n\nexport const avatarGroupClassName = \"flex items-center -space-x-2\";\n\nexport const avatarGroupCountClassName =\n  \"relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-sm font-medium text-gray-700 ring-2 ring-white\";\n\nexport const avatarSizeClassNameBySize = (\n  size: AvatarSize = \"Default\"\n): string => {\n  if (size === \"Small\") {\n    return \"h-8 w-8 text-xs\";\n  }\n\n  if (size === \"Large\") {\n    return \"h-12 w-12 text-base\";\n  }\n\n  return \"h-10 w-10 text-sm\";\n};\n\nexport const avatarClassNameBySize = (size: AvatarSize = \"Default\"): string =>\n  `${avatarBaseClassName} ${avatarSizeClassNameBySize(size)}`;\n"
+    },
+    {
+      "path": "registry/default/ui/avatar/avatar.scene.test.ts",
+      "target": "src/ui/avatar/avatar.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Avatar from \"./index\";\n\nconst imageSrc =\n  \"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%234f46e5'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' font-family='Arial' fill='white'%3EAL%3C/text%3E%3C/svg%3E\";\n\nconst view = (): Html => {\n  const h = html<never>();\n\n  return h.div(\n    [h.Class(\"space-y-4\")],\n    [\n      Avatar.view({ fallback: \"AL\", src: imageSrc, alt: \"Ada Lovelace\" }),\n      Avatar.view({ fallback: \"GH\", size: \"Large\" }),\n      Avatar.groupView([\n        Avatar.view({ fallback: \"AL\", src: imageSrc, alt: \"Ada Lovelace\" }),\n        Avatar.view({ fallback: \"GH\" }),\n        Avatar.countView({ count: 3 }),\n      ]),\n    ]\n  );\n};\n\ndescribe(\"Avatar registry view\", () => {\n  test(\"renders image, fallback, group, and count affordances\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.role(\"img\", { name: \"Ada Lovelace\" })).toExist(),\n      Scene.expect(Scene.text(\"GH\")).toExist(),\n      Scene.expect(Scene.role(\"img\", { name: \"3 more people\" })).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Avatar",
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

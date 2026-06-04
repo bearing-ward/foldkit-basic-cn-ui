@@ -644,6 +644,67 @@
       }
     },
     {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A small shadcn-style identity component for profile images, fallback initials, grouped contributors, and overflow counts.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/avatar/index.ts",
+          "target": "src/ui/avatar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/avatar/view.ts",
+          "target": "src/ui/avatar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/avatar/avatar.scene.test.ts",
+          "target": "src/ui/avatar/avatar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Avatar",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "avatar-basic",
+      "type": "registry:example",
+      "title": "Avatar Basic",
+      "description": "A runnable Foldkit example showing avatar images, fallbacks, groups, and parent-owned featured avatar changes.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["avatar"],
+      "files": [
+        {
+          "path": "registry/default/examples/avatar-basic/main.ts",
+          "target": "src/examples/avatar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/avatar-basic/avatar-basic.scene.test.ts",
+          "target": "src/examples/avatar-basic/avatar-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Avatar",
+          "example": "basic"
+        }
+      }
+    },
+    {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
