@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Button",
       "primitive": "Ui.Button",
-      "stateful": false
+      "stateful": false,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "VirtualList",
       "primitive": "Ui.VirtualList",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

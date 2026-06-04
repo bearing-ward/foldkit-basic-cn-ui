@@ -37,7 +37,9 @@
     "foldkit": {
       "component": "Listbox",
       "primitive": "Ui.Listbox",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

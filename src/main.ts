@@ -2874,6 +2874,19 @@ type NavItem = Readonly<{
   href: string;
 }>;
 
+type ComponentLibrary = "Foldkit" | "Base UI" | "shadcn";
+
+type DocsNavItem = NavItem &
+  Readonly<{
+    library: ComponentLibrary;
+    componentRoutePrefix: string;
+  }>;
+
+type DocsNavGroup = Readonly<{
+  library: ComponentLibrary;
+  items: readonly DocsNavItem[];
+}>;
+
 const NAV_ITEMS: readonly NavItem[] = [
   { label: "Animation", routeTag: "Animation", href: animationRouter() },
   {
@@ -3303,16 +3316,49 @@ const EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF: Record<string, string> = {
   [virtualListVariableExampleRouter()]: "sources/virtual-list-variable.txt",
 };
 
+const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
+  navItem.routeTag === "BadgeDocs" ? "shadcn" : "Foldkit";
+
 const DOCS_NAV_ITEMS = NAV_ITEMS.filter((navItem) =>
   navItem.routeTag.endsWith("Docs")
 ).map((navItem) => ({
   ...navItem,
   label: navItem.label.replace(/ Docs$/u, ""),
-}));
+  library: docsNavItemLibrary(navItem),
+  componentRoutePrefix: navItem.routeTag.replace(/Docs$/u, ""),
+})) satisfies readonly DocsNavItem[];
+
+const DOCS_NAV_GROUPS: readonly DocsNavGroup[] = [
+  {
+    library: "Foldkit",
+    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Foldkit"),
+  },
+  {
+    library: "Base UI",
+    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Base UI"),
+  },
+  {
+    library: "shadcn",
+    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "shadcn"),
+  },
+];
+
+const isDocsNavItemActive = (
+  currentRoute: AppRoute,
+  navItem: DocsNavItem
+): boolean => currentRoute._tag.startsWith(navItem.componentRoutePrefix);
+
+const libraryBadgeClassName = (library: ComponentLibrary): string =>
+  clsx(
+    "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none",
+    library === "Foldkit" && "bg-accent-100 text-accent-700",
+    library === "Base UI" && "bg-emerald-100 text-emerald-700",
+    library === "shadcn" && "bg-gray-200 text-gray-700"
+  );
 
 const navLinkClassName = (isActive: boolean): string =>
   clsx(
-    "block px-3 py-1.5 rounded-md text-sm transition-colors",
+    "block min-w-0 flex-1 rounded-md px-3 py-1.5 text-sm transition-colors",
     isActive
       ? "bg-accent-100 text-accent-700"
       : "text-gray-700 hover:bg-gray-200"
@@ -3320,11 +3366,62 @@ const navLinkClassName = (isActive: boolean): string =>
 
 const mobileNavLinkClassName = (isActive: boolean): string =>
   clsx(
-    "block px-4 py-2.5 rounded-md text-base transition-colors",
+    "block min-w-0 flex-1 rounded-md px-4 py-2.5 text-base transition-colors",
     isActive
       ? "bg-accent-100 text-accent-700"
       : "text-gray-700 hover:bg-gray-200"
   );
+
+const docsNavGroupView = (
+  currentRoute: AppRoute,
+  group: DocsNavGroup,
+  linkClassName: (isActive: boolean) => string
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("space-y-2")],
+    [
+      h.div(
+        [
+          h.Class(
+            "border-t border-gray-200 pt-3 text-xs font-semibold uppercase tracking-wide text-gray-500 first:border-t-0 first:pt-0"
+          ),
+        ],
+        [group.library]
+      ),
+      group.items.length === 0
+        ? h.p([h.Class("px-3 text-xs text-gray-400")], ["No components yet"])
+        : h.ul(
+            [h.Class("flex flex-col gap-0.5")],
+            group.items.map((navItem) => {
+              const isActive = isDocsNavItemActive(currentRoute, navItem);
+
+              return h.li(
+                [h.Class("flex items-center gap-2")],
+                [
+                  h.a(
+                    [
+                      h.Href(appPath(navItem.href)),
+                      h.Class(linkClassName(isActive)),
+                      ...(isActive ? [h.AriaCurrent("page")] : []),
+                    ],
+                    [navItem.label]
+                  ),
+                  h.span(
+                    [
+                      h.AriaHidden(true),
+                      h.Class(libraryBadgeClassName(navItem.library)),
+                    ],
+                    [navItem.library]
+                  ),
+                ]
+              );
+            })
+          ),
+    ]
+  );
+};
 
 const sidebarView = (currentRoute: AppRoute): Html => {
   const h = html<Message>();
@@ -3332,7 +3429,7 @@ const sidebarView = (currentRoute: AppRoute): Html => {
   return h.nav(
     [
       h.Class(
-        "hidden md:flex w-56 shrink-0 border-r border-gray-200 bg-gray-50 p-4 flex-col"
+        "hidden h-screen w-64 shrink-0 flex-col border-r border-gray-200 bg-gray-50 p-4 md:flex"
       ),
     ],
     [
@@ -3341,28 +3438,23 @@ const sidebarView = (currentRoute: AppRoute): Html => {
         [
           h.a(
             [h.Href(appPath(homeRouter())), h.Class("block")],
-            [h.h1([h.Class("text-lg font-bold text-gray-900")], ["Foldkit UI"])]
-          ),
-          h.span([h.Class("text-xs text-gray-500")], ["Component Showcase"]),
-        ]
-      ),
-      h.ul(
-        [h.Class("flex flex-col gap-0.5")],
-        DOCS_NAV_ITEMS.map((navItem) =>
-          h.li(
-            [],
             [
-              h.a(
-                [
-                  h.Href(appPath(navItem.href)),
-                  h.Class(
-                    navLinkClassName(currentRoute._tag === navItem.routeTag)
-                  ),
-                ],
-                [navItem.label]
+              h.h1(
+                [h.Class("text-lg font-bold text-gray-900")],
+                ["Foldkit-basic-cn-ui"]
               ),
             ]
-          )
+          ),
+          h.span(
+            [h.Class("text-xs text-gray-500")],
+            ["Foldkit component registry"]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("min-h-0 flex-1 space-y-5 overflow-y-auto pr-1")],
+        DOCS_NAV_GROUPS.map((group) =>
+          docsNavGroupView(currentRoute, group, navLinkClassName)
         )
       ),
     ]
@@ -3390,11 +3482,11 @@ const mobileMenuContent = (currentRoute: AppRoute): Html => {
                 [
                   h.span(
                     [h.Class("text-base font-bold text-gray-900")],
-                    ["Foldkit UI"]
+                    ["Foldkit-basic-cn-ui"]
                   ),
                   h.span(
                     [h.Class("text-xs text-gray-500")],
-                    ["Component Showcase"]
+                    ["Foldkit component registry"]
                   ),
                 ]
               ),
@@ -3419,25 +3511,10 @@ const mobileMenuContent = (currentRoute: AppRoute): Html => {
           h.Autofocus(true),
         ],
         [
-          h.ul(
-            [h.Class("flex flex-col gap-0.5")],
-            DOCS_NAV_ITEMS.map((navItem) =>
-              h.li(
-                [],
-                [
-                  h.a(
-                    [
-                      h.Href(appPath(navItem.href)),
-                      h.Class(
-                        mobileNavLinkClassName(
-                          currentRoute._tag === navItem.routeTag
-                        )
-                      ),
-                    ],
-                    [navItem.label]
-                  ),
-                ]
-              )
+          h.div(
+            [h.Class("space-y-5")],
+            DOCS_NAV_GROUPS.map((group) =>
+              docsNavGroupView(currentRoute, group, mobileNavLinkClassName)
             )
           ),
         ]
@@ -3464,11 +3541,11 @@ const mobileHeaderView = (model: Model): Html => {
             [
               h.span(
                 [h.Class("text-base font-bold text-gray-900")],
-                ["Foldkit UI"]
+                ["Foldkit-basic-cn-ui"]
               ),
               h.span(
                 [h.Class("text-xs text-gray-500")],
-                ["Component Showcase"]
+                ["Foldkit component registry"]
               ),
             ]
           ),
@@ -3526,12 +3603,12 @@ const homeView = (): Html => {
     [
       h.h1(
         [h.Class("text-2xl md:text-3xl font-bold text-gray-900 mb-4")],
-        ["Foldkit UI Showcase"]
+        ["Foldkit component registry"]
       ),
       h.p(
         [h.Class("text-gray-600 mb-4")],
         [
-          "This is a showcase of every Foldkit UI component. Select a component from the menu to see it in action.",
+          "Browse installable Foldkit, Base UI, and shadcn component slices. Select a component from the menu to update this detail view.",
         ]
       ),
       h.p(
@@ -3587,8 +3664,71 @@ type DocsMetaItem = Readonly<{
   value: string;
 }>;
 
+type ComponentDocsMetadata = Readonly<{
+  origin: ComponentLibrary;
+  artifact: "component" | "primitive-backed-component";
+  primitive?: string;
+}>;
+
+const componentNameFromSlug = (slug: string): string =>
+  slug
+    .split("-")
+    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+    .join("");
+
+const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
+  badge: {
+    artifact: "component",
+    origin: "shadcn",
+  },
+};
+
+const docsMetadataForSource = (
+  source: string
+): ComponentDocsMetadata | undefined => {
+  const slug = source.replace(/^registry\/default\/ui\//u, "");
+
+  if (slug === source) {
+    return undefined;
+  }
+
+  return (
+    COMPONENT_DOCS_METADATA_BY_SLUG[slug] ?? {
+      artifact: "primitive-backed-component",
+      origin: "Foldkit",
+      primitive: `Ui.${componentNameFromSlug(slug)}`,
+    }
+  );
+};
+
+const docsMetaItemsWithComponentMetadata = (
+  items: readonly DocsMetaItem[]
+): readonly DocsMetaItem[] => {
+  const maybeSource = items.find((item) => item.label === "Source");
+
+  if (maybeSource === undefined) {
+    return items;
+  }
+
+  const maybeMetadata = docsMetadataForSource(maybeSource.value);
+
+  if (maybeMetadata === undefined) {
+    return items;
+  }
+
+  return [
+    ...items,
+    { label: "Origin", value: maybeMetadata.origin },
+    { label: "Artifact", value: maybeMetadata.artifact },
+    ...(maybeMetadata.primitive === undefined
+      ? []
+      : [{ label: "Primitive", value: maybeMetadata.primitive }]),
+  ];
+};
+
 const docsMetaGrid = (items: readonly DocsMetaItem[]): Html => {
   const h = html<Message>();
+  const enrichedItems = docsMetaItemsWithComponentMetadata(items);
 
   return h.section(
     [
@@ -3596,7 +3736,7 @@ const docsMetaGrid = (items: readonly DocsMetaItem[]): Html => {
         "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
       ),
     ],
-    items.map((item) =>
+    enrichedItems.map((item) =>
       h.div(
         [h.Class("space-y-1")],
         [
@@ -10075,8 +10215,8 @@ const contentView = (model: Model): Html => {
 
 const routeTitle = (route: Model["route"]): string =>
   M.value(route).pipe(
-    M.tag("Home", () => "Foldkit UI Showcase"),
-    M.orElse(({ _tag }) => `${_tag} — Foldkit UI Showcase`)
+    M.tag("Home", () => "Foldkit-basic-cn-ui"),
+    M.orElse(({ _tag }) => `${_tag} - Foldkit-basic-cn-ui`)
   );
 
 export const view = (model: Model): Document => {
@@ -10085,13 +10225,13 @@ export const view = (model: Model): Document => {
   return {
     title: routeTitle(model.route),
     body: h.div(
-      [h.Class("flex flex-col md:flex-row min-h-screen bg-white")],
+      [h.Class("flex h-screen flex-col overflow-hidden bg-white md:flex-row")],
       [
         mobileHeaderView(model),
         mobileMenuView(model),
         sidebarView(model.route),
         h.main(
-          [h.Class("flex-1 p-4 md:p-8 overflow-auto")],
+          [h.Class("min-h-0 flex-1 overflow-y-auto p-4 md:p-8")],
           [h.keyed("div")(model.route._tag, [], [contentView(model)])]
         ),
       ]

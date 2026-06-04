@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "RadioGroup",
       "primitive": "Ui.RadioGroup",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

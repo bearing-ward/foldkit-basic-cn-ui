@@ -283,6 +283,7 @@ describe("scene", () => {
       { update, view },
       Scene.with(homeModel),
       Scene.expect(Scene.role("link", { name: "Animation" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Badge" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Button" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Calendar" })).toExist(),
       Scene.expect(Scene.role("link", { name: "Checkbox" })).toExist(),
@@ -318,15 +319,15 @@ describe("scene", () => {
     );
   });
 
-  test("the Home route shows the showcase heading and description", () => {
+  test("the Home route shows the registry heading and description", () => {
     Scene.scene(
       { update, view },
       Scene.with(homeModel),
       Scene.expect(
-        Scene.role("heading", { name: "Foldkit UI Showcase" })
+        Scene.role("heading", { name: "Foldkit component registry" })
       ).toExist(),
       Scene.expect(
-        Scene.text("This is a showcase of every Foldkit UI component.", {
+        Scene.text("Browse installable Foldkit, Base UI, and shadcn", {
           exact: false,
         })
       ).toExist()

@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "FileDrop",
       "primitive": "Ui.FileDrop",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

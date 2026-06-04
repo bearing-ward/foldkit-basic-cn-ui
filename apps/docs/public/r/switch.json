@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Switch",
       "primitive": "Ui.Switch",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

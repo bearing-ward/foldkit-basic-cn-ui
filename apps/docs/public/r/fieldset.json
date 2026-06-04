@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Fieldset",
       "primitive": "Ui.Fieldset",
-      "stateful": false
+      "stateful": false,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

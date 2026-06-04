@@ -30,8 +30,9 @@
   "meta": {
     "foldkit": {
       "component": "Badge",
-      "source": "shadcn",
-      "stateful": false
+      "stateful": false,
+      "origin": "shadcn",
+      "artifact": "component"
     }
   }
 }

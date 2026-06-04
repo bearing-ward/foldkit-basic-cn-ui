@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Animation",
       "primitive": "Ui.Animation",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

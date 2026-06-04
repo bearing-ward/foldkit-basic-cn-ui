@@ -37,7 +37,9 @@
     "foldkit": {
       "component": "Menu",
       "primitive": "Ui.Menu",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

@@ -37,7 +37,9 @@
         "foldkit": {
           "component": "Dialog",
           "primitive": "Ui.Dialog",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -210,7 +212,9 @@
         "foldkit": {
           "component": "Popover",
           "primitive": "Ui.Popover",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -302,7 +306,9 @@
         "foldkit": {
           "component": "Menu",
           "primitive": "Ui.Menu",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -394,7 +400,9 @@
         "foldkit": {
           "component": "Listbox",
           "primitive": "Ui.Listbox",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -481,7 +489,9 @@
         "foldkit": {
           "component": "Select",
           "primitive": "Ui.Select",
-          "stateful": false
+          "stateful": false,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -573,7 +583,9 @@
         "foldkit": {
           "component": "Combobox",
           "primitive": "Ui.Combobox",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -659,8 +671,9 @@
       "meta": {
         "foldkit": {
           "component": "Badge",
-          "source": "shadcn",
-          "stateful": false
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
         }
       }
     },
@@ -720,7 +733,9 @@
         "foldkit": {
           "component": "Button",
           "primitive": "Ui.Button",
-          "stateful": false
+          "stateful": false,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -807,7 +822,9 @@
         "foldkit": {
           "component": "Input",
           "primitive": "Ui.Input",
-          "stateful": false
+          "stateful": false,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -894,7 +911,9 @@
         "foldkit": {
           "component": "Checkbox",
           "primitive": "Ui.Checkbox",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -981,7 +1000,9 @@
         "foldkit": {
           "component": "Textarea",
           "primitive": "Ui.Textarea",
-          "stateful": false
+          "stateful": false,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1068,7 +1089,9 @@
         "foldkit": {
           "component": "Toast",
           "primitive": "Ui.Toast",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1155,7 +1178,9 @@
         "foldkit": {
           "component": "Switch",
           "primitive": "Ui.Switch",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1242,7 +1267,9 @@
         "foldkit": {
           "component": "RadioGroup",
           "primitive": "Ui.RadioGroup",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1329,7 +1356,9 @@
         "foldkit": {
           "component": "Fieldset",
           "primitive": "Ui.Fieldset",
-          "stateful": false
+          "stateful": false,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1416,7 +1445,9 @@
         "foldkit": {
           "component": "FileDrop",
           "primitive": "Ui.FileDrop",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1503,7 +1534,9 @@
         "foldkit": {
           "component": "Calendar",
           "primitive": "Ui.Calendar",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1590,7 +1623,9 @@
         "foldkit": {
           "component": "DatePicker",
           "primitive": "Ui.DatePicker",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1677,7 +1712,9 @@
         "foldkit": {
           "component": "Disclosure",
           "primitive": "Ui.Disclosure",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1764,7 +1801,9 @@
         "foldkit": {
           "component": "DragAndDrop",
           "primitive": "Ui.DragAndDrop",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1851,7 +1890,9 @@
         "foldkit": {
           "component": "Slider",
           "primitive": "Ui.Slider",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -1938,7 +1979,9 @@
         "foldkit": {
           "component": "Tabs",
           "primitive": "Ui.Tabs",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -2025,7 +2068,9 @@
         "foldkit": {
           "component": "Tooltip",
           "primitive": "Ui.Tooltip",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -2112,7 +2157,9 @@
         "foldkit": {
           "component": "Animation",
           "primitive": "Ui.Animation",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },
@@ -2172,7 +2219,9 @@
         "foldkit": {
           "component": "VirtualList",
           "primitive": "Ui.VirtualList",
-          "stateful": true
+          "stateful": true,
+          "origin": "foldkit",
+          "artifact": "primitive-backed-component"
         }
       }
     },

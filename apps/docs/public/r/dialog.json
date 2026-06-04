@@ -37,7 +37,9 @@
     "foldkit": {
       "component": "Dialog",
       "primitive": "Ui.Dialog",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

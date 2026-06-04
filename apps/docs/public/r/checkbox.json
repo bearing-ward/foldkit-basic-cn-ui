@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Checkbox",
       "primitive": "Ui.Checkbox",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

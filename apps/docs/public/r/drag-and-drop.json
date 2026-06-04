@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "DragAndDrop",
       "primitive": "Ui.DragAndDrop",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

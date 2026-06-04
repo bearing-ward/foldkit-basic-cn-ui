@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Input",
       "primitive": "Ui.Input",
-      "stateful": false
+      "stateful": false,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }

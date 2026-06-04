@@ -31,7 +31,9 @@
     "foldkit": {
       "component": "Disclosure",
       "primitive": "Ui.Disclosure",
-      "stateful": true
+      "stateful": true,
+      "origin": "foldkit",
+      "artifact": "primitive-backed-component"
     }
   }
 }
