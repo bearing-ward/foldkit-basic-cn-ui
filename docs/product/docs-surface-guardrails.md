@@ -27,13 +27,13 @@ An example block is the reusable card surface for a component docs example.
 
 Required structure:
 
-| Region  | Expectation                                                                                  |
-| ------- | -------------------------------------------------------------------------------------------- |
-| Card    | Vertical flex layout with a stable minimum height so uneven controls do not resize the grid. |
-| Heading | Short example name only. Do not repeat route or install copy in the heading.                 |
-| Preview | Dedicated preview region below the heading. Interactive controls stay inside this region.    |
-| Actions | Dedicated action row below the preview, separated by a light top border.                     |
-| Link    | Standalone-example links live in the action row, never inline with the preview controls.     |
+| Region  | Expectation                                                                                                                          |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Card    | Vertical flex layout with a stable minimum height so uneven controls do not resize the grid.                                         |
+| Heading | Short example name only. Do not repeat route or install copy in the heading.                                                         |
+| Preview | Dedicated preview region below the heading. Interactive controls stay inside this region.                                            |
+| Actions | Dedicated action row below the preview, separated by a light top border.                                                             |
+| Link    | Standalone-example links live in the action row, never inline with the preview controls. Links must have at least a 40px hit target. |
 
 Implementation guardrail:
 
@@ -41,6 +41,7 @@ Implementation guardrail:
 - Add `data-testid` hooks for the block, preview region, and action row.
 - Scene tests must assert the block uses vertical stacking and that the action row is separated from the preview.
 - Every `registry:example` item must ship a `.scene.test.ts` file that exercises behavior through Scene interactions, command or mount resolution, or explicitly asserts disabled/inert state. `bun run check:registry` enforces this via `scripts/check-example-tests.mjs`.
+- `bun run test:e2e` must include the docs surface guard across desktop and mobile widths so mobile overflow, preview/action overlap, missing required sections, and undersized action links are caught in browser layout.
 
 Current enforced examples:
 

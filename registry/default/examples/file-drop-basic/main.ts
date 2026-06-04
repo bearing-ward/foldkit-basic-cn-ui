@@ -111,7 +111,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   [h.Class(FileDrop.secondaryTextClassName)],
                   ["Any file type. This example lists selected files."]
                 ),
-                h.input([...attributes.input, h.AriaLabel("Upload files")]),
+                h.input([
+                  ...attributes.input,
+                  h.AriaLabel("Upload files"),
+                  h.Class(FileDrop.fileInputClassName),
+                ]),
               ]
             ),
         },

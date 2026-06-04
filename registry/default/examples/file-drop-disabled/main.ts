@@ -66,7 +66,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               [h.Class(FileDrop.secondaryTextClassName)],
               ["Uploads are unavailable while the project is archived."]
             ),
-            h.input([...attributes.input, h.AriaLabel("Upload files")]),
+            h.input([
+              ...attributes.input,
+              h.AriaLabel("Upload files"),
+              h.Class(FileDrop.fileInputClassName),
+            ]),
           ]
         ),
     },

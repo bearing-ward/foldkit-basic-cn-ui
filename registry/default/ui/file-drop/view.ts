@@ -7,6 +7,8 @@ export const primaryTextClassName = "text-sm font-semibold text-gray-950";
 
 export const secondaryTextClassName = "text-sm text-gray-600";
 
+export const fileInputClassName = "max-w-full text-sm";
+
 export const fileListClassName = "space-y-2";
 
 export const fileRowClassName =

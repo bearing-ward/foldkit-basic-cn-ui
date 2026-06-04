@@ -3589,7 +3589,7 @@ const docsExampleBlock = ({
             [
               h.Href(href),
               h.Class(
-                "inline-flex text-sm font-medium text-accent-700 hover:underline"
+                "inline-flex min-h-10 items-center text-sm font-medium text-accent-700 hover:underline"
               ),
             ],
             [linkText]

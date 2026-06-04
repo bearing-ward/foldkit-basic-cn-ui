@@ -23,6 +23,7 @@ export type FileDropAttributes = Ui.FileDrop.FileDropAttributes;
 
 export {
   dropZoneClassName,
+  fileInputClassName,
   fileListClassName,
   fileNameClassName,
   fileRowClassName,

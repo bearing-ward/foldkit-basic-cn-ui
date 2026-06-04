@@ -102,7 +102,11 @@ const fileDropView = (
                   [h.Class(FileDrop.secondaryTextClassName)],
                   ["Documents, images, or other local files."]
                 ),
-                h.input([...attributes.input, h.AriaLabel("Upload files")]),
+                h.input([
+                  ...attributes.input,
+                  h.AriaLabel("Upload files"),
+                  h.Class(FileDrop.fileInputClassName),
+                ]),
               ]
             ),
         },
