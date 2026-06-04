@@ -64,7 +64,7 @@ for (const viewport of viewports) {
               '[data-testid^="docs-example-block-"][data-testid$="-actions"] iframe'
             )
             .first()
-        ).toHaveAttribute("src", /\/sources\/.+\.ts/u);
+        ).toHaveAttribute("src", /\/sources\/.+\.txt/u);
 
         const pageOverflow = await page.evaluate(
           () =>
