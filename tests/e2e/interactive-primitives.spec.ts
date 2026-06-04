@@ -228,3 +228,206 @@ test("Toast docs variants show and dismiss notifications", async ({ page }) => {
   await expect(variants.getByText("Review needed")).toBeHidden();
   await expect(variants.getByText("Failed")).toBeHidden();
 });
+
+test("Checkbox, Switch, and RadioGroup docs examples update state", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/checkbox");
+
+  const checkboxBasic = page.getByTestId("docs-example-block-checkbox-basic");
+  const termsCheckbox = checkboxBasic.getByRole("checkbox");
+
+  await expect(termsCheckbox).toHaveAttribute("aria-checked", "false");
+  await termsCheckbox.click();
+  await expect(termsCheckbox).toHaveAttribute("aria-checked", "true");
+  await expect(checkboxBasic.getByText("Accepted: yes")).toBeVisible();
+
+  const indeterminate = page.getByTestId(
+    "docs-example-block-checkbox-indeterminate"
+  );
+  const allChannels = indeterminate.getByRole("checkbox").first();
+
+  await expect(allChannels).toHaveAttribute("aria-checked", "mixed");
+  await allChannels.click();
+  await expect(allChannels).toHaveAttribute("aria-checked", "true");
+  await expect(indeterminate.getByText("Selected channels: 2")).toBeVisible();
+
+  await page.goto("/docs/components/switch");
+
+  const switchBasic = page.getByTestId("docs-example-block-switch-basic");
+  const notificationsSwitch = switchBasic.getByRole("switch");
+
+  await expect(notificationsSwitch).toHaveAttribute("aria-checked", "false");
+  await notificationsSwitch.click();
+  await expect(notificationsSwitch).toHaveAttribute("aria-checked", "true");
+  await expect(switchBasic.getByText("Notifications: on")).toBeVisible();
+
+  const switchDisabled = page.getByTestId("docs-example-block-switch-disabled");
+  const lockedSwitch = switchDisabled.getByRole("switch");
+
+  await expect(lockedSwitch).toHaveAttribute("aria-disabled", "true");
+  await expect(lockedSwitch).toHaveAttribute("aria-checked", "true");
+
+  await page.goto("/docs/components/radio-group");
+
+  const radioBasic = page.getByTestId("docs-example-block-radio-group-basic");
+  const businessPlan = radioBasic.getByRole("radio", { name: /Business/u });
+
+  await businessPlan.click();
+  await expect(businessPlan).toHaveAttribute("aria-checked", "true");
+  await expect(radioBasic.getByText("Selected plan: Business")).toBeVisible();
+
+  const radioHorizontal = page.getByTestId(
+    "docs-example-block-radio-group-horizontal"
+  );
+  const compactDensity = radioHorizontal.getByRole("radio", {
+    name: /Compact/u,
+  });
+  const spaciousDensity = radioHorizontal.getByRole("radio", {
+    name: /Spacious/u,
+  });
+
+  await compactDensity.click();
+  await expect(compactDensity).toHaveAttribute("aria-checked", "true");
+  await expect(
+    radioHorizontal.getByText("Selected density: Compact")
+  ).toBeVisible();
+  await expect(spaciousDensity).toHaveAttribute("aria-disabled", "true");
+  await expect(spaciousDensity).toHaveAttribute("aria-checked", "false");
+});
+
+test("Calendar and DatePicker docs examples select allowed dates", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/calendar");
+
+  const calendarBasic = page.getByTestId("docs-example-block-calendar-basic");
+
+  await calendarBasic
+    .getByRole("button", { name: "Friday, April 17, 2026" })
+    .click();
+  await expect(
+    calendarBasic.getByText("Selected date: 2026-04-17")
+  ).toBeVisible();
+
+  const calendarBounds = page.getByTestId("docs-example-block-calendar-bounds");
+  const disabledToday = calendarBounds.getByRole("button", {
+    name: "Thursday, April 16, 2026",
+  });
+
+  await expect(disabledToday).toHaveAttribute("aria-disabled", "true");
+  await calendarBounds
+    .getByRole("button", { name: "Friday, April 17, 2026" })
+    .click();
+  await expect(
+    calendarBounds.getByText("Selected bounded date: 2026-04-17")
+  ).toBeVisible();
+
+  await page.goto("/docs/components/date-picker");
+
+  const datePickerBasic = page.getByTestId(
+    "docs-example-block-date-picker-basic"
+  );
+
+  await datePickerBasic.getByRole("button", { name: /Pick a date/u }).click();
+  await page.getByRole("button", { name: "Friday, April 17, 2026" }).click();
+  await expect(
+    datePickerBasic.getByText("Selected date: 2026-04-17")
+  ).toBeVisible();
+  await expect(
+    datePickerBasic.getByRole("button", { name: /2026-04-17/u })
+  ).toBeVisible();
+
+  const datePickerBounds = page.getByTestId(
+    "docs-example-block-date-picker-bounds"
+  );
+
+  await datePickerBounds.getByRole("button", { name: /Pick a date/u }).click();
+  await expect(
+    page.getByRole("button", { name: "Thursday, April 16, 2026" })
+  ).toHaveAttribute("aria-disabled", "true");
+  await page.getByRole("button", { name: "Friday, April 17, 2026" }).click();
+  await expect(
+    datePickerBounds.getByText("Selected bounded date: 2026-04-17")
+  ).toBeVisible();
+});
+
+test("FileDrop docs examples accept selected files and preserve disabled state", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/file-drop");
+
+  const basic = page.getByTestId("docs-example-block-file-drop-basic");
+  const input = basic.locator("#file-drop-basic");
+
+  await input.setInputFiles({
+    name: "registry-proof.txt",
+    mimeType: "text/plain",
+    buffer: Buffer.from("registry proof"),
+  });
+
+  await expect(basic.getByText("Selected files: 1")).toBeVisible();
+  await expect(basic.getByText("registry-proof.txt")).toBeVisible();
+
+  await basic.getByRole("button", { name: "Remove" }).click();
+  await expect(basic.getByText("Selected files: 0")).toBeVisible();
+
+  const disabled = page.getByTestId("docs-example-block-file-drop-disabled");
+
+  await expect(disabled.locator("#file-drop-disabled")).toBeDisabled();
+  await expect(disabled.getByText("File uploads disabled")).toBeVisible();
+});
+
+test("Popover and Dialog docs examples open and dismiss portal surfaces", async ({
+  page,
+}) => {
+  await page.goto("/docs/components/popover");
+
+  const popoverBasic = page.getByTestId("docs-example-block-popover-basic");
+  const popoverTrigger = popoverBasic.getByRole("button", {
+    name: "Open popover",
+  });
+
+  await popoverTrigger.click();
+  await expect(popoverTrigger).toHaveAttribute("aria-expanded", "true");
+  await expect(page.locator("#popover-basic-panel")).toContainText("Analytics");
+  await page.keyboard.press("Escape");
+  await expect(popoverTrigger).toHaveAttribute("aria-expanded", "false");
+
+  const popoverAnimated = page.getByTestId(
+    "docs-example-block-popover-animated"
+  );
+  const animatedTrigger = popoverAnimated.getByRole("button", {
+    name: "Open animated popover",
+  });
+
+  await animatedTrigger.click();
+  await expect(animatedTrigger).toHaveAttribute("aria-expanded", "true");
+  await expect(page.locator("#popover-animated-panel")).toContainText(
+    "Animated popover"
+  );
+  await page.keyboard.press("Escape");
+  await expect(animatedTrigger).toHaveAttribute("aria-expanded", "false");
+
+  await page.goto("/docs/components/dialog");
+
+  const dialogBasic = page.getByTestId("docs-example-block-dialog-basic");
+
+  await dialogBasic.getByRole("button", { name: "Open dialog" }).click();
+  await expect(page.getByText("Edit profile")).toBeVisible();
+  await page.getByRole("button", { name: "Save changes" }).click();
+  await expect(page.getByText("Edit profile")).toBeHidden();
+
+  const dialogAnimated = page.getByTestId("docs-example-block-dialog-animated");
+
+  await dialogAnimated
+    .getByRole("button", { name: "Open animated dialog" })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "Animated dialog" })
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Done" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Animated dialog" })
+  ).toBeHidden();
+});

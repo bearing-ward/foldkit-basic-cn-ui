@@ -5,6 +5,9 @@ import { expect, test } from "@playwright/test";
 const registryItems = JSON.parse(
   readFileSync("registry/default/items.json", "utf-8")
 ) as readonly { name: string; type: string }[];
+const registryConfig = JSON.parse(
+  readFileSync("registry/config.json", "utf-8")
+) as { registryBaseUrl: string };
 
 const componentNames = registryItems
   .filter((item) => item.type === "registry:ui")
@@ -41,6 +44,13 @@ for (const viewport of viewports) {
             page.getByRole("heading", { name: section })
           ).toBeVisible();
         }
+
+        await expect(page.getByText("<registry-url>")).toHaveCount(0);
+        await expect(
+          page.getByText(
+            `${registryConfig.registryBaseUrl}/${componentName}.json`
+          )
+        ).toBeVisible();
 
         const pageOverflow = await page.evaluate(
           () =>

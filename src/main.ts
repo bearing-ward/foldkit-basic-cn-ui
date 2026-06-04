@@ -3465,8 +3465,13 @@ const docsOverviewBlock = (body: string): Html => {
   ]);
 };
 
+const publicRegistryBaseUrl =
+  "https://binarytide.github.io/foldkit-basic-cn-ui/r";
+
 const docsInstallBlock = (commands: string): Html =>
-  docsSection("Installation", [codeBlock(commands)]);
+  docsSection("Installation", [
+    codeBlock(commands.replaceAll("<registry-url>", publicRegistryBaseUrl)),
+  ]);
 
 const docsUsageBlock = (body: string, code: string): Html => {
   const h = html<Message>();
