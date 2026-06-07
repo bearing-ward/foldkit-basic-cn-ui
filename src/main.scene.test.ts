@@ -735,8 +735,17 @@ describe("scene", () => {
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
         "Avatar"
       ),
-      Scene.expect(Scene.testId("docs-nav-section-shadcn")).not.toContainText(
+      Scene.expect(Scene.testId("docs-nav-section-shadcn")).toContainText(
         "Avatar"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-shadcn")).toContainText(
+        "Coming soon"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
+        "Button"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
+        "Coming soon"
       )
     );
   });

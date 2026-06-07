@@ -41,6 +41,7 @@ type DocsNavItem = NavItem &
     library: ComponentLibrary;
     componentRoutePrefix: string;
     activeRouteTags: readonly string[];
+    availability: "available" | "coming-soon";
   }>;
 
 type DocsNavGroup = Readonly<{
@@ -1476,7 +1477,107 @@ const DOCS_NAV_ITEMS = NAV_ITEMS.filter((navItem) =>
   library: docsNavItemLibrary(navItem),
   componentRoutePrefix: navItem.routeTag.replace(/Docs$/u, ""),
   activeRouteTags: docsNavItemActiveRouteTags(navItem),
+  availability: "available",
 })) satisfies readonly DocsNavItem[];
+
+const labelFromComponentSlug = (slug: string): string =>
+  slug
+    .split("-")
+    .map((part) =>
+      part.length === 0
+        ? part
+        : `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`
+    )
+    .join(" ");
+
+const missingBaseUiLaneSlugs: readonly string[] = [
+  "button",
+  "checkbox",
+  "combobox",
+  "dialog",
+  "fieldset",
+  "input",
+  "menu",
+  "popover",
+  "radio-group",
+  "select",
+  "slider",
+  "switch",
+  "tabs",
+  "toast",
+  "tooltip",
+];
+
+const missingShadcnLaneSlugs: readonly string[] = [
+  "accordion",
+  "alert-dialog",
+  "avatar",
+  "button",
+  "calendar",
+  "checkbox",
+  "collapsible",
+  "combobox",
+  "context-menu",
+  "date-picker",
+  "dialog",
+  "drawer",
+  "field",
+  "input",
+  "menubar",
+  "navigation-menu",
+  "popover",
+  "progress",
+  "radio-group",
+  "scroll-area",
+  "select",
+  "separator",
+  "slider",
+  "switch",
+  "tabs",
+  "textarea",
+  "toast",
+  "toggle",
+  "toggle-group",
+  "tooltip",
+];
+
+const comingSoonDocsNavItems = (
+  library: ComponentLibrary,
+  slugs: readonly string[]
+): readonly DocsNavItem[] =>
+  slugs.map((slug) => {
+    const prefixedSlug =
+      library === "Base UI" ? `base-ui-${slug}` : `shadcn-${slug}`;
+    const routePrefix = `${prefixedSlug
+      .split("-")
+      .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+      .join("")}Docs`;
+
+    return {
+      label: labelFromComponentSlug(slug),
+      routeTag: routePrefix,
+      href: `/docs/components/${prefixedSlug}`,
+      library,
+      componentRoutePrefix: routePrefix,
+      activeRouteTags: [],
+      availability: "coming-soon",
+    };
+  });
+
+const docsNavItemsWithComingSoon = (
+  library: ComponentLibrary,
+  comingSoonItems: readonly DocsNavItem[]
+): readonly DocsNavItem[] => {
+  const availableItems = DOCS_NAV_ITEMS.filter(
+    (navItem) => navItem.library === library
+  );
+  const availableLabels = new Set(availableItems.map((item) => item.label));
+
+  return [
+    ...availableItems,
+    ...comingSoonItems.filter((item) => !availableLabels.has(item.label)),
+  ];
+};
 
 const compareDocsNavItems = (left: DocsNavItem, right: DocsNavItem): number =>
   left.label.localeCompare(right.label);
@@ -1499,13 +1600,19 @@ const DOCS_NAV_GROUPS: readonly DocsNavGroup[] = [
   {
     library: "Base UI",
     items: sortedDocsNavItems(
-      DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Base UI")
+      docsNavItemsWithComingSoon(
+        "Base UI",
+        comingSoonDocsNavItems("Base UI", missingBaseUiLaneSlugs)
+      )
     ),
   },
   {
     library: "shadcn",
     items: sortedDocsNavItems(
-      DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "shadcn")
+      docsNavItemsWithComingSoon(
+        "shadcn",
+        comingSoonDocsNavItems("shadcn", missingShadcnLaneSlugs)
+      )
     ),
   },
 ];
@@ -1523,6 +1630,9 @@ const libraryBadgeClassName = (library: ComponentLibrary): string =>
     library === "shadcn" && "bg-gray-200 text-gray-700"
   );
 
+const comingSoonBadgeClassName =
+  "rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none text-gray-500";
+
 const navLinkClassName = (isActive: boolean): string =>
   clsx(
     "block min-w-0 flex-1 rounded-md px-3 py-1.5 text-sm transition-colors",
@@ -1530,6 +1640,9 @@ const navLinkClassName = (isActive: boolean): string =>
       ? "bg-accent-100 text-accent-700"
       : "text-gray-700 hover:bg-gray-200"
   );
+
+const comingSoonNavItemClassName =
+  "block min-w-0 flex-1 rounded-md px-3 py-1.5 text-sm text-gray-400";
 
 const mobileNavLinkClassName = (isActive: boolean): string =>
   clsx(
@@ -1570,14 +1683,22 @@ const docsNavGroupView = (
               return h.li(
                 [h.Class("flex items-center gap-2")],
                 [
-                  h.a(
-                    [
-                      h.Href(Main.appPath(navItem.href)),
-                      h.Class(linkClassName(isActive)),
-                      ...(isActive ? [h.AriaCurrent("page")] : []),
-                    ],
-                    [navItem.label]
-                  ),
+                  navItem.availability === "coming-soon"
+                    ? h.span(
+                        [
+                          h.Class(comingSoonNavItemClassName),
+                          h.AriaDisabled(true),
+                        ],
+                        [navItem.label]
+                      )
+                    : h.a(
+                        [
+                          h.Href(Main.appPath(navItem.href)),
+                          h.Class(linkClassName(isActive)),
+                          ...(isActive ? [h.AriaCurrent("page")] : []),
+                        ],
+                        [navItem.label]
+                      ),
                   h.span(
                     [
                       h.AriaHidden(true),
@@ -1585,6 +1706,14 @@ const docsNavGroupView = (
                     ],
                     [navItem.library]
                   ),
+                  ...(navItem.availability === "coming-soon"
+                    ? [
+                        h.span(
+                          [h.Class(comingSoonBadgeClassName)],
+                          ["Coming soon"]
+                        ),
+                      ]
+                    : []),
                 ]
               );
             })
