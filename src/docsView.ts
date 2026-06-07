@@ -1829,6 +1829,11 @@ const componentNameFromSlug = (slug: string): string =>
     .join("");
 
 const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
+  animation: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Animation",
+  },
   accordion: {
     artifact: "component",
     origin: "Base UI",
@@ -1841,17 +1846,132 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "shadcn",
   },
+  button: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Button",
+  },
   breadcrumb: { artifact: "component", origin: "shadcn" },
   "button-group": { artifact: "component", origin: "shadcn" },
+  calendar: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Calendar",
+  },
   carousel: { artifact: "component", origin: "shadcn" },
   chart: { artifact: "component", origin: "shadcn" },
+  checkbox: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Checkbox",
+  },
   command: { artifact: "component", origin: "shadcn" },
+  combobox: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Combobox",
+  },
+  "date-picker": {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.DatePicker",
+  },
+  dialog: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Dialog",
+  },
+  disclosure: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Disclosure",
+  },
+  "drag-and-drop": {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.DragAndDrop",
+  },
   "dropdown-menu": { artifact: "component", origin: "shadcn" },
+  fieldset: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Fieldset",
+  },
+  "file-drop": {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.FileDrop",
+  },
   "hover-card": { artifact: "component", origin: "shadcn" },
+  input: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Input",
+  },
   "input-otp": { artifact: "component", origin: "shadcn" },
+  listbox: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Listbox",
+  },
+  menu: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Menu",
+  },
   "native-select": { artifact: "component", origin: "shadcn" },
+  popover: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Popover",
+  },
+  "radio-group": {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.RadioGroup",
+  },
+  select: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Select",
+  },
   sheet: { artifact: "component", origin: "shadcn" },
+  slider: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Slider",
+  },
   sonner: { artifact: "component", origin: "shadcn" },
+  switch: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Switch",
+  },
+  tabs: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Tabs",
+  },
+  textarea: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Textarea",
+  },
+  toast: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Toast",
+  },
+  tooltip: {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.Tooltip",
+  },
+  "virtual-list": {
+    artifact: "primitive-backed-component",
+    origin: "Foldkit",
+    primitive: "Ui.VirtualList",
+  },
   "data-table": { artifact: "component", origin: "shadcn" },
   direction: { artifact: "component", origin: "shadcn" },
   item: { artifact: "component", origin: "shadcn" },
@@ -1910,7 +2030,7 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   },
   avatar: {
     artifact: "component",
-    origin: "shadcn",
+    origin: "Base UI",
   },
   badge: {
     artifact: "component",
