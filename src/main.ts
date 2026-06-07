@@ -354,6 +354,7 @@ export const CheckboxIndeterminateExampleRoute = r(
 );
 export const ComboboxRoute = r("Combobox");
 export const ComboboxDocsRoute = r("ComboboxDocs");
+export const BaseUiComboboxDocsRoute = r("BaseUiComboboxDocs");
 export const ComboboxBasicExampleRoute = r("ComboboxBasicExample");
 export const ComboboxMultiExampleRoute = r("ComboboxMultiExample");
 export const DatePickerRoute = r("DatePicker");
@@ -362,6 +363,7 @@ export const DatePickerBasicExampleRoute = r("DatePickerBasicExample");
 export const DatePickerBoundsExampleRoute = r("DatePickerBoundsExample");
 export const DialogRoute = r("Dialog");
 export const DialogDocsRoute = r("DialogDocs");
+export const BaseUiDialogDocsRoute = r("BaseUiDialogDocs");
 export const DialogBasicExampleRoute = r("DialogBasicExample");
 export const DialogAnimatedExampleRoute = r("DialogAnimatedExample");
 export const DialogDestructiveExampleRoute = r("DialogDestructiveExample");
@@ -377,6 +379,7 @@ export const DragAndDropBasicExampleRoute = r("DragAndDropBasicExample");
 export const DragAndDropDisabledExampleRoute = r("DragAndDropDisabledExample");
 export const FieldsetRoute = r("Fieldset");
 export const FieldsetDocsRoute = r("FieldsetDocs");
+export const BaseUiFieldsetDocsRoute = r("BaseUiFieldsetDocs");
 export const FieldsetBasicExampleRoute = r("FieldsetBasicExample");
 export const FieldsetDisabledExampleRoute = r("FieldsetDisabledExample");
 export const FileDropRoute = r("FileDrop");
@@ -385,6 +388,7 @@ export const FileDropBasicExampleRoute = r("FileDropBasicExample");
 export const FileDropDisabledExampleRoute = r("FileDropDisabledExample");
 export const InputRoute = r("Input");
 export const InputDocsRoute = r("InputDocs");
+export const BaseUiInputDocsRoute = r("BaseUiInputDocs");
 export const InputBasicExampleRoute = r("InputBasicExample");
 export const InputDisabledExampleRoute = r("InputDisabledExample");
 export const ListboxRoute = r("Listbox");
@@ -393,6 +397,7 @@ export const ListboxBasicExampleRoute = r("ListboxBasicExample");
 export const ListboxAnimatedExampleRoute = r("ListboxAnimatedExample");
 export const MenuRoute = r("Menu");
 export const MenuDocsRoute = r("MenuDocs");
+export const BaseUiMenuDocsRoute = r("BaseUiMenuDocs");
 export const MenuBasicExampleRoute = r("MenuBasicExample");
 export const MenuAnimatedExampleRoute = r("MenuAnimatedExample");
 export const PopoverRoute = r("Popover");
@@ -624,6 +629,7 @@ const AppRoute = S.Union([
   CheckboxIndeterminateExampleRoute,
   ComboboxRoute,
   ComboboxDocsRoute,
+  BaseUiComboboxDocsRoute,
   ComboboxBasicExampleRoute,
   ComboboxMultiExampleRoute,
   DatePickerRoute,
@@ -632,6 +638,7 @@ const AppRoute = S.Union([
   DatePickerBoundsExampleRoute,
   DialogRoute,
   DialogDocsRoute,
+  BaseUiDialogDocsRoute,
   DialogBasicExampleRoute,
   DialogAnimatedExampleRoute,
   DialogDestructiveExampleRoute,
@@ -647,6 +654,7 @@ const AppRoute = S.Union([
   DragAndDropDisabledExampleRoute,
   FieldsetRoute,
   FieldsetDocsRoute,
+  BaseUiFieldsetDocsRoute,
   FieldsetBasicExampleRoute,
   FieldsetDisabledExampleRoute,
   FileDropRoute,
@@ -655,6 +663,7 @@ const AppRoute = S.Union([
   FileDropDisabledExampleRoute,
   InputRoute,
   InputDocsRoute,
+  BaseUiInputDocsRoute,
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
   ListboxRoute,
@@ -663,6 +672,7 @@ const AppRoute = S.Union([
   ListboxAnimatedExampleRoute,
   MenuRoute,
   MenuDocsRoute,
+  BaseUiMenuDocsRoute,
   MenuBasicExampleRoute,
   MenuAnimatedExampleRoute,
   PopoverRoute,
@@ -2443,6 +2453,12 @@ export const comboboxDocsRouter = pipe(
   slash(literal("combobox")),
   Route.mapTo(ComboboxDocsRoute)
 );
+export const baseUiComboboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-combobox")),
+  Route.mapTo(BaseUiComboboxDocsRoute)
+);
 export const comboboxBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2511,6 +2527,12 @@ export const dialogDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("dialog")),
   Route.mapTo(DialogDocsRoute)
+);
+export const baseUiDialogDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-dialog")),
+  Route.mapTo(BaseUiDialogDocsRoute)
 );
 export const dialogBasicExampleRouter = pipe(
   literal("docs"),
@@ -2678,6 +2700,12 @@ export const fieldsetDocsRouter = pipe(
   slash(literal("fieldset")),
   Route.mapTo(FieldsetDocsRoute)
 );
+export const baseUiFieldsetDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-fieldset")),
+  Route.mapTo(BaseUiFieldsetDocsRoute)
+);
 export const fieldsetBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2747,6 +2775,12 @@ export const inputDocsRouter = pipe(
   slash(literal("input")),
   Route.mapTo(InputDocsRoute)
 );
+export const baseUiInputDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-input")),
+  Route.mapTo(BaseUiInputDocsRoute)
+);
 export const inputBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2815,6 +2849,12 @@ export const menuDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("menu")),
   Route.mapTo(MenuDocsRoute)
+);
+export const baseUiMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-menu")),
+  Route.mapTo(BaseUiMenuDocsRoute)
 );
 export const menuBasicExampleRouter = pipe(
   literal("docs"),
@@ -3410,6 +3450,7 @@ const routeParser = Route.oneOf(
   comboboxBasicStandaloneExampleRouter,
   comboboxMultiStandaloneExampleRouter,
   comboboxDocsRouter,
+  baseUiComboboxDocsRouter,
   datePickerRouter,
   datePickerBasicExampleRouter,
   datePickerBoundsExampleRouter,
@@ -3428,6 +3469,7 @@ const routeParser = Route.oneOf(
   dialogFocusStandaloneExampleRouter,
   dialogScrollableStandaloneExampleRouter,
   dialogDocsRouter,
+  baseUiDialogDocsRouter,
   disclosureRouter,
   disclosureBasicExampleRouter,
   disclosureDisabledExampleRouter,
@@ -3446,6 +3488,7 @@ const routeParser = Route.oneOf(
   fieldsetBasicStandaloneExampleRouter,
   fieldsetDisabledStandaloneExampleRouter,
   fieldsetDocsRouter,
+  baseUiFieldsetDocsRouter,
   fileDropRouter,
   fileDropBasicExampleRouter,
   fileDropDisabledExampleRouter,
@@ -3458,6 +3501,7 @@ const routeParser = Route.oneOf(
   inputBasicStandaloneExampleRouter,
   inputDisabledStandaloneExampleRouter,
   inputDocsRouter,
+  baseUiInputDocsRouter,
   listboxRouter,
   listboxBasicExampleRouter,
   listboxAnimatedExampleRouter,
@@ -3470,6 +3514,7 @@ const routeParser = Route.oneOf(
   menuBasicStandaloneExampleRouter,
   menuAnimatedStandaloneExampleRouter,
   menuDocsRouter,
+  baseUiMenuDocsRouter,
   popoverRouter,
   popoverBasicExampleRouter,
   popoverAnimatedExampleRouter,

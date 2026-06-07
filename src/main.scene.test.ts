@@ -235,14 +235,19 @@ import {
   CheckboxGroupDocsRoute,
   CheckboxIndeterminateExampleRoute,
   CheckboxRoute,
+  BaseUiComboboxDocsRoute,
   CollapsibleBasicExampleRoute,
   CollapsibleDocsRoute,
   AutocompleteBasicExampleRoute,
   AutocompleteDocsRoute,
+  BaseUiDialogDocsRoute,
+  BaseUiFieldsetDocsRoute,
   FieldBasicExampleRoute,
   FieldDocsRoute,
+  BaseUiInputDocsRoute,
   FormBasicExampleRoute,
   FormDocsRoute,
+  BaseUiMenuDocsRoute,
   NumberFieldBasicExampleRoute,
   NumberFieldDocsRoute,
   ComboboxBasicExampleRoute,
@@ -2186,6 +2191,54 @@ describe("scene", () => {
         "Checkbox"
       )
     );
+  });
+
+  test("the next Base UI lane docs routes render active docs pages", () => {
+    const baseUiDocsRoutes = [
+      {
+        route: BaseUiComboboxDocsRoute(),
+        heading: "Combobox",
+        source: "registry/default/ui/base-ui-combobox",
+      },
+      {
+        route: BaseUiDialogDocsRoute(),
+        heading: "Dialog",
+        source: "registry/default/ui/base-ui-dialog",
+      },
+      {
+        route: BaseUiFieldsetDocsRoute(),
+        heading: "Fieldset",
+        source: "registry/default/ui/base-ui-fieldset",
+      },
+      {
+        route: BaseUiInputDocsRoute(),
+        heading: "Input",
+        source: "registry/default/ui/base-ui-input",
+      },
+      {
+        route: BaseUiMenuDocsRoute(),
+        heading: "Menu",
+        source: "registry/default/ui/base-ui-menu",
+      },
+    ];
+
+    baseUiDocsRoutes.forEach(({ route, heading, source }) => {
+      Scene.scene(
+        { update, view },
+        Scene.with(modelForRoute(route)),
+        Scene.expect(Scene.role("heading", { name: heading })).toExist(),
+        Scene.expect(Scene.text("Base UI")).toExist(),
+        Scene.expect(Scene.text(source)).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+        Scene.expect(
+          Scene.role("heading", { name: "Foldkit integration" })
+        ).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
+        Scene.expect(Scene.role("heading", { name: "API reference" })).toExist()
+      );
+    });
   });
 
   test("the Checkbox Basic example route renders the standalone example", () => {

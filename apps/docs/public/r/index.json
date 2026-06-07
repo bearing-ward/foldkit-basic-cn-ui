@@ -347,6 +347,181 @@
       }
     },
     {
+      "name": "base-ui-combobox",
+      "type": "registry:ui",
+      "title": "Base UI Combobox",
+      "description": "A Base UI style-lane Combobox wrapper that reuses the Foldkit Ui.Combobox behavior with simple class helper aliases.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/combobox"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-combobox/index.ts",
+          "target": "src/ui/base-ui-combobox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-combobox/view.ts",
+          "target": "src/ui/base-ui-combobox/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-combobox/base-ui-combobox.scene.test.ts",
+          "target": "src/ui/base-ui-combobox/base-ui-combobox.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Combobox",
+          "primitive": "Ui.Combobox",
+          "stateful": true,
+          "origin": "base-ui",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "base-ui-dialog",
+      "type": "registry:ui",
+      "title": "Base UI Dialog",
+      "description": "A Base UI style-lane Dialog wrapper that reuses the Foldkit Ui.Dialog behavior with simple class helper aliases.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/dialog"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-dialog/index.ts",
+          "target": "src/ui/base-ui-dialog/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-dialog/view.ts",
+          "target": "src/ui/base-ui-dialog/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-dialog/base-ui-dialog.scene.test.ts",
+          "target": "src/ui/base-ui-dialog/base-ui-dialog.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "primitive": "Ui.Dialog",
+          "stateful": true,
+          "origin": "base-ui",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "base-ui-fieldset",
+      "type": "registry:ui",
+      "title": "Base UI Fieldset",
+      "description": "A Base UI style-lane Fieldset wrapper that reuses the Foldkit Ui.Fieldset behavior with simple class helper aliases.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/fieldset"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-fieldset/index.ts",
+          "target": "src/ui/base-ui-fieldset/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-fieldset/view.ts",
+          "target": "src/ui/base-ui-fieldset/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",
+          "target": "src/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Fieldset",
+          "primitive": "Ui.Fieldset",
+          "stateful": false,
+          "origin": "base-ui",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "base-ui-input",
+      "type": "registry:ui",
+      "title": "Base UI Input",
+      "description": "A Base UI style-lane Input wrapper that reuses the Foldkit Ui.Input behavior with simple class helper aliases.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/input"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-input/index.ts",
+          "target": "src/ui/base-ui-input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-input/view.ts",
+          "target": "src/ui/base-ui-input/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-input/base-ui-input.scene.test.ts",
+          "target": "src/ui/base-ui-input/base-ui-input.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Input",
+          "primitive": "Ui.Input",
+          "stateful": false,
+          "origin": "base-ui",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "base-ui-menu",
+      "type": "registry:ui",
+      "title": "Base UI Menu",
+      "description": "A Base UI style-lane Menu wrapper that reuses the Foldkit Ui.Menu behavior with simple class helper aliases.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/menu"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-menu/index.ts",
+          "target": "src/ui/base-ui-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-menu/view.ts",
+          "target": "src/ui/base-ui-menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-menu/base-ui-menu.scene.test.ts",
+          "target": "src/ui/base-ui-menu/base-ui-menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "primitive": "Ui.Menu",
+          "stateful": true,
+          "origin": "base-ui",
+          "artifact": "component"
+        }
+      }
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",

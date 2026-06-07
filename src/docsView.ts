@@ -868,6 +868,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/combobox",
   },
   {
+    label: "Combobox Docs",
+    routeTag: "BaseUiComboboxDocs",
+    href: "/docs/components/base-ui-combobox",
+  },
+  {
     label: "Combobox Basic Example",
     routeTag: "ComboboxBasicExample",
     href: "/docs/components/combobox/examples/basic",
@@ -898,6 +903,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dialog Docs",
     routeTag: "DialogDocs",
     href: "/docs/components/dialog",
+  },
+  {
+    label: "Dialog Docs",
+    routeTag: "BaseUiDialogDocs",
+    href: "/docs/components/base-ui-dialog",
   },
   {
     label: "Dialog Basic Example",
@@ -967,6 +977,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/fieldset",
   },
   {
+    label: "Fieldset Docs",
+    routeTag: "BaseUiFieldsetDocs",
+    href: "/docs/components/base-ui-fieldset",
+  },
+  {
     label: "Fieldset Basic Example",
     routeTag: "FieldsetBasicExample",
     href: "/docs/components/fieldset/examples/basic",
@@ -999,6 +1014,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/input",
   },
   {
+    label: "Input Docs",
+    routeTag: "BaseUiInputDocs",
+    href: "/docs/components/base-ui-input",
+  },
+  {
     label: "Input Basic Example",
     routeTag: "InputBasicExample",
     href: "/docs/components/input/examples/basic",
@@ -1026,6 +1046,11 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   { label: "Menu", routeTag: "Menu", href: "/menu" },
   { label: "Menu Docs", routeTag: "MenuDocs", href: "/docs/components/menu" },
+  {
+    label: "Menu Docs",
+    routeTag: "BaseUiMenuDocs",
+    href: "/docs/components/base-ui-menu",
+  },
   {
     label: "Menu Basic Example",
     routeTag: "MenuBasicExample",
@@ -1464,6 +1489,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
           "CheckboxGroupDocs",
           "BaseUiButtonDocs",
           "BaseUiCheckboxDocs",
+          "BaseUiComboboxDocs",
+          "BaseUiDialogDocs",
+          "BaseUiFieldsetDocs",
+          "BaseUiInputDocs",
+          "BaseUiMenuDocs",
         ].includes(navItem.routeTag)
       ? "Base UI"
       : "Foldkit";
@@ -1503,11 +1533,6 @@ const labelFromComponentSlug = (slug: string): string =>
     .join(" ");
 
 const missingBaseUiLaneSlugs: readonly string[] = [
-  "combobox",
-  "dialog",
-  "fieldset",
-  "input",
-  "menu",
   "popover",
   "radio-group",
   "select",
@@ -2037,6 +2062,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Combobox",
   },
+  "base-ui-combobox": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Combobox",
+  },
   "date-picker": {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -2045,6 +2075,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   dialog: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Dialog",
+  },
+  "base-ui-dialog": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Dialog",
   },
   disclosure: {
@@ -2063,6 +2098,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Fieldset",
   },
+  "base-ui-fieldset": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Fieldset",
+  },
   "file-drop": {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -2074,6 +2114,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Input",
   },
+  "base-ui-input": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Input",
+  },
   "input-otp": { artifact: "component", origin: "shadcn" },
   listbox: {
     artifact: "primitive-backed-component",
@@ -2083,6 +2128,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   menu: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Menu",
+  },
+  "base-ui-menu": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Menu",
   },
   "native-select": { artifact: "component", origin: "shadcn" },
@@ -11575,6 +11625,82 @@ ClickedSave: () => [
   );
 };
 
+type BaseUiLaneDocsConfig = Readonly<{
+  label: string;
+  source: string;
+  primitive: string;
+  description: string;
+  usage: string;
+  classHelpers: readonly string[];
+  anatomyCode: string;
+}>;
+
+const baseUiLaneDocsView = (config: BaseUiLaneDocsConfig): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], [config.label]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [config.description]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: config.source },
+        { label: "Examples", value: "reuses Foldkit examples" },
+        { label: "Proof", value: "wrapper tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        `${config.label} documents the Base UI style lane for ${config.primitive}: the behavior remains owned by Foldkit, while the installable slice exposes simple Base UI naming and class hooks for consumers who want a lighter presentation layer.`
+      ),
+      ...docsStandardComponentSections({
+        installCommands: `bunx shadcn@latest add <registry-url>/${config.source.replace(
+          "registry/default/ui/",
+          ""
+        )}.json`,
+        usageBody: config.usage,
+        usageCode: `import * as ${config.label.replaceAll(
+          " ",
+          ""
+        )} from "./ui/${config.source.replace("registry/default/ui/", "")}";`,
+        integrationCode: `// Parent model and messages stay the same as the Foldkit ${config.primitive} slice.\n// Use this Base UI lane package when you want the same behavior with Base UI naming and styling hooks.`,
+        anatomySection: docsAnatomyBlock(config.anatomyCode),
+        stylingItems: config.classHelpers,
+        stylingCode: config.classHelpers.join("\n"),
+        includeKeyboardInteraction: true,
+        apiItems: [
+          `${config.primitive} exports: re-exported from the Foldkit functional slice.`,
+          "Base UI class helpers: stable names for the simple styled lane.",
+        ],
+        accessibilityItems: [
+          `Accessibility behavior comes from the underlying Foldkit ${config.primitive} implementation.`,
+          "Consumers keep the primitive attribute groups intact when customizing markup.",
+          "Disabled, labelled, described, focus, and keyboard behavior follow the matching Foldkit component contract.",
+        ],
+        coverageItems: [
+          "Registry wrapper tests verify exported class helpers and functional re-exports.",
+          "Generated registry JSON includes the Base UI origin metadata and dependency link to the Foldkit component.",
+          "Install smoke verifies the wrapper and its registry dependency install together.",
+        ],
+      }),
+    ]
+  );
+};
+
 const calendarDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -14813,6 +14939,30 @@ const contentView = (model: Model): Html => {
         DocsRoutes.checkboxIndeterminateExampleRouteView(model),
       Combobox: () => embedUi("ui-combobox", View.combobox),
       ComboboxDocs: () => comboboxDocsView(model),
+      BaseUiComboboxDocs: () =>
+        baseUiLaneDocsView({
+          label: "Combobox",
+          source: "registry/default/ui/base-ui-combobox",
+          primitive: "Ui.Combobox",
+          description:
+            "A Base UI style-lane Combobox slice that reuses the official Foldkit Ui.Combobox primitive for controlled input, popup, item selection, and multi-select behavior.",
+          usage:
+            "Install the Base UI lane wrapper when you want the Foldkit Combobox behavior with Base UI naming and class helpers.",
+          classHelpers: [
+            "baseUiComboboxInputClassName",
+            "baseUiComboboxButtonClassName",
+            "baseUiComboboxItemsClassName",
+            "baseUiComboboxItemClassName",
+            "baseUiComboboxBackdropClassName",
+          ],
+          anatomyCode: `import * as Combobox from "./ui/base-ui-combobox";
+
+Combobox.view<Message>({
+  model: model.combobox,
+  toParentMessage: (message) => GotComboboxMessage({ message }),
+  items,
+});`,
+        }),
       ComboboxBasicExample: () =>
         DocsRoutes.comboboxBasicExampleRouteView(model),
       ComboboxMultiExample: () =>
@@ -14825,6 +14975,29 @@ const contentView = (model: Model): Html => {
         DocsRoutes.datePickerBoundsExampleRouteView(model),
       Dialog: () => embedUi("ui-dialog", View.dialog),
       DialogDocs: () => dialogDocsView(model),
+      BaseUiDialogDocs: () =>
+        baseUiLaneDocsView({
+          label: "Dialog",
+          source: "registry/default/ui/base-ui-dialog",
+          primitive: "Ui.Dialog",
+          description:
+            "A Base UI style-lane Dialog slice that reuses the official Foldkit Ui.Dialog primitive for open state, modal semantics, labelled content, dismissal, and focus commands.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit Dialog behavior with a simple Base UI presentation surface.",
+          classHelpers: [
+            "baseUiDialogBackdropClassName",
+            "baseUiDialogPanelClassName",
+            "baseUiDialogTitleClassName",
+            "baseUiDialogDescriptionClassName",
+          ],
+          anatomyCode: `import * as Dialog from "./ui/base-ui-dialog";
+
+Dialog.view<Message>({
+  model: model.dialog,
+  toParentMessage: (message) => GotDialogMessage({ message }),
+  toContentView: (attributes) => h.div(attributes.panel, ["Dialog content"]),
+});`,
+        }),
       DialogBasicExample: () => DocsRoutes.dialogBasicExampleRouteView(model),
       DialogAnimatedExample: () =>
         DocsRoutes.dialogAnimatedExampleRouteView(model),
@@ -14847,6 +15020,28 @@ const contentView = (model: Model): Html => {
         DocsRoutes.dragAndDropDisabledExampleRouteView(model),
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),
       FieldsetDocs: () => fieldsetDocsView(model),
+      BaseUiFieldsetDocs: () =>
+        baseUiLaneDocsView({
+          label: "Fieldset",
+          source: "registry/default/ui/base-ui-fieldset",
+          primitive: "Ui.Fieldset",
+          description:
+            "A Base UI style-lane Fieldset slice that reuses the official Foldkit Ui.Fieldset helpers for grouped form semantics, legend, description, and disabled propagation.",
+          usage:
+            "Install the Base UI lane wrapper when the form group should keep Foldkit semantics and expose Base UI class helper names.",
+          classHelpers: [
+            "baseUiFieldsetRootClassName",
+            "baseUiFieldsetLegendClassName",
+            "baseUiFieldsetDescriptionClassName",
+          ],
+          anatomyCode: `import * as Fieldset from "./ui/base-ui-fieldset";
+
+Fieldset.view<Message>({
+  label: "Account",
+  description: "Fields required for account setup.",
+  children: [field],
+});`,
+        }),
       FieldsetBasicExample: () =>
         DocsRoutes.fieldsetBasicExampleRouteView(model),
       FieldsetDisabledExample: () =>
@@ -14859,6 +15054,29 @@ const contentView = (model: Model): Html => {
         DocsRoutes.fileDropDisabledExampleRouteView(model),
       Input: () => embedUi("ui-input", View.input),
       InputDocs: () => inputDocsView(model),
+      BaseUiInputDocs: () =>
+        baseUiLaneDocsView({
+          label: "Input",
+          source: "registry/default/ui/base-ui-input",
+          primitive: "Ui.Input",
+          description:
+            "A Base UI style-lane Input slice that reuses the official Foldkit Ui.Input behavior for native value updates, disabled state, labels, descriptions, and field layout.",
+          usage:
+            "Install the Base UI lane wrapper when you need the native Foldkit Input contract with simple Base UI class hook names.",
+          classHelpers: [
+            "baseUiInputRootClassName",
+            "baseUiInputLabelClassName",
+            "baseUiInputControlClassName",
+            "baseUiInputDescriptionClassName",
+          ],
+          anatomyCode: `import * as Input from "./ui/base-ui-input";
+
+Input.view<Message>({
+  value: model.name,
+  onInput: (value) => UpdatedName({ value }),
+  label: "Name",
+});`,
+        }),
       InputBasicExample: () => DocsRoutes.inputBasicExampleRouteView(model),
       InputDisabledExample: () =>
         DocsRoutes.inputDisabledExampleRouteView(model),
@@ -14890,6 +15108,31 @@ const contentView = (model: Model): Html => {
         DocsRoutes.listboxAnimatedExampleRouteView(model),
       Menu: () => embedUi("ui-menu", View.menu),
       MenuDocs: () => menuDocsView(model),
+      BaseUiMenuDocs: () =>
+        baseUiLaneDocsView({
+          label: "Menu",
+          source: "registry/default/ui/base-ui-menu",
+          primitive: "Ui.Menu",
+          description:
+            "A Base UI style-lane Menu slice that reuses the official Foldkit Ui.Menu primitive for trigger state, popup rendering, item selection, backdrop dismissal, and animated variants.",
+          usage:
+            "Install the Base UI lane wrapper when you want the existing Foldkit Menu behavior with Base UI package naming and styling hooks.",
+          classHelpers: [
+            "baseUiMenuTriggerClassName",
+            "baseUiMenuRootClassName",
+            "baseUiMenuPopupClassName",
+            "baseUiMenuAnimatedPopupClassName",
+            "baseUiMenuItemClassName",
+            "baseUiMenuBackdropClassName",
+          ],
+          anatomyCode: `import * as Menu from "./ui/base-ui-menu";
+
+Menu.view<Message>({
+  model: model.menu,
+  toParentMessage: (message) => GotMenuMessage({ message }),
+  items,
+});`,
+        }),
       MenuBasicExample: () => DocsRoutes.menuBasicExampleRouteView(model),
       MenuAnimatedExample: () => DocsRoutes.menuAnimatedExampleRouteView(model),
       Popover: () => embedUi("ui-popover", View.popover),

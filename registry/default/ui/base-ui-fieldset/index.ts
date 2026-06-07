@@ -1,0 +1,8 @@
+export { descriptionId, legendId, view } from "../fieldset";
+export type { FieldsetAttributes, ViewConfig } from "../fieldset";
+
+export {
+  fieldsetClassName as baseUiFieldsetRootClassName,
+  legendClassName as baseUiFieldsetLegendClassName,
+  descriptionClassName as baseUiFieldsetDescriptionClassName,
+} from "./view";
