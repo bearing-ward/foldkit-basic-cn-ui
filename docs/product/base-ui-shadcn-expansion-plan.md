@@ -95,11 +95,77 @@ Definitions vocabulary to adopt:
   `role/state/property`, `keyboard map`, `focus management`, and
   `copy-and-paste source distribution`.
 
-## shadcn Coverage
+## shadcn Lane Coverage
 
-Component-level coverage compared with the current shadcn components page is
-complete as of the current registry. New shadcn work should focus on parity
-quality rather than adding more component names:
+shadcn is the opinionated style lane. A Foldkit functional implementation with
+the same component name does not count as shadcn lane coverage.
+
+Present shadcn lane components:
+
+- alert
+- aspect-ratio
+- badge
+- breadcrumb
+- button-group
+- card
+- carousel
+- chart
+- command
+- data-table
+- direction
+- dropdown-menu
+- empty
+- hover-card
+- input-group
+- input-otp
+- item
+- kbd
+- label
+- native-select
+- pagination
+- resizable
+- sheet
+- sidebar
+- skeleton
+- sonner
+- spinner
+- table
+- typography
+
+Missing shadcn lane components:
+
+- accordion
+- alert-dialog
+- avatar
+- button
+- calendar
+- checkbox
+- collapsible
+- combobox
+- context-menu
+- date-picker
+- dialog
+- drawer
+- field
+- input
+- menubar
+- navigation-menu
+- popover
+- progress
+- radio-group
+- scroll-area
+- select
+- separator
+- slider
+- switch
+- tabs
+- textarea
+- toast
+- toggle
+- toggle-group
+- tooltip
+
+New shadcn work should focus on opinionated style parity:
 
 - example-name parity and visible-content parity
 - anatomy depth and composition guidance
@@ -107,11 +173,55 @@ quality rather than adding more component names:
 - data attributes and accessibility notes
 - scene tests for interactive behavior
 
-## Base UI Coverage
+## Base UI Lane Coverage
 
-Component-level coverage compared with the current Base UI components
-navigation is complete as of the current registry. New Base UI work should
-focus on contract depth:
+Base UI is the simple styled or unstyled lane. A Foldkit functional
+implementation with the same component name does not count as Base UI lane
+coverage.
+
+Present Base UI lane components:
+
+- accordion
+- alert-dialog
+- autocomplete
+- avatar
+- checkbox-group
+- collapsible
+- context-menu
+- drawer
+- field
+- form
+- menubar
+- meter
+- navigation-menu
+- number-field
+- preview-card
+- progress
+- scroll-area
+- separator
+- toggle
+- toggle-group
+- toolbar
+
+Missing Base UI lane components:
+
+- button
+- checkbox
+- combobox
+- dialog
+- fieldset
+- input
+- menu
+- popover
+- radio-group
+- select
+- slider
+- switch
+- tabs
+- toast
+- tooltip
+
+New Base UI work should focus on simple styled or unstyled contract depth:
 
 - every distinct upstream demo is either implemented or explicitly deferred
 - anatomy hierarchy matches the upstream component page
@@ -125,23 +235,32 @@ focus on contract depth:
    source items sorted by type/name, docs navigation sorted by type/name, and
    docs origins matching `meta.foldkit.origin`.
 
-2. Audit Base UI-backed Foldkit component slices:
-   docs, API reference, keyboard interaction, accessibility contract, scene
-   tests, generated JSON, and public install compatibility.
+2. Fill missing Base UI lane components by reusing Foldkit behavior and adding
+   simple styled or unstyled source:
+   button, checkbox, combobox, dialog, fieldset, input, menu, popover,
+   radio-group, select, slider, switch, tabs, toast, tooltip.
 
-3. Audit already-promoted shadcn slices against Base UI behavior and
+3. Fill missing shadcn lane components by reusing Foldkit behavior and adding
+   opinionated style parity:
+   accordion, alert-dialog, avatar, button, calendar, checkbox, collapsible,
+   combobox, context-menu, date-picker, dialog, drawer, field, input, menubar,
+   navigation-menu, popover, progress, radio-group, scroll-area, select,
+   separator, slider, switch, tabs, textarea, toast, toggle, toggle-group,
+   tooltip.
+
+4. Audit already-promoted shadcn slices against Base UI behavior and
    accessibility contracts:
    badge, avatar, card, skeleton, spinner, kbd, typography, empty, input-group,
    badge-spinner, empty-input-group, and kbd-input-group.
 
-4. Continue shadcn parity on top of the Base UI-informed foundation:
+5. Continue shadcn parity on top of the Base UI-informed foundation:
    use shadcn example names and visible content, but require behavior-heavy
    shadcn components to pass the corresponding Base UI contract first.
 
-5. Harden shadcn-only presentation and layout components:
+6. Harden shadcn-only presentation and layout components:
    alert, aspect-ratio, breadcrumb, button-group, carousel, typography.
 
-6. Specialized integration components:
+7. Specialized integration components:
    command, native-select, sonner, sheet, hover-card, dropdown-menu, input-otp,
    and form wrappers where the Base UI/shadcn naming or behavior diverges.
 

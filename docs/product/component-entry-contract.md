@@ -43,16 +43,20 @@ Use this vocabulary consistently in source, docs, metadata, and planning.
 
 Each `registry:ui` item must declare its origin in `meta.foldkit.origin`.
 
-| Origin    | Use When                                                                                                                |
-| --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `foldkit` | The component primarily packages an existing Foldkit UI primitive or a Foldkit-native behavior.                         |
-| `base-ui` | The component is promoted to match Base UI anatomy, behavior, accessibility, examples, or API concepts in Foldkit form. |
-| `shadcn`  | The component is a shadcn-style presentation component or shadcn example-parity slice.                                  |
+| Origin    | Use When                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `foldkit` | The component shows the correct Foldkit functional implementation: model, messages, update, view wiring, and effects.    |
+| `base-ui` | The component exposes the simple Base UI styled or unstyled lane, reusing Foldkit functionality where it already exists. |
+| `shadcn`  | The component exposes the opinionated shadcn style lane, reusing Foldkit functionality where it already exists.          |
 
-Base UI is the preferred primitive and accessibility source for behavior-heavy
-work. shadcn remains the styled registry and example-parity target, but
-behavior-heavy shadcn slices must later be audited against the corresponding
-Base UI contract when one exists.
+Origins are style/source lanes, not mutually exclusive functional coverage. A
+Foldkit-origin component can satisfy the functional reference for a component
+name, but it does not satisfy the Base UI or shadcn style lane by itself.
+
+Base UI and shadcn slices should steal Foldkit behavior when a Foldkit primitive
+or Foldkit-native implementation already exists. Base UI remains the simple
+styled or unstyled lane. shadcn remains the opinionated styled lane and
+example-parity target.
 
 ## Naming And Paths
 
@@ -65,8 +69,10 @@ Use clean public names by default:
 
 # john note: I actually always want origin name so it's explicit
 
-Use `{origin}-{name}` only when two origins expose materially different
-components with the same public name and both need to exist at the same time.
+Use `{origin}-{name}` when two origins expose materially different components
+with the same public name and both need to exist at the same time. This is the
+default for overlapping lanes after the unprefixed name is already taken by a
+Foldkit functional component, such as `base-ui-button` or `shadcn-button`.
 
 Examples should use upstream example names when matching Base UI or shadcn:
 
