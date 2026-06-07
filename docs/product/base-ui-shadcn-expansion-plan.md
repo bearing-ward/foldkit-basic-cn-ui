@@ -102,16 +102,21 @@ the same component name does not count as shadcn lane coverage.
 
 Present shadcn lane components:
 
+- accordion
 - alert
+- alert-dialog
 - aspect-ratio
+- avatar
 - badge
 - breadcrumb
 - button
 - button-group
+- calendar
 - card
 - carousel
 - chart
 - checkbox
+- collapsible
 - command
 - data-table
 - direction
@@ -137,11 +142,6 @@ Present shadcn lane components:
 
 Missing shadcn lane components:
 
-- accordion
-- alert-dialog
-- avatar
-- calendar
-- collapsible
 - combobox
 - context-menu
 - date-picker

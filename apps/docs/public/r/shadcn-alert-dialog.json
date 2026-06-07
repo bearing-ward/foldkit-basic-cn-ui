@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert Dialog",
+  "description": "shadcn style-lane alert-dialog wrapper backed by the existing alert-dialog component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/alert-dialog"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-alert-dialog/index.ts",
+      "target": "src/ui/shadcn-alert-dialog/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  actionsView,\n  backdropView,\n  closeView,\n  descriptionView,\n  popupView,\n  portalView,\n  rootView,\n  titleView,\n  triggerView,\n  viewportView,\n} from \"../alert-dialog\";\nexport type {\n  AlertDialogStyle,\n  CloseViewConfig,\n  PartViewConfig,\n  PopupViewConfig,\n  PortalViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../alert-dialog\";\n\nexport {\n  shadcnAlertDialogActionsClassName,\n  shadcnAlertDialogBackdropClassName,\n  shadcnAlertDialogCancelClassName,\n  shadcnAlertDialogConfirmClassName,\n  shadcnAlertDialogDescriptionClassName,\n  shadcnAlertDialogPopupClassName,\n  shadcnAlertDialogPortalClassName,\n  shadcnAlertDialogRootClassName,\n  shadcnAlertDialogTitleClassName,\n  shadcnAlertDialogTriggerClassName,\n  shadcnAlertDialogViewportClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-alert-dialog/view.ts",
+      "target": "src/ui/shadcn-alert-dialog/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  alertDialogActionsClassName as shadcnAlertDialogActionsClassName,\n  alertDialogBackdropClassName as shadcnAlertDialogBackdropClassName,\n  alertDialogCancelClassName as shadcnAlertDialogCancelClassName,\n  alertDialogConfirmClassName as shadcnAlertDialogConfirmClassName,\n  alertDialogDescriptionClassName as shadcnAlertDialogDescriptionClassName,\n  alertDialogPopupClassName as shadcnAlertDialogPopupClassName,\n  alertDialogPortalClassName as shadcnAlertDialogPortalClassName,\n  alertDialogRootClassName as shadcnAlertDialogRootClassName,\n  alertDialogTitleClassName as shadcnAlertDialogTitleClassName,\n  alertDialogTriggerClassName as shadcnAlertDialogTriggerClassName,\n  alertDialogViewportClassName as shadcnAlertDialogViewportClassName,\n} from \"../alert-dialog/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-alert-dialog/shadcn-alert-dialog.scene.test.ts",
+      "target": "src/ui/shadcn-alert-dialog/shadcn-alert-dialog.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as AlertDialog from \"./index\";\n\ndescribe(\"shadcn AlertDialog registry view\", () => {\n  test(\"reuses the Foldkit AlertDialog view contract\", () => {\n    expect(AlertDialog.rootView).toBeTypeOf(\"function\");\n    expect(AlertDialog.popupView).toBeTypeOf(\"function\");\n    expect(AlertDialog.closeView).toBeTypeOf(\"function\");\n    expect(AlertDialog.shadcnAlertDialogPopupClassName).toContain(\"rounded\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

@@ -56,6 +56,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/accordion",
   },
   {
+    label: "Accordion Docs",
+    routeTag: "ShadcnAccordionDocs",
+    href: "/docs/components/shadcn-accordion",
+  },
+  {
     label: "Accordion Basic Example",
     routeTag: "AccordionBasicExample",
     href: "/docs/components/accordion/examples/basic",
@@ -206,6 +211,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/alert-dialog",
   },
   {
+    label: "Alert Dialog Docs",
+    routeTag: "ShadcnAlertDialogDocs",
+    href: "/docs/components/shadcn-alert-dialog",
+  },
+  {
     label: "Alert Dialog Basic Example",
     routeTag: "AlertDialogBasicExample",
     href: "/docs/components/alert-dialog/examples/basic",
@@ -276,6 +286,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/collapsible",
   },
   {
+    label: "Collapsible Docs",
+    routeTag: "ShadcnCollapsibleDocs",
+    href: "/docs/components/shadcn-collapsible",
+  },
+  {
     label: "Collapsible Basic Example",
     routeTag: "CollapsibleBasicExample",
     href: "/docs/components/collapsible/examples/basic",
@@ -332,6 +347,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Avatar Docs",
     routeTag: "AvatarDocs",
     href: "/docs/components/avatar",
+  },
+  {
+    label: "Avatar Docs",
+    routeTag: "ShadcnAvatarDocs",
+    href: "/docs/components/shadcn-avatar",
   },
   {
     label: "Avatar Basic Example",
@@ -824,6 +844,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Calendar Docs",
     routeTag: "CalendarDocs",
     href: "/docs/components/calendar",
+  },
+  {
+    label: "Calendar Docs",
+    routeTag: "ShadcnCalendarDocs",
+    href: "/docs/components/shadcn-calendar",
   },
   {
     label: "Calendar Basic Example",
@@ -1519,6 +1544,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnButtonDocs",
     "ShadcnCheckboxDocs",
     "ShadcnInputDocs",
+    "ShadcnAccordionDocs",
+    "ShadcnAlertDialogDocs",
+    "ShadcnAvatarDocs",
+    "ShadcnCalendarDocs",
+    "ShadcnCollapsibleDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
     : [
@@ -1601,11 +1631,6 @@ const labelFromComponentSlug = (slug: string): string =>
 const missingBaseUiLaneSlugs: readonly string[] = [];
 
 const missingShadcnLaneSlugs: readonly string[] = [
-  "accordion",
-  "alert-dialog",
-  "avatar",
-  "calendar",
-  "collapsible",
   "combobox",
   "context-menu",
   "date-picker",
@@ -2073,11 +2098,31 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "shadcn-accordion": {
+    artifact: "component",
+    origin: "shadcn",
+  },
   alert: {
     artifact: "component",
     origin: "shadcn",
   },
+  "alert-dialog": {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "shadcn-alert-dialog": {
+    artifact: "component",
+    origin: "shadcn",
+  },
   "aspect-ratio": {
+    artifact: "component",
+    origin: "shadcn",
+  },
+  avatar: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "shadcn-avatar": {
     artifact: "component",
     origin: "shadcn",
   },
@@ -2103,6 +2148,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Calendar",
   },
+  "shadcn-calendar": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Calendar",
+  },
   carousel: { artifact: "component", origin: "shadcn" },
   chart: { artifact: "component", origin: "shadcn" },
   checkbox: {
@@ -2121,6 +2171,14 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     primitive: "Ui.Checkbox",
   },
   command: { artifact: "component", origin: "shadcn" },
+  collapsible: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "shadcn-collapsible": {
+    artifact: "component",
+    origin: "shadcn",
+  },
   combobox: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -2305,10 +2363,6 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   resizable: { artifact: "component", origin: "shadcn" },
   sidebar: { artifact: "component", origin: "shadcn" },
   table: { artifact: "component", origin: "shadcn" },
-  "alert-dialog": {
-    artifact: "component",
-    origin: "Base UI",
-  },
   drawer: {
     artifact: "component",
     origin: "Base UI",
@@ -2333,10 +2387,6 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
-  collapsible: {
-    artifact: "component",
-    origin: "Base UI",
-  },
   field: {
     artifact: "component",
     origin: "Base UI",
@@ -2350,10 +2400,6 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Base UI",
   },
   autocomplete: {
-    artifact: "component",
-    origin: "Base UI",
-  },
-  avatar: {
     artifact: "component",
     origin: "Base UI",
   },
@@ -14902,6 +14948,38 @@ const contentView = (model: Model): Html => {
     M.tagsExhaustive({
       Home: homeView,
       AccordionDocs: () => accordionDocsView(model),
+      ShadcnAccordionDocs: () =>
+        shadcnLaneDocsView({
+          label: "Accordion",
+          source: "registry/default/ui/shadcn-accordion",
+          primitive: "Accordion view helpers",
+          description:
+            "A shadcn style-lane Accordion slice that reuses existing controlled open-values behavior with root, item, trigger, icon, and panel helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Accordion composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnAccordionRootClassName",
+            "shadcnAccordionItemClassName",
+            "shadcnAccordionHeaderClassName",
+            "shadcnAccordionTriggerClassName",
+            "shadcnAccordionIconClassName",
+            "shadcnAccordionPanelClassName",
+          ],
+          anatomyCode: `import * as Accordion from "./ui/shadcn-accordion";
+
+Accordion.rootView<Message>({
+  openValues: model.openValues,
+  children: [
+    Accordion.itemView({
+      value: "item-1",
+      openValues: model.openValues,
+      onValueChange: ToggledItem({ value: "item-1" }),
+      title: "Is it accessible?",
+      children: ["Yes. It follows the Foldkit behavior contract."],
+    }),
+  ],
+});`,
+        }),
       AccordionBasicExample: () =>
         DocsRoutes.accordionBasicExampleRouteView(model),
       AccordionMultipleExample: () =>
@@ -14956,6 +15034,33 @@ const contentView = (model: Model): Html => {
       ButtonGroupRtlExample: () =>
         DocsRoutes.buttonGroupRtlExampleRouteView(model),
       AlertDialogDocs: () => alertDialogDocsView(model),
+      ShadcnAlertDialogDocs: () =>
+        shadcnLaneDocsView({
+          label: "Alert Dialog",
+          source: "registry/default/ui/shadcn-alert-dialog",
+          primitive: "AlertDialog view helpers",
+          description:
+            "A shadcn style-lane Alert Dialog slice that reuses the existing alert-dialog anatomy for trigger, portal, backdrop, popup, title, description, and action buttons.",
+          usage:
+            "Install the shadcn lane wrapper when you want the existing Alert Dialog behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnAlertDialogTriggerClassName",
+            "shadcnAlertDialogPortalClassName",
+            "shadcnAlertDialogBackdropClassName",
+            "shadcnAlertDialogPopupClassName",
+            "shadcnAlertDialogTitleClassName",
+            "shadcnAlertDialogDescriptionClassName",
+            "shadcnAlertDialogActionsClassName",
+          ],
+          anatomyCode: `import * as AlertDialog from "./ui/shadcn-alert-dialog";
+
+AlertDialog.rootView<Message>({
+  children: [
+    AlertDialog.triggerView({ onClick: OpenedDialog(), children: ["Delete"] }),
+    AlertDialog.portalView({ open: model.open, children: [content] }),
+  ],
+});`,
+        }),
       AlertDialogBasicExample: () =>
         DocsRoutes.alertDialogBasicExampleRouteView(model),
       DrawerDocs: () => drawerDocsView(model),
@@ -14975,6 +15080,32 @@ const contentView = (model: Model): Html => {
       PreviewCardBasicExample: () =>
         DocsRoutes.previewCardBasicExampleRouteView(model),
       CollapsibleDocs: () => collapsibleDocsView(model),
+      ShadcnCollapsibleDocs: () =>
+        shadcnLaneDocsView({
+          label: "Collapsible",
+          source: "registry/default/ui/shadcn-collapsible",
+          primitive: "Collapsible view helpers",
+          description:
+            "A shadcn style-lane Collapsible slice that reuses the existing controlled open-state root, trigger, panel, and content helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want controlled Collapsible behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnCollapsibleRootClassName",
+            "shadcnCollapsibleTriggerClassName",
+            "shadcnCollapsibleIconClassName",
+            "shadcnCollapsiblePanelClassName",
+            "shadcnCollapsibleContentClassName",
+          ],
+          anatomyCode: `import * as Collapsible from "./ui/shadcn-collapsible";
+
+Collapsible.rootView<Message>({
+  open: model.open,
+  children: [
+    Collapsible.triggerView({ open: model.open, onOpenChange: ToggledOpen(), children }),
+    Collapsible.panelView({ open: model.open, children: [content] }),
+  ],
+});`,
+        }),
       CollapsibleBasicExample: () =>
         DocsRoutes.collapsibleBasicExampleRouteView(model),
       FieldDocs: () => fieldDocsView(model),
@@ -14989,6 +15120,30 @@ const contentView = (model: Model): Html => {
         DocsRoutes.autocompleteBasicExampleRouteView(model),
       Avatar: () => embedUi("ui-avatar", View.avatar),
       AvatarDocs: () => avatarDocsView(model),
+      ShadcnAvatarDocs: () =>
+        shadcnLaneDocsView({
+          label: "Avatar",
+          source: "registry/default/ui/shadcn-avatar",
+          primitive: "Avatar view helpers",
+          description:
+            "A shadcn style-lane Avatar slice that reuses existing image, fallback, root, group, and count helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Avatar composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnAvatarBaseClassName",
+            "shadcnAvatarImageClassName",
+            "shadcnAvatarFallbackClassName",
+            "shadcnAvatarGroupClassName",
+            "shadcnAvatarGroupCountClassName",
+          ],
+          anatomyCode: `import * as Avatar from "./ui/shadcn-avatar";
+
+Avatar.view<Message>({
+  src: "/avatar.png",
+  alt: "Ada Lovelace",
+  fallback: "AL",
+});`,
+        }),
       AvatarBasicExample: () => DocsRoutes.avatarBasicExampleRouteView(model),
       Badge: () => embedUi("ui-badge", View.badge),
       BadgeDocs: () => badgeDocsView(model),
@@ -15133,6 +15288,32 @@ Button.view<Message>({
         DocsRoutes.buttonDisabledExampleRouteView(model),
       Calendar: () => embedUi("ui-calendar", View.calendar),
       CalendarDocs: () => calendarDocsView(model),
+      ShadcnCalendarDocs: () =>
+        shadcnLaneDocsView({
+          label: "Calendar",
+          source: "registry/default/ui/shadcn-calendar",
+          primitive: "Ui.Calendar",
+          description:
+            "A shadcn style-lane Calendar slice that reuses the official Foldkit Ui.Calendar primitive for date selection, month navigation, keyboard focus, and disabled date reflection.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Calendar behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnCalendarContainerClassName",
+            "shadcnCalendarHeaderClassName",
+            "shadcnCalendarNavButtonClassName",
+            "shadcnCalendarGridClassName",
+            "shadcnCalendarDayButtonClassName",
+            "shadcnCalendarMonthYearButtonClassName",
+          ],
+          anatomyCode: `import * as Calendar from "./ui/shadcn-calendar";
+
+h.submodel({
+  slotId: model.calendar.id,
+  model: model.calendar,
+  view: Calendar.view,
+  toParentMessage: (message) => GotCalendarMessage({ message }),
+});`,
+        }),
       CalendarBasicExample: () =>
         DocsRoutes.calendarBasicExampleRouteView(model),
       CalendarBoundsExample: () =>

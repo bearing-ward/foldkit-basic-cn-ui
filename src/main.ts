@@ -165,6 +165,7 @@ import { uiUpdate } from "./ui/update";
 
 export const HomeRoute = r("Home");
 export const AccordionDocsRoute = r("AccordionDocs");
+export const ShadcnAccordionDocsRoute = r("ShadcnAccordionDocs");
 export const AccordionBasicExampleRoute = r("AccordionBasicExample");
 export const AccordionMultipleExampleRoute = r("AccordionMultipleExample");
 export const AlertDocsRoute = r("AlertDocs");
@@ -201,6 +202,7 @@ export const ButtonGroupSelectExampleRoute = r("ButtonGroupSelectExample");
 export const ButtonGroupPopoverExampleRoute = r("ButtonGroupPopoverExample");
 export const ButtonGroupRtlExampleRoute = r("ButtonGroupRtlExample");
 export const AlertDialogDocsRoute = r("AlertDialogDocs");
+export const ShadcnAlertDialogDocsRoute = r("ShadcnAlertDialogDocs");
 export const AlertDialogBasicExampleRoute = r("AlertDialogBasicExample");
 export const DrawerDocsRoute = r("DrawerDocs");
 export const DrawerBasicExampleRoute = r("DrawerBasicExample");
@@ -215,6 +217,7 @@ export const OtpFieldBasicExampleRoute = r("OtpFieldBasicExample");
 export const PreviewCardDocsRoute = r("PreviewCardDocs");
 export const PreviewCardBasicExampleRoute = r("PreviewCardBasicExample");
 export const CollapsibleDocsRoute = r("CollapsibleDocs");
+export const ShadcnCollapsibleDocsRoute = r("ShadcnCollapsibleDocs");
 export const CollapsibleBasicExampleRoute = r("CollapsibleBasicExample");
 export const FieldDocsRoute = r("FieldDocs");
 export const FieldBasicExampleRoute = r("FieldBasicExample");
@@ -226,6 +229,7 @@ export const AutocompleteDocsRoute = r("AutocompleteDocs");
 export const AutocompleteBasicExampleRoute = r("AutocompleteBasicExample");
 export const AvatarRoute = r("Avatar");
 export const AvatarDocsRoute = r("AvatarDocs");
+export const ShadcnAvatarDocsRoute = r("ShadcnAvatarDocs");
 export const AvatarBasicExampleRoute = r("AvatarBasicExample");
 export const BadgeRoute = r("Badge");
 export const BadgeDocsRoute = r("BadgeDocs");
@@ -342,6 +346,7 @@ export const ProgressDocsRoute = r("ProgressDocs");
 export const ProgressBasicExampleRoute = r("ProgressBasicExample");
 export const CalendarRoute = r("Calendar");
 export const CalendarDocsRoute = r("CalendarDocs");
+export const ShadcnCalendarDocsRoute = r("ShadcnCalendarDocs");
 export const CalendarBasicExampleRoute = r("CalendarBasicExample");
 export const CalendarBoundsExampleRoute = r("CalendarBoundsExample");
 export const CheckboxRoute = r("Checkbox");
@@ -461,6 +466,7 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 const AppRoute = S.Union([
   HomeRoute,
   AccordionDocsRoute,
+  ShadcnAccordionDocsRoute,
   AccordionBasicExampleRoute,
   AccordionMultipleExampleRoute,
   AlertDocsRoute,
@@ -491,6 +497,7 @@ const AppRoute = S.Union([
   ButtonGroupPopoverExampleRoute,
   ButtonGroupRtlExampleRoute,
   AlertDialogDocsRoute,
+  ShadcnAlertDialogDocsRoute,
   AlertDialogBasicExampleRoute,
   DrawerDocsRoute,
   DrawerBasicExampleRoute,
@@ -505,6 +512,7 @@ const AppRoute = S.Union([
   PreviewCardDocsRoute,
   PreviewCardBasicExampleRoute,
   CollapsibleDocsRoute,
+  ShadcnCollapsibleDocsRoute,
   CollapsibleBasicExampleRoute,
   FieldDocsRoute,
   FieldBasicExampleRoute,
@@ -516,6 +524,7 @@ const AppRoute = S.Union([
   AutocompleteBasicExampleRoute,
   AvatarRoute,
   AvatarDocsRoute,
+  ShadcnAvatarDocsRoute,
   AvatarBasicExampleRoute,
   BadgeRoute,
   BadgeDocsRoute,
@@ -630,6 +639,7 @@ const AppRoute = S.Union([
   ProgressBasicExampleRoute,
   CalendarRoute,
   CalendarDocsRoute,
+  ShadcnCalendarDocsRoute,
   CalendarBasicExampleRoute,
   CalendarBoundsExampleRoute,
   CheckboxRoute,
@@ -1075,6 +1085,12 @@ export const alertDialogDocsRouter = pipe(
   slash(literal("alert-dialog")),
   Route.mapTo(AlertDialogDocsRoute)
 );
+export const shadcnAlertDialogDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-alert-dialog")),
+  Route.mapTo(ShadcnAlertDialogDocsRoute)
+);
 export const alertDialogBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -1208,6 +1224,12 @@ export const accordionDocsRouter = pipe(
   slash(literal("accordion")),
   Route.mapTo(AccordionDocsRoute)
 );
+export const shadcnAccordionDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-accordion")),
+  Route.mapTo(ShadcnAccordionDocsRoute)
+);
 export const accordionBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -1239,6 +1261,12 @@ export const collapsibleDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("collapsible")),
   Route.mapTo(CollapsibleDocsRoute)
+);
+export const shadcnCollapsibleDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-collapsible")),
+  Route.mapTo(ShadcnCollapsibleDocsRoute)
 );
 export const collapsibleBasicExampleRouter = pipe(
   literal("docs"),
@@ -1335,6 +1363,12 @@ export const avatarDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("avatar")),
   Route.mapTo(AvatarDocsRoute)
+);
+export const shadcnAvatarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-avatar")),
+  Route.mapTo(ShadcnAvatarDocsRoute)
 );
 export const avatarBasicExampleRouter = pipe(
   literal("docs"),
@@ -2384,6 +2418,12 @@ export const calendarDocsRouter = pipe(
   slash(literal("calendar")),
   Route.mapTo(CalendarDocsRoute)
 );
+export const shadcnCalendarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  Route.mapTo(ShadcnCalendarDocsRoute)
+);
 export const calendarBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3344,6 +3384,7 @@ const routeParser = Route.oneOf(
   avatarBasicExampleRouter,
   avatarBasicStandaloneExampleRouter,
   avatarDocsRouter,
+  shadcnAvatarDocsRouter,
   badgeRouter,
   badgeBasicExampleRouter,
   badgeBasicStandaloneExampleRouter,
@@ -3523,6 +3564,7 @@ const routeParser = Route.oneOf(
   calendarBasicStandaloneExampleRouter,
   calendarBoundsStandaloneExampleRouter,
   calendarDocsRouter,
+  shadcnCalendarDocsRouter,
   checkboxRouter,
   checkboxBasicExampleRouter,
   checkboxIndeterminateExampleRouter,
@@ -3735,6 +3777,7 @@ const routeParser = Route.oneOf(
   alertDialogBasicExampleRouter,
   alertDialogBasicStandaloneExampleRouter,
   alertDialogDocsRouter,
+  shadcnAlertDialogDocsRouter,
   drawerBasicExampleRouter,
   drawerBasicStandaloneExampleRouter,
   drawerDocsRouter,
@@ -3754,9 +3797,11 @@ const routeParser = Route.oneOf(
   previewCardBasicStandaloneExampleRouter,
   previewCardDocsRouter,
   accordionDocsRouter,
+  shadcnAccordionDocsRouter,
   collapsibleBasicExampleRouter,
   collapsibleBasicStandaloneExampleRouter,
   collapsibleDocsRouter,
+  shadcnCollapsibleDocsRouter,
   fieldBasicExampleRouter,
   fieldBasicStandaloneExampleRouter,
   fieldDocsRouter,

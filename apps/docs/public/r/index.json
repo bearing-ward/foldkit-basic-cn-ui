@@ -2569,6 +2569,105 @@
       }
     },
     {
+      "name": "shadcn-accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "shadcn style-lane accordion wrapper backed by the existing accordion component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/accordion"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-accordion/index.ts",
+          "target": "src/ui/shadcn-accordion/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-accordion/view.ts",
+          "target": "src/ui/shadcn-accordion/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-accordion/shadcn-accordion.scene.test.ts",
+          "target": "src/ui/shadcn-accordion/shadcn-accordion.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "shadcn style-lane alert-dialog wrapper backed by the existing alert-dialog component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-alert-dialog/index.ts",
+          "target": "src/ui/shadcn-alert-dialog/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-alert-dialog/view.ts",
+          "target": "src/ui/shadcn-alert-dialog/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-alert-dialog/shadcn-alert-dialog.scene.test.ts",
+          "target": "src/ui/shadcn-alert-dialog/shadcn-alert-dialog.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "shadcn style-lane avatar wrapper backed by the existing avatar component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/avatar"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-avatar/index.ts",
+          "target": "src/ui/shadcn-avatar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-avatar/view.ts",
+          "target": "src/ui/shadcn-avatar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-avatar/shadcn-avatar.scene.test.ts",
+          "target": "src/ui/shadcn-avatar/shadcn-avatar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
       "name": "shadcn-button",
       "type": "registry:ui",
       "title": "Button",
@@ -2603,6 +2702,40 @@
       }
     },
     {
+      "name": "shadcn-calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "shadcn style-lane calendar wrapper backed by the existing calendar component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/calendar"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-calendar/index.ts",
+          "target": "src/ui/shadcn-calendar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-calendar/view.ts",
+          "target": "src/ui/shadcn-calendar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-calendar/shadcn-calendar.scene.test.ts",
+          "target": "src/ui/shadcn-calendar/shadcn-calendar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Calendar",
+          "stateful": true
+        }
+      }
+    },
+    {
       "name": "shadcn-checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
@@ -2633,6 +2766,39 @@
           "artifact": "component",
           "primitive": "Ui.Checkbox",
           "stateful": true
+        }
+      }
+    },
+    {
+      "name": "shadcn-collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "shadcn style-lane collapsible wrapper backed by the existing collapsible component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/collapsible"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-collapsible/index.ts",
+          "target": "src/ui/shadcn-collapsible/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-collapsible/view.ts",
+          "target": "src/ui/shadcn-collapsible/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-collapsible/shadcn-collapsible.scene.test.ts",
+          "target": "src/ui/shadcn-collapsible/shadcn-collapsible.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
         }
       }
     },
