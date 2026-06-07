@@ -522,6 +522,176 @@
       }
     },
     {
+      "name": "base-ui-popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Base UI style-lane popover wrapper backed by the Foldkit Ui.Popover component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/popover"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-popover/index.ts",
+          "target": "src/ui/base-ui-popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-popover/view.ts",
+          "target": "src/ui/base-ui-popover/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-popover/base-ui-popover.scene.test.ts",
+          "target": "src/ui/base-ui-popover/base-ui-popover.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "base-ui",
+          "artifact": "component",
+          "primitive": "Ui.Popover",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "base-ui-radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Base UI style-lane radio-group wrapper backed by the Foldkit Ui.RadioGroup component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/radio-group"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-radio-group/index.ts",
+          "target": "src/ui/base-ui-radio-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-radio-group/view.ts",
+          "target": "src/ui/base-ui-radio-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-radio-group/base-ui-radio-group.scene.test.ts",
+          "target": "src/ui/base-ui-radio-group/base-ui-radio-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "base-ui",
+          "artifact": "component",
+          "primitive": "Ui.RadioGroup",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "base-ui-select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Base UI style-lane select wrapper backed by the Foldkit Ui.Select component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/select"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-select/index.ts",
+          "target": "src/ui/base-ui-select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-select/view.ts",
+          "target": "src/ui/base-ui-select/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-select/base-ui-select.scene.test.ts",
+          "target": "src/ui/base-ui-select/base-ui-select.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "base-ui",
+          "artifact": "component",
+          "primitive": "Ui.Select",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "base-ui-slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Base UI style-lane slider wrapper backed by the Foldkit Ui.Slider component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/slider"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-slider/index.ts",
+          "target": "src/ui/base-ui-slider/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-slider/view.ts",
+          "target": "src/ui/base-ui-slider/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-slider/base-ui-slider.scene.test.ts",
+          "target": "src/ui/base-ui-slider/base-ui-slider.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "base-ui",
+          "artifact": "component",
+          "primitive": "Ui.Slider",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "base-ui-switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Base UI style-lane switch wrapper backed by the Foldkit Ui.Switch component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/switch"],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-switch/index.ts",
+          "target": "src/ui/base-ui-switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-switch/view.ts",
+          "target": "src/ui/base-ui-switch/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-switch/base-ui-switch.scene.test.ts",
+          "target": "src/ui/base-ui-switch/base-ui-switch.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "base-ui",
+          "artifact": "component",
+          "primitive": "Ui.Switch",
+          "stateful": true
+        }
+      }
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",

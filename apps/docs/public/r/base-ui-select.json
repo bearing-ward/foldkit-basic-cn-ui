@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-select",
+  "type": "registry:ui",
+  "title": "Select",
+  "description": "Base UI style-lane select wrapper backed by the Foldkit Ui.Select component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/select"],
+  "files": [
+    {
+      "path": "registry/default/ui/base-ui-select/index.ts",
+      "target": "src/ui/base-ui-select/index.ts",
+      "type": "registry:ui",
+      "content": "export { descriptionId, view } from \"../select\";\nexport type { SelectAttributes, ViewConfig } from \"../select\";\n\nexport {\n  baseUiSelectChevronClassName,\n  baseUiSelectControlClassName,\n  baseUiSelectDescriptionClassName,\n  baseUiSelectLabelClassName,\n  baseUiSelectWrapperClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/base-ui-select/view.ts",
+      "target": "src/ui/base-ui-select/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  chevronClassName as baseUiSelectChevronClassName,\n  descriptionClassName as baseUiSelectDescriptionClassName,\n  labelClassName as baseUiSelectLabelClassName,\n  selectClassName as baseUiSelectControlClassName,\n  selectWrapperClassName as baseUiSelectWrapperClassName,\n} from \"../select/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/base-ui-select/base-ui-select.scene.test.ts",
+      "target": "src/ui/base-ui-select/base-ui-select.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Select from \"./index\";\n\ndescribe(\"Base UI Select registry view\", () => {\n  test(\"reuses the Foldkit Select functional contract\", () => {\n    expect(Select.view).toBeTypeOf(\"function\");\n    expect(Select.descriptionId).toBeTypeOf(\"function\");\n    expect(Select.baseUiSelectControlClassName).toContain(\"rounded\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "base-ui",
+      "artifact": "component",
+      "primitive": "Ui.Select",
+      "stateful": false
+    }
+  }
+}

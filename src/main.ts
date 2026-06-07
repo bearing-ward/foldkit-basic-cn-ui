@@ -402,24 +402,29 @@ export const MenuBasicExampleRoute = r("MenuBasicExample");
 export const MenuAnimatedExampleRoute = r("MenuAnimatedExample");
 export const PopoverRoute = r("Popover");
 export const PopoverDocsRoute = r("PopoverDocs");
+export const BaseUiPopoverDocsRoute = r("BaseUiPopoverDocs");
 export const PopoverBasicExampleRoute = r("PopoverBasicExample");
 export const PopoverAnimatedExampleRoute = r("PopoverAnimatedExample");
 export const RadioGroupRoute = r("RadioGroup");
 export const RadioGroupDocsRoute = r("RadioGroupDocs");
+export const BaseUiRadioGroupDocsRoute = r("BaseUiRadioGroupDocs");
 export const RadioGroupBasicExampleRoute = r("RadioGroupBasicExample");
 export const RadioGroupHorizontalExampleRoute = r(
   "RadioGroupHorizontalExample"
 );
 export const SelectRoute = r("Select");
 export const SelectDocsRoute = r("SelectDocs");
+export const BaseUiSelectDocsRoute = r("BaseUiSelectDocs");
 export const SelectBasicExampleRoute = r("SelectBasicExample");
 export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
 export const SliderDocsRoute = r("SliderDocs");
+export const BaseUiSliderDocsRoute = r("BaseUiSliderDocs");
 export const SliderBasicExampleRoute = r("SliderBasicExample");
 export const SliderDisabledExampleRoute = r("SliderDisabledExample");
 export const SwitchRoute = r("Switch");
 export const SwitchDocsRoute = r("SwitchDocs");
+export const BaseUiSwitchDocsRoute = r("BaseUiSwitchDocs");
 export const SwitchBasicExampleRoute = r("SwitchBasicExample");
 export const SwitchDisabledExampleRoute = r("SwitchDisabledExample");
 export const TabsRoute = r("Tabs");
@@ -677,22 +682,27 @@ const AppRoute = S.Union([
   MenuAnimatedExampleRoute,
   PopoverRoute,
   PopoverDocsRoute,
+  BaseUiPopoverDocsRoute,
   PopoverBasicExampleRoute,
   PopoverAnimatedExampleRoute,
   RadioGroupRoute,
   RadioGroupDocsRoute,
+  BaseUiRadioGroupDocsRoute,
   RadioGroupBasicExampleRoute,
   RadioGroupHorizontalExampleRoute,
   SelectRoute,
   SelectDocsRoute,
+  BaseUiSelectDocsRoute,
   SelectBasicExampleRoute,
   SelectDisabledExampleRoute,
   SliderRoute,
   SliderDocsRoute,
+  BaseUiSliderDocsRoute,
   SliderBasicExampleRoute,
   SliderDisabledExampleRoute,
   SwitchRoute,
   SwitchDocsRoute,
+  BaseUiSwitchDocsRoute,
   SwitchBasicExampleRoute,
   SwitchDisabledExampleRoute,
   TabsRoute,
@@ -2892,6 +2902,12 @@ export const popoverDocsRouter = pipe(
   slash(literal("popover")),
   Route.mapTo(PopoverDocsRoute)
 );
+export const baseUiPopoverDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-popover")),
+  Route.mapTo(BaseUiPopoverDocsRoute)
+);
 export const popoverBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2928,6 +2944,12 @@ export const radioGroupDocsRouter = pipe(
   slash(literal("radio-group")),
   Route.mapTo(RadioGroupDocsRoute)
 );
+export const baseUiRadioGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-radio-group")),
+  Route.mapTo(BaseUiRadioGroupDocsRoute)
+);
 export const radioGroupBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2960,6 +2982,12 @@ export const selectDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("select")),
   Route.mapTo(SelectDocsRoute)
+);
+export const baseUiSelectDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-select")),
+  Route.mapTo(BaseUiSelectDocsRoute)
 );
 export const selectBasicExampleRouter = pipe(
   literal("docs"),
@@ -2994,6 +3022,12 @@ export const sliderDocsRouter = pipe(
   slash(literal("slider")),
   Route.mapTo(SliderDocsRoute)
 );
+export const baseUiSliderDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-slider")),
+  Route.mapTo(BaseUiSliderDocsRoute)
+);
 export const sliderBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3026,6 +3060,12 @@ export const switchDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("switch")),
   Route.mapTo(SwitchDocsRoute)
+);
+export const baseUiSwitchDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-switch")),
+  Route.mapTo(BaseUiSwitchDocsRoute)
 );
 export const switchBasicExampleRouter = pipe(
   literal("docs"),
@@ -3521,30 +3561,35 @@ const routeParser = Route.oneOf(
   popoverBasicStandaloneExampleRouter,
   popoverAnimatedStandaloneExampleRouter,
   popoverDocsRouter,
+  baseUiPopoverDocsRouter,
   radioGroupRouter,
   radioGroupBasicExampleRouter,
   radioGroupHorizontalExampleRouter,
   radioGroupBasicStandaloneExampleRouter,
   radioGroupHorizontalStandaloneExampleRouter,
   radioGroupDocsRouter,
+  baseUiRadioGroupDocsRouter,
   selectRouter,
   selectBasicExampleRouter,
   selectDisabledExampleRouter,
   selectBasicStandaloneExampleRouter,
   selectDisabledStandaloneExampleRouter,
   selectDocsRouter,
+  baseUiSelectDocsRouter,
   sliderRouter,
   sliderBasicExampleRouter,
   sliderDisabledExampleRouter,
   sliderBasicStandaloneExampleRouter,
   sliderDisabledStandaloneExampleRouter,
   sliderDocsRouter,
+  baseUiSliderDocsRouter,
   switchRouter,
   switchBasicExampleRouter,
   switchDisabledExampleRouter,
   switchBasicStandaloneExampleRouter,
   switchDisabledStandaloneExampleRouter,
   switchDocsRouter,
+  baseUiSwitchDocsRouter,
   tabsRouter,
   tabsBasicExampleRouter,
   tabsManualExampleRouter,

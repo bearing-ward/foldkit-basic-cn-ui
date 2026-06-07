@@ -202,21 +202,21 @@ Present Base UI lane components:
 - meter
 - navigation-menu
 - number-field
+- popover
 - preview-card
 - progress
+- radio-group
 - scroll-area
 - separator
+- select
+- slider
+- switch
 - toggle
 - toggle-group
 - toolbar
 
 Missing Base UI lane components:
 
-- popover
-- radio-group
-- select
-- slider
-- switch
 - tabs
 - toast
 - tooltip
@@ -243,7 +243,7 @@ New Base UI work should focus on simple styled or unstyled contract depth:
 
 3. Fill missing Base UI lane components by reusing Foldkit behavior and adding
    simple styled or unstyled source:
-   popover, radio-group, select, slider, switch, tabs, toast, tooltip.
+   tabs, toast, tooltip.
 
 4. Fill missing shadcn lane components by reusing Foldkit behavior and adding
    opinionated style parity:

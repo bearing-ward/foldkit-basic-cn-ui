@@ -1068,6 +1068,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/popover",
   },
   {
+    label: "Popover Docs",
+    routeTag: "BaseUiPopoverDocs",
+    href: "/docs/components/base-ui-popover",
+  },
+  {
     label: "Popover Basic Example",
     routeTag: "PopoverBasicExample",
     href: "/docs/components/popover/examples/basic",
@@ -1082,6 +1087,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Radio Group Docs",
     routeTag: "RadioGroupDocs",
     href: "/docs/components/radio-group",
+  },
+  {
+    label: "Radio Group Docs",
+    routeTag: "BaseUiRadioGroupDocs",
+    href: "/docs/components/base-ui-radio-group",
   },
   {
     label: "Radio Group Basic Example",
@@ -1100,6 +1110,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/select",
   },
   {
+    label: "Select Docs",
+    routeTag: "BaseUiSelectDocs",
+    href: "/docs/components/base-ui-select",
+  },
+  {
     label: "Select Basic Example",
     routeTag: "SelectBasicExample",
     href: "/docs/components/select/examples/basic",
@@ -1116,6 +1131,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/slider",
   },
   {
+    label: "Slider Docs",
+    routeTag: "BaseUiSliderDocs",
+    href: "/docs/components/base-ui-slider",
+  },
+  {
     label: "Slider Basic Example",
     routeTag: "SliderBasicExample",
     href: "/docs/components/slider/examples/basic",
@@ -1130,6 +1150,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Switch Docs",
     routeTag: "SwitchDocs",
     href: "/docs/components/switch",
+  },
+  {
+    label: "Switch Docs",
+    routeTag: "BaseUiSwitchDocs",
+    href: "/docs/components/base-ui-switch",
   },
   {
     label: "Switch Basic Example",
@@ -1494,6 +1519,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
           "BaseUiFieldsetDocs",
           "BaseUiInputDocs",
           "BaseUiMenuDocs",
+          "BaseUiPopoverDocs",
+          "BaseUiRadioGroupDocs",
+          "BaseUiSelectDocs",
+          "BaseUiSliderDocs",
+          "BaseUiSwitchDocs",
         ].includes(navItem.routeTag)
       ? "Base UI"
       : "Foldkit";
@@ -1532,16 +1562,7 @@ const labelFromComponentSlug = (slug: string): string =>
     )
     .join(" ");
 
-const missingBaseUiLaneSlugs: readonly string[] = [
-  "popover",
-  "radio-group",
-  "select",
-  "slider",
-  "switch",
-  "tabs",
-  "toast",
-  "tooltip",
-];
+const missingBaseUiLaneSlugs: readonly string[] = ["tabs", "toast", "tooltip"];
 
 const missingShadcnLaneSlugs: readonly string[] = [
   "accordion",
@@ -2141,14 +2162,29 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Popover",
   },
+  "base-ui-popover": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Popover",
+  },
   "radio-group": {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
     primitive: "Ui.RadioGroup",
   },
+  "base-ui-radio-group": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.RadioGroup",
+  },
   select: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Select",
+  },
+  "base-ui-select": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Select",
   },
   sheet: { artifact: "component", origin: "shadcn" },
@@ -2157,10 +2193,20 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Slider",
   },
+  "base-ui-slider": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Slider",
+  },
   sonner: { artifact: "component", origin: "shadcn" },
   switch: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Switch",
+  },
+  "base-ui-switch": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Switch",
   },
   tabs: {
@@ -15137,27 +15183,159 @@ Menu.view<Message>({
       MenuAnimatedExample: () => DocsRoutes.menuAnimatedExampleRouteView(model),
       Popover: () => embedUi("ui-popover", View.popover),
       PopoverDocs: () => popoverDocsView(model),
+      BaseUiPopoverDocs: () =>
+        baseUiLaneDocsView({
+          label: "Popover",
+          source: "registry/default/ui/base-ui-popover",
+          primitive: "Ui.Popover",
+          description:
+            "A Base UI style-lane Popover slice that reuses the official Foldkit Ui.Popover primitive for controlled open state, anchored panel rendering, backdrop dismissal, and focus commands.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit Popover behavior with simple Base UI naming and class helpers.",
+          classHelpers: [
+            "baseUiPopoverTriggerClassName",
+            "baseUiPopoverRootClassName",
+            "baseUiPopoverPanelClassName",
+            "baseUiPopoverBackdropClassName",
+          ],
+          anatomyCode: `import * as Popover from "./ui/base-ui-popover";
+
+Popover.view<Message>({
+  model: model.popover,
+  toParentMessage: (message) => GotPopoverMessage({ message }),
+  children: [
+    Popover.trigger({ children: ["Open"] }),
+    Popover.panel({ children: ["Popover content"] }),
+  ],
+});`,
+        }),
       PopoverBasicExample: () => DocsRoutes.popoverBasicExampleRouteView(model),
       PopoverAnimatedExample: () =>
         DocsRoutes.popoverAnimatedExampleRouteView(model),
       RadioGroup: () => embedUi("ui-radio-group", View.radioGroup),
       RadioGroupDocs: () => radioGroupDocsView(model),
+      BaseUiRadioGroupDocs: () =>
+        baseUiLaneDocsView({
+          label: "Radio Group",
+          source: "registry/default/ui/base-ui-radio-group",
+          primitive: "Ui.RadioGroup",
+          description:
+            "A Base UI style-lane Radio Group slice that reuses the official Foldkit Ui.RadioGroup primitive for controlled selection, orientation, option focus, and labelled choices.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit RadioGroup behavior with Base UI class helper names.",
+          classHelpers: [
+            "baseUiRadioGroupVerticalClassName",
+            "baseUiRadioGroupHorizontalClassName",
+            "baseUiRadioGroupVerticalOptionClassName",
+            "baseUiRadioGroupHorizontalOptionClassName",
+            "baseUiRadioGroupLabelClassName",
+            "baseUiRadioGroupDescriptionClassName",
+          ],
+          anatomyCode: `import * as RadioGroup from "./ui/base-ui-radio-group";
+
+const RadioGroup = RadioGroup.create<"starter" | "pro">();
+
+h.submodel({
+  slotId: model.radioGroup.id,
+  model: model.radioGroup,
+  view: RadioGroup.view,
+  viewInputs: { options },
+  toParentMessage: (message) => GotRadioGroupMessage({ message }),
+});`,
+        }),
       RadioGroupBasicExample: () =>
         DocsRoutes.radioGroupBasicExampleRouteView(model),
       RadioGroupHorizontalExample: () =>
         DocsRoutes.radioGroupHorizontalExampleRouteView(model),
       Select: () => embedUi("ui-select", View.select),
       SelectDocs: () => selectDocsView(model),
+      BaseUiSelectDocs: () =>
+        baseUiLaneDocsView({
+          label: "Select",
+          source: "registry/default/ui/base-ui-select",
+          primitive: "Ui.Select",
+          description:
+            "A Base UI style-lane Select slice that reuses the official Foldkit Ui.Select native select helper for labels, descriptions, disabled state, and value changes.",
+          usage:
+            "Install the Base UI lane wrapper when you need the native Foldkit Select contract with simple Base UI class hooks.",
+          classHelpers: [
+            "baseUiSelectWrapperClassName",
+            "baseUiSelectControlClassName",
+            "baseUiSelectChevronClassName",
+            "baseUiSelectLabelClassName",
+            "baseUiSelectDescriptionClassName",
+          ],
+          anatomyCode: `import * as Select from "./ui/base-ui-select";
+
+Select.view<Message>({
+  id: "plan",
+  value: model.plan,
+  onChange: (value) => SelectedPlan({ value }),
+  options,
+});`,
+        }),
       SelectBasicExample: () => DocsRoutes.selectBasicExampleRouteView(model),
       SelectDisabledExample: () =>
         DocsRoutes.selectDisabledExampleRouteView(model),
       Slider: () => embedUi("ui-slider", View.slider),
       SliderDocs: () => sliderDocsView(model),
+      BaseUiSliderDocs: () =>
+        baseUiLaneDocsView({
+          label: "Slider",
+          source: "registry/default/ui/base-ui-slider",
+          primitive: "Ui.Slider",
+          description:
+            "A Base UI style-lane Slider slice that reuses the official Foldkit Ui.Slider primitive for value reflection, drag state, keyboard movement, and root subscriptions.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit Slider behavior with Base UI class helper names.",
+          classHelpers: [
+            "baseUiSliderRootClassName",
+            "baseUiSliderTrackClassName",
+            "baseUiSliderFilledTrackClassName",
+            "baseUiSliderThumbClassName",
+            "baseUiSliderLabelClassName",
+            "baseUiSliderValueClassName",
+          ],
+          anatomyCode: `import * as Slider from "./ui/base-ui-slider";
+
+h.submodel({
+  slotId: model.slider.id,
+  model: model.slider,
+  view: Slider.view,
+  toParentMessage: (message) => GotSliderMessage({ message }),
+});`,
+        }),
       SliderBasicExample: () => DocsRoutes.sliderBasicExampleRouteView(model),
       SliderDisabledExample: () =>
         DocsRoutes.sliderDisabledExampleRouteView(model),
       Switch: () => embedUi("ui-switch", View.switch_),
       SwitchDocs: () => switchDocsView(model),
+      BaseUiSwitchDocs: () =>
+        baseUiLaneDocsView({
+          label: "Switch",
+          source: "registry/default/ui/base-ui-switch",
+          primitive: "Ui.Switch",
+          description:
+            "A Base UI style-lane Switch slice that reuses the official Foldkit Ui.Switch primitive for controlled checked state, labels, descriptions, hidden input behavior, and disabled state.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit Switch behavior with Base UI class helper names.",
+          classHelpers: [
+            "baseUiSwitchRowClassName",
+            "baseUiSwitchButtonClassName",
+            "baseUiSwitchKnob",
+            "baseUiSwitchLabelClassName",
+            "baseUiSwitchDescriptionClassName",
+            "baseUiSwitchTextClassName",
+          ],
+          anatomyCode: `import * as Switch from "./ui/base-ui-switch";
+
+h.submodel({
+  slotId: model.switch.id,
+  model: model.switch,
+  view: Switch.view,
+  toParentMessage: (message) => GotSwitchMessage({ message }),
+});`,
+        }),
       SwitchBasicExample: () => DocsRoutes.switchBasicExampleRouteView(model),
       SwitchDisabledExample: () =>
         DocsRoutes.switchDisabledExampleRouteView(model),

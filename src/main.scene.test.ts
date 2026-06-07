@@ -248,6 +248,11 @@ import {
   FormBasicExampleRoute,
   FormDocsRoute,
   BaseUiMenuDocsRoute,
+  BaseUiPopoverDocsRoute,
+  BaseUiRadioGroupDocsRoute,
+  BaseUiSelectDocsRoute,
+  BaseUiSliderDocsRoute,
+  BaseUiSwitchDocsRoute,
   NumberFieldBasicExampleRoute,
   NumberFieldDocsRoute,
   ComboboxBasicExampleRoute,
@@ -2219,6 +2224,31 @@ describe("scene", () => {
         route: BaseUiMenuDocsRoute(),
         heading: "Menu",
         source: "registry/default/ui/base-ui-menu",
+      },
+      {
+        route: BaseUiPopoverDocsRoute(),
+        heading: "Popover",
+        source: "registry/default/ui/base-ui-popover",
+      },
+      {
+        route: BaseUiRadioGroupDocsRoute(),
+        heading: "Radio Group",
+        source: "registry/default/ui/base-ui-radio-group",
+      },
+      {
+        route: BaseUiSelectDocsRoute(),
+        heading: "Select",
+        source: "registry/default/ui/base-ui-select",
+      },
+      {
+        route: BaseUiSliderDocsRoute(),
+        heading: "Slider",
+        source: "registry/default/ui/base-ui-slider",
+      },
+      {
+        route: BaseUiSwitchDocsRoute(),
+        heading: "Switch",
+        source: "registry/default/ui/base-ui-switch",
       },
     ];
 

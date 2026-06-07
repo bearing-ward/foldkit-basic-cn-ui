@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Base UI style-lane switch wrapper backed by the Foldkit Ui.Switch component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/switch"],
+  "files": [
+    {
+      "path": "registry/default/ui/base-ui-switch/index.ts",
+      "target": "src/ui/base-ui-switch/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectChecked,\n  setChecked,\n  SetChecked,\n  ToggledChecked,\n  update,\n  view,\n} from \"../switch\";\nexport type {\n  Commands,\n  InitConfig,\n  InitReturn,\n  SwitchAttributes,\n  Toggled,\n  UpdateReturn,\n  ViewInputs,\n} from \"../switch\";\n\nexport {\n  baseUiSwitchButtonClassName,\n  baseUiSwitchDescriptionClassName,\n  baseUiSwitchKnob,\n  baseUiSwitchLabelClassName,\n  baseUiSwitchRowClassName,\n  baseUiSwitchTextClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/base-ui-switch/view.ts",
+      "target": "src/ui/base-ui-switch/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  switchButtonClassName as baseUiSwitchButtonClassName,\n  switchDescriptionClassName as baseUiSwitchDescriptionClassName,\n  switchKnob as baseUiSwitchKnob,\n  switchLabelClassName as baseUiSwitchLabelClassName,\n  switchRowClassName as baseUiSwitchRowClassName,\n  switchTextClassName as baseUiSwitchTextClassName,\n} from \"../switch/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/base-ui-switch/base-ui-switch.scene.test.ts",
+      "target": "src/ui/base-ui-switch/base-ui-switch.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Switch from \"./index\";\n\ndescribe(\"Base UI Switch registry view\", () => {\n  test(\"reuses the Foldkit Switch functional contract\", () => {\n    expect(Switch.init).toBeTypeOf(\"function\");\n    expect(Switch.update).toBeTypeOf(\"function\");\n    expect(Switch.view).toBeTypeOf(\"function\");\n    expect(Switch.baseUiSwitchKnob).toBeTypeOf(\"function\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "base-ui",
+      "artifact": "component",
+      "primitive": "Ui.Switch",
+      "stateful": true
+    }
+  }
+}
