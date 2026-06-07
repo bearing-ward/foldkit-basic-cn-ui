@@ -186,6 +186,7 @@ Present Base UI lane components:
 - autocomplete
 - avatar
 - button
+- checkbox
 - checkbox-group
 - collapsible
 - context-menu
@@ -206,7 +207,6 @@ Present Base UI lane components:
 
 Missing Base UI lane components:
 
-- checkbox
 - combobox
 - dialog
 - fieldset
@@ -243,8 +243,8 @@ New Base UI work should focus on simple styled or unstyled contract depth:
 
 3. Fill missing Base UI lane components by reusing Foldkit behavior and adding
    simple styled or unstyled source:
-   checkbox, combobox, dialog, fieldset, input, menu, popover, radio-group,
-   select, slider, switch, tabs, toast, tooltip.
+   combobox, dialog, fieldset, input, menu, popover, radio-group, select,
+   slider, switch, tabs, toast, tooltip.
 
 4. Fill missing shadcn lane components by reusing Foldkit behavior and adding
    opinionated style parity:

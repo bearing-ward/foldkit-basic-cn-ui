@@ -837,6 +837,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/checkbox",
   },
   {
+    label: "Checkbox Docs",
+    routeTag: "BaseUiCheckboxDocs",
+    href: "/docs/components/base-ui-checkbox",
+  },
+  {
     label: "Checkbox Basic Example",
     routeTag: "CheckboxBasicExample",
     href: "/docs/components/checkbox/examples/basic",
@@ -1458,6 +1463,7 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
           "ToolbarDocs",
           "CheckboxGroupDocs",
           "BaseUiButtonDocs",
+          "BaseUiCheckboxDocs",
         ].includes(navItem.routeTag)
       ? "Base UI"
       : "Foldkit";
@@ -1497,7 +1503,6 @@ const labelFromComponentSlug = (slug: string): string =>
     .join(" ");
 
 const missingBaseUiLaneSlugs: readonly string[] = [
-  "checkbox",
   "combobox",
   "dialog",
   "fieldset",
@@ -2019,6 +2024,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   checkbox: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Checkbox",
+  },
+  "base-ui-checkbox": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Checkbox",
   },
   command: { artifact: "component", origin: "shadcn" },
@@ -3124,6 +3134,156 @@ GotCheckboxMessage: ({ message }) => {
           "Registry scene tests verify label, description, checked toggling, hidden input composition, and disabled state.",
           "Example scene tests verify parent-visible checked feedback and grouped indeterminate behavior.",
           "Docs scene tests verify the shared component page section contract and example block layout.",
+        ],
+      }),
+    ]
+  );
+};
+
+const baseUiCheckboxDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Checkbox"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A Base UI style-lane Checkbox slice that reuses the official Foldkit Ui.Checkbox primitive for checked, disabled, indeterminate, label, description, and hidden input behavior.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/base-ui-checkbox" },
+        { label: "Examples", value: "basic, indeterminate" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Base UI Checkbox documents the simple styled lane: child-owned checked state, parent message delegation, form participation through hidden input attributes, and lightweight class helpers that preserve Foldkit primitive attributes."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-base-ui-checkbox-basic",
+                preview: DocsPreviewsCD.checkboxBasicExamplePreview(
+                  model.checkboxBasicExample,
+                  "base-ui-checkbox-docs-basic-preview"
+                ),
+                href: "/docs/components/checkbox/examples/basic",
+                linkText: "Open standalone Checkbox Basic example",
+              }),
+              docsExampleBlock({
+                title: "Indeterminate",
+                testId: "docs-example-block-base-ui-checkbox-indeterminate",
+                preview: DocsPreviewsCD.checkboxIndeterminateExamplePreview(
+                  model.checkboxIndeterminateExample,
+                  "base-ui-checkbox-docs-indeterminate-preview"
+                ),
+                href: "/docs/components/checkbox/examples/indeterminate",
+                linkText: "Open standalone Checkbox Indeterminate example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/base-ui-checkbox.json",
+        usageBody:
+          "Initialize the checkbox child model in the parent model, delegate child messages through `h.submodel`, and render the supplied attribute groups with Base UI class helpers.",
+        usageCode: `import * as Checkbox from "./ui/base-ui-checkbox";
+
+h.submodel({
+  slotId: model.checkbox.id,
+  model: model.checkbox,
+  view: Checkbox.view,
+  viewInputs: {
+    toView: (attributes) =>
+      h.button(
+        [
+          ...attributes.checkbox,
+          h.Class(Checkbox.baseUiCheckboxControlClassName),
+        ],
+        model.checkbox.isChecked ? ["✓"] : []
+      ),
+  },
+  toParentMessage: (message) => Main.GotCheckboxMessage({ message }),
+});`,
+        integrationCode: `// Model
+checkbox: Checkbox.Model;
+
+// Message
+Main.GotCheckboxMessage({ message: Checkbox.Message });
+
+// Update
+GotCheckboxMessage: ({ message }) => {
+  const [checkbox, commands] = Checkbox.update(model.checkbox, message);
+
+  return [
+    evo(model, { checkbox: () => checkbox }),
+    Command.mapMessages(commands, (message) => Main.GotCheckboxMessage({ message })),
+  ];
+};`,
+        anatomySection: docsAnatomyBlock(
+          `h.submodel({
+  slotId: model.checkbox.id,
+  model: model.checkbox,
+  view: Checkbox.view,
+  viewInputs: {
+    name: "terms",
+    value: "accepted",
+    toView: (attributes) =>
+      h.div(
+        [h.Class(Checkbox.baseUiCheckboxRowClassName)],
+        [
+          h.button(attributes.checkbox, ["✓"]),
+          h.input(attributes.hiddenInput),
+          h.label(attributes.label, ["Accept terms"]),
+          h.p(attributes.description, ["Helper text"]),
+        ]
+      ),
+  },
+  toParentMessage: (message) => GotCheckboxMessage({ message }),
+});`
+        ),
+        apiItems: [
+          "Model: schema-backed state containing id and isChecked.",
+          "init(config): creates a Checkbox model and empty command list for registry consistency.",
+          "update(model, message): delegates to Ui.Checkbox.update and returns model, commands, and OutMessage.",
+          "setChecked(model, isChecked): programmatically assigns checked state and emits the same OutMessage as user toggles.",
+          "reflectChecked(model, isChecked): mirrors external checked state without emitting OutMessage.",
+          "view: h.submodel view that exposes checkbox, label, description, and hiddenInput attribute groups.",
+          "Class helpers: baseUiCheckboxRowClassName, baseUiCheckboxControlClassName, baseUiCheckboxLabelClassName, baseUiCheckboxDescriptionClassName, and baseUiCheckboxTextClassName.",
+        ],
+        accessibilityItems: [
+          "The visible control receives the Foldkit checkbox role, checked, disabled, and indeterminate attributes.",
+          "The label attributes bind the visible label to the checkbox control.",
+          "The description attributes provide aria-describedby for explanatory copy.",
+          "The hiddenInput attributes preserve form participation when a name and value are supplied.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify checked toggling and disabled state through the Foldkit primitive.",
+          "Docs scene tests verify the Base UI lane page replaces the coming-soon sidebar entry.",
+          "Registry checks verify metadata, generated JSON, and install compatibility.",
         ],
       }),
     ]
@@ -14643,6 +14803,7 @@ const contentView = (model: Model): Html => {
         DocsRoutes.calendarBoundsExampleRouteView(model),
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
       CheckboxDocs: () => checkboxDocsView(model),
+      BaseUiCheckboxDocs: () => baseUiCheckboxDocsView(model),
       CheckboxBasicExample: () =>
         DocsRoutes.checkboxBasicExampleRouteView(model),
       CheckboxGroupDocs: () => checkboxGroupDocsView(model),

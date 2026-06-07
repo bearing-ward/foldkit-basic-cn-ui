@@ -228,6 +228,7 @@ import {
   CalendarBasicExampleRoute,
   CalendarBoundsExampleRoute,
   CalendarDocsRoute,
+  BaseUiCheckboxDocsRoute,
   CheckboxBasicExampleRoute,
   CheckboxDocsRoute,
   CheckboxGroupBasicExampleRoute,
@@ -2163,6 +2164,27 @@ describe("scene", () => {
       ).toHaveClass("border-t"),
       Scene.expect(Scene.text("View code")).toExist(),
       Scene.expect(Scene.text("View code")).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox docs route renders docs and replaces the coming soon entry", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Checkbox" })).toExist(),
+      Scene.expect(Scene.text("Base UI")).toExist(),
+      Scene.expect(
+        Scene.text("registry/default/ui/base-ui-checkbox")
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "All notification channels" })
+      ).toExist(),
+      Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
+        "Checkbox"
+      )
     );
   });
 

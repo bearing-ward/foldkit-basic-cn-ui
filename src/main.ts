@@ -346,6 +346,7 @@ export const CalendarBoundsExampleRoute = r("CalendarBoundsExample");
 export const CheckboxRoute = r("Checkbox");
 export const CheckboxDocsRoute = r("CheckboxDocs");
 export const CheckboxBasicExampleRoute = r("CheckboxBasicExample");
+export const BaseUiCheckboxDocsRoute = r("BaseUiCheckboxDocs");
 export const CheckboxGroupDocsRoute = r("CheckboxGroupDocs");
 export const CheckboxGroupBasicExampleRoute = r("CheckboxGroupBasicExample");
 export const CheckboxIndeterminateExampleRoute = r(
@@ -617,6 +618,7 @@ const AppRoute = S.Union([
   CheckboxRoute,
   CheckboxDocsRoute,
   CheckboxBasicExampleRoute,
+  BaseUiCheckboxDocsRoute,
   CheckboxGroupDocsRoute,
   CheckboxGroupBasicExampleRoute,
   CheckboxIndeterminateExampleRoute,
@@ -2380,6 +2382,12 @@ export const checkboxDocsRouter = pipe(
   slash(literal("checkbox")),
   Route.mapTo(CheckboxDocsRoute)
 );
+export const baseUiCheckboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-checkbox")),
+  Route.mapTo(BaseUiCheckboxDocsRoute)
+);
 export const checkboxBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3392,6 +3400,7 @@ const routeParser = Route.oneOf(
   checkboxBasicStandaloneExampleRouter,
   checkboxIndeterminateStandaloneExampleRouter,
   checkboxDocsRouter,
+  baseUiCheckboxDocsRouter,
   checkboxGroupBasicExampleRouter,
   checkboxGroupBasicStandaloneExampleRouter,
   checkboxGroupDocsRouter,
