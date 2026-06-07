@@ -1478,18 +1478,35 @@ const DOCS_NAV_ITEMS = NAV_ITEMS.filter((navItem) =>
   activeRouteTags: docsNavItemActiveRouteTags(navItem),
 })) satisfies readonly DocsNavItem[];
 
+const compareDocsNavItems = (left: DocsNavItem, right: DocsNavItem): number =>
+  left.label.localeCompare(right.label);
+
+const sortedDocsNavItems = (
+  items: readonly DocsNavItem[]
+): readonly DocsNavItem[] => {
+  const sortedItems = [...items];
+  sortedItems.sort(compareDocsNavItems);
+  return sortedItems;
+};
+
 const DOCS_NAV_GROUPS: readonly DocsNavGroup[] = [
   {
     library: "Foldkit",
-    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Foldkit"),
+    items: sortedDocsNavItems(
+      DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Foldkit")
+    ),
   },
   {
     library: "Base UI",
-    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Base UI"),
+    items: sortedDocsNavItems(
+      DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Base UI")
+    ),
   },
   {
     library: "shadcn",
-    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "shadcn"),
+    items: sortedDocsNavItems(
+      DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "shadcn")
+    ),
   },
 ];
 
