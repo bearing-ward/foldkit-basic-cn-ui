@@ -211,15 +211,14 @@ Present Base UI lane components:
 - select
 - slider
 - switch
+- tabs
+- toast
 - toggle
 - toggle-group
 - toolbar
-
-Missing Base UI lane components:
-
-- tabs
-- toast
 - tooltip
+
+Missing Base UI lane components: none.
 
 New Base UI work should focus on simple styled or unstyled contract depth:
 
@@ -242,8 +241,8 @@ New Base UI work should focus on simple styled or unstyled contract depth:
    coverage.
 
 3. Fill missing Base UI lane components by reusing Foldkit behavior and adding
-   simple styled or unstyled source:
-   tabs, toast, tooltip.
+   simple styled or unstyled source. Current Base UI lane coverage is complete
+   against the tracked list.
 
 4. Fill missing shadcn lane components by reusing Foldkit behavior and adding
    opinionated style parity:

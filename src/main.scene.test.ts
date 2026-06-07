@@ -253,6 +253,9 @@ import {
   BaseUiSelectDocsRoute,
   BaseUiSliderDocsRoute,
   BaseUiSwitchDocsRoute,
+  BaseUiTabsDocsRoute,
+  BaseUiToastDocsRoute,
+  BaseUiTooltipDocsRoute,
   NumberFieldBasicExampleRoute,
   NumberFieldDocsRoute,
   ComboboxBasicExampleRoute,
@@ -757,7 +760,7 @@ describe("scene", () => {
         "Button"
       ),
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
-        "Coming soon"
+        "Tooltip"
       )
     );
   });
@@ -2249,6 +2252,21 @@ describe("scene", () => {
         route: BaseUiSwitchDocsRoute(),
         heading: "Switch",
         source: "registry/default/ui/base-ui-switch",
+      },
+      {
+        route: BaseUiTabsDocsRoute(),
+        heading: "Tabs",
+        source: "registry/default/ui/base-ui-tabs",
+      },
+      {
+        route: BaseUiToastDocsRoute(),
+        heading: "Toast",
+        source: "registry/default/ui/base-ui-toast",
+      },
+      {
+        route: BaseUiTooltipDocsRoute(),
+        heading: "Tooltip",
+        source: "registry/default/ui/base-ui-tooltip",
       },
     ];
 

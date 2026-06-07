@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "Base UI style-lane tooltip wrapper backed by the Foldkit Ui.Tooltip component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/tooltip"],
+  "files": [
+    {
+      "path": "registry/default/ui/base-ui-tooltip/index.ts",
+      "target": "src/ui/base-ui-tooltip/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  AnchorTooltip,\n  BlurredTrigger,\n  CompletedAnchorTooltip,\n  ElapsedShowDelay,\n  EnteredTrigger,\n  FocusedTrigger,\n  Hidden,\n  init,\n  LeftTrigger,\n  Message,\n  Model,\n  OutMessage,\n  PressedEscape,\n  PressedPointerOnTrigger,\n  reflectShowDelay,\n  ShowAfterDelay,\n  Shown,\n  update,\n  view,\n} from \"../tooltip\";\nexport type {\n  InitConfig,\n  InitReturn,\n  RenderInfo,\n  UpdateReturn,\n  ViewInputs,\n} from \"../tooltip\";\n\nexport {\n  baseUiTooltipAnchor,\n  baseUiTooltipPanelClassName,\n  baseUiTooltipRootClassName,\n  baseUiTooltipTriggerClassName,\n  baseUiTooltipView,\n} from \"./view\";\nexport type { BaseUiTooltipViewInput } from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/base-ui-tooltip/view.ts",
+      "target": "src/ui/base-ui-tooltip/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  panelClassName as baseUiTooltipPanelClassName,\n  tooltipAnchor as baseUiTooltipAnchor,\n  tooltipRootClassName as baseUiTooltipRootClassName,\n  tooltipTriggerClassName as baseUiTooltipTriggerClassName,\n  tooltipView as baseUiTooltipView,\n} from \"../tooltip/view\";\nexport type { TooltipViewInput as BaseUiTooltipViewInput } from \"../tooltip/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/base-ui-tooltip/base-ui-tooltip.scene.test.ts",
+      "target": "src/ui/base-ui-tooltip/base-ui-tooltip.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Tooltip from \"./index\";\n\ndescribe(\"Base UI Tooltip registry view\", () => {\n  test(\"reuses the Foldkit Tooltip functional contract\", () => {\n    expect(Tooltip.init).toBeTypeOf(\"function\");\n    expect(Tooltip.update).toBeTypeOf(\"function\");\n    expect(Tooltip.baseUiTooltipView).toBeTypeOf(\"function\");\n    expect(Tooltip.baseUiTooltipTriggerClassName).toContain(\"rounded-lg\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "base-ui",
+      "artifact": "component",
+      "primitive": "Ui.Tooltip",
+      "stateful": true
+    }
+  }
+}

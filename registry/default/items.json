@@ -688,6 +688,108 @@
     }
   },
   {
+    "name": "base-ui-tabs",
+    "type": "registry:ui",
+    "title": "Tabs",
+    "description": "Base UI style-lane tabs wrapper backed by the Foldkit Ui.Tabs component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["tabs"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-tabs/index.ts",
+        "target": "src/ui/base-ui-tabs/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-tabs/view.ts",
+        "target": "src/ui/base-ui-tabs/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-tabs/base-ui-tabs.scene.test.ts",
+        "target": "src/ui/base-ui-tabs/base-ui-tabs.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "base-ui",
+        "artifact": "component",
+        "primitive": "Ui.Tabs",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "base-ui-toast",
+    "type": "registry:ui",
+    "title": "Toast",
+    "description": "Base UI style-lane toast wrapper backed by the Foldkit Ui.Toast component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["toast"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-toast/index.ts",
+        "target": "src/ui/base-ui-toast/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toast/view.ts",
+        "target": "src/ui/base-ui-toast/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toast/base-ui-toast.scene.test.ts",
+        "target": "src/ui/base-ui-toast/base-ui-toast.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "base-ui",
+        "artifact": "component",
+        "primitive": "Ui.Toast",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "base-ui-tooltip",
+    "type": "registry:ui",
+    "title": "Tooltip",
+    "description": "Base UI style-lane tooltip wrapper backed by the Foldkit Ui.Tooltip component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["tooltip"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-tooltip/index.ts",
+        "target": "src/ui/base-ui-tooltip/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-tooltip/view.ts",
+        "target": "src/ui/base-ui-tooltip/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-tooltip/base-ui-tooltip.scene.test.ts",
+        "target": "src/ui/base-ui-tooltip/base-ui-tooltip.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "base-ui",
+        "artifact": "component",
+        "primitive": "Ui.Tooltip",
+        "stateful": true
+      }
+    }
+  },
+  {
     "name": "breadcrumb",
     "type": "registry:ui",
     "title": "Breadcrumb",

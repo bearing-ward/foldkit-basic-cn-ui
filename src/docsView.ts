@@ -1169,6 +1169,11 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Tabs", routeTag: "Tabs", href: "/tabs" },
   { label: "Tabs Docs", routeTag: "TabsDocs", href: "/docs/components/tabs" },
   {
+    label: "Tabs Docs",
+    routeTag: "BaseUiTabsDocs",
+    href: "/docs/components/base-ui-tabs",
+  },
+  {
     label: "Tabs Basic Example",
     routeTag: "TabsBasicExample",
     href: "/docs/components/tabs/examples/basic",
@@ -1201,6 +1206,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/toast",
   },
   {
+    label: "Toast Docs",
+    routeTag: "BaseUiToastDocs",
+    href: "/docs/components/base-ui-toast",
+  },
+  {
     label: "Toast Basic Example",
     routeTag: "ToastBasicExample",
     href: "/docs/components/toast/examples/basic",
@@ -1215,6 +1225,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Tooltip Docs",
     routeTag: "TooltipDocs",
     href: "/docs/components/tooltip",
+  },
+  {
+    label: "Tooltip Docs",
+    routeTag: "BaseUiTooltipDocs",
+    href: "/docs/components/base-ui-tooltip",
   },
   {
     label: "Tooltip Basic Example",
@@ -1524,6 +1539,9 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
           "BaseUiSelectDocs",
           "BaseUiSliderDocs",
           "BaseUiSwitchDocs",
+          "BaseUiTabsDocs",
+          "BaseUiToastDocs",
+          "BaseUiTooltipDocs",
         ].includes(navItem.routeTag)
       ? "Base UI"
       : "Foldkit";
@@ -1562,7 +1580,7 @@ const labelFromComponentSlug = (slug: string): string =>
     )
     .join(" ");
 
-const missingBaseUiLaneSlugs: readonly string[] = ["tabs", "toast", "tooltip"];
+const missingBaseUiLaneSlugs: readonly string[] = [];
 
 const missingShadcnLaneSlugs: readonly string[] = [
   "accordion",
@@ -2214,6 +2232,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Tabs",
   },
+  "base-ui-tabs": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Tabs",
+  },
   textarea: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -2224,9 +2247,19 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.Toast",
   },
+  "base-ui-toast": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Ui.Toast",
+  },
   tooltip: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Tooltip",
+  },
+  "base-ui-tooltip": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Tooltip",
   },
   "virtual-list": {
@@ -15341,6 +15374,35 @@ h.submodel({
         DocsRoutes.switchDisabledExampleRouteView(model),
       Tabs: () => embedUi("ui-tabs", View.tabs),
       TabsDocs: () => tabsDocsView(model),
+      BaseUiTabsDocs: () =>
+        baseUiLaneDocsView({
+          label: "Tabs",
+          source: "registry/default/ui/base-ui-tabs",
+          primitive: "Ui.Tabs",
+          description:
+            "A Base UI style-lane Tabs slice that reuses the official Foldkit Ui.Tabs primitive for controlled selection, focus movement, orientation, and activation mode.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit Tabs behavior with Base UI class helper names.",
+          classHelpers: [
+            "baseUiTabsRootClassName",
+            "baseUiTabsListClassName",
+            "baseUiTabsTabClassName",
+            "baseUiTabsPanelClassName",
+            "baseUiTabsVerticalRootClassName",
+            "baseUiTabsVerticalListClassName",
+          ],
+          anatomyCode: `import * as Tabs from "./ui/base-ui-tabs";
+
+const Tabs = Tabs.create<"overview" | "settings">();
+
+h.submodel({
+  slotId: model.tabs.id,
+  model: model.tabs,
+  view: Tabs.view,
+  viewInputs: { tabs },
+  toParentMessage: (message) => GotTabsMessage({ message }),
+});`,
+        }),
       TabsBasicExample: () => DocsRoutes.tabsBasicExampleRouteView(model),
       TabsManualExample: () => DocsRoutes.tabsManualExampleRouteView(model),
       Textarea: () => embedUi("ui-textarea", View.textarea),
@@ -15351,11 +15413,62 @@ h.submodel({
         DocsRoutes.textareaDisabledExampleRouteView(model),
       Toast: () => embedUi("ui-toast", View.toast),
       ToastDocs: () => toastDocsView(model),
+      BaseUiToastDocs: () =>
+        baseUiLaneDocsView({
+          label: "Toast",
+          source: "registry/default/ui/base-ui-toast",
+          primitive: "Ui.Toast",
+          description:
+            "A Base UI style-lane Toast slice that reuses the Foldkit Ui.Toast stack for typed payloads, dismissal, hover pause, duration, variants, and positioning.",
+          usage:
+            "Install the Base UI lane wrapper when you want the typed Foldkit Toast model with Base UI class helper names.",
+          classHelpers: [
+            "baseUiToastContainerClassName",
+            "baseUiToastEntryClassName",
+            "baseUiToastClassName",
+            "baseUiToastTitleClassName",
+            "baseUiToastDescriptionClassName",
+            "baseUiToastCloseButtonClassName",
+          ],
+          anatomyCode: `import * as Toast from "./ui/base-ui-toast";
+
+const [toast, commands] = Toast.init();
+
+Toast.view<Message>({
+  model: model.toast,
+  toParentMessage: (message) => GotToastMessage({ message }),
+});`,
+        }),
       ToastBasicExample: () => DocsRoutes.toastBasicExampleRouteView(model),
       ToastVariantsExample: () =>
         DocsRoutes.toastVariantsExampleRouteView(model),
       Tooltip: () => embedUi("ui-tooltip", View.tooltip),
       TooltipDocs: () => tooltipDocsView(model),
+      BaseUiTooltipDocs: () =>
+        baseUiLaneDocsView({
+          label: "Tooltip",
+          source: "registry/default/ui/base-ui-tooltip",
+          primitive: "Ui.Tooltip",
+          description:
+            "A Base UI style-lane Tooltip slice that reuses the official Foldkit Ui.Tooltip primitive for hover, focus, delay, Escape dismissal, anchoring, and described trigger behavior.",
+          usage:
+            "Install the Base UI lane wrapper when you want Foldkit Tooltip behavior with Base UI class helper names.",
+          classHelpers: [
+            "baseUiTooltipRootClassName",
+            "baseUiTooltipTriggerClassName",
+            "baseUiTooltipPanelClassName",
+            "baseUiTooltipAnchor",
+            "baseUiTooltipView",
+          ],
+          anatomyCode: `import * as Tooltip from "./ui/base-ui-tooltip";
+
+h.submodel({
+  slotId: model.tooltip.id,
+  model: model.tooltip,
+  view: Tooltip.view,
+  toParentMessage: (message) => GotTooltipMessage({ message }),
+});`,
+        }),
       TooltipBasicExample: () => DocsRoutes.tooltipBasicExampleRouteView(model),
       TooltipNoDelayExample: () =>
         DocsRoutes.tooltipNoDelayExampleRouteView(model),

@@ -429,6 +429,7 @@ export const SwitchBasicExampleRoute = r("SwitchBasicExample");
 export const SwitchDisabledExampleRoute = r("SwitchDisabledExample");
 export const TabsRoute = r("Tabs");
 export const TabsDocsRoute = r("TabsDocs");
+export const BaseUiTabsDocsRoute = r("BaseUiTabsDocs");
 export const TabsBasicExampleRoute = r("TabsBasicExample");
 export const TabsManualExampleRoute = r("TabsManualExample");
 export const TextareaRoute = r("Textarea");
@@ -437,10 +438,12 @@ export const TextareaBasicExampleRoute = r("TextareaBasicExample");
 export const TextareaDisabledExampleRoute = r("TextareaDisabledExample");
 export const ToastRoute = r("Toast");
 export const ToastDocsRoute = r("ToastDocs");
+export const BaseUiToastDocsRoute = r("BaseUiToastDocs");
 export const ToastBasicExampleRoute = r("ToastBasicExample");
 export const ToastVariantsExampleRoute = r("ToastVariantsExample");
 export const TooltipRoute = r("Tooltip");
 export const TooltipDocsRoute = r("TooltipDocs");
+export const BaseUiTooltipDocsRoute = r("BaseUiTooltipDocs");
 export const TooltipBasicExampleRoute = r("TooltipBasicExample");
 export const TooltipNoDelayExampleRoute = r("TooltipNoDelayExample");
 export const AnimationRoute = r("Animation");
@@ -707,6 +710,7 @@ const AppRoute = S.Union([
   SwitchDisabledExampleRoute,
   TabsRoute,
   TabsDocsRoute,
+  BaseUiTabsDocsRoute,
   TabsBasicExampleRoute,
   TabsManualExampleRoute,
   TextareaRoute,
@@ -715,10 +719,12 @@ const AppRoute = S.Union([
   TextareaDisabledExampleRoute,
   ToastRoute,
   ToastDocsRoute,
+  BaseUiToastDocsRoute,
   ToastBasicExampleRoute,
   ToastVariantsExampleRoute,
   TooltipRoute,
   TooltipDocsRoute,
+  BaseUiTooltipDocsRoute,
   TooltipBasicExampleRoute,
   TooltipNoDelayExampleRoute,
   AnimationRoute,
@@ -3100,6 +3106,12 @@ export const tabsDocsRouter = pipe(
   slash(literal("tabs")),
   Route.mapTo(TabsDocsRoute)
 );
+export const baseUiTabsDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-tabs")),
+  Route.mapTo(BaseUiTabsDocsRoute)
+);
 export const tabsBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3169,6 +3181,12 @@ export const toastDocsRouter = pipe(
   slash(literal("toast")),
   Route.mapTo(ToastDocsRoute)
 );
+export const baseUiToastDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toast")),
+  Route.mapTo(BaseUiToastDocsRoute)
+);
 export const toastBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3204,6 +3222,12 @@ export const tooltipDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("tooltip")),
   Route.mapTo(TooltipDocsRoute)
+);
+export const baseUiTooltipDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-tooltip")),
+  Route.mapTo(BaseUiTooltipDocsRoute)
 );
 export const tooltipBasicExampleRouter = pipe(
   literal("docs"),
@@ -3596,6 +3620,7 @@ const routeParser = Route.oneOf(
   tabsBasicStandaloneExampleRouter,
   tabsManualStandaloneExampleRouter,
   tabsDocsRouter,
+  baseUiTabsDocsRouter,
   textareaRouter,
   textareaBasicExampleRouter,
   textareaDisabledExampleRouter,
@@ -3608,12 +3633,14 @@ const routeParser = Route.oneOf(
   toastBasicStandaloneExampleRouter,
   toastVariantsStandaloneExampleRouter,
   toastDocsRouter,
+  baseUiToastDocsRouter,
   tooltipRouter,
   tooltipBasicExampleRouter,
   tooltipNoDelayExampleRouter,
   tooltipBasicStandaloneExampleRouter,
   tooltipNoDelayStandaloneExampleRouter,
   tooltipDocsRouter,
+  baseUiTooltipDocsRouter,
   animationRouter,
   animationBasicExampleRouter,
   animationBasicStandaloneExampleRouter,
