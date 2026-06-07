@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
-    "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-metadata.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-primitive-coverage.mjs",
+    "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-primitive-coverage.mjs",
     "smoke:install-all": "bun scripts/smoke-install-all.mjs",
     "smoke:public-install": "bun scripts/smoke-public-install.mjs",
     "smoke:public-site": "bun scripts/smoke-public-site.mjs",

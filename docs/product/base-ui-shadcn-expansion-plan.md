@@ -95,50 +95,50 @@ Definitions vocabulary to adopt:
   `role/state/property`, `keyboard map`, `focus management`, and
   `copy-and-paste source distribution`.
 
-## shadcn Gaps
+## shadcn Coverage
 
-Gaps compared with the current shadcn components page:
+Component-level coverage compared with the current shadcn components page is
+complete as of the current registry. New shadcn work should focus on parity
+quality rather than adding more component names:
 
-- accordion
-- alert-dialog
-- avatar
-- card
-- collapsible
-- input-group
-- kbd
-- progress
-- scroll-area
-- skeleton
-- spinner
-- toggle
-- toggle-group
-- typography
+- example-name parity and visible-content parity
+- anatomy depth and composition guidance
+- API reference completeness
+- data attributes and accessibility notes
+- scene tests for interactive behavior
 
-## Base UI Gaps
+## Base UI Coverage
 
-Gaps compared with the current Base UI components navigation:
+Component-level coverage compared with the current Base UI components
+navigation is complete as of the current registry. New Base UI work should
+focus on contract depth:
+
+- every distinct upstream demo is either implemented or explicitly deferred
+- anatomy hierarchy matches the upstream component page
+- API reference documents Foldkit equivalents for upstream behavior
+- data attributes are documented with state semantics
+- keyboard and focus behavior has scene-test coverage
 
 ## Priority Order
 
-1. Base UI primitive and accessibility contracts:
-   alert-dialog, autocomplete, collapsible, context-menu, drawer, form,
-   menubar.
+1. Keep registry ordering and metadata guardrails green:
+   source items sorted by type/name, docs navigation sorted by type/name, and
+   docs origins matching `meta.foldkit.origin`.
 
-2. Base UI-backed Foldkit component slices:
-   promote each primitive into a registry component with docs, API reference,
-   keyboard interaction, accessibility contract, scene tests, generated JSON,
-   and public install compatibility.
+2. Audit Base UI-backed Foldkit component slices:
+   docs, API reference, keyboard interaction, accessibility contract, scene
+   tests, generated JSON, and public install compatibility.
 
 3. Audit already-promoted shadcn slices against Base UI behavior and
    accessibility contracts:
    badge, avatar, card, skeleton, spinner, kbd, typography, empty, input-group,
    badge-spinner, empty-input-group, and kbd-input-group.
 
-4. Resume shadcn parity on top of the Base UI-informed foundation:
+4. Continue shadcn parity on top of the Base UI-informed foundation:
    use shadcn example names and visible content, but require behavior-heavy
    shadcn components to pass the corresponding Base UI contract first.
 
-5. shadcn-only presentation and layout components:
+5. Harden shadcn-only presentation and layout components:
    alert, aspect-ratio, breadcrumb, button-group, carousel, typography.
 
 6. Specialized integration components:
