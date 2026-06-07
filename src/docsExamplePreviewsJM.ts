@@ -1,0 +1,146 @@
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+
+import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
+import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
+import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
+import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
+import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
+import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
+import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
+import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
+import * as Main from "./main";
+
+type Message = Main.Message;
+
+export const labelBasicExamplePreview = (
+  model: LabelBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: LabelBasicExample.view,
+    toParentMessage: (message) => Main.GotLabelBasicExampleMessage({ message }),
+  });
+};
+
+export const kbdBasicExamplePreview = (
+  model: KbdBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: KbdBasicExample.view,
+    toParentMessage: (message) => Main.GotKbdBasicExampleMessage({ message }),
+  });
+};
+
+export const kbdInputGroupExamplePreview = (
+  model: KbdInputGroupExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: KbdInputGroupExample.view,
+    toParentMessage: (message) =>
+      Main.GotKbdInputGroupExampleMessage({ message }),
+  });
+};
+
+export const menubarBasicExamplePreview = (
+  model: MenubarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: MenubarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotMenubarBasicExampleMessage({ message }),
+  });
+};
+
+export const listboxBasicExamplePreview = (
+  model: ListboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ListboxBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotListboxBasicExampleMessage({ message }),
+  });
+};
+
+export const listboxAnimatedExamplePreview = (
+  model: ListboxAnimatedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ListboxAnimatedExample.view,
+    toParentMessage: (message) =>
+      Main.GotListboxAnimatedExampleMessage({ message }),
+  });
+};
+
+export const menuBasicExamplePreview = (
+  model: MenuBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: MenuBasicExample.view,
+    toParentMessage: (message) => Main.GotMenuBasicExampleMessage({ message }),
+  });
+};
+
+export const menuAnimatedExamplePreview = (
+  model: MenuAnimatedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: MenuAnimatedExample.view,
+    toParentMessage: (message) =>
+      Main.GotMenuAnimatedExampleMessage({ message }),
+  });
+};
+
+export const meterBasicExamplePreview = (
+  model: MeterBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: MeterBasicExample.view,
+    toParentMessage: (message) => Main.GotMeterBasicExampleMessage({ message }),
+  });
+};

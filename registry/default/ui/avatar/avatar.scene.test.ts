@@ -16,6 +16,9 @@ const view = (): Html => {
     [
       Avatar.view({ fallback: "AL", src: imageSrc, alt: "Ada Lovelace" }),
       Avatar.view({ fallback: "GH", size: "Large" }),
+      Avatar.rootView({
+        children: [Avatar.fallbackView({ children: [h.span([], ["LT"])] })],
+      }),
       Avatar.groupView([
         Avatar.view({ fallback: "AL", src: imageSrc, alt: "Ada Lovelace" }),
         Avatar.view({ fallback: "GH" }),
@@ -35,6 +38,7 @@ describe("Avatar registry view", () => {
       Scene.with(undefined),
       Scene.expect(Scene.role("img", { name: "Ada Lovelace" })).toExist(),
       Scene.expect(Scene.text("GH")).toExist(),
+      Scene.expect(Scene.text("LT")).toExist(),
       Scene.expect(Scene.role("img", { name: "3 more people" })).toExist()
     );
   });

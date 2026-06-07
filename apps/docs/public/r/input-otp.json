@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-otp",
+  "type": "registry:ui",
+  "title": "Input OTP",
+  "description": "A shadcn-style one-time password input composition with controlled slots and separator helpers.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/input-otp/index.ts",
+      "target": "src/ui/input-otp/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  inputOtpGroupClassName,\n  inputOtpRootClassName,\n  inputOtpSeparatorClassName,\n  inputOtpSlotClassName,\n} from \"./view\";\n\nexport {\n  inputOtpGroupClassName,\n  inputOtpRootClassName,\n  inputOtpSeparatorClassName,\n  inputOtpSlotClassName,\n} from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  children: readonly Html[];\n  className?: string | undefined;\n}>;\n\nexport type SlotViewConfig<ParentMessage> = Readonly<{\n  value: string;\n  ariaLabel: string;\n  onInput: (value: string) => ParentMessage;\n  active?: boolean | undefined;\n  className?: string | undefined;\n}>;\n\nconst classNames = (base: string, className?: string): string =>\n  [base, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const rootView = <ParentMessage>({\n  children,\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.DataAttribute(\"slot\", \"input-otp\"),\n      h.Class(classNames(inputOtpRootClassName, className)),\n    ],\n    children\n  );\n};\n\nexport const groupView = <ParentMessage>({\n  children,\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.DataAttribute(\"slot\", \"input-otp-group\"),\n      h.Class(classNames(inputOtpGroupClassName, className)),\n    ],\n    children\n  );\n};\n\nexport const slotView = <ParentMessage>({\n  value,\n  ariaLabel,\n  onInput,\n  active = false,\n  className,\n}: SlotViewConfig<ParentMessage>): Html => {\n  const h = html<ParentMessage>();\n\n  return h.input([\n    h.Type(\"text\"),\n    h.Value(value),\n    h.AriaLabel(ariaLabel),\n    h.Autocomplete(\"one-time-code\"),\n    h.Attribute(\"inputmode\", \"numeric\"),\n    h.Attribute(\"maxlength\", \"1\"),\n    h.OnInput(onInput),\n    h.DataAttribute(\"slot\", \"input-otp-slot\"),\n    h.DataAttribute(\"active\", active ? \"true\" : \"false\"),\n    h.DataAttribute(\"filled\", value === \"\" ? \"false\" : \"true\"),\n    h.Class(classNames(inputOtpSlotClassName, className)),\n  ]);\n};\n\nexport const separatorView = <ParentMessage>(): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.AriaHidden(true),\n      h.DataAttribute(\"slot\", \"input-otp-separator\"),\n      h.Class(inputOtpSeparatorClassName),\n    ],\n    [\"-\"]\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/input-otp/view.ts",
+      "target": "src/ui/input-otp/view.ts",
+      "type": "registry:ui",
+      "content": "export const inputOtpRootClassName = \"flex items-center gap-2\";\nexport const inputOtpGroupClassName = \"flex items-center\";\nexport const inputOtpSlotClassName =\n  \"relative flex h-10 w-10 items-center justify-center border-y border-r border-gray-300 text-sm text-gray-950 first:rounded-l-md first:border-l last:rounded-r-md data-[active=true]:z-10 data-[active=true]:ring-2 data-[active=true]:ring-accent-600 data-[filled=true]:bg-gray-50\";\nexport const inputOtpSeparatorClassName =\n  \"mx-2 text-sm font-medium text-gray-500\";\n"
+    },
+    {
+      "path": "registry/default/ui/input-otp/input-otp.scene.test.ts",
+      "target": "src/ui/input-otp/input-otp.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as InputOtp from \"./index\";\n\nconst view = (digit: string): Html =>\n  InputOtp.rootView<string>({\n    children: [\n      InputOtp.groupView<string>({\n        children: [\n          InputOtp.slotView<string>({\n            value: digit,\n            ariaLabel: \"Digit 1\",\n            onInput: (value) => value,\n            active: true,\n          }),\n        ],\n      }),\n      InputOtp.separatorView<string>(),\n    ],\n  });\n\ndescribe(\"Input OTP registry view\", () => {\n  test(\"renders one-time-code slot state\", () => {\n    Scene.scene(\n      {\n        update: (_model: string, message: string): readonly [string, []] => [\n          message,\n          [],\n        ],\n        view,\n      },\n      Scene.with(\"\"),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Digit 1\" })).toHaveAttr(\n        \"autocomplete\",\n        \"one-time-code\"\n      ),\n      Scene.type(Scene.role(\"textbox\", { name: \"Digit 1\" }), \"4\"),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Digit 1\" })).toHaveValue(\"4\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "InputOtp",
+      "stateful": false,
+      "origin": "shadcn",
+      "artifact": "component"
+    }
+  }
+}

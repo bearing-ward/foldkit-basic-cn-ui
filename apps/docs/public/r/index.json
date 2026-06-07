@@ -489,7 +489,7 @@
         "foldkit": {
           "component": "Select",
           "primitive": "Ui.Select",
-          "stateful": false,
+          "stateful": true,
           "origin": "foldkit",
           "artifact": "primitive-backed-component"
         }
@@ -647,7 +647,7 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "A small shadcn-style identity component for profile images, fallback initials, grouped contributors, and overflow counts.",
+      "description": "A Base UI-informed avatar component for profile images, fallback initials, grouped avatars, and overflow counts.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
       "registryDependencies": [],
@@ -671,9 +671,9 @@
       "meta": {
         "foldkit": {
           "component": "Avatar",
-          "origin": "shadcn",
+          "origin": "base-ui",
           "artifact": "component",
-          "stateful": false
+          "stateful": true
         }
       }
     },
@@ -681,7 +681,7 @@
       "name": "avatar-basic",
       "type": "registry:example",
       "title": "Avatar Basic",
-      "description": "A runnable Foldkit example showing avatar images, fallbacks, groups, and parent-owned featured avatar changes.",
+      "description": "A runnable Foldkit version of the Base UI Avatar default two-avatar example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
       "registryDependencies": ["avatar"],
@@ -689,6 +689,16 @@
         {
           "path": "registry/default/examples/avatar-basic/main.ts",
           "target": "src/examples/avatar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/avatar-basic/entry.ts",
+          "target": "src/examples/avatar-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/avatar-basic/index.html",
+          "target": "src/examples/avatar-basic/index.html",
           "type": "registry:example"
         },
         {
@@ -700,7 +710,8 @@
       "meta": {
         "foldkit": {
           "component": "Avatar",
-          "example": "basic"
+          "example": "basic",
+          "originExample": "avatar-default-two-avatars"
         }
       }
     },
@@ -762,6 +773,964 @@
         "foldkit": {
           "component": "Badge",
           "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "badge-spinner",
+      "type": "registry:example",
+      "title": "Badge Spinner",
+      "description": "A runnable Foldkit version of the upstream shadcn badge spinner example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["badge", "spinner"],
+      "files": [
+        {
+          "path": "registry/default/examples/badge-spinner/main.ts",
+          "target": "src/examples/badge-spinner/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/badge-spinner/badge-spinner.scene.test.ts",
+          "target": "src/examples/badge-spinner/badge-spinner.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Badge",
+          "example": "spinner",
+          "originExample": "badge-spinner"
+        }
+      }
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "A shadcn-style carousel component for cycling through slides with native Foldkit messages and installable view helpers.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/carousel/index.ts",
+          "target": "src/ui/carousel/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/carousel/view.ts",
+          "target": "src/ui/carousel/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/carousel/carousel.scene.test.ts",
+          "target": "src/ui/carousel/carousel.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "carousel-basic",
+      "type": "registry:example",
+      "title": "Carousel Basic",
+      "description": "A runnable Foldkit example showing the shadcn Carousel Basic composition.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["carousel"],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-basic/main.ts",
+          "target": "src/examples/carousel-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/carousel-basic/carousel-basic.scene.test.ts",
+          "target": "src/examples/carousel-basic/carousel-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "example": "basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "carousel-sizes",
+      "type": "registry:example",
+      "title": "Carousel Sizes",
+      "description": "A runnable Foldkit example showing the shadcn Carousel Sizes composition.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["carousel"],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-sizes/main.ts",
+          "target": "src/examples/carousel-sizes/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/carousel-sizes/carousel-sizes.scene.test.ts",
+          "target": "src/examples/carousel-sizes/carousel-sizes.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "example": "sizes",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "carousel-spacing",
+      "type": "registry:example",
+      "title": "Carousel Spacing",
+      "description": "A runnable Foldkit example showing the shadcn Carousel Spacing composition.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["carousel"],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-spacing/main.ts",
+          "target": "src/examples/carousel-spacing/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/carousel-spacing/carousel-spacing.scene.test.ts",
+          "target": "src/examples/carousel-spacing/carousel-spacing.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "example": "spacing",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "carousel-orientation",
+      "type": "registry:example",
+      "title": "Carousel Orientation",
+      "description": "A runnable Foldkit example showing the shadcn Carousel Orientation composition.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["carousel"],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-orientation/main.ts",
+          "target": "src/examples/carousel-orientation/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/carousel-orientation/carousel-orientation.scene.test.ts",
+          "target": "src/examples/carousel-orientation/carousel-orientation.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "example": "orientation",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "carousel-api",
+      "type": "registry:example",
+      "title": "Carousel API",
+      "description": "A runnable Foldkit example showing the shadcn Carousel API composition.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["carousel"],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-api/main.ts",
+          "target": "src/examples/carousel-api/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/carousel-api/carousel-api.scene.test.ts",
+          "target": "src/examples/carousel-api/carousel-api.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "example": "api",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "carousel-rtl",
+      "type": "registry:example",
+      "title": "Carousel RTL",
+      "description": "A runnable Foldkit example showing the shadcn Carousel RTL composition.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["carousel"],
+      "files": [
+        {
+          "path": "registry/default/examples/carousel-rtl/main.ts",
+          "target": "src/examples/carousel-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/carousel-rtl/carousel-rtl.scene.test.ts",
+          "target": "src/examples/carousel-rtl/carousel-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "example": "rtl",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A shadcn-style layout component for grouping related content into header, content, and footer regions.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/card/index.ts",
+          "target": "src/ui/card/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/card/view.ts",
+          "target": "src/ui/card/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/card/card.scene.test.ts",
+          "target": "src/ui/card/card.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Card",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "card-basic",
+      "type": "registry:example",
+      "title": "Card Basic",
+      "description": "A runnable Foldkit example showing the Card component with parent-owned example state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["card"],
+      "files": [
+        {
+          "path": "registry/default/examples/card-basic/main.ts",
+          "target": "src/examples/card-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/card-basic/card-basic.scene.test.ts",
+          "target": "src/examples/card-basic/card-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Card",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A Base UI-informed separator component for accessible horizontal and vertical content separation.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/separator/index.ts",
+          "target": "src/ui/separator/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/separator/view.ts",
+          "target": "src/ui/separator/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/separator/separator.scene.test.ts",
+          "target": "src/ui/separator/separator.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Separator",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "separator-basic",
+      "type": "registry:example",
+      "title": "Separator Basic",
+      "description": "A runnable Foldkit example showing the Separator component with parent-owned example state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["separator"],
+      "files": [
+        {
+          "path": "registry/default/examples/separator-basic/main.ts",
+          "target": "src/examples/separator-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/separator-basic/entry.ts",
+          "target": "src/examples/separator-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/separator-basic/index.html",
+          "target": "src/examples/separator-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/separator-basic/separator-basic.scene.test.ts",
+          "target": "src/examples/separator-basic/separator-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Separator",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A shadcn-style loading placeholder for reserving space while content is pending.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/skeleton/index.ts",
+          "target": "src/ui/skeleton/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/skeleton/view.ts",
+          "target": "src/ui/skeleton/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/skeleton/skeleton.scene.test.ts",
+          "target": "src/ui/skeleton/skeleton.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Skeleton",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "skeleton-basic",
+      "type": "registry:example",
+      "title": "Skeleton Basic",
+      "description": "A runnable Foldkit example showing the Skeleton component with parent-owned example state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["skeleton"],
+      "files": [
+        {
+          "path": "registry/default/examples/skeleton-basic/main.ts",
+          "target": "src/examples/skeleton-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/skeleton-basic/skeleton-basic.scene.test.ts",
+          "target": "src/examples/skeleton-basic/skeleton-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Skeleton",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A shadcn-style loading status icon for inline pending states.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/spinner/index.ts",
+          "target": "src/ui/spinner/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/spinner/view.ts",
+          "target": "src/ui/spinner/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/spinner/spinner.scene.test.ts",
+          "target": "src/ui/spinner/spinner.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Spinner",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "A shadcn-style keyboard key token for documenting shortcuts and key combinations.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/kbd/index.ts",
+          "target": "src/ui/kbd/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/kbd/view.ts",
+          "target": "src/ui/kbd/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/kbd/kbd.scene.test.ts",
+          "target": "src/ui/kbd/kbd.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Kbd",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "kbd-basic",
+      "type": "registry:example",
+      "title": "Kbd Basic",
+      "description": "A runnable Foldkit example showing the Kbd component with parent-owned example state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["kbd"],
+      "files": [
+        {
+          "path": "registry/default/examples/kbd-basic/main.ts",
+          "target": "src/examples/kbd-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/kbd-basic/kbd-basic.scene.test.ts",
+          "target": "src/examples/kbd-basic/kbd-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Kbd",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "kbd-input-group",
+      "type": "registry:example",
+      "title": "Kbd Input Group",
+      "description": "A runnable Foldkit version of the upstream shadcn kbd input-group example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["input-group", "kbd"],
+      "files": [
+        {
+          "path": "registry/default/examples/kbd-input-group/main.ts",
+          "target": "src/examples/kbd-input-group/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/kbd-input-group/kbd-input-group.scene.test.ts",
+          "target": "src/examples/kbd-input-group/kbd-input-group.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Kbd",
+          "example": "input-group",
+          "originExample": "kbd-input-group"
+        }
+      }
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "A shadcn-style set of text helpers for headings, paragraphs, lists, inline code, and muted copy.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/typography/index.ts",
+          "target": "src/ui/typography/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/typography/view.ts",
+          "target": "src/ui/typography/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/typography/typography.scene.test.ts",
+          "target": "src/ui/typography/typography.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Typography",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "typography-basic",
+      "type": "registry:example",
+      "title": "Typography Basic",
+      "description": "A runnable Foldkit example showing the Typography component with parent-owned example state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["typography"],
+      "files": [
+        {
+          "path": "registry/default/examples/typography-basic/main.ts",
+          "target": "src/examples/typography-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/typography-basic/typography-basic.scene.test.ts",
+          "target": "src/examples/typography-basic/typography-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Typography",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "A shadcn-style empty state component for explaining missing content and offering a next action.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/empty/index.ts",
+          "target": "src/ui/empty/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/empty/view.ts",
+          "target": "src/ui/empty/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/empty/empty.scene.test.ts",
+          "target": "src/ui/empty/empty.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Empty",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "empty-basic",
+      "type": "registry:example",
+      "title": "Empty Basic",
+      "description": "A runnable Foldkit example showing the Empty component with parent-owned example state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["empty"],
+      "files": [
+        {
+          "path": "registry/default/examples/empty-basic/main.ts",
+          "target": "src/examples/empty-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/empty-basic/empty-basic.scene.test.ts",
+          "target": "src/examples/empty-basic/empty-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Empty",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "empty-input-group",
+      "type": "registry:example",
+      "title": "Empty Input Group",
+      "description": "A runnable Foldkit version of the upstream shadcn empty input-group example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["empty", "input-group", "kbd"],
+      "files": [
+        {
+          "path": "registry/default/examples/empty-input-group/main.ts",
+          "target": "src/examples/empty-input-group/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/empty-input-group/empty-input-group.scene.test.ts",
+          "target": "src/examples/empty-input-group/empty-input-group.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Empty",
+          "example": "input-group",
+          "originExample": "empty-input-group"
+        }
+      }
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "A shadcn-style breadcrumb component for displaying the path to the current resource using a hierarchy of links.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/breadcrumb/index.ts",
+          "target": "src/ui/breadcrumb/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/breadcrumb/view.ts",
+          "target": "src/ui/breadcrumb/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/breadcrumb/breadcrumb.scene.test.ts",
+          "target": "src/ui/breadcrumb/breadcrumb.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "breadcrumb-basic",
+      "type": "registry:example",
+      "title": "Breadcrumb Basic",
+      "description": "A runnable Foldkit version of the shadcn Breadcrumb Basic example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-basic/main.ts",
+          "target": "src/examples/breadcrumb-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-basic/entry.ts",
+          "target": "src/examples/breadcrumb-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-basic/index.html",
+          "target": "src/examples/breadcrumb-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-basic/breadcrumb-basic.scene.test.ts",
+          "target": "src/examples/breadcrumb-basic/breadcrumb-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "example": "basic",
+          "originExample": "breadcrumb-basic"
+        }
+      }
+    },
+    {
+      "name": "breadcrumb-separator",
+      "type": "registry:example",
+      "title": "Breadcrumb Separator",
+      "description": "A runnable Foldkit version of the shadcn Breadcrumb Separator example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-separator/main.ts",
+          "target": "src/examples/breadcrumb-separator/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-separator/entry.ts",
+          "target": "src/examples/breadcrumb-separator/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-separator/index.html",
+          "target": "src/examples/breadcrumb-separator/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-separator/breadcrumb-separator.scene.test.ts",
+          "target": "src/examples/breadcrumb-separator/breadcrumb-separator.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "example": "separator",
+          "originExample": "breadcrumb-separator"
+        }
+      }
+    },
+    {
+      "name": "breadcrumb-dropdown",
+      "type": "registry:example",
+      "title": "Breadcrumb Dropdown",
+      "description": "A runnable Foldkit version of the shadcn Breadcrumb Dropdown example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-dropdown/main.ts",
+          "target": "src/examples/breadcrumb-dropdown/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-dropdown/entry.ts",
+          "target": "src/examples/breadcrumb-dropdown/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-dropdown/index.html",
+          "target": "src/examples/breadcrumb-dropdown/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-dropdown/breadcrumb-dropdown.scene.test.ts",
+          "target": "src/examples/breadcrumb-dropdown/breadcrumb-dropdown.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "example": "dropdown",
+          "originExample": "breadcrumb-dropdown"
+        }
+      }
+    },
+    {
+      "name": "breadcrumb-collapsed",
+      "type": "registry:example",
+      "title": "Breadcrumb Collapsed",
+      "description": "A runnable Foldkit version of the shadcn Breadcrumb Collapsed example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-collapsed/main.ts",
+          "target": "src/examples/breadcrumb-collapsed/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-collapsed/entry.ts",
+          "target": "src/examples/breadcrumb-collapsed/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-collapsed/index.html",
+          "target": "src/examples/breadcrumb-collapsed/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-collapsed/breadcrumb-collapsed.scene.test.ts",
+          "target": "src/examples/breadcrumb-collapsed/breadcrumb-collapsed.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "example": "collapsed",
+          "originExample": "breadcrumb-collapsed"
+        }
+      }
+    },
+    {
+      "name": "breadcrumb-link",
+      "type": "registry:example",
+      "title": "Breadcrumb Link",
+      "description": "A runnable Foldkit version of the shadcn Breadcrumb Link example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-link/main.ts",
+          "target": "src/examples/breadcrumb-link/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-link/entry.ts",
+          "target": "src/examples/breadcrumb-link/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-link/index.html",
+          "target": "src/examples/breadcrumb-link/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-link/breadcrumb-link.scene.test.ts",
+          "target": "src/examples/breadcrumb-link/breadcrumb-link.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "example": "link",
+          "originExample": "breadcrumb-link"
+        }
+      }
+    },
+    {
+      "name": "breadcrumb-rtl",
+      "type": "registry:example",
+      "title": "Breadcrumb RTL",
+      "description": "A runnable Foldkit version of the shadcn Breadcrumb RTL example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["breadcrumb"],
+      "files": [
+        {
+          "path": "registry/default/examples/breadcrumb-rtl/main.ts",
+          "target": "src/examples/breadcrumb-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-rtl/entry.ts",
+          "target": "src/examples/breadcrumb-rtl/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-rtl/index.html",
+          "target": "src/examples/breadcrumb-rtl/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/breadcrumb-rtl/breadcrumb-rtl.scene.test.ts",
+          "target": "src/examples/breadcrumb-rtl/breadcrumb-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "example": "rtl",
+          "originExample": "breadcrumb-rtl"
         }
       }
     },
@@ -944,6 +1913,544 @@
       }
     },
     {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "A shadcn-style input composition component for grouped controls, addons, and shortcut slots.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/input-group/index.ts",
+          "target": "src/ui/input-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/input-group/view.ts",
+          "target": "src/ui/input-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/input-group/input-group.scene.test.ts",
+          "target": "src/ui/input-group/input-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "InputGroup",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "A Base UI-informed native scroll container with styled viewport, content, scrollbar, thumb, and corner anatomy.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/scroll-area/index.ts",
+          "target": "src/ui/scroll-area/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/scroll-area/view.ts",
+          "target": "src/ui/scroll-area/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/scroll-area/scroll-area.scene.test.ts",
+          "target": "src/ui/scroll-area/scroll-area.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ScrollArea",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "scroll-area-basic",
+      "type": "registry:example",
+      "title": "Scroll Area Basic",
+      "description": "A runnable Foldkit version of the Base UI Scroll Area hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["scroll-area"],
+      "files": [
+        {
+          "path": "registry/default/examples/scroll-area-basic/main.ts",
+          "target": "src/examples/scroll-area-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/scroll-area-basic/entry.ts",
+          "target": "src/examples/scroll-area-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/scroll-area-basic/index.html",
+          "target": "src/examples/scroll-area-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/scroll-area-basic/scroll-area-basic.scene.test.ts",
+          "target": "src/examples/scroll-area-basic/scroll-area-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ScrollArea",
+          "example": "basic",
+          "originExample": "scroll-area-hero"
+        }
+      }
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A Base UI-informed two-state button with controlled pressed state, aria-pressed semantics, data-pressed styling, and disabled handling.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/toggle/index.ts",
+          "target": "src/ui/toggle/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toggle/view.ts",
+          "target": "src/ui/toggle/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toggle/toggle.scene.test.ts",
+          "target": "src/ui/toggle/toggle.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toggle",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "toggle-basic",
+      "type": "registry:example",
+      "title": "Toggle Basic",
+      "description": "A runnable Foldkit version of the Base UI Toggle hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/default/examples/toggle-basic/main.ts",
+          "target": "src/examples/toggle-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toggle-basic/entry.ts",
+          "target": "src/examples/toggle-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toggle-basic/index.html",
+          "target": "src/examples/toggle-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toggle-basic/toggle-basic.scene.test.ts",
+          "target": "src/examples/toggle-basic/toggle-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toggle",
+          "example": "basic",
+          "originExample": "toggle-hero"
+        }
+      }
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["toggle"],
+      "files": [
+        {
+          "path": "registry/default/ui/toggle-group/index.ts",
+          "target": "src/ui/toggle-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toggle-group/view.ts",
+          "target": "src/ui/toggle-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toggle-group/toggle-group.scene.test.ts",
+          "target": "src/ui/toggle-group/toggle-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ToggleGroup",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "toggle-group-basic",
+      "type": "registry:example",
+      "title": "Toggle Group Basic",
+      "description": "A runnable Foldkit version of the Base UI Toggle Group hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["toggle-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/toggle-group-basic/main.ts",
+          "target": "src/examples/toggle-group-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toggle-group-basic/entry.ts",
+          "target": "src/examples/toggle-group-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toggle-group-basic/index.html",
+          "target": "src/examples/toggle-group-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toggle-group-basic/toggle-group-basic.scene.test.ts",
+          "target": "src/examples/toggle-group-basic/toggle-group-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ToggleGroup",
+          "example": "basic",
+          "originExample": "toggle-group-hero"
+        }
+      }
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "title": "Radio",
+      "description": "A Base UI-informed radio group component with controlled selected value, labelled group, radio root, and indicator anatomy.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/radio/index.ts",
+          "target": "src/ui/radio/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/radio/view.ts",
+          "target": "src/ui/radio/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/radio/radio.scene.test.ts",
+          "target": "src/ui/radio/radio.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Radio",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "radio-basic",
+      "type": "registry:example",
+      "title": "Radio Basic",
+      "description": "A runnable Foldkit version of the Base UI Radio hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["radio"],
+      "files": [
+        {
+          "path": "registry/default/examples/radio-basic/main.ts",
+          "target": "src/examples/radio-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/radio-basic/entry.ts",
+          "target": "src/examples/radio-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/radio-basic/index.html",
+          "target": "src/examples/radio-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/radio-basic/radio-basic.scene.test.ts",
+          "target": "src/examples/radio-basic/radio-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Radio",
+          "example": "basic",
+          "originExample": "radio-hero"
+        }
+      }
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "A Base UI-informed toolbar component for grouped editor controls, compact actions, separators, links, and inputs.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/toolbar/index.ts",
+          "target": "src/ui/toolbar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toolbar/view.ts",
+          "target": "src/ui/toolbar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/toolbar/toolbar.scene.test.ts",
+          "target": "src/ui/toolbar/toolbar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toolbar",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "toolbar-basic",
+      "type": "registry:example",
+      "title": "Toolbar Basic",
+      "description": "A runnable Foldkit version of the Base UI Toolbar hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["toolbar"],
+      "files": [
+        {
+          "path": "registry/default/examples/toolbar-basic/main.ts",
+          "target": "src/examples/toolbar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toolbar-basic/entry.ts",
+          "target": "src/examples/toolbar-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toolbar-basic/index.html",
+          "target": "src/examples/toolbar-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/toolbar-basic/toolbar-basic.scene.test.ts",
+          "target": "src/examples/toolbar-basic/toolbar-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toolbar",
+          "example": "basic",
+          "originExample": "toolbar-hero"
+        }
+      }
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "A Base UI-informed meter component for displaying a numeric measurement within a known range.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/meter/index.ts",
+          "target": "src/ui/meter/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/meter/view.ts",
+          "target": "src/ui/meter/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/meter/meter.scene.test.ts",
+          "target": "src/ui/meter/meter.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Meter",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "meter-basic",
+      "type": "registry:example",
+      "title": "Meter Basic",
+      "description": "A runnable Foldkit version of the Base UI Meter hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["meter"],
+      "files": [
+        {
+          "path": "registry/default/examples/meter-basic/main.ts",
+          "target": "src/examples/meter-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/meter-basic/entry.ts",
+          "target": "src/examples/meter-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/meter-basic/index.html",
+          "target": "src/examples/meter-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/meter-basic/meter-basic.scene.test.ts",
+          "target": "src/examples/meter-basic/meter-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Meter",
+          "example": "basic",
+          "originExample": "meter-hero"
+        }
+      }
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "A Base UI-informed progress component for displaying long-running task status with accessible value semantics.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/progress/index.ts",
+          "target": "src/ui/progress/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/progress/view.ts",
+          "target": "src/ui/progress/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/progress/progress.scene.test.ts",
+          "target": "src/ui/progress/progress.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Progress",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "progress-basic",
+      "type": "registry:example",
+      "title": "Progress Basic",
+      "description": "A runnable Foldkit version of the Base UI Progress hero example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["progress"],
+      "files": [
+        {
+          "path": "registry/default/examples/progress-basic/main.ts",
+          "target": "src/examples/progress-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/progress-basic/entry.ts",
+          "target": "src/examples/progress-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/progress-basic/index.html",
+          "target": "src/examples/progress-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/progress-basic/progress-basic.scene.test.ts",
+          "target": "src/examples/progress-basic/progress-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Progress",
+          "example": "basic",
+          "originExample": "progress-hero"
+        }
+      }
+    },
+    {
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
@@ -1002,6 +2509,1690 @@
         "foldkit": {
           "component": "Checkbox",
           "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A Base UI-informed accordion component for controlled groups of collapsible panels.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/accordion/index.ts",
+          "target": "src/ui/accordion/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/accordion/view.ts",
+          "target": "src/ui/accordion/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/accordion/accordion.scene.test.ts",
+          "target": "src/ui/accordion/accordion.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Accordion",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "accordion-basic",
+      "type": "registry:example",
+      "title": "Accordion Basic",
+      "description": "A runnable Foldkit version of the Base UI Accordion single-panel example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["accordion"],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-basic/main.ts",
+          "target": "src/examples/accordion-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/accordion-basic/entry.ts",
+          "target": "src/examples/accordion-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/accordion-basic/index.html",
+          "target": "src/examples/accordion-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/accordion-basic/accordion-basic.scene.test.ts",
+          "target": "src/examples/accordion-basic/accordion-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Accordion",
+          "example": "basic",
+          "originExample": "accordion-single-panel"
+        }
+      }
+    },
+    {
+      "name": "accordion-multiple",
+      "type": "registry:example",
+      "title": "Accordion Multiple",
+      "description": "A runnable Foldkit version of the Base UI Accordion open multiple panels example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["accordion"],
+      "files": [
+        {
+          "path": "registry/default/examples/accordion-multiple/main.ts",
+          "target": "src/examples/accordion-multiple/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/accordion-multiple/entry.ts",
+          "target": "src/examples/accordion-multiple/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/accordion-multiple/index.html",
+          "target": "src/examples/accordion-multiple/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/accordion-multiple/accordion-multiple.scene.test.ts",
+          "target": "src/examples/accordion-multiple/accordion-multiple.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Accordion",
+          "example": "multiple",
+          "originExample": "accordion-open-multiple"
+        }
+      }
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A shadcn-style alert component for inline status, notices, and destructive messages.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/alert/index.ts",
+          "target": "src/ui/alert/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/alert/view.ts",
+          "target": "src/ui/alert/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/alert/alert.scene.test.ts",
+          "target": "src/ui/alert/alert.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "alert-basic",
+      "type": "registry:example",
+      "title": "Alert Basic",
+      "description": "A runnable Foldkit version of the shadcn Alert default example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/default/examples/alert-basic/main.ts",
+          "target": "src/examples/alert-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-basic/entry.ts",
+          "target": "src/examples/alert-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-basic/index.html",
+          "target": "src/examples/alert-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-basic/alert-basic.scene.test.ts",
+          "target": "src/examples/alert-basic/alert-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert",
+          "example": "basic",
+          "originExample": "alert-default"
+        }
+      }
+    },
+    {
+      "name": "alert-destructive",
+      "type": "registry:example",
+      "title": "Alert Destructive",
+      "description": "A runnable Foldkit version of the shadcn Alert destructive example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["alert"],
+      "files": [
+        {
+          "path": "registry/default/examples/alert-destructive/main.ts",
+          "target": "src/examples/alert-destructive/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-destructive/entry.ts",
+          "target": "src/examples/alert-destructive/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-destructive/index.html",
+          "target": "src/examples/alert-destructive/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-destructive/alert-destructive.scene.test.ts",
+          "target": "src/examples/alert-destructive/alert-destructive.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert",
+          "example": "destructive",
+          "originExample": "alert-destructive"
+        }
+      }
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "A shadcn-style layout component for reserving a fixed width-to-height ratio around caller-owned media or content.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/aspect-ratio/index.ts",
+          "target": "src/ui/aspect-ratio/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/aspect-ratio/view.ts",
+          "target": "src/ui/aspect-ratio/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/aspect-ratio/aspect-ratio.scene.test.ts",
+          "target": "src/ui/aspect-ratio/aspect-ratio.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AspectRatio",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "aspect-ratio-basic",
+      "type": "registry:example",
+      "title": "Aspect Ratio Basic",
+      "description": "A runnable Foldkit version of the shadcn Aspect Ratio default 16:9 example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/default/examples/aspect-ratio-basic/main.ts",
+          "target": "src/examples/aspect-ratio-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-basic/entry.ts",
+          "target": "src/examples/aspect-ratio-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-basic/index.html",
+          "target": "src/examples/aspect-ratio-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-basic/aspect-ratio-basic.scene.test.ts",
+          "target": "src/examples/aspect-ratio-basic/aspect-ratio-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AspectRatio",
+          "example": "basic",
+          "originExample": "aspect-ratio-default"
+        }
+      }
+    },
+    {
+      "name": "aspect-ratio-square",
+      "type": "registry:example",
+      "title": "Aspect Ratio Square",
+      "description": "A runnable Foldkit version of the shadcn Aspect Ratio square example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/default/examples/aspect-ratio-square/main.ts",
+          "target": "src/examples/aspect-ratio-square/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-square/entry.ts",
+          "target": "src/examples/aspect-ratio-square/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-square/index.html",
+          "target": "src/examples/aspect-ratio-square/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-square/aspect-ratio-square.scene.test.ts",
+          "target": "src/examples/aspect-ratio-square/aspect-ratio-square.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AspectRatio",
+          "example": "square",
+          "originExample": "aspect-ratio-square"
+        }
+      }
+    },
+    {
+      "name": "aspect-ratio-portrait",
+      "type": "registry:example",
+      "title": "Aspect Ratio Portrait",
+      "description": "A runnable Foldkit version of the shadcn Aspect Ratio portrait example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/default/examples/aspect-ratio-portrait/main.ts",
+          "target": "src/examples/aspect-ratio-portrait/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-portrait/entry.ts",
+          "target": "src/examples/aspect-ratio-portrait/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-portrait/index.html",
+          "target": "src/examples/aspect-ratio-portrait/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-portrait/aspect-ratio-portrait.scene.test.ts",
+          "target": "src/examples/aspect-ratio-portrait/aspect-ratio-portrait.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AspectRatio",
+          "example": "portrait",
+          "originExample": "aspect-ratio-portrait"
+        }
+      }
+    },
+    {
+      "name": "aspect-ratio-rtl",
+      "type": "registry:example",
+      "title": "Aspect Ratio RTL",
+      "description": "A runnable Foldkit version of the shadcn Aspect Ratio RTL example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/default/examples/aspect-ratio-rtl/main.ts",
+          "target": "src/examples/aspect-ratio-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-rtl/entry.ts",
+          "target": "src/examples/aspect-ratio-rtl/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-rtl/index.html",
+          "target": "src/examples/aspect-ratio-rtl/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/aspect-ratio-rtl/aspect-ratio-rtl.scene.test.ts",
+          "target": "src/examples/aspect-ratio-rtl/aspect-ratio-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AspectRatio",
+          "example": "rtl",
+          "originExample": "aspect-ratio-rtl"
+        }
+      }
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "A shadcn-style grouping primitive for visually joining related buttons, inputs, and composed controls while preserving native control semantics.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/button-group/index.ts",
+          "target": "src/ui/button-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/button-group/view.ts",
+          "target": "src/ui/button-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/button-group/button-group.scene.test.ts",
+          "target": "src/ui/button-group/button-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "button-group-basic",
+      "type": "registry:example",
+      "title": "Button Group Basic",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Basic composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-basic/main.ts",
+          "target": "src/examples/button-group-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-basic/button-group-basic.scene.test.ts",
+          "target": "src/examples/button-group-basic/button-group-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-orientation",
+      "type": "registry:example",
+      "title": "Button Group Orientation",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Orientation composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-orientation/main.ts",
+          "target": "src/examples/button-group-orientation/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-orientation/button-group-orientation.scene.test.ts",
+          "target": "src/examples/button-group-orientation/button-group-orientation.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "orientation",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-size",
+      "type": "registry:example",
+      "title": "Button Group Size",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Size composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-size/main.ts",
+          "target": "src/examples/button-group-size/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-size/button-group-size.scene.test.ts",
+          "target": "src/examples/button-group-size/button-group-size.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "size",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-nested",
+      "type": "registry:example",
+      "title": "Button Group Nested",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Nested composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-nested/main.ts",
+          "target": "src/examples/button-group-nested/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-nested/button-group-nested.scene.test.ts",
+          "target": "src/examples/button-group-nested/button-group-nested.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "nested",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-separator",
+      "type": "registry:example",
+      "title": "Button Group Separator",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Separator composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-separator/main.ts",
+          "target": "src/examples/button-group-separator/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-separator/button-group-separator.scene.test.ts",
+          "target": "src/examples/button-group-separator/button-group-separator.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "separator",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-split",
+      "type": "registry:example",
+      "title": "Button Group Split",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Split composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-split/main.ts",
+          "target": "src/examples/button-group-split/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-split/button-group-split.scene.test.ts",
+          "target": "src/examples/button-group-split/button-group-split.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "split",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-input",
+      "type": "registry:example",
+      "title": "Button Group Input",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Input composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group", "input"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-input/main.ts",
+          "target": "src/examples/button-group-input/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-input/button-group-input.scene.test.ts",
+          "target": "src/examples/button-group-input/button-group-input.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "input",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-input-group",
+      "type": "registry:example",
+      "title": "Button Group Input Group",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Input Group composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group", "input-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-input-group/main.ts",
+          "target": "src/examples/button-group-input-group/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-input-group/button-group-input-group.scene.test.ts",
+          "target": "src/examples/button-group-input-group/button-group-input-group.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "input-group",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-select",
+      "type": "registry:example",
+      "title": "Button Group Select",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Select composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group", "select"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-select/main.ts",
+          "target": "src/examples/button-group-select/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-select/button-group-select.scene.test.ts",
+          "target": "src/examples/button-group-select/button-group-select.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "select",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-popover",
+      "type": "registry:example",
+      "title": "Button Group Popover",
+      "description": "A runnable Foldkit example showing the shadcn Button Group Popover composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group", "popover"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-popover/main.ts",
+          "target": "src/examples/button-group-popover/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-popover/button-group-popover.scene.test.ts",
+          "target": "src/examples/button-group-popover/button-group-popover.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "popover",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "button-group-rtl",
+      "type": "registry:example",
+      "title": "Button Group RTL",
+      "description": "A runnable Foldkit example showing the shadcn Button Group RTL composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["button-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/button-group-rtl/main.ts",
+          "target": "src/examples/button-group-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/button-group-rtl/button-group-rtl.scene.test.ts",
+          "target": "src/examples/button-group-rtl/button-group-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "example": "rtl",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A Base UI-informed alert dialog component for controlled destructive confirmations.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/alert-dialog/index.ts",
+          "target": "src/ui/alert-dialog/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/alert-dialog/view.ts",
+          "target": "src/ui/alert-dialog/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/alert-dialog/alert-dialog.scene.test.ts",
+          "target": "src/ui/alert-dialog/alert-dialog.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "alert-dialog-basic",
+      "type": "registry:example",
+      "title": "Alert Dialog Basic",
+      "description": "A runnable Foldkit version of the Base UI Alert Dialog default Discard draft example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/alert-dialog-basic/main.ts",
+          "target": "src/examples/alert-dialog-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-dialog-basic/entry.ts",
+          "target": "src/examples/alert-dialog-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-dialog-basic/index.html",
+          "target": "src/examples/alert-dialog-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-dialog-basic/alert-dialog-basic.scene.test.ts",
+          "target": "src/examples/alert-dialog-basic/alert-dialog-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "basic",
+          "originExample": "alert-dialog-default-discard-draft"
+        }
+      }
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A Base UI-informed drawer component for controlled side panels.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/drawer/index.ts",
+          "target": "src/ui/drawer/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/drawer/view.ts",
+          "target": "src/ui/drawer/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/drawer/drawer.scene.test.ts",
+          "target": "src/ui/drawer/drawer.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "drawer-basic",
+      "type": "registry:example",
+      "title": "Drawer Basic",
+      "description": "A runnable Foldkit version of the Base UI Drawer default side panel example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/drawer-basic/main.ts",
+          "target": "src/examples/drawer-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/drawer-basic/entry.ts",
+          "target": "src/examples/drawer-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/drawer-basic/index.html",
+          "target": "src/examples/drawer-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/drawer-basic/drawer-basic.scene.test.ts",
+          "target": "src/examples/drawer-basic/drawer-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "basic",
+          "originExample": "drawer-default-side"
+        }
+      }
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "A Base UI-informed context menu component for controlled command menus.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/context-menu/index.ts",
+          "target": "src/ui/context-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/context-menu/view.ts",
+          "target": "src/ui/context-menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/context-menu/context-menu.scene.test.ts",
+          "target": "src/ui/context-menu/context-menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ContextMenu",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "context-menu-basic",
+      "type": "registry:example",
+      "title": "Context Menu Basic",
+      "description": "A runnable Foldkit version of the Base UI Context Menu default example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["context-menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/context-menu-basic/main.ts",
+          "target": "src/examples/context-menu-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/context-menu-basic/entry.ts",
+          "target": "src/examples/context-menu-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/context-menu-basic/index.html",
+          "target": "src/examples/context-menu-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/context-menu-basic/context-menu-basic.scene.test.ts",
+          "target": "src/examples/context-menu-basic/context-menu-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ContextMenu",
+          "example": "basic",
+          "originExample": "context-menu-default"
+        }
+      }
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A Base UI-informed controlled menubar component for horizontal command menus.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/menubar/index.ts",
+          "target": "src/ui/menubar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/menubar/view.ts",
+          "target": "src/ui/menubar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/menubar/menubar.scene.test.ts",
+          "target": "src/ui/menubar/menubar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menubar",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "menubar-basic",
+      "type": "registry:example",
+      "title": "Menubar Basic",
+      "description": "A runnable Foldkit version of the Base UI Menubar default example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["menubar"],
+      "files": [
+        {
+          "path": "registry/default/examples/menubar-basic/main.ts",
+          "target": "src/examples/menubar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/menubar-basic/entry.ts",
+          "target": "src/examples/menubar-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/menubar-basic/index.html",
+          "target": "src/examples/menubar-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/menubar-basic/menubar-basic.scene.test.ts",
+          "target": "src/examples/menubar-basic/menubar-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menubar",
+          "example": "basic",
+          "originExample": "menubar-default"
+        }
+      }
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A Base UI-informed navigation menu component for controlled popup panels.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/navigation-menu/index.ts",
+          "target": "src/ui/navigation-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/navigation-menu/view.ts",
+          "target": "src/ui/navigation-menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/navigation-menu/navigation-menu.scene.test.ts",
+          "target": "src/ui/navigation-menu/navigation-menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "NavigationMenu",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "navigation-menu-basic",
+      "type": "registry:example",
+      "title": "Navigation Menu Basic",
+      "description": "A runnable Foldkit version of the Base UI Navigation Menu default example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["navigation-menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/navigation-menu-basic/main.ts",
+          "target": "src/examples/navigation-menu-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/navigation-menu-basic/entry.ts",
+          "target": "src/examples/navigation-menu-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/navigation-menu-basic/index.html",
+          "target": "src/examples/navigation-menu-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/navigation-menu-basic/navigation-menu-basic.scene.test.ts",
+          "target": "src/examples/navigation-menu-basic/navigation-menu-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "NavigationMenu",
+          "example": "basic",
+          "originExample": "navigation-menu-default"
+        }
+      }
+    },
+    {
+      "name": "otp-field",
+      "type": "registry:ui",
+      "title": "OTP Field",
+      "description": "A Base UI-informed one-time-code input component for controlled verification-code entry.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/otp-field/index.ts",
+          "target": "src/ui/otp-field/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/otp-field/view.ts",
+          "target": "src/ui/otp-field/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/otp-field/otp-field.scene.test.ts",
+          "target": "src/ui/otp-field/otp-field.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "OtpField",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "otp-field-basic",
+      "type": "registry:example",
+      "title": "OTP Field Basic",
+      "description": "A runnable Foldkit version of the Base UI OTP Field default example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["otp-field"],
+      "files": [
+        {
+          "path": "registry/default/examples/otp-field-basic/main.ts",
+          "target": "src/examples/otp-field-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/otp-field-basic/entry.ts",
+          "target": "src/examples/otp-field-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/otp-field-basic/index.html",
+          "target": "src/examples/otp-field-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/otp-field-basic/otp-field-basic.scene.test.ts",
+          "target": "src/examples/otp-field-basic/otp-field-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "OtpField",
+          "example": "basic",
+          "originExample": "otp-field-default"
+        }
+      }
+    },
+    {
+      "name": "preview-card",
+      "type": "registry:ui",
+      "title": "Preview Card",
+      "description": "A Base UI-informed preview card component for controlled contextual previews.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/preview-card/index.ts",
+          "target": "src/ui/preview-card/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/preview-card/view.ts",
+          "target": "src/ui/preview-card/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/preview-card/preview-card.scene.test.ts",
+          "target": "src/ui/preview-card/preview-card.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "PreviewCard",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "preview-card-basic",
+      "type": "registry:example",
+      "title": "Preview Card Basic",
+      "description": "A runnable Foldkit version of the Base UI Preview Card default example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["preview-card"],
+      "files": [
+        {
+          "path": "registry/default/examples/preview-card-basic/main.ts",
+          "target": "src/examples/preview-card-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/preview-card-basic/entry.ts",
+          "target": "src/examples/preview-card-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/preview-card-basic/index.html",
+          "target": "src/examples/preview-card-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/preview-card-basic/preview-card-basic.scene.test.ts",
+          "target": "src/examples/preview-card-basic/preview-card-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "PreviewCard",
+          "example": "basic",
+          "originExample": "preview-card-default"
+        }
+      }
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "A Base UI-informed collapsible component for a controlled panel toggled by a button.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/collapsible/index.ts",
+          "target": "src/ui/collapsible/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/collapsible/view.ts",
+          "target": "src/ui/collapsible/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/collapsible/collapsible.scene.test.ts",
+          "target": "src/ui/collapsible/collapsible.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Collapsible",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "collapsible-basic",
+      "type": "registry:example",
+      "title": "Collapsible Basic",
+      "description": "A runnable Foldkit version of the Base UI Collapsible default Recovery keys example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["collapsible"],
+      "files": [
+        {
+          "path": "registry/default/examples/collapsible-basic/main.ts",
+          "target": "src/examples/collapsible-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/collapsible-basic/entry.ts",
+          "target": "src/examples/collapsible-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/collapsible-basic/index.html",
+          "target": "src/examples/collapsible-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/collapsible-basic/collapsible-basic.scene.test.ts",
+          "target": "src/examples/collapsible-basic/collapsible-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Collapsible",
+          "example": "basic",
+          "originExample": "collapsible-default-recovery-keys"
+        }
+      }
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "A Base UI-informed field component for labeling, descriptions, validation errors, and form control state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/field/index.ts",
+          "target": "src/ui/field/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/field/view.ts",
+          "target": "src/ui/field/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/field/field.scene.test.ts",
+          "target": "src/ui/field/field.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Field",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "field-basic",
+      "type": "registry:example",
+      "title": "Field Basic",
+      "description": "A runnable Foldkit version of the Base UI Field default Name example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["field"],
+      "files": [
+        {
+          "path": "registry/default/examples/field-basic/main.ts",
+          "target": "src/examples/field-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/field-basic/entry.ts",
+          "target": "src/examples/field-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/field-basic/index.html",
+          "target": "src/examples/field-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/field-basic/field-basic.scene.test.ts",
+          "target": "src/examples/field-basic/field-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Field",
+          "example": "basic",
+          "originExample": "field-default-name"
+        }
+      }
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "A Base UI-informed number field component for controlled numeric input with increment and decrement controls.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/number-field/index.ts",
+          "target": "src/ui/number-field/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/number-field/view.ts",
+          "target": "src/ui/number-field/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/number-field/number-field.scene.test.ts",
+          "target": "src/ui/number-field/number-field.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "NumberField",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "number-field-basic",
+      "type": "registry:example",
+      "title": "Number Field Basic",
+      "description": "A runnable Foldkit version of the Base UI Number Field default Amount example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["number-field"],
+      "files": [
+        {
+          "path": "registry/default/examples/number-field-basic/main.ts",
+          "target": "src/examples/number-field-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/number-field-basic/entry.ts",
+          "target": "src/examples/number-field-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/number-field-basic/index.html",
+          "target": "src/examples/number-field-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/number-field-basic/number-field-basic.scene.test.ts",
+          "target": "src/examples/number-field-basic/number-field-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "NumberField",
+          "example": "basic",
+          "originExample": "number-field-default-amount"
+        }
+      }
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "A Base UI-informed form component for native submission, labelled controls, and parent-owned error state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/form/index.ts",
+          "target": "src/ui/form/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/form/view.ts",
+          "target": "src/ui/form/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/form/form.scene.test.ts",
+          "target": "src/ui/form/form.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Form",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "form-basic",
+      "type": "registry:example",
+      "title": "Form Basic",
+      "description": "A runnable Foldkit version of the Base UI Form default Homepage example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["form"],
+      "files": [
+        {
+          "path": "registry/default/examples/form-basic/main.ts",
+          "target": "src/examples/form-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/form-basic/entry.ts",
+          "target": "src/examples/form-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/form-basic/index.html",
+          "target": "src/examples/form-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/form-basic/form-basic.scene.test.ts",
+          "target": "src/examples/form-basic/form-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Form",
+          "example": "basic",
+          "originExample": "form-default-homepage"
+        }
+      }
+    },
+    {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "title": "Autocomplete",
+      "description": "A Base UI-informed autocomplete component for controlled text input, filtered options, and empty states.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/autocomplete/index.ts",
+          "target": "src/ui/autocomplete/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/autocomplete/view.ts",
+          "target": "src/ui/autocomplete/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/autocomplete/autocomplete.scene.test.ts",
+          "target": "src/ui/autocomplete/autocomplete.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Autocomplete",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "autocomplete-basic",
+      "type": "registry:example",
+      "title": "Autocomplete Basic",
+      "description": "A runnable Foldkit version of the Base UI Autocomplete default Search tags example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["autocomplete"],
+      "files": [
+        {
+          "path": "registry/default/examples/autocomplete-basic/main.ts",
+          "target": "src/examples/autocomplete-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/autocomplete-basic/entry.ts",
+          "target": "src/examples/autocomplete-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/autocomplete-basic/index.html",
+          "target": "src/examples/autocomplete-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/autocomplete-basic/autocomplete-basic.scene.test.ts",
+          "target": "src/examples/autocomplete-basic/autocomplete-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Autocomplete",
+          "example": "basic",
+          "originExample": "autocomplete-default-search-tags"
+        }
+      }
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "A Base UI-informed checkbox group component for controlled multi-select value arrays and parent checkbox state.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/checkbox-group/index.ts",
+          "target": "src/ui/checkbox-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/checkbox-group/view.ts",
+          "target": "src/ui/checkbox-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/checkbox-group/checkbox-group.scene.test.ts",
+          "target": "src/ui/checkbox-group/checkbox-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "CheckboxGroup",
+          "origin": "base-ui",
+          "artifact": "component",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "checkbox-group-basic",
+      "type": "registry:example",
+      "title": "Checkbox Group Basic",
+      "description": "A runnable Foldkit version of the Base UI Checkbox Group hero and parent-checkbox behavior.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["checkbox-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/checkbox-group-basic/main.ts",
+          "target": "src/examples/checkbox-group-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/checkbox-group-basic/entry.ts",
+          "target": "src/examples/checkbox-group-basic/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/checkbox-group-basic/index.html",
+          "target": "src/examples/checkbox-group-basic/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/checkbox-group-basic/checkbox-group-basic.scene.test.ts",
+          "target": "src/examples/checkbox-group-basic/checkbox-group-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "CheckboxGroup",
+          "example": "basic",
+          "originExample": "checkbox-group-hero"
         }
       }
     },
@@ -2337,6 +5528,1522 @@
         "foldkit": {
           "component": "VirtualList",
           "example": "variable"
+        }
+      }
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "A shadcn-style chart composition layer with Foldkit-native SVG helpers for containers, bars, tooltips, and legends.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/chart/index.ts",
+          "target": "src/ui/chart/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/chart/view.ts",
+          "target": "src/ui/chart/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/chart/chart.scene.test.ts",
+          "target": "src/ui/chart/chart.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "chart-basic",
+      "type": "registry:example",
+      "title": "Chart Basic",
+      "description": "A runnable Foldkit example showing the shadcn Chart Basic composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/default/examples/chart-basic/main.ts",
+          "target": "src/examples/chart-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/chart-basic/chart-basic.scene.test.ts",
+          "target": "src/examples/chart-basic/chart-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "chart-grid",
+      "type": "registry:example",
+      "title": "Chart Grid",
+      "description": "A runnable Foldkit example showing the shadcn Chart Grid composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/default/examples/chart-grid/main.ts",
+          "target": "src/examples/chart-grid/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/chart-grid/chart-grid.scene.test.ts",
+          "target": "src/examples/chart-grid/chart-grid.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "example": "grid"
+        }
+      }
+    },
+    {
+      "name": "chart-axis",
+      "type": "registry:example",
+      "title": "Chart Axis",
+      "description": "A runnable Foldkit example showing the shadcn Chart Axis composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/default/examples/chart-axis/main.ts",
+          "target": "src/examples/chart-axis/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/chart-axis/chart-axis.scene.test.ts",
+          "target": "src/examples/chart-axis/chart-axis.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "example": "axis"
+        }
+      }
+    },
+    {
+      "name": "chart-tooltip",
+      "type": "registry:example",
+      "title": "Chart Tooltip",
+      "description": "A runnable Foldkit example showing the shadcn Chart Tooltip composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/default/examples/chart-tooltip/main.ts",
+          "target": "src/examples/chart-tooltip/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/chart-tooltip/chart-tooltip.scene.test.ts",
+          "target": "src/examples/chart-tooltip/chart-tooltip.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "example": "tooltip"
+        }
+      }
+    },
+    {
+      "name": "chart-legend",
+      "type": "registry:example",
+      "title": "Chart Legend",
+      "description": "A runnable Foldkit example showing the shadcn Chart Legend composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/default/examples/chart-legend/main.ts",
+          "target": "src/examples/chart-legend/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/chart-legend/chart-legend.scene.test.ts",
+          "target": "src/examples/chart-legend/chart-legend.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "example": "legend"
+        }
+      }
+    },
+    {
+      "name": "chart-rtl",
+      "type": "registry:example",
+      "title": "Chart RTL",
+      "description": "A runnable Foldkit example showing the shadcn Chart RTL composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "registry/default/examples/chart-rtl/main.ts",
+          "target": "src/examples/chart-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/chart-rtl/chart-rtl.scene.test.ts",
+          "target": "src/examples/chart-rtl/chart-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Chart",
+          "example": "rtl"
+        }
+      }
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A shadcn-style data table guide component with Foldkit-owned sorting, filtering, pagination, column visibility, and row selection helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/data-table/index.ts",
+          "target": "src/ui/data-table/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/data-table/view.ts",
+          "target": "src/ui/data-table/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/data-table/data-table.scene.test.ts",
+          "target": "src/ui/data-table/data-table.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "stateful": true,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "data-table-basic",
+      "type": "registry:example",
+      "title": "Data Table Basic",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Basic guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-basic/main.ts",
+          "target": "src/examples/data-table-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-basic/data-table-basic.scene.test.ts",
+          "target": "src/examples/data-table-basic/data-table-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "data-table-row-actions",
+      "type": "registry:example",
+      "title": "Data Table Row Actions",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Row Actions guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-row-actions/main.ts",
+          "target": "src/examples/data-table-row-actions/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-row-actions/data-table-row-actions.scene.test.ts",
+          "target": "src/examples/data-table-row-actions/data-table-row-actions.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "row-actions"
+        }
+      }
+    },
+    {
+      "name": "data-table-pagination",
+      "type": "registry:example",
+      "title": "Data Table Pagination",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Pagination guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-pagination/main.ts",
+          "target": "src/examples/data-table-pagination/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-pagination/data-table-pagination.scene.test.ts",
+          "target": "src/examples/data-table-pagination/data-table-pagination.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "pagination"
+        }
+      }
+    },
+    {
+      "name": "data-table-sorting",
+      "type": "registry:example",
+      "title": "Data Table Sorting",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Sorting guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-sorting/main.ts",
+          "target": "src/examples/data-table-sorting/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-sorting/data-table-sorting.scene.test.ts",
+          "target": "src/examples/data-table-sorting/data-table-sorting.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "sorting"
+        }
+      }
+    },
+    {
+      "name": "data-table-filtering",
+      "type": "registry:example",
+      "title": "Data Table Filtering",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Filtering guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-filtering/main.ts",
+          "target": "src/examples/data-table-filtering/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-filtering/data-table-filtering.scene.test.ts",
+          "target": "src/examples/data-table-filtering/data-table-filtering.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "filtering"
+        }
+      }
+    },
+    {
+      "name": "data-table-visibility",
+      "type": "registry:example",
+      "title": "Data Table Visibility",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Visibility guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-visibility/main.ts",
+          "target": "src/examples/data-table-visibility/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-visibility/data-table-visibility.scene.test.ts",
+          "target": "src/examples/data-table-visibility/data-table-visibility.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "visibility"
+        }
+      }
+    },
+    {
+      "name": "data-table-row-selection",
+      "type": "registry:example",
+      "title": "Data Table Row Selection",
+      "description": "A runnable Foldkit example showing the shadcn Data Table Row Selection guide topic.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["data-table"],
+      "files": [
+        {
+          "path": "registry/default/examples/data-table-row-selection/main.ts",
+          "target": "src/examples/data-table-row-selection/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/data-table-row-selection/data-table-row-selection.scene.test.ts",
+          "target": "src/examples/data-table-row-selection/data-table-row-selection.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DataTable",
+          "example": "row-selection"
+        }
+      }
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "A shadcn-style direction provider helper that wraps Foldkit content with an explicit ltr or rtl dir attribute.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/direction/index.ts",
+          "target": "src/ui/direction/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/direction/view.ts",
+          "target": "src/ui/direction/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/direction/direction.scene.test.ts",
+          "target": "src/ui/direction/direction.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Direction",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "direction-basic",
+      "type": "registry:example",
+      "title": "Direction Basic",
+      "description": "A runnable Foldkit example showing the shadcn Direction provider preview with LTR and RTL switching.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["direction"],
+      "files": [
+        {
+          "path": "registry/default/examples/direction-basic/main.ts",
+          "target": "src/examples/direction-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/direction-basic/direction-basic.scene.test.ts",
+          "target": "src/examples/direction-basic/direction-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Direction",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A shadcn-style item component for displaying content with media, title, description, actions, groups, and separators.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/item/index.ts",
+          "target": "src/ui/item/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/item/view.ts",
+          "target": "src/ui/item/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/item/item.scene.test.ts",
+          "target": "src/ui/item/item.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "item-basic",
+      "type": "registry:example",
+      "title": "Item Basic",
+      "description": "A runnable Foldkit example showing the shadcn Item Basic composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-basic/main.ts",
+          "target": "src/examples/item-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-basic/item-basic.scene.test.ts",
+          "target": "src/examples/item-basic/item-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "item-variant",
+      "type": "registry:example",
+      "title": "Item Variant",
+      "description": "A runnable Foldkit example showing the shadcn Item Variant composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-variant/main.ts",
+          "target": "src/examples/item-variant/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-variant/item-variant.scene.test.ts",
+          "target": "src/examples/item-variant/item-variant.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "variant"
+        }
+      }
+    },
+    {
+      "name": "item-size",
+      "type": "registry:example",
+      "title": "Item Size",
+      "description": "A runnable Foldkit example showing the shadcn Item Size composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-size/main.ts",
+          "target": "src/examples/item-size/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-size/item-size.scene.test.ts",
+          "target": "src/examples/item-size/item-size.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "size"
+        }
+      }
+    },
+    {
+      "name": "item-icon",
+      "type": "registry:example",
+      "title": "Item Icon",
+      "description": "A runnable Foldkit example showing the shadcn Item Icon composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-icon/main.ts",
+          "target": "src/examples/item-icon/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-icon/item-icon.scene.test.ts",
+          "target": "src/examples/item-icon/item-icon.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "icon"
+        }
+      }
+    },
+    {
+      "name": "item-avatar",
+      "type": "registry:example",
+      "title": "Item Avatar",
+      "description": "A runnable Foldkit example showing the shadcn Item Avatar composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-avatar/main.ts",
+          "target": "src/examples/item-avatar/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-avatar/item-avatar.scene.test.ts",
+          "target": "src/examples/item-avatar/item-avatar.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "avatar"
+        }
+      }
+    },
+    {
+      "name": "item-image",
+      "type": "registry:example",
+      "title": "Item Image",
+      "description": "A runnable Foldkit example showing the shadcn Item Image composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-image/main.ts",
+          "target": "src/examples/item-image/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-image/item-image.scene.test.ts",
+          "target": "src/examples/item-image/item-image.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "image"
+        }
+      }
+    },
+    {
+      "name": "item-group",
+      "type": "registry:example",
+      "title": "Item Group",
+      "description": "A runnable Foldkit example showing the shadcn Item Group composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-group/main.ts",
+          "target": "src/examples/item-group/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-group/item-group.scene.test.ts",
+          "target": "src/examples/item-group/item-group.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "group"
+        }
+      }
+    },
+    {
+      "name": "item-header",
+      "type": "registry:example",
+      "title": "Item Header",
+      "description": "A runnable Foldkit example showing the shadcn Item Header composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-header/main.ts",
+          "target": "src/examples/item-header/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-header/item-header.scene.test.ts",
+          "target": "src/examples/item-header/item-header.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "header"
+        }
+      }
+    },
+    {
+      "name": "item-link",
+      "type": "registry:example",
+      "title": "Item Link",
+      "description": "A runnable Foldkit example showing the shadcn Item Link composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-link/main.ts",
+          "target": "src/examples/item-link/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-link/item-link.scene.test.ts",
+          "target": "src/examples/item-link/item-link.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "link"
+        }
+      }
+    },
+    {
+      "name": "item-rtl",
+      "type": "registry:example",
+      "title": "Item Rtl",
+      "description": "A runnable Foldkit example showing the shadcn Item Rtl composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["item"],
+      "files": [
+        {
+          "path": "registry/default/examples/item-rtl/main.ts",
+          "target": "src/examples/item-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/item-rtl/item-rtl.scene.test.ts",
+          "target": "src/examples/item-rtl/item-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Item",
+          "example": "rtl"
+        }
+      }
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "A shadcn-style label component for associating text with form controls.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/label/index.ts",
+          "target": "src/ui/label/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/label/view.ts",
+          "target": "src/ui/label/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/label/label.scene.test.ts",
+          "target": "src/ui/label/label.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Label",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "label-basic",
+      "type": "registry:example",
+      "title": "Label Basic",
+      "description": "A runnable Foldkit example showing the shadcn Label Basic form control association.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["label"],
+      "files": [
+        {
+          "path": "registry/default/examples/label-basic/main.ts",
+          "target": "src/examples/label-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/label-basic/label-basic.scene.test.ts",
+          "target": "src/examples/label-basic/label-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Label",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "A shadcn-style pagination navigation component for page links, previous and next links, and ellipsis ranges.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/pagination/index.ts",
+          "target": "src/ui/pagination/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/pagination/view.ts",
+          "target": "src/ui/pagination/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/pagination/pagination.scene.test.ts",
+          "target": "src/ui/pagination/pagination.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Pagination",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "pagination-basic",
+      "type": "registry:example",
+      "title": "Pagination Basic",
+      "description": "A runnable Foldkit example showing the shadcn Pagination Basic navigation composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["pagination"],
+      "files": [
+        {
+          "path": "registry/default/examples/pagination-basic/main.ts",
+          "target": "src/examples/pagination-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/pagination-basic/pagination-basic.scene.test.ts",
+          "target": "src/examples/pagination-basic/pagination-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Pagination",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "A shadcn-style resizable panel composition with controlled panel sizes and separator handle anatomy.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/resizable/index.ts",
+          "target": "src/ui/resizable/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/resizable/view.ts",
+          "target": "src/ui/resizable/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/resizable/resizable.scene.test.ts",
+          "target": "src/ui/resizable/resizable.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Resizable",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "resizable-basic",
+      "type": "registry:example",
+      "title": "Resizable Basic",
+      "description": "A runnable Foldkit example showing controlled pointer and keyboard resizing in the shadcn Resizable Basic panel composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["resizable"],
+      "files": [
+        {
+          "path": "registry/default/examples/resizable-basic/main.ts",
+          "target": "src/examples/resizable-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/resizable-basic/resizable-basic.scene.test.ts",
+          "target": "src/examples/resizable-basic/resizable-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Resizable",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A shadcn-style application sidebar composition with controlled collapsed state and menu anatomy.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/sidebar/index.ts",
+          "target": "src/ui/sidebar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/sidebar/view.ts",
+          "target": "src/ui/sidebar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/sidebar/sidebar.scene.test.ts",
+          "target": "src/ui/sidebar/sidebar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Sidebar",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "sidebar-basic",
+      "type": "registry:example",
+      "title": "Sidebar Basic",
+      "description": "A runnable Foldkit example showing a controlled collapsible shadcn Sidebar application layout.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["sidebar"],
+      "files": [
+        {
+          "path": "registry/default/examples/sidebar-basic/main.ts",
+          "target": "src/examples/sidebar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/sidebar-basic/sidebar-basic.scene.test.ts",
+          "target": "src/examples/sidebar-basic/sidebar-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Sidebar",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A shadcn-style responsive native table composition with caption, header, body, row, head, cell, and footer anatomy.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/table/index.ts",
+          "target": "src/ui/table/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/table/view.ts",
+          "target": "src/ui/table/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/table/table.scene.test.ts",
+          "target": "src/ui/table/table.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Table",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "table-basic",
+      "type": "registry:example",
+      "title": "Table Basic",
+      "description": "A runnable Foldkit example showing the shadcn recent invoices Table composition.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["table"],
+      "files": [
+        {
+          "path": "registry/default/examples/table-basic/main.ts",
+          "target": "src/examples/table-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/table-basic/table-basic.scene.test.ts",
+          "target": "src/examples/table-basic/table-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Table",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "A shadcn-style command palette composition with controlled search, grouped items, shortcuts, and empty state helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/command/index.ts",
+          "target": "src/ui/command/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/command/view.ts",
+          "target": "src/ui/command/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/command/command.scene.test.ts",
+          "target": "src/ui/command/command.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Command",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "command-basic",
+      "type": "registry:example",
+      "title": "Command Basic",
+      "description": "A runnable Foldkit example showing the shadcn command palette with controlled search, grouped results, and selection feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["command"],
+      "files": [
+        {
+          "path": "registry/default/examples/command-basic/main.ts",
+          "target": "src/examples/command-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/command-basic/command-basic.scene.test.ts",
+          "target": "src/examples/command-basic/command-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Command",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "A shadcn-style dropdown menu composition with controlled trigger state, menu items, shortcuts, separators, and outside dismissal.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/dropdown-menu/index.ts",
+          "target": "src/ui/dropdown-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/dropdown-menu/view.ts",
+          "target": "src/ui/dropdown-menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/dropdown-menu/dropdown-menu.scene.test.ts",
+          "target": "src/ui/dropdown-menu/dropdown-menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DropdownMenu",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "dropdown-menu-basic",
+      "type": "registry:example",
+      "title": "Dropdown Menu Basic",
+      "description": "A runnable Foldkit example showing the shadcn dropdown menu account actions pattern with controlled open state and selection feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/dropdown-menu-basic/main.ts",
+          "target": "src/examples/dropdown-menu-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/dropdown-menu-basic/dropdown-menu-basic.scene.test.ts",
+          "target": "src/examples/dropdown-menu-basic/dropdown-menu-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DropdownMenu",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "A shadcn-style hover card composition with controlled trigger and preview content.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/hover-card/index.ts",
+          "target": "src/ui/hover-card/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/hover-card/view.ts",
+          "target": "src/ui/hover-card/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/hover-card/hover-card.scene.test.ts",
+          "target": "src/ui/hover-card/hover-card.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "HoverCard",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "hover-card-basic",
+      "type": "registry:example",
+      "title": "Hover Card Basic",
+      "description": "A runnable Foldkit example showing the shadcn Hover Card Basic pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["hover-card"],
+      "files": [
+        {
+          "path": "registry/default/examples/hover-card-basic/main.ts",
+          "target": "src/examples/hover-card-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/hover-card-basic/hover-card-basic.scene.test.ts",
+          "target": "src/examples/hover-card-basic/hover-card-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "HoverCard",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "A shadcn-style one-time password input composition with controlled slots and separator helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/input-otp/index.ts",
+          "target": "src/ui/input-otp/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/input-otp/view.ts",
+          "target": "src/ui/input-otp/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/input-otp/input-otp.scene.test.ts",
+          "target": "src/ui/input-otp/input-otp.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "InputOtp",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "input-otp-basic",
+      "type": "registry:example",
+      "title": "Input OTP Basic",
+      "description": "A runnable Foldkit example showing the shadcn Input OTP Basic pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["input-otp"],
+      "files": [
+        {
+          "path": "registry/default/examples/input-otp-basic/main.ts",
+          "target": "src/examples/input-otp-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/input-otp-basic/input-otp-basic.scene.test.ts",
+          "target": "src/examples/input-otp-basic/input-otp-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "InputOtp",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "A shadcn-style native select composition with label, trigger, options, and description helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/native-select/index.ts",
+          "target": "src/ui/native-select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/native-select/view.ts",
+          "target": "src/ui/native-select/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/native-select/native-select.scene.test.ts",
+          "target": "src/ui/native-select/native-select.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "NativeSelect",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "native-select-basic",
+      "type": "registry:example",
+      "title": "Native Select Basic",
+      "description": "A runnable Foldkit example showing the shadcn Native Select Basic pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["native-select"],
+      "files": [
+        {
+          "path": "registry/default/examples/native-select-basic/main.ts",
+          "target": "src/examples/native-select-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/native-select-basic/native-select-basic.scene.test.ts",
+          "target": "src/examples/native-select-basic/native-select-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "NativeSelect",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A shadcn-style sheet composition with controlled trigger, overlay, content, header, footer, and close helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/sheet/index.ts",
+          "target": "src/ui/sheet/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/sheet/view.ts",
+          "target": "src/ui/sheet/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/sheet/sheet.scene.test.ts",
+          "target": "src/ui/sheet/sheet.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Sheet",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "sheet-basic",
+      "type": "registry:example",
+      "title": "Sheet Basic",
+      "description": "A runnable Foldkit example showing the shadcn Sheet Basic pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["sheet"],
+      "files": [
+        {
+          "path": "registry/default/examples/sheet-basic/main.ts",
+          "target": "src/examples/sheet-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/sheet-basic/sheet-basic.scene.test.ts",
+          "target": "src/examples/sheet-basic/sheet-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Sheet",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "A shadcn-style toast stack composition with aria-live viewport and dismissible toast helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/sonner/index.ts",
+          "target": "src/ui/sonner/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/sonner/view.ts",
+          "target": "src/ui/sonner/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/sonner/sonner.scene.test.ts",
+          "target": "src/ui/sonner/sonner.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Sonner",
+          "stateful": false,
+          "origin": "shadcn",
+          "artifact": "component"
+        }
+      }
+    },
+    {
+      "name": "sonner-basic",
+      "type": "registry:example",
+      "title": "Sonner Basic",
+      "description": "A runnable Foldkit example showing the shadcn Sonner Basic pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["sonner"],
+      "files": [
+        {
+          "path": "registry/default/examples/sonner-basic/main.ts",
+          "target": "src/examples/sonner-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/sonner-basic/sonner-basic.scene.test.ts",
+          "target": "src/examples/sonner-basic/sonner-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Sonner",
+          "example": "basic"
         }
       }
     }

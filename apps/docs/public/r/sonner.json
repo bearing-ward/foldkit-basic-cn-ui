@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "type": "registry:ui",
+  "title": "Sonner",
+  "description": "A shadcn-style toast stack composition with aria-live viewport and dismissible toast helpers.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/sonner/index.ts",
+      "target": "src/ui/sonner/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  sonnerCloseClassName,\n  sonnerDescriptionClassName,\n  sonnerTitleClassName,\n  sonnerToastClassName,\n  sonnerViewportClassName,\n} from \"./view\";\n\nexport {\n  sonnerActionClassName,\n  sonnerCloseClassName,\n  sonnerDescriptionClassName,\n  sonnerTitleClassName,\n  sonnerToastClassName,\n  sonnerViewportClassName,\n} from \"./view\";\n\nexport type ToastConfig<ParentMessage> = Readonly<{\n  title: string;\n  description?: string | undefined;\n  action?: Html | undefined;\n  onClose?: ParentMessage | undefined;\n  className?: string | undefined;\n}>;\n\nexport type ViewportConfig = Readonly<{\n  children: readonly Html[];\n  className?: string | undefined;\n}>;\n\nconst classNames = (base: string, className?: string): string =>\n  [base, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const viewportView = <ParentMessage>({\n  children,\n  className,\n}: ViewportConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.Attribute(\"aria-live\", \"polite\"),\n      h.Attribute(\"aria-atomic\", \"true\"),\n      h.DataAttribute(\"slot\", \"sonner-viewport\"),\n      h.Class(classNames(sonnerViewportClassName, className)),\n    ],\n    children\n  );\n};\n\nexport const toastView = <ParentMessage>({\n  title,\n  description,\n  action,\n  onClose,\n  className,\n}: ToastConfig<ParentMessage>): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.Attribute(\"role\", \"status\"),\n      h.DataAttribute(\"slot\", \"sonner-toast\"),\n      h.Class(classNames(`${sonnerToastClassName} relative`, className)),\n    ],\n    [\n      h.div(\n        [\n          h.DataAttribute(\"slot\", \"sonner-title\"),\n          h.Class(sonnerTitleClassName),\n        ],\n        [title]\n      ),\n      description === undefined\n        ? h.empty\n        : h.div(\n            [\n              h.DataAttribute(\"slot\", \"sonner-description\"),\n              h.Class(sonnerDescriptionClassName),\n            ],\n            [description]\n          ),\n      action === undefined ? h.empty : action,\n      onClose === undefined\n        ? h.empty\n        : h.button(\n            [\n              h.Type(\"button\"),\n              h.AriaLabel(\"Dismiss toast\"),\n              h.OnClick(onClose),\n              h.DataAttribute(\"slot\", \"sonner-close\"),\n              h.Class(sonnerCloseClassName),\n            ],\n            [\"x\"]\n          ),\n    ]\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/sonner/view.ts",
+      "target": "src/ui/sonner/view.ts",
+      "type": "registry:ui",
+      "content": "export const sonnerViewportClassName =\n  \"fixed bottom-4 right-4 z-50 flex w-full max-w-sm flex-col gap-2\";\nexport const sonnerToastClassName =\n  \"rounded-lg border border-gray-200 bg-white p-4 text-sm shadow-lg\";\nexport const sonnerTitleClassName = \"font-semibold text-gray-950\";\nexport const sonnerDescriptionClassName = \"mt-1 text-gray-600\";\nexport const sonnerActionClassName =\n  \"mt-3 rounded-md bg-gray-950 px-3 py-1.5 text-xs font-medium text-white\";\nexport const sonnerCloseClassName =\n  \"absolute right-2 top-2 rounded-sm p-1 text-gray-500 hover:text-gray-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600\";\n"
+    },
+    {
+      "path": "registry/default/ui/sonner/sonner.scene.test.ts",
+      "target": "src/ui/sonner/sonner.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Sonner from \"./index\";\n\nconst view = (show: boolean): Html =>\n  Sonner.viewportView<string>({\n    children: show\n      ? [\n          Sonner.toastView<string>({\n            title: \"Event has been created\",\n            description: \"Sunday, December 03, 2023 at 9:00 AM\",\n            onClose: \"close\",\n          }),\n        ]\n      : [],\n  });\n\ndescribe(\"Sonner registry view\", () => {\n  test(\"renders an aria-live toast stack\", () => {\n    Scene.scene(\n      {\n        update: (model: boolean): readonly [boolean, []] => [model, []],\n        view,\n      },\n      Scene.with(true),\n      Scene.expect(Scene.text(\"Event has been created\")).toExist(),\n      Scene.expect(Scene.role(\"status\")).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Dismiss toast\" })).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Sonner",
+      "stateful": false,
+      "origin": "shadcn",
+      "artifact": "component"
+    }
+  }
+}

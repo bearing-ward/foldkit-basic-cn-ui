@@ -1,0 +1,18 @@
+import { Scene } from "foldkit";
+import { describe, test } from "vitest";
+
+import { init, update, view } from "./main";
+
+describe("breadcrumb-separator example", () => {
+  test("renders the shadcn Breadcrumb Separator example", () => {
+    const [model] = init();
+
+    Scene.scene(
+      { update, view },
+      Scene.with(model),
+      Scene.expect(Scene.role("navigation", { name: "breadcrumb" })).toExist(),
+      Scene.expect(Scene.text("/")).toExist(),
+      Scene.expect(Scene.text("/")).not.toHaveHandler("click")
+    );
+  });
+});

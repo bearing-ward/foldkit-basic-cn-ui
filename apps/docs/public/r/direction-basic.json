@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction-basic",
+  "type": "registry:example",
+  "title": "Direction Basic",
+  "description": "A runnable Foldkit example showing the shadcn Direction provider preview with LTR and RTL switching.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["direction"],
+  "files": [
+    {
+      "path": "registry/default/examples/direction-basic/main.ts",
+      "target": "src/examples/direction-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Direction from \"../../ui/direction\";\n\n// MODEL\n\nexport const DirectionValue = S.Union([S.Literal(\"ltr\"), S.Literal(\"rtl\")]);\nexport const Model = S.Struct({ direction: DirectionValue });\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const SelectedDirection = m(\"SelectedDirection\", {\n  direction: DirectionValue,\n});\n\nexport const Message = S.Union([SelectedDirection]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ direction: \"rtl\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      SelectedDirection: ({ direction }) => [\n        evo(model, { direction: () => direction }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-4\")],\n    [\n      h.div(\n        [h.Class(Direction.directionControlsClassName)],\n        [\n          Direction.buttonView<Message>({\n            direction: \"ltr\",\n            currentDirection: model.direction,\n            label: \"Use left to right direction\",\n            onClick: SelectedDirection({ direction: \"ltr\" }),\n          }),\n          Direction.buttonView<Message>({\n            direction: \"rtl\",\n            currentDirection: model.direction,\n            label: \"Use right to left direction\",\n            onClick: SelectedDirection({ direction: \"rtl\" }),\n          }),\n        ]\n      ),\n      Direction.view<Message>({\n        direction: model.direction,\n        className: Direction.directionPreviewClassName,\n        children: [\n          h.div(\n            [h.Class(Direction.directionCardClassName)],\n            [\n              h.h3(\n                [h.Class(\"text-lg font-semibold\")],\n                [\n                  model.direction === \"rtl\"\n                    ? \"تسجيل الدخول إلى حسابك\"\n                    : \"Sign in to your account\",\n                ]\n              ),\n              h.p(\n                [h.Class(\"text-sm text-gray-600\")],\n                [\n                  model.direction === \"rtl\"\n                    ? \"أدخل بريدك الإلكتروني أدناه لتسجيل الدخول إلى حسابك\"\n                    : \"Enter your email below to sign in to your account\",\n                ]\n              ),\n              h.div(\n                [h.Class(\"grid gap-2\")],\n                [\n                  h.label(\n                    [h.Class(\"text-sm font-medium\")],\n                    [model.direction === \"rtl\" ? \"البريد الإلكتروني\" : \"Email\"]\n                  ),\n                  h.input([\n                    h.Type(\"email\"),\n                    h.Value(\"m@example.com\"),\n                    h.Class(\n                      \"h-9 rounded-md border border-gray-300 bg-white px-3 text-sm\"\n                    ),\n                  ]),\n                ]\n              ),\n              h.button(\n                [\n                  h.Type(\"button\"),\n                  h.Class(\n                    \"inline-flex h-9 items-center rounded-md bg-gray-950 px-4 text-sm font-medium text-white\"\n                  ),\n                ],\n                [model.direction === \"rtl\" ? \"تسجيل الدخول\" : \"Sign in\"]\n              ),\n            ]\n          ),\n        ],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/direction-basic/direction-basic.scene.test.ts",
+      "target": "src/examples/direction-basic/direction-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"direction-basic example\", () => {\n  test(\"switches between RTL and LTR direction\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"تسجيل الدخول إلى حسابك\")).toExist(),\n      Scene.click(\n        Scene.role(\"button\", { name: \"Use left to right direction\" })\n      ),\n      Scene.expect(Scene.text(\"Sign in to your account\")).toExist(),\n      Scene.click(\n        Scene.role(\"button\", { name: \"Use right to left direction\" })\n      ),\n      Scene.expect(Scene.text(\"تسجيل الدخول إلى حسابك\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Direction",
+      "example": "basic"
+    }
+  }
+}

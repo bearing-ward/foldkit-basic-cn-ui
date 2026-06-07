@@ -1,5 +1,11 @@
 # Foldkit Shadcn Registry Plan
 
+Canonical component-entry expectations now live in
+[`component-entry-contract.md`](./component-entry-contract.md). This plan
+describes the broader product direction; use the component-entry contract for
+current source, docs, examples, tests, metadata, generated artifacts, and
+completion criteria.
+
 ## Product Boundary
 
 This repository will become Foldkit CN: a Foldkit-native component registry, documentation site, example catalog, and public shadcn-style install source in one repo.

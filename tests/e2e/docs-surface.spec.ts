@@ -4,7 +4,11 @@ import { expect, test } from "@playwright/test";
 
 const registryItems = JSON.parse(
   readFileSync("registry/default/items.json", "utf-8")
-) as readonly { name: string; type: string }[];
+) as readonly {
+  name: string;
+  type: string;
+  meta?: { foldkit?: { origin?: string } };
+}[];
 const registryConfig = JSON.parse(
   readFileSync("registry/config.json", "utf-8")
 ) as { registryBaseUrl: string };
@@ -12,6 +16,15 @@ const registryConfig = JSON.parse(
 const componentNames = registryItems
   .filter((item) => item.type === "registry:ui")
   .map((item) => item.name);
+
+const baseUiComponentNames = new Set(
+  registryItems
+    .filter(
+      (item) =>
+        item.type === "registry:ui" && item.meta?.foldkit?.origin === "base-ui"
+    )
+    .map((item) => item.name)
+);
 
 const requiredSections = [
   "Overview",
@@ -25,6 +38,16 @@ const requiredSections = [
   "Accessibility",
   "Coverage",
 ];
+
+const sectionsForComponent = (componentName: string): readonly string[] =>
+  baseUiComponentNames.has(componentName)
+    ? requiredSections
+        .filter(
+          (section) =>
+            section !== "Styling" && section !== "Keyboard interaction"
+        )
+        .toSpliced(5, 0, "Anatomy")
+    : requiredSections;
 
 const viewports = [
   { name: "desktop", width: 1280, height: 900 },
@@ -41,10 +64,28 @@ for (const viewport of viewports) {
       }) => {
         await page.goto(`/docs/components/${componentName}`);
 
-        for (const section of requiredSections) {
+        for (const section of sectionsForComponent(componentName)) {
           await expect(
             page.getByRole("heading", { name: section })
           ).toBeVisible();
+        }
+
+        if (componentName === "progress") {
+          await expect(
+            page.getByText("labelStyle", { exact: true })
+          ).toBeVisible();
+          await expect(
+            page.getByText("indicatorStyle", { exact: true })
+          ).toBeVisible();
+          await expect(
+            page.getByText("data-progressing", { exact: true }).first()
+          ).toBeVisible();
+          await expect(
+            page.getByRole("heading", { name: "Styling" })
+          ).toHaveCount(0);
+          await expect(
+            page.getByRole("heading", { name: "Keyboard interaction" })
+          ).toHaveCount(0);
         }
 
         await expect(page.getByText("<registry-url>")).toHaveCount(0);

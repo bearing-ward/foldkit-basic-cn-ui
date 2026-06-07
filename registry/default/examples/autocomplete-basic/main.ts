@@ -1,0 +1,116 @@
+import { Array, Match as M, Schema as S } from "effect";
+import type { Command } from "foldkit";
+import { Submodel } from "foldkit";
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+import { m } from "foldkit/message";
+import { evo } from "foldkit/struct";
+
+import * as Autocomplete from "../../ui/autocomplete";
+
+// MODEL
+
+export const Model = S.Struct({
+  query: S.String,
+  selected: S.String,
+});
+
+export type Model = typeof Model.Type;
+
+// MESSAGE
+
+export const UpdatedQuery = m("UpdatedQuery", { value: S.String });
+export const SelectedTag = m("SelectedTag", { value: S.String });
+
+export const Message = S.Union([UpdatedQuery, SelectedTag]);
+export type Message = typeof Message.Type;
+
+// INIT
+
+export const init = (): readonly [
+  Model,
+  readonly Command.Command<Message>[],
+] => [{ query: "", selected: "" }, []];
+
+// UPDATE
+
+export const update = (
+  model: Model,
+  message: Message
+): readonly [Model, readonly Command.Command<Message>[]] =>
+  M.value(message).pipe(
+    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
+    M.tagsExhaustive({
+      UpdatedQuery: ({ value }) => [evo(model, { query: () => value }), []],
+      SelectedTag: ({ value }) => [
+        evo(model, { query: () => value, selected: () => value }),
+        [],
+      ],
+    })
+  );
+
+// VIEW
+
+const tags = [
+  "feature",
+  "bug",
+  "design",
+  "documentation",
+  "component: accordion",
+  "component: alert dialog",
+  "component: autocomplete",
+] as const;
+
+const filteredTags = (query: string): readonly string[] => {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  if (normalizedQuery === "") {
+    return tags;
+  }
+
+  return Array.filter(tags, (tag) =>
+    tag.toLowerCase().includes(normalizedQuery)
+  );
+};
+
+export const view = Submodel.defineView<Model, Message>((model): Html => {
+  const h = html<Message>();
+  const inputId = "tag-search";
+  const listId = "tag-search-list";
+  const items = filteredTags(model.query);
+
+  return Autocomplete.rootView<Message>({
+    children: [
+      Autocomplete.labelView<Message>({
+        forId: inputId,
+        children: [h.span([], ["Search tags"])],
+      }),
+      Autocomplete.inputView<Message>({
+        id: inputId,
+        value: model.query,
+        onInput: (value) => UpdatedQuery({ value }),
+        ariaLabel: "Search tags",
+        listId,
+        placeholder: "e.g. feature",
+      }),
+      Autocomplete.listView<Message>({
+        id: listId,
+        children: Array.match(items, {
+          onEmpty: () => [
+            Autocomplete.emptyView<Message>({
+              children: [h.span([], ["No tags found."])],
+            }),
+          ],
+          onNonEmpty: (nonEmptyItems) =>
+            Array.map(nonEmptyItems, (tag) =>
+              Autocomplete.itemView<Message>({
+                selected: model.selected === tag,
+                onClick: SelectedTag({ value: tag }),
+                children: [h.span([], [tag])],
+              })
+            ),
+        }),
+      }),
+    ],
+  });
+});

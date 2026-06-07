@@ -1,5 +1,17 @@
 export { view as avatar } from "./avatar";
 export { view as badge } from "./badge";
+export { view as card } from "./card";
+export { view as separator } from "./separator";
+export { view as skeleton } from "./skeleton";
+export { view as spinner } from "./spinner";
+export { view as kbd } from "./kbd";
+export { view as typography } from "./typography";
+export { view as empty } from "./empty";
+export { view as inputGroup } from "./inputGroup";
+export { view as meter } from "./meter";
+export { view as progress } from "./progress";
+export { view as scrollArea } from "./scrollArea";
+export { view as toggle } from "./toggle";
 export { view as button } from "./button";
 export { view as calendar } from "./calendar";
 export { view as checkbox } from "./checkbox";

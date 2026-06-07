@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator-basic",
+  "type": "registry:example",
+  "title": "Separator Basic",
+  "description": "A runnable Foldkit example showing the Separator component with parent-owned example state.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["separator"],
+  "files": [
+    {
+      "path": "registry/default/examples/separator-basic/main.ts",
+      "target": "src/examples/separator-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Separator from \"../../ui/separator\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = m(\"Message\");\n\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      Message: () => [model, []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-4\")],\n    [\n      h.div(\n        [h.Class(\"space-y-4\")],\n        [\n          h.div(\n            [h.Class(\"space-y-2\")],\n            [\n              h.p([h.Class(\"text-sm font-medium text-gray-950\")], [\"Account\"]),\n              Separator.view<Message>(),\n              h.p(\n                [h.Class(\"text-sm text-gray-600\")],\n                [\"Profile, billing, and team settings.\"]\n              ),\n            ]\n          ),\n          h.div(\n            [h.Class(\"flex h-8 items-center gap-4 text-sm text-gray-700\")],\n            [\n              h.span([], [\"Preview\"]),\n              Separator.view<Message>({ orientation: \"vertical\" }),\n              h.span([], [\"Code\"]),\n              Separator.view<Message>({ orientation: \"vertical\" }),\n              h.span([], [\"Deploy\"]),\n            ]\n          ),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/separator-basic/entry.ts",
+      "target": "src/examples/separator-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Separator Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/separator-basic/index.html",
+      "target": "src/examples/separator-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Separator Basic</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/default/examples/separator-basic/separator-basic.scene.test.ts",
+      "target": "src/examples/separator-basic/separator-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as SeparatorBasicExample from \"./main\";\n\ndescribe(\"Separator Basic example\", () => {\n  test(\"renders separator utility without an artificial action\", () => {\n    Scene.scene(\n      {\n        update: SeparatorBasicExample.update,\n        view: SeparatorBasicExample.view,\n      },\n      Scene.with(SeparatorBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"Account\")).toExist(),\n      Scene.expect(\n        Scene.text(\"Profile, billing, and team settings.\")\n      ).toExist(),\n      Scene.expect(Scene.text(\"Preview\")).toExist(),\n      Scene.expect(Scene.text(\"Code\")).toExist(),\n      Scene.expect(Scene.text(\"Deploy\")).toExist(),\n      Scene.expect(Scene.text(\"Preview\")).not.toHaveHandler(\"click\"),\n      Scene.expect(Scene.text(\"Code\")).not.toHaveHandler(\"click\"),\n      Scene.expect(Scene.text(\"Deploy\")).not.toHaveHandler(\"click\"),\n      Scene.expect(Scene.role(\"button\", { name: \"Toggle label\" })).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Separator",
+      "example": "basic"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-rtl",
+  "type": "registry:example",
+  "title": "Breadcrumb RTL",
+  "description": "A runnable Foldkit version of the shadcn Breadcrumb RTL example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["breadcrumb"],
+  "files": [
+    {
+      "path": "registry/default/examples/breadcrumb-rtl/main.ts",
+      "target": "src/examples/breadcrumb-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Breadcrumb from \"../../ui/breadcrumb\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Dir(\"rtl\")],\n    [\n      Breadcrumb.view<Message>([\n        { label: \"الرئيسية\", href: \"/\" },\n        { label: \"المكونات\", href: \"/components\" },\n        { label: \"مسار التنقل\" },\n      ]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/breadcrumb-rtl/entry.ts",
+      "target": "src/examples/breadcrumb-rtl/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({ title: \"Breadcrumb RTL\", body: view(model) }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/breadcrumb-rtl/index.html",
+      "target": "src/examples/breadcrumb-rtl/index.html",
+      "type": "registry:example",
+      "content": "<div id=\"root\"></div>\n<script type=\"module\" src=\"./entry.ts\"></script>\n"
+    },
+    {
+      "path": "registry/default/examples/breadcrumb-rtl/breadcrumb-rtl.scene.test.ts",
+      "target": "src/examples/breadcrumb-rtl/breadcrumb-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"breadcrumb-rtl example\", () => {\n  test(\"renders the shadcn Breadcrumb RTL example\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.expect(Scene.role(\"navigation\", { name: \"breadcrumb\" })).toExist(),\n      Scene.expect(Scene.text(\"مسار التنقل\")).toExist(),\n      Scene.expect(Scene.text(\"مسار التنقل\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Breadcrumb",
+      "example": "rtl",
+      "originExample": "breadcrumb-rtl"
+    }
+  }
+}

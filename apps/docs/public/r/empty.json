@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty",
+  "type": "registry:ui",
+  "title": "Empty",
+  "description": "A shadcn-style empty state component for explaining missing content and offering a next action.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/empty/index.ts",
+      "target": "src/ui/empty/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  emptyActionClassName,\n  emptyClassName,\n  emptyDescriptionClassName,\n  emptyIconClassName,\n  emptyTitleClassName,\n} from \"./view\";\n\nexport {\n  emptyActionClassName,\n  emptyClassName,\n  emptyDescriptionClassName,\n  emptyIconClassName,\n  emptyTitleClassName,\n} from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  title: string;\n  description: string;\n  icon?: string;\n  action?: Html;\n  className?: string;\n}>;\n\nconst classNames = (base: string, className?: string): string =>\n  [base, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const view = <ParentMessage>({\n  title,\n  description,\n  icon = \"–\",\n  action,\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [h.Class(classNames(emptyClassName, className))],\n    [\n      h.div([h.Class(emptyIconClassName), h.AriaHidden(true)], [icon]),\n      h.h3([h.Class(emptyTitleClassName)], [title]),\n      h.p([h.Class(emptyDescriptionClassName)], [description]),\n      action === undefined\n        ? h.empty\n        : h.div([h.Class(emptyActionClassName)], [action]),\n    ]\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/empty/view.ts",
+      "target": "src/ui/empty/view.ts",
+      "type": "registry:ui",
+      "content": "export const emptyClassName =\n  \"flex flex-col items-center justify-center rounded-lg border border-dashed border-gray-300 bg-white p-8 text-center\";\n\nexport const emptyIconClassName =\n  \"mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-xl font-semibold text-gray-500\";\n\nexport const emptyTitleClassName = \"text-base font-semibold text-gray-950\";\n\nexport const emptyDescriptionClassName =\n  \"mt-2 max-w-sm text-sm leading-6 text-gray-600\";\n\nexport const emptyActionClassName = \"mt-5\";\n"
+    },
+    {
+      "path": "registry/default/ui/empty/empty.scene.test.ts",
+      "target": "src/ui/empty/empty.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Empty from \"./index\";\n\nconst view = (): Html =>\n  Empty.view({\n    title: \"No projects yet\",\n    description: \"Create a project to start collecting registry slices.\",\n    icon: \"+\",\n  });\n\ndescribe(\"Empty registry view\", () => {\n  test(\"renders the documented static surface\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.text(\"No projects yet\")).toExist(),\n      Scene.expect(\n        Scene.text(\"Create a project to start collecting registry slices.\")\n      ).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Empty",
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

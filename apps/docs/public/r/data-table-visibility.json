@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-table-visibility",
+  "type": "registry:example",
+  "title": "Data Table Visibility",
+  "description": "A runnable Foldkit example showing the shadcn Data Table Visibility guide topic.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["data-table"],
+  "files": [
+    {
+      "path": "registry/default/examples/data-table-visibility/main.ts",
+      "target": "src/examples/data-table-visibility/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as DataTable from \"../../ui/data-table\";\n\n// MODEL\nexport const Model = S.Struct({\n  status: S.Boolean,\n  email: S.Boolean,\n  amount: S.Boolean,\n});\nexport type Model = typeof Model.Type;\n// MESSAGE\nexport const ClickedToggleColumn = m(\"ClickedToggleColumn\", {\n  column: S.Union([\n    S.Literal(\"status\"),\n    S.Literal(\"email\"),\n    S.Literal(\"amount\"),\n  ]),\n});\nexport const Message = S.Union([ClickedToggleColumn]);\nexport type Message = typeof Message.Type;\n// INIT\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ status: true, email: true, amount: true }, []];\n// UPDATE\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedToggleColumn: ({ column }) => {\n        if (column === \"status\") {\n          return [evo(model, { status: (status) => !status }), []];\n        }\n        if (column === \"email\") {\n          return [evo(model, { email: (email) => !email }), []];\n        }\n        return [evo(model, { amount: (amount) => !amount }), []];\n      },\n    })\n  );\n// VIEW\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const button = (column: \"status\" | \"email\" | \"amount\", label: string): Html =>\n    h.button(\n      [\n        h.Type(\"button\"),\n        h.AriaLabel(`Toggle ${column} column`),\n        h.Class(DataTable.dataTableButtonClassName),\n        h.OnClick(ClickedToggleColumn({ column })),\n      ],\n      [label]\n    );\n  return h.div(\n    [h.Class(\"space-y-4\")],\n    [\n      DataTable.toolbarView<Message>({\n        children: [\n          button(\"status\", \"Status\"),\n          button(\"email\", \"Email\"),\n          button(\"amount\", \"Amount\"),\n        ],\n      }),\n      DataTable.paymentsTableView<Message>({\n        payments: DataTable.payments.slice(0, 5),\n        visibleColumns: model,\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/data-table-visibility/data-table-visibility.scene.test.ts",
+      "target": "src/examples/data-table-visibility/data-table-visibility.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"data-table-visibility example\", () => {\n  test(\"renders the shadcn Data Table Visibility example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Amount\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Toggle amount column\" })),\n      Scene.expect(Scene.text(\"$100.00\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "DataTable",
+      "example": "visibility"
+    }
+  }
+}

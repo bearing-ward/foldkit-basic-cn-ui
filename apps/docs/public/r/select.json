@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Select",
       "primitive": "Ui.Select",
-      "stateful": false,
+      "stateful": true,
       "origin": "foldkit",
       "artifact": "primitive-backed-component"
     }

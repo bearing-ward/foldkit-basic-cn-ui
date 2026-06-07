@@ -39,6 +39,7 @@ export type DemoColumn = typeof DemoColumn.Type;
 export const UiModel = S.Struct({
   mobileMenuDialog: Dialog.Model,
   buttonClickCount: S.Number,
+  toggleFavoriteDemoPressed: S.Boolean,
   inputDemoValue: S.String,
   textareaDemoValue: S.String,
   fieldsetInputValue: S.String,

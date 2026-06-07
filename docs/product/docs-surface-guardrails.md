@@ -1,5 +1,10 @@
 # Docs Surface Guardrails
 
+Canonical component-entry expectations now live in
+[`component-entry-contract.md`](./component-entry-contract.md). This file is an
+implementation guardrail companion for docs-page layout tests; if it conflicts
+with the canonical contract, update this file to match the contract.
+
 ## Component Docs Page
 
 Every registry component docs page must expose the same core section set:

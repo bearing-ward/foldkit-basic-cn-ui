@@ -1,26 +1,75 @@
-import clsx from "clsx";
 import { Effect, Match as M, Schema as S, pipe } from "effect";
-import type { Runtime, Submodel } from "foldkit";
+import type { Runtime } from "foldkit";
 import { Calendar, Command, Route, Subscription, Ui } from "foldkit";
-import type { Document, Html } from "foldkit/html";
-import { html } from "foldkit/html";
 import { m } from "foldkit/message";
 import { UrlRequest, load, pushUrl } from "foldkit/navigation";
 import { literal, r, slash } from "foldkit/route";
 import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
+import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
+import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
+import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
+import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
+import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
+import * as AspectRatioRtlExample from "../registry/default/examples/aspect-ratio-rtl/main";
+import * as AspectRatioSquareExample from "../registry/default/examples/aspect-ratio-square/main";
+import * as AutocompleteBasicExample from "../registry/default/examples/autocomplete-basic/main";
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
+import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
+import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
+import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
+import * as BreadcrumbLinkExample from "../registry/default/examples/breadcrumb-link/main";
+import * as BreadcrumbRtlExample from "../registry/default/examples/breadcrumb-rtl/main";
+import * as BreadcrumbSeparatorExample from "../registry/default/examples/breadcrumb-separator/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as ButtonGroupBasicExample from "../registry/default/examples/button-group-basic/main";
+import * as ButtonGroupInputGroupExample from "../registry/default/examples/button-group-input-group/main";
+import * as ButtonGroupInputExample from "../registry/default/examples/button-group-input/main";
+import * as ButtonGroupNestedExample from "../registry/default/examples/button-group-nested/main";
+import * as ButtonGroupOrientationExample from "../registry/default/examples/button-group-orientation/main";
+import * as ButtonGroupPopoverExample from "../registry/default/examples/button-group-popover/main";
+import * as ButtonGroupRtlExample from "../registry/default/examples/button-group-rtl/main";
+import * as ButtonGroupSelectExample from "../registry/default/examples/button-group-select/main";
+import * as ButtonGroupSeparatorExample from "../registry/default/examples/button-group-separator/main";
+import * as ButtonGroupSizeExample from "../registry/default/examples/button-group-size/main";
+import * as ButtonGroupSplitExample from "../registry/default/examples/button-group-split/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
+import * as CardBasicExample from "../registry/default/examples/card-basic/main";
+import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
+import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
+import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
+import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
+import * as CarouselSizesExample from "../registry/default/examples/carousel-sizes/main";
+import * as CarouselSpacingExample from "../registry/default/examples/carousel-spacing/main";
+import * as ChartAxisExample from "../registry/default/examples/chart-axis/main";
+import * as ChartBasicExample from "../registry/default/examples/chart-basic/main";
+import * as ChartGridExample from "../registry/default/examples/chart-grid/main";
+import * as ChartLegendExample from "../registry/default/examples/chart-legend/main";
+import * as ChartRtlExample from "../registry/default/examples/chart-rtl/main";
+import * as ChartTooltipExample from "../registry/default/examples/chart-tooltip/main";
 import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
+import * as CheckboxGroupBasicExample from "../registry/default/examples/checkbox-group-basic/main";
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
+import * as CollapsibleBasicExample from "../registry/default/examples/collapsible-basic/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
+import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
+import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
+import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
+import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
+import * as DataTablePaginationExample from "../registry/default/examples/data-table-pagination/main";
+import * as DataTableRowActionsExample from "../registry/default/examples/data-table-row-actions/main";
+import * as DataTableRowSelectionExample from "../registry/default/examples/data-table-row-selection/main";
+import * as DataTableSortingExample from "../registry/default/examples/data-table-sorting/main";
+import * as DataTableVisibilityExample from "../registry/default/examples/data-table-visibility/main";
 import * as DatePickerBasicExample from "../registry/default/examples/date-picker-basic/main";
 import * as DatePickerBoundsExample from "../registry/default/examples/date-picker-bounds/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -28,61 +77,267 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as DirectionBasicExample from "../registry/default/examples/direction-basic/main";
 import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
 import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
 import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-drop-basic/main";
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
+import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
+import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as EmptyBasicExample from "../registry/default/examples/empty-basic/main";
+import * as EmptyInputGroupExample from "../registry/default/examples/empty-input-group/main";
+import * as FieldBasicExample from "../registry/default/examples/field-basic/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
 import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
+import * as FormBasicExample from "../registry/default/examples/form-basic/main";
+import * as HoverCardBasicExample from "../registry/default/examples/hover-card-basic/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
+import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
+import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
+import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
+import * as ItemGroupExample from "../registry/default/examples/item-group/main";
+import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
+import * as ItemIconExample from "../registry/default/examples/item-icon/main";
+import * as ItemImageExample from "../registry/default/examples/item-image/main";
+import * as ItemLinkExample from "../registry/default/examples/item-link/main";
+import * as ItemRtlExample from "../registry/default/examples/item-rtl/main";
+import * as ItemSizeExample from "../registry/default/examples/item-size/main";
+import * as ItemVariantExample from "../registry/default/examples/item-variant/main";
+import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
+import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
+import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
+import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
+import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
+import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
+import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
+import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
+import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
+import * as ProgressBasicExample from "../registry/default/examples/progress-basic/main";
+import * as RadioBasicExample from "../registry/default/examples/radio-basic/main";
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
+import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
+import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-area-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
+import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
+import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
+import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
 import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
+import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
+import * as TableBasicExample from "../registry/default/examples/table-basic/main";
 import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main";
 import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
+import * as ToggleBasicExample from "../registry/default/examples/toggle-basic/main";
+import * as ToggleGroupBasicExample from "../registry/default/examples/toggle-group-basic/main";
+import * as ToolbarBasicExample from "../registry/default/examples/toolbar-basic/main";
 import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
 import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
+import * as TypographyBasicExample from "../registry/default/examples/typography-basic/main";
 import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
 import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
-import * as Icon from "./icon";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
 import { UiModel } from "./ui/model";
 import * as UiSubscriptions from "./ui/subscriptions";
 import { uiUpdate } from "./ui/update";
-import * as View from "./ui/view";
 
 // ROUTE
 
 export const HomeRoute = r("Home");
+export const AccordionDocsRoute = r("AccordionDocs");
+export const AccordionBasicExampleRoute = r("AccordionBasicExample");
+export const AccordionMultipleExampleRoute = r("AccordionMultipleExample");
+export const AlertDocsRoute = r("AlertDocs");
+export const AlertBasicExampleRoute = r("AlertBasicExample");
+export const AlertDestructiveExampleRoute = r("AlertDestructiveExample");
+export const AspectRatioDocsRoute = r("AspectRatioDocs");
+export const AspectRatioBasicExampleRoute = r("AspectRatioBasicExample");
+export const AspectRatioSquareExampleRoute = r("AspectRatioSquareExample");
+export const AspectRatioPortraitExampleRoute = r("AspectRatioPortraitExample");
+export const AspectRatioRtlExampleRoute = r("AspectRatioRtlExample");
+export const BreadcrumbDocsRoute = r("BreadcrumbDocs");
+export const BreadcrumbBasicExampleRoute = r("BreadcrumbBasicExample");
+export const BreadcrumbSeparatorExampleRoute = r("BreadcrumbSeparatorExample");
+export const BreadcrumbDropdownExampleRoute = r("BreadcrumbDropdownExample");
+export const BreadcrumbCollapsedExampleRoute = r("BreadcrumbCollapsedExample");
+export const BreadcrumbLinkExampleRoute = r("BreadcrumbLinkExample");
+export const BreadcrumbRtlExampleRoute = r("BreadcrumbRtlExample");
+export const ButtonGroupDocsRoute = r("ButtonGroupDocs");
+export const ButtonGroupBasicExampleRoute = r("ButtonGroupBasicExample");
+export const ButtonGroupOrientationExampleRoute = r(
+  "ButtonGroupOrientationExample"
+);
+export const ButtonGroupSizeExampleRoute = r("ButtonGroupSizeExample");
+export const ButtonGroupNestedExampleRoute = r("ButtonGroupNestedExample");
+export const ButtonGroupSeparatorExampleRoute = r(
+  "ButtonGroupSeparatorExample"
+);
+export const ButtonGroupSplitExampleRoute = r("ButtonGroupSplitExample");
+export const ButtonGroupInputExampleRoute = r("ButtonGroupInputExample");
+export const ButtonGroupInputGroupExampleRoute = r(
+  "ButtonGroupInputGroupExample"
+);
+export const ButtonGroupSelectExampleRoute = r("ButtonGroupSelectExample");
+export const ButtonGroupPopoverExampleRoute = r("ButtonGroupPopoverExample");
+export const ButtonGroupRtlExampleRoute = r("ButtonGroupRtlExample");
+export const AlertDialogDocsRoute = r("AlertDialogDocs");
+export const AlertDialogBasicExampleRoute = r("AlertDialogBasicExample");
+export const DrawerDocsRoute = r("DrawerDocs");
+export const DrawerBasicExampleRoute = r("DrawerBasicExample");
+export const ContextMenuDocsRoute = r("ContextMenuDocs");
+export const ContextMenuBasicExampleRoute = r("ContextMenuBasicExample");
+export const MenubarDocsRoute = r("MenubarDocs");
+export const MenubarBasicExampleRoute = r("MenubarBasicExample");
+export const NavigationMenuDocsRoute = r("NavigationMenuDocs");
+export const NavigationMenuBasicExampleRoute = r("NavigationMenuBasicExample");
+export const OtpFieldDocsRoute = r("OtpFieldDocs");
+export const OtpFieldBasicExampleRoute = r("OtpFieldBasicExample");
+export const PreviewCardDocsRoute = r("PreviewCardDocs");
+export const PreviewCardBasicExampleRoute = r("PreviewCardBasicExample");
+export const CollapsibleDocsRoute = r("CollapsibleDocs");
+export const CollapsibleBasicExampleRoute = r("CollapsibleBasicExample");
+export const FieldDocsRoute = r("FieldDocs");
+export const FieldBasicExampleRoute = r("FieldBasicExample");
+export const NumberFieldDocsRoute = r("NumberFieldDocs");
+export const NumberFieldBasicExampleRoute = r("NumberFieldBasicExample");
+export const FormDocsRoute = r("FormDocs");
+export const FormBasicExampleRoute = r("FormBasicExample");
+export const AutocompleteDocsRoute = r("AutocompleteDocs");
+export const AutocompleteBasicExampleRoute = r("AutocompleteBasicExample");
 export const AvatarRoute = r("Avatar");
 export const AvatarDocsRoute = r("AvatarDocs");
 export const AvatarBasicExampleRoute = r("AvatarBasicExample");
 export const BadgeRoute = r("Badge");
 export const BadgeDocsRoute = r("BadgeDocs");
 export const BadgeBasicExampleRoute = r("BadgeBasicExample");
+export const BadgeSpinnerExampleRoute = r("BadgeSpinnerExample");
+export const CarouselDocsRoute = r("CarouselDocs");
+export const CarouselBasicExampleRoute = r("CarouselBasicExample");
+export const CarouselSizesExampleRoute = r("CarouselSizesExample");
+export const CarouselSpacingExampleRoute = r("CarouselSpacingExample");
+export const CarouselOrientationExampleRoute = r("CarouselOrientationExample");
+export const CarouselApiExampleRoute = r("CarouselApiExample");
+export const CarouselRtlExampleRoute = r("CarouselRtlExample");
+export const ChartDocsRoute = r("ChartDocs");
+export const ChartBasicExampleRoute = r("ChartBasicExample");
+export const ChartGridExampleRoute = r("ChartGridExample");
+export const ChartAxisExampleRoute = r("ChartAxisExample");
+export const ChartTooltipExampleRoute = r("ChartTooltipExample");
+export const ChartLegendExampleRoute = r("ChartLegendExample");
+export const ChartRtlExampleRoute = r("ChartRtlExample");
+export const CommandDocsRoute = r("CommandDocs");
+export const CommandBasicExampleRoute = r("CommandBasicExample");
+export const DropdownMenuDocsRoute = r("DropdownMenuDocs");
+export const DropdownMenuBasicExampleRoute = r("DropdownMenuBasicExample");
+export const HoverCardDocsRoute = r("HoverCardDocs");
+export const HoverCardBasicExampleRoute = r("HoverCardBasicExample");
+export const InputOtpDocsRoute = r("InputOtpDocs");
+export const InputOtpBasicExampleRoute = r("InputOtpBasicExample");
+export const NativeSelectDocsRoute = r("NativeSelectDocs");
+export const NativeSelectBasicExampleRoute = r("NativeSelectBasicExample");
+export const SheetDocsRoute = r("SheetDocs");
+export const SheetBasicExampleRoute = r("SheetBasicExample");
+export const SonnerDocsRoute = r("SonnerDocs");
+export const SonnerBasicExampleRoute = r("SonnerBasicExample");
+export const DataTableDocsRoute = r("DataTableDocs");
+export const DataTableBasicExampleRoute = r("DataTableBasicExample");
+export const DataTableRowActionsExampleRoute = r("DataTableRowActionsExample");
+export const DataTablePaginationExampleRoute = r("DataTablePaginationExample");
+export const DataTableSortingExampleRoute = r("DataTableSortingExample");
+export const DataTableFilteringExampleRoute = r("DataTableFilteringExample");
+export const DataTableVisibilityExampleRoute = r("DataTableVisibilityExample");
+export const DataTableRowSelectionExampleRoute = r(
+  "DataTableRowSelectionExample"
+);
+export const DirectionDocsRoute = r("DirectionDocs");
+export const DirectionBasicExampleRoute = r("DirectionBasicExample");
+export const ItemDocsRoute = r("ItemDocs");
+export const ItemAvatarExampleRoute = r("ItemAvatarExample");
+export const ItemBasicExampleRoute = r("ItemBasicExample");
+export const ItemGroupExampleRoute = r("ItemGroupExample");
+export const ItemHeaderExampleRoute = r("ItemHeaderExample");
+export const ItemIconExampleRoute = r("ItemIconExample");
+export const ItemImageExampleRoute = r("ItemImageExample");
+export const ItemLinkExampleRoute = r("ItemLinkExample");
+export const ItemRtlExampleRoute = r("ItemRtlExample");
+export const ItemSizeExampleRoute = r("ItemSizeExample");
+export const ItemVariantExampleRoute = r("ItemVariantExample");
+export const LabelDocsRoute = r("LabelDocs");
+export const LabelBasicExampleRoute = r("LabelBasicExample");
+export const PaginationDocsRoute = r("PaginationDocs");
+export const PaginationBasicExampleRoute = r("PaginationBasicExample");
+export const ResizableDocsRoute = r("ResizableDocs");
+export const ResizableBasicExampleRoute = r("ResizableBasicExample");
+export const SidebarDocsRoute = r("SidebarDocs");
+export const SidebarBasicExampleRoute = r("SidebarBasicExample");
+export const TableDocsRoute = r("TableDocs");
+export const TableBasicExampleRoute = r("TableBasicExample");
+export const CardRoute = r("Card");
+export const CardDocsRoute = r("CardDocs");
+export const CardBasicExampleRoute = r("CardBasicExample");
+export const SeparatorRoute = r("Separator");
+export const SeparatorDocsRoute = r("SeparatorDocs");
+export const SeparatorBasicExampleRoute = r("SeparatorBasicExample");
+export const SkeletonRoute = r("Skeleton");
+export const SkeletonDocsRoute = r("SkeletonDocs");
+export const SkeletonBasicExampleRoute = r("SkeletonBasicExample");
+export const SpinnerRoute = r("Spinner");
+export const SpinnerDocsRoute = r("SpinnerDocs");
+export const KbdRoute = r("Kbd");
+export const KbdDocsRoute = r("KbdDocs");
+export const KbdBasicExampleRoute = r("KbdBasicExample");
+export const KbdInputGroupExampleRoute = r("KbdInputGroupExample");
+export const TypographyRoute = r("Typography");
+export const TypographyDocsRoute = r("TypographyDocs");
+export const TypographyBasicExampleRoute = r("TypographyBasicExample");
+export const EmptyRoute = r("Empty");
+export const EmptyDocsRoute = r("EmptyDocs");
+export const EmptyBasicExampleRoute = r("EmptyBasicExample");
+export const EmptyInputGroupExampleRoute = r("EmptyInputGroupExample");
 export const ButtonRoute = r("Button");
 export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
 export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
+export const InputGroupRoute = r("InputGroup");
+export const InputGroupDocsRoute = r("InputGroupDocs");
+export const MeterRoute = r("Meter");
+export const MeterDocsRoute = r("MeterDocs");
+export const MeterBasicExampleRoute = r("MeterBasicExample");
+export const ScrollAreaRoute = r("ScrollArea");
+export const ScrollAreaDocsRoute = r("ScrollAreaDocs");
+export const ScrollAreaBasicExampleRoute = r("ScrollAreaBasicExample");
+export const ToggleRoute = r("Toggle");
+export const ToggleDocsRoute = r("ToggleDocs");
+export const ToggleBasicExampleRoute = r("ToggleBasicExample");
+export const ToggleGroupDocsRoute = r("ToggleGroupDocs");
+export const ToggleGroupBasicExampleRoute = r("ToggleGroupBasicExample");
+export const RadioDocsRoute = r("RadioDocs");
+export const RadioBasicExampleRoute = r("RadioBasicExample");
+export const ToolbarDocsRoute = r("ToolbarDocs");
+export const ToolbarBasicExampleRoute = r("ToolbarBasicExample");
+export const ProgressRoute = r("Progress");
+export const ProgressDocsRoute = r("ProgressDocs");
+export const ProgressBasicExampleRoute = r("ProgressBasicExample");
 export const CalendarRoute = r("Calendar");
 export const CalendarDocsRoute = r("CalendarDocs");
 export const CalendarBasicExampleRoute = r("CalendarBasicExample");
@@ -90,6 +345,8 @@ export const CalendarBoundsExampleRoute = r("CalendarBoundsExample");
 export const CheckboxRoute = r("Checkbox");
 export const CheckboxDocsRoute = r("CheckboxDocs");
 export const CheckboxBasicExampleRoute = r("CheckboxBasicExample");
+export const CheckboxGroupDocsRoute = r("CheckboxGroupDocs");
+export const CheckboxGroupBasicExampleRoute = r("CheckboxGroupBasicExample");
 export const CheckboxIndeterminateExampleRoute = r(
   "CheckboxIndeterminateExample"
 );
@@ -185,16 +442,172 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 
 const AppRoute = S.Union([
   HomeRoute,
+  AccordionDocsRoute,
+  AccordionBasicExampleRoute,
+  AccordionMultipleExampleRoute,
+  AlertDocsRoute,
+  AlertBasicExampleRoute,
+  AlertDestructiveExampleRoute,
+  AspectRatioDocsRoute,
+  AspectRatioBasicExampleRoute,
+  AspectRatioSquareExampleRoute,
+  AspectRatioPortraitExampleRoute,
+  AspectRatioRtlExampleRoute,
+  BreadcrumbDocsRoute,
+  BreadcrumbBasicExampleRoute,
+  BreadcrumbSeparatorExampleRoute,
+  BreadcrumbDropdownExampleRoute,
+  BreadcrumbCollapsedExampleRoute,
+  BreadcrumbLinkExampleRoute,
+  BreadcrumbRtlExampleRoute,
+  ButtonGroupDocsRoute,
+  ButtonGroupBasicExampleRoute,
+  ButtonGroupOrientationExampleRoute,
+  ButtonGroupSizeExampleRoute,
+  ButtonGroupNestedExampleRoute,
+  ButtonGroupSeparatorExampleRoute,
+  ButtonGroupSplitExampleRoute,
+  ButtonGroupInputExampleRoute,
+  ButtonGroupInputGroupExampleRoute,
+  ButtonGroupSelectExampleRoute,
+  ButtonGroupPopoverExampleRoute,
+  ButtonGroupRtlExampleRoute,
+  AlertDialogDocsRoute,
+  AlertDialogBasicExampleRoute,
+  DrawerDocsRoute,
+  DrawerBasicExampleRoute,
+  ContextMenuDocsRoute,
+  ContextMenuBasicExampleRoute,
+  MenubarDocsRoute,
+  MenubarBasicExampleRoute,
+  NavigationMenuDocsRoute,
+  NavigationMenuBasicExampleRoute,
+  OtpFieldDocsRoute,
+  OtpFieldBasicExampleRoute,
+  PreviewCardDocsRoute,
+  PreviewCardBasicExampleRoute,
+  CollapsibleDocsRoute,
+  CollapsibleBasicExampleRoute,
+  FieldDocsRoute,
+  FieldBasicExampleRoute,
+  NumberFieldDocsRoute,
+  NumberFieldBasicExampleRoute,
+  FormDocsRoute,
+  FormBasicExampleRoute,
+  AutocompleteDocsRoute,
+  AutocompleteBasicExampleRoute,
   AvatarRoute,
   AvatarDocsRoute,
   AvatarBasicExampleRoute,
   BadgeRoute,
   BadgeDocsRoute,
   BadgeBasicExampleRoute,
+  BadgeSpinnerExampleRoute,
+  CarouselDocsRoute,
+  CarouselBasicExampleRoute,
+  CarouselSizesExampleRoute,
+  CarouselSpacingExampleRoute,
+  CarouselOrientationExampleRoute,
+  CarouselApiExampleRoute,
+  CarouselRtlExampleRoute,
+  ChartDocsRoute,
+  ChartBasicExampleRoute,
+  ChartGridExampleRoute,
+  ChartAxisExampleRoute,
+  ChartTooltipExampleRoute,
+  ChartLegendExampleRoute,
+  ChartRtlExampleRoute,
+  CommandDocsRoute,
+  CommandBasicExampleRoute,
+  DropdownMenuDocsRoute,
+  DropdownMenuBasicExampleRoute,
+  HoverCardDocsRoute,
+  HoverCardBasicExampleRoute,
+  InputOtpDocsRoute,
+  InputOtpBasicExampleRoute,
+  NativeSelectDocsRoute,
+  NativeSelectBasicExampleRoute,
+  SheetDocsRoute,
+  SheetBasicExampleRoute,
+  SonnerDocsRoute,
+  SonnerBasicExampleRoute,
+  DataTableDocsRoute,
+  DataTableBasicExampleRoute,
+  DataTableRowActionsExampleRoute,
+  DataTablePaginationExampleRoute,
+  DataTableSortingExampleRoute,
+  DataTableFilteringExampleRoute,
+  DataTableVisibilityExampleRoute,
+  DataTableRowSelectionExampleRoute,
+  DirectionDocsRoute,
+  DirectionBasicExampleRoute,
+  ItemDocsRoute,
+  ItemAvatarExampleRoute,
+  ItemBasicExampleRoute,
+  ItemGroupExampleRoute,
+  ItemHeaderExampleRoute,
+  ItemIconExampleRoute,
+  ItemImageExampleRoute,
+  ItemLinkExampleRoute,
+  ItemRtlExampleRoute,
+  ItemSizeExampleRoute,
+  ItemVariantExampleRoute,
+  LabelDocsRoute,
+  LabelBasicExampleRoute,
+  PaginationDocsRoute,
+  PaginationBasicExampleRoute,
+  ResizableDocsRoute,
+  ResizableBasicExampleRoute,
+  SidebarDocsRoute,
+  SidebarBasicExampleRoute,
+  TableDocsRoute,
+  TableBasicExampleRoute,
+  CardRoute,
+  CardDocsRoute,
+  CardBasicExampleRoute,
+  SeparatorRoute,
+  SeparatorDocsRoute,
+  SeparatorBasicExampleRoute,
+  SkeletonRoute,
+  SkeletonDocsRoute,
+  SkeletonBasicExampleRoute,
+  SpinnerRoute,
+  SpinnerDocsRoute,
+  KbdRoute,
+  KbdDocsRoute,
+  KbdBasicExampleRoute,
+  KbdInputGroupExampleRoute,
+  TypographyRoute,
+  TypographyDocsRoute,
+  TypographyBasicExampleRoute,
+  EmptyRoute,
+  EmptyDocsRoute,
+  EmptyBasicExampleRoute,
+  EmptyInputGroupExampleRoute,
   ButtonRoute,
   ButtonDocsRoute,
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
+  InputGroupRoute,
+  InputGroupDocsRoute,
+  MeterRoute,
+  MeterDocsRoute,
+  MeterBasicExampleRoute,
+  ScrollAreaRoute,
+  ScrollAreaDocsRoute,
+  ScrollAreaBasicExampleRoute,
+  ToggleRoute,
+  ToggleDocsRoute,
+  ToggleBasicExampleRoute,
+  ToggleGroupDocsRoute,
+  ToggleGroupBasicExampleRoute,
+  RadioDocsRoute,
+  RadioBasicExampleRoute,
+  ToolbarDocsRoute,
+  ToolbarBasicExampleRoute,
+  ProgressRoute,
+  ProgressDocsRoute,
+  ProgressBasicExampleRoute,
   CalendarRoute,
   CalendarDocsRoute,
   CalendarBasicExampleRoute,
@@ -202,6 +615,8 @@ const AppRoute = S.Union([
   CheckboxRoute,
   CheckboxDocsRoute,
   CheckboxBasicExampleRoute,
+  CheckboxGroupDocsRoute,
+  CheckboxGroupBasicExampleRoute,
   CheckboxIndeterminateExampleRoute,
   ComboboxRoute,
   ComboboxDocsRoute,
@@ -292,17 +707,600 @@ const AppRoute = S.Union([
   NotFoundRoute,
 ]);
 
-type AppRoute = typeof AppRoute.Type;
+export type AppRoute = typeof AppRoute.Type;
 
-const homeRouter = pipe(Route.root, Route.mapTo(HomeRoute));
-const avatarRouter = pipe(literal("avatar"), Route.mapTo(AvatarRoute));
-const avatarDocsRouter = pipe(
+export const homeRouter = pipe(Route.root, Route.mapTo(HomeRoute));
+export const alertDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert")),
+  Route.mapTo(AlertDocsRoute)
+);
+export const alertBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AlertBasicExampleRoute)
+);
+export const alertBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("alert-basic")),
+  Route.mapTo(AlertBasicExampleRoute)
+);
+export const alertDestructiveExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert")),
+  slash(literal("examples")),
+  slash(literal("destructive")),
+  Route.mapTo(AlertDestructiveExampleRoute)
+);
+export const alertDestructiveStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("alert-destructive")),
+  Route.mapTo(AlertDestructiveExampleRoute)
+);
+export const aspectRatioDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("aspect-ratio")),
+  Route.mapTo(AspectRatioDocsRoute)
+);
+export const aspectRatioBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("aspect-ratio")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AspectRatioBasicExampleRoute)
+);
+export const aspectRatioBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("aspect-ratio-basic")),
+  Route.mapTo(AspectRatioBasicExampleRoute)
+);
+export const aspectRatioSquareExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("aspect-ratio")),
+  slash(literal("examples")),
+  slash(literal("square")),
+  Route.mapTo(AspectRatioSquareExampleRoute)
+);
+export const aspectRatioSquareStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("aspect-ratio-square")),
+  Route.mapTo(AspectRatioSquareExampleRoute)
+);
+export const aspectRatioPortraitExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("aspect-ratio")),
+  slash(literal("examples")),
+  slash(literal("portrait")),
+  Route.mapTo(AspectRatioPortraitExampleRoute)
+);
+export const aspectRatioPortraitStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("aspect-ratio-portrait")),
+  Route.mapTo(AspectRatioPortraitExampleRoute)
+);
+export const aspectRatioRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("aspect-ratio")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(AspectRatioRtlExampleRoute)
+);
+export const aspectRatioRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("aspect-ratio-rtl")),
+  Route.mapTo(AspectRatioRtlExampleRoute)
+);
+export const breadcrumbDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  Route.mapTo(BreadcrumbDocsRoute)
+);
+export const breadcrumbBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BreadcrumbBasicExampleRoute)
+);
+export const breadcrumbBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("breadcrumb-basic")),
+  Route.mapTo(BreadcrumbBasicExampleRoute)
+);
+export const breadcrumbSeparatorExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  slash(literal("examples")),
+  slash(literal("separator")),
+  Route.mapTo(BreadcrumbSeparatorExampleRoute)
+);
+export const breadcrumbSeparatorStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("breadcrumb-separator")),
+  Route.mapTo(BreadcrumbSeparatorExampleRoute)
+);
+export const breadcrumbDropdownExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  slash(literal("examples")),
+  slash(literal("dropdown")),
+  Route.mapTo(BreadcrumbDropdownExampleRoute)
+);
+export const breadcrumbDropdownStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("breadcrumb-dropdown")),
+  Route.mapTo(BreadcrumbDropdownExampleRoute)
+);
+export const breadcrumbCollapsedExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  slash(literal("examples")),
+  slash(literal("collapsed")),
+  Route.mapTo(BreadcrumbCollapsedExampleRoute)
+);
+export const breadcrumbCollapsedStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("breadcrumb-collapsed")),
+  Route.mapTo(BreadcrumbCollapsedExampleRoute)
+);
+export const breadcrumbLinkExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  slash(literal("examples")),
+  slash(literal("link")),
+  Route.mapTo(BreadcrumbLinkExampleRoute)
+);
+export const breadcrumbLinkStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("breadcrumb-link")),
+  Route.mapTo(BreadcrumbLinkExampleRoute)
+);
+export const breadcrumbRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("breadcrumb")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(BreadcrumbRtlExampleRoute)
+);
+export const breadcrumbRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("breadcrumb-rtl")),
+  Route.mapTo(BreadcrumbRtlExampleRoute)
+);
+export const buttonGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  Route.mapTo(ButtonGroupDocsRoute)
+);
+export const buttonGroupBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ButtonGroupBasicExampleRoute)
+);
+export const buttonGroupBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-basic")),
+  Route.mapTo(ButtonGroupBasicExampleRoute)
+);
+export const buttonGroupOrientationExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("orientation")),
+  Route.mapTo(ButtonGroupOrientationExampleRoute)
+);
+export const buttonGroupOrientationStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-orientation")),
+  Route.mapTo(ButtonGroupOrientationExampleRoute)
+);
+export const buttonGroupSizeExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("size")),
+  Route.mapTo(ButtonGroupSizeExampleRoute)
+);
+export const buttonGroupSizeStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-size")),
+  Route.mapTo(ButtonGroupSizeExampleRoute)
+);
+export const buttonGroupNestedExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("nested")),
+  Route.mapTo(ButtonGroupNestedExampleRoute)
+);
+export const buttonGroupNestedStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-nested")),
+  Route.mapTo(ButtonGroupNestedExampleRoute)
+);
+export const buttonGroupSeparatorExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("separator")),
+  Route.mapTo(ButtonGroupSeparatorExampleRoute)
+);
+export const buttonGroupSeparatorStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-separator")),
+  Route.mapTo(ButtonGroupSeparatorExampleRoute)
+);
+export const buttonGroupSplitExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("split")),
+  Route.mapTo(ButtonGroupSplitExampleRoute)
+);
+export const buttonGroupSplitStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-split")),
+  Route.mapTo(ButtonGroupSplitExampleRoute)
+);
+export const buttonGroupInputExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("input")),
+  Route.mapTo(ButtonGroupInputExampleRoute)
+);
+export const buttonGroupInputStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-input")),
+  Route.mapTo(ButtonGroupInputExampleRoute)
+);
+export const buttonGroupInputGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("input-group")),
+  Route.mapTo(ButtonGroupInputGroupExampleRoute)
+);
+export const buttonGroupInputGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-input-group")),
+  Route.mapTo(ButtonGroupInputGroupExampleRoute)
+);
+export const buttonGroupSelectExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("select")),
+  Route.mapTo(ButtonGroupSelectExampleRoute)
+);
+export const buttonGroupSelectStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-select")),
+  Route.mapTo(ButtonGroupSelectExampleRoute)
+);
+export const buttonGroupPopoverExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("popover")),
+  Route.mapTo(ButtonGroupPopoverExampleRoute)
+);
+export const buttonGroupPopoverStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-popover")),
+  Route.mapTo(ButtonGroupPopoverExampleRoute)
+);
+export const buttonGroupRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ButtonGroupRtlExampleRoute)
+);
+export const buttonGroupRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("button-group-rtl")),
+  Route.mapTo(ButtonGroupRtlExampleRoute)
+);
+export const alertDialogDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert-dialog")),
+  Route.mapTo(AlertDialogDocsRoute)
+);
+export const alertDialogBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert-dialog")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AlertDialogBasicExampleRoute)
+);
+export const alertDialogBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("alert-dialog-basic")),
+  Route.mapTo(AlertDialogBasicExampleRoute)
+);
+export const drawerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("drawer")),
+  Route.mapTo(DrawerDocsRoute)
+);
+export const drawerBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("drawer")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DrawerBasicExampleRoute)
+);
+export const drawerBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("drawer-basic")),
+  Route.mapTo(DrawerBasicExampleRoute)
+);
+export const contextMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("context-menu")),
+  Route.mapTo(ContextMenuDocsRoute)
+);
+export const contextMenuBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("context-menu")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ContextMenuBasicExampleRoute)
+);
+export const contextMenuBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("context-menu-basic")),
+  Route.mapTo(ContextMenuBasicExampleRoute)
+);
+export const menubarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("menubar")),
+  Route.mapTo(MenubarDocsRoute)
+);
+export const menubarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("menubar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(MenubarBasicExampleRoute)
+);
+export const menubarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("menubar-basic")),
+  Route.mapTo(MenubarBasicExampleRoute)
+);
+export const navigationMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("navigation-menu")),
+  Route.mapTo(NavigationMenuDocsRoute)
+);
+export const navigationMenuBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("navigation-menu")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(NavigationMenuBasicExampleRoute)
+);
+export const navigationMenuBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("navigation-menu-basic")),
+  Route.mapTo(NavigationMenuBasicExampleRoute)
+);
+export const otpFieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("otp-field")),
+  Route.mapTo(OtpFieldDocsRoute)
+);
+export const otpFieldBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("otp-field")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(OtpFieldBasicExampleRoute)
+);
+export const otpFieldBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("otp-field-basic")),
+  Route.mapTo(OtpFieldBasicExampleRoute)
+);
+export const previewCardDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("preview-card")),
+  Route.mapTo(PreviewCardDocsRoute)
+);
+export const previewCardBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("preview-card")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(PreviewCardBasicExampleRoute)
+);
+export const previewCardBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("preview-card-basic")),
+  Route.mapTo(PreviewCardBasicExampleRoute)
+);
+export const accordionDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("accordion")),
+  Route.mapTo(AccordionDocsRoute)
+);
+export const accordionBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("accordion")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AccordionBasicExampleRoute)
+);
+export const accordionBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("accordion-basic")),
+  Route.mapTo(AccordionBasicExampleRoute)
+);
+export const accordionMultipleExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("accordion")),
+  slash(literal("examples")),
+  slash(literal("multiple")),
+  Route.mapTo(AccordionMultipleExampleRoute)
+);
+export const accordionMultipleStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("accordion-multiple")),
+  Route.mapTo(AccordionMultipleExampleRoute)
+);
+export const collapsibleDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("collapsible")),
+  Route.mapTo(CollapsibleDocsRoute)
+);
+export const collapsibleBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("collapsible")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CollapsibleBasicExampleRoute)
+);
+export const collapsibleBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("collapsible-basic")),
+  Route.mapTo(CollapsibleBasicExampleRoute)
+);
+export const fieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("field")),
+  Route.mapTo(FieldDocsRoute)
+);
+export const fieldBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("field")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(FieldBasicExampleRoute)
+);
+export const fieldBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("field-basic")),
+  Route.mapTo(FieldBasicExampleRoute)
+);
+export const numberFieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("number-field")),
+  Route.mapTo(NumberFieldDocsRoute)
+);
+export const numberFieldBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("number-field")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(NumberFieldBasicExampleRoute)
+);
+export const numberFieldBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("number-field-basic")),
+  Route.mapTo(NumberFieldBasicExampleRoute)
+);
+export const formDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("form")),
+  Route.mapTo(FormDocsRoute)
+);
+export const formBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("form")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(FormBasicExampleRoute)
+);
+export const formBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("form-basic")),
+  Route.mapTo(FormBasicExampleRoute)
+);
+export const autocompleteDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("autocomplete")),
+  Route.mapTo(AutocompleteDocsRoute)
+);
+export const autocompleteBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("autocomplete")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(AutocompleteBasicExampleRoute)
+);
+export const autocompleteBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("autocomplete-basic")),
+  Route.mapTo(AutocompleteBasicExampleRoute)
+);
+export const avatarRouter = pipe(literal("avatar"), Route.mapTo(AvatarRoute));
+export const avatarDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("avatar")),
   Route.mapTo(AvatarDocsRoute)
 );
-const avatarBasicExampleRouter = pipe(
+export const avatarBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("avatar")),
@@ -310,19 +1308,19 @@ const avatarBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(AvatarBasicExampleRoute)
 );
-const avatarBasicStandaloneExampleRouter = pipe(
+export const avatarBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("avatar-basic")),
   Route.mapTo(AvatarBasicExampleRoute)
 );
-const badgeRouter = pipe(literal("badge"), Route.mapTo(BadgeRoute));
-const badgeDocsRouter = pipe(
+export const badgeRouter = pipe(literal("badge"), Route.mapTo(BadgeRoute));
+export const badgeDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("badge")),
   Route.mapTo(BadgeDocsRoute)
 );
-const badgeBasicExampleRouter = pipe(
+export const badgeBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("badge")),
@@ -330,19 +1328,826 @@ const badgeBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(BadgeBasicExampleRoute)
 );
-const badgeBasicStandaloneExampleRouter = pipe(
+export const badgeBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("badge-basic")),
   Route.mapTo(BadgeBasicExampleRoute)
 );
-const buttonRouter = pipe(literal("button"), Route.mapTo(ButtonRoute));
-const buttonDocsRouter = pipe(
+export const badgeSpinnerExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  slash(literal("examples")),
+  slash(literal("spinner")),
+  Route.mapTo(BadgeSpinnerExampleRoute)
+);
+export const badgeSpinnerStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("badge-spinner")),
+  Route.mapTo(BadgeSpinnerExampleRoute)
+);
+export const carouselDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  Route.mapTo(CarouselDocsRoute)
+);
+export const carouselBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CarouselBasicExampleRoute)
+);
+export const carouselBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-basic")),
+  Route.mapTo(CarouselBasicExampleRoute)
+);
+export const carouselSizesExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("sizes")),
+  Route.mapTo(CarouselSizesExampleRoute)
+);
+export const carouselSizesStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-sizes")),
+  Route.mapTo(CarouselSizesExampleRoute)
+);
+export const carouselSpacingExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("spacing")),
+  Route.mapTo(CarouselSpacingExampleRoute)
+);
+export const carouselSpacingStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-spacing")),
+  Route.mapTo(CarouselSpacingExampleRoute)
+);
+export const carouselOrientationExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("orientation")),
+  Route.mapTo(CarouselOrientationExampleRoute)
+);
+export const carouselOrientationStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-orientation")),
+  Route.mapTo(CarouselOrientationExampleRoute)
+);
+export const carouselApiExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("api")),
+  Route.mapTo(CarouselApiExampleRoute)
+);
+export const carouselApiStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-api")),
+  Route.mapTo(CarouselApiExampleRoute)
+);
+export const carouselRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(CarouselRtlExampleRoute)
+);
+export const carouselRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-rtl")),
+  Route.mapTo(CarouselRtlExampleRoute)
+);
+export const chartDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  Route.mapTo(ChartDocsRoute)
+);
+export const chartBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ChartBasicExampleRoute)
+);
+export const chartBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("chart-basic")),
+  Route.mapTo(ChartBasicExampleRoute)
+);
+export const chartGridExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  slash(literal("examples")),
+  slash(literal("grid")),
+  Route.mapTo(ChartGridExampleRoute)
+);
+export const chartGridStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("chart-grid")),
+  Route.mapTo(ChartGridExampleRoute)
+);
+export const chartAxisExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  slash(literal("examples")),
+  slash(literal("axis")),
+  Route.mapTo(ChartAxisExampleRoute)
+);
+export const chartAxisStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("chart-axis")),
+  Route.mapTo(ChartAxisExampleRoute)
+);
+export const chartTooltipExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  slash(literal("examples")),
+  slash(literal("tooltip")),
+  Route.mapTo(ChartTooltipExampleRoute)
+);
+export const chartTooltipStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("chart-tooltip")),
+  Route.mapTo(ChartTooltipExampleRoute)
+);
+export const chartLegendExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  slash(literal("examples")),
+  slash(literal("legend")),
+  Route.mapTo(ChartLegendExampleRoute)
+);
+export const chartLegendStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("chart-legend")),
+  Route.mapTo(ChartLegendExampleRoute)
+);
+export const chartRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("chart")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ChartRtlExampleRoute)
+);
+export const chartRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("chart-rtl")),
+  Route.mapTo(ChartRtlExampleRoute)
+);
+export const commandDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("command")),
+  Route.mapTo(CommandDocsRoute)
+);
+export const commandBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("command")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CommandBasicExampleRoute)
+);
+export const commandBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("command-basic")),
+  Route.mapTo(CommandBasicExampleRoute)
+);
+export const dropdownMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  Route.mapTo(DropdownMenuDocsRoute)
+);
+export const dropdownMenuBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DropdownMenuBasicExampleRoute)
+);
+export const dropdownMenuBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-basic")),
+  Route.mapTo(DropdownMenuBasicExampleRoute)
+);
+export const hoverCardDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("hover-card")),
+  Route.mapTo(HoverCardDocsRoute)
+);
+export const hoverCardBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("hover-card")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(HoverCardBasicExampleRoute)
+);
+export const hoverCardBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("hover-card-basic")),
+  Route.mapTo(HoverCardBasicExampleRoute)
+);
+export const inputOtpDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  Route.mapTo(InputOtpDocsRoute)
+);
+export const inputOtpBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(InputOtpBasicExampleRoute)
+);
+export const inputOtpBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-basic")),
+  Route.mapTo(InputOtpBasicExampleRoute)
+);
+export const nativeSelectDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("native-select")),
+  Route.mapTo(NativeSelectDocsRoute)
+);
+export const nativeSelectBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("native-select")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(NativeSelectBasicExampleRoute)
+);
+export const nativeSelectBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("native-select-basic")),
+  Route.mapTo(NativeSelectBasicExampleRoute)
+);
+export const sheetDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sheet")),
+  Route.mapTo(SheetDocsRoute)
+);
+export const sheetBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sheet")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SheetBasicExampleRoute)
+);
+export const sheetBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sheet-basic")),
+  Route.mapTo(SheetBasicExampleRoute)
+);
+export const sonnerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sonner")),
+  Route.mapTo(SonnerDocsRoute)
+);
+export const sonnerBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sonner")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SonnerBasicExampleRoute)
+);
+export const sonnerBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sonner-basic")),
+  Route.mapTo(SonnerBasicExampleRoute)
+);
+export const dataTableDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  Route.mapTo(DataTableDocsRoute)
+);
+export const dataTableBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DataTableBasicExampleRoute)
+);
+export const dataTableBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-basic")),
+  Route.mapTo(DataTableBasicExampleRoute)
+);
+export const dataTableRowActionsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("row-actions")),
+  Route.mapTo(DataTableRowActionsExampleRoute)
+);
+export const dataTableRowActionsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-row-actions")),
+  Route.mapTo(DataTableRowActionsExampleRoute)
+);
+export const dataTablePaginationExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("pagination")),
+  Route.mapTo(DataTablePaginationExampleRoute)
+);
+export const dataTablePaginationStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-pagination")),
+  Route.mapTo(DataTablePaginationExampleRoute)
+);
+export const dataTableSortingExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("sorting")),
+  Route.mapTo(DataTableSortingExampleRoute)
+);
+export const dataTableSortingStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-sorting")),
+  Route.mapTo(DataTableSortingExampleRoute)
+);
+export const dataTableFilteringExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("filtering")),
+  Route.mapTo(DataTableFilteringExampleRoute)
+);
+export const dataTableFilteringStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-filtering")),
+  Route.mapTo(DataTableFilteringExampleRoute)
+);
+export const dataTableVisibilityExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("visibility")),
+  Route.mapTo(DataTableVisibilityExampleRoute)
+);
+export const dataTableVisibilityStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-visibility")),
+  Route.mapTo(DataTableVisibilityExampleRoute)
+);
+export const dataTableRowSelectionExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("data-table")),
+  slash(literal("examples")),
+  slash(literal("row-selection")),
+  Route.mapTo(DataTableRowSelectionExampleRoute)
+);
+export const dataTableRowSelectionStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("data-table-row-selection")),
+  Route.mapTo(DataTableRowSelectionExampleRoute)
+);
+export const itemDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  Route.mapTo(ItemDocsRoute)
+);
+export const itemAvatarExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("avatar")),
+  Route.mapTo(ItemAvatarExampleRoute)
+);
+export const itemAvatarStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-avatar")),
+  Route.mapTo(ItemAvatarExampleRoute)
+);
+export const itemBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ItemBasicExampleRoute)
+);
+export const itemBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-basic")),
+  Route.mapTo(ItemBasicExampleRoute)
+);
+export const itemGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("group")),
+  Route.mapTo(ItemGroupExampleRoute)
+);
+export const itemGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-group")),
+  Route.mapTo(ItemGroupExampleRoute)
+);
+export const itemHeaderExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("header")),
+  Route.mapTo(ItemHeaderExampleRoute)
+);
+export const itemHeaderStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-header")),
+  Route.mapTo(ItemHeaderExampleRoute)
+);
+export const itemIconExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("icon")),
+  Route.mapTo(ItemIconExampleRoute)
+);
+export const itemIconStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-icon")),
+  Route.mapTo(ItemIconExampleRoute)
+);
+export const itemImageExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("image")),
+  Route.mapTo(ItemImageExampleRoute)
+);
+export const itemImageStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-image")),
+  Route.mapTo(ItemImageExampleRoute)
+);
+export const itemLinkExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("link")),
+  Route.mapTo(ItemLinkExampleRoute)
+);
+export const itemLinkStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-link")),
+  Route.mapTo(ItemLinkExampleRoute)
+);
+export const itemRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ItemRtlExampleRoute)
+);
+export const itemRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-rtl")),
+  Route.mapTo(ItemRtlExampleRoute)
+);
+export const itemSizeExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("size")),
+  Route.mapTo(ItemSizeExampleRoute)
+);
+export const itemSizeStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-size")),
+  Route.mapTo(ItemSizeExampleRoute)
+);
+export const itemVariantExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("variant")),
+  Route.mapTo(ItemVariantExampleRoute)
+);
+export const itemVariantStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-variant")),
+  Route.mapTo(ItemVariantExampleRoute)
+);
+export const labelDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("label")),
+  Route.mapTo(LabelDocsRoute)
+);
+export const labelBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("label")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(LabelBasicExampleRoute)
+);
+export const labelBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("label-basic")),
+  Route.mapTo(LabelBasicExampleRoute)
+);
+export const paginationDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("pagination")),
+  Route.mapTo(PaginationDocsRoute)
+);
+export const paginationBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("pagination")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(PaginationBasicExampleRoute)
+);
+export const paginationBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("pagination-basic")),
+  Route.mapTo(PaginationBasicExampleRoute)
+);
+export const resizableDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("resizable")),
+  Route.mapTo(ResizableDocsRoute)
+);
+export const resizableBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("resizable")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ResizableBasicExampleRoute)
+);
+export const resizableBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("resizable-basic")),
+  Route.mapTo(ResizableBasicExampleRoute)
+);
+export const sidebarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sidebar")),
+  Route.mapTo(SidebarDocsRoute)
+);
+export const sidebarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sidebar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SidebarBasicExampleRoute)
+);
+export const sidebarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sidebar-basic")),
+  Route.mapTo(SidebarBasicExampleRoute)
+);
+export const tableDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("table")),
+  Route.mapTo(TableDocsRoute)
+);
+export const tableBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("table")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(TableBasicExampleRoute)
+);
+export const tableBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("table-basic")),
+  Route.mapTo(TableBasicExampleRoute)
+);
+export const cardRouter = pipe(literal("card"), Route.mapTo(CardRoute));
+export const cardDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  Route.mapTo(CardDocsRoute)
+);
+export const cardBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CardBasicExampleRoute)
+);
+export const cardBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("card-basic")),
+  Route.mapTo(CardBasicExampleRoute)
+);
+export const separatorRouter = pipe(
+  literal("separator"),
+  Route.mapTo(SeparatorRoute)
+);
+export const separatorDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("separator")),
+  Route.mapTo(SeparatorDocsRoute)
+);
+export const separatorBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("separator")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SeparatorBasicExampleRoute)
+);
+export const separatorBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("separator-basic")),
+  Route.mapTo(SeparatorBasicExampleRoute)
+);
+export const skeletonRouter = pipe(
+  literal("skeleton"),
+  Route.mapTo(SkeletonRoute)
+);
+export const skeletonDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("skeleton")),
+  Route.mapTo(SkeletonDocsRoute)
+);
+export const skeletonBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("skeleton")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SkeletonBasicExampleRoute)
+);
+export const skeletonBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("skeleton-basic")),
+  Route.mapTo(SkeletonBasicExampleRoute)
+);
+export const spinnerRouter = pipe(
+  literal("spinner"),
+  Route.mapTo(SpinnerRoute)
+);
+export const spinnerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("spinner")),
+  Route.mapTo(SpinnerDocsRoute)
+);
+export const kbdRouter = pipe(literal("kbd"), Route.mapTo(KbdRoute));
+export const kbdDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("kbd")),
+  Route.mapTo(KbdDocsRoute)
+);
+export const kbdBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("kbd")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(KbdBasicExampleRoute)
+);
+export const kbdBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("kbd-basic")),
+  Route.mapTo(KbdBasicExampleRoute)
+);
+export const kbdInputGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("kbd")),
+  slash(literal("examples")),
+  slash(literal("input-group")),
+  Route.mapTo(KbdInputGroupExampleRoute)
+);
+export const kbdInputGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("kbd-input-group")),
+  Route.mapTo(KbdInputGroupExampleRoute)
+);
+export const typographyRouter = pipe(
+  literal("typography"),
+  Route.mapTo(TypographyRoute)
+);
+export const typographyDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("typography")),
+  Route.mapTo(TypographyDocsRoute)
+);
+export const typographyBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("typography")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(TypographyBasicExampleRoute)
+);
+export const typographyBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("typography-basic")),
+  Route.mapTo(TypographyBasicExampleRoute)
+);
+export const emptyRouter = pipe(literal("empty"), Route.mapTo(EmptyRoute));
+export const emptyDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  Route.mapTo(EmptyDocsRoute)
+);
+export const emptyBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(EmptyBasicExampleRoute)
+);
+export const emptyBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-basic")),
+  Route.mapTo(EmptyBasicExampleRoute)
+);
+export const emptyInputGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("input-group")),
+  Route.mapTo(EmptyInputGroupExampleRoute)
+);
+export const emptyInputGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-input-group")),
+  Route.mapTo(EmptyInputGroupExampleRoute)
+);
+export const buttonRouter = pipe(literal("button"), Route.mapTo(ButtonRoute));
+export const buttonDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("button")),
   Route.mapTo(ButtonDocsRoute)
 );
-const buttonBasicExampleRouter = pipe(
+export const buttonBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("button")),
@@ -350,7 +2155,7 @@ const buttonBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ButtonBasicExampleRoute)
 );
-const buttonDisabledExampleRouter = pipe(
+export const buttonDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("button")),
@@ -358,24 +2163,180 @@ const buttonDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(ButtonDisabledExampleRoute)
 );
-const buttonBasicStandaloneExampleRouter = pipe(
+export const buttonBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("button-basic")),
   Route.mapTo(ButtonBasicExampleRoute)
 );
-const buttonDisabledStandaloneExampleRouter = pipe(
+export const buttonDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("button-disabled")),
   Route.mapTo(ButtonDisabledExampleRoute)
 );
-const calendarRouter = pipe(literal("calendar"), Route.mapTo(CalendarRoute));
-const calendarDocsRouter = pipe(
+export const inputGroupRouter = pipe(
+  literal("input-group"),
+  Route.mapTo(InputGroupRoute)
+);
+export const inputGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  Route.mapTo(InputGroupDocsRoute)
+);
+export const meterRouter = pipe(literal("meter"), Route.mapTo(MeterRoute));
+export const meterDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("meter")),
+  Route.mapTo(MeterDocsRoute)
+);
+export const meterBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("meter")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(MeterBasicExampleRoute)
+);
+export const meterBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("meter-basic")),
+  Route.mapTo(MeterBasicExampleRoute)
+);
+export const scrollAreaRouter = pipe(
+  literal("scroll-area"),
+  Route.mapTo(ScrollAreaRoute)
+);
+export const scrollAreaDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("scroll-area")),
+  Route.mapTo(ScrollAreaDocsRoute)
+);
+export const scrollAreaBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("scroll-area")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ScrollAreaBasicExampleRoute)
+);
+export const scrollAreaBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("scroll-area-basic")),
+  Route.mapTo(ScrollAreaBasicExampleRoute)
+);
+export const toggleRouter = pipe(literal("toggle"), Route.mapTo(ToggleRoute));
+export const toggleDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toggle")),
+  Route.mapTo(ToggleDocsRoute)
+);
+export const toggleBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toggle")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ToggleBasicExampleRoute)
+);
+export const toggleBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("toggle-basic")),
+  Route.mapTo(ToggleBasicExampleRoute)
+);
+export const toggleGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toggle-group")),
+  Route.mapTo(ToggleGroupDocsRoute)
+);
+export const toggleGroupBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toggle-group")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ToggleGroupBasicExampleRoute)
+);
+export const toggleGroupBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("toggle-group-basic")),
+  Route.mapTo(ToggleGroupBasicExampleRoute)
+);
+export const radioDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("radio")),
+  Route.mapTo(RadioDocsRoute)
+);
+export const radioBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("radio")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(RadioBasicExampleRoute)
+);
+export const radioBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("radio-basic")),
+  Route.mapTo(RadioBasicExampleRoute)
+);
+export const toolbarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toolbar")),
+  Route.mapTo(ToolbarDocsRoute)
+);
+export const toolbarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("toolbar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ToolbarBasicExampleRoute)
+);
+export const toolbarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("toolbar-basic")),
+  Route.mapTo(ToolbarBasicExampleRoute)
+);
+export const progressRouter = pipe(
+  literal("progress"),
+  Route.mapTo(ProgressRoute)
+);
+export const progressDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("progress")),
+  Route.mapTo(ProgressDocsRoute)
+);
+export const progressBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("progress")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ProgressBasicExampleRoute)
+);
+export const progressBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("progress-basic")),
+  Route.mapTo(ProgressBasicExampleRoute)
+);
+export const calendarRouter = pipe(
+  literal("calendar"),
+  Route.mapTo(CalendarRoute)
+);
+export const calendarDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("calendar")),
   Route.mapTo(CalendarDocsRoute)
 );
-const calendarBasicExampleRouter = pipe(
+export const calendarBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("calendar")),
@@ -383,7 +2344,7 @@ const calendarBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(CalendarBasicExampleRoute)
 );
-const calendarBoundsExampleRouter = pipe(
+export const calendarBoundsExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("calendar")),
@@ -391,24 +2352,27 @@ const calendarBoundsExampleRouter = pipe(
   slash(literal("bounds")),
   Route.mapTo(CalendarBoundsExampleRoute)
 );
-const calendarBasicStandaloneExampleRouter = pipe(
+export const calendarBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("calendar-basic")),
   Route.mapTo(CalendarBasicExampleRoute)
 );
-const calendarBoundsStandaloneExampleRouter = pipe(
+export const calendarBoundsStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("calendar-bounds")),
   Route.mapTo(CalendarBoundsExampleRoute)
 );
-const checkboxRouter = pipe(literal("checkbox"), Route.mapTo(CheckboxRoute));
-const checkboxDocsRouter = pipe(
+export const checkboxRouter = pipe(
+  literal("checkbox"),
+  Route.mapTo(CheckboxRoute)
+);
+export const checkboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("checkbox")),
   Route.mapTo(CheckboxDocsRoute)
 );
-const checkboxBasicExampleRouter = pipe(
+export const checkboxBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("checkbox")),
@@ -416,7 +2380,7 @@ const checkboxBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(CheckboxBasicExampleRoute)
 );
-const checkboxIndeterminateExampleRouter = pipe(
+export const checkboxIndeterminateExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("checkbox")),
@@ -424,24 +2388,46 @@ const checkboxIndeterminateExampleRouter = pipe(
   slash(literal("indeterminate")),
   Route.mapTo(CheckboxIndeterminateExampleRoute)
 );
-const checkboxBasicStandaloneExampleRouter = pipe(
+export const checkboxGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("checkbox-group")),
+  Route.mapTo(CheckboxGroupDocsRoute)
+);
+export const checkboxGroupBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("checkbox-group")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CheckboxGroupBasicExampleRoute)
+);
+export const checkboxBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("checkbox-basic")),
   Route.mapTo(CheckboxBasicExampleRoute)
 );
-const checkboxIndeterminateStandaloneExampleRouter = pipe(
+export const checkboxIndeterminateStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("checkbox-indeterminate")),
   Route.mapTo(CheckboxIndeterminateExampleRoute)
 );
-const comboboxRouter = pipe(literal("combobox"), Route.mapTo(ComboboxRoute));
-const comboboxDocsRouter = pipe(
+export const checkboxGroupBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("checkbox-group-basic")),
+  Route.mapTo(CheckboxGroupBasicExampleRoute)
+);
+export const comboboxRouter = pipe(
+  literal("combobox"),
+  Route.mapTo(ComboboxRoute)
+);
+export const comboboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("combobox")),
   Route.mapTo(ComboboxDocsRoute)
 );
-const comboboxBasicExampleRouter = pipe(
+export const comboboxBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("combobox")),
@@ -449,7 +2435,7 @@ const comboboxBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ComboboxBasicExampleRoute)
 );
-const comboboxMultiExampleRouter = pipe(
+export const comboboxMultiExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("combobox")),
@@ -457,27 +2443,27 @@ const comboboxMultiExampleRouter = pipe(
   slash(literal("multi")),
   Route.mapTo(ComboboxMultiExampleRoute)
 );
-const comboboxBasicStandaloneExampleRouter = pipe(
+export const comboboxBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("combobox-basic")),
   Route.mapTo(ComboboxBasicExampleRoute)
 );
-const comboboxMultiStandaloneExampleRouter = pipe(
+export const comboboxMultiStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("combobox-multi")),
   Route.mapTo(ComboboxMultiExampleRoute)
 );
-const datePickerRouter = pipe(
+export const datePickerRouter = pipe(
   literal("date-picker"),
   Route.mapTo(DatePickerRoute)
 );
-const datePickerDocsRouter = pipe(
+export const datePickerDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("date-picker")),
   Route.mapTo(DatePickerDocsRoute)
 );
-const datePickerBasicExampleRouter = pipe(
+export const datePickerBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("date-picker")),
@@ -485,7 +2471,7 @@ const datePickerBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(DatePickerBasicExampleRoute)
 );
-const datePickerBoundsExampleRouter = pipe(
+export const datePickerBoundsExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("date-picker")),
@@ -493,24 +2479,24 @@ const datePickerBoundsExampleRouter = pipe(
   slash(literal("bounds")),
   Route.mapTo(DatePickerBoundsExampleRoute)
 );
-const datePickerBasicStandaloneExampleRouter = pipe(
+export const datePickerBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("date-picker-basic")),
   Route.mapTo(DatePickerBasicExampleRoute)
 );
-const datePickerBoundsStandaloneExampleRouter = pipe(
+export const datePickerBoundsStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("date-picker-bounds")),
   Route.mapTo(DatePickerBoundsExampleRoute)
 );
-const dialogRouter = pipe(literal("dialog"), Route.mapTo(DialogRoute));
-const dialogDocsRouter = pipe(
+export const dialogRouter = pipe(literal("dialog"), Route.mapTo(DialogRoute));
+export const dialogDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
   Route.mapTo(DialogDocsRoute)
 );
-const dialogBasicExampleRouter = pipe(
+export const dialogBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
@@ -518,7 +2504,7 @@ const dialogBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(DialogBasicExampleRoute)
 );
-const dialogAnimatedExampleRouter = pipe(
+export const dialogAnimatedExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
@@ -526,7 +2512,7 @@ const dialogAnimatedExampleRouter = pipe(
   slash(literal("animated")),
   Route.mapTo(DialogAnimatedExampleRoute)
 );
-const dialogDestructiveExampleRouter = pipe(
+export const dialogDestructiveExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
@@ -534,7 +2520,7 @@ const dialogDestructiveExampleRouter = pipe(
   slash(literal("destructive")),
   Route.mapTo(DialogDestructiveExampleRoute)
 );
-const dialogFocusExampleRouter = pipe(
+export const dialogFocusExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
@@ -542,7 +2528,7 @@ const dialogFocusExampleRouter = pipe(
   slash(literal("focus")),
   Route.mapTo(DialogFocusExampleRoute)
 );
-const dialogScrollableExampleRouter = pipe(
+export const dialogScrollableExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
@@ -550,42 +2536,61 @@ const dialogScrollableExampleRouter = pipe(
   slash(literal("scrollable")),
   Route.mapTo(DialogScrollableExampleRoute)
 );
-const dialogBasicStandaloneExampleRouter = pipe(
+export const dialogBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dialog-basic")),
   Route.mapTo(DialogBasicExampleRoute)
 );
-const dialogAnimatedStandaloneExampleRouter = pipe(
+export const dialogAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dialog-animated")),
   Route.mapTo(DialogAnimatedExampleRoute)
 );
-const dialogDestructiveStandaloneExampleRouter = pipe(
+export const dialogDestructiveStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dialog-destructive")),
   Route.mapTo(DialogDestructiveExampleRoute)
 );
-const dialogFocusStandaloneExampleRouter = pipe(
+export const dialogFocusStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dialog-focus")),
   Route.mapTo(DialogFocusExampleRoute)
 );
-const dialogScrollableStandaloneExampleRouter = pipe(
+export const dialogScrollableStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dialog-scrollable")),
   Route.mapTo(DialogScrollableExampleRoute)
 );
-const disclosureRouter = pipe(
+export const directionDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("direction")),
+  Route.mapTo(DirectionDocsRoute)
+);
+export const directionBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("direction")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(DirectionBasicExampleRoute)
+);
+export const directionBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("direction-basic")),
+  Route.mapTo(DirectionBasicExampleRoute)
+);
+export const disclosureRouter = pipe(
   literal("disclosure"),
   Route.mapTo(DisclosureRoute)
 );
-const disclosureDocsRouter = pipe(
+export const disclosureDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("disclosure")),
   Route.mapTo(DisclosureDocsRoute)
 );
-const disclosureBasicExampleRouter = pipe(
+export const disclosureBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("disclosure")),
@@ -593,7 +2598,7 @@ const disclosureBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(DisclosureBasicExampleRoute)
 );
-const disclosureDisabledExampleRouter = pipe(
+export const disclosureDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("disclosure")),
@@ -601,27 +2606,27 @@ const disclosureDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(DisclosureDisabledExampleRoute)
 );
-const disclosureBasicStandaloneExampleRouter = pipe(
+export const disclosureBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("disclosure-basic")),
   Route.mapTo(DisclosureBasicExampleRoute)
 );
-const disclosureDisabledStandaloneExampleRouter = pipe(
+export const disclosureDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("disclosure-disabled")),
   Route.mapTo(DisclosureDisabledExampleRoute)
 );
-const dragAndDropRouter = pipe(
+export const dragAndDropRouter = pipe(
   literal("drag-and-drop"),
   Route.mapTo(DragAndDropRoute)
 );
-const dragAndDropDocsRouter = pipe(
+export const dragAndDropDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("drag-and-drop")),
   Route.mapTo(DragAndDropDocsRoute)
 );
-const dragAndDropBasicExampleRouter = pipe(
+export const dragAndDropBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("drag-and-drop")),
@@ -629,7 +2634,7 @@ const dragAndDropBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(DragAndDropBasicExampleRoute)
 );
-const dragAndDropDisabledExampleRouter = pipe(
+export const dragAndDropDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("drag-and-drop")),
@@ -637,24 +2642,27 @@ const dragAndDropDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(DragAndDropDisabledExampleRoute)
 );
-const dragAndDropBasicStandaloneExampleRouter = pipe(
+export const dragAndDropBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("drag-and-drop-basic")),
   Route.mapTo(DragAndDropBasicExampleRoute)
 );
-const dragAndDropDisabledStandaloneExampleRouter = pipe(
+export const dragAndDropDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("drag-and-drop-disabled")),
   Route.mapTo(DragAndDropDisabledExampleRoute)
 );
-const fieldsetRouter = pipe(literal("fieldset"), Route.mapTo(FieldsetRoute));
-const fieldsetDocsRouter = pipe(
+export const fieldsetRouter = pipe(
+  literal("fieldset"),
+  Route.mapTo(FieldsetRoute)
+);
+export const fieldsetDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("fieldset")),
   Route.mapTo(FieldsetDocsRoute)
 );
-const fieldsetBasicExampleRouter = pipe(
+export const fieldsetBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("fieldset")),
@@ -662,7 +2670,7 @@ const fieldsetBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(FieldsetBasicExampleRoute)
 );
-const fieldsetDisabledExampleRouter = pipe(
+export const fieldsetDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("fieldset")),
@@ -670,24 +2678,27 @@ const fieldsetDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(FieldsetDisabledExampleRoute)
 );
-const fieldsetBasicStandaloneExampleRouter = pipe(
+export const fieldsetBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("fieldset-basic")),
   Route.mapTo(FieldsetBasicExampleRoute)
 );
-const fieldsetDisabledStandaloneExampleRouter = pipe(
+export const fieldsetDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("fieldset-disabled")),
   Route.mapTo(FieldsetDisabledExampleRoute)
 );
-const fileDropRouter = pipe(literal("file-drop"), Route.mapTo(FileDropRoute));
-const fileDropDocsRouter = pipe(
+export const fileDropRouter = pipe(
+  literal("file-drop"),
+  Route.mapTo(FileDropRoute)
+);
+export const fileDropDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("file-drop")),
   Route.mapTo(FileDropDocsRoute)
 );
-const fileDropBasicExampleRouter = pipe(
+export const fileDropBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("file-drop")),
@@ -695,7 +2706,7 @@ const fileDropBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(FileDropBasicExampleRoute)
 );
-const fileDropDisabledExampleRouter = pipe(
+export const fileDropDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("file-drop")),
@@ -703,24 +2714,24 @@ const fileDropDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(FileDropDisabledExampleRoute)
 );
-const fileDropBasicStandaloneExampleRouter = pipe(
+export const fileDropBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("file-drop-basic")),
   Route.mapTo(FileDropBasicExampleRoute)
 );
-const fileDropDisabledStandaloneExampleRouter = pipe(
+export const fileDropDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("file-drop-disabled")),
   Route.mapTo(FileDropDisabledExampleRoute)
 );
-const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
-const inputDocsRouter = pipe(
+export const inputRouter = pipe(literal("input"), Route.mapTo(InputRoute));
+export const inputDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("input")),
   Route.mapTo(InputDocsRoute)
 );
-const inputBasicExampleRouter = pipe(
+export const inputBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("input")),
@@ -728,7 +2739,7 @@ const inputBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(InputBasicExampleRoute)
 );
-const inputDisabledExampleRouter = pipe(
+export const inputDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("input")),
@@ -736,24 +2747,27 @@ const inputDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(InputDisabledExampleRoute)
 );
-const inputBasicStandaloneExampleRouter = pipe(
+export const inputBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("input-basic")),
   Route.mapTo(InputBasicExampleRoute)
 );
-const inputDisabledStandaloneExampleRouter = pipe(
+export const inputDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("input-disabled")),
   Route.mapTo(InputDisabledExampleRoute)
 );
-const listboxRouter = pipe(literal("listbox"), Route.mapTo(ListboxRoute));
-const listboxDocsRouter = pipe(
+export const listboxRouter = pipe(
+  literal("listbox"),
+  Route.mapTo(ListboxRoute)
+);
+export const listboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("listbox")),
   Route.mapTo(ListboxDocsRoute)
 );
-const listboxBasicExampleRouter = pipe(
+export const listboxBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("listbox")),
@@ -761,7 +2775,7 @@ const listboxBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ListboxBasicExampleRoute)
 );
-const listboxAnimatedExampleRouter = pipe(
+export const listboxAnimatedExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("listbox")),
@@ -769,24 +2783,24 @@ const listboxAnimatedExampleRouter = pipe(
   slash(literal("animated")),
   Route.mapTo(ListboxAnimatedExampleRoute)
 );
-const listboxBasicStandaloneExampleRouter = pipe(
+export const listboxBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("listbox-basic")),
   Route.mapTo(ListboxBasicExampleRoute)
 );
-const listboxAnimatedStandaloneExampleRouter = pipe(
+export const listboxAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("listbox-animated")),
   Route.mapTo(ListboxAnimatedExampleRoute)
 );
-const menuRouter = pipe(literal("menu"), Route.mapTo(MenuRoute));
-const menuDocsRouter = pipe(
+export const menuRouter = pipe(literal("menu"), Route.mapTo(MenuRoute));
+export const menuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("menu")),
   Route.mapTo(MenuDocsRoute)
 );
-const menuBasicExampleRouter = pipe(
+export const menuBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("menu")),
@@ -794,7 +2808,7 @@ const menuBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(MenuBasicExampleRoute)
 );
-const menuAnimatedExampleRouter = pipe(
+export const menuAnimatedExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("menu")),
@@ -802,24 +2816,27 @@ const menuAnimatedExampleRouter = pipe(
   slash(literal("animated")),
   Route.mapTo(MenuAnimatedExampleRoute)
 );
-const menuBasicStandaloneExampleRouter = pipe(
+export const menuBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("menu-basic")),
   Route.mapTo(MenuBasicExampleRoute)
 );
-const menuAnimatedStandaloneExampleRouter = pipe(
+export const menuAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("menu-animated")),
   Route.mapTo(MenuAnimatedExampleRoute)
 );
-const popoverRouter = pipe(literal("popover"), Route.mapTo(PopoverRoute));
-const popoverDocsRouter = pipe(
+export const popoverRouter = pipe(
+  literal("popover"),
+  Route.mapTo(PopoverRoute)
+);
+export const popoverDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("popover")),
   Route.mapTo(PopoverDocsRoute)
 );
-const popoverBasicExampleRouter = pipe(
+export const popoverBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("popover")),
@@ -827,7 +2844,7 @@ const popoverBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(PopoverBasicExampleRoute)
 );
-const popoverAnimatedExampleRouter = pipe(
+export const popoverAnimatedExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("popover")),
@@ -835,27 +2852,27 @@ const popoverAnimatedExampleRouter = pipe(
   slash(literal("animated")),
   Route.mapTo(PopoverAnimatedExampleRoute)
 );
-const popoverBasicStandaloneExampleRouter = pipe(
+export const popoverBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("popover-basic")),
   Route.mapTo(PopoverBasicExampleRoute)
 );
-const popoverAnimatedStandaloneExampleRouter = pipe(
+export const popoverAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("popover-animated")),
   Route.mapTo(PopoverAnimatedExampleRoute)
 );
-const radioGroupRouter = pipe(
+export const radioGroupRouter = pipe(
   literal("radio-group"),
   Route.mapTo(RadioGroupRoute)
 );
-const radioGroupDocsRouter = pipe(
+export const radioGroupDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("radio-group")),
   Route.mapTo(RadioGroupDocsRoute)
 );
-const radioGroupBasicExampleRouter = pipe(
+export const radioGroupBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("radio-group")),
@@ -863,7 +2880,7 @@ const radioGroupBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(RadioGroupBasicExampleRoute)
 );
-const radioGroupHorizontalExampleRouter = pipe(
+export const radioGroupHorizontalExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("radio-group")),
@@ -871,24 +2888,24 @@ const radioGroupHorizontalExampleRouter = pipe(
   slash(literal("horizontal")),
   Route.mapTo(RadioGroupHorizontalExampleRoute)
 );
-const radioGroupBasicStandaloneExampleRouter = pipe(
+export const radioGroupBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("radio-group-basic")),
   Route.mapTo(RadioGroupBasicExampleRoute)
 );
-const radioGroupHorizontalStandaloneExampleRouter = pipe(
+export const radioGroupHorizontalStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("radio-group-horizontal")),
   Route.mapTo(RadioGroupHorizontalExampleRoute)
 );
-const selectRouter = pipe(literal("select"), Route.mapTo(SelectRoute));
-const selectDocsRouter = pipe(
+export const selectRouter = pipe(literal("select"), Route.mapTo(SelectRoute));
+export const selectDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("select")),
   Route.mapTo(SelectDocsRoute)
 );
-const selectBasicExampleRouter = pipe(
+export const selectBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("select")),
@@ -896,7 +2913,7 @@ const selectBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(SelectBasicExampleRoute)
 );
-const selectDisabledExampleRouter = pipe(
+export const selectDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("select")),
@@ -904,24 +2921,24 @@ const selectDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(SelectDisabledExampleRoute)
 );
-const selectBasicStandaloneExampleRouter = pipe(
+export const selectBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("select-basic")),
   Route.mapTo(SelectBasicExampleRoute)
 );
-const selectDisabledStandaloneExampleRouter = pipe(
+export const selectDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("select-disabled")),
   Route.mapTo(SelectDisabledExampleRoute)
 );
-const sliderRouter = pipe(literal("slider"), Route.mapTo(SliderRoute));
-const sliderDocsRouter = pipe(
+export const sliderRouter = pipe(literal("slider"), Route.mapTo(SliderRoute));
+export const sliderDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("slider")),
   Route.mapTo(SliderDocsRoute)
 );
-const sliderBasicExampleRouter = pipe(
+export const sliderBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("slider")),
@@ -929,7 +2946,7 @@ const sliderBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(SliderBasicExampleRoute)
 );
-const sliderDisabledExampleRouter = pipe(
+export const sliderDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("slider")),
@@ -937,24 +2954,24 @@ const sliderDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(SliderDisabledExampleRoute)
 );
-const sliderBasicStandaloneExampleRouter = pipe(
+export const sliderBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("slider-basic")),
   Route.mapTo(SliderBasicExampleRoute)
 );
-const sliderDisabledStandaloneExampleRouter = pipe(
+export const sliderDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("slider-disabled")),
   Route.mapTo(SliderDisabledExampleRoute)
 );
-const switchRouter = pipe(literal("switch"), Route.mapTo(SwitchRoute));
-const switchDocsRouter = pipe(
+export const switchRouter = pipe(literal("switch"), Route.mapTo(SwitchRoute));
+export const switchDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("switch")),
   Route.mapTo(SwitchDocsRoute)
 );
-const switchBasicExampleRouter = pipe(
+export const switchBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("switch")),
@@ -962,7 +2979,7 @@ const switchBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(SwitchBasicExampleRoute)
 );
-const switchDisabledExampleRouter = pipe(
+export const switchDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("switch")),
@@ -970,24 +2987,24 @@ const switchDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(SwitchDisabledExampleRoute)
 );
-const switchBasicStandaloneExampleRouter = pipe(
+export const switchBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("switch-basic")),
   Route.mapTo(SwitchBasicExampleRoute)
 );
-const switchDisabledStandaloneExampleRouter = pipe(
+export const switchDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("switch-disabled")),
   Route.mapTo(SwitchDisabledExampleRoute)
 );
-const tabsRouter = pipe(literal("tabs"), Route.mapTo(TabsRoute));
-const tabsDocsRouter = pipe(
+export const tabsRouter = pipe(literal("tabs"), Route.mapTo(TabsRoute));
+export const tabsDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("tabs")),
   Route.mapTo(TabsDocsRoute)
 );
-const tabsBasicExampleRouter = pipe(
+export const tabsBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("tabs")),
@@ -995,7 +3012,7 @@ const tabsBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(TabsBasicExampleRoute)
 );
-const tabsManualExampleRouter = pipe(
+export const tabsManualExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("tabs")),
@@ -1003,24 +3020,27 @@ const tabsManualExampleRouter = pipe(
   slash(literal("manual")),
   Route.mapTo(TabsManualExampleRoute)
 );
-const tabsBasicStandaloneExampleRouter = pipe(
+export const tabsBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("tabs-basic")),
   Route.mapTo(TabsBasicExampleRoute)
 );
-const tabsManualStandaloneExampleRouter = pipe(
+export const tabsManualStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("tabs-manual")),
   Route.mapTo(TabsManualExampleRoute)
 );
-const textareaRouter = pipe(literal("textarea"), Route.mapTo(TextareaRoute));
-const textareaDocsRouter = pipe(
+export const textareaRouter = pipe(
+  literal("textarea"),
+  Route.mapTo(TextareaRoute)
+);
+export const textareaDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("textarea")),
   Route.mapTo(TextareaDocsRoute)
 );
-const textareaBasicExampleRouter = pipe(
+export const textareaBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("textarea")),
@@ -1028,7 +3048,7 @@ const textareaBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(TextareaBasicExampleRoute)
 );
-const textareaDisabledExampleRouter = pipe(
+export const textareaDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("textarea")),
@@ -1036,24 +3056,24 @@ const textareaDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(TextareaDisabledExampleRoute)
 );
-const textareaBasicStandaloneExampleRouter = pipe(
+export const textareaBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("textarea-basic")),
   Route.mapTo(TextareaBasicExampleRoute)
 );
-const textareaDisabledStandaloneExampleRouter = pipe(
+export const textareaDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("textarea-disabled")),
   Route.mapTo(TextareaDisabledExampleRoute)
 );
-const toastRouter = pipe(literal("toast"), Route.mapTo(ToastRoute));
-const toastDocsRouter = pipe(
+export const toastRouter = pipe(literal("toast"), Route.mapTo(ToastRoute));
+export const toastDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("toast")),
   Route.mapTo(ToastDocsRoute)
 );
-const toastBasicExampleRouter = pipe(
+export const toastBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("toast")),
@@ -1061,7 +3081,7 @@ const toastBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ToastBasicExampleRoute)
 );
-const toastVariantsExampleRouter = pipe(
+export const toastVariantsExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("toast")),
@@ -1069,24 +3089,27 @@ const toastVariantsExampleRouter = pipe(
   slash(literal("variants")),
   Route.mapTo(ToastVariantsExampleRoute)
 );
-const toastBasicStandaloneExampleRouter = pipe(
+export const toastBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("toast-basic")),
   Route.mapTo(ToastBasicExampleRoute)
 );
-const toastVariantsStandaloneExampleRouter = pipe(
+export const toastVariantsStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("toast-variants")),
   Route.mapTo(ToastVariantsExampleRoute)
 );
-const tooltipRouter = pipe(literal("tooltip"), Route.mapTo(TooltipRoute));
-const tooltipDocsRouter = pipe(
+export const tooltipRouter = pipe(
+  literal("tooltip"),
+  Route.mapTo(TooltipRoute)
+);
+export const tooltipDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("tooltip")),
   Route.mapTo(TooltipDocsRoute)
 );
-const tooltipBasicExampleRouter = pipe(
+export const tooltipBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("tooltip")),
@@ -1094,7 +3117,7 @@ const tooltipBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(TooltipBasicExampleRoute)
 );
-const tooltipNoDelayExampleRouter = pipe(
+export const tooltipNoDelayExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("tooltip")),
@@ -1102,24 +3125,27 @@ const tooltipNoDelayExampleRouter = pipe(
   slash(literal("no-delay")),
   Route.mapTo(TooltipNoDelayExampleRoute)
 );
-const tooltipBasicStandaloneExampleRouter = pipe(
+export const tooltipBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("tooltip-basic")),
   Route.mapTo(TooltipBasicExampleRoute)
 );
-const tooltipNoDelayStandaloneExampleRouter = pipe(
+export const tooltipNoDelayStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("tooltip-no-delay")),
   Route.mapTo(TooltipNoDelayExampleRoute)
 );
-const animationRouter = pipe(literal("animation"), Route.mapTo(AnimationRoute));
-const animationDocsRouter = pipe(
+export const animationRouter = pipe(
+  literal("animation"),
+  Route.mapTo(AnimationRoute)
+);
+export const animationDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("animation")),
   Route.mapTo(AnimationDocsRoute)
 );
-const animationBasicExampleRouter = pipe(
+export const animationBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("animation")),
@@ -1127,22 +3153,22 @@ const animationBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(AnimationBasicExampleRoute)
 );
-const animationBasicStandaloneExampleRouter = pipe(
+export const animationBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("animation-basic")),
   Route.mapTo(AnimationBasicExampleRoute)
 );
-const virtualListRouter = pipe(
+export const virtualListRouter = pipe(
   literal("virtual-list"),
   Route.mapTo(VirtualListRoute)
 );
-const virtualListDocsRouter = pipe(
+export const virtualListDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("virtual-list")),
   Route.mapTo(VirtualListDocsRoute)
 );
-const virtualListBasicExampleRouter = pipe(
+export const virtualListBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("virtual-list")),
@@ -1150,7 +3176,7 @@ const virtualListBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(VirtualListBasicExampleRoute)
 );
-const virtualListVariableExampleRouter = pipe(
+export const virtualListVariableExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("virtual-list")),
@@ -1158,12 +3184,12 @@ const virtualListVariableExampleRouter = pipe(
   slash(literal("variable")),
   Route.mapTo(VirtualListVariableExampleRoute)
 );
-const virtualListBasicStandaloneExampleRouter = pipe(
+export const virtualListBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("virtual-list-basic")),
   Route.mapTo(VirtualListBasicExampleRoute)
 );
-const virtualListVariableStandaloneExampleRouter = pipe(
+export const virtualListVariableStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("virtual-list-variable")),
   Route.mapTo(VirtualListVariableExampleRoute)
@@ -1177,13 +3203,174 @@ const routeParser = Route.oneOf(
   badgeRouter,
   badgeBasicExampleRouter,
   badgeBasicStandaloneExampleRouter,
+  badgeSpinnerExampleRouter,
+  badgeSpinnerStandaloneExampleRouter,
   badgeDocsRouter,
+  carouselBasicExampleRouter,
+  carouselBasicStandaloneExampleRouter,
+  carouselSizesExampleRouter,
+  carouselSizesStandaloneExampleRouter,
+  carouselSpacingExampleRouter,
+  carouselSpacingStandaloneExampleRouter,
+  carouselOrientationExampleRouter,
+  carouselOrientationStandaloneExampleRouter,
+  carouselApiExampleRouter,
+  carouselApiStandaloneExampleRouter,
+  carouselRtlExampleRouter,
+  carouselRtlStandaloneExampleRouter,
+  carouselDocsRouter,
+
+  chartBasicExampleRouter,
+  chartBasicStandaloneExampleRouter,
+  chartGridExampleRouter,
+  chartGridStandaloneExampleRouter,
+  chartAxisExampleRouter,
+  chartAxisStandaloneExampleRouter,
+  chartTooltipExampleRouter,
+  chartTooltipStandaloneExampleRouter,
+  chartLegendExampleRouter,
+  chartLegendStandaloneExampleRouter,
+  chartRtlExampleRouter,
+  chartRtlStandaloneExampleRouter,
+  chartDocsRouter,
+  commandBasicExampleRouter,
+  commandBasicStandaloneExampleRouter,
+  commandDocsRouter,
+  dropdownMenuBasicExampleRouter,
+  dropdownMenuBasicStandaloneExampleRouter,
+  dropdownMenuDocsRouter,
+  hoverCardBasicExampleRouter,
+  hoverCardBasicStandaloneExampleRouter,
+  hoverCardDocsRouter,
+  inputOtpBasicExampleRouter,
+  inputOtpBasicStandaloneExampleRouter,
+  inputOtpDocsRouter,
+  nativeSelectBasicExampleRouter,
+  nativeSelectBasicStandaloneExampleRouter,
+  nativeSelectDocsRouter,
+  sheetBasicExampleRouter,
+  sheetBasicStandaloneExampleRouter,
+  sheetDocsRouter,
+  sonnerBasicExampleRouter,
+  sonnerBasicStandaloneExampleRouter,
+  sonnerDocsRouter,
+  dataTableBasicExampleRouter,
+  dataTableBasicStandaloneExampleRouter,
+  dataTableRowActionsExampleRouter,
+  dataTableRowActionsStandaloneExampleRouter,
+  dataTablePaginationExampleRouter,
+  dataTablePaginationStandaloneExampleRouter,
+  dataTableSortingExampleRouter,
+  dataTableSortingStandaloneExampleRouter,
+  dataTableFilteringExampleRouter,
+  dataTableFilteringStandaloneExampleRouter,
+  dataTableVisibilityExampleRouter,
+  dataTableVisibilityStandaloneExampleRouter,
+  dataTableRowSelectionExampleRouter,
+  dataTableRowSelectionStandaloneExampleRouter,
+  dataTableDocsRouter,
+  directionBasicExampleRouter,
+  directionBasicStandaloneExampleRouter,
+  directionDocsRouter,
+  itemAvatarExampleRouter,
+  itemAvatarStandaloneExampleRouter,
+  itemBasicExampleRouter,
+  itemBasicStandaloneExampleRouter,
+  itemGroupExampleRouter,
+  itemGroupStandaloneExampleRouter,
+  itemHeaderExampleRouter,
+  itemHeaderStandaloneExampleRouter,
+  itemIconExampleRouter,
+  itemIconStandaloneExampleRouter,
+  itemImageExampleRouter,
+  itemImageStandaloneExampleRouter,
+  itemLinkExampleRouter,
+  itemLinkStandaloneExampleRouter,
+  itemRtlExampleRouter,
+  itemRtlStandaloneExampleRouter,
+  itemSizeExampleRouter,
+  itemSizeStandaloneExampleRouter,
+  itemVariantExampleRouter,
+  itemVariantStandaloneExampleRouter,
+  itemDocsRouter,
+  labelBasicExampleRouter,
+  labelBasicStandaloneExampleRouter,
+  labelDocsRouter,
+  paginationBasicExampleRouter,
+  paginationBasicStandaloneExampleRouter,
+  paginationDocsRouter,
+  resizableBasicExampleRouter,
+  resizableBasicStandaloneExampleRouter,
+  resizableDocsRouter,
+  sidebarBasicExampleRouter,
+  sidebarBasicStandaloneExampleRouter,
+  sidebarDocsRouter,
+  tableBasicExampleRouter,
+  tableBasicStandaloneExampleRouter,
+  tableDocsRouter,
+  cardRouter,
+  cardBasicExampleRouter,
+  cardBasicStandaloneExampleRouter,
+  cardDocsRouter,
+  separatorRouter,
+  separatorBasicExampleRouter,
+  separatorBasicStandaloneExampleRouter,
+  separatorDocsRouter,
+  skeletonRouter,
+  skeletonBasicExampleRouter,
+  skeletonBasicStandaloneExampleRouter,
+  skeletonDocsRouter,
+  spinnerRouter,
+  spinnerDocsRouter,
+  kbdRouter,
+  kbdBasicExampleRouter,
+  kbdBasicStandaloneExampleRouter,
+  kbdInputGroupExampleRouter,
+  kbdInputGroupStandaloneExampleRouter,
+  kbdDocsRouter,
+  typographyRouter,
+  typographyBasicExampleRouter,
+  typographyBasicStandaloneExampleRouter,
+  typographyDocsRouter,
+  emptyRouter,
+  emptyBasicExampleRouter,
+  emptyBasicStandaloneExampleRouter,
+  emptyInputGroupExampleRouter,
+  emptyInputGroupStandaloneExampleRouter,
+  emptyDocsRouter,
   buttonRouter,
   buttonBasicExampleRouter,
   buttonDisabledExampleRouter,
   buttonBasicStandaloneExampleRouter,
   buttonDisabledStandaloneExampleRouter,
   buttonDocsRouter,
+  inputGroupRouter,
+  inputGroupDocsRouter,
+  meterRouter,
+  meterBasicExampleRouter,
+  meterBasicStandaloneExampleRouter,
+  meterDocsRouter,
+  scrollAreaRouter,
+  scrollAreaBasicExampleRouter,
+  scrollAreaBasicStandaloneExampleRouter,
+  scrollAreaDocsRouter,
+  toggleRouter,
+  toggleBasicExampleRouter,
+  toggleBasicStandaloneExampleRouter,
+  toggleDocsRouter,
+  toggleGroupBasicExampleRouter,
+  toggleGroupBasicStandaloneExampleRouter,
+  toggleGroupDocsRouter,
+  radioBasicExampleRouter,
+  radioBasicStandaloneExampleRouter,
+  radioDocsRouter,
+  toolbarBasicExampleRouter,
+  toolbarBasicStandaloneExampleRouter,
+  toolbarDocsRouter,
+  progressRouter,
+  progressBasicExampleRouter,
+  progressBasicStandaloneExampleRouter,
+  progressDocsRouter,
   calendarRouter,
   calendarBasicExampleRouter,
   calendarBoundsExampleRouter,
@@ -1196,6 +3383,9 @@ const routeParser = Route.oneOf(
   checkboxBasicStandaloneExampleRouter,
   checkboxIndeterminateStandaloneExampleRouter,
   checkboxDocsRouter,
+  checkboxGroupBasicExampleRouter,
+  checkboxGroupBasicStandaloneExampleRouter,
+  checkboxGroupDocsRouter,
   comboboxRouter,
   comboboxBasicExampleRouter,
   comboboxMultiExampleRouter,
@@ -1326,13 +3516,104 @@ const routeParser = Route.oneOf(
   virtualListBasicStandaloneExampleRouter,
   virtualListVariableStandaloneExampleRouter,
   virtualListDocsRouter,
+  accordionBasicExampleRouter,
+  accordionBasicStandaloneExampleRouter,
+  accordionMultipleExampleRouter,
+  accordionMultipleStandaloneExampleRouter,
+  alertBasicExampleRouter,
+  alertBasicStandaloneExampleRouter,
+  alertDestructiveExampleRouter,
+  alertDestructiveStandaloneExampleRouter,
+  alertDocsRouter,
+  aspectRatioBasicExampleRouter,
+  aspectRatioBasicStandaloneExampleRouter,
+  aspectRatioSquareExampleRouter,
+  aspectRatioSquareStandaloneExampleRouter,
+  aspectRatioPortraitExampleRouter,
+  aspectRatioPortraitStandaloneExampleRouter,
+  aspectRatioRtlExampleRouter,
+  aspectRatioRtlStandaloneExampleRouter,
+  aspectRatioDocsRouter,
+  breadcrumbBasicExampleRouter,
+  breadcrumbBasicStandaloneExampleRouter,
+  breadcrumbSeparatorExampleRouter,
+  breadcrumbSeparatorStandaloneExampleRouter,
+  breadcrumbDropdownExampleRouter,
+  breadcrumbDropdownStandaloneExampleRouter,
+  breadcrumbCollapsedExampleRouter,
+  breadcrumbCollapsedStandaloneExampleRouter,
+  breadcrumbLinkExampleRouter,
+  breadcrumbLinkStandaloneExampleRouter,
+  breadcrumbRtlExampleRouter,
+  breadcrumbRtlStandaloneExampleRouter,
+  breadcrumbDocsRouter,
+  buttonGroupBasicExampleRouter,
+  buttonGroupBasicStandaloneExampleRouter,
+  buttonGroupOrientationExampleRouter,
+  buttonGroupOrientationStandaloneExampleRouter,
+  buttonGroupSizeExampleRouter,
+  buttonGroupSizeStandaloneExampleRouter,
+  buttonGroupNestedExampleRouter,
+  buttonGroupNestedStandaloneExampleRouter,
+  buttonGroupSeparatorExampleRouter,
+  buttonGroupSeparatorStandaloneExampleRouter,
+  buttonGroupSplitExampleRouter,
+  buttonGroupSplitStandaloneExampleRouter,
+  buttonGroupInputExampleRouter,
+  buttonGroupInputStandaloneExampleRouter,
+  buttonGroupInputGroupExampleRouter,
+  buttonGroupInputGroupStandaloneExampleRouter,
+  buttonGroupSelectExampleRouter,
+  buttonGroupSelectStandaloneExampleRouter,
+  buttonGroupPopoverExampleRouter,
+  buttonGroupPopoverStandaloneExampleRouter,
+  buttonGroupRtlExampleRouter,
+  buttonGroupRtlStandaloneExampleRouter,
+  buttonGroupDocsRouter,
+  alertDialogBasicExampleRouter,
+  alertDialogBasicStandaloneExampleRouter,
+  alertDialogDocsRouter,
+  drawerBasicExampleRouter,
+  drawerBasicStandaloneExampleRouter,
+  drawerDocsRouter,
+  contextMenuBasicExampleRouter,
+  contextMenuBasicStandaloneExampleRouter,
+  contextMenuDocsRouter,
+  menubarBasicExampleRouter,
+  menubarBasicStandaloneExampleRouter,
+  menubarDocsRouter,
+  navigationMenuBasicExampleRouter,
+  navigationMenuBasicStandaloneExampleRouter,
+  navigationMenuDocsRouter,
+  otpFieldBasicExampleRouter,
+  otpFieldBasicStandaloneExampleRouter,
+  otpFieldDocsRouter,
+  previewCardBasicExampleRouter,
+  previewCardBasicStandaloneExampleRouter,
+  previewCardDocsRouter,
+  accordionDocsRouter,
+  collapsibleBasicExampleRouter,
+  collapsibleBasicStandaloneExampleRouter,
+  collapsibleDocsRouter,
+  fieldBasicExampleRouter,
+  fieldBasicStandaloneExampleRouter,
+  fieldDocsRouter,
+  numberFieldBasicExampleRouter,
+  numberFieldBasicStandaloneExampleRouter,
+  numberFieldDocsRouter,
+  formBasicExampleRouter,
+  formBasicStandaloneExampleRouter,
+  formDocsRouter,
+  autocompleteBasicExampleRouter,
+  autocompleteBasicStandaloneExampleRouter,
+  autocompleteDocsRouter,
   homeRouter
 );
 
 const urlToAppRoute = Route.parseUrlWithFallback(routeParser, NotFoundRoute);
 const appBasePath = import.meta.env.BASE_URL;
 
-const appPath = (path: string): string => {
+export const appPath = (path: string): string => {
   if (path === "/") {
     return appBasePath;
   }
@@ -1370,15 +3651,104 @@ const urlToBaseAwareAppRoute = (url: Url): AppRoute =>
 
 export const Model = S.Struct({
   route: AppRoute,
+  accordionBasicExample: AccordionBasicExample.Model,
+  accordionMultipleExample: AccordionMultipleExample.Model,
+  alertBasicExample: AlertBasicExample.Model,
+  alertDestructiveExample: AlertDestructiveExample.Model,
+  aspectRatioBasicExample: AspectRatioBasicExample.Model,
+  aspectRatioSquareExample: AspectRatioSquareExample.Model,
+  aspectRatioPortraitExample: AspectRatioPortraitExample.Model,
+  aspectRatioRtlExample: AspectRatioRtlExample.Model,
+  breadcrumbBasicExample: BreadcrumbBasicExample.Model,
+  breadcrumbSeparatorExample: BreadcrumbSeparatorExample.Model,
+  breadcrumbDropdownExample: BreadcrumbDropdownExample.Model,
+  breadcrumbCollapsedExample: BreadcrumbCollapsedExample.Model,
+  breadcrumbLinkExample: BreadcrumbLinkExample.Model,
+  breadcrumbRtlExample: BreadcrumbRtlExample.Model,
+  buttonGroupBasicExample: ButtonGroupBasicExample.Model,
+  buttonGroupOrientationExample: ButtonGroupOrientationExample.Model,
+  buttonGroupSizeExample: ButtonGroupSizeExample.Model,
+  buttonGroupNestedExample: ButtonGroupNestedExample.Model,
+  buttonGroupSeparatorExample: ButtonGroupSeparatorExample.Model,
+  buttonGroupSplitExample: ButtonGroupSplitExample.Model,
+  buttonGroupInputExample: ButtonGroupInputExample.Model,
+  buttonGroupInputGroupExample: ButtonGroupInputGroupExample.Model,
+  buttonGroupSelectExample: ButtonGroupSelectExample.Model,
+  buttonGroupPopoverExample: ButtonGroupPopoverExample.Model,
+  buttonGroupRtlExample: ButtonGroupRtlExample.Model,
+  alertDialogBasicExample: AlertDialogBasicExample.Model,
+  drawerBasicExample: DrawerBasicExample.Model,
+  contextMenuBasicExample: ContextMenuBasicExample.Model,
+  menubarBasicExample: MenubarBasicExample.Model,
+  navigationMenuBasicExample: NavigationMenuBasicExample.Model,
+  otpFieldBasicExample: OtpFieldBasicExample.Model,
+  previewCardBasicExample: PreviewCardBasicExample.Model,
+  collapsibleBasicExample: CollapsibleBasicExample.Model,
+  fieldBasicExample: FieldBasicExample.Model,
+  numberFieldBasicExample: NumberFieldBasicExample.Model,
+  formBasicExample: FormBasicExample.Model,
+  autocompleteBasicExample: AutocompleteBasicExample.Model,
   uiModel: UiModel,
   animationBasicExample: AnimationBasicExample.Model,
   avatarBasicExample: AvatarBasicExample.Model,
   badgeBasicExample: BadgeBasicExample.Model,
+  badgeSpinnerExample: BadgeSpinnerExample.Model,
+  carouselBasicExample: CarouselBasicExample.Model,
+  carouselSizesExample: CarouselSizesExample.Model,
+  carouselSpacingExample: CarouselSpacingExample.Model,
+  carouselOrientationExample: CarouselOrientationExample.Model,
+  carouselApiExample: CarouselApiExample.Model,
+  carouselRtlExample: CarouselRtlExample.Model,
+  chartBasicExample: ChartBasicExample.Model,
+  chartGridExample: ChartGridExample.Model,
+  chartAxisExample: ChartAxisExample.Model,
+  chartTooltipExample: ChartTooltipExample.Model,
+  chartLegendExample: ChartLegendExample.Model,
+  chartRtlExample: ChartRtlExample.Model,
+  commandBasicExample: CommandBasicExample.Model,
+  dropdownMenuBasicExample: DropdownMenuBasicExample.Model,
+  hoverCardBasicExample: HoverCardBasicExample.Model,
+  inputOtpBasicExample: InputOtpBasicExample.Model,
+  nativeSelectBasicExample: NativeSelectBasicExample.Model,
+  sheetBasicExample: SheetBasicExample.Model,
+  sonnerBasicExample: SonnerBasicExample.Model,
+  dataTableBasicExample: DataTableBasicExample.Model,
+  dataTableRowActionsExample: DataTableRowActionsExample.Model,
+  dataTablePaginationExample: DataTablePaginationExample.Model,
+  dataTableSortingExample: DataTableSortingExample.Model,
+  dataTableFilteringExample: DataTableFilteringExample.Model,
+  dataTableVisibilityExample: DataTableVisibilityExample.Model,
+  dataTableRowSelectionExample: DataTableRowSelectionExample.Model,
+  directionBasicExample: DirectionBasicExample.Model,
+  itemAvatarExample: ItemAvatarExample.Model,
+  itemBasicExample: ItemBasicExample.Model,
+  itemGroupExample: ItemGroupExample.Model,
+  itemHeaderExample: ItemHeaderExample.Model,
+  itemIconExample: ItemIconExample.Model,
+  itemImageExample: ItemImageExample.Model,
+  itemLinkExample: ItemLinkExample.Model,
+  itemRtlExample: ItemRtlExample.Model,
+  itemSizeExample: ItemSizeExample.Model,
+  itemVariantExample: ItemVariantExample.Model,
+  labelBasicExample: LabelBasicExample.Model,
+  paginationBasicExample: PaginationBasicExample.Model,
+  resizableBasicExample: ResizableBasicExample.Model,
+  sidebarBasicExample: SidebarBasicExample.Model,
+  tableBasicExample: TableBasicExample.Model,
+  cardBasicExample: CardBasicExample.Model,
+  separatorBasicExample: SeparatorBasicExample.Model,
+  skeletonBasicExample: SkeletonBasicExample.Model,
+  kbdBasicExample: KbdBasicExample.Model,
+  kbdInputGroupExample: KbdInputGroupExample.Model,
+  typographyBasicExample: TypographyBasicExample.Model,
+  emptyBasicExample: EmptyBasicExample.Model,
+  emptyInputGroupExample: EmptyInputGroupExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
   calendarBasicExample: CalendarBasicExample.Model,
   calendarBoundsExample: CalendarBoundsExample.Model,
   checkboxBasicExample: CheckboxBasicExample.Model,
+  checkboxGroupBasicExample: CheckboxGroupBasicExample.Model,
   checkboxIndeterminateExample: CheckboxIndeterminateExample.Model,
   comboboxBasicExample: ComboboxBasicExample.Model,
   comboboxMultiExample: ComboboxMultiExample.Model,
@@ -1399,6 +3769,13 @@ export const Model = S.Struct({
   fileDropDisabledExample: FileDropDisabledExample.Model,
   inputBasicExample: InputBasicExample.Model,
   inputDisabledExample: InputDisabledExample.Model,
+  meterBasicExample: MeterBasicExample.Model,
+  scrollAreaBasicExample: ScrollAreaBasicExample.Model,
+  toggleBasicExample: ToggleBasicExample.Model,
+  toggleGroupBasicExample: ToggleGroupBasicExample.Model,
+  radioBasicExample: RadioBasicExample.Model,
+  toolbarBasicExample: ToolbarBasicExample.Model,
+  progressBasicExample: ProgressBasicExample.Model,
   listboxBasicExample: ListboxBasicExample.Model,
   listboxAnimatedExample: ListboxAnimatedExample.Model,
   menuBasicExample: MenuBasicExample.Model,
@@ -1438,6 +3815,182 @@ export const ChangedUrl = m("ChangedUrl", { url: Url });
 export const GotUiMessage = m("GotUiMessage", {
   message: UiMessage,
 });
+export const GotAccordionBasicExampleMessage = m(
+  "GotAccordionBasicExampleMessage",
+  {
+    message: AccordionBasicExample.Message,
+  }
+);
+export const GotAccordionMultipleExampleMessage = m(
+  "GotAccordionMultipleExampleMessage",
+  {
+    message: AccordionMultipleExample.Message,
+  }
+);
+export const GotAlertBasicExampleMessage = m("GotAlertBasicExampleMessage", {
+  message: AlertBasicExample.Message,
+});
+export const GotAlertDestructiveExampleMessage = m(
+  "GotAlertDestructiveExampleMessage",
+  {
+    message: AlertDestructiveExample.Message,
+  }
+);
+export const GotAspectRatioBasicExampleMessage = m(
+  "GotAspectRatioBasicExampleMessage",
+  {
+    message: AspectRatioBasicExample.Message,
+  }
+);
+export const GotAspectRatioSquareExampleMessage = m(
+  "GotAspectRatioSquareExampleMessage",
+  {
+    message: AspectRatioSquareExample.Message,
+  }
+);
+export const GotAspectRatioPortraitExampleMessage = m(
+  "GotAspectRatioPortraitExampleMessage",
+  {
+    message: AspectRatioPortraitExample.Message,
+  }
+);
+export const GotAspectRatioRtlExampleMessage = m(
+  "GotAspectRatioRtlExampleMessage",
+  {
+    message: AspectRatioRtlExample.Message,
+  }
+);
+export const GotBreadcrumbBasicExampleMessage = m(
+  "GotBreadcrumbBasicExampleMessage",
+  { message: BreadcrumbBasicExample.Message }
+);
+export const GotBreadcrumbSeparatorExampleMessage = m(
+  "GotBreadcrumbSeparatorExampleMessage",
+  { message: BreadcrumbSeparatorExample.Message }
+);
+export const GotBreadcrumbDropdownExampleMessage = m(
+  "GotBreadcrumbDropdownExampleMessage",
+  { message: BreadcrumbDropdownExample.Message }
+);
+export const GotBreadcrumbCollapsedExampleMessage = m(
+  "GotBreadcrumbCollapsedExampleMessage",
+  { message: BreadcrumbCollapsedExample.Message }
+);
+export const GotBreadcrumbLinkExampleMessage = m(
+  "GotBreadcrumbLinkExampleMessage",
+  { message: BreadcrumbLinkExample.Message }
+);
+export const GotBreadcrumbRtlExampleMessage = m(
+  "GotBreadcrumbRtlExampleMessage",
+  { message: BreadcrumbRtlExample.Message }
+);
+export const GotButtonGroupBasicExampleMessage = m(
+  "GotButtonGroupBasicExampleMessage",
+  { message: ButtonGroupBasicExample.Message }
+);
+export const GotButtonGroupOrientationExampleMessage = m(
+  "GotButtonGroupOrientationExampleMessage",
+  { message: ButtonGroupOrientationExample.Message }
+);
+export const GotButtonGroupSizeExampleMessage = m(
+  "GotButtonGroupSizeExampleMessage",
+  { message: ButtonGroupSizeExample.Message }
+);
+export const GotButtonGroupNestedExampleMessage = m(
+  "GotButtonGroupNestedExampleMessage",
+  { message: ButtonGroupNestedExample.Message }
+);
+export const GotButtonGroupSeparatorExampleMessage = m(
+  "GotButtonGroupSeparatorExampleMessage",
+  { message: ButtonGroupSeparatorExample.Message }
+);
+export const GotButtonGroupSplitExampleMessage = m(
+  "GotButtonGroupSplitExampleMessage",
+  { message: ButtonGroupSplitExample.Message }
+);
+export const GotButtonGroupInputExampleMessage = m(
+  "GotButtonGroupInputExampleMessage",
+  { message: ButtonGroupInputExample.Message }
+);
+export const GotButtonGroupInputGroupExampleMessage = m(
+  "GotButtonGroupInputGroupExampleMessage",
+  { message: ButtonGroupInputGroupExample.Message }
+);
+export const GotButtonGroupSelectExampleMessage = m(
+  "GotButtonGroupSelectExampleMessage",
+  { message: ButtonGroupSelectExample.Message }
+);
+export const GotButtonGroupPopoverExampleMessage = m(
+  "GotButtonGroupPopoverExampleMessage",
+  { message: ButtonGroupPopoverExample.Message }
+);
+export const GotButtonGroupRtlExampleMessage = m(
+  "GotButtonGroupRtlExampleMessage",
+  { message: ButtonGroupRtlExample.Message }
+);
+export const GotAlertDialogBasicExampleMessage = m(
+  "GotAlertDialogBasicExampleMessage",
+  {
+    message: AlertDialogBasicExample.Message,
+  }
+);
+export const GotDrawerBasicExampleMessage = m("GotDrawerBasicExampleMessage", {
+  message: DrawerBasicExample.Message,
+});
+export const GotContextMenuBasicExampleMessage = m(
+  "GotContextMenuBasicExampleMessage",
+  {
+    message: ContextMenuBasicExample.Message,
+  }
+);
+export const GotMenubarBasicExampleMessage = m(
+  "GotMenubarBasicExampleMessage",
+  {
+    message: MenubarBasicExample.Message,
+  }
+);
+export const GotNavigationMenuBasicExampleMessage = m(
+  "GotNavigationMenuBasicExampleMessage",
+  {
+    message: NavigationMenuBasicExample.Message,
+  }
+);
+export const GotOtpFieldBasicExampleMessage = m(
+  "GotOtpFieldBasicExampleMessage",
+  {
+    message: OtpFieldBasicExample.Message,
+  }
+);
+export const GotPreviewCardBasicExampleMessage = m(
+  "GotPreviewCardBasicExampleMessage",
+  {
+    message: PreviewCardBasicExample.Message,
+  }
+);
+export const GotCollapsibleBasicExampleMessage = m(
+  "GotCollapsibleBasicExampleMessage",
+  {
+    message: CollapsibleBasicExample.Message,
+  }
+);
+export const GotFieldBasicExampleMessage = m("GotFieldBasicExampleMessage", {
+  message: FieldBasicExample.Message,
+});
+export const GotNumberFieldBasicExampleMessage = m(
+  "GotNumberFieldBasicExampleMessage",
+  {
+    message: NumberFieldBasicExample.Message,
+  }
+);
+export const GotFormBasicExampleMessage = m("GotFormBasicExampleMessage", {
+  message: FormBasicExample.Message,
+});
+export const GotAutocompleteBasicExampleMessage = m(
+  "GotAutocompleteBasicExampleMessage",
+  {
+    message: AutocompleteBasicExample.Message,
+  }
+);
 export const GotAnimationBasicExampleMessage = m(
   "GotAnimationBasicExampleMessage",
   {
@@ -1450,6 +4003,224 @@ export const GotAvatarBasicExampleMessage = m("GotAvatarBasicExampleMessage", {
 export const GotBadgeBasicExampleMessage = m("GotBadgeBasicExampleMessage", {
   message: BadgeBasicExample.Message,
 });
+export const GotBadgeSpinnerExampleMessage = m(
+  "GotBadgeSpinnerExampleMessage",
+  {
+    message: BadgeSpinnerExample.Message,
+  }
+);
+export const GotCarouselBasicExampleMessage = m(
+  "GotCarouselBasicExampleMessage",
+  {
+    message: CarouselBasicExample.Message,
+  }
+);
+export const GotCarouselSizesExampleMessage = m(
+  "GotCarouselSizesExampleMessage",
+  {
+    message: CarouselSizesExample.Message,
+  }
+);
+export const GotCarouselSpacingExampleMessage = m(
+  "GotCarouselSpacingExampleMessage",
+  {
+    message: CarouselSpacingExample.Message,
+  }
+);
+export const GotCarouselOrientationExampleMessage = m(
+  "GotCarouselOrientationExampleMessage",
+  {
+    message: CarouselOrientationExample.Message,
+  }
+);
+export const GotCarouselApiExampleMessage = m("GotCarouselApiExampleMessage", {
+  message: CarouselApiExample.Message,
+});
+export const GotCarouselRtlExampleMessage = m("GotCarouselRtlExampleMessage", {
+  message: CarouselRtlExample.Message,
+});
+export const GotChartBasicExampleMessage = m("GotChartBasicExampleMessage", {
+  message: ChartBasicExample.Message,
+});
+export const GotChartGridExampleMessage = m("GotChartGridExampleMessage", {
+  message: ChartGridExample.Message,
+});
+export const GotChartAxisExampleMessage = m("GotChartAxisExampleMessage", {
+  message: ChartAxisExample.Message,
+});
+export const GotChartTooltipExampleMessage = m(
+  "GotChartTooltipExampleMessage",
+  {
+    message: ChartTooltipExample.Message,
+  }
+);
+export const GotChartLegendExampleMessage = m("GotChartLegendExampleMessage", {
+  message: ChartLegendExample.Message,
+});
+export const GotChartRtlExampleMessage = m("GotChartRtlExampleMessage", {
+  message: ChartRtlExample.Message,
+});
+export const GotDataTableBasicExampleMessage = m(
+  "GotDataTableBasicExampleMessage",
+  {
+    message: DataTableBasicExample.Message,
+  }
+);
+export const GotDataTableRowActionsExampleMessage = m(
+  "GotDataTableRowActionsExampleMessage",
+  {
+    message: DataTableRowActionsExample.Message,
+  }
+);
+export const GotDataTablePaginationExampleMessage = m(
+  "GotDataTablePaginationExampleMessage",
+  {
+    message: DataTablePaginationExample.Message,
+  }
+);
+export const GotDataTableSortingExampleMessage = m(
+  "GotDataTableSortingExampleMessage",
+  {
+    message: DataTableSortingExample.Message,
+  }
+);
+export const GotDataTableFilteringExampleMessage = m(
+  "GotDataTableFilteringExampleMessage",
+  {
+    message: DataTableFilteringExample.Message,
+  }
+);
+export const GotDataTableVisibilityExampleMessage = m(
+  "GotDataTableVisibilityExampleMessage",
+  {
+    message: DataTableVisibilityExample.Message,
+  }
+);
+export const GotDataTableRowSelectionExampleMessage = m(
+  "GotDataTableRowSelectionExampleMessage",
+  {
+    message: DataTableRowSelectionExample.Message,
+  }
+);
+export const GotDirectionBasicExampleMessage = m(
+  "GotDirectionBasicExampleMessage",
+  {
+    message: DirectionBasicExample.Message,
+  }
+);
+export const GotItemAvatarExampleMessage = m("GotItemAvatarExampleMessage", {
+  message: ItemAvatarExample.Message,
+});
+export const GotItemBasicExampleMessage = m("GotItemBasicExampleMessage", {
+  message: ItemBasicExample.Message,
+});
+export const GotItemGroupExampleMessage = m("GotItemGroupExampleMessage", {
+  message: ItemGroupExample.Message,
+});
+export const GotItemHeaderExampleMessage = m("GotItemHeaderExampleMessage", {
+  message: ItemHeaderExample.Message,
+});
+export const GotItemIconExampleMessage = m("GotItemIconExampleMessage", {
+  message: ItemIconExample.Message,
+});
+export const GotItemImageExampleMessage = m("GotItemImageExampleMessage", {
+  message: ItemImageExample.Message,
+});
+export const GotItemLinkExampleMessage = m("GotItemLinkExampleMessage", {
+  message: ItemLinkExample.Message,
+});
+export const GotItemRtlExampleMessage = m("GotItemRtlExampleMessage", {
+  message: ItemRtlExample.Message,
+});
+export const GotItemSizeExampleMessage = m("GotItemSizeExampleMessage", {
+  message: ItemSizeExample.Message,
+});
+export const GotItemVariantExampleMessage = m("GotItemVariantExampleMessage", {
+  message: ItemVariantExample.Message,
+});
+export const GotLabelBasicExampleMessage = m("GotLabelBasicExampleMessage", {
+  message: LabelBasicExample.Message,
+});
+export const GotPaginationBasicExampleMessage = m(
+  "GotPaginationBasicExampleMessage",
+  { message: PaginationBasicExample.Message }
+);
+export const GotResizableBasicExampleMessage = m(
+  "GotResizableBasicExampleMessage",
+  { message: ResizableBasicExample.Message }
+);
+export const GotSidebarBasicExampleMessage = m(
+  "GotSidebarBasicExampleMessage",
+  { message: SidebarBasicExample.Message }
+);
+export const GotTableBasicExampleMessage = m("GotTableBasicExampleMessage", {
+  message: TableBasicExample.Message,
+});
+export const GotCommandBasicExampleMessage = m(
+  "GotCommandBasicExampleMessage",
+  { message: CommandBasicExample.Message }
+);
+export const GotDropdownMenuBasicExampleMessage = m(
+  "GotDropdownMenuBasicExampleMessage",
+  { message: DropdownMenuBasicExample.Message }
+);
+export const GotHoverCardBasicExampleMessage = m(
+  "GotHoverCardBasicExampleMessage",
+  { message: HoverCardBasicExample.Message }
+);
+export const GotInputOtpBasicExampleMessage = m(
+  "GotInputOtpBasicExampleMessage",
+  { message: InputOtpBasicExample.Message }
+);
+export const GotNativeSelectBasicExampleMessage = m(
+  "GotNativeSelectBasicExampleMessage",
+  { message: NativeSelectBasicExample.Message }
+);
+export const GotSheetBasicExampleMessage = m("GotSheetBasicExampleMessage", {
+  message: SheetBasicExample.Message,
+});
+export const GotSonnerBasicExampleMessage = m("GotSonnerBasicExampleMessage", {
+  message: SonnerBasicExample.Message,
+});
+export const GotCardBasicExampleMessage = m("GotCardBasicExampleMessage", {
+  message: CardBasicExample.Message,
+});
+export const GotSeparatorBasicExampleMessage = m(
+  "GotSeparatorBasicExampleMessage",
+  {
+    message: SeparatorBasicExample.Message,
+  }
+);
+export const GotSkeletonBasicExampleMessage = m(
+  "GotSkeletonBasicExampleMessage",
+  {
+    message: SkeletonBasicExample.Message,
+  }
+);
+export const GotKbdBasicExampleMessage = m("GotKbdBasicExampleMessage", {
+  message: KbdBasicExample.Message,
+});
+export const GotKbdInputGroupExampleMessage = m(
+  "GotKbdInputGroupExampleMessage",
+  {
+    message: KbdInputGroupExample.Message,
+  }
+);
+export const GotTypographyBasicExampleMessage = m(
+  "GotTypographyBasicExampleMessage",
+  {
+    message: TypographyBasicExample.Message,
+  }
+);
+export const GotEmptyBasicExampleMessage = m("GotEmptyBasicExampleMessage", {
+  message: EmptyBasicExample.Message,
+});
+export const GotEmptyInputGroupExampleMessage = m(
+  "GotEmptyInputGroupExampleMessage",
+  {
+    message: EmptyInputGroupExample.Message,
+  }
+);
 export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
   message: ButtonBasicExample.Message,
 });
@@ -1475,6 +4246,12 @@ export const GotCheckboxBasicExampleMessage = m(
   "GotCheckboxBasicExampleMessage",
   {
     message: CheckboxBasicExample.Message,
+  }
+);
+export const GotCheckboxGroupBasicExampleMessage = m(
+  "GotCheckboxGroupBasicExampleMessage",
+  {
+    message: CheckboxGroupBasicExample.Message,
   }
 );
 export const GotCheckboxIndeterminateExampleMessage = m(
@@ -1586,6 +4363,39 @@ export const GotInputDisabledExampleMessage = m(
   "GotInputDisabledExampleMessage",
   {
     message: InputDisabledExample.Message,
+  }
+);
+export const GotMeterBasicExampleMessage = m("GotMeterBasicExampleMessage", {
+  message: MeterBasicExample.Message,
+});
+export const GotScrollAreaBasicExampleMessage = m(
+  "GotScrollAreaBasicExampleMessage",
+  {
+    message: ScrollAreaBasicExample.Message,
+  }
+);
+export const GotToggleBasicExampleMessage = m("GotToggleBasicExampleMessage", {
+  message: ToggleBasicExample.Message,
+});
+export const GotToggleGroupBasicExampleMessage = m(
+  "GotToggleGroupBasicExampleMessage",
+  {
+    message: ToggleGroupBasicExample.Message,
+  }
+);
+export const GotRadioBasicExampleMessage = m("GotRadioBasicExampleMessage", {
+  message: RadioBasicExample.Message,
+});
+export const GotToolbarBasicExampleMessage = m(
+  "GotToolbarBasicExampleMessage",
+  {
+    message: ToolbarBasicExample.Message,
+  }
+);
+export const GotProgressBasicExampleMessage = m(
+  "GotProgressBasicExampleMessage",
+  {
+    message: ProgressBasicExample.Message,
   }
 );
 export const GotListboxBasicExampleMessage = m(
@@ -1718,14 +4528,103 @@ export const Message = S.Union([
   ClickedLink,
   ChangedUrl,
   GotUiMessage,
+  GotAccordionBasicExampleMessage,
+  GotAccordionMultipleExampleMessage,
+  GotAlertBasicExampleMessage,
+  GotAlertDestructiveExampleMessage,
+  GotAspectRatioBasicExampleMessage,
+  GotAspectRatioSquareExampleMessage,
+  GotAspectRatioPortraitExampleMessage,
+  GotAspectRatioRtlExampleMessage,
+  GotBreadcrumbBasicExampleMessage,
+  GotBreadcrumbSeparatorExampleMessage,
+  GotBreadcrumbDropdownExampleMessage,
+  GotBreadcrumbCollapsedExampleMessage,
+  GotBreadcrumbLinkExampleMessage,
+  GotBreadcrumbRtlExampleMessage,
+  GotButtonGroupBasicExampleMessage,
+  GotButtonGroupOrientationExampleMessage,
+  GotButtonGroupSizeExampleMessage,
+  GotButtonGroupNestedExampleMessage,
+  GotButtonGroupSeparatorExampleMessage,
+  GotButtonGroupSplitExampleMessage,
+  GotButtonGroupInputExampleMessage,
+  GotButtonGroupInputGroupExampleMessage,
+  GotButtonGroupSelectExampleMessage,
+  GotButtonGroupPopoverExampleMessage,
+  GotButtonGroupRtlExampleMessage,
+  GotAlertDialogBasicExampleMessage,
+  GotDrawerBasicExampleMessage,
+  GotContextMenuBasicExampleMessage,
+  GotMenubarBasicExampleMessage,
+  GotNavigationMenuBasicExampleMessage,
+  GotOtpFieldBasicExampleMessage,
+  GotPreviewCardBasicExampleMessage,
+  GotCollapsibleBasicExampleMessage,
+  GotFieldBasicExampleMessage,
+  GotNumberFieldBasicExampleMessage,
+  GotFormBasicExampleMessage,
+  GotAutocompleteBasicExampleMessage,
   GotAnimationBasicExampleMessage,
   GotAvatarBasicExampleMessage,
   GotBadgeBasicExampleMessage,
+  GotBadgeSpinnerExampleMessage,
+  GotCarouselBasicExampleMessage,
+  GotCarouselSizesExampleMessage,
+  GotCarouselSpacingExampleMessage,
+  GotCarouselOrientationExampleMessage,
+  GotCarouselApiExampleMessage,
+  GotCarouselRtlExampleMessage,
+  GotChartBasicExampleMessage,
+  GotChartGridExampleMessage,
+  GotChartAxisExampleMessage,
+  GotChartTooltipExampleMessage,
+  GotChartLegendExampleMessage,
+  GotChartRtlExampleMessage,
+  GotDataTableBasicExampleMessage,
+  GotDataTableRowActionsExampleMessage,
+  GotDataTablePaginationExampleMessage,
+  GotDataTableSortingExampleMessage,
+  GotDataTableFilteringExampleMessage,
+  GotDataTableVisibilityExampleMessage,
+  GotDataTableRowSelectionExampleMessage,
+  GotDirectionBasicExampleMessage,
+  GotItemAvatarExampleMessage,
+  GotItemBasicExampleMessage,
+  GotItemGroupExampleMessage,
+  GotItemHeaderExampleMessage,
+  GotItemIconExampleMessage,
+  GotItemImageExampleMessage,
+  GotItemLinkExampleMessage,
+  GotItemRtlExampleMessage,
+  GotItemSizeExampleMessage,
+  GotItemVariantExampleMessage,
+  GotLabelBasicExampleMessage,
+  GotPaginationBasicExampleMessage,
+  GotResizableBasicExampleMessage,
+  GotSidebarBasicExampleMessage,
+  GotTableBasicExampleMessage,
+  GotCommandBasicExampleMessage,
+  GotDropdownMenuBasicExampleMessage,
+  GotHoverCardBasicExampleMessage,
+  GotInputOtpBasicExampleMessage,
+  GotNativeSelectBasicExampleMessage,
+  GotSheetBasicExampleMessage,
+  GotSonnerBasicExampleMessage,
+  GotCardBasicExampleMessage,
+  GotSeparatorBasicExampleMessage,
+  GotSkeletonBasicExampleMessage,
+  GotKbdBasicExampleMessage,
+  GotKbdInputGroupExampleMessage,
+  GotTypographyBasicExampleMessage,
+  GotEmptyBasicExampleMessage,
+  GotEmptyInputGroupExampleMessage,
   GotButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
   GotCalendarBasicExampleMessage,
   GotCalendarBoundsExampleMessage,
   GotCheckboxBasicExampleMessage,
+  GotCheckboxGroupBasicExampleMessage,
   GotCheckboxIndeterminateExampleMessage,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
@@ -1746,6 +4645,13 @@ export const Message = S.Union([
   GotFileDropDisabledExampleMessage,
   GotInputBasicExampleMessage,
   GotInputDisabledExampleMessage,
+  GotMeterBasicExampleMessage,
+  GotScrollAreaBasicExampleMessage,
+  GotToggleBasicExampleMessage,
+  GotToggleGroupBasicExampleMessage,
+  GotRadioBasicExampleMessage,
+  GotToolbarBasicExampleMessage,
+  GotProgressBasicExampleMessage,
   GotListboxBasicExampleMessage,
   GotListboxAnimatedExampleMessage,
   GotMenuBasicExampleMessage,
@@ -1805,12 +4711,175 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   url: Url
 ) => {
   const [initialUiModel, uiCommands] = uiInit(flags.today);
+  const [accordionBasicExample, accordionBasicExampleCommands] =
+    AccordionBasicExample.init();
+  const [accordionMultipleExample, accordionMultipleExampleCommands] =
+    AccordionMultipleExample.init();
+  const [alertBasicExample, alertBasicExampleCommands] =
+    AlertBasicExample.init();
+  const [alertDestructiveExample, alertDestructiveExampleCommands] =
+    AlertDestructiveExample.init();
+  const [aspectRatioBasicExample, aspectRatioBasicExampleCommands] =
+    AspectRatioBasicExample.init();
+  const [aspectRatioSquareExample, aspectRatioSquareExampleCommands] =
+    AspectRatioSquareExample.init();
+  const [aspectRatioPortraitExample, aspectRatioPortraitExampleCommands] =
+    AspectRatioPortraitExample.init();
+  const [aspectRatioRtlExample, aspectRatioRtlExampleCommands] =
+    AspectRatioRtlExample.init();
+  const [breadcrumbBasicExample, breadcrumbBasicExampleCommands] =
+    BreadcrumbBasicExample.init();
+  const [breadcrumbSeparatorExample, breadcrumbSeparatorExampleCommands] =
+    BreadcrumbSeparatorExample.init();
+  const [breadcrumbDropdownExample, breadcrumbDropdownExampleCommands] =
+    BreadcrumbDropdownExample.init();
+  const [breadcrumbCollapsedExample, breadcrumbCollapsedExampleCommands] =
+    BreadcrumbCollapsedExample.init();
+  const [breadcrumbLinkExample, breadcrumbLinkExampleCommands] =
+    BreadcrumbLinkExample.init();
+  const [breadcrumbRtlExample, breadcrumbRtlExampleCommands] =
+    BreadcrumbRtlExample.init();
+  const [buttonGroupBasicExample, buttonGroupBasicExampleCommands] =
+    ButtonGroupBasicExample.init();
+  const [buttonGroupOrientationExample, buttonGroupOrientationExampleCommands] =
+    ButtonGroupOrientationExample.init();
+  const [buttonGroupSizeExample, buttonGroupSizeExampleCommands] =
+    ButtonGroupSizeExample.init();
+  const [buttonGroupNestedExample, buttonGroupNestedExampleCommands] =
+    ButtonGroupNestedExample.init();
+  const [buttonGroupSeparatorExample, buttonGroupSeparatorExampleCommands] =
+    ButtonGroupSeparatorExample.init();
+  const [buttonGroupSplitExample, buttonGroupSplitExampleCommands] =
+    ButtonGroupSplitExample.init();
+  const [buttonGroupInputExample, buttonGroupInputExampleCommands] =
+    ButtonGroupInputExample.init();
+  const [buttonGroupInputGroupExample, buttonGroupInputGroupExampleCommands] =
+    ButtonGroupInputGroupExample.init();
+  const [buttonGroupSelectExample, buttonGroupSelectExampleCommands] =
+    ButtonGroupSelectExample.init();
+  const [buttonGroupPopoverExample, buttonGroupPopoverExampleCommands] =
+    ButtonGroupPopoverExample.init();
+  const [buttonGroupRtlExample, buttonGroupRtlExampleCommands] =
+    ButtonGroupRtlExample.init();
+  const [alertDialogBasicExample, alertDialogBasicExampleCommands] =
+    AlertDialogBasicExample.init();
+  const [drawerBasicExample, drawerBasicExampleCommands] =
+    DrawerBasicExample.init();
+  const [contextMenuBasicExample, contextMenuBasicExampleCommands] =
+    ContextMenuBasicExample.init();
+  const [menubarBasicExample, menubarBasicExampleCommands] =
+    MenubarBasicExample.init();
+  const [navigationMenuBasicExample, navigationMenuBasicExampleCommands] =
+    NavigationMenuBasicExample.init();
+  const [otpFieldBasicExample, otpFieldBasicExampleCommands] =
+    OtpFieldBasicExample.init();
+  const [previewCardBasicExample, previewCardBasicExampleCommands] =
+    PreviewCardBasicExample.init();
+  const [collapsibleBasicExample, collapsibleBasicExampleCommands] =
+    CollapsibleBasicExample.init();
+  const [fieldBasicExample, fieldBasicExampleCommands] =
+    FieldBasicExample.init();
+  const [numberFieldBasicExample, numberFieldBasicExampleCommands] =
+    NumberFieldBasicExample.init();
+  const [formBasicExample, formBasicExampleCommands] = FormBasicExample.init();
+  const [autocompleteBasicExample, autocompleteBasicExampleCommands] =
+    AutocompleteBasicExample.init();
   const [animationBasicExample, animationBasicExampleCommands] =
     AnimationBasicExample.init();
   const [avatarBasicExample, avatarBasicExampleCommands] =
     AvatarBasicExample.init();
   const [badgeBasicExample, badgeBasicExampleCommands] =
     BadgeBasicExample.init();
+  const [badgeSpinnerExample, badgeSpinnerExampleCommands] =
+    BadgeSpinnerExample.init();
+  const [carouselBasicExample, carouselBasicExampleCommands] =
+    CarouselBasicExample.init();
+  const [carouselSizesExample, carouselSizesExampleCommands] =
+    CarouselSizesExample.init();
+  const [carouselSpacingExample, carouselSpacingExampleCommands] =
+    CarouselSpacingExample.init();
+  const [carouselOrientationExample, carouselOrientationExampleCommands] =
+    CarouselOrientationExample.init();
+  const [carouselApiExample, carouselApiExampleCommands] =
+    CarouselApiExample.init();
+  const [carouselRtlExample, carouselRtlExampleCommands] =
+    CarouselRtlExample.init();
+  const [chartBasicExample, chartBasicExampleCommands] =
+    ChartBasicExample.init();
+  const [chartGridExample, chartGridExampleCommands] = ChartGridExample.init();
+  const [chartAxisExample, chartAxisExampleCommands] = ChartAxisExample.init();
+  const [chartTooltipExample, chartTooltipExampleCommands] =
+    ChartTooltipExample.init();
+  const [chartLegendExample, chartLegendExampleCommands] =
+    ChartLegendExample.init();
+  const [chartRtlExample, chartRtlExampleCommands] = ChartRtlExample.init();
+  const [commandBasicExample, commandBasicExampleCommands] =
+    CommandBasicExample.init();
+  const [dropdownMenuBasicExample, dropdownMenuBasicExampleCommands] =
+    DropdownMenuBasicExample.init();
+  const [hoverCardBasicExample, hoverCardBasicExampleCommands] =
+    HoverCardBasicExample.init();
+  const [inputOtpBasicExample, inputOtpBasicExampleCommands] =
+    InputOtpBasicExample.init();
+  const [nativeSelectBasicExample, nativeSelectBasicExampleCommands] =
+    NativeSelectBasicExample.init();
+  const [sheetBasicExample, sheetBasicExampleCommands] =
+    SheetBasicExample.init();
+  const [sonnerBasicExample, sonnerBasicExampleCommands] =
+    SonnerBasicExample.init();
+  const [dataTableBasicExample, dataTableBasicExampleCommands] =
+    DataTableBasicExample.init();
+  const [dataTableRowActionsExample, dataTableRowActionsExampleCommands] =
+    DataTableRowActionsExample.init();
+  const [dataTablePaginationExample, dataTablePaginationExampleCommands] =
+    DataTablePaginationExample.init();
+  const [dataTableSortingExample, dataTableSortingExampleCommands] =
+    DataTableSortingExample.init();
+  const [dataTableFilteringExample, dataTableFilteringExampleCommands] =
+    DataTableFilteringExample.init();
+  const [dataTableVisibilityExample, dataTableVisibilityExampleCommands] =
+    DataTableVisibilityExample.init();
+  const [dataTableRowSelectionExample, dataTableRowSelectionExampleCommands] =
+    DataTableRowSelectionExample.init();
+  const [directionBasicExample, directionBasicExampleCommands] =
+    DirectionBasicExample.init();
+  const [itemAvatarExample, itemAvatarExampleCommands] =
+    ItemAvatarExample.init();
+  const [itemBasicExample, itemBasicExampleCommands] = ItemBasicExample.init();
+  const [itemGroupExample, itemGroupExampleCommands] = ItemGroupExample.init();
+  const [itemHeaderExample, itemHeaderExampleCommands] =
+    ItemHeaderExample.init();
+  const [itemIconExample, itemIconExampleCommands] = ItemIconExample.init();
+  const [itemImageExample, itemImageExampleCommands] = ItemImageExample.init();
+  const [itemLinkExample, itemLinkExampleCommands] = ItemLinkExample.init();
+  const [itemRtlExample, itemRtlExampleCommands] = ItemRtlExample.init();
+  const [itemSizeExample, itemSizeExampleCommands] = ItemSizeExample.init();
+  const [itemVariantExample, itemVariantExampleCommands] =
+    ItemVariantExample.init();
+  const [labelBasicExample, labelBasicExampleCommands] =
+    LabelBasicExample.init();
+  const [paginationBasicExample, paginationBasicExampleCommands] =
+    PaginationBasicExample.init();
+  const [resizableBasicExample, resizableBasicExampleCommands] =
+    ResizableBasicExample.init();
+  const [sidebarBasicExample, sidebarBasicExampleCommands] =
+    SidebarBasicExample.init();
+  const [tableBasicExample, tableBasicExampleCommands] =
+    TableBasicExample.init();
+  const [cardBasicExample, cardBasicExampleCommands] = CardBasicExample.init();
+  const [separatorBasicExample, separatorBasicExampleCommands] =
+    SeparatorBasicExample.init();
+  const [skeletonBasicExample, skeletonBasicExampleCommands] =
+    SkeletonBasicExample.init();
+  const [kbdBasicExample, kbdBasicExampleCommands] = KbdBasicExample.init();
+  const [kbdInputGroupExample, kbdInputGroupExampleCommands] =
+    KbdInputGroupExample.init();
+  const [typographyBasicExample, typographyBasicExampleCommands] =
+    TypographyBasicExample.init();
+  const [emptyBasicExample, emptyBasicExampleCommands] =
+    EmptyBasicExample.init();
+  const [emptyInputGroupExample, emptyInputGroupExampleCommands] =
+    EmptyInputGroupExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
     ButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
@@ -1821,6 +4890,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     CalendarBoundsExample.init();
   const [checkboxBasicExample, checkboxBasicExampleCommands] =
     CheckboxBasicExample.init();
+  const [checkboxGroupBasicExample, checkboxGroupBasicExampleCommands] =
+    CheckboxGroupBasicExample.init();
   const [checkboxIndeterminateExample, checkboxIndeterminateExampleCommands] =
     CheckboxIndeterminateExample.init();
   const [comboboxBasicExample, comboboxBasicExampleCommands] =
@@ -1861,6 +4932,20 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     InputBasicExample.init();
   const [inputDisabledExample, inputDisabledExampleCommands] =
     InputDisabledExample.init();
+  const [meterBasicExample, meterBasicExampleCommands] =
+    MeterBasicExample.init();
+  const [scrollAreaBasicExample, scrollAreaBasicExampleCommands] =
+    ScrollAreaBasicExample.init();
+  const [toggleBasicExample, toggleBasicExampleCommands] =
+    ToggleBasicExample.init();
+  const [toggleGroupBasicExample, toggleGroupBasicExampleCommands] =
+    ToggleGroupBasicExample.init();
+  const [radioBasicExample, radioBasicExampleCommands] =
+    RadioBasicExample.init();
+  const [toolbarBasicExample, toolbarBasicExampleCommands] =
+    ToolbarBasicExample.init();
+  const [progressBasicExample, progressBasicExampleCommands] =
+    ProgressBasicExample.init();
   const [listboxBasicExample, listboxBasicExampleCommands] =
     ListboxBasicExample.init();
   const [listboxAnimatedExample, listboxAnimatedExampleCommands] =
@@ -1912,14 +4997,103 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     {
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
+      accordionBasicExample,
+      accordionMultipleExample,
+      alertBasicExample,
+      alertDestructiveExample,
+      aspectRatioBasicExample,
+      aspectRatioSquareExample,
+      aspectRatioPortraitExample,
+      aspectRatioRtlExample,
+      breadcrumbBasicExample,
+      breadcrumbSeparatorExample,
+      breadcrumbDropdownExample,
+      breadcrumbCollapsedExample,
+      breadcrumbLinkExample,
+      breadcrumbRtlExample,
+      buttonGroupBasicExample,
+      buttonGroupOrientationExample,
+      buttonGroupSizeExample,
+      buttonGroupNestedExample,
+      buttonGroupSeparatorExample,
+      buttonGroupSplitExample,
+      buttonGroupInputExample,
+      buttonGroupInputGroupExample,
+      buttonGroupSelectExample,
+      buttonGroupPopoverExample,
+      buttonGroupRtlExample,
+      alertDialogBasicExample,
+      drawerBasicExample,
+      contextMenuBasicExample,
+      menubarBasicExample,
+      navigationMenuBasicExample,
+      otpFieldBasicExample,
+      previewCardBasicExample,
+      collapsibleBasicExample,
+      fieldBasicExample,
+      numberFieldBasicExample,
+      formBasicExample,
+      autocompleteBasicExample,
       animationBasicExample,
       avatarBasicExample,
       badgeBasicExample,
+      badgeSpinnerExample,
+      carouselBasicExample,
+      carouselSizesExample,
+      carouselSpacingExample,
+      carouselOrientationExample,
+      carouselApiExample,
+      carouselRtlExample,
+      chartBasicExample,
+      chartGridExample,
+      chartAxisExample,
+      chartTooltipExample,
+      chartLegendExample,
+      chartRtlExample,
+      commandBasicExample,
+      dropdownMenuBasicExample,
+      hoverCardBasicExample,
+      inputOtpBasicExample,
+      nativeSelectBasicExample,
+      sheetBasicExample,
+      sonnerBasicExample,
+      dataTableBasicExample,
+      dataTableRowActionsExample,
+      dataTablePaginationExample,
+      dataTableSortingExample,
+      dataTableFilteringExample,
+      dataTableVisibilityExample,
+      dataTableRowSelectionExample,
+      directionBasicExample,
+      itemAvatarExample,
+      itemBasicExample,
+      itemGroupExample,
+      itemHeaderExample,
+      itemIconExample,
+      itemImageExample,
+      itemLinkExample,
+      itemRtlExample,
+      itemSizeExample,
+      itemVariantExample,
+      labelBasicExample,
+      paginationBasicExample,
+      resizableBasicExample,
+      sidebarBasicExample,
+      tableBasicExample,
+      cardBasicExample,
+      separatorBasicExample,
+      skeletonBasicExample,
+      kbdBasicExample,
+      kbdInputGroupExample,
+      typographyBasicExample,
+      emptyBasicExample,
+      emptyInputGroupExample,
       buttonBasicExample,
       buttonDisabledExample,
       calendarBasicExample,
       calendarBoundsExample,
       checkboxBasicExample,
+      checkboxGroupBasicExample,
       checkboxIndeterminateExample,
       comboboxBasicExample,
       comboboxMultiExample,
@@ -1940,6 +5114,13 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       fileDropDisabledExample,
       inputBasicExample,
       inputDisabledExample,
+      meterBasicExample,
+      scrollAreaBasicExample,
+      toggleBasicExample,
+      toggleGroupBasicExample,
+      radioBasicExample,
+      toolbarBasicExample,
+      progressBasicExample,
       listboxBasicExample,
       listboxAnimatedExample,
       menuBasicExample,
@@ -1969,6 +5150,117 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(uiCommands, (message) =>
         GotUiMessage({ message })
       ),
+      ...Command.mapMessages(accordionBasicExampleCommands, (message) =>
+        GotAccordionBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(accordionMultipleExampleCommands, (message) =>
+        GotAccordionMultipleExampleMessage({ message })
+      ),
+      ...Command.mapMessages(alertBasicExampleCommands, (message) =>
+        GotAlertBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(alertDestructiveExampleCommands, (message) =>
+        GotAlertDestructiveExampleMessage({ message })
+      ),
+      ...Command.mapMessages(aspectRatioBasicExampleCommands, (message) =>
+        GotAspectRatioBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(aspectRatioSquareExampleCommands, (message) =>
+        GotAspectRatioSquareExampleMessage({ message })
+      ),
+      ...Command.mapMessages(aspectRatioPortraitExampleCommands, (message) =>
+        GotAspectRatioPortraitExampleMessage({ message })
+      ),
+      ...Command.mapMessages(aspectRatioRtlExampleCommands, (message) =>
+        GotAspectRatioRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(breadcrumbBasicExampleCommands, (message) =>
+        GotBreadcrumbBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(breadcrumbSeparatorExampleCommands, (message) =>
+        GotBreadcrumbSeparatorExampleMessage({ message })
+      ),
+      ...Command.mapMessages(breadcrumbDropdownExampleCommands, (message) =>
+        GotBreadcrumbDropdownExampleMessage({ message })
+      ),
+      ...Command.mapMessages(breadcrumbCollapsedExampleCommands, (message) =>
+        GotBreadcrumbCollapsedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(breadcrumbLinkExampleCommands, (message) =>
+        GotBreadcrumbLinkExampleMessage({ message })
+      ),
+      ...Command.mapMessages(breadcrumbRtlExampleCommands, (message) =>
+        GotBreadcrumbRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupBasicExampleCommands, (message) =>
+        GotButtonGroupBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupOrientationExampleCommands, (message) =>
+        GotButtonGroupOrientationExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupSizeExampleCommands, (message) =>
+        GotButtonGroupSizeExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupNestedExampleCommands, (message) =>
+        GotButtonGroupNestedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupSeparatorExampleCommands, (message) =>
+        GotButtonGroupSeparatorExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupSplitExampleCommands, (message) =>
+        GotButtonGroupSplitExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupInputExampleCommands, (message) =>
+        GotButtonGroupInputExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupInputGroupExampleCommands, (message) =>
+        GotButtonGroupInputGroupExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupSelectExampleCommands, (message) =>
+        GotButtonGroupSelectExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupPopoverExampleCommands, (message) =>
+        GotButtonGroupPopoverExampleMessage({ message })
+      ),
+      ...Command.mapMessages(buttonGroupRtlExampleCommands, (message) =>
+        GotButtonGroupRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(alertDialogBasicExampleCommands, (message) =>
+        GotAlertDialogBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(drawerBasicExampleCommands, (message) =>
+        GotDrawerBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(contextMenuBasicExampleCommands, (message) =>
+        GotContextMenuBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(menubarBasicExampleCommands, (message) =>
+        GotMenubarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(navigationMenuBasicExampleCommands, (message) =>
+        GotNavigationMenuBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(otpFieldBasicExampleCommands, (message) =>
+        GotOtpFieldBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(previewCardBasicExampleCommands, (message) =>
+        GotPreviewCardBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(collapsibleBasicExampleCommands, (message) =>
+        GotCollapsibleBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(fieldBasicExampleCommands, (message) =>
+        GotFieldBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(numberFieldBasicExampleCommands, (message) =>
+        GotNumberFieldBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(formBasicExampleCommands, (message) =>
+        GotFormBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(autocompleteBasicExampleCommands, (message) =>
+        GotAutocompleteBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(animationBasicExampleCommands, (message) =>
         GotAnimationBasicExampleMessage({ message })
       ),
@@ -1977,6 +5269,159 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(badgeBasicExampleCommands, (message) =>
         GotBadgeBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(badgeSpinnerExampleCommands, (message) =>
+        GotBadgeSpinnerExampleMessage({ message })
+      ),
+      ...Command.mapMessages(carouselBasicExampleCommands, (message) =>
+        GotCarouselBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(carouselSizesExampleCommands, (message) =>
+        GotCarouselSizesExampleMessage({ message })
+      ),
+      ...Command.mapMessages(carouselSpacingExampleCommands, (message) =>
+        GotCarouselSpacingExampleMessage({ message })
+      ),
+      ...Command.mapMessages(carouselOrientationExampleCommands, (message) =>
+        GotCarouselOrientationExampleMessage({ message })
+      ),
+      ...Command.mapMessages(carouselApiExampleCommands, (message) =>
+        GotCarouselApiExampleMessage({ message })
+      ),
+      ...Command.mapMessages(carouselRtlExampleCommands, (message) =>
+        GotCarouselRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(chartBasicExampleCommands, (message) =>
+        GotChartBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(chartGridExampleCommands, (message) =>
+        GotChartGridExampleMessage({ message })
+      ),
+      ...Command.mapMessages(chartAxisExampleCommands, (message) =>
+        GotChartAxisExampleMessage({ message })
+      ),
+      ...Command.mapMessages(chartTooltipExampleCommands, (message) =>
+        GotChartTooltipExampleMessage({ message })
+      ),
+      ...Command.mapMessages(chartLegendExampleCommands, (message) =>
+        GotChartLegendExampleMessage({ message })
+      ),
+      ...Command.mapMessages(chartRtlExampleCommands, (message) =>
+        GotChartRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(commandBasicExampleCommands, (message) =>
+        GotCommandBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuBasicExampleCommands, (message) =>
+        GotDropdownMenuBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(hoverCardBasicExampleCommands, (message) =>
+        GotHoverCardBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpBasicExampleCommands, (message) =>
+        GotInputOtpBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(nativeSelectBasicExampleCommands, (message) =>
+        GotNativeSelectBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sheetBasicExampleCommands, (message) =>
+        GotSheetBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sonnerBasicExampleCommands, (message) =>
+        GotSonnerBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTableBasicExampleCommands, (message) =>
+        GotDataTableBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTableRowActionsExampleCommands, (message) =>
+        GotDataTableRowActionsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTablePaginationExampleCommands, (message) =>
+        GotDataTablePaginationExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTableSortingExampleCommands, (message) =>
+        GotDataTableSortingExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTableFilteringExampleCommands, (message) =>
+        GotDataTableFilteringExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTableVisibilityExampleCommands, (message) =>
+        GotDataTableVisibilityExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dataTableRowSelectionExampleCommands, (message) =>
+        GotDataTableRowSelectionExampleMessage({ message })
+      ),
+      ...Command.mapMessages(directionBasicExampleCommands, (message) =>
+        GotDirectionBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemAvatarExampleCommands, (message) =>
+        GotItemAvatarExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemBasicExampleCommands, (message) =>
+        GotItemBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemGroupExampleCommands, (message) =>
+        GotItemGroupExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemHeaderExampleCommands, (message) =>
+        GotItemHeaderExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemIconExampleCommands, (message) =>
+        GotItemIconExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemImageExampleCommands, (message) =>
+        GotItemImageExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemLinkExampleCommands, (message) =>
+        GotItemLinkExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemRtlExampleCommands, (message) =>
+        GotItemRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemSizeExampleCommands, (message) =>
+        GotItemSizeExampleMessage({ message })
+      ),
+      ...Command.mapMessages(itemVariantExampleCommands, (message) =>
+        GotItemVariantExampleMessage({ message })
+      ),
+      ...Command.mapMessages(labelBasicExampleCommands, (message) =>
+        GotLabelBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(paginationBasicExampleCommands, (message) =>
+        GotPaginationBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(resizableBasicExampleCommands, (message) =>
+        GotResizableBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sidebarBasicExampleCommands, (message) =>
+        GotSidebarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(tableBasicExampleCommands, (message) =>
+        GotTableBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(cardBasicExampleCommands, (message) =>
+        GotCardBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(separatorBasicExampleCommands, (message) =>
+        GotSeparatorBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(skeletonBasicExampleCommands, (message) =>
+        GotSkeletonBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(kbdBasicExampleCommands, (message) =>
+        GotKbdBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(kbdInputGroupExampleCommands, (message) =>
+        GotKbdInputGroupExampleMessage({ message })
+      ),
+      ...Command.mapMessages(typographyBasicExampleCommands, (message) =>
+        GotTypographyBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyBasicExampleCommands, (message) =>
+        GotEmptyBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyInputGroupExampleCommands, (message) =>
+        GotEmptyInputGroupExampleMessage({ message })
       ),
       ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
         GotButtonBasicExampleMessage({ message })
@@ -1992,6 +5437,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(checkboxBasicExampleCommands, (message) =>
         GotCheckboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(checkboxGroupBasicExampleCommands, (message) =>
+        GotCheckboxGroupBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(checkboxIndeterminateExampleCommands, (message) =>
         GotCheckboxIndeterminateExampleMessage({ message })
@@ -2052,6 +5500,27 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(inputDisabledExampleCommands, (message) =>
         GotInputDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(meterBasicExampleCommands, (message) =>
+        GotMeterBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(scrollAreaBasicExampleCommands, (message) =>
+        GotScrollAreaBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(toggleBasicExampleCommands, (message) =>
+        GotToggleBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(toggleGroupBasicExampleCommands, (message) =>
+        GotToggleGroupBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(radioBasicExampleCommands, (message) =>
+        GotRadioBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(toolbarBasicExampleCommands, (message) =>
+        GotToolbarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(progressBasicExampleCommands, (message) =>
+        GotProgressBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(listboxBasicExampleCommands, (message) =>
         GotListboxBasicExampleMessage({ message })
@@ -2131,10 +5600,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
 
 // UPDATE
 
-const toUiMessage = (message: typeof UiMessage.Type): Message =>
+export const toUiMessage = (message: typeof UiMessage.Type): Message =>
   GotUiMessage({ message });
 
-const toMobileMenuDialogMessage = (message: Ui.Dialog.Message): Message =>
+export const toMobileMenuDialogMessage = (
+  message: Ui.Dialog.Message
+): Message =>
   GotUiMessage({ message: GotMobileMenuDialogMessage({ message }) });
 
 export const update = (
@@ -2195,6 +5666,562 @@ export const update = (
         ];
       },
 
+      GotAccordionBasicExampleMessage: ({ message }) => {
+        const [accordionBasicExample, accordionBasicExampleCommands] =
+          AccordionBasicExample.update(model.accordionBasicExample, message);
+
+        return [
+          evo(model, { accordionBasicExample: () => accordionBasicExample }),
+          Command.mapMessages(accordionBasicExampleCommands, (message) =>
+            GotAccordionBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAccordionMultipleExampleMessage: ({ message }) => {
+        const [accordionMultipleExample, accordionMultipleExampleCommands] =
+          AccordionMultipleExample.update(
+            model.accordionMultipleExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            accordionMultipleExample: () => accordionMultipleExample,
+          }),
+          Command.mapMessages(accordionMultipleExampleCommands, (message) =>
+            GotAccordionMultipleExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAlertBasicExampleMessage: ({ message }) => {
+        const [alertBasicExample, alertBasicExampleCommands] =
+          AlertBasicExample.update(model.alertBasicExample, message);
+
+        return [
+          evo(model, { alertBasicExample: () => alertBasicExample }),
+          Command.mapMessages(alertBasicExampleCommands, (message) =>
+            GotAlertBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAlertDestructiveExampleMessage: ({ message }) => {
+        const [alertDestructiveExample, alertDestructiveExampleCommands] =
+          AlertDestructiveExample.update(
+            model.alertDestructiveExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            alertDestructiveExample: () => alertDestructiveExample,
+          }),
+          Command.mapMessages(alertDestructiveExampleCommands, (message) =>
+            GotAlertDestructiveExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAspectRatioBasicExampleMessage: ({ message }) => {
+        const [aspectRatioBasicExample, aspectRatioBasicExampleCommands] =
+          AspectRatioBasicExample.update(
+            model.aspectRatioBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            aspectRatioBasicExample: () => aspectRatioBasicExample,
+          }),
+          Command.mapMessages(aspectRatioBasicExampleCommands, (message) =>
+            GotAspectRatioBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAspectRatioSquareExampleMessage: ({ message }) => {
+        const [aspectRatioSquareExample, aspectRatioSquareExampleCommands] =
+          AspectRatioSquareExample.update(
+            model.aspectRatioSquareExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            aspectRatioSquareExample: () => aspectRatioSquareExample,
+          }),
+          Command.mapMessages(aspectRatioSquareExampleCommands, (message) =>
+            GotAspectRatioSquareExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAspectRatioPortraitExampleMessage: ({ message }) => {
+        const [aspectRatioPortraitExample, aspectRatioPortraitExampleCommands] =
+          AspectRatioPortraitExample.update(
+            model.aspectRatioPortraitExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            aspectRatioPortraitExample: () => aspectRatioPortraitExample,
+          }),
+          Command.mapMessages(aspectRatioPortraitExampleCommands, (message) =>
+            GotAspectRatioPortraitExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAspectRatioRtlExampleMessage: ({ message }) => {
+        const [aspectRatioRtlExample, aspectRatioRtlExampleCommands] =
+          AspectRatioRtlExample.update(model.aspectRatioRtlExample, message);
+
+        return [
+          evo(model, {
+            aspectRatioRtlExample: () => aspectRatioRtlExample,
+          }),
+          Command.mapMessages(aspectRatioRtlExampleCommands, (message) =>
+            GotAspectRatioRtlExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBreadcrumbBasicExampleMessage: ({ message }) => {
+        const [breadcrumbBasicExample, breadcrumbBasicExampleCommands] =
+          BreadcrumbBasicExample.update(model.breadcrumbBasicExample, message);
+        return [
+          evo(model, { breadcrumbBasicExample: () => breadcrumbBasicExample }),
+          Command.mapMessages(breadcrumbBasicExampleCommands, (message) =>
+            GotBreadcrumbBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBreadcrumbSeparatorExampleMessage: ({ message }) => {
+        const [breadcrumbSeparatorExample, breadcrumbSeparatorExampleCommands] =
+          BreadcrumbSeparatorExample.update(
+            model.breadcrumbSeparatorExample,
+            message
+          );
+        return [
+          evo(model, {
+            breadcrumbSeparatorExample: () => breadcrumbSeparatorExample,
+          }),
+          Command.mapMessages(breadcrumbSeparatorExampleCommands, (message) =>
+            GotBreadcrumbSeparatorExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBreadcrumbDropdownExampleMessage: ({ message }) => {
+        const [breadcrumbDropdownExample, breadcrumbDropdownExampleCommands] =
+          BreadcrumbDropdownExample.update(
+            model.breadcrumbDropdownExample,
+            message
+          );
+        return [
+          evo(model, {
+            breadcrumbDropdownExample: () => breadcrumbDropdownExample,
+          }),
+          Command.mapMessages(breadcrumbDropdownExampleCommands, (message) =>
+            GotBreadcrumbDropdownExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBreadcrumbCollapsedExampleMessage: ({ message }) => {
+        const [breadcrumbCollapsedExample, breadcrumbCollapsedExampleCommands] =
+          BreadcrumbCollapsedExample.update(
+            model.breadcrumbCollapsedExample,
+            message
+          );
+        return [
+          evo(model, {
+            breadcrumbCollapsedExample: () => breadcrumbCollapsedExample,
+          }),
+          Command.mapMessages(breadcrumbCollapsedExampleCommands, (message) =>
+            GotBreadcrumbCollapsedExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBreadcrumbLinkExampleMessage: ({ message }) => {
+        const [breadcrumbLinkExample, breadcrumbLinkExampleCommands] =
+          BreadcrumbLinkExample.update(model.breadcrumbLinkExample, message);
+        return [
+          evo(model, { breadcrumbLinkExample: () => breadcrumbLinkExample }),
+          Command.mapMessages(breadcrumbLinkExampleCommands, (message) =>
+            GotBreadcrumbLinkExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBreadcrumbRtlExampleMessage: ({ message }) => {
+        const [breadcrumbRtlExample, breadcrumbRtlExampleCommands] =
+          BreadcrumbRtlExample.update(model.breadcrumbRtlExample, message);
+        return [
+          evo(model, { breadcrumbRtlExample: () => breadcrumbRtlExample }),
+          Command.mapMessages(breadcrumbRtlExampleCommands, (message) =>
+            GotBreadcrumbRtlExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotButtonGroupBasicExampleMessage: ({ message }) => {
+        const [buttonGroupBasicExample, buttonGroupBasicExampleCommands] =
+          ButtonGroupBasicExample.update(
+            model.buttonGroupBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            buttonGroupBasicExample: () => buttonGroupBasicExample,
+          }),
+          Command.mapMessages(buttonGroupBasicExampleCommands, (message) =>
+            GotButtonGroupBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupOrientationExampleMessage: ({ message }) => {
+        const [
+          buttonGroupOrientationExample,
+          buttonGroupOrientationExampleCommands,
+        ] = ButtonGroupOrientationExample.update(
+          model.buttonGroupOrientationExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            buttonGroupOrientationExample: () => buttonGroupOrientationExample,
+          }),
+          Command.mapMessages(
+            buttonGroupOrientationExampleCommands,
+            (message) => GotButtonGroupOrientationExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupSizeExampleMessage: ({ message }) => {
+        const [buttonGroupSizeExample, buttonGroupSizeExampleCommands] =
+          ButtonGroupSizeExample.update(model.buttonGroupSizeExample, message);
+
+        return [
+          evo(model, { buttonGroupSizeExample: () => buttonGroupSizeExample }),
+          Command.mapMessages(buttonGroupSizeExampleCommands, (message) =>
+            GotButtonGroupSizeExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupNestedExampleMessage: ({ message }) => {
+        const [buttonGroupNestedExample, buttonGroupNestedExampleCommands] =
+          ButtonGroupNestedExample.update(
+            model.buttonGroupNestedExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            buttonGroupNestedExample: () => buttonGroupNestedExample,
+          }),
+          Command.mapMessages(buttonGroupNestedExampleCommands, (message) =>
+            GotButtonGroupNestedExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupSeparatorExampleMessage: ({ message }) => {
+        const [
+          buttonGroupSeparatorExample,
+          buttonGroupSeparatorExampleCommands,
+        ] = ButtonGroupSeparatorExample.update(
+          model.buttonGroupSeparatorExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            buttonGroupSeparatorExample: () => buttonGroupSeparatorExample,
+          }),
+          Command.mapMessages(buttonGroupSeparatorExampleCommands, (message) =>
+            GotButtonGroupSeparatorExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupSplitExampleMessage: ({ message }) => {
+        const [buttonGroupSplitExample, buttonGroupSplitExampleCommands] =
+          ButtonGroupSplitExample.update(
+            model.buttonGroupSplitExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            buttonGroupSplitExample: () => buttonGroupSplitExample,
+          }),
+          Command.mapMessages(buttonGroupSplitExampleCommands, (message) =>
+            GotButtonGroupSplitExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupInputExampleMessage: ({ message }) => {
+        const [buttonGroupInputExample, buttonGroupInputExampleCommands] =
+          ButtonGroupInputExample.update(
+            model.buttonGroupInputExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            buttonGroupInputExample: () => buttonGroupInputExample,
+          }),
+          Command.mapMessages(buttonGroupInputExampleCommands, (message) =>
+            GotButtonGroupInputExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupInputGroupExampleMessage: ({ message }) => {
+        const [
+          buttonGroupInputGroupExample,
+          buttonGroupInputGroupExampleCommands,
+        ] = ButtonGroupInputGroupExample.update(
+          model.buttonGroupInputGroupExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            buttonGroupInputGroupExample: () => buttonGroupInputGroupExample,
+          }),
+          Command.mapMessages(buttonGroupInputGroupExampleCommands, (message) =>
+            GotButtonGroupInputGroupExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupSelectExampleMessage: ({ message }) => {
+        const [buttonGroupSelectExample, buttonGroupSelectExampleCommands] =
+          ButtonGroupSelectExample.update(
+            model.buttonGroupSelectExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            buttonGroupSelectExample: () => buttonGroupSelectExample,
+          }),
+          Command.mapMessages(buttonGroupSelectExampleCommands, (message) =>
+            GotButtonGroupSelectExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupPopoverExampleMessage: ({ message }) => {
+        const [buttonGroupPopoverExample, buttonGroupPopoverExampleCommands] =
+          ButtonGroupPopoverExample.update(
+            model.buttonGroupPopoverExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            buttonGroupPopoverExample: () => buttonGroupPopoverExample,
+          }),
+          Command.mapMessages(buttonGroupPopoverExampleCommands, (message) =>
+            GotButtonGroupPopoverExampleMessage({ message })
+          ),
+        ];
+      },
+      GotButtonGroupRtlExampleMessage: ({ message }) => {
+        const [buttonGroupRtlExample, buttonGroupRtlExampleCommands] =
+          ButtonGroupRtlExample.update(model.buttonGroupRtlExample, message);
+
+        return [
+          evo(model, { buttonGroupRtlExample: () => buttonGroupRtlExample }),
+          Command.mapMessages(buttonGroupRtlExampleCommands, (message) =>
+            GotButtonGroupRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotAlertDialogBasicExampleMessage: ({ message }) => {
+        const [alertDialogBasicExample, alertDialogBasicExampleCommands] =
+          AlertDialogBasicExample.update(
+            model.alertDialogBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            alertDialogBasicExample: () => alertDialogBasicExample,
+          }),
+          Command.mapMessages(alertDialogBasicExampleCommands, (message) =>
+            GotAlertDialogBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotDrawerBasicExampleMessage: ({ message }) => {
+        const [drawerBasicExample, drawerBasicExampleCommands] =
+          DrawerBasicExample.update(model.drawerBasicExample, message);
+
+        return [
+          evo(model, { drawerBasicExample: () => drawerBasicExample }),
+          Command.mapMessages(drawerBasicExampleCommands, (message) =>
+            GotDrawerBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotContextMenuBasicExampleMessage: ({ message }) => {
+        const [contextMenuBasicExample, contextMenuBasicExampleCommands] =
+          ContextMenuBasicExample.update(
+            model.contextMenuBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            contextMenuBasicExample: () => contextMenuBasicExample,
+          }),
+          Command.mapMessages(contextMenuBasicExampleCommands, (message) =>
+            GotContextMenuBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotMenubarBasicExampleMessage: ({ message }) => {
+        const [menubarBasicExample, menubarBasicExampleCommands] =
+          MenubarBasicExample.update(model.menubarBasicExample, message);
+
+        return [
+          evo(model, { menubarBasicExample: () => menubarBasicExample }),
+          Command.mapMessages(menubarBasicExampleCommands, (message) =>
+            GotMenubarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotNavigationMenuBasicExampleMessage: ({ message }) => {
+        const [navigationMenuBasicExample, navigationMenuBasicExampleCommands] =
+          NavigationMenuBasicExample.update(
+            model.navigationMenuBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            navigationMenuBasicExample: () => navigationMenuBasicExample,
+          }),
+          Command.mapMessages(navigationMenuBasicExampleCommands, (message) =>
+            GotNavigationMenuBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotOtpFieldBasicExampleMessage: ({ message }) => {
+        const [otpFieldBasicExample, otpFieldBasicExampleCommands] =
+          OtpFieldBasicExample.update(model.otpFieldBasicExample, message);
+
+        return [
+          evo(model, { otpFieldBasicExample: () => otpFieldBasicExample }),
+          Command.mapMessages(otpFieldBasicExampleCommands, (message) =>
+            GotOtpFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotPreviewCardBasicExampleMessage: ({ message }) => {
+        const [previewCardBasicExample, previewCardBasicExampleCommands] =
+          PreviewCardBasicExample.update(
+            model.previewCardBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            previewCardBasicExample: () => previewCardBasicExample,
+          }),
+          Command.mapMessages(previewCardBasicExampleCommands, (message) =>
+            GotPreviewCardBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCollapsibleBasicExampleMessage: ({ message }) => {
+        const [collapsibleBasicExample, collapsibleBasicExampleCommands] =
+          CollapsibleBasicExample.update(
+            model.collapsibleBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            collapsibleBasicExample: () => collapsibleBasicExample,
+          }),
+          Command.mapMessages(collapsibleBasicExampleCommands, (message) =>
+            GotCollapsibleBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotFieldBasicExampleMessage: ({ message }) => {
+        const [fieldBasicExample, fieldBasicExampleCommands] =
+          FieldBasicExample.update(model.fieldBasicExample, message);
+
+        return [
+          evo(model, { fieldBasicExample: () => fieldBasicExample }),
+          Command.mapMessages(fieldBasicExampleCommands, (message) =>
+            GotFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotNumberFieldBasicExampleMessage: ({ message }) => {
+        const [numberFieldBasicExample, numberFieldBasicExampleCommands] =
+          NumberFieldBasicExample.update(
+            model.numberFieldBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            numberFieldBasicExample: () => numberFieldBasicExample,
+          }),
+          Command.mapMessages(numberFieldBasicExampleCommands, (message) =>
+            GotNumberFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotFormBasicExampleMessage: ({ message }) => {
+        const [formBasicExample, formBasicExampleCommands] =
+          FormBasicExample.update(model.formBasicExample, message);
+
+        return [
+          evo(model, { formBasicExample: () => formBasicExample }),
+          Command.mapMessages(formBasicExampleCommands, (message) =>
+            GotFormBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAutocompleteBasicExampleMessage: ({ message }) => {
+        const [autocompleteBasicExample, autocompleteBasicExampleCommands] =
+          AutocompleteBasicExample.update(
+            model.autocompleteBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            autocompleteBasicExample: () => autocompleteBasicExample,
+          }),
+          Command.mapMessages(autocompleteBasicExampleCommands, (message) =>
+            GotAutocompleteBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotAnimationBasicExampleMessage: ({ message }) => {
         const [animationBasicExample, animationBasicExampleCommands] =
           AnimationBasicExample.update(model.animationBasicExample, message);
@@ -2227,6 +6254,625 @@ export const update = (
           evo(model, { badgeBasicExample: () => badgeBasicExample }),
           Command.mapMessages(badgeBasicExampleCommands, (message) =>
             GotBadgeBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBadgeSpinnerExampleMessage: ({ message }) => {
+        const [badgeSpinnerExample, badgeSpinnerExampleCommands] =
+          BadgeSpinnerExample.update(model.badgeSpinnerExample, message);
+
+        return [
+          evo(model, { badgeSpinnerExample: () => badgeSpinnerExample }),
+          Command.mapMessages(badgeSpinnerExampleCommands, (message) =>
+            GotBadgeSpinnerExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCarouselBasicExampleMessage: ({ message }) => {
+        const [carouselBasicExample, carouselBasicExampleCommands] =
+          CarouselBasicExample.update(model.carouselBasicExample, message);
+
+        return [
+          evo(model, { carouselBasicExample: () => carouselBasicExample }),
+          Command.mapMessages(carouselBasicExampleCommands, (message) =>
+            GotCarouselBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCarouselSizesExampleMessage: ({ message }) => {
+        const [carouselSizesExample, carouselSizesExampleCommands] =
+          CarouselSizesExample.update(model.carouselSizesExample, message);
+
+        return [
+          evo(model, { carouselSizesExample: () => carouselSizesExample }),
+          Command.mapMessages(carouselSizesExampleCommands, (message) =>
+            GotCarouselSizesExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCarouselSpacingExampleMessage: ({ message }) => {
+        const [carouselSpacingExample, carouselSpacingExampleCommands] =
+          CarouselSpacingExample.update(model.carouselSpacingExample, message);
+
+        return [
+          evo(model, { carouselSpacingExample: () => carouselSpacingExample }),
+          Command.mapMessages(carouselSpacingExampleCommands, (message) =>
+            GotCarouselSpacingExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCarouselOrientationExampleMessage: ({ message }) => {
+        const [carouselOrientationExample, carouselOrientationExampleCommands] =
+          CarouselOrientationExample.update(
+            model.carouselOrientationExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            carouselOrientationExample: () => carouselOrientationExample,
+          }),
+          Command.mapMessages(carouselOrientationExampleCommands, (message) =>
+            GotCarouselOrientationExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCarouselApiExampleMessage: ({ message }) => {
+        const [carouselApiExample, carouselApiExampleCommands] =
+          CarouselApiExample.update(model.carouselApiExample, message);
+
+        return [
+          evo(model, { carouselApiExample: () => carouselApiExample }),
+          Command.mapMessages(carouselApiExampleCommands, (message) =>
+            GotCarouselApiExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCarouselRtlExampleMessage: ({ message }) => {
+        const [carouselRtlExample, carouselRtlExampleCommands] =
+          CarouselRtlExample.update(model.carouselRtlExample, message);
+
+        return [
+          evo(model, { carouselRtlExample: () => carouselRtlExample }),
+          Command.mapMessages(carouselRtlExampleCommands, (message) =>
+            GotCarouselRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotChartBasicExampleMessage: ({ message }) => {
+        const [chartBasicExample, chartBasicExampleCommands] =
+          ChartBasicExample.update(model.chartBasicExample, message);
+
+        return [
+          evo(model, { chartBasicExample: () => chartBasicExample }),
+          Command.mapMessages(chartBasicExampleCommands, (message) =>
+            GotChartBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotChartGridExampleMessage: ({ message }) => {
+        const [chartGridExample, chartGridExampleCommands] =
+          ChartGridExample.update(model.chartGridExample, message);
+
+        return [
+          evo(model, { chartGridExample: () => chartGridExample }),
+          Command.mapMessages(chartGridExampleCommands, (message) =>
+            GotChartGridExampleMessage({ message })
+          ),
+        ];
+      },
+      GotChartAxisExampleMessage: ({ message }) => {
+        const [chartAxisExample, chartAxisExampleCommands] =
+          ChartAxisExample.update(model.chartAxisExample, message);
+
+        return [
+          evo(model, { chartAxisExample: () => chartAxisExample }),
+          Command.mapMessages(chartAxisExampleCommands, (message) =>
+            GotChartAxisExampleMessage({ message })
+          ),
+        ];
+      },
+      GotChartTooltipExampleMessage: ({ message }) => {
+        const [chartTooltipExample, chartTooltipExampleCommands] =
+          ChartTooltipExample.update(model.chartTooltipExample, message);
+
+        return [
+          evo(model, { chartTooltipExample: () => chartTooltipExample }),
+          Command.mapMessages(chartTooltipExampleCommands, (message) =>
+            GotChartTooltipExampleMessage({ message })
+          ),
+        ];
+      },
+      GotChartLegendExampleMessage: ({ message }) => {
+        const [chartLegendExample, chartLegendExampleCommands] =
+          ChartLegendExample.update(model.chartLegendExample, message);
+
+        return [
+          evo(model, { chartLegendExample: () => chartLegendExample }),
+          Command.mapMessages(chartLegendExampleCommands, (message) =>
+            GotChartLegendExampleMessage({ message })
+          ),
+        ];
+      },
+      GotChartRtlExampleMessage: ({ message }) => {
+        const [chartRtlExample, chartRtlExampleCommands] =
+          ChartRtlExample.update(model.chartRtlExample, message);
+
+        return [
+          evo(model, { chartRtlExample: () => chartRtlExample }),
+          Command.mapMessages(chartRtlExampleCommands, (message) =>
+            GotChartRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCommandBasicExampleMessage: ({ message }) => {
+        const [commandBasicExample, commandBasicExampleCommands] =
+          CommandBasicExample.update(model.commandBasicExample, message);
+
+        return [
+          evo(model, { commandBasicExample: () => commandBasicExample }),
+          Command.mapMessages(commandBasicExampleCommands, (message) =>
+            GotCommandBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuBasicExampleMessage: ({ message }) => {
+        const [dropdownMenuBasicExample, dropdownMenuBasicExampleCommands] =
+          DropdownMenuBasicExample.update(
+            model.dropdownMenuBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dropdownMenuBasicExample: () => dropdownMenuBasicExample,
+          }),
+          Command.mapMessages(dropdownMenuBasicExampleCommands, (message) =>
+            GotDropdownMenuBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotHoverCardBasicExampleMessage: ({ message }) => {
+        const [hoverCardBasicExample, hoverCardBasicExampleCommands] =
+          HoverCardBasicExample.update(model.hoverCardBasicExample, message);
+
+        return [
+          evo(model, { hoverCardBasicExample: () => hoverCardBasicExample }),
+          Command.mapMessages(hoverCardBasicExampleCommands, (message) =>
+            GotHoverCardBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpBasicExampleMessage: ({ message }) => {
+        const [inputOtpBasicExample, inputOtpBasicExampleCommands] =
+          InputOtpBasicExample.update(model.inputOtpBasicExample, message);
+
+        return [
+          evo(model, { inputOtpBasicExample: () => inputOtpBasicExample }),
+          Command.mapMessages(inputOtpBasicExampleCommands, (message) =>
+            GotInputOtpBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotNativeSelectBasicExampleMessage: ({ message }) => {
+        const [nativeSelectBasicExample, nativeSelectBasicExampleCommands] =
+          NativeSelectBasicExample.update(
+            model.nativeSelectBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            nativeSelectBasicExample: () => nativeSelectBasicExample,
+          }),
+          Command.mapMessages(nativeSelectBasicExampleCommands, (message) =>
+            GotNativeSelectBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSheetBasicExampleMessage: ({ message }) => {
+        const [sheetBasicExample, sheetBasicExampleCommands] =
+          SheetBasicExample.update(model.sheetBasicExample, message);
+
+        return [
+          evo(model, { sheetBasicExample: () => sheetBasicExample }),
+          Command.mapMessages(sheetBasicExampleCommands, (message) =>
+            GotSheetBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSonnerBasicExampleMessage: ({ message }) => {
+        const [sonnerBasicExample, sonnerBasicExampleCommands] =
+          SonnerBasicExample.update(model.sonnerBasicExample, message);
+
+        return [
+          evo(model, { sonnerBasicExample: () => sonnerBasicExample }),
+          Command.mapMessages(sonnerBasicExampleCommands, (message) =>
+            GotSonnerBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTableBasicExampleMessage: ({ message }) => {
+        const [dataTableBasicExample, dataTableBasicExampleCommands] =
+          DataTableBasicExample.update(model.dataTableBasicExample, message);
+
+        return [
+          evo(model, { dataTableBasicExample: () => dataTableBasicExample }),
+          Command.mapMessages(dataTableBasicExampleCommands, (message) =>
+            GotDataTableBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTableRowActionsExampleMessage: ({ message }) => {
+        const [dataTableRowActionsExample, dataTableRowActionsExampleCommands] =
+          DataTableRowActionsExample.update(
+            model.dataTableRowActionsExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dataTableRowActionsExample: () => dataTableRowActionsExample,
+          }),
+          Command.mapMessages(dataTableRowActionsExampleCommands, (message) =>
+            GotDataTableRowActionsExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTablePaginationExampleMessage: ({ message }) => {
+        const [dataTablePaginationExample, dataTablePaginationExampleCommands] =
+          DataTablePaginationExample.update(
+            model.dataTablePaginationExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dataTablePaginationExample: () => dataTablePaginationExample,
+          }),
+          Command.mapMessages(dataTablePaginationExampleCommands, (message) =>
+            GotDataTablePaginationExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTableSortingExampleMessage: ({ message }) => {
+        const [dataTableSortingExample, dataTableSortingExampleCommands] =
+          DataTableSortingExample.update(
+            model.dataTableSortingExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dataTableSortingExample: () => dataTableSortingExample,
+          }),
+          Command.mapMessages(dataTableSortingExampleCommands, (message) =>
+            GotDataTableSortingExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTableFilteringExampleMessage: ({ message }) => {
+        const [dataTableFilteringExample, dataTableFilteringExampleCommands] =
+          DataTableFilteringExample.update(
+            model.dataTableFilteringExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dataTableFilteringExample: () => dataTableFilteringExample,
+          }),
+          Command.mapMessages(dataTableFilteringExampleCommands, (message) =>
+            GotDataTableFilteringExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTableVisibilityExampleMessage: ({ message }) => {
+        const [dataTableVisibilityExample, dataTableVisibilityExampleCommands] =
+          DataTableVisibilityExample.update(
+            model.dataTableVisibilityExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dataTableVisibilityExample: () => dataTableVisibilityExample,
+          }),
+          Command.mapMessages(dataTableVisibilityExampleCommands, (message) =>
+            GotDataTableVisibilityExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDataTableRowSelectionExampleMessage: ({ message }) => {
+        const [
+          dataTableRowSelectionExample,
+          dataTableRowSelectionExampleCommands,
+        ] = DataTableRowSelectionExample.update(
+          model.dataTableRowSelectionExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            dataTableRowSelectionExample: () => dataTableRowSelectionExample,
+          }),
+          Command.mapMessages(dataTableRowSelectionExampleCommands, (message) =>
+            GotDataTableRowSelectionExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDirectionBasicExampleMessage: ({ message }) => {
+        const [directionBasicExample, directionBasicExampleCommands] =
+          DirectionBasicExample.update(model.directionBasicExample, message);
+
+        return [
+          evo(model, { directionBasicExample: () => directionBasicExample }),
+          Command.mapMessages(directionBasicExampleCommands, (message) =>
+            GotDirectionBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemAvatarExampleMessage: ({ message }) => {
+        const [itemAvatarExample, itemAvatarExampleCommands] =
+          ItemAvatarExample.update(model.itemAvatarExample, message);
+
+        return [
+          evo(model, { itemAvatarExample: () => itemAvatarExample }),
+          Command.mapMessages(itemAvatarExampleCommands, (message) =>
+            GotItemAvatarExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemBasicExampleMessage: ({ message }) => {
+        const [itemBasicExample, itemBasicExampleCommands] =
+          ItemBasicExample.update(model.itemBasicExample, message);
+
+        return [
+          evo(model, { itemBasicExample: () => itemBasicExample }),
+          Command.mapMessages(itemBasicExampleCommands, (message) =>
+            GotItemBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemGroupExampleMessage: ({ message }) => {
+        const [itemGroupExample, itemGroupExampleCommands] =
+          ItemGroupExample.update(model.itemGroupExample, message);
+
+        return [
+          evo(model, { itemGroupExample: () => itemGroupExample }),
+          Command.mapMessages(itemGroupExampleCommands, (message) =>
+            GotItemGroupExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemHeaderExampleMessage: ({ message }) => {
+        const [itemHeaderExample, itemHeaderExampleCommands] =
+          ItemHeaderExample.update(model.itemHeaderExample, message);
+
+        return [
+          evo(model, { itemHeaderExample: () => itemHeaderExample }),
+          Command.mapMessages(itemHeaderExampleCommands, (message) =>
+            GotItemHeaderExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemIconExampleMessage: ({ message }) => {
+        const [itemIconExample, itemIconExampleCommands] =
+          ItemIconExample.update(model.itemIconExample, message);
+
+        return [
+          evo(model, { itemIconExample: () => itemIconExample }),
+          Command.mapMessages(itemIconExampleCommands, (message) =>
+            GotItemIconExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemImageExampleMessage: ({ message }) => {
+        const [itemImageExample, itemImageExampleCommands] =
+          ItemImageExample.update(model.itemImageExample, message);
+
+        return [
+          evo(model, { itemImageExample: () => itemImageExample }),
+          Command.mapMessages(itemImageExampleCommands, (message) =>
+            GotItemImageExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemLinkExampleMessage: ({ message }) => {
+        const [itemLinkExample, itemLinkExampleCommands] =
+          ItemLinkExample.update(model.itemLinkExample, message);
+
+        return [
+          evo(model, { itemLinkExample: () => itemLinkExample }),
+          Command.mapMessages(itemLinkExampleCommands, (message) =>
+            GotItemLinkExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemRtlExampleMessage: ({ message }) => {
+        const [itemRtlExample, itemRtlExampleCommands] = ItemRtlExample.update(
+          model.itemRtlExample,
+          message
+        );
+
+        return [
+          evo(model, { itemRtlExample: () => itemRtlExample }),
+          Command.mapMessages(itemRtlExampleCommands, (message) =>
+            GotItemRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemSizeExampleMessage: ({ message }) => {
+        const [itemSizeExample, itemSizeExampleCommands] =
+          ItemSizeExample.update(model.itemSizeExample, message);
+
+        return [
+          evo(model, { itemSizeExample: () => itemSizeExample }),
+          Command.mapMessages(itemSizeExampleCommands, (message) =>
+            GotItemSizeExampleMessage({ message })
+          ),
+        ];
+      },
+      GotItemVariantExampleMessage: ({ message }) => {
+        const [itemVariantExample, itemVariantExampleCommands] =
+          ItemVariantExample.update(model.itemVariantExample, message);
+
+        return [
+          evo(model, { itemVariantExample: () => itemVariantExample }),
+          Command.mapMessages(itemVariantExampleCommands, (message) =>
+            GotItemVariantExampleMessage({ message })
+          ),
+        ];
+      },
+      GotLabelBasicExampleMessage: ({ message }) => {
+        const [labelBasicExample, labelBasicExampleCommands] =
+          LabelBasicExample.update(model.labelBasicExample, message);
+
+        return [
+          evo(model, { labelBasicExample: () => labelBasicExample }),
+          Command.mapMessages(labelBasicExampleCommands, (message) =>
+            GotLabelBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotPaginationBasicExampleMessage: ({ message }) => {
+        const [paginationBasicExample, paginationBasicExampleCommands] =
+          PaginationBasicExample.update(model.paginationBasicExample, message);
+
+        return [
+          evo(model, { paginationBasicExample: () => paginationBasicExample }),
+          Command.mapMessages(paginationBasicExampleCommands, (message) =>
+            GotPaginationBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotResizableBasicExampleMessage: ({ message }) => {
+        const [resizableBasicExample, resizableBasicExampleCommands] =
+          ResizableBasicExample.update(model.resizableBasicExample, message);
+
+        return [
+          evo(model, { resizableBasicExample: () => resizableBasicExample }),
+          Command.mapMessages(resizableBasicExampleCommands, (message) =>
+            GotResizableBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSidebarBasicExampleMessage: ({ message }) => {
+        const [sidebarBasicExample, sidebarBasicExampleCommands] =
+          SidebarBasicExample.update(model.sidebarBasicExample, message);
+
+        return [
+          evo(model, { sidebarBasicExample: () => sidebarBasicExample }),
+          Command.mapMessages(sidebarBasicExampleCommands, (message) =>
+            GotSidebarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotTableBasicExampleMessage: ({ message }) => {
+        const [tableBasicExample, tableBasicExampleCommands] =
+          TableBasicExample.update(model.tableBasicExample, message);
+
+        return [
+          evo(model, { tableBasicExample: () => tableBasicExample }),
+          Command.mapMessages(tableBasicExampleCommands, (message) =>
+            GotTableBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCardBasicExampleMessage: ({ message }) => {
+        const [cardBasicExample, cardBasicExampleCommands] =
+          CardBasicExample.update(model.cardBasicExample, message);
+
+        return [
+          evo(model, { cardBasicExample: () => cardBasicExample }),
+          Command.mapMessages(cardBasicExampleCommands, (message) =>
+            GotCardBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotSeparatorBasicExampleMessage: ({ message }) => {
+        const [separatorBasicExample, separatorBasicExampleCommands] =
+          SeparatorBasicExample.update(model.separatorBasicExample, message);
+
+        return [
+          evo(model, { separatorBasicExample: () => separatorBasicExample }),
+          Command.mapMessages(separatorBasicExampleCommands, (message) =>
+            GotSeparatorBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotSkeletonBasicExampleMessage: ({ message }) => {
+        const [skeletonBasicExample, skeletonBasicExampleCommands] =
+          SkeletonBasicExample.update(model.skeletonBasicExample, message);
+
+        return [
+          evo(model, { skeletonBasicExample: () => skeletonBasicExample }),
+          Command.mapMessages(skeletonBasicExampleCommands, (message) =>
+            GotSkeletonBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotKbdBasicExampleMessage: ({ message }) => {
+        const [kbdBasicExample, kbdBasicExampleCommands] =
+          KbdBasicExample.update(model.kbdBasicExample, message);
+
+        return [
+          evo(model, { kbdBasicExample: () => kbdBasicExample }),
+          Command.mapMessages(kbdBasicExampleCommands, (message) =>
+            GotKbdBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotKbdInputGroupExampleMessage: ({ message }) => {
+        const [kbdInputGroupExample, kbdInputGroupExampleCommands] =
+          KbdInputGroupExample.update(model.kbdInputGroupExample, message);
+
+        return [
+          evo(model, { kbdInputGroupExample: () => kbdInputGroupExample }),
+          Command.mapMessages(kbdInputGroupExampleCommands, (message) =>
+            GotKbdInputGroupExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotTypographyBasicExampleMessage: ({ message }) => {
+        const [typographyBasicExample, typographyBasicExampleCommands] =
+          TypographyBasicExample.update(model.typographyBasicExample, message);
+
+        return [
+          evo(model, { typographyBasicExample: () => typographyBasicExample }),
+          Command.mapMessages(typographyBasicExampleCommands, (message) =>
+            GotTypographyBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyBasicExampleMessage: ({ message }) => {
+        const [emptyBasicExample, emptyBasicExampleCommands] =
+          EmptyBasicExample.update(model.emptyBasicExample, message);
+
+        return [
+          evo(model, { emptyBasicExample: () => emptyBasicExample }),
+          Command.mapMessages(emptyBasicExampleCommands, (message) =>
+            GotEmptyBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyInputGroupExampleMessage: ({ message }) => {
+        const [emptyInputGroupExample, emptyInputGroupExampleCommands] =
+          EmptyInputGroupExample.update(model.emptyInputGroupExample, message);
+
+        return [
+          evo(model, { emptyInputGroupExample: () => emptyInputGroupExample }),
+          Command.mapMessages(emptyInputGroupExampleCommands, (message) =>
+            GotEmptyInputGroupExampleMessage({ message })
           ),
         ];
       },
@@ -2287,6 +6933,23 @@ export const update = (
           evo(model, { checkboxBasicExample: () => checkboxBasicExample }),
           Command.mapMessages(checkboxBasicExampleCommands, (message) =>
             GotCheckboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotCheckboxGroupBasicExampleMessage: ({ message }) => {
+        const [checkboxGroupBasicExample, checkboxGroupBasicExampleCommands] =
+          CheckboxGroupBasicExample.update(
+            model.checkboxGroupBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            checkboxGroupBasicExample: () => checkboxGroupBasicExample,
+          }),
+          Command.mapMessages(checkboxGroupBasicExampleCommands, (message) =>
+            GotCheckboxGroupBasicExampleMessage({ message })
           ),
         ];
       },
@@ -2580,6 +7243,95 @@ export const update = (
           evo(model, { inputDisabledExample: () => inputDisabledExample }),
           Command.mapMessages(inputDisabledExampleCommands, (message) =>
             GotInputDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotMeterBasicExampleMessage: ({ message }) => {
+        const [meterBasicExample, meterBasicExampleCommands] =
+          MeterBasicExample.update(model.meterBasicExample, message);
+
+        return [
+          evo(model, { meterBasicExample: () => meterBasicExample }),
+          Command.mapMessages(meterBasicExampleCommands, (message) =>
+            GotMeterBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotScrollAreaBasicExampleMessage: ({ message }) => {
+        const [scrollAreaBasicExample, scrollAreaBasicExampleCommands] =
+          ScrollAreaBasicExample.update(model.scrollAreaBasicExample, message);
+
+        return [
+          evo(model, { scrollAreaBasicExample: () => scrollAreaBasicExample }),
+          Command.mapMessages(scrollAreaBasicExampleCommands, (message) =>
+            GotScrollAreaBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotToggleBasicExampleMessage: ({ message }) => {
+        const [toggleBasicExample, toggleBasicExampleCommands] =
+          ToggleBasicExample.update(model.toggleBasicExample, message);
+
+        return [
+          evo(model, { toggleBasicExample: () => toggleBasicExample }),
+          Command.mapMessages(toggleBasicExampleCommands, (message) =>
+            GotToggleBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotToggleGroupBasicExampleMessage: ({ message }) => {
+        const [toggleGroupBasicExample, toggleGroupBasicExampleCommands] =
+          ToggleGroupBasicExample.update(
+            model.toggleGroupBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            toggleGroupBasicExample: () => toggleGroupBasicExample,
+          }),
+          Command.mapMessages(toggleGroupBasicExampleCommands, (message) =>
+            GotToggleGroupBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotRadioBasicExampleMessage: ({ message }) => {
+        const [radioBasicExample, radioBasicExampleCommands] =
+          RadioBasicExample.update(model.radioBasicExample, message);
+
+        return [
+          evo(model, { radioBasicExample: () => radioBasicExample }),
+          Command.mapMessages(radioBasicExampleCommands, (message) =>
+            GotRadioBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotToolbarBasicExampleMessage: ({ message }) => {
+        const [toolbarBasicExample, toolbarBasicExampleCommands] =
+          ToolbarBasicExample.update(model.toolbarBasicExample, message);
+
+        return [
+          evo(model, { toolbarBasicExample: () => toolbarBasicExample }),
+          Command.mapMessages(toolbarBasicExampleCommands, (message) =>
+            GotToolbarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotProgressBasicExampleMessage: ({ message }) => {
+        const [progressBasicExample, progressBasicExampleCommands] =
+          ProgressBasicExample.update(model.progressBasicExample, message);
+
+        return [
+          evo(model, { progressBasicExample: () => progressBasicExample }),
+          Command.mapMessages(progressBasicExampleCommands, (message) =>
+            GotProgressBasicExampleMessage({ message })
           ),
         ];
       },
@@ -2919,7548 +7671,6 @@ export const update = (
       },
     })
   );
-
-// VIEW
-
-type NavItem = Readonly<{
-  label: string;
-  routeTag: string;
-  href: string;
-}>;
-
-type ComponentLibrary = "Foldkit" | "Base UI" | "shadcn";
-
-type DocsNavItem = NavItem &
-  Readonly<{
-    library: ComponentLibrary;
-    componentRoutePrefix: string;
-  }>;
-
-type DocsNavGroup = Readonly<{
-  library: ComponentLibrary;
-  items: readonly DocsNavItem[];
-}>;
-
-const NAV_ITEMS: readonly NavItem[] = [
-  { label: "Animation", routeTag: "Animation", href: animationRouter() },
-  {
-    label: "Animation Docs",
-    routeTag: "AnimationDocs",
-    href: animationDocsRouter(),
-  },
-  {
-    label: "Animation Basic Example",
-    routeTag: "AnimationBasicExample",
-    href: animationBasicExampleRouter(),
-  },
-  { label: "Avatar", routeTag: "Avatar", href: avatarRouter() },
-  { label: "Avatar Docs", routeTag: "AvatarDocs", href: avatarDocsRouter() },
-  {
-    label: "Avatar Basic Example",
-    routeTag: "AvatarBasicExample",
-    href: avatarBasicExampleRouter(),
-  },
-  { label: "Badge", routeTag: "Badge", href: badgeRouter() },
-  { label: "Badge Docs", routeTag: "BadgeDocs", href: badgeDocsRouter() },
-  {
-    label: "Badge Basic Example",
-    routeTag: "BadgeBasicExample",
-    href: badgeBasicExampleRouter(),
-  },
-  { label: "Button", routeTag: "Button", href: buttonRouter() },
-  { label: "Button Docs", routeTag: "ButtonDocs", href: buttonDocsRouter() },
-  {
-    label: "Button Basic Example",
-    routeTag: "ButtonBasicExample",
-    href: buttonBasicExampleRouter(),
-  },
-  {
-    label: "Button Disabled Example",
-    routeTag: "ButtonDisabledExample",
-    href: buttonDisabledExampleRouter(),
-  },
-  { label: "Calendar", routeTag: "Calendar", href: calendarRouter() },
-  {
-    label: "Calendar Docs",
-    routeTag: "CalendarDocs",
-    href: calendarDocsRouter(),
-  },
-  {
-    label: "Calendar Basic Example",
-    routeTag: "CalendarBasicExample",
-    href: calendarBasicExampleRouter(),
-  },
-  {
-    label: "Calendar Bounds Example",
-    routeTag: "CalendarBoundsExample",
-    href: calendarBoundsExampleRouter(),
-  },
-  { label: "Checkbox", routeTag: "Checkbox", href: checkboxRouter() },
-  {
-    label: "Checkbox Docs",
-    routeTag: "CheckboxDocs",
-    href: checkboxDocsRouter(),
-  },
-  {
-    label: "Checkbox Basic Example",
-    routeTag: "CheckboxBasicExample",
-    href: checkboxBasicExampleRouter(),
-  },
-  {
-    label: "Checkbox Indeterminate Example",
-    routeTag: "CheckboxIndeterminateExample",
-    href: checkboxIndeterminateExampleRouter(),
-  },
-  { label: "Combobox", routeTag: "Combobox", href: comboboxRouter() },
-  {
-    label: "Combobox Docs",
-    routeTag: "ComboboxDocs",
-    href: comboboxDocsRouter(),
-  },
-  {
-    label: "Combobox Basic Example",
-    routeTag: "ComboboxBasicExample",
-    href: comboboxBasicExampleRouter(),
-  },
-  {
-    label: "Combobox Multi Example",
-    routeTag: "ComboboxMultiExample",
-    href: comboboxMultiExampleRouter(),
-  },
-  { label: "Date Picker", routeTag: "DatePicker", href: datePickerRouter() },
-  {
-    label: "Date Picker Docs",
-    routeTag: "DatePickerDocs",
-    href: datePickerDocsRouter(),
-  },
-  {
-    label: "Date Picker Basic Example",
-    routeTag: "DatePickerBasicExample",
-    href: datePickerBasicExampleRouter(),
-  },
-  {
-    label: "Date Picker Bounds Example",
-    routeTag: "DatePickerBoundsExample",
-    href: datePickerBoundsExampleRouter(),
-  },
-  { label: "Dialog", routeTag: "Dialog", href: dialogRouter() },
-  { label: "Dialog Docs", routeTag: "DialogDocs", href: dialogDocsRouter() },
-  {
-    label: "Dialog Basic Example",
-    routeTag: "DialogBasicExample",
-    href: dialogBasicExampleRouter(),
-  },
-  {
-    label: "Dialog Animated Example",
-    routeTag: "DialogAnimatedExample",
-    href: dialogAnimatedExampleRouter(),
-  },
-  {
-    label: "Dialog Destructive Example",
-    routeTag: "DialogDestructiveExample",
-    href: dialogDestructiveExampleRouter(),
-  },
-  {
-    label: "Dialog Focus Example",
-    routeTag: "DialogFocusExample",
-    href: dialogFocusExampleRouter(),
-  },
-  {
-    label: "Dialog Scrollable Example",
-    routeTag: "DialogScrollableExample",
-    href: dialogScrollableExampleRouter(),
-  },
-  { label: "Disclosure", routeTag: "Disclosure", href: disclosureRouter() },
-  {
-    label: "Disclosure Docs",
-    routeTag: "DisclosureDocs",
-    href: disclosureDocsRouter(),
-  },
-  {
-    label: "Disclosure Basic Example",
-    routeTag: "DisclosureBasicExample",
-    href: disclosureBasicExampleRouter(),
-  },
-  {
-    label: "Disclosure Disabled Example",
-    routeTag: "DisclosureDisabledExample",
-    href: disclosureDisabledExampleRouter(),
-  },
-  {
-    label: "Drag and Drop",
-    routeTag: "DragAndDrop",
-    href: dragAndDropRouter(),
-  },
-  {
-    label: "Drag and Drop Docs",
-    routeTag: "DragAndDropDocs",
-    href: dragAndDropDocsRouter(),
-  },
-  {
-    label: "Drag and Drop Basic Example",
-    routeTag: "DragAndDropBasicExample",
-    href: dragAndDropBasicExampleRouter(),
-  },
-  {
-    label: "Drag and Drop Disabled Example",
-    routeTag: "DragAndDropDisabledExample",
-    href: dragAndDropDisabledExampleRouter(),
-  },
-  { label: "Fieldset", routeTag: "Fieldset", href: fieldsetRouter() },
-  {
-    label: "Fieldset Docs",
-    routeTag: "FieldsetDocs",
-    href: fieldsetDocsRouter(),
-  },
-  {
-    label: "Fieldset Basic Example",
-    routeTag: "FieldsetBasicExample",
-    href: fieldsetBasicExampleRouter(),
-  },
-  {
-    label: "Fieldset Disabled Example",
-    routeTag: "FieldsetDisabledExample",
-    href: fieldsetDisabledExampleRouter(),
-  },
-  { label: "File Drop", routeTag: "FileDrop", href: fileDropRouter() },
-  {
-    label: "File Drop Docs",
-    routeTag: "FileDropDocs",
-    href: fileDropDocsRouter(),
-  },
-  {
-    label: "File Drop Basic Example",
-    routeTag: "FileDropBasicExample",
-    href: fileDropBasicExampleRouter(),
-  },
-  {
-    label: "File Drop Disabled Example",
-    routeTag: "FileDropDisabledExample",
-    href: fileDropDisabledExampleRouter(),
-  },
-  { label: "Input", routeTag: "Input", href: inputRouter() },
-  { label: "Input Docs", routeTag: "InputDocs", href: inputDocsRouter() },
-  {
-    label: "Input Basic Example",
-    routeTag: "InputBasicExample",
-    href: inputBasicExampleRouter(),
-  },
-  {
-    label: "Input Disabled Example",
-    routeTag: "InputDisabledExample",
-    href: inputDisabledExampleRouter(),
-  },
-  { label: "Listbox", routeTag: "Listbox", href: listboxRouter() },
-  {
-    label: "Listbox Docs",
-    routeTag: "ListboxDocs",
-    href: listboxDocsRouter(),
-  },
-  {
-    label: "Listbox Basic Example",
-    routeTag: "ListboxBasicExample",
-    href: listboxBasicExampleRouter(),
-  },
-  {
-    label: "Listbox Animated Example",
-    routeTag: "ListboxAnimatedExample",
-    href: listboxAnimatedExampleRouter(),
-  },
-  { label: "Menu", routeTag: "Menu", href: menuRouter() },
-  { label: "Menu Docs", routeTag: "MenuDocs", href: menuDocsRouter() },
-  {
-    label: "Menu Basic Example",
-    routeTag: "MenuBasicExample",
-    href: menuBasicExampleRouter(),
-  },
-  {
-    label: "Menu Animated Example",
-    routeTag: "MenuAnimatedExample",
-    href: menuAnimatedExampleRouter(),
-  },
-  { label: "Popover", routeTag: "Popover", href: popoverRouter() },
-  { label: "Popover Docs", routeTag: "PopoverDocs", href: popoverDocsRouter() },
-  {
-    label: "Popover Basic Example",
-    routeTag: "PopoverBasicExample",
-    href: popoverBasicExampleRouter(),
-  },
-  {
-    label: "Popover Animated Example",
-    routeTag: "PopoverAnimatedExample",
-    href: popoverAnimatedExampleRouter(),
-  },
-  { label: "Radio Group", routeTag: "RadioGroup", href: radioGroupRouter() },
-  {
-    label: "Radio Group Docs",
-    routeTag: "RadioGroupDocs",
-    href: radioGroupDocsRouter(),
-  },
-  {
-    label: "Radio Group Basic Example",
-    routeTag: "RadioGroupBasicExample",
-    href: radioGroupBasicExampleRouter(),
-  },
-  {
-    label: "Radio Group Horizontal Example",
-    routeTag: "RadioGroupHorizontalExample",
-    href: radioGroupHorizontalExampleRouter(),
-  },
-  { label: "Select", routeTag: "Select", href: selectRouter() },
-  { label: "Select Docs", routeTag: "SelectDocs", href: selectDocsRouter() },
-  {
-    label: "Select Basic Example",
-    routeTag: "SelectBasicExample",
-    href: selectBasicExampleRouter(),
-  },
-  {
-    label: "Select Disabled Example",
-    routeTag: "SelectDisabledExample",
-    href: selectDisabledExampleRouter(),
-  },
-  { label: "Slider", routeTag: "Slider", href: sliderRouter() },
-  { label: "Slider Docs", routeTag: "SliderDocs", href: sliderDocsRouter() },
-  {
-    label: "Slider Basic Example",
-    routeTag: "SliderBasicExample",
-    href: sliderBasicExampleRouter(),
-  },
-  {
-    label: "Slider Disabled Example",
-    routeTag: "SliderDisabledExample",
-    href: sliderDisabledExampleRouter(),
-  },
-  { label: "Switch", routeTag: "Switch", href: switchRouter() },
-  { label: "Switch Docs", routeTag: "SwitchDocs", href: switchDocsRouter() },
-  {
-    label: "Switch Basic Example",
-    routeTag: "SwitchBasicExample",
-    href: switchBasicExampleRouter(),
-  },
-  {
-    label: "Switch Disabled Example",
-    routeTag: "SwitchDisabledExample",
-    href: switchDisabledExampleRouter(),
-  },
-  { label: "Tabs", routeTag: "Tabs", href: tabsRouter() },
-  { label: "Tabs Docs", routeTag: "TabsDocs", href: tabsDocsRouter() },
-  {
-    label: "Tabs Basic Example",
-    routeTag: "TabsBasicExample",
-    href: tabsBasicExampleRouter(),
-  },
-  {
-    label: "Tabs Manual Example",
-    routeTag: "TabsManualExample",
-    href: tabsManualExampleRouter(),
-  },
-  { label: "Textarea", routeTag: "Textarea", href: textareaRouter() },
-  {
-    label: "Textarea Docs",
-    routeTag: "TextareaDocs",
-    href: textareaDocsRouter(),
-  },
-  {
-    label: "Textarea Basic Example",
-    routeTag: "TextareaBasicExample",
-    href: textareaBasicExampleRouter(),
-  },
-  {
-    label: "Textarea Disabled Example",
-    routeTag: "TextareaDisabledExample",
-    href: textareaDisabledExampleRouter(),
-  },
-  { label: "Toast", routeTag: "Toast", href: toastRouter() },
-  { label: "Toast Docs", routeTag: "ToastDocs", href: toastDocsRouter() },
-  {
-    label: "Toast Basic Example",
-    routeTag: "ToastBasicExample",
-    href: toastBasicExampleRouter(),
-  },
-  {
-    label: "Toast Variants Example",
-    routeTag: "ToastVariantsExample",
-    href: toastVariantsExampleRouter(),
-  },
-  { label: "Tooltip", routeTag: "Tooltip", href: tooltipRouter() },
-  {
-    label: "Tooltip Docs",
-    routeTag: "TooltipDocs",
-    href: tooltipDocsRouter(),
-  },
-  {
-    label: "Tooltip Basic Example",
-    routeTag: "TooltipBasicExample",
-    href: tooltipBasicExampleRouter(),
-  },
-  {
-    label: "Tooltip No Delay Example",
-    routeTag: "TooltipNoDelayExample",
-    href: tooltipNoDelayExampleRouter(),
-  },
-  {
-    label: "Virtual List",
-    routeTag: "VirtualList",
-    href: virtualListRouter(),
-  },
-  {
-    label: "Virtual List Docs",
-    routeTag: "VirtualListDocs",
-    href: virtualListDocsRouter(),
-  },
-  {
-    label: "VirtualList Basic Example",
-    routeTag: "VirtualListBasicExample",
-    href: virtualListBasicExampleRouter(),
-  },
-  {
-    label: "VirtualList Variable Example",
-    routeTag: "VirtualListVariableExample",
-    href: virtualListVariableExampleRouter(),
-  },
-];
-
-const publicPath = (path: string): string =>
-  `${import.meta.env.BASE_URL}${path}`;
-
-const EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF: Record<string, string> = {
-  [animationBasicExampleRouter()]: "sources/animation-basic.txt",
-  [avatarBasicExampleRouter()]: "sources/avatar-basic.txt",
-  [badgeBasicExampleRouter()]: "sources/badge-basic.txt",
-  [buttonBasicExampleRouter()]: "sources/button-basic.txt",
-  [buttonDisabledExampleRouter()]: "sources/button-disabled.txt",
-  [calendarBasicExampleRouter()]: "sources/calendar-basic.txt",
-  [calendarBoundsExampleRouter()]: "sources/calendar-bounds.txt",
-  [checkboxBasicExampleRouter()]: "sources/checkbox-basic.txt",
-  [checkboxIndeterminateExampleRouter()]: "sources/checkbox-indeterminate.txt",
-  [comboboxBasicExampleRouter()]: "sources/combobox-basic.txt",
-  [comboboxMultiExampleRouter()]: "sources/combobox-multi.txt",
-  [datePickerBasicExampleRouter()]: "sources/date-picker-basic.txt",
-  [datePickerBoundsExampleRouter()]: "sources/date-picker-bounds.txt",
-  [dialogAnimatedExampleRouter()]: "sources/dialog-animated.txt",
-  [dialogBasicExampleRouter()]: "sources/dialog-basic.txt",
-  [dialogDestructiveExampleRouter()]: "sources/dialog-destructive.txt",
-  [dialogFocusExampleRouter()]: "sources/dialog-focus.txt",
-  [dialogScrollableExampleRouter()]: "sources/dialog-scrollable.txt",
-  [disclosureBasicExampleRouter()]: "sources/disclosure-basic.txt",
-  [disclosureDisabledExampleRouter()]: "sources/disclosure-disabled.txt",
-  [dragAndDropBasicExampleRouter()]: "sources/drag-and-drop-basic.txt",
-  [dragAndDropDisabledExampleRouter()]: "sources/drag-and-drop-disabled.txt",
-  [fieldsetBasicExampleRouter()]: "sources/fieldset-basic.txt",
-  [fieldsetDisabledExampleRouter()]: "sources/fieldset-disabled.txt",
-  [fileDropBasicExampleRouter()]: "sources/file-drop-basic.txt",
-  [fileDropDisabledExampleRouter()]: "sources/file-drop-disabled.txt",
-  [inputBasicExampleRouter()]: "sources/input-basic.txt",
-  [inputDisabledExampleRouter()]: "sources/input-disabled.txt",
-  [listboxAnimatedExampleRouter()]: "sources/listbox-animated.txt",
-  [listboxBasicExampleRouter()]: "sources/listbox-basic.txt",
-  [menuAnimatedExampleRouter()]: "sources/menu-animated.txt",
-  [menuBasicExampleRouter()]: "sources/menu-basic.txt",
-  [popoverAnimatedExampleRouter()]: "sources/popover-animated.txt",
-  [popoverBasicExampleRouter()]: "sources/popover-basic.txt",
-  [radioGroupBasicExampleRouter()]: "sources/radio-group-basic.txt",
-  [radioGroupHorizontalExampleRouter()]: "sources/radio-group-horizontal.txt",
-  [selectBasicExampleRouter()]: "sources/select-basic.txt",
-  [selectDisabledExampleRouter()]: "sources/select-disabled.txt",
-  [sliderBasicExampleRouter()]: "sources/slider-basic.txt",
-  [sliderDisabledExampleRouter()]: "sources/slider-disabled.txt",
-  [switchBasicExampleRouter()]: "sources/switch-basic.txt",
-  [switchDisabledExampleRouter()]: "sources/switch-disabled.txt",
-  [tabsBasicExampleRouter()]: "sources/tabs-basic.txt",
-  [tabsManualExampleRouter()]: "sources/tabs-manual.txt",
-  [textareaBasicExampleRouter()]: "sources/textarea-basic.txt",
-  [textareaDisabledExampleRouter()]: "sources/textarea-disabled.txt",
-  [toastBasicExampleRouter()]: "sources/toast-basic.txt",
-  [toastVariantsExampleRouter()]: "sources/toast-variants.txt",
-  [tooltipBasicExampleRouter()]: "sources/tooltip-basic.txt",
-  [tooltipNoDelayExampleRouter()]: "sources/tooltip-no-delay.txt",
-  [virtualListBasicExampleRouter()]: "sources/virtual-list-basic.txt",
-  [virtualListVariableExampleRouter()]: "sources/virtual-list-variable.txt",
-};
-
-const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
-  navItem.routeTag === "AvatarDocs" || navItem.routeTag === "BadgeDocs"
-    ? "shadcn"
-    : "Foldkit";
-
-const DOCS_NAV_ITEMS = NAV_ITEMS.filter((navItem) =>
-  navItem.routeTag.endsWith("Docs")
-).map((navItem) => ({
-  ...navItem,
-  label: navItem.label.replace(/ Docs$/u, ""),
-  library: docsNavItemLibrary(navItem),
-  componentRoutePrefix: navItem.routeTag.replace(/Docs$/u, ""),
-})) satisfies readonly DocsNavItem[];
-
-const DOCS_NAV_GROUPS: readonly DocsNavGroup[] = [
-  {
-    library: "Foldkit",
-    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Foldkit"),
-  },
-  {
-    library: "Base UI",
-    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "Base UI"),
-  },
-  {
-    library: "shadcn",
-    items: DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "shadcn"),
-  },
-];
-
-const isDocsNavItemActive = (
-  currentRoute: AppRoute,
-  navItem: DocsNavItem
-): boolean => currentRoute._tag.startsWith(navItem.componentRoutePrefix);
-
-const libraryBadgeClassName = (library: ComponentLibrary): string =>
-  clsx(
-    "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none",
-    library === "Foldkit" && "bg-accent-100 text-accent-700",
-    library === "Base UI" && "bg-emerald-100 text-emerald-700",
-    library === "shadcn" && "bg-gray-200 text-gray-700"
-  );
-
-const navLinkClassName = (isActive: boolean): string =>
-  clsx(
-    "block min-w-0 flex-1 rounded-md px-3 py-1.5 text-sm transition-colors",
-    isActive
-      ? "bg-accent-100 text-accent-700"
-      : "text-gray-700 hover:bg-gray-200"
-  );
-
-const mobileNavLinkClassName = (isActive: boolean): string =>
-  clsx(
-    "block min-w-0 flex-1 rounded-md px-4 py-2.5 text-base transition-colors",
-    isActive
-      ? "bg-accent-100 text-accent-700"
-      : "text-gray-700 hover:bg-gray-200"
-  );
-
-const docsNavGroupView = (
-  currentRoute: AppRoute,
-  group: DocsNavGroup,
-  linkClassName: (isActive: boolean) => string
-): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("space-y-2")],
-    [
-      h.div(
-        [
-          h.Class(
-            "border-t border-gray-200 pt-3 text-xs font-semibold uppercase tracking-wide text-gray-500 first:border-t-0 first:pt-0"
-          ),
-        ],
-        [group.library]
-      ),
-      group.items.length === 0
-        ? h.p([h.Class("px-3 text-xs text-gray-400")], ["No components yet"])
-        : h.ul(
-            [h.Class("flex flex-col gap-0.5")],
-            group.items.map((navItem) => {
-              const isActive = isDocsNavItemActive(currentRoute, navItem);
-
-              return h.li(
-                [h.Class("flex items-center gap-2")],
-                [
-                  h.a(
-                    [
-                      h.Href(appPath(navItem.href)),
-                      h.Class(linkClassName(isActive)),
-                      ...(isActive ? [h.AriaCurrent("page")] : []),
-                    ],
-                    [navItem.label]
-                  ),
-                  h.span(
-                    [
-                      h.AriaHidden(true),
-                      h.Class(libraryBadgeClassName(navItem.library)),
-                    ],
-                    [navItem.library]
-                  ),
-                ]
-              );
-            })
-          ),
-    ]
-  );
-};
-
-const sidebarView = (currentRoute: AppRoute): Html => {
-  const h = html<Message>();
-
-  return h.nav(
-    [
-      h.Class(
-        "hidden h-screen w-64 shrink-0 flex-col border-r border-gray-200 bg-gray-50 p-4 md:flex"
-      ),
-    ],
-    [
-      h.div(
-        [h.Class("mb-6")],
-        [
-          h.a(
-            [h.Href(appPath(homeRouter())), h.Class("block")],
-            [
-              h.h1(
-                [h.Class("text-lg font-bold text-gray-900")],
-                ["Foldkit-basic-cn-ui"]
-              ),
-            ]
-          ),
-          h.span(
-            [h.Class("text-xs text-gray-500")],
-            ["Foldkit component registry"]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("min-h-0 flex-1 space-y-5 overflow-y-auto pr-1")],
-        DOCS_NAV_GROUPS.map((group) =>
-          docsNavGroupView(currentRoute, group, navLinkClassName)
-        )
-      ),
-    ]
-  );
-};
-
-const mobileMenuContent = (currentRoute: AppRoute): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("flex flex-col h-full")],
-    [
-      h.div(
-        [
-          h.Class(
-            "flex items-center justify-between border-b border-gray-200 px-4 py-3"
-          ),
-        ],
-        [
-          h.a(
-            [h.Href(appPath(homeRouter())), h.Class("block")],
-            [
-              h.div(
-                [h.Class("flex flex-col")],
-                [
-                  h.span(
-                    [h.Class("text-base font-bold text-gray-900")],
-                    ["Foldkit-basic-cn-ui"]
-                  ),
-                  h.span(
-                    [h.Class("text-xs text-gray-500")],
-                    ["Foldkit component registry"]
-                  ),
-                ]
-              ),
-            ]
-          ),
-          h.button(
-            [
-              h.Class(
-                "p-2 rounded-md hover:bg-gray-200 transition text-gray-700 cursor-pointer"
-              ),
-              h.AriaLabel("Close menu"),
-              h.OnClick(toMobileMenuDialogMessage(Ui.Dialog.RequestedClose())),
-            ],
-            [Icon.xMark("w-6 h-6")]
-          ),
-        ]
-      ),
-      h.nav(
-        [
-          h.Class("flex-1 overflow-y-auto min-h-0 p-4"),
-          h.Tabindex(-1),
-          h.Autofocus(true),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-5")],
-            DOCS_NAV_GROUPS.map((group) =>
-              docsNavGroupView(currentRoute, group, mobileNavLinkClassName)
-            )
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const mobileHeaderView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.header(
-    [
-      h.Class(
-        "md:hidden sticky top-0 z-40 flex items-center justify-between border-b border-gray-200 bg-gray-50 px-4 py-3"
-      ),
-    ],
-    [
-      h.a(
-        [h.Href(appPath(homeRouter())), h.Class("block")],
-        [
-          h.div(
-            [h.Class("flex flex-col")],
-            [
-              h.span(
-                [h.Class("text-base font-bold text-gray-900")],
-                ["Foldkit-basic-cn-ui"]
-              ),
-              h.span(
-                [h.Class("text-xs text-gray-500")],
-                ["Foldkit component registry"]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.button(
-        [
-          h.Class(
-            "p-2 rounded-md hover:bg-gray-200 transition text-gray-700 cursor-pointer"
-          ),
-          h.AriaExpanded(model.uiModel.mobileMenuDialog.isOpen),
-          h.AriaLabel("Toggle menu"),
-          h.OnClick(toMobileMenuDialogMessage(Ui.Dialog.RequestedOpen())),
-        ],
-        [Icon.menu("w-6 h-6")]
-      ),
-    ]
-  );
-};
-
-const mobileMenuView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId: model.uiModel.mobileMenuDialog.id,
-    model: model.uiModel.mobileMenuDialog,
-    view: Ui.Dialog.view,
-    viewInputs: {
-      toView: ({ dialog, backdrop, panel, isVisible }) =>
-        h.dialog(
-          [...dialog, h.Class("md:hidden")],
-          isVisible
-            ? [
-                h.div([...backdrop, h.Class("fixed inset-0 z-[59]")], []),
-                h.div(
-                  [
-                    ...panel,
-                    h.Class("fixed inset-0 z-[60] bg-white flex flex-col"),
-                  ],
-                  [mobileMenuContent(model.route)]
-                ),
-              ]
-            : []
-        ),
-    },
-    toParentMessage: (message) => toMobileMenuDialogMessage(message),
-  });
-};
-
-const homeView = (): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-2xl")],
-    [
-      h.h1(
-        [h.Class("text-2xl md:text-3xl font-bold text-gray-900 mb-4")],
-        ["Foldkit component registry"]
-      ),
-      h.p(
-        [h.Class("text-gray-600 mb-4")],
-        [
-          "Browse installable Foldkit, Base UI, and shadcn component slices. Select a component from the menu to update this detail view.",
-        ]
-      ),
-      h.p(
-        [h.Class("text-gray-600")],
-        [
-          "Each component is headless. You provide the markup and styling via a callback, and Foldkit handles accessibility, keyboard navigation, and state management.",
-        ]
-      ),
-    ]
-  );
-};
-
-const notFoundView = (path: string): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-2xl")],
-    [
-      h.h1(
-        [h.Class("text-2xl md:text-3xl font-bold text-red-600 mb-4")],
-        ["404 — Page Not Found"]
-      ),
-      h.p(
-        [h.Class("text-gray-600 mb-4")],
-        [`The path "${path}" was not found.`]
-      ),
-      h.a(
-        [
-          h.Href(appPath(homeRouter())),
-          h.Class("text-accent-600 hover:underline"),
-        ],
-        ["Go Home"]
-      ),
-    ]
-  );
-};
-
-const codeBlock = (code: string): Html => {
-  const h = html<Message>();
-
-  return h.pre(
-    [
-      h.Class(
-        "overflow-x-auto rounded-lg border border-gray-200 bg-gray-950 px-4 py-3 text-sm text-gray-50"
-      ),
-    ],
-    [h.code([], [code])]
-  );
-};
-
-type DocsMetaItem = Readonly<{
-  label: string;
-  value: string;
-}>;
-
-type ComponentDocsMetadata = Readonly<{
-  origin: ComponentLibrary;
-  artifact: "component" | "primitive-backed-component";
-  primitive?: string;
-}>;
-
-const componentNameFromSlug = (slug: string): string =>
-  slug
-    .split("-")
-    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
-    .join("");
-
-const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
-  avatar: {
-    artifact: "component",
-    origin: "shadcn",
-  },
-  badge: {
-    artifact: "component",
-    origin: "shadcn",
-  },
-};
-
-const docsMetadataForSource = (
-  source: string
-): ComponentDocsMetadata | undefined => {
-  const slug = source.replace(/^registry\/default\/ui\//u, "");
-
-  if (slug === source) {
-    return undefined;
-  }
-
-  return (
-    COMPONENT_DOCS_METADATA_BY_SLUG[slug] ?? {
-      artifact: "primitive-backed-component",
-      origin: "Foldkit",
-      primitive: `Ui.${componentNameFromSlug(slug)}`,
-    }
-  );
-};
-
-const docsMetaItemsWithComponentMetadata = (
-  items: readonly DocsMetaItem[]
-): readonly DocsMetaItem[] => {
-  const maybeSource = items.find((item) => item.label === "Source");
-
-  if (maybeSource === undefined) {
-    return items;
-  }
-
-  const maybeMetadata = docsMetadataForSource(maybeSource.value);
-
-  if (maybeMetadata === undefined) {
-    return items;
-  }
-
-  return [
-    ...items,
-    { label: "Origin", value: maybeMetadata.origin },
-    { label: "Artifact", value: maybeMetadata.artifact },
-    ...(maybeMetadata.primitive === undefined
-      ? []
-      : [{ label: "Primitive", value: maybeMetadata.primitive }]),
-  ];
-};
-
-const docsMetaGrid = (items: readonly DocsMetaItem[]): Html => {
-  const h = html<Message>();
-  const enrichedItems = docsMetaItemsWithComponentMetadata(items);
-
-  return h.section(
-    [
-      h.Class(
-        "grid gap-3 border-y border-gray-200 py-4 text-sm text-gray-700 sm:grid-cols-3"
-      ),
-    ],
-    enrichedItems.map((item) =>
-      h.div(
-        [h.Class("space-y-1")],
-        [
-          h.p([h.Class("font-medium text-gray-950")], [item.label]),
-          h.p([], [item.value]),
-        ]
-      )
-    )
-  );
-};
-
-const docsSection = (title: string, children: readonly Html[]): Html => {
-  const h = html<Message>();
-
-  return h.section(
-    [h.Class("space-y-3 border-t border-gray-200 pt-8")],
-    [
-      h.h2([h.Class("text-xl font-semibold text-gray-950")], [title]),
-      ...children,
-    ]
-  );
-};
-
-const docsOverviewBlock = (body: string): Html => {
-  const h = html<Message>();
-
-  return docsSection("Overview", [
-    h.p([h.Class("max-w-2xl text-sm text-gray-600")], [body]),
-  ]);
-};
-
-const publicRegistryBaseUrl =
-  "https://bearing-ward.github.io/foldkit-basic-cn-ui/r";
-
-const docsInstallBlock = (commands: string): Html =>
-  docsSection("Installation", [
-    codeBlock(commands.replaceAll("<registry-url>", publicRegistryBaseUrl)),
-  ]);
-
-const docsStylingBlock = (): Html => {
-  const h = html<Message>();
-
-  return docsSection("Styling", [
-    h.p(
-      [h.Class("max-w-2xl text-sm text-gray-600")],
-      [
-        "Styled registry slices keep presentation in registry/default/ui/{component}/view.ts. Foldkit UI publishes semantic attribute bundles for each part; the registry view spreads those attributes first, then applies local class tokens so consumers can replace the markup without losing ARIA, ids, or event wiring.",
-      ]
-    ),
-    h.ul(
-      [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-      [
-        h.li(
-          [],
-          [
-            "Class-name exports are the stable styling surface for the generated examples.",
-          ]
-        ),
-        h.li(
-          [],
-          [
-            "Consumers can keep the primitive update/model contract and swap only the view callback.",
-          ]
-        ),
-        h.li(
-          [],
-          [
-            "Hidden inputs, labels, descriptions, portals, and panels stay wired through primitive attributes rather than ad hoc DOM selectors.",
-          ]
-        ),
-      ]
-    ),
-  ]);
-};
-
-const docsKeyboardInteractionBlock = (): Html => {
-  const h = html<Message>();
-
-  return docsSection("Keyboard interaction", [
-    h.p(
-      [h.Class("max-w-2xl text-sm text-gray-600")],
-      [
-        "Keyboard behavior is owned by the Foldkit UI primitive and represented as Foldkit messages, not imperative handlers in the docs shell. The examples exercise the applicable focus, arrow-key, Escape, Enter, Space, typeahead, and disabled-state paths for each interactive component.",
-      ]
-    ),
-    h.ul(
-      [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-      [
-        h.li(
-          [],
-          [
-            "Buttons, inputs, selects, and textareas rely on native HTML behavior.",
-          ]
-        ),
-        h.li(
-          [],
-          [
-            "Composite widgets expose roving focus, selection, dismissal, or drag subscriptions through Foldkit UI.",
-          ]
-        ),
-        h.li(
-          [],
-          [
-            "Browser tests cover the interaction contract for promoted primitives so regressions fail before deployment.",
-          ]
-        ),
-      ]
-    ),
-  ]);
-};
-
-const docsUsageBlock = (body: string, code: string): Html => {
-  const h = html<Message>();
-
-  return docsSection("Usage", [
-    h.p([h.Class("max-w-2xl text-sm text-gray-600")], [body]),
-    codeBlock(code),
-  ]);
-};
-
-const docsFoldkitIntegrationBlock = (code: string): Html =>
-  (() => {
-    const h = html<Message>();
-
-    return docsSection("Foldkit integration", [
-      h.p(
-        [h.Class("max-w-2xl text-sm text-gray-600")],
-        [
-          "Stateful registry components compose as ordinary Foldkit children: parent-owned model field, parent message wrapper, init command mapping, update delegation, and h.submodel view wiring.",
-        ]
-      ),
-      codeBlock(code),
-    ]);
-  })();
-
-const docsApiList = (items: readonly string[]): Html => {
-  const h = html<Message>();
-
-  const parseApiItem = (
-    item: string
-  ): Readonly<{ name: string; description: string }> => {
-    const separatorIndex = item.indexOf(":");
-
-    if (separatorIndex === -1) {
-      return { name: item, description: "" };
-    }
-
-    return {
-      name: item.slice(0, separatorIndex),
-      description: item.slice(separatorIndex + 1).trim(),
-    };
-  };
-
-  return docsSection("API reference", [
-    h.p(
-      [h.Class("max-w-2xl text-sm text-gray-600")],
-      [
-        "Use these exports from the registry component module. Stateful primitives keep Foldkit model and message contracts explicit; view helpers expose attribute bundles so apps own markup and styling.",
-      ]
-    ),
-    h.ul(
-      [h.Class("grid gap-3 text-sm sm:grid-cols-2")],
-      items.map((item) => {
-        const parsedItem = parseApiItem(item);
-
-        return h.li(
-          [
-            h.Class(
-              "rounded-lg border border-gray-200 bg-white p-3 text-gray-700"
-            ),
-          ],
-          [
-            h.code(
-              [
-                h.Class(
-                  "text-sm font-semibold text-gray-950 [overflow-wrap:anywhere]"
-                ),
-              ],
-              [parsedItem.name]
-            ),
-            parsedItem.description === ""
-              ? h.empty
-              : h.p([h.Class("mt-1 leading-6")], [parsedItem.description]),
-          ]
-        );
-      })
-    ),
-  ]);
-};
-
-const docsTextListSection = (title: string, items: readonly string[]): Html => {
-  const h = html<Message>();
-
-  return docsSection(title, [
-    h.ul(
-      [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-      items.map((item) => h.li([], [item]))
-    ),
-  ]);
-};
-
-type DocsStandardComponentSectionsInput = Readonly<{
-  installCommands: string;
-  usageBody: string;
-  usageCode: string;
-  integrationCode: string;
-  apiItems: readonly string[];
-  accessibilityItems: readonly string[];
-  coverageItems: readonly string[];
-}>;
-
-const docsStandardComponentSections = ({
-  installCommands,
-  usageBody,
-  usageCode,
-  integrationCode,
-  apiItems,
-  accessibilityItems,
-  coverageItems,
-}: DocsStandardComponentSectionsInput): readonly Html[] => [
-  docsInstallBlock(installCommands),
-  docsUsageBlock(usageBody, usageCode),
-  docsFoldkitIntegrationBlock(integrationCode),
-  docsStylingBlock(),
-  docsKeyboardInteractionBlock(),
-  docsApiList(apiItems),
-  docsTextListSection("Accessibility", accessibilityItems),
-  docsTextListSection("Coverage", coverageItems),
-];
-
-type DocsExampleBlockInput = Readonly<{
-  title: string;
-  description?: string;
-  testId: string;
-  preview: Html;
-  href: string;
-  linkText: string;
-}>;
-
-const docsExampleBlock = ({
-  title,
-  description,
-  testId,
-  preview,
-  href,
-}: DocsExampleBlockInput): Html => {
-  const h = html<Message>();
-  const sourceHref = publicPath(
-    EXAMPLE_SOURCE_HREF_BY_EXAMPLE_HREF[href] ?? ""
-  );
-
-  return h.div(
-    [
-      h.Class(
-        "flex h-full min-h-56 flex-col rounded-lg border border-gray-200 bg-white p-4"
-      ),
-      h.DataAttribute("testid", testId),
-    ],
-    [
-      h.h3([h.Class("text-base font-semibold text-gray-950")], [title]),
-      description === undefined
-        ? h.empty
-        : h.p([h.Class("mt-3 text-sm text-gray-600")], [description]),
-      h.div(
-        [
-          h.Class("flex min-h-20 items-start pt-6"),
-          h.DataAttribute("testid", `${testId}-preview`),
-        ],
-        [preview]
-      ),
-      h.div(
-        [
-          h.Class("mt-auto border-t border-gray-100 pt-4"),
-          h.DataAttribute("testid", `${testId}-actions`),
-        ],
-        [
-          h.details(
-            [h.Class("group")],
-            [
-              h.summary(
-                [
-                  h.Class(
-                    "inline-flex min-h-10 cursor-pointer list-none items-center rounded-lg border border-gray-300 bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600"
-                  ),
-                ],
-                ["View code"]
-              ),
-              h.div(
-                [
-                  h.Class(
-                    "mt-4 overflow-hidden rounded-lg border border-gray-200 bg-white"
-                  ),
-                ],
-                [
-                  h.iframe(
-                    [
-                      h.Src(sourceHref),
-                      h.Title(`${title} source code`),
-                      h.Class("h-96 w-full bg-white"),
-                    ],
-                    []
-                  ),
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const animationBasicExamplePreview = (
-  model: AnimationBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: AnimationBasicExample.view,
-    toParentMessage: (message) => GotAnimationBasicExampleMessage({ message }),
-  });
-};
-
-const avatarBasicExamplePreview = (
-  model: AvatarBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: AvatarBasicExample.view,
-    toParentMessage: (message) => GotAvatarBasicExampleMessage({ message }),
-  });
-};
-
-const badgeBasicExamplePreview = (
-  model: BadgeBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: BadgeBasicExample.view,
-    toParentMessage: (message) => GotBadgeBasicExampleMessage({ message }),
-  });
-};
-
-const buttonBasicExamplePreview = (
-  model: ButtonBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ButtonBasicExample.view,
-    toParentMessage: (message) => GotButtonBasicExampleMessage({ message }),
-  });
-};
-
-const buttonDisabledExamplePreview = (
-  model: ButtonDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ButtonDisabledExample.view,
-    toParentMessage: (message) => GotButtonDisabledExampleMessage({ message }),
-  });
-};
-
-const calendarBasicExamplePreview = (
-  model: CalendarBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: CalendarBasicExample.view,
-    toParentMessage: (message) => GotCalendarBasicExampleMessage({ message }),
-  });
-};
-
-const calendarBoundsExamplePreview = (
-  model: CalendarBoundsExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: CalendarBoundsExample.view,
-    toParentMessage: (message) => GotCalendarBoundsExampleMessage({ message }),
-  });
-};
-
-const checkboxBasicExamplePreview = (
-  model: CheckboxBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: CheckboxBasicExample.view,
-    toParentMessage: (message) => GotCheckboxBasicExampleMessage({ message }),
-  });
-};
-
-const checkboxIndeterminateExamplePreview = (
-  model: CheckboxIndeterminateExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: CheckboxIndeterminateExample.view,
-    toParentMessage: (message) =>
-      GotCheckboxIndeterminateExampleMessage({ message }),
-  });
-};
-
-const switchBasicExamplePreview = (
-  model: SwitchBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: SwitchBasicExample.view,
-    toParentMessage: (message) => GotSwitchBasicExampleMessage({ message }),
-  });
-};
-
-const switchDisabledExamplePreview = (
-  model: SwitchDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: SwitchDisabledExample.view,
-    toParentMessage: (message) => GotSwitchDisabledExampleMessage({ message }),
-  });
-};
-
-const sliderBasicExamplePreview = (
-  model: SliderBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: SliderBasicExample.view,
-    toParentMessage: (message) => GotSliderBasicExampleMessage({ message }),
-  });
-};
-
-const sliderDisabledExamplePreview = (
-  model: SliderDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: SliderDisabledExample.view,
-    toParentMessage: (message) => GotSliderDisabledExampleMessage({ message }),
-  });
-};
-
-const tabsBasicExamplePreview = (
-  model: TabsBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: TabsBasicExample.view,
-    toParentMessage: (message) => GotTabsBasicExampleMessage({ message }),
-  });
-};
-
-const tabsManualExamplePreview = (
-  model: TabsManualExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: TabsManualExample.view,
-    toParentMessage: (message) => GotTabsManualExampleMessage({ message }),
-  });
-};
-
-const tooltipBasicExamplePreview = (
-  model: TooltipBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: TooltipBasicExample.view,
-    toParentMessage: (message) => GotTooltipBasicExampleMessage({ message }),
-  });
-};
-
-const tooltipNoDelayExamplePreview = (
-  model: TooltipNoDelayExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: TooltipNoDelayExample.view,
-    toParentMessage: (message) => GotTooltipNoDelayExampleMessage({ message }),
-  });
-};
-
-const virtualListBasicExamplePreview = (
-  model: VirtualListBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: VirtualListBasicExample.view,
-    toParentMessage: (message) =>
-      GotVirtualListBasicExampleMessage({ message }),
-  });
-};
-
-const virtualListVariableExamplePreview = (
-  model: VirtualListVariableExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: VirtualListVariableExample.view,
-    toParentMessage: (message) =>
-      GotVirtualListVariableExampleMessage({ message }),
-  });
-};
-
-const dialogBasicExamplePreview = (
-  model: DialogBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DialogBasicExample.view,
-    toParentMessage: (message) => GotDialogBasicExampleMessage({ message }),
-  });
-};
-
-const dialogAnimatedExamplePreview = (
-  model: DialogAnimatedExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DialogAnimatedExample.view,
-    toParentMessage: (message) => GotDialogAnimatedExampleMessage({ message }),
-  });
-};
-
-const dialogDestructiveExamplePreview = (
-  model: DialogDestructiveExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DialogDestructiveExample.view,
-    toParentMessage: (message) =>
-      GotDialogDestructiveExampleMessage({ message }),
-  });
-};
-
-const dialogFocusExamplePreview = (
-  model: DialogFocusExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DialogFocusExample.view,
-    toParentMessage: (message) => GotDialogFocusExampleMessage({ message }),
-  });
-};
-
-const dialogScrollableExamplePreview = (
-  model: DialogScrollableExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DialogScrollableExample.view,
-    toParentMessage: (message) =>
-      GotDialogScrollableExampleMessage({ message }),
-  });
-};
-
-const disclosureBasicExamplePreview = (
-  model: DisclosureBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DisclosureBasicExample.view,
-    toParentMessage: (message) => GotDisclosureBasicExampleMessage({ message }),
-  });
-};
-
-const disclosureDisabledExamplePreview = (
-  model: DisclosureDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DisclosureDisabledExample.view,
-    toParentMessage: (message) =>
-      GotDisclosureDisabledExampleMessage({ message }),
-  });
-};
-
-const dragAndDropBasicExamplePreview = (
-  model: DragAndDropBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DragAndDropBasicExample.view,
-    toParentMessage: (message) =>
-      GotDragAndDropBasicExampleMessage({ message }),
-  });
-};
-
-const dragAndDropDisabledExamplePreview = (
-  model: DragAndDropDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DragAndDropDisabledExample.view,
-    toParentMessage: (message) =>
-      GotDragAndDropDisabledExampleMessage({ message }),
-  });
-};
-
-const fieldsetBasicExamplePreview = (
-  model: FieldsetBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: FieldsetBasicExample.view,
-    toParentMessage: (message) => GotFieldsetBasicExampleMessage({ message }),
-  });
-};
-
-const fieldsetDisabledExamplePreview = (
-  model: FieldsetDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: FieldsetDisabledExample.view,
-    toParentMessage: (message) =>
-      GotFieldsetDisabledExampleMessage({ message }),
-  });
-};
-
-const fileDropBasicExamplePreview = (
-  model: FileDropBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: FileDropBasicExample.view,
-    toParentMessage: (message) => GotFileDropBasicExampleMessage({ message }),
-  });
-};
-
-const fileDropDisabledExamplePreview = (
-  model: FileDropDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: FileDropDisabledExample.view,
-    toParentMessage: (message) =>
-      GotFileDropDisabledExampleMessage({ message }),
-  });
-};
-
-const listboxBasicExamplePreview = (
-  model: ListboxBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ListboxBasicExample.view,
-    toParentMessage: (message) => GotListboxBasicExampleMessage({ message }),
-  });
-};
-
-const listboxAnimatedExamplePreview = (
-  model: ListboxAnimatedExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ListboxAnimatedExample.view,
-    toParentMessage: (message) => GotListboxAnimatedExampleMessage({ message }),
-  });
-};
-
-const menuBasicExamplePreview = (
-  model: MenuBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: MenuBasicExample.view,
-    toParentMessage: (message) => GotMenuBasicExampleMessage({ message }),
-  });
-};
-
-const menuAnimatedExamplePreview = (
-  model: MenuAnimatedExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: MenuAnimatedExample.view,
-    toParentMessage: (message) => GotMenuAnimatedExampleMessage({ message }),
-  });
-};
-
-const popoverBasicExamplePreview = (
-  model: PopoverBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: PopoverBasicExample.view,
-    toParentMessage: (message) => GotPopoverBasicExampleMessage({ message }),
-  });
-};
-
-const popoverAnimatedExamplePreview = (
-  model: PopoverAnimatedExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: PopoverAnimatedExample.view,
-    toParentMessage: (message) => GotPopoverAnimatedExampleMessage({ message }),
-  });
-};
-
-const radioGroupBasicExamplePreview = (
-  model: RadioGroupBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: RadioGroupBasicExample.view,
-    toParentMessage: (message) => GotRadioGroupBasicExampleMessage({ message }),
-  });
-};
-
-const radioGroupHorizontalExamplePreview = (
-  model: RadioGroupHorizontalExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: RadioGroupHorizontalExample.view,
-    toParentMessage: (message) =>
-      GotRadioGroupHorizontalExampleMessage({ message }),
-  });
-};
-
-const selectBasicExamplePreview = (
-  model: SelectBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: SelectBasicExample.view,
-    toParentMessage: (message) => GotSelectBasicExampleMessage({ message }),
-  });
-};
-
-const selectDisabledExamplePreview = (
-  model: SelectDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: SelectDisabledExample.view,
-    toParentMessage: (message) => GotSelectDisabledExampleMessage({ message }),
-  });
-};
-
-const comboboxBasicExamplePreview = (
-  model: ComboboxBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ComboboxBasicExample.view,
-    toParentMessage: (message) => GotComboboxBasicExampleMessage({ message }),
-  });
-};
-
-const comboboxMultiExamplePreview = (
-  model: ComboboxMultiExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ComboboxMultiExample.view,
-    toParentMessage: (message) => GotComboboxMultiExampleMessage({ message }),
-  });
-};
-
-const datePickerBasicExamplePreview = (
-  model: DatePickerBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DatePickerBasicExample.view,
-    toParentMessage: (message) => GotDatePickerBasicExampleMessage({ message }),
-  });
-};
-
-const datePickerBoundsExamplePreview = (
-  model: DatePickerBoundsExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: DatePickerBoundsExample.view,
-    toParentMessage: (message) =>
-      GotDatePickerBoundsExampleMessage({ message }),
-  });
-};
-
-const inputBasicExamplePreview = (
-  model: InputBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: InputBasicExample.view,
-    toParentMessage: (message) => GotInputBasicExampleMessage({ message }),
-  });
-};
-
-const inputDisabledExamplePreview = (
-  model: InputDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: InputDisabledExample.view,
-    toParentMessage: (message) => GotInputDisabledExampleMessage({ message }),
-  });
-};
-
-const textareaBasicExamplePreview = (
-  model: TextareaBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: TextareaBasicExample.view,
-    toParentMessage: (message) => GotTextareaBasicExampleMessage({ message }),
-  });
-};
-
-const textareaDisabledExamplePreview = (
-  model: TextareaDisabledExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: TextareaDisabledExample.view,
-    toParentMessage: (message) =>
-      GotTextareaDisabledExampleMessage({ message }),
-  });
-};
-
-const toastBasicExamplePreview = (
-  model: ToastBasicExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ToastBasicExample.view,
-    toParentMessage: (message) => GotToastBasicExampleMessage({ message }),
-  });
-};
-
-const toastVariantsExamplePreview = (
-  model: ToastVariantsExample.Model,
-  slotId: string
-): Html => {
-  const h = html<Message>();
-
-  return h.submodel({
-    slotId,
-    model,
-    view: ToastVariantsExample.view,
-    toParentMessage: (message) => GotToastVariantsExampleMessage({ message }),
-  });
-};
-
-const checkboxDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Checkbox"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Checkbox slice built on the official Foldkit Ui.Checkbox primitive. It keeps checked state in a child model while exposing typed messages, OutMessage-compatible state changes, hidden input attributes, disabled state, indeterminate state, and reusable field classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/checkbox" },
-        { label: "Examples", value: "basic, indeterminate" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Checkbox v1 documents the stateful boolean-selection path: child-owned checked state, parent message delegation, grouped indeterminate state, and styled control parts that preserve the Foldkit primitive attributes."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-checkbox-basic",
-                preview: checkboxBasicExamplePreview(
-                  model.checkboxBasicExample,
-                  "checkbox-docs-basic-preview"
-                ),
-                href: checkboxBasicExampleRouter(),
-                linkText: "Open standalone Checkbox Basic example",
-              }),
-              docsExampleBlock({
-                title: "Indeterminate",
-                testId: "docs-example-block-checkbox-indeterminate",
-                preview: checkboxIndeterminateExamplePreview(
-                  model.checkboxIndeterminateExample,
-                  "checkbox-docs-indeterminate-preview"
-                ),
-                href: checkboxIndeterminateExampleRouter(),
-                linkText: "Open standalone Checkbox Indeterminate example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/checkbox.json\nbunx shadcn@latest add <registry-url>/checkbox-basic.json\nbunx shadcn@latest add <registry-url>/checkbox-indeterminate.json",
-        usageBody:
-          "Initialize the checkbox child model in the parent model, delegate child messages through `h.submodel`, and render the supplied checkbox, label, description, and hidden input attributes.",
-        usageCode: `import * as Checkbox from "./ui/checkbox";
-
-const [checkbox, checkboxCommands] = Checkbox.init({
-  id: "terms-checkbox",
-});
-
-h.submodel({
-  slotId: model.checkbox.id,
-  model: model.checkbox,
-  view: Checkbox.view,
-  viewInputs: {
-    toView: (attributes) => h.button(attributes.checkbox, ["Accept"]),
-  },
-  toParentMessage: (message) => GotCheckboxMessage({ message }),
-});`,
-        integrationCode: `// Model
-checkbox: Checkbox.Model;
-
-// Message
-GotCheckboxMessage({ message: Checkbox.Message });
-
-// Update
-GotCheckboxMessage: ({ message }) => {
-  const [checkbox, commands] = Checkbox.update(model.checkbox, message);
-
-  return [
-    evo(model, { checkbox: () => checkbox }),
-    Command.mapMessages(commands, (message) => GotCheckboxMessage({ message })),
-  ];
-};`,
-        apiItems: [
-          "Model: schema-backed state containing id and isChecked.",
-          "init(config): creates a Checkbox model and empty command list for registry consistency.",
-          "update(model, message): delegates to Ui.Checkbox.update and returns model, commands, and OutMessage.",
-          "setChecked(model, isChecked): programmatically assigns checked state and emits the same OutMessage as user toggles.",
-          "reflectChecked(model, isChecked): mirrors external checked state without emitting OutMessage.",
-          "view: h.submodel view that exposes checkbox, label, description, and hiddenInput attribute groups.",
-        ],
-        accessibilityItems: [
-          "The visible control receives the Foldkit checkbox role, checked, disabled, and indeterminate attributes.",
-          "The label attributes bind the visible label to the checkbox control.",
-          "The description attributes provide aria-describedby for explanatory copy.",
-          "The hiddenInput attributes preserve form participation when a name and value are supplied.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify label, description, checked toggling, hidden input composition, and disabled state.",
-          "Example scene tests verify parent-visible checked feedback and grouped indeterminate behavior.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const sliderDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Slider"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Slider slice built on the official Foldkit Ui.Slider primitive. It preserves typed value state, keyboard and pointer messages, ChangedValue OutMessages, disabled state, hidden input support, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/slider" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Slider v1 documents the single-value range path: child-owned value and drag state, parent-visible ChangedValue facts, keyboard increments, disabled slider semantics, and form participation through hidden input attributes."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-slider-basic",
-                preview: sliderBasicExamplePreview(
-                  model.sliderBasicExample,
-                  "slider-docs-basic-preview"
-                ),
-                href: sliderBasicExampleRouter(),
-                linkText: "Open standalone Slider Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-slider-disabled",
-                preview: sliderDisabledExamplePreview(
-                  model.sliderDisabledExample,
-                  "slider-docs-disabled-preview"
-                ),
-                href: sliderDisabledExampleRouter(),
-                linkText: "Open standalone Slider Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/slider.json\nbunx shadcn@latest add <registry-url>/slider-basic.json\nbunx shadcn@latest add <registry-url>/slider-disabled.json",
-        usageBody:
-          "Initialize the Slider child model, delegate child messages through `h.submodel`, and handle ChangedValue in the parent update when the value changes.",
-        usageCode: `import * as Slider from "./ui/slider";
-
-const [slider] = Slider.init({
-  id: "rating-slider",
-  min: 0,
-  max: 10,
-  step: 1,
-  initialValue: 4,
-});`,
-        integrationCode: `// Model
-slider: Slider.Model;
-
-// Message
-GotSliderMessage({ message: Slider.Message });
-
-// Update
-const [slider, commands, maybeOutMessage] =
-  Slider.update(model.slider, message);
-
-// View
-h.submodel({
-  slotId: model.slider.id,
-  model: model.slider,
-  view: Slider.view,
-  viewInputs: {
-    formatValue: (value) => \`\${value} of 10\`,
-    toView: (attributes) =>
-      Slider.sliderFieldView({
-        attributes,
-        label: "Rating",
-        valueText: \`\${model.slider.value} of 10\`,
-      }),
-  },
-  toParentMessage: (message) => GotSliderMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id, value, min, max, step, and drag state.",
-          "init(config): creates a Slider model and returns the registry init tuple.",
-          "update(model, message): returns model, commands, and an optional ChangedValue OutMessage.",
-          "reflectValue and reflectRange: mirror externally driven value/range changes without user-originated OutMessages.",
-          "fractionOfValue: computes the filled-track fraction for custom layouts.",
-          "subscriptions and subscriptionsForRoot: pointer-drag subscriptions for document and Shadow DOM roots.",
-          "ViewInputs and SliderAttributes: root, track, filledTrack, thumb, label, and hiddenInput attribute bundles for custom composition.",
-        ],
-        accessibilityItems: [
-          "The primitive supplies role=slider, aria-valuemin, aria-valuemax, aria-valuenow, and keyboard navigation handlers.",
-          "The label attributes provide the accessible name when no explicit aria label is supplied.",
-          "The disabled example exposes aria-disabled and removes pointer and keyboard interaction handlers.",
-          "The hiddenInput attributes preserve form participation when a name is supplied.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify accessible slider rendering, keyboard increment behavior, and parent-visible ChangedValue feedback.",
-          "Example scene tests verify basic keyboard value changes and disabled slider semantics.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const switchDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Switch"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Switch slice built on the official Foldkit Ui.Switch primitive. It keeps checked state in a child model while exposing typed messages, OutMessage-compatible state changes, disabled state, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/switch" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Switch v1 documents the stateful boolean-setting path: child-owned checked state, parent message delegation, native switch semantics, and styled control parts that preserve the Foldkit primitive attributes."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-switch-basic",
-                preview: switchBasicExamplePreview(
-                  model.switchBasicExample,
-                  "switch-docs-basic-preview"
-                ),
-                href: switchBasicExampleRouter(),
-                linkText: "Open standalone Switch Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-switch-disabled",
-                preview: switchDisabledExamplePreview(
-                  model.switchDisabledExample,
-                  "switch-docs-disabled-preview"
-                ),
-                href: switchDisabledExampleRouter(),
-                linkText: "Open standalone Switch Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/switch.json\nbunx shadcn@latest add <registry-url>/switch-basic.json\nbunx shadcn@latest add <registry-url>/switch-disabled.json",
-        usageBody:
-          "Initialize the switch child model in the parent model, delegate child messages through `h.submodel`, and render the supplied button, label, and description attributes.",
-        usageCode: `import * as Switch from "./ui/switch";
-
-const [switchModel, switchCommands] = Switch.init({
-  id: "notifications-switch",
-});
-
-h.submodel({
-  slotId: model.switchModel.id,
-  model: model.switchModel,
-  view: Switch.view,
-  viewInputs: {
-    toView: (attributes) => h.button(attributes.button, [
-      Switch.switchKnob(model.switchModel.isChecked),
-    ]),
-  },
-  toParentMessage: (message) => GotSwitchMessage({ message }),
-});`,
-        integrationCode: `// Model
-switchModel: Switch.Model;
-
-// Message
-GotSwitchMessage({ message: Switch.Message });
-
-// Update
-GotSwitchMessage: ({ message }) => {
-  const [switchModel, commands] = Switch.update(model.switchModel, message);
-
-  return [
-    evo(model, { switchModel: () => switchModel }),
-    Command.mapMessages(commands, (message) => GotSwitchMessage({ message })),
-  ];
-};`,
-        apiItems: [
-          "Model: schema-backed state containing id and isChecked.",
-          "init(config): creates a Switch model and empty command list for registry consistency.",
-          "update(model, message): delegates to Ui.Switch.update and returns model, commands, and OutMessage.",
-          "setChecked(model, isChecked): programmatically assigns checked state and emits the same OutMessage as user toggles.",
-          "reflectChecked(model, isChecked): mirrors external checked state without emitting OutMessage.",
-          "view: h.submodel view that exposes button, label, and description attribute groups.",
-        ],
-        accessibilityItems: [
-          "The visible control receives the Foldkit switch role, checked, and disabled attributes.",
-          "The label attributes bind the visible label to the switch control.",
-          "The description attributes provide aria-describedby for explanatory copy.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify label, description, checked toggling, and disabled state.",
-          "Example scene tests verify parent-visible checked feedback and disabled documentation copy.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const animationDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Animation"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Animation slice built on the official Foldkit Ui.Animation primitive. It preserves enter and leave lifecycle messages, double-frame coordination, CSS transition settlement commands, size animation, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/animation" },
-        { label: "Examples", value: "basic" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Animation v1 documents headless lifecycle coordination for animated content: parent-owned visibility intent, child-owned transition state, enter frame advancement, leave settlement, and parent-visible transition completion."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-animation-basic",
-                preview: animationBasicExamplePreview(
-                  model.animationBasicExample,
-                  "animation-docs-basic-preview"
-                ),
-                href: animationBasicExampleRouter(),
-                linkText: "Open standalone Animation Basic example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/animation.json\nbunx shadcn@latest add <registry-url>/animation-basic.json",
-        usageBody:
-          "Keep the Animation child model in the parent, send Showed or Hid when visibility intent changes, delegate child messages through h.submodel, and schedule defaultLeaveCommand when StartedLeaveAnimating is emitted.",
-        usageCode: `import * as Animation from "./ui/animation";
-
-const [animation] = Animation.init({
-  id: "details-animation",
-});`,
-        integrationCode: `// Model
-animation: Animation.Model;
-
-// Message
-GotAnimationMessage({ message: Animation.Message });
-
-// Update
-const [animation, commands, maybeOutMessage] =
-  Animation.update(model.animation, message);
-
-// View
-h.submodel({
-  slotId: model.animation.id,
-  model: model.animation,
-  view: Animation.view,
-  viewInputs: {
-    animateSize: true,
-    className: Animation.animationContentClassName,
-    content,
-  },
-  toParentMessage: (message) => GotAnimationMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id, isShowing, and transitionState.",
-          "init(config): creates an Animation model and returns the registry init tuple.",
-          "update(model, message): returns model, commands, and an optional StartedLeaveAnimating or TransitionedOut OutMessage.",
-          "RequestFrame: command emitted to advance enter or leave from start to animating state after paint.",
-          "WaitForAnimationSettled and defaultLeaveCommand: detect CSS transition or keyframe completion for leave cleanup.",
-          "ViewInputs: content, className, attributes, element, and animateSize options for custom composition.",
-        ],
-        accessibilityItems: [
-          "Animation is headless and does not assign roles; semantics belong to the animated content.",
-          "The wrapper keeps content mounted while enter or leave animation state settles.",
-          "Data attributes expose closed, enter, leave, and transition phases for CSS without imperative DOM mutation.",
-          "animateSize uses a grid wrapper so height transitions do not require measuring content in application code.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify Showed, Hid, RequestFrame, defaultLeaveCommand, and WaitForAnimationSettled resolution.",
-          "Example scene tests verify parent toggle flow, rendered content, and transition completion feedback.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const virtualListDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Virtual List"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit VirtualList slice built on the official Foldkit Ui.VirtualList primitive. It preserves subscription-driven measurement, scroll tracking, fixed-height windows, variable-height windows, and programmatic scroll commands.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/virtual-list" },
-        { label: "Examples", value: "basic, variable" },
-        { label: "Proof", value: "scene tests, registry JSON, browser scroll" },
-      ]),
-      docsOverviewBlock(
-        "VirtualList v1 documents high-volume list rendering: parent-owned data, child-owned scroll and measurement state, h.submodel row rendering, lifted container subscriptions, and command-backed scroll-to-index behavior."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                description:
-                  "Fixed row heights with direct index-to-offset math.",
-                testId: "docs-example-block-virtual-list-basic",
-                preview: virtualListBasicExamplePreview(
-                  model.virtualListBasicExample,
-                  "virtual-list-docs-basic-preview"
-                ),
-                href: virtualListBasicExampleRouter(),
-                linkText: "Open standalone VirtualList Basic example",
-              }),
-              docsExampleBlock({
-                title: "Variable",
-                description:
-                  "Variable row heights with per-item height callbacks.",
-                testId: "docs-example-block-virtual-list-variable",
-                preview: virtualListVariableExamplePreview(
-                  model.virtualListVariableExample,
-                  "virtual-list-docs-variable-preview"
-                ),
-                href: virtualListVariableExampleRouter(),
-                linkText: "Open standalone VirtualList Variable example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/virtual-list.json\nbunx shadcn@latest add <registry-url>/virtual-list-basic.json\nbunx shadcn@latest add <registry-url>/virtual-list-variable.json",
-        usageBody:
-          "Initialize the VirtualList child model, lift `VirtualList.subscriptions.containerEvents` into the parent subscriptions, delegate child messages through `h.submodel`, and provide row key and row view callbacks.",
-        usageCode: `import * as VirtualList from "./ui/virtual-list";
-
-const virtualList = VirtualList.init({
-  id: "activity-feed",
-  rowHeightPx: 56,
-});
-
-h.submodel({
-  slotId: model.virtualList.id,
-  model: model.virtualList,
-  view: VirtualList.view<Activity>(),
-  viewInputs: {
-    items,
-    itemToKey: (activity) => activity.id,
-    itemToView: (activity) => activityRow(activity),
-    containerClassName: VirtualList.activityListContainerClassName,
-  },
-  toParentMessage: (message) => GotVirtualListMessage({ message }),
-});`,
-        integrationCode: `// Model
-virtualList: VirtualList.Model;
-
-// Message
-GotVirtualListMessage({ message: VirtualList.Message });
-
-// Update
-GotVirtualListMessage: ({ message }) => {
-  const [virtualList, commands] = VirtualList.update(model.virtualList, message);
-
-  return [
-    evo(model, { virtualList: () => virtualList }),
-    Command.mapMessages(commands, (message) => GotVirtualListMessage({ message })),
-  ];
-};
-
-// Subscriptions
-Subscription.lift({
-  virtualListContainerEvents: VirtualList.subscriptions.containerEvents,
-})({
-  toChildModel: (model) => model.virtualList,
-  toParentMessage: (message) => GotVirtualListMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed id, rowHeightPx, scrollTop, measurement, pendingScroll, and pendingScrollVersion.",
-          "init(config): creates an unmeasured VirtualList model.",
-          "update(model, message): handles ScrolledContainer, MeasuredContainer, and CompletedApplyScroll messages.",
-          "scrollToIndex(model, index): computes fixed-height scroll offset and emits ApplyScroll.",
-          "scrollToIndexVariable(model, items, itemToRowHeightPx, index): computes variable-height scroll offset and emits ApplyScroll.",
-          "visibleWindow and visibleWindowVariable: compute mounted range and spacer heights for fixed or variable rows.",
-          "subscriptions.containerEvents: attaches scroll and ResizeObserver streams to the list container by id.",
-        ],
-        accessibilityItems: [
-          "The primitive preserves caller-owned row markup, so list semantics belong to the row renderer.",
-          "The scroll container remains a native scroll region with stable physical height and overscan rows.",
-          "Programmatic scroll uses a command and then returns through normal messages rather than mutating parent state from the view.",
-          "Row keys keep mounted row identity stable as the visible window changes.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify measurement, fixed visible-window math, variable visible-window math, and ApplyScroll command resolution.",
-          "Example scene tests verify fixed and variable jump-to-middle flows through the real scroll command.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-          "Browser probes verify rendered docs previews and standalone routes after registry generation.",
-        ],
-      }),
-    ]
-  );
-};
-
-const badgeDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Badge"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A small installable status label for shadcn-style presentation surfaces. It keeps behavior parent-owned while centralizing badge variants and class helpers for Foldkit views.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/badge" },
-        { label: "Examples", value: "basic" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Badge v1 documents the first non-primitive registry slice: stateless variant styling, parent-owned state changes, and installable presentation helpers that can be used inside any Foldkit view."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-badge-basic",
-                preview: badgeBasicExamplePreview(
-                  model.badgeBasicExample,
-                  "badge-docs-basic-preview"
-                ),
-                href: badgeBasicExampleRouter(),
-                linkText: "Open standalone Badge Basic example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/badge.json\nbunx shadcn@latest add <registry-url>/badge-basic.json",
-        usageBody:
-          "Render Badge.view wherever a compact status label is needed. The parent model owns any status changes and passes the label plus optional variant into the view helper.",
-        usageCode: `import * as Badge from "./ui/badge";
-
-Badge.view<Message>({
-  label: "Published",
-  variant: "Default",
-});`,
-        integrationCode: `// Model
-status: S.Literal("Draft", "Published");
-
-// Message
-ClickedToggleStatus();
-
-// Update
-ClickedToggleStatus: () => [
-  evo(model, {
-    status: (status) => (status === "Draft" ? "Published" : "Draft"),
-  }),
-  [],
-];`,
-        apiItems: [
-          "view(config): renders a span badge with a label and optional variant.",
-          "ViewConfig: label, variant, and className.",
-          'BadgeVariant: "Default", "Secondary", "Destructive", or "Outline".',
-          "Class helpers: default, secondary, destructive, outline, and badgeClassNameByVariant.",
-        ],
-        accessibilityItems: [
-          "Badges are presentational text, so the visible label must carry the useful status.",
-          "Do not use color alone to communicate critical state; pair the variant with clear text.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify all documented variants render.",
-          "Example scene tests verify the parent-owned status toggle and variant copy.",
-          "Docs e2e tests verify the shared page sections, example block layout, and source viewer readability.",
-        ],
-      }),
-    ]
-  );
-};
-
-const avatarDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Avatar"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A shadcn-style identity component for profile images, fallback initials, grouped contributors, and overflow counts. It stays presentational while giving apps reusable size, image, fallback, group, and count helpers.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/avatar" },
-        { label: "Examples", value: "basic" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Avatar v1 documents image and fallback rendering, deterministic grouped avatars, accessible image labels, overflow count labels, and reusable class helpers without introducing component-owned state."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-avatar-basic",
-                preview: avatarBasicExamplePreview(
-                  model.avatarBasicExample,
-                  "avatar-docs-basic-preview"
-                ),
-                href: avatarBasicExampleRouter(),
-                linkText: "Open standalone Avatar Basic example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/avatar.json\nbunx shadcn@latest add <registry-url>/avatar-basic.json",
-        usageBody:
-          "Render Avatar.view for an individual person. Use fallback text when no source image exists, and use groupView plus countView for compact collaborator stacks.",
-        usageCode: `import * as Avatar from "./ui/avatar";
-
-Avatar.groupView<Message>([
-  Avatar.view<Message>({
-    alt: "Ada Lovelace",
-    fallback: "AL",
-    src: adaImageSrc,
-  }),
-  Avatar.view<Message>({ fallback: "GH" }),
-  Avatar.countView<Message>({ count: 4 }),
-]);`,
-        integrationCode: `// Model
-featuredPerson: S.Literal("Ada Lovelace", "Grace Hopper");
-
-// Message
-ClickedToggleFeaturedPerson();
-
-// Update
-ClickedToggleFeaturedPerson: () => [
-  evo(model, {
-    featuredPerson: (person) =>
-      person === "Ada Lovelace" ? "Grace Hopper" : "Ada Lovelace",
-  }),
-  [],
-];`,
-        apiItems: [
-          "view(config): renders an image avatar when src is present, otherwise fallback initials.",
-          "groupView(children, className): renders overlapping avatar groups.",
-          "countView(config): renders an accessible overflow count.",
-          'AvatarSize: "Small", "Default", or "Large".',
-          "Class helpers: avatar base, image, fallback, group, count, and size helpers.",
-        ],
-        accessibilityItems: [
-          "Images require useful alt text when the person identity is meaningful.",
-          "Fallback initials must match nearby visible identity text when the avatar conveys a person.",
-          "Overflow counts expose an accessible image label such as `4 more people`.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify image, fallback, group, and count rendering.",
-          "Example scene tests verify parent-owned featured-person state and fallback changes.",
-          "Docs e2e tests verify the shared page sections, source viewer, and layout contract.",
-        ],
-      }),
-    ]
-  );
-};
-
-const buttonDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Button"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Button slice built on the official Foldkit Ui.Button primitive. It keeps native button semantics while centralizing typed click messages, disabled state, button type, autofocus, and reusable class variants.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/button" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Button v1 documents the stateless action path: parent-owned click handling, native disabled semantics, and styled variants that preserve the Foldkit primitive attributes."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-button-basic",
-                preview: buttonBasicExamplePreview(
-                  model.buttonBasicExample,
-                  "button-docs-basic-preview"
-                ),
-                href: buttonBasicExampleRouter(),
-                linkText: "Open standalone Button Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-button-disabled",
-                preview: buttonDisabledExamplePreview(
-                  model.buttonDisabledExample,
-                  "button-docs-disabled-preview"
-                ),
-                href: buttonDisabledExampleRouter(),
-                linkText: "Open standalone Button Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/button.json\nbunx shadcn@latest add <registry-url>/button-basic.json\nbunx shadcn@latest add <registry-url>/button-disabled.json",
-        usageBody:
-          "Map the button click to a verb-first Foldkit message and render a native button with the supplied button attributes.",
-        usageCode: `import * as Button from "./ui/button";
-
-Button.view<Message>({
-  onClick: ClickedSave(),
-  toView: (attributes) =>
-    h.button(attributes.button, ["Save changes"]),
-});`,
-        integrationCode: `// Message
-ClickedSave();
-
-// Update
-ClickedSave: () => [
-  evo(model, { saveCount: (count) => count + 1 }),
-  [],
-];`,
-        apiItems: [
-          "view(config): renders a native button through the supplied toView callback.",
-          "ButtonAttributes: grouped button attributes that include click, disabled, type, and autofocus behavior.",
-          "ViewConfig: onClick, isDisabled, type, isAutofocus, and toView.",
-          "Class helpers: primary, secondary, and destructive button class names.",
-        ],
-        accessibilityItems: [
-          "The primitive applies native disabled state so disabled buttons do not dispatch clicks.",
-          "Consumers provide visible button text or an accessible name through their rendered button.",
-          "Button type can be set explicitly for form submit/reset behavior.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify click message dispatch and disabled state.",
-          "Example scene tests verify parent-owned click feedback and disabled explanatory copy.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const calendarDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Calendar"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Calendar slice built on the official Foldkit Ui.Calendar primitive. It preserves date selection, view-month OutMessages, disabled date attributes, and reusable day, month, and year mode view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/calendar" },
-        { label: "Examples", value: "basic, bounds" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Calendar v1 documents the date-selection path: child-owned calendar state, parent-visible selected-date facts, month navigation feedback, bounded dates, and disabled date styling."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-calendar-basic",
-                preview: calendarBasicExamplePreview(
-                  model.calendarBasicExample,
-                  "calendar-docs-basic-preview"
-                ),
-                href: calendarBasicExampleRouter(),
-                linkText: "Open standalone Calendar Basic example",
-              }),
-              docsExampleBlock({
-                title: "Bounds",
-                testId: "docs-example-block-calendar-bounds",
-                preview: calendarBoundsExamplePreview(
-                  model.calendarBoundsExample,
-                  "calendar-docs-bounds-preview"
-                ),
-                href: calendarBoundsExampleRouter(),
-                linkText: "Open standalone Calendar Bounds example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/calendar.json\nbunx shadcn@latest add <registry-url>/calendar-basic.json\nbunx shadcn@latest add <registry-url>/calendar-bounds.json",
-        usageBody:
-          "Initialize the Calendar child model, delegate child messages through `h.submodel`, and handle SelectedDate or ChangedViewMonth in the parent update.",
-        usageCode: `import * as Calendar from "./ui/calendar";
-
-const calendar = Calendar.init({
-  id: "booking-calendar",
-  today,
-  initialSelectedDate: today,
-});`,
-        integrationCode: `// Model
-calendar: Calendar.Model;
-selectedDate: CalendarDate;
-
-// Message
-GotCalendarMessage({ message: Calendar.Message });
-
-// Update
-const [calendar, commands, maybeOutMessage] =
-  Calendar.update(model.calendar, message);
-
-// View
-h.submodel({
-  slotId: model.calendar.id,
-  model: model.calendar,
-  view: Calendar.view,
-  viewInputs: { toView: Calendar.calendarView },
-  toParentMessage: (message) => GotCalendarMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed calendar state with current view mode, focused date, selected date, and constraints.",
-          "init(config): creates a Calendar model with today, optional selected date, locale, min/max dates, and disabled dates.",
-          "update(model, message): returns model, commands, and an optional OutMessage.",
-          "SelectedDate and ChangedViewMonth: parent-visible calendar facts.",
-          "selectDate and reflectSelectedDate: helpers for parent-driven selection changes.",
-          "ViewInputs and CalendarAttributes: mode-specific attributes for custom day, month, and year rendering.",
-          "Class helpers: container, header, nav, grid, day cell, and month/year cell classes.",
-        ],
-        accessibilityItems: [
-          "The primitive provides full-date accessible names for day buttons.",
-          "Disabled dates expose aria-disabled for assistive technology and styling.",
-          "Heading buttons expose view-switch labels for days, months, and years modes.",
-          "FocusGrid commands keep keyboard focus behavior in the child command lifecycle.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify selectable dates, disabled date attributes, and mode switching with FocusGrid resolution.",
-          "Example scene tests verify parent-visible selected date, viewed month, and bounded-date feedback.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const datePickerDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Date Picker"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit DatePicker slice built on the official Foldkit Ui.DatePicker primitive. It composes a trigger, popover, embedded Calendar, selected-date OutMessages, hidden input support, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/date-picker" },
-        { label: "Examples", value: "basic, bounds" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "DatePicker v1 documents the popover-backed date-selection path: trigger labeling, child-owned open state, mounted popover positioning, parent-visible selected-date facts, bounded dates, and disabled date styling."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-date-picker-basic",
-                preview: datePickerBasicExamplePreview(
-                  model.datePickerBasicExample,
-                  "date-picker-docs-basic-preview"
-                ),
-                href: datePickerBasicExampleRouter(),
-                linkText: "Open standalone Date Picker Basic example",
-              }),
-              docsExampleBlock({
-                title: "Bounds",
-                testId: "docs-example-block-date-picker-bounds",
-                preview: datePickerBoundsExamplePreview(
-                  model.datePickerBoundsExample,
-                  "date-picker-docs-bounds-preview"
-                ),
-                href: datePickerBoundsExampleRouter(),
-                linkText: "Open standalone Date Picker Bounds example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/date-picker.json\nbunx shadcn@latest add <registry-url>/date-picker-basic.json\nbunx shadcn@latest add <registry-url>/date-picker-bounds.json",
-        usageBody:
-          "Initialize the DatePicker child model, delegate child messages through `h.submodel`, and handle SelectedDate or ChangedViewMonth in the parent update.",
-        usageCode: `import * as DatePicker from "./ui/date-picker";
-
-const datePicker = DatePicker.init({
-  id: "appointment-date",
-  today,
-});`,
-        integrationCode: `// Model
-datePicker: DatePicker.Model;
-selectedDate: Option.Option<CalendarDate>;
-
-// Message
-GotDatePickerMessage({ message: DatePicker.Message });
-
-// Update
-const [datePicker, commands, maybeOutMessage] =
-  DatePicker.update(model.datePicker, message);
-
-// View
-h.submodel({
-  slotId: model.datePicker.id,
-  model: model.datePicker,
-  view: DatePicker.view,
-  viewInputs: DatePicker.datePickerViewInputs({
-    name: "appointment-date",
-  }),
-  toParentMessage: (message) => GotDatePickerMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed DatePicker state with selected date, embedded Calendar state, and embedded Popover state.",
-          "init(config): creates a DatePicker model with today, optional selected date, animation, locale, min/max dates, and disabled dates.",
-          "update(model, message): returns model, commands, and an optional OutMessage.",
-          "SelectedDate and ChangedViewMonth: parent-visible picker facts.",
-          "open, close, selectDate, clear, and reflectSelectedDate: helpers for parent-driven picker changes.",
-          "datePickerViewInputs(overrides): standard trigger, panel, anchor, and embedded calendar rendering inputs.",
-          "Class helpers: wrapper, trigger, trigger content, placeholder, panel, backdrop, and formatDate.",
-        ],
-        accessibilityItems: [
-          "The helper provides a stable trigger aria-label for screen readers and tests.",
-          "The popover mount focuses the embedded calendar grid after opening.",
-          "Disabled dates expose aria-disabled through the embedded Calendar.",
-          "When name is provided, the primitive renders a hidden input for native form submission.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify opening, popover mount resolution, disabled date attributes, selected-date OutMessages, close focus, and mount cleanup.",
-          "Example scene tests verify parent-visible selected date and bounded-date feedback.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const disclosureDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Disclosure"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Disclosure slice built on the official Foldkit Ui.Disclosure primitive. It preserves accessible toggle semantics, parent-visible open-state facts, focus restoration on close, disabled state, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/disclosure" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Disclosure v1 documents the collapsible content path: child-owned open state, parent-visible ToggledOpenState facts, disabled trigger semantics, and focus restoration after close."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-disclosure-basic",
-                preview: disclosureBasicExamplePreview(
-                  model.disclosureBasicExample,
-                  "disclosure-docs-basic-preview"
-                ),
-                href: disclosureBasicExampleRouter(),
-                linkText: "Open standalone Disclosure Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-disclosure-disabled",
-                preview: disclosureDisabledExamplePreview(
-                  model.disclosureDisabledExample,
-                  "disclosure-docs-disabled-preview"
-                ),
-                href: disclosureDisabledExampleRouter(),
-                linkText: "Open standalone Disclosure Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/disclosure.json\nbunx shadcn@latest add <registry-url>/disclosure-basic.json\nbunx shadcn@latest add <registry-url>/disclosure-disabled.json",
-        usageBody:
-          "Initialize the Disclosure child model, delegate child messages through `h.submodel`, and handle ToggledOpenState in the parent update.",
-        usageCode: `import * as Disclosure from "./ui/disclosure";
-
-const [disclosure] = Disclosure.init({
-  id: "faq-disclosure",
-});`,
-        integrationCode: `// Model
-disclosure: Disclosure.Model;
-
-// Message
-GotDisclosureMessage({ message: Disclosure.Message });
-
-// Update
-const [disclosure, commands, maybeOutMessage] =
-  Disclosure.update(model.disclosure, message);
-
-// View
-h.submodel({
-  slotId: model.disclosure.id,
-  model: model.disclosure,
-  view: Disclosure.view,
-  viewInputs: {
-    toView: (attributes) =>
-      Disclosure.disclosureView({
-        attributes,
-        isOpen: model.disclosure.isOpen,
-        title: "Question",
-        body: "Answer",
-      }),
-  },
-  toParentMessage: (message) => GotDisclosureMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id and isOpen.",
-          "init(config): creates a Disclosure model and returns the registry init tuple.",
-          "update(model, message): returns model, commands, and an optional OutMessage.",
-          "ToggledOpenState: parent-visible open-state fact emitted after toggles and close.",
-          "toggle, close, and reflectOpenState: helpers for parent-driven disclosure changes.",
-          "ViewInputs and DisclosureAttributes: button and panel attribute bundles for custom composition.",
-          "Class helpers: root, button, button content, chevron, panel, and disclosureView.",
-        ],
-        accessibilityItems: [
-          "The primitive supplies aria-expanded and aria-controls on the trigger button.",
-          "The helper adds an aria-label matching the visible title for stable accessible names.",
-          "Disabled state exposes aria-disabled and prevents click dispatch.",
-          "Closing emits a FocusButton command so focus returns to the disclosure trigger.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify open/close behavior, parent-visible OutMessages, panel rendering, and FocusButton resolution.",
-          "Example scene tests verify basic toggling, disabled trigger semantics, and parent-visible status feedback.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const dragAndDropDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Drag and Drop"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit DragAndDrop slice built on the official Foldkit Ui.DragAndDrop primitive. It preserves schema-backed drag state, keyboard reorder messages, parent-visible reorder facts, and reusable sortable list classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/drag-and-drop" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "DragAndDrop v1 documents sortable list behavior: parent-owned item order, child-owned drag state, deterministic keyboard reorder commands, and read-only presentation for locked lists."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-drag-and-drop-basic",
-                preview: dragAndDropBasicExamplePreview(
-                  model.dragAndDropBasicExample,
-                  "drag-and-drop-docs-basic-preview"
-                ),
-                href: dragAndDropBasicExampleRouter(),
-                linkText: "Open standalone Drag and Drop Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-drag-and-drop-disabled",
-                preview: dragAndDropDisabledExamplePreview(
-                  model.dragAndDropDisabledExample,
-                  "drag-and-drop-docs-disabled-preview"
-                ),
-                href: dragAndDropDisabledExampleRouter(),
-                linkText: "Open standalone Drag and Drop Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/drag-and-drop.json\nbunx shadcn@latest add <registry-url>/drag-and-drop-basic.json\nbunx shadcn@latest add <registry-url>/drag-and-drop-disabled.json",
-        usageBody:
-          "Initialize the DragAndDrop child model, delegate child messages through the sortable list helper, and apply Reordered OutMessages in the parent update.",
-        usageCode: `import * as DragAndDrop from "./ui/drag-and-drop";
-
-const [dragAndDrop] = DragAndDrop.init({
-  id: "task-order",
-  orientation: "Vertical",
-});`,
-        integrationCode: `// Model
-dragAndDrop: DragAndDrop.Model;
-
-// Message
-GotDragAndDropMessage({ message: DragAndDrop.Message });
-
-// Update
-const [dragAndDrop, commands, maybeOutMessage] =
-  DragAndDrop.update(model.dragAndDrop, message);
-
-// View
-DragAndDrop.sortableListView({
-  model: model.dragAndDrop,
-  containerId: "tasks",
-  items: model.tasks,
-  label: "Task order",
-  status: model.status,
-  toParentMessage: (message) =>
-    GotDragAndDropMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id, orientation, activation threshold, and drag state.",
-          "init(config): creates a DragAndDrop model and returns the registry init tuple.",
-          "update(model, message): returns model, commands, and an optional OutMessage.",
-          "Reordered: parent-visible fact containing item id, source container/index, and target container/index.",
-          "FocusItem and ResolveKeyboardMove: commands used after keyboard drag confirmation and arrow-key movement.",
-          "draggable, droppable, sortable, ghostStyle, isDragging, maybeDraggedItemId, and maybeDropTarget: primitive helpers re-exported from Foldkit.",
-          "Class helpers and sortableListView: reusable list composition for installable examples.",
-        ],
-        accessibilityItems: [
-          "The primitive supplies keyboard activation and arrow-key movement messages for sortable items.",
-          "Droppable containers include role and label attributes from the Foldkit helper.",
-          "Sortable items are focusable through the primitive draggable attributes.",
-          "The disabled example uses aria-disabled on read-only rows and avoids binding drag messages.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify sortable rendering, keyboard reorder update flow, ResolveKeyboardMove command emission, and FocusItem command emission.",
-          "Example scene tests verify the installable basic reorder flow and locked-list rendering.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const fieldsetDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Fieldset"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Fieldset slice built on the official Foldkit Ui.Fieldset primitive. It groups related form controls with accessible legend, description, disabled state, and reusable layout classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/fieldset" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Fieldset v1 documents the stateless grouped-form path: consumers render native controls inside the primitive-provided fieldset, legend, and description attributes while the wrapper centralizes styling and IDs."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-fieldset-basic",
-                preview: fieldsetBasicExamplePreview(
-                  model.fieldsetBasicExample,
-                  "fieldset-docs-basic-preview"
-                ),
-                href: fieldsetBasicExampleRouter(),
-                linkText: "Open standalone Fieldset Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-fieldset-disabled",
-                preview: fieldsetDisabledExamplePreview(
-                  model.fieldsetDisabledExample,
-                  "fieldset-docs-disabled-preview"
-                ),
-                href: fieldsetDisabledExampleRouter(),
-                linkText: "Open standalone Fieldset Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/fieldset.json\nbunx shadcn@latest add <registry-url>/fieldset-basic.json\nbunx shadcn@latest add <registry-url>/fieldset-disabled.json",
-        usageBody:
-          "Render Fieldset.view with a stable id, then spread the supplied fieldset, legend, and description attributes onto native elements.",
-        usageCode: `import * as Fieldset from "./ui/fieldset";
-
-Fieldset.view<Message>({
-  id: "profile-fieldset",
-  toView: (attributes) =>
-    h.fieldset(attributes.fieldset, [
-      h.legend(attributes.legend, ["Profile"]),
-      h.p(attributes.description, ["Public profile details."]),
-      children,
-    ]),
-});`,
-        integrationCode: `// Message
-UpdatedName({ value: S.String });
-
-// Update
-UpdatedName: ({ value }) => [
-  evo(model, { name: () => value }),
-  [],
-];
-
-// View
-Fieldset.view<Message>({
-  id: "profile-fieldset",
-  isDisabled: model.isArchived,
-  toView,
-});`,
-        apiItems: [
-          "view(config): renders an accessible fieldset through the supplied toView callback.",
-          "legendId(id): returns the generated legend id for custom composition.",
-          "descriptionId(id): returns the generated description id for custom composition.",
-          "FieldsetAttributes: grouped fieldset, legend, and description attributes.",
-          "ViewConfig: id, toView, and optional isDisabled.",
-          "Class helpers: fieldset, legend, description, fields, field, label, input, and textarea classes.",
-        ],
-        accessibilityItems: [
-          "The primitive binds fieldset aria-labelledby to the legend attributes.",
-          "The primitive binds fieldset aria-describedby to the description attributes.",
-          "Disabled state is applied to the native fieldset so grouped controls inherit disabled behavior.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify grouped label/description wiring and disabled fieldset behavior.",
-          "Example scene tests verify parent-owned field feedback and disabled grouped fields.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const fileDropDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["File Drop"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit FileDrop slice built on the official Foldkit Ui.FileDrop primitive. It preserves drag-over state, file input selection, dropped-file OutMessages, rejected non-file drops, and reusable drop-zone classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/file-drop" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "FileDrop v1 documents the upload-intake path: child-owned drag state, parent-visible received-file facts, optional multiple selection, optional accept filters, and disabled drop/input behavior."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-file-drop-basic",
-                preview: fileDropBasicExamplePreview(
-                  model.fileDropBasicExample,
-                  "file-drop-docs-basic-preview"
-                ),
-                href: fileDropBasicExampleRouter(),
-                linkText: "Open standalone File Drop Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-file-drop-disabled",
-                preview: fileDropDisabledExamplePreview(
-                  model.fileDropDisabledExample,
-                  "file-drop-docs-disabled-preview"
-                ),
-                href: fileDropDisabledExampleRouter(),
-                linkText: "Open standalone File Drop Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/file-drop.json\nbunx shadcn@latest add <registry-url>/file-drop-basic.json\nbunx shadcn@latest add <registry-url>/file-drop-disabled.json",
-        usageBody:
-          "Initialize the FileDrop child model, delegate child messages through `h.submodel`, and handle ReceivedFiles or RejectedNonFiles in the parent update.",
-        usageCode: `import * as FileDrop from "./ui/file-drop";
-
-const [fileDrop] = FileDrop.init({ id: "documents-file-drop" });`,
-        integrationCode: `// Model
-fileDrop: FileDrop.Model;
-files: S.Array(File.File);
-
-// Message
-GotFileDropMessage({ message: FileDrop.Message });
-
-// Update
-const [fileDrop, commands, maybeOutMessage] =
-  FileDrop.update(model.fileDrop, message);
-
-// View
-h.submodel({
-  slotId: model.fileDrop.id,
-  model: model.fileDrop,
-  view: FileDrop.view,
-  viewInputs,
-  toParentMessage: (message) => GotFileDropMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id and isDragOver.",
-          "init(config): creates a FileDrop model.",
-          "update(model, message): returns model, commands, and an optional OutMessage.",
-          "view: h.submodel view that exposes root and input attribute groups.",
-          "ReceivedFiles and RejectedNonFiles: parent-visible upload facts.",
-          "ViewInputs: toView, accept, multiple, and isDisabled.",
-          "Class helpers: drop zone, primary text, secondary text, file list, file row, file name, file size, and formatFileSize.",
-        ],
-        accessibilityItems: [
-          "The drop zone is composed as a label wrapping a hidden file input.",
-          "The file input should receive a clear accessible label for keyboard and test access.",
-          "Disabled state is applied through primitive attributes to prevent file input interaction.",
-          "Drag-over state is exposed through data attributes for visual feedback.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify dropped files, input-selected files, file metadata rendering, and disabled state.",
-          "Example scene tests verify parent-visible file list feedback, removal, and disabled upload input.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const inputDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Input"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Input slice built on the official Foldkit Ui.Input primitive. It keeps native text input semantics while centralizing labels, descriptions, placeholders, typed input messages, disabled state, invalid state, and reusable field classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/input" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Input v1 documents the stateless text-entry path: parent-owned value, typed input messages, accessible label and description helpers, and disabled state styling."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-input-basic",
-                preview: inputBasicExamplePreview(
-                  model.inputBasicExample,
-                  "input-docs-basic-preview"
-                ),
-                href: inputBasicExampleRouter(),
-                linkText: "Open standalone Input Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-input-disabled",
-                preview: inputDisabledExamplePreview(
-                  model.inputDisabledExample,
-                  "input-docs-disabled-preview"
-                ),
-                href: inputDisabledExampleRouter(),
-                linkText: "Open standalone Input Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/input.json\nbunx shadcn@latest add <registry-url>/input-basic.json\nbunx shadcn@latest add <registry-url>/input-disabled.json",
-        usageBody:
-          "Store the input value in the parent model, map `onInput` into a verb-first Foldkit message, and render a native input with the supplied attributes.",
-        usageCode: `import * as Input from "./ui/input";
-
-Input.view<Message>({
-  id: "name-input",
-  value: model.name,
-  onInput: (value) => UpdatedName({ value }),
-  toView: (attributes) => h.input(attributes.input),
-});`,
-        integrationCode: `// Model
-name: S.String;
-
-// Message
-UpdatedName({ value: S.String });
-
-// Update
-UpdatedName: ({ value }) => [
-  evo(model, { name: () => value }),
-  [],
-];`,
-        apiItems: [
-          "view(config): renders a native input through the supplied toView callback.",
-          "descriptionId(id): returns the generated description id for custom composition.",
-          "InputAttributes: grouped input, label, and description attributes.",
-          "ViewConfig: id, value, onInput, isDisabled, isInvalid, isAutofocus, name, type, and placeholder.",
-        ],
-        accessibilityItems: [
-          "The label attributes bind the input to a visible label.",
-          "The description attributes provide aria-describedby for explanatory copy.",
-          "Disabled and invalid states stay on the native control so browser semantics are preserved.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify label, description, placeholder, input messages, and disabled state.",
-          "Example scene tests verify parent-owned value feedback and disabled documentation copy.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const tabsDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tabs"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Tabs slice built on the official Foldkit Ui.Tabs primitive. It preserves typed values, automatic and manual activation, disabled tabs, focus commands, Selected OutMessages, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/tabs" },
-        { label: "Examples", value: "basic, vertical" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Tabs v1 documents tabbed content with child-owned active and focused indices, parent-visible Selected facts, automatic activation, manual activation, disabled tab semantics, and focus command resolution."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-tabs-basic",
-                preview: tabsBasicExamplePreview(
-                  model.tabsBasicExample,
-                  "tabs-docs-basic-preview"
-                ),
-                href: tabsBasicExampleRouter(),
-                linkText: "Open standalone Tabs Basic example",
-              }),
-              docsExampleBlock({
-                title: "Vertical",
-                testId: "docs-example-block-tabs-manual",
-                preview: tabsManualExamplePreview(
-                  model.tabsManualExample,
-                  "tabs-docs-manual-preview"
-                ),
-                href: tabsManualExampleRouter(),
-                linkText: "Open standalone Tabs Manual example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/tabs.json\nbunx shadcn@latest add <registry-url>/tabs-basic.json\nbunx shadcn@latest add <registry-url>/tabs-manual.json",
-        usageBody:
-          "Create a typed Tabs entry point, initialize the child model, delegate messages through `h.submodel`, and handle Selected in the parent update.",
-        usageCode: `import * as Tabs from "./ui/tabs";
-
-type Tab = "Overview" | "Usage";
-const DemoTabs = Tabs.create<Tab>();
-
-const [tabs] = Tabs.initialize({
-  id: "docs-tabs",
-});`,
-        integrationCode: `// Model
-tabs: Tabs.Model;
-
-// Message
-GotTabsMessage({ message: Tabs.Message });
-
-// Update
-const [tabs, commands, maybeOutMessage] =
-  DemoTabs.update(model.tabs, message);
-
-// View
-h.submodel({
-  slotId: model.tabs.id,
-  model: model.tabs,
-  view: DemoTabs.view,
-  viewInputs: {
-    tabs: ["Overview", "Usage"],
-    ariaLabel: "Documentation sections",
-    toView: (render) => Tabs.tabsView({ render, panelContent }),
-  },
-  toParentMessage: (message) => GotTabsMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id, activeIndex, focusedIndex, and activationMode.",
-          "create<Value>(): typed view/update/select entry point for string-literal tab values.",
-          "initialize(config): creates a Tabs model and returns the registry init tuple.",
-          "update(model, message): returns model, commands, and an optional Selected OutMessage.",
-          "FocusTab: command emitted when selection or focus should move to a tab button.",
-          "reflectSelectedTab and selectTab: helpers for external or programmatic selection flows.",
-          "ViewInputs and RenderInfo: tablist attributes plus per-tab tab and panel bundles.",
-        ],
-        accessibilityItems: [
-          "The primitive supplies tablist, tab, tabpanel, aria-selected, aria-controls, and aria-labelledby attributes.",
-          "Keyboard navigation follows orientation and activation mode.",
-          "Disabled tabs expose disabled and aria-disabled and are skipped by keyboard navigation.",
-          "FocusTab commands keep DOM focus aligned with the model after selection and manual focus movement.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify selection, Selected OutMessage feedback, and FocusTab resolution.",
-          "Example scene tests verify automatic selection feedback and manual-mode disabled tab rendering.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const textareaDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Textarea"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Textarea slice built on the official Foldkit Ui.Textarea primitive. It keeps native multi-line text semantics while centralizing labels, descriptions, placeholders, rows, typed input messages, disabled state, invalid state, and reusable field classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/textarea" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Textarea v1 documents the stateless multi-line text-entry path: parent-owned value, typed input messages, accessible label and description helpers, row sizing, and disabled state styling."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-textarea-basic",
-                preview: textareaBasicExamplePreview(
-                  model.textareaBasicExample,
-                  "textarea-docs-basic-preview"
-                ),
-                href: textareaBasicExampleRouter(),
-                linkText: "Open standalone Textarea Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-textarea-disabled",
-                preview: textareaDisabledExamplePreview(
-                  model.textareaDisabledExample,
-                  "textarea-docs-disabled-preview"
-                ),
-                href: textareaDisabledExampleRouter(),
-                linkText: "Open standalone Textarea Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/textarea.json\nbunx shadcn@latest add <registry-url>/textarea-basic.json\nbunx shadcn@latest add <registry-url>/textarea-disabled.json",
-        usageBody:
-          "Store the textarea value in the parent model, map `onInput` into a verb-first Foldkit message, and render a native textarea with the supplied attributes.",
-        usageCode: `import * as Textarea from "./ui/textarea";
-
-Textarea.view<Message>({
-  id: "bio-textarea",
-  value: model.bio,
-  rows: 4,
-  onInput: (value) => UpdatedBio({ value }),
-  toView: (attributes) => h.textarea(attributes.textarea, []),
-});`,
-        integrationCode: `// Model
-bio: S.String;
-
-// Message
-UpdatedBio({ value: S.String });
-
-// Update
-UpdatedBio: ({ value }) => [
-  evo(model, { bio: () => value }),
-  [],
-];`,
-        apiItems: [
-          "view(config): renders a native textarea through the supplied toView callback.",
-          "descriptionId(id): returns the generated description id for custom composition.",
-          "TextareaAttributes: grouped textarea, label, and description attributes.",
-          "ViewConfig: id, value, onInput, isDisabled, isInvalid, isAutofocus, name, rows, and placeholder.",
-        ],
-        accessibilityItems: [
-          "The label attributes bind the textarea to a visible label.",
-          "The description attributes provide aria-describedby for explanatory copy.",
-          "Disabled and invalid states stay on the native control so browser semantics are preserved.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify label, description, placeholder, rows, input messages, and disabled state.",
-          "Example scene tests verify parent-owned character count feedback and disabled documentation copy.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const toastDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Toast"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Toast slice built on the official Foldkit Ui.Toast primitive. It binds a typed payload schema to the toast stack while preserving variant roles, animation lifecycle commands, hover pause behavior, sticky entries, and parent-visible dismissal OutMessages.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/toast" },
-        { label: "Examples", value: "basic, variants" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Toast v1 documents the typed notification stack path: payload-owned title and description rendering, status and alert variants, sticky entries, dismiss controls, and animation command resolution."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-toast-basic",
-                preview: toastBasicExamplePreview(
-                  model.toastBasicExample,
-                  "toast-docs-basic-preview"
-                ),
-                href: toastBasicExampleRouter(),
-                linkText: "Open standalone Toast Basic example",
-              }),
-              docsExampleBlock({
-                title: "Variants",
-                testId: "docs-example-block-toast-variants",
-                preview: toastVariantsExamplePreview(
-                  model.toastVariantsExample,
-                  "toast-docs-variants-preview"
-                ),
-                href: toastVariantsExampleRouter(),
-                linkText: "Open standalone Toast Variants example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/toast.json\nbunx shadcn@latest add <registry-url>/toast-basic.json\nbunx shadcn@latest add <registry-url>/toast-variants.json",
-        usageBody:
-          "Keep the toast model in the parent, call Toast.show from update events, delegate child messages through h.submodel, and render entries with the supplied dismiss handlers.",
-        usageCode: `import * as Toast from "./ui/toast";
-
-const toast = Toast.init({ id: "app-toast" });
-
-Toast.show(toast, {
-  variant: "Success",
-  payload: {
-    title: "Saved",
-    maybeDescription: Option.some("Changes are live."),
-  },
-});`,
-        integrationCode: `// Model
-toast: Toast.Model;
-
-// Message
-GotToastMessage({ message: Toast.Message });
-
-// Update
-const [toast, commands, maybeOutMessage] =
-  Toast.update(model.toast, message);
-
-// View
-h.submodel({
-  slotId: model.toast.id,
-  model: model.toast,
-  view: Toast.view,
-  viewInputs: {
-    position: "BottomRight",
-    entryToView: Toast.toastEntryView,
-  },
-  toParentMessage: (message) => GotToastMessage({ message }),
-});`,
-        apiItems: [
-          "ToastPayload: schema-backed title and optional description for registry examples.",
-          "init(config): creates an empty toast stack model with a default duration.",
-          "show(model, input): appends a typed entry and starts the animation/timer lifecycle.",
-          "dismiss and dismissAll: begin leave animation for one entry or all entries.",
-          "update(model, message): returns model, commands, and an optional DismissedToast OutMessage.",
-          "toastEntryView: reusable styled entry renderer that spreads EntryHandlers.dismiss onto the close button.",
-        ],
-        accessibilityItems: [
-          "The primitive renders a persistent aria-live region labelled Notifications.",
-          "Info and Success variants use status; Warning and Error variants use alert.",
-          "Each toast entry is aria-atomic so screen readers announce the full notification.",
-          "Dismiss controls have entry-specific accessible names.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify live region rendering, sticky show, dismiss control attributes, and animation command resolution.",
-          "Example scene tests verify basic show/dismiss flow and status/alert variant rendering.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const tooltipDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tooltip"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Tooltip slice built on the official Foldkit Ui.Tooltip primitive. It preserves delayed hover opening, focus opening, Escape and blur dismissal, anchor positioning mounts, Shown and Hidden OutMessages, disabled trigger semantics, and reusable view classes.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/tooltip" },
-        { label: "Examples", value: "basic, no-delay" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Tooltip v1 documents transient non-interactive help content: delayed hover disclosure, immediate keyboard focus disclosure, hidden panel state, mount-positioned placement, and parent-visible visibility feedback."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-tooltip-basic",
-                preview: tooltipBasicExamplePreview(
-                  model.tooltipBasicExample,
-                  "tooltip-docs-basic-preview"
-                ),
-                href: tooltipBasicExampleRouter(),
-                linkText: "Open standalone Tooltip Basic example",
-              }),
-              docsExampleBlock({
-                title: "No delay",
-                testId: "docs-example-block-tooltip-no-delay",
-                preview: tooltipNoDelayExamplePreview(
-                  model.tooltipNoDelayExample,
-                  "tooltip-docs-no-delay-preview"
-                ),
-                href: tooltipNoDelayExampleRouter(),
-                linkText: "Open standalone Tooltip No Delay example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/tooltip.json\nbunx shadcn@latest add <registry-url>/tooltip-basic.json\nbunx shadcn@latest add <registry-url>/tooltip-no-delay.json",
-        usageBody:
-          "Initialize the Tooltip child model, delegate child messages through `h.submodel`, render the trigger and conditional panel from the supplied attribute bundles, and handle Shown or Hidden when parent state needs visibility feedback.",
-        usageCode: `import * as Tooltip from "./ui/tooltip";
-
-const [tooltip] = Tooltip.init({
-  id: "save-tooltip",
-});
-
-h.submodel({
-  slotId: model.tooltip.id,
-  model: model.tooltip,
-  view: Tooltip.view,
-  viewInputs: {
-    anchor: Tooltip.tooltipAnchor,
-    toView: (render) =>
-      Tooltip.tooltipView({
-        render,
-        triggerLabel: "Hover or focus me",
-        panelText: "This is a tooltip",
-      }),
-  },
-  toParentMessage: (message) => GotTooltipMessage({ message }),
-});`,
-        integrationCode: `// Model
-tooltip: Tooltip.Model;
-
-// Message
-GotTooltipMessage({ message: Tooltip.Message });
-
-// Update
-const [tooltip, commands, maybeOutMessage] =
-  Tooltip.update(model.tooltip, message);
-
-// View
-h.submodel({
-  slotId: model.tooltip.id,
-  model: model.tooltip,
-  view: Tooltip.view,
-  viewInputs,
-  toParentMessage: (message) => GotTooltipMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id, open state, hover/focus state, dismissal state, showDelay, and pending timer version.",
-          "init(config): creates a Tooltip model and returns the registry init tuple.",
-          "update(model, message): returns model, commands, and an optional Shown or Hidden OutMessage.",
-          "ShowAfterDelay: command emitted when hover should open after the configured delay.",
-          "AnchorTooltip: mount emitted by the panel to position it relative to the trigger.",
-          "reflectShowDelay: mirrors externally controlled delay configuration without emitting OutMessage.",
-          "ViewInputs and RenderInfo: trigger attributes, panel attributes, visibility, disabled state, and anchor configuration for custom composition.",
-        ],
-        accessibilityItems: [
-          "The trigger receives aria-describedby pointing to the tooltip panel id.",
-          "The panel receives role tooltip and stays non-interactive with pointer events disabled.",
-          "Keyboard focus opens immediately and Escape hides an open tooltip.",
-          "Disabled tooltips remove hover, focus, keyboard, and pointer handlers while preserving disabled data attributes.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify trigger attributes, hover delay command resolution, focus opening, blur hiding, and AnchorTooltip mount lifecycle.",
-          "Example scene tests verify basic hover-delay behavior and no-delay focus behavior with parent-visible status feedback.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const comboboxDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Combobox"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Combobox slice built on the official Foldkit Ui.Combobox primitive. It preserves input filtering, typed Selected OutMessage flow, multi-select state, command effects, and mount-aware positioning.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/combobox" },
-        { label: "Examples", value: "basic, multi" },
-        { label: "Proof", value: "story tests, scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Combobox v1 documents the single-select and multi-select paths: input-driven filtering, typed selection messages, selected display text, and selected tag rendering."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-combobox-basic",
-                preview: comboboxBasicExamplePreview(
-                  model.comboboxBasicExample,
-                  "combobox-docs-basic-preview"
-                ),
-                href: comboboxBasicExampleRouter(),
-                linkText: "Open standalone Combobox Basic example",
-              }),
-              docsExampleBlock({
-                title: "Multi",
-                testId: "docs-example-block-combobox-multi",
-                preview: comboboxMultiExamplePreview(
-                  model.comboboxMultiExample,
-                  "combobox-docs-multi-preview"
-                ),
-                href: comboboxMultiExampleRouter(),
-                linkText: "Open standalone Combobox Multi example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/combobox.json\nbunx shadcn@latest add <registry-url>/combobox-basic.json\nbunx shadcn@latest add <registry-url>/combobox-multi.json",
-        usageBody:
-          "Create a typed Combobox factory, keep the model in the parent, filter items from the current input value, and handle Selected OutMessage values in the parent update.",
-        usageCode: `import * as Combobox from "./ui/combobox";
-
-type City = "Kyiv" | "Oxford" | "Quito";
-const CityCombobox = Combobox.create<City>();
-
-const [comboboxModel] = Combobox.init({ id: "city-combobox" });`,
-        integrationCode: `// Model
-cityCombobox: Combobox.Model;
-
-// Message
-GotComboboxMessage({ message: Combobox.Message });
-
-// Update
-const [cityCombobox, commands, maybeOutMessage] =
-  CityCombobox.update(model.cityCombobox, message);`,
-        apiItems: [
-          "init(config): returns a model and empty startup command list for single-select comboboxes.",
-          "create<Item>(): returns typed view, update, open, close, selectItem, and reflectSelectedItem helpers.",
-          "Multi.create<Item>(): returns typed multi-select view, update, selectItem, and reflectSelectedItems helpers.",
-          "ViewInputs: item rendering, filtering inputs, anchor, groups, disabled items, and form metadata.",
-        ],
-        accessibilityItems: [
-          "The Foldkit primitive owns combobox roles, active item state, keyboard navigation, and selected item semantics.",
-          "Input attributes should include a clear accessible label or visible label composition.",
-          "Backdrop, anchor, and prevent-blur mounts must be resolved in scene tests when the popup opens.",
-        ],
-        coverageItems: [
-          "Story tests cover init config, single-select helper behavior, and multi-select add/remove out-messages.",
-          "Scene tests cover input filtering, mount resolution, selection close behavior, and multi example tag rendering.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const radioGroupDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Radio Group"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit RadioGroup slice built on the official Foldkit Ui.RadioGroup primitive. It preserves typed grouped selection, disabled options, hidden input attributes, vertical and horizontal layout, and parent-visible selected feedback.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/radio-group" },
-        { label: "Examples", value: "basic, horizontal" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "RadioGroup v1 documents the stateful grouped-selection path: one selected string value, typed option rendering, optional hidden input form participation, disabled group or option state, and vertical/horizontal layout helpers."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-radio-group-basic",
-                preview: radioGroupBasicExamplePreview(
-                  model.radioGroupBasicExample,
-                  "radio-group-docs-basic-preview"
-                ),
-                href: radioGroupBasicExampleRouter(),
-                linkText: "Open standalone Radio Group Basic example",
-              }),
-              docsExampleBlock({
-                title: "Horizontal",
-                testId: "docs-example-block-radio-group-horizontal",
-                preview: radioGroupHorizontalExamplePreview(
-                  model.radioGroupHorizontalExample,
-                  "radio-group-docs-horizontal-preview"
-                ),
-                href: radioGroupHorizontalExampleRouter(),
-                linkText: "Open standalone Radio Group Horizontal example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/radio-group.json\nbunx shadcn@latest add <registry-url>/radio-group-basic.json\nbunx shadcn@latest add <registry-url>/radio-group-horizontal.json",
-        usageBody:
-          "Create a typed RadioGroup factory, initialize the child model in the parent, delegate child messages through `h.submodel`, and render each option from the primitive-provided attributes.",
-        usageCode: `import * as RadioGroup from "./ui/radio-group";
-
-type Plan = "Startup" | "Business" | "Enterprise";
-const PlanRadioGroup = RadioGroup.create<Plan>();
-
-const [radioGroup, radioGroupCommands] = RadioGroup.init({
-  id: "plan-radio-group",
-  selectedValue: "Startup",
-});`,
-        integrationCode: `// Model
-radioGroup: RadioGroup.Model;
-
-// Message
-GotRadioGroupMessage({ message: RadioGroup.Message });
-
-// Update
-const [radioGroup, commands] =
-  PlanRadioGroup.update(model.radioGroup, message);
-
-// View
-h.submodel({
-  slotId: model.radioGroup.id,
-  model: model.radioGroup,
-  view: PlanRadioGroup.view,
-  viewInputs,
-  toParentMessage: (message) => GotRadioGroupMessage({ message }),
-});`,
-        apiItems: [
-          "Model: schema-backed state containing id, selectedValue, orientation, and disabled state.",
-          "Orientation type: vertical or horizontal orientation value accepted through init config and view inputs.",
-          "init(config): creates a RadioGroup model and empty command list for registry consistency.",
-          "create<Value>(): returns typed view, update, and focus helpers for string option values.",
-          "FocusOption: command helper for moving focus to a specific option.",
-          "Selected and OutMessage: typed parent-visible selected value facts.",
-          "ViewInputs: options, labels, descriptions, disabled predicates, hidden input metadata, and custom toView composition.",
-          "Class helpers: vertical/horizontal group classes, option classes, label text, description text, metadata text, and check icon helpers.",
-        ],
-        accessibilityItems: [
-          "The Foldkit primitive owns radiogroup and radio role attributes.",
-          "Option labels and descriptions bind visible text to each radio item.",
-          "Disabled group and disabled option state are exposed through ARIA and data attributes.",
-          "The hiddenInput attributes preserve form participation when a name is supplied.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify checked state, selection updates, parent-visible feedback, and disabled group behavior.",
-          "Example scene tests verify vertical selection, horizontal layout, and disabled option state.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const selectDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Select"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Select slice built on the official Foldkit Ui.Select primitive. It keeps native select semantics while centralizing label, description, disabled, invalid, value, and onChange wiring.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/select" },
-        { label: "Examples", value: "basic, disabled" },
-        { label: "Proof", value: "scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Select v1 documents the native select path: parent-owned value, typed onChange messages, accessible label and description helpers, and disabled state styling."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-select-basic",
-                preview: selectBasicExamplePreview(
-                  model.selectBasicExample,
-                  "select-docs-basic-preview"
-                ),
-                href: selectBasicExampleRouter(),
-                linkText: "Open standalone Select Basic example",
-              }),
-              docsExampleBlock({
-                title: "Disabled",
-                testId: "docs-example-block-select-disabled",
-                preview: selectDisabledExamplePreview(
-                  model.selectDisabledExample,
-                  "select-docs-disabled-preview"
-                ),
-                href: selectDisabledExampleRouter(),
-                linkText: "Open standalone Select Disabled example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/select.json\nbunx shadcn@latest add <registry-url>/select-basic.json\nbunx shadcn@latest add <registry-url>/select-disabled.json",
-        usageBody:
-          "Store the selected value in the parent model, map Ui.Select onChange into a verb-first Foldkit message, and render native options inside the supplied select attributes.",
-        usageCode: `import * as Select from "./ui/select";
-
-Select.view<Message>({
-  id: "region-select",
-  value: model.region,
-  onChange: (value) => UpdatedRegion({ value }),
-  toView: (attributes) => h.select(attributes.select, options),
-});`,
-        integrationCode: `// Model
-region: S.String;
-
-// Message
-UpdatedRegion({ value: S.String });
-
-// Update
-UpdatedRegion: ({ value }) => [
-  evo(model, { region: () => value }),
-  [],
-];`,
-        apiItems: [
-          "view(config): renders the native select through the supplied toView callback.",
-          "descriptionId(id): returns the generated description id for custom composition.",
-          "SelectAttributes: grouped select, label, and description attributes.",
-          "ViewConfig: id, value, onChange, isDisabled, isInvalid, isAutofocus, and name.",
-        ],
-        accessibilityItems: [
-          "The label attributes bind the select to a visible label.",
-          "The description attributes provide aria-describedby for explanatory copy.",
-          "Disabled and invalid states stay on the native control so browser semantics are preserved.",
-        ],
-        coverageItems: [
-          "Registry scene tests verify label, description, change messages, and disabled state.",
-          "Example scene tests verify parent-owned value feedback and disabled documentation copy.",
-          "Docs scene tests verify the shared component page section contract and example block layout.",
-        ],
-      }),
-    ]
-  );
-};
-
-const listboxDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Listbox"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Listbox slice built on the official Foldkit Ui.Listbox primitive. It preserves single-select state, typed Selected OutMessage flow, command and mount effects, typeahead, and animation lifecycle.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/listbox" },
-        { label: "Examples", value: "basic, animated" },
-        { label: "Proof", value: "story tests, scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Listbox v1 documents the single-select path: local component interaction state, parent-observed Selected OutMessage, anchored panel positioning, and optional animation."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-listbox-basic",
-                preview: listboxBasicExamplePreview(
-                  model.listboxBasicExample,
-                  "listbox-docs-basic-preview"
-                ),
-                href: listboxBasicExampleRouter(),
-                linkText: "Open standalone Listbox Basic example",
-              }),
-              docsExampleBlock({
-                title: "Animated",
-                testId: "docs-example-block-listbox-animated",
-                preview: listboxAnimatedExamplePreview(
-                  model.listboxAnimatedExample,
-                  "listbox-docs-animated-preview"
-                ),
-                href: listboxAnimatedExampleRouter(),
-                linkText: "Open standalone Listbox Animated example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/listbox.json\nbunx shadcn@latest add <registry-url>/listbox-basic.json\nbunx shadcn@latest add <registry-url>/listbox-animated.json",
-        usageBody:
-          "Create a typed Listbox factory, store the model in the parent, and render with item configs that expose selected and active state through data attributes.",
-        usageCode: `import * as Listbox from "./ui/listbox";
-
-type Person = "Michael Bluth" | "Lindsay Funke" | "Gob Bluth";
-const PersonListbox = Listbox.create<Person>();
-
-const [listboxModel] = Listbox.init({ id: "people-listbox" });`,
-        integrationCode: `// Model
-peopleListbox: Listbox.Model;
-
-// Message
-GotListboxMessage({ message: Listbox.Message });
-
-// Update
-const [peopleListbox, commands, maybeOutMessage] =
-  PersonListbox.update(model.peopleListbox, message);
-
-// View
-h.submodel({
-  slotId: model.peopleListbox.id,
-  model: model.peopleListbox,
-  view: PersonListbox.view,
-  viewInputs,
-  toParentMessage: GotListboxMessage,
-});`,
-        apiItems: [
-          "Model",
-          "Message",
-          "OutMessage",
-          "Selected",
-          "init",
-          "create",
-          "open",
-          "close",
-          "selectItem",
-          "reflectSelectedItem",
-          "AnchorListbox",
-          "PortalListboxBackdrop",
-        ],
-        accessibilityItems: [
-          "Button and items attributes come from Ui.Listbox.view.",
-          "Active and selected state are exposed through data attributes for styling.",
-          "Typeahead, keyboard activation, and focus return stay inside the primitive.",
-          "Modal mode can lock scroll and inert outside content.",
-        ],
-        coverageItems: [
-          "Wrapper story tests cover init, helper API, modal commands, and selection reflection.",
-          "Scene tests cover trigger, choices, backdrop close, mounts, and animation lifecycle.",
-          "Docs route tests cover examples, install text, and example-block guardrails.",
-          "Registry checks validate generated listbox JSON artifacts.",
-        ],
-      }),
-    ]
-  );
-};
-
-const menuDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Menu"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Menu slice built on the official Foldkit Ui.Menu primitive. It preserves typed item unions, command and mount effects, animation lifecycle, and Selected OutMessage flow while adding a shadcn-style source layout.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/menu" },
-        { label: "Examples", value: "basic, animated" },
-        { label: "Proof", value: "story tests, scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Menu v1 documents transient command selection: typed item unions, anchored items, typeahead, pointer and keyboard activation, and a semantic Selected OutMessage."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-menu-basic",
-                preview: menuBasicExamplePreview(
-                  model.menuBasicExample,
-                  "menu-docs-basic-preview"
-                ),
-                href: menuBasicExampleRouter(),
-                linkText: "Open standalone Menu Basic example",
-              }),
-              docsExampleBlock({
-                title: "Animated",
-                testId: "docs-example-block-menu-animated",
-                preview: menuAnimatedExamplePreview(
-                  model.menuAnimatedExample,
-                  "menu-docs-animated-preview"
-                ),
-                href: menuAnimatedExampleRouter(),
-                linkText: "Open standalone Menu Animated example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/menu.json\nbunx shadcn@latest add <registry-url>/menu-basic.json\nbunx shadcn@latest add <registry-url>/menu-animated.json",
-        usageBody:
-          "Create a typed Menu factory and render transient action items. Parent code receives semantic selection through the factory update result.",
-        usageCode: `import * as Menu from "./ui/menu";
-
-type Action = "Edit" | "Duplicate" | "Delete";
-const ActionMenu = Menu.create<Action>();
-
-const [menuModel] = Menu.init({ id: "actions-menu" });`,
-        integrationCode: `// Model
-actionsMenu: Menu.Model;
-
-// Message
-GotMenuMessage({ message: Menu.Message });
-
-// Update
-const [actionsMenu, commands, maybeOutMessage] =
-  ActionMenu.update(model.actionsMenu, message);
-
-// View
-h.submodel({
-  slotId: model.actionsMenu.id,
-  model: model.actionsMenu,
-  view: ActionMenu.view,
-  viewInputs,
-  toParentMessage: GotMenuMessage,
-});`,
-        apiItems: [
-          "Model",
-          "Message",
-          "OutMessage",
-          "Selected",
-          "init",
-          "create",
-          "open",
-          "close",
-          "selectItem",
-          "AnchorMenu",
-          "PortalMenuBackdrop",
-        ],
-        accessibilityItems: [
-          "Button and menu items attributes come from Ui.Menu.view.",
-          "Keyboard navigation, typeahead, and focus return stay inside the primitive.",
-          "Disabled and active item state are exposed through data attributes for styling.",
-          "Modal mode can lock scroll and inert outside content.",
-        ],
-        coverageItems: [
-          "Wrapper story tests cover init, helper API, modal commands, and typed selection.",
-          "Scene tests cover trigger, items, backdrop close, mounts, and animation lifecycle.",
-          "Docs route tests cover examples, install text, and example-block guardrails.",
-          "Registry checks validate generated menu JSON artifacts.",
-        ],
-      }),
-    ]
-  );
-};
-
-const popoverDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Popover"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Popover slice built on the official Foldkit Ui.Popover primitive. It preserves typed model, message, command, mount, and OutMessage flow while adding a shadcn-style source layout.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/popover" },
-        { label: "Examples", value: "basic, animated" },
-        { label: "Proof", value: "story tests, scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Popover v1 documents anchored non-selection content: local open state, mount-aware positioning, backdrop close, optional modal behavior, and optional animation."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                testId: "docs-example-block-popover-basic",
-                preview: popoverBasicExamplePreview(
-                  model.popoverBasicExample,
-                  "popover-docs-basic-preview"
-                ),
-                href: popoverBasicExampleRouter(),
-                linkText: "Open standalone Popover Basic example",
-              }),
-              docsExampleBlock({
-                title: "Animated",
-                testId: "docs-example-block-popover-animated",
-                preview: popoverAnimatedExamplePreview(
-                  model.popoverAnimatedExample,
-                  "popover-docs-animated-preview"
-                ),
-                href: popoverAnimatedExampleRouter(),
-                linkText: "Open standalone Popover Animated example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      ...docsStandardComponentSections({
-        installCommands:
-          "bunx shadcn@latest add <registry-url>/popover.json\nbunx shadcn@latest add <registry-url>/popover-basic.json\nbunx shadcn@latest add <registry-url>/popover-animated.json",
-        usageBody:
-          "Store Popover model in the parent and render anchored content through the registry view helpers.",
-        usageCode: `import * as Popover from "./ui/popover";
-
-const [popoverModel] = Popover.init({
-  id: "details-popover",
-});`,
-        integrationCode: `// Model
-detailsPopover: Popover.Model;
-
-// Message
-GotPopoverMessage({ message: Popover.Message });
-
-// Update
-const [detailsPopover, commands, maybeOutMessage] =
-  Popover.update(model.detailsPopover, message);
-
-// View
-h.submodel({
-  slotId: model.detailsPopover.id,
-  model: model.detailsPopover,
-  view: Popover.view,
-  viewInputs,
-  toParentMessage: GotPopoverMessage,
-});`,
-        apiItems: [
-          "Model",
-          "Message",
-          "OutMessage",
-          "init",
-          "update",
-          "open",
-          "close",
-          "view",
-          "AnchorPopover",
-          "PortalPopoverBackdrop",
-        ],
-        accessibilityItems: [
-          "Trigger and panel attributes come from Ui.Popover.view.",
-          "Backdrop close and Escape close route through Popover messages.",
-          "Content focus can be configured through primitive init options.",
-          "Modal mode can lock scroll and inert outside content.",
-        ],
-        coverageItems: [
-          "Wrapper story tests cover init, open, close, and modal commands.",
-          "Scene tests cover trigger, panel content, backdrop close, mounts, and animation lifecycle.",
-          "Docs route tests cover examples, install text, and example-block guardrails.",
-          "Registry checks validate generated popover JSON artifacts.",
-        ],
-      }),
-    ]
-  );
-};
-
-const dialogDocsView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-5xl space-y-10")],
-    [
-      h.header(
-        [h.Class("space-y-4")],
-        [
-          h.p(
-            [
-              h.Class(
-                "text-sm font-medium uppercase tracking-wide text-accent-700"
-              ),
-            ],
-            ["Registry component"]
-          ),
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Dialog"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "A styled, installable Foldkit Dialog slice built on the official Foldkit Ui.Dialog primitive. It preserves the Elm-style model, message, command, and OutMessage flow while adding a shadcn-style source layout.",
-            ]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-sm text-gray-500")],
-            [
-              "Foldkit CN is a third-party registry and does not replace the official Foldkit UI documentation at foldkit.dev/ui/overview.",
-            ]
-          ),
-        ]
-      ),
-      docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/dialog" },
-        {
-          label: "Examples",
-          value: "basic, animated, destructive, focus, scrollable",
-        },
-        { label: "Proof", value: "story tests, scene tests, registry JSON" },
-      ]),
-      docsOverviewBlock(
-        "Dialog v1 documents centered modal presentation: parent-owned trigger flow, accessible title and description wiring, scroll lock commands, focus management, and optional animation."
-      ),
-      h.section(
-        [h.Class("space-y-4")],
-        [
-          h.div(
-            [h.Class("space-y-2")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Examples"]
-              ),
-              h.p(
-                [h.Class("max-w-2xl text-sm text-gray-600")],
-                [
-                  "The docs page renders the same registry examples that install as standalone source.",
-                ]
-              ),
-            ]
-          ),
-          h.div(
-            [h.Class("grid gap-4 lg:grid-cols-2")],
-            [
-              docsExampleBlock({
-                title: "Basic",
-                description:
-                  "A parent-owned trigger sends RequestedOpen and receives close results through OutMessage.",
-                testId: "docs-example-block-dialog-basic",
-                preview: dialogBasicExamplePreview(
-                  model.dialogBasicExample,
-                  "dialog-docs-basic-preview"
-                ),
-                href: dialogBasicExampleRouter(),
-                linkText: "Open standalone Dialog Basic example",
-              }),
-              docsExampleBlock({
-                title: "Animated",
-                description:
-                  "The animated variant keeps the dialog surface mounted while Foldkit animation state settles.",
-                testId: "docs-example-block-dialog-animated",
-                preview: dialogAnimatedExamplePreview(
-                  model.dialogAnimatedExample,
-                  "dialog-docs-animated-preview"
-                ),
-                href: dialogAnimatedExampleRouter(),
-                linkText: "Open standalone Dialog Animated example",
-              }),
-              docsExampleBlock({
-                title: "Destructive",
-                description:
-                  "A destructive confirmation uses the existing Dialog flow with a red confirm action.",
-                testId: "docs-example-block-dialog-destructive",
-                preview: dialogDestructiveExamplePreview(
-                  model.dialogDestructiveExample,
-                  "dialog-docs-destructive-preview"
-                ),
-                href: dialogDestructiveExampleRouter(),
-                linkText: "Open standalone Dialog Destructive example",
-              }),
-              docsExampleBlock({
-                title: "Focus",
-                description:
-                  "A focus-targeted dialog warms up and focuses the first field for input-heavy flows.",
-                testId: "docs-example-block-dialog-focus",
-                preview: dialogFocusExamplePreview(
-                  model.dialogFocusExample,
-                  "dialog-docs-focus-preview"
-                ),
-                href: dialogFocusExampleRouter(),
-                linkText: "Open standalone Dialog Focus example",
-              }),
-              docsExampleBlock({
-                title: "Scrollable",
-                description:
-                  "A long-content dialog constrains the body scroll region while keeping footer actions visible.",
-                testId: "docs-example-block-dialog-scrollable",
-                preview: dialogScrollableExamplePreview(
-                  model.dialogScrollableExample,
-                  "dialog-docs-scrollable-preview"
-                ),
-                href: dialogScrollableExampleRouter(),
-                linkText: "Open standalone Dialog Scrollable example",
-              }),
-            ]
-          ),
-        ]
-      ),
-      docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/dialog.json\nbunx shadcn@latest add <registry-url>/dialog-basic.json\nbunx shadcn@latest add <registry-url>/dialog-animated.json\nbunx shadcn@latest add <registry-url>/dialog-destructive.json\nbunx shadcn@latest add <registry-url>/dialog-focus.json\nbunx shadcn@latest add <registry-url>/dialog-scrollable.json"
-      ),
-      docsStylingBlock(),
-      docsKeyboardInteractionBlock(),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Usage"]),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Dialog state stays in the parent model. The parent sends Dialog.RequestedOpen and maps child messages back through GotDialogMessage.",
-                ]
-              ),
-            ]
-          ),
-          codeBlock(`import * as Dialog from "./ui/dialog";
-
-const [dialogModel, dialogCommands] = Dialog.init({
-  id: "settings-dialog",
-});
-
-Dialog.view({
-  model: dialogModel,
-  trigger: h.button([h.OnClick(Dialog.RequestedOpen())], ["Open dialog"]),
-  title: "Edit settings",
-  children: [...]
-});`),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Foldkit integration"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Stateful registry components compose like any Foldkit child: parent-owned model field, parent message wrapper, init command mapping, update command mapping, and h.submodel view wiring.",
-                ]
-              ),
-            ]
-          ),
-          codeBlock(`// Model
-dialog: Dialog.Model;
-
-// Message
-GotDialogMessage({ message: Dialog.Message });
-
-// Init
-const [dialog, dialogCommands] = Dialog.init({ id: "settings-dialog" });
-Command.mapMessages(dialogCommands, GotDialogMessage);
-
-// Update
-const [dialog, dialogCommands] = Dialog.update(model.dialog, message);
-
-// View
-h.submodel({
-  slotId: model.dialog.id,
-  model: model.dialog,
-  view: Dialog.view,
-  toParentMessage: GotDialogMessage,
-});`),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["API reference"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "The registry wrapper intentionally exposes the Foldkit primitive shape instead of inventing a separate component protocol.",
-                ]
-              ),
-            ]
-          ),
-          codeBlock(`import * as Dialog from "./ui/dialog";
-
-Dialog.Model;
-Dialog.Message;
-Dialog.OutMessage;
-Dialog.init;
-Dialog.update;
-Dialog.open;
-Dialog.close;
-Dialog.view;
-Dialog.titleId;
-Dialog.descriptionId;`),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Accessibility"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "The component delegates native dialog semantics to Ui.Dialog and exposes helpers for title and description wiring.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Native dialog role and backdrop behavior come from Ui.Dialog.view.",
-                ]
-              ),
-              h.li([], ["Escape and backdrop close emit RequestedClose."]),
-              h.li(
-                [],
-                ["Trigger, cancel, and confirm controls have accessible names."]
-              ),
-              h.li(
-                [],
-                [
-                  "titleId and descriptionId connect visible copy to the dialog surface.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "focusSelector directs post-open focus, and h.OnClickFocus supports iOS keyboard warmup for input-first dialogs.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "ShowDialog and CloseDialog own body scroll lock through the Foldkit primitive commands.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Nested or stacked dialogs are unsupported in v1; keep one active Dialog per flow.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  'RTL is inherited from the surrounding document or container through h.Dir("rtl"); Dialog does not store direction in its model.',
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["AlertDialog policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Dialog v1 keeps AlertDialog out of the Dialog API. Destructive styling is allowed for ordinary confirmation flows, but alert semantics should ship as a separate component later.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Use dialog-destructive when the interaction is still a standard Dialog with cancel and confirm actions.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Do not add AlertDialog variants, messages, model fields, or registry dependencies to Dialog v1.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Future AlertDialog work should define its own component, examples, accessibility expectations, and tests.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Command Dialog policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Command Dialog is not a Dialog v1 example or variant. It needs its own component because search, filtering, active option state, and keyboard command navigation are separate behavior contracts.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Do not add command palette messages, list state, or search input state to Dialog v1.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "A future Command Dialog should compose modal presentation with command/listbox behavior under its own model and tests.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Dialog examples may show ordinary form or confirmation flows, but not searchable command selection.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Drawer policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Drawer is not a Dialog v1 variant. It needs its own component because edge placement, slide-in motion, responsive sizing, and navigation-style use cases are separate presentation contracts.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Do not add side, placement, or drawer sizing props to Dialog v1.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "A future Drawer can reuse modal concepts, but should own its own examples, animation proof, and responsive behavior tests.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Use Dialog for centered modal confirmation and form flows; use the future Drawer for edge-mounted panels.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Composition policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Dialog v1 documents a single active dialog per user flow. It does not add a stack manager, nested focus handoff, or parent-child modal coordination on top of Foldkit Ui.Dialog.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Open a second step by closing the current Dialog and rendering the next Dialog state from the parent model.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Do not mount a Dialog trigger or Dialog surface inside another Dialog panel in v1 examples.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "If a product needs modal stacking, treat it as a future coordinator or separate component with its own tests.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["RTL policy"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Dialog v1 treats direction as layout context. Set direction on the document, page region, or preview wrapper; the Dialog model and messages stay direction-agnostic.",
-                ]
-              ),
-            ]
-          ),
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              codeBlock(`const rtlPreview = h.div(
-  [h.Dir("rtl")],
-  [
-    Dialog.trigger({ ... }),
-    h.submodel({ ... })
-  ]
-);`),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "The registry view helpers avoid text-alignment props and keep direction-specific copy in the consuming app. Dedicated RTL visual snapshots can be added later when the docs site has screenshot coverage.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Browser focus proof"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "The focus example is the browser-check target for focusSelector and h.OnClickFocus behavior. Open the standalone route, trigger the dialog, and verify the ShowDialog command carries #dialog-focus-name.",
-                ]
-              ),
-            ]
-          ),
-          codeBlock(`Route:
-/docs/components/dialog/examples/focus
-
-Expected runtime proof:
-GotDialogFocusExampleMessage.RequestedOpen
-ShowDialog({
-  id: "dialog-focus",
-  maybeFocusSelector: Some("#dialog-focus-name")
-})`),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Coverage"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "The first Dialog slice is covered at the wrapper, example, route, and registry-output levels.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Story tests cover init, open, close, commands, and OutMessage.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Scene tests cover trigger, accessible dialog labelling, cancel, confirm, animated open, destructive confirm, and focus-target configuration.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "The scrollable example covers long content with a constrained scroll body and persistent footer actions.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Generated registry JSON includes source and test files for installation.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-      h.section(
-        [
-          h.Class(
-            "grid gap-6 border-t border-gray-200 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-          ),
-        ],
-        [
-          h.div(
-            [h.Class("space-y-3")],
-            [
-              h.h2(
-                [h.Class("text-xl font-semibold text-gray-950")],
-                ["Traceability checklist"]
-              ),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                [
-                  "Each documented behavior maps to a concrete proof or an explicit policy decision.",
-                ]
-              ),
-            ]
-          ),
-          h.ul(
-            [h.Class("list-disc space-y-1 pl-5 text-sm text-gray-700")],
-            [
-              h.li(
-                [],
-                [
-                  "Open, close, repeated open, repeated close: dialog.story.test.ts.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Accessible role, title, description, cancel, confirm: dialog.scene.test.ts and dialog-basic.scene.test.ts.",
-                ]
-              ),
-              h.li([], ["Animated lifecycle: dialog-animated.scene.test.ts."]),
-              h.li(
-                [],
-                [
-                  "Destructive confirm styling: dialog-destructive.scene.test.ts.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "focusSelector and OnClickFocus: dialog-focus.scene.test.ts plus browser focus proof.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Scrollable content and footer persistence: dialog-scrollable.scene.test.ts.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  'RTL behavior: documented as inherited layout context through h.Dir("rtl").',
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Generated install artifacts: build:registry and check:registry.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Nested or stacked dialogs: unsupported v1 policy documented in the Composition policy section.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "AlertDialog: separate future component policy documented in the AlertDialog policy section.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Command Dialog: separate future component policy documented in the Command Dialog policy section.",
-                ]
-              ),
-              h.li(
-                [],
-                [
-                  "Drawer: separate future component policy documented in the Drawer policy section.",
-                ]
-              ),
-            ]
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const animationBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Animation Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable animation-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          animationBasicExamplePreview(
-            model.animationBasicExample,
-            "animation-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const virtualListBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["VirtualList Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable virtual-list-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          virtualListBasicExamplePreview(
-            model.virtualListBasicExample,
-            "virtual-list-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const virtualListVariableExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["VirtualList Variable"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable virtual-list-variable registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          virtualListVariableExamplePreview(
-            model.virtualListVariableExample,
-            "virtual-list-variable-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const badgeBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Badge Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable badge-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          badgeBasicExamplePreview(
-            model.badgeBasicExample,
-            "badge-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const avatarBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Avatar Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable avatar-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          avatarBasicExamplePreview(
-            model.avatarBasicExample,
-            "avatar-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const buttonBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Button Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable button-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          buttonBasicExamplePreview(
-            model.buttonBasicExample,
-            "button-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const buttonDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Button Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable button-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          buttonDisabledExamplePreview(
-            model.buttonDisabledExample,
-            "button-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const calendarBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Calendar Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable calendar-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          calendarBasicExamplePreview(
-            model.calendarBasicExample,
-            "calendar-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const calendarBoundsExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Calendar Bounds"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable calendar-bounds registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          calendarBoundsExamplePreview(
-            model.calendarBoundsExample,
-            "calendar-bounds-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const datePickerBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Date Picker Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable date-picker-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          datePickerBasicExamplePreview(
-            model.datePickerBasicExample,
-            "date-picker-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const datePickerBoundsExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Date Picker Bounds"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable date-picker-bounds registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          datePickerBoundsExamplePreview(
-            model.datePickerBoundsExample,
-            "date-picker-bounds-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const checkboxBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Checkbox Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable checkbox-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          checkboxBasicExamplePreview(
-            model.checkboxBasicExample,
-            "checkbox-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const checkboxIndeterminateExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Checkbox Indeterminate"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable checkbox-indeterminate registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          checkboxIndeterminateExamplePreview(
-            model.checkboxIndeterminateExample,
-            "checkbox-indeterminate-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const sliderBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Slider Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable slider-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          sliderBasicExamplePreview(
-            model.sliderBasicExample,
-            "slider-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const sliderDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Slider Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable slider-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          sliderDisabledExamplePreview(
-            model.sliderDisabledExample,
-            "slider-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const tabsBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tabs Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable tabs-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          tabsBasicExamplePreview(
-            model.tabsBasicExample,
-            "tabs-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const tabsManualExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Tabs Manual"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable tabs-manual registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          tabsManualExamplePreview(
-            model.tabsManualExample,
-            "tabs-manual-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const switchBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Switch Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable switch-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          switchBasicExamplePreview(
-            model.switchBasicExample,
-            "switch-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const switchDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Switch Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable switch-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          switchDisabledExamplePreview(
-            model.switchDisabledExample,
-            "switch-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const fieldsetBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Fieldset Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable fieldset-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          fieldsetBasicExamplePreview(
-            model.fieldsetBasicExample,
-            "fieldset-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const fieldsetDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Fieldset Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable fieldset-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          fieldsetDisabledExamplePreview(
-            model.fieldsetDisabledExample,
-            "fieldset-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const fileDropBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["File Drop Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable file-drop-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          fileDropBasicExamplePreview(
-            model.fileDropBasicExample,
-            "file-drop-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const fileDropDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["File Drop Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable file-drop-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          fileDropDisabledExamplePreview(
-            model.fileDropDisabledExample,
-            "file-drop-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const inputBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Input Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable input-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          inputBasicExamplePreview(
-            model.inputBasicExample,
-            "input-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const inputDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Input Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable input-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          inputDisabledExamplePreview(
-            model.inputDisabledExample,
-            "input-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const textareaBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Textarea Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable textarea-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          textareaBasicExamplePreview(
-            model.textareaBasicExample,
-            "textarea-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const textareaDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Textarea Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable textarea-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          textareaDisabledExamplePreview(
-            model.textareaDisabledExample,
-            "textarea-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const toastBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Toast Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable toast-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          toastBasicExamplePreview(
-            model.toastBasicExample,
-            "toast-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const toastVariantsExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Toast Variants"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable toast-variants registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          toastVariantsExamplePreview(
-            model.toastVariantsExample,
-            "toast-variants-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const tooltipBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Tooltip Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable tooltip-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          tooltipBasicExamplePreview(
-            model.tooltipBasicExample,
-            "tooltip-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const tooltipNoDelayExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Tooltip No Delay"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable tooltip-no-delay registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          tooltipNoDelayExamplePreview(
-            model.tooltipNoDelayExample,
-            "tooltip-no-delay-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dialogBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Dialog Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable dialog-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dialogBasicExamplePreview(
-            model.dialogBasicExample,
-            "dialog-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dialogAnimatedExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Dialog Animated"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable dialog-animated registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dialogAnimatedExamplePreview(
-            model.dialogAnimatedExample,
-            "dialog-animated-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dialogDestructiveExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Dialog Destructive"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable dialog-destructive registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dialogDestructiveExamplePreview(
-            model.dialogDestructiveExample,
-            "dialog-destructive-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dialogFocusExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Dialog Focus"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable dialog-focus registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dialogFocusExamplePreview(
-            model.dialogFocusExample,
-            "dialog-focus-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dialogScrollableExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Dialog Scrollable"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable dialog-scrollable registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dialogScrollableExamplePreview(
-            model.dialogScrollableExample,
-            "dialog-scrollable-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const disclosureBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Disclosure Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable disclosure-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          disclosureBasicExamplePreview(
-            model.disclosureBasicExample,
-            "disclosure-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const disclosureDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Disclosure Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable disclosure-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          disclosureDisabledExamplePreview(
-            model.disclosureDisabledExample,
-            "disclosure-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dragAndDropBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Drag and Drop Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable drag-and-drop-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dragAndDropBasicExamplePreview(
-            model.dragAndDropBasicExample,
-            "drag-and-drop-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const dragAndDropDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Drag and Drop Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable drag-and-drop-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          dragAndDropDisabledExamplePreview(
-            model.dragAndDropDisabledExample,
-            "drag-and-drop-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const listboxBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Listbox Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable listbox-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          listboxBasicExamplePreview(
-            model.listboxBasicExample,
-            "listbox-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const listboxAnimatedExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Listbox Animated"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable listbox-animated registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          listboxAnimatedExamplePreview(
-            model.listboxAnimatedExample,
-            "listbox-animated-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const menuBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Menu Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable menu-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          menuBasicExamplePreview(
-            model.menuBasicExample,
-            "menu-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const menuAnimatedExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Menu Animated"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable menu-animated registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          menuAnimatedExamplePreview(
-            model.menuAnimatedExample,
-            "menu-animated-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const popoverBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Popover Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable popover-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          popoverBasicExamplePreview(
-            model.popoverBasicExample,
-            "popover-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const popoverAnimatedExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Popover Animated"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable popover-animated registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          popoverAnimatedExamplePreview(
-            model.popoverAnimatedExample,
-            "popover-animated-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const radioGroupBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Radio Group Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable radio-group-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          radioGroupBasicExamplePreview(
-            model.radioGroupBasicExample,
-            "radio-group-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const radioGroupHorizontalExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Radio Group Horizontal"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable radio-group-horizontal registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          radioGroupHorizontalExamplePreview(
-            model.radioGroupHorizontalExample,
-            "radio-group-horizontal-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const selectBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Select Basic"]),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable select-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          selectBasicExamplePreview(
-            model.selectBasicExample,
-            "select-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const selectDisabledExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Select Disabled"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable select-disabled registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          selectDisabledExamplePreview(
-            model.selectDisabledExample,
-            "select-disabled-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const comboboxBasicExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Combobox Basic"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable combobox-basic registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          comboboxBasicExamplePreview(
-            model.comboboxBasicExample,
-            "combobox-basic-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const comboboxMultiExampleRouteView = (model: Model): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("max-w-4xl space-y-6")],
-    [
-      h.header(
-        [h.Class("space-y-2")],
-        [
-          h.h1(
-            [h.Class("text-3xl font-bold text-gray-950")],
-            ["Combobox Multi"]
-          ),
-          h.p(
-            [h.Class("max-w-2xl text-base text-gray-600")],
-            [
-              "Standalone route for the installable combobox-multi registry example.",
-            ]
-          ),
-        ]
-      ),
-      h.div(
-        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [
-          comboboxMultiExamplePreview(
-            model.comboboxMultiExample,
-            "combobox-multi-standalone"
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
-const contentView = (model: Model): Html => {
-  const h = html<Message>();
-
-  const embedUi = (id: string, view: Submodel.View<UiModel, UiMessage>): Html =>
-    h.submodel({
-      slotId: id,
-      model: model.uiModel,
-      view,
-      toParentMessage: toUiMessage,
-    });
-
-  return M.value(model.route).pipe(
-    M.tagsExhaustive({
-      Home: homeView,
-      Avatar: () => embedUi("ui-avatar", View.avatar),
-      AvatarDocs: () => avatarDocsView(model),
-      AvatarBasicExample: () => avatarBasicExampleRouteView(model),
-      Badge: () => embedUi("ui-badge", View.badge),
-      BadgeDocs: () => badgeDocsView(model),
-      BadgeBasicExample: () => badgeBasicExampleRouteView(model),
-      Button: () => embedUi("ui-button", View.button),
-      ButtonDocs: () => buttonDocsView(model),
-      ButtonBasicExample: () => buttonBasicExampleRouteView(model),
-      ButtonDisabledExample: () => buttonDisabledExampleRouteView(model),
-      Calendar: () => embedUi("ui-calendar", View.calendar),
-      CalendarDocs: () => calendarDocsView(model),
-      CalendarBasicExample: () => calendarBasicExampleRouteView(model),
-      CalendarBoundsExample: () => calendarBoundsExampleRouteView(model),
-      Checkbox: () => embedUi("ui-checkbox", View.checkbox),
-      CheckboxDocs: () => checkboxDocsView(model),
-      CheckboxBasicExample: () => checkboxBasicExampleRouteView(model),
-      CheckboxIndeterminateExample: () =>
-        checkboxIndeterminateExampleRouteView(model),
-      Combobox: () => embedUi("ui-combobox", View.combobox),
-      ComboboxDocs: () => comboboxDocsView(model),
-      ComboboxBasicExample: () => comboboxBasicExampleRouteView(model),
-      ComboboxMultiExample: () => comboboxMultiExampleRouteView(model),
-      DatePicker: () => embedUi("ui-date-picker", View.datePicker),
-      DatePickerDocs: () => datePickerDocsView(model),
-      DatePickerBasicExample: () => datePickerBasicExampleRouteView(model),
-      DatePickerBoundsExample: () => datePickerBoundsExampleRouteView(model),
-      Dialog: () => embedUi("ui-dialog", View.dialog),
-      DialogDocs: () => dialogDocsView(model),
-      DialogBasicExample: () => dialogBasicExampleRouteView(model),
-      DialogAnimatedExample: () => dialogAnimatedExampleRouteView(model),
-      DialogDestructiveExample: () => dialogDestructiveExampleRouteView(model),
-      DialogFocusExample: () => dialogFocusExampleRouteView(model),
-      DialogScrollableExample: () => dialogScrollableExampleRouteView(model),
-      Disclosure: () => embedUi("ui-disclosure", View.disclosure),
-      DisclosureDocs: () => disclosureDocsView(model),
-      DisclosureBasicExample: () => disclosureBasicExampleRouteView(model),
-      DisclosureDisabledExample: () =>
-        disclosureDisabledExampleRouteView(model),
-      DragAndDrop: () => embedUi("ui-drag-and-drop", View.dragAndDrop),
-      DragAndDropDocs: () => dragAndDropDocsView(model),
-      DragAndDropBasicExample: () => dragAndDropBasicExampleRouteView(model),
-      DragAndDropDisabledExample: () =>
-        dragAndDropDisabledExampleRouteView(model),
-      Fieldset: () => embedUi("ui-fieldset", View.fieldset),
-      FieldsetDocs: () => fieldsetDocsView(model),
-      FieldsetBasicExample: () => fieldsetBasicExampleRouteView(model),
-      FieldsetDisabledExample: () => fieldsetDisabledExampleRouteView(model),
-      FileDrop: () => embedUi("ui-file-drop", View.fileDrop),
-      FileDropDocs: () => fileDropDocsView(model),
-      FileDropBasicExample: () => fileDropBasicExampleRouteView(model),
-      FileDropDisabledExample: () => fileDropDisabledExampleRouteView(model),
-      Input: () => embedUi("ui-input", View.input),
-      InputDocs: () => inputDocsView(model),
-      InputBasicExample: () => inputBasicExampleRouteView(model),
-      InputDisabledExample: () => inputDisabledExampleRouteView(model),
-      Listbox: () => embedUi("ui-listbox", View.listbox),
-      ListboxDocs: () => listboxDocsView(model),
-      ListboxBasicExample: () => listboxBasicExampleRouteView(model),
-      ListboxAnimatedExample: () => listboxAnimatedExampleRouteView(model),
-      Menu: () => embedUi("ui-menu", View.menu),
-      MenuDocs: () => menuDocsView(model),
-      MenuBasicExample: () => menuBasicExampleRouteView(model),
-      MenuAnimatedExample: () => menuAnimatedExampleRouteView(model),
-      Popover: () => embedUi("ui-popover", View.popover),
-      PopoverDocs: () => popoverDocsView(model),
-      PopoverBasicExample: () => popoverBasicExampleRouteView(model),
-      PopoverAnimatedExample: () => popoverAnimatedExampleRouteView(model),
-      RadioGroup: () => embedUi("ui-radio-group", View.radioGroup),
-      RadioGroupDocs: () => radioGroupDocsView(model),
-      RadioGroupBasicExample: () => radioGroupBasicExampleRouteView(model),
-      RadioGroupHorizontalExample: () =>
-        radioGroupHorizontalExampleRouteView(model),
-      Select: () => embedUi("ui-select", View.select),
-      SelectDocs: () => selectDocsView(model),
-      SelectBasicExample: () => selectBasicExampleRouteView(model),
-      SelectDisabledExample: () => selectDisabledExampleRouteView(model),
-      Slider: () => embedUi("ui-slider", View.slider),
-      SliderDocs: () => sliderDocsView(model),
-      SliderBasicExample: () => sliderBasicExampleRouteView(model),
-      SliderDisabledExample: () => sliderDisabledExampleRouteView(model),
-      Switch: () => embedUi("ui-switch", View.switch_),
-      SwitchDocs: () => switchDocsView(model),
-      SwitchBasicExample: () => switchBasicExampleRouteView(model),
-      SwitchDisabledExample: () => switchDisabledExampleRouteView(model),
-      Tabs: () => embedUi("ui-tabs", View.tabs),
-      TabsDocs: () => tabsDocsView(model),
-      TabsBasicExample: () => tabsBasicExampleRouteView(model),
-      TabsManualExample: () => tabsManualExampleRouteView(model),
-      Textarea: () => embedUi("ui-textarea", View.textarea),
-      TextareaDocs: () => textareaDocsView(model),
-      TextareaBasicExample: () => textareaBasicExampleRouteView(model),
-      TextareaDisabledExample: () => textareaDisabledExampleRouteView(model),
-      Toast: () => embedUi("ui-toast", View.toast),
-      ToastDocs: () => toastDocsView(model),
-      ToastBasicExample: () => toastBasicExampleRouteView(model),
-      ToastVariantsExample: () => toastVariantsExampleRouteView(model),
-      Tooltip: () => embedUi("ui-tooltip", View.tooltip),
-      TooltipDocs: () => tooltipDocsView(model),
-      TooltipBasicExample: () => tooltipBasicExampleRouteView(model),
-      TooltipNoDelayExample: () => tooltipNoDelayExampleRouteView(model),
-      Animation: () => embedUi("ui-animation", View.animation),
-      AnimationDocs: () => animationDocsView(model),
-      AnimationBasicExample: () => animationBasicExampleRouteView(model),
-      VirtualList: () => embedUi("ui-virtual-list", View.virtualList),
-      VirtualListDocs: () => virtualListDocsView(model),
-      VirtualListBasicExample: () => virtualListBasicExampleRouteView(model),
-      VirtualListVariableExample: () =>
-        virtualListVariableExampleRouteView(model),
-      NotFound: ({ path }) => notFoundView(path),
-    })
-  );
-};
-
-const routeTitle = (route: Model["route"]): string =>
-  M.value(route).pipe(
-    M.tag("Home", () => "Foldkit-basic-cn-ui"),
-    M.orElse(({ _tag }) => `${_tag} - Foldkit-basic-cn-ui`)
-  );
-
-export const view = (model: Model): Document => {
-  const h = html<Message>();
-
-  return {
-    title: routeTitle(model.route),
-    body: h.div(
-      [h.Class("flex h-screen flex-col overflow-hidden bg-white md:flex-row")],
-      [
-        mobileHeaderView(model),
-        mobileMenuView(model),
-        sidebarView(model.route),
-        h.main(
-          [h.Class("min-h-0 flex-1 overflow-y-auto p-4 md:p-8")],
-          [h.keyed("div")(model.route._tag, [], [contentView(model)])]
-        ),
-      ]
-    ),
-  };
-};
 
 // SUBSCRIPTION
 

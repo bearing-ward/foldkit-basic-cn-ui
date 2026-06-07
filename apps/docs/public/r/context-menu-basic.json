@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu-basic",
+  "type": "registry:example",
+  "title": "Context Menu Basic",
+  "description": "A runnable Foldkit version of the Base UI Context Menu default example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["context-menu"],
+  "files": [
+    {
+      "path": "registry/default/examples/context-menu-basic/main.ts",
+      "target": "src/examples/context-menu-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as ContextMenu from \"../../ui/context-menu\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  selected: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const OpenedContextMenu = m(\"OpenedContextMenu\");\nexport const ClosedContextMenu = m(\"ClosedContextMenu\");\nexport const SelectedContextMenuItem = m(\"SelectedContextMenuItem\", {\n  value: S.String,\n});\n\nexport const Message = S.Union([\n  OpenedContextMenu,\n  ClosedContextMenu,\n  SelectedContextMenuItem,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false, selected: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      OpenedContextMenu: () => [evo(model, { open: () => true }), []],\n      ClosedContextMenu: () => [evo(model, { open: () => false }), []],\n      SelectedContextMenuItem: ({ value }) => [\n        evo(model, {\n          open: () => false,\n          selected: () => value,\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst itemView = (value: string): Html => {\n  const h = html<Message>();\n\n  return ContextMenu.itemView<Message>({\n    onSelect: SelectedContextMenuItem({ value }),\n    children: [h.span([], [value])],\n  });\n};\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return ContextMenu.rootView<Message>({\n    children: [\n      ContextMenu.triggerView<Message>({\n        onOpen: OpenedContextMenu(),\n        children: [h.span([], [\"Right click here\"])],\n      }),\n      ContextMenu.portalView<Message>({\n        open: model.open,\n        children: [\n          ContextMenu.backdropView<Message>({\n            onClose: ClosedContextMenu(),\n          }),\n          ContextMenu.positionerView<Message>({\n            children: [\n              ContextMenu.popupView<Message>({\n                children: [\n                  itemView(\"Add to Library\"),\n                  itemView(\"Add to Playlist\"),\n                  ContextMenu.separatorView<Message>({}),\n                  itemView(\"Play Next\"),\n                  itemView(\"Play Last\"),\n                  ContextMenu.separatorView<Message>({}),\n                  itemView(\"Favorite\"),\n                  itemView(\"Share\"),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n      model.selected === \"\"\n        ? h.empty\n        : h.p(\n            [h.Class(\"mt-3 text-sm text-gray-600\")],\n            [`Selected: ${model.selected}`]\n          ),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/context-menu-basic/entry.ts",
+      "target": "src/examples/context-menu-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Context Menu Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/context-menu-basic/index.html",
+      "target": "src/examples/context-menu-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Context Menu Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/default/examples/context-menu-basic/context-menu-basic.scene.test.ts",
+      "target": "src/examples/context-menu-basic/context-menu-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ContextMenuBasicExample from \"./main\";\n\ndescribe(\"Context Menu Basic example\", () => {\n  test(\"matches the Base UI default context menu content\", () => {\n    Scene.scene(\n      {\n        update: ContextMenuBasicExample.update,\n        view: ContextMenuBasicExample.view,\n      },\n      Scene.with(ContextMenuBasicExample.init()[0]),\n      Scene.click(Scene.role(\"button\", { name: \"Right click here\" })),\n      Scene.expect(Scene.role(\"menu\")).toExist(),\n      Scene.expect(\n        Scene.role(\"menuitem\", { name: \"Add to Library\" })\n      ).toExist(),\n      Scene.expect(\n        Scene.role(\"menuitem\", { name: \"Add to Playlist\" })\n      ).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Play Next\" })).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Play Last\" })).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Favorite\" })).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Share\" })).toExist(),\n      Scene.click(Scene.role(\"menuitem\", { name: \"Share\" })),\n      Scene.expect(Scene.role(\"menu\")).not.toExist(),\n      Scene.expect(Scene.text(\"Selected: Share\")).toExist()\n    );\n  });\n\n  test(\"closes from the backdrop without selecting an item\", () => {\n    Scene.scene(\n      {\n        update: ContextMenuBasicExample.update,\n        view: ContextMenuBasicExample.view,\n      },\n      Scene.with(ContextMenuBasicExample.init()[0]),\n      Scene.click(Scene.role(\"button\", { name: \"Right click here\" })),\n      Scene.expect(Scene.role(\"menu\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Close context menu\" })),\n      Scene.expect(Scene.role(\"menu\")).not.toExist(),\n      Scene.expect(Scene.text(\"Selected:\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "ContextMenu",
+      "example": "basic",
+      "originExample": "context-menu-default"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-api",
+  "type": "registry:example",
+  "title": "Carousel API",
+  "description": "A runnable Foldkit example showing the shadcn Carousel API composition.",
+  "dependencies": ["effect", "foldkit", "embla-carousel"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["carousel"],
+  "files": [
+    {
+      "path": "registry/default/examples/carousel-api/main.ts",
+      "target": "src/examples/carousel-api/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Carousel from \"../../ui/carousel\";\n\nconst slideCount = 5;\nconst slides = [\"1\", \"2\", \"3\", \"4\", \"5\"] as const;\n\n// MODEL\n\nexport const Model = S.Struct({ index: S.Number });\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedPreviousSlide = m(\"ClickedPreviousSlide\");\nexport const ClickedNextSlide = m(\"ClickedNextSlide\");\n\nexport const Message = S.Union([ClickedPreviousSlide, ClickedNextSlide]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ index: 0 }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedPreviousSlide: () => [\n        evo(model, {\n          index: (index) => Carousel.previousIndex(index, slideCount),\n        }),\n        [],\n      ],\n      ClickedNextSlide: () => [\n        evo(model, { index: (index) => Carousel.nextIndex(index, slideCount) }),\n        [],\n      ],\n    })\n  );\n\nconst slideCard = <ParentMessage>(label: string): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div([h.Class(Carousel.carouselCardClassName)], [label]);\n};\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  const carouselBody = (\n    contentClassName: string,\n    itemClassName: string,\n    orientation: Carousel.CarouselOrientation,\n    rootClassName: string,\n    ariaLabel = \"Carousel\",\n    labels: readonly string[] = slides\n  ): Html =>\n    Carousel.rootView<Message>({\n      ariaLabel,\n      className: rootClassName,\n      children: [\n        Carousel.viewportView<Message>({\n          children: [\n            Carousel.contentView<Message>({\n              index: model.index,\n              orientation,\n              className: contentClassName,\n              children: labels.map((slide) =>\n                Carousel.itemView<Message>({\n                  className: itemClassName,\n                  children: [slideCard<Message>(slide)],\n                })\n              ),\n            }),\n          ],\n        }),\n        Carousel.buttonView<Message>({\n          label: \"Previous slide\",\n          direction: \"previous\",\n          onClick: ClickedPreviousSlide(),\n        }),\n        Carousel.buttonView<Message>({\n          label: \"Next slide\",\n          direction: \"next\",\n          onClick: ClickedNextSlide(),\n        }),\n      ],\n    });\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      carouselBody(\"\", \"\", \"horizontal\", \"max-w-xs\"),\n      Carousel.statusView<Message>({\n        current: model.index + 1,\n        count: slideCount,\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/carousel-api/carousel-api.scene.test.ts",
+      "target": "src/examples/carousel-api/carousel-api.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"carousel-api example\", () => {\n  test(\"renders and advances the shadcn Carousel API example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Slide 1 of 5\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Next slide\" })),\n      Scene.expect(Scene.text(\"Slide 2 of 5\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Carousel",
+      "example": "api",
+      "origin": "shadcn"
+    }
+  }
+}

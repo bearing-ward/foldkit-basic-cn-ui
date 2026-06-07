@@ -11,6 +11,7 @@ export const uiInit = (
   {
     mobileMenuDialog: Ui.Dialog.init({ id: "mobile-menu" }),
     buttonClickCount: 0,
+    toggleFavoriteDemoPressed: false,
     inputDemoValue: "",
     textareaDemoValue: "",
     fieldsetInputValue: "",

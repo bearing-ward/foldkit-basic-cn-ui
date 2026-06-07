@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-basic",
+  "type": "registry:example",
+  "title": "Hover Card Basic",
+  "description": "A runnable Foldkit example showing the shadcn Hover Card Basic pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["hover-card"],
+  "files": [
+    {
+      "path": "registry/default/examples/hover-card-basic/main.ts",
+      "target": "src/examples/hover-card-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as HoverCard from \"../../ui/hover-card\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const OpenedHoverCard = m(\"OpenedHoverCard\");\nexport const ClosedHoverCard = m(\"ClosedHoverCard\");\nexport const Message = S.Union([OpenedHoverCard, ClosedHoverCard]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      OpenedHoverCard: () => [evo(model, { open: () => true }), []],\n      ClosedHoverCard: () => [evo(model, { open: () => false }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return HoverCard.rootView<Message>({\n    children: [\n      h.span([h.Class(\"text-sm text-gray-600\")], [\"Follow \"]),\n      HoverCard.triggerView<Message>({\n        open: model.open,\n        onOpen: OpenedHoverCard(),\n        children: [h.span([], [\"@foldkit\"])],\n      }),\n      HoverCard.portalView<Message>({\n        open: model.open,\n        children: [\n          HoverCard.backdropView<Message>({ onClose: ClosedHoverCard() }),\n          HoverCard.positionerView<Message>({\n            children: [\n              HoverCard.popupView<Message>({\n                children: [\n                  h.div([h.Class(HoverCard.hoverCardAvatarClassName)], [\"FK\"]),\n                  h.h3(\n                    [h.Class(HoverCard.hoverCardTitleClassName)],\n                    [\"@foldkit\"]\n                  ),\n                  h.p(\n                    [h.Class(HoverCard.hoverCardDescriptionClassName)],\n                    [\n                      \"A toolkit for building Elm-style applications with Effect and typed messages.\",\n                    ]\n                  ),\n                  h.div(\n                    [h.Class(HoverCard.hoverCardMetaClassName)],\n                    [\"12.8k stars\"]\n                  ),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/hover-card-basic/hover-card-basic.scene.test.ts",
+      "target": "src/examples/hover-card-basic/hover-card-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as HoverCardBasicExample from \"./main\";\n\ndescribe(\"Hover Card Basic example\", () => {\n  test(\"opens and closes the controlled preview\", () => {\n    Scene.scene(\n      {\n        update: HoverCardBasicExample.update,\n        view: HoverCardBasicExample.view,\n      },\n      Scene.with(HoverCardBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"dialog\")).toBeAbsent(),\n      Scene.click(Scene.role(\"button\", { name: \"@foldkit\" })),\n      Scene.expect(Scene.role(\"dialog\")).toExist(),\n      Scene.expect(Scene.text(\"12.8k stars\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Close hover card\" })),\n      Scene.expect(Scene.role(\"dialog\")).toBeAbsent()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "HoverCard",
+      "example": "basic"
+    }
+  }
+}

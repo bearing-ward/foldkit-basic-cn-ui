@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-input",
+  "type": "registry:example",
+  "title": "Button Group Input",
+  "description": "A runnable Foldkit example showing the shadcn Button Group Input composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["button-group", "input"],
+  "files": [
+    {
+      "path": "registry/default/examples/button-group-input/main.ts",
+      "target": "src/examples/button-group-input/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as ButtonGroup from \"../../ui/button-group\";\nimport * as Input from \"../../ui/input\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\nconst primaryButtonClassName =\n  \"inline-flex h-9 items-center justify-center bg-gray-950 px-3 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600\";\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return ButtonGroup.view<Message>({\n    ariaLabel: \"Search actions\",\n    className: \"w-full max-w-md\",\n    children: [\n      ButtonGroup.itemView<Message>({\n        className: \"min-w-0 flex-1\",\n        children: [\n          Input.view<Message>({\n            id: \"button-group-search\",\n            value: \"\",\n            onInput: () => undefined as never,\n            toView: (attributes) =>\n              h.input([\n                ...attributes.input,\n                h.Class(\n                  \"h-9 min-w-0 border-0 bg-transparent px-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:ring-0\"\n                ),\n                h.Placeholder(\"Search documentation...\"),\n              ]),\n          }),\n        ],\n      }),\n      ButtonGroup.itemView<Message>({\n        children: [h.button([h.Class(primaryButtonClassName)], [\"Search\"])],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/button-group-input/button-group-input.scene.test.ts",
+      "target": "src/examples/button-group-input/button-group-input.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"button-group-input example\", () => {\n  test(\"renders the shadcn Button Group Input example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"group\", { name: \"Search actions\" })).toExist(),\n      Scene.expect(Scene.placeholder(\"Search documentation...\")).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Search\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"group\", { name: \"Search actions\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "ButtonGroup",
+      "example": "input",
+      "origin": "shadcn"
+    }
+  }
+}

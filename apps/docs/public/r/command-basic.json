@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-basic",
+  "type": "registry:example",
+  "title": "Command Basic",
+  "description": "A runnable Foldkit example showing the shadcn command palette with controlled search, grouped results, and selection feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["command"],
+  "files": [
+    {
+      "path": "registry/default/examples/command-basic/main.ts",
+      "target": "src/examples/command-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Array, Match as M, Schema as S } from \"effect\";\nimport type { Command as FoldkitCommand } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Command from \"../../ui/command\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  query: S.String,\n  selected: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedCommandQuery = m(\"UpdatedCommandQuery\", {\n  value: S.String,\n});\nexport const SelectedCommandItem = m(\"SelectedCommandItem\", {\n  value: S.String,\n});\nexport const Message = S.Union([UpdatedCommandQuery, SelectedCommandItem]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\ntype UpdateReturn = readonly [\n  Model,\n  readonly FoldkitCommand.Command<Message>[],\n];\n\nexport const init = (): UpdateReturn => [{ query: \"\", selected: \"\" }, []];\n\n// UPDATE\n\nexport const update = (model: Model, message: Message): UpdateReturn =>\n  M.value(message).pipe(\n    M.withReturnType<UpdateReturn>(),\n    M.tagsExhaustive({\n      UpdatedCommandQuery: ({ value }) => [\n        evo(model, { query: () => value }),\n        [],\n      ],\n      SelectedCommandItem: ({ value }) => [\n        evo(model, { selected: () => value, query: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst groupedItems = (\n  items: readonly Command.CommandItem[]\n): readonly [string, readonly Command.CommandItem[]][] =>\n  Array.dedupe(items.map((item) => item.group)).map((group) => [\n    group,\n    items.filter((item) => item.group === group),\n  ]);\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const listId = \"command-basic-list\";\n  const items = Command.filterItems(Command.defaultItems, model.query);\n\n  return h.div(\n    [h.Class(\"w-full max-w-md space-y-3\")],\n    [\n      Command.rootView<Message>({\n        children: [\n          Command.inputView<Message>({\n            value: model.query,\n            onInput: (value) => UpdatedCommandQuery({ value }),\n            listId,\n          }),\n          Command.listView<Message>({\n            attributes: [h.Id(listId)],\n            children:\n              items.length === 0\n                ? [\n                    Command.emptyView<Message>({\n                      children: [\"No results found.\"],\n                    }),\n                  ]\n                : groupedItems(items).flatMap(([group, groupItems], index) => [\n                    ...(index === 0 ? [] : [Command.separatorView<Message>()]),\n                    Command.groupView<Message>({\n                      heading: group,\n                      children: groupItems.map((item) =>\n                        Command.itemView<Message>({\n                          item,\n                          selected: item.label === model.selected,\n                          onSelect: SelectedCommandItem({ value: item.label }),\n                        })\n                      ),\n                    }),\n                  ]),\n          }),\n        ],\n      }),\n      model.selected === \"\"\n        ? h.empty\n        : h.p(\n            [h.Class(\"text-sm text-gray-600\")],\n            [`Selected ${model.selected}`]\n          ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/command-basic/command-basic.scene.test.ts",
+      "target": "src/examples/command-basic/command-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as CommandBasicExample from \"./main\";\n\ndescribe(\"Command Basic example\", () => {\n  test(\"filters and selects command items\", () => {\n    Scene.scene(\n      {\n        update: CommandBasicExample.update,\n        view: CommandBasicExample.view,\n      },\n      Scene.with(CommandBasicExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"combobox\", { name: \"Command search\" })\n      ).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Calendar\" })).toExist(),\n      Scene.type(Scene.role(\"combobox\", { name: \"Command search\" }), \"bill\"),\n      Scene.expect(Scene.text(\"Billing\")).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Calendar\" })).toBeAbsent(),\n      Scene.click(Scene.text(\"Billing\")),\n      Scene.expect(Scene.text(\"Selected Billing\")).toExist(),\n      Scene.expect(\n        Scene.role(\"combobox\", { name: \"Command search\" })\n      ).toHaveValue(\"Billing\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Command",
+      "example": "basic"
+    }
+  }
+}

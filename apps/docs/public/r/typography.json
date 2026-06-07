@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography",
+  "type": "registry:ui",
+  "title": "Typography",
+  "description": "A shadcn-style set of text helpers for headings, paragraphs, lists, inline code, and muted copy.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/typography/index.ts",
+      "target": "src/ui/typography/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  h1ClassName,\n  h2ClassName,\n  h3ClassName,\n  inlineCodeClassName,\n  listClassName,\n  mutedClassName,\n  paragraphClassName,\n} from \"./view\";\n\nexport {\n  h1ClassName,\n  h2ClassName,\n  h3ClassName,\n  inlineCodeClassName,\n  listClassName,\n  mutedClassName,\n  paragraphClassName,\n} from \"./view\";\n\nconst classNames = (base: string, className?: string): string =>\n  [base, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const h1 = <ParentMessage>(label: string, className?: string): Html => {\n  const h = html<ParentMessage>();\n  return h.h1([h.Class(classNames(h1ClassName, className))], [label]);\n};\n\nexport const h2 = <ParentMessage>(label: string, className?: string): Html => {\n  const h = html<ParentMessage>();\n  return h.h2([h.Class(classNames(h2ClassName, className))], [label]);\n};\n\nexport const h3 = <ParentMessage>(label: string, className?: string): Html => {\n  const h = html<ParentMessage>();\n  return h.h3([h.Class(classNames(h3ClassName, className))], [label]);\n};\n\nexport const p = <ParentMessage>(label: string, className?: string): Html => {\n  const h = html<ParentMessage>();\n  return h.p([h.Class(classNames(paragraphClassName, className))], [label]);\n};\n\nexport const muted = <ParentMessage>(\n  label: string,\n  className?: string\n): Html => {\n  const h = html<ParentMessage>();\n  return h.p([h.Class(classNames(mutedClassName, className))], [label]);\n};\n\nexport const inlineCode = <ParentMessage>(\n  label: string,\n  className?: string\n): Html => {\n  const h = html<ParentMessage>();\n  return h.code([h.Class(classNames(inlineCodeClassName, className))], [label]);\n};\n\nexport const ul = <ParentMessage>(\n  items: readonly string[],\n  className?: string\n): Html => {\n  const h = html<ParentMessage>();\n  return h.ul(\n    [h.Class(classNames(listClassName, className))],\n    items.map((item) => h.li([], [item]))\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/typography/view.ts",
+      "target": "src/ui/typography/view.ts",
+      "type": "registry:ui",
+      "content": "export const h1ClassName =\n  \"scroll-m-20 text-4xl font-extrabold tracking-normal text-gray-950\";\n\nexport const h2ClassName =\n  \"scroll-m-20 border-b border-gray-200 pb-2 text-3xl font-semibold tracking-normal text-gray-950\";\n\nexport const h3ClassName =\n  \"scroll-m-20 text-2xl font-semibold tracking-normal text-gray-950\";\n\nexport const paragraphClassName = \"leading-7 text-gray-700\";\n\nexport const mutedClassName = \"text-sm text-gray-500\";\n\nexport const inlineCodeClassName =\n  \"relative rounded bg-gray-100 px-1.5 py-0.5 font-mono text-sm font-semibold text-gray-900\";\n\nexport const listClassName = \"my-6 ml-6 list-disc [&>li]:mt-2\";\n"
+    },
+    {
+      "path": "registry/default/ui/typography/typography.scene.test.ts",
+      "target": "src/ui/typography/typography.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Typography from \"./index\";\n\nconst view = (): Html => {\n  const h = html<never>();\n\n  return h.div(\n    [],\n    [\n      Typography.h1(\"Component registry\"),\n      Typography.h2(\"Principles\"),\n      Typography.p(\"Reusable text helpers.\"),\n      Typography.inlineCode(\"className\"),\n    ]\n  );\n};\n\ndescribe(\"Typography registry view\", () => {\n  test(\"renders the documented static surface\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.text(\"Component registry\")).toExist(),\n      Scene.expect(Scene.text(\"Principles\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Typography",
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

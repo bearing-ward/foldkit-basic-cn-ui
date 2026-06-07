@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-table-filtering",
+  "type": "registry:example",
+  "title": "Data Table Filtering",
+  "description": "A runnable Foldkit example showing the shadcn Data Table Filtering guide topic.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["data-table"],
+  "files": [
+    {
+      "path": "registry/default/examples/data-table-filtering/main.ts",
+      "target": "src/examples/data-table-filtering/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as DataTable from \"../../ui/data-table\";\n\n// MODEL\nexport const Model = S.Struct({ filter: S.String });\nexport type Model = typeof Model.Type;\n// MESSAGE\nexport const UpdatedFilter = m(\"UpdatedFilter\", { value: S.String });\nexport const Message = S.Union([UpdatedFilter]);\nexport type Message = typeof Message.Type;\n// INIT\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ filter: \"\" }, []];\n// UPDATE\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedFilter: ({ value }) => [evo(model, { filter: () => value }), []],\n    })\n  );\n// VIEW\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const rows = DataTable.filterPayments(DataTable.payments, model.filter);\n  return h.div(\n    [h.Class(\"space-y-4\")],\n    [\n      DataTable.toolbarView<Message>({\n        children: [\n          h.input([\n            h.Type(\"text\"),\n            h.AriaLabel(\"Filter emails\"),\n            h.Placeholder(\"Filter emails...\"),\n            h.Value(model.filter),\n            h.OnInput((value) => UpdatedFilter({ value })),\n            h.Class(DataTable.dataTableInputClassName),\n          ]),\n          h.p(\n            [h.Class(\"text-sm text-gray-600\")],\n            [`${String(rows.length)} results`]\n          ),\n        ],\n      }),\n      DataTable.paymentsTableView<Message>({ payments: rows }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/data-table-filtering/data-table-filtering.scene.test.ts",
+      "target": "src/examples/data-table-filtering/data-table-filtering.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"data-table-filtering example\", () => {\n  test(\"renders the shadcn Data Table Filtering example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"7 results\")).toExist(),\n      Scene.type(Scene.role(\"textbox\", { name: \"Filter emails\" }), \"ken\"),\n      Scene.expect(Scene.text(\"1 results\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "DataTable",
+      "example": "filtering"
+    }
+  }
+}

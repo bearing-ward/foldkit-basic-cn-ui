@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "type": "registry:ui",
+  "title": "Native Select",
+  "description": "A shadcn-style native select composition with label, trigger, options, and description helpers.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/native-select/index.ts",
+      "target": "src/ui/native-select/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  nativeSelectDescriptionClassName,\n  nativeSelectLabelClassName,\n  nativeSelectRootClassName,\n  nativeSelectTriggerClassName,\n} from \"./view\";\n\nexport {\n  nativeSelectDescriptionClassName,\n  nativeSelectLabelClassName,\n  nativeSelectRootClassName,\n  nativeSelectTriggerClassName,\n} from \"./view\";\n\nexport type OptionConfig = Readonly<{\n  value: string;\n  label: string;\n  disabled?: boolean | undefined;\n}>;\n\nexport type RootViewConfig = Readonly<{\n  children: readonly Html[];\n  className?: string | undefined;\n}>;\n\nexport type LabelViewConfig = Readonly<{\n  forId: string;\n  children: readonly Html[];\n  className?: string | undefined;\n}>;\n\nexport type TriggerViewConfig<ParentMessage> = Readonly<{\n  id: string;\n  value: string;\n  onChange: (value: string) => ParentMessage;\n  options: readonly OptionConfig[];\n  ariaLabel?: string | undefined;\n  describedById?: string | undefined;\n  disabled?: boolean | undefined;\n  className?: string | undefined;\n}>;\n\nexport type DescriptionViewConfig = Readonly<{\n  id: string;\n  children: readonly Html[];\n  className?: string | undefined;\n}>;\n\nconst classNames = (base: string, className?: string): string =>\n  [base, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const rootView = <ParentMessage>({\n  children,\n  className,\n}: RootViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.DataAttribute(\"slot\", \"native-select\"),\n      h.Class(classNames(nativeSelectRootClassName, className)),\n    ],\n    children\n  );\n};\n\nexport const labelView = <ParentMessage>({\n  forId,\n  children,\n  className,\n}: LabelViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.label(\n    [\n      h.For(forId),\n      h.DataAttribute(\"slot\", \"native-select-label\"),\n      h.Class(classNames(nativeSelectLabelClassName, className)),\n    ],\n    children\n  );\n};\n\nexport const triggerView = <ParentMessage>({\n  id,\n  value,\n  onChange,\n  options,\n  ariaLabel,\n  describedById,\n  disabled = false,\n  className,\n}: TriggerViewConfig<ParentMessage>): Html => {\n  const h = html<ParentMessage>();\n\n  return h.select(\n    [\n      h.Id(id),\n      h.Value(value),\n      h.Disabled(disabled),\n      h.OnChange(onChange),\n      ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),\n      ...(describedById === undefined\n        ? []\n        : [h.AriaDescribedBy(describedById)]),\n      h.DataAttribute(\"slot\", \"native-select-trigger\"),\n      h.Class(classNames(nativeSelectTriggerClassName, className)),\n    ],\n    options.map((option) =>\n      h.option(\n        [\n          h.Value(option.value),\n          ...(option.disabled === true ? [h.Disabled(true)] : []),\n        ],\n        [option.label]\n      )\n    )\n  );\n};\n\nexport const descriptionView = <ParentMessage>({\n  id,\n  children,\n  className,\n}: DescriptionViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.p(\n    [\n      h.Id(id),\n      h.DataAttribute(\"slot\", \"native-select-description\"),\n      h.Class(classNames(nativeSelectDescriptionClassName, className)),\n    ],\n    children\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/native-select/view.ts",
+      "target": "src/ui/native-select/view.ts",
+      "type": "registry:ui",
+      "content": "export const nativeSelectRootClassName = \"grid w-full max-w-sm gap-2\";\nexport const nativeSelectLabelClassName = \"text-sm font-medium text-gray-950\";\nexport const nativeSelectTriggerClassName =\n  \"h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-950 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed disabled:opacity-50\";\nexport const nativeSelectDescriptionClassName = \"text-sm text-gray-600\";\n"
+    },
+    {
+      "path": "registry/default/ui/native-select/native-select.scene.test.ts",
+      "target": "src/ui/native-select/native-select.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as NativeSelect from \"./index\";\n\nconst options = [\n  { value: \"apple\", label: \"Apple\" },\n  { value: \"banana\", label: \"Banana\" },\n] as const;\n\nconst view = (value: string): Html => {\n  const h = html<string>();\n\n  return NativeSelect.rootView<string>({\n    children: [\n      NativeSelect.labelView<string>({\n        forId: \"fruit\",\n        children: [h.span([], [\"Fruit\"])],\n      }),\n      NativeSelect.triggerView<string>({\n        id: \"fruit\",\n        value,\n        onChange: (nextValue) => nextValue,\n        options,\n        describedById: \"fruit-description\",\n      }),\n      NativeSelect.descriptionView<string>({\n        id: \"fruit-description\",\n        children: [h.span([], [\"Choose a fruit\"])],\n      }),\n    ],\n  });\n};\n\ndescribe(\"Native Select registry view\", () => {\n  test(\"renders labelled native select and updates value\", () => {\n    Scene.scene(\n      {\n        update: (_model: string, message: string): readonly [string, []] => [\n          message,\n          [],\n        ],\n        view,\n      },\n      Scene.with(\"apple\"),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Fruit\" })).toHaveValue(\n        \"apple\"\n      ),\n      Scene.change(Scene.role(\"combobox\", { name: \"Fruit\" }), \"banana\"),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Fruit\" })).toHaveValue(\n        \"banana\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "NativeSelect",
+      "stateful": false,
+      "origin": "shadcn",
+      "artifact": "component"
+    }
+  }
+}

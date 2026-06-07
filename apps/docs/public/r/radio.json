@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio",
+  "type": "registry:ui",
+  "title": "Radio",
+  "description": "A Base UI-informed radio group component with controlled selected value, labelled group, radio root, and indicator anatomy.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/radio/index.ts",
+      "target": "src/ui/radio/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  radioCaptionClassName,\n  radioGroupClassName,\n  radioIndicatorClassName,\n  radioItemClassName,\n  radioRootClassName,\n} from \"./view\";\n\nexport {\n  radioCaptionClassName,\n  radioGroupClassName,\n  radioIndicatorClassName,\n  radioItemClassName,\n  radioRootClassName,\n} from \"./view\";\n\nexport type RadioStyle = Readonly<Record<string, string>>;\n\nexport type GroupViewConfig = Readonly<{\n  label: string;\n  labelId: string;\n  children: readonly Html[];\n  name?: string | undefined;\n  disabled?: boolean | undefined;\n  required?: boolean | undefined;\n  className?: string | undefined;\n  style?: RadioStyle | undefined;\n}>;\n\nexport type ItemViewConfig<ParentMessage> = Readonly<{\n  value: string;\n  selectedValue: string;\n  onValueChange: ParentMessage;\n  label: string;\n  disabled?: boolean | undefined;\n  required?: boolean | undefined;\n  className?: string | undefined;\n  style?: RadioStyle | undefined;\n}>;\n\nconst classNames = (base: string, className?: string): string =>\n  [base, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nconst stateAttributes = <ParentMessage>(\n  h: ReturnType<typeof html<ParentMessage>>,\n  checked: boolean,\n  disabled: boolean,\n  required: boolean\n) => [\n  ...(checked\n    ? [h.DataAttribute(\"checked\", \"\")]\n    : [h.DataAttribute(\"unchecked\", \"\")]),\n  ...(disabled ? [h.DataAttribute(\"disabled\", \"\")] : []),\n  ...(required ? [h.DataAttribute(\"required\", \"\")] : []),\n];\n\nexport const groupView = <ParentMessage>({\n  label,\n  labelId,\n  children,\n  name,\n  disabled = false,\n  required = false,\n  className,\n  style,\n}: GroupViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.Attribute(\"role\", \"radiogroup\"),\n      h.Attribute(\"aria-labelledby\", labelId),\n      ...(name === undefined ? [] : [h.DataAttribute(\"name\", name)]),\n      ...(disabled ? [h.DataAttribute(\"disabled\", \"\")] : []),\n      ...(required ? [h.Attribute(\"aria-required\", \"true\")] : []),\n      ...(style === undefined ? [] : [h.Style(style)]),\n      h.Class(classNames(radioGroupClassName, className)),\n    ],\n    [\n      h.div([h.Id(labelId), h.Class(radioCaptionClassName)], [label]),\n      ...children,\n    ]\n  );\n};\n\nexport const itemView = <ParentMessage>({\n  value,\n  selectedValue,\n  onValueChange,\n  label,\n  disabled = false,\n  required = false,\n  className,\n  style,\n}: ItemViewConfig<ParentMessage>): Html => {\n  const h = html<ParentMessage>();\n  const checked = selectedValue === value;\n\n  return h.label(\n    [\n      ...stateAttributes(h, checked, disabled, required),\n      ...(disabled ? [] : [h.OnClick(onValueChange)]),\n      ...(style === undefined ? [] : [h.Style(style)]),\n      h.Class(classNames(radioItemClassName, className)),\n    ],\n    [\n      h.span(\n        [\n          h.Attribute(\"role\", \"radio\"),\n          h.AriaLabel(label),\n          h.Attribute(\"aria-checked\", checked ? \"true\" : \"false\"),\n          ...(disabled ? [h.Attribute(\"aria-disabled\", \"true\")] : []),\n          ...(required ? [h.Attribute(\"aria-required\", \"true\")] : []),\n          ...stateAttributes(h, checked, disabled, required),\n          ...(disabled ? [] : [h.OnClick(onValueChange)]),\n          h.Class(radioRootClassName),\n        ],\n        [\n          h.span(\n            [\n              ...stateAttributes(h, checked, disabled, required),\n              h.Class(radioIndicatorClassName),\n            ],\n            []\n          ),\n        ]\n      ),\n      h.span(disabled ? [] : [h.OnClick(onValueChange)], [label]),\n    ]\n  );\n};\n"
+    },
+    {
+      "path": "registry/default/ui/radio/view.ts",
+      "target": "src/ui/radio/view.ts",
+      "type": "registry:ui",
+      "content": "export const radioGroupClassName = \"flex flex-col gap-3\";\n\nexport const radioCaptionClassName = \"text-sm font-medium text-gray-950\";\n\nexport const radioItemClassName =\n  \"flex cursor-pointer items-center gap-2 text-sm text-gray-700 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\";\n\nexport const radioRootClassName =\n  \"flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-white transition-colors data-[checked]:border-accent-600 data-[checked]:bg-accent-600 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\";\n\nexport const radioIndicatorClassName =\n  \"h-1.5 w-1.5 rounded-full bg-current opacity-0 data-[checked]:opacity-100\";\n"
+    },
+    {
+      "path": "registry/default/ui/radio/radio.scene.test.ts",
+      "target": "src/ui/radio/radio.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Schema as S } from \"effect\";\nimport { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { describe, expect, test } from \"vitest\";\n\nimport * as Radio from \"./index\";\n\nconst SelectedApple = m(\"SelectedApple\", { value: S.String });\nconst Message = S.Union([SelectedApple]);\ntype Message = typeof Message.Type;\n\nconst view = (selectedValue: string): Html =>\n  Radio.groupView<Message>({\n    label: \"Best apple\",\n    labelId: \"best-apple-label\",\n    children: [\n      Radio.itemView<Message>({\n        value: \"fuji-apple\",\n        selectedValue,\n        label: \"Fuji\",\n        onValueChange: SelectedApple({ value: \"fuji-apple\" }),\n      }),\n      Radio.itemView<Message>({\n        value: \"gala-apple\",\n        selectedValue,\n        label: \"Gala\",\n        onValueChange: SelectedApple({ value: \"gala-apple\" }),\n      }),\n    ],\n  });\n\ndescribe(\"Radio registry view\", () => {\n  test(\"renders Base UI group and radio checked state\", () => {\n    Scene.scene(\n      {\n        update: (_model: string, message: Message): readonly [string, []] => {\n          expect(message._tag).toBe(\"SelectedApple\");\n          return [message.value, []];\n        },\n        view,\n      },\n      Scene.with(\"fuji-apple\"),\n      Scene.expect(Scene.role(\"radiogroup\", { name: \"Best apple\" })).toExist(),\n      Scene.expect(Scene.role(\"radio\", { name: \"Fuji\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      ),\n      Scene.expect(Scene.role(\"radio\", { name: \"Gala\" })).toHaveAttr(\n        \"aria-checked\",\n        \"false\"\n      ),\n      Scene.click(Scene.text(\"Gala\")),\n      Scene.expect(Scene.role(\"radio\", { name: \"Fuji\" })).toHaveAttr(\n        \"aria-checked\",\n        \"false\"\n      ),\n      Scene.expect(Scene.role(\"radio\", { name: \"Gala\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Radio",
+      "origin": "base-ui",
+      "artifact": "component",
+      "stateful": true
+    }
+  }
+}

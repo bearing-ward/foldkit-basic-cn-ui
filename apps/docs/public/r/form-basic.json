@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-basic",
+  "type": "registry:example",
+  "title": "Form Basic",
+  "description": "A runnable Foldkit version of the Base UI Form default Homepage example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["form"],
+  "files": [
+    {
+      "path": "registry/default/examples/form-basic/main.ts",
+      "target": "src/examples/form-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Form from \"../../ui/form\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  homepage: S.String,\n  submitted: S.Boolean,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedHomepage = m(\"UpdatedHomepage\", { value: S.String });\nexport const SubmittedHomepage = m(\"SubmittedHomepage\");\n\nexport const Message = S.Union([UpdatedHomepage, SubmittedHomepage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ homepage: \"https://example.com\", submitted: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedHomepage: ({ value }) => [\n        evo(model, { homepage: () => value, submitted: () => false }),\n        [],\n      ],\n      SubmittedHomepage: () => [evo(model, { submitted: () => true }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const inputId = \"homepage\";\n  const errorId = \"homepage-error\";\n  const invalid =\n    model.submitted && model.homepage.trim() === \"https://example.com\";\n\n  return Form.rootView<Message>({\n    onSubmit: SubmittedHomepage(),\n    invalid,\n    children: [\n      Form.fieldView<Message>({\n        invalid,\n        children: [\n          Form.labelView<Message>({\n            forId: inputId,\n            children: [h.span([], [\"Homepage\"])],\n          }),\n          Form.controlView<Message>({\n            id: inputId,\n            name: \"homepage\",\n            type: \"url\",\n            value: model.homepage,\n            onInput: (value) => UpdatedHomepage({ value }),\n            ariaLabel: \"Homepage\",\n            describedById: errorId,\n            invalid,\n          }),\n          Form.errorView<Message>({\n            id: errorId,\n            show: invalid,\n            children: [h.span([], [\"Use a domain other than example.com\"])],\n          }),\n        ],\n      }),\n      Form.submitView<Message>({ children: [h.span([], [\"Submit\"])] }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/form-basic/entry.ts",
+      "target": "src/examples/form-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Form Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/form-basic/index.html",
+      "target": "src/examples/form-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Form Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/default/examples/form-basic/form-basic.scene.test.ts",
+      "target": "src/examples/form-basic/form-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as FormBasicExample from \"./main\";\n\ndescribe(\"Form Basic example\", () => {\n  test(\"matches the Base UI default Homepage submission example\", () => {\n    Scene.scene(\n      { update: FormBasicExample.update, view: FormBasicExample.view },\n      Scene.with(FormBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Homepage\" })).toHaveValue(\n        \"https://example.com\"\n      ),\n      Scene.expect(\n        Scene.text(\"Use a domain other than example.com\")\n      ).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Submit\" })),\n      Scene.expect(Scene.text(\"Use a domain other than example.com\")).toExist(),\n      Scene.type(\n        Scene.role(\"textbox\", { name: \"Homepage\" }),\n        \"https://foldkit.dev\"\n      ),\n      Scene.expect(\n        Scene.text(\"Use a domain other than example.com\")\n      ).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Form",
+      "example": "basic",
+      "originExample": "form-default-homepage"
+    }
+  }
+}

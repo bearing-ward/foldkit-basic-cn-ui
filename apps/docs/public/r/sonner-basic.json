@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner-basic",
+  "type": "registry:example",
+  "title": "Sonner Basic",
+  "description": "A runnable Foldkit example showing the shadcn Sonner Basic pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["sonner"],
+  "files": [
+    {
+      "path": "registry/default/examples/sonner-basic/main.ts",
+      "target": "src/examples/sonner-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Sonner from \"../../ui/sonner\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  visible: S.Boolean,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedShowToast = m(\"ClickedShowToast\");\nexport const ClickedDismissToast = m(\"ClickedDismissToast\");\nexport const Message = S.Union([ClickedShowToast, ClickedDismissToast]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ visible: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedShowToast: () => [evo(model, { visible: () => true }), []],\n      ClickedDismissToast: () => [evo(model, { visible: () => false }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"min-h-40\")],\n    [\n      h.button(\n        [\n          h.Type(\"button\"),\n          h.OnClick(ClickedShowToast()),\n          h.Class(\n            \"rounded-md bg-gray-950 px-4 py-2 text-sm font-medium text-white\"\n          ),\n        ],\n        [\"Show toast\"]\n      ),\n      Sonner.viewportView<Message>({\n        children: model.visible\n          ? [\n              Sonner.toastView<Message>({\n                title: \"Event has been created\",\n                description: \"Sunday, December 03, 2023 at 9:00 AM\",\n                onClose: ClickedDismissToast(),\n              }),\n            ]\n          : [],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/sonner-basic/sonner-basic.scene.test.ts",
+      "target": "src/examples/sonner-basic/sonner-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as SonnerBasicExample from \"./main\";\n\ndescribe(\"Sonner Basic example\", () => {\n  test(\"shows and dismisses a toast\", () => {\n    Scene.scene(\n      {\n        update: SonnerBasicExample.update,\n        view: SonnerBasicExample.view,\n      },\n      Scene.with(SonnerBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"status\")).toBeAbsent(),\n      Scene.click(Scene.role(\"button\", { name: \"Show toast\" })),\n      Scene.expect(Scene.role(\"status\")).toExist(),\n      Scene.expect(Scene.text(\"Event has been created\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Dismiss toast\" })),\n      Scene.expect(Scene.role(\"status\")).toBeAbsent()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Sonner",
+      "example": "basic"
+    }
+  }
+}

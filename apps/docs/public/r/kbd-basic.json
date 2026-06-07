@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-basic",
+  "type": "registry:example",
+  "title": "Kbd Basic",
+  "description": "A runnable Foldkit example showing the Kbd component with parent-owned example state.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["kbd"],
+  "files": [
+    {
+      "path": "registry/default/examples/kbd-basic/main.ts",
+      "target": "src/examples/kbd-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Kbd from \"../../ui/kbd\";\n\n// MODEL\n\nexport const KbdMode = S.Union([S.Literal(\"Mac\"), S.Literal(\"Windows\")]);\n\nexport const Model = S.Struct({\n  mode: KbdMode,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedToggleKbdExample = m(\"ClickedToggleKbdExample\");\n\nexport const Message = S.Union([ClickedToggleKbdExample]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ mode: \"Mac\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedToggleKbdExample: () => [\n        evo(model, {\n          mode: (mode) => (mode === \"Mac\" ? \"Windows\" : \"Mac\"),\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst buttonClassName =\n  \"inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600\";\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-4\")],\n    [\n      h.div(\n        [h.Class(\"space-y-4\")],\n        [\n          h.div(\n            [h.Class(\"flex items-center gap-3\")],\n            [\n              h.span([h.Class(\"text-sm text-gray-600\")], [\"Command menu\"]),\n              Kbd.groupView<Message>([\n                Kbd.view<Message>({\n                  label: model.mode === \"Mac\" ? \"Cmd\" : \"Ctrl\",\n                }),\n                h.span([h.Class(\"text-sm text-gray-400\")], [\"+\"]),\n                Kbd.view<Message>({ label: \"K\" }),\n              ]),\n            ]\n          ),\n          h.div(\n            [h.Class(\"flex items-center gap-3\")],\n            [\n              h.span([h.Class(\"text-sm text-gray-600\")], [\"Dismiss\"]),\n              Kbd.view<Message>({ label: \"Esc\", size: \"Small\" }),\n            ]\n          ),\n          h.button(\n            [h.OnClick(ClickedToggleKbdExample()), h.Class(buttonClassName)],\n            [\"Switch platform\"]\n          ),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/kbd-basic/kbd-basic.scene.test.ts",
+      "target": "src/examples/kbd-basic/kbd-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as KbdBasicExample from \"./main\";\n\ndescribe(\"Kbd Basic example\", () => {\n  test(\"renders and updates the parent-owned example state\", () => {\n    Scene.scene(\n      { update: KbdBasicExample.update, view: KbdBasicExample.view },\n      Scene.with(KbdBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"Cmd\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Switch platform\" })),\n      Scene.expect(Scene.text(\"Ctrl\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Kbd",
+      "example": "basic"
+    }
+  }
+}

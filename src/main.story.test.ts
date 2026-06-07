@@ -3,17 +3,69 @@ import { Calendar, Story, Ui } from "foldkit";
 import { fromString } from "foldkit/url";
 import { describe, expect, test } from "vitest";
 
+import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
+import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
+import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
+import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
+import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
+import * as AspectRatioRtlExample from "../registry/default/examples/aspect-ratio-rtl/main";
+import * as AspectRatioSquareExample from "../registry/default/examples/aspect-ratio-square/main";
+import * as AutocompleteBasicExample from "../registry/default/examples/autocomplete-basic/main";
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
+import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
+import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
+import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
+import * as BreadcrumbLinkExample from "../registry/default/examples/breadcrumb-link/main";
+import * as BreadcrumbRtlExample from "../registry/default/examples/breadcrumb-rtl/main";
+import * as BreadcrumbSeparatorExample from "../registry/default/examples/breadcrumb-separator/main";
 import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
 import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
+import * as ButtonGroupBasicExample from "../registry/default/examples/button-group-basic/main";
+import * as ButtonGroupInputGroupExample from "../registry/default/examples/button-group-input-group/main";
+import * as ButtonGroupInputExample from "../registry/default/examples/button-group-input/main";
+import * as ButtonGroupNestedExample from "../registry/default/examples/button-group-nested/main";
+import * as ButtonGroupOrientationExample from "../registry/default/examples/button-group-orientation/main";
+import * as ButtonGroupPopoverExample from "../registry/default/examples/button-group-popover/main";
+import * as ButtonGroupRtlExample from "../registry/default/examples/button-group-rtl/main";
+import * as ButtonGroupSelectExample from "../registry/default/examples/button-group-select/main";
+import * as ButtonGroupSeparatorExample from "../registry/default/examples/button-group-separator/main";
+import * as ButtonGroupSizeExample from "../registry/default/examples/button-group-size/main";
+import * as ButtonGroupSplitExample from "../registry/default/examples/button-group-split/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
+import * as CardBasicExample from "../registry/default/examples/card-basic/main";
+import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
+import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
+import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
+import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
+import * as CarouselSizesExample from "../registry/default/examples/carousel-sizes/main";
+import * as CarouselSpacingExample from "../registry/default/examples/carousel-spacing/main";
+import * as ChartAxisExample from "../registry/default/examples/chart-axis/main";
+import * as ChartBasicExample from "../registry/default/examples/chart-basic/main";
+import * as ChartGridExample from "../registry/default/examples/chart-grid/main";
+import * as ChartLegendExample from "../registry/default/examples/chart-legend/main";
+import * as ChartRtlExample from "../registry/default/examples/chart-rtl/main";
+import * as ChartTooltipExample from "../registry/default/examples/chart-tooltip/main";
 import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
+import * as CheckboxGroupBasicExample from "../registry/default/examples/checkbox-group-basic/main";
 import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
+import * as CollapsibleBasicExample from "../registry/default/examples/collapsible-basic/main";
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
+import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
+import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
+import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
+import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
+import * as DataTablePaginationExample from "../registry/default/examples/data-table-pagination/main";
+import * as DataTableRowActionsExample from "../registry/default/examples/data-table-row-actions/main";
+import * as DataTableRowSelectionExample from "../registry/default/examples/data-table-row-selection/main";
+import * as DataTableSortingExample from "../registry/default/examples/data-table-sorting/main";
+import * as DataTableVisibilityExample from "../registry/default/examples/data-table-visibility/main";
 import * as DatePickerBasicExample from "../registry/default/examples/date-picker-basic/main";
 import * as DatePickerBoundsExample from "../registry/default/examples/date-picker-bounds/main";
 import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
@@ -21,38 +73,82 @@ import * as DialogBasicExample from "../registry/default/examples/dialog-basic/m
 import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
 import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
 import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
+import * as DirectionBasicExample from "../registry/default/examples/direction-basic/main";
 import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
 import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
 import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-drop-basic/main";
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
+import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
+import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as EmptyBasicExample from "../registry/default/examples/empty-basic/main";
+import * as EmptyInputGroupExample from "../registry/default/examples/empty-input-group/main";
+import * as FieldBasicExample from "../registry/default/examples/field-basic/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
 import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
 import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
+import * as FormBasicExample from "../registry/default/examples/form-basic/main";
+import * as HoverCardBasicExample from "../registry/default/examples/hover-card-basic/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
+import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
+import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
+import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
+import * as ItemGroupExample from "../registry/default/examples/item-group/main";
+import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
+import * as ItemIconExample from "../registry/default/examples/item-icon/main";
+import * as ItemImageExample from "../registry/default/examples/item-image/main";
+import * as ItemLinkExample from "../registry/default/examples/item-link/main";
+import * as ItemRtlExample from "../registry/default/examples/item-rtl/main";
+import * as ItemSizeExample from "../registry/default/examples/item-size/main";
+import * as ItemVariantExample from "../registry/default/examples/item-variant/main";
+import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
+import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
 import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
+import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
+import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
+import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
+import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
+import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
+import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
+import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
+import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
+import * as ProgressBasicExample from "../registry/default/examples/progress-basic/main";
+import * as RadioBasicExample from "../registry/default/examples/radio-basic/main";
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
+import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
+import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-area-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
+import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
+import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
+import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
+import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
 import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
+import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
+import * as TableBasicExample from "../registry/default/examples/table-basic/main";
 import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main";
 import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
 import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
 import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
 import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
 import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
+import * as ToggleBasicExample from "../registry/default/examples/toggle-basic/main";
+import * as ToggleGroupBasicExample from "../registry/default/examples/toggle-group-basic/main";
+import * as ToolbarBasicExample from "../registry/default/examples/toolbar-basic/main";
 import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
 import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
+import * as TypographyBasicExample from "../registry/default/examples/typography-basic/main";
 import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
 import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
@@ -62,14 +158,102 @@ import { GotMobileMenuDialogMessage } from "./ui/message";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [accordionBasicExample] = AccordionBasicExample.init();
+const [accordionMultipleExample] = AccordionMultipleExample.init();
+const [alertBasicExample] = AlertBasicExample.init();
+const [alertDestructiveExample] = AlertDestructiveExample.init();
+const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
+const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
+const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
+const [aspectRatioRtlExample] = AspectRatioRtlExample.init();
+const [alertDialogBasicExample] = AlertDialogBasicExample.init();
+const [drawerBasicExample] = DrawerBasicExample.init();
+const [contextMenuBasicExample] = ContextMenuBasicExample.init();
+const [menubarBasicExample] = MenubarBasicExample.init();
+const [navigationMenuBasicExample] = NavigationMenuBasicExample.init();
+const [otpFieldBasicExample] = OtpFieldBasicExample.init();
+const [previewCardBasicExample] = PreviewCardBasicExample.init();
+const [autocompleteBasicExample] = AutocompleteBasicExample.init();
+const [collapsibleBasicExample] = CollapsibleBasicExample.init();
+const [fieldBasicExample] = FieldBasicExample.init();
+const [formBasicExample] = FormBasicExample.init();
+const [numberFieldBasicExample] = NumberFieldBasicExample.init();
 const [animationBasicExample] = AnimationBasicExample.init();
 const [avatarBasicExample] = AvatarBasicExample.init();
 const [badgeBasicExample] = BadgeBasicExample.init();
+const [badgeSpinnerExample] = BadgeSpinnerExample.init();
+const [carouselBasicExample] = CarouselBasicExample.init();
+const [carouselSizesExample] = CarouselSizesExample.init();
+const [carouselSpacingExample] = CarouselSpacingExample.init();
+const [carouselOrientationExample] = CarouselOrientationExample.init();
+const [carouselApiExample] = CarouselApiExample.init();
+const [carouselRtlExample] = CarouselRtlExample.init();
+const [chartBasicExample] = ChartBasicExample.init();
+const [chartGridExample] = ChartGridExample.init();
+const [chartAxisExample] = ChartAxisExample.init();
+const [chartTooltipExample] = ChartTooltipExample.init();
+const [chartLegendExample] = ChartLegendExample.init();
+const [chartRtlExample] = ChartRtlExample.init();
+const [commandBasicExample] = CommandBasicExample.init();
+const [dropdownMenuBasicExample] = DropdownMenuBasicExample.init();
+const [hoverCardBasicExample] = HoverCardBasicExample.init();
+const [inputOtpBasicExample] = InputOtpBasicExample.init();
+const [nativeSelectBasicExample] = NativeSelectBasicExample.init();
+const [sheetBasicExample] = SheetBasicExample.init();
+const [sonnerBasicExample] = SonnerBasicExample.init();
+const [dataTableBasicExample] = DataTableBasicExample.init();
+const [dataTableRowActionsExample] = DataTableRowActionsExample.init();
+const [dataTablePaginationExample] = DataTablePaginationExample.init();
+const [dataTableSortingExample] = DataTableSortingExample.init();
+const [dataTableFilteringExample] = DataTableFilteringExample.init();
+const [dataTableVisibilityExample] = DataTableVisibilityExample.init();
+const [dataTableRowSelectionExample] = DataTableRowSelectionExample.init();
+const [itemAvatarExample] = ItemAvatarExample.init();
+const [itemBasicExample] = ItemBasicExample.init();
+const [itemGroupExample] = ItemGroupExample.init();
+const [itemHeaderExample] = ItemHeaderExample.init();
+const [itemIconExample] = ItemIconExample.init();
+const [itemImageExample] = ItemImageExample.init();
+const [itemLinkExample] = ItemLinkExample.init();
+const [itemRtlExample] = ItemRtlExample.init();
+const [itemSizeExample] = ItemSizeExample.init();
+const [itemVariantExample] = ItemVariantExample.init();
+const [labelBasicExample] = LabelBasicExample.init();
+const [paginationBasicExample] = PaginationBasicExample.init();
+const [resizableBasicExample] = ResizableBasicExample.init();
+const [sidebarBasicExample] = SidebarBasicExample.init();
+const [tableBasicExample] = TableBasicExample.init();
+const [cardBasicExample] = CardBasicExample.init();
+const [separatorBasicExample] = SeparatorBasicExample.init();
+const [skeletonBasicExample] = SkeletonBasicExample.init();
+const [kbdBasicExample] = KbdBasicExample.init();
+const [kbdInputGroupExample] = KbdInputGroupExample.init();
+const [typographyBasicExample] = TypographyBasicExample.init();
+const [emptyBasicExample] = EmptyBasicExample.init();
+const [emptyInputGroupExample] = EmptyInputGroupExample.init();
+const [breadcrumbBasicExample] = BreadcrumbBasicExample.init();
+const [breadcrumbSeparatorExample] = BreadcrumbSeparatorExample.init();
+const [breadcrumbDropdownExample] = BreadcrumbDropdownExample.init();
+const [breadcrumbCollapsedExample] = BreadcrumbCollapsedExample.init();
+const [breadcrumbLinkExample] = BreadcrumbLinkExample.init();
+const [breadcrumbRtlExample] = BreadcrumbRtlExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
+const [buttonGroupBasicExample] = ButtonGroupBasicExample.init();
+const [buttonGroupOrientationExample] = ButtonGroupOrientationExample.init();
+const [buttonGroupSizeExample] = ButtonGroupSizeExample.init();
+const [buttonGroupNestedExample] = ButtonGroupNestedExample.init();
+const [buttonGroupSeparatorExample] = ButtonGroupSeparatorExample.init();
+const [buttonGroupSplitExample] = ButtonGroupSplitExample.init();
+const [buttonGroupInputExample] = ButtonGroupInputExample.init();
+const [buttonGroupInputGroupExample] = ButtonGroupInputGroupExample.init();
+const [buttonGroupSelectExample] = ButtonGroupSelectExample.init();
+const [buttonGroupPopoverExample] = ButtonGroupPopoverExample.init();
+const [buttonGroupRtlExample] = ButtonGroupRtlExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
 const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
+const [checkboxGroupBasicExample] = CheckboxGroupBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
@@ -80,6 +264,7 @@ const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
 const [dialogFocusExample] = DialogFocusExample.init();
 const [dialogScrollableExample] = DialogScrollableExample.init();
+const [directionBasicExample] = DirectionBasicExample.init();
 const [disclosureBasicExample] = DisclosureBasicExample.init();
 const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
@@ -90,6 +275,13 @@ const [fileDropBasicExample] = FileDropBasicExample.init();
 const [fileDropDisabledExample] = FileDropDisabledExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
+const [meterBasicExample] = MeterBasicExample.init();
+const [scrollAreaBasicExample] = ScrollAreaBasicExample.init();
+const [toggleBasicExample] = ToggleBasicExample.init();
+const [toggleGroupBasicExample] = ToggleGroupBasicExample.init();
+const [radioBasicExample] = RadioBasicExample.init();
+const [toolbarBasicExample] = ToolbarBasicExample.init();
+const [progressBasicExample] = ProgressBasicExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
 const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
@@ -118,14 +310,87 @@ const [virtualListVariableExample] = VirtualListVariableExample.init();
 const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
+  accordionBasicExample,
+  accordionMultipleExample,
+  alertBasicExample,
+  alertDestructiveExample,
+  aspectRatioBasicExample,
+  aspectRatioSquareExample,
+  aspectRatioPortraitExample,
+  aspectRatioRtlExample,
+  alertDialogBasicExample,
+  drawerBasicExample,
+  contextMenuBasicExample,
+  menubarBasicExample,
+  navigationMenuBasicExample,
+  otpFieldBasicExample,
+  previewCardBasicExample,
+  autocompleteBasicExample,
+  collapsibleBasicExample,
+  fieldBasicExample,
+  formBasicExample,
+  numberFieldBasicExample,
   animationBasicExample,
   avatarBasicExample,
   badgeBasicExample,
+  badgeSpinnerExample,
+  carouselBasicExample,
+  carouselSizesExample,
+  carouselSpacingExample,
+  carouselOrientationExample,
+  carouselApiExample,
+  carouselRtlExample,
+  chartBasicExample,
+  chartGridExample,
+  chartAxisExample,
+  chartTooltipExample,
+  chartLegendExample,
+  chartRtlExample,
+  commandBasicExample,
+  dropdownMenuBasicExample,
+  hoverCardBasicExample,
+  inputOtpBasicExample,
+  nativeSelectBasicExample,
+  sheetBasicExample,
+  sonnerBasicExample,
+  dataTableBasicExample,
+  dataTableRowActionsExample,
+  dataTablePaginationExample,
+  dataTableSortingExample,
+  dataTableFilteringExample,
+  dataTableVisibilityExample,
+  dataTableRowSelectionExample,
+  cardBasicExample,
+  separatorBasicExample,
+  skeletonBasicExample,
+  kbdBasicExample,
+  kbdInputGroupExample,
+  typographyBasicExample,
+  emptyBasicExample,
+  emptyInputGroupExample,
+  breadcrumbBasicExample,
+  breadcrumbSeparatorExample,
+  breadcrumbDropdownExample,
+  breadcrumbCollapsedExample,
+  breadcrumbLinkExample,
+  breadcrumbRtlExample,
   buttonBasicExample,
   buttonDisabledExample,
+  buttonGroupBasicExample,
+  buttonGroupOrientationExample,
+  buttonGroupSizeExample,
+  buttonGroupNestedExample,
+  buttonGroupSeparatorExample,
+  buttonGroupSplitExample,
+  buttonGroupInputExample,
+  buttonGroupInputGroupExample,
+  buttonGroupSelectExample,
+  buttonGroupPopoverExample,
+  buttonGroupRtlExample,
   calendarBasicExample,
   calendarBoundsExample,
   checkboxBasicExample,
+  checkboxGroupBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
   comboboxMultiExample,
@@ -136,6 +401,22 @@ const initialModel: Model = {
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  directionBasicExample,
+  itemAvatarExample,
+  itemBasicExample,
+  itemGroupExample,
+  itemHeaderExample,
+  itemIconExample,
+  itemImageExample,
+  itemLinkExample,
+  itemRtlExample,
+  itemSizeExample,
+  itemVariantExample,
+  labelBasicExample,
+  paginationBasicExample,
+  resizableBasicExample,
+  sidebarBasicExample,
+  tableBasicExample,
   disclosureBasicExample,
   disclosureDisabledExample,
   dragAndDropBasicExample,
@@ -146,6 +427,13 @@ const initialModel: Model = {
   fileDropDisabledExample,
   inputBasicExample,
   inputDisabledExample,
+  meterBasicExample,
+  scrollAreaBasicExample,
+  toggleBasicExample,
+  toggleGroupBasicExample,
+  radioBasicExample,
+  toolbarBasicExample,
+  progressBasicExample,
   listboxBasicExample,
   listboxAnimatedExample,
   menuBasicExample,
@@ -200,6 +488,1800 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("Button");
+        })
+      );
+    });
+
+    test("/docs/components/accordion resolves to AccordionDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/accordion"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AccordionDocs");
+        })
+      );
+    });
+
+    test("/docs/components/accordion/examples/basic resolves to AccordionBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/accordion/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AccordionBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/accordion/examples/multiple resolves to AccordionMultipleExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/accordion/examples/multiple"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AccordionMultipleExample");
+        })
+      );
+    });
+
+    test("/examples/accordion-multiple resolves to AccordionMultipleExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/accordion-multiple"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AccordionMultipleExample");
+        })
+      );
+    });
+
+    test("/docs/components/collapsible resolves to CollapsibleDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/collapsible"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CollapsibleDocs");
+        })
+      );
+    });
+
+    test("/docs/components/collapsible/examples/basic resolves to CollapsibleBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/collapsible/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CollapsibleBasicExample");
+        })
+      );
+    });
+
+    test("/examples/collapsible-basic resolves to CollapsibleBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/collapsible-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CollapsibleBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/alert-dialog resolves to AlertDialogDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/alert-dialog"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertDialogDocs");
+        })
+      );
+    });
+
+    test("/docs/components/alert resolves to AlertDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/alert"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertDocs");
+        })
+      );
+    });
+
+    test("/docs/components/alert/examples/basic resolves to AlertBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/alert/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/alert/examples/destructive resolves to AlertDestructiveExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/alert/examples/destructive"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertDestructiveExample");
+        })
+      );
+    });
+
+    test("/examples/alert-basic resolves to AlertBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/alert-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertBasicExample");
+        })
+      );
+    });
+
+    test("/examples/alert-destructive resolves to AlertDestructiveExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/alert-destructive"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertDestructiveExample");
+        })
+      );
+    });
+
+    test("/docs/components/aspect-ratio resolves to AspectRatioDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/aspect-ratio"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioDocs");
+        })
+      );
+    });
+
+    test("/docs/components/aspect-ratio/examples/basic resolves to AspectRatioBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/aspect-ratio/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/aspect-ratio/examples/square resolves to AspectRatioSquareExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/aspect-ratio/examples/square"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioSquareExample");
+        })
+      );
+    });
+
+    test("/docs/components/aspect-ratio/examples/portrait resolves to AspectRatioPortraitExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/aspect-ratio/examples/portrait"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioPortraitExample");
+        })
+      );
+    });
+
+    test("/docs/components/aspect-ratio/examples/rtl resolves to AspectRatioRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/aspect-ratio/examples/rtl"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioRtlExample");
+        })
+      );
+    });
+
+    test("/examples/aspect-ratio-basic resolves to AspectRatioBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/aspect-ratio-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioBasicExample");
+        })
+      );
+    });
+
+    test("/examples/aspect-ratio-square resolves to AspectRatioSquareExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/aspect-ratio-square"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioSquareExample");
+        })
+      );
+    });
+
+    test("/examples/aspect-ratio-portrait resolves to AspectRatioPortraitExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/aspect-ratio-portrait"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioPortraitExample");
+        })
+      );
+    });
+
+    test("/examples/aspect-ratio-rtl resolves to AspectRatioRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/aspect-ratio-rtl"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AspectRatioRtlExample");
+        })
+      );
+    });
+
+    test("/docs/components/breadcrumb resolves to BreadcrumbDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/breadcrumb"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BreadcrumbDocs");
+        })
+      );
+    });
+
+    test("/docs/components/breadcrumb/examples/basic resolves to BreadcrumbBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/breadcrumb/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BreadcrumbBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/breadcrumb/examples/dropdown resolves to BreadcrumbDropdownExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/breadcrumb/examples/dropdown"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BreadcrumbDropdownExample");
+        })
+      );
+    });
+
+    test("/examples/breadcrumb-basic resolves to BreadcrumbBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/breadcrumb-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BreadcrumbBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/button-group resolves to ButtonGroupDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/button-group"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonGroupDocs");
+        })
+      );
+    });
+
+    test("/docs/components/button-group/examples/basic resolves to ButtonGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/button-group/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonGroupBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/button-group/examples/popover resolves to ButtonGroupPopoverExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/button-group/examples/popover"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonGroupPopoverExample");
+        })
+      );
+    });
+
+    test("/examples/button-group-basic resolves to ButtonGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/button-group-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ButtonGroupBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/carousel resolves to CarouselDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/carousel"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CarouselDocs");
+        })
+      );
+    });
+
+    test("/docs/components/carousel/examples/basic resolves to CarouselBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/carousel/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CarouselBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/carousel/examples/api resolves to CarouselApiExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/carousel/examples/api"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CarouselApiExample");
+        })
+      );
+    });
+
+    test("/examples/carousel-basic resolves to CarouselBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/carousel-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CarouselBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/direction resolves to DirectionDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/direction"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DirectionDocs");
+        })
+      );
+    });
+
+    test("/docs/components/direction/examples/basic resolves to DirectionBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/direction/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DirectionBasicExample");
+        })
+      );
+    });
+
+    test("/examples/direction-basic resolves to DirectionBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/direction-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DirectionBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/item resolves to ItemDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/item"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ItemDocs");
+        })
+      );
+    });
+
+    test("/docs/components/item/examples/basic resolves to ItemBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/item/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ItemBasicExample");
+        })
+      );
+    });
+
+    test("/examples/item-basic resolves to ItemBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/item-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ItemBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/label resolves to LabelDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/label"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("LabelDocs");
+        })
+      );
+    });
+
+    test("/docs/components/label/examples/basic resolves to LabelBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/label/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("LabelBasicExample");
+        })
+      );
+    });
+
+    test("/examples/label-basic resolves to LabelBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/label-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("LabelBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/pagination resolves to PaginationDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/pagination"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PaginationDocs");
+        })
+      );
+    });
+
+    test("/docs/components/pagination/examples/basic resolves to PaginationBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/pagination/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PaginationBasicExample");
+        })
+      );
+    });
+
+    test("/examples/pagination-basic resolves to PaginationBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/pagination-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PaginationBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/resizable resolves to ResizableDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/resizable"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableDocs");
+        })
+      );
+    });
+
+    test("/docs/components/resizable/examples/basic resolves to ResizableBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/resizable/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableBasicExample");
+        })
+      );
+    });
+
+    test("/examples/resizable-basic resolves to ResizableBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/resizable-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/sidebar resolves to SidebarDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/sidebar"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarDocs");
+        })
+      );
+    });
+
+    test("/docs/components/sidebar/examples/basic resolves to SidebarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sidebar/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarBasicExample");
+        })
+      );
+    });
+
+    test("/examples/sidebar-basic resolves to SidebarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sidebar-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/table resolves to TableDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/table"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TableDocs");
+        })
+      );
+    });
+
+    test("/docs/components/table/examples/basic resolves to TableBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/table/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TableBasicExample");
+        })
+      );
+    });
+
+    test("/examples/table-basic resolves to TableBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/table-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("TableBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/command resolves to CommandDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/command"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CommandDocs");
+        })
+      );
+    });
+
+    test("/docs/components/command/examples/basic resolves to CommandBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/command/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CommandBasicExample");
+        })
+      );
+    });
+
+    test("/examples/command-basic resolves to CommandBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/command-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CommandBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/dropdown-menu resolves to DropdownMenuDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/dropdown-menu"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DropdownMenuDocs");
+        })
+      );
+    });
+
+    test("/docs/components/dropdown-menu/examples/basic resolves to DropdownMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/dropdown-menu/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DropdownMenuBasicExample");
+        })
+      );
+    });
+
+    test("/examples/dropdown-menu-basic resolves to DropdownMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/dropdown-menu-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DropdownMenuBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/hover-card resolves to HoverCardDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/hover-card"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("HoverCardDocs");
+        })
+      );
+    });
+
+    test("/docs/components/hover-card/examples/basic resolves to HoverCardBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/hover-card/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("HoverCardBasicExample");
+        })
+      );
+    });
+
+    test("/examples/hover-card-basic resolves to HoverCardBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/hover-card-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("HoverCardBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/input-otp resolves to InputOtpDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/input-otp"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputOtpDocs");
+        })
+      );
+    });
+
+    test("/docs/components/input-otp/examples/basic resolves to InputOtpBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/input-otp/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputOtpBasicExample");
+        })
+      );
+    });
+
+    test("/examples/input-otp-basic resolves to InputOtpBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/input-otp-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputOtpBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/native-select resolves to NativeSelectDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/native-select"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectDocs");
+        })
+      );
+    });
+
+    test("/docs/components/native-select/examples/basic resolves to NativeSelectBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/native-select/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectBasicExample");
+        })
+      );
+    });
+
+    test("/examples/native-select-basic resolves to NativeSelectBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/native-select-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/sheet resolves to SheetDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/sheet"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SheetDocs");
+        })
+      );
+    });
+
+    test("/docs/components/sheet/examples/basic resolves to SheetBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sheet/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SheetBasicExample");
+        })
+      );
+    });
+
+    test("/examples/sheet-basic resolves to SheetBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sheet-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SheetBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/sonner resolves to SonnerDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/sonner"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SonnerDocs");
+        })
+      );
+    });
+
+    test("/docs/components/sonner/examples/basic resolves to SonnerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sonner/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SonnerBasicExample");
+        })
+      );
+    });
+
+    test("/examples/sonner-basic resolves to SonnerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sonner-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SonnerBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/data-table resolves to DataTableDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/data-table"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DataTableDocs");
+        })
+      );
+    });
+
+    test("/docs/components/data-table/examples/basic resolves to DataTableBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/data-table/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DataTableBasicExample");
+        })
+      );
+    });
+
+    test("/examples/data-table-basic resolves to DataTableBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/data-table-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DataTableBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/chart resolves to ChartDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/chart"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ChartDocs");
+        })
+      );
+    });
+
+    test("/docs/components/chart/examples/basic resolves to ChartBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/chart/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ChartBasicExample");
+        })
+      );
+    });
+
+    test("/examples/chart-basic resolves to ChartBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/chart-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ChartBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/alert-dialog/examples/basic resolves to AlertDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/alert-dialog/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertDialogBasicExample");
+        })
+      );
+    });
+
+    test("/examples/alert-dialog-basic resolves to AlertDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/alert-dialog-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertDialogBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/drawer resolves to DrawerDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/drawer"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DrawerDocs");
+        })
+      );
+    });
+
+    test("/docs/components/drawer/examples/basic resolves to DrawerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/drawer/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DrawerBasicExample");
+        })
+      );
+    });
+
+    test("/examples/drawer-basic resolves to DrawerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/drawer-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("DrawerBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/context-menu resolves to ContextMenuDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/context-menu"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ContextMenuDocs");
+        })
+      );
+    });
+
+    test("/docs/components/context-menu/examples/basic resolves to ContextMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/context-menu/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ContextMenuBasicExample");
+        })
+      );
+    });
+
+    test("/examples/context-menu-basic resolves to ContextMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/context-menu-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ContextMenuBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/menubar resolves to MenubarDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/menubar"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenubarDocs");
+        })
+      );
+    });
+
+    test("/docs/components/menubar/examples/basic resolves to MenubarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/menubar/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenubarBasicExample");
+        })
+      );
+    });
+
+    test("/examples/menubar-basic resolves to MenubarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/menubar-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MenubarBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/navigation-menu resolves to NavigationMenuDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/navigation-menu"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NavigationMenuDocs");
+        })
+      );
+    });
+
+    test("/docs/components/navigation-menu/examples/basic resolves to NavigationMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/navigation-menu/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NavigationMenuBasicExample");
+        })
+      );
+    });
+
+    test("/examples/navigation-menu-basic resolves to NavigationMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/navigation-menu-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NavigationMenuBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/otp-field resolves to OtpFieldDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/otp-field"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("OtpFieldDocs");
+        })
+      );
+    });
+
+    test("/docs/components/otp-field/examples/basic resolves to OtpFieldBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/otp-field/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("OtpFieldBasicExample");
+        })
+      );
+    });
+
+    test("/examples/otp-field-basic resolves to OtpFieldBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/otp-field-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("OtpFieldBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/preview-card resolves to PreviewCardDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/preview-card"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PreviewCardDocs");
+        })
+      );
+    });
+
+    test("/docs/components/preview-card/examples/basic resolves to PreviewCardBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/preview-card/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PreviewCardBasicExample");
+        })
+      );
+    });
+
+    test("/examples/preview-card-basic resolves to PreviewCardBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/preview-card-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("PreviewCardBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/field resolves to FieldDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/field"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldDocs");
+        })
+      );
+    });
+
+    test("/docs/components/field/examples/basic resolves to FieldBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/field/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldBasicExample");
+        })
+      );
+    });
+
+    test("/examples/field-basic resolves to FieldBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/field-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FieldBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/number-field resolves to NumberFieldDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/number-field"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NumberFieldDocs");
+        })
+      );
+    });
+
+    test("/docs/components/number-field/examples/basic resolves to NumberFieldBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/number-field/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NumberFieldBasicExample");
+        })
+      );
+    });
+
+    test("/examples/number-field-basic resolves to NumberFieldBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/number-field-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NumberFieldBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/form resolves to FormDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/form"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FormDocs");
+        })
+      );
+    });
+
+    test("/docs/components/form/examples/basic resolves to FormBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/form/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FormBasicExample");
+        })
+      );
+    });
+
+    test("/examples/form-basic resolves to FormBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/form-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("FormBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/autocomplete resolves to AutocompleteDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/autocomplete"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AutocompleteDocs");
+        })
+      );
+    });
+
+    test("/docs/components/autocomplete/examples/basic resolves to AutocompleteBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/autocomplete/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AutocompleteBasicExample");
+        })
+      );
+    });
+
+    test("/examples/autocomplete-basic resolves to AutocompleteBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/autocomplete-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AutocompleteBasicExample");
         })
       );
     });
@@ -970,6 +3052,38 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/checkbox-group resolves to CheckboxGroupDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/checkbox-group"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxGroupDocs");
+        })
+      );
+    });
+
+    test("/docs/components/checkbox-group/examples/basic resolves to CheckboxGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/checkbox-group/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CheckboxGroupBasicExample");
+        })
+      );
+    });
+
     test("/docs/components/checkbox/examples/indeterminate resolves to CheckboxIndeterminateExample", () => {
       Story.story(
         update,
@@ -1017,6 +3131,279 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("InputDisabledExample");
+        })
+      );
+    });
+
+    test("/docs/components/input-group resolves to InputGroupDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/input-group"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("InputGroupDocs");
+        })
+      );
+    });
+
+    test("/docs/components/kbd/examples/input-group resolves to KbdInputGroupExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/kbd/examples/input-group"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("KbdInputGroupExample");
+        })
+      );
+    });
+
+    test("/docs/components/empty/examples/input-group resolves to EmptyInputGroupExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/empty/examples/input-group"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("EmptyInputGroupExample");
+        })
+      );
+    });
+
+    test("/docs/components/meter resolves to MeterDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/meter"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MeterDocs");
+        })
+      );
+    });
+
+    test("/docs/components/meter/examples/basic resolves to MeterBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/meter/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("MeterBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/scroll-area resolves to ScrollAreaDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/scroll-area"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaDocs");
+        })
+      );
+    });
+
+    test("/docs/components/scroll-area/examples/basic resolves to ScrollAreaBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/scroll-area/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/toggle resolves to ToggleDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/toggle"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ToggleDocs");
+        })
+      );
+    });
+
+    test("/docs/components/toggle/examples/basic resolves to ToggleBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/toggle/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ToggleBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/toggle-group resolves to ToggleGroupDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/toggle-group"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ToggleGroupDocs");
+        })
+      );
+    });
+
+    test("/docs/components/toggle-group/examples/basic resolves to ToggleGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/toggle-group/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ToggleGroupBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/radio resolves to RadioDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/radio"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioDocs");
+        })
+      );
+    });
+
+    test("/docs/components/radio/examples/basic resolves to RadioBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/radio/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("RadioBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/toolbar resolves to ToolbarDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/toolbar"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ToolbarDocs");
+        })
+      );
+    });
+
+    test("/docs/components/toolbar/examples/basic resolves to ToolbarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/toolbar/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ToolbarBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/progress resolves to ProgressDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/progress"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ProgressDocs");
+        })
+      );
+    });
+
+    test("/docs/components/progress/examples/basic resolves to ProgressBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/progress/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ProgressBasicExample");
         })
       );
     });

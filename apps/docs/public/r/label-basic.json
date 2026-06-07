@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-basic",
+  "type": "registry:example",
+  "title": "Label Basic",
+  "description": "A runnable Foldkit example showing the shadcn Label Basic form control association.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["label"],
+  "files": [
+    {
+      "path": "registry/default/examples/label-basic/main.ts",
+      "target": "src/examples/label-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Label from \"../../ui/label\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  email: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedEmail = m(\"UpdatedEmail\", { value: S.String });\n\nexport const Message = S.Union([UpdatedEmail]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ email: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedEmail: ({ value }) => [evo(model, { email: () => value }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const inputId = \"email\";\n\n  return h.div(\n    [h.Class(\"grid w-full max-w-sm gap-3\")],\n    [\n      Label.view<Message>({\n        forId: inputId,\n        children: \"Email\",\n      }),\n      h.input([\n        h.Id(inputId),\n        h.Type(\"email\"),\n        h.Value(model.email),\n        h.Placeholder(\"m@example.com\"),\n        h.OnInput((value) => UpdatedEmail({ value })),\n        h.Class(\n          \"flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-base text-gray-950 shadow-sm transition-colors placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 md:text-sm\"\n        ),\n      ]),\n      h.p(\n        [h.Class(\"text-sm text-gray-600\")],\n        [`Current value: ${model.email === \"\" ? \"empty\" : model.email}`]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/label-basic/label-basic.scene.test.ts",
+      "target": "src/examples/label-basic/label-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as LabelBasicExample from \"./main\";\n\ndescribe(\"Label Basic example\", () => {\n  test(\"matches the shadcn Label basic example\", () => {\n    Scene.scene(\n      { update: LabelBasicExample.update, view: LabelBasicExample.view },\n      Scene.with(LabelBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).toHaveAttr(\n        \"placeholder\",\n        \"m@example.com\"\n      ),\n      Scene.expect(Scene.text(\"Current value: empty\")).toExist(),\n      Scene.type(Scene.role(\"textbox\", { name: \"Email\" }), \"ada@example.com\"),\n      Scene.expect(Scene.text(\"Current value: ada@example.com\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Label",
+      "example": "basic"
+    }
+  }
+}

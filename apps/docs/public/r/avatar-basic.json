@@ -3,7 +3,7 @@
   "name": "avatar-basic",
   "type": "registry:example",
   "title": "Avatar Basic",
-  "description": "A runnable Foldkit example showing avatar images, fallbacks, groups, and parent-owned featured avatar changes.",
+  "description": "A runnable Foldkit version of the Base UI Avatar default two-avatar example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
   "registryDependencies": ["avatar"],
@@ -12,19 +12,32 @@
       "path": "registry/default/examples/avatar-basic/main.ts",
       "target": "src/examples/avatar-basic/main.ts",
       "type": "registry:example",
-      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Avatar from \"../../ui/avatar\";\n\n// MODEL\n\nexport const FeaturedPerson = S.Union([\n  S.Literal(\"Ada Lovelace\"),\n  S.Literal(\"Grace Hopper\"),\n]);\n\nexport const Model = S.Struct({\n  featuredPerson: FeaturedPerson,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedToggleFeaturedPerson = m(\"ClickedToggleFeaturedPerson\");\n\nexport const Message = S.Union([ClickedToggleFeaturedPerson]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ featuredPerson: \"Ada Lovelace\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedToggleFeaturedPerson: () => [\n        evo(model, {\n          featuredPerson: (featuredPerson) =>\n            featuredPerson === \"Ada Lovelace\" ? \"Grace Hopper\" : \"Ada Lovelace\",\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst adaImageSrc =\n  \"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%234f46e5'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' font-family='Arial' fill='white'%3EAL%3C/text%3E%3C/svg%3E\";\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const featuredInitials =\n    model.featuredPerson === \"Ada Lovelace\" ? \"AL\" : \"GH\";\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-4\")],\n    [\n      Avatar.groupView<Message>([\n        Avatar.view<Message>({\n          alt: \"Ada Lovelace\",\n          fallback: \"AL\",\n          src: adaImageSrc,\n        }),\n        Avatar.view<Message>({ fallback: \"GH\" }),\n        Avatar.view<Message>({ fallback: \"HT\" }),\n        Avatar.countView<Message>({ count: 4 }),\n      ]),\n      h.div(\n        [h.Class(\"flex items-center gap-3\")],\n        [\n          Avatar.view<Message>({\n            fallback: featuredInitials,\n            size: \"Large\",\n            ...(model.featuredPerson === \"Ada Lovelace\"\n              ? { alt: \"Ada Lovelace\", src: adaImageSrc }\n              : {}),\n          }),\n          h.div(\n            [h.Class(\"space-y-1\")],\n            [\n              h.p(\n                [h.Class(\"text-sm font-medium text-gray-900\")],\n                [model.featuredPerson]\n              ),\n              h.p([h.Class(\"text-sm text-gray-600\")], [\"Featured contributor\"]),\n            ]\n          ),\n        ]\n      ),\n      h.button(\n        [\n          h.OnClick(ClickedToggleFeaturedPerson()),\n          h.Class(\n            \"inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600\"\n          ),\n        ],\n        [\"Toggle featured avatar\"]\n      ),\n    ]\n  );\n});\n"
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\n\nimport * as Avatar from \"../../ui/avatar\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst avatarImageSrc =\n  \"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%230f172a'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' font-family='Arial' fill='white'%3ELT%3C/text%3E%3C/svg%3E\";\n\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html =>\n    Avatar.groupView<Message>(\n      [\n        Avatar.view<Message>({\n          alt: \"Lena Taylor\",\n          fallback: \"LT\",\n          src: avatarImageSrc,\n        }),\n        Avatar.view<Message>({ fallback: \"LT\" }),\n      ],\n      \"gap-3\"\n    )\n);\n"
+    },
+    {
+      "path": "registry/default/examples/avatar-basic/entry.ts",
+      "target": "src/examples/avatar-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Avatar Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/avatar-basic/index.html",
+      "target": "src/examples/avatar-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Avatar Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
     },
     {
       "path": "registry/default/examples/avatar-basic/avatar-basic.scene.test.ts",
       "target": "src/examples/avatar-basic/avatar-basic.scene.test.ts",
       "type": "registry:example",
-      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as AvatarBasicExample from \"./main\";\n\ndescribe(\"Avatar Basic example\", () => {\n  test(\"renders avatar group and toggles featured fallback\", () => {\n    Scene.scene(\n      { update: AvatarBasicExample.update, view: AvatarBasicExample.view },\n      Scene.with(AvatarBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"img\", { name: \"Ada Lovelace\" })).toExist(),\n      Scene.expect(Scene.text(\"Featured contributor\")).toExist(),\n      Scene.expect(Scene.role(\"img\", { name: \"4 more people\" })).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Toggle featured avatar\" })),\n      Scene.expect(Scene.text(\"Grace Hopper\")).toExist(),\n      Scene.expect(Scene.text(\"GH\")).toExist()\n    );\n  });\n});\n"
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as AvatarBasicExample from \"./main\";\n\ndescribe(\"Avatar Basic example\", () => {\n  test(\"matches the Base UI default two avatar example\", () => {\n    Scene.scene(\n      { update: AvatarBasicExample.update, view: AvatarBasicExample.view },\n      Scene.with(AvatarBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"img\", { name: \"Lena Taylor\" })).toExist(),\n      Scene.expect(Scene.text(\"LT\")).toExist(),\n      Scene.expect(Scene.text(\"LT\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
     }
   ],
   "meta": {
     "foldkit": {
       "component": "Avatar",
-      "example": "basic"
+      "example": "basic",
+      "originExample": "avatar-default-two-avatars"
     }
   }
 }

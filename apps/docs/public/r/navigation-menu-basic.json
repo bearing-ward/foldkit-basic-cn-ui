@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navigation-menu-basic",
+  "type": "registry:example",
+  "title": "Navigation Menu Basic",
+  "description": "A runnable Foldkit version of the Base UI Navigation Menu default example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["navigation-menu"],
+  "files": [
+    {
+      "path": "registry/default/examples/navigation-menu-basic/main.ts",
+      "target": "src/examples/navigation-menu-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as NavigationMenu from \"../../ui/navigation-menu\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  openItem: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ToggledNavigationMenuItem = m(\"ToggledNavigationMenuItem\", {\n  value: S.String,\n});\n\nexport const Message = S.Union([ToggledNavigationMenuItem]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ openItem: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledNavigationMenuItem: ({ value }) => [\n        evo(model, {\n          openItem: (openItem) => (openItem === value ? \"\" : value),\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst cardView = (title: string, body: string): Html => {\n  const h = html<Message>();\n\n  return NavigationMenu.contentView<Message>({\n    children: [\n      h.h3([h.Class(\"text-base font-semibold text-gray-950\")], [title]),\n      h.p([h.Class(\"mt-1 text-sm leading-6 text-gray-600\")], [body]),\n    ],\n  });\n};\n\nconst popupView = (children: readonly Html[]): Html =>\n  NavigationMenu.portalView<Message>({\n    open: true,\n    children: [\n      NavigationMenu.positionerView<Message>({\n        children: [\n          NavigationMenu.popupView<Message>({\n            children: [\n              NavigationMenu.arrowView<Message>({}),\n              NavigationMenu.viewportView<Message>({ children }),\n            ],\n          }),\n        ],\n      }),\n    ],\n  });\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const isOpen = (value: string): boolean => model.openItem === value;\n\n  return NavigationMenu.rootView<Message>({\n    children: [\n      NavigationMenu.listView<Message>({\n        children: [\n          NavigationMenu.itemView<Message>({\n            children: [\n              NavigationMenu.triggerView<Message>({\n                open: isOpen(\"Overview\"),\n                onToggle: ToggledNavigationMenuItem({ value: \"Overview\" }),\n                children: [h.span([], [\"Overview\"])],\n              }),\n            ],\n          }),\n          NavigationMenu.itemView<Message>({\n            children: [\n              NavigationMenu.triggerView<Message>({\n                open: isOpen(\"Handbook\"),\n                onToggle: ToggledNavigationMenuItem({ value: \"Handbook\" }),\n                children: [h.span([], [\"Handbook\"])],\n              }),\n            ],\n          }),\n          NavigationMenu.itemView<Message>({\n            children: [\n              NavigationMenu.linkView<Message>({\n                href: \"https://github.com/\",\n                children: [h.span([], [\"GitHub\"])],\n              }),\n            ],\n          }),\n        ],\n      }),\n      isOpen(\"Overview\")\n        ? popupView([\n            cardView(\n              \"Introduction\",\n              \"Start with the product overview and component principles.\"\n            ),\n            cardView(\n              \"Installation\",\n              \"Install the registry package and copy the source into your app.\"\n            ),\n          ])\n        : h.empty,\n      isOpen(\"Handbook\")\n        ? popupView([\n            cardView(\n              \"Components\",\n              \"Browse guidance for composing navigation and overlays.\"\n            ),\n            cardView(\n              \"Patterns\",\n              \"Review accessibility, state, and styling conventions.\"\n            ),\n          ])\n        : h.empty,\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/navigation-menu-basic/entry.ts",
+      "target": "src/examples/navigation-menu-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Navigation Menu Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/navigation-menu-basic/index.html",
+      "target": "src/examples/navigation-menu-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Navigation Menu Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/default/examples/navigation-menu-basic/navigation-menu-basic.scene.test.ts",
+      "target": "src/examples/navigation-menu-basic/navigation-menu-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as NavigationMenuBasicExample from \"./main\";\n\ndescribe(\"Navigation Menu Basic example\", () => {\n  test(\"matches the Base UI default navigation menu content\", () => {\n    Scene.scene(\n      {\n        update: NavigationMenuBasicExample.update,\n        view: NavigationMenuBasicExample.view,\n      },\n      Scene.with(NavigationMenuBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"button\", { name: \"Overview\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Handbook\" })).toExist(),\n      Scene.expect(Scene.role(\"link\", { name: \"GitHub\" })).toHaveAttr(\n        \"href\",\n        \"https://github.com/\"\n      ),\n      Scene.expect(Scene.role(\"menu\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Overview\" })),\n      Scene.expect(Scene.role(\"menu\")).toExist(),\n      Scene.expect(Scene.text(\"Introduction\")).toExist(),\n      Scene.expect(Scene.text(\"Installation\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Handbook\" })),\n      Scene.expect(Scene.text(\"Components\")).toExist(),\n      Scene.expect(Scene.text(\"Patterns\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Handbook\" })),\n      Scene.expect(Scene.role(\"menu\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "NavigationMenu",
+      "example": "basic",
+      "originExample": "navigation-menu-default"
+    }
+  }
+}

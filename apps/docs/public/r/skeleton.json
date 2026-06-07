@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "A shadcn-style loading placeholder for reserving space while content is pending.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/default/ui/skeleton/index.ts",
+      "target": "src/ui/skeleton/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { skeletonClassNameByShape } from \"./view\";\nimport type { SkeletonShape } from \"./view\";\n\nexport type { SkeletonShape };\n\nexport { skeletonBaseClassName, skeletonClassNameByShape } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  shape?: SkeletonShape;\n  className?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  shape = \"Block\",\n  className,\n}: ViewConfig = {}): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [skeletonClassNameByShape(shape), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(classNames), h.AriaHidden(true)], []);\n};\n"
+    },
+    {
+      "path": "registry/default/ui/skeleton/view.ts",
+      "target": "src/ui/skeleton/view.ts",
+      "type": "registry:ui",
+      "content": "export type SkeletonShape = \"Text\" | \"Avatar\" | \"Button\" | \"Block\";\n\nexport const skeletonBaseClassName = \"animate-pulse rounded-md bg-gray-200\";\n\nexport const skeletonClassNameByShape = (\n  shape: SkeletonShape = \"Block\"\n): string => {\n  if (shape === \"Text\") {\n    return `${skeletonBaseClassName} h-4 w-40`;\n  }\n\n  if (shape === \"Avatar\") {\n    return `${skeletonBaseClassName} h-10 w-10 rounded-full`;\n  }\n\n  if (shape === \"Button\") {\n    return `${skeletonBaseClassName} h-9 w-24`;\n  }\n\n  return `${skeletonBaseClassName} h-28 w-full`;\n};\n"
+    },
+    {
+      "path": "registry/default/ui/skeleton/skeleton.scene.test.ts",
+      "target": "src/ui/skeleton/skeleton.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Skeleton from \"./index\";\n\nconst view = (): Html => {\n  const h = html<never>();\n\n  return h.div(\n    [],\n    [\n      h.span([], [\"Loading placeholder\"]),\n      Skeleton.view({ shape: \"Avatar\" }),\n      Skeleton.view({ shape: \"Text\" }),\n      Skeleton.view({ shape: \"Button\" }),\n      Skeleton.view({ shape: \"Block\" }),\n    ]\n  );\n};\n\ndescribe(\"Skeleton registry view\", () => {\n  test(\"renders the documented static surface\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.text(\"Loading placeholder\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Skeleton",
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

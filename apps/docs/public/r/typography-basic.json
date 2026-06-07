@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-basic",
+  "type": "registry:example",
+  "title": "Typography Basic",
+  "description": "A runnable Foldkit example showing the Typography component with parent-owned example state.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["typography"],
+  "files": [
+    {
+      "path": "registry/default/examples/typography-basic/main.ts",
+      "target": "src/examples/typography-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Typography from \"../../ui/typography\";\n\n// MODEL\n\nexport const TypographyMode = S.Union([\n  S.Literal(\"Comfortable\"),\n  S.Literal(\"Dense\"),\n]);\n\nexport const Model = S.Struct({\n  mode: TypographyMode,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedToggleTypographyExample = m(\n  \"ClickedToggleTypographyExample\"\n);\n\nexport const Message = S.Union([ClickedToggleTypographyExample]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ mode: \"Comfortable\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedToggleTypographyExample: () => [\n        evo(model, {\n          mode: (mode) => (mode === \"Comfortable\" ? \"Dense\" : \"Comfortable\"),\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst buttonClassName =\n  \"inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600\";\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-4\")],\n    [\n      h.div(\n        [\n          h.Class(\n            model.mode === \"Comfortable\"\n              ? \"max-w-2xl space-y-5\"\n              : \"max-w-2xl space-y-3\"\n          ),\n        ],\n        [\n          Typography.h1<Message>(\"Component registry\"),\n          Typography.p<Message>(\n            \"Reusable text helpers keep examples readable while preserving semantic HTML.\"\n          ),\n          Typography.h2<Message>(\"Principles\"),\n          Typography.ul<Message>([\n            \"Choose heading level by document outline.\",\n            \"Use muted copy for supporting context.\",\n            \"Use inline code for literal props like className.\",\n          ]),\n          h.p(\n            [],\n            [\n              \"Use \",\n              Typography.inlineCode<Message>(\"Typography.inlineCode\"),\n              \" for API terms.\",\n            ]\n          ),\n          Typography.muted<Message>(`Density: ${model.mode}`),\n          h.button(\n            [\n              h.OnClick(ClickedToggleTypographyExample()),\n              h.Class(buttonClassName),\n            ],\n            [\"Toggle density\"]\n          ),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/typography-basic/typography-basic.scene.test.ts",
+      "target": "src/examples/typography-basic/typography-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as TypographyBasicExample from \"./main\";\n\ndescribe(\"Typography Basic example\", () => {\n  test(\"renders and updates the parent-owned example state\", () => {\n    Scene.scene(\n      {\n        update: TypographyBasicExample.update,\n        view: TypographyBasicExample.view,\n      },\n      Scene.with(TypographyBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"Component registry\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Toggle density\" })),\n      Scene.expect(Scene.text(\"Density: Dense\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Typography",
+      "example": "basic"
+    }
+  }
+}

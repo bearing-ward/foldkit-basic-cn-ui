@@ -195,6 +195,13 @@ export const uiUpdate = (model: UiModel, message: UiMessage): UiUpdateReturn =>
         [],
       ],
 
+      ClickedToggleFavoriteDemo: () => [
+        evo(model, {
+          toggleFavoriteDemoPressed: (pressed) => !pressed,
+        }),
+        [],
+      ],
+
       GotCheckboxBasicDemoMessage: ({ message }) => {
         const [nextCheckboxBasicDemo, checkboxBasicCommands] =
           Ui.Checkbox.update(model.checkboxBasicDemo, message);

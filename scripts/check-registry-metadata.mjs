@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 const registryItems = JSON.parse(
   readFileSync("registry/default/items.json", "utf-8")
 );
+const docsViewSource = readFileSync("src/docsView.ts", "utf-8");
 
 const originPrefixes = {
   "base-ui": "base-ui",
@@ -12,6 +13,41 @@ const originPrefixes = {
 
 const uiItems = registryItems.filter((item) => item.type === "registry:ui");
 const failures = [];
+
+const routeTagFromComponentName = (name) =>
+  `${name
+    .split("-")
+    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+    .join("")}Docs`;
+
+const extractDocsNavRouteTags = (library) => {
+  const libraryPattern =
+    library === "shadcn"
+      ? /\]\.includes\(navItem\.routeTag\)\s*\?\s*"shadcn"/u
+      : /\]\.includes\(navItem\.routeTag\)\s*\?\s*"Base UI"/u;
+  const libraryMatch = libraryPattern.exec(docsViewSource);
+
+  if (libraryMatch === null) {
+    failures.push(`docsNavItemLibrary: missing ${library} route list`);
+    return new Set();
+  }
+
+  const listEnd = libraryMatch.index;
+  const listStart = docsViewSource.lastIndexOf("[", listEnd);
+
+  if (listStart === -1) {
+    failures.push(`docsNavItemLibrary: cannot parse ${library} route list`);
+    return new Set();
+  }
+
+  const listSource = docsViewSource.slice(listStart, listEnd + 1);
+  return new Set(
+    [...listSource.matchAll(/"([^"]+Docs)"/gu)].map((match) => match[1])
+  );
+};
+
+const shadcnDocsRouteTags = extractDocsNavRouteTags("shadcn");
+const baseUiDocsRouteTags = extractDocsNavRouteTags("Base UI");
 
 for (const item of uiItems) {
   const foldkitMeta = item.meta?.foldkit;
@@ -45,6 +81,32 @@ for (const item of uiItems) {
     artifact !== "primitive-backed-component"
   ) {
     failures.push(`${item.name}: unknown artifact ${artifact}`);
+  }
+}
+
+for (const item of uiItems) {
+  const origin = item.meta?.foldkit?.origin;
+  const routeTag = routeTagFromComponentName(item.name);
+
+  if (origin === "base-ui" && !baseUiDocsRouteTags.has(routeTag)) {
+    failures.push(
+      `${item.name}: ${routeTag} must be listed in docsNavItemLibrary Base UI routes`
+    );
+  }
+
+  if (origin === "shadcn" && !shadcnDocsRouteTags.has(routeTag)) {
+    failures.push(
+      `${item.name}: ${routeTag} must be listed in docsNavItemLibrary shadcn routes`
+    );
+  }
+
+  if (
+    origin === "foldkit" &&
+    (baseUiDocsRouteTags.has(routeTag) || shadcnDocsRouteTags.has(routeTag))
+  ) {
+    failures.push(
+      `${item.name}: ${routeTag} is foldkit origin but is listed in a non-Foldkit docs group`
+    );
   }
 }
 

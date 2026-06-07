@@ -13,6 +13,7 @@ export const GotMobileMenuDialogMessage = m("GotMobileMenuDialogMessage", {
   message: Ui.Dialog.Message,
 });
 export const ClickedButtonDemo = m("ClickedButtonDemo");
+export const ClickedToggleFavoriteDemo = m("ClickedToggleFavoriteDemo");
 export const UpdatedInputDemoValue = m("UpdatedInputDemoValue", {
   value: S.String,
 });
@@ -185,6 +186,7 @@ export const ClickedVirtualListVariableScrollToMiddle = m(
 export const UiMessage = S.Union([
   GotMobileMenuDialogMessage,
   ClickedButtonDemo,
+  ClickedToggleFavoriteDemo,
   GotAnimationDemoMessage,
   ToggledAnimationDemo,
   UpdatedInputDemoValue,

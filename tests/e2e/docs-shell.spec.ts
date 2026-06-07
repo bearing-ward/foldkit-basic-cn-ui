@@ -56,3 +56,18 @@ test("docs shell keeps sidebar and detail pane as independent SPA regions", asyn
     "page"
   );
 });
+
+test("docs sidebar active state does not match component name prefixes", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/docs/components/toggle-group");
+  const sidebar = page.locator("body > div > nav").first();
+
+  await expect(
+    sidebar.getByRole("link", { name: "Toggle Group", exact: true })
+  ).toHaveAttribute("aria-current", "page");
+  await expect(
+    sidebar.getByRole("link", { name: "Toggle", exact: true })
+  ).not.toHaveAttribute("aria-current", "page");
+});

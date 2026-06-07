@@ -1,5 +1,6 @@
 import { Runtime } from "foldkit";
 
+import { view } from "./docsView";
 import {
   ChangedUrl,
   ClickedLink,
@@ -10,7 +11,6 @@ import {
   init,
   subscriptions,
   update,
-  view,
 } from "./main";
 
 const program = Runtime.makeProgram({

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart-rtl",
+  "type": "registry:example",
+  "title": "Chart RTL",
+  "description": "A runnable Foldkit example showing the shadcn Chart RTL composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["chart"],
+  "files": [
+    {
+      "path": "registry/default/examples/chart-rtl/main.ts",
+      "target": "src/examples/chart-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Chart from \"../../ui/chart\";\n\nconst chartData: readonly Chart.ChartDatum[] = [\n  { label: \"Jan\", values: { desktop: 186, mobile: 80 } },\n  { label: \"Feb\", values: { desktop: 305, mobile: 200 } },\n  { label: \"Mar\", values: { desktop: 237, mobile: 120 } },\n  { label: \"Apr\", values: { desktop: 73, mobile: 190 } },\n  { label: \"May\", values: { desktop: 209, mobile: 130 } },\n  { label: \"Jun\", values: { desktop: 214, mobile: 140 } },\n];\n\nconst chartSeries: readonly Chart.ChartSeries[] = [\n  { key: \"desktop\", label: \"Desktop\", color: \"#2563eb\" },\n  { key: \"mobile\", label: \"Mobile\", color: \"#16a34a\" },\n];\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = m(\"Message\");\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      Message: () => [model, []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"w-full\")],\n    [\n      h.div(\n        [h.Attribute(\"dir\", \"rtl\"), h.Class(\"w-full\")],\n        [\n          Chart.containerView<Message>({\n            ariaLabel: \"Monthly visitors RTL\",\n            children: [\n              Chart.barChartView<Message>({\n                data: chartData,\n                series: chartSeries,\n                rtl: true,\n              }),\n            ],\n          }),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/chart-rtl/chart-rtl.scene.test.ts",
+      "target": "src/examples/chart-rtl/chart-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"chart-rtl example\", () => {\n  test(\"renders the shadcn Chart RTL example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"img\", { name: \"Bar chart\" })).not.toHaveHandler(\n        \"click\"\n      ),\n      Scene.expect(Scene.text(\"Jan\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Chart",
+      "example": "rtl"
+    }
+  }
+}

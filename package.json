@@ -23,6 +23,7 @@
     "@tailwindcss/vite": "^4.2.4",
     "clsx": "^2.1.1",
     "effect": "4.0.0-beta.66",
+    "embla-carousel": "^8.6.0",
     "foldkit": "0.104.0",
     "tailwindcss": "^4.2.4"
   },
