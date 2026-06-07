@@ -205,8 +205,10 @@ export const AlertDialogDocsRoute = r("AlertDialogDocs");
 export const ShadcnAlertDialogDocsRoute = r("ShadcnAlertDialogDocs");
 export const AlertDialogBasicExampleRoute = r("AlertDialogBasicExample");
 export const DrawerDocsRoute = r("DrawerDocs");
+export const ShadcnDrawerDocsRoute = r("ShadcnDrawerDocs");
 export const DrawerBasicExampleRoute = r("DrawerBasicExample");
 export const ContextMenuDocsRoute = r("ContextMenuDocs");
+export const ShadcnContextMenuDocsRoute = r("ShadcnContextMenuDocs");
 export const ContextMenuBasicExampleRoute = r("ContextMenuBasicExample");
 export const MenubarDocsRoute = r("MenubarDocs");
 export const MenubarBasicExampleRoute = r("MenubarBasicExample");
@@ -361,15 +363,18 @@ export const CheckboxIndeterminateExampleRoute = r(
 );
 export const ComboboxRoute = r("Combobox");
 export const ComboboxDocsRoute = r("ComboboxDocs");
+export const ShadcnComboboxDocsRoute = r("ShadcnComboboxDocs");
 export const BaseUiComboboxDocsRoute = r("BaseUiComboboxDocs");
 export const ComboboxBasicExampleRoute = r("ComboboxBasicExample");
 export const ComboboxMultiExampleRoute = r("ComboboxMultiExample");
 export const DatePickerRoute = r("DatePicker");
 export const DatePickerDocsRoute = r("DatePickerDocs");
+export const ShadcnDatePickerDocsRoute = r("ShadcnDatePickerDocs");
 export const DatePickerBasicExampleRoute = r("DatePickerBasicExample");
 export const DatePickerBoundsExampleRoute = r("DatePickerBoundsExample");
 export const DialogRoute = r("Dialog");
 export const DialogDocsRoute = r("DialogDocs");
+export const ShadcnDialogDocsRoute = r("ShadcnDialogDocs");
 export const BaseUiDialogDocsRoute = r("BaseUiDialogDocs");
 export const DialogBasicExampleRoute = r("DialogBasicExample");
 export const DialogAnimatedExampleRoute = r("DialogAnimatedExample");
@@ -500,8 +505,10 @@ const AppRoute = S.Union([
   ShadcnAlertDialogDocsRoute,
   AlertDialogBasicExampleRoute,
   DrawerDocsRoute,
+  ShadcnDrawerDocsRoute,
   DrawerBasicExampleRoute,
   ContextMenuDocsRoute,
+  ShadcnContextMenuDocsRoute,
   ContextMenuBasicExampleRoute,
   MenubarDocsRoute,
   MenubarBasicExampleRoute,
@@ -652,15 +659,18 @@ const AppRoute = S.Union([
   CheckboxIndeterminateExampleRoute,
   ComboboxRoute,
   ComboboxDocsRoute,
+  ShadcnComboboxDocsRoute,
   BaseUiComboboxDocsRoute,
   ComboboxBasicExampleRoute,
   ComboboxMultiExampleRoute,
   DatePickerRoute,
   DatePickerDocsRoute,
+  ShadcnDatePickerDocsRoute,
   DatePickerBasicExampleRoute,
   DatePickerBoundsExampleRoute,
   DialogRoute,
   DialogDocsRoute,
+  ShadcnDialogDocsRoute,
   BaseUiDialogDocsRoute,
   DialogBasicExampleRoute,
   DialogAnimatedExampleRoute,
@@ -1110,6 +1120,12 @@ export const drawerDocsRouter = pipe(
   slash(literal("drawer")),
   Route.mapTo(DrawerDocsRoute)
 );
+export const shadcnDrawerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-drawer")),
+  Route.mapTo(ShadcnDrawerDocsRoute)
+);
 export const drawerBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -1128,6 +1144,12 @@ export const contextMenuDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("context-menu")),
   Route.mapTo(ContextMenuDocsRoute)
+);
+export const shadcnContextMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-context-menu")),
+  Route.mapTo(ShadcnContextMenuDocsRoute)
 );
 export const contextMenuBasicExampleRouter = pipe(
   literal("docs"),
@@ -2527,6 +2549,12 @@ export const comboboxDocsRouter = pipe(
   slash(literal("combobox")),
   Route.mapTo(ComboboxDocsRoute)
 );
+export const shadcnComboboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-combobox")),
+  Route.mapTo(ShadcnComboboxDocsRoute)
+);
 export const baseUiComboboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2569,6 +2597,12 @@ export const datePickerDocsRouter = pipe(
   slash(literal("date-picker")),
   Route.mapTo(DatePickerDocsRoute)
 );
+export const shadcnDatePickerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-date-picker")),
+  Route.mapTo(ShadcnDatePickerDocsRoute)
+);
 export const datePickerBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2601,6 +2635,12 @@ export const dialogDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("dialog")),
   Route.mapTo(DialogDocsRoute)
+);
+export const shadcnDialogDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  Route.mapTo(ShadcnDialogDocsRoute)
 );
 export const baseUiDialogDocsRouter = pipe(
   literal("docs"),
@@ -3582,6 +3622,7 @@ const routeParser = Route.oneOf(
   comboboxBasicStandaloneExampleRouter,
   comboboxMultiStandaloneExampleRouter,
   comboboxDocsRouter,
+  shadcnComboboxDocsRouter,
   baseUiComboboxDocsRouter,
   datePickerRouter,
   datePickerBasicExampleRouter,
@@ -3589,6 +3630,7 @@ const routeParser = Route.oneOf(
   datePickerBasicStandaloneExampleRouter,
   datePickerBoundsStandaloneExampleRouter,
   datePickerDocsRouter,
+  shadcnDatePickerDocsRouter,
   dialogRouter,
   dialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
@@ -3601,6 +3643,7 @@ const routeParser = Route.oneOf(
   dialogFocusStandaloneExampleRouter,
   dialogScrollableStandaloneExampleRouter,
   dialogDocsRouter,
+  shadcnDialogDocsRouter,
   baseUiDialogDocsRouter,
   disclosureRouter,
   disclosureBasicExampleRouter,
@@ -3781,9 +3824,11 @@ const routeParser = Route.oneOf(
   drawerBasicExampleRouter,
   drawerBasicStandaloneExampleRouter,
   drawerDocsRouter,
+  shadcnDrawerDocsRouter,
   contextMenuBasicExampleRouter,
   contextMenuBasicStandaloneExampleRouter,
   contextMenuDocsRouter,
+  shadcnContextMenuDocsRouter,
   menubarBasicExampleRouter,
   menubarBasicStandaloneExampleRouter,
   menubarDocsRouter,

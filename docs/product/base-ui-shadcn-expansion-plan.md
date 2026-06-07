@@ -25,9 +25,6 @@ Current registry UI items:
 - button
 - calendar
 - checkbox
-- combobox
-- date-picker
-- dialog
 - disclosure
 - drag-and-drop
 - fieldset
@@ -117,9 +114,14 @@ Present shadcn lane components:
 - chart
 - checkbox
 - collapsible
+- combobox
 - command
+- context-menu
 - data-table
+- date-picker
+- dialog
 - direction
+- drawer
 - dropdown-menu
 - empty
 - hover-card
@@ -142,11 +144,6 @@ Present shadcn lane components:
 
 Missing shadcn lane components:
 
-- combobox
-- context-menu
-- date-picker
-- dialog
-- drawer
 - field
 - menubar
 - navigation-menu

@@ -2799,6 +2799,174 @@
     }
   },
   {
+    "name": "shadcn-combobox",
+    "type": "registry:ui",
+    "title": "Combobox",
+    "description": "shadcn style-lane combobox wrapper backed by the existing Combobox component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["combobox"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-combobox/index.ts",
+        "target": "src/ui/shadcn-combobox/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-combobox/view.ts",
+        "target": "src/ui/shadcn-combobox/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-combobox/shadcn-combobox.scene.test.ts",
+        "target": "src/ui/shadcn-combobox/shadcn-combobox.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "primitive": "Ui.Combobox",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "shadcn-context-menu",
+    "type": "registry:ui",
+    "title": "Context Menu",
+    "description": "shadcn style-lane context menu wrapper backed by the existing Context Menu component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["context-menu"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-context-menu/index.ts",
+        "target": "src/ui/shadcn-context-menu/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-context-menu/view.ts",
+        "target": "src/ui/shadcn-context-menu/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-context-menu/shadcn-context-menu.scene.test.ts",
+        "target": "src/ui/shadcn-context-menu/shadcn-context-menu.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "shadcn-date-picker",
+    "type": "registry:ui",
+    "title": "Date Picker",
+    "description": "shadcn style-lane date picker wrapper backed by the existing Date Picker component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["date-picker"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-date-picker/index.ts",
+        "target": "src/ui/shadcn-date-picker/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-date-picker/view.ts",
+        "target": "src/ui/shadcn-date-picker/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-date-picker/shadcn-date-picker.scene.test.ts",
+        "target": "src/ui/shadcn-date-picker/shadcn-date-picker.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "primitive": "Ui.DatePicker",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "shadcn-dialog",
+    "type": "registry:ui",
+    "title": "Dialog",
+    "description": "shadcn style-lane dialog wrapper backed by the existing Dialog component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dialog"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-dialog/index.ts",
+        "target": "src/ui/shadcn-dialog/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-dialog/view.ts",
+        "target": "src/ui/shadcn-dialog/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-dialog/shadcn-dialog.scene.test.ts",
+        "target": "src/ui/shadcn-dialog/shadcn-dialog.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "primitive": "Ui.Dialog",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "shadcn-drawer",
+    "type": "registry:ui",
+    "title": "Drawer",
+    "description": "shadcn style-lane drawer wrapper backed by the existing Drawer component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["drawer"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-drawer/index.ts",
+        "target": "src/ui/shadcn-drawer/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-drawer/view.ts",
+        "target": "src/ui/shadcn-drawer/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-drawer/shadcn-drawer.scene.test.ts",
+        "target": "src/ui/shadcn-drawer/shadcn-drawer.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  },
+  {
     "name": "shadcn-input",
     "type": "registry:ui",
     "title": "Input",

@@ -226,6 +226,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/drawer",
   },
   {
+    label: "Drawer Docs",
+    routeTag: "ShadcnDrawerDocs",
+    href: "/docs/components/shadcn-drawer",
+  },
+  {
     label: "Drawer Basic Example",
     routeTag: "DrawerBasicExample",
     href: "/docs/components/drawer/examples/basic",
@@ -234,6 +239,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Context Menu Docs",
     routeTag: "ContextMenuDocs",
     href: "/docs/components/context-menu",
+  },
+  {
+    label: "Context Menu Docs",
+    routeTag: "ShadcnContextMenuDocs",
+    href: "/docs/components/shadcn-context-menu",
   },
   {
     label: "Context Menu Basic Example",
@@ -908,6 +918,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/base-ui-combobox",
   },
   {
+    label: "Combobox Docs",
+    routeTag: "ShadcnComboboxDocs",
+    href: "/docs/components/shadcn-combobox",
+  },
+  {
     label: "Combobox Basic Example",
     routeTag: "ComboboxBasicExample",
     href: "/docs/components/combobox/examples/basic",
@@ -922,6 +937,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Date Picker Docs",
     routeTag: "DatePickerDocs",
     href: "/docs/components/date-picker",
+  },
+  {
+    label: "Date Picker Docs",
+    routeTag: "ShadcnDatePickerDocs",
+    href: "/docs/components/shadcn-date-picker",
   },
   {
     label: "Date Picker Basic Example",
@@ -943,6 +963,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dialog Docs",
     routeTag: "BaseUiDialogDocs",
     href: "/docs/components/base-ui-dialog",
+  },
+  {
+    label: "Dialog Docs",
+    routeTag: "ShadcnDialogDocs",
+    href: "/docs/components/shadcn-dialog",
   },
   {
     label: "Dialog Basic Example",
@@ -1549,6 +1574,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnAvatarDocs",
     "ShadcnCalendarDocs",
     "ShadcnCollapsibleDocs",
+    "ShadcnComboboxDocs",
+    "ShadcnContextMenuDocs",
+    "ShadcnDatePickerDocs",
+    "ShadcnDialogDocs",
+    "ShadcnDrawerDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
     : [
@@ -1631,11 +1661,6 @@ const labelFromComponentSlug = (slug: string): string =>
 const missingBaseUiLaneSlugs: readonly string[] = [];
 
 const missingShadcnLaneSlugs: readonly string[] = [
-  "combobox",
-  "context-menu",
-  "date-picker",
-  "dialog",
-  "drawer",
   "field",
   "menubar",
   "navigation-menu",
@@ -2189,9 +2214,19 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Base UI",
     primitive: "Ui.Combobox",
   },
+  "shadcn-combobox": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Combobox",
+  },
   "date-picker": {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.DatePicker",
+  },
+  "shadcn-date-picker": {
+    artifact: "component",
+    origin: "shadcn",
     primitive: "Ui.DatePicker",
   },
   dialog: {
@@ -2202,6 +2237,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   "base-ui-dialog": {
     artifact: "component",
     origin: "Base UI",
+    primitive: "Ui.Dialog",
+  },
+  "shadcn-dialog": {
+    artifact: "component",
+    origin: "shadcn",
     primitive: "Ui.Dialog",
   },
   disclosure: {
@@ -2215,6 +2255,8 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     primitive: "Ui.DragAndDrop",
   },
   "dropdown-menu": { artifact: "component", origin: "shadcn" },
+  "shadcn-drawer": { artifact: "component", origin: "shadcn" },
+  "shadcn-context-menu": { artifact: "component", origin: "shadcn" },
   fieldset: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -15064,8 +15106,60 @@ AlertDialog.rootView<Message>({
       AlertDialogBasicExample: () =>
         DocsRoutes.alertDialogBasicExampleRouteView(model),
       DrawerDocs: () => drawerDocsView(model),
+      ShadcnDrawerDocs: () =>
+        shadcnLaneDocsView({
+          label: "Drawer",
+          source: "registry/default/ui/shadcn-drawer",
+          primitive: "Drawer view helpers",
+          description:
+            "A shadcn style-lane Drawer slice that reuses the existing trigger, portal, backdrop, viewport, popup, content, title, description, and close helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Drawer composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnDrawerTriggerClassName",
+            "shadcnDrawerPortalClassName",
+            "shadcnDrawerBackdropClassName",
+            "shadcnDrawerViewportClassName",
+            "shadcnDrawerPopupClassName",
+            "shadcnDrawerCloseClassName",
+          ],
+          anatomyCode: `import * as Drawer from "./ui/shadcn-drawer";
+
+Drawer.rootView<Message>({
+  children: [
+    Drawer.triggerView({ onClick: ClickedOpen(), children: ["Open"] }),
+    Drawer.portalView({ open: model.open, children: [content] }),
+  ],
+});`,
+        }),
       DrawerBasicExample: () => DocsRoutes.drawerBasicExampleRouteView(model),
       ContextMenuDocs: () => contextMenuDocsView(model),
+      ShadcnContextMenuDocs: () =>
+        shadcnLaneDocsView({
+          label: "Context Menu",
+          source: "registry/default/ui/shadcn-context-menu",
+          primitive: "Context Menu view helpers",
+          description:
+            "A shadcn style-lane Context Menu slice that reuses the existing root, trigger, portal, backdrop, positioner, popup, item, and separator helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Context Menu composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnContextMenuTriggerClassName",
+            "shadcnContextMenuPortalClassName",
+            "shadcnContextMenuBackdropClassName",
+            "shadcnContextMenuPositionerClassName",
+            "shadcnContextMenuPopupClassName",
+            "shadcnContextMenuItemClassName",
+          ],
+          anatomyCode: `import * as ContextMenu from "./ui/shadcn-context-menu";
+
+ContextMenu.rootView<Message>({
+  children: [
+    ContextMenu.triggerView({ onOpen: ClickedOpen(), children: ["Open"] }),
+    ContextMenu.portalView({ open: model.open, children: [menu] }),
+  ],
+});`,
+        }),
       ContextMenuBasicExample: () =>
         DocsRoutes.contextMenuBasicExampleRouteView(model),
       MenubarDocs: () => menubarDocsView(model),
@@ -15379,12 +15473,61 @@ Combobox.view<Message>({
   items,
 });`,
         }),
+      ShadcnComboboxDocs: () =>
+        shadcnLaneDocsView({
+          label: "Combobox",
+          source: "registry/default/ui/shadcn-combobox",
+          primitive: "Ui.Combobox",
+          description:
+            "A shadcn style-lane Combobox slice that reuses the official Foldkit Ui.Combobox primitive for controlled input, popup, item selection, and multi-select behavior.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Combobox behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnComboboxInputClassName",
+            "shadcnComboboxButtonClassName",
+            "shadcnComboboxItemsClassName",
+            "shadcnComboboxItemClassName",
+            "shadcnComboboxBackdropClassName",
+          ],
+          anatomyCode: `import * as Combobox from "./ui/shadcn-combobox";
+
+Combobox.view<Message>({
+  model: model.combobox,
+  toParentMessage: (message) => GotComboboxMessage({ message }),
+  items,
+});`,
+        }),
       ComboboxBasicExample: () =>
         DocsRoutes.comboboxBasicExampleRouteView(model),
       ComboboxMultiExample: () =>
         DocsRoutes.comboboxMultiExampleRouteView(model),
       DatePicker: () => embedUi("ui-date-picker", View.datePicker),
       DatePickerDocs: () => datePickerDocsView(model),
+      ShadcnDatePickerDocs: () =>
+        shadcnLaneDocsView({
+          label: "Date Picker",
+          source: "registry/default/ui/shadcn-date-picker",
+          primitive: "Ui.DatePicker",
+          description:
+            "A shadcn style-lane Date Picker slice that reuses the official Foldkit Ui.DatePicker primitive for popover state, calendar selection, disabled date reflection, and formatted trigger content.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Date Picker behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnDatePickerWrapperClassName",
+            "shadcnDatePickerTriggerClassName",
+            "shadcnDatePickerTriggerContentClassName",
+            "shadcnDatePickerPanelClassName",
+            "shadcnDatePickerBackdropClassName",
+          ],
+          anatomyCode: `import * as DatePicker from "./ui/shadcn-date-picker";
+
+h.submodel({
+  slotId: model.datePicker.id,
+  model: model.datePicker,
+  view: DatePicker.view,
+  toParentMessage: (message) => GotDatePickerMessage({ message }),
+});`,
+        }),
       DatePickerBasicExample: () =>
         DocsRoutes.datePickerBasicExampleRouteView(model),
       DatePickerBoundsExample: () =>
@@ -15407,6 +15550,29 @@ Combobox.view<Message>({
             "baseUiDialogDescriptionClassName",
           ],
           anatomyCode: `import * as Dialog from "./ui/base-ui-dialog";
+
+Dialog.view<Message>({
+  model: model.dialog,
+  toParentMessage: (message) => GotDialogMessage({ message }),
+  toContentView: (attributes) => h.div(attributes.panel, ["Dialog content"]),
+});`,
+        }),
+      ShadcnDialogDocs: () =>
+        shadcnLaneDocsView({
+          label: "Dialog",
+          source: "registry/default/ui/shadcn-dialog",
+          primitive: "Ui.Dialog",
+          description:
+            "A shadcn style-lane Dialog slice that reuses the official Foldkit Ui.Dialog primitive for open state, modal semantics, labelled content, dismissal, and focus commands.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Dialog behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnDialogBackdropClassName",
+            "shadcnDialogPanelClassName",
+            "shadcnDialogTitleClassName",
+            "shadcnDialogDescriptionClassName",
+          ],
+          anatomyCode: `import * as Dialog from "./ui/shadcn-dialog";
 
 Dialog.view<Message>({
   model: model.dialog,
