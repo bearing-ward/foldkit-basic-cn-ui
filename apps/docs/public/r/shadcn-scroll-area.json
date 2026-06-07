@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-scroll-area",
+  "type": "registry:ui",
+  "title": "Scroll Area",
+  "description": "shadcn style-lane scroll area wrapper backed by the existing Scroll Area component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/scroll-area"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-scroll-area/index.ts",
+      "target": "src/ui/shadcn-scroll-area/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  contentView,\n  cornerView,\n  rootView,\n  scrollbarView,\n  thumbView,\n  view,\n  viewportView,\n} from \"../scroll-area\";\nexport type {\n  ContentViewConfig,\n  CornerViewConfig,\n  RootViewConfig,\n  ScrollAreaStyle,\n  ScrollbarViewConfig,\n  ThumbViewConfig,\n  ViewConfig,\n  ViewportViewConfig,\n} from \"../scroll-area\";\n\nexport {\n  shadcnScrollAreaContentClassName,\n  shadcnScrollAreaCornerClassName,\n  shadcnScrollAreaFadeClassName,\n  shadcnScrollAreaRootClassName,\n  shadcnScrollAreaScrollbarClassName,\n  shadcnScrollAreaThumbClassName,\n  shadcnScrollAreaViewportClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-scroll-area/view.ts",
+      "target": "src/ui/shadcn-scroll-area/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  scrollAreaContentClassName as shadcnScrollAreaContentClassName,\n  scrollAreaCornerClassName as shadcnScrollAreaCornerClassName,\n  scrollAreaFadeClassName as shadcnScrollAreaFadeClassName,\n  scrollAreaRootClassName as shadcnScrollAreaRootClassName,\n  scrollAreaScrollbarClassName as shadcnScrollAreaScrollbarClassName,\n  scrollAreaThumbClassName as shadcnScrollAreaThumbClassName,\n  scrollAreaViewportClassName as shadcnScrollAreaViewportClassName,\n} from \"../scroll-area/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-scroll-area/shadcn-scroll-area.scene.test.ts",
+      "target": "src/ui/shadcn-scroll-area/shadcn-scroll-area.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as ScrollArea from \"./index\";\n\ndescribe(\"shadcn Scroll Area registry view\", () => {\n  test(\"reuses the Foldkit Scroll Area view contract\", () => {\n    expect(ScrollArea.rootView).toBeTypeOf(\"function\");\n    expect(ScrollArea.viewportView).toBeTypeOf(\"function\");\n    expect(ScrollArea.view).toBeTypeOf(\"function\");\n    expect(ScrollArea.shadcnScrollAreaRootClassName).toContain(\"overflow\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

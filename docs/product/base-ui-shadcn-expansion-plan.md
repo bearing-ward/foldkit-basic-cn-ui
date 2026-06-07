@@ -138,10 +138,15 @@ Present shadcn lane components:
 - pagination
 - popover
 - progress
+- radio-group
 - resizable
+- scroll-area
+- select
+- separator
 - sheet
 - sidebar
 - skeleton
+- slider
 - sonner
 - spinner
 - table
@@ -149,11 +154,6 @@ Present shadcn lane components:
 
 Missing shadcn lane components:
 
-- radio-group
-- scroll-area
-- select
-- separator
-- slider
 - switch
 - tabs
 - textarea

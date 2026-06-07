@@ -306,6 +306,7 @@ export const CardDocsRoute = r("CardDocs");
 export const CardBasicExampleRoute = r("CardBasicExample");
 export const SeparatorRoute = r("Separator");
 export const SeparatorDocsRoute = r("SeparatorDocs");
+export const ShadcnSeparatorDocsRoute = r("ShadcnSeparatorDocs");
 export const SeparatorBasicExampleRoute = r("SeparatorBasicExample");
 export const SkeletonRoute = r("Skeleton");
 export const SkeletonDocsRoute = r("SkeletonDocs");
@@ -336,6 +337,7 @@ export const MeterDocsRoute = r("MeterDocs");
 export const MeterBasicExampleRoute = r("MeterBasicExample");
 export const ScrollAreaRoute = r("ScrollArea");
 export const ScrollAreaDocsRoute = r("ScrollAreaDocs");
+export const ShadcnScrollAreaDocsRoute = r("ShadcnScrollAreaDocs");
 export const ScrollAreaBasicExampleRoute = r("ScrollAreaBasicExample");
 export const ToggleRoute = r("Toggle");
 export const ToggleDocsRoute = r("ToggleDocs");
@@ -425,6 +427,7 @@ export const PopoverBasicExampleRoute = r("PopoverBasicExample");
 export const PopoverAnimatedExampleRoute = r("PopoverAnimatedExample");
 export const RadioGroupRoute = r("RadioGroup");
 export const RadioGroupDocsRoute = r("RadioGroupDocs");
+export const ShadcnRadioGroupDocsRoute = r("ShadcnRadioGroupDocs");
 export const BaseUiRadioGroupDocsRoute = r("BaseUiRadioGroupDocs");
 export const RadioGroupBasicExampleRoute = r("RadioGroupBasicExample");
 export const RadioGroupHorizontalExampleRoute = r(
@@ -432,11 +435,13 @@ export const RadioGroupHorizontalExampleRoute = r(
 );
 export const SelectRoute = r("Select");
 export const SelectDocsRoute = r("SelectDocs");
+export const ShadcnSelectDocsRoute = r("ShadcnSelectDocs");
 export const BaseUiSelectDocsRoute = r("BaseUiSelectDocs");
 export const SelectBasicExampleRoute = r("SelectBasicExample");
 export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
 export const SliderDocsRoute = r("SliderDocs");
+export const ShadcnSliderDocsRoute = r("ShadcnSliderDocs");
 export const BaseUiSliderDocsRoute = r("BaseUiSliderDocs");
 export const SliderBasicExampleRoute = r("SliderBasicExample");
 export const SliderDisabledExampleRoute = r("SliderDisabledExample");
@@ -609,6 +614,7 @@ const AppRoute = S.Union([
   CardBasicExampleRoute,
   SeparatorRoute,
   SeparatorDocsRoute,
+  ShadcnSeparatorDocsRoute,
   SeparatorBasicExampleRoute,
   SkeletonRoute,
   SkeletonDocsRoute,
@@ -639,6 +645,7 @@ const AppRoute = S.Union([
   MeterBasicExampleRoute,
   ScrollAreaRoute,
   ScrollAreaDocsRoute,
+  ShadcnScrollAreaDocsRoute,
   ScrollAreaBasicExampleRoute,
   ToggleRoute,
   ToggleDocsRoute,
@@ -726,16 +733,19 @@ const AppRoute = S.Union([
   PopoverAnimatedExampleRoute,
   RadioGroupRoute,
   RadioGroupDocsRoute,
+  ShadcnRadioGroupDocsRoute,
   BaseUiRadioGroupDocsRoute,
   RadioGroupBasicExampleRoute,
   RadioGroupHorizontalExampleRoute,
   SelectRoute,
   SelectDocsRoute,
+  ShadcnSelectDocsRoute,
   BaseUiSelectDocsRoute,
   SelectBasicExampleRoute,
   SelectDisabledExampleRoute,
   SliderRoute,
   SliderDocsRoute,
+  ShadcnSliderDocsRoute,
   BaseUiSliderDocsRoute,
   SliderBasicExampleRoute,
   SliderDisabledExampleRoute,
@@ -2125,6 +2135,12 @@ export const separatorDocsRouter = pipe(
   slash(literal("separator")),
   Route.mapTo(SeparatorDocsRoute)
 );
+export const shadcnSeparatorDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-separator")),
+  Route.mapTo(ShadcnSeparatorDocsRoute)
+);
 export const separatorBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2344,6 +2360,12 @@ export const scrollAreaDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("scroll-area")),
   Route.mapTo(ScrollAreaDocsRoute)
+);
+export const shadcnScrollAreaDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-scroll-area")),
+  Route.mapTo(ShadcnScrollAreaDocsRoute)
 );
 export const scrollAreaBasicExampleRouter = pipe(
   literal("docs"),
@@ -3094,6 +3116,12 @@ export const radioGroupDocsRouter = pipe(
   slash(literal("radio-group")),
   Route.mapTo(RadioGroupDocsRoute)
 );
+export const shadcnRadioGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-radio-group")),
+  Route.mapTo(ShadcnRadioGroupDocsRoute)
+);
 export const baseUiRadioGroupDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3133,6 +3161,12 @@ export const selectDocsRouter = pipe(
   slash(literal("select")),
   Route.mapTo(SelectDocsRoute)
 );
+export const shadcnSelectDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-select")),
+  Route.mapTo(ShadcnSelectDocsRoute)
+);
 export const baseUiSelectDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3171,6 +3205,12 @@ export const sliderDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("slider")),
   Route.mapTo(SliderDocsRoute)
+);
+export const shadcnSliderDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-slider")),
+  Route.mapTo(ShadcnSliderDocsRoute)
 );
 export const baseUiSliderDocsRouter = pipe(
   literal("docs"),
@@ -3581,6 +3621,7 @@ const routeParser = Route.oneOf(
   separatorBasicExampleRouter,
   separatorBasicStandaloneExampleRouter,
   separatorDocsRouter,
+  shadcnSeparatorDocsRouter,
   skeletonRouter,
   skeletonBasicExampleRouter,
   skeletonBasicStandaloneExampleRouter,
@@ -3621,6 +3662,7 @@ const routeParser = Route.oneOf(
   scrollAreaBasicExampleRouter,
   scrollAreaBasicStandaloneExampleRouter,
   scrollAreaDocsRouter,
+  shadcnScrollAreaDocsRouter,
   toggleRouter,
   toggleBasicExampleRouter,
   toggleBasicStandaloneExampleRouter,
@@ -3746,6 +3788,7 @@ const routeParser = Route.oneOf(
   radioGroupBasicStandaloneExampleRouter,
   radioGroupHorizontalStandaloneExampleRouter,
   radioGroupDocsRouter,
+  shadcnRadioGroupDocsRouter,
   baseUiRadioGroupDocsRouter,
   selectRouter,
   selectBasicExampleRouter,
@@ -3753,6 +3796,7 @@ const routeParser = Route.oneOf(
   selectBasicStandaloneExampleRouter,
   selectDisabledStandaloneExampleRouter,
   selectDocsRouter,
+  shadcnSelectDocsRouter,
   baseUiSelectDocsRouter,
   sliderRouter,
   sliderBasicExampleRouter,
@@ -3760,6 +3804,7 @@ const routeParser = Route.oneOf(
   sliderBasicStandaloneExampleRouter,
   sliderDisabledStandaloneExampleRouter,
   sliderDocsRouter,
+  shadcnSliderDocsRouter,
   baseUiSliderDocsRouter,
   switchRouter,
   switchBasicExampleRouter,

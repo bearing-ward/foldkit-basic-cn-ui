@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "shadcn style-lane radio group wrapper backed by the existing Radio Group component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/radio-group"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-radio-group/index.ts",
+      "target": "src/ui/shadcn-radio-group/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  checkIcon,\n  checkPlaceholder,\n  CompletedFocusOption,\n  create,\n  FocusOption,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  Selected,\n  SelectedOption,\n} from \"../radio-group\";\nexport type {\n  Commands,\n  CompletedFocusOption as RadioGroupCompletedFocusOption,\n  InitConfig,\n  InitReturn,\n  Model as RadioGroupModel,\n  OptionInfo,\n  Orientation,\n  OutMessage as RadioGroupOutMessage,\n  RenderInfo,\n  Selected as RadioGroupSelected,\n  SelectedOption as RadioGroupSelectedOption,\n  ViewInputs,\n} from \"../radio-group\";\n\nexport {\n  shadcnRadioGroupDescriptionClassName,\n  shadcnRadioGroupHorizontalClassName,\n  shadcnRadioGroupHorizontalOptionClassName,\n  shadcnRadioGroupLabelClassName,\n  shadcnRadioGroupMetaClassName,\n  shadcnRadioGroupVerticalClassName,\n  shadcnRadioGroupVerticalOptionClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-radio-group/view.ts",
+      "target": "src/ui/shadcn-radio-group/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  descriptionClassName as shadcnRadioGroupDescriptionClassName,\n  horizontalGroupClassName as shadcnRadioGroupHorizontalClassName,\n  horizontalOptionClassName as shadcnRadioGroupHorizontalOptionClassName,\n  labelClassName as shadcnRadioGroupLabelClassName,\n  metaClassName as shadcnRadioGroupMetaClassName,\n  verticalGroupClassName as shadcnRadioGroupVerticalClassName,\n  verticalOptionClassName as shadcnRadioGroupVerticalOptionClassName,\n} from \"../radio-group/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-radio-group/shadcn-radio-group.scene.test.ts",
+      "target": "src/ui/shadcn-radio-group/shadcn-radio-group.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as RadioGroup from \"./index\";\n\ndescribe(\"shadcn Radio Group registry view\", () => {\n  test(\"reuses the Foldkit Radio Group functional contract\", () => {\n    expect(RadioGroup.init).toBeTypeOf(\"function\");\n    expect(RadioGroup.create).toBeTypeOf(\"function\");\n    expect(RadioGroup.checkIcon).toBeTypeOf(\"function\");\n    expect(RadioGroup.shadcnRadioGroupVerticalOptionClassName).toContain(\n      \"data-[checked]\"\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.RadioGroup",
+      "stateful": true
+    }
+  }
+}

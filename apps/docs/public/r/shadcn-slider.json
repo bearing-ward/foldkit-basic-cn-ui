@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-slider",
+  "type": "registry:ui",
+  "title": "Slider",
+  "description": "shadcn style-lane slider wrapper backed by the existing Slider component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/slider"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-slider/index.ts",
+      "target": "src/ui/shadcn-slider/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  fractionOfValue,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectRange,\n  reflectValue,\n  sliderFieldView,\n  subscriptions,\n  subscriptionsForRoot,\n  update,\n  view,\n} from \"../slider\";\nexport type {\n  InitConfig,\n  InitReturn,\n  SliderAttributes,\n  SliderFieldViewInput,\n  UpdateReturn,\n  ViewInputs,\n} from \"../slider\";\n\nexport {\n  shadcnSliderFieldClassName,\n  shadcnSliderFilledTrackClassName,\n  shadcnSliderHeaderClassName,\n  shadcnSliderLabelClassName,\n  shadcnSliderRootClassName,\n  shadcnSliderThumbClassName,\n  shadcnSliderTrackClassName,\n  shadcnSliderValueClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-slider/view.ts",
+      "target": "src/ui/shadcn-slider/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  fieldClassName as shadcnSliderFieldClassName,\n  filledTrackClassName as shadcnSliderFilledTrackClassName,\n  headerClassName as shadcnSliderHeaderClassName,\n  labelClassName as shadcnSliderLabelClassName,\n  rootClassName as shadcnSliderRootClassName,\n  thumbClassName as shadcnSliderThumbClassName,\n  trackClassName as shadcnSliderTrackClassName,\n  valueClassName as shadcnSliderValueClassName,\n} from \"../slider/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-slider/shadcn-slider.scene.test.ts",
+      "target": "src/ui/shadcn-slider/shadcn-slider.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Slider from \"./index\";\n\ndescribe(\"shadcn Slider registry view\", () => {\n  test(\"reuses the Foldkit Slider functional contract\", () => {\n    expect(Slider.init).toBeTypeOf(\"function\");\n    expect(Slider.update).toBeTypeOf(\"function\");\n    expect(Slider.sliderFieldView).toBeTypeOf(\"function\");\n    expect(Slider.shadcnSliderThumbClassName).toContain(\"rounded-full\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Slider",
+      "stateful": true
+    }
+  }
+}

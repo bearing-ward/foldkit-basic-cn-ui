@@ -265,7 +265,9 @@ import {
   BaseUiMenuDocsRoute,
   BaseUiPopoverDocsRoute,
   BaseUiRadioGroupDocsRoute,
+  ShadcnRadioGroupDocsRoute,
   BaseUiSelectDocsRoute,
+  ShadcnSelectDocsRoute,
   BaseUiSliderDocsRoute,
   BaseUiSwitchDocsRoute,
   BaseUiTabsDocsRoute,
@@ -314,6 +316,7 @@ import {
   MeterDocsRoute,
   ScrollAreaBasicExampleRoute,
   ScrollAreaDocsRoute,
+  ShadcnScrollAreaDocsRoute,
   ToggleBasicExampleRoute,
   ToggleDocsRoute,
   ToggleGroupBasicExampleRoute,
@@ -349,6 +352,8 @@ import {
   SliderBasicExampleRoute,
   SliderDisabledExampleRoute,
   SliderDocsRoute,
+  ShadcnSeparatorDocsRoute,
+  ShadcnSliderDocsRoute,
   SwitchBasicExampleRoute,
   SwitchDisabledExampleRoute,
   SwitchDocsRoute,
@@ -2398,6 +2403,31 @@ describe("scene", () => {
         route: ShadcnProgressDocsRoute(),
         heading: "Progress",
         source: "registry/default/ui/shadcn-progress",
+      },
+      {
+        route: ShadcnRadioGroupDocsRoute(),
+        heading: "Radio Group",
+        source: "registry/default/ui/shadcn-radio-group",
+      },
+      {
+        route: ShadcnScrollAreaDocsRoute(),
+        heading: "Scroll Area",
+        source: "registry/default/ui/shadcn-scroll-area",
+      },
+      {
+        route: ShadcnSelectDocsRoute(),
+        heading: "Select",
+        source: "registry/default/ui/shadcn-select",
+      },
+      {
+        route: ShadcnSeparatorDocsRoute(),
+        heading: "Separator",
+        source: "registry/default/ui/shadcn-separator",
+      },
+      {
+        route: ShadcnSliderDocsRoute(),
+        heading: "Slider",
+        source: "registry/default/ui/shadcn-slider",
       },
     ];
 

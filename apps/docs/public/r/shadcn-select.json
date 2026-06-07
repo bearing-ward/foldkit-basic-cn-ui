@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-select",
+  "type": "registry:ui",
+  "title": "Select",
+  "description": "shadcn style-lane select wrapper backed by the existing Select component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/select"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-select/index.ts",
+      "target": "src/ui/shadcn-select/index.ts",
+      "type": "registry:ui",
+      "content": "export { descriptionId, view } from \"../select\";\nexport type { SelectAttributes, ViewConfig } from \"../select\";\n\nexport {\n  shadcnSelectChevronClassName,\n  shadcnSelectClassName,\n  shadcnSelectDescriptionClassName,\n  shadcnSelectLabelClassName,\n  shadcnSelectWrapperClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-select/view.ts",
+      "target": "src/ui/shadcn-select/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  chevronClassName as shadcnSelectChevronClassName,\n  descriptionClassName as shadcnSelectDescriptionClassName,\n  labelClassName as shadcnSelectLabelClassName,\n  selectClassName as shadcnSelectClassName,\n  selectWrapperClassName as shadcnSelectWrapperClassName,\n} from \"../select/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-select/shadcn-select.scene.test.ts",
+      "target": "src/ui/shadcn-select/shadcn-select.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Select from \"./index\";\n\ndescribe(\"shadcn Select registry view\", () => {\n  test(\"reuses the Foldkit Select view contract\", () => {\n    expect(Select.view).toBeTypeOf(\"function\");\n    expect(Select.descriptionId).toBeTypeOf(\"function\");\n    expect(Select.shadcnSelectClassName).toContain(\"rounded\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Select",
+      "stateful": false
+    }
+  }
+}

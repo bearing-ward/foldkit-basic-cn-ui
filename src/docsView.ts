@@ -694,6 +694,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/separator",
   },
   {
+    label: "Separator Docs",
+    routeTag: "ShadcnSeparatorDocs",
+    href: "/docs/components/shadcn-separator",
+  },
+  {
     label: "Separator Basic Example",
     routeTag: "SeparatorBasicExample",
     href: "/docs/components/separator/examples/basic",
@@ -806,6 +811,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Scroll Area Docs",
     routeTag: "ScrollAreaDocs",
     href: "/docs/components/scroll-area",
+  },
+  {
+    label: "Scroll Area Docs",
+    routeTag: "ShadcnScrollAreaDocs",
+    href: "/docs/components/shadcn-scroll-area",
   },
   {
     label: "Scroll Area Basic Example",
@@ -1184,6 +1194,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/base-ui-radio-group",
   },
   {
+    label: "Radio Group Docs",
+    routeTag: "ShadcnRadioGroupDocs",
+    href: "/docs/components/shadcn-radio-group",
+  },
+  {
     label: "Radio Group Basic Example",
     routeTag: "RadioGroupBasicExample",
     href: "/docs/components/radio-group/examples/basic",
@@ -1205,6 +1220,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/base-ui-select",
   },
   {
+    label: "Select Docs",
+    routeTag: "ShadcnSelectDocs",
+    href: "/docs/components/shadcn-select",
+  },
+  {
     label: "Select Basic Example",
     routeTag: "SelectBasicExample",
     href: "/docs/components/select/examples/basic",
@@ -1224,6 +1244,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Slider Docs",
     routeTag: "BaseUiSliderDocs",
     href: "/docs/components/base-ui-slider",
+  },
+  {
+    label: "Slider Docs",
+    routeTag: "ShadcnSliderDocs",
+    href: "/docs/components/shadcn-slider",
   },
   {
     label: "Slider Basic Example",
@@ -1609,6 +1634,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnNavigationMenuDocs",
     "ShadcnPopoverDocs",
     "ShadcnProgressDocs",
+    "ShadcnRadioGroupDocs",
+    "ShadcnScrollAreaDocs",
+    "ShadcnSelectDocs",
+    "ShadcnSeparatorDocs",
+    "ShadcnSliderDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
     : [
@@ -1691,11 +1721,6 @@ const labelFromComponentSlug = (slug: string): string =>
 const missingBaseUiLaneSlugs: readonly string[] = [];
 
 const missingShadcnLaneSlugs: readonly string[] = [
-  "radio-group",
-  "scroll-area",
-  "select",
-  "separator",
-  "slider",
   "switch",
   "tabs",
   "textarea",
@@ -2547,6 +2572,23 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Base UI",
   },
   "shadcn-progress": { artifact: "component", origin: "shadcn" },
+  "shadcn-radio-group": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.RadioGroup",
+  },
+  "shadcn-scroll-area": { artifact: "component", origin: "shadcn" },
+  "shadcn-select": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Select",
+  },
+  "shadcn-separator": { artifact: "component", origin: "shadcn" },
+  "shadcn-slider": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Slider",
+  },
 };
 
 const docsMetadataForSource = (
@@ -15446,6 +15488,25 @@ Avatar.view<Message>({
       CardBasicExample: () => DocsRoutes.cardBasicExampleRouteView(model),
       Separator: () => embedUi("ui-separator", View.separator),
       SeparatorDocs: () => separatorDocsView(model),
+      ShadcnSeparatorDocs: () =>
+        shadcnLaneDocsView({
+          label: "Separator",
+          source: "registry/default/ui/shadcn-separator",
+          primitive: "Separator view helpers",
+          description:
+            "A shadcn style-lane Separator slice that reuses the existing accessible orientation-aware separator helper.",
+          usage:
+            "Install the shadcn lane wrapper when you want Separator composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnSeparatorBaseClassName",
+            "shadcnHorizontalSeparatorClassName",
+            "shadcnVerticalSeparatorClassName",
+            "shadcnSeparatorClassNameByOrientation",
+          ],
+          anatomyCode: `import * as Separator from "./ui/shadcn-separator";
+
+Separator.view<Message>({ orientation: "horizontal" });`,
+        }),
       SeparatorBasicExample: () =>
         DocsRoutes.separatorBasicExampleRouteView(model),
       Skeleton: () => embedUi("ui-skeleton", View.skeleton),
@@ -15811,6 +15872,28 @@ Input.view<Message>({
       MeterBasicExample: () => DocsRoutes.meterBasicExampleRouteView(model),
       ScrollArea: () => embedUi("ui-scroll-area", View.scrollArea),
       ScrollAreaDocs: () => scrollAreaDocsView(model),
+      ShadcnScrollAreaDocs: () =>
+        shadcnLaneDocsView({
+          label: "Scroll Area",
+          source: "registry/default/ui/shadcn-scroll-area",
+          primitive: "Scroll Area view helpers",
+          description:
+            "A shadcn style-lane Scroll Area slice that reuses the existing root, viewport, content, scrollbar, thumb, corner, and fade helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Scroll Area composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnScrollAreaRootClassName",
+            "shadcnScrollAreaViewportClassName",
+            "shadcnScrollAreaContentClassName",
+            "shadcnScrollAreaScrollbarClassName",
+            "shadcnScrollAreaThumbClassName",
+          ],
+          anatomyCode: `import * as ScrollArea from "./ui/shadcn-scroll-area";
+
+ScrollArea.view<Message>({
+  children: items.map((item) => h.p([], [item])),
+});`,
+        }),
       ScrollAreaBasicExample: () =>
         DocsRoutes.scrollAreaBasicExampleRouteView(model),
       Toggle: () => embedUi("ui-toggle", View.toggle),
@@ -15972,6 +16055,35 @@ h.submodel({
   toParentMessage: (message) => GotRadioGroupMessage({ message }),
 });`,
         }),
+      ShadcnRadioGroupDocs: () =>
+        shadcnLaneDocsView({
+          label: "Radio Group",
+          source: "registry/default/ui/shadcn-radio-group",
+          primitive: "Ui.RadioGroup",
+          description:
+            "A shadcn style-lane Radio Group slice that reuses the official Foldkit Ui.RadioGroup primitive for controlled selection, orientation, option focus, and labelled choices.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Radio Group behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnRadioGroupVerticalClassName",
+            "shadcnRadioGroupHorizontalClassName",
+            "shadcnRadioGroupVerticalOptionClassName",
+            "shadcnRadioGroupHorizontalOptionClassName",
+            "shadcnRadioGroupLabelClassName",
+            "shadcnRadioGroupDescriptionClassName",
+          ],
+          anatomyCode: `import * as RadioGroup from "./ui/shadcn-radio-group";
+
+const PlanRadioGroup = RadioGroup.create<"starter" | "pro">();
+
+h.submodel({
+  slotId: model.radioGroup.id,
+  model: model.radioGroup,
+  view: PlanRadioGroup.view,
+  viewInputs: { options },
+  toParentMessage: (message) => GotRadioGroupMessage({ message }),
+});`,
+        }),
       RadioGroupBasicExample: () =>
         DocsRoutes.radioGroupBasicExampleRouteView(model),
       RadioGroupHorizontalExample: () =>
@@ -16003,6 +16115,31 @@ Select.view<Message>({
   options,
 });`,
         }),
+      ShadcnSelectDocs: () =>
+        shadcnLaneDocsView({
+          label: "Select",
+          source: "registry/default/ui/shadcn-select",
+          primitive: "Ui.Select",
+          description:
+            "A shadcn style-lane Select slice that reuses the official Foldkit Ui.Select native select helper for labels, descriptions, disabled state, and value changes.",
+          usage:
+            "Install the shadcn lane wrapper when you need the native Foldkit Select contract with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnSelectWrapperClassName",
+            "shadcnSelectClassName",
+            "shadcnSelectChevronClassName",
+            "shadcnSelectLabelClassName",
+            "shadcnSelectDescriptionClassName",
+          ],
+          anatomyCode: `import * as Select from "./ui/shadcn-select";
+
+Select.view<Message>({
+  id: "plan",
+  value: model.plan,
+  onChange: (value) => SelectedPlan({ value }),
+  options,
+});`,
+        }),
       SelectBasicExample: () => DocsRoutes.selectBasicExampleRouteView(model),
       SelectDisabledExample: () =>
         DocsRoutes.selectDisabledExampleRouteView(model),
@@ -16026,6 +16163,32 @@ Select.view<Message>({
             "baseUiSliderValueClassName",
           ],
           anatomyCode: `import * as Slider from "./ui/base-ui-slider";
+
+h.submodel({
+  slotId: model.slider.id,
+  model: model.slider,
+  view: Slider.view,
+  toParentMessage: (message) => GotSliderMessage({ message }),
+});`,
+        }),
+      ShadcnSliderDocs: () =>
+        shadcnLaneDocsView({
+          label: "Slider",
+          source: "registry/default/ui/shadcn-slider",
+          primitive: "Ui.Slider",
+          description:
+            "A shadcn style-lane Slider slice that reuses the official Foldkit Ui.Slider primitive for value reflection, drag state, keyboard movement, and root subscriptions.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Slider behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnSliderRootClassName",
+            "shadcnSliderTrackClassName",
+            "shadcnSliderFilledTrackClassName",
+            "shadcnSliderThumbClassName",
+            "shadcnSliderLabelClassName",
+            "shadcnSliderValueClassName",
+          ],
+          anatomyCode: `import * as Slider from "./ui/shadcn-slider";
 
 h.submodel({
   slotId: model.slider.id,

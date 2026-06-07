@@ -3171,6 +3171,174 @@
       }
     },
     {
+      "name": "shadcn-radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "shadcn style-lane radio group wrapper backed by the existing Radio Group component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/radio-group"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-radio-group/index.ts",
+          "target": "src/ui/shadcn-radio-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-radio-group/view.ts",
+          "target": "src/ui/shadcn-radio-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-radio-group/shadcn-radio-group.scene.test.ts",
+          "target": "src/ui/shadcn-radio-group/shadcn-radio-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.RadioGroup",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "shadcn-scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "shadcn style-lane scroll area wrapper backed by the existing Scroll Area component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/scroll-area"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-scroll-area/index.ts",
+          "target": "src/ui/shadcn-scroll-area/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-scroll-area/view.ts",
+          "target": "src/ui/shadcn-scroll-area/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-scroll-area/shadcn-scroll-area.scene.test.ts",
+          "target": "src/ui/shadcn-scroll-area/shadcn-scroll-area.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "shadcn style-lane select wrapper backed by the existing Select component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/select"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-select/index.ts",
+          "target": "src/ui/shadcn-select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-select/view.ts",
+          "target": "src/ui/shadcn-select/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-select/shadcn-select.scene.test.ts",
+          "target": "src/ui/shadcn-select/shadcn-select.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Select",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "shadcn style-lane separator wrapper backed by the existing Separator component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/separator"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-separator/index.ts",
+          "target": "src/ui/shadcn-separator/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-separator/view.ts",
+          "target": "src/ui/shadcn-separator/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-separator/shadcn-separator.scene.test.ts",
+          "target": "src/ui/shadcn-separator/shadcn-separator.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "shadcn style-lane slider wrapper backed by the existing Slider component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/slider"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-slider/index.ts",
+          "target": "src/ui/shadcn-slider/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-slider/view.ts",
+          "target": "src/ui/shadcn-slider/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-slider/shadcn-slider.scene.test.ts",
+          "target": "src/ui/shadcn-slider/shadcn-slider.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Slider",
+          "stateful": true
+        }
+      }
+    },
+    {
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
