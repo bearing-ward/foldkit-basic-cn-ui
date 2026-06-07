@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing DatePicker open, selected-date feedback, and hidden input naming.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["date-picker"],
+  "registryDependencies": ["@foldkit-cn/date-picker"],
   "files": [
     {
       "path": "registry/default/examples/date-picker-basic/main.ts",

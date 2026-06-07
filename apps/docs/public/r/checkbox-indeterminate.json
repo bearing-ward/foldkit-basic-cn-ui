@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing grouped Checkbox state and an indeterminate parent control.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["checkbox"],
+  "registryDependencies": ["@foldkit-cn/checkbox"],
   "files": [
     {
       "path": "registry/default/examples/checkbox-indeterminate/main.ts",

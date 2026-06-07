@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing immediate Tooltip focus opening with zero hover delay configuration.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["tooltip"],
+  "registryDependencies": ["@foldkit-cn/tooltip"],
   "files": [
     {
       "path": "registry/default/examples/tooltip-no-delay/main.ts",

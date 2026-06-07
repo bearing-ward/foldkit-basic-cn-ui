@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the shadcn Alert destructive example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["alert"],
+  "registryDependencies": ["@foldkit-cn/alert"],
   "files": [
     {
       "path": "registry/default/examples/alert-destructive/main.ts",

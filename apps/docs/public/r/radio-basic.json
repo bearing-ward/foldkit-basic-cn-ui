@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Radio hero example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["radio"],
+  "registryDependencies": ["@foldkit-cn/radio"],
   "files": [
     {
       "path": "registry/default/examples/radio-basic/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing grouped profile fields with parent-visible input feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["fieldset"],
+  "registryDependencies": ["@foldkit-cn/fieldset"],
   "files": [
     {
       "path": "registry/default/examples/fieldset-basic/main.ts",

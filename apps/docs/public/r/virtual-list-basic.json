@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing fixed-height VirtualList rendering and command-backed scroll-to-index behavior.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["virtual-list"],
+  "registryDependencies": ["@foldkit-cn/virtual-list"],
   "files": [
     {
       "path": "registry/default/examples/virtual-list-basic/main.ts",

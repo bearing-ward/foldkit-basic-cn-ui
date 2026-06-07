@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the shadcn Aspect Ratio portrait example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["aspect-ratio"],
+  "registryDependencies": ["@foldkit-cn/aspect-ratio"],
   "files": [
     {
       "path": "registry/default/examples/aspect-ratio-portrait/main.ts",

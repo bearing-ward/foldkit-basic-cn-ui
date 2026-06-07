@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing manual Tabs activation with a disabled tab.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["tabs"],
+  "registryDependencies": ["@foldkit-cn/tabs"],
   "files": [
     {
       "path": "registry/default/examples/tabs-manual/main.ts",

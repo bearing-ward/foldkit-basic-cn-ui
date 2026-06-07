@@ -50,7 +50,7 @@
       "description": "A runnable Foldkit example showing a parent-owned trigger, dialog submodel, accessible title and description, cancel, and confirm actions.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["dialog"],
+      "registryDependencies": ["@foldkit-cn/dialog"],
       "files": [
         {
           "path": "registry/default/examples/dialog-basic/main.ts",
@@ -77,7 +77,7 @@
       "description": "A runnable Foldkit example showing Dialog with isAnimated enabled and styled enter/leave transition classes.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["dialog"],
+      "registryDependencies": ["@foldkit-cn/dialog"],
       "files": [
         {
           "path": "registry/default/examples/dialog-animated/main.ts",
@@ -104,7 +104,7 @@
       "description": "A runnable Foldkit example showing destructive confirmation styling with the standard Dialog message flow.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["dialog"],
+      "registryDependencies": ["@foldkit-cn/dialog"],
       "files": [
         {
           "path": "registry/default/examples/dialog-destructive/main.ts",
@@ -131,7 +131,7 @@
       "description": "A runnable Foldkit example showing Dialog focusSelector and trigger-time OnClickFocus for input-first flows.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["dialog"],
+      "registryDependencies": ["@foldkit-cn/dialog"],
       "files": [
         {
           "path": "registry/default/examples/dialog-focus/main.ts",
@@ -158,7 +158,7 @@
       "description": "A runnable Foldkit example showing long Dialog content with a constrained scroll body and persistent footer actions.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["dialog"],
+      "registryDependencies": ["@foldkit-cn/dialog"],
       "files": [
         {
           "path": "registry/default/examples/dialog-scrollable/main.ts",
@@ -225,7 +225,7 @@
       "description": "A runnable Foldkit example showing a Popover trigger, anchored panel, backdrop close, and mount resolution coverage.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["popover"],
+      "registryDependencies": ["@foldkit-cn/popover"],
       "files": [
         {
           "path": "registry/default/examples/popover-basic/main.ts",
@@ -252,7 +252,7 @@
       "description": "A runnable Foldkit example showing Popover with isAnimated enabled and animation lifecycle coverage.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["popover"],
+      "registryDependencies": ["@foldkit-cn/popover"],
       "files": [
         {
           "path": "registry/default/examples/popover-animated/main.ts",
@@ -319,7 +319,7 @@
       "description": "A runnable Foldkit example showing a typed Menu trigger, anchored items, backdrop close, and mount resolution coverage.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["menu"],
+      "registryDependencies": ["@foldkit-cn/menu"],
       "files": [
         {
           "path": "registry/default/examples/menu-basic/main.ts",
@@ -346,7 +346,7 @@
       "description": "A runnable Foldkit example showing Menu with isAnimated enabled and animation lifecycle coverage.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["menu"],
+      "registryDependencies": ["@foldkit-cn/menu"],
       "files": [
         {
           "path": "registry/default/examples/menu-animated/main.ts",
@@ -413,7 +413,7 @@
       "description": "A runnable Foldkit example showing a typed single-select Listbox trigger, selected label, anchored items, backdrop close, and mount resolution coverage.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["listbox"],
+      "registryDependencies": ["@foldkit-cn/listbox"],
       "files": [
         {
           "path": "registry/default/examples/listbox-basic/main.ts",
@@ -440,7 +440,7 @@
       "description": "A runnable Foldkit example showing Listbox with isAnimated enabled and animation lifecycle coverage.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["listbox"],
+      "registryDependencies": ["@foldkit-cn/listbox"],
       "files": [
         {
           "path": "registry/default/examples/listbox-animated/main.ts",
@@ -502,7 +502,7 @@
       "description": "A runnable Foldkit example showing a native Select with parent-owned value, typed onChange message, label, description, and selected-value feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["select"],
+      "registryDependencies": ["@foldkit-cn/select"],
       "files": [
         {
           "path": "registry/default/examples/select-basic/main.ts",
@@ -529,7 +529,7 @@
       "description": "A runnable Foldkit example showing disabled Select styling and accessible explanatory text.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["select"],
+      "registryDependencies": ["@foldkit-cn/select"],
       "files": [
         {
           "path": "registry/default/examples/select-disabled/main.ts",
@@ -596,7 +596,7 @@
       "description": "A runnable Foldkit example showing single-select Combobox filtering, typed parent message routing, and selected-value feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["combobox"],
+      "registryDependencies": ["@foldkit-cn/combobox"],
       "files": [
         {
           "path": "registry/default/examples/combobox-basic/main.ts",
@@ -623,7 +623,7 @@
       "description": "A runnable Foldkit example showing multi-select Combobox filtering with selected item tags.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["combobox"],
+      "registryDependencies": ["@foldkit-cn/combobox"],
       "files": [
         {
           "path": "registry/default/examples/combobox-multi/main.ts",
@@ -684,7 +684,7 @@
       "description": "A runnable Foldkit version of the Base UI Avatar default two-avatar example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["avatar"],
+      "registryDependencies": ["@foldkit-cn/avatar"],
       "files": [
         {
           "path": "registry/default/examples/avatar-basic/main.ts",
@@ -756,7 +756,7 @@
       "description": "A runnable Foldkit example showing badge variants with parent-owned status changes.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["badge"],
+      "registryDependencies": ["@foldkit-cn/badge"],
       "files": [
         {
           "path": "registry/default/examples/badge-basic/main.ts",
@@ -783,7 +783,7 @@
       "description": "A runnable Foldkit version of the upstream shadcn badge spinner example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["badge", "spinner"],
+      "registryDependencies": ["@foldkit-cn/badge", "@foldkit-cn/spinner"],
       "files": [
         {
           "path": "registry/default/examples/badge-spinner/main.ts",
@@ -845,7 +845,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Basic composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["carousel"],
+      "registryDependencies": ["@foldkit-cn/carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-basic/main.ts",
@@ -873,7 +873,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Sizes composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["carousel"],
+      "registryDependencies": ["@foldkit-cn/carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-sizes/main.ts",
@@ -901,7 +901,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Spacing composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["carousel"],
+      "registryDependencies": ["@foldkit-cn/carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-spacing/main.ts",
@@ -929,7 +929,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Orientation composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["carousel"],
+      "registryDependencies": ["@foldkit-cn/carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-orientation/main.ts",
@@ -957,7 +957,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel API composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["carousel"],
+      "registryDependencies": ["@foldkit-cn/carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-api/main.ts",
@@ -985,7 +985,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel RTL composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["carousel"],
+      "registryDependencies": ["@foldkit-cn/carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-rtl/main.ts",
@@ -1047,7 +1047,7 @@
       "description": "A runnable Foldkit example showing the Card component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["card"],
+      "registryDependencies": ["@foldkit-cn/card"],
       "files": [
         {
           "path": "registry/default/examples/card-basic/main.ts",
@@ -1108,7 +1108,7 @@
       "description": "A runnable Foldkit example showing the Separator component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["separator"],
+      "registryDependencies": ["@foldkit-cn/separator"],
       "files": [
         {
           "path": "registry/default/examples/separator-basic/main.ts",
@@ -1179,7 +1179,7 @@
       "description": "A runnable Foldkit example showing the Skeleton component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["skeleton"],
+      "registryDependencies": ["@foldkit-cn/skeleton"],
       "files": [
         {
           "path": "registry/default/examples/skeleton-basic/main.ts",
@@ -1274,7 +1274,7 @@
       "description": "A runnable Foldkit example showing the Kbd component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["kbd"],
+      "registryDependencies": ["@foldkit-cn/kbd"],
       "files": [
         {
           "path": "registry/default/examples/kbd-basic/main.ts",
@@ -1301,7 +1301,7 @@
       "description": "A runnable Foldkit version of the upstream shadcn kbd input-group example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["input-group", "kbd"],
+      "registryDependencies": ["@foldkit-cn/input-group", "@foldkit-cn/kbd"],
       "files": [
         {
           "path": "registry/default/examples/kbd-input-group/main.ts",
@@ -1363,7 +1363,7 @@
       "description": "A runnable Foldkit example showing the Typography component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["typography"],
+      "registryDependencies": ["@foldkit-cn/typography"],
       "files": [
         {
           "path": "registry/default/examples/typography-basic/main.ts",
@@ -1424,7 +1424,7 @@
       "description": "A runnable Foldkit example showing the Empty component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["empty"],
+      "registryDependencies": ["@foldkit-cn/empty"],
       "files": [
         {
           "path": "registry/default/examples/empty-basic/main.ts",
@@ -1451,7 +1451,11 @@
       "description": "A runnable Foldkit version of the upstream shadcn empty input-group example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["empty", "input-group", "kbd"],
+      "registryDependencies": [
+        "@foldkit-cn/empty",
+        "@foldkit-cn/input-group",
+        "@foldkit-cn/kbd"
+      ],
       "files": [
         {
           "path": "registry/default/examples/empty-input-group/main.ts",
@@ -1513,7 +1517,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Basic example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-basic/main.ts",
@@ -1551,7 +1555,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Separator example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-separator/main.ts",
@@ -1589,7 +1593,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Dropdown example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-dropdown/main.ts",
@@ -1627,7 +1631,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Collapsed example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-collapsed/main.ts",
@@ -1665,7 +1669,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Link example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-link/main.ts",
@@ -1703,7 +1707,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb RTL example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-rtl/main.ts",
@@ -1776,7 +1780,7 @@
       "description": "A runnable Foldkit example showing a typed Button click message with parent-owned feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button"],
+      "registryDependencies": ["@foldkit-cn/button"],
       "files": [
         {
           "path": "registry/default/examples/button-basic/main.ts",
@@ -1803,7 +1807,7 @@
       "description": "A runnable Foldkit example showing disabled Button styling and native disabled semantics.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button"],
+      "registryDependencies": ["@foldkit-cn/button"],
       "files": [
         {
           "path": "registry/default/examples/button-disabled/main.ts",
@@ -1865,7 +1869,7 @@
       "description": "A runnable Foldkit example showing typed Input messages with parent-owned value feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["input"],
+      "registryDependencies": ["@foldkit-cn/input"],
       "files": [
         {
           "path": "registry/default/examples/input-basic/main.ts",
@@ -1892,7 +1896,7 @@
       "description": "A runnable Foldkit example showing disabled Input styling and native disabled semantics.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["input"],
+      "registryDependencies": ["@foldkit-cn/input"],
       "files": [
         {
           "path": "registry/default/examples/input-disabled/main.ts",
@@ -1987,7 +1991,7 @@
       "description": "A runnable Foldkit version of the Base UI Scroll Area hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["scroll-area"],
+      "registryDependencies": ["@foldkit-cn/scroll-area"],
       "files": [
         {
           "path": "registry/default/examples/scroll-area-basic/main.ts",
@@ -2059,7 +2063,7 @@
       "description": "A runnable Foldkit version of the Base UI Toggle hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["toggle"],
+      "registryDependencies": ["@foldkit-cn/toggle"],
       "files": [
         {
           "path": "registry/default/examples/toggle-basic/main.ts",
@@ -2097,7 +2101,7 @@
       "description": "A Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["toggle"],
+      "registryDependencies": ["@foldkit-cn/toggle"],
       "files": [
         {
           "path": "registry/default/ui/toggle-group/index.ts",
@@ -2131,7 +2135,7 @@
       "description": "A runnable Foldkit version of the Base UI Toggle Group hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["toggle-group"],
+      "registryDependencies": ["@foldkit-cn/toggle-group"],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-basic/main.ts",
@@ -2203,7 +2207,7 @@
       "description": "A runnable Foldkit version of the Base UI Radio hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["radio"],
+      "registryDependencies": ["@foldkit-cn/radio"],
       "files": [
         {
           "path": "registry/default/examples/radio-basic/main.ts",
@@ -2275,7 +2279,7 @@
       "description": "A runnable Foldkit version of the Base UI Toolbar hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["toolbar"],
+      "registryDependencies": ["@foldkit-cn/toolbar"],
       "files": [
         {
           "path": "registry/default/examples/toolbar-basic/main.ts",
@@ -2347,7 +2351,7 @@
       "description": "A runnable Foldkit version of the Base UI Meter hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["meter"],
+      "registryDependencies": ["@foldkit-cn/meter"],
       "files": [
         {
           "path": "registry/default/examples/meter-basic/main.ts",
@@ -2419,7 +2423,7 @@
       "description": "A runnable Foldkit version of the Base UI Progress hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["progress"],
+      "registryDependencies": ["@foldkit-cn/progress"],
       "files": [
         {
           "path": "registry/default/examples/progress-basic/main.ts",
@@ -2492,7 +2496,7 @@
       "description": "A runnable Foldkit example showing a typed Checkbox message with parent-visible checked feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["checkbox"],
+      "registryDependencies": ["@foldkit-cn/checkbox"],
       "files": [
         {
           "path": "registry/default/examples/checkbox-basic/main.ts",
@@ -2553,7 +2557,7 @@
       "description": "A runnable Foldkit version of the Base UI Accordion single-panel example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["accordion"],
+      "registryDependencies": ["@foldkit-cn/accordion"],
       "files": [
         {
           "path": "registry/default/examples/accordion-basic/main.ts",
@@ -2591,7 +2595,7 @@
       "description": "A runnable Foldkit version of the Base UI Accordion open multiple panels example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["accordion"],
+      "registryDependencies": ["@foldkit-cn/accordion"],
       "files": [
         {
           "path": "registry/default/examples/accordion-multiple/main.ts",
@@ -2663,7 +2667,7 @@
       "description": "A runnable Foldkit version of the shadcn Alert default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["alert"],
+      "registryDependencies": ["@foldkit-cn/alert"],
       "files": [
         {
           "path": "registry/default/examples/alert-basic/main.ts",
@@ -2701,7 +2705,7 @@
       "description": "A runnable Foldkit version of the shadcn Alert destructive example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["alert"],
+      "registryDependencies": ["@foldkit-cn/alert"],
       "files": [
         {
           "path": "registry/default/examples/alert-destructive/main.ts",
@@ -2773,7 +2777,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio default 16:9 example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-basic/main.ts",
@@ -2811,7 +2815,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio square example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-square/main.ts",
@@ -2849,7 +2853,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio portrait example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-portrait/main.ts",
@@ -2887,7 +2891,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio RTL example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-rtl/main.ts",
@@ -2959,7 +2963,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Basic composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-basic/main.ts",
@@ -2987,7 +2991,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Orientation composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-orientation/main.ts",
@@ -3015,7 +3019,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Size composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-size/main.ts",
@@ -3043,7 +3047,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Nested composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-nested/main.ts",
@@ -3071,7 +3075,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Separator composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-separator/main.ts",
@@ -3099,7 +3103,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Split composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-split/main.ts",
@@ -3127,7 +3131,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Input composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group", "input"],
+      "registryDependencies": ["@foldkit-cn/button-group", "@foldkit-cn/input"],
       "files": [
         {
           "path": "registry/default/examples/button-group-input/main.ts",
@@ -3155,7 +3159,10 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Input Group composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group", "input-group"],
+      "registryDependencies": [
+        "@foldkit-cn/button-group",
+        "@foldkit-cn/input-group"
+      ],
       "files": [
         {
           "path": "registry/default/examples/button-group-input-group/main.ts",
@@ -3183,7 +3190,10 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Select composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group", "select"],
+      "registryDependencies": [
+        "@foldkit-cn/button-group",
+        "@foldkit-cn/select"
+      ],
       "files": [
         {
           "path": "registry/default/examples/button-group-select/main.ts",
@@ -3211,7 +3221,10 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Popover composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group", "popover"],
+      "registryDependencies": [
+        "@foldkit-cn/button-group",
+        "@foldkit-cn/popover"
+      ],
       "files": [
         {
           "path": "registry/default/examples/button-group-popover/main.ts",
@@ -3239,7 +3252,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group RTL composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["button-group"],
+      "registryDependencies": ["@foldkit-cn/button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-rtl/main.ts",
@@ -3301,7 +3314,7 @@
       "description": "A runnable Foldkit version of the Base UI Alert Dialog default Discard draft example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["alert-dialog"],
+      "registryDependencies": ["@foldkit-cn/alert-dialog"],
       "files": [
         {
           "path": "registry/default/examples/alert-dialog-basic/main.ts",
@@ -3373,7 +3386,7 @@
       "description": "A runnable Foldkit version of the Base UI Drawer default side panel example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["drawer"],
+      "registryDependencies": ["@foldkit-cn/drawer"],
       "files": [
         {
           "path": "registry/default/examples/drawer-basic/main.ts",
@@ -3445,7 +3458,7 @@
       "description": "A runnable Foldkit version of the Base UI Context Menu default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["context-menu"],
+      "registryDependencies": ["@foldkit-cn/context-menu"],
       "files": [
         {
           "path": "registry/default/examples/context-menu-basic/main.ts",
@@ -3517,7 +3530,7 @@
       "description": "A runnable Foldkit version of the Base UI Menubar default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["menubar"],
+      "registryDependencies": ["@foldkit-cn/menubar"],
       "files": [
         {
           "path": "registry/default/examples/menubar-basic/main.ts",
@@ -3589,7 +3602,7 @@
       "description": "A runnable Foldkit version of the Base UI Navigation Menu default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["navigation-menu"],
+      "registryDependencies": ["@foldkit-cn/navigation-menu"],
       "files": [
         {
           "path": "registry/default/examples/navigation-menu-basic/main.ts",
@@ -3661,7 +3674,7 @@
       "description": "A runnable Foldkit version of the Base UI OTP Field default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["otp-field"],
+      "registryDependencies": ["@foldkit-cn/otp-field"],
       "files": [
         {
           "path": "registry/default/examples/otp-field-basic/main.ts",
@@ -3733,7 +3746,7 @@
       "description": "A runnable Foldkit version of the Base UI Preview Card default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["preview-card"],
+      "registryDependencies": ["@foldkit-cn/preview-card"],
       "files": [
         {
           "path": "registry/default/examples/preview-card-basic/main.ts",
@@ -3805,7 +3818,7 @@
       "description": "A runnable Foldkit version of the Base UI Collapsible default Recovery keys example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["collapsible"],
+      "registryDependencies": ["@foldkit-cn/collapsible"],
       "files": [
         {
           "path": "registry/default/examples/collapsible-basic/main.ts",
@@ -3877,7 +3890,7 @@
       "description": "A runnable Foldkit version of the Base UI Field default Name example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["field"],
+      "registryDependencies": ["@foldkit-cn/field"],
       "files": [
         {
           "path": "registry/default/examples/field-basic/main.ts",
@@ -3949,7 +3962,7 @@
       "description": "A runnable Foldkit version of the Base UI Number Field default Amount example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["number-field"],
+      "registryDependencies": ["@foldkit-cn/number-field"],
       "files": [
         {
           "path": "registry/default/examples/number-field-basic/main.ts",
@@ -4021,7 +4034,7 @@
       "description": "A runnable Foldkit version of the Base UI Form default Homepage example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["form"],
+      "registryDependencies": ["@foldkit-cn/form"],
       "files": [
         {
           "path": "registry/default/examples/form-basic/main.ts",
@@ -4093,7 +4106,7 @@
       "description": "A runnable Foldkit version of the Base UI Autocomplete default Search tags example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["autocomplete"],
+      "registryDependencies": ["@foldkit-cn/autocomplete"],
       "files": [
         {
           "path": "registry/default/examples/autocomplete-basic/main.ts",
@@ -4165,7 +4178,7 @@
       "description": "A runnable Foldkit version of the Base UI Checkbox Group hero and parent-checkbox behavior.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["checkbox-group"],
+      "registryDependencies": ["@foldkit-cn/checkbox-group"],
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-basic/main.ts",
@@ -4203,7 +4216,7 @@
       "description": "A runnable Foldkit example showing grouped Checkbox state and an indeterminate parent control.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["checkbox"],
+      "registryDependencies": ["@foldkit-cn/checkbox"],
       "files": [
         {
           "path": "registry/default/examples/checkbox-indeterminate/main.ts",
@@ -4265,7 +4278,7 @@
       "description": "A runnable Foldkit example showing typed Textarea messages with parent-owned character count feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["textarea"],
+      "registryDependencies": ["@foldkit-cn/textarea"],
       "files": [
         {
           "path": "registry/default/examples/textarea-basic/main.ts",
@@ -4292,7 +4305,7 @@
       "description": "A runnable Foldkit example showing disabled Textarea styling and native disabled semantics.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["textarea"],
+      "registryDependencies": ["@foldkit-cn/textarea"],
       "files": [
         {
           "path": "registry/default/examples/textarea-disabled/main.ts",
@@ -4354,7 +4367,7 @@
       "description": "A runnable Foldkit example showing a sticky success toast with typed payload rendering and manual dismissal.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["toast"],
+      "registryDependencies": ["@foldkit-cn/toast"],
       "files": [
         {
           "path": "registry/default/examples/toast-basic/main.ts",
@@ -4381,7 +4394,7 @@
       "description": "A runnable Foldkit example showing Info, Success, Warning, and Error toast variants with status and alert semantics.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["toast"],
+      "registryDependencies": ["@foldkit-cn/toast"],
       "files": [
         {
           "path": "registry/default/examples/toast-variants/main.ts",
@@ -4443,7 +4456,7 @@
       "description": "A runnable Foldkit example showing typed Switch messages with parent-visible checked feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["switch"],
+      "registryDependencies": ["@foldkit-cn/switch"],
       "files": [
         {
           "path": "registry/default/examples/switch-basic/main.ts",
@@ -4470,7 +4483,7 @@
       "description": "A runnable Foldkit example showing disabled Switch styling and native disabled semantics.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["switch"],
+      "registryDependencies": ["@foldkit-cn/switch"],
       "files": [
         {
           "path": "registry/default/examples/switch-disabled/main.ts",
@@ -4532,7 +4545,7 @@
       "description": "A runnable Foldkit example showing vertical RadioGroup selection with typed parent-visible feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["radio-group"],
+      "registryDependencies": ["@foldkit-cn/radio-group"],
       "files": [
         {
           "path": "registry/default/examples/radio-group-basic/main.ts",
@@ -4559,7 +4572,7 @@
       "description": "A runnable Foldkit example showing horizontal RadioGroup layout and disabled option state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["radio-group"],
+      "registryDependencies": ["@foldkit-cn/radio-group"],
       "files": [
         {
           "path": "registry/default/examples/radio-group-horizontal/main.ts",
@@ -4621,7 +4634,7 @@
       "description": "A runnable Foldkit example showing grouped profile fields with parent-visible input feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["fieldset"],
+      "registryDependencies": ["@foldkit-cn/fieldset"],
       "files": [
         {
           "path": "registry/default/examples/fieldset-basic/main.ts",
@@ -4648,7 +4661,7 @@
       "description": "A runnable Foldkit example showing disabled grouped fields.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["fieldset"],
+      "registryDependencies": ["@foldkit-cn/fieldset"],
       "files": [
         {
           "path": "registry/default/examples/fieldset-disabled/main.ts",
@@ -4710,7 +4723,7 @@
       "description": "A runnable Foldkit example showing file input/drop handling with parent-visible file list feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["file-drop"],
+      "registryDependencies": ["@foldkit-cn/file-drop"],
       "files": [
         {
           "path": "registry/default/examples/file-drop-basic/main.ts",
@@ -4737,7 +4750,7 @@
       "description": "A runnable Foldkit example showing disabled file drop and input state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["file-drop"],
+      "registryDependencies": ["@foldkit-cn/file-drop"],
       "files": [
         {
           "path": "registry/default/examples/file-drop-disabled/main.ts",
@@ -4799,7 +4812,7 @@
       "description": "A runnable Foldkit example showing date selection and viewed-month feedback from Calendar OutMessages.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["calendar"],
+      "registryDependencies": ["@foldkit-cn/calendar"],
       "files": [
         {
           "path": "registry/default/examples/calendar-basic/main.ts",
@@ -4826,7 +4839,7 @@
       "description": "A runnable Foldkit example showing bounded Calendar selection and disabled date feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["calendar"],
+      "registryDependencies": ["@foldkit-cn/calendar"],
       "files": [
         {
           "path": "registry/default/examples/calendar-bounds/main.ts",
@@ -4853,7 +4866,7 @@
       "description": "A Foldkit DatePicker wrapper combining trigger, popover, embedded Calendar, selected-date OutMessages, and reusable view classes.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["calendar", "popover"],
+      "registryDependencies": ["@foldkit-cn/calendar", "@foldkit-cn/popover"],
       "files": [
         {
           "path": "registry/default/ui/date-picker/index.ts",
@@ -4888,7 +4901,7 @@
       "description": "A runnable Foldkit example showing DatePicker open, selected-date feedback, and hidden input naming.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["date-picker"],
+      "registryDependencies": ["@foldkit-cn/date-picker"],
       "files": [
         {
           "path": "registry/default/examples/date-picker-basic/main.ts",
@@ -4915,7 +4928,7 @@
       "description": "A runnable Foldkit example showing bounded DatePicker selection and disabled date feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["date-picker"],
+      "registryDependencies": ["@foldkit-cn/date-picker"],
       "files": [
         {
           "path": "registry/default/examples/date-picker-bounds/main.ts",
@@ -4977,7 +4990,7 @@
       "description": "A runnable Foldkit example showing Disclosure toggle state, panel content, and parent-visible open-state feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["disclosure"],
+      "registryDependencies": ["@foldkit-cn/disclosure"],
       "files": [
         {
           "path": "registry/default/examples/disclosure-basic/main.ts",
@@ -5004,7 +5017,7 @@
       "description": "A runnable Foldkit example showing disabled Disclosure trigger semantics.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["disclosure"],
+      "registryDependencies": ["@foldkit-cn/disclosure"],
       "files": [
         {
           "path": "registry/default/examples/disclosure-disabled/main.ts",
@@ -5066,7 +5079,7 @@
       "description": "A runnable Foldkit example showing DragAndDrop keyboard reorder messages and parent-visible task order feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["drag-and-drop"],
+      "registryDependencies": ["@foldkit-cn/drag-and-drop"],
       "files": [
         {
           "path": "registry/default/examples/drag-and-drop-basic/main.ts",
@@ -5093,7 +5106,7 @@
       "description": "A runnable Foldkit example showing a locked DragAndDrop list presentation without binding drag messages.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["drag-and-drop"],
+      "registryDependencies": ["@foldkit-cn/drag-and-drop"],
       "files": [
         {
           "path": "registry/default/examples/drag-and-drop-disabled/main.ts",
@@ -5155,7 +5168,7 @@
       "description": "A runnable Foldkit example showing Slider keyboard value changes and parent-visible rating feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["slider"],
+      "registryDependencies": ["@foldkit-cn/slider"],
       "files": [
         {
           "path": "registry/default/examples/slider-basic/main.ts",
@@ -5182,7 +5195,7 @@
       "description": "A runnable Foldkit example showing disabled Slider semantics and locked value feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["slider"],
+      "registryDependencies": ["@foldkit-cn/slider"],
       "files": [
         {
           "path": "registry/default/examples/slider-disabled/main.ts",
@@ -5244,7 +5257,7 @@
       "description": "A runnable Foldkit example showing automatic Tabs selection and parent-visible selected-tab feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["tabs"],
+      "registryDependencies": ["@foldkit-cn/tabs"],
       "files": [
         {
           "path": "registry/default/examples/tabs-basic/main.ts",
@@ -5271,7 +5284,7 @@
       "description": "A runnable Foldkit example showing manual Tabs activation with a disabled tab.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["tabs"],
+      "registryDependencies": ["@foldkit-cn/tabs"],
       "files": [
         {
           "path": "registry/default/examples/tabs-manual/main.ts",
@@ -5333,7 +5346,7 @@
       "description": "A runnable Foldkit example showing delayed Tooltip hover opening and parent-visible visibility feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["tooltip"],
+      "registryDependencies": ["@foldkit-cn/tooltip"],
       "files": [
         {
           "path": "registry/default/examples/tooltip-basic/main.ts",
@@ -5360,7 +5373,7 @@
       "description": "A runnable Foldkit example showing immediate Tooltip focus opening with zero hover delay configuration.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["tooltip"],
+      "registryDependencies": ["@foldkit-cn/tooltip"],
       "files": [
         {
           "path": "registry/default/examples/tooltip-no-delay/main.ts",
@@ -5422,7 +5435,7 @@
       "description": "A runnable Foldkit example showing toggle-driven Animation enter and leave lifecycle command resolution.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["animation"],
+      "registryDependencies": ["@foldkit-cn/animation"],
       "files": [
         {
           "path": "registry/default/examples/animation-basic/main.ts",
@@ -5484,7 +5497,7 @@
       "description": "A runnable Foldkit example showing fixed-height VirtualList rendering and command-backed scroll-to-index behavior.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["virtual-list"],
+      "registryDependencies": ["@foldkit-cn/virtual-list"],
       "files": [
         {
           "path": "registry/default/examples/virtual-list-basic/main.ts",
@@ -5511,7 +5524,7 @@
       "description": "A runnable Foldkit example showing variable-height VirtualList rendering and variable scroll-to-index behavior.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["virtual-list"],
+      "registryDependencies": ["@foldkit-cn/virtual-list"],
       "files": [
         {
           "path": "registry/default/examples/virtual-list-variable/main.ts",
@@ -5572,7 +5585,7 @@
       "description": "A runnable Foldkit example showing the shadcn Chart Basic composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["chart"],
+      "registryDependencies": ["@foldkit-cn/chart"],
       "files": [
         {
           "path": "registry/default/examples/chart-basic/main.ts",
@@ -5599,7 +5612,7 @@
       "description": "A runnable Foldkit example showing the shadcn Chart Grid composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["chart"],
+      "registryDependencies": ["@foldkit-cn/chart"],
       "files": [
         {
           "path": "registry/default/examples/chart-grid/main.ts",
@@ -5626,7 +5639,7 @@
       "description": "A runnable Foldkit example showing the shadcn Chart Axis composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["chart"],
+      "registryDependencies": ["@foldkit-cn/chart"],
       "files": [
         {
           "path": "registry/default/examples/chart-axis/main.ts",
@@ -5653,7 +5666,7 @@
       "description": "A runnable Foldkit example showing the shadcn Chart Tooltip composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["chart"],
+      "registryDependencies": ["@foldkit-cn/chart"],
       "files": [
         {
           "path": "registry/default/examples/chart-tooltip/main.ts",
@@ -5680,7 +5693,7 @@
       "description": "A runnable Foldkit example showing the shadcn Chart Legend composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["chart"],
+      "registryDependencies": ["@foldkit-cn/chart"],
       "files": [
         {
           "path": "registry/default/examples/chart-legend/main.ts",
@@ -5707,7 +5720,7 @@
       "description": "A runnable Foldkit example showing the shadcn Chart RTL composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["chart"],
+      "registryDependencies": ["@foldkit-cn/chart"],
       "files": [
         {
           "path": "registry/default/examples/chart-rtl/main.ts",
@@ -5768,7 +5781,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Basic guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-basic/main.ts",
@@ -5795,7 +5808,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Row Actions guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-row-actions/main.ts",
@@ -5822,7 +5835,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Pagination guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-pagination/main.ts",
@@ -5849,7 +5862,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Sorting guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-sorting/main.ts",
@@ -5876,7 +5889,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Filtering guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-filtering/main.ts",
@@ -5903,7 +5916,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Visibility guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-visibility/main.ts",
@@ -5930,7 +5943,7 @@
       "description": "A runnable Foldkit example showing the shadcn Data Table Row Selection guide topic.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["data-table"],
+      "registryDependencies": ["@foldkit-cn/data-table"],
       "files": [
         {
           "path": "registry/default/examples/data-table-row-selection/main.ts",
@@ -5991,7 +6004,7 @@
       "description": "A runnable Foldkit example showing the shadcn Direction provider preview with LTR and RTL switching.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["direction"],
+      "registryDependencies": ["@foldkit-cn/direction"],
       "files": [
         {
           "path": "registry/default/examples/direction-basic/main.ts",
@@ -6052,7 +6065,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Basic composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-basic/main.ts",
@@ -6079,7 +6092,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Variant composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-variant/main.ts",
@@ -6106,7 +6119,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Size composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-size/main.ts",
@@ -6133,7 +6146,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Icon composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-icon/main.ts",
@@ -6160,7 +6173,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Avatar composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-avatar/main.ts",
@@ -6187,7 +6200,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Image composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-image/main.ts",
@@ -6214,7 +6227,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Group composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-group/main.ts",
@@ -6241,7 +6254,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Header composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-header/main.ts",
@@ -6268,7 +6281,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Link composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-link/main.ts",
@@ -6295,7 +6308,7 @@
       "description": "A runnable Foldkit example showing the shadcn Item Rtl composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["item"],
+      "registryDependencies": ["@foldkit-cn/item"],
       "files": [
         {
           "path": "registry/default/examples/item-rtl/main.ts",
@@ -6356,7 +6369,7 @@
       "description": "A runnable Foldkit example showing the shadcn Label Basic form control association.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["label"],
+      "registryDependencies": ["@foldkit-cn/label"],
       "files": [
         {
           "path": "registry/default/examples/label-basic/main.ts",
@@ -6417,7 +6430,7 @@
       "description": "A runnable Foldkit example showing the shadcn Pagination Basic navigation composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["pagination"],
+      "registryDependencies": ["@foldkit-cn/pagination"],
       "files": [
         {
           "path": "registry/default/examples/pagination-basic/main.ts",
@@ -6478,7 +6491,7 @@
       "description": "A runnable Foldkit example showing controlled pointer and keyboard resizing in the shadcn Resizable Basic panel composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["resizable"],
+      "registryDependencies": ["@foldkit-cn/resizable"],
       "files": [
         {
           "path": "registry/default/examples/resizable-basic/main.ts",
@@ -6539,7 +6552,7 @@
       "description": "A runnable Foldkit example showing a controlled collapsible shadcn Sidebar application layout.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["sidebar"],
+      "registryDependencies": ["@foldkit-cn/sidebar"],
       "files": [
         {
           "path": "registry/default/examples/sidebar-basic/main.ts",
@@ -6600,7 +6613,7 @@
       "description": "A runnable Foldkit example showing the shadcn recent invoices Table composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["table"],
+      "registryDependencies": ["@foldkit-cn/table"],
       "files": [
         {
           "path": "registry/default/examples/table-basic/main.ts",
@@ -6661,7 +6674,7 @@
       "description": "A runnable Foldkit example showing the shadcn command palette with controlled search, grouped results, and selection feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["command"],
+      "registryDependencies": ["@foldkit-cn/command"],
       "files": [
         {
           "path": "registry/default/examples/command-basic/main.ts",
@@ -6722,7 +6735,7 @@
       "description": "A runnable Foldkit example showing the shadcn dropdown menu account actions pattern with controlled open state and selection feedback.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["dropdown-menu"],
+      "registryDependencies": ["@foldkit-cn/dropdown-menu"],
       "files": [
         {
           "path": "registry/default/examples/dropdown-menu-basic/main.ts",
@@ -6783,7 +6796,7 @@
       "description": "A runnable Foldkit example showing the shadcn Hover Card Basic pattern.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["hover-card"],
+      "registryDependencies": ["@foldkit-cn/hover-card"],
       "files": [
         {
           "path": "registry/default/examples/hover-card-basic/main.ts",
@@ -6844,7 +6857,7 @@
       "description": "A runnable Foldkit example showing the shadcn Input OTP Basic pattern.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["input-otp"],
+      "registryDependencies": ["@foldkit-cn/input-otp"],
       "files": [
         {
           "path": "registry/default/examples/input-otp-basic/main.ts",
@@ -6905,7 +6918,7 @@
       "description": "A runnable Foldkit example showing the shadcn Native Select Basic pattern.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["native-select"],
+      "registryDependencies": ["@foldkit-cn/native-select"],
       "files": [
         {
           "path": "registry/default/examples/native-select-basic/main.ts",
@@ -6966,7 +6979,7 @@
       "description": "A runnable Foldkit example showing the shadcn Sheet Basic pattern.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["sheet"],
+      "registryDependencies": ["@foldkit-cn/sheet"],
       "files": [
         {
           "path": "registry/default/examples/sheet-basic/main.ts",
@@ -7027,7 +7040,7 @@
       "description": "A runnable Foldkit example showing the shadcn Sonner Basic pattern.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["sonner"],
+      "registryDependencies": ["@foldkit-cn/sonner"],
       "files": [
         {
           "path": "registry/default/examples/sonner-basic/main.ts",

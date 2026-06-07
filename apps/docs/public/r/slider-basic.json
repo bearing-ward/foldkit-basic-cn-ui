@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing Slider keyboard value changes and parent-visible rating feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["slider"],
+  "registryDependencies": ["@foldkit-cn/slider"],
   "files": [
     {
       "path": "registry/default/examples/slider-basic/main.ts",

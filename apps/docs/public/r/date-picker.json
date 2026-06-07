@@ -6,7 +6,7 @@
   "description": "A Foldkit DatePicker wrapper combining trigger, popover, embedded Calendar, selected-date OutMessages, and reusable view classes.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["calendar", "popover"],
+  "registryDependencies": ["@foldkit-cn/calendar", "@foldkit-cn/popover"],
   "files": [
     {
       "path": "registry/default/ui/date-picker/index.ts",

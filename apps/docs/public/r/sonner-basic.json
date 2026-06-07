@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Sonner Basic pattern.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["sonner"],
+  "registryDependencies": ["@foldkit-cn/sonner"],
   "files": [
     {
       "path": "registry/default/examples/sonner-basic/main.ts",

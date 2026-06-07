@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Hover Card Basic pattern.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["hover-card"],
+  "registryDependencies": ["@foldkit-cn/hover-card"],
   "files": [
     {
       "path": "registry/default/examples/hover-card-basic/main.ts",

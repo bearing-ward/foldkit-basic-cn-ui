@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a Popover trigger, anchored panel, backdrop close, and mount resolution coverage.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["popover"],
+  "registryDependencies": ["@foldkit-cn/popover"],
   "files": [
     {
       "path": "registry/default/examples/popover-basic/main.ts",

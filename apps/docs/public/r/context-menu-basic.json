@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Context Menu default example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["context-menu"],
+  "registryDependencies": ["@foldkit-cn/context-menu"],
   "files": [
     {
       "path": "registry/default/examples/context-menu-basic/main.ts",

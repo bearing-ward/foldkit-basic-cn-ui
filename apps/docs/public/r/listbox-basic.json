@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a typed single-select Listbox trigger, selected label, anchored items, backdrop close, and mount resolution coverage.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["listbox"],
+  "registryDependencies": ["@foldkit-cn/listbox"],
   "files": [
     {
       "path": "registry/default/examples/listbox-basic/main.ts",

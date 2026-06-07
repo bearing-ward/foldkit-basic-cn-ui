@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing toggle-driven Animation enter and leave lifecycle command resolution.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["animation"],
+  "registryDependencies": ["@foldkit-cn/animation"],
   "files": [
     {
       "path": "registry/default/examples/animation-basic/main.ts",

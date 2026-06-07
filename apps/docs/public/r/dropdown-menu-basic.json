@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn dropdown menu account actions pattern with controlled open state and selection feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["dropdown-menu"],
+  "registryDependencies": ["@foldkit-cn/dropdown-menu"],
   "files": [
     {
       "path": "registry/default/examples/dropdown-menu-basic/main.ts",

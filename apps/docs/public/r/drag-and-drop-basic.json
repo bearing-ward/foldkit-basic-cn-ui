@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing DragAndDrop keyboard reorder messages and parent-visible task order feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["drag-and-drop"],
+  "registryDependencies": ["@foldkit-cn/drag-and-drop"],
   "files": [
     {
       "path": "registry/default/examples/drag-and-drop-basic/main.ts",

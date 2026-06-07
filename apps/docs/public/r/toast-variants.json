@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing Info, Success, Warning, and Error toast variants with status and alert semantics.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["toast"],
+  "registryDependencies": ["@foldkit-cn/toast"],
   "files": [
     {
       "path": "registry/default/examples/toast-variants/main.ts",

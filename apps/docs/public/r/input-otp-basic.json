@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Input OTP Basic pattern.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["input-otp"],
+  "registryDependencies": ["@foldkit-cn/input-otp"],
   "files": [
     {
       "path": "registry/default/examples/input-otp-basic/main.ts",

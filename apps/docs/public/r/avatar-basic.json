@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Avatar default two-avatar example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["avatar"],
+  "registryDependencies": ["@foldkit-cn/avatar"],
   "files": [
     {
       "path": "registry/default/examples/avatar-basic/main.ts",

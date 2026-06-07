@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Checkbox Group hero and parent-checkbox behavior.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["checkbox-group"],
+  "registryDependencies": ["@foldkit-cn/checkbox-group"],
   "files": [
     {
       "path": "registry/default/examples/checkbox-group-basic/main.ts",

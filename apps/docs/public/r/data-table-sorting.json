@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Data Table Sorting guide topic.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["data-table"],
+  "registryDependencies": ["@foldkit-cn/data-table"],
   "files": [
     {
       "path": "registry/default/examples/data-table-sorting/main.ts",

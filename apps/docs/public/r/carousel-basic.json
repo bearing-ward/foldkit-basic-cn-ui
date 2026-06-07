@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Carousel Basic composition.",
   "dependencies": ["effect", "foldkit", "embla-carousel"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["carousel"],
+  "registryDependencies": ["@foldkit-cn/carousel"],
   "files": [
     {
       "path": "registry/default/examples/carousel-basic/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Chart Legend composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["chart"],
+  "registryDependencies": ["@foldkit-cn/chart"],
   "files": [
     {
       "path": "registry/default/examples/chart-legend/main.ts",

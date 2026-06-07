@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing disabled Button styling and native disabled semantics.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["button"],
+  "registryDependencies": ["@foldkit-cn/button"],
   "files": [
     {
       "path": "registry/default/examples/button-disabled/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a native Select with parent-owned value, typed onChange message, label, description, and selected-value feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["select"],
+  "registryDependencies": ["@foldkit-cn/select"],
   "files": [
     {
       "path": "registry/default/examples/select-basic/main.ts",

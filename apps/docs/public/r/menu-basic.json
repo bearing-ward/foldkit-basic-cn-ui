@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a typed Menu trigger, anchored items, backdrop close, and mount resolution coverage.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["menu"],
+  "registryDependencies": ["@foldkit-cn/menu"],
   "files": [
     {
       "path": "registry/default/examples/menu-basic/main.ts",

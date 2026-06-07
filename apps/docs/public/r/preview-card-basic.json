@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Preview Card default example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["preview-card"],
+  "registryDependencies": ["@foldkit-cn/preview-card"],
   "files": [
     {
       "path": "registry/default/examples/preview-card-basic/main.ts",

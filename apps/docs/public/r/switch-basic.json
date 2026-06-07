@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing typed Switch messages with parent-visible checked feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["switch"],
+  "registryDependencies": ["@foldkit-cn/switch"],
   "files": [
     {
       "path": "registry/default/examples/switch-basic/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing horizontal RadioGroup layout and disabled option state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["radio-group"],
+  "registryDependencies": ["@foldkit-cn/radio-group"],
   "files": [
     {
       "path": "registry/default/examples/radio-group-horizontal/main.ts",

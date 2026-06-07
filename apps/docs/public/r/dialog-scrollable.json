@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing long Dialog content with a constrained scroll body and persistent footer actions.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["dialog"],
+  "registryDependencies": ["@foldkit-cn/dialog"],
   "files": [
     {
       "path": "registry/default/examples/dialog-scrollable/main.ts",

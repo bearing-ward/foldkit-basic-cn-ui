@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Chart Tooltip composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["chart"],
+  "registryDependencies": ["@foldkit-cn/chart"],
   "files": [
     {
       "path": "registry/default/examples/chart-tooltip/main.ts",

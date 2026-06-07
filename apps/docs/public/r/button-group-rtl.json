@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Button Group RTL composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["button-group"],
+  "registryDependencies": ["@foldkit-cn/button-group"],
   "files": [
     {
       "path": "registry/default/examples/button-group-rtl/main.ts",

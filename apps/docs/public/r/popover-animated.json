@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing Popover with isAnimated enabled and animation lifecycle coverage.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["popover"],
+  "registryDependencies": ["@foldkit-cn/popover"],
   "files": [
     {
       "path": "registry/default/examples/popover-animated/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Progress hero example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["progress"],
+  "registryDependencies": ["@foldkit-cn/progress"],
   "files": [
     {
       "path": "registry/default/examples/progress-basic/main.ts",

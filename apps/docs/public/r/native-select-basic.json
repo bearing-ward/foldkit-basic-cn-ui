@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Native Select Basic pattern.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["native-select"],
+  "registryDependencies": ["@foldkit-cn/native-select"],
   "files": [
     {
       "path": "registry/default/examples/native-select-basic/main.ts",

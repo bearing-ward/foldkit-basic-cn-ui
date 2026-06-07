@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a typed Button click message with parent-owned feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["button"],
+  "registryDependencies": ["@foldkit-cn/button"],
   "files": [
     {
       "path": "registry/default/examples/button-basic/main.ts",

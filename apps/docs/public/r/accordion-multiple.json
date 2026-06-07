@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Accordion open multiple panels example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["accordion"],
+  "registryDependencies": ["@foldkit-cn/accordion"],
   "files": [
     {
       "path": "registry/default/examples/accordion-multiple/main.ts",

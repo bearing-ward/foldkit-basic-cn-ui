@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing vertical RadioGroup selection with typed parent-visible feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["radio-group"],
+  "registryDependencies": ["@foldkit-cn/radio-group"],
   "files": [
     {
       "path": "registry/default/examples/radio-group-basic/main.ts",

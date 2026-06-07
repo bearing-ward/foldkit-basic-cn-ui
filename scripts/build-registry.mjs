@@ -37,7 +37,18 @@ const formatJson = (value, depth = 0) => {
     }
 
     if (value.every(isPrimitiveJsonValue)) {
-      return `[${value.map((item) => formatJson(item)).join(", ")}]`;
+      const inlineArray = `[${value.map((item) => formatJson(item)).join(", ")}]`;
+
+      if (
+        `${jsonIndent(depth)}"registryDependencies": ${inlineArray}`.length <=
+        79
+      ) {
+        return inlineArray;
+      }
+
+      return `[\n${value
+        .map((item) => `${jsonIndent(depth + 2)}${formatJson(item, depth + 2)}`)
+        .join(",\n")}\n${jsonIndent(depth)}]`;
     }
 
     return `[\n${value
@@ -136,6 +147,9 @@ const expandItem = async (item) => {
   return {
     $schema: itemSchemaUrl,
     ...item,
+    registryDependencies: item.registryDependencies.map(
+      qualifyRegistryDependency
+    ),
     files,
   };
 };
@@ -156,6 +170,19 @@ const writeOrCheck = async (filePath, content) => {
 };
 
 const sourceItems = await readJson(itemsPath);
+const sourceItemNames = new Set(sourceItems.map((item) => item.name));
+const qualifyRegistryDependency = (dependency) => {
+  if (
+    dependency.startsWith("@") ||
+    dependency.startsWith("http://") ||
+    dependency.startsWith("https://") ||
+    !sourceItemNames.has(dependency)
+  ) {
+    return dependency;
+  }
+
+  return `@foldkit-cn/${dependency}`;
+};
 const registryConfig = await readJson(configPath);
 const items = await Promise.all(sourceItems.map(expandItem));
 const index = {

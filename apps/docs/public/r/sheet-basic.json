@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Sheet Basic pattern.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["sheet"],
+  "registryDependencies": ["@foldkit-cn/sheet"],
   "files": [
     {
       "path": "registry/default/examples/sheet-basic/main.ts",

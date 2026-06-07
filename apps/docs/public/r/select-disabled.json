@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing disabled Select styling and accessible explanatory text.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["select"],
+  "registryDependencies": ["@foldkit-cn/select"],
   "files": [
     {
       "path": "registry/default/examples/select-disabled/main.ts",

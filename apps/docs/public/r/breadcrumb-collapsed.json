@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the shadcn Breadcrumb Collapsed example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["breadcrumb"],
+  "registryDependencies": ["@foldkit-cn/breadcrumb"],
   "files": [
     {
       "path": "registry/default/examples/breadcrumb-collapsed/main.ts",

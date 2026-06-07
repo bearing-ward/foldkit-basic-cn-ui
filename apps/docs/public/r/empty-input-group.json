@@ -6,7 +6,11 @@
   "description": "A runnable Foldkit version of the upstream shadcn empty input-group example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["empty", "input-group", "kbd"],
+  "registryDependencies": [
+    "@foldkit-cn/empty",
+    "@foldkit-cn/input-group",
+    "@foldkit-cn/kbd"
+  ],
   "files": [
     {
       "path": "registry/default/examples/empty-input-group/main.ts",

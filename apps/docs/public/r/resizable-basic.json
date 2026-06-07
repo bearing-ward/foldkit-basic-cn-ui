@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing controlled pointer and keyboard resizing in the shadcn Resizable Basic panel composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["resizable"],
+  "registryDependencies": ["@foldkit-cn/resizable"],
   "files": [
     {
       "path": "registry/default/examples/resizable-basic/main.ts",

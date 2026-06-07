@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing single-select Combobox filtering, typed parent message routing, and selected-value feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["combobox"],
+  "registryDependencies": ["@foldkit-cn/combobox"],
   "files": [
     {
       "path": "registry/default/examples/combobox-basic/main.ts",

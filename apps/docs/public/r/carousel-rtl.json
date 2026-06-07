@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Carousel RTL composition.",
   "dependencies": ["effect", "foldkit", "embla-carousel"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["carousel"],
+  "registryDependencies": ["@foldkit-cn/carousel"],
   "files": [
     {
       "path": "registry/default/examples/carousel-rtl/main.ts",

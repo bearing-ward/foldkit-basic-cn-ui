@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Label Basic form control association.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["label"],
+  "registryDependencies": ["@foldkit-cn/label"],
   "files": [
     {
       "path": "registry/default/examples/label-basic/main.ts",

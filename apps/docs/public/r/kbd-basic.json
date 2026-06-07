@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the Kbd component with parent-owned example state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["kbd"],
+  "registryDependencies": ["@foldkit-cn/kbd"],
   "files": [
     {
       "path": "registry/default/examples/kbd-basic/main.ts",

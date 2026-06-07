@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing delayed Tooltip hover opening and parent-visible visibility feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["tooltip"],
+  "registryDependencies": ["@foldkit-cn/tooltip"],
   "files": [
     {
       "path": "registry/default/examples/tooltip-basic/main.ts",

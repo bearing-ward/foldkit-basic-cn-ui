@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing automatic Tabs selection and parent-visible selected-tab feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["tabs"],
+  "registryDependencies": ["@foldkit-cn/tabs"],
   "files": [
     {
       "path": "registry/default/examples/tabs-basic/main.ts",

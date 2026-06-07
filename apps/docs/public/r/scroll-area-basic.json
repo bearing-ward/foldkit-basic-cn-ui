@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Scroll Area hero example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["scroll-area"],
+  "registryDependencies": ["@foldkit-cn/scroll-area"],
   "files": [
     {
       "path": "registry/default/examples/scroll-area-basic/main.ts",

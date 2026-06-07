@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Direction provider preview with LTR and RTL switching.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["direction"],
+  "registryDependencies": ["@foldkit-cn/direction"],
   "files": [
     {
       "path": "registry/default/examples/direction-basic/main.ts",

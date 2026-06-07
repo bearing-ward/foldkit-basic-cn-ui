@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing bounded DatePicker selection and disabled date feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["date-picker"],
+  "registryDependencies": ["@foldkit-cn/date-picker"],
   "files": [
     {
       "path": "registry/default/examples/date-picker-bounds/main.ts",

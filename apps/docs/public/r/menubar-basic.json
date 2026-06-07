@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Menubar default example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["menubar"],
+  "registryDependencies": ["@foldkit-cn/menubar"],
   "files": [
     {
       "path": "registry/default/examples/menubar-basic/main.ts",

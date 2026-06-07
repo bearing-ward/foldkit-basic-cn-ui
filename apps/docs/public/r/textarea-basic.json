@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing typed Textarea messages with parent-owned character count feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["textarea"],
+  "registryDependencies": ["@foldkit-cn/textarea"],
   "files": [
     {
       "path": "registry/default/examples/textarea-basic/main.ts",

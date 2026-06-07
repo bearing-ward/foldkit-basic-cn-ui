@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing destructive confirmation styling with the standard Dialog message flow.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["dialog"],
+  "registryDependencies": ["@foldkit-cn/dialog"],
   "files": [
     {
       "path": "registry/default/examples/dialog-destructive/main.ts",

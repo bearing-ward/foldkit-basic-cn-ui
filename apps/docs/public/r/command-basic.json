@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn command palette with controlled search, grouped results, and selection feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["command"],
+  "registryDependencies": ["@foldkit-cn/command"],
   "files": [
     {
       "path": "registry/default/examples/command-basic/main.ts",

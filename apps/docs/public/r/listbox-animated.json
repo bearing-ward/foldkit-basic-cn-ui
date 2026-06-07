@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing Listbox with isAnimated enabled and animation lifecycle coverage.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["listbox"],
+  "registryDependencies": ["@foldkit-cn/listbox"],
   "files": [
     {
       "path": "registry/default/examples/listbox-animated/main.ts",

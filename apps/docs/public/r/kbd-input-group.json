@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the upstream shadcn kbd input-group example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["input-group", "kbd"],
+  "registryDependencies": ["@foldkit-cn/input-group", "@foldkit-cn/kbd"],
   "files": [
     {
       "path": "registry/default/examples/kbd-input-group/main.ts",

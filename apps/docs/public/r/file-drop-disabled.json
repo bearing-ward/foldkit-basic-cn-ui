@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing disabled file drop and input state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["file-drop"],
+  "registryDependencies": ["@foldkit-cn/file-drop"],
   "files": [
     {
       "path": "registry/default/examples/file-drop-disabled/main.ts",

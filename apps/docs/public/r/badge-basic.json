@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing badge variants with parent-owned status changes.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["badge"],
+  "registryDependencies": ["@foldkit-cn/badge"],
   "files": [
     {
       "path": "registry/default/examples/badge-basic/main.ts",

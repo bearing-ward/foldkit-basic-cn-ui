@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a parent-owned trigger, dialog submodel, accessible title and description, cancel, and confirm actions.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["dialog"],
+  "registryDependencies": ["@foldkit-cn/dialog"],
   "files": [
     {
       "path": "registry/default/examples/dialog-basic/main.ts",

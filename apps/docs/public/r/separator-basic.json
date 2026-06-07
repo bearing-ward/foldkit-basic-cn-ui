@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the Separator component with parent-owned example state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["separator"],
+  "registryDependencies": ["@foldkit-cn/separator"],
   "files": [
     {
       "path": "registry/default/examples/separator-basic/main.ts",

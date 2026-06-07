@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing typed Input messages with parent-owned value feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["input"],
+  "registryDependencies": ["@foldkit-cn/input"],
   "files": [
     {
       "path": "registry/default/examples/input-basic/main.ts",

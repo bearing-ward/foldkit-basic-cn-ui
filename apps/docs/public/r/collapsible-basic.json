@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Collapsible default Recovery keys example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["collapsible"],
+  "registryDependencies": ["@foldkit-cn/collapsible"],
   "files": [
     {
       "path": "registry/default/examples/collapsible-basic/main.ts",

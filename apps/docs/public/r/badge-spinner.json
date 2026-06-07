@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the upstream shadcn badge spinner example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["badge", "spinner"],
+  "registryDependencies": ["@foldkit-cn/badge", "@foldkit-cn/spinner"],
   "files": [
     {
       "path": "registry/default/examples/badge-spinner/main.ts",

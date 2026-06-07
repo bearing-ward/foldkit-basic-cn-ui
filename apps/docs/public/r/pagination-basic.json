@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Pagination Basic navigation composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["pagination"],
+  "registryDependencies": ["@foldkit-cn/pagination"],
   "files": [
     {
       "path": "registry/default/examples/pagination-basic/main.ts",

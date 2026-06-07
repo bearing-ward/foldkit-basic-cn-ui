@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Number Field default Amount example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["number-field"],
+  "registryDependencies": ["@foldkit-cn/number-field"],
   "files": [
     {
       "path": "registry/default/examples/number-field-basic/main.ts",

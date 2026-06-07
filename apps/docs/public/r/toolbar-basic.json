@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Toolbar hero example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["toolbar"],
+  "registryDependencies": ["@foldkit-cn/toolbar"],
   "files": [
     {
       "path": "registry/default/examples/toolbar-basic/main.ts",

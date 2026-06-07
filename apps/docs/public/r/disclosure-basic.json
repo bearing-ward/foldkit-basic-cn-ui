@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing Disclosure toggle state, panel content, and parent-visible open-state feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["disclosure"],
+  "registryDependencies": ["@foldkit-cn/disclosure"],
   "files": [
     {
       "path": "registry/default/examples/disclosure-basic/main.ts",

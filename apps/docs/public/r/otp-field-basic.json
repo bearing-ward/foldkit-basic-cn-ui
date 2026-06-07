@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI OTP Field default example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["otp-field"],
+  "registryDependencies": ["@foldkit-cn/otp-field"],
   "files": [
     {
       "path": "registry/default/examples/otp-field-basic/main.ts",

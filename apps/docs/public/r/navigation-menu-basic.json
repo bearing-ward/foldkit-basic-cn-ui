@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Navigation Menu default example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["navigation-menu"],
+  "registryDependencies": ["@foldkit-cn/navigation-menu"],
   "files": [
     {
       "path": "registry/default/examples/navigation-menu-basic/main.ts",

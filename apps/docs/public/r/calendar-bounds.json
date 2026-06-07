@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing bounded Calendar selection and disabled date feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["calendar"],
+  "registryDependencies": ["@foldkit-cn/calendar"],
   "files": [
     {
       "path": "registry/default/examples/calendar-bounds/main.ts",

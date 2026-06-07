@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Meter hero example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["meter"],
+  "registryDependencies": ["@foldkit-cn/meter"],
   "files": [
     {
       "path": "registry/default/examples/meter-basic/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing disabled Slider semantics and locked value feedback.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["slider"],
+  "registryDependencies": ["@foldkit-cn/slider"],
   "files": [
     {
       "path": "registry/default/examples/slider-disabled/main.ts",

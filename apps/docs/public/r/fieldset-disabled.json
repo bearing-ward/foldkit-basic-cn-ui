@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing disabled grouped fields.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["fieldset"],
+  "registryDependencies": ["@foldkit-cn/fieldset"],
   "files": [
     {
       "path": "registry/default/examples/fieldset-disabled/main.ts",

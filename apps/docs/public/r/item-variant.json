@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Item Variant composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["item"],
+  "registryDependencies": ["@foldkit-cn/item"],
   "files": [
     {
       "path": "registry/default/examples/item-variant/main.ts",

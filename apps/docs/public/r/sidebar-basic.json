@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a controlled collapsible shadcn Sidebar application layout.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["sidebar"],
+  "registryDependencies": ["@foldkit-cn/sidebar"],
   "files": [
     {
       "path": "registry/default/examples/sidebar-basic/main.ts",

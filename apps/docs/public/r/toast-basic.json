@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing a sticky success toast with typed payload rendering and manual dismissal.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["toast"],
+  "registryDependencies": ["@foldkit-cn/toast"],
   "files": [
     {
       "path": "registry/default/examples/toast-basic/main.ts",

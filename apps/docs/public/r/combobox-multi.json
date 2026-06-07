@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing multi-select Combobox filtering with selected item tags.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["combobox"],
+  "registryDependencies": ["@foldkit-cn/combobox"],
   "files": [
     {
       "path": "registry/default/examples/combobox-multi/main.ts",

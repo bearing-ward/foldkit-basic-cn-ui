@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn Button Group Select composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["button-group", "select"],
+  "registryDependencies": ["@foldkit-cn/button-group", "@foldkit-cn/select"],
   "files": [
     {
       "path": "registry/default/examples/button-group-select/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing date selection and viewed-month feedback from Calendar OutMessages.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["calendar"],
+  "registryDependencies": ["@foldkit-cn/calendar"],
   "files": [
     {
       "path": "registry/default/examples/calendar-basic/main.ts",

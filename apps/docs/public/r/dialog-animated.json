@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing Dialog with isAnimated enabled and styled enter/leave transition classes.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["dialog"],
+  "registryDependencies": ["@foldkit-cn/dialog"],
   "files": [
     {
       "path": "registry/default/examples/dialog-animated/main.ts",

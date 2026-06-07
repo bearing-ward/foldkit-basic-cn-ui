@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the shadcn recent invoices Table composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["table"],
+  "registryDependencies": ["@foldkit-cn/table"],
   "files": [
     {
       "path": "registry/default/examples/table-basic/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Field default Name example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["field"],
+  "registryDependencies": ["@foldkit-cn/field"],
   "files": [
     {
       "path": "registry/default/examples/field-basic/main.ts",
