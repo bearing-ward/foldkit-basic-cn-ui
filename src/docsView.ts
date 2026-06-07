@@ -716,6 +716,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/button",
   },
   {
+    label: "Button Docs",
+    routeTag: "BaseUiButtonDocs",
+    href: "/docs/components/base-ui-button",
+  },
+  {
     label: "Button Basic Example",
     routeTag: "ButtonBasicExample",
     href: "/docs/components/button/examples/basic",
@@ -1452,6 +1457,7 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
           "RadioDocs",
           "ToolbarDocs",
           "CheckboxGroupDocs",
+          "BaseUiButtonDocs",
         ].includes(navItem.routeTag)
       ? "Base UI"
       : "Foldkit";
@@ -1491,7 +1497,6 @@ const labelFromComponentSlug = (slug: string): string =>
     .join(" ");
 
 const missingBaseUiLaneSlugs: readonly string[] = [
-  "button",
   "checkbox",
   "combobox",
   "dialog",
@@ -1995,6 +2000,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   button: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
+    primitive: "Ui.Button",
+  },
+  "base-ui-button": {
+    artifact: "component",
+    origin: "Base UI",
     primitive: "Ui.Button",
   },
   breadcrumb: { artifact: "component", origin: "shadcn" },
@@ -11289,6 +11299,122 @@ ClickedSave: () => [
   );
 };
 
+const baseUiButtonDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Button"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A Base UI style-lane Button slice that reuses the official Foldkit Ui.Button primitive for native button behavior while exposing simple, unopinionated class helpers.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: "registry/default/ui/base-ui-button" },
+        { label: "Examples", value: "basic, disabled" },
+        { label: "Proof", value: "scene tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        "Base UI Button documents the simple styled lane: parent-owned click handling, native disabled semantics, and lightweight classes that preserve the Foldkit primitive attributes."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-base-ui-button-basic",
+                preview: DocsPreviewsB.buttonBasicExamplePreview(
+                  model.buttonBasicExample,
+                  "base-ui-button-docs-basic-preview"
+                ),
+                href: "/docs/components/button/examples/basic",
+                linkText: "Open standalone Button Basic example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-base-ui-button-disabled",
+                preview: DocsPreviewsB.buttonDisabledExamplePreview(
+                  model.buttonDisabledExample,
+                  "base-ui-button-docs-disabled-preview"
+                ),
+                href: "/docs/components/button/examples/disabled",
+                linkText: "Open standalone Button Disabled example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/base-ui-button.json",
+        usageBody:
+          "Map the button click to a verb-first Foldkit message and render a native button with the supplied button attributes plus the Base UI class helper.",
+        usageCode: `import * as Button from "./ui/base-ui-button";
+
+Button.view<Message>({
+  onClick: ClickedSave(),
+  toView: (attributes) =>
+    h.button(
+      [...attributes.button, h.Class(Button.baseUiButtonClassName)],
+      ["Save changes"]
+    ),
+});`,
+        integrationCode: `// Message
+ClickedSave();
+
+// Update
+ClickedSave: () => [
+  evo(model, { saveCount: (count) => count + 1 }),
+  [],
+];`,
+        anatomySection: docsAnatomyBlock(
+          `Button.view<Message>({
+  onClick: ClickedSave(),
+  toView: (attributes) =>
+    h.button(attributes.button, ["Save changes"]),
+});`
+        ),
+        apiItems: [
+          "view(config): renders a native button through the supplied toView callback.",
+          "ButtonAttributes: grouped button attributes that include click, disabled, type, and autofocus behavior.",
+          "ViewConfig: onClick, isDisabled, type, isAutofocus, and toView.",
+          "Class helpers: baseUiButtonClassName, baseUiSecondaryButtonClassName, and baseUiDestructiveButtonClassName.",
+        ],
+        accessibilityItems: [
+          "The primitive applies native disabled state so disabled buttons do not dispatch clicks.",
+          "Consumers provide visible button text or an accessible name through their rendered button.",
+          "Button type can be set explicitly for form submit/reset behavior.",
+        ],
+        coverageItems: [
+          "Registry scene tests verify click message dispatch and disabled state through the Foldkit primitive.",
+          "Docs scene tests verify the Base UI lane page replaces the coming-soon sidebar entry.",
+          "Registry checks verify metadata, generated JSON, and install compatibility.",
+        ],
+      }),
+    ]
+  );
+};
+
 const calendarDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -14505,6 +14631,7 @@ const contentView = (model: Model): Html => {
       InputGroupDocs: () => inputGroupDocsView(model),
       Button: () => embedUi("ui-button", View.button),
       ButtonDocs: () => buttonDocsView(model),
+      BaseUiButtonDocs: () => baseUiButtonDocsView(model),
       ButtonBasicExample: () => DocsRoutes.buttonBasicExampleRouteView(model),
       ButtonDisabledExample: () =>
         DocsRoutes.buttonDisabledExampleRouteView(model),

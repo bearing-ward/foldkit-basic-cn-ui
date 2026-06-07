@@ -220,6 +220,7 @@ import {
   SidebarDocsRoute,
   TableBasicExampleRoute,
   TableDocsRoute,
+  BaseUiButtonDocsRoute,
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
   ButtonDocsRoute,
@@ -1964,6 +1965,24 @@ describe("scene", () => {
       ).toHaveClass("border-t"),
       Scene.expect(Scene.text("View code")).toExist(),
       Scene.expect(Scene.text("View code")).toExist()
+    );
+  });
+
+  test("the Base UI Button docs route renders docs and replaces the coming soon entry", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiButtonDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Button" })).toExist(),
+      Scene.expect(Scene.text("Base UI")).toExist(),
+      Scene.expect(Scene.text("registry/default/ui/base-ui-button")).toExist(),
+      Scene.expect(Scene.role("button", { name: "Click me" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled(),
+      Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
+        "Button"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
+        "Avatar"
+      )
     );
   });
 

@@ -277,6 +277,41 @@
       }
     },
     {
+      "name": "base-ui-button",
+      "type": "registry:ui",
+      "title": "Base UI Button",
+      "description": "A Base UI style-lane Button wrapper that reuses the Foldkit Ui.Button behavior with simple styled class helpers.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/base-ui-button/index.ts",
+          "target": "src/ui/base-ui-button/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-button/view.ts",
+          "target": "src/ui/base-ui-button/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/base-ui-button/base-ui-button.scene.test.ts",
+          "target": "src/ui/base-ui-button/base-ui-button.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Button",
+          "primitive": "Ui.Button",
+          "stateful": false,
+          "origin": "base-ui",
+          "artifact": "component"
+        }
+      }
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",

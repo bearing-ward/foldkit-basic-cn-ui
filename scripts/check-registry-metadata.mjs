@@ -207,6 +207,10 @@ for (const [componentKey, entries] of componentKeys.entries()) {
   }
 
   for (const entry of entries) {
+    if (entry.origin === "foldkit") {
+      continue;
+    }
+
     const prefix = originPrefixes[entry.origin];
 
     if (!entry.name.startsWith(`${prefix}-`)) {

@@ -318,6 +318,7 @@ export const ButtonRoute = r("Button");
 export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
 export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
+export const BaseUiButtonDocsRoute = r("BaseUiButtonDocs");
 export const InputGroupRoute = r("InputGroup");
 export const InputGroupDocsRoute = r("InputGroupDocs");
 export const MeterRoute = r("Meter");
@@ -588,6 +589,7 @@ const AppRoute = S.Union([
   ButtonDocsRoute,
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
+  BaseUiButtonDocsRoute,
   InputGroupRoute,
   InputGroupDocsRoute,
   MeterRoute,
@@ -2163,6 +2165,12 @@ export const buttonDisabledExampleRouter = pipe(
   slash(literal("disabled")),
   Route.mapTo(ButtonDisabledExampleRoute)
 );
+export const baseUiButtonDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-button")),
+  Route.mapTo(BaseUiButtonDocsRoute)
+);
 export const buttonBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("button-basic")),
@@ -3344,6 +3352,7 @@ const routeParser = Route.oneOf(
   buttonBasicStandaloneExampleRouter,
   buttonDisabledStandaloneExampleRouter,
   buttonDocsRouter,
+  baseUiButtonDocsRouter,
   inputGroupRouter,
   inputGroupDocsRouter,
   meterRouter,
