@@ -235,12 +235,18 @@ New Base UI work should focus on simple styled or unstyled contract depth:
    source items sorted by type/name, docs navigation sorted by type/name, and
    docs origins matching `meta.foldkit.origin`.
 
-2. Fill missing Base UI lane components by reusing Foldkit behavior and adding
+2. Rename existing style-lane items to explicit origin-prefixed names. Existing
+   Base UI and shadcn items predate the prefix rule and are temporarily
+   allowlisted by `scripts/check-registry-metadata.mjs`; migrate them to
+   `base-ui-*` and `shadcn-*` names in batches before adding broad new style
+   coverage.
+
+3. Fill missing Base UI lane components by reusing Foldkit behavior and adding
    simple styled or unstyled source:
    button, checkbox, combobox, dialog, fieldset, input, menu, popover,
    radio-group, select, slider, switch, tabs, toast, tooltip.
 
-3. Fill missing shadcn lane components by reusing Foldkit behavior and adding
+4. Fill missing shadcn lane components by reusing Foldkit behavior and adding
    opinionated style parity:
    accordion, alert-dialog, avatar, button, calendar, checkbox, collapsible,
    combobox, context-menu, date-picker, dialog, drawer, field, input, menubar,
@@ -248,19 +254,19 @@ New Base UI work should focus on simple styled or unstyled contract depth:
    separator, slider, switch, tabs, textarea, toast, toggle, toggle-group,
    tooltip.
 
-4. Audit already-promoted shadcn slices against Base UI behavior and
+5. Audit already-promoted shadcn slices against Base UI behavior and
    accessibility contracts:
    badge, avatar, card, skeleton, spinner, kbd, typography, empty, input-group,
    badge-spinner, empty-input-group, and kbd-input-group.
 
-5. Continue shadcn parity on top of the Base UI-informed foundation:
+6. Continue shadcn parity on top of the Base UI-informed foundation:
    use shadcn example names and visible content, but require behavior-heavy
    shadcn components to pass the corresponding Base UI contract first.
 
-6. Harden shadcn-only presentation and layout components:
+7. Harden shadcn-only presentation and layout components:
    alert, aspect-ratio, breadcrumb, button-group, carousel, typography.
 
-7. Specialized integration components:
+8. Specialized integration components:
    command, native-select, sonner, sheet, hover-card, dropdown-menu, input-otp,
    and form wrappers where the Base UI/shadcn naming or behavior diverges.
 

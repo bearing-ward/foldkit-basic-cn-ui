@@ -60,19 +60,29 @@ example-parity target.
 
 ## Naming And Paths
 
-Use clean public names by default:
+Use clean public names only for Foldkit functional components:
 
 - `registry/default/ui/{name}`
 - `registry/default/examples/{name}-basic`
 - `/docs/components/{name}`
 - `/r/{name}.json`
 
-# john note: I actually always want origin name so it's explicit
+Base UI and shadcn style-lane components must always use an explicit origin
+prefix, even when there is no overlap today:
 
-Use `{origin}-{name}` when two origins expose materially different components
-with the same public name and both need to exist at the same time. This is the
-default for overlapping lanes after the unprefixed name is already taken by a
-Foldkit functional component, such as `base-ui-button` or `shadcn-button`.
+- `registry/default/ui/base-ui-{name}`
+- `registry/default/ui/shadcn-{name}`
+- `registry/default/examples/base-ui-{name}-{example}`
+- `registry/default/examples/shadcn-{name}-{example}`
+- `/docs/components/base-ui-{name}`
+- `/docs/components/shadcn-{name}`
+- `/r/base-ui-{name}.json`
+- `/r/shadcn-{name}.json`
+
+The prefix is product language, not just a collision workaround. It keeps the
+style lane visible in install names, docs routes, search, and generated
+registry output. Existing non-Foldkit items should migrate to prefixed names;
+compatibility aliases are not required.
 
 Examples should use upstream example names when matching Base UI or shadcn:
 

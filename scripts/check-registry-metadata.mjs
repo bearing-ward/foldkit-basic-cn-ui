@@ -10,6 +10,60 @@ const originPrefixes = {
   foldkit: "foldkit",
   shadcn: "shadcn",
 };
+const legacyUnprefixedStyleLaneItems = new Set([
+  "accordion",
+  "alert",
+  "alert-dialog",
+  "aspect-ratio",
+  "autocomplete",
+  "avatar",
+  "badge",
+  "breadcrumb",
+  "button-group",
+  "card",
+  "carousel",
+  "chart",
+  "checkbox-group",
+  "collapsible",
+  "command",
+  "context-menu",
+  "data-table",
+  "direction",
+  "drawer",
+  "dropdown-menu",
+  "empty",
+  "field",
+  "form",
+  "hover-card",
+  "input-group",
+  "input-otp",
+  "item",
+  "kbd",
+  "label",
+  "menubar",
+  "meter",
+  "native-select",
+  "navigation-menu",
+  "number-field",
+  "otp-field",
+  "pagination",
+  "preview-card",
+  "progress",
+  "radio",
+  "resizable",
+  "scroll-area",
+  "separator",
+  "sheet",
+  "sidebar",
+  "skeleton",
+  "sonner",
+  "spinner",
+  "table",
+  "toggle",
+  "toggle-group",
+  "toolbar",
+  "typography",
+]);
 
 const uiItems = registryItems.filter((item) => item.type === "registry:ui");
 const failures = [];
@@ -73,6 +127,22 @@ for (const item of uiItems) {
 
   if (origin !== undefined && !(origin in originPrefixes)) {
     failures.push(`${item.name}: unknown origin ${origin}`);
+  }
+
+  if (
+    origin === "base-ui" &&
+    !item.name.startsWith("base-ui-") &&
+    !legacyUnprefixedStyleLaneItems.has(item.name)
+  ) {
+    failures.push(`${item.name}: Base UI lane items must use base-ui-* names`);
+  }
+
+  if (
+    origin === "shadcn" &&
+    !item.name.startsWith("shadcn-") &&
+    !legacyUnprefixedStyleLaneItems.has(item.name)
+  ) {
+    failures.push(`${item.name}: shadcn lane items must use shadcn-* names`);
   }
 
   if (
