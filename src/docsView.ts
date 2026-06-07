@@ -256,6 +256,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/menubar",
   },
   {
+    label: "Menubar Docs",
+    routeTag: "ShadcnMenubarDocs",
+    href: "/docs/components/shadcn-menubar",
+  },
+  {
     label: "Menubar Basic Example",
     routeTag: "MenubarBasicExample",
     href: "/docs/components/menubar/examples/basic",
@@ -264,6 +269,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Navigation Menu Docs",
     routeTag: "NavigationMenuDocs",
     href: "/docs/components/navigation-menu",
+  },
+  {
+    label: "Navigation Menu Docs",
+    routeTag: "ShadcnNavigationMenuDocs",
+    href: "/docs/components/shadcn-navigation-menu",
   },
   {
     label: "Navigation Menu Basic Example",
@@ -309,6 +319,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Field Docs",
     routeTag: "FieldDocs",
     href: "/docs/components/field",
+  },
+  {
+    label: "Field Docs",
+    routeTag: "ShadcnFieldDocs",
+    href: "/docs/components/shadcn-field",
   },
   {
     label: "Field Basic Example",
@@ -845,6 +860,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/progress",
   },
   {
+    label: "Progress Docs",
+    routeTag: "ShadcnProgressDocs",
+    href: "/docs/components/shadcn-progress",
+  },
+  {
     label: "Progress Basic Example",
     routeTag: "ProgressBasicExample",
     href: "/docs/components/progress/examples/basic",
@@ -1136,6 +1156,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Popover Docs",
     routeTag: "BaseUiPopoverDocs",
     href: "/docs/components/base-ui-popover",
+  },
+  {
+    label: "Popover Docs",
+    routeTag: "ShadcnPopoverDocs",
+    href: "/docs/components/shadcn-popover",
   },
   {
     label: "Popover Basic Example",
@@ -1579,6 +1604,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnDatePickerDocs",
     "ShadcnDialogDocs",
     "ShadcnDrawerDocs",
+    "ShadcnFieldDocs",
+    "ShadcnMenubarDocs",
+    "ShadcnNavigationMenuDocs",
+    "ShadcnPopoverDocs",
+    "ShadcnProgressDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
     : [
@@ -1661,11 +1691,6 @@ const labelFromComponentSlug = (slug: string): string =>
 const missingBaseUiLaneSlugs: readonly string[] = [];
 
 const missingShadcnLaneSlugs: readonly string[] = [
-  "field",
-  "menubar",
-  "navigation-menu",
-  "popover",
-  "progress",
   "radio-group",
   "scroll-area",
   "select",
@@ -2267,6 +2292,7 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Base UI",
     primitive: "Ui.Fieldset",
   },
+  "shadcn-field": { artifact: "component", origin: "shadcn" },
   "file-drop": {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -2313,6 +2339,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   "base-ui-popover": {
     artifact: "component",
     origin: "Base UI",
+    primitive: "Ui.Popover",
+  },
+  "shadcn-popover": {
+    artifact: "component",
+    origin: "shadcn",
     primitive: "Ui.Popover",
   },
   "radio-group": {
@@ -2417,10 +2448,12 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "shadcn-menubar": { artifact: "component", origin: "shadcn" },
   "navigation-menu": {
     artifact: "component",
     origin: "Base UI",
   },
+  "shadcn-navigation-menu": { artifact: "component", origin: "shadcn" },
   "otp-field": {
     artifact: "component",
     origin: "Base UI",
@@ -2513,6 +2546,7 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "shadcn-progress": { artifact: "component", origin: "shadcn" },
 };
 
 const docsMetadataForSource = (
@@ -15163,8 +15197,68 @@ ContextMenu.rootView<Message>({
       ContextMenuBasicExample: () =>
         DocsRoutes.contextMenuBasicExampleRouteView(model),
       MenubarDocs: () => menubarDocsView(model),
+      ShadcnMenubarDocs: () =>
+        shadcnLaneDocsView({
+          label: "Menubar",
+          source: "registry/default/ui/shadcn-menubar",
+          primitive: "Menubar view helpers",
+          description:
+            "A shadcn style-lane Menubar slice that reuses the existing root, menu, trigger, popup, item, and separator helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Menubar composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnMenubarRootClassName",
+            "shadcnMenubarMenuClassName",
+            "shadcnMenubarTriggerClassName",
+            "shadcnMenubarPopupClassName",
+            "shadcnMenubarItemClassName",
+            "shadcnMenubarSeparatorClassName",
+          ],
+          anatomyCode: `import * as Menubar from "./ui/shadcn-menubar";
+
+Menubar.rootView<Message>({
+  children: [
+    Menubar.menuView({
+      children: [
+        Menubar.triggerView({ open: model.open, onToggle: ClickedToggle(), children: ["File"] }),
+        Menubar.popupView({ open: model.open, children: [Menubar.itemView({ children: ["New"] })] }),
+      ],
+    }),
+  ],
+});`,
+        }),
       MenubarBasicExample: () => DocsRoutes.menubarBasicExampleRouteView(model),
       NavigationMenuDocs: () => navigationMenuDocsView(model),
+      ShadcnNavigationMenuDocs: () =>
+        shadcnLaneDocsView({
+          label: "Navigation Menu",
+          source: "registry/default/ui/shadcn-navigation-menu",
+          primitive: "Navigation Menu view helpers",
+          description:
+            "A shadcn style-lane Navigation Menu slice that reuses the existing root, list, item, trigger, link, portal, positioner, popup, viewport, content, and arrow helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Navigation Menu composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnNavigationMenuRootClassName",
+            "shadcnNavigationMenuListClassName",
+            "shadcnNavigationMenuTriggerClassName",
+            "shadcnNavigationMenuLinkClassName",
+            "shadcnNavigationMenuPopupClassName",
+            "shadcnNavigationMenuViewportClassName",
+          ],
+          anatomyCode: `import * as NavigationMenu from "./ui/shadcn-navigation-menu";
+
+NavigationMenu.rootView<Message>({
+  children: [
+    NavigationMenu.listView({
+      children: [
+        NavigationMenu.triggerView({ open: model.open, onToggle: ClickedToggle(), children: ["Components"] }),
+        NavigationMenu.portalView({ open: model.open, children: [NavigationMenu.popupView({ children: [content] })] }),
+      ],
+    }),
+  ],
+});`,
+        }),
       NavigationMenuBasicExample: () =>
         DocsRoutes.navigationMenuBasicExampleRouteView(model),
       OtpFieldDocs: () => otpFieldDocsView(model),
@@ -15203,6 +15297,33 @@ Collapsible.rootView<Message>({
       CollapsibleBasicExample: () =>
         DocsRoutes.collapsibleBasicExampleRouteView(model),
       FieldDocs: () => fieldDocsView(model),
+      ShadcnFieldDocs: () =>
+        shadcnLaneDocsView({
+          label: "Field",
+          source: "registry/default/ui/shadcn-field",
+          primitive: "Field view helpers",
+          description:
+            "A shadcn style-lane Field slice that reuses the existing root, label, control, description, error, item, and validity helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Field composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnFieldRootClassName",
+            "shadcnFieldLabelClassName",
+            "shadcnFieldControlClassName",
+            "shadcnFieldDescriptionClassName",
+            "shadcnFieldErrorClassName",
+            "shadcnFieldValidityClassName",
+          ],
+          anatomyCode: `import * as Field from "./ui/shadcn-field";
+
+Field.rootView<Message>({
+  children: [
+    Field.labelView({ forId: "email", children: ["Email"] }),
+    Field.controlView({ id: "email", value: model.email, onInput: UpdatedEmail }),
+    Field.descriptionView({ children: ["Use your work email."] }),
+  ],
+});`,
+        }),
       FieldBasicExample: () => DocsRoutes.fieldBasicExampleRouteView(model),
       NumberFieldDocs: () => numberFieldDocsView(model),
       NumberFieldBasicExample: () =>
@@ -15704,6 +15825,29 @@ Input.view<Message>({
       ToolbarBasicExample: () => DocsRoutes.toolbarBasicExampleRouteView(model),
       Progress: () => embedUi("ui-progress", View.progress),
       ProgressDocs: () => progressDocsView(model),
+      ShadcnProgressDocs: () =>
+        shadcnLaneDocsView({
+          label: "Progress",
+          source: "registry/default/ui/shadcn-progress",
+          primitive: "Progress view helpers",
+          description:
+            "A shadcn style-lane Progress slice that reuses the existing accessible root, label, value, track, and indicator helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Progress composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnProgressRootClassName",
+            "shadcnProgressLabelClassName",
+            "shadcnProgressValueClassName",
+            "shadcnProgressTrackClassName",
+            "shadcnProgressIndicatorClassName",
+          ],
+          anatomyCode: `import * as Progress from "./ui/shadcn-progress";
+
+Progress.view<Message>({
+  value: model.uploadPercent,
+  label: "Upload progress",
+});`,
+        }),
       ProgressBasicExample: () =>
         DocsRoutes.progressBasicExampleRouteView(model),
       Listbox: () => embedUi("ui-listbox", View.listbox),
@@ -15758,6 +15902,32 @@ Menu.view<Message>({
             "baseUiPopoverBackdropClassName",
           ],
           anatomyCode: `import * as Popover from "./ui/base-ui-popover";
+
+Popover.view<Message>({
+  model: model.popover,
+  toParentMessage: (message) => GotPopoverMessage({ message }),
+  children: [
+    Popover.trigger({ children: ["Open"] }),
+    Popover.panel({ children: ["Popover content"] }),
+  ],
+});`,
+        }),
+      ShadcnPopoverDocs: () =>
+        shadcnLaneDocsView({
+          label: "Popover",
+          source: "registry/default/ui/shadcn-popover",
+          primitive: "Ui.Popover",
+          description:
+            "A shadcn style-lane Popover slice that reuses the official Foldkit Ui.Popover primitive for open state, anchored panels, dismissal, scroll lock, focus, and backdrop commands.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Popover behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnPopoverTriggerClassName",
+            "shadcnPopoverRootClassName",
+            "shadcnPopoverPanelClassName",
+            "shadcnPopoverBackdropClassName",
+          ],
+          anatomyCode: `import * as Popover from "./ui/shadcn-popover";
 
 Popover.view<Message>({
   model: model.popover,

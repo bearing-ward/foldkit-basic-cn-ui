@@ -124,6 +124,7 @@ Present shadcn lane components:
 - drawer
 - dropdown-menu
 - empty
+- field
 - hover-card
 - input
 - input-group
@@ -131,8 +132,12 @@ Present shadcn lane components:
 - item
 - kbd
 - label
+- menubar
 - native-select
+- navigation-menu
 - pagination
+- popover
+- progress
 - resizable
 - sheet
 - sidebar
@@ -144,11 +149,6 @@ Present shadcn lane components:
 
 Missing shadcn lane components:
 
-- field
-- menubar
-- navigation-menu
-- popover
-- progress
 - radio-group
 - scroll-area
 - select

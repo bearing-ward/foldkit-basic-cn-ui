@@ -2971,6 +2971,39 @@
       }
     },
     {
+      "name": "shadcn-field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "shadcn style-lane field wrapper backed by the existing Field component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/field"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-field/index.ts",
+          "target": "src/ui/shadcn-field/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-field/view.ts",
+          "target": "src/ui/shadcn-field/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-field/shadcn-field.scene.test.ts",
+          "target": "src/ui/shadcn-field/shadcn-field.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
       "name": "shadcn-input",
       "type": "registry:ui",
       "title": "Input",
@@ -3000,6 +3033,139 @@
           "origin": "shadcn",
           "artifact": "component",
           "primitive": "Ui.Input",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "shadcn style-lane menubar wrapper backed by the existing Menubar component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/menubar"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-menubar/index.ts",
+          "target": "src/ui/shadcn-menubar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-menubar/view.ts",
+          "target": "src/ui/shadcn-menubar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-menubar/shadcn-menubar.scene.test.ts",
+          "target": "src/ui/shadcn-menubar/shadcn-menubar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "shadcn style-lane navigation menu wrapper backed by the existing Navigation Menu component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/navigation-menu"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-navigation-menu/index.ts",
+          "target": "src/ui/shadcn-navigation-menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-navigation-menu/view.ts",
+          "target": "src/ui/shadcn-navigation-menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-navigation-menu/shadcn-navigation-menu.scene.test.ts",
+          "target": "src/ui/shadcn-navigation-menu/shadcn-navigation-menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "shadcn style-lane popover wrapper backed by the existing Popover component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/popover"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-popover/index.ts",
+          "target": "src/ui/shadcn-popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-popover/view.ts",
+          "target": "src/ui/shadcn-popover/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-popover/shadcn-popover.scene.test.ts",
+          "target": "src/ui/shadcn-popover/shadcn-popover.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Popover",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "shadcn-progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "shadcn style-lane progress wrapper backed by the existing Progress component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/progress"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-progress/index.ts",
+          "target": "src/ui/shadcn-progress/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-progress/view.ts",
+          "target": "src/ui/shadcn-progress/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-progress/shadcn-progress.scene.test.ts",
+          "target": "src/ui/shadcn-progress/shadcn-progress.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
           "stateful": false
         }
       }

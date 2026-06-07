@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-navigation-menu",
+  "type": "registry:ui",
+  "title": "Navigation Menu",
+  "description": "shadcn style-lane navigation menu wrapper backed by the existing Navigation Menu component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/navigation-menu"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-navigation-menu/index.ts",
+      "target": "src/ui/shadcn-navigation-menu/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  arrowView,\n  contentView,\n  itemView,\n  linkView,\n  listView,\n  popupView,\n  portalView,\n  positionerView,\n  rootView,\n  triggerView,\n  viewportView,\n} from \"../navigation-menu\";\nexport type {\n  LinkViewConfig,\n  NavigationMenuStyle,\n  PartViewConfig,\n  PortalViewConfig,\n  TriggerViewConfig,\n} from \"../navigation-menu\";\n\nexport {\n  shadcnNavigationMenuArrowClassName,\n  shadcnNavigationMenuContentClassName,\n  shadcnNavigationMenuItemClassName,\n  shadcnNavigationMenuLinkClassName,\n  shadcnNavigationMenuListClassName,\n  shadcnNavigationMenuPopupClassName,\n  shadcnNavigationMenuPortalClassName,\n  shadcnNavigationMenuPositionerClassName,\n  shadcnNavigationMenuRootClassName,\n  shadcnNavigationMenuTriggerClassName,\n  shadcnNavigationMenuViewportClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-navigation-menu/view.ts",
+      "target": "src/ui/shadcn-navigation-menu/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  navigationMenuArrowClassName as shadcnNavigationMenuArrowClassName,\n  navigationMenuContentClassName as shadcnNavigationMenuContentClassName,\n  navigationMenuItemClassName as shadcnNavigationMenuItemClassName,\n  navigationMenuLinkClassName as shadcnNavigationMenuLinkClassName,\n  navigationMenuListClassName as shadcnNavigationMenuListClassName,\n  navigationMenuPopupClassName as shadcnNavigationMenuPopupClassName,\n  navigationMenuPortalClassName as shadcnNavigationMenuPortalClassName,\n  navigationMenuPositionerClassName as shadcnNavigationMenuPositionerClassName,\n  navigationMenuRootClassName as shadcnNavigationMenuRootClassName,\n  navigationMenuTriggerClassName as shadcnNavigationMenuTriggerClassName,\n  navigationMenuViewportClassName as shadcnNavigationMenuViewportClassName,\n} from \"../navigation-menu/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-navigation-menu/shadcn-navigation-menu.scene.test.ts",
+      "target": "src/ui/shadcn-navigation-menu/shadcn-navigation-menu.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as NavigationMenu from \"./index\";\n\ndescribe(\"shadcn Navigation Menu registry view\", () => {\n  test(\"reuses the Foldkit Navigation Menu view contract\", () => {\n    expect(NavigationMenu.rootView).toBeTypeOf(\"function\");\n    expect(NavigationMenu.triggerView).toBeTypeOf(\"function\");\n    expect(NavigationMenu.linkView).toBeTypeOf(\"function\");\n    expect(NavigationMenu.shadcnNavigationMenuPopupClassName).toContain(\n      \"shadow\"\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

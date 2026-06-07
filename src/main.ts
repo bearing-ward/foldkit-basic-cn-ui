@@ -211,8 +211,10 @@ export const ContextMenuDocsRoute = r("ContextMenuDocs");
 export const ShadcnContextMenuDocsRoute = r("ShadcnContextMenuDocs");
 export const ContextMenuBasicExampleRoute = r("ContextMenuBasicExample");
 export const MenubarDocsRoute = r("MenubarDocs");
+export const ShadcnMenubarDocsRoute = r("ShadcnMenubarDocs");
 export const MenubarBasicExampleRoute = r("MenubarBasicExample");
 export const NavigationMenuDocsRoute = r("NavigationMenuDocs");
+export const ShadcnNavigationMenuDocsRoute = r("ShadcnNavigationMenuDocs");
 export const NavigationMenuBasicExampleRoute = r("NavigationMenuBasicExample");
 export const OtpFieldDocsRoute = r("OtpFieldDocs");
 export const OtpFieldBasicExampleRoute = r("OtpFieldBasicExample");
@@ -222,6 +224,7 @@ export const CollapsibleDocsRoute = r("CollapsibleDocs");
 export const ShadcnCollapsibleDocsRoute = r("ShadcnCollapsibleDocs");
 export const CollapsibleBasicExampleRoute = r("CollapsibleBasicExample");
 export const FieldDocsRoute = r("FieldDocs");
+export const ShadcnFieldDocsRoute = r("ShadcnFieldDocs");
 export const FieldBasicExampleRoute = r("FieldBasicExample");
 export const NumberFieldDocsRoute = r("NumberFieldDocs");
 export const NumberFieldBasicExampleRoute = r("NumberFieldBasicExample");
@@ -345,6 +348,7 @@ export const ToolbarDocsRoute = r("ToolbarDocs");
 export const ToolbarBasicExampleRoute = r("ToolbarBasicExample");
 export const ProgressRoute = r("Progress");
 export const ProgressDocsRoute = r("ProgressDocs");
+export const ShadcnProgressDocsRoute = r("ShadcnProgressDocs");
 export const ProgressBasicExampleRoute = r("ProgressBasicExample");
 export const CalendarRoute = r("Calendar");
 export const CalendarDocsRoute = r("CalendarDocs");
@@ -415,6 +419,7 @@ export const MenuBasicExampleRoute = r("MenuBasicExample");
 export const MenuAnimatedExampleRoute = r("MenuAnimatedExample");
 export const PopoverRoute = r("Popover");
 export const PopoverDocsRoute = r("PopoverDocs");
+export const ShadcnPopoverDocsRoute = r("ShadcnPopoverDocs");
 export const BaseUiPopoverDocsRoute = r("BaseUiPopoverDocs");
 export const PopoverBasicExampleRoute = r("PopoverBasicExample");
 export const PopoverAnimatedExampleRoute = r("PopoverAnimatedExample");
@@ -511,8 +516,10 @@ const AppRoute = S.Union([
   ShadcnContextMenuDocsRoute,
   ContextMenuBasicExampleRoute,
   MenubarDocsRoute,
+  ShadcnMenubarDocsRoute,
   MenubarBasicExampleRoute,
   NavigationMenuDocsRoute,
+  ShadcnNavigationMenuDocsRoute,
   NavigationMenuBasicExampleRoute,
   OtpFieldDocsRoute,
   OtpFieldBasicExampleRoute,
@@ -522,6 +529,7 @@ const AppRoute = S.Union([
   ShadcnCollapsibleDocsRoute,
   CollapsibleBasicExampleRoute,
   FieldDocsRoute,
+  ShadcnFieldDocsRoute,
   FieldBasicExampleRoute,
   NumberFieldDocsRoute,
   NumberFieldBasicExampleRoute,
@@ -643,6 +651,7 @@ const AppRoute = S.Union([
   ToolbarBasicExampleRoute,
   ProgressRoute,
   ProgressDocsRoute,
+  ShadcnProgressDocsRoute,
   ProgressBasicExampleRoute,
   CalendarRoute,
   CalendarDocsRoute,
@@ -711,6 +720,7 @@ const AppRoute = S.Union([
   MenuAnimatedExampleRoute,
   PopoverRoute,
   PopoverDocsRoute,
+  ShadcnPopoverDocsRoute,
   BaseUiPopoverDocsRoute,
   PopoverBasicExampleRoute,
   PopoverAnimatedExampleRoute,
@@ -1170,6 +1180,12 @@ export const menubarDocsRouter = pipe(
   slash(literal("menubar")),
   Route.mapTo(MenubarDocsRoute)
 );
+export const shadcnMenubarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-menubar")),
+  Route.mapTo(ShadcnMenubarDocsRoute)
+);
 export const menubarBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -1188,6 +1204,12 @@ export const navigationMenuDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("navigation-menu")),
   Route.mapTo(NavigationMenuDocsRoute)
+);
+export const shadcnNavigationMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-navigation-menu")),
+  Route.mapTo(ShadcnNavigationMenuDocsRoute)
 );
 export const navigationMenuBasicExampleRouter = pipe(
   literal("docs"),
@@ -1308,6 +1330,12 @@ export const fieldDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("field")),
   Route.mapTo(FieldDocsRoute)
+);
+export const shadcnFieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-field")),
+  Route.mapTo(ShadcnFieldDocsRoute)
 );
 export const fieldBasicExampleRouter = pipe(
   literal("docs"),
@@ -2417,6 +2445,12 @@ export const progressDocsRouter = pipe(
   slash(literal("progress")),
   Route.mapTo(ProgressDocsRoute)
 );
+export const shadcnProgressDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-progress")),
+  Route.mapTo(ShadcnProgressDocsRoute)
+);
 export const progressBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3012,6 +3046,12 @@ export const popoverDocsRouter = pipe(
   slash(literal("popover")),
   Route.mapTo(PopoverDocsRoute)
 );
+export const shadcnPopoverDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-popover")),
+  Route.mapTo(ShadcnPopoverDocsRoute)
+);
 export const baseUiPopoverDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3598,6 +3638,7 @@ const routeParser = Route.oneOf(
   progressBasicExampleRouter,
   progressBasicStandaloneExampleRouter,
   progressDocsRouter,
+  shadcnProgressDocsRouter,
   calendarRouter,
   calendarBasicExampleRouter,
   calendarBoundsExampleRouter,
@@ -3697,6 +3738,7 @@ const routeParser = Route.oneOf(
   popoverBasicStandaloneExampleRouter,
   popoverAnimatedStandaloneExampleRouter,
   popoverDocsRouter,
+  shadcnPopoverDocsRouter,
   baseUiPopoverDocsRouter,
   radioGroupRouter,
   radioGroupBasicExampleRouter,
@@ -3832,9 +3874,11 @@ const routeParser = Route.oneOf(
   menubarBasicExampleRouter,
   menubarBasicStandaloneExampleRouter,
   menubarDocsRouter,
+  shadcnMenubarDocsRouter,
   navigationMenuBasicExampleRouter,
   navigationMenuBasicStandaloneExampleRouter,
   navigationMenuDocsRouter,
+  shadcnNavigationMenuDocsRouter,
   otpFieldBasicExampleRouter,
   otpFieldBasicStandaloneExampleRouter,
   otpFieldDocsRouter,
@@ -3850,6 +3894,7 @@ const routeParser = Route.oneOf(
   fieldBasicExampleRouter,
   fieldBasicStandaloneExampleRouter,
   fieldDocsRouter,
+  shadcnFieldDocsRouter,
   numberFieldBasicExampleRouter,
   numberFieldBasicStandaloneExampleRouter,
   numberFieldDocsRouter,

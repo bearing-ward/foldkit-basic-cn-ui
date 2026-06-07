@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-menubar",
+  "type": "registry:ui",
+  "title": "Menubar",
+  "description": "shadcn style-lane menubar wrapper backed by the existing Menubar component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/menubar"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-menubar/index.ts",
+      "target": "src/ui/shadcn-menubar/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  itemView,\n  menuView,\n  popupView,\n  rootView,\n  separatorView,\n  triggerView,\n} from \"../menubar\";\nexport type {\n  ItemViewConfig,\n  MenubarStyle,\n  MenuViewConfig,\n  PopupViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../menubar\";\n\nexport {\n  shadcnMenubarItemClassName,\n  shadcnMenubarMenuClassName,\n  shadcnMenubarPopupClassName,\n  shadcnMenubarRootClassName,\n  shadcnMenubarSeparatorClassName,\n  shadcnMenubarTriggerClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-menubar/view.ts",
+      "target": "src/ui/shadcn-menubar/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  menubarItemClassName as shadcnMenubarItemClassName,\n  menubarMenuClassName as shadcnMenubarMenuClassName,\n  menubarPopupClassName as shadcnMenubarPopupClassName,\n  menubarRootClassName as shadcnMenubarRootClassName,\n  menubarSeparatorClassName as shadcnMenubarSeparatorClassName,\n  menubarTriggerClassName as shadcnMenubarTriggerClassName,\n} from \"../menubar/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-menubar/shadcn-menubar.scene.test.ts",
+      "target": "src/ui/shadcn-menubar/shadcn-menubar.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Menubar from \"./index\";\n\ndescribe(\"shadcn Menubar registry view\", () => {\n  test(\"reuses the Foldkit Menubar view contract\", () => {\n    expect(Menubar.rootView).toBeTypeOf(\"function\");\n    expect(Menubar.triggerView).toBeTypeOf(\"function\");\n    expect(Menubar.popupView).toBeTypeOf(\"function\");\n    expect(Menubar.shadcnMenubarRootClassName).toContain(\"border\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}
