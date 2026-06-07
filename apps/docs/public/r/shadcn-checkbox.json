@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-checkbox",
+  "type": "registry:ui",
+  "title": "Checkbox",
+  "description": "shadcn style-lane checkbox wrapper backed by the Foldkit Ui.Checkbox component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/checkbox"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-checkbox/index.ts",
+      "target": "src/ui/shadcn-checkbox/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectChecked,\n  setChecked,\n  SetChecked,\n  ToggledChecked,\n  update,\n  view,\n} from \"../checkbox\";\nexport type {\n  CheckboxAttributes,\n  Commands,\n  InitConfig,\n  InitReturn,\n  Toggled,\n  UpdateReturn,\n  ViewInputs,\n} from \"../checkbox\";\n\nexport {\n  shadcnCheckboxControlClassName,\n  shadcnCheckboxDescriptionClassName,\n  shadcnCheckboxLabelClassName,\n  shadcnCheckboxRowClassName,\n  shadcnCheckboxTextClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-checkbox/view.ts",
+      "target": "src/ui/shadcn-checkbox/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  checkboxControlClassName as shadcnCheckboxControlClassName,\n  checkboxDescriptionClassName as shadcnCheckboxDescriptionClassName,\n  checkboxLabelClassName as shadcnCheckboxLabelClassName,\n  checkboxRowClassName as shadcnCheckboxRowClassName,\n  checkboxTextClassName as shadcnCheckboxTextClassName,\n} from \"../checkbox/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-checkbox/shadcn-checkbox.scene.test.ts",
+      "target": "src/ui/shadcn-checkbox/shadcn-checkbox.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Checkbox from \"./index\";\n\ndescribe(\"shadcn Checkbox registry view\", () => {\n  test(\"reuses the Foldkit Checkbox functional contract\", () => {\n    expect(Checkbox.init).toBeTypeOf(\"function\");\n    expect(Checkbox.update).toBeTypeOf(\"function\");\n    expect(Checkbox.view).toBeTypeOf(\"function\");\n    expect(Checkbox.shadcnCheckboxControlClassName).toContain(\"rounded\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Checkbox",
+      "stateful": true
+    }
+  }
+}

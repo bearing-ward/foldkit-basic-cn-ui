@@ -319,6 +319,7 @@ export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
 export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
 export const BaseUiButtonDocsRoute = r("BaseUiButtonDocs");
+export const ShadcnButtonDocsRoute = r("ShadcnButtonDocs");
 export const InputGroupRoute = r("InputGroup");
 export const InputGroupDocsRoute = r("InputGroupDocs");
 export const MeterRoute = r("Meter");
@@ -347,6 +348,7 @@ export const CheckboxRoute = r("Checkbox");
 export const CheckboxDocsRoute = r("CheckboxDocs");
 export const CheckboxBasicExampleRoute = r("CheckboxBasicExample");
 export const BaseUiCheckboxDocsRoute = r("BaseUiCheckboxDocs");
+export const ShadcnCheckboxDocsRoute = r("ShadcnCheckboxDocs");
 export const CheckboxGroupDocsRoute = r("CheckboxGroupDocs");
 export const CheckboxGroupBasicExampleRoute = r("CheckboxGroupBasicExample");
 export const CheckboxIndeterminateExampleRoute = r(
@@ -389,6 +391,7 @@ export const FileDropDisabledExampleRoute = r("FileDropDisabledExample");
 export const InputRoute = r("Input");
 export const InputDocsRoute = r("InputDocs");
 export const BaseUiInputDocsRoute = r("BaseUiInputDocs");
+export const ShadcnInputDocsRoute = r("ShadcnInputDocs");
 export const InputBasicExampleRoute = r("InputBasicExample");
 export const InputDisabledExampleRoute = r("InputDisabledExample");
 export const ListboxRoute = r("Listbox");
@@ -604,6 +607,7 @@ const AppRoute = S.Union([
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
   BaseUiButtonDocsRoute,
+  ShadcnButtonDocsRoute,
   InputGroupRoute,
   InputGroupDocsRoute,
   MeterRoute,
@@ -632,6 +636,7 @@ const AppRoute = S.Union([
   CheckboxDocsRoute,
   CheckboxBasicExampleRoute,
   BaseUiCheckboxDocsRoute,
+  ShadcnCheckboxDocsRoute,
   CheckboxGroupDocsRoute,
   CheckboxGroupBasicExampleRoute,
   CheckboxIndeterminateExampleRoute,
@@ -672,6 +677,7 @@ const AppRoute = S.Union([
   InputRoute,
   InputDocsRoute,
   BaseUiInputDocsRoute,
+  ShadcnInputDocsRoute,
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
   ListboxRoute,
@@ -2199,6 +2205,12 @@ export const baseUiButtonDocsRouter = pipe(
   slash(literal("base-ui-button")),
   Route.mapTo(BaseUiButtonDocsRoute)
 );
+export const shadcnButtonDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-button")),
+  Route.mapTo(ShadcnButtonDocsRoute)
+);
 export const buttonBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("button-basic")),
@@ -2413,6 +2425,12 @@ export const baseUiCheckboxDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-checkbox")),
   Route.mapTo(BaseUiCheckboxDocsRoute)
+);
+export const shadcnCheckboxDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-checkbox")),
+  Route.mapTo(ShadcnCheckboxDocsRoute)
 );
 export const checkboxBasicExampleRouter = pipe(
   literal("docs"),
@@ -2796,6 +2814,12 @@ export const baseUiInputDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-input")),
   Route.mapTo(BaseUiInputDocsRoute)
+);
+export const shadcnInputDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  Route.mapTo(ShadcnInputDocsRoute)
 );
 export const inputBasicExampleRouter = pipe(
   literal("docs"),
@@ -3465,6 +3489,7 @@ const routeParser = Route.oneOf(
   buttonDisabledStandaloneExampleRouter,
   buttonDocsRouter,
   baseUiButtonDocsRouter,
+  shadcnButtonDocsRouter,
   inputGroupRouter,
   inputGroupDocsRouter,
   meterRouter,
@@ -3505,6 +3530,7 @@ const routeParser = Route.oneOf(
   checkboxIndeterminateStandaloneExampleRouter,
   checkboxDocsRouter,
   baseUiCheckboxDocsRouter,
+  shadcnCheckboxDocsRouter,
   checkboxGroupBasicExampleRouter,
   checkboxGroupBasicStandaloneExampleRouter,
   checkboxGroupDocsRouter,
@@ -3566,6 +3592,7 @@ const routeParser = Route.oneOf(
   inputDisabledStandaloneExampleRouter,
   inputDocsRouter,
   baseUiInputDocsRouter,
+  shadcnInputDocsRouter,
   listboxRouter,
   listboxBasicExampleRouter,
   listboxAnimatedExampleRouter,

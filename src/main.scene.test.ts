@@ -221,6 +221,7 @@ import {
   TableBasicExampleRoute,
   TableDocsRoute,
   BaseUiButtonDocsRoute,
+  ShadcnButtonDocsRoute,
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
   ButtonDocsRoute,
@@ -229,6 +230,7 @@ import {
   CalendarBoundsExampleRoute,
   CalendarDocsRoute,
   BaseUiCheckboxDocsRoute,
+  ShadcnCheckboxDocsRoute,
   CheckboxBasicExampleRoute,
   CheckboxDocsRoute,
   CheckboxGroupBasicExampleRoute,
@@ -245,6 +247,7 @@ import {
   FieldBasicExampleRoute,
   FieldDocsRoute,
   BaseUiInputDocsRoute,
+  ShadcnInputDocsRoute,
   FormBasicExampleRoute,
   FormDocsRoute,
   BaseUiMenuDocsRoute,
@@ -2276,6 +2279,44 @@ describe("scene", () => {
         Scene.with(modelForRoute(route)),
         Scene.expect(Scene.role("heading", { name: heading })).toExist(),
         Scene.expect(Scene.text("Base UI")).toExist(),
+        Scene.expect(Scene.text(source)).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+        Scene.expect(
+          Scene.role("heading", { name: "Foldkit integration" })
+        ).toExist(),
+        Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
+        Scene.expect(Scene.role("heading", { name: "API reference" })).toExist()
+      );
+    });
+  });
+
+  test("the first shadcn lane docs routes render active docs pages", () => {
+    const shadcnDocsRoutes = [
+      {
+        route: ShadcnButtonDocsRoute(),
+        heading: "Button",
+        source: "registry/default/ui/shadcn-button",
+      },
+      {
+        route: ShadcnCheckboxDocsRoute(),
+        heading: "Checkbox",
+        source: "registry/default/ui/shadcn-checkbox",
+      },
+      {
+        route: ShadcnInputDocsRoute(),
+        heading: "Input",
+        source: "registry/default/ui/shadcn-input",
+      },
+    ];
+
+    shadcnDocsRoutes.forEach(({ route, heading, source }) => {
+      Scene.scene(
+        { update, view },
+        Scene.with(modelForRoute(route)),
+        Scene.expect(Scene.role("heading", { name: heading })).toExist(),
+        Scene.expect(Scene.text("shadcn")).toExist(),
         Scene.expect(Scene.text(source)).toExist(),
         Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
         Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),

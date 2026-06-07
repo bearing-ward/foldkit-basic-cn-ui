@@ -2565,6 +2565,108 @@
     }
   },
   {
+    "name": "shadcn-button",
+    "type": "registry:ui",
+    "title": "Button",
+    "description": "shadcn style-lane button wrapper backed by the Foldkit Ui.Button component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-button/index.ts",
+        "target": "src/ui/shadcn-button/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-button/view.ts",
+        "target": "src/ui/shadcn-button/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-button/shadcn-button.scene.test.ts",
+        "target": "src/ui/shadcn-button/shadcn-button.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "primitive": "Ui.Button",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox",
+    "type": "registry:ui",
+    "title": "Checkbox",
+    "description": "shadcn style-lane checkbox wrapper backed by the Foldkit Ui.Checkbox component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["checkbox"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-checkbox/index.ts",
+        "target": "src/ui/shadcn-checkbox/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-checkbox/view.ts",
+        "target": "src/ui/shadcn-checkbox/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-checkbox/shadcn-checkbox.scene.test.ts",
+        "target": "src/ui/shadcn-checkbox/shadcn-checkbox.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "primitive": "Ui.Checkbox",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "shadcn-input",
+    "type": "registry:ui",
+    "title": "Input",
+    "description": "shadcn style-lane input wrapper backed by the Foldkit Ui.Input component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-input/index.ts",
+        "target": "src/ui/shadcn-input/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-input/view.ts",
+        "target": "src/ui/shadcn-input/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-input/shadcn-input.scene.test.ts",
+        "target": "src/ui/shadcn-input/shadcn-input.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "origin": "shadcn",
+        "artifact": "component",
+        "primitive": "Ui.Input",
+        "stateful": false
+      }
+    }
+  },
+  {
     "name": "sheet",
     "type": "registry:ui",
     "title": "Sheet",

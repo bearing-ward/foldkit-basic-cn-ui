@@ -721,6 +721,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/base-ui-button",
   },
   {
+    label: "Button Docs",
+    routeTag: "ShadcnButtonDocs",
+    href: "/docs/components/shadcn-button",
+  },
+  {
     label: "Button Basic Example",
     routeTag: "ButtonBasicExample",
     href: "/docs/components/button/examples/basic",
@@ -840,6 +845,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Checkbox Docs",
     routeTag: "BaseUiCheckboxDocs",
     href: "/docs/components/base-ui-checkbox",
+  },
+  {
+    label: "Checkbox Docs",
+    routeTag: "ShadcnCheckboxDocs",
+    href: "/docs/components/shadcn-checkbox",
   },
   {
     label: "Checkbox Basic Example",
@@ -1017,6 +1027,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Input Docs",
     routeTag: "BaseUiInputDocs",
     href: "/docs/components/base-ui-input",
+  },
+  {
+    label: "Input Docs",
+    routeTag: "ShadcnInputDocs",
+    href: "/docs/components/shadcn-input",
   },
   {
     label: "Input Basic Example",
@@ -1501,6 +1516,9 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "TypographyDocs",
     "EmptyDocs",
     "InputGroupDocs",
+    "ShadcnButtonDocs",
+    "ShadcnCheckboxDocs",
+    "ShadcnInputDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
     : [
@@ -1586,9 +1604,7 @@ const missingShadcnLaneSlugs: readonly string[] = [
   "accordion",
   "alert-dialog",
   "avatar",
-  "button",
   "calendar",
-  "checkbox",
   "collapsible",
   "combobox",
   "context-menu",
@@ -1596,7 +1612,6 @@ const missingShadcnLaneSlugs: readonly string[] = [
   "dialog",
   "drawer",
   "field",
-  "input",
   "menubar",
   "navigation-menu",
   "popover",
@@ -2076,6 +2091,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Base UI",
     primitive: "Ui.Button",
   },
+  "shadcn-button": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Button",
+  },
   breadcrumb: { artifact: "component", origin: "shadcn" },
   "button-group": { artifact: "component", origin: "shadcn" },
   calendar: {
@@ -2093,6 +2113,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   "base-ui-checkbox": {
     artifact: "component",
     origin: "Base UI",
+    primitive: "Ui.Checkbox",
+  },
+  "shadcn-checkbox": {
+    artifact: "component",
+    origin: "shadcn",
     primitive: "Ui.Checkbox",
   },
   command: { artifact: "component", origin: "shadcn" },
@@ -2156,6 +2181,11 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
   "base-ui-input": {
     artifact: "component",
     origin: "Base UI",
+    primitive: "Ui.Input",
+  },
+  "shadcn-input": {
+    artifact: "component",
+    origin: "shadcn",
     primitive: "Ui.Input",
   },
   "input-otp": { artifact: "component", origin: "shadcn" },
@@ -11780,6 +11810,82 @@ const baseUiLaneDocsView = (config: BaseUiLaneDocsConfig): Html => {
   );
 };
 
+type ShadcnLaneDocsConfig = Readonly<{
+  label: string;
+  source: string;
+  primitive: string;
+  description: string;
+  usage: string;
+  classHelpers: readonly string[];
+  anatomyCode: string;
+}>;
+
+const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-accent-700"
+              ),
+            ],
+            ["Registry component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], [config.label]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [config.description]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        { label: "Source", value: config.source },
+        { label: "Examples", value: "reuses Foldkit examples" },
+        { label: "Proof", value: "wrapper tests, registry JSON" },
+      ]),
+      docsOverviewBlock(
+        `${config.label} documents the shadcn style lane for ${config.primitive}: Foldkit owns the behavior, while the installable slice exposes opinionated shadcn naming and class hooks.`
+      ),
+      ...docsStandardComponentSections({
+        installCommands: `bunx shadcn@latest add <registry-url>/${config.source.replace(
+          "registry/default/ui/",
+          ""
+        )}.json`,
+        usageBody: config.usage,
+        usageCode: `import * as ${config.label.replaceAll(
+          " ",
+          ""
+        )} from "./ui/${config.source.replace("registry/default/ui/", "")}";`,
+        integrationCode: `// Parent model and messages stay the same as the Foldkit ${config.primitive} slice.\n// Use this shadcn lane package when you want the same behavior with opinionated shadcn styling hooks.`,
+        anatomySection: docsAnatomyBlock(config.anatomyCode),
+        stylingItems: config.classHelpers,
+        stylingCode: config.classHelpers.join("\n"),
+        includeKeyboardInteraction: true,
+        apiItems: [
+          `${config.primitive} exports: re-exported from the Foldkit functional slice.`,
+          "shadcn class helpers: stable names for the opinionated styled lane.",
+        ],
+        accessibilityItems: [
+          `Accessibility behavior comes from the underlying Foldkit ${config.primitive} implementation.`,
+          "Consumers keep the primitive attribute groups intact when customizing markup.",
+          "Disabled, labelled, described, focus, and keyboard behavior follow the matching Foldkit component contract.",
+        ],
+        coverageItems: [
+          "Registry wrapper tests verify exported class helpers and functional re-exports.",
+          "Generated registry JSON includes the shadcn origin metadata and dependency link to the Foldkit component.",
+          "Install smoke verifies the wrapper and its registry dependency install together.",
+        ],
+      }),
+    ]
+  );
+};
+
 const calendarDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -14997,6 +15103,31 @@ const contentView = (model: Model): Html => {
       Button: () => embedUi("ui-button", View.button),
       ButtonDocs: () => buttonDocsView(model),
       BaseUiButtonDocs: () => baseUiButtonDocsView(model),
+      ShadcnButtonDocs: () =>
+        shadcnLaneDocsView({
+          label: "Button",
+          source: "registry/default/ui/shadcn-button",
+          primitive: "Ui.Button",
+          description:
+            "A shadcn style-lane Button slice that reuses the official Foldkit Ui.Button primitive for native button behavior while exposing opinionated shadcn class helpers.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Button behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnButtonClassName",
+            "shadcnSecondaryButtonClassName",
+            "shadcnDestructiveButtonClassName",
+          ],
+          anatomyCode: `import * as Button from "./ui/shadcn-button";
+
+Button.view<Message>({
+  onClick: ClickedSave(),
+  toView: (attributes) =>
+    h.button(
+      [...attributes.button, h.Class(Button.shadcnButtonClassName)],
+      ["Save changes"]
+    ),
+});`,
+        }),
       ButtonBasicExample: () => DocsRoutes.buttonBasicExampleRouteView(model),
       ButtonDisabledExample: () =>
         DocsRoutes.buttonDisabledExampleRouteView(model),
@@ -15009,6 +15140,31 @@ const contentView = (model: Model): Html => {
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
       CheckboxDocs: () => checkboxDocsView(model),
       BaseUiCheckboxDocs: () => baseUiCheckboxDocsView(model),
+      ShadcnCheckboxDocs: () =>
+        shadcnLaneDocsView({
+          label: "Checkbox",
+          source: "registry/default/ui/shadcn-checkbox",
+          primitive: "Ui.Checkbox",
+          description:
+            "A shadcn style-lane Checkbox slice that reuses the official Foldkit Ui.Checkbox primitive for checked, disabled, indeterminate, label, description, and hidden input behavior.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Checkbox behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnCheckboxRowClassName",
+            "shadcnCheckboxControlClassName",
+            "shadcnCheckboxLabelClassName",
+            "shadcnCheckboxDescriptionClassName",
+            "shadcnCheckboxTextClassName",
+          ],
+          anatomyCode: `import * as Checkbox from "./ui/shadcn-checkbox";
+
+h.submodel({
+  slotId: model.checkbox.id,
+  model: model.checkbox,
+  view: Checkbox.view,
+  toParentMessage: (message) => GotCheckboxMessage({ message }),
+});`,
+        }),
       CheckboxBasicExample: () =>
         DocsRoutes.checkboxBasicExampleRouteView(model),
       CheckboxGroupDocs: () => checkboxGroupDocsView(model),
@@ -15149,6 +15305,29 @@ Fieldset.view<Message>({
             "baseUiInputDescriptionClassName",
           ],
           anatomyCode: `import * as Input from "./ui/base-ui-input";
+
+Input.view<Message>({
+  value: model.name,
+  onInput: (value) => UpdatedName({ value }),
+  label: "Name",
+});`,
+        }),
+      ShadcnInputDocs: () =>
+        shadcnLaneDocsView({
+          label: "Input",
+          source: "registry/default/ui/shadcn-input",
+          primitive: "Ui.Input",
+          description:
+            "A shadcn style-lane Input slice that reuses the official Foldkit Ui.Input behavior for native value updates, disabled state, labels, descriptions, and field layout.",
+          usage:
+            "Install the shadcn lane wrapper when you want the native Foldkit Input contract with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnInputFieldClassName",
+            "shadcnInputLabelClassName",
+            "shadcnInputClassName",
+            "shadcnInputDescriptionClassName",
+          ],
+          anatomyCode: `import * as Input from "./ui/shadcn-input";
 
 Input.view<Message>({
   value: model.name,

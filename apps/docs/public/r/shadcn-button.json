@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "shadcn style-lane button wrapper backed by the Foldkit Ui.Button component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/button"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-button/index.ts",
+      "target": "src/ui/shadcn-button/index.ts",
+      "type": "registry:ui",
+      "content": "export { view } from \"../button\";\nexport type { ButtonAttributes, ViewConfig } from \"../button\";\n\nexport {\n  shadcnButtonClassName,\n  shadcnDestructiveButtonClassName,\n  shadcnSecondaryButtonClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-button/view.ts",
+      "target": "src/ui/shadcn-button/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  buttonClassName as shadcnButtonClassName,\n  destructiveButtonClassName as shadcnDestructiveButtonClassName,\n  secondaryButtonClassName as shadcnSecondaryButtonClassName,\n} from \"../button/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-button/shadcn-button.scene.test.ts",
+      "target": "src/ui/shadcn-button/shadcn-button.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Button from \"./index\";\n\ndescribe(\"shadcn Button registry view\", () => {\n  test(\"reuses the Foldkit Button functional contract\", () => {\n    expect(Button.view).toBeTypeOf(\"function\");\n    expect(Button.shadcnButtonClassName).toContain(\"rounded\");\n    expect(Button.shadcnDestructiveButtonClassName).toContain(\"red\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Button",
+      "stateful": false
+    }
+  }
+}

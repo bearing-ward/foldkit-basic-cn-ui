@@ -106,16 +106,19 @@ Present shadcn lane components:
 - aspect-ratio
 - badge
 - breadcrumb
+- button
 - button-group
 - card
 - carousel
 - chart
+- checkbox
 - command
 - data-table
 - direction
 - dropdown-menu
 - empty
 - hover-card
+- input
 - input-group
 - input-otp
 - item
@@ -137,9 +140,7 @@ Missing shadcn lane components:
 - accordion
 - alert-dialog
 - avatar
-- button
 - calendar
-- checkbox
 - collapsible
 - combobox
 - context-menu
@@ -147,7 +148,6 @@ Missing shadcn lane components:
 - dialog
 - drawer
 - field
-- input
 - menubar
 - navigation-menu
 - popover
