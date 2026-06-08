@@ -55,11 +55,6 @@ Affected Base UI wrappers:
 
 Affected shadcn wrappers:
 
-- `shadcn-accordion`
-- `shadcn-alert-dialog`
-- `shadcn-avatar`
-- `shadcn-button`
-- `shadcn-calendar`
 - `shadcn-checkbox`
 - `shadcn-collapsible`
 - `shadcn-combobox`
@@ -146,10 +141,18 @@ This batch is behavior-heavy, currently visible in the docs sidebar, and gives
 the install workflow direct shadcn-style example proof instead of relying only
 on the underlying Foldkit examples.
 
+Completed wrapper-specific example batch:
+
+- `shadcn-accordion` - done in `shadcn-accordion-basic`
+- `shadcn-alert-dialog` - done in `shadcn-alert-dialog-basic`
+- `shadcn-avatar` - done in `shadcn-avatar-basic`
+- `shadcn-button` - done in `shadcn-button-basic`
+- `shadcn-calendar` - done in `shadcn-calendar-basic`
+
 Next wrapper-specific example batch:
 
-- `shadcn-accordion`
-- `shadcn-alert-dialog`
-- `shadcn-avatar`
-- `shadcn-button`
-- `shadcn-calendar`
+- `shadcn-checkbox`
+- `shadcn-collapsible`
+- `shadcn-combobox`
+- `shadcn-context-menu`
+- `shadcn-date-picker`

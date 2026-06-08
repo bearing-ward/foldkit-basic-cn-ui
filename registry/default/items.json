@@ -7813,6 +7813,146 @@
     }
   },
   {
+    "name": "shadcn-accordion-basic",
+    "type": "registry:example",
+    "title": "shadcn Accordion Basic",
+    "description": "A runnable Foldkit example showing the shadcn Accordion wrapper with single-panel state and ARIA expansion.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-accordion"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-accordion-basic/main.ts",
+        "target": "src/examples/shadcn-accordion-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-accordion-basic/shadcn-accordion-basic.scene.test.ts",
+        "target": "src/examples/shadcn-accordion-basic/shadcn-accordion-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Accordion",
+        "example": "shadcn-basic",
+        "origin": "shadcn"
+      }
+    }
+  },
+  {
+    "name": "shadcn-alert-dialog-basic",
+    "type": "registry:example",
+    "title": "shadcn Alert Dialog Basic",
+    "description": "A runnable Foldkit example showing the shadcn Alert Dialog wrapper with open, cancel, and confirm state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-alert-dialog"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-alert-dialog-basic/main.ts",
+        "target": "src/examples/shadcn-alert-dialog-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-alert-dialog-basic/shadcn-alert-dialog-basic.scene.test.ts",
+        "target": "src/examples/shadcn-alert-dialog-basic/shadcn-alert-dialog-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "AlertDialog",
+        "example": "shadcn-basic",
+        "origin": "shadcn"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-basic",
+    "type": "registry:example",
+    "title": "shadcn Avatar Basic",
+    "description": "A runnable Foldkit example showing the shadcn Avatar wrapper with image, fallback, and overflow count.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-basic/main.ts",
+        "target": "src/examples/shadcn-avatar-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-basic/shadcn-avatar-basic.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-basic/shadcn-avatar-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "shadcn-basic",
+        "origin": "shadcn"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-basic",
+    "type": "registry:example",
+    "title": "shadcn Button Basic",
+    "description": "A runnable Foldkit example showing the shadcn Button wrapper with click feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-basic/main.ts",
+        "target": "src/examples/shadcn-button-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-basic/shadcn-button-basic.scene.test.ts",
+        "target": "src/examples/shadcn-button-basic/shadcn-button-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "shadcn-basic",
+        "origin": "shadcn"
+      }
+    }
+  },
+  {
+    "name": "shadcn-calendar-basic",
+    "type": "registry:example",
+    "title": "shadcn Calendar Basic",
+    "description": "A runnable Foldkit example showing the shadcn Calendar wrapper with selected date and viewed month feedback.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-calendar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-basic/main.ts",
+        "target": "src/examples/shadcn-calendar-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-basic/shadcn-calendar-basic.scene.test.ts",
+        "target": "src/examples/shadcn-calendar-basic/shadcn-calendar-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Calendar",
+        "example": "shadcn-basic",
+        "origin": "shadcn"
+      }
+    }
+  },
+  {
     "name": "shadcn-radio-group-basic",
     "type": "registry:example",
     "title": "shadcn Radio Group Basic",

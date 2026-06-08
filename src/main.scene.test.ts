@@ -2331,6 +2331,7 @@ describe("scene", () => {
         route: ShadcnButtonDocsRoute(),
         heading: "Button",
         source: "registry/default/ui/shadcn-button",
+        example: "shadcn-button-basic",
       },
       {
         route: ShadcnCheckboxDocsRoute(),
@@ -2346,21 +2347,25 @@ describe("scene", () => {
         route: ShadcnAccordionDocsRoute(),
         heading: "Accordion",
         source: "registry/default/ui/shadcn-accordion",
+        example: "shadcn-accordion-basic",
       },
       {
         route: ShadcnAlertDialogDocsRoute(),
         heading: "Alert Dialog",
         source: "registry/default/ui/shadcn-alert-dialog",
+        example: "shadcn-alert-dialog-basic",
       },
       {
         route: ShadcnAvatarDocsRoute(),
         heading: "Avatar",
         source: "registry/default/ui/shadcn-avatar",
+        example: "shadcn-avatar-basic",
       },
       {
         route: ShadcnCalendarDocsRoute(),
         heading: "Calendar",
         source: "registry/default/ui/shadcn-calendar",
+        example: "shadcn-calendar-basic",
       },
       {
         route: ShadcnCollapsibleDocsRoute(),

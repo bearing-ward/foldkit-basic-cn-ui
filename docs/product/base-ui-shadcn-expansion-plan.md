@@ -584,6 +584,8 @@ Reasoning:
   [`style-lane-contract-audit.md`](./style-lane-contract-audit.md). The first
   wrapper-specific example slice is complete for `shadcn-radio-group`,
   `shadcn-select`, `shadcn-slider`, `shadcn-switch`, and `shadcn-tabs`. The
-  next wrapper-specific example batch is `shadcn-accordion`,
+  second wrapper-specific example slice is complete for `shadcn-accordion`,
   `shadcn-alert-dialog`, `shadcn-avatar`, `shadcn-button`, and
-  `shadcn-calendar`.
+  `shadcn-calendar`. The next wrapper-specific example batch is
+  `shadcn-checkbox`, `shadcn-collapsible`, `shadcn-combobox`,
+  `shadcn-context-menu`, and `shadcn-date-picker`.

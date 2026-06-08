@@ -15133,6 +15133,7 @@ const contentView = (model: Model): Html => {
             "shadcnAccordionIconClassName",
             "shadcnAccordionPanelClassName",
           ],
+          examples: ["shadcn-accordion-basic"],
           anatomyCode: `import * as Accordion from "./ui/shadcn-accordion";
 
 Accordion.rootView<Message>({
@@ -15220,6 +15221,7 @@ Accordion.rootView<Message>({
             "shadcnAlertDialogDescriptionClassName",
             "shadcnAlertDialogActionsClassName",
           ],
+          examples: ["shadcn-alert-dialog-basic"],
           anatomyCode: `import * as AlertDialog from "./ui/shadcn-alert-dialog";
 
 AlertDialog.rootView<Message>({
@@ -15443,6 +15445,7 @@ Field.rootView<Message>({
             "shadcnAvatarGroupClassName",
             "shadcnAvatarGroupCountClassName",
           ],
+          examples: ["shadcn-avatar-basic"],
           anatomyCode: `import * as Avatar from "./ui/shadcn-avatar";
 
 Avatar.view<Message>({
@@ -15598,6 +15601,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
             "shadcnSecondaryButtonClassName",
             "shadcnDestructiveButtonClassName",
           ],
+          examples: ["shadcn-button-basic"],
           anatomyCode: `import * as Button from "./ui/shadcn-button";
 
 Button.view<Message>({
@@ -15631,6 +15635,7 @@ Button.view<Message>({
             "shadcnCalendarDayButtonClassName",
             "shadcnCalendarMonthYearButtonClassName",
           ],
+          examples: ["shadcn-calendar-basic"],
           anatomyCode: `import * as Calendar from "./ui/shadcn-calendar";
 
 h.submodel({
