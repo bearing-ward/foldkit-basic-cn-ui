@@ -239,13 +239,9 @@ New Base UI work should focus on simple styled or unstyled contract depth:
    simple styled or unstyled source. Current Base UI lane coverage is complete
    against the tracked list.
 
-4. Fill missing shadcn lane components by reusing Foldkit behavior and adding
-   opinionated style parity:
-   accordion, alert-dialog, avatar, button, calendar, checkbox, collapsible,
-   combobox, context-menu, date-picker, dialog, drawer, field, input, menubar,
-   navigation-menu, popover, progress, radio-group, scroll-area, select,
-   separator, slider, switch, tabs, textarea, toast, toggle, toggle-group,
-   tooltip.
+4. Maintain complete shadcn lane coverage by reusing Foldkit behavior and
+   adding opinionated style parity when upstream adds or changes components.
+   Current shadcn lane coverage is complete against the tracked list.
 
 5. Audit already-promoted shadcn slices against Base UI behavior and
    accessibility contracts:
@@ -579,6 +575,8 @@ Reasoning:
 - Added `hover-card`, `input-otp`, `native-select`, `sheet`, and `sonner` as
   shadcn-origin registry slices with Basic examples, source snapshots, docs
   routes, shadcn nav grouping, generated registry output, and scene coverage.
-- Next recommended item: resume shadcn parity work from the remaining shadcn
-  gap list cleanup by auditing the remaining listed entries against
-  `registry/default/items.json`.
+- Next recommended item: run a cross-lane quality audit against
+  [`component-entry-contract.md`](./component-entry-contract.md), focusing on
+  example parity, anatomy depth, API reference completeness, data attributes,
+  accessibility notes, and scene-test coverage for already-promoted Base UI and
+  shadcn slices.
