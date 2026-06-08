@@ -12059,6 +12059,17 @@ const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
       docsOverviewBlock(
         `${config.label} documents the shadcn style lane for ${config.primitive}: Foldkit owns the behavior, while the installable slice exposes opinionated shadcn naming and class hooks.`
       ),
+      ...(config.examples === undefined
+        ? []
+        : [
+            docsTextListSection(
+              "Examples",
+              config.examples.map(
+                (example) =>
+                  `${example} - installable wrapper-specific example: bunx shadcn@latest add <registry-url>/${example}.json`
+              )
+            ),
+          ]),
       ...docsStandardComponentSections({
         installCommands: `bunx shadcn@latest add <registry-url>/${config.source.replace(
           "registry/default/ui/",

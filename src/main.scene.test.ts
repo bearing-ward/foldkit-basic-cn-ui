@@ -2493,7 +2493,12 @@ describe("scene", () => {
         ).toExist(),
         ...(example === undefined
           ? []
-          : [Scene.expect(Scene.text(example)).toExist()])
+          : [
+              Scene.expect(
+                Scene.role("heading", { name: "Examples" })
+              ).toExist(),
+              Scene.expect(Scene.text(example)).toExist(),
+            ])
       );
     });
   });
