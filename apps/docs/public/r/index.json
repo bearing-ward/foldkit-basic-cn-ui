@@ -7830,6 +7830,146 @@
       }
     },
     {
+      "name": "shadcn-radio-group-basic",
+      "type": "registry:example",
+      "title": "shadcn Radio Group Basic",
+      "description": "A runnable Foldkit example showing the shadcn Radio Group wrapper with typed selection and parent-visible feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-radio-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-radio-group-basic/main.ts",
+          "target": "src/examples/shadcn-radio-group-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-radio-group-basic/shadcn-radio-group-basic.scene.test.ts",
+          "target": "src/examples/shadcn-radio-group-basic/shadcn-radio-group-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "RadioGroup",
+          "example": "shadcn-basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "shadcn-select-basic",
+      "type": "registry:example",
+      "title": "shadcn Select Basic",
+      "description": "A runnable Foldkit example showing the shadcn Select wrapper with parent-owned native select value.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-select"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-select-basic/main.ts",
+          "target": "src/examples/shadcn-select-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-select-basic/shadcn-select-basic.scene.test.ts",
+          "target": "src/examples/shadcn-select-basic/shadcn-select-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "example": "shadcn-basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "shadcn-slider-basic",
+      "type": "registry:example",
+      "title": "shadcn Slider Basic",
+      "description": "A runnable Foldkit example showing the shadcn Slider wrapper with keyboard value changes and parent-visible feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-slider"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-slider-basic/main.ts",
+          "target": "src/examples/shadcn-slider-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-slider-basic/shadcn-slider-basic.scene.test.ts",
+          "target": "src/examples/shadcn-slider-basic/shadcn-slider-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Slider",
+          "example": "shadcn-basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "shadcn-switch-basic",
+      "type": "registry:example",
+      "title": "shadcn Switch Basic",
+      "description": "A runnable Foldkit example showing the shadcn Switch wrapper with accessible checked state and styled label content.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-switch"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-switch-basic/main.ts",
+          "target": "src/examples/shadcn-switch-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-switch-basic/shadcn-switch-basic.scene.test.ts",
+          "target": "src/examples/shadcn-switch-basic/shadcn-switch-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "example": "shadcn-basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
+      "name": "shadcn-tabs-basic",
+      "type": "registry:example",
+      "title": "shadcn Tabs Basic",
+      "description": "A runnable Foldkit example showing the shadcn Tabs wrapper with automatic selection and parent-visible selected-tab feedback.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-tabs"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-tabs-basic/main.ts",
+          "target": "src/examples/shadcn-tabs-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-tabs-basic/shadcn-tabs-basic.scene.test.ts",
+          "target": "src/examples/shadcn-tabs-basic/shadcn-tabs-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tabs",
+          "example": "shadcn-basic",
+          "origin": "shadcn"
+        }
+      }
+    },
+    {
       "name": "sheet-basic",
       "type": "registry:example",
       "title": "Sheet Basic",

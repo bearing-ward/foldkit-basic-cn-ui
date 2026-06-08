@@ -12018,6 +12018,7 @@ type ShadcnLaneDocsConfig = Readonly<{
   usage: string;
   classHelpers: readonly string[];
   anatomyCode: string;
+  examples?: readonly string[];
 }>;
 
 const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
@@ -12046,7 +12047,13 @@ const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: config.source },
-        { label: "Examples", value: "reuses Foldkit examples" },
+        {
+          label: "Examples",
+          value:
+            config.examples === undefined
+              ? "reuses Foldkit examples"
+              : config.examples.join(", "),
+        },
         { label: "Proof", value: "wrapper tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -12078,6 +12085,13 @@ const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
         ],
         coverageItems: [
           "Registry wrapper tests verify exported class helpers and functional re-exports.",
+          ...(config.examples === undefined
+            ? []
+            : [
+                `Wrapper-specific installable examples: ${config.examples.join(
+                  ", "
+                )}.`,
+              ]),
           "Generated registry JSON includes the shadcn origin metadata and dependency link to the Foldkit component.",
           "Install smoke verifies the wrapper and its registry dependency install together.",
         ],
@@ -16108,6 +16122,7 @@ h.submodel({
             "shadcnRadioGroupLabelClassName",
             "shadcnRadioGroupDescriptionClassName",
           ],
+          examples: ["shadcn-radio-group-basic"],
           anatomyCode: `import * as RadioGroup from "./ui/shadcn-radio-group";
 
 const PlanRadioGroup = RadioGroup.create<"starter" | "pro">();
@@ -16167,6 +16182,7 @@ Select.view<Message>({
             "shadcnSelectLabelClassName",
             "shadcnSelectDescriptionClassName",
           ],
+          examples: ["shadcn-select-basic"],
           anatomyCode: `import * as Select from "./ui/shadcn-select";
 
 Select.view<Message>({
@@ -16224,6 +16240,7 @@ h.submodel({
             "shadcnSliderLabelClassName",
             "shadcnSliderValueClassName",
           ],
+          examples: ["shadcn-slider-basic"],
           anatomyCode: `import * as Slider from "./ui/shadcn-slider";
 
 h.submodel({
@@ -16281,6 +16298,7 @@ h.submodel({
             "shadcnSwitchDescriptionClassName",
             "shadcnSwitchTextClassName",
           ],
+          examples: ["shadcn-switch-basic"],
           anatomyCode: `import * as Switch from "./ui/shadcn-switch";
 
 h.submodel({
@@ -16341,6 +16359,7 @@ h.submodel({
             "shadcnTabsVerticalRootClassName",
             "shadcnTabsVerticalTabListClassName",
           ],
+          examples: ["shadcn-tabs-basic"],
           anatomyCode: `import * as Tabs from "./ui/shadcn-tabs";
 
 const SettingsTabs = Tabs.create<"overview" | "settings">();

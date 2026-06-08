@@ -582,6 +582,8 @@ Reasoning:
   shadcn slices.
 - Started that audit in
   [`style-lane-contract-audit.md`](./style-lane-contract-audit.md). The first
-  recommended remediation slice is wrapper-specific examples for
-  `shadcn-radio-group`, `shadcn-select`, `shadcn-slider`, `shadcn-switch`, and
-  `shadcn-tabs`.
+  wrapper-specific example slice is complete for `shadcn-radio-group`,
+  `shadcn-select`, `shadcn-slider`, `shadcn-switch`, and `shadcn-tabs`. The
+  next wrapper-specific example batch is `shadcn-accordion`,
+  `shadcn-alert-dialog`, `shadcn-avatar`, `shadcn-button`, and
+  `shadcn-calendar`.

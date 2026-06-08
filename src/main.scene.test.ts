@@ -2421,11 +2421,13 @@ describe("scene", () => {
         route: ShadcnSwitchDocsRoute(),
         heading: "Switch",
         source: "registry/default/ui/shadcn-switch",
+        example: "shadcn-switch-basic",
       },
       {
         route: ShadcnTabsDocsRoute(),
         heading: "Tabs",
         source: "registry/default/ui/shadcn-tabs",
+        example: "shadcn-tabs-basic",
       },
       {
         route: ShadcnTextareaDocsRoute(),
@@ -2441,6 +2443,7 @@ describe("scene", () => {
         route: ShadcnRadioGroupDocsRoute(),
         heading: "Radio Group",
         source: "registry/default/ui/shadcn-radio-group",
+        example: "shadcn-radio-group-basic",
       },
       {
         route: ShadcnScrollAreaDocsRoute(),
@@ -2451,6 +2454,7 @@ describe("scene", () => {
         route: ShadcnSelectDocsRoute(),
         heading: "Select",
         source: "registry/default/ui/shadcn-select",
+        example: "shadcn-select-basic",
       },
       {
         route: ShadcnSeparatorDocsRoute(),
@@ -2461,10 +2465,11 @@ describe("scene", () => {
         route: ShadcnSliderDocsRoute(),
         heading: "Slider",
         source: "registry/default/ui/shadcn-slider",
+        example: "shadcn-slider-basic",
       },
     ];
 
-    shadcnDocsRoutes.forEach(({ route, heading, source }) => {
+    shadcnDocsRoutes.forEach(({ route, heading, source, example }) => {
       Scene.scene(
         { update, view },
         Scene.with(modelForRoute(route)),
@@ -2478,7 +2483,12 @@ describe("scene", () => {
           Scene.role("heading", { name: "Foldkit integration" })
         ).toExist(),
         Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
-        Scene.expect(Scene.role("heading", { name: "API reference" })).toExist()
+        Scene.expect(
+          Scene.role("heading", { name: "API reference" })
+        ).toExist(),
+        ...(example === undefined
+          ? []
+          : [Scene.expect(Scene.text(example)).toExist()])
       );
     });
   });

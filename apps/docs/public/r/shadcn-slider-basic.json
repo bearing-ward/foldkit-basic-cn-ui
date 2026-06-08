@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-slider-basic",
+  "type": "registry:example",
+  "title": "shadcn Slider Basic",
+  "description": "A runnable Foldkit example showing the shadcn Slider wrapper with keyboard value changes and parent-visible feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-slider"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-slider-basic/main.ts",
+      "target": "src/examples/shadcn-slider-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Slider from \"../../ui/shadcn-slider\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  slider: Slider.Model,\n  status: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotSliderMessage = m(\"GotSliderMessage\", {\n  message: Slider.Message,\n});\n\nexport const Message = S.Union([GotSliderMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nconst statusForValue = (value: number): string => `Volume: ${value}%`;\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [slider, commands] = Slider.init({\n    id: \"shadcn-slider-basic\",\n    min: 0,\n    max: 100,\n    step: 5,\n    initialValue: 40,\n  });\n\n  return [\n    {\n      slider,\n      status: statusForValue(slider.value),\n    },\n    Command.mapMessages(commands, (message) => GotSliderMessage({ message })),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotSliderMessage: ({ message }) => {\n        const [slider, commands, maybeOutMessage] = Slider.update(\n          model.slider,\n          message\n        );\n        const status = Option.match(maybeOutMessage, {\n          onNone: () => model.status,\n          onSome: M.type<Slider.OutMessage>().pipe(\n            M.tagsExhaustive({\n              ChangedValue: ({ value }) => statusForValue(value),\n            })\n          ),\n        });\n\n        return [\n          evo(model, {\n            slider: () => slider,\n            status: () => status,\n          }),\n          Command.mapMessages(commands, (message) =>\n            GotSliderMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.slider.id,\n        model: model.slider,\n        view: Slider.view,\n        viewInputs: {\n          name: \"volume\",\n          formatValue: (value) => `${value}%`,\n          toView: (attributes) =>\n            Slider.sliderFieldView({\n              attributes,\n              label: \"Volume\",\n              valueText: `${model.slider.value}%`,\n            }),\n        },\n        toParentMessage: (message) => GotSliderMessage({ message }),\n      }),\n      h.p([h.Class(\"text-sm text-gray-700\")], [model.status]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-slider-basic/shadcn-slider-basic.scene.test.ts",
+      "target": "src/examples/shadcn-slider-basic/shadcn-slider-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnSliderBasicExample from \"./main\";\n\ndescribe(\"shadcn Slider Basic example\", () => {\n  test(\"updates volume feedback from keyboard navigation\", () => {\n    const [initialModel] = ShadcnSliderBasicExample.init();\n\n    Scene.scene(\n      {\n        update: ShadcnSliderBasicExample.update,\n        view: ShadcnSliderBasicExample.view,\n      },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"slider\", { name: \"Volume\" })).toHaveAttr(\n        \"aria-valuenow\",\n        \"40\"\n      ),\n      Scene.expect(Scene.text(\"Volume: 40%\")).toExist(),\n      Scene.keydown(Scene.role(\"slider\", { name: \"Volume\" }), \"ArrowRight\"),\n      Scene.expect(Scene.role(\"slider\", { name: \"Volume\" })).toHaveAttr(\n        \"aria-valuenow\",\n        \"45\"\n      ),\n      Scene.expect(Scene.text(\"Volume: 45%\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Slider",
+      "example": "shadcn-basic",
+      "origin": "shadcn"
+    }
+  }
+}

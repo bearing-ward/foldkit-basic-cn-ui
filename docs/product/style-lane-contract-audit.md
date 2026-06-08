@@ -73,13 +73,8 @@ Affected shadcn wrappers:
 - `shadcn-navigation-menu`
 - `shadcn-popover`
 - `shadcn-progress`
-- `shadcn-radio-group`
 - `shadcn-scroll-area`
-- `shadcn-select`
 - `shadcn-separator`
-- `shadcn-slider`
-- `shadcn-switch`
-- `shadcn-tabs`
 - `shadcn-textarea`
 - `shadcn-toast`
 
@@ -141,12 +136,20 @@ Priority bespoke pages:
 Start with wrapper-specific examples for the recently added prefixed shadcn
 selection controls:
 
-- `shadcn-radio-group`
-- `shadcn-select`
-- `shadcn-slider`
-- `shadcn-switch`
-- `shadcn-tabs`
+- `shadcn-radio-group` - done in `shadcn-radio-group-basic`
+- `shadcn-select` - done in `shadcn-select-basic`
+- `shadcn-slider` - done in `shadcn-slider-basic`
+- `shadcn-switch` - done in `shadcn-switch-basic`
+- `shadcn-tabs` - done in `shadcn-tabs-basic`
 
 This batch is behavior-heavy, currently visible in the docs sidebar, and gives
 the install workflow direct shadcn-style example proof instead of relying only
 on the underlying Foldkit examples.
+
+Next wrapper-specific example batch:
+
+- `shadcn-accordion`
+- `shadcn-alert-dialog`
+- `shadcn-avatar`
+- `shadcn-button`
+- `shadcn-calendar`
