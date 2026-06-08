@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "shadcn style-lane switch wrapper backed by the existing Switch component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/switch"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-switch/index.ts",
+      "target": "src/ui/shadcn-switch/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectChecked,\n  setChecked,\n  SetChecked,\n  ToggledChecked,\n  update,\n  view,\n} from \"../switch\";\nexport type {\n  Commands,\n  InitConfig,\n  InitReturn,\n  Model as SwitchModel,\n  OutMessage as SwitchOutMessage,\n  SetChecked as SwitchSetChecked,\n  SwitchAttributes,\n  Toggled,\n  ToggledChecked as SwitchToggledChecked,\n  UpdateReturn,\n  ViewInputs,\n} from \"../switch\";\n\nexport {\n  shadcnSwitchButtonClassName,\n  shadcnSwitchDescriptionClassName,\n  shadcnSwitchKnob,\n  shadcnSwitchLabelClassName,\n  shadcnSwitchRowClassName,\n  shadcnSwitchTextClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-switch/view.ts",
+      "target": "src/ui/shadcn-switch/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  switchButtonClassName as shadcnSwitchButtonClassName,\n  switchDescriptionClassName as shadcnSwitchDescriptionClassName,\n  switchKnob as shadcnSwitchKnob,\n  switchLabelClassName as shadcnSwitchLabelClassName,\n  switchRowClassName as shadcnSwitchRowClassName,\n  switchTextClassName as shadcnSwitchTextClassName,\n} from \"../switch/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-switch/shadcn-switch.scene.test.ts",
+      "target": "src/ui/shadcn-switch/shadcn-switch.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Switch from \"./index\";\n\ndescribe(\"shadcn Switch registry view\", () => {\n  test(\"reuses the Foldkit Switch functional contract\", () => {\n    expect(Switch.init).toBeTypeOf(\"function\");\n    expect(Switch.update).toBeTypeOf(\"function\");\n    expect(Switch.view).toBeTypeOf(\"function\");\n    expect(Switch.shadcnSwitchButtonClassName).toContain(\"data-[checked]\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Switch",
+      "stateful": true
+    }
+  }
+}

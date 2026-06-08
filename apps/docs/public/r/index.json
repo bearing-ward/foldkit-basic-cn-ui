@@ -3339,6 +3339,142 @@
       }
     },
     {
+      "name": "shadcn-switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "shadcn style-lane switch wrapper backed by the existing Switch component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/switch"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-switch/index.ts",
+          "target": "src/ui/shadcn-switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-switch/view.ts",
+          "target": "src/ui/shadcn-switch/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-switch/shadcn-switch.scene.test.ts",
+          "target": "src/ui/shadcn-switch/shadcn-switch.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Switch",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "shadcn-tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "shadcn style-lane tabs wrapper backed by the existing Tabs component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/tabs"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-tabs/index.ts",
+          "target": "src/ui/shadcn-tabs/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-tabs/view.ts",
+          "target": "src/ui/shadcn-tabs/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-tabs/shadcn-tabs.scene.test.ts",
+          "target": "src/ui/shadcn-tabs/shadcn-tabs.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Tabs",
+          "stateful": true
+        }
+      }
+    },
+    {
+      "name": "shadcn-textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "shadcn style-lane textarea wrapper backed by the existing Textarea component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/textarea"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-textarea/index.ts",
+          "target": "src/ui/shadcn-textarea/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-textarea/view.ts",
+          "target": "src/ui/shadcn-textarea/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-textarea/shadcn-textarea.scene.test.ts",
+          "target": "src/ui/shadcn-textarea/shadcn-textarea.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Textarea",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "shadcn style-lane toast wrapper backed by the existing Toast component.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/toast"],
+      "files": [
+        {
+          "path": "registry/default/ui/shadcn-toast/index.ts",
+          "target": "src/ui/shadcn-toast/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-toast/view.ts",
+          "target": "src/ui/shadcn-toast/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/shadcn-toast/shadcn-toast.scene.test.ts",
+          "target": "src/ui/shadcn-toast/shadcn-toast.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "origin": "shadcn",
+          "artifact": "component",
+          "primitive": "Ui.Toast",
+          "stateful": true
+        }
+      }
+    },
+    {
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",

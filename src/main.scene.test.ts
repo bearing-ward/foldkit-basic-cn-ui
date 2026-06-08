@@ -270,8 +270,11 @@ import {
   ShadcnSelectDocsRoute,
   BaseUiSliderDocsRoute,
   BaseUiSwitchDocsRoute,
+  ShadcnSwitchDocsRoute,
   BaseUiTabsDocsRoute,
+  ShadcnTabsDocsRoute,
   BaseUiToastDocsRoute,
+  ShadcnToastDocsRoute,
   BaseUiTooltipDocsRoute,
   NumberFieldBasicExampleRoute,
   NumberFieldDocsRoute,
@@ -364,6 +367,7 @@ import {
   TextareaBasicExampleRoute,
   TextareaDisabledExampleRoute,
   TextareaDocsRoute,
+  ShadcnTextareaDocsRoute,
   TextareaRoute,
   TooltipBasicExampleRoute,
   TooltipDocsRoute,
@@ -777,7 +781,16 @@ describe("scene", () => {
         "Avatar"
       ),
       Scene.expect(Scene.testId("docs-nav-section-shadcn")).toContainText(
-        "Coming soon"
+        "Switch"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-shadcn")).toContainText(
+        "Tabs"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-shadcn")).toContainText(
+        "Textarea"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-shadcn")).toContainText(
+        "Toast"
       ),
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
         "Button"
@@ -2403,6 +2416,26 @@ describe("scene", () => {
         route: ShadcnProgressDocsRoute(),
         heading: "Progress",
         source: "registry/default/ui/shadcn-progress",
+      },
+      {
+        route: ShadcnSwitchDocsRoute(),
+        heading: "Switch",
+        source: "registry/default/ui/shadcn-switch",
+      },
+      {
+        route: ShadcnTabsDocsRoute(),
+        heading: "Tabs",
+        source: "registry/default/ui/shadcn-tabs",
+      },
+      {
+        route: ShadcnTextareaDocsRoute(),
+        heading: "Textarea",
+        source: "registry/default/ui/shadcn-textarea",
+      },
+      {
+        route: ShadcnToastDocsRoute(),
+        heading: "Toast",
+        source: "registry/default/ui/shadcn-toast",
       },
       {
         route: ShadcnRadioGroupDocsRoute(),

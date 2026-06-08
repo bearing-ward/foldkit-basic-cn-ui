@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-tabs",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "shadcn style-lane tabs wrapper backed by the existing Tabs component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/tabs"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-tabs/index.ts",
+      "target": "src/ui/shadcn-tabs/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  CompletedFocusTab,\n  create,\n  FocusedTab,\n  FocusTab,\n  init,\n  initialize,\n  Message,\n  Model,\n  OutMessage,\n  Selected,\n  SelectedTab,\n} from \"../tabs\";\nexport type {\n  ActivationMode,\n  FocusedTab as TabsFocusedTab,\n  InitConfig,\n  InitReturn,\n  Message as TabsMessage,\n  Orientation,\n  OutMessage as TabsOutMessage,\n  RenderInfo,\n  Selected as TabsSelected,\n  SelectedTab as TabsSelectedTab,\n  TabInfo,\n  TabsViewInput,\n  UpdateReturn,\n  ViewInputs,\n} from \"../tabs\";\n\nexport {\n  shadcnTabsPanelClassName,\n  shadcnTabsRootClassName,\n  shadcnTabsTabClassName,\n  shadcnTabsTabListClassName,\n  shadcnTabsVerticalRootClassName,\n  shadcnTabsVerticalTabListClassName,\n  shadcnTabsView,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-tabs/view.ts",
+      "target": "src/ui/shadcn-tabs/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  panelClassName as shadcnTabsPanelClassName,\n  tabClassName as shadcnTabsTabClassName,\n  tabListClassName as shadcnTabsTabListClassName,\n  tabsRootClassName as shadcnTabsRootClassName,\n  tabsView as shadcnTabsView,\n  verticalTabListClassName as shadcnTabsVerticalTabListClassName,\n  verticalTabsRootClassName as shadcnTabsVerticalRootClassName,\n} from \"../tabs/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-tabs/shadcn-tabs.scene.test.ts",
+      "target": "src/ui/shadcn-tabs/shadcn-tabs.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Tabs from \"./index\";\n\ndescribe(\"shadcn Tabs registry view\", () => {\n  test(\"reuses the Foldkit Tabs functional contract\", () => {\n    expect(Tabs.initialize).toBeTypeOf(\"function\");\n    expect(Tabs.create).toBeTypeOf(\"function\");\n    expect(Tabs.shadcnTabsView).toBeTypeOf(\"function\");\n    expect(Tabs.shadcnTabsTabClassName).toContain(\"data-[selected]\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Tabs",
+      "stateful": true
+    }
+  }
+}

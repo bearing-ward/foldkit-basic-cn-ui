@@ -1272,6 +1272,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/base-ui-switch",
   },
   {
+    label: "Switch Docs",
+    routeTag: "ShadcnSwitchDocs",
+    href: "/docs/components/shadcn-switch",
+  },
+  {
     label: "Switch Basic Example",
     routeTag: "SwitchBasicExample",
     href: "/docs/components/switch/examples/basic",
@@ -1289,6 +1294,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/base-ui-tabs",
   },
   {
+    label: "Tabs Docs",
+    routeTag: "ShadcnTabsDocs",
+    href: "/docs/components/shadcn-tabs",
+  },
+  {
     label: "Tabs Basic Example",
     routeTag: "TabsBasicExample",
     href: "/docs/components/tabs/examples/basic",
@@ -1303,6 +1313,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Textarea Docs",
     routeTag: "TextareaDocs",
     href: "/docs/components/textarea",
+  },
+  {
+    label: "Textarea Docs",
+    routeTag: "ShadcnTextareaDocs",
+    href: "/docs/components/shadcn-textarea",
   },
   {
     label: "Textarea Basic Example",
@@ -1324,6 +1339,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Toast Docs",
     routeTag: "BaseUiToastDocs",
     href: "/docs/components/base-ui-toast",
+  },
+  {
+    label: "Toast Docs",
+    routeTag: "ShadcnToastDocs",
+    href: "/docs/components/shadcn-toast",
   },
   {
     label: "Toast Basic Example",
@@ -1639,6 +1659,10 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnSelectDocs",
     "ShadcnSeparatorDocs",
     "ShadcnSliderDocs",
+    "ShadcnSwitchDocs",
+    "ShadcnTabsDocs",
+    "ShadcnTextareaDocs",
+    "ShadcnToastDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
     : [
@@ -1720,15 +1744,7 @@ const labelFromComponentSlug = (slug: string): string =>
 
 const missingBaseUiLaneSlugs: readonly string[] = [];
 
-const missingShadcnLaneSlugs: readonly string[] = [
-  "switch",
-  "tabs",
-  "textarea",
-  "toast",
-  "toggle",
-  "toggle-group",
-  "tooltip",
-];
+const missingShadcnLaneSlugs: readonly string[] = [];
 
 const comingSoonDocsNavItems = (
   library: ComponentLibrary,
@@ -2588,6 +2604,26 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "shadcn",
     primitive: "Ui.Slider",
+  },
+  "shadcn-switch": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Switch",
+  },
+  "shadcn-tabs": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Tabs",
+  },
+  "shadcn-textarea": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Textarea",
+  },
+  "shadcn-toast": {
+    artifact: "component",
+    origin: "shadcn",
+    primitive: "Ui.Toast",
   },
 };
 
@@ -16228,6 +16264,32 @@ h.submodel({
   toParentMessage: (message) => GotSwitchMessage({ message }),
 });`,
         }),
+      ShadcnSwitchDocs: () =>
+        shadcnLaneDocsView({
+          label: "Switch",
+          source: "registry/default/ui/shadcn-switch",
+          primitive: "Ui.Switch",
+          description:
+            "A shadcn style-lane Switch slice that reuses the official Foldkit Ui.Switch primitive for controlled checked state, labels, descriptions, hidden input behavior, and disabled state.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Switch behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnSwitchRowClassName",
+            "shadcnSwitchButtonClassName",
+            "shadcnSwitchKnob",
+            "shadcnSwitchLabelClassName",
+            "shadcnSwitchDescriptionClassName",
+            "shadcnSwitchTextClassName",
+          ],
+          anatomyCode: `import * as Switch from "./ui/shadcn-switch";
+
+h.submodel({
+  slotId: model.switch.id,
+  model: model.switch,
+  view: Switch.view,
+  toParentMessage: (message) => GotSwitchMessage({ message }),
+});`,
+        }),
       SwitchBasicExample: () => DocsRoutes.switchBasicExampleRouteView(model),
       SwitchDisabledExample: () =>
         DocsRoutes.switchDisabledExampleRouteView(model),
@@ -16262,10 +16324,63 @@ h.submodel({
   toParentMessage: (message) => GotTabsMessage({ message }),
 });`,
         }),
+      ShadcnTabsDocs: () =>
+        shadcnLaneDocsView({
+          label: "Tabs",
+          source: "registry/default/ui/shadcn-tabs",
+          primitive: "Ui.Tabs",
+          description:
+            "A shadcn style-lane Tabs slice that reuses the official Foldkit Ui.Tabs primitive for controlled selection, focus movement, orientation, and activation mode.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Tabs behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnTabsRootClassName",
+            "shadcnTabsTabListClassName",
+            "shadcnTabsTabClassName",
+            "shadcnTabsPanelClassName",
+            "shadcnTabsVerticalRootClassName",
+            "shadcnTabsVerticalTabListClassName",
+          ],
+          anatomyCode: `import * as Tabs from "./ui/shadcn-tabs";
+
+const SettingsTabs = Tabs.create<"overview" | "settings">();
+
+h.submodel({
+  slotId: model.tabs.id,
+  model: model.tabs,
+  view: SettingsTabs.view,
+  viewInputs: { tabs },
+  toParentMessage: (message) => GotTabsMessage({ message }),
+});`,
+        }),
       TabsBasicExample: () => DocsRoutes.tabsBasicExampleRouteView(model),
       TabsManualExample: () => DocsRoutes.tabsManualExampleRouteView(model),
       Textarea: () => embedUi("ui-textarea", View.textarea),
       TextareaDocs: () => textareaDocsView(model),
+      ShadcnTextareaDocs: () =>
+        shadcnLaneDocsView({
+          label: "Textarea",
+          source: "registry/default/ui/shadcn-textarea",
+          primitive: "Ui.Textarea",
+          description:
+            "A shadcn style-lane Textarea slice that reuses the official Foldkit Ui.Textarea helper for labels, descriptions, disabled state, value updates, and native textarea behavior.",
+          usage:
+            "Install the shadcn lane wrapper when you want Foldkit Textarea behavior with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnTextareaFieldClassName",
+            "shadcnTextareaLabelClassName",
+            "shadcnTextareaClassName",
+            "shadcnTextareaDescriptionClassName",
+          ],
+          anatomyCode: `import * as Textarea from "./ui/shadcn-textarea";
+
+Textarea.view<Message>({
+  id: "message",
+  value: model.message,
+  onInput: (value) => UpdatedMessage({ value }),
+  label: "Message",
+});`,
+        }),
       TextareaBasicExample: () =>
         DocsRoutes.textareaBasicExampleRouteView(model),
       TextareaDisabledExample: () =>
@@ -16290,6 +16405,32 @@ h.submodel({
             "baseUiToastCloseButtonClassName",
           ],
           anatomyCode: `import * as Toast from "./ui/base-ui-toast";
+
+const [toast, commands] = Toast.init();
+
+Toast.view<Message>({
+  model: model.toast,
+  toParentMessage: (message) => GotToastMessage({ message }),
+});`,
+        }),
+      ShadcnToastDocs: () =>
+        shadcnLaneDocsView({
+          label: "Toast",
+          source: "registry/default/ui/shadcn-toast",
+          primitive: "Ui.Toast",
+          description:
+            "A shadcn style-lane Toast slice that reuses the Foldkit Ui.Toast stack for typed payloads, dismissal, hover pause, duration, variants, and positioning.",
+          usage:
+            "Install the shadcn lane wrapper when you want the typed Foldkit Toast model with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnToastContainerClassName",
+            "shadcnToastEntryClassName",
+            "shadcnToastClassName",
+            "shadcnToastTitleClassName",
+            "shadcnToastDescriptionClassName",
+            "shadcnToastCloseButtonClassName",
+          ],
+          anatomyCode: `import * as Toast from "./ui/shadcn-toast";
 
 const [toast, commands] = Toast.init();
 

@@ -447,20 +447,24 @@ export const SliderBasicExampleRoute = r("SliderBasicExample");
 export const SliderDisabledExampleRoute = r("SliderDisabledExample");
 export const SwitchRoute = r("Switch");
 export const SwitchDocsRoute = r("SwitchDocs");
+export const ShadcnSwitchDocsRoute = r("ShadcnSwitchDocs");
 export const BaseUiSwitchDocsRoute = r("BaseUiSwitchDocs");
 export const SwitchBasicExampleRoute = r("SwitchBasicExample");
 export const SwitchDisabledExampleRoute = r("SwitchDisabledExample");
 export const TabsRoute = r("Tabs");
 export const TabsDocsRoute = r("TabsDocs");
+export const ShadcnTabsDocsRoute = r("ShadcnTabsDocs");
 export const BaseUiTabsDocsRoute = r("BaseUiTabsDocs");
 export const TabsBasicExampleRoute = r("TabsBasicExample");
 export const TabsManualExampleRoute = r("TabsManualExample");
 export const TextareaRoute = r("Textarea");
 export const TextareaDocsRoute = r("TextareaDocs");
+export const ShadcnTextareaDocsRoute = r("ShadcnTextareaDocs");
 export const TextareaBasicExampleRoute = r("TextareaBasicExample");
 export const TextareaDisabledExampleRoute = r("TextareaDisabledExample");
 export const ToastRoute = r("Toast");
 export const ToastDocsRoute = r("ToastDocs");
+export const ShadcnToastDocsRoute = r("ShadcnToastDocs");
 export const BaseUiToastDocsRoute = r("BaseUiToastDocs");
 export const ToastBasicExampleRoute = r("ToastBasicExample");
 export const ToastVariantsExampleRoute = r("ToastVariantsExample");
@@ -751,20 +755,24 @@ const AppRoute = S.Union([
   SliderDisabledExampleRoute,
   SwitchRoute,
   SwitchDocsRoute,
+  ShadcnSwitchDocsRoute,
   BaseUiSwitchDocsRoute,
   SwitchBasicExampleRoute,
   SwitchDisabledExampleRoute,
   TabsRoute,
   TabsDocsRoute,
+  ShadcnTabsDocsRoute,
   BaseUiTabsDocsRoute,
   TabsBasicExampleRoute,
   TabsManualExampleRoute,
   TextareaRoute,
   TextareaDocsRoute,
+  ShadcnTextareaDocsRoute,
   TextareaBasicExampleRoute,
   TextareaDisabledExampleRoute,
   ToastRoute,
   ToastDocsRoute,
+  ShadcnToastDocsRoute,
   BaseUiToastDocsRoute,
   ToastBasicExampleRoute,
   ToastVariantsExampleRoute,
@@ -3251,6 +3259,12 @@ export const switchDocsRouter = pipe(
   slash(literal("switch")),
   Route.mapTo(SwitchDocsRoute)
 );
+export const shadcnSwitchDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-switch")),
+  Route.mapTo(ShadcnSwitchDocsRoute)
+);
 export const baseUiSwitchDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3289,6 +3303,12 @@ export const tabsDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("tabs")),
   Route.mapTo(TabsDocsRoute)
+);
+export const shadcnTabsDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-tabs")),
+  Route.mapTo(ShadcnTabsDocsRoute)
 );
 export const baseUiTabsDocsRouter = pipe(
   literal("docs"),
@@ -3332,6 +3352,12 @@ export const textareaDocsRouter = pipe(
   slash(literal("textarea")),
   Route.mapTo(TextareaDocsRoute)
 );
+export const shadcnTextareaDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-textarea")),
+  Route.mapTo(ShadcnTextareaDocsRoute)
+);
 export const textareaBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3364,6 +3390,12 @@ export const toastDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("toast")),
   Route.mapTo(ToastDocsRoute)
+);
+export const shadcnToastDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-toast")),
+  Route.mapTo(ShadcnToastDocsRoute)
 );
 export const baseUiToastDocsRouter = pipe(
   literal("docs"),
@@ -3812,6 +3844,7 @@ const routeParser = Route.oneOf(
   switchBasicStandaloneExampleRouter,
   switchDisabledStandaloneExampleRouter,
   switchDocsRouter,
+  shadcnSwitchDocsRouter,
   baseUiSwitchDocsRouter,
   tabsRouter,
   tabsBasicExampleRouter,
@@ -3819,6 +3852,7 @@ const routeParser = Route.oneOf(
   tabsBasicStandaloneExampleRouter,
   tabsManualStandaloneExampleRouter,
   tabsDocsRouter,
+  shadcnTabsDocsRouter,
   baseUiTabsDocsRouter,
   textareaRouter,
   textareaBasicExampleRouter,
@@ -3826,12 +3860,14 @@ const routeParser = Route.oneOf(
   textareaBasicStandaloneExampleRouter,
   textareaDisabledStandaloneExampleRouter,
   textareaDocsRouter,
+  shadcnTextareaDocsRouter,
   toastRouter,
   toastBasicExampleRouter,
   toastVariantsExampleRouter,
   toastBasicStandaloneExampleRouter,
   toastVariantsStandaloneExampleRouter,
   toastDocsRouter,
+  shadcnToastDocsRouter,
   baseUiToastDocsRouter,
   tooltipRouter,
   tooltipBasicExampleRouter,

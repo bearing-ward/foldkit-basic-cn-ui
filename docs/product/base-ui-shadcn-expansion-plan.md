@@ -149,18 +149,16 @@ Present shadcn lane components:
 - slider
 - sonner
 - spinner
+- switch
 - table
+- tabs
+- textarea
+- toast
 - typography
 
 Missing shadcn lane components:
 
-- switch
-- tabs
-- textarea
-- toast
-- toggle
-- toggle-group
-- tooltip
+None.
 
 New shadcn work should focus on opinionated style parity:
 

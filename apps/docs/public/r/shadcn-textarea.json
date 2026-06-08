@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "shadcn style-lane textarea wrapper backed by the existing Textarea component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/textarea"],
+  "files": [
+    {
+      "path": "registry/default/ui/shadcn-textarea/index.ts",
+      "target": "src/ui/shadcn-textarea/index.ts",
+      "type": "registry:ui",
+      "content": "export { descriptionId, view } from \"../textarea\";\nexport type { TextareaAttributes, ViewConfig } from \"../textarea\";\n\nexport {\n  shadcnTextareaClassName,\n  shadcnTextareaDescriptionClassName,\n  shadcnTextareaFieldClassName,\n  shadcnTextareaLabelClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-textarea/view.ts",
+      "target": "src/ui/shadcn-textarea/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  descriptionClassName as shadcnTextareaDescriptionClassName,\n  fieldClassName as shadcnTextareaFieldClassName,\n  labelClassName as shadcnTextareaLabelClassName,\n  textareaClassName as shadcnTextareaClassName,\n} from \"../textarea/view\";\n"
+    },
+    {
+      "path": "registry/default/ui/shadcn-textarea/shadcn-textarea.scene.test.ts",
+      "target": "src/ui/shadcn-textarea/shadcn-textarea.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Textarea from \"./index\";\n\ndescribe(\"shadcn Textarea registry view\", () => {\n  test(\"reuses the Foldkit Textarea view contract\", () => {\n    expect(Textarea.view).toBeTypeOf(\"function\");\n    expect(Textarea.descriptionId).toBeTypeOf(\"function\");\n    expect(Textarea.shadcnTextareaClassName).toContain(\"rounded\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "shadcn",
+      "artifact": "component",
+      "primitive": "Ui.Textarea",
+      "stateful": false
+    }
+  }
+}
