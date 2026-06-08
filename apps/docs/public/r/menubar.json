@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Menubar",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/menubar",
       "artifact": "component",
       "stateful": false
     }

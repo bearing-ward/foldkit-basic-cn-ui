@@ -38,7 +38,7 @@
       "component": "Popover",
       "primitive": "Ui.Popover",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/popover",
       "artifact": "primitive-backed-component"
     }
   }

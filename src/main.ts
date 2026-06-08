@@ -132,6 +132,27 @@ import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-are
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
+import * as ShadcnAccordionBasicExample from "../registry/default/examples/shadcn-accordion-basic/main";
+import * as ShadcnAccordionBordersExample from "../registry/default/examples/shadcn-accordion-borders/main";
+import * as ShadcnAccordionCardExample from "../registry/default/examples/shadcn-accordion-card/main";
+import * as ShadcnAccordionDisabledExample from "../registry/default/examples/shadcn-accordion-disabled/main";
+import * as ShadcnAccordionMultipleExample from "../registry/default/examples/shadcn-accordion-multiple/main";
+import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-accordion-rtl/main";
+import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
+import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
+import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
+import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
+import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
+import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
+import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
+import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
+import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-switch-basic/main";
+import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
@@ -4030,6 +4051,12 @@ const urlToBaseAwareAppRoute = (url: Url): AppRoute =>
 export const Model = S.Struct({
   route: AppRoute,
   accordionBasicExample: AccordionBasicExample.Model,
+  shadcnAccordionBasicExample: ShadcnAccordionBasicExample.Model,
+  shadcnAccordionBordersExample: ShadcnAccordionBordersExample.Model,
+  shadcnAccordionCardExample: ShadcnAccordionCardExample.Model,
+  shadcnAccordionDisabledExample: ShadcnAccordionDisabledExample.Model,
+  shadcnAccordionMultipleExample: ShadcnAccordionMultipleExample.Model,
+  shadcnAccordionRtlExample: ShadcnAccordionRtlExample.Model,
   accordionMultipleExample: AccordionMultipleExample.Model,
   alertBasicExample: AlertBasicExample.Model,
   alertDestructiveExample: AlertDestructiveExample.Model,
@@ -4055,6 +4082,7 @@ export const Model = S.Struct({
   buttonGroupPopoverExample: ButtonGroupPopoverExample.Model,
   buttonGroupRtlExample: ButtonGroupRtlExample.Model,
   alertDialogBasicExample: AlertDialogBasicExample.Model,
+  shadcnAlertDialogBasicExample: ShadcnAlertDialogBasicExample.Model,
   drawerBasicExample: DrawerBasicExample.Model,
   contextMenuBasicExample: ContextMenuBasicExample.Model,
   menubarBasicExample: MenubarBasicExample.Model,
@@ -4069,6 +4097,8 @@ export const Model = S.Struct({
   uiModel: UiModel,
   animationBasicExample: AnimationBasicExample.Model,
   avatarBasicExample: AvatarBasicExample.Model,
+  shadcnAvatarBasicExample: ShadcnAvatarBasicExample.Model,
+  shadcnAvatarDropdownExample: ShadcnAvatarDropdownExample.Model,
   badgeBasicExample: BadgeBasicExample.Model,
   badgeSpinnerExample: BadgeSpinnerExample.Model,
   carouselBasicExample: CarouselBasicExample.Model,
@@ -4122,8 +4152,16 @@ export const Model = S.Struct({
   emptyBasicExample: EmptyBasicExample.Model,
   emptyInputGroupExample: EmptyInputGroupExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
+  shadcnButtonBasicExample: ShadcnButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
   calendarBasicExample: CalendarBasicExample.Model,
+  shadcnCalendarBasicExample: ShadcnCalendarBasicExample.Model,
+  shadcnCalendarBookedExample: ShadcnCalendarBookedExample.Model,
+  shadcnCalendarDateOfBirthExample: ShadcnCalendarDateOfBirthExample.Model,
+  shadcnCalendarMonthYearSelectorExample:
+    ShadcnCalendarMonthYearSelectorExample.Model,
+  shadcnCalendarPresetsExample: ShadcnCalendarPresetsExample.Model,
+  shadcnCalendarRtlExample: ShadcnCalendarRtlExample.Model,
   calendarBoundsExample: CalendarBoundsExample.Model,
   checkboxBasicExample: CheckboxBasicExample.Model,
   checkboxGroupBasicExample: CheckboxGroupBasicExample.Model,
@@ -4161,14 +4199,19 @@ export const Model = S.Struct({
   popoverBasicExample: PopoverBasicExample.Model,
   popoverAnimatedExample: PopoverAnimatedExample.Model,
   radioGroupBasicExample: RadioGroupBasicExample.Model,
+  shadcnRadioGroupBasicExample: ShadcnRadioGroupBasicExample.Model,
   radioGroupHorizontalExample: RadioGroupHorizontalExample.Model,
   selectBasicExample: SelectBasicExample.Model,
+  shadcnSelectBasicExample: ShadcnSelectBasicExample.Model,
   selectDisabledExample: SelectDisabledExample.Model,
   sliderBasicExample: SliderBasicExample.Model,
+  shadcnSliderBasicExample: ShadcnSliderBasicExample.Model,
   sliderDisabledExample: SliderDisabledExample.Model,
   switchBasicExample: SwitchBasicExample.Model,
+  shadcnSwitchBasicExample: ShadcnSwitchBasicExample.Model,
   switchDisabledExample: SwitchDisabledExample.Model,
   tabsBasicExample: TabsBasicExample.Model,
+  shadcnTabsBasicExample: ShadcnTabsBasicExample.Model,
   tabsManualExample: TabsManualExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
   textareaDisabledExample: TextareaDisabledExample.Model,
@@ -4197,6 +4240,42 @@ export const GotAccordionBasicExampleMessage = m(
   "GotAccordionBasicExampleMessage",
   {
     message: AccordionBasicExample.Message,
+  }
+);
+export const GotShadcnAccordionBasicExampleMessage = m(
+  "GotShadcnAccordionBasicExampleMessage",
+  {
+    message: ShadcnAccordionBasicExample.Message,
+  }
+);
+export const GotShadcnAccordionBordersExampleMessage = m(
+  "GotShadcnAccordionBordersExampleMessage",
+  {
+    message: ShadcnAccordionBordersExample.Message,
+  }
+);
+export const GotShadcnAccordionCardExampleMessage = m(
+  "GotShadcnAccordionCardExampleMessage",
+  {
+    message: ShadcnAccordionCardExample.Message,
+  }
+);
+export const GotShadcnAccordionDisabledExampleMessage = m(
+  "GotShadcnAccordionDisabledExampleMessage",
+  {
+    message: ShadcnAccordionDisabledExample.Message,
+  }
+);
+export const GotShadcnAccordionMultipleExampleMessage = m(
+  "GotShadcnAccordionMultipleExampleMessage",
+  {
+    message: ShadcnAccordionMultipleExample.Message,
+  }
+);
+export const GotShadcnAccordionRtlExampleMessage = m(
+  "GotShadcnAccordionRtlExampleMessage",
+  {
+    message: ShadcnAccordionRtlExample.Message,
   }
 );
 export const GotAccordionMultipleExampleMessage = m(
@@ -4312,6 +4391,12 @@ export const GotAlertDialogBasicExampleMessage = m(
     message: AlertDialogBasicExample.Message,
   }
 );
+export const GotShadcnAlertDialogBasicExampleMessage = m(
+  "GotShadcnAlertDialogBasicExampleMessage",
+  {
+    message: ShadcnAlertDialogBasicExample.Message,
+  }
+);
 export const GotDrawerBasicExampleMessage = m("GotDrawerBasicExampleMessage", {
   message: DrawerBasicExample.Message,
 });
@@ -4378,6 +4463,18 @@ export const GotAnimationBasicExampleMessage = m(
 export const GotAvatarBasicExampleMessage = m("GotAvatarBasicExampleMessage", {
   message: AvatarBasicExample.Message,
 });
+export const GotShadcnAvatarBasicExampleMessage = m(
+  "GotShadcnAvatarBasicExampleMessage",
+  {
+    message: ShadcnAvatarBasicExample.Message,
+  }
+);
+export const GotShadcnAvatarDropdownExampleMessage = m(
+  "GotShadcnAvatarDropdownExampleMessage",
+  {
+    message: ShadcnAvatarDropdownExample.Message,
+  }
+);
 export const GotBadgeBasicExampleMessage = m("GotBadgeBasicExampleMessage", {
   message: BadgeBasicExample.Message,
 });
@@ -4602,6 +4699,12 @@ export const GotEmptyInputGroupExampleMessage = m(
 export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
   message: ButtonBasicExample.Message,
 });
+export const GotShadcnButtonBasicExampleMessage = m(
+  "GotShadcnButtonBasicExampleMessage",
+  {
+    message: ShadcnButtonBasicExample.Message,
+  }
+);
 export const GotButtonDisabledExampleMessage = m(
   "GotButtonDisabledExampleMessage",
   {
@@ -4612,6 +4715,42 @@ export const GotCalendarBasicExampleMessage = m(
   "GotCalendarBasicExampleMessage",
   {
     message: CalendarBasicExample.Message,
+  }
+);
+export const GotShadcnCalendarBasicExampleMessage = m(
+  "GotShadcnCalendarBasicExampleMessage",
+  {
+    message: ShadcnCalendarBasicExample.Message,
+  }
+);
+export const GotShadcnCalendarBookedExampleMessage = m(
+  "GotShadcnCalendarBookedExampleMessage",
+  {
+    message: ShadcnCalendarBookedExample.Message,
+  }
+);
+export const GotShadcnCalendarDateOfBirthExampleMessage = m(
+  "GotShadcnCalendarDateOfBirthExampleMessage",
+  {
+    message: ShadcnCalendarDateOfBirthExample.Message,
+  }
+);
+export const GotShadcnCalendarMonthYearSelectorExampleMessage = m(
+  "GotShadcnCalendarMonthYearSelectorExampleMessage",
+  {
+    message: ShadcnCalendarMonthYearSelectorExample.Message,
+  }
+);
+export const GotShadcnCalendarPresetsExampleMessage = m(
+  "GotShadcnCalendarPresetsExampleMessage",
+  {
+    message: ShadcnCalendarPresetsExample.Message,
+  }
+);
+export const GotShadcnCalendarRtlExampleMessage = m(
+  "GotShadcnCalendarRtlExampleMessage",
+  {
+    message: ShadcnCalendarRtlExample.Message,
   }
 );
 export const GotCalendarBoundsExampleMessage = m(
@@ -4815,6 +4954,12 @@ export const GotRadioGroupBasicExampleMessage = m(
     message: RadioGroupBasicExample.Message,
   }
 );
+export const GotShadcnRadioGroupBasicExampleMessage = m(
+  "GotShadcnRadioGroupBasicExampleMessage",
+  {
+    message: ShadcnRadioGroupBasicExample.Message,
+  }
+);
 export const GotRadioGroupHorizontalExampleMessage = m(
   "GotRadioGroupHorizontalExampleMessage",
   {
@@ -4824,6 +4969,12 @@ export const GotRadioGroupHorizontalExampleMessage = m(
 export const GotSelectBasicExampleMessage = m("GotSelectBasicExampleMessage", {
   message: SelectBasicExample.Message,
 });
+export const GotShadcnSelectBasicExampleMessage = m(
+  "GotShadcnSelectBasicExampleMessage",
+  {
+    message: ShadcnSelectBasicExample.Message,
+  }
+);
 export const GotSelectDisabledExampleMessage = m(
   "GotSelectDisabledExampleMessage",
   {
@@ -4833,6 +4984,12 @@ export const GotSelectDisabledExampleMessage = m(
 export const GotSliderBasicExampleMessage = m("GotSliderBasicExampleMessage", {
   message: SliderBasicExample.Message,
 });
+export const GotShadcnSliderBasicExampleMessage = m(
+  "GotShadcnSliderBasicExampleMessage",
+  {
+    message: ShadcnSliderBasicExample.Message,
+  }
+);
 export const GotSliderDisabledExampleMessage = m(
   "GotSliderDisabledExampleMessage",
   {
@@ -4842,6 +4999,12 @@ export const GotSliderDisabledExampleMessage = m(
 export const GotSwitchBasicExampleMessage = m("GotSwitchBasicExampleMessage", {
   message: SwitchBasicExample.Message,
 });
+export const GotShadcnSwitchBasicExampleMessage = m(
+  "GotShadcnSwitchBasicExampleMessage",
+  {
+    message: ShadcnSwitchBasicExample.Message,
+  }
+);
 export const GotSwitchDisabledExampleMessage = m(
   "GotSwitchDisabledExampleMessage",
   {
@@ -4851,6 +5014,12 @@ export const GotSwitchDisabledExampleMessage = m(
 export const GotTabsBasicExampleMessage = m("GotTabsBasicExampleMessage", {
   message: TabsBasicExample.Message,
 });
+export const GotShadcnTabsBasicExampleMessage = m(
+  "GotShadcnTabsBasicExampleMessage",
+  {
+    message: ShadcnTabsBasicExample.Message,
+  }
+);
 export const GotTabsManualExampleMessage = m("GotTabsManualExampleMessage", {
   message: TabsManualExample.Message,
 });
@@ -4907,6 +5076,12 @@ export const Message = S.Union([
   ChangedUrl,
   GotUiMessage,
   GotAccordionBasicExampleMessage,
+  GotShadcnAccordionBasicExampleMessage,
+  GotShadcnAccordionBordersExampleMessage,
+  GotShadcnAccordionCardExampleMessage,
+  GotShadcnAccordionDisabledExampleMessage,
+  GotShadcnAccordionMultipleExampleMessage,
+  GotShadcnAccordionRtlExampleMessage,
   GotAccordionMultipleExampleMessage,
   GotAlertBasicExampleMessage,
   GotAlertDestructiveExampleMessage,
@@ -4932,6 +5107,7 @@ export const Message = S.Union([
   GotButtonGroupPopoverExampleMessage,
   GotButtonGroupRtlExampleMessage,
   GotAlertDialogBasicExampleMessage,
+  GotShadcnAlertDialogBasicExampleMessage,
   GotDrawerBasicExampleMessage,
   GotContextMenuBasicExampleMessage,
   GotMenubarBasicExampleMessage,
@@ -4945,6 +5121,8 @@ export const Message = S.Union([
   GotAutocompleteBasicExampleMessage,
   GotAnimationBasicExampleMessage,
   GotAvatarBasicExampleMessage,
+  GotShadcnAvatarBasicExampleMessage,
+  GotShadcnAvatarDropdownExampleMessage,
   GotBadgeBasicExampleMessage,
   GotBadgeSpinnerExampleMessage,
   GotCarouselBasicExampleMessage,
@@ -4998,8 +5176,15 @@ export const Message = S.Union([
   GotEmptyBasicExampleMessage,
   GotEmptyInputGroupExampleMessage,
   GotButtonBasicExampleMessage,
+  GotShadcnButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
   GotCalendarBasicExampleMessage,
+  GotShadcnCalendarBasicExampleMessage,
+  GotShadcnCalendarBookedExampleMessage,
+  GotShadcnCalendarDateOfBirthExampleMessage,
+  GotShadcnCalendarMonthYearSelectorExampleMessage,
+  GotShadcnCalendarPresetsExampleMessage,
+  GotShadcnCalendarRtlExampleMessage,
   GotCalendarBoundsExampleMessage,
   GotCheckboxBasicExampleMessage,
   GotCheckboxGroupBasicExampleMessage,
@@ -5037,14 +5222,19 @@ export const Message = S.Union([
   GotPopoverBasicExampleMessage,
   GotPopoverAnimatedExampleMessage,
   GotRadioGroupBasicExampleMessage,
+  GotShadcnRadioGroupBasicExampleMessage,
   GotRadioGroupHorizontalExampleMessage,
   GotSelectBasicExampleMessage,
+  GotShadcnSelectBasicExampleMessage,
   GotSelectDisabledExampleMessage,
   GotSliderBasicExampleMessage,
+  GotShadcnSliderBasicExampleMessage,
   GotSliderDisabledExampleMessage,
   GotSwitchBasicExampleMessage,
+  GotShadcnSwitchBasicExampleMessage,
   GotSwitchDisabledExampleMessage,
   GotTabsBasicExampleMessage,
+  GotShadcnTabsBasicExampleMessage,
   GotTabsManualExampleMessage,
   GotTextareaBasicExampleMessage,
   GotTextareaDisabledExampleMessage,
@@ -5091,6 +5281,22 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [initialUiModel, uiCommands] = uiInit(flags.today);
   const [accordionBasicExample, accordionBasicExampleCommands] =
     AccordionBasicExample.init();
+  const [shadcnAccordionBasicExample, shadcnAccordionBasicExampleCommands] =
+    ShadcnAccordionBasicExample.init();
+  const [shadcnAccordionBordersExample, shadcnAccordionBordersExampleCommands] =
+    ShadcnAccordionBordersExample.init();
+  const [shadcnAccordionCardExample, shadcnAccordionCardExampleCommands] =
+    ShadcnAccordionCardExample.init();
+  const [
+    shadcnAccordionDisabledExample,
+    shadcnAccordionDisabledExampleCommands,
+  ] = ShadcnAccordionDisabledExample.init();
+  const [
+    shadcnAccordionMultipleExample,
+    shadcnAccordionMultipleExampleCommands,
+  ] = ShadcnAccordionMultipleExample.init();
+  const [shadcnAccordionRtlExample, shadcnAccordionRtlExampleCommands] =
+    ShadcnAccordionRtlExample.init();
   const [accordionMultipleExample, accordionMultipleExampleCommands] =
     AccordionMultipleExample.init();
   const [alertBasicExample, alertBasicExampleCommands] =
@@ -5141,6 +5347,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ButtonGroupRtlExample.init();
   const [alertDialogBasicExample, alertDialogBasicExampleCommands] =
     AlertDialogBasicExample.init();
+  const [shadcnAlertDialogBasicExample, shadcnAlertDialogBasicExampleCommands] =
+    ShadcnAlertDialogBasicExample.init();
   const [drawerBasicExample, drawerBasicExampleCommands] =
     DrawerBasicExample.init();
   const [contextMenuBasicExample, contextMenuBasicExampleCommands] =
@@ -5166,6 +5374,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     AnimationBasicExample.init();
   const [avatarBasicExample, avatarBasicExampleCommands] =
     AvatarBasicExample.init();
+  const [shadcnAvatarBasicExample, shadcnAvatarBasicExampleCommands] =
+    ShadcnAvatarBasicExample.init();
+  const [shadcnAvatarDropdownExample, shadcnAvatarDropdownExampleCommands] =
+    ShadcnAvatarDropdownExample.init();
   const [badgeBasicExample, badgeBasicExampleCommands] =
     BadgeBasicExample.init();
   const [badgeSpinnerExample, badgeSpinnerExampleCommands] =
@@ -5260,10 +5472,28 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     EmptyInputGroupExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
     ButtonBasicExample.init();
+  const [shadcnButtonBasicExample, shadcnButtonBasicExampleCommands] =
+    ShadcnButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
     ButtonDisabledExample.init();
   const [calendarBasicExample, calendarBasicExampleCommands] =
     CalendarBasicExample.init();
+  const [shadcnCalendarBasicExample, shadcnCalendarBasicExampleCommands] =
+    ShadcnCalendarBasicExample.init();
+  const [shadcnCalendarBookedExample, shadcnCalendarBookedExampleCommands] =
+    ShadcnCalendarBookedExample.init();
+  const [
+    shadcnCalendarDateOfBirthExample,
+    shadcnCalendarDateOfBirthExampleCommands,
+  ] = ShadcnCalendarDateOfBirthExample.init();
+  const [
+    shadcnCalendarMonthYearSelectorExample,
+    shadcnCalendarMonthYearSelectorExampleCommands,
+  ] = ShadcnCalendarMonthYearSelectorExample.init();
+  const [shadcnCalendarPresetsExample, shadcnCalendarPresetsExampleCommands] =
+    ShadcnCalendarPresetsExample.init();
+  const [shadcnCalendarRtlExample, shadcnCalendarRtlExampleCommands] =
+    ShadcnCalendarRtlExample.init();
   const [calendarBoundsExample, calendarBoundsExampleCommands] =
     CalendarBoundsExample.init();
   const [checkboxBasicExample, checkboxBasicExampleCommands] =
@@ -5337,21 +5567,31 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     PopoverAnimatedExample.init();
   const [radioGroupBasicExample, radioGroupBasicExampleCommands] =
     RadioGroupBasicExample.init();
+  const [shadcnRadioGroupBasicExample, shadcnRadioGroupBasicExampleCommands] =
+    ShadcnRadioGroupBasicExample.init();
   const [radioGroupHorizontalExample, radioGroupHorizontalExampleCommands] =
     RadioGroupHorizontalExample.init();
   const [selectBasicExample, selectBasicExampleCommands] =
     SelectBasicExample.init();
+  const [shadcnSelectBasicExample, shadcnSelectBasicExampleCommands] =
+    ShadcnSelectBasicExample.init();
   const [selectDisabledExample, selectDisabledExampleCommands] =
     SelectDisabledExample.init();
   const [sliderBasicExample, sliderBasicExampleCommands] =
     SliderBasicExample.init();
+  const [shadcnSliderBasicExample, shadcnSliderBasicExampleCommands] =
+    ShadcnSliderBasicExample.init();
   const [sliderDisabledExample, sliderDisabledExampleCommands] =
     SliderDisabledExample.init();
   const [switchBasicExample, switchBasicExampleCommands] =
     SwitchBasicExample.init();
+  const [shadcnSwitchBasicExample, shadcnSwitchBasicExampleCommands] =
+    ShadcnSwitchBasicExample.init();
   const [switchDisabledExample, switchDisabledExampleCommands] =
     SwitchDisabledExample.init();
   const [tabsBasicExample, tabsBasicExampleCommands] = TabsBasicExample.init();
+  const [shadcnTabsBasicExample, shadcnTabsBasicExampleCommands] =
+    ShadcnTabsBasicExample.init();
   const [tabsManualExample, tabsManualExampleCommands] =
     TabsManualExample.init();
   const [textareaBasicExample, textareaBasicExampleCommands] =
@@ -5376,6 +5616,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
       accordionBasicExample,
+      shadcnAccordionBasicExample,
+      shadcnAccordionBordersExample,
+      shadcnAccordionCardExample,
+      shadcnAccordionDisabledExample,
+      shadcnAccordionMultipleExample,
+      shadcnAccordionRtlExample,
       accordionMultipleExample,
       alertBasicExample,
       alertDestructiveExample,
@@ -5401,6 +5647,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       buttonGroupPopoverExample,
       buttonGroupRtlExample,
       alertDialogBasicExample,
+      shadcnAlertDialogBasicExample,
       drawerBasicExample,
       contextMenuBasicExample,
       menubarBasicExample,
@@ -5414,6 +5661,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       autocompleteBasicExample,
       animationBasicExample,
       avatarBasicExample,
+      shadcnAvatarBasicExample,
+      shadcnAvatarDropdownExample,
       badgeBasicExample,
       badgeSpinnerExample,
       carouselBasicExample,
@@ -5467,8 +5716,15 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       emptyBasicExample,
       emptyInputGroupExample,
       buttonBasicExample,
+      shadcnButtonBasicExample,
       buttonDisabledExample,
       calendarBasicExample,
+      shadcnCalendarBasicExample,
+      shadcnCalendarBookedExample,
+      shadcnCalendarDateOfBirthExample,
+      shadcnCalendarMonthYearSelectorExample,
+      shadcnCalendarPresetsExample,
+      shadcnCalendarRtlExample,
       calendarBoundsExample,
       checkboxBasicExample,
       checkboxGroupBasicExample,
@@ -5506,14 +5762,19 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       popoverBasicExample,
       popoverAnimatedExample,
       radioGroupBasicExample,
+      shadcnRadioGroupBasicExample,
       radioGroupHorizontalExample,
       selectBasicExample,
+      shadcnSelectBasicExample,
       selectDisabledExample,
       sliderBasicExample,
+      shadcnSliderBasicExample,
       sliderDisabledExample,
       switchBasicExample,
+      shadcnSwitchBasicExample,
       switchDisabledExample,
       tabsBasicExample,
+      shadcnTabsBasicExample,
       tabsManualExample,
       textareaBasicExample,
       textareaDisabledExample,
@@ -5530,6 +5791,26 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(accordionBasicExampleCommands, (message) =>
         GotAccordionBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAccordionBasicExampleCommands, (message) =>
+        GotShadcnAccordionBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAccordionBordersExampleCommands, (message) =>
+        GotShadcnAccordionBordersExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAccordionCardExampleCommands, (message) =>
+        GotShadcnAccordionCardExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnAccordionDisabledExampleCommands,
+        (message) => GotShadcnAccordionDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnAccordionMultipleExampleCommands,
+        (message) => GotShadcnAccordionMultipleExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAccordionRtlExampleCommands, (message) =>
+        GotShadcnAccordionRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(accordionMultipleExampleCommands, (message) =>
         GotAccordionMultipleExampleMessage({ message })
@@ -5606,6 +5887,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(alertDialogBasicExampleCommands, (message) =>
         GotAlertDialogBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnAlertDialogBasicExampleCommands, (message) =>
+        GotShadcnAlertDialogBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(drawerBasicExampleCommands, (message) =>
         GotDrawerBasicExampleMessage({ message })
       ),
@@ -5644,6 +5928,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(avatarBasicExampleCommands, (message) =>
         GotAvatarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAvatarBasicExampleCommands, (message) =>
+        GotShadcnAvatarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAvatarDropdownExampleCommands, (message) =>
+        GotShadcnAvatarDropdownExampleMessage({ message })
       ),
       ...Command.mapMessages(badgeBasicExampleCommands, (message) =>
         GotBadgeBasicExampleMessage({ message })
@@ -5804,11 +6094,35 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
         GotButtonBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnButtonBasicExampleCommands, (message) =>
+        GotShadcnButtonBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(buttonDisabledExampleCommands, (message) =>
         GotButtonDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(calendarBasicExampleCommands, (message) =>
         GotCalendarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnCalendarBasicExampleCommands, (message) =>
+        GotShadcnCalendarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnCalendarBookedExampleCommands, (message) =>
+        GotShadcnCalendarBookedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnCalendarDateOfBirthExampleCommands,
+        (message) => GotShadcnCalendarDateOfBirthExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnCalendarMonthYearSelectorExampleCommands,
+        (message) =>
+          GotShadcnCalendarMonthYearSelectorExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnCalendarPresetsExampleCommands, (message) =>
+        GotShadcnCalendarPresetsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnCalendarRtlExampleCommands, (message) =>
+        GotShadcnCalendarRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(calendarBoundsExampleCommands, (message) =>
         GotCalendarBoundsExampleMessage({ message })
@@ -5921,11 +6235,17 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(radioGroupBasicExampleCommands, (message) =>
         GotRadioGroupBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnRadioGroupBasicExampleCommands, (message) =>
+        GotShadcnRadioGroupBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(radioGroupHorizontalExampleCommands, (message) =>
         GotRadioGroupHorizontalExampleMessage({ message })
       ),
       ...Command.mapMessages(selectBasicExampleCommands, (message) =>
         GotSelectBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnSelectBasicExampleCommands, (message) =>
+        GotShadcnSelectBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(selectDisabledExampleCommands, (message) =>
         GotSelectDisabledExampleMessage({ message })
@@ -5933,17 +6253,26 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(sliderBasicExampleCommands, (message) =>
         GotSliderBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnSliderBasicExampleCommands, (message) =>
+        GotShadcnSliderBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(sliderDisabledExampleCommands, (message) =>
         GotSliderDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(switchBasicExampleCommands, (message) =>
         GotSwitchBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnSwitchBasicExampleCommands, (message) =>
+        GotShadcnSwitchBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(switchDisabledExampleCommands, (message) =>
         GotSwitchDisabledExampleMessage({ message })
       ),
       ...Command.mapMessages(tabsBasicExampleCommands, (message) =>
         GotTabsBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnTabsBasicExampleCommands, (message) =>
+        GotShadcnTabsBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(tabsManualExampleCommands, (message) =>
         GotTabsManualExampleMessage({ message })
@@ -6052,6 +6381,121 @@ export const update = (
           evo(model, { accordionBasicExample: () => accordionBasicExample }),
           Command.mapMessages(accordionBasicExampleCommands, (message) =>
             GotAccordionBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAccordionBasicExampleMessage: ({ message }) => {
+        const [
+          shadcnAccordionBasicExample,
+          shadcnAccordionBasicExampleCommands,
+        ] = ShadcnAccordionBasicExample.update(
+          model.shadcnAccordionBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAccordionBasicExample: () => shadcnAccordionBasicExample,
+          }),
+          Command.mapMessages(shadcnAccordionBasicExampleCommands, (message) =>
+            GotShadcnAccordionBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAccordionBordersExampleMessage: ({ message }) => {
+        const [
+          shadcnAccordionBordersExample,
+          shadcnAccordionBordersExampleCommands,
+        ] = ShadcnAccordionBordersExample.update(
+          model.shadcnAccordionBordersExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAccordionBordersExample: () => shadcnAccordionBordersExample,
+          }),
+          Command.mapMessages(
+            shadcnAccordionBordersExampleCommands,
+            (message) => GotShadcnAccordionBordersExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAccordionCardExampleMessage: ({ message }) => {
+        const [shadcnAccordionCardExample, shadcnAccordionCardExampleCommands] =
+          ShadcnAccordionCardExample.update(
+            model.shadcnAccordionCardExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnAccordionCardExample: () => shadcnAccordionCardExample,
+          }),
+          Command.mapMessages(shadcnAccordionCardExampleCommands, (message) =>
+            GotShadcnAccordionCardExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAccordionDisabledExampleMessage: ({ message }) => {
+        const [
+          shadcnAccordionDisabledExample,
+          shadcnAccordionDisabledExampleCommands,
+        ] = ShadcnAccordionDisabledExample.update(
+          model.shadcnAccordionDisabledExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAccordionDisabledExample: () =>
+              shadcnAccordionDisabledExample,
+          }),
+          Command.mapMessages(
+            shadcnAccordionDisabledExampleCommands,
+            (message) => GotShadcnAccordionDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAccordionMultipleExampleMessage: ({ message }) => {
+        const [
+          shadcnAccordionMultipleExample,
+          shadcnAccordionMultipleExampleCommands,
+        ] = ShadcnAccordionMultipleExample.update(
+          model.shadcnAccordionMultipleExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAccordionMultipleExample: () =>
+              shadcnAccordionMultipleExample,
+          }),
+          Command.mapMessages(
+            shadcnAccordionMultipleExampleCommands,
+            (message) => GotShadcnAccordionMultipleExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAccordionRtlExampleMessage: ({ message }) => {
+        const [shadcnAccordionRtlExample, shadcnAccordionRtlExampleCommands] =
+          ShadcnAccordionRtlExample.update(
+            model.shadcnAccordionRtlExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnAccordionRtlExample: () => shadcnAccordionRtlExample,
+          }),
+          Command.mapMessages(shadcnAccordionRtlExampleCommands, (message) =>
+            GotShadcnAccordionRtlExampleMessage({ message })
           ),
         ];
       },
@@ -6438,6 +6882,26 @@ export const update = (
         ];
       },
 
+      GotShadcnAlertDialogBasicExampleMessage: ({ message }) => {
+        const [
+          shadcnAlertDialogBasicExample,
+          shadcnAlertDialogBasicExampleCommands,
+        ] = ShadcnAlertDialogBasicExample.update(
+          model.shadcnAlertDialogBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAlertDialogBasicExample: () => shadcnAlertDialogBasicExample,
+          }),
+          Command.mapMessages(
+            shadcnAlertDialogBasicExampleCommands,
+            (message) => GotShadcnAlertDialogBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotDrawerBasicExampleMessage: ({ message }) => {
         const [drawerBasicExample, drawerBasicExampleCommands] =
           DrawerBasicExample.update(model.drawerBasicExample, message);
@@ -6620,6 +7084,39 @@ export const update = (
           evo(model, { avatarBasicExample: () => avatarBasicExample }),
           Command.mapMessages(avatarBasicExampleCommands, (message) =>
             GotAvatarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAvatarBasicExampleMessage: () => {
+        const [shadcnAvatarBasicExample, shadcnAvatarBasicExampleCommands] =
+          ShadcnAvatarBasicExample.update(model.shadcnAvatarBasicExample);
+
+        return [
+          evo(model, {
+            shadcnAvatarBasicExample: () => shadcnAvatarBasicExample,
+          }),
+          Command.mapMessages(shadcnAvatarBasicExampleCommands, (message) =>
+            GotShadcnAvatarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAvatarDropdownExampleMessage: ({ message }) => {
+        const [
+          shadcnAvatarDropdownExample,
+          shadcnAvatarDropdownExampleCommands,
+        ] = ShadcnAvatarDropdownExample.update(
+          model.shadcnAvatarDropdownExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAvatarDropdownExample: () => shadcnAvatarDropdownExample,
+          }),
+          Command.mapMessages(shadcnAvatarDropdownExampleCommands, (message) =>
+            GotShadcnAvatarDropdownExampleMessage({ message })
           ),
         ];
       },
@@ -7267,6 +7764,23 @@ export const update = (
         ];
       },
 
+      GotShadcnButtonBasicExampleMessage: ({ message }) => {
+        const [shadcnButtonBasicExample, shadcnButtonBasicExampleCommands] =
+          ShadcnButtonBasicExample.update(
+            model.shadcnButtonBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnButtonBasicExample: () => shadcnButtonBasicExample,
+          }),
+          Command.mapMessages(shadcnButtonBasicExampleCommands, (message) =>
+            GotShadcnButtonBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotButtonDisabledExampleMessage: ({ message }) => {
         const [buttonDisabledExample, buttonDisabledExampleCommands] =
           ButtonDisabledExample.update(model.buttonDisabledExample, message);
@@ -7287,6 +7801,121 @@ export const update = (
           evo(model, { calendarBasicExample: () => calendarBasicExample }),
           Command.mapMessages(calendarBasicExampleCommands, (message) =>
             GotCalendarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarBasicExampleMessage: ({ message }) => {
+        const [shadcnCalendarBasicExample, shadcnCalendarBasicExampleCommands] =
+          ShadcnCalendarBasicExample.update(
+            model.shadcnCalendarBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnCalendarBasicExample: () => shadcnCalendarBasicExample,
+          }),
+          Command.mapMessages(shadcnCalendarBasicExampleCommands, (message) =>
+            GotShadcnCalendarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarBookedExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarBookedExample,
+          shadcnCalendarBookedExampleCommands,
+        ] = ShadcnCalendarBookedExample.update(
+          model.shadcnCalendarBookedExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarBookedExample: () => shadcnCalendarBookedExample,
+          }),
+          Command.mapMessages(shadcnCalendarBookedExampleCommands, (message) =>
+            GotShadcnCalendarBookedExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarDateOfBirthExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarDateOfBirthExample,
+          shadcnCalendarDateOfBirthExampleCommands,
+        ] = ShadcnCalendarDateOfBirthExample.update(
+          model.shadcnCalendarDateOfBirthExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarDateOfBirthExample: () =>
+              shadcnCalendarDateOfBirthExample,
+          }),
+          Command.mapMessages(
+            shadcnCalendarDateOfBirthExampleCommands,
+            (message) => GotShadcnCalendarDateOfBirthExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarMonthYearSelectorExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarMonthYearSelectorExample,
+          shadcnCalendarMonthYearSelectorExampleCommands,
+        ] = ShadcnCalendarMonthYearSelectorExample.update(
+          model.shadcnCalendarMonthYearSelectorExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarMonthYearSelectorExample: () =>
+              shadcnCalendarMonthYearSelectorExample,
+          }),
+          Command.mapMessages(
+            shadcnCalendarMonthYearSelectorExampleCommands,
+            (message) =>
+              GotShadcnCalendarMonthYearSelectorExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarPresetsExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarPresetsExample,
+          shadcnCalendarPresetsExampleCommands,
+        ] = ShadcnCalendarPresetsExample.update(
+          model.shadcnCalendarPresetsExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarPresetsExample: () => shadcnCalendarPresetsExample,
+          }),
+          Command.mapMessages(shadcnCalendarPresetsExampleCommands, (message) =>
+            GotShadcnCalendarPresetsExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarRtlExampleMessage: ({ message }) => {
+        const [shadcnCalendarRtlExample, shadcnCalendarRtlExampleCommands] =
+          ShadcnCalendarRtlExample.update(
+            model.shadcnCalendarRtlExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnCalendarRtlExample: () => shadcnCalendarRtlExample,
+          }),
+          Command.mapMessages(shadcnCalendarRtlExampleCommands, (message) =>
+            GotShadcnCalendarRtlExampleMessage({ message })
           ),
         ];
       },
@@ -7812,6 +8441,25 @@ export const update = (
         ];
       },
 
+      GotShadcnRadioGroupBasicExampleMessage: ({ message }) => {
+        const [
+          shadcnRadioGroupBasicExample,
+          shadcnRadioGroupBasicExampleCommands,
+        ] = ShadcnRadioGroupBasicExample.update(
+          model.shadcnRadioGroupBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnRadioGroupBasicExample: () => shadcnRadioGroupBasicExample,
+          }),
+          Command.mapMessages(shadcnRadioGroupBasicExampleCommands, (message) =>
+            GotShadcnRadioGroupBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotRadioGroupHorizontalExampleMessage: ({ message }) => {
         const [
           radioGroupHorizontalExample,
@@ -7845,6 +8493,23 @@ export const update = (
         ];
       },
 
+      GotShadcnSelectBasicExampleMessage: ({ message }) => {
+        const [shadcnSelectBasicExample, shadcnSelectBasicExampleCommands] =
+          ShadcnSelectBasicExample.update(
+            model.shadcnSelectBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnSelectBasicExample: () => shadcnSelectBasicExample,
+          }),
+          Command.mapMessages(shadcnSelectBasicExampleCommands, (message) =>
+            GotShadcnSelectBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSelectDisabledExampleMessage: ({ message }) => {
         const [selectDisabledExample, selectDisabledExampleCommands] =
           SelectDisabledExample.update(model.selectDisabledExample, message);
@@ -7867,6 +8532,23 @@ export const update = (
           evo(model, { sliderBasicExample: () => sliderBasicExample }),
           Command.mapMessages(sliderBasicExampleCommands, (message) =>
             GotSliderBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnSliderBasicExampleMessage: ({ message }) => {
+        const [shadcnSliderBasicExample, shadcnSliderBasicExampleCommands] =
+          ShadcnSliderBasicExample.update(
+            model.shadcnSliderBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnSliderBasicExample: () => shadcnSliderBasicExample,
+          }),
+          Command.mapMessages(shadcnSliderBasicExampleCommands, (message) =>
+            GotShadcnSliderBasicExampleMessage({ message })
           ),
         ];
       },
@@ -7897,6 +8579,23 @@ export const update = (
         ];
       },
 
+      GotShadcnSwitchBasicExampleMessage: ({ message }) => {
+        const [shadcnSwitchBasicExample, shadcnSwitchBasicExampleCommands] =
+          ShadcnSwitchBasicExample.update(
+            model.shadcnSwitchBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnSwitchBasicExample: () => shadcnSwitchBasicExample,
+          }),
+          Command.mapMessages(shadcnSwitchBasicExampleCommands, (message) =>
+            GotShadcnSwitchBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSwitchDisabledExampleMessage: ({ message }) => {
         const [switchDisabledExample, switchDisabledExampleCommands] =
           SwitchDisabledExample.update(model.switchDisabledExample, message);
@@ -7919,6 +8618,20 @@ export const update = (
           evo(model, { tabsBasicExample: () => tabsBasicExample }),
           Command.mapMessages(tabsBasicExampleCommands, (message) =>
             GotTabsBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnTabsBasicExampleMessage: ({ message }) => {
+        const [shadcnTabsBasicExample, shadcnTabsBasicExampleCommands] =
+          ShadcnTabsBasicExample.update(model.shadcnTabsBasicExample, message);
+
+        return [
+          evo(model, {
+            shadcnTabsBasicExample: () => shadcnTabsBasicExample,
+          }),
+          Command.mapMessages(shadcnTabsBasicExampleCommands, (message) =>
+            GotShadcnTabsBasicExampleMessage({ message })
           ),
         ];
       },

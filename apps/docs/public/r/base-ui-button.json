@@ -32,7 +32,7 @@
       "component": "Button",
       "primitive": "Ui.Button",
       "stateful": false,
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/button",
       "artifact": "component"
     }
   }

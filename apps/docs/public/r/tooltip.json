@@ -32,7 +32,7 @@
       "component": "Tooltip",
       "primitive": "Ui.Tooltip",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/tooltip",
       "artifact": "primitive-backed-component"
     }
   }

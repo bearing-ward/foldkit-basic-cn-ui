@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-popover-basic",
+  "type": "registry:example",
+  "title": "shadcn Popover Basic",
+  "description": "A runnable Foldkit example showing the shadcn Popover wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-popover"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-popover-basic/main.ts",
+      "target": "src/examples/shadcn-popover-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Popover from \"../../ui/shadcn-popover\";\n\nconst anchor = {\n  placement: \"bottom-start\" as const,\n  gap: 4,\n  padding: 8,\n};\n\n// MODEL\n\nexport const Model = S.Struct({\n  popover: Popover.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotPopoverMessage = m(\"GotPopoverMessage\", {\n  message: Popover.Message,\n});\n\nexport const Message = S.Union([GotPopoverMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [popover, popoverCommands] = Popover.init({ id: \"popover-basic\" });\n\n  return [\n    { popover },\n    Command.mapMessages(popoverCommands, (message) =>\n      GotPopoverMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotPopoverMessage: ({ message }) => {\n        const [popover, popoverCommands] = Popover.update(\n          model.popover,\n          message\n        );\n\n        return [\n          evo(model, { popover: () => popover }),\n          Command.mapMessages(popoverCommands, (message) =>\n            GotPopoverMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  const toPopoverMessage = (message: Popover.Message): Message =>\n    GotPopoverMessage({ message });\n\n  return h.submodel({\n    slotId: model.popover.id,\n    model: model.popover,\n    view: Popover.view,\n    viewInputs: {\n      anchor,\n      toView: (render) =>\n        Popover.root<Message>({\n          children: [\n            Popover.trigger<Message>({\n              render,\n              label: \"Open popover\",\n            }),\n            ...(render.isVisible\n              ? [\n                  Popover.backdrop<Message>({ render }),\n                  Popover.panel<Message>({\n                    render,\n                    children: [\n                      h.p(\n                        [h.Class(\"text-sm font-semibold text-gray-900\")],\n                        [\"Analytics\"]\n                      ),\n                      h.p(\n                        [h.Class(\"mt-2 text-sm text-gray-600\")],\n                        [\n                          \"Get a better understanding of where your traffic is coming from.\",\n                        ]\n                      ),\n                    ],\n                  }),\n                ]\n              : []),\n          ],\n        }),\n    },\n    toParentMessage: toPopoverMessage,\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-popover-basic/shadcn-popover-basic.scene.test.ts",
+      "target": "src/examples/shadcn-popover-basic/shadcn-popover-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Popover from \"../../ui/popover\";\nimport { GotPopoverMessage, init, update, view } from \"./main\";\n\nconst [initialModel] = init();\n\nconst AnchorPopover = Popover.AnchorPopover({\n  buttonId: \"popover-basic-button\",\n  anchor: {\n    placement: \"bottom-start\",\n    gap: 4,\n    padding: 8,\n  },\n});\n\nconst FocusButton = Popover.FocusButton({ id: \"popover-basic\" });\n\nconst resolvePopoverMounts = () =>\n  Scene.Mount.resolveAll(\n    [\n      Popover.PortalPopoverBackdrop,\n      Popover.CompletedPortalPopoverBackdrop(),\n      (message) => GotPopoverMessage({ message }),\n    ],\n    [\n      AnchorPopover,\n      Popover.CompletedAnchorPopover(),\n      (message) => GotPopoverMessage({ message }),\n    ]\n  );\n\ndescribe(\"shadcn-popover-basic example\", () => {\n  test(\"opens and closes through the backdrop\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"button\", { name: \"Open popover\" })).toExist(),\n      Scene.expect(Scene.text(\"Analytics\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Open popover\" })),\n      resolvePopoverMounts(),\n      Scene.expect(Scene.text(\"Analytics\")).toExist(),\n      Scene.expect(\n        Scene.text(\n          \"Get a better understanding of where your traffic is coming from.\"\n        )\n      ).toExist(),\n      Scene.click(Scene.testId(\"popover-backdrop\")),\n      Scene.Command.expectExact(FocusButton),\n      Scene.Command.resolve(\n        FocusButton,\n        Popover.CompletedFocusButton(),\n        (message) => GotPopoverMessage({ message })\n      ),\n      Scene.Mount.expectEnded(Popover.PortalPopoverBackdrop, AnchorPopover),\n      Scene.expect(Scene.text(\"Analytics\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Popover",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/popover"
+    }
+  }
+}

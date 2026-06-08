@@ -38,7 +38,7 @@
       "component": "Combobox",
       "primitive": "Ui.Combobox",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/combobox",
       "artifact": "primitive-backed-component"
     }
   }

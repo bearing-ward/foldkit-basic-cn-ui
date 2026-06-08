@@ -128,6 +128,27 @@ import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-are
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
+import * as ShadcnAccordionBasicExample from "../registry/default/examples/shadcn-accordion-basic/main";
+import * as ShadcnAccordionBordersExample from "../registry/default/examples/shadcn-accordion-borders/main";
+import * as ShadcnAccordionCardExample from "../registry/default/examples/shadcn-accordion-card/main";
+import * as ShadcnAccordionDisabledExample from "../registry/default/examples/shadcn-accordion-disabled/main";
+import * as ShadcnAccordionMultipleExample from "../registry/default/examples/shadcn-accordion-multiple/main";
+import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-accordion-rtl/main";
+import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
+import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
+import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
+import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
+import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
+import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
+import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
+import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
+import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-switch-basic/main";
+import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
@@ -159,6 +180,12 @@ import { GotMobileMenuDialogMessage } from "./ui/message";
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [accordionBasicExample] = AccordionBasicExample.init();
+const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
+const [shadcnAccordionBordersExample] = ShadcnAccordionBordersExample.init();
+const [shadcnAccordionCardExample] = ShadcnAccordionCardExample.init();
+const [shadcnAccordionDisabledExample] = ShadcnAccordionDisabledExample.init();
+const [shadcnAccordionMultipleExample] = ShadcnAccordionMultipleExample.init();
+const [shadcnAccordionRtlExample] = ShadcnAccordionRtlExample.init();
 const [accordionMultipleExample] = AccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
@@ -167,6 +194,7 @@ const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
 const [aspectRatioRtlExample] = AspectRatioRtlExample.init();
 const [alertDialogBasicExample] = AlertDialogBasicExample.init();
+const [shadcnAlertDialogBasicExample] = ShadcnAlertDialogBasicExample.init();
 const [drawerBasicExample] = DrawerBasicExample.init();
 const [contextMenuBasicExample] = ContextMenuBasicExample.init();
 const [menubarBasicExample] = MenubarBasicExample.init();
@@ -180,6 +208,8 @@ const [formBasicExample] = FormBasicExample.init();
 const [numberFieldBasicExample] = NumberFieldBasicExample.init();
 const [animationBasicExample] = AnimationBasicExample.init();
 const [avatarBasicExample] = AvatarBasicExample.init();
+const [shadcnAvatarBasicExample] = ShadcnAvatarBasicExample.init();
+const [shadcnAvatarDropdownExample] = ShadcnAvatarDropdownExample.init();
 const [badgeBasicExample] = BadgeBasicExample.init();
 const [badgeSpinnerExample] = BadgeSpinnerExample.init();
 const [carouselBasicExample] = CarouselBasicExample.init();
@@ -238,6 +268,7 @@ const [breadcrumbCollapsedExample] = BreadcrumbCollapsedExample.init();
 const [breadcrumbLinkExample] = BreadcrumbLinkExample.init();
 const [breadcrumbRtlExample] = BreadcrumbRtlExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
+const [shadcnButtonBasicExample] = ShadcnButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [buttonGroupBasicExample] = ButtonGroupBasicExample.init();
 const [buttonGroupOrientationExample] = ButtonGroupOrientationExample.init();
@@ -251,6 +282,14 @@ const [buttonGroupSelectExample] = ButtonGroupSelectExample.init();
 const [buttonGroupPopoverExample] = ButtonGroupPopoverExample.init();
 const [buttonGroupRtlExample] = ButtonGroupRtlExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
+const [shadcnCalendarBasicExample] = ShadcnCalendarBasicExample.init();
+const [shadcnCalendarBookedExample] = ShadcnCalendarBookedExample.init();
+const [shadcnCalendarDateOfBirthExample] =
+  ShadcnCalendarDateOfBirthExample.init();
+const [shadcnCalendarMonthYearSelectorExample] =
+  ShadcnCalendarMonthYearSelectorExample.init();
+const [shadcnCalendarPresetsExample] = ShadcnCalendarPresetsExample.init();
+const [shadcnCalendarRtlExample] = ShadcnCalendarRtlExample.init();
 const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [checkboxGroupBasicExample] = CheckboxGroupBasicExample.init();
@@ -289,14 +328,19 @@ const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [radioGroupBasicExample] = RadioGroupBasicExample.init();
+const [shadcnRadioGroupBasicExample] = ShadcnRadioGroupBasicExample.init();
 const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
+const [shadcnSelectBasicExample] = ShadcnSelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
 const [sliderBasicExample] = SliderBasicExample.init();
+const [shadcnSliderBasicExample] = ShadcnSliderBasicExample.init();
 const [sliderDisabledExample] = SliderDisabledExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
+const [shadcnSwitchBasicExample] = ShadcnSwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
 const [tabsBasicExample] = TabsBasicExample.init();
+const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
@@ -311,6 +355,12 @@ const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
   accordionBasicExample,
+  shadcnAccordionBasicExample,
+  shadcnAccordionBordersExample,
+  shadcnAccordionCardExample,
+  shadcnAccordionDisabledExample,
+  shadcnAccordionMultipleExample,
+  shadcnAccordionRtlExample,
   accordionMultipleExample,
   alertBasicExample,
   alertDestructiveExample,
@@ -319,6 +369,7 @@ const initialModel: Model = {
   aspectRatioPortraitExample,
   aspectRatioRtlExample,
   alertDialogBasicExample,
+  shadcnAlertDialogBasicExample,
   drawerBasicExample,
   contextMenuBasicExample,
   menubarBasicExample,
@@ -332,6 +383,8 @@ const initialModel: Model = {
   numberFieldBasicExample,
   animationBasicExample,
   avatarBasicExample,
+  shadcnAvatarBasicExample,
+  shadcnAvatarDropdownExample,
   badgeBasicExample,
   badgeSpinnerExample,
   carouselBasicExample,
@@ -375,6 +428,7 @@ const initialModel: Model = {
   breadcrumbLinkExample,
   breadcrumbRtlExample,
   buttonBasicExample,
+  shadcnButtonBasicExample,
   buttonDisabledExample,
   buttonGroupBasicExample,
   buttonGroupOrientationExample,
@@ -388,6 +442,12 @@ const initialModel: Model = {
   buttonGroupPopoverExample,
   buttonGroupRtlExample,
   calendarBasicExample,
+  shadcnCalendarBasicExample,
+  shadcnCalendarBookedExample,
+  shadcnCalendarDateOfBirthExample,
+  shadcnCalendarMonthYearSelectorExample,
+  shadcnCalendarPresetsExample,
+  shadcnCalendarRtlExample,
   calendarBoundsExample,
   checkboxBasicExample,
   checkboxGroupBasicExample,
@@ -441,14 +501,19 @@ const initialModel: Model = {
   popoverBasicExample,
   popoverAnimatedExample,
   radioGroupBasicExample,
+  shadcnRadioGroupBasicExample,
   radioGroupHorizontalExample,
   selectBasicExample,
+  shadcnSelectBasicExample,
   selectDisabledExample,
   sliderBasicExample,
+  shadcnSliderBasicExample,
   sliderDisabledExample,
   switchBasicExample,
+  shadcnSwitchBasicExample,
   switchDisabledExample,
   tabsBasicExample,
+  shadcnTabsBasicExample,
   tabsManualExample,
   textareaBasicExample,
   textareaDisabledExample,

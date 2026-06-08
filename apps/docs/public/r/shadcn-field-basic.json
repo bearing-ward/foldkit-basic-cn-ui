@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-field-basic",
+  "type": "registry:example",
+  "title": "shadcn Field Basic",
+  "description": "A runnable Foldkit example showing the shadcn Field wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-field"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-field-basic/main.ts",
+      "target": "src/examples/shadcn-field-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Field from \"../../ui/shadcn-field\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  name: S.String,\n  touched: S.Boolean,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedName = m(\"UpdatedName\", { value: S.String });\nexport const BlurredName = m(\"BlurredName\");\n\nexport const Message = S.Union([UpdatedName, BlurredName]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ name: \"\", touched: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedName: ({ value }) => [evo(model, { name: () => value }), []],\n      BlurredName: () => [evo(model, { touched: () => true }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const inputId = \"profile-name\";\n  const errorId = \"profile-name-error\";\n  const descriptionId = \"profile-name-description\";\n  const invalid = model.touched && model.name === \"\";\n\n  return Field.rootView<Message>({\n    name: \"name\",\n    required: true,\n    invalid,\n    touched: model.touched,\n    filled: model.name !== \"\",\n    children: [\n      Field.labelView<Message>({\n        forId: inputId,\n        children: [h.span([], [\"Name\"])],\n      }),\n      Field.controlView<Message>({\n        id: inputId,\n        ariaLabel: \"Name\",\n        name: \"name\",\n        value: model.name,\n        onInput: (value) => UpdatedName({ value }),\n        placeholder: \"Required\",\n        required: true,\n        invalid,\n        touched: model.touched,\n        filled: model.name !== \"\",\n        describedByIds: [errorId, descriptionId],\n      }),\n      Field.errorView<Message>({\n        id: errorId,\n        show: invalid,\n        children: [h.span([], [\"Please enter your name\"])],\n      }),\n      Field.descriptionView<Message>({\n        id: descriptionId,\n        children: [h.span([], [\"Visible on your profile\"])],\n      }),\n      h.button(\n        [\n          h.Type(\"button\"),\n          h.OnClick(BlurredName()),\n          h.Class(\n            \"mt-2 w-fit rounded-md border border-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50\"\n          ),\n        ],\n        [\"Validate\"]\n      ),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-field-basic/shadcn-field-basic.scene.test.ts",
+      "target": "src/examples/shadcn-field-basic/shadcn-field-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnFieldBasicExample from \"./main\";\n\ndescribe(\"Shadcn Field Basic example\", () => {\n  test(\"matches the Base UI default Name field example\", () => {\n    Scene.scene(\n      {\n        update: ShadcnFieldBasicExample.update,\n        view: ShadcnFieldBasicExample.view,\n      },\n      Scene.with(ShadcnFieldBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Name\" })).toHaveAttr(\n        \"placeholder\",\n        \"Required\"\n      ),\n      Scene.expect(Scene.text(\"Visible on your profile\")).toExist(),\n      Scene.expect(Scene.text(\"Please enter your name\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Validate\" })),\n      Scene.expect(Scene.text(\"Please enter your name\")).toExist(),\n      Scene.type(Scene.role(\"textbox\", { name: \"Name\" }), \"Ada Lovelace\"),\n      Scene.expect(Scene.text(\"Please enter your name\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Field",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/field"
+    }
+  }
+}

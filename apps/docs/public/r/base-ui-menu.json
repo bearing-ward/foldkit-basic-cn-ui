@@ -32,7 +32,7 @@
       "component": "Menu",
       "primitive": "Ui.Menu",
       "stateful": true,
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/menu",
       "artifact": "component"
     }
   }

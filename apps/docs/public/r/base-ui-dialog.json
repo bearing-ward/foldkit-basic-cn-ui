@@ -32,7 +32,7 @@
       "component": "Dialog",
       "primitive": "Ui.Dialog",
       "stateful": true,
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/dialog",
       "artifact": "component"
     }
   }

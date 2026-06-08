@@ -24,7 +24,8 @@
   "meta": {
     "foldkit": {
       "component": "Badge",
-      "example": "basic"
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/badge"
     }
   }
 }

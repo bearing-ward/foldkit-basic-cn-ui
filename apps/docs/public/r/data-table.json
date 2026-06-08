@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "DataTable",
       "stateful": true,
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/data-table",
       "artifact": "component"
     }
   }

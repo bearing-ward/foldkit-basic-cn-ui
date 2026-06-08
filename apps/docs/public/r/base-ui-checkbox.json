@@ -32,7 +32,7 @@
       "component": "Checkbox",
       "primitive": "Ui.Checkbox",
       "stateful": true,
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/checkbox",
       "artifact": "component"
     }
   }

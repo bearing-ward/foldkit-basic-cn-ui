@@ -24,7 +24,8 @@
   "meta": {
     "foldkit": {
       "component": "Chart",
-      "example": "legend"
+      "example": "legend",
+      "origin": "https://ui.shadcn.com/docs/components/chart"
     }
   }
 }

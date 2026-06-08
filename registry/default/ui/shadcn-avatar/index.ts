@@ -1,4 +1,5 @@
 export {
+  badgeView,
   countView,
   fallbackView,
   groupView,
@@ -8,6 +9,7 @@ export {
 } from "../avatar";
 export type {
   AvatarStyle,
+  BadgeViewConfig,
   CountConfig,
   FallbackViewConfig,
   ImageViewConfig,
@@ -17,6 +19,7 @@ export type {
 
 export {
   shadcnAvatarBaseClassName,
+  shadcnAvatarBadgeClassName,
   shadcnAvatarClassNameBySize,
   shadcnAvatarFallbackClassName,
   shadcnAvatarGroupClassName,

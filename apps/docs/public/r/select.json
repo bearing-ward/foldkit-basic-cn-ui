@@ -32,7 +32,7 @@
       "component": "Select",
       "primitive": "Ui.Select",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/select",
       "artifact": "primitive-backed-component"
     }
   }

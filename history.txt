@@ -1,0 +1,12 @@
+#V2
+INFO FOR DB;
+SELECT count() AS total FROM session GROUP ALL;
+SELECT count() AS total FROM turn GROUP ALL;
+SELECT count() AS total FROM skill GROUP ALL;
+SELECT count() AS total FROM invoked GROUP ALL;
+SELECT source, count() AS sessions FROM session GROUP BY source ORDER BY sessions DESC;
+SELECT * FROM tool_call LIMIT 1;
+SELECT out, count() AS invocations FROM invoked GROUP BY out ORDER BY invocations DESC LIMIT 20;
+SELECT name, count() AS calls FROM tool_call GROUP BY name ORDER BY calls DESC LIMIT 15;
+SELECT status, count() AS skills FROM skill GROUP BY status ORDER BY skills DESC;
+SELECT name, source, scope, fired, status FROM skill WHERE status != 'live' ORDER BY status, fired DESC LIMIT 50;

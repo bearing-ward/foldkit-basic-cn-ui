@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Kbd",
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/kbd",
       "artifact": "component",
       "stateful": false
     }

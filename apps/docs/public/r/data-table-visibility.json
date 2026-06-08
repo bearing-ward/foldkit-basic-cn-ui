@@ -24,7 +24,8 @@
   "meta": {
     "foldkit": {
       "component": "DataTable",
-      "example": "visibility"
+      "example": "visibility",
+      "origin": "https://ui.shadcn.com/docs/components/data-table"
     }
   }
 }

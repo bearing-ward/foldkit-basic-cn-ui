@@ -32,7 +32,7 @@
       "component": "Input",
       "primitive": "Ui.Input",
       "stateful": false,
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/input",
       "artifact": "component"
     }
   }

@@ -32,7 +32,7 @@
       "component": "Fieldset",
       "primitive": "Ui.Fieldset",
       "stateful": false,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/fieldset",
       "artifact": "primitive-backed-component"
     }
   }

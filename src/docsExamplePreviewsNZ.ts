@@ -18,6 +18,11 @@ import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-are
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
+import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
+import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
+import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
+import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-switch-basic/main";
+import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
@@ -268,6 +273,21 @@ export const switchBasicExamplePreview = (
   });
 };
 
+export const shadcnSwitchBasicExamplePreview = (
+  model: ShadcnSwitchBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnSwitchBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnSwitchBasicExampleMessage({ message }),
+  });
+};
+
 export const switchDisabledExamplePreview = (
   model: SwitchDisabledExample.Model,
   slotId: string
@@ -298,6 +318,21 @@ export const sliderBasicExamplePreview = (
   });
 };
 
+export const shadcnSliderBasicExamplePreview = (
+  model: ShadcnSliderBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnSliderBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnSliderBasicExampleMessage({ message }),
+  });
+};
+
 export const sliderDisabledExamplePreview = (
   model: SliderDisabledExample.Model,
   slotId: string
@@ -324,6 +359,21 @@ export const tabsBasicExamplePreview = (
     model,
     view: TabsBasicExample.view,
     toParentMessage: (message) => Main.GotTabsBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnTabsBasicExamplePreview = (
+  model: ShadcnTabsBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnTabsBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnTabsBasicExampleMessage({ message }),
   });
 };
 
@@ -446,6 +496,21 @@ export const radioGroupBasicExamplePreview = (
   });
 };
 
+export const shadcnRadioGroupBasicExamplePreview = (
+  model: ShadcnRadioGroupBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnRadioGroupBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnRadioGroupBasicExampleMessage({ message }),
+  });
+};
+
 export const radioGroupHorizontalExamplePreview = (
   model: RadioGroupHorizontalExample.Model,
   slotId: string
@@ -473,6 +538,21 @@ export const selectBasicExamplePreview = (
     view: SelectBasicExample.view,
     toParentMessage: (message) =>
       Main.GotSelectBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnSelectBasicExamplePreview = (
+  model: ShadcnSelectBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnSelectBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnSelectBasicExampleMessage({ message }),
   });
 };
 

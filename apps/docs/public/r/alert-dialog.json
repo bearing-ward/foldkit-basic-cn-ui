@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "AlertDialog",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/alert-dialog",
       "artifact": "component",
       "stateful": true
     }

@@ -27,7 +27,7 @@
     "meta": {
       "foldkit": {
         "component": "Accordion",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/accordion",
         "artifact": "component",
         "stateful": true
       }
@@ -61,7 +61,7 @@
     "meta": {
       "foldkit": {
         "component": "Alert",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/alert",
         "artifact": "component",
         "stateful": false
       }
@@ -95,7 +95,7 @@
     "meta": {
       "foldkit": {
         "component": "AlertDialog",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/alert-dialog",
         "artifact": "component",
         "stateful": true
       }
@@ -131,7 +131,7 @@
         "component": "Animation",
         "primitive": "Ui.Animation",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/animation",
         "artifact": "primitive-backed-component"
       }
     }
@@ -164,7 +164,7 @@
     "meta": {
       "foldkit": {
         "component": "AspectRatio",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio",
         "artifact": "component",
         "stateful": false
       }
@@ -198,7 +198,7 @@
     "meta": {
       "foldkit": {
         "component": "Autocomplete",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/autocomplete",
         "artifact": "component",
         "stateful": true
       }
@@ -232,7 +232,7 @@
     "meta": {
       "foldkit": {
         "component": "Avatar",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/avatar",
         "artifact": "component",
         "stateful": true
       }
@@ -267,7 +267,7 @@
       "foldkit": {
         "component": "Badge",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/badge",
         "artifact": "component"
       }
     }
@@ -302,7 +302,7 @@
         "component": "Button",
         "primitive": "Ui.Button",
         "stateful": false,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/button",
         "artifact": "component"
       }
     }
@@ -337,7 +337,7 @@
         "component": "Checkbox",
         "primitive": "Ui.Checkbox",
         "stateful": true,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/checkbox",
         "artifact": "component"
       }
     }
@@ -372,7 +372,7 @@
         "component": "Combobox",
         "primitive": "Ui.Combobox",
         "stateful": true,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/combobox",
         "artifact": "component"
       }
     }
@@ -407,7 +407,7 @@
         "component": "Dialog",
         "primitive": "Ui.Dialog",
         "stateful": true,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/dialog",
         "artifact": "component"
       }
     }
@@ -442,7 +442,7 @@
         "component": "Fieldset",
         "primitive": "Ui.Fieldset",
         "stateful": false,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/fieldset",
         "artifact": "component"
       }
     }
@@ -477,7 +477,7 @@
         "component": "Input",
         "primitive": "Ui.Input",
         "stateful": false,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/input",
         "artifact": "component"
       }
     }
@@ -512,7 +512,7 @@
         "component": "Menu",
         "primitive": "Ui.Menu",
         "stateful": true,
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/menu",
         "artifact": "component"
       }
     }
@@ -544,7 +544,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/popover",
         "artifact": "component",
         "primitive": "Ui.Popover",
         "stateful": true
@@ -578,7 +578,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/radio",
         "artifact": "component",
         "primitive": "Ui.RadioGroup",
         "stateful": true
@@ -612,7 +612,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/select",
         "artifact": "component",
         "primitive": "Ui.Select",
         "stateful": false
@@ -646,7 +646,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/slider",
         "artifact": "component",
         "primitive": "Ui.Slider",
         "stateful": true
@@ -680,7 +680,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/switch",
         "artifact": "component",
         "primitive": "Ui.Switch",
         "stateful": true
@@ -714,7 +714,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/tabs",
         "artifact": "component",
         "primitive": "Ui.Tabs",
         "stateful": true
@@ -748,7 +748,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/toast",
         "artifact": "component",
         "primitive": "Ui.Toast",
         "stateful": true
@@ -782,7 +782,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/tooltip",
         "artifact": "component",
         "primitive": "Ui.Tooltip",
         "stateful": true
@@ -817,7 +817,7 @@
     "meta": {
       "foldkit": {
         "component": "Breadcrumb",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb",
         "artifact": "component",
         "stateful": false
       }
@@ -853,7 +853,7 @@
         "component": "Button",
         "primitive": "Ui.Button",
         "stateful": false,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/button",
         "artifact": "primitive-backed-component"
       }
     }
@@ -886,7 +886,7 @@
     "meta": {
       "foldkit": {
         "component": "ButtonGroup",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/button-group",
         "artifact": "component",
         "stateful": false
       }
@@ -922,7 +922,7 @@
         "component": "Calendar",
         "primitive": "Ui.Calendar",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/calendar",
         "artifact": "primitive-backed-component"
       }
     }
@@ -955,7 +955,7 @@
     "meta": {
       "foldkit": {
         "component": "Card",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/card",
         "artifact": "component",
         "stateful": false
       }
@@ -989,7 +989,7 @@
     "meta": {
       "foldkit": {
         "component": "Carousel",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/carousel",
         "artifact": "component",
         "stateful": false
       }
@@ -1024,7 +1024,7 @@
       "foldkit": {
         "component": "Chart",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/chart",
         "artifact": "component"
       }
     }
@@ -1059,7 +1059,7 @@
         "component": "Checkbox",
         "primitive": "Ui.Checkbox",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/checkbox",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1092,7 +1092,7 @@
     "meta": {
       "foldkit": {
         "component": "CheckboxGroup",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/checkbox-group",
         "artifact": "component",
         "stateful": true
       }
@@ -1126,7 +1126,7 @@
     "meta": {
       "foldkit": {
         "component": "Collapsible",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/collapsible",
         "artifact": "component",
         "stateful": true
       }
@@ -1167,7 +1167,7 @@
         "component": "Combobox",
         "primitive": "Ui.Combobox",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/combobox",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1201,7 +1201,7 @@
       "foldkit": {
         "component": "Command",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/command",
         "artifact": "component"
       }
     }
@@ -1234,7 +1234,7 @@
     "meta": {
       "foldkit": {
         "component": "ContextMenu",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/context-menu",
         "artifact": "component",
         "stateful": true
       }
@@ -1269,7 +1269,7 @@
       "foldkit": {
         "component": "DataTable",
         "stateful": true,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/data-table",
         "artifact": "component"
       }
     }
@@ -1304,7 +1304,7 @@
         "component": "DatePicker",
         "primitive": "Ui.DatePicker",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/date-picker",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1344,7 +1344,7 @@
         "component": "Dialog",
         "primitive": "Ui.Dialog",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/dialog",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1378,7 +1378,7 @@
       "foldkit": {
         "component": "Direction",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/direction",
         "artifact": "component"
       }
     }
@@ -1413,7 +1413,7 @@
         "component": "Disclosure",
         "primitive": "Ui.Disclosure",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/disclosure",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1448,7 +1448,7 @@
         "component": "DragAndDrop",
         "primitive": "Ui.DragAndDrop",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/drag-and-drop",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1481,7 +1481,7 @@
     "meta": {
       "foldkit": {
         "component": "Drawer",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/drawer",
         "artifact": "component",
         "stateful": true
       }
@@ -1516,7 +1516,7 @@
       "foldkit": {
         "component": "DropdownMenu",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/dropdown-menu",
         "artifact": "component"
       }
     }
@@ -1549,7 +1549,7 @@
     "meta": {
       "foldkit": {
         "component": "Empty",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/empty",
         "artifact": "component",
         "stateful": false
       }
@@ -1583,7 +1583,7 @@
     "meta": {
       "foldkit": {
         "component": "Field",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/field",
         "artifact": "component",
         "stateful": true
       }
@@ -1619,7 +1619,7 @@
         "component": "Fieldset",
         "primitive": "Ui.Fieldset",
         "stateful": false,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/fieldset",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1654,7 +1654,7 @@
         "component": "FileDrop",
         "primitive": "Ui.FileDrop",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/file-drop",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1687,7 +1687,7 @@
     "meta": {
       "foldkit": {
         "component": "Form",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/form",
         "artifact": "component",
         "stateful": true
       }
@@ -1722,7 +1722,7 @@
       "foldkit": {
         "component": "HoverCard",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/hover-card",
         "artifact": "component"
       }
     }
@@ -1757,7 +1757,7 @@
         "component": "Input",
         "primitive": "Ui.Input",
         "stateful": false,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/input",
         "artifact": "primitive-backed-component"
       }
     }
@@ -1790,7 +1790,7 @@
     "meta": {
       "foldkit": {
         "component": "InputGroup",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/input-group",
         "artifact": "component",
         "stateful": false
       }
@@ -1825,7 +1825,7 @@
       "foldkit": {
         "component": "InputOtp",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/input-otp",
         "artifact": "component"
       }
     }
@@ -1859,7 +1859,7 @@
       "foldkit": {
         "component": "Item",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/item",
         "artifact": "component"
       }
     }
@@ -1892,7 +1892,7 @@
     "meta": {
       "foldkit": {
         "component": "Kbd",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/kbd",
         "artifact": "component",
         "stateful": false
       }
@@ -1927,7 +1927,7 @@
       "foldkit": {
         "component": "Label",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/label",
         "artifact": "component"
       }
     }
@@ -1967,7 +1967,7 @@
         "component": "Listbox",
         "primitive": "Ui.Listbox",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/listbox",
         "artifact": "primitive-backed-component"
       }
     }
@@ -2007,7 +2007,7 @@
         "component": "Menu",
         "primitive": "Ui.Menu",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/menu",
         "artifact": "primitive-backed-component"
       }
     }
@@ -2040,7 +2040,7 @@
     "meta": {
       "foldkit": {
         "component": "Menubar",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/menubar",
         "artifact": "component",
         "stateful": false
       }
@@ -2074,7 +2074,7 @@
     "meta": {
       "foldkit": {
         "component": "Meter",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/meter",
         "artifact": "component",
         "stateful": false
       }
@@ -2109,7 +2109,7 @@
       "foldkit": {
         "component": "NativeSelect",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/native-select",
         "artifact": "component"
       }
     }
@@ -2142,7 +2142,7 @@
     "meta": {
       "foldkit": {
         "component": "NavigationMenu",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/navigation-menu",
         "artifact": "component",
         "stateful": true
       }
@@ -2176,7 +2176,7 @@
     "meta": {
       "foldkit": {
         "component": "NumberField",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/number-field",
         "artifact": "component",
         "stateful": true
       }
@@ -2210,7 +2210,7 @@
     "meta": {
       "foldkit": {
         "component": "OtpField",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/otp-field",
         "artifact": "component",
         "stateful": true
       }
@@ -2245,7 +2245,7 @@
       "foldkit": {
         "component": "Pagination",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/pagination",
         "artifact": "component"
       }
     }
@@ -2285,7 +2285,7 @@
         "component": "Popover",
         "primitive": "Ui.Popover",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/popover",
         "artifact": "primitive-backed-component"
       }
     }
@@ -2318,7 +2318,7 @@
     "meta": {
       "foldkit": {
         "component": "PreviewCard",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/preview-card",
         "artifact": "component",
         "stateful": true
       }
@@ -2352,7 +2352,7 @@
     "meta": {
       "foldkit": {
         "component": "Progress",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/progress",
         "artifact": "component",
         "stateful": false
       }
@@ -2386,7 +2386,7 @@
     "meta": {
       "foldkit": {
         "component": "Radio",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/radio",
         "artifact": "component",
         "stateful": true
       }
@@ -2422,7 +2422,7 @@
         "component": "RadioGroup",
         "primitive": "Ui.RadioGroup",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/radio-group",
         "artifact": "primitive-backed-component"
       }
     }
@@ -2456,7 +2456,7 @@
       "foldkit": {
         "component": "Resizable",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/resizable",
         "artifact": "component"
       }
     }
@@ -2489,7 +2489,7 @@
     "meta": {
       "foldkit": {
         "component": "ScrollArea",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/scroll-area",
         "artifact": "component",
         "stateful": false
       }
@@ -2525,7 +2525,7 @@
         "component": "Select",
         "primitive": "Ui.Select",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/select",
         "artifact": "primitive-backed-component"
       }
     }
@@ -2558,7 +2558,7 @@
     "meta": {
       "foldkit": {
         "component": "Separator",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/separator",
         "artifact": "component",
         "stateful": false
       }
@@ -2591,7 +2591,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion",
         "artifact": "component",
         "stateful": false
       }
@@ -2624,7 +2624,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/alert-dialog",
         "artifact": "component",
         "stateful": false
       }
@@ -2657,7 +2657,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar",
         "artifact": "component",
         "stateful": false
       }
@@ -2690,7 +2690,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/button",
         "artifact": "component",
         "primitive": "Ui.Button",
         "stateful": false
@@ -2724,7 +2724,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar",
         "artifact": "component",
         "primitive": "Ui.Calendar",
         "stateful": true
@@ -2758,7 +2758,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/checkbox",
         "artifact": "component",
         "primitive": "Ui.Checkbox",
         "stateful": true
@@ -2792,7 +2792,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/collapsible",
         "artifact": "component",
         "stateful": false
       }
@@ -2825,7 +2825,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/combobox",
         "artifact": "component",
         "primitive": "Ui.Combobox",
         "stateful": true
@@ -2859,7 +2859,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/context-menu",
         "artifact": "component",
         "stateful": false
       }
@@ -2892,7 +2892,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/date-picker",
         "artifact": "component",
         "primitive": "Ui.DatePicker",
         "stateful": true
@@ -2926,7 +2926,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/dialog",
         "artifact": "component",
         "primitive": "Ui.Dialog",
         "stateful": true
@@ -2960,7 +2960,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/drawer",
         "artifact": "component",
         "stateful": false
       }
@@ -2993,7 +2993,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/field",
         "artifact": "component",
         "stateful": false
       }
@@ -3026,7 +3026,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/input",
         "artifact": "component",
         "primitive": "Ui.Input",
         "stateful": false
@@ -3060,7 +3060,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/menubar",
         "artifact": "component",
         "stateful": false
       }
@@ -3093,7 +3093,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/navigation-menu",
         "artifact": "component",
         "stateful": false
       }
@@ -3126,7 +3126,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/popover",
         "artifact": "component",
         "primitive": "Ui.Popover",
         "stateful": true
@@ -3160,7 +3160,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/progress",
         "artifact": "component",
         "stateful": false
       }
@@ -3193,7 +3193,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/radio",
         "artifact": "component",
         "primitive": "Ui.RadioGroup",
         "stateful": true
@@ -3227,7 +3227,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/scroll-area",
         "artifact": "component",
         "stateful": false
       }
@@ -3260,7 +3260,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/select",
         "artifact": "component",
         "primitive": "Ui.Select",
         "stateful": false
@@ -3294,7 +3294,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/separator",
         "artifact": "component",
         "stateful": false
       }
@@ -3327,7 +3327,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/slider",
         "artifact": "component",
         "primitive": "Ui.Slider",
         "stateful": true
@@ -3361,7 +3361,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/switch",
         "artifact": "component",
         "primitive": "Ui.Switch",
         "stateful": true
@@ -3395,7 +3395,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/tabs",
         "artifact": "component",
         "primitive": "Ui.Tabs",
         "stateful": true
@@ -3429,7 +3429,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/textarea",
         "artifact": "component",
         "primitive": "Ui.Textarea",
         "stateful": false
@@ -3463,7 +3463,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/toast",
         "artifact": "component",
         "primitive": "Ui.Toast",
         "stateful": true
@@ -3499,7 +3499,7 @@
       "foldkit": {
         "component": "Sheet",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/sheet",
         "artifact": "component"
       }
     }
@@ -3533,7 +3533,7 @@
       "foldkit": {
         "component": "Sidebar",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/sidebar",
         "artifact": "component"
       }
     }
@@ -3566,7 +3566,7 @@
     "meta": {
       "foldkit": {
         "component": "Skeleton",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/skeleton",
         "artifact": "component",
         "stateful": false
       }
@@ -3602,7 +3602,7 @@
         "component": "Slider",
         "primitive": "Ui.Slider",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/slider",
         "artifact": "primitive-backed-component"
       }
     }
@@ -3636,7 +3636,7 @@
       "foldkit": {
         "component": "Sonner",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/sonner",
         "artifact": "component"
       }
     }
@@ -3669,7 +3669,7 @@
     "meta": {
       "foldkit": {
         "component": "Spinner",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/spinner",
         "artifact": "component",
         "stateful": false
       }
@@ -3705,7 +3705,7 @@
         "component": "Switch",
         "primitive": "Ui.Switch",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/switch",
         "artifact": "primitive-backed-component"
       }
     }
@@ -3739,7 +3739,7 @@
       "foldkit": {
         "component": "Table",
         "stateful": false,
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/table",
         "artifact": "component"
       }
     }
@@ -3774,7 +3774,7 @@
         "component": "Tabs",
         "primitive": "Ui.Tabs",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/tabs",
         "artifact": "primitive-backed-component"
       }
     }
@@ -3809,7 +3809,7 @@
         "component": "Textarea",
         "primitive": "Ui.Textarea",
         "stateful": false,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/textarea",
         "artifact": "primitive-backed-component"
       }
     }
@@ -3844,7 +3844,7 @@
         "component": "Toast",
         "primitive": "Ui.Toast",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/toast",
         "artifact": "primitive-backed-component"
       }
     }
@@ -3877,7 +3877,7 @@
     "meta": {
       "foldkit": {
         "component": "Toggle",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/toggle",
         "artifact": "component",
         "stateful": true
       }
@@ -3911,7 +3911,7 @@
     "meta": {
       "foldkit": {
         "component": "ToggleGroup",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/toggle-group",
         "artifact": "component",
         "stateful": true
       }
@@ -3945,7 +3945,7 @@
     "meta": {
       "foldkit": {
         "component": "Toolbar",
-        "origin": "base-ui",
+        "origin": "https://base-ui.com/react/components/toolbar",
         "artifact": "component",
         "stateful": true
       }
@@ -3981,7 +3981,7 @@
         "component": "Tooltip",
         "primitive": "Ui.Tooltip",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/tooltip",
         "artifact": "primitive-backed-component"
       }
     }
@@ -4014,7 +4014,7 @@
     "meta": {
       "foldkit": {
         "component": "Typography",
-        "origin": "shadcn",
+        "origin": "https://ui.shadcn.com/docs/components/typography",
         "artifact": "component",
         "stateful": false
       }
@@ -4050,7 +4050,7 @@
         "component": "VirtualList",
         "primitive": "Ui.VirtualList",
         "stateful": true,
-        "origin": "foldkit",
+        "origin": "https://foldkit.dev/ui/virtual-list",
         "artifact": "primitive-backed-component"
       }
     }
@@ -4165,7 +4165,8 @@
       "foldkit": {
         "component": "Alert",
         "example": "basic",
-        "originExample": "alert-default"
+        "originExample": "alert-default",
+        "origin": "https://ui.shadcn.com/docs/components/alert"
       }
     }
   },
@@ -4203,7 +4204,8 @@
       "foldkit": {
         "component": "Alert",
         "example": "destructive",
-        "originExample": "alert-destructive"
+        "originExample": "alert-destructive",
+        "origin": "https://ui.shadcn.com/docs/components/alert"
       }
     }
   },
@@ -4306,7 +4308,8 @@
       "foldkit": {
         "component": "AspectRatio",
         "example": "basic",
-        "originExample": "aspect-ratio-default"
+        "originExample": "aspect-ratio-default",
+        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
       }
     }
   },
@@ -4344,7 +4347,8 @@
       "foldkit": {
         "component": "AspectRatio",
         "example": "portrait",
-        "originExample": "aspect-ratio-portrait"
+        "originExample": "aspect-ratio-portrait",
+        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
       }
     }
   },
@@ -4382,7 +4386,8 @@
       "foldkit": {
         "component": "AspectRatio",
         "example": "rtl",
-        "originExample": "aspect-ratio-rtl"
+        "originExample": "aspect-ratio-rtl",
+        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
       }
     }
   },
@@ -4420,7 +4425,8 @@
       "foldkit": {
         "component": "AspectRatio",
         "example": "square",
-        "originExample": "aspect-ratio-square"
+        "originExample": "aspect-ratio-square",
+        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
       }
     }
   },
@@ -4523,7 +4529,8 @@
     "meta": {
       "foldkit": {
         "component": "Badge",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/badge"
       }
     }
   },
@@ -4551,7 +4558,8 @@
       "foldkit": {
         "component": "Badge",
         "example": "spinner",
-        "originExample": "badge-spinner"
+        "originExample": "badge-spinner",
+        "origin": "https://ui.shadcn.com/docs/components/badge"
       }
     }
   },
@@ -4589,7 +4597,8 @@
       "foldkit": {
         "component": "Breadcrumb",
         "example": "basic",
-        "originExample": "breadcrumb-basic"
+        "originExample": "breadcrumb-basic",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
       }
     }
   },
@@ -4627,7 +4636,8 @@
       "foldkit": {
         "component": "Breadcrumb",
         "example": "collapsed",
-        "originExample": "breadcrumb-collapsed"
+        "originExample": "breadcrumb-collapsed",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
       }
     }
   },
@@ -4665,7 +4675,8 @@
       "foldkit": {
         "component": "Breadcrumb",
         "example": "dropdown",
-        "originExample": "breadcrumb-dropdown"
+        "originExample": "breadcrumb-dropdown",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
       }
     }
   },
@@ -4703,7 +4714,8 @@
       "foldkit": {
         "component": "Breadcrumb",
         "example": "link",
-        "originExample": "breadcrumb-link"
+        "originExample": "breadcrumb-link",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
       }
     }
   },
@@ -4741,7 +4753,8 @@
       "foldkit": {
         "component": "Breadcrumb",
         "example": "rtl",
-        "originExample": "breadcrumb-rtl"
+        "originExample": "breadcrumb-rtl",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
       }
     }
   },
@@ -4779,7 +4792,8 @@
       "foldkit": {
         "component": "Breadcrumb",
         "example": "separator",
-        "originExample": "breadcrumb-separator"
+        "originExample": "breadcrumb-separator",
+        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
       }
     }
   },
@@ -4861,7 +4875,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -4889,7 +4903,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "input",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -4917,7 +4931,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "input-group",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -4945,7 +4959,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "nested",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -4973,7 +4987,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "orientation",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5001,7 +5015,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "popover",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5029,7 +5043,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "rtl",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5057,7 +5071,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "select",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5085,7 +5099,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "separator",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5113,7 +5127,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "size",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5141,7 +5155,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "split",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button-group"
       }
     }
   },
@@ -5222,7 +5236,8 @@
     "meta": {
       "foldkit": {
         "component": "Card",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/card"
       }
     }
   },
@@ -5250,7 +5265,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "api",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/carousel"
       }
     }
   },
@@ -5278,7 +5293,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/carousel"
       }
     }
   },
@@ -5306,7 +5321,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "orientation",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/carousel"
       }
     }
   },
@@ -5334,7 +5349,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "rtl",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/carousel"
       }
     }
   },
@@ -5362,7 +5377,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "sizes",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/carousel"
       }
     }
   },
@@ -5390,7 +5405,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "spacing",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/carousel"
       }
     }
   },
@@ -5417,7 +5432,8 @@
     "meta": {
       "foldkit": {
         "component": "Chart",
-        "example": "axis"
+        "example": "axis",
+        "origin": "https://ui.shadcn.com/docs/components/chart"
       }
     }
   },
@@ -5444,7 +5460,8 @@
     "meta": {
       "foldkit": {
         "component": "Chart",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/chart"
       }
     }
   },
@@ -5471,7 +5488,8 @@
     "meta": {
       "foldkit": {
         "component": "Chart",
-        "example": "grid"
+        "example": "grid",
+        "origin": "https://ui.shadcn.com/docs/components/chart"
       }
     }
   },
@@ -5498,7 +5516,8 @@
     "meta": {
       "foldkit": {
         "component": "Chart",
-        "example": "legend"
+        "example": "legend",
+        "origin": "https://ui.shadcn.com/docs/components/chart"
       }
     }
   },
@@ -5525,7 +5544,8 @@
     "meta": {
       "foldkit": {
         "component": "Chart",
-        "example": "rtl"
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/chart"
       }
     }
   },
@@ -5552,7 +5572,8 @@
     "meta": {
       "foldkit": {
         "component": "Chart",
-        "example": "tooltip"
+        "example": "tooltip",
+        "origin": "https://ui.shadcn.com/docs/components/chart"
       }
     }
   },
@@ -5763,7 +5784,8 @@
     "meta": {
       "foldkit": {
         "component": "Command",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/command"
       }
     }
   },
@@ -5828,7 +5850,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -5855,7 +5878,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "filtering"
+        "example": "filtering",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -5882,7 +5906,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "pagination"
+        "example": "pagination",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -5909,7 +5934,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "row-actions"
+        "example": "row-actions",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -5936,7 +5962,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "row-selection"
+        "example": "row-selection",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -5963,7 +5990,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "sorting"
+        "example": "sorting",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -5990,7 +6018,8 @@
     "meta": {
       "foldkit": {
         "component": "DataTable",
-        "example": "visibility"
+        "example": "visibility",
+        "origin": "https://ui.shadcn.com/docs/components/data-table"
       }
     }
   },
@@ -6206,7 +6235,8 @@
     "meta": {
       "foldkit": {
         "component": "Direction",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/direction"
       }
     }
   },
@@ -6379,7 +6409,8 @@
     "meta": {
       "foldkit": {
         "component": "DropdownMenu",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/dropdown-menu"
       }
     }
   },
@@ -6406,7 +6437,8 @@
     "meta": {
       "foldkit": {
         "component": "Empty",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/empty"
       }
     }
   },
@@ -6434,7 +6466,8 @@
       "foldkit": {
         "component": "Empty",
         "example": "input-group",
-        "originExample": "empty-input-group"
+        "originExample": "empty-input-group",
+        "origin": "https://ui.shadcn.com/docs/components/empty"
       }
     }
   },
@@ -6645,7 +6678,8 @@
     "meta": {
       "foldkit": {
         "component": "HoverCard",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/hover-card"
       }
     }
   },
@@ -6704,6 +6738,34 @@
     }
   },
   {
+    "name": "input-group-basic",
+    "type": "registry:example",
+    "title": "Input Group Basic",
+    "description": "A runnable Foldkit example showing Input Group.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-basic/main.ts",
+        "target": "src/examples/input-group-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-basic/input-group-basic.scene.test.ts",
+        "target": "src/examples/input-group-basic/input-group-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/input-group"
+      }
+    }
+  },
+  {
     "name": "input-otp-basic",
     "type": "registry:example",
     "title": "Input OTP Basic",
@@ -6726,7 +6788,8 @@
     "meta": {
       "foldkit": {
         "component": "InputOtp",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/input-otp"
       }
     }
   },
@@ -6753,7 +6816,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "avatar"
+        "example": "avatar",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6780,7 +6844,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6807,7 +6872,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "group"
+        "example": "group",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6834,7 +6900,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "header"
+        "example": "header",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6861,7 +6928,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "icon"
+        "example": "icon",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6888,7 +6956,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "image"
+        "example": "image",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6915,7 +6984,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "link"
+        "example": "link",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6942,7 +7012,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "rtl"
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6969,7 +7040,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "size"
+        "example": "size",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -6996,7 +7068,8 @@
     "meta": {
       "foldkit": {
         "component": "Item",
-        "example": "variant"
+        "example": "variant",
+        "origin": "https://ui.shadcn.com/docs/components/item"
       }
     }
   },
@@ -7023,7 +7096,8 @@
     "meta": {
       "foldkit": {
         "component": "Kbd",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/kbd"
       }
     }
   },
@@ -7051,7 +7125,8 @@
       "foldkit": {
         "component": "Kbd",
         "example": "input-group",
-        "originExample": "kbd-input-group"
+        "originExample": "kbd-input-group",
+        "origin": "https://ui.shadcn.com/docs/components/input-group"
       }
     }
   },
@@ -7078,7 +7153,8 @@
     "meta": {
       "foldkit": {
         "component": "Label",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/label"
       }
     }
   },
@@ -7289,7 +7365,8 @@
     "meta": {
       "foldkit": {
         "component": "NativeSelect",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/native-select"
       }
     }
   },
@@ -7430,7 +7507,8 @@
     "meta": {
       "foldkit": {
         "component": "Pagination",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/pagination"
       }
     }
   },
@@ -7679,7 +7757,8 @@
     "meta": {
       "foldkit": {
         "component": "Resizable",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/resizable"
       }
     }
   },
@@ -7836,9 +7915,149 @@
       "foldkit": {
         "component": "Accordion",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion"
       }
     }
+  },
+  {
+    "name": "shadcn-accordion-borders",
+    "type": "registry:example",
+    "title": "shadcn Accordion Borders",
+    "description": "A Foldkit shadcn Accordion borders example.",
+    "registryDependencies": ["shadcn-accordion"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-accordion",
+        "example": "Borders",
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-accordion-borders/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-borders/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-accordion-borders/shadcn-accordion-borders.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-borders/shadcn-accordion-borders.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-accordion-card",
+    "type": "registry:example",
+    "title": "shadcn Accordion Card",
+    "description": "A Foldkit shadcn Accordion card example.",
+    "registryDependencies": ["shadcn-accordion"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-accordion",
+        "example": "Card",
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-accordion-card/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-card/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-accordion-card/shadcn-accordion-card.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-card/shadcn-accordion-card.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-accordion-disabled",
+    "type": "registry:example",
+    "title": "shadcn Accordion Disabled",
+    "description": "A Foldkit shadcn Accordion disabled example.",
+    "registryDependencies": ["shadcn-accordion"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-accordion",
+        "example": "Disabled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-accordion-disabled/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-disabled/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-accordion-disabled/shadcn-accordion-disabled.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-disabled/shadcn-accordion-disabled.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-accordion-multiple",
+    "type": "registry:example",
+    "title": "shadcn Accordion Multiple",
+    "description": "A Foldkit shadcn Accordion multiple example.",
+    "registryDependencies": ["shadcn-accordion"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-accordion",
+        "example": "Multiple",
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-accordion-multiple/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-multiple/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-accordion-multiple/shadcn-accordion-multiple.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-multiple/shadcn-accordion-multiple.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-accordion-rtl",
+    "type": "registry:example",
+    "title": "shadcn Accordion RTL",
+    "description": "A Foldkit shadcn Accordion rtl example.",
+    "registryDependencies": ["shadcn-accordion"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-accordion",
+        "example": "RTL",
+        "origin": "https://ui.shadcn.com/docs/components/radix/accordion"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-accordion-rtl/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-rtl/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-accordion-rtl/shadcn-accordion-rtl.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-accordion-rtl/shadcn-accordion-rtl.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
   },
   {
     "name": "shadcn-alert-dialog-basic",
@@ -7864,7 +8083,63 @@
       "foldkit": {
         "component": "AlertDialog",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-badge",
+    "type": "registry:example",
+    "title": "shadcn Avatar Badge",
+    "description": "A runnable Foldkit example showing AvatarBadge-style status composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-badge/main.ts",
+        "target": "src/examples/shadcn-avatar-badge/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-badge/shadcn-avatar-badge.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-badge/shadcn-avatar-badge.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "badge",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-badge-icon",
+    "type": "registry:example",
+    "title": "shadcn Avatar Badge with Icon",
+    "description": "A runnable Foldkit example showing icon content inside an Avatar badge.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-badge-icon/main.ts",
+        "target": "src/examples/shadcn-avatar-badge-icon/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-badge-icon/shadcn-avatar-badge-icon.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-badge-icon/shadcn-avatar-badge-icon.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "badge-with-icon",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
       }
     }
   },
@@ -7872,7 +8147,7 @@
     "name": "shadcn-avatar-basic",
     "type": "registry:example",
     "title": "shadcn Avatar Basic",
-    "description": "A runnable Foldkit example showing the shadcn Avatar wrapper with image, fallback, and overflow count.",
+    "description": "A runnable Foldkit example showing a basic shadcn Avatar with image and fallback.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
     "registryDependencies": ["shadcn-avatar"],
@@ -7892,7 +8167,175 @@
       "foldkit": {
         "component": "Avatar",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-dropdown",
+    "type": "registry:example",
+    "title": "shadcn Avatar Dropdown",
+    "description": "A runnable Foldkit example showing a shadcn Avatar used as a dropdown trigger.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar", "dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-dropdown/main.ts",
+        "target": "src/examples/shadcn-avatar-dropdown/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-dropdown/shadcn-avatar-dropdown.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-dropdown/shadcn-avatar-dropdown.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "dropdown",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-group",
+    "type": "registry:example",
+    "title": "shadcn Avatar Group",
+    "description": "A runnable Foldkit example showing AvatarGroup composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-group/main.ts",
+        "target": "src/examples/shadcn-avatar-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-group/shadcn-avatar-group.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-group/shadcn-avatar-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "avatar-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-group-count",
+    "type": "registry:example",
+    "title": "shadcn Avatar Group Count",
+    "description": "A runnable Foldkit example showing AvatarGroupCount composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-group-count/main.ts",
+        "target": "src/examples/shadcn-avatar-group-count/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-group-count/shadcn-avatar-group-count.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-group-count/shadcn-avatar-group-count.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "avatar-group-count",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-group-icon",
+    "type": "registry:example",
+    "title": "shadcn Avatar Group with Icon",
+    "description": "A runnable Foldkit example showing icon content with an Avatar group count.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-group-icon/main.ts",
+        "target": "src/examples/shadcn-avatar-group-icon/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-group-icon/shadcn-avatar-group-icon.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-group-icon/shadcn-avatar-group-icon.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "avatar-group-with-icon",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-avatar-sizes",
+    "type": "registry:example",
+    "title": "shadcn Avatar Sizes",
+    "description": "A runnable Foldkit example showing shadcn Avatar sizes.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-avatar-sizes/main.ts",
+        "target": "src/examples/shadcn-avatar-sizes/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-avatar-sizes/shadcn-avatar-sizes.scene.test.ts",
+        "target": "src/examples/shadcn-avatar-sizes/shadcn-avatar-sizes.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "sizes",
+        "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-as-child",
+    "type": "registry:example",
+    "title": "shadcn Button As Child",
+    "description": "A runnable Foldkit example matching the shadcn Button As Child example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-as-child/main.ts",
+        "target": "src/examples/shadcn-button-as-child/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-as-child/shadcn-button-as-child.scene.test.ts",
+        "target": "src/examples/shadcn-button-as-child/shadcn-button-as-child.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "as-child",
+        "origin": "https://ui.shadcn.com/docs/components/button"
       }
     }
   },
@@ -7920,7 +8363,343 @@
       "foldkit": {
         "component": "Button",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-default",
+    "type": "registry:example",
+    "title": "shadcn Button Default",
+    "description": "A runnable Foldkit example matching the shadcn Button Default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-default/main.ts",
+        "target": "src/examples/shadcn-button-default/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-default/shadcn-button-default.scene.test.ts",
+        "target": "src/examples/shadcn-button-default/shadcn-button-default.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "default",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-destructive",
+    "type": "registry:example",
+    "title": "shadcn Button Destructive",
+    "description": "A runnable Foldkit example matching the shadcn Button Destructive example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-destructive/main.ts",
+        "target": "src/examples/shadcn-button-destructive/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-destructive/shadcn-button-destructive.scene.test.ts",
+        "target": "src/examples/shadcn-button-destructive/shadcn-button-destructive.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "destructive",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-ghost",
+    "type": "registry:example",
+    "title": "shadcn Button Ghost",
+    "description": "A runnable Foldkit example matching the shadcn Button Ghost example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-ghost/main.ts",
+        "target": "src/examples/shadcn-button-ghost/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-ghost/shadcn-button-ghost.scene.test.ts",
+        "target": "src/examples/shadcn-button-ghost/shadcn-button-ghost.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "ghost",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-icon",
+    "type": "registry:example",
+    "title": "shadcn Button Icon",
+    "description": "A runnable Foldkit example matching the shadcn Button Icon example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-icon/main.ts",
+        "target": "src/examples/shadcn-button-icon/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-icon/shadcn-button-icon.scene.test.ts",
+        "target": "src/examples/shadcn-button-icon/shadcn-button-icon.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "icon",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-link",
+    "type": "registry:example",
+    "title": "shadcn Button Link",
+    "description": "A runnable Foldkit example matching the shadcn Button Link example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-link/main.ts",
+        "target": "src/examples/shadcn-button-link/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-link/shadcn-button-link.scene.test.ts",
+        "target": "src/examples/shadcn-button-link/shadcn-button-link.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "link",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-outline",
+    "type": "registry:example",
+    "title": "shadcn Button Outline",
+    "description": "A runnable Foldkit example matching the shadcn Button Outline example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-outline/main.ts",
+        "target": "src/examples/shadcn-button-outline/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-outline/shadcn-button-outline.scene.test.ts",
+        "target": "src/examples/shadcn-button-outline/shadcn-button-outline.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "outline",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-rounded",
+    "type": "registry:example",
+    "title": "shadcn Button Rounded",
+    "description": "A runnable Foldkit example matching the shadcn Button Rounded example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-rounded/main.ts",
+        "target": "src/examples/shadcn-button-rounded/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-rounded/shadcn-button-rounded.scene.test.ts",
+        "target": "src/examples/shadcn-button-rounded/shadcn-button-rounded.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "rounded",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-rtl",
+    "type": "registry:example",
+    "title": "shadcn Button RTL",
+    "description": "A runnable Foldkit example matching the shadcn Button RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-rtl/main.ts",
+        "target": "src/examples/shadcn-button-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-rtl/shadcn-button-rtl.scene.test.ts",
+        "target": "src/examples/shadcn-button-rtl/shadcn-button-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-secondary",
+    "type": "registry:example",
+    "title": "shadcn Button Secondary",
+    "description": "A runnable Foldkit example matching the shadcn Button Secondary example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-secondary/main.ts",
+        "target": "src/examples/shadcn-button-secondary/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-secondary/shadcn-button-secondary.scene.test.ts",
+        "target": "src/examples/shadcn-button-secondary/shadcn-button-secondary.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "secondary",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-size",
+    "type": "registry:example",
+    "title": "shadcn Button Size",
+    "description": "A runnable Foldkit example matching the shadcn Button Size example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-size/main.ts",
+        "target": "src/examples/shadcn-button-size/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-size/shadcn-button-size.scene.test.ts",
+        "target": "src/examples/shadcn-button-size/shadcn-button-size.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "size",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-spinner",
+    "type": "registry:example",
+    "title": "shadcn Button Spinner",
+    "description": "A runnable Foldkit example matching the shadcn Button Spinner example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button", "spinner"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-spinner/main.ts",
+        "target": "src/examples/shadcn-button-spinner/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-spinner/shadcn-button-spinner.scene.test.ts",
+        "target": "src/examples/shadcn-button-spinner/shadcn-button-spinner.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "spinner",
+        "origin": "https://ui.shadcn.com/docs/components/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-with-icon",
+    "type": "registry:example",
+    "title": "shadcn Button With Icon",
+    "description": "A runnable Foldkit example matching the shadcn Button With Icon example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-with-icon/main.ts",
+        "target": "src/examples/shadcn-button-with-icon/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-with-icon/shadcn-button-with-icon.scene.test.ts",
+        "target": "src/examples/shadcn-button-with-icon/shadcn-button-with-icon.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "with-icon",
+        "origin": "https://ui.shadcn.com/docs/components/button"
       }
     }
   },
@@ -7948,7 +8727,511 @@
       "foldkit": {
         "component": "Calendar",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-calendar-booked",
+    "type": "registry:example",
+    "title": "shadcn Calendar Booked Dates",
+    "description": "A Foldkit shadcn Calendar booked-dates example using disabled dates.",
+    "registryDependencies": ["shadcn-calendar"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-calendar",
+        "example": "Booked Dates",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-booked/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-booked/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-booked/shadcn-calendar-booked.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-booked/shadcn-calendar-booked.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-calendar-date-of-birth",
+    "type": "registry:example",
+    "title": "shadcn Calendar Date of Birth",
+    "description": "A Foldkit shadcn Calendar date-of-birth example with bounded years.",
+    "registryDependencies": ["shadcn-calendar"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-calendar",
+        "example": "Date of Birth",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-date-of-birth/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-date-of-birth/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-date-of-birth/shadcn-calendar-date-of-birth.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-date-of-birth/shadcn-calendar-date-of-birth.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-calendar-month-year-selector",
+    "type": "registry:example",
+    "title": "shadcn Calendar Month and Year Selector",
+    "description": "A Foldkit shadcn Calendar month and year selector example.",
+    "registryDependencies": ["shadcn-calendar"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-calendar",
+        "example": "Month and Year Selector",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-month-year-selector/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-month-year-selector/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-month-year-selector/shadcn-calendar-month-year-selector.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-month-year-selector/shadcn-calendar-month-year-selector.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-calendar-presets",
+    "type": "registry:example",
+    "title": "shadcn Calendar Presets",
+    "description": "A Foldkit shadcn Calendar presets example that selects dates from parent actions.",
+    "registryDependencies": ["shadcn-calendar"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-calendar",
+        "example": "Presets",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-presets/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-presets/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-presets/shadcn-calendar-presets.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-presets/shadcn-calendar-presets.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-calendar-rtl",
+    "type": "registry:example",
+    "title": "shadcn Calendar RTL",
+    "description": "A Foldkit shadcn Calendar RTL example with Arabic locale labels.",
+    "registryDependencies": ["shadcn-calendar"],
+    "meta": {
+      "foldkit": {
+        "component": "shadcn-calendar",
+        "example": "RTL",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    },
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-rtl/main.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-rtl/main.ts"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-rtl/shadcn-calendar-rtl.scene.test.ts",
+        "type": "registry:example",
+        "target": "src/examples/shadcn-calendar-rtl/shadcn-calendar-rtl.scene.test.ts"
+      }
+    ],
+    "dependencies": [],
+    "devDependencies": []
+  },
+  {
+    "name": "shadcn-checkbox-basic",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Basic",
+    "description": "A runnable Foldkit example showing the shadcn Checkbox wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-basic/main.ts",
+        "target": "src/examples/shadcn-checkbox-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-basic/shadcn-checkbox-basic.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-basic/shadcn-checkbox-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/checkbox"
+      }
+    }
+  },
+  {
+    "name": "shadcn-collapsible-basic",
+    "type": "registry:example",
+    "title": "shadcn Collapsible Basic",
+    "description": "A runnable Foldkit example showing the shadcn Collapsible wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-collapsible"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-collapsible-basic/main.ts",
+        "target": "src/examples/shadcn-collapsible-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-collapsible-basic/shadcn-collapsible-basic.scene.test.ts",
+        "target": "src/examples/shadcn-collapsible-basic/shadcn-collapsible-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Collapsible",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/collapsible"
+      }
+    }
+  },
+  {
+    "name": "shadcn-combobox-basic",
+    "type": "registry:example",
+    "title": "shadcn Combobox Basic",
+    "description": "A runnable Foldkit example showing the shadcn Combobox wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-combobox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-combobox-basic/main.ts",
+        "target": "src/examples/shadcn-combobox-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-combobox-basic/shadcn-combobox-basic.scene.test.ts",
+        "target": "src/examples/shadcn-combobox-basic/shadcn-combobox-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Combobox",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/combobox"
+      }
+    }
+  },
+  {
+    "name": "shadcn-context-menu-basic",
+    "type": "registry:example",
+    "title": "shadcn Context Menu Basic",
+    "description": "A runnable Foldkit example showing the shadcn Context Menu wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-context-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-context-menu-basic/main.ts",
+        "target": "src/examples/shadcn-context-menu-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-context-menu-basic/shadcn-context-menu-basic.scene.test.ts",
+        "target": "src/examples/shadcn-context-menu-basic/shadcn-context-menu-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ContextMenu",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/context-menu"
+      }
+    }
+  },
+  {
+    "name": "shadcn-date-picker-basic",
+    "type": "registry:example",
+    "title": "shadcn Date Picker Basic",
+    "description": "A runnable Foldkit example showing the shadcn Date Picker wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-date-picker"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-date-picker-basic/main.ts",
+        "target": "src/examples/shadcn-date-picker-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-date-picker-basic/shadcn-date-picker-basic.scene.test.ts",
+        "target": "src/examples/shadcn-date-picker-basic/shadcn-date-picker-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DatePicker",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/date-picker"
+      }
+    }
+  },
+  {
+    "name": "shadcn-dialog-basic",
+    "type": "registry:example",
+    "title": "shadcn Dialog Basic",
+    "description": "A runnable Foldkit example showing the shadcn Dialog wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-dialog"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-dialog-basic/main.ts",
+        "target": "src/examples/shadcn-dialog-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-dialog-basic/shadcn-dialog-basic.scene.test.ts",
+        "target": "src/examples/shadcn-dialog-basic/shadcn-dialog-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Dialog",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/dialog"
+      }
+    }
+  },
+  {
+    "name": "shadcn-drawer-basic",
+    "type": "registry:example",
+    "title": "shadcn Drawer Basic",
+    "description": "A runnable Foldkit example showing the shadcn Drawer wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-drawer"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-drawer-basic/main.ts",
+        "target": "src/examples/shadcn-drawer-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-drawer-basic/shadcn-drawer-basic.scene.test.ts",
+        "target": "src/examples/shadcn-drawer-basic/shadcn-drawer-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Drawer",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/drawer"
+      }
+    }
+  },
+  {
+    "name": "shadcn-field-basic",
+    "type": "registry:example",
+    "title": "shadcn Field Basic",
+    "description": "A runnable Foldkit example showing the shadcn Field wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-field"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-field-basic/main.ts",
+        "target": "src/examples/shadcn-field-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-field-basic/shadcn-field-basic.scene.test.ts",
+        "target": "src/examples/shadcn-field-basic/shadcn-field-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Field",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/field"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-basic",
+    "type": "registry:example",
+    "title": "shadcn Input Basic",
+    "description": "A runnable Foldkit example showing the shadcn Input wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-basic/main.ts",
+        "target": "src/examples/shadcn-input-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-basic/shadcn-input-basic.scene.test.ts",
+        "target": "src/examples/shadcn-input-basic/shadcn-input-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/input"
+      }
+    }
+  },
+  {
+    "name": "shadcn-menubar-basic",
+    "type": "registry:example",
+    "title": "shadcn Menubar Basic",
+    "description": "A runnable Foldkit example showing the shadcn Menubar wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-menubar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-menubar-basic/main.ts",
+        "target": "src/examples/shadcn-menubar-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-menubar-basic/shadcn-menubar-basic.scene.test.ts",
+        "target": "src/examples/shadcn-menubar-basic/shadcn-menubar-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Menubar",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/menubar"
+      }
+    }
+  },
+  {
+    "name": "shadcn-navigation-menu-basic",
+    "type": "registry:example",
+    "title": "shadcn Navigation Menu Basic",
+    "description": "A runnable Foldkit example showing the shadcn Navigation Menu wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-navigation-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-navigation-menu-basic/main.ts",
+        "target": "src/examples/shadcn-navigation-menu-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-navigation-menu-basic/shadcn-navigation-menu-basic.scene.test.ts",
+        "target": "src/examples/shadcn-navigation-menu-basic/shadcn-navigation-menu-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NavigationMenu",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/navigation-menu"
+      }
+    }
+  },
+  {
+    "name": "shadcn-popover-basic",
+    "type": "registry:example",
+    "title": "shadcn Popover Basic",
+    "description": "A runnable Foldkit example showing the shadcn Popover wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-popover"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-popover-basic/main.ts",
+        "target": "src/examples/shadcn-popover-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-popover-basic/shadcn-popover-basic.scene.test.ts",
+        "target": "src/examples/shadcn-popover-basic/shadcn-popover-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Popover",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/popover"
+      }
+    }
+  },
+  {
+    "name": "shadcn-progress-basic",
+    "type": "registry:example",
+    "title": "shadcn Progress Basic",
+    "description": "A runnable Foldkit example showing the shadcn Progress wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-progress"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-progress-basic/main.ts",
+        "target": "src/examples/shadcn-progress-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-progress-basic/shadcn-progress-basic.scene.test.ts",
+        "target": "src/examples/shadcn-progress-basic/shadcn-progress-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Progress",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/progress"
       }
     }
   },
@@ -7976,7 +9259,35 @@
       "foldkit": {
         "component": "RadioGroup",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/radio"
+      }
+    }
+  },
+  {
+    "name": "shadcn-scroll-area-basic",
+    "type": "registry:example",
+    "title": "shadcn Scroll Area Basic",
+    "description": "A runnable Foldkit example showing the shadcn Scroll Area wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-scroll-area"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-scroll-area-basic/main.ts",
+        "target": "src/examples/shadcn-scroll-area-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-scroll-area-basic/shadcn-scroll-area-basic.scene.test.ts",
+        "target": "src/examples/shadcn-scroll-area-basic/shadcn-scroll-area-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ScrollArea",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/scroll-area"
       }
     }
   },
@@ -8004,7 +9315,35 @@
       "foldkit": {
         "component": "Select",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/select"
+      }
+    }
+  },
+  {
+    "name": "shadcn-separator-basic",
+    "type": "registry:example",
+    "title": "shadcn Separator Basic",
+    "description": "A runnable Foldkit example showing the shadcn Separator wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-separator"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-separator-basic/main.ts",
+        "target": "src/examples/shadcn-separator-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-separator-basic/shadcn-separator-basic.scene.test.ts",
+        "target": "src/examples/shadcn-separator-basic/shadcn-separator-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Separator",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/separator"
       }
     }
   },
@@ -8032,7 +9371,7 @@
       "foldkit": {
         "component": "Slider",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/slider"
       }
     }
   },
@@ -8060,7 +9399,7 @@
       "foldkit": {
         "component": "Switch",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/switch"
       }
     }
   },
@@ -8088,7 +9427,63 @@
       "foldkit": {
         "component": "Tabs",
         "example": "shadcn-basic",
-        "origin": "shadcn"
+        "origin": "https://ui.shadcn.com/docs/components/tabs"
+      }
+    }
+  },
+  {
+    "name": "shadcn-textarea-basic",
+    "type": "registry:example",
+    "title": "shadcn Textarea Basic",
+    "description": "A runnable Foldkit example showing the shadcn Textarea wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-textarea-basic/main.ts",
+        "target": "src/examples/shadcn-textarea-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-textarea-basic/shadcn-textarea-basic.scene.test.ts",
+        "target": "src/examples/shadcn-textarea-basic/shadcn-textarea-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/textarea"
+      }
+    }
+  },
+  {
+    "name": "shadcn-toast-basic",
+    "type": "registry:example",
+    "title": "shadcn Toast Basic",
+    "description": "A runnable Foldkit example showing the shadcn Toast wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-toast"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-toast-basic/main.ts",
+        "target": "src/examples/shadcn-toast-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-toast-basic/shadcn-toast-basic.scene.test.ts",
+        "target": "src/examples/shadcn-toast-basic/shadcn-toast-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toast",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/toast"
       }
     }
   },
@@ -8115,7 +9510,8 @@
     "meta": {
       "foldkit": {
         "component": "Sheet",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/sheet"
       }
     }
   },
@@ -8142,7 +9538,8 @@
     "meta": {
       "foldkit": {
         "component": "Sidebar",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/sidebar"
       }
     }
   },
@@ -8169,7 +9566,8 @@
     "meta": {
       "foldkit": {
         "component": "Skeleton",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/skeleton"
       }
     }
   },
@@ -8250,7 +9648,36 @@
     "meta": {
       "foldkit": {
         "component": "Sonner",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/sonner"
+      }
+    }
+  },
+  {
+    "name": "spinner-basic",
+    "type": "registry:example",
+    "title": "Spinner Basic",
+    "description": "A runnable Foldkit example showing Spinner.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["spinner"],
+    "files": [
+      {
+        "path": "registry/default/examples/spinner-basic/main.ts",
+        "target": "src/examples/spinner-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/spinner-basic/spinner-basic.scene.test.ts",
+        "target": "src/examples/spinner-basic/spinner-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Spinner",
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/spinner"
       }
     }
   },
@@ -8331,7 +9758,8 @@
     "meta": {
       "foldkit": {
         "component": "Table",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/table"
       }
     }
   },
@@ -8688,7 +10116,8 @@
     "meta": {
       "foldkit": {
         "component": "Typography",
-        "example": "basic"
+        "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/typography"
       }
     }
   },

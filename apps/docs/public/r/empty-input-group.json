@@ -29,7 +29,8 @@
     "foldkit": {
       "component": "Empty",
       "example": "input-group",
-      "originExample": "empty-input-group"
+      "originExample": "empty-input-group",
+      "origin": "https://ui.shadcn.com/docs/components/empty"
     }
   }
 }

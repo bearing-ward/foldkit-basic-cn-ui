@@ -32,7 +32,7 @@
       "component": "Slider",
       "primitive": "Ui.Slider",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/slider",
       "artifact": "primitive-backed-component"
     }
   }

@@ -32,7 +32,7 @@
       "component": "RadioGroup",
       "primitive": "Ui.RadioGroup",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/radio-group",
       "artifact": "primitive-backed-component"
     }
   }

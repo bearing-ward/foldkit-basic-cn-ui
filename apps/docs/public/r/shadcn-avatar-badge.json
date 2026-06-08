@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-avatar-badge",
+  "type": "registry:example",
+  "title": "shadcn Avatar Badge",
+  "description": "A runnable Foldkit example showing AvatarBadge-style status composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-avatar"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-avatar-badge/main.ts",
+      "target": "src/examples/shadcn-avatar-badge/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\n\nimport * as Avatar from \"../../ui/shadcn-avatar\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst avatarImageSrc =\n  \"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%230f172a'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' font-family='Arial' fill='white'%3ECN%3C/text%3E%3C/svg%3E\";\n\nexport const view = Submodel.defineView<Model, Message>(() =>\n  Avatar.rootView<Message>({\n    children: [\n      Avatar.imageView<Message>({\n        alt: \"Colm Tuite\",\n        src: avatarImageSrc,\n      }),\n      Avatar.badgeView<Message>({ label: \"Online\" }),\n    ],\n  })\n);\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-avatar-badge/shadcn-avatar-badge.scene.test.ts",
+      "target": "src/examples/shadcn-avatar-badge/shadcn-avatar-badge.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnAvatarBadgeExample from \"./main\";\n\ndescribe(\"shadcn Avatar Badge example\", () => {\n  test(\"renders an avatar with a status badge\", () => {\n    Scene.scene(\n      {\n        update: ShadcnAvatarBadgeExample.update,\n        view: ShadcnAvatarBadgeExample.view,\n      },\n      Scene.with(ShadcnAvatarBadgeExample.init()[0]),\n      Scene.expect(Scene.role(\"img\", { name: \"Colm Tuite\" })).toExist(),\n      Scene.expect(Scene.label(\"Online\")).toExist(),\n      Scene.expect(Scene.role(\"img\", { name: \"Colm Tuite\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Avatar",
+      "example": "badge",
+      "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+    }
+  }
+}

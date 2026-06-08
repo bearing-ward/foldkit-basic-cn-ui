@@ -24,7 +24,8 @@
   "meta": {
     "foldkit": {
       "component": "Item",
-      "example": "icon"
+      "example": "icon",
+      "origin": "https://ui.shadcn.com/docs/components/item"
     }
   }
 }

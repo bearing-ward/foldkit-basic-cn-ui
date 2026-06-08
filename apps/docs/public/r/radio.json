@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Radio",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/radio",
       "artifact": "component",
       "stateful": true
     }

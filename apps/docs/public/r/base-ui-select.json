@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/select",
       "artifact": "component",
       "primitive": "Ui.Select",
       "stateful": false

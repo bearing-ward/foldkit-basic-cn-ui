@@ -32,7 +32,7 @@
       "component": "DatePicker",
       "primitive": "Ui.DatePicker",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/date-picker",
       "artifact": "primitive-backed-component"
     }
   }

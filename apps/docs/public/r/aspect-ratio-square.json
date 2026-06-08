@@ -37,7 +37,8 @@
     "foldkit": {
       "component": "AspectRatio",
       "example": "square",
-      "originExample": "aspect-ratio-square"
+      "originExample": "aspect-ratio-square",
+      "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
     }
   }
 }

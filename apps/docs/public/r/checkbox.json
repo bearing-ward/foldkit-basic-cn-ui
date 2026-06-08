@@ -32,7 +32,7 @@
       "component": "Checkbox",
       "primitive": "Ui.Checkbox",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/checkbox",
       "artifact": "primitive-backed-component"
     }
   }

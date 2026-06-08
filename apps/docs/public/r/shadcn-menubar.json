@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/menubar",
       "artifact": "component",
       "stateful": false
     }

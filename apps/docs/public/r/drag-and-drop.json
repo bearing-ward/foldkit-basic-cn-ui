@@ -32,7 +32,7 @@
       "component": "DragAndDrop",
       "primitive": "Ui.DragAndDrop",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/drag-and-drop",
       "artifact": "primitive-backed-component"
     }
   }

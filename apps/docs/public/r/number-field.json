@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "NumberField",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/number-field",
       "artifact": "component",
       "stateful": true
     }

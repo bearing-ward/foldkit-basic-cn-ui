@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Carousel",
       "example": "spacing",
-      "origin": "shadcn"
+      "origin": "https://ui.shadcn.com/docs/components/carousel"
     }
   }
 }

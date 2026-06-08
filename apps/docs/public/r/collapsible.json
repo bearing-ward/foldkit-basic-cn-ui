@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Collapsible",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/collapsible",
       "artifact": "component",
       "stateful": true
     }

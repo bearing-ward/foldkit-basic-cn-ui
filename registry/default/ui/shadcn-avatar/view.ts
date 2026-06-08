@@ -1,5 +1,6 @@
 export {
   avatarBaseClassName as shadcnAvatarBaseClassName,
+  avatarBadgeClassName as shadcnAvatarBadgeClassName,
   avatarClassNameBySize as shadcnAvatarClassNameBySize,
   avatarFallbackClassName as shadcnAvatarFallbackClassName,
   avatarGroupClassName as shadcnAvatarGroupClassName,

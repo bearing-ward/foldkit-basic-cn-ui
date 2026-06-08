@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "CheckboxGroup",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/checkbox-group",
       "artifact": "component",
       "stateful": true
     }

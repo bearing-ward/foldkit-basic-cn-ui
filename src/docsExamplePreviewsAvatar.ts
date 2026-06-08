@@ -2,6 +2,14 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
+import * as ShadcnAvatarBadgeIconExample from "../registry/default/examples/shadcn-avatar-badge-icon/main";
+import * as ShadcnAvatarBadgeExample from "../registry/default/examples/shadcn-avatar-badge/main";
+import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
+import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnAvatarGroupCountExample from "../registry/default/examples/shadcn-avatar-group-count/main";
+import * as ShadcnAvatarGroupIconExample from "../registry/default/examples/shadcn-avatar-group-icon/main";
+import * as ShadcnAvatarGroupExample from "../registry/default/examples/shadcn-avatar-group/main";
+import * as ShadcnAvatarSizesExample from "../registry/default/examples/shadcn-avatar-sizes/main";
 import * as Main from "./main";
 
 type Message = Main.Message;
@@ -18,5 +26,53 @@ export const avatarBasicExamplePreview = (
     view: AvatarBasicExample.view,
     toParentMessage: (message) =>
       Main.GotAvatarBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnAvatarBasicExamplePreview = (
+  model: ShadcnAvatarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnAvatarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnAvatarBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnAvatarBadgeExamplePreview = (): Html =>
+  ShadcnAvatarBadgeExample.view(ShadcnAvatarBadgeExample.init()[0]);
+
+export const shadcnAvatarBadgeIconExamplePreview = (): Html =>
+  ShadcnAvatarBadgeIconExample.view(ShadcnAvatarBadgeIconExample.init()[0]);
+
+export const shadcnAvatarGroupExamplePreview = (): Html =>
+  ShadcnAvatarGroupExample.view(ShadcnAvatarGroupExample.init()[0]);
+
+export const shadcnAvatarGroupCountExamplePreview = (): Html =>
+  ShadcnAvatarGroupCountExample.view(ShadcnAvatarGroupCountExample.init()[0]);
+
+export const shadcnAvatarGroupIconExamplePreview = (): Html =>
+  ShadcnAvatarGroupIconExample.view(ShadcnAvatarGroupIconExample.init()[0]);
+
+export const shadcnAvatarSizesExamplePreview = (): Html =>
+  ShadcnAvatarSizesExample.view(ShadcnAvatarSizesExample.init()[0]);
+
+export const shadcnAvatarDropdownExamplePreview = (
+  model: ShadcnAvatarDropdownExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnAvatarDropdownExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnAvatarDropdownExampleMessage({ message }),
   });
 };

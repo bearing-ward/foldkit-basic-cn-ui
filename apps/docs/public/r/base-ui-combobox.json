@@ -32,7 +32,7 @@
       "component": "Combobox",
       "primitive": "Ui.Combobox",
       "stateful": true,
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/combobox",
       "artifact": "component"
     }
   }

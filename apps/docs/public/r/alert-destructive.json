@@ -37,7 +37,8 @@
     "foldkit": {
       "component": "Alert",
       "example": "destructive",
-      "originExample": "alert-destructive"
+      "originExample": "alert-destructive",
+      "origin": "https://ui.shadcn.com/docs/components/alert"
     }
   }
 }

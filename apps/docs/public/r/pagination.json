@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Pagination",
       "stateful": false,
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/pagination",
       "artifact": "component"
     }
   }

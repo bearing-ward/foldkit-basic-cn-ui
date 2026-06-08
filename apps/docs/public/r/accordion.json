@@ -18,7 +18,7 @@
       "path": "registry/default/ui/accordion/view.ts",
       "target": "src/ui/accordion/view.ts",
       "type": "registry:ui",
-      "content": "export const accordionRootClassName =\n  \"w-full max-w-2xl divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white\";\n\nexport const accordionItemClassName =\n  \"data-[disabled]:opacity-50 data-[open]:bg-gray-50\";\n\nexport const accordionHeaderClassName = \"m-0\";\n\nexport const accordionTriggerClassName =\n  \"group flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-3 text-left text-sm font-medium text-gray-950 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600 data-[disabled]:cursor-not-allowed\";\n\nexport const accordionIconClassName =\n  \"text-gray-500 transition-transform group-data-[open]:rotate-45\";\n\nexport const accordionPanelClassName =\n  \"px-4 pb-4 text-sm leading-6 text-gray-600\";\n"
+      "content": "export const accordionRootClassName = \"w-full max-w-2xl bg-white\";\n\nexport const accordionItemClassName =\n  \"border-b border-gray-200 data-[disabled]:opacity-50 data-[open]:bg-gray-50\";\n\nexport const accordionHeaderClassName = \"m-0\";\n\nexport const accordionTriggerClassName =\n  \"group flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-3 text-left text-sm font-medium text-gray-950 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600 data-[disabled]:cursor-not-allowed\";\n\nexport const accordionIconClassName =\n  \"text-gray-500 transition-transform group-data-[open]:rotate-45\";\n\nexport const accordionPanelClassName =\n  \"px-4 pb-4 text-sm leading-6 text-gray-600\";\n"
     },
     {
       "path": "registry/default/ui/accordion/accordion.scene.test.ts",
@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Accordion",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/accordion",
       "artifact": "component",
       "stateful": true
     }

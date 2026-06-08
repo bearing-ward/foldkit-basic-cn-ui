@@ -22,6 +22,20 @@ import * as ButtonGroupSelectExample from "../registry/default/examples/button-g
 import * as ButtonGroupSeparatorExample from "../registry/default/examples/button-group-separator/main";
 import * as ButtonGroupSizeExample from "../registry/default/examples/button-group-size/main";
 import * as ButtonGroupSplitExample from "../registry/default/examples/button-group-split/main";
+import * as ShadcnButtonAsChildExample from "../registry/default/examples/shadcn-button-as-child/main";
+import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
+import * as ShadcnButtonDefaultExample from "../registry/default/examples/shadcn-button-default/main";
+import * as ShadcnButtonDestructiveExample from "../registry/default/examples/shadcn-button-destructive/main";
+import * as ShadcnButtonGhostExample from "../registry/default/examples/shadcn-button-ghost/main";
+import * as ShadcnButtonIconExample from "../registry/default/examples/shadcn-button-icon/main";
+import * as ShadcnButtonLinkExample from "../registry/default/examples/shadcn-button-link/main";
+import * as ShadcnButtonOutlineExample from "../registry/default/examples/shadcn-button-outline/main";
+import * as ShadcnButtonRoundedExample from "../registry/default/examples/shadcn-button-rounded/main";
+import * as ShadcnButtonRtlExample from "../registry/default/examples/shadcn-button-rtl/main";
+import * as ShadcnButtonSecondaryExample from "../registry/default/examples/shadcn-button-secondary/main";
+import * as ShadcnButtonSizeExample from "../registry/default/examples/shadcn-button-size/main";
+import * as ShadcnButtonSpinnerExample from "../registry/default/examples/shadcn-button-spinner/main";
+import * as ShadcnButtonWithIconExample from "../registry/default/examples/shadcn-button-with-icon/main";
 import * as Main from "./main";
 
 type Message = Main.Message;
@@ -319,6 +333,21 @@ export const buttonBasicExamplePreview = (
   });
 };
 
+export const shadcnButtonBasicExamplePreview = (
+  model: ShadcnButtonBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnButtonBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnButtonBasicExampleMessage({ message }),
+  });
+};
+
 export const buttonDisabledExamplePreview = (
   model: ButtonDisabledExample.Model,
   slotId: string
@@ -333,3 +362,42 @@ export const buttonDisabledExamplePreview = (
       Main.GotButtonDisabledExampleMessage({ message }),
   });
 };
+
+export const shadcnButtonSizeExamplePreview = (): Html =>
+  ShadcnButtonSizeExample.view(ShadcnButtonSizeExample.init()[0]);
+
+export const shadcnButtonDefaultExamplePreview = (): Html =>
+  ShadcnButtonDefaultExample.view(ShadcnButtonDefaultExample.init()[0]);
+
+export const shadcnButtonOutlineExamplePreview = (): Html =>
+  ShadcnButtonOutlineExample.view(ShadcnButtonOutlineExample.init()[0]);
+
+export const shadcnButtonSecondaryExamplePreview = (): Html =>
+  ShadcnButtonSecondaryExample.view(ShadcnButtonSecondaryExample.init()[0]);
+
+export const shadcnButtonGhostExamplePreview = (): Html =>
+  ShadcnButtonGhostExample.view(ShadcnButtonGhostExample.init()[0]);
+
+export const shadcnButtonDestructiveExamplePreview = (): Html =>
+  ShadcnButtonDestructiveExample.view(ShadcnButtonDestructiveExample.init()[0]);
+
+export const shadcnButtonLinkExamplePreview = (): Html =>
+  ShadcnButtonLinkExample.view(ShadcnButtonLinkExample.init()[0]);
+
+export const shadcnButtonIconExamplePreview = (): Html =>
+  ShadcnButtonIconExample.view(ShadcnButtonIconExample.init()[0]);
+
+export const shadcnButtonWithIconExamplePreview = (): Html =>
+  ShadcnButtonWithIconExample.view(ShadcnButtonWithIconExample.init()[0]);
+
+export const shadcnButtonRoundedExamplePreview = (): Html =>
+  ShadcnButtonRoundedExample.view(ShadcnButtonRoundedExample.init()[0]);
+
+export const shadcnButtonSpinnerExamplePreview = (): Html =>
+  ShadcnButtonSpinnerExample.view(ShadcnButtonSpinnerExample.init()[0]);
+
+export const shadcnButtonAsChildExamplePreview = (): Html =>
+  ShadcnButtonAsChildExample.view(ShadcnButtonAsChildExample.init()[0]);
+
+export const shadcnButtonRtlExamplePreview = (): Html =>
+  ShadcnButtonRtlExample.view(ShadcnButtonRtlExample.init()[0]);

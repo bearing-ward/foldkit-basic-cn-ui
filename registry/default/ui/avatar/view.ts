@@ -1,12 +1,15 @@
 export type AvatarSize = "Small" | "Default" | "Large";
 
 export const avatarBaseClassName =
-  "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-100 font-medium text-gray-700 ring-2 ring-white";
+  "relative inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 font-medium text-gray-700 ring-2 ring-white";
 
-export const avatarImageClassName = "h-full w-full object-cover";
+export const avatarImageClassName = "h-full w-full rounded-full object-cover";
 
 export const avatarFallbackClassName =
-  "flex h-full w-full items-center justify-center bg-gray-100 text-gray-700";
+  "flex h-full w-full items-center justify-center rounded-full bg-gray-100 text-gray-700";
+
+export const avatarBadgeClassName =
+  "absolute right-0 bottom-0 inline-flex h-3 w-3 items-center justify-center rounded-full border-2 border-white bg-green-600 text-[8px] text-white";
 
 export const avatarGroupClassName = "flex items-center -space-x-2";
 

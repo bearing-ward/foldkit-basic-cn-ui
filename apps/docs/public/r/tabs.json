@@ -32,7 +32,7 @@
       "component": "Tabs",
       "primitive": "Ui.Tabs",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/tabs",
       "artifact": "primitive-backed-component"
     }
   }

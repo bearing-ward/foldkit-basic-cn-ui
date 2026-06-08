@@ -32,7 +32,7 @@
       "component": "Textarea",
       "primitive": "Ui.Textarea",
       "stateful": false,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/textarea",
       "artifact": "primitive-backed-component"
     }
   }

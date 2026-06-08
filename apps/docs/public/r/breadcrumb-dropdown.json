@@ -37,7 +37,8 @@
     "foldkit": {
       "component": "Breadcrumb",
       "example": "dropdown",
-      "originExample": "breadcrumb-dropdown"
+      "originExample": "breadcrumb-dropdown",
+      "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
     }
   }
 }

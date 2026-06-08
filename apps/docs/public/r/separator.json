@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Separator",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/separator",
       "artifact": "component",
       "stateful": false
     }

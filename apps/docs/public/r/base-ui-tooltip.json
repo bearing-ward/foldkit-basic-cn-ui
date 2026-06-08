@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/tooltip",
       "artifact": "component",
       "primitive": "Ui.Tooltip",
       "stateful": true

@@ -45,6 +45,12 @@ import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
 import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
+import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
+import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
 import * as Main from "./main";
 
 type Message = Main.Message;
@@ -461,6 +467,96 @@ export const calendarBoundsExamplePreview = (
     view: CalendarBoundsExample.view,
     toParentMessage: (message) =>
       Main.GotCalendarBoundsExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarBasicExamplePreview = (
+  model: ShadcnCalendarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarMonthYearSelectorExamplePreview = (
+  model: ShadcnCalendarMonthYearSelectorExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarMonthYearSelectorExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarMonthYearSelectorExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarDateOfBirthExamplePreview = (
+  model: ShadcnCalendarDateOfBirthExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarDateOfBirthExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarDateOfBirthExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarPresetsExamplePreview = (
+  model: ShadcnCalendarPresetsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarPresetsExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarPresetsExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarBookedExamplePreview = (
+  model: ShadcnCalendarBookedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarBookedExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarBookedExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarRtlExamplePreview = (
+  model: ShadcnCalendarRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarRtlExampleMessage({ message }),
   });
 };
 

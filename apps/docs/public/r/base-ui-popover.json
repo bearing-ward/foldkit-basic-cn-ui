@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/popover",
       "artifact": "component",
       "primitive": "Ui.Popover",
       "stateful": true

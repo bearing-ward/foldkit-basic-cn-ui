@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-button-spinner",
+  "type": "registry:example",
+  "title": "shadcn Button Spinner",
+  "description": "A runnable Foldkit example matching the shadcn Button Spinner example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-button", "@foldkit-cn/spinner"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-button-spinner/main.ts",
+      "target": "src/examples/shadcn-button-spinner/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Button from \"../../ui/shadcn-button\";\nimport * as Spinner from \"../../ui/spinner\";\n\n// MODEL\n\nexport const Model = S.Struct({ count: S.Number });\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedButton = m(\"ClickedButton\");\nconst Message = S.Union([ClickedButton]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ count: 0 }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedButton: () => [evo(model, { count: (count) => count + 1 }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-2\")],\n    [\n      Button.view<Message>({\n        onClick: ClickedButton(),\n        toView: (attributes) =>\n          h.button(\n            [...attributes.button, h.Class(Button.shadcnButtonClassName)],\n            [Spinner.view<Message>({ className: \"h-4 w-4\" }), \"Generating\"]\n          ),\n      }),\n      h.span(\n        [h.Class(\"text-sm text-gray-600\")],\n        [`Clicked ${model.count} time${model.count === 1 ? \"\" : \"s\"}`]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-button-spinner/shadcn-button-spinner.scene.test.ts",
+      "target": "src/examples/shadcn-button-spinner/shadcn-button-spinner.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Button Spinner example\", () => {\n  test(\"renders and handles the Spinner button\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"button\", { name: \"Generating\" })).toExist(),\n      Scene.expect(Scene.text(\"Clicked 0 times\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Generating\" })),\n      Scene.expect(Scene.text(\"Clicked 1 time\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Button",
+      "example": "spinner",
+      "origin": "https://ui.shadcn.com/docs/components/button"
+    }
+  }
+}

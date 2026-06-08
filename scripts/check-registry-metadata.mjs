@@ -10,6 +10,35 @@ const originPrefixes = {
   foldkit: "foldkit",
   shadcn: "shadcn",
 };
+const originLaneFromUrl = (origin) => {
+  if (typeof origin !== "string") {
+    return undefined;
+  }
+
+  try {
+    const url = new URL(origin);
+
+    if (url.protocol !== "https:") {
+      return undefined;
+    }
+
+    if (url.hostname === "base-ui.com") {
+      return "base-ui";
+    }
+
+    if (url.hostname === "ui.shadcn.com") {
+      return "shadcn";
+    }
+
+    if (url.hostname === "foldkit.dev") {
+      return "foldkit";
+    }
+
+    return undefined;
+  } catch {
+    return undefined;
+  }
+};
 const legacyUnprefixedStyleLaneItems = new Set([
   "accordion",
   "alert",
@@ -106,6 +135,7 @@ const baseUiDocsRouteTags = extractDocsNavRouteTags("Base UI");
 for (const item of uiItems) {
   const foldkitMeta = item.meta?.foldkit;
   const origin = foldkitMeta?.origin;
+  const originLane = originLaneFromUrl(origin);
   const artifact = foldkitMeta?.artifact;
 
   if (origin === undefined) {
@@ -125,12 +155,14 @@ for (const item of uiItems) {
     );
   }
 
-  if (origin !== undefined && !(origin in originPrefixes)) {
-    failures.push(`${item.name}: unknown origin ${origin}`);
+  if (origin !== undefined && originLane === undefined) {
+    failures.push(
+      `${item.name}: meta.foldkit.origin must be an https URL under foldkit.dev, base-ui.com, or ui.shadcn.com`
+    );
   }
 
   if (
-    origin === "base-ui" &&
+    originLane === "base-ui" &&
     !item.name.startsWith("base-ui-") &&
     !legacyUnprefixedStyleLaneItems.has(item.name)
   ) {
@@ -138,7 +170,7 @@ for (const item of uiItems) {
   }
 
   if (
-    origin === "shadcn" &&
+    originLane === "shadcn" &&
     !item.name.startsWith("shadcn-") &&
     !legacyUnprefixedStyleLaneItems.has(item.name)
   ) {
@@ -156,22 +188,23 @@ for (const item of uiItems) {
 
 for (const item of uiItems) {
   const origin = item.meta?.foldkit?.origin;
+  const originLane = originLaneFromUrl(origin);
   const routeTag = routeTagFromComponentName(item.name);
 
-  if (origin === "base-ui" && !baseUiDocsRouteTags.has(routeTag)) {
+  if (originLane === "base-ui" && !baseUiDocsRouteTags.has(routeTag)) {
     failures.push(
       `${item.name}: ${routeTag} must be listed in docsNavItemLibrary Base UI routes`
     );
   }
 
-  if (origin === "shadcn" && !shadcnDocsRouteTags.has(routeTag)) {
+  if (originLane === "shadcn" && !shadcnDocsRouteTags.has(routeTag)) {
     failures.push(
       `${item.name}: ${routeTag} must be listed in docsNavItemLibrary shadcn routes`
     );
   }
 
   if (
-    origin === "foldkit" &&
+    originLane === "foldkit" &&
     (baseUiDocsRouteTags.has(routeTag) || shadcnDocsRouteTags.has(routeTag))
   ) {
     failures.push(
@@ -185,17 +218,18 @@ const componentKeys = new Map();
 for (const item of uiItems) {
   const componentKey = item.meta?.foldkit?.component;
   const origin = item.meta?.foldkit?.origin;
+  const originLane = originLaneFromUrl(origin);
 
-  if (componentKey === undefined || origin === undefined) {
+  if (componentKey === undefined || originLane === undefined) {
     continue;
   }
 
   const previous = componentKeys.get(componentKey);
 
   if (previous === undefined) {
-    componentKeys.set(componentKey, [{ name: item.name, origin }]);
+    componentKeys.set(componentKey, [{ name: item.name, origin: originLane }]);
   } else {
-    previous.push({ name: item.name, origin });
+    previous.push({ name: item.name, origin: originLane });
   }
 }
 

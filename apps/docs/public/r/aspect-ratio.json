@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "AspectRatio",
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/aspect-ratio",
       "artifact": "component",
       "stateful": false
     }

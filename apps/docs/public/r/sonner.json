@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Sonner",
       "stateful": false,
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/sonner",
       "artifact": "component"
     }
   }

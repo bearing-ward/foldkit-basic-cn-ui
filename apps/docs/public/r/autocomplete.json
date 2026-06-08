@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Autocomplete",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/autocomplete",
       "artifact": "component",
       "stateful": true
     }

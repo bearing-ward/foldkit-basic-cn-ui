@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "NavigationMenu",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/navigation-menu",
       "artifact": "component",
       "stateful": true
     }

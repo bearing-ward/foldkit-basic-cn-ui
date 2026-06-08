@@ -24,7 +24,8 @@
   "meta": {
     "foldkit": {
       "component": "Skeleton",
-      "example": "basic"
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/skeleton"
     }
   }
 }

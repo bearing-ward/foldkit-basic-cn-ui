@@ -32,7 +32,7 @@
       "component": "Toast",
       "primitive": "Ui.Toast",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/toast",
       "artifact": "primitive-backed-component"
     }
   }

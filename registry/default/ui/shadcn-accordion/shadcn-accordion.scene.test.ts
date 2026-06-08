@@ -7,6 +7,8 @@ describe("shadcn Accordion registry view", () => {
     expect(Accordion.rootView).toBeTypeOf("function");
     expect(Accordion.itemView).toBeTypeOf("function");
     expect(Accordion.toggleValue(["one"], "one")).toEqual([]);
+    expect(Accordion.shadcnAccordionRootClassName).not.toContain("border");
+    expect(Accordion.shadcnAccordionItemClassName).toContain("border-b");
     expect(Accordion.shadcnAccordionTriggerClassName).toContain("font-medium");
   });
 });

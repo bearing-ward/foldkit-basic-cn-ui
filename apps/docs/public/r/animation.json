@@ -32,7 +32,7 @@
       "component": "Animation",
       "primitive": "Ui.Animation",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/animation",
       "artifact": "primitive-backed-component"
     }
   }

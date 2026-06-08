@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "ButtonGroup",
       "example": "nested",
-      "origin": "shadcn"
+      "origin": "https://ui.shadcn.com/docs/components/button-group"
     }
   }
 }

@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Drawer",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/drawer",
       "artifact": "component",
       "stateful": true
     }

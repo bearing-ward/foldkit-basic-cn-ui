@@ -2,6 +2,7 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
+  avatarBadgeClassName,
   avatarClassNameBySize,
   avatarFallbackClassName,
   avatarGroupClassName,
@@ -14,6 +15,7 @@ export type { AvatarSize };
 
 export {
   avatarBaseClassName,
+  avatarBadgeClassName,
   avatarClassNameBySize,
   avatarFallbackClassName,
   avatarGroupClassName,
@@ -56,6 +58,13 @@ export type ViewConfig = Readonly<{
 
 export type CountConfig = Readonly<{
   count: number;
+  label?: string | undefined;
+  className?: string | undefined;
+  style?: AvatarStyle | undefined;
+}>;
+
+export type BadgeViewConfig = Readonly<{
+  children?: readonly Html[] | undefined;
   label?: string | undefined;
   className?: string | undefined;
   style?: AvatarStyle | undefined;
@@ -138,6 +147,24 @@ export const view = <ParentMessage>({
           ]
         : [imageView<ParentMessage>({ src, alt: alt ?? fallback })],
   });
+
+export const badgeView = <ParentMessage>({
+  children = [],
+  label,
+  className,
+  style,
+}: BadgeViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.span(
+    [
+      ...(label === undefined ? [h.AriaHidden(true)] : [h.AriaLabel(label)]),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(classNames(avatarBadgeClassName, className)),
+    ],
+    children
+  );
+};
 
 export const groupView = <ParentMessage>(
   children: readonly Html[],

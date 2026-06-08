@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Card",
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/card",
       "artifact": "component",
       "stateful": false
     }

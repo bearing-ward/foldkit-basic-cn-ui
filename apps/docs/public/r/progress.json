@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Progress",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/progress",
       "artifact": "component",
       "stateful": false
     }

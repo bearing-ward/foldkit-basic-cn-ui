@@ -32,7 +32,7 @@
       "component": "FileDrop",
       "primitive": "Ui.FileDrop",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/file-drop",
       "artifact": "primitive-backed-component"
     }
   }

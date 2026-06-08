@@ -41,17 +41,21 @@ Use this vocabulary consistently in source, docs, metadata, and planning.
 
 ## Origin Policy
 
-Each `registry:ui` item must declare its origin in `meta.foldkit.origin`.
+Each `registry:ui` item must declare its upstream reference in
+`meta.foldkit.origin`. The value must be an `https://` URL for the component
+being mirrored or wrapped, not a lane label.
 
-| Origin    | Use When                                                                                                                 |
-| --------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `foldkit` | The component shows the correct Foldkit functional implementation: model, messages, update, view wiring, and effects.    |
-| `base-ui` | The component exposes the simple Base UI styled or unstyled lane, reusing Foldkit functionality where it already exists. |
-| `shadcn`  | The component exposes the opinionated shadcn style lane, reusing Foldkit functionality where it already exists.          |
+| URL Family               | Use When                                                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `https://foldkit.dev/`   | The component shows the correct Foldkit functional implementation: model, messages, update, view wiring, and effects.    |
+| `https://base-ui.com/`   | The component exposes the simple Base UI styled or unstyled lane, reusing Foldkit functionality where it already exists. |
+| `https://ui.shadcn.com/` | The component exposes the opinionated shadcn style lane, reusing Foldkit functionality where it already exists.          |
 
-Origins are style/source lanes, not mutually exclusive functional coverage. A
-Foldkit-origin component can satisfy the functional reference for a component
-name, but it does not satisfy the Base UI or shadcn style lane by itself.
+Origin URLs identify the canonical component reference. The application and
+registry guardrails derive the style/source lane from the URL family. Lanes are
+not mutually exclusive functional coverage: a Foldkit-origin component can
+satisfy the functional reference for a component name, but it does not satisfy
+the Base UI or shadcn style lane by itself.
 
 Base UI and shadcn slices should steal Foldkit behavior when a Foldkit primitive
 or Foldkit-native implementation already exists. Base UI remains the simple
@@ -97,6 +101,12 @@ Examples should use upstream example names when matching Base UI or shadcn:
 - shadcn examples should match shadcn example names and visible content.
 - When an upstream example depends on another component, track that dependency
   and promote the dependency first when practical.
+- Every Base UI or shadcn component pass must reconcile the origin examples
+  against our implementation before it is considered complete. Inventory the
+  current origin URL from `meta.foldkit.origin`, compare its examples to
+  `registry/default/examples/{origin-lane}-{name}-*`, docs example blocks, source
+  snapshots, generated registry JSON, and scene tests, then either add the
+  missing matching example or document the deliberate deferral with the reason.
 
 ## Required Files
 
@@ -129,16 +139,19 @@ The docs sidebar/dock grouping is part of the component contract, not a
 presentation detail. A component's docs nav group must match
 `registry/default/items.json`:
 
-- `meta.foldkit.origin: "base-ui"` appears under the `Base UI` docs group.
-- `meta.foldkit.origin: "shadcn"` appears under the `shadcn` docs group.
-- `meta.foldkit.origin: "foldkit"` appears under the `Foldkit` docs group.
+- `meta.foldkit.origin` under `https://base-ui.com/` appears under the `Base UI`
+  docs group.
+- `meta.foldkit.origin` under `https://ui.shadcn.com/` appears under the
+  `shadcn` docs group.
+- `meta.foldkit.origin` under `https://foldkit.dev/` appears under the `Foldkit`
+  docs group.
 
 When adding or changing a `registry:ui` item:
 
 - Add the docs route to `NAV_ITEMS`.
 - Ensure `docsNavItemLibrary` classifies the `{Component}Docs` route according
-  to `meta.foldkit.origin`; never rely on the fallback for Base UI or shadcn
-  components.
+  to the lane derived from `meta.foldkit.origin`; never rely on the fallback for
+  Base UI or shadcn components.
 - Add source metadata to `COMPONENT_DOCS_METADATA_BY_SLUG` for every non-Foldkit
   origin so the docs meta grid shows the same origin as the registry metadata.
 - Run `bun run check:registry`; the metadata guardrail must fail if a Base UI or
@@ -412,7 +425,7 @@ Required fields:
 {
   "meta": {
     "foldkit": {
-      "origin": "foldkit | base-ui | shadcn",
+      "origin": "https://foldkit.dev/ui/dialog",
       "artifact": "primitive-backed-component | component",
       "primitive": "Ui.Dialog"
     }

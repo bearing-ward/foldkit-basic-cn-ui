@@ -32,7 +32,7 @@
       "component": "VirtualList",
       "primitive": "Ui.VirtualList",
       "stateful": true,
-      "origin": "foldkit",
+      "origin": "https://foldkit.dev/ui/virtual-list",
       "artifact": "primitive-backed-component"
     }
   }

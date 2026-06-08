@@ -1,8 +1,7 @@
-export const accordionRootClassName =
-  "w-full max-w-2xl divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white";
+export const accordionRootClassName = "w-full max-w-2xl bg-white";
 
 export const accordionItemClassName =
-  "data-[disabled]:opacity-50 data-[open]:bg-gray-50";
+  "border-b border-gray-200 data-[disabled]:opacity-50 data-[open]:bg-gray-50";
 
 export const accordionHeaderClassName = "m-0";
 

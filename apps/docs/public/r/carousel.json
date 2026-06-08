@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Carousel",
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/carousel",
       "artifact": "component",
       "stateful": false
     }

@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "ToggleGroup",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/toggle-group",
       "artifact": "component",
       "stateful": true
     }

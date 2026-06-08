@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "shadcn",
+      "origin": "https://ui.shadcn.com/docs/components/scroll-area",
       "artifact": "component",
       "stateful": false
     }

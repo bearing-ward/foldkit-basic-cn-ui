@@ -36,16 +36,9 @@ const avatarImageSrc =
 
 export const view = Submodel.defineView<Model, Message>(
   (): Html =>
-    Avatar.groupView<Message>(
-      [
-        Avatar.view<Message>({
-          alt: "Lena Taylor",
-          fallback: "LT",
-          src: avatarImageSrc,
-        }),
-        Avatar.view<Message>({ fallback: "BW" }),
-        Avatar.countView<Message>({ count: 3 }),
-      ],
-      "gap-3"
-    )
+    Avatar.view<Message>({
+      alt: "Colm Tuite",
+      fallback: "CN",
+      src: avatarImageSrc,
+    })
 );

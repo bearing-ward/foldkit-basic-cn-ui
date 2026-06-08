@@ -24,7 +24,8 @@
   "meta": {
     "foldkit": {
       "component": "Chart",
-      "example": "rtl"
+      "example": "rtl",
+      "origin": "https://ui.shadcn.com/docs/components/chart"
     }
   }
 }

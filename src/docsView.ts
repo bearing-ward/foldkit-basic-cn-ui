@@ -16,6 +16,7 @@ import * as DocsPreviewsCD from "./docsExamplePreviewsCD";
 import * as DocsPreviewsEI from "./docsExamplePreviewsEI";
 import * as DocsPreviewsJM from "./docsExamplePreviewsJM";
 import * as DocsPreviewsNZ from "./docsExamplePreviewsNZ";
+import * as DocsPreviewsShadcnMissing from "./docsExamplePreviewsShadcnMissing";
 import * as DocsRoutes from "./docsExampleRoutes";
 import * as Icon from "./icon";
 import * as Main from "./main";
@@ -1403,6 +1404,18 @@ const publicPath = (path: string): string =>
 
 const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/accordion/examples/basic": "sources/accordion-basic.txt",
+  "/docs/components/shadcn-accordion/examples/basic":
+    "sources/shadcn-accordion-basic.txt",
+  "/docs/components/shadcn-accordion/examples/multiple":
+    "sources/shadcn-accordion-multiple.txt",
+  "/docs/components/shadcn-accordion/examples/disabled":
+    "sources/shadcn-accordion-disabled.txt",
+  "/docs/components/shadcn-accordion/examples/borders":
+    "sources/shadcn-accordion-borders.txt",
+  "/docs/components/shadcn-accordion/examples/card":
+    "sources/shadcn-accordion-card.txt",
+  "/docs/components/shadcn-accordion/examples/rtl":
+    "sources/shadcn-accordion-rtl.txt",
   "/docs/components/accordion/examples/multiple":
     "sources/accordion-multiple.txt",
   "/docs/components/alert/examples/basic": "sources/alert-basic.txt",
@@ -1476,6 +1489,8 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/direction/examples/basic": "sources/direction-basic.txt",
   "/docs/components/alert-dialog/examples/basic":
     "sources/alert-dialog-basic.txt",
+  "/docs/components/shadcn-alert-dialog/examples/basic":
+    "sources/shadcn-alert-dialog-basic.txt",
   "/docs/components/drawer/examples/basic": "sources/drawer-basic.txt",
   "/docs/components/context-menu/examples/basic":
     "sources/context-menu-basic.txt",
@@ -1495,6 +1510,22 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/autocomplete-basic.txt",
   "/docs/components/animation/examples/basic": "sources/animation-basic.txt",
   "/docs/components/avatar/examples/basic": "sources/avatar-basic.txt",
+  "/docs/components/shadcn-avatar/examples/basic":
+    "sources/shadcn-avatar-basic.txt",
+  "/docs/components/shadcn-avatar/examples/badge":
+    "sources/shadcn-avatar-badge.txt",
+  "/docs/components/shadcn-avatar/examples/badge-icon":
+    "sources/shadcn-avatar-badge-icon.txt",
+  "/docs/components/shadcn-avatar/examples/group":
+    "sources/shadcn-avatar-group.txt",
+  "/docs/components/shadcn-avatar/examples/group-count":
+    "sources/shadcn-avatar-group-count.txt",
+  "/docs/components/shadcn-avatar/examples/group-icon":
+    "sources/shadcn-avatar-group-icon.txt",
+  "/docs/components/shadcn-avatar/examples/sizes":
+    "sources/shadcn-avatar-sizes.txt",
+  "/docs/components/shadcn-avatar/examples/dropdown":
+    "sources/shadcn-avatar-dropdown.txt",
   "/docs/components/badge/examples/basic": "sources/badge-basic.txt",
   "/docs/components/badge/examples/spinner": "sources/badge-spinner.txt",
   "/docs/components/carousel/examples/basic": "sources/carousel-basic.txt",
@@ -1529,6 +1560,34 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/empty/examples/input-group":
     "sources/empty-input-group.txt",
   "/docs/components/button/examples/basic": "sources/button-basic.txt",
+  "/docs/components/shadcn-button/examples/basic":
+    "sources/shadcn-button-basic.txt",
+  "/docs/components/shadcn-button/examples/size":
+    "sources/shadcn-button-size.txt",
+  "/docs/components/shadcn-button/examples/default":
+    "sources/shadcn-button-default.txt",
+  "/docs/components/shadcn-button/examples/outline":
+    "sources/shadcn-button-outline.txt",
+  "/docs/components/shadcn-button/examples/secondary":
+    "sources/shadcn-button-secondary.txt",
+  "/docs/components/shadcn-button/examples/ghost":
+    "sources/shadcn-button-ghost.txt",
+  "/docs/components/shadcn-button/examples/destructive":
+    "sources/shadcn-button-destructive.txt",
+  "/docs/components/shadcn-button/examples/link":
+    "sources/shadcn-button-link.txt",
+  "/docs/components/shadcn-button/examples/icon":
+    "sources/shadcn-button-icon.txt",
+  "/docs/components/shadcn-button/examples/with-icon":
+    "sources/shadcn-button-with-icon.txt",
+  "/docs/components/shadcn-button/examples/rounded":
+    "sources/shadcn-button-rounded.txt",
+  "/docs/components/shadcn-button/examples/spinner":
+    "sources/shadcn-button-spinner.txt",
+  "/docs/components/shadcn-button/examples/as-child":
+    "sources/shadcn-button-as-child.txt",
+  "/docs/components/shadcn-button/examples/rtl":
+    "sources/shadcn-button-rtl.txt",
   "/docs/components/button/examples/disabled": "sources/button-disabled.txt",
   "/docs/components/meter/examples/basic": "sources/meter-basic.txt",
   "/docs/components/scroll-area/examples/basic":
@@ -1539,6 +1598,52 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/radio/examples/basic": "sources/radio-basic.txt",
   "/docs/components/toolbar/examples/basic": "sources/toolbar-basic.txt",
   "/docs/components/calendar/examples/basic": "sources/calendar-basic.txt",
+  "/docs/components/shadcn-calendar/examples/basic":
+    "sources/shadcn-calendar-basic.txt",
+  "/docs/components/shadcn-calendar/examples/month-year-selector":
+    "sources/shadcn-calendar-month-year-selector.txt",
+  "/docs/components/shadcn-calendar/examples/date-of-birth":
+    "sources/shadcn-calendar-date-of-birth.txt",
+  "/docs/components/shadcn-calendar/examples/presets":
+    "sources/shadcn-calendar-presets.txt",
+  "/docs/components/shadcn-calendar/examples/booked-dates":
+    "sources/shadcn-calendar-booked.txt",
+  "/docs/components/shadcn-calendar/examples/rtl":
+    "sources/shadcn-calendar-rtl.txt",
+  "/docs/components/shadcn-toast/examples/basic":
+    "sources/shadcn-toast-basic.txt",
+  "/docs/components/shadcn-textarea/examples/basic":
+    "sources/shadcn-textarea-basic.txt",
+  "/docs/components/shadcn-separator/examples/basic":
+    "sources/shadcn-separator-basic.txt",
+  "/docs/components/shadcn-scroll-area/examples/basic":
+    "sources/shadcn-scroll-area-basic.txt",
+  "/docs/components/shadcn-progress/examples/basic":
+    "sources/shadcn-progress-basic.txt",
+  "/docs/components/shadcn-popover/examples/basic":
+    "sources/shadcn-popover-basic.txt",
+  "/docs/components/shadcn-navigation-menu/examples/basic":
+    "sources/shadcn-navigation-menu-basic.txt",
+  "/docs/components/shadcn-menubar/examples/basic":
+    "sources/shadcn-menubar-basic.txt",
+  "/docs/components/shadcn-input/examples/basic":
+    "sources/shadcn-input-basic.txt",
+  "/docs/components/shadcn-field/examples/basic":
+    "sources/shadcn-field-basic.txt",
+  "/docs/components/shadcn-drawer/examples/basic":
+    "sources/shadcn-drawer-basic.txt",
+  "/docs/components/shadcn-dialog/examples/basic":
+    "sources/shadcn-dialog-basic.txt",
+  "/docs/components/shadcn-date-picker/examples/basic":
+    "sources/shadcn-date-picker-basic.txt",
+  "/docs/components/shadcn-context-menu/examples/basic":
+    "sources/shadcn-context-menu-basic.txt",
+  "/docs/components/shadcn-combobox/examples/basic":
+    "sources/shadcn-combobox-basic.txt",
+  "/docs/components/shadcn-collapsible/examples/basic":
+    "sources/shadcn-collapsible-basic.txt",
+  "/docs/components/shadcn-checkbox/examples/basic":
+    "sources/shadcn-checkbox-basic.txt",
   "/docs/components/calendar/examples/bounds": "sources/calendar-bounds.txt",
   "/docs/components/checkbox/examples/basic": "sources/checkbox-basic.txt",
   "/docs/components/checkbox-group/examples/basic":
@@ -1582,15 +1687,25 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/popover/examples/basic": "sources/popover-basic.txt",
   "/docs/components/radio-group/examples/basic":
     "sources/radio-group-basic.txt",
+  "/docs/components/shadcn-radio-group/examples/basic":
+    "sources/shadcn-radio-group-basic.txt",
   "/docs/components/radio-group/examples/horizontal":
     "sources/radio-group-horizontal.txt",
   "/docs/components/select/examples/basic": "sources/select-basic.txt",
+  "/docs/components/shadcn-select/examples/basic":
+    "sources/shadcn-select-basic.txt",
   "/docs/components/select/examples/disabled": "sources/select-disabled.txt",
   "/docs/components/slider/examples/basic": "sources/slider-basic.txt",
+  "/docs/components/shadcn-slider/examples/basic":
+    "sources/shadcn-slider-basic.txt",
   "/docs/components/slider/examples/disabled": "sources/slider-disabled.txt",
   "/docs/components/switch/examples/basic": "sources/switch-basic.txt",
+  "/docs/components/shadcn-switch/examples/basic":
+    "sources/shadcn-switch-basic.txt",
   "/docs/components/switch/examples/disabled": "sources/switch-disabled.txt",
   "/docs/components/tabs/examples/basic": "sources/tabs-basic.txt",
+  "/docs/components/shadcn-tabs/examples/basic":
+    "sources/shadcn-tabs-basic.txt",
   "/docs/components/tabs/examples/manual": "sources/tabs-manual.txt",
   "/docs/components/textarea/examples/basic": "sources/textarea-basic.txt",
   "/docs/components/textarea/examples/disabled":
@@ -2645,6 +2760,27 @@ const docsMetadataForSource = (
   );
 };
 
+const originUrlForSource = (source: string, origin: string): string => {
+  if (origin.startsWith("https://")) {
+    return origin;
+  }
+
+  const slug = source.replace(/^registry\/default\/ui\//u, "");
+  const componentSlug = slug.replace(/^base-ui-/u, "").replace(/^shadcn-/u, "");
+
+  if (origin === "Base UI") {
+    return `https://base-ui.com/react/components/${componentSlug}`;
+  }
+
+  if (origin === "shadcn") {
+    return componentSlug === "avatar"
+      ? "https://ui.shadcn.com/docs/components/radix/avatar"
+      : `https://ui.shadcn.com/docs/components/${componentSlug}`;
+  }
+
+  return `https://foldkit.dev/ui/${componentSlug}`;
+};
+
 const docsMetaItemsWithComponentMetadata = (
   items: readonly DocsMetaItem[]
 ): readonly DocsMetaItem[] => {
@@ -2662,12 +2798,44 @@ const docsMetaItemsWithComponentMetadata = (
 
   return [
     ...items,
-    { label: "Origin", value: maybeMetadata.origin },
+    {
+      label: "Origin",
+      value: originUrlForSource(maybeSource.value, maybeMetadata.origin),
+    },
     { label: "Artifact", value: maybeMetadata.artifact },
     ...(maybeMetadata.primitive === undefined
       ? []
       : [{ label: "Primitive", value: maybeMetadata.primitive }]),
   ];
+};
+
+const isHttpsUrl = (value: string): boolean => {
+  try {
+    return new URL(value).protocol === "https:";
+  } catch {
+    return false;
+  }
+};
+
+const docsMetaValueView = (value: string): Html => {
+  const h = html<Message>();
+
+  if (!isHttpsUrl(value)) {
+    return h.p([], [value]);
+  }
+
+  return h.p(
+    [],
+    [
+      h.a(
+        [
+          h.Href(value),
+          h.Class("break-words text-accent-700 underline underline-offset-4"),
+        ],
+        [value]
+      ),
+    ]
+  );
 };
 
 const docsMetaGrid = (items: readonly DocsMetaItem[]): Html => {
@@ -2685,7 +2853,7 @@ const docsMetaGrid = (items: readonly DocsMetaItem[]): Html => {
         [h.Class("space-y-1")],
         [
           h.p([h.Class("font-medium text-gray-950")], [item.label]),
-          h.p([], [item.value]),
+          docsMetaValueView(item.value),
         ]
       )
     )
@@ -12021,7 +12189,641 @@ type ShadcnLaneDocsConfig = Readonly<{
   examples?: readonly string[];
 }>;
 
-const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
+const shadcnGeneratedExampleBlock = (example: string): Html =>
+  M.value(example).pipe(
+    M.when("shadcn-checkbox-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-checkbox-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnCheckboxBasicExamplePreview(),
+        href: "/docs/components/shadcn-checkbox/examples/basic",
+        linkText: "Open standalone shadcn Checkbox Basic example",
+      })
+    ),
+    M.when("shadcn-collapsible-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-collapsible-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnCollapsibleBasicExamplePreview(),
+        href: "/docs/components/shadcn-collapsible/examples/basic",
+        linkText: "Open standalone shadcn Collapsible Basic example",
+      })
+    ),
+    M.when("shadcn-combobox-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-combobox-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnComboboxBasicExamplePreview(),
+        href: "/docs/components/shadcn-combobox/examples/basic",
+        linkText: "Open standalone shadcn Combobox Basic example",
+      })
+    ),
+    M.when("shadcn-context-menu-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-context-menu-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnContextMenuBasicExamplePreview(),
+        href: "/docs/components/shadcn-context-menu/examples/basic",
+        linkText: "Open standalone shadcn Context Menu Basic example",
+      })
+    ),
+    M.when("shadcn-date-picker-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-date-picker-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnDatePickerBasicExamplePreview(),
+        href: "/docs/components/shadcn-date-picker/examples/basic",
+        linkText: "Open standalone shadcn Date Picker Basic example",
+      })
+    ),
+    M.when("shadcn-dialog-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-dialog-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(),
+        href: "/docs/components/shadcn-dialog/examples/basic",
+        linkText: "Open standalone shadcn Dialog Basic example",
+      })
+    ),
+    M.when("shadcn-drawer-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-drawer-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnDrawerBasicExamplePreview(),
+        href: "/docs/components/shadcn-drawer/examples/basic",
+        linkText: "Open standalone shadcn Drawer Basic example",
+      })
+    ),
+    M.when("shadcn-field-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-field-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnFieldBasicExamplePreview(),
+        href: "/docs/components/shadcn-field/examples/basic",
+        linkText: "Open standalone shadcn Field Basic example",
+      })
+    ),
+    M.when("shadcn-input-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-input-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnInputBasicExamplePreview(),
+        href: "/docs/components/shadcn-input/examples/basic",
+        linkText: "Open standalone shadcn Input Basic example",
+      })
+    ),
+    M.when("shadcn-menubar-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-menubar-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnMenubarBasicExamplePreview(),
+        href: "/docs/components/shadcn-menubar/examples/basic",
+        linkText: "Open standalone shadcn Menubar Basic example",
+      })
+    ),
+    M.when("shadcn-navigation-menu-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-navigation-menu-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnNavigationMenuBasicExamplePreview(),
+        href: "/docs/components/shadcn-navigation-menu/examples/basic",
+        linkText: "Open standalone shadcn Navigation Menu Basic example",
+      })
+    ),
+    M.when("shadcn-popover-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-popover-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnPopoverBasicExamplePreview(),
+        href: "/docs/components/shadcn-popover/examples/basic",
+        linkText: "Open standalone shadcn Popover Basic example",
+      })
+    ),
+    M.when("shadcn-progress-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-progress-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnProgressBasicExamplePreview(),
+        href: "/docs/components/shadcn-progress/examples/basic",
+        linkText: "Open standalone shadcn Progress Basic example",
+      })
+    ),
+    M.when("shadcn-scroll-area-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-scroll-area-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnScrollAreaBasicExamplePreview(),
+        href: "/docs/components/shadcn-scroll-area/examples/basic",
+        linkText: "Open standalone shadcn Scroll Area Basic example",
+      })
+    ),
+    M.when("shadcn-separator-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-separator-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnSeparatorBasicExamplePreview(),
+        href: "/docs/components/shadcn-separator/examples/basic",
+        linkText: "Open standalone shadcn Separator Basic example",
+      })
+    ),
+    M.when("shadcn-textarea-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-textarea-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnTextareaBasicExamplePreview(),
+        href: "/docs/components/shadcn-textarea/examples/basic",
+        linkText: "Open standalone shadcn Textarea Basic example",
+      })
+    ),
+    M.when("shadcn-toast-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-toast-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnToastBasicExamplePreview(),
+        href: "/docs/components/shadcn-toast/examples/basic",
+        linkText: "Open standalone shadcn Toast Basic example",
+      })
+    ),
+    M.orElse(() => shadcnGeneratedExampleBlock(example))
+  );
+
+const shadcnButtonExampleBlock = (example: string): Html =>
+  M.value(example).pipe(
+    M.when("shadcn-button-size", () =>
+      docsExampleBlock({
+        title: "Size",
+        testId: "docs-example-block-shadcn-button-size",
+        preview: DocsPreviewsB.shadcnButtonSizeExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/size",
+        linkText: "Open standalone shadcn Button Size example",
+      })
+    ),
+    M.when("shadcn-button-default", () =>
+      docsExampleBlock({
+        title: "Default",
+        testId: "docs-example-block-shadcn-button-default",
+        preview: DocsPreviewsB.shadcnButtonDefaultExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/default",
+        linkText: "Open standalone shadcn Button Default example",
+      })
+    ),
+    M.when("shadcn-button-outline", () =>
+      docsExampleBlock({
+        title: "Outline",
+        testId: "docs-example-block-shadcn-button-outline",
+        preview: DocsPreviewsB.shadcnButtonOutlineExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/outline",
+        linkText: "Open standalone shadcn Button Outline example",
+      })
+    ),
+    M.when("shadcn-button-secondary", () =>
+      docsExampleBlock({
+        title: "Secondary",
+        testId: "docs-example-block-shadcn-button-secondary",
+        preview: DocsPreviewsB.shadcnButtonSecondaryExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/secondary",
+        linkText: "Open standalone shadcn Button Secondary example",
+      })
+    ),
+    M.when("shadcn-button-ghost", () =>
+      docsExampleBlock({
+        title: "Ghost",
+        testId: "docs-example-block-shadcn-button-ghost",
+        preview: DocsPreviewsB.shadcnButtonGhostExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/ghost",
+        linkText: "Open standalone shadcn Button Ghost example",
+      })
+    ),
+    M.when("shadcn-button-destructive", () =>
+      docsExampleBlock({
+        title: "Destructive",
+        testId: "docs-example-block-shadcn-button-destructive",
+        preview: DocsPreviewsB.shadcnButtonDestructiveExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/destructive",
+        linkText: "Open standalone shadcn Button Destructive example",
+      })
+    ),
+    M.when("shadcn-button-link", () =>
+      docsExampleBlock({
+        title: "Link",
+        testId: "docs-example-block-shadcn-button-link",
+        preview: DocsPreviewsB.shadcnButtonLinkExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/link",
+        linkText: "Open standalone shadcn Button Link example",
+      })
+    ),
+    M.when("shadcn-button-icon", () =>
+      docsExampleBlock({
+        title: "Icon",
+        testId: "docs-example-block-shadcn-button-icon",
+        preview: DocsPreviewsB.shadcnButtonIconExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/icon",
+        linkText: "Open standalone shadcn Button Icon example",
+      })
+    ),
+    M.when("shadcn-button-with-icon", () =>
+      docsExampleBlock({
+        title: "With Icon",
+        testId: "docs-example-block-shadcn-button-with-icon",
+        preview: DocsPreviewsB.shadcnButtonWithIconExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/with-icon",
+        linkText: "Open standalone shadcn Button With Icon example",
+      })
+    ),
+    M.when("shadcn-button-rounded", () =>
+      docsExampleBlock({
+        title: "Rounded",
+        testId: "docs-example-block-shadcn-button-rounded",
+        preview: DocsPreviewsB.shadcnButtonRoundedExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/rounded",
+        linkText: "Open standalone shadcn Button Rounded example",
+      })
+    ),
+    M.when("shadcn-button-spinner", () =>
+      docsExampleBlock({
+        title: "Spinner",
+        testId: "docs-example-block-shadcn-button-spinner",
+        preview: DocsPreviewsB.shadcnButtonSpinnerExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/spinner",
+        linkText: "Open standalone shadcn Button Spinner example",
+      })
+    ),
+    M.when("shadcn-button-as-child", () =>
+      docsExampleBlock({
+        title: "As Child",
+        testId: "docs-example-block-shadcn-button-as-child",
+        preview: DocsPreviewsB.shadcnButtonAsChildExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/as-child",
+        linkText: "Open standalone shadcn Button As Child example",
+      })
+    ),
+    M.when("shadcn-button-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        testId: "docs-example-block-shadcn-button-rtl",
+        preview: DocsPreviewsB.shadcnButtonRtlExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/rtl",
+        linkText: "Open standalone shadcn Button RTL example",
+      })
+    ),
+    M.orElse(() => shadcnGeneratedExampleBlock(example))
+  );
+
+const shadcnAccordionExampleBlock = (model: Model, example: string): Html =>
+  M.value(example).pipe(
+    M.when("shadcn-accordion-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        description:
+          "Single-value accordion behavior: one trigger opens its content and closes the previously open item.",
+        testId: "docs-example-block-shadcn-accordion-basic",
+        preview: DocsPreviewsAccordion.shadcnAccordionBasicExamplePreview(
+          model.shadcnAccordionBasicExample,
+          "shadcn-accordion-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-accordion/examples/basic",
+        linkText: "Open standalone shadcn Accordion Basic example",
+      })
+    ),
+    M.when("shadcn-accordion-multiple", () =>
+      docsExampleBlock({
+        title: "Multiple",
+        description:
+          "Multiple-value accordion behavior: opening another item keeps the existing item open.",
+        testId: "docs-example-block-shadcn-accordion-multiple",
+        preview: DocsPreviewsAccordion.shadcnAccordionMultipleExamplePreview(
+          model.shadcnAccordionMultipleExample,
+          "shadcn-accordion-docs-multiple-preview"
+        ),
+        href: "/docs/components/shadcn-accordion/examples/multiple",
+        linkText: "Open standalone shadcn Accordion Multiple example",
+      })
+    ),
+    M.when("shadcn-accordion-disabled", () =>
+      docsExampleBlock({
+        title: "Disabled",
+        description:
+          "Disabled items stay visible in the set but do not dispatch toggle messages.",
+        testId: "docs-example-block-shadcn-accordion-disabled",
+        preview: DocsPreviewsAccordion.shadcnAccordionDisabledExamplePreview(
+          model.shadcnAccordionDisabledExample,
+          "shadcn-accordion-docs-disabled-preview"
+        ),
+        href: "/docs/components/shadcn-accordion/examples/disabled",
+        linkText: "Open standalone shadcn Accordion Disabled example",
+      })
+    ),
+    M.when("shadcn-accordion-borders", () =>
+      docsExampleBlock({
+        title: "Borders",
+        description:
+          "Adds the outer rounded border while item dividers remain internal and the last divider is removed.",
+        testId: "docs-example-block-shadcn-accordion-borders",
+        preview: DocsPreviewsAccordion.shadcnAccordionBordersExamplePreview(
+          model.shadcnAccordionBordersExample,
+          "shadcn-accordion-docs-borders-preview"
+        ),
+        href: "/docs/components/shadcn-accordion/examples/borders",
+        linkText: "Open standalone shadcn Accordion Borders example",
+      })
+    ),
+    M.when("shadcn-accordion-card", () =>
+      docsExampleBlock({
+        title: "Card",
+        description:
+          "Places the accordion inside a card shell with contextual title copy and contained spacing.",
+        testId: "docs-example-block-shadcn-accordion-card",
+        preview: DocsPreviewsAccordion.shadcnAccordionCardExamplePreview(
+          model.shadcnAccordionCardExample,
+          "shadcn-accordion-docs-card-preview"
+        ),
+        href: "/docs/components/shadcn-accordion/examples/card",
+        linkText: "Open standalone shadcn Accordion Card example",
+      })
+    ),
+    M.when("shadcn-accordion-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        description:
+          "Renders the same controlled accordion interaction inside a right-to-left container.",
+        testId: "docs-example-block-shadcn-accordion-rtl",
+        preview: DocsPreviewsAccordion.shadcnAccordionRtlExamplePreview(
+          model.shadcnAccordionRtlExample,
+          "shadcn-accordion-docs-rtl-preview"
+        ),
+        href: "/docs/components/shadcn-accordion/examples/rtl",
+        linkText: "Open standalone shadcn Accordion RTL example",
+      })
+    ),
+    M.orElse(() => shadcnButtonExampleBlock(example))
+  );
+
+const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
+  M.value(example).pipe(
+    M.when("shadcn-calendar-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        description:
+          "Single-date selection with parent-visible selected date and viewed month feedback.",
+        testId: "docs-example-block-shadcn-calendar-basic",
+        preview: DocsPreviewsCD.shadcnCalendarBasicExamplePreview(
+          model.shadcnCalendarBasicExample,
+          "shadcn-calendar-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-calendar/examples/basic",
+        linkText: "Open standalone shadcn Calendar Basic example",
+      })
+    ),
+    M.when("shadcn-calendar-month-year-selector", () =>
+      docsExampleBlock({
+        title: "Month and Year Selector",
+        description:
+          "Uses Foldkit Calendar day, month, and year modes to navigate bounded birth-year selection.",
+        testId: "docs-example-block-shadcn-calendar-month-year-selector",
+        preview: DocsPreviewsCD.shadcnCalendarMonthYearSelectorExamplePreview(
+          model.shadcnCalendarMonthYearSelectorExample,
+          "shadcn-calendar-docs-month-year-selector-preview"
+        ),
+        href: "/docs/components/shadcn-calendar/examples/month-year-selector",
+        linkText:
+          "Open standalone shadcn Calendar Month and Year Selector example",
+      })
+    ),
+    M.when("shadcn-calendar-date-of-birth", () =>
+      docsExampleBlock({
+        title: "Date of Birth",
+        description:
+          "Constrains date selection to an application-defined birth-date range.",
+        testId: "docs-example-block-shadcn-calendar-date-of-birth",
+        preview: DocsPreviewsCD.shadcnCalendarDateOfBirthExamplePreview(
+          model.shadcnCalendarDateOfBirthExample,
+          "shadcn-calendar-docs-date-of-birth-preview"
+        ),
+        href: "/docs/components/shadcn-calendar/examples/date-of-birth",
+        linkText: "Open standalone shadcn Calendar Date of Birth example",
+      })
+    ),
+    M.when("shadcn-calendar-presets", () =>
+      docsExampleBlock({
+        title: "Presets",
+        description:
+          "Parent-owned preset buttons select concrete CalendarDate values through the Calendar update path.",
+        testId: "docs-example-block-shadcn-calendar-presets",
+        preview: DocsPreviewsCD.shadcnCalendarPresetsExamplePreview(
+          model.shadcnCalendarPresetsExample,
+          "shadcn-calendar-docs-presets-preview"
+        ),
+        href: "/docs/components/shadcn-calendar/examples/presets",
+        linkText: "Open standalone shadcn Calendar Presets example",
+      })
+    ),
+    M.when("shadcn-calendar-booked", () =>
+      docsExampleBlock({
+        title: "Booked Dates",
+        description:
+          "Marks booked days as disabled with Calendar disabled-date and disabled-weekday reflection.",
+        testId: "docs-example-block-shadcn-calendar-booked",
+        preview: DocsPreviewsCD.shadcnCalendarBookedExamplePreview(
+          model.shadcnCalendarBookedExample,
+          "shadcn-calendar-docs-booked-preview"
+        ),
+        href: "/docs/components/shadcn-calendar/examples/booked-dates",
+        linkText: "Open standalone shadcn Calendar Booked Dates example",
+      })
+    ),
+    M.when("shadcn-calendar-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        description:
+          "Uses an Arabic locale and right-to-left container while keeping Calendar selection behavior intact.",
+        testId: "docs-example-block-shadcn-calendar-rtl",
+        preview: DocsPreviewsCD.shadcnCalendarRtlExamplePreview(
+          model.shadcnCalendarRtlExample,
+          "shadcn-calendar-docs-rtl-preview"
+        ),
+        href: "/docs/components/shadcn-calendar/examples/rtl",
+        linkText: "Open standalone shadcn Calendar RTL example",
+      })
+    ),
+    M.orElse(() => shadcnAccordionExampleBlock(model, example))
+  );
+
+const shadcnExampleBlock = (model: Model, example: string): Html =>
+  M.value(example).pipe(
+    M.when("shadcn-alert-dialog-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-alert-dialog-basic",
+        preview: DocsPreviewsAlert.shadcnAlertDialogBasicExamplePreview(
+          model.shadcnAlertDialogBasicExample,
+          "shadcn-alert-dialog-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-alert-dialog/examples/basic",
+        linkText: "Open standalone shadcn Alert Dialog Basic example",
+      })
+    ),
+    M.when("shadcn-avatar-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-avatar-basic",
+        preview: DocsPreviewsAvatar.shadcnAvatarBasicExamplePreview(
+          model.shadcnAvatarBasicExample,
+          "shadcn-avatar-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-avatar/examples/basic",
+        linkText: "Open standalone shadcn Avatar Basic example",
+      })
+    ),
+    M.when("shadcn-avatar-badge", () =>
+      docsExampleBlock({
+        title: "Badge",
+        testId: "docs-example-block-shadcn-avatar-badge",
+        preview: DocsPreviewsAvatar.shadcnAvatarBadgeExamplePreview(),
+        href: "/docs/components/shadcn-avatar/examples/badge",
+        linkText: "Open standalone shadcn Avatar Badge example",
+      })
+    ),
+    M.when("shadcn-avatar-badge-icon", () =>
+      docsExampleBlock({
+        title: "Badge with Icon",
+        testId: "docs-example-block-shadcn-avatar-badge-icon",
+        preview: DocsPreviewsAvatar.shadcnAvatarBadgeIconExamplePreview(),
+        href: "/docs/components/shadcn-avatar/examples/badge-icon",
+        linkText: "Open standalone shadcn Avatar Badge with Icon example",
+      })
+    ),
+    M.when("shadcn-avatar-group", () =>
+      docsExampleBlock({
+        title: "Avatar Group",
+        testId: "docs-example-block-shadcn-avatar-group",
+        preview: DocsPreviewsAvatar.shadcnAvatarGroupExamplePreview(),
+        href: "/docs/components/shadcn-avatar/examples/group",
+        linkText: "Open standalone shadcn Avatar Group example",
+      })
+    ),
+    M.when("shadcn-avatar-group-count", () =>
+      docsExampleBlock({
+        title: "Avatar Group Count",
+        testId: "docs-example-block-shadcn-avatar-group-count",
+        preview: DocsPreviewsAvatar.shadcnAvatarGroupCountExamplePreview(),
+        href: "/docs/components/shadcn-avatar/examples/group-count",
+        linkText: "Open standalone shadcn Avatar Group Count example",
+      })
+    ),
+    M.when("shadcn-avatar-group-icon", () =>
+      docsExampleBlock({
+        title: "Avatar Group with Icon",
+        testId: "docs-example-block-shadcn-avatar-group-icon",
+        preview: DocsPreviewsAvatar.shadcnAvatarGroupIconExamplePreview(),
+        href: "/docs/components/shadcn-avatar/examples/group-icon",
+        linkText: "Open standalone shadcn Avatar Group with Icon example",
+      })
+    ),
+    M.when("shadcn-avatar-sizes", () =>
+      docsExampleBlock({
+        title: "Sizes",
+        testId: "docs-example-block-shadcn-avatar-sizes",
+        preview: DocsPreviewsAvatar.shadcnAvatarSizesExamplePreview(),
+        href: "/docs/components/shadcn-avatar/examples/sizes",
+        linkText: "Open standalone shadcn Avatar Sizes example",
+      })
+    ),
+    M.when("shadcn-avatar-dropdown", () =>
+      docsExampleBlock({
+        title: "Dropdown",
+        testId: "docs-example-block-shadcn-avatar-dropdown",
+        preview: DocsPreviewsAvatar.shadcnAvatarDropdownExamplePreview(
+          model.shadcnAvatarDropdownExample,
+          "shadcn-avatar-docs-dropdown-preview"
+        ),
+        href: "/docs/components/shadcn-avatar/examples/dropdown",
+        linkText: "Open standalone shadcn Avatar Dropdown example",
+      })
+    ),
+    M.when("shadcn-button-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-button-basic",
+        preview: DocsPreviewsB.shadcnButtonBasicExamplePreview(
+          model.shadcnButtonBasicExample,
+          "shadcn-button-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-button/examples/basic",
+        linkText: "Open standalone shadcn Button Basic example",
+      })
+    ),
+    M.when("shadcn-radio-group-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-radio-group-basic",
+        preview: DocsPreviewsNZ.shadcnRadioGroupBasicExamplePreview(
+          model.shadcnRadioGroupBasicExample,
+          "shadcn-radio-group-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-radio-group/examples/basic",
+        linkText: "Open standalone shadcn Radio Group Basic example",
+      })
+    ),
+    M.when("shadcn-select-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-select-basic",
+        preview: DocsPreviewsNZ.shadcnSelectBasicExamplePreview(
+          model.shadcnSelectBasicExample,
+          "shadcn-select-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-select/examples/basic",
+        linkText: "Open standalone shadcn Select Basic example",
+      })
+    ),
+    M.when("shadcn-slider-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-slider-basic",
+        preview: DocsPreviewsNZ.shadcnSliderBasicExamplePreview(
+          model.shadcnSliderBasicExample,
+          "shadcn-slider-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-slider/examples/basic",
+        linkText: "Open standalone shadcn Slider Basic example",
+      })
+    ),
+    M.when("shadcn-switch-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-switch-basic",
+        preview: DocsPreviewsNZ.shadcnSwitchBasicExamplePreview(
+          model.shadcnSwitchBasicExample,
+          "shadcn-switch-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-switch/examples/basic",
+        linkText: "Open standalone shadcn Switch Basic example",
+      })
+    ),
+    M.when("shadcn-tabs-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-tabs-basic",
+        preview: DocsPreviewsNZ.shadcnTabsBasicExamplePreview(
+          model.shadcnTabsBasicExample,
+          "shadcn-tabs-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-tabs/examples/basic",
+        linkText: "Open standalone shadcn Tabs Basic example",
+      })
+    ),
+    M.orElse(() => shadcnCalendarExampleBlock(model, example))
+  );
+
+const shadcnLaneDocsView = (
+  model: Model,
+  config: ShadcnLaneDocsConfig
+): Html => {
   const h = html<Message>();
 
   return h.div(
@@ -12062,12 +12864,20 @@ const shadcnLaneDocsView = (config: ShadcnLaneDocsConfig): Html => {
       ...(config.examples === undefined
         ? []
         : [
-            docsTextListSection(
-              "Examples",
-              config.examples.map(
-                (example) =>
-                  `${example} - installable wrapper-specific example: bunx shadcn@latest add <registry-url>/${example}.json`
-              )
+            h.section(
+              [h.Class("space-y-4")],
+              [
+                h.h2(
+                  [h.Class("text-xl font-semibold text-gray-950")],
+                  ["Examples"]
+                ),
+                h.div(
+                  [h.Class("grid gap-4 lg:grid-cols-2")],
+                  config.examples.map((example) =>
+                    shadcnExampleBlock(model, example)
+                  )
+                ),
+              ]
             ),
           ]),
       ...docsStandardComponentSections({
@@ -15128,7 +15938,7 @@ const contentView = (model: Model): Html => {
       Home: homeView,
       AccordionDocs: () => accordionDocsView(model),
       ShadcnAccordionDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Accordion",
           source: "registry/default/ui/shadcn-accordion",
           primitive: "Accordion view helpers",
@@ -15144,7 +15954,14 @@ const contentView = (model: Model): Html => {
             "shadcnAccordionIconClassName",
             "shadcnAccordionPanelClassName",
           ],
-          examples: ["shadcn-accordion-basic"],
+          examples: [
+            "shadcn-accordion-basic",
+            "shadcn-accordion-multiple",
+            "shadcn-accordion-disabled",
+            "shadcn-accordion-borders",
+            "shadcn-accordion-card",
+            "shadcn-accordion-rtl",
+          ],
           anatomyCode: `import * as Accordion from "./ui/shadcn-accordion";
 
 Accordion.rootView<Message>({
@@ -15215,7 +16032,7 @@ Accordion.rootView<Message>({
         DocsRoutes.buttonGroupRtlExampleRouteView(model),
       AlertDialogDocs: () => alertDialogDocsView(model),
       ShadcnAlertDialogDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Alert Dialog",
           source: "registry/default/ui/shadcn-alert-dialog",
           primitive: "AlertDialog view helpers",
@@ -15246,7 +16063,7 @@ AlertDialog.rootView<Message>({
         DocsRoutes.alertDialogBasicExampleRouteView(model),
       DrawerDocs: () => drawerDocsView(model),
       ShadcnDrawerDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Drawer",
           source: "registry/default/ui/shadcn-drawer",
           primitive: "Drawer view helpers",
@@ -15262,6 +16079,7 @@ AlertDialog.rootView<Message>({
             "shadcnDrawerPopupClassName",
             "shadcnDrawerCloseClassName",
           ],
+          examples: ["shadcn-drawer-basic"],
           anatomyCode: `import * as Drawer from "./ui/shadcn-drawer";
 
 Drawer.rootView<Message>({
@@ -15274,7 +16092,7 @@ Drawer.rootView<Message>({
       DrawerBasicExample: () => DocsRoutes.drawerBasicExampleRouteView(model),
       ContextMenuDocs: () => contextMenuDocsView(model),
       ShadcnContextMenuDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Context Menu",
           source: "registry/default/ui/shadcn-context-menu",
           primitive: "Context Menu view helpers",
@@ -15290,6 +16108,7 @@ Drawer.rootView<Message>({
             "shadcnContextMenuPopupClassName",
             "shadcnContextMenuItemClassName",
           ],
+          examples: ["shadcn-context-menu-basic"],
           anatomyCode: `import * as ContextMenu from "./ui/shadcn-context-menu";
 
 ContextMenu.rootView<Message>({
@@ -15303,7 +16122,7 @@ ContextMenu.rootView<Message>({
         DocsRoutes.contextMenuBasicExampleRouteView(model),
       MenubarDocs: () => menubarDocsView(model),
       ShadcnMenubarDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Menubar",
           source: "registry/default/ui/shadcn-menubar",
           primitive: "Menubar view helpers",
@@ -15319,6 +16138,7 @@ ContextMenu.rootView<Message>({
             "shadcnMenubarItemClassName",
             "shadcnMenubarSeparatorClassName",
           ],
+          examples: ["shadcn-menubar-basic"],
           anatomyCode: `import * as Menubar from "./ui/shadcn-menubar";
 
 Menubar.rootView<Message>({
@@ -15335,7 +16155,7 @@ Menubar.rootView<Message>({
       MenubarBasicExample: () => DocsRoutes.menubarBasicExampleRouteView(model),
       NavigationMenuDocs: () => navigationMenuDocsView(model),
       ShadcnNavigationMenuDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Navigation Menu",
           source: "registry/default/ui/shadcn-navigation-menu",
           primitive: "Navigation Menu view helpers",
@@ -15351,6 +16171,7 @@ Menubar.rootView<Message>({
             "shadcnNavigationMenuPopupClassName",
             "shadcnNavigationMenuViewportClassName",
           ],
+          examples: ["shadcn-navigation-menu-basic"],
           anatomyCode: `import * as NavigationMenu from "./ui/shadcn-navigation-menu";
 
 NavigationMenu.rootView<Message>({
@@ -15374,7 +16195,7 @@ NavigationMenu.rootView<Message>({
         DocsRoutes.previewCardBasicExampleRouteView(model),
       CollapsibleDocs: () => collapsibleDocsView(model),
       ShadcnCollapsibleDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Collapsible",
           source: "registry/default/ui/shadcn-collapsible",
           primitive: "Collapsible view helpers",
@@ -15389,6 +16210,7 @@ NavigationMenu.rootView<Message>({
             "shadcnCollapsiblePanelClassName",
             "shadcnCollapsibleContentClassName",
           ],
+          examples: ["shadcn-collapsible-basic"],
           anatomyCode: `import * as Collapsible from "./ui/shadcn-collapsible";
 
 Collapsible.rootView<Message>({
@@ -15403,7 +16225,7 @@ Collapsible.rootView<Message>({
         DocsRoutes.collapsibleBasicExampleRouteView(model),
       FieldDocs: () => fieldDocsView(model),
       ShadcnFieldDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Field",
           source: "registry/default/ui/shadcn-field",
           primitive: "Field view helpers",
@@ -15419,6 +16241,7 @@ Collapsible.rootView<Message>({
             "shadcnFieldErrorClassName",
             "shadcnFieldValidityClassName",
           ],
+          examples: ["shadcn-field-basic"],
           anatomyCode: `import * as Field from "./ui/shadcn-field";
 
 Field.rootView<Message>({
@@ -15441,7 +16264,7 @@ Field.rootView<Message>({
       Avatar: () => embedUi("ui-avatar", View.avatar),
       AvatarDocs: () => avatarDocsView(model),
       ShadcnAvatarDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Avatar",
           source: "registry/default/ui/shadcn-avatar",
           primitive: "Avatar view helpers",
@@ -15451,12 +16274,22 @@ Field.rootView<Message>({
             "Install the shadcn lane wrapper when you want Avatar composition with shadcn naming and style hooks.",
           classHelpers: [
             "shadcnAvatarBaseClassName",
+            "shadcnAvatarBadgeClassName",
             "shadcnAvatarImageClassName",
             "shadcnAvatarFallbackClassName",
             "shadcnAvatarGroupClassName",
             "shadcnAvatarGroupCountClassName",
           ],
-          examples: ["shadcn-avatar-basic"],
+          examples: [
+            "shadcn-avatar-basic",
+            "shadcn-avatar-badge",
+            "shadcn-avatar-badge-icon",
+            "shadcn-avatar-group",
+            "shadcn-avatar-group-count",
+            "shadcn-avatar-group-icon",
+            "shadcn-avatar-sizes",
+            "shadcn-avatar-dropdown",
+          ],
           anatomyCode: `import * as Avatar from "./ui/shadcn-avatar";
 
 Avatar.view<Message>({
@@ -15553,7 +16386,7 @@ Avatar.view<Message>({
       Separator: () => embedUi("ui-separator", View.separator),
       SeparatorDocs: () => separatorDocsView(model),
       ShadcnSeparatorDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Separator",
           source: "registry/default/ui/shadcn-separator",
           primitive: "Separator view helpers",
@@ -15567,6 +16400,7 @@ Avatar.view<Message>({
             "shadcnVerticalSeparatorClassName",
             "shadcnSeparatorClassNameByOrientation",
           ],
+          examples: ["shadcn-separator-basic"],
           anatomyCode: `import * as Separator from "./ui/shadcn-separator";
 
 Separator.view<Message>({ orientation: "horizontal" });`,
@@ -15599,7 +16433,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
       ButtonDocs: () => buttonDocsView(model),
       BaseUiButtonDocs: () => baseUiButtonDocsView(model),
       ShadcnButtonDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Button",
           source: "registry/default/ui/shadcn-button",
           primitive: "Ui.Button",
@@ -15612,7 +16446,22 @@ Separator.view<Message>({ orientation: "horizontal" });`,
             "shadcnSecondaryButtonClassName",
             "shadcnDestructiveButtonClassName",
           ],
-          examples: ["shadcn-button-basic"],
+          examples: [
+            "shadcn-button-basic",
+            "shadcn-button-size",
+            "shadcn-button-default",
+            "shadcn-button-outline",
+            "shadcn-button-secondary",
+            "shadcn-button-ghost",
+            "shadcn-button-destructive",
+            "shadcn-button-link",
+            "shadcn-button-icon",
+            "shadcn-button-with-icon",
+            "shadcn-button-rounded",
+            "shadcn-button-spinner",
+            "shadcn-button-as-child",
+            "shadcn-button-rtl",
+          ],
           anatomyCode: `import * as Button from "./ui/shadcn-button";
 
 Button.view<Message>({
@@ -15630,14 +16479,14 @@ Button.view<Message>({
       Calendar: () => embedUi("ui-calendar", View.calendar),
       CalendarDocs: () => calendarDocsView(model),
       ShadcnCalendarDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Calendar",
           source: "registry/default/ui/shadcn-calendar",
           primitive: "Ui.Calendar",
           description:
-            "A shadcn style-lane Calendar slice that reuses the official Foldkit Ui.Calendar primitive for date selection, month navigation, keyboard focus, and disabled date reflection.",
+            "A shadcn style-lane Calendar slice that reuses the official Foldkit Ui.Calendar primitive for date selection, month/year navigation, locale labels, keyboard focus, and disabled date reflection.",
           usage:
-            "Install the shadcn lane wrapper when you want Foldkit Calendar behavior with shadcn naming and style hooks.",
+            "Install the shadcn lane wrapper when you want Foldkit Calendar behavior with shadcn naming and style hooks. Reconcile against the origin docs before adding new variants; range selection, date-time picking, natural-language parsing, and week numbers remain deferred until Ui.Calendar exposes those APIs.",
           classHelpers: [
             "shadcnCalendarContainerClassName",
             "shadcnCalendarHeaderClassName",
@@ -15646,7 +16495,14 @@ Button.view<Message>({
             "shadcnCalendarDayButtonClassName",
             "shadcnCalendarMonthYearButtonClassName",
           ],
-          examples: ["shadcn-calendar-basic"],
+          examples: [
+            "shadcn-calendar-basic",
+            "shadcn-calendar-month-year-selector",
+            "shadcn-calendar-date-of-birth",
+            "shadcn-calendar-presets",
+            "shadcn-calendar-booked",
+            "shadcn-calendar-rtl",
+          ],
           anatomyCode: `import * as Calendar from "./ui/shadcn-calendar";
 
 h.submodel({
@@ -15664,7 +16520,7 @@ h.submodel({
       CheckboxDocs: () => checkboxDocsView(model),
       BaseUiCheckboxDocs: () => baseUiCheckboxDocsView(model),
       ShadcnCheckboxDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Checkbox",
           source: "registry/default/ui/shadcn-checkbox",
           primitive: "Ui.Checkbox",
@@ -15679,6 +16535,7 @@ h.submodel({
             "shadcnCheckboxDescriptionClassName",
             "shadcnCheckboxTextClassName",
           ],
+          examples: ["shadcn-checkbox-basic"],
           anatomyCode: `import * as Checkbox from "./ui/shadcn-checkbox";
 
 h.submodel({
@@ -15722,7 +16579,7 @@ Combobox.view<Message>({
 });`,
         }),
       ShadcnComboboxDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Combobox",
           source: "registry/default/ui/shadcn-combobox",
           primitive: "Ui.Combobox",
@@ -15737,6 +16594,7 @@ Combobox.view<Message>({
             "shadcnComboboxItemClassName",
             "shadcnComboboxBackdropClassName",
           ],
+          examples: ["shadcn-combobox-basic"],
           anatomyCode: `import * as Combobox from "./ui/shadcn-combobox";
 
 Combobox.view<Message>({
@@ -15752,7 +16610,7 @@ Combobox.view<Message>({
       DatePicker: () => embedUi("ui-date-picker", View.datePicker),
       DatePickerDocs: () => datePickerDocsView(model),
       ShadcnDatePickerDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Date Picker",
           source: "registry/default/ui/shadcn-date-picker",
           primitive: "Ui.DatePicker",
@@ -15767,6 +16625,7 @@ Combobox.view<Message>({
             "shadcnDatePickerPanelClassName",
             "shadcnDatePickerBackdropClassName",
           ],
+          examples: ["shadcn-date-picker-basic"],
           anatomyCode: `import * as DatePicker from "./ui/shadcn-date-picker";
 
 h.submodel({
@@ -15806,7 +16665,7 @@ Dialog.view<Message>({
 });`,
         }),
       ShadcnDialogDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Dialog",
           source: "registry/default/ui/shadcn-dialog",
           primitive: "Ui.Dialog",
@@ -15820,6 +16679,7 @@ Dialog.view<Message>({
             "shadcnDialogTitleClassName",
             "shadcnDialogDescriptionClassName",
           ],
+          examples: ["shadcn-dialog-basic"],
           anatomyCode: `import * as Dialog from "./ui/shadcn-dialog";
 
 Dialog.view<Message>({
@@ -15908,7 +16768,7 @@ Input.view<Message>({
 });`,
         }),
       ShadcnInputDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Input",
           source: "registry/default/ui/shadcn-input",
           primitive: "Ui.Input",
@@ -15922,6 +16782,7 @@ Input.view<Message>({
             "shadcnInputClassName",
             "shadcnInputDescriptionClassName",
           ],
+          examples: ["shadcn-input-basic"],
           anatomyCode: `import * as Input from "./ui/shadcn-input";
 
 Input.view<Message>({
@@ -15939,7 +16800,7 @@ Input.view<Message>({
       ScrollArea: () => embedUi("ui-scroll-area", View.scrollArea),
       ScrollAreaDocs: () => scrollAreaDocsView(model),
       ShadcnScrollAreaDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Scroll Area",
           source: "registry/default/ui/shadcn-scroll-area",
           primitive: "Scroll Area view helpers",
@@ -15954,6 +16815,7 @@ Input.view<Message>({
             "shadcnScrollAreaScrollbarClassName",
             "shadcnScrollAreaThumbClassName",
           ],
+          examples: ["shadcn-scroll-area-basic"],
           anatomyCode: `import * as ScrollArea from "./ui/shadcn-scroll-area";
 
 ScrollArea.view<Message>({
@@ -15975,7 +16837,7 @@ ScrollArea.view<Message>({
       Progress: () => embedUi("ui-progress", View.progress),
       ProgressDocs: () => progressDocsView(model),
       ShadcnProgressDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Progress",
           source: "registry/default/ui/shadcn-progress",
           primitive: "Progress view helpers",
@@ -15990,6 +16852,7 @@ ScrollArea.view<Message>({
             "shadcnProgressTrackClassName",
             "shadcnProgressIndicatorClassName",
           ],
+          examples: ["shadcn-progress-basic"],
           anatomyCode: `import * as Progress from "./ui/shadcn-progress";
 
 Progress.view<Message>({
@@ -16062,7 +16925,7 @@ Popover.view<Message>({
 });`,
         }),
       ShadcnPopoverDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Popover",
           source: "registry/default/ui/shadcn-popover",
           primitive: "Ui.Popover",
@@ -16076,6 +16939,7 @@ Popover.view<Message>({
             "shadcnPopoverPanelClassName",
             "shadcnPopoverBackdropClassName",
           ],
+          examples: ["shadcn-popover-basic"],
           anatomyCode: `import * as Popover from "./ui/shadcn-popover";
 
 Popover.view<Message>({
@@ -16122,7 +16986,7 @@ h.submodel({
 });`,
         }),
       ShadcnRadioGroupDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Radio Group",
           source: "registry/default/ui/shadcn-radio-group",
           primitive: "Ui.RadioGroup",
@@ -16183,7 +17047,7 @@ Select.view<Message>({
 });`,
         }),
       ShadcnSelectDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Select",
           source: "registry/default/ui/shadcn-select",
           primitive: "Ui.Select",
@@ -16240,7 +17104,7 @@ h.submodel({
 });`,
         }),
       ShadcnSliderDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Slider",
           source: "registry/default/ui/shadcn-slider",
           primitive: "Ui.Slider",
@@ -16298,7 +17162,7 @@ h.submodel({
 });`,
         }),
       ShadcnSwitchDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Switch",
           source: "registry/default/ui/shadcn-switch",
           primitive: "Ui.Switch",
@@ -16359,7 +17223,7 @@ h.submodel({
 });`,
         }),
       ShadcnTabsDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Tabs",
           source: "registry/default/ui/shadcn-tabs",
           primitive: "Ui.Tabs",
@@ -16393,7 +17257,7 @@ h.submodel({
       Textarea: () => embedUi("ui-textarea", View.textarea),
       TextareaDocs: () => textareaDocsView(model),
       ShadcnTextareaDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Textarea",
           source: "registry/default/ui/shadcn-textarea",
           primitive: "Ui.Textarea",
@@ -16407,6 +17271,7 @@ h.submodel({
             "shadcnTextareaClassName",
             "shadcnTextareaDescriptionClassName",
           ],
+          examples: ["shadcn-textarea-basic"],
           anatomyCode: `import * as Textarea from "./ui/shadcn-textarea";
 
 Textarea.view<Message>({
@@ -16449,7 +17314,7 @@ Toast.view<Message>({
 });`,
         }),
       ShadcnToastDocs: () =>
-        shadcnLaneDocsView({
+        shadcnLaneDocsView(model, {
           label: "Toast",
           source: "registry/default/ui/shadcn-toast",
           primitive: "Ui.Toast",
@@ -16465,6 +17330,7 @@ Toast.view<Message>({
             "shadcnToastDescriptionClassName",
             "shadcnToastCloseButtonClassName",
           ],
+          examples: ["shadcn-toast-basic"],
           anatomyCode: `import * as Toast from "./ui/shadcn-toast";
 
 const [toast, commands] = Toast.init();

@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "ScrollArea",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/scroll-area",
       "artifact": "component",
       "stateful": false
     }

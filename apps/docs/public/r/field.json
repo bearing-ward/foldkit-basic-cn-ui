@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Field",
-      "origin": "base-ui",
+      "origin": "https://base-ui.com/react/components/field",
       "artifact": "component",
       "stateful": true
     }
