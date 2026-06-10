@@ -18958,13 +18958,13 @@ Button.view<Message>({
             "shadcn-calendar-basic",
             "shadcn-calendar-range",
             "shadcn-calendar-month-year-selector",
-            "shadcn-calendar-date-of-birth",
-            "shadcn-calendar-date-time-picker",
             "shadcn-calendar-presets",
+            "shadcn-calendar-date-time-picker",
             "shadcn-calendar-booked",
             "shadcn-calendar-custom-cell-size",
             "shadcn-calendar-week-numbers",
             "shadcn-calendar-rtl",
+            "shadcn-calendar-date-of-birth",
           ],
           anatomyCode: `import * as Calendar from "./ui/shadcn-calendar";
 
