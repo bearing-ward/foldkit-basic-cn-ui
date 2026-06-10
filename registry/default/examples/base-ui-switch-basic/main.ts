@@ -32,6 +32,7 @@ export const init = (): readonly [
 ] => {
   const [switchModel, switchCommands] = Switch.init({
     id: "switch-basic",
+    isChecked: true,
   });
 
   return [
@@ -81,7 +82,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         view: Switch.view,
         viewInputs: {
           toView: (attributes) =>
-            h.div(
+            h.label(
               [h.Class(Switch.baseUiSwitchRowClassName)],
               [
                 h.button(
@@ -91,24 +92,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   ],
                   [Switch.baseUiSwitchKnob(model.switchModel.isChecked)]
                 ),
-                h.div(
-                  [h.Class(Switch.baseUiSwitchTextClassName)],
+                h.span(
                   [
-                    h.label(
-                      [
-                        ...attributes.label,
-                        h.Class(Switch.baseUiSwitchLabelClassName),
-                      ],
-                      ["Notifications"]
-                    ),
-                    h.p(
-                      [
-                        ...attributes.description,
-                        h.Class(Switch.baseUiSwitchDescriptionClassName),
-                      ],
-                      ["Receive push notifications."]
-                    ),
-                  ]
+                    ...attributes.label,
+                    h.Class(Switch.baseUiSwitchLabelClassName),
+                  ],
+                  ["Notifications"]
                 ),
               ]
             ),

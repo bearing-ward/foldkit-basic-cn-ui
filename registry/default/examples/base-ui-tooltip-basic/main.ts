@@ -73,8 +73,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       toView: (render) =>
         Tooltip.baseUiTooltipView({
           render,
-          triggerLabel: "Hover me",
-          panelText: "This is a tooltip",
+          triggerLabel: "Bold",
+          panelText: "Bold",
         }),
     },
     toParentMessage: (message) => GotTooltipMessage({ message }),

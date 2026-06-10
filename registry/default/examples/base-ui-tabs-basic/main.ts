@@ -11,9 +11,9 @@ type Tab = "Overview" | "Projects" | "Account";
 const DemoTabs = Tabs.create<Tab>();
 const tabValues: readonly Tab[] = ["Overview", "Projects", "Account"];
 const panelContent: Record<Tab, string> = {
-  Overview: "Overview panel",
-  Projects: "Projects panel",
-  Account: "Account panel",
+  Overview: "Workspace stats and activity.",
+  Projects: "Milestones and deadlines.",
+  Account: "Profile and preferences.",
 };
 
 // MODEL

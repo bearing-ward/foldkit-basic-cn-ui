@@ -34,6 +34,7 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   onValueChange: ParentMessage;
   title: string;
   children: readonly Html[];
+  idPrefix?: string | undefined;
   disabled?: boolean | undefined;
   className?: string | undefined;
   style?: AccordionStyle | undefined;
@@ -92,6 +93,7 @@ export const itemView = <ParentMessage>({
   onValueChange,
   title,
   children,
+  idPrefix,
   disabled = false,
   className,
   style,
@@ -100,8 +102,9 @@ export const itemView = <ParentMessage>({
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
   const open = includesValue(openValues, value);
-  const triggerId = `${value}-trigger`;
-  const panelId = `${value}-panel`;
+  const idBase = idPrefix === undefined ? value : `${idPrefix}-${value}`;
+  const triggerId = `${idBase}-trigger`;
+  const panelId = `${idBase}-panel`;
   const state = stateAttributes(h, open, disabled);
 
   return h.div(

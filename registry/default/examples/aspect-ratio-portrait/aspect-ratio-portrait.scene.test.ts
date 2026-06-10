@@ -11,6 +11,10 @@ describe("aspect-ratio-portrait example", () => {
       { update, view },
       Scene.with(model),
       Scene.expect(Scene.role("img", { name: "Photo" })).toExist(),
+      Scene.expect(Scene.role("img", { name: "Photo" })).toHaveAttr(
+        "src",
+        "https://avatar.vercel.sh/shadcn1"
+      ),
       Scene.expect(Scene.role("img", { name: "Photo" })).not.toHaveHandler(
         "click"
       )

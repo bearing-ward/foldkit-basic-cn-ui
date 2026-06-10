@@ -4241,6 +4241,45 @@
       }
     },
     {
+      "name": "alert-action",
+      "type": "registry:example",
+      "title": "Alert Action",
+      "description": "A runnable Foldkit version of the shadcn Alert action example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/alert"],
+      "files": [
+        {
+          "path": "registry/default/examples/alert-action/main.ts",
+          "target": "src/examples/alert-action/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-action/entry.ts",
+          "target": "src/examples/alert-action/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-action/index.html",
+          "target": "src/examples/alert-action/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/alert-action/alert-action.scene.test.ts",
+          "target": "src/examples/alert-action/alert-action.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert",
+          "example": "action",
+          "originExample": "alert-action",
+          "origin": "https://ui.shadcn.com/docs/components/radix/alert"
+        }
+      }
+    },
+    {
       "name": "alert-basic",
       "type": "registry:example",
       "title": "Alert Basic",
@@ -4789,6 +4828,125 @@
       }
     },
     {
+      "name": "base-ui-alert-dialog-controlled-multiple-triggers",
+      "type": "registry:example",
+      "title": "Base UI Alert Dialog Controlled Multiple Triggers",
+      "description": "A runnable Foldkit version of the Base UI Alert Dialog controlled mode with multiple triggers example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-controlled-multiple-triggers/main.ts",
+          "target": "src/examples/base-ui-alert-dialog-controlled-multiple-triggers/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-controlled-multiple-triggers/base-ui-alert-dialog-controlled-multiple-triggers.scene.test.ts",
+          "target": "src/examples/base-ui-alert-dialog-controlled-multiple-triggers/base-ui-alert-dialog-controlled-multiple-triggers.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "controlled-multiple-triggers",
+          "originExample": "controlled-mode-with-multiple-triggers",
+          "origin": "https://base-ui.com/react/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "base-ui-alert-dialog-detached-triggers",
+      "type": "registry:example",
+      "title": "Base UI Alert Dialog Detached Triggers",
+      "description": "A runnable Foldkit version of the Base UI Alert Dialog Detached triggers example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-detached-triggers/main.ts",
+          "target": "src/examples/base-ui-alert-dialog-detached-triggers/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-detached-triggers/base-ui-alert-dialog-detached-triggers.scene.test.ts",
+          "target": "src/examples/base-ui-alert-dialog-detached-triggers/base-ui-alert-dialog-detached-triggers.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert Dialog",
+          "example": "detached-triggers",
+          "originExample": "detached-triggers",
+          "origin": "https://base-ui.com/react/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "base-ui-alert-dialog-multiple-triggers",
+      "type": "registry:example",
+      "title": "Base UI Alert Dialog Multiple Triggers",
+      "description": "A runnable Foldkit version of the Base UI Alert Dialog multiple triggers example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-multiple-triggers/main.ts",
+          "target": "src/examples/base-ui-alert-dialog-multiple-triggers/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-multiple-triggers/base-ui-alert-dialog-multiple-triggers.scene.test.ts",
+          "target": "src/examples/base-ui-alert-dialog-multiple-triggers/base-ui-alert-dialog-multiple-triggers.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "multiple-triggers",
+          "originExample": "multiple-triggers",
+          "origin": "https://base-ui.com/react/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "base-ui-alert-dialog-open-from-menu",
+      "type": "registry:example",
+      "title": "Base UI Alert Dialog Open From Menu",
+      "description": "A runnable Foldkit version of the Base UI Alert Dialog Open from a menu example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [
+        "@foldkit-cn/base-ui-alert-dialog",
+        "@foldkit-cn/base-ui-menu"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-open-from-menu/main.ts",
+          "target": "src/examples/base-ui-alert-dialog-open-from-menu/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-alert-dialog-open-from-menu/base-ui-alert-dialog-open-from-menu.scene.test.ts",
+          "target": "src/examples/base-ui-alert-dialog-open-from-menu/base-ui-alert-dialog-open-from-menu.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert Dialog",
+          "example": "open-from-menu",
+          "originExample": "open-from-menu",
+          "origin": "https://base-ui.com/react/components/alert-dialog"
+        }
+      }
+    },
+    {
       "name": "base-ui-autocomplete-basic",
       "type": "registry:example",
       "title": "Base UI Autocomplete Basic",
@@ -4934,6 +5092,151 @@
       }
     },
     {
+      "name": "base-ui-checkbox-group-form",
+      "type": "registry:example",
+      "title": "Base UI Checkbox Group Form",
+      "description": "A runnable Foldkit version of the Base UI Checkbox Group form example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-form/main.ts",
+          "target": "src/examples/base-ui-checkbox-group-form/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-form/base-ui-checkbox-group-form.scene.test.ts",
+          "target": "src/examples/base-ui-checkbox-group-form/base-ui-checkbox-group-form.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox Group",
+          "example": "form",
+          "originExample": "form",
+          "origin": "https://base-ui.com/react/components/checkbox-group"
+        }
+      }
+    },
+    {
+      "name": "base-ui-checkbox-group-labeling",
+      "type": "registry:example",
+      "title": "Base UI Checkbox Group Labeling",
+      "description": "A runnable Foldkit version of the Base UI Checkbox Group labeling example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-labeling/main.ts",
+          "target": "src/examples/base-ui-checkbox-group-labeling/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-labeling/base-ui-checkbox-group-labeling.scene.test.ts",
+          "target": "src/examples/base-ui-checkbox-group-labeling/base-ui-checkbox-group-labeling.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox Group",
+          "example": "labeling",
+          "originExample": "labeling",
+          "origin": "https://base-ui.com/react/components/checkbox-group"
+        }
+      }
+    },
+    {
+      "name": "base-ui-checkbox-group-native-button",
+      "type": "registry:example",
+      "title": "Base UI Checkbox Group Native Button",
+      "description": "A runnable Foldkit version of the Base UI Checkbox Group native button example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-native-button/main.ts",
+          "target": "src/examples/base-ui-checkbox-group-native-button/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-native-button/base-ui-checkbox-group-native-button.scene.test.ts",
+          "target": "src/examples/base-ui-checkbox-group-native-button/base-ui-checkbox-group-native-button.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox Group",
+          "example": "native-button",
+          "originExample": "native-button",
+          "origin": "https://base-ui.com/react/components/checkbox-group"
+        }
+      }
+    },
+    {
+      "name": "base-ui-checkbox-group-nested-parent",
+      "type": "registry:example",
+      "title": "Base UI Checkbox Group Nested Parent Checkbox",
+      "description": "A runnable Foldkit version of the Base UI Checkbox Group nested parent checkbox example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-nested-parent/main.ts",
+          "target": "src/examples/base-ui-checkbox-group-nested-parent/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-nested-parent/base-ui-checkbox-group-nested-parent.scene.test.ts",
+          "target": "src/examples/base-ui-checkbox-group-nested-parent/base-ui-checkbox-group-nested-parent.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox Group",
+          "example": "nested-parent",
+          "originExample": "nested-parent-checkbox",
+          "origin": "https://base-ui.com/react/components/checkbox-group"
+        }
+      }
+    },
+    {
+      "name": "base-ui-checkbox-group-parent",
+      "type": "registry:example",
+      "title": "Base UI Checkbox Group Parent Checkbox",
+      "description": "A runnable Foldkit version of the Base UI Checkbox Group parent checkbox example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-parent/main.ts",
+          "target": "src/examples/base-ui-checkbox-group-parent/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-checkbox-group-parent/base-ui-checkbox-group-parent.scene.test.ts",
+          "target": "src/examples/base-ui-checkbox-group-parent/base-ui-checkbox-group-parent.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox Group",
+          "example": "parent",
+          "originExample": "parent-checkbox",
+          "origin": "https://base-ui.com/react/components/checkbox-group"
+        }
+      }
+    },
+    {
       "name": "base-ui-collapsible-basic",
       "type": "registry:example",
       "title": "Base UI Collapsible Basic",
@@ -5021,6 +5324,35 @@
       }
     },
     {
+      "name": "base-ui-context-menu-nested",
+      "type": "registry:example",
+      "title": "Base UI Context Menu Nested",
+      "description": "A runnable Foldkit version of the Base UI Context Menu nested menu example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-context-menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-context-menu-nested/main.ts",
+          "target": "src/examples/base-ui-context-menu-nested/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-context-menu-nested/base-ui-context-menu-nested.scene.test.ts",
+          "target": "src/examples/base-ui-context-menu-nested/base-ui-context-menu-nested.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Context Menu",
+          "example": "nested",
+          "originExample": "nested-menu",
+          "origin": "https://base-ui.com/react/components/context-menu"
+        }
+      }
+    },
+    {
       "name": "base-ui-dialog-basic",
       "type": "registry:example",
       "title": "Base UI Dialog Basic",
@@ -5050,6 +5382,64 @@
       }
     },
     {
+      "name": "base-ui-dialog-close-confirmation",
+      "type": "registry:example",
+      "title": "Base UI Dialog Close Confirmation",
+      "description": "A runnable Foldkit version of the Base UI Dialog close confirmation example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-dialog-close-confirmation/main.ts",
+          "target": "src/examples/base-ui-dialog-close-confirmation/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-dialog-close-confirmation/base-ui-dialog-close-confirmation.scene.test.ts",
+          "target": "src/examples/base-ui-dialog-close-confirmation/base-ui-dialog-close-confirmation.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "close-confirmation",
+          "originExample": "close-confirmation",
+          "origin": "https://base-ui.com/react/components/dialog"
+        }
+      }
+    },
+    {
+      "name": "base-ui-dialog-nested",
+      "type": "registry:example",
+      "title": "Base UI Dialog Nested",
+      "description": "A runnable Foldkit version of the Base UI Dialog nested dialogs example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-dialog-nested/main.ts",
+          "target": "src/examples/base-ui-dialog-nested/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-dialog-nested/base-ui-dialog-nested.scene.test.ts",
+          "target": "src/examples/base-ui-dialog-nested/base-ui-dialog-nested.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "nested",
+          "originExample": "nested-dialogs",
+          "origin": "https://base-ui.com/react/components/dialog"
+        }
+      }
+    },
+    {
       "name": "base-ui-drawer-basic",
       "type": "registry:example",
       "title": "Base UI Drawer Basic",
@@ -5074,6 +5464,64 @@
           "component": "Drawer",
           "example": "basic",
           "originExample": "drawer-default-side",
+          "origin": "https://base-ui.com/react/components/drawer"
+        }
+      }
+    },
+    {
+      "name": "base-ui-drawer-non-modal",
+      "type": "registry:example",
+      "title": "Base UI Drawer Non-modal",
+      "description": "A runnable Foldkit version of the Base UI Drawer non-modal example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-drawer-non-modal/main.ts",
+          "target": "src/examples/base-ui-drawer-non-modal/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-drawer-non-modal/base-ui-drawer-non-modal.scene.test.ts",
+          "target": "src/examples/base-ui-drawer-non-modal/base-ui-drawer-non-modal.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "non-modal",
+          "originExample": "non-modal",
+          "origin": "https://base-ui.com/react/components/drawer"
+        }
+      }
+    },
+    {
+      "name": "base-ui-drawer-position",
+      "type": "registry:example",
+      "title": "Base UI Drawer Position",
+      "description": "A runnable Foldkit version of the Base UI Drawer position example using the Base UI style-lane wrapper.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-drawer-position/main.ts",
+          "target": "src/examples/base-ui-drawer-position/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-drawer-position/base-ui-drawer-position.scene.test.ts",
+          "target": "src/examples/base-ui-drawer-position/base-ui-drawer-position.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "position",
+          "originExample": "position",
           "origin": "https://base-ui.com/react/components/drawer"
         }
       }
@@ -5166,6 +5614,35 @@
       }
     },
     {
+      "name": "base-ui-form-server-function",
+      "type": "registry:example",
+      "title": "Base UI Form Server Function",
+      "description": "A Base UI runnable Foldkit version of the Form server function username validation example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-form"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-form-server-function/main.ts",
+          "target": "src/examples/base-ui-form-server-function/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-form-server-function/base-ui-form-server-function.scene.test.ts",
+          "target": "src/examples/base-ui-form-server-function/base-ui-form-server-function.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Form",
+          "example": "server-function",
+          "originExample": "submit-with-a-server-function",
+          "origin": "https://base-ui.com/react/components/form"
+        }
+      }
+    },
+    {
       "name": "base-ui-input-basic",
       "type": "registry:example",
       "title": "Base UI Input Basic",
@@ -5219,6 +5696,35 @@
           "component": "Menu",
           "example": "basic",
           "originExample": "menu-default",
+          "origin": "https://base-ui.com/react/components/menu"
+        }
+      }
+    },
+    {
+      "name": "base-ui-menu-nested",
+      "type": "registry:example",
+      "title": "Base UI Menu Nested",
+      "description": "A runnable Foldkit version of the Base UI Menu nested Add to Playlist submenu example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-menu"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-menu-nested/main.ts",
+          "target": "src/examples/base-ui-menu-nested/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-menu-nested/base-ui-menu-nested.scene.test.ts",
+          "target": "src/examples/base-ui-menu-nested/base-ui-menu-nested.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "example": "nested",
+          "originExample": "nested-menu",
           "origin": "https://base-ui.com/react/components/menu"
         }
       }
@@ -5393,6 +5899,35 @@
           "component": "Popover",
           "example": "basic",
           "originExample": "popover-default",
+          "origin": "https://base-ui.com/react/components/popover"
+        }
+      }
+    },
+    {
+      "name": "base-ui-popover-multiple-triggers",
+      "type": "registry:example",
+      "title": "Base UI Popover Multiple Triggers",
+      "description": "A runnable Foldkit version of the Base UI Popover multiple triggers example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-popover"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-popover-multiple-triggers/main.ts",
+          "target": "src/examples/base-ui-popover-multiple-triggers/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-popover-multiple-triggers/base-ui-popover-multiple-triggers.scene.test.ts",
+          "target": "src/examples/base-ui-popover-multiple-triggers/base-ui-popover-multiple-triggers.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "example": "multiple-triggers",
+          "originExample": "multiple-triggers",
           "origin": "https://base-ui.com/react/components/popover"
         }
       }
@@ -5596,6 +6131,96 @@
           "component": "ScrollArea",
           "example": "basic",
           "originExample": "scroll-area-hero",
+          "origin": "https://base-ui.com/react/components/scroll-area"
+        }
+      }
+    },
+    {
+      "name": "base-ui-scroll-area-both-scrollbars",
+      "type": "registry:example",
+      "title": "Base UI Scroll Area Both Scrollbars",
+      "description": "A Base UI runnable Foldkit version of the Scroll Area both scrollbars example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-scroll-area"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-scroll-area-both-scrollbars/main.ts",
+          "target": "src/examples/base-ui-scroll-area-both-scrollbars/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-scroll-area-both-scrollbars/base-ui-scroll-area-both-scrollbars.scene.test.ts",
+          "target": "src/examples/base-ui-scroll-area-both-scrollbars/base-ui-scroll-area-both-scrollbars.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ScrollArea",
+          "example": "both-scrollbars",
+          "originExample": "both-scrollbars",
+          "origin": "https://base-ui.com/react/components/scroll-area"
+        }
+      }
+    },
+    {
+      "name": "base-ui-scroll-area-gradient",
+      "type": "registry:example",
+      "title": "Base UI Scroll Area Gradient",
+      "description": "A Base UI runnable Foldkit version of the Scroll Area gradient fade example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-scroll-area"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-scroll-area-gradient/main.ts",
+          "target": "src/examples/base-ui-scroll-area-gradient/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-scroll-area-gradient/base-ui-scroll-area-gradient.scene.test.ts",
+          "target": "src/examples/base-ui-scroll-area-gradient/base-ui-scroll-area-gradient.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ScrollArea",
+          "example": "gradient",
+          "originExample": "gradient-scroll-fade",
+          "origin": "https://base-ui.com/react/components/scroll-area"
+        }
+      }
+    },
+    {
+      "name": "base-ui-scroll-area-tabs",
+      "type": "registry:example",
+      "title": "Base UI Scroll Area Tabs",
+      "description": "A Base UI runnable Foldkit version of the Scroll Area combining with Tabs example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [
+        "@foldkit-cn/base-ui-scroll-area",
+        "@foldkit-cn/base-ui-tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-scroll-area-tabs/main.ts",
+          "target": "src/examples/base-ui-scroll-area-tabs/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-scroll-area-tabs/base-ui-scroll-area-tabs.scene.test.ts",
+          "target": "src/examples/base-ui-scroll-area-tabs/base-ui-scroll-area-tabs.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ScrollArea",
+          "example": "tabs",
+          "originExample": "combining-with-tabs",
           "origin": "https://base-ui.com/react/components/scroll-area"
         }
       }

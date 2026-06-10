@@ -22,18 +22,11 @@ export const Model = S.Struct({
 
 export type Model = typeof Model.Type;
 
-const appleValues: readonly AppleValue[] = [
-  "fuji-apple",
-  "gala-apple",
-  "granny-smith-apple",
-];
-
 // MESSAGE
 
 export const ToggledApple = m("ToggledApple", { value: AppleValue });
-export const ToggledAllApples = m("ToggledAllApples");
 
-export const Message = S.Union([ToggledApple, ToggledAllApples]);
+export const Message = S.Union([ToggledApple]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -59,15 +52,6 @@ export const update = (
         }),
         [],
       ],
-      ToggledAllApples: () => [
-        evo(model, {
-          selectedApples: (selectedApples) =>
-            CheckboxGroup.parentState(selectedApples, appleValues) === "checked"
-              ? []
-              : appleValues,
-        }),
-        [],
-      ],
     })
   );
 
@@ -80,13 +64,6 @@ export const view = Submodel.defineView<Model, Message>(
       labelId: "checkbox-group-apples-label",
       name: "apple",
       children: [
-        CheckboxGroup.parentItemView<Message>({
-          selectedValues: model.selectedApples,
-          allValues: appleValues,
-          label: "All apples",
-          onValueChange: ToggledAllApples(),
-          className: "mb-1",
-        }),
         CheckboxGroup.itemView<Message>({
           value: "fuji-apple",
           selectedValues: model.selectedApples,

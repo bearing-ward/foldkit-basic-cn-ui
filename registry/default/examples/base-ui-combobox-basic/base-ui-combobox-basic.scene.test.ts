@@ -55,4 +55,30 @@ describe("Base UI combobox Basic example", () => {
       Scene.expect(Scene.text("Banana")).not.toExist()
     );
   });
+
+  test("matches the origin clear button and empty state affordances", () => {
+    Scene.scene(
+      {
+        update: BaseUiComboboxBasicExample.update,
+        view: BaseUiComboboxBasicExample.view,
+      },
+      Scene.with(BaseUiComboboxBasicExample.init()[0]),
+      Scene.expect(Scene.role("button", { name: "Clear selection" })).toExist(),
+      resolvePreventBlurMount(),
+      Scene.type(Scene.placeholder("e.g. Apple"), "ap"),
+      resolveComboboxMounts(),
+      Scene.expect(Scene.placeholder("e.g. Apple")).toHaveValue("ap"),
+      Scene.click(Scene.role("button", { name: "Clear selection" })),
+      Scene.expect(Scene.placeholder("e.g. Apple")).toHaveValue(""),
+      Scene.type(Scene.placeholder("e.g. Apple"), "zzz"),
+      Scene.Mount.expectEnded(
+        Combobox.PortalComboboxBackdrop,
+        Combobox.AnchorCombobox({
+          buttonId: "combobox-basic-input-wrapper",
+          anchor: Combobox.defaultAnchor,
+        })
+      ),
+      Scene.expect(Scene.text("No fruits found.")).toExist()
+    );
+  });
 });

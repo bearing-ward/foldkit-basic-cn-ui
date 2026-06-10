@@ -21,14 +21,12 @@ describe("Base UI Checkbox Group Basic example", () => {
         "aria-checked",
         "true"
       ),
-      Scene.expect(Scene.role("checkbox", { name: "All apples" })).toHaveAttr(
-        "aria-checked",
-        "mixed"
-      ),
-      Scene.click(Scene.text("All apples")),
+      Scene.expect(
+        Scene.role("checkbox", { name: "All apples" })
+      ).not.toExist(),
       Scene.expect(Scene.role("checkbox", { name: "Granny Smith" })).toHaveAttr(
         "aria-checked",
-        "true"
+        "false"
       )
     );
   });

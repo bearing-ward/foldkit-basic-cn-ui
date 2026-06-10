@@ -66,7 +66,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const pressed = isPressed(model.favorite);
 
   return h.div(
-    [h.Class("flex items-center gap-3 rounded-lg border border-gray-200 p-4")],
+    [h.Class("rounded-lg border border-gray-200 p-4")],
     [
       Toggle.view<Message>({
         pressed,
@@ -75,10 +75,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         onPressedChange: ClickedToggleFavorite(),
         children: [heartIcon(pressed)],
       }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [pressed ? "Added to favorites" : "Not favorited"]
-      ),
     ]
   );
 });

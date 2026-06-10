@@ -79,7 +79,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   h.span([h.Class(Select.baseUiSelectChevronClassName)], ["v"]),
                 ]
               ),
-              h.p(attributes.description, ["Choose your favorite apple."]),
             ]
           ),
       }),

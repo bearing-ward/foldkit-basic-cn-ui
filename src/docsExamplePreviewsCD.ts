@@ -2,15 +2,32 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCheckboxFormExample from "../registry/default/examples/base-ui-checkbox-form/main";
+import * as BaseUiCheckboxGroupBasicExample from "../registry/default/examples/base-ui-checkbox-group-basic/main";
+import * as BaseUiCheckboxGroupFormExample from "../registry/default/examples/base-ui-checkbox-group-form/main";
+import * as BaseUiCheckboxGroupLabelingExample from "../registry/default/examples/base-ui-checkbox-group-labeling/main";
+import * as BaseUiCheckboxGroupNativeButtonExample from "../registry/default/examples/base-ui-checkbox-group-native-button/main";
+import * as BaseUiCheckboxGroupNestedParentExample from "../registry/default/examples/base-ui-checkbox-group-nested-parent/main";
+import * as BaseUiCheckboxGroupParentExample from "../registry/default/examples/base-ui-checkbox-group-parent/main";
+import * as BaseUiCheckboxLabelingExample from "../registry/default/examples/base-ui-checkbox-labeling/main";
+import * as BaseUiCheckboxNativeButtonExample from "../registry/default/examples/base-ui-checkbox-native-button/main";
 import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
 import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiContextMenuBasicExample from "../registry/default/examples/base-ui-context-menu-basic/main";
+import * as BaseUiContextMenuNestedExample from "../registry/default/examples/base-ui-context-menu-nested/main";
 import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDialogCloseConfirmationExample from "../registry/default/examples/base-ui-dialog-close-confirmation/main";
+import * as BaseUiDialogNestedExample from "../registry/default/examples/base-ui-dialog-nested/main";
 import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiDrawerNonModalExample from "../registry/default/examples/base-ui-drawer-non-modal/main";
+import * as BaseUiDrawerPositionExample from "../registry/default/examples/base-ui-drawer-position/main";
 import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
 import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
 import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiFormServerFunctionExample from "../registry/default/examples/base-ui-form-server-function/main";
 import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
 import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenuNestedExample from "../registry/default/examples/base-ui-menu-nested/main";
 import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
 import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
@@ -441,6 +458,21 @@ export const contextMenuBasicExamplePreview = (
   });
 };
 
+export const baseUiContextMenuBasicExamplePreview = (
+  model: BaseUiContextMenuBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiContextMenuBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiContextMenuBasicExampleMessage({ message }),
+  });
+};
+
 export const collapsibleBasicExamplePreview = (
   model: CollapsibleBasicExample.Model,
   slotId: string
@@ -639,6 +671,141 @@ export const baseUiCheckboxBasicExamplePreview = (
   });
 };
 
+export const baseUiCheckboxLabelingExamplePreview = (
+  model: BaseUiCheckboxLabelingExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxLabelingExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxLabelingExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxNativeButtonExamplePreview = (
+  model: BaseUiCheckboxNativeButtonExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxNativeButtonExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxNativeButtonExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxFormExamplePreview = (
+  model: BaseUiCheckboxFormExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxFormExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxFormExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxGroupBasicExamplePreview = (
+  model: BaseUiCheckboxGroupBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxGroupBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxGroupBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxGroupLabelingExamplePreview = (
+  model: BaseUiCheckboxGroupLabelingExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxGroupLabelingExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxGroupLabelingExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxGroupNativeButtonExamplePreview = (
+  model: BaseUiCheckboxGroupNativeButtonExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxGroupNativeButtonExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxGroupNativeButtonExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxGroupFormExamplePreview = (
+  model: BaseUiCheckboxGroupFormExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxGroupFormExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxGroupFormExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxGroupParentExamplePreview = (
+  model: BaseUiCheckboxGroupParentExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxGroupParentExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxGroupParentExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxGroupNestedParentExamplePreview = (
+  model: BaseUiCheckboxGroupNestedParentExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxGroupNestedParentExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxGroupNestedParentExampleMessage({ message }),
+  });
+};
+
 export const checkboxGroupBasicExamplePreview = (
   model: CheckboxGroupBasicExample.Model,
   slotId: string
@@ -684,6 +851,21 @@ export const dialogBasicExamplePreview = (
   });
 };
 
+export const baseUiContextMenuNestedExamplePreview = (
+  model: BaseUiContextMenuNestedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiContextMenuNestedExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiContextMenuNestedExampleMessage({ message }),
+  });
+};
+
 export const baseUiDialogBasicExamplePreview = (
   model: BaseUiDialogBasicExample.Model,
   slotId: string
@@ -699,6 +881,36 @@ export const baseUiDialogBasicExamplePreview = (
   });
 };
 
+export const baseUiDialogCloseConfirmationExamplePreview = (
+  model: BaseUiDialogCloseConfirmationExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiDialogCloseConfirmationExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiDialogCloseConfirmationExampleMessage({ message }),
+  });
+};
+
+export const baseUiDialogNestedExamplePreview = (
+  model: BaseUiDialogNestedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiDialogNestedExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiDialogNestedExampleMessage({ message }),
+  });
+};
+
 export const baseUiDrawerBasicExamplePreview = (
   model: BaseUiDrawerBasicExample.Model,
   slotId: string
@@ -711,6 +923,33 @@ export const baseUiDrawerBasicExamplePreview = (
     view: BaseUiDrawerBasicExample.view,
     toParentMessage: (message) =>
       Main.GotBaseUiDrawerBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiDrawerPositionExamplePreview = (
+  model: BaseUiDrawerPositionExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiDrawerPositionExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiDrawerPositionExampleMessage({ message }),
+  });
+};
+export const baseUiDrawerNonModalExamplePreview = (
+  model: BaseUiDrawerNonModalExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiDrawerNonModalExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiDrawerNonModalExampleMessage({ message }),
   });
 };
 
@@ -759,6 +998,21 @@ export const baseUiFormBasicExamplePreview = (
   });
 };
 
+export const baseUiFormServerFunctionExamplePreview = (
+  model: BaseUiFormServerFunctionExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiFormServerFunctionExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiFormServerFunctionExampleMessage({ message }),
+  });
+};
+
 export const baseUiInputBasicExamplePreview = (
   model: BaseUiInputBasicExample.Model,
   slotId: string
@@ -786,6 +1040,21 @@ export const baseUiMenuBasicExamplePreview = (
     view: BaseUiMenuBasicExample.view,
     toParentMessage: (message) =>
       Main.GotBaseUiMenuBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiMenuNestedExamplePreview = (
+  model: BaseUiMenuNestedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiMenuNestedExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiMenuNestedExampleMessage({ message }),
   });
 };
 

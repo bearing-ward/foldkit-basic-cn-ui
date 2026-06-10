@@ -1,8 +1,10 @@
+import { Option } from "effect";
 import { Calendar, Scene } from "foldkit";
 import { describe, test } from "vitest";
 
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
@@ -15,27 +17,51 @@ import * as AutocompleteBasicExample from "../registry/default/examples/autocomp
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAccordionBasicExample from "../registry/default/examples/base-ui-accordion-basic/main";
 import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
+import * as BaseUiAlertDialogBasicExample from "../registry/default/examples/base-ui-alert-dialog-basic/main";
 import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAlertDialogControlledMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-controlled-multiple-triggers/main";
+import * as BaseUiAlertDialogDetachedTriggersExample from "../registry/default/examples/base-ui-alert-dialog-detached-triggers/main";
+import * as BaseUiAlertDialogMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-multiple-triggers/main";
+import * as BaseUiAlertDialogOpenFromMenuExample from "../registry/default/examples/base-ui-alert-dialog-open-from-menu/main";
 import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
 import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
 import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
 import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCheckboxFormExample from "../registry/default/examples/base-ui-checkbox-form/main";
+import * as BaseUiCheckboxGroupBasicExample from "../registry/default/examples/base-ui-checkbox-group-basic/main";
+import * as BaseUiCheckboxGroupFormExample from "../registry/default/examples/base-ui-checkbox-group-form/main";
+import * as BaseUiCheckboxGroupLabelingExample from "../registry/default/examples/base-ui-checkbox-group-labeling/main";
+import * as BaseUiCheckboxGroupNativeButtonExample from "../registry/default/examples/base-ui-checkbox-group-native-button/main";
+import * as BaseUiCheckboxGroupNestedParentExample from "../registry/default/examples/base-ui-checkbox-group-nested-parent/main";
+import * as BaseUiCheckboxGroupParentExample from "../registry/default/examples/base-ui-checkbox-group-parent/main";
+import * as BaseUiCheckboxLabelingExample from "../registry/default/examples/base-ui-checkbox-labeling/main";
+import * as BaseUiCheckboxNativeButtonExample from "../registry/default/examples/base-ui-checkbox-native-button/main";
 import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
 import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiContextMenuBasicExample from "../registry/default/examples/base-ui-context-menu-basic/main";
+import * as BaseUiContextMenuNestedExample from "../registry/default/examples/base-ui-context-menu-nested/main";
 import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDialogCloseConfirmationExample from "../registry/default/examples/base-ui-dialog-close-confirmation/main";
+import * as BaseUiDialogNestedExample from "../registry/default/examples/base-ui-dialog-nested/main";
 import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiDrawerNonModalExample from "../registry/default/examples/base-ui-drawer-non-modal/main";
+import * as BaseUiDrawerPositionExample from "../registry/default/examples/base-ui-drawer-position/main";
 import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
 import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
 import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiFormServerFunctionExample from "../registry/default/examples/base-ui-form-server-function/main";
 import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
 import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenuNestedExample from "../registry/default/examples/base-ui-menu-nested/main";
 import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
 import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
 import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -43,6 +69,9 @@ import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-ra
 import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
 import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
 import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as ScrollAreaBothScrollbarsExample from "../registry/default/examples/base-ui-scroll-area-both-scrollbars/main";
+import * as ScrollAreaGradientExample from "../registry/default/examples/base-ui-scroll-area-gradient/main";
+import * as ScrollAreaTabsExample from "../registry/default/examples/base-ui-scroll-area-tabs/main";
 import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
 import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
 import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
@@ -184,11 +213,24 @@ import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-c
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
+import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
+import * as ShadcnDatePickerBasicExample from "../registry/default/examples/shadcn-date-picker-basic/main";
+import * as ShadcnDialogBasicExample from "../registry/default/examples/shadcn-dialog-basic/main";
+import * as ShadcnDrawerBasicExample from "../registry/default/examples/shadcn-drawer-basic/main";
+import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
+import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
+import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
 import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
 import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
 import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-switch-basic/main";
 import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
+import * as ShadcnTextareaBasicExample from "../registry/default/examples/shadcn-textarea-basic/main";
+import * as ShadcnToastBasicExample from "../registry/default/examples/shadcn-toast-basic/main";
+import * as ShadcnToggleBasicExample from "../registry/default/examples/shadcn-toggle-basic/main";
+import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/shadcn-toggle-group-basic/main";
+import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
@@ -212,7 +254,9 @@ import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-
 import * as TypographyBasicExample from "../registry/default/examples/typography-basic/main";
 import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
 import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
+import * as BaseUiTabs from "../registry/default/ui/base-ui-tabs";
 import * as Combobox from "../registry/default/ui/combobox";
+import * as Dialog from "../registry/default/ui/dialog";
 import { view } from "./docsView";
 import {
   AnimationRoute,
@@ -221,6 +265,7 @@ import {
   AccordionMultipleExampleRoute,
   ShadcnAccordionDocsRoute,
   AlertBasicExampleRoute,
+  AlertActionExampleRoute,
   AlertDestructiveExampleRoute,
   AlertDocsRoute,
   AspectRatioBasicExampleRoute,
@@ -234,7 +279,11 @@ import {
   DrawerBasicExampleRoute,
   DrawerDocsRoute,
   ShadcnDrawerDocsRoute,
+  BaseUiDrawerPositionExampleRoute,
+  BaseUiDrawerNonModalExampleRoute,
   BaseUiDrawerDocsRoute,
+  BaseUiContextMenuBasicExampleRoute,
+  BaseUiContextMenuNestedExampleRoute,
   ContextMenuBasicExampleRoute,
   ContextMenuDocsRoute,
   ShadcnContextMenuDocsRoute,
@@ -306,15 +355,26 @@ import {
   CalendarBoundsExampleRoute,
   CalendarDocsRoute,
   ShadcnCalendarDocsRoute,
+  BaseUiAccordionBasicExampleRoute,
   BaseUiAccordionDocsRoute,
   BaseUiAccordionMultipleExampleRoute,
+  BaseUiAlertDialogBasicExampleRoute,
   BaseUiAlertDialogDocsRoute,
   BaseUiAlertDialogCloseConfirmationExampleRoute,
+  BaseUiAlertDialogControlledMultipleTriggersExampleRoute,
+  BaseUiAlertDialogDetachedTriggersExampleRoute,
+  BaseUiAlertDialogMultipleTriggersExampleRoute,
   BaseUiAutocompleteDocsRoute,
   BaseUiAutocompleteBasicExampleRoute,
   BaseUiAvatarDocsRoute,
   BaseUiAvatarBasicExampleRoute,
   BaseUiCheckboxDocsRoute,
+  BaseUiCheckboxGroupBasicExampleRoute,
+  BaseUiCheckboxGroupLabelingExampleRoute,
+  BaseUiCheckboxGroupNativeButtonExampleRoute,
+  BaseUiCheckboxGroupFormExampleRoute,
+  BaseUiCheckboxGroupParentExampleRoute,
+  BaseUiCheckboxGroupNestedParentExampleRoute,
   BaseUiCheckboxGroupDocsRoute,
   BaseUiCollapsibleBasicExampleRoute,
   BaseUiCollapsibleDocsRoute,
@@ -345,8 +405,10 @@ import {
   ShadcnInputDocsRoute,
   FormBasicExampleRoute,
   BaseUiFormDocsRoute,
+  BaseUiFormServerFunctionExampleRoute,
   FormDocsRoute,
   BaseUiMenuDocsRoute,
+  BaseUiMenuNestedExampleRoute,
   BaseUiPopoverDocsRoute,
   BaseUiRadioDocsRoute,
   ShadcnRadioGroupDocsRoute,
@@ -360,6 +422,9 @@ import {
   BaseUiToastDocsRoute,
   ShadcnToastDocsRoute,
   BaseUiTooltipDocsRoute,
+  BaseUiCheckboxFormExampleRoute,
+  BaseUiCheckboxLabelingExampleRoute,
+  BaseUiCheckboxNativeButtonExampleRoute,
   NumberFieldBasicExampleRoute,
   NumberFieldDocsRoute,
   ComboboxBasicExampleRoute,
@@ -370,6 +435,8 @@ import {
   DatePickerDocsRoute,
   ShadcnDatePickerDocsRoute,
   BaseUiDialogBasicExampleRoute,
+  BaseUiDialogCloseConfirmationExampleRoute,
+  BaseUiDialogNestedExampleRoute,
   DialogAnimatedExampleRoute,
   DialogBasicExampleRoute,
   DialogDestructiveExampleRoute,
@@ -406,9 +473,13 @@ import {
   BaseUiMeterDocsRoute,
   MeterDocsRoute,
   ScrollAreaBasicExampleRoute,
+  ScrollAreaBothScrollbarsExampleRoute,
+  ScrollAreaGradientExampleRoute,
+  ScrollAreaTabsExampleRoute,
   BaseUiScrollAreaDocsRoute,
   ScrollAreaDocsRoute,
   ShadcnScrollAreaDocsRoute,
+  GotScrollAreaTabsExampleMessage,
   ToggleBasicExampleRoute,
   BaseUiToggleDocsRoute,
   ToggleDocsRoute,
@@ -434,6 +505,7 @@ import {
   MenuDocsRoute,
   NotFoundRoute,
   BaseUiPopoverBasicExampleRoute,
+  BaseUiPopoverMultipleTriggersExampleRoute,
   BaseUiRadioBasicExampleRoute,
   BaseUiRadioFormExampleRoute,
   BaseUiRadioLabelingExampleRoute,
@@ -474,12 +546,26 @@ import {
   VirtualListBasicExampleRoute,
   VirtualListDocsRoute,
   VirtualListVariableExampleRoute,
+  GotBaseUiDialogCloseConfirmationExampleMessage,
+  GotBaseUiDialogNestedExampleMessage,
   update,
 } from "./main";
 import type { Model } from "./main";
 import { uiInit } from "./ui/init";
 
 const today = Calendar.make(2026, 4, 16);
+const BaseUiDialogNestedNotificationsShowDialog = Dialog.ShowDialog({
+  id: "dialog-nested-notifications",
+  maybeFocusSelector: Option.none(),
+});
+const BaseUiDialogNestedDetailsShowDialog = Dialog.ShowDialog({
+  id: "dialog-nested-details",
+  maybeFocusSelector: Option.none(),
+});
+const BaseUiDialogCloseConfirmationTweetShowDialog = Dialog.ShowDialog({
+  id: "dialog-close-confirmation-tweet",
+  maybeFocusSelector: Option.none(),
+});
 const [initialUiModel] = uiInit(today);
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
@@ -491,18 +577,31 @@ const [shadcnAccordionDisabledExample] = ShadcnAccordionDisabledExample.init();
 const [shadcnAccordionMultipleExample] = ShadcnAccordionMultipleExample.init();
 const [shadcnAccordionRtlExample] = ShadcnAccordionRtlExample.init();
 const [accordionMultipleExample] = AccordionMultipleExample.init();
+const [baseUiAccordionBasicExample] = BaseUiAccordionBasicExample.init();
 const [baseUiAccordionMultipleExample] = BaseUiAccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
+const [alertActionExample] = AlertActionExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
 const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
 const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
 const [aspectRatioRtlExample] = AspectRatioRtlExample.init();
 const [alertDialogBasicExample] = AlertDialogBasicExample.init();
+const [baseUiAlertDialogBasicExample] = BaseUiAlertDialogBasicExample.init();
 const [baseUiAlertDialogCloseConfirmationExample] =
   BaseUiAlertDialogCloseConfirmationExample.init();
+const [baseUiAlertDialogControlledMultipleTriggersExample] =
+  BaseUiAlertDialogControlledMultipleTriggersExample.init();
+const [baseUiAlertDialogDetachedTriggersExample] =
+  BaseUiAlertDialogDetachedTriggersExample.init();
+const [baseUiAlertDialogMultipleTriggersExample] =
+  BaseUiAlertDialogMultipleTriggersExample.init();
+const [baseUiAlertDialogOpenFromMenuExample] =
+  BaseUiAlertDialogOpenFromMenuExample.init();
 const [shadcnAlertDialogBasicExample] = ShadcnAlertDialogBasicExample.init();
 const [drawerBasicExample] = DrawerBasicExample.init();
+const [baseUiContextMenuBasicExample] = BaseUiContextMenuBasicExample.init();
+const [baseUiContextMenuNestedExample] = BaseUiContextMenuNestedExample.init();
 const [contextMenuBasicExample] = ContextMenuBasicExample.init();
 const [menubarBasicExample] = MenubarBasicExample.init();
 const [baseUiNavigationMenuBasicExample] =
@@ -613,6 +712,21 @@ const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [shadcnCheckboxBasicExample] = ShadcnCheckboxBasicExample.init();
 const [baseUiCheckboxBasicExample] = BaseUiCheckboxBasicExample.init();
+const [baseUiCheckboxLabelingExample] = BaseUiCheckboxLabelingExample.init();
+const [baseUiCheckboxNativeButtonExample] =
+  BaseUiCheckboxNativeButtonExample.init();
+const [baseUiCheckboxFormExample] = BaseUiCheckboxFormExample.init();
+const [baseUiCheckboxGroupBasicExample] =
+  BaseUiCheckboxGroupBasicExample.init();
+const [baseUiCheckboxGrouplabelingExample] =
+  BaseUiCheckboxGroupLabelingExample.init();
+const [baseUiCheckboxGroupnativeButtonExample] =
+  BaseUiCheckboxGroupNativeButtonExample.init();
+const [baseUiCheckboxGroupformExample] = BaseUiCheckboxGroupFormExample.init();
+const [baseUiCheckboxGroupparentExample] =
+  BaseUiCheckboxGroupParentExample.init();
+const [baseUiCheckboxGroupnestedParentExample] =
+  BaseUiCheckboxGroupNestedParentExample.init();
 const [checkboxGroupBasicExample] = CheckboxGroupBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
@@ -622,6 +736,9 @@ const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [datePickerBasicExample] = DatePickerBasicExample.init();
 const [datePickerBoundsExample] = DatePickerBoundsExample.init();
 const [baseUiDialogBasicExample] = BaseUiDialogBasicExample.init();
+const [baseUiDialogCloseConfirmationExample] =
+  BaseUiDialogCloseConfirmationExample.init();
+const [baseUiDialogNestedExample] = BaseUiDialogNestedExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -633,9 +750,13 @@ const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
 const [dragAndDropDisabledExample] = DragAndDropDisabledExample.init();
 const [baseUiDrawerBasicExample] = BaseUiDrawerBasicExample.init();
+const [baseUiDrawerpositionExample] = BaseUiDrawerPositionExample.init();
+const [baseUiDrawernonModalExample] = BaseUiDrawerNonModalExample.init();
 const [baseUiFieldBasicExample] = BaseUiFieldBasicExample.init();
 const [baseUiFieldsetBasicExample] = BaseUiFieldsetBasicExample.init();
 const [baseUiFormBasicExample] = BaseUiFormBasicExample.init();
+const [baseUiFormServerFunctionExample] =
+  BaseUiFormServerFunctionExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
@@ -644,10 +765,15 @@ const [baseUiInputBasicExample] = BaseUiInputBasicExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
 const [baseUiMenuBasicExample] = BaseUiMenuBasicExample.init();
+const [baseUiMenuNestedExample] = BaseUiMenuNestedExample.init();
 const [baseUiMenubarBasicExample] = BaseUiMenubarBasicExample.init();
 const [baseUiMeterBasicExample] = BaseUiMeterBasicExample.init();
 const [meterBasicExample] = MeterBasicExample.init();
 const [scrollAreaBasicExample] = ScrollAreaBasicExample.init();
+const [scrollAreaBothScrollbarsExample] =
+  ScrollAreaBothScrollbarsExample.init();
+const [scrollAreaGradientExample] = ScrollAreaGradientExample.init();
+const [scrollAreaTabsExample] = ScrollAreaTabsExample.init();
 const [baseUiToggleBasicExample] = BaseUiToggleBasicExample.init();
 const [toggleBasicExample] = ToggleBasicExample.init();
 const [baseUiToggleGroupBasicExample] = BaseUiToggleGroupBasicExample.init();
@@ -662,6 +788,8 @@ const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
+const [baseUiPopoverMultipleTriggersExample] =
+  BaseUiPopoverMultipleTriggersExample.init();
 const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
 const [baseUiRadioLabelingExample] = BaseUiRadioLabelingExample.init();
 const [baseUiRadioNativeButtonExample] = BaseUiRadioNativeButtonExample.init();
@@ -687,8 +815,21 @@ const [baseUiTabsBasicExample] = BaseUiTabsBasicExample.init();
 const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
+const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
+const [shadcnContextMenuBasicExample] = ShadcnContextMenuBasicExample.init();
+const [shadcnDatePickerBasicExample] = ShadcnDatePickerBasicExample.init();
+const [shadcnDialogBasicExample] = ShadcnDialogBasicExample.init();
+const [shadcnDrawerBasicExample] = ShadcnDrawerBasicExample.init();
+const [shadcnFieldBasicExample] = ShadcnFieldBasicExample.init();
+const [shadcnMenubarBasicExample] = ShadcnMenubarBasicExample.init();
+const [shadcnPopoverBasicExample] = ShadcnPopoverBasicExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
+const [shadcnTextareaBasicExample] = ShadcnTextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
+const [shadcnToggleBasicExample] = ShadcnToggleBasicExample.init();
+const [shadcnToggleGroupBasicExample] = ShadcnToggleGroupBasicExample.init();
+const [shadcnToastBasicExample] = ShadcnToastBasicExample.init();
+const [shadcnTooltipBasicExample] = ShadcnTooltipBasicExample.init();
 const [baseUiToastBasicExample] = BaseUiToastBasicExample.init();
 const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
@@ -710,17 +851,26 @@ const modelForRoute = (route: Model["route"]): Model => ({
   shadcnAccordionMultipleExample,
   shadcnAccordionRtlExample,
   accordionMultipleExample,
+  baseUiAccordionBasicExample,
   baseUiAccordionMultipleExample,
   alertBasicExample,
+  alertActionExample,
   alertDestructiveExample,
   aspectRatioBasicExample,
   aspectRatioSquareExample,
   aspectRatioPortraitExample,
   aspectRatioRtlExample,
   alertDialogBasicExample,
+  baseUiAlertDialogBasicExample,
   baseUiAlertDialogCloseConfirmationExample,
+  baseUiAlertDialogControlledMultipleTriggersExample,
+  baseUiAlertDialogDetachedTriggersExample,
+  baseUiAlertDialogMultipleTriggersExample,
+  baseUiAlertDialogOpenFromMenuExample,
   shadcnAlertDialogBasicExample,
   drawerBasicExample,
+  baseUiContextMenuBasicExample,
+  baseUiContextMenuNestedExample,
   contextMenuBasicExample,
   menubarBasicExample,
   baseUiNavigationMenuBasicExample,
@@ -812,6 +962,15 @@ const modelForRoute = (route: Model["route"]): Model => ({
   checkboxBasicExample,
   shadcnCheckboxBasicExample,
   baseUiCheckboxBasicExample,
+  baseUiCheckboxLabelingExample,
+  baseUiCheckboxNativeButtonExample,
+  baseUiCheckboxFormExample,
+  baseUiCheckboxGroupBasicExample,
+  baseUiCheckboxGrouplabelingExample,
+  baseUiCheckboxGroupnativeButtonExample,
+  baseUiCheckboxGroupformExample,
+  baseUiCheckboxGroupparentExample,
+  baseUiCheckboxGroupnestedParentExample,
   checkboxGroupBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
@@ -821,6 +980,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   datePickerBasicExample,
   datePickerBoundsExample,
   baseUiDialogBasicExample,
+  baseUiDialogCloseConfirmationExample,
+  baseUiDialogNestedExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
@@ -828,9 +989,12 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dialogScrollableExample,
   directionBasicExample,
   baseUiDrawerBasicExample,
+  baseUiDrawerpositionExample,
+  baseUiDrawernonModalExample,
   baseUiFieldBasicExample,
   baseUiFieldsetBasicExample,
   baseUiFormBasicExample,
+  baseUiFormServerFunctionExample,
   itemAvatarExample,
   itemBasicExample,
   itemGroupExample,
@@ -859,10 +1023,14 @@ const modelForRoute = (route: Model["route"]): Model => ({
   inputBasicExample,
   inputDisabledExample,
   baseUiMenuBasicExample,
+  baseUiMenuNestedExample,
   baseUiMenubarBasicExample,
   baseUiMeterBasicExample,
   meterBasicExample,
   scrollAreaBasicExample,
+  scrollAreaBothScrollbarsExample,
+  scrollAreaGradientExample,
+  scrollAreaTabsExample,
   baseUiToggleBasicExample,
   toggleBasicExample,
   baseUiToggleGroupBasicExample,
@@ -877,6 +1045,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   menuBasicExample,
   menuAnimatedExample,
   baseUiPopoverBasicExample,
+  baseUiPopoverMultipleTriggersExample,
   baseUiRadioBasicExample,
   baseUiRadioLabelingExample,
   baseUiRadioNativeButtonExample,
@@ -902,8 +1071,21 @@ const modelForRoute = (route: Model["route"]): Model => ({
   tabsBasicExample,
   shadcnTabsBasicExample,
   tabsManualExample,
+  shadcnInputBasicExample,
+  shadcnContextMenuBasicExample,
+  shadcnDatePickerBasicExample,
+  shadcnDialogBasicExample,
+  shadcnDrawerBasicExample,
+  shadcnFieldBasicExample,
+  shadcnMenubarBasicExample,
+  shadcnPopoverBasicExample,
   textareaBasicExample,
+  shadcnTextareaBasicExample,
   textareaDisabledExample,
+  shadcnToggleBasicExample,
+  shadcnToggleGroupBasicExample,
+  shadcnToastBasicExample,
+  shadcnTooltipBasicExample,
   baseUiToastBasicExample,
   toastBasicExample,
   toastVariantsExample,
@@ -1119,6 +1301,19 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Accordion Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiAccordionBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Accordion Basic" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "What is Base UI?" })
+      ).toHaveAttr("aria-expanded", "true")
+    );
+  });
+
   test("the Collapsible docs route renders Base UI docs and default preview", () => {
     Scene.scene(
       { update, view },
@@ -1204,10 +1399,12 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Alert" })).toExist(),
       Scene.expect(Scene.text("shadcn")).toExist(),
       Scene.expect(Scene.testId("docs-example-block-alert-basic")).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-alert-action")).toExist(),
       Scene.expect(
         Scene.testId("docs-example-block-alert-destructive")
       ).toExist(),
       Scene.expect(Scene.text("Heads up!")).toExist(),
+      Scene.expect(Scene.role("button", { name: "Enable" })).toExist(),
       Scene.expect(Scene.text("Error")).toExist()
     );
   });
@@ -1219,6 +1416,17 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Alert Basic" })).toExist(),
       Scene.expect(Scene.role("alert")).toExist(),
       Scene.expect(Scene.text("Heads up!")).toExist()
+    );
+  });
+
+  test("the Alert Action example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AlertActionExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Alert Action" })).toExist(),
+      Scene.expect(Scene.role("alert")).toExist(),
+      Scene.expect(Scene.text("Heads up!")).toExist(),
+      Scene.expect(Scene.role("button", { name: "Enable" })).toExist()
     );
   });
 
@@ -1818,6 +2026,69 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Alert Dialog Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiAlertDialogBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Alert Dialog Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Discard draft" })).toExist()
+    );
+  });
+
+  test("the Base UI Alert Dialog Detached Triggers example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(
+        modelForRoute(BaseUiAlertDialogDetachedTriggersExampleRoute())
+      ),
+      Scene.expect(
+        Scene.role("heading", {
+          name: "Base UI Alert Dialog Detached Triggers",
+        })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Discard draft" })),
+      Scene.expect(
+        Scene.role("alertdialog", { name: "Discard draft?" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Alert Dialog Controlled Multiple Triggers example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(
+        modelForRoute(BaseUiAlertDialogControlledMultipleTriggersExampleRoute())
+      ),
+      Scene.expect(
+        Scene.role("heading", {
+          name: "Base UI Alert Dialog Controlled Multiple Triggers",
+        })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Open programmatically" })),
+      Scene.expect(
+        Scene.role("alertdialog", { name: "Delete project?" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Alert Dialog Multiple Triggers example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(
+        modelForRoute(BaseUiAlertDialogMultipleTriggersExampleRoute())
+      ),
+      Scene.expect(
+        Scene.role("heading", {
+          name: "Base UI Alert Dialog Multiple Triggers",
+        })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Remove Bob" })),
+      Scene.expect(Scene.role("alertdialog", { name: "Remove Bob?" })).toExist()
+    );
+  });
+
   test("the Drawer docs route renders Base UI docs and default preview", () => {
     Scene.scene(
       { update, view },
@@ -1873,6 +2144,17 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Context Menu Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiContextMenuBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Context Menu Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Right click here")).toExist()
+    );
+  });
+
   test("the Menubar docs route renders Base UI docs and controlled preview", () => {
     Scene.scene(
       { update, view },
@@ -1889,6 +2171,18 @@ describe("scene", () => {
       Scene.expect(Scene.role("menuitem", { name: "Zoom In" })).toExist(),
       Scene.click(Scene.role("menuitem", { name: "Help" })),
       Scene.expect(Scene.role("menuitem", { name: "Documentation" })).toExist()
+    );
+  });
+
+  test("the Base UI Context Menu Nested example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiContextMenuNestedExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Context Menu Nested" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Right click here" })),
+      Scene.expect(Scene.text("Add to Playlist")).toExist()
     );
   });
 
@@ -2066,6 +2360,30 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Drawer Position example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiDrawerPositionExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Drawer Position" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Open bottom drawer" })),
+      Scene.expect(Scene.role("dialog", { name: "Notifications" })).toExist()
+    );
+  });
+
+  test("the Base UI Drawer Non-modal example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiDrawerNonModalExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Drawer Non-modal" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Open non-modal drawer" })),
+      Scene.expect(Scene.role("dialog", { name: "Non-modal drawer" })).toExist()
+    );
+  });
+
   test("the Field Basic example route renders the standalone example", () => {
     Scene.scene(
       { update, view },
@@ -2147,6 +2465,21 @@ describe("scene", () => {
       Scene.expect(Scene.role("textbox", { name: "Homepage" })).toHaveValue(
         "https://example.com"
       )
+    );
+  });
+
+  test("the Base UI Form Server Function example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiFormServerFunctionExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Form Server Function" })
+      ).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Username" })).toHaveValue(
+        "admin"
+      ),
+      Scene.click(Scene.role("button", { name: "Submit" })),
+      Scene.expect(Scene.text("This username is reserved")).toExist()
     );
   });
 
@@ -2561,7 +2894,10 @@ describe("scene", () => {
         Scene.role("checkbox", { name: "Enable notifications" })
       ).toExist(),
       Scene.expect(
-        Scene.role("checkbox", { name: "All notification channels" })
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Stay logged in for 7 days" })
       ).toExist(),
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
         "Checkbox"
@@ -3005,6 +3341,38 @@ describe("scene", () => {
     );
   });
 
+  test("the shadcn Input docs Basic preview updates through its submodel", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ShadcnInputDocsRoute())),
+      Scene.expect(Scene.text("Current value: empty")).toExist(),
+      Scene.type(Scene.role("textbox", { name: "Name" }), "Ada Lovelace"),
+      Scene.expect(Scene.text("Current value: Ada Lovelace")).toExist()
+    );
+  });
+
+  test("the shadcn Textarea docs Basic preview updates through its submodel", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ShadcnTextareaDocsRoute())),
+      Scene.expect(Scene.text("Characters: 0")).toExist(),
+      Scene.type(Scene.role("textbox", { name: "Bio" }), "Ada"),
+      Scene.expect(Scene.text("Characters: 3")).toExist()
+    );
+  });
+
+  test("the shadcn Field docs Basic preview updates through its submodel", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ShadcnFieldDocsRoute())),
+      Scene.expect(Scene.text("Please enter your name")).not.toExist(),
+      Scene.click(Scene.role("button", { name: "Validate" })),
+      Scene.expect(Scene.text("Please enter your name")).toExist(),
+      Scene.type(Scene.role("textbox", { name: "Name" }), "Ada Lovelace"),
+      Scene.expect(Scene.text("Please enter your name")).not.toExist()
+    );
+  });
+
   test("the Checkbox Basic example route renders the standalone example", () => {
     Scene.scene(
       { update, view },
@@ -3061,6 +3429,117 @@ describe("scene", () => {
         Scene.role("heading", { name: "Checkbox Group Basic" })
       ).toExist(),
       Scene.expect(Scene.role("group", { name: "Apples" })).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Group Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxGroupBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Group Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("group", { name: "Apples" })).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Labeling example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxLabelingExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Labeling" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Native Button example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxNativeButtonExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Native Button" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Enable notifications" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Form example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxFormExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Form" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Stay logged in for 7 days" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Group Labeling example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxGroupLabelingExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Group Labeling" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("group", { name: "Allowed network protocols" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Group Native Button example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxGroupNativeButtonExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Group Native Button" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("group", { name: "Allowed network protocols" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Group Form example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxGroupFormExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Group Form" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("group", { name: "Allowed network protocols" })
+      ).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Group Parent example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxGroupParentExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Group Parent" })
+      ).toExist(),
+      Scene.expect(Scene.role("group", { name: "Apples" })).toExist()
+    );
+  });
+
+  test("the Base UI Checkbox Group Nested Parent example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCheckboxGroupNestedParentExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Checkbox Group Nested Parent" })
+      ).toExist(),
+      Scene.expect(Scene.role("group", { name: "User Permissions" })).toExist()
     );
   });
 
@@ -3723,6 +4202,68 @@ describe("scene", () => {
     );
   });
 
+  test("the Scroll Area Both Scrollbars example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ScrollAreaBothScrollbarsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Scroll Area Both Scrollbars" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("region", { name: "Two axis content" })
+      ).toExist(),
+      Scene.expect(Scene.text("Column E")).toExist()
+    );
+  });
+
+  test("the Scroll Area Gradient example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ScrollAreaGradientExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Scroll Area Gradient" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("region", { name: "Gradient scroll fade" })
+      ).toExist(),
+      Scene.expect(Scene.text("Stone croft")).toExist()
+    );
+  });
+
+  test("the Scroll Area Tabs example route renders and changes tabs", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ScrollAreaTabsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Scroll Area Tabs" })
+      ).toExist(),
+      Scene.expect(Scene.role("tab", { name: "Account" })).toHaveAttr(
+        "aria-selected",
+        "true"
+      ),
+      Scene.expect(
+        Scene.role("region", { name: "Account settings" })
+      ).toExist(),
+      Scene.click(Scene.role("tab", { name: "Notifications" })),
+      Scene.Command.resolve(
+        BaseUiTabs.FocusTab({ id: "scroll-area-tabs", index: 2 }),
+        BaseUiTabs.CompletedFocusTab(),
+        (message) =>
+          GotScrollAreaTabsExampleMessage({
+            message: ScrollAreaTabsExample.GotTabsMessage({ message }),
+          })
+      ),
+      Scene.expect(Scene.role("tab", { name: "Notifications" })).toHaveAttr(
+        "aria-selected",
+        "true"
+      ),
+      Scene.expect(
+        Scene.role("region", { name: "Notifications settings" })
+      ).toExist(),
+      Scene.expect(Scene.text("Security alerts")).toExist()
+    );
+  });
+
   test("the Toggle docs route renders Base UI docs and hero preview", () => {
     Scene.scene(
       { update, view },
@@ -4129,6 +4670,68 @@ describe("scene", () => {
         Scene.role("button", { name: "View notifications" })
       ).toExist(),
       Scene.expect(Scene.text("Good job!")).not.toExist()
+    );
+  });
+
+  test("the Base UI Dialog Close Confirmation example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiDialogCloseConfirmationExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", {
+          name: "Base UI Dialog Close Confirmation",
+        })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Tweet" })),
+      Scene.Command.resolve(
+        BaseUiDialogCloseConfirmationTweetShowDialog,
+        Dialog.CompletedShowDialog(),
+        (message) =>
+          GotBaseUiDialogCloseConfirmationExampleMessage({
+            message: BaseUiDialogCloseConfirmationExample.GotTweetDialogMessage(
+              {
+                message,
+              }
+            ),
+          })
+      ),
+      Scene.expect(Scene.role("dialog", { name: "New tweet" })).toExist()
+    );
+  });
+
+  test("the Base UI Dialog Nested example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiDialogNestedExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Dialog Nested" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "View notifications" })),
+      Scene.Command.resolve(
+        BaseUiDialogNestedNotificationsShowDialog,
+        Dialog.CompletedShowDialog(),
+        (message) =>
+          GotBaseUiDialogNestedExampleMessage({
+            message: BaseUiDialogNestedExample.GotNotificationsDialogMessage({
+              message,
+            }),
+          })
+      ),
+      Scene.expect(Scene.role("dialog", { name: "Notifications" })).toExist(),
+      Scene.click(Scene.role("button", { name: "View details" })),
+      Scene.Command.resolve(
+        BaseUiDialogNestedDetailsShowDialog,
+        Dialog.CompletedShowDialog(),
+        (message) =>
+          GotBaseUiDialogNestedExampleMessage({
+            message: BaseUiDialogNestedExample.GotDetailsDialogMessage({
+              message,
+            }),
+          })
+      ),
+      Scene.expect(
+        Scene.role("dialog", { name: "Notification details" })
+      ).toExist()
     );
   });
 
@@ -4543,6 +5146,21 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Menu Nested example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiMenuNestedExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Menu Nested" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Format" })),
+      Scene.click(Scene.text("Add to Playlist")),
+      Scene.expect(Scene.text("Nightcall")).toExist(),
+      Scene.click(Scene.text("Nightcall")),
+      Scene.expect(Scene.text("Selected: Nightcall")).toExist()
+    );
+  });
+
   test("the Menu Animated example route renders the standalone example", () => {
     Scene.scene(
       { update, view },
@@ -4612,6 +5230,22 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(Scene.role("button", { name: "Notifications" })).toExist(),
       Scene.expect(Scene.text("Good job!")).not.toExist()
+    );
+  });
+
+  test("the Base UI Popover Multiple Triggers example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiPopoverMultipleTriggersExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Popover Multiple Triggers" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Trigger 1" })),
+      Scene.expect(Scene.text("Content for Trigger 1")).toExist(),
+      Scene.click(Scene.role("button", { name: "Trigger 2" })),
+      Scene.expect(Scene.text("Content for Trigger 2")).toExist(),
+      Scene.click(Scene.role("button", { name: "Close" })),
+      Scene.expect(Scene.text("Content for Trigger 2")).not.toExist()
     );
   });
 

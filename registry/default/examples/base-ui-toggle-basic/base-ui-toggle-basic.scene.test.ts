@@ -15,7 +15,7 @@ describe("Base UI Toggle Basic example", () => {
         "aria-pressed",
         "false"
       ),
-      Scene.expect(Scene.text("Not favorited")).toExist(),
+      Scene.expect(Scene.text("Not favorited")).not.toExist(),
       Scene.click(Scene.role("button", { name: "Favorite" })),
       Scene.expect(Scene.role("button", { name: "Favorite" })).toHaveAttr(
         "aria-pressed",
@@ -25,7 +25,7 @@ describe("Base UI Toggle Basic example", () => {
         "data-pressed",
         ""
       ),
-      Scene.expect(Scene.text("Added to favorites")).toExist()
+      Scene.expect(Scene.text("Added to favorites")).not.toExist()
     );
   });
 });

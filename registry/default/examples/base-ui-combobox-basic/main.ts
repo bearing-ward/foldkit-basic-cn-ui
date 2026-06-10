@@ -1,4 +1,4 @@
-import { Array, Match as M, Schema as S } from "effect";
+import { Array, Match as M, Option, Schema as S } from "effect";
 import { Command, Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { childAttributes, html } from "foldkit/html";
@@ -76,8 +76,9 @@ export type Model = typeof Model.Type;
 export const GotComboboxMessage = m("GotComboboxMessage", {
   message: Combobox.Message,
 });
+export const ClickedClearSelection = m("ClickedClearSelection");
 
-export const Message = S.Union([GotComboboxMessage]);
+export const Message = S.Union([GotComboboxMessage, ClickedClearSelection]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -119,6 +120,14 @@ export const update = (
             GotComboboxMessage({ message })
           ),
         ];
+      },
+      ClickedClearSelection: () => {
+        const combobox = FruitCombobox.reflectSelectedItem(
+          model.combobox,
+          Option.none()
+        );
+
+        return [evo(model, { combobox: () => combobox }), []];
       },
     })
   );
@@ -176,16 +185,33 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Fruit> => {
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
+  const filteredFruits = filterFruits(model.combobox.inputValue);
 
   return h.div(
     [h.Class("space-y-3")],
     [
-      h.label(
+      h.div(
+        [h.Class("flex items-center justify-between gap-3")],
         [
-          h.Class("block text-sm font-medium text-gray-900"),
-          h.For(`${model.combobox.id}-input`),
-        ],
-        ["Choose a fruit"]
+          h.label(
+            [
+              h.Class("block text-sm font-medium text-gray-900"),
+              h.For(`${model.combobox.id}-input`),
+            ],
+            ["Choose a fruit"]
+          ),
+          h.button(
+            [
+              h.Type("button"),
+              h.AriaLabel("Clear selection"),
+              h.OnClick(ClickedClearSelection()),
+              h.Class(
+                "text-sm font-medium text-gray-500 transition hover:text-gray-950"
+              ),
+            ],
+            ["Clear"]
+          ),
+        ]
       ),
       h.submodel({
         slotId: model.combobox.id,
@@ -194,6 +220,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         viewInputs: viewInputs(model.combobox.inputValue),
         toParentMessage: (message) => GotComboboxMessage({ message }),
       }),
+      model.combobox.inputValue !== "" && filteredFruits.length === 0
+        ? h.div(
+            [
+              h.Class(
+                "rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-500 shadow-sm"
+              ),
+            ],
+            ["No fruits found."]
+          )
+        : h.empty,
     ]
   );
 });

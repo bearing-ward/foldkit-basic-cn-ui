@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-scroll-area-both-scrollbars",
+  "type": "registry:example",
+  "title": "Base UI Scroll Area Both Scrollbars",
+  "description": "A Base UI runnable Foldkit version of the Scroll Area both scrollbars example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-scroll-area"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-scroll-area-both-scrollbars/main.ts",
+      "target": "src/examples/base-ui-scroll-area-both-scrollbars/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as ScrollArea from \"../../ui/base-ui-scroll-area\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = m(\"Message\");\n\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      Message: () => [model, []],\n    })\n  );\n\n// VIEW\n\nconst wideRows = (): readonly Html[] => {\n  const h = html<Message>();\n  const labels = [\n    \"Header\",\n    \"Content\",\n    \"Sidebar\",\n    \"Navigation\",\n    \"Footer\",\n    \"Actions\",\n  ];\n\n  return labels.map((label) =>\n    h.div(\n      [\n        h.Class(\n          \"grid w-[720px] grid-cols-6 gap-3 border-b border-gray-100 py-2 text-sm text-gray-700\"\n        ),\n      ],\n      [\n        h.span([h.Class(\"font-medium text-gray-950\")], [label]),\n        h.span([], [\"Column A\"]),\n        h.span([], [\"Column B\"]),\n        h.span([], [\"Column C\"]),\n        h.span([], [\"Column D\"]),\n        h.span([], [\"Column E\"]),\n      ]\n    )\n  );\n};\n\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html =>\n    ScrollArea.rootView<Message>({\n      hasOverflowX: true,\n      hasOverflowY: true,\n      children: [\n        ScrollArea.viewportView<Message>({\n          ariaLabel: \"Two axis content\",\n          children: [\n            ScrollArea.contentView<Message>({\n              className: \"space-y-0\",\n              children: wideRows(),\n            }),\n          ],\n        }),\n        ScrollArea.scrollbarView<Message>({\n          children: [ScrollArea.thumbView<Message>({})],\n        }),\n        ScrollArea.scrollbarView<Message>({\n          className: \"inset-x-1 bottom-1 top-auto h-1.5 w-auto\",\n          children: [\n            ScrollArea.thumbView<Message>({\n              className: \"h-full min-h-0 w-16\",\n            }),\n          ],\n        }),\n        ScrollArea.cornerView<Message>({}),\n      ],\n    })\n);\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-scroll-area-both-scrollbars/base-ui-scroll-area-both-scrollbars.scene.test.ts",
+      "target": "src/examples/base-ui-scroll-area-both-scrollbars/base-ui-scroll-area-both-scrollbars.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ScrollAreaBothScrollbarsExample from \"./main\";\n\ndescribe(\"Base UI Scroll Area Both Scrollbars example\", () => {\n  test(\"renders two-axis scroll content\", () => {\n    Scene.scene(\n      {\n        update: ScrollAreaBothScrollbarsExample.update,\n        view: ScrollAreaBothScrollbarsExample.view,\n      },\n      Scene.with(ScrollAreaBothScrollbarsExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"region\", { name: \"Two axis content\" })\n      ).toExist(),\n      Scene.expect(Scene.text(\"Navigation\")).toExist(),\n      Scene.expect(Scene.text(\"Column E\")).toExist(),\n      Scene.expect(Scene.text(\"Column E\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "ScrollArea",
+      "example": "both-scrollbars",
+      "originExample": "both-scrollbars",
+      "origin": "https://base-ui.com/react/components/scroll-area"
+    }
+  },
+  "origin": "https://base-ui.com/react/components/scroll-area"
+}

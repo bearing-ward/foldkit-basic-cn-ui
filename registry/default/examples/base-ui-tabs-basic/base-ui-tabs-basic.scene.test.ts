@@ -25,14 +25,14 @@ describe("Base UI tabs Basic example", () => {
         "aria-selected",
         "true"
       ),
-      Scene.expect(Scene.text("Overview panel")).toExist(),
+      Scene.expect(Scene.text("Workspace stats and activity.")).toExist(),
       Scene.click(Scene.role("tab", { name: "Projects" })),
       resolveFocusTab(1),
       Scene.expect(Scene.role("tab", { name: "Projects" })).toHaveAttr(
         "aria-selected",
         "true"
       ),
-      Scene.expect(Scene.text("Projects panel")).toExist()
+      Scene.expect(Scene.text("Milestones and deadlines.")).toExist()
     );
   });
 });

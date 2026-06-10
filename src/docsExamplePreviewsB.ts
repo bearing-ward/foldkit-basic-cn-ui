@@ -3,7 +3,12 @@ import { html } from "foldkit/html";
 
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAlertDialogBasicExample from "../registry/default/examples/base-ui-alert-dialog-basic/main";
 import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAlertDialogControlledMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-controlled-multiple-triggers/main";
+import * as BaseUiAlertDialogDetachedTriggersExample from "../registry/default/examples/base-ui-alert-dialog-detached-triggers/main";
+import * as BaseUiAlertDialogMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-multiple-triggers/main";
+import * as BaseUiAlertDialogOpenFromMenuExample from "../registry/default/examples/base-ui-alert-dialog-open-from-menu/main";
 import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
 import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
 import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
@@ -351,6 +356,21 @@ export const baseUiButtonBasicExamplePreview = (
   });
 };
 
+export const baseUiAlertDialogBasicExamplePreview = (
+  model: BaseUiAlertDialogBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAlertDialogBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAlertDialogBasicExampleMessage({ message }),
+  });
+};
+
 export const baseUiAlertDialogCloseConfirmationExamplePreview = (
   model: BaseUiAlertDialogCloseConfirmationExample.Model,
   slotId: string
@@ -363,6 +383,68 @@ export const baseUiAlertDialogCloseConfirmationExamplePreview = (
     view: BaseUiAlertDialogCloseConfirmationExample.view,
     toParentMessage: (message) =>
       Main.GotBaseUiAlertDialogCloseConfirmationExampleMessage({ message }),
+  });
+};
+
+export const baseUiAlertDialogControlledMultipleTriggersExamplePreview = (
+  model: BaseUiAlertDialogControlledMultipleTriggersExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAlertDialogControlledMultipleTriggersExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAlertDialogControlledMultipleTriggersExampleMessage({
+        message,
+      }),
+  });
+};
+
+export const baseUiAlertDialogOpenFromMenuExamplePreview = (
+  model: BaseUiAlertDialogOpenFromMenuExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAlertDialogOpenFromMenuExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAlertDialogOpenFromMenuExampleMessage({ message }),
+  });
+};
+
+export const baseUiAlertDialogDetachedTriggersExamplePreview = (
+  model: BaseUiAlertDialogDetachedTriggersExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAlertDialogDetachedTriggersExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAlertDialogDetachedTriggersExampleMessage({ message }),
+  });
+};
+
+export const baseUiAlertDialogMultipleTriggersExamplePreview = (
+  model: BaseUiAlertDialogMultipleTriggersExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAlertDialogMultipleTriggersExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAlertDialogMultipleTriggersExampleMessage({ message }),
   });
 };
 

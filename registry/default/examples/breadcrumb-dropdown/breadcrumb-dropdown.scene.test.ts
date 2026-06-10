@@ -12,7 +12,9 @@ describe("breadcrumb-dropdown example", () => {
       Scene.with(model),
       Scene.expect(Scene.role("button", { name: "Toggle menu" })).toExist(),
       Scene.click(Scene.role("button", { name: "Toggle menu" })),
-      Scene.expect(Scene.role("menuitem", { name: "Alert" })).toExist()
+      Scene.expect(Scene.role("menuitem", { name: "Documentation" })).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "Themes" })).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "GitHub" })).toExist()
     );
   });
 });

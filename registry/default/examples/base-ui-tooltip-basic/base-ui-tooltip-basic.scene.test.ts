@@ -29,8 +29,8 @@ describe("Base UI tooltip Basic example", () => {
         view: BaseUiTooltipBasicExample.view,
       },
       Scene.with(initialModel),
-      Scene.expect(Scene.text("This is a tooltip")).not.toExist(),
-      Scene.hover(Scene.role("button", { name: "Hover me" })),
+      Scene.expect(Scene.role("tooltip")).not.toExist(),
+      Scene.hover(Scene.role("button", { name: "Bold" })),
       Scene.Command.resolve(
         Tooltip.ShowAfterDelay({
           delay: initialModel.tooltip.showDelay,
@@ -41,7 +41,7 @@ describe("Base UI tooltip Basic example", () => {
       ),
       resolveTooltipMount(),
       Scene.expect(Scene.role("tooltip")).toExist(),
-      Scene.expect(Scene.text("This is a tooltip")).toExist()
+      Scene.expect(Scene.text("Bold")).toExist()
     );
   });
 });

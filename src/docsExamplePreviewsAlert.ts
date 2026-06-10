@@ -1,6 +1,7 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
+import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
@@ -20,6 +21,21 @@ export const alertBasicExamplePreview = (
     model,
     view: AlertBasicExample.view,
     toParentMessage: (message) => Main.GotAlertBasicExampleMessage({ message }),
+  });
+};
+
+export const alertActionExamplePreview = (
+  model: AlertActionExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: AlertActionExample.view,
+    toParentMessage: (message) =>
+      Main.GotAlertActionExampleMessage({ message }),
   });
 };
 

@@ -61,10 +61,8 @@ export const update = (
           variant: "Success",
           sticky: true,
           payload: {
-            title: "Toast created",
-            maybeDescription: Option.some(
-              "The toast was created successfully."
-            ),
+            title: "Toast 1 created",
+            maybeDescription: Option.some("This is a toast notification."),
           },
         });
 

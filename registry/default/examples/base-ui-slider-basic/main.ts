@@ -35,7 +35,7 @@ export const init = (): readonly [
     min: 0,
     max: 100,
     step: 1,
-    initialValue: 50,
+    initialValue: 25,
   });
 
   return [
@@ -79,11 +79,32 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       name: "volume",
       formatValue: (value) => `${value}%`,
       toView: (attributes) =>
-        Slider.baseUiSliderFieldView({
-          attributes,
-          label: "Volume",
-          valueText: `${model.slider.value}%`,
-        }),
+        h.div(
+          [...attributes.root, h.Class(Slider.baseUiSliderRootClassName)],
+          [
+            h.div(
+              [...attributes.track, h.Class(Slider.baseUiSliderTrackClassName)],
+              [
+                h.div(
+                  [
+                    ...attributes.filledTrack,
+                    h.Class(Slider.baseUiSliderFilledTrackClassName),
+                  ],
+                  []
+                ),
+              ]
+            ),
+            h.div(
+              [
+                ...attributes.thumb,
+                h.AriaLabel("Volume"),
+                h.Class(Slider.baseUiSliderThumbClassName),
+              ],
+              []
+            ),
+            h.input(attributes.hiddenInput),
+          ]
+        ),
     },
     toParentMessage: (message) => GotSliderMessage({ message }),
   });

@@ -45,34 +45,15 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("flex flex-col items-start gap-4")],
+    [h.Class("flex h-8 items-center gap-4 text-sm text-gray-950")],
     [
-      h.div(
-        [h.Class("space-y-4")],
-        [
-          h.div(
-            [h.Class("space-y-2")],
-            [
-              h.p([h.Class("text-sm font-medium text-gray-950")], ["Account"]),
-              Separator.view<Message>(),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                ["Profile, billing, and team settings."]
-              ),
-            ]
-          ),
-          h.div(
-            [h.Class("flex h-8 items-center gap-4 text-sm text-gray-700")],
-            [
-              h.span([], ["Preview"]),
-              Separator.view<Message>({ orientation: "vertical" }),
-              h.span([], ["Code"]),
-              Separator.view<Message>({ orientation: "vertical" }),
-              h.span([], ["Deploy"]),
-            ]
-          ),
-        ]
-      ),
+      h.a([h.Href("#"), h.Class("hover:text-gray-600")], ["Home"]),
+      h.a([h.Href("#"), h.Class("hover:text-gray-600")], ["Pricing"]),
+      h.a([h.Href("#"), h.Class("hover:text-gray-600")], ["Blog"]),
+      h.a([h.Href("#"), h.Class("hover:text-gray-600")], ["Support"]),
+      Separator.view<Message>({ orientation: "vertical" }),
+      h.a([h.Href("#"), h.Class("hover:text-gray-600")], ["Log in"]),
+      h.a([h.Href("#"), h.Class("hover:text-gray-600")], ["Sign up"]),
     ]
   );
 });

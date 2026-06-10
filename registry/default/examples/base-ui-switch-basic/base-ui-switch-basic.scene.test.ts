@@ -13,12 +13,12 @@ describe("Base UI switch Basic example", () => {
       Scene.with(BaseUiSwitchBasicExample.init()[0]),
       Scene.expect(Scene.role("switch", { name: "Notifications" })).toHaveAttr(
         "aria-checked",
-        "false"
+        "true"
       ),
       Scene.click(Scene.role("switch", { name: "Notifications" })),
       Scene.expect(Scene.role("switch", { name: "Notifications" })).toHaveAttr(
         "aria-checked",
-        "true"
+        "false"
       )
     );
   });

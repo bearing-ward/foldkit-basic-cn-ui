@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-checkbox-group-form",
+  "type": "registry:example",
+  "title": "Base UI Checkbox Group Form",
+  "description": "A runnable Foldkit version of the Base UI Checkbox Group form example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-checkbox-group-form/main.ts",
+      "target": "src/examples/base-ui-checkbox-group-form/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as CheckboxGroup from \"../../ui/base-ui-checkbox-group\";\n\n// MODEL\n\nexport const ProtocolValue = S.Union([\n  S.Literal(\"http\"),\n  S.Literal(\"https\"),\n  S.Literal(\"ssh\"),\n]);\nexport type ProtocolValue = typeof ProtocolValue.Type;\n\nexport const Model = S.Struct({\n  selectedProtocols: S.Array(ProtocolValue),\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ToggledProtocol = m(\"ToggledProtocol\", { value: ProtocolValue });\n\nexport const Message = S.Union([ToggledProtocol]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ selectedProtocols: [\"http\"] }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledProtocol: ({ value }) => [\n        evo(model, {\n          selectedProtocols: (selectedProtocols) =>\n            CheckboxGroup.toggleValue(selectedProtocols, value),\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.form(\n    [h.Class(\"w-full max-w-sm\")],\n    [\n      h.fieldset(\n        [\n          h.Attribute(\"role\", \"group\"),\n          h.Attribute(\"aria-labelledby\", \"allowed-network-protocols-label\"),\n          h.Class(CheckboxGroup.checkboxGroupRootClassName),\n        ],\n        [\n          h.legend(\n            [\n              h.Id(\"allowed-network-protocols-label\"),\n              h.Class(CheckboxGroup.checkboxGroupCaptionClassName),\n            ],\n            [\"Allowed network protocols\"]\n          ),\n          h.div(\n            [h.Class(CheckboxGroup.checkboxGroupItemsClassName)],\n            [\n              CheckboxGroup.itemView<Message>({\n                value: \"http\",\n                selectedValues: model.selectedProtocols,\n                label: \"HTTP\",\n                onValueChange: ToggledProtocol({ value: \"http\" }),\n              }),\n              CheckboxGroup.itemView<Message>({\n                value: \"https\",\n                selectedValues: model.selectedProtocols,\n                label: \"HTTPS\",\n                onValueChange: ToggledProtocol({ value: \"https\" }),\n              }),\n              CheckboxGroup.itemView<Message>({\n                value: \"ssh\",\n                selectedValues: model.selectedProtocols,\n                label: \"SSH\",\n                onValueChange: ToggledProtocol({ value: \"ssh\" }),\n              }),\n            ]\n          ),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-checkbox-group-form/base-ui-checkbox-group-form.scene.test.ts",
+      "target": "src/examples/base-ui-checkbox-group-form/base-ui-checkbox-group-form.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BaseUiCheckboxGroupFormExample from \"./main\";\n\ndescribe(\"Base UI Checkbox Group Form example\", () => {\n  test(\"matches the Base UI form integration content\", () => {\n    Scene.scene(\n      {\n        update: BaseUiCheckboxGroupFormExample.update,\n        view: BaseUiCheckboxGroupFormExample.view,\n      },\n      Scene.with(BaseUiCheckboxGroupFormExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"group\", { name: \"Allowed network protocols\" })\n      ).toExist(),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"HTTP\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      ),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"SSH\" })).toHaveAttr(\n        \"aria-checked\",\n        \"false\"\n      ),\n      Scene.click(Scene.text(\"SSH\")),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"SSH\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Checkbox Group",
+      "example": "form",
+      "originExample": "form",
+      "origin": "https://base-ui.com/react/components/checkbox-group"
+    }
+  }
+}

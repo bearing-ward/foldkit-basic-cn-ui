@@ -39,6 +39,7 @@ const view = (model: Model): Html => {
     openValues: model.openValues,
     children: [
       Accordion.itemView<Message>({
+        idPrefix: "registry-test",
         value: "base-ui",
         openValues: model.openValues,
         title: "What is Base UI?",
@@ -46,6 +47,7 @@ const view = (model: Model): Html => {
         children: [h.p([], ["Base UI is a component library."])],
       }),
       Accordion.itemView<Message>({
+        idPrefix: "registry-test",
         value: "getting-started",
         openValues: model.openValues,
         title: "How do I get started?",
@@ -53,6 +55,7 @@ const view = (model: Model): Html => {
         children: [h.p([], ["Install the registry item."])],
       }),
       Accordion.itemView<Message>({
+        idPrefix: "registry-test",
         value: "disabled",
         openValues: model.openValues,
         title: "Locked panel",
@@ -72,6 +75,12 @@ describe("Base UI Accordion registry view", () => {
       Scene.expect(
         Scene.role("button", { name: "What is Base UI?" })
       ).toHaveAttr("aria-expanded", "true"),
+      Scene.expect(
+        Scene.role("button", { name: "What is Base UI?" })
+      ).toHaveAttr("id", "registry-test-base-ui-trigger"),
+      Scene.expect(
+        Scene.role("button", { name: "What is Base UI?" })
+      ).toHaveAttr("aria-controls", "registry-test-base-ui-panel"),
       Scene.expect(Scene.text("Base UI is a component library.")).toExist(),
       Scene.expect(
         Scene.role("button", { name: "How do I get started?" })

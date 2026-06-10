@@ -15,12 +15,12 @@ describe("Base UI slider Basic example", () => {
       Scene.with(initialModel),
       Scene.expect(Scene.role("slider", { name: "Volume" })).toHaveAttr(
         "aria-valuenow",
-        "50"
+        "25"
       ),
       Scene.keydown(Scene.role("slider", { name: "Volume" }), "ArrowRight"),
       Scene.expect(Scene.role("slider", { name: "Volume" })).toHaveAttr(
         "aria-valuenow",
-        "51"
+        "26"
       )
     );
   });

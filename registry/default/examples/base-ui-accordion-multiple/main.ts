@@ -64,6 +64,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     openValues: model.openValues,
     children: [
       Accordion.itemView<Message>({
+        idPrefix: "base-ui-accordion-multiple",
         value: "base-ui",
         openValues: model.openValues,
         title: "What is Base UI?",
@@ -78,6 +79,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ],
       }),
       Accordion.itemView<Message>({
+        idPrefix: "base-ui-accordion-multiple",
         value: "getting-started",
         openValues: model.openValues,
         title: "How do I get started?",
@@ -92,6 +94,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ],
       }),
       Accordion.itemView<Message>({
+        idPrefix: "base-ui-accordion-multiple",
         value: "project",
         openValues: model.openValues,
         title: "Can I use it for my project?",

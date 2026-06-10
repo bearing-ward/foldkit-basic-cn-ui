@@ -5,6 +5,7 @@ import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -12,6 +13,9 @@ import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-ra
 import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
 import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
 import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as ScrollAreaBothScrollbarsExample from "../registry/default/examples/base-ui-scroll-area-both-scrollbars/main";
+import * as ScrollAreaGradientExample from "../registry/default/examples/base-ui-scroll-area-gradient/main";
+import * as ScrollAreaTabsExample from "../registry/default/examples/base-ui-scroll-area-tabs/main";
 import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
 import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
 import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
@@ -636,6 +640,21 @@ export const baseUiPopoverBasicExamplePreview = (
   });
 };
 
+export const baseUiPopoverMultipleTriggersExamplePreview = (
+  model: BaseUiPopoverMultipleTriggersExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiPopoverMultipleTriggersExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiPopoverMultipleTriggersExampleMessage({ message }),
+  });
+};
+
 export const popoverAnimatedExamplePreview = (
   model: PopoverAnimatedExample.Model,
   slotId: string
@@ -828,6 +847,51 @@ export const scrollAreaBasicExamplePreview = (
     view: ScrollAreaBasicExample.view,
     toParentMessage: (message) =>
       Main.GotScrollAreaBasicExampleMessage({ message }),
+  });
+};
+
+export const scrollAreaBothScrollbarsExamplePreview = (
+  model: ScrollAreaBothScrollbarsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ScrollAreaBothScrollbarsExample.view,
+    toParentMessage: (message) =>
+      Main.GotScrollAreaBothScrollbarsExampleMessage({ message }),
+  });
+};
+
+export const scrollAreaGradientExamplePreview = (
+  model: ScrollAreaGradientExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ScrollAreaGradientExample.view,
+    toParentMessage: (message) =>
+      Main.GotScrollAreaGradientExampleMessage({ message }),
+  });
+};
+
+export const scrollAreaTabsExamplePreview = (
+  model: ScrollAreaTabsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ScrollAreaTabsExample.view,
+    toParentMessage: (message) =>
+      Main.GotScrollAreaTabsExampleMessage({ message }),
   });
 };
 

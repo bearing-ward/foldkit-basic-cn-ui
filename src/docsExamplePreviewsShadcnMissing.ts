@@ -86,34 +86,130 @@ export const shadcnComboboxBasicExamplePreview = (
   });
 };
 
-export const shadcnContextMenuBasicExamplePreview = (): Html =>
-  ShadcnContextMenuBasicExample.view(ShadcnContextMenuBasicExample.init()[0]);
+export const shadcnContextMenuBasicExamplePreview = (
+  model: ShadcnContextMenuBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnDatePickerBasicExamplePreview = (): Html =>
-  ShadcnDatePickerBasicExample.view(ShadcnDatePickerBasicExample.init()[0]);
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnContextMenuBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnContextMenuBasicExampleMessage({ message }),
+  });
+};
 
-export const shadcnDialogBasicExamplePreview = (): Html =>
-  ShadcnDialogBasicExample.view(ShadcnDialogBasicExample.init()[0]);
+export const shadcnDatePickerBasicExamplePreview = (
+  model: ShadcnDatePickerBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnDrawerBasicExamplePreview = (): Html =>
-  ShadcnDrawerBasicExample.view(ShadcnDrawerBasicExample.init()[0]);
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnDatePickerBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnDatePickerBasicExampleMessage({ message }),
+  });
+};
 
-export const shadcnFieldBasicExamplePreview = (): Html =>
-  ShadcnFieldBasicExample.view(ShadcnFieldBasicExample.init()[0]);
+export const shadcnDialogBasicExamplePreview = (
+  model: ShadcnDialogBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnInputBasicExamplePreview = (): Html =>
-  ShadcnInputBasicExample.view(ShadcnInputBasicExample.init()[0]);
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnDialogBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnDialogBasicExampleMessage({ message }),
+  });
+};
 
-export const shadcnMenubarBasicExamplePreview = (): Html =>
-  ShadcnMenubarBasicExample.view(ShadcnMenubarBasicExample.init()[0]);
+export const shadcnDrawerBasicExamplePreview = (
+  model: ShadcnDrawerBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnDrawerBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnDrawerBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnFieldBasicExamplePreview = (
+  model: ShadcnFieldBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnFieldBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnFieldBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputBasicExamplePreview = (
+  model: ShadcnInputBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnMenubarBasicExamplePreview = (
+  model: ShadcnMenubarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnMenubarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnMenubarBasicExampleMessage({ message }),
+  });
+};
 
 export const shadcnNavigationMenuBasicExamplePreview = (): Html =>
   ShadcnNavigationMenuBasicExample.view(
     ShadcnNavigationMenuBasicExample.init()[0]
   );
 
-export const shadcnPopoverBasicExamplePreview = (): Html =>
-  ShadcnPopoverBasicExample.view(ShadcnPopoverBasicExample.init()[0]);
+export const shadcnPopoverBasicExamplePreview = (
+  model: ShadcnPopoverBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnPopoverBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnPopoverBasicExampleMessage({ message }),
+  });
+};
 
 export const shadcnProgressBasicExamplePreview = (): Html =>
   ShadcnProgressBasicExample.view(ShadcnProgressBasicExample.init()[0]);
@@ -124,17 +220,77 @@ export const shadcnScrollAreaBasicExamplePreview = (): Html =>
 export const shadcnSeparatorBasicExamplePreview = (): Html =>
   ShadcnSeparatorBasicExample.view(ShadcnSeparatorBasicExample.init()[0]);
 
-export const shadcnTextareaBasicExamplePreview = (): Html =>
-  ShadcnTextareaBasicExample.view(ShadcnTextareaBasicExample.init()[0]);
+export const shadcnTextareaBasicExamplePreview = (
+  model: ShadcnTextareaBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnToggleBasicExamplePreview = (): Html =>
-  ShadcnToggleBasicExample.view(ShadcnToggleBasicExample.init()[0]);
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnTextareaBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnTextareaBasicExampleMessage({ message }),
+  });
+};
 
-export const shadcnToggleGroupBasicExamplePreview = (): Html =>
-  ShadcnToggleGroupBasicExample.view(ShadcnToggleGroupBasicExample.init()[0]);
+export const shadcnToggleBasicExamplePreview = (
+  model: ShadcnToggleBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnToastBasicExamplePreview = (): Html =>
-  ShadcnToastBasicExample.view(ShadcnToastBasicExample.init()[0]);
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnToggleBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnToggleBasicExampleMessage({ message }),
+  });
+};
 
-export const shadcnTooltipBasicExamplePreview = (): Html =>
-  ShadcnTooltipBasicExample.view(ShadcnTooltipBasicExample.init()[0]);
+export const shadcnToggleGroupBasicExamplePreview = (
+  model: ShadcnToggleGroupBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnToggleGroupBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnToggleGroupBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnToastBasicExamplePreview = (
+  model: ShadcnToastBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnToastBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnToastBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnTooltipBasicExamplePreview = (
+  model: ShadcnTooltipBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnTooltipBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnTooltipBasicExampleMessage({ message }),
+  });
+};

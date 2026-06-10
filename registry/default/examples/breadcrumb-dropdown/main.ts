@@ -88,27 +88,27 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                           [
                             h.a(
                               [
-                                h.Href("/docs/components/accordion"),
+                                h.Href("#"),
                                 h.Attribute("role", "menuitem"),
                                 h.Class(itemClassName),
                               ],
-                              ["Accordion"]
+                              ["Documentation"]
                             ),
                             h.a(
                               [
-                                h.Href("/docs/components/alert"),
+                                h.Href("#"),
                                 h.Attribute("role", "menuitem"),
                                 h.Class(itemClassName),
                               ],
-                              ["Alert"]
+                              ["Themes"]
                             ),
                             h.a(
                               [
-                                h.Href("/docs/components/breadcrumb"),
+                                h.Href("#"),
                                 h.Attribute("role", "menuitem"),
                                 h.Class(itemClassName),
                               ],
-                              ["Breadcrumb"]
+                              ["GitHub"]
                             ),
                           ]
                         ),

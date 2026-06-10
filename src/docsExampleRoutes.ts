@@ -850,6 +850,104 @@ export const baseUiCheckboxBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiCheckboxLabelingExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Labeling",
+    "base-ui-checkbox-labeling",
+    DocsPreviewsCD.baseUiCheckboxLabelingExamplePreview(
+      model.baseUiCheckboxLabelingExample,
+      "base-ui-checkbox-labeling-standalone"
+    )
+  );
+
+export const baseUiCheckboxNativeButtonExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Native Button",
+    "base-ui-checkbox-native-button",
+    DocsPreviewsCD.baseUiCheckboxNativeButtonExamplePreview(
+      model.baseUiCheckboxNativeButtonExample,
+      "base-ui-checkbox-native-button-standalone"
+    )
+  );
+
+export const baseUiCheckboxFormExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Form",
+    "base-ui-checkbox-form",
+    DocsPreviewsCD.baseUiCheckboxFormExamplePreview(
+      model.baseUiCheckboxFormExample,
+      "base-ui-checkbox-form-standalone"
+    )
+  );
+
+export const baseUiCheckboxGroupBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Group Basic",
+    "base-ui-checkbox-group-basic",
+    DocsPreviewsCD.baseUiCheckboxGroupBasicExamplePreview(
+      model.baseUiCheckboxGroupBasicExample,
+      "base-ui-checkbox-group-basic-standalone"
+    )
+  );
+
+export const baseUiCheckboxGroupLabelingExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Group Labeling",
+    "base-ui-checkbox-group-labeling",
+    DocsPreviewsCD.baseUiCheckboxGroupLabelingExamplePreview(
+      model.baseUiCheckboxGrouplabelingExample,
+      "base-ui-checkbox-group-labeling-standalone"
+    )
+  );
+
+export const baseUiCheckboxGroupNativeButtonExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Group Native Button",
+    "base-ui-checkbox-group-native-button",
+    DocsPreviewsCD.baseUiCheckboxGroupNativeButtonExamplePreview(
+      model.baseUiCheckboxGroupnativeButtonExample,
+      "base-ui-checkbox-group-native-button-standalone"
+    )
+  );
+
+export const baseUiCheckboxGroupFormExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Group Form",
+    "base-ui-checkbox-group-form",
+    DocsPreviewsCD.baseUiCheckboxGroupFormExamplePreview(
+      model.baseUiCheckboxGroupformExample,
+      "base-ui-checkbox-group-form-standalone"
+    )
+  );
+
+export const baseUiCheckboxGroupParentExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Group Parent",
+    "base-ui-checkbox-group-parent",
+    DocsPreviewsCD.baseUiCheckboxGroupParentExamplePreview(
+      model.baseUiCheckboxGroupparentExample,
+      "base-ui-checkbox-group-parent-standalone"
+    )
+  );
+
+export const baseUiCheckboxGroupNestedParentExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Checkbox Group Nested Parent",
+    "base-ui-checkbox-group-nested-parent",
+    DocsPreviewsCD.baseUiCheckboxGroupNestedParentExamplePreview(
+      model.baseUiCheckboxGroupnestedParentExample,
+      "base-ui-checkbox-group-nested-parent-standalone"
+    )
+  );
+
 export const checkboxGroupBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -985,6 +1083,16 @@ export const baseUiAccordionMultipleExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiAccordionBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Accordion Basic",
+    "base-ui-accordion-basic",
+    DocsPreviewsAccordion.baseUiAccordionBasicExamplePreview(
+      model.baseUiAccordionBasicExample,
+      "base-ui-accordion-basic-standalone"
+    )
+  );
 
 export const breadcrumbBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
@@ -1567,6 +1675,64 @@ export const baseUiAlertDialogCloseConfirmationExampleRouteView = (
     )
   );
 
+export const baseUiAlertDialogControlledMultipleTriggersExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Alert Dialog Controlled Multiple Triggers",
+    "base-ui-alert-dialog-controlled-multiple-triggers",
+    DocsPreviewsB.baseUiAlertDialogControlledMultipleTriggersExamplePreview(
+      model.baseUiAlertDialogControlledMultipleTriggersExample,
+      "base-ui-alert-dialog-controlled-multiple-triggers-standalone"
+    )
+  );
+
+export const baseUiAlertDialogOpenFromMenuExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Alert Dialog Open From Menu",
+    "base-ui-alert-dialog-open-from-menu",
+    DocsPreviewsB.baseUiAlertDialogOpenFromMenuExamplePreview(
+      model.baseUiAlertDialogOpenFromMenuExample,
+      "base-ui-alert-dialog-open-from-menu-standalone"
+    )
+  );
+
+export const baseUiAlertDialogDetachedTriggersExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Alert Dialog Detached Triggers",
+    "base-ui-alert-dialog-detached-triggers",
+    DocsPreviewsB.baseUiAlertDialogDetachedTriggersExamplePreview(
+      model.baseUiAlertDialogDetachedTriggersExample,
+      "base-ui-alert-dialog-detached-triggers-standalone"
+    )
+  );
+
+export const baseUiAlertDialogMultipleTriggersExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Alert Dialog Multiple Triggers",
+    "base-ui-alert-dialog-multiple-triggers",
+    DocsPreviewsB.baseUiAlertDialogMultipleTriggersExamplePreview(
+      model.baseUiAlertDialogMultipleTriggersExample,
+      "base-ui-alert-dialog-multiple-triggers-standalone"
+    )
+  );
+
+export const baseUiAlertDialogBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Alert Dialog Basic",
+    "base-ui-alert-dialog-basic",
+    DocsPreviewsB.baseUiAlertDialogBasicExamplePreview(
+      model.baseUiAlertDialogBasicExample,
+      "base-ui-alert-dialog-basic-standalone"
+    )
+  );
+
 export const alertBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1591,6 +1757,37 @@ export const alertBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsAlert.alertBasicExamplePreview(
             model.alertBasicExample,
             "alert-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const alertActionExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Alert Action"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable alert-action registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsAlert.alertActionExamplePreview(
+            model.alertActionExample,
+            "alert-action-standalone"
           ),
         ]
       ),
@@ -1832,6 +2029,16 @@ export const contextMenuBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiContextMenuBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Context Menu Basic",
+    "base-ui-context-menu-basic",
+    DocsPreviewsCD.baseUiContextMenuBasicExamplePreview(
+      model.baseUiContextMenuBasicExample,
+      "base-ui-context-menu-basic-standalone"
+    )
+  );
 
 export const menubarBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2140,6 +2347,25 @@ export const baseUiCollapsibleBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiDrawerPositionExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Drawer Position",
+    "base-ui-drawer-position",
+    DocsPreviewsCD.baseUiDrawerPositionExamplePreview(
+      model.baseUiDrawerpositionExample,
+      "base-ui-drawer-position-standalone"
+    )
+  );
+export const baseUiDrawerNonModalExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Drawer Non-modal",
+    "base-ui-drawer-non-modal",
+    DocsPreviewsCD.baseUiDrawerNonModalExamplePreview(
+      model.baseUiDrawernonModalExample,
+      "base-ui-drawer-non-modal-standalone"
+    )
+  );
 
 export const fieldBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2451,6 +2677,42 @@ export const baseUiFormBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiFormServerFunctionExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Form Server Function"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-form-server-function registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiFormServerFunctionExamplePreview(
+            model.baseUiFormServerFunctionExample,
+            "base-ui-form-server-function-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const baseUiInputBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2512,6 +2774,40 @@ export const baseUiMenuBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsCD.baseUiMenuBasicExamplePreview(
             model.baseUiMenuBasicExample,
             "base-ui-menu-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiMenuNestedExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Menu Nested"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-menu-nested registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiMenuNestedExamplePreview(
+            model.baseUiMenuNestedExample,
+            "base-ui-menu-nested-standalone"
           ),
         ]
       ),
@@ -3177,6 +3473,36 @@ export const scrollAreaBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const scrollAreaBothScrollbarsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Scroll Area Both Scrollbars",
+    "base-ui-scroll-area-both-scrollbars",
+    DocsPreviewsNZ.scrollAreaBothScrollbarsExamplePreview(
+      model.scrollAreaBothScrollbarsExample,
+      "base-ui-scroll-area-both-scrollbars-standalone"
+    )
+  );
+
+export const scrollAreaGradientExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Scroll Area Gradient",
+    "base-ui-scroll-area-gradient",
+    DocsPreviewsNZ.scrollAreaGradientExamplePreview(
+      model.scrollAreaGradientExample,
+      "base-ui-scroll-area-gradient-standalone"
+    )
+  );
+
+export const scrollAreaTabsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Scroll Area Tabs",
+    "base-ui-scroll-area-tabs",
+    DocsPreviewsNZ.scrollAreaTabsExamplePreview(
+      model.scrollAreaTabsExample,
+      "base-ui-scroll-area-tabs-standalone"
+    )
+  );
+
 export const baseUiToggleBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Base UI Toggle Basic",
@@ -3558,6 +3884,16 @@ export const tooltipNoDelayExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiContextMenuNestedExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Context Menu Nested",
+    "base-ui-context-menu-nested",
+    DocsPreviewsCD.baseUiContextMenuNestedExamplePreview(
+      model.baseUiContextMenuNestedExample,
+      "base-ui-context-menu-nested-standalone"
+    )
+  );
+
 export const dialogBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3616,6 +3952,76 @@ export const baseUiDialogBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsCD.baseUiDialogBasicExamplePreview(
             model.baseUiDialogBasicExample,
             "base-ui-dialog-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiDialogCloseConfirmationExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Dialog Close Confirmation"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-dialog-close-confirmation registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiDialogCloseConfirmationExamplePreview(
+            model.baseUiDialogCloseConfirmationExample,
+            "base-ui-dialog-close-confirmation-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiDialogNestedExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Dialog Nested"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-dialog-nested registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiDialogNestedExamplePreview(
+            model.baseUiDialogNestedExample,
+            "base-ui-dialog-nested-standalone"
           ),
         ]
       ),
@@ -4086,6 +4492,42 @@ export const baseUiPopoverBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsNZ.baseUiPopoverBasicExamplePreview(
             model.baseUiPopoverBasicExample,
             "base-ui-popover-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiPopoverMultipleTriggersExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Popover Multiple Triggers"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-popover-multiple-triggers registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiPopoverMultipleTriggersExamplePreview(
+            model.baseUiPopoverMultipleTriggersExample,
+            "base-ui-popover-multiple-triggers-standalone"
           ),
         ]
       ),

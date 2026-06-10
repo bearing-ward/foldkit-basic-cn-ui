@@ -5,6 +5,7 @@ import { describe, expect, test } from "vitest";
 
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
@@ -17,27 +18,51 @@ import * as AutocompleteBasicExample from "../registry/default/examples/autocomp
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAccordionBasicExample from "../registry/default/examples/base-ui-accordion-basic/main";
 import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
+import * as BaseUiAlertDialogBasicExample from "../registry/default/examples/base-ui-alert-dialog-basic/main";
 import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAlertDialogControlledMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-controlled-multiple-triggers/main";
+import * as BaseUiAlertDialogDetachedTriggersExample from "../registry/default/examples/base-ui-alert-dialog-detached-triggers/main";
+import * as BaseUiAlertDialogMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-multiple-triggers/main";
+import * as BaseUiAlertDialogOpenFromMenuExample from "../registry/default/examples/base-ui-alert-dialog-open-from-menu/main";
 import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
 import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
 import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
 import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCheckboxFormExample from "../registry/default/examples/base-ui-checkbox-form/main";
+import * as BaseUiCheckboxGroupBasicExample from "../registry/default/examples/base-ui-checkbox-group-basic/main";
+import * as BaseUiCheckboxGroupFormExample from "../registry/default/examples/base-ui-checkbox-group-form/main";
+import * as BaseUiCheckboxGroupLabelingExample from "../registry/default/examples/base-ui-checkbox-group-labeling/main";
+import * as BaseUiCheckboxGroupNativeButtonExample from "../registry/default/examples/base-ui-checkbox-group-native-button/main";
+import * as BaseUiCheckboxGroupNestedParentExample from "../registry/default/examples/base-ui-checkbox-group-nested-parent/main";
+import * as BaseUiCheckboxGroupParentExample from "../registry/default/examples/base-ui-checkbox-group-parent/main";
+import * as BaseUiCheckboxLabelingExample from "../registry/default/examples/base-ui-checkbox-labeling/main";
+import * as BaseUiCheckboxNativeButtonExample from "../registry/default/examples/base-ui-checkbox-native-button/main";
 import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
 import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiContextMenuBasicExample from "../registry/default/examples/base-ui-context-menu-basic/main";
+import * as BaseUiContextMenuNestedExample from "../registry/default/examples/base-ui-context-menu-nested/main";
 import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDialogCloseConfirmationExample from "../registry/default/examples/base-ui-dialog-close-confirmation/main";
+import * as BaseUiDialogNestedExample from "../registry/default/examples/base-ui-dialog-nested/main";
 import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiDrawerNonModalExample from "../registry/default/examples/base-ui-drawer-non-modal/main";
+import * as BaseUiDrawerPositionExample from "../registry/default/examples/base-ui-drawer-position/main";
 import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
 import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
 import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiFormServerFunctionExample from "../registry/default/examples/base-ui-form-server-function/main";
 import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
 import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenuNestedExample from "../registry/default/examples/base-ui-menu-nested/main";
 import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
 import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
 import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -45,6 +70,9 @@ import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-ra
 import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
 import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
 import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as ScrollAreaBothScrollbarsExample from "../registry/default/examples/base-ui-scroll-area-both-scrollbars/main";
+import * as ScrollAreaGradientExample from "../registry/default/examples/base-ui-scroll-area-gradient/main";
+import * as ScrollAreaTabsExample from "../registry/default/examples/base-ui-scroll-area-tabs/main";
 import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
 import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
 import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
@@ -186,11 +214,24 @@ import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-c
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
+import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
+import * as ShadcnDatePickerBasicExample from "../registry/default/examples/shadcn-date-picker-basic/main";
+import * as ShadcnDialogBasicExample from "../registry/default/examples/shadcn-dialog-basic/main";
+import * as ShadcnDrawerBasicExample from "../registry/default/examples/shadcn-drawer-basic/main";
+import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
+import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
+import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
 import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
 import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
 import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-switch-basic/main";
 import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
+import * as ShadcnTextareaBasicExample from "../registry/default/examples/shadcn-textarea-basic/main";
+import * as ShadcnToastBasicExample from "../registry/default/examples/shadcn-toast-basic/main";
+import * as ShadcnToggleBasicExample from "../registry/default/examples/shadcn-toggle-basic/main";
+import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/shadcn-toggle-group-basic/main";
+import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
@@ -231,18 +272,31 @@ const [shadcnAccordionDisabledExample] = ShadcnAccordionDisabledExample.init();
 const [shadcnAccordionMultipleExample] = ShadcnAccordionMultipleExample.init();
 const [shadcnAccordionRtlExample] = ShadcnAccordionRtlExample.init();
 const [accordionMultipleExample] = AccordionMultipleExample.init();
+const [baseUiAccordionBasicExample] = BaseUiAccordionBasicExample.init();
 const [baseUiAccordionMultipleExample] = BaseUiAccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
+const [alertActionExample] = AlertActionExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
 const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
 const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
 const [aspectRatioRtlExample] = AspectRatioRtlExample.init();
 const [alertDialogBasicExample] = AlertDialogBasicExample.init();
+const [baseUiAlertDialogBasicExample] = BaseUiAlertDialogBasicExample.init();
 const [baseUiAlertDialogCloseConfirmationExample] =
   BaseUiAlertDialogCloseConfirmationExample.init();
+const [baseUiAlertDialogControlledMultipleTriggersExample] =
+  BaseUiAlertDialogControlledMultipleTriggersExample.init();
+const [baseUiAlertDialogDetachedTriggersExample] =
+  BaseUiAlertDialogDetachedTriggersExample.init();
+const [baseUiAlertDialogMultipleTriggersExample] =
+  BaseUiAlertDialogMultipleTriggersExample.init();
+const [baseUiAlertDialogOpenFromMenuExample] =
+  BaseUiAlertDialogOpenFromMenuExample.init();
 const [shadcnAlertDialogBasicExample] = ShadcnAlertDialogBasicExample.init();
 const [drawerBasicExample] = DrawerBasicExample.init();
+const [baseUiContextMenuBasicExample] = BaseUiContextMenuBasicExample.init();
+const [baseUiContextMenuNestedExample] = BaseUiContextMenuNestedExample.init();
 const [contextMenuBasicExample] = ContextMenuBasicExample.init();
 const [menubarBasicExample] = MenubarBasicExample.init();
 const [baseUiNavigationMenuBasicExample] =
@@ -353,6 +407,21 @@ const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [shadcnCheckboxBasicExample] = ShadcnCheckboxBasicExample.init();
 const [baseUiCheckboxBasicExample] = BaseUiCheckboxBasicExample.init();
+const [baseUiCheckboxLabelingExample] = BaseUiCheckboxLabelingExample.init();
+const [baseUiCheckboxNativeButtonExample] =
+  BaseUiCheckboxNativeButtonExample.init();
+const [baseUiCheckboxFormExample] = BaseUiCheckboxFormExample.init();
+const [baseUiCheckboxGroupBasicExample] =
+  BaseUiCheckboxGroupBasicExample.init();
+const [baseUiCheckboxGrouplabelingExample] =
+  BaseUiCheckboxGroupLabelingExample.init();
+const [baseUiCheckboxGroupnativeButtonExample] =
+  BaseUiCheckboxGroupNativeButtonExample.init();
+const [baseUiCheckboxGroupformExample] = BaseUiCheckboxGroupFormExample.init();
+const [baseUiCheckboxGroupparentExample] =
+  BaseUiCheckboxGroupParentExample.init();
+const [baseUiCheckboxGroupnestedParentExample] =
+  BaseUiCheckboxGroupNestedParentExample.init();
 const [checkboxGroupBasicExample] = CheckboxGroupBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
@@ -362,6 +431,9 @@ const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [datePickerBasicExample] = DatePickerBasicExample.init();
 const [datePickerBoundsExample] = DatePickerBoundsExample.init();
 const [baseUiDialogBasicExample] = BaseUiDialogBasicExample.init();
+const [baseUiDialogCloseConfirmationExample] =
+  BaseUiDialogCloseConfirmationExample.init();
+const [baseUiDialogNestedExample] = BaseUiDialogNestedExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -373,9 +445,13 @@ const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
 const [dragAndDropDisabledExample] = DragAndDropDisabledExample.init();
 const [baseUiDrawerBasicExample] = BaseUiDrawerBasicExample.init();
+const [baseUiDrawerpositionExample] = BaseUiDrawerPositionExample.init();
+const [baseUiDrawernonModalExample] = BaseUiDrawerNonModalExample.init();
 const [baseUiFieldBasicExample] = BaseUiFieldBasicExample.init();
 const [baseUiFieldsetBasicExample] = BaseUiFieldsetBasicExample.init();
 const [baseUiFormBasicExample] = BaseUiFormBasicExample.init();
+const [baseUiFormServerFunctionExample] =
+  BaseUiFormServerFunctionExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
@@ -384,10 +460,15 @@ const [baseUiInputBasicExample] = BaseUiInputBasicExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
 const [baseUiMenuBasicExample] = BaseUiMenuBasicExample.init();
+const [baseUiMenuNestedExample] = BaseUiMenuNestedExample.init();
 const [baseUiMenubarBasicExample] = BaseUiMenubarBasicExample.init();
 const [baseUiMeterBasicExample] = BaseUiMeterBasicExample.init();
 const [meterBasicExample] = MeterBasicExample.init();
 const [scrollAreaBasicExample] = ScrollAreaBasicExample.init();
+const [scrollAreaBothScrollbarsExample] =
+  ScrollAreaBothScrollbarsExample.init();
+const [scrollAreaGradientExample] = ScrollAreaGradientExample.init();
+const [scrollAreaTabsExample] = ScrollAreaTabsExample.init();
 const [baseUiToggleBasicExample] = BaseUiToggleBasicExample.init();
 const [toggleBasicExample] = ToggleBasicExample.init();
 const [baseUiToggleGroupBasicExample] = BaseUiToggleGroupBasicExample.init();
@@ -402,6 +483,8 @@ const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
+const [baseUiPopoverMultipleTriggersExample] =
+  BaseUiPopoverMultipleTriggersExample.init();
 const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
 const [baseUiRadioLabelingExample] = BaseUiRadioLabelingExample.init();
 const [baseUiRadioNativeButtonExample] = BaseUiRadioNativeButtonExample.init();
@@ -427,8 +510,21 @@ const [baseUiTabsBasicExample] = BaseUiTabsBasicExample.init();
 const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
+const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
+const [shadcnContextMenuBasicExample] = ShadcnContextMenuBasicExample.init();
+const [shadcnDatePickerBasicExample] = ShadcnDatePickerBasicExample.init();
+const [shadcnDialogBasicExample] = ShadcnDialogBasicExample.init();
+const [shadcnDrawerBasicExample] = ShadcnDrawerBasicExample.init();
+const [shadcnFieldBasicExample] = ShadcnFieldBasicExample.init();
+const [shadcnMenubarBasicExample] = ShadcnMenubarBasicExample.init();
+const [shadcnPopoverBasicExample] = ShadcnPopoverBasicExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
+const [shadcnTextareaBasicExample] = ShadcnTextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
+const [shadcnToggleBasicExample] = ShadcnToggleBasicExample.init();
+const [shadcnToggleGroupBasicExample] = ShadcnToggleGroupBasicExample.init();
+const [shadcnToastBasicExample] = ShadcnToastBasicExample.init();
+const [shadcnTooltipBasicExample] = ShadcnTooltipBasicExample.init();
 const [baseUiToastBasicExample] = BaseUiToastBasicExample.init();
 const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
@@ -450,17 +546,26 @@ const initialModel: Model = {
   shadcnAccordionMultipleExample,
   shadcnAccordionRtlExample,
   accordionMultipleExample,
+  baseUiAccordionBasicExample,
   baseUiAccordionMultipleExample,
   alertBasicExample,
+  alertActionExample,
   alertDestructiveExample,
   aspectRatioBasicExample,
   aspectRatioSquareExample,
   aspectRatioPortraitExample,
   aspectRatioRtlExample,
   alertDialogBasicExample,
+  baseUiAlertDialogBasicExample,
   baseUiAlertDialogCloseConfirmationExample,
+  baseUiAlertDialogControlledMultipleTriggersExample,
+  baseUiAlertDialogDetachedTriggersExample,
+  baseUiAlertDialogMultipleTriggersExample,
+  baseUiAlertDialogOpenFromMenuExample,
   shadcnAlertDialogBasicExample,
   drawerBasicExample,
+  baseUiContextMenuBasicExample,
+  baseUiContextMenuNestedExample,
   contextMenuBasicExample,
   menubarBasicExample,
   baseUiNavigationMenuBasicExample,
@@ -552,6 +657,15 @@ const initialModel: Model = {
   checkboxBasicExample,
   shadcnCheckboxBasicExample,
   baseUiCheckboxBasicExample,
+  baseUiCheckboxLabelingExample,
+  baseUiCheckboxNativeButtonExample,
+  baseUiCheckboxFormExample,
+  baseUiCheckboxGroupBasicExample,
+  baseUiCheckboxGrouplabelingExample,
+  baseUiCheckboxGroupnativeButtonExample,
+  baseUiCheckboxGroupformExample,
+  baseUiCheckboxGroupparentExample,
+  baseUiCheckboxGroupnestedParentExample,
   checkboxGroupBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
@@ -561,15 +675,20 @@ const initialModel: Model = {
   datePickerBasicExample,
   datePickerBoundsExample,
   baseUiDialogBasicExample,
+  baseUiDialogCloseConfirmationExample,
+  baseUiDialogNestedExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
   baseUiDrawerBasicExample,
+  baseUiDrawerpositionExample,
+  baseUiDrawernonModalExample,
   baseUiFieldBasicExample,
   baseUiFieldsetBasicExample,
   baseUiFormBasicExample,
+  baseUiFormServerFunctionExample,
   directionBasicExample,
   itemAvatarExample,
   itemBasicExample,
@@ -599,10 +718,14 @@ const initialModel: Model = {
   inputBasicExample,
   inputDisabledExample,
   baseUiMenuBasicExample,
+  baseUiMenuNestedExample,
   baseUiMenubarBasicExample,
   baseUiMeterBasicExample,
   meterBasicExample,
   scrollAreaBasicExample,
+  scrollAreaBothScrollbarsExample,
+  scrollAreaGradientExample,
+  scrollAreaTabsExample,
   baseUiToggleBasicExample,
   toggleBasicExample,
   baseUiToggleGroupBasicExample,
@@ -617,6 +740,7 @@ const initialModel: Model = {
   menuBasicExample,
   menuAnimatedExample,
   baseUiPopoverBasicExample,
+  baseUiPopoverMultipleTriggersExample,
   baseUiRadioBasicExample,
   baseUiRadioLabelingExample,
   baseUiRadioNativeButtonExample,
@@ -642,8 +766,21 @@ const initialModel: Model = {
   tabsBasicExample,
   shadcnTabsBasicExample,
   tabsManualExample,
+  shadcnInputBasicExample,
+  shadcnContextMenuBasicExample,
+  shadcnDatePickerBasicExample,
+  shadcnDialogBasicExample,
+  shadcnDrawerBasicExample,
+  shadcnFieldBasicExample,
+  shadcnMenubarBasicExample,
+  shadcnPopoverBasicExample,
   textareaBasicExample,
+  shadcnTextareaBasicExample,
   textareaDisabledExample,
+  shadcnToggleBasicExample,
+  shadcnToggleGroupBasicExample,
+  shadcnToastBasicExample,
+  shadcnTooltipBasicExample,
   baseUiToastBasicExample,
   toastBasicExample,
   toastVariantsExample,
@@ -752,6 +889,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-accordion/examples/basic resolves to BaseUiAccordionBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-accordion/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAccordionBasicExample");
+        })
+      );
+    });
+
     test("/examples/accordion-multiple resolves to AccordionMultipleExample", () => {
       Story.story(
         update,
@@ -780,6 +934,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiAccordionMultipleExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-accordion-basic resolves to BaseUiAccordionBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-accordion-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAccordionBasicExample");
         })
       );
     });
@@ -912,6 +1083,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/alert/examples/action resolves to AlertActionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/alert/examples/action"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertActionExample");
+        })
+      );
+    });
+
     test("/docs/components/alert/examples/destructive resolves to AlertDestructiveExample", () => {
       Story.story(
         update,
@@ -940,6 +1128,21 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("AlertBasicExample");
+        })
+      );
+    });
+
+    test("/examples/alert-action resolves to AlertActionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/alert-action"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("AlertActionExample");
         })
       );
     });
@@ -2129,6 +2332,97 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-alert-dialog/examples/basic resolves to BaseUiAlertDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-alert-dialog/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAlertDialogBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-alert-dialog/examples/open-from-menu resolves to BaseUiAlertDialogOpenFromMenuExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-alert-dialog/examples/open-from-menu"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAlertDialogOpenFromMenuExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-alert-dialog/examples/detached-triggers resolves to BaseUiAlertDialogDetachedTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-alert-dialog/examples/detached-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogDetachedTriggersExample"
+          );
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-alert-dialog/examples/controlled-multiple-triggers resolves to BaseUiAlertDialogControlledMultipleTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-alert-dialog/examples/controlled-multiple-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogControlledMultipleTriggersExample"
+          );
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-alert-dialog/examples/multiple-triggers resolves to BaseUiAlertDialogMultipleTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-alert-dialog/examples/multiple-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogMultipleTriggersExample"
+          );
+        })
+      );
+    });
+
     test("/examples/base-ui-alert-dialog-close-confirmation resolves to BaseUiAlertDialogCloseConfirmationExample", () => {
       Story.story(
         update,
@@ -2144,6 +2438,97 @@ describe(update, () => {
           expect(model.route._tag).toBe(
             "BaseUiAlertDialogCloseConfirmationExample"
           );
+        })
+      );
+    });
+
+    test("/examples/base-ui-alert-dialog-open-from-menu resolves to BaseUiAlertDialogOpenFromMenuExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-alert-dialog-open-from-menu"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAlertDialogOpenFromMenuExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-alert-dialog-detached-triggers resolves to BaseUiAlertDialogDetachedTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-alert-dialog-detached-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogDetachedTriggersExample"
+          );
+        })
+      );
+    });
+
+    test("/examples/base-ui-alert-dialog-controlled-multiple-triggers resolves to BaseUiAlertDialogControlledMultipleTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-alert-dialog-controlled-multiple-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogControlledMultipleTriggersExample"
+          );
+        })
+      );
+    });
+
+    test("/examples/base-ui-alert-dialog-multiple-triggers resolves to BaseUiAlertDialogMultipleTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-alert-dialog-multiple-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogMultipleTriggersExample"
+          );
+        })
+      );
+    });
+
+    test("/examples/base-ui-alert-dialog-basic resolves to BaseUiAlertDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-alert-dialog-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAlertDialogBasicExample");
         })
       );
     });
@@ -2227,6 +2612,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-context-menu/examples/basic resolves to BaseUiContextMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-context-menu/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiContextMenuBasicExample");
+        })
+      );
+    });
+
     test("/examples/context-menu-basic resolves to ContextMenuBasicExample", () => {
       Story.story(
         update,
@@ -2238,6 +2640,57 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ContextMenuBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-context-menu/examples/nested resolves to BaseUiContextMenuNestedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-context-menu/examples/nested"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiContextMenuNestedExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-context-menu-nested resolves to BaseUiContextMenuNestedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-context-menu-nested"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiContextMenuNestedExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-context-menu-basic resolves to BaseUiContextMenuBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-context-menu-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiContextMenuBasicExample");
         })
       );
     });
@@ -2430,6 +2883,74 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-drawer/examples/position resolves to BaseUiDrawerPositionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-drawer/examples/position"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDrawerPositionExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-drawer-position resolves to BaseUiDrawerPositionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-drawer-position"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDrawerPositionExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-drawer/examples/non-modal resolves to BaseUiDrawerNonModalExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-drawer/examples/non-modal"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDrawerNonModalExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-drawer-non-modal resolves to BaseUiDrawerNonModalExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-drawer-non-modal"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDrawerNonModalExample");
+        })
+      );
+    });
+
     test("/docs/components/field resolves to BaseUiFieldDocs", () => {
       Story.story(
         update,
@@ -2535,6 +3056,40 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiFormDocs");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-form/examples/server-function resolves to BaseUiFormServerFunctionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-form/examples/server-function"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiFormServerFunctionExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-form-server-function resolves to BaseUiFormServerFunctionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-form-server-function"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiFormServerFunctionExample");
         })
       );
     });
@@ -3130,6 +3685,40 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-dialog/examples/nested resolves to BaseUiDialogNestedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-dialog/examples/nested"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDialogNestedExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-dialog/examples/close-confirmation resolves to BaseUiDialogCloseConfirmationExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-dialog/examples/close-confirmation"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDialogCloseConfirmationExample");
+        })
+      );
+    });
+
     test("/docs/components/dialog/examples/animated resolves to DialogAnimatedExample", () => {
       Story.story(
         update,
@@ -3356,6 +3945,38 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-menu/examples/nested resolves to BaseUiMenuNestedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-menu/examples/nested"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiMenuNestedExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-menu-nested resolves to BaseUiMenuNestedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-menu-nested"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiMenuNestedExample");
+        })
+      );
+    });
+
     test("/docs/components/listbox resolves to ListboxDocs", () => {
       Story.story(
         update,
@@ -3533,6 +4154,146 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-checkbox/examples/labeling resolves to BaseUiCheckboxLabelingExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox/examples/labeling"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxLabelingExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox/examples/native-button resolves to BaseUiCheckboxNativeButtonExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox/examples/native-button"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxNativeButtonExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox/examples/form resolves to BaseUiCheckboxFormExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox/examples/form"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxFormExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox-group/examples/labeling resolves to BaseUiCheckboxGroupLabelingExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox-group/examples/labeling"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupLabelingExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox-group/examples/native-button resolves to BaseUiCheckboxGroupNativeButtonExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox-group/examples/native-button"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiCheckboxGroupNativeButtonExample"
+          );
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox-group/examples/form resolves to BaseUiCheckboxGroupFormExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox-group/examples/form"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupFormExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox-group/examples/parent resolves to BaseUiCheckboxGroupParentExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox-group/examples/parent"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupParentExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox-group/examples/nested-parent resolves to BaseUiCheckboxGroupNestedParentExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox-group/examples/nested-parent"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiCheckboxGroupNestedParentExample"
+          );
+        })
+      );
+    });
+
     test("/docs/components/checkbox-group resolves to CheckboxGroupDocs", () => {
       Story.story(
         update,
@@ -3561,6 +4322,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("CheckboxGroupBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox-group/examples/basic resolves to BaseUiCheckboxGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox-group/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupBasicExample");
         })
       );
     });
@@ -3742,6 +4520,57 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ScrollAreaBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-scroll-area/examples/both-scrollbars resolves to ScrollAreaBothScrollbarsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-scroll-area/examples/both-scrollbars"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaBothScrollbarsExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-scroll-area/examples/gradient resolves to ScrollAreaGradientExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-scroll-area/examples/gradient"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaGradientExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-scroll-area/examples/tabs resolves to ScrollAreaTabsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-scroll-area/examples/tabs"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaTabsExample");
         })
       );
     });
@@ -4370,6 +5199,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-popover/examples/multiple-triggers resolves to BaseUiPopoverMultipleTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-popover/examples/multiple-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverMultipleTriggersExample");
+        })
+      );
+    });
+
     test("/docs/components/popover/examples/animated resolves to PopoverAnimatedExample", () => {
       Story.story(
         update,
@@ -4462,6 +5308,38 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiDialogBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-dialog-nested resolves to BaseUiDialogNestedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-dialog-nested"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDialogNestedExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-dialog-close-confirmation resolves to BaseUiDialogCloseConfirmationExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-dialog-close-confirmation"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDialogCloseConfirmationExample");
         })
       );
     });
@@ -4582,6 +5460,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiPopoverBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-popover-multiple-triggers resolves to BaseUiPopoverMultipleTriggersExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-popover-multiple-triggers"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverMultipleTriggersExample");
         })
       );
     });
@@ -5085,6 +5980,161 @@ describe(update, () => {
       );
     });
 
+    test("/examples/base-ui-checkbox-labeling resolves to BaseUiCheckboxLabelingExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-labeling"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxLabelingExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-native-button resolves to BaseUiCheckboxNativeButtonExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-native-button"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxNativeButtonExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-form resolves to BaseUiCheckboxFormExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-checkbox-form"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxFormExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-group-labeling resolves to BaseUiCheckboxGroupLabelingExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-group-labeling"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupLabelingExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-group-native-button resolves to BaseUiCheckboxGroupNativeButtonExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-group-native-button"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiCheckboxGroupNativeButtonExample"
+          );
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-group-form resolves to BaseUiCheckboxGroupFormExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-group-form"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupFormExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-group-parent resolves to BaseUiCheckboxGroupParentExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-group-parent"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupParentExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-group-nested-parent resolves to BaseUiCheckboxGroupNestedParentExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-group-nested-parent"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiCheckboxGroupNestedParentExample"
+          );
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-group-basic resolves to BaseUiCheckboxGroupBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-checkbox-group-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxGroupBasicExample");
+        })
+      );
+    });
+
     test("/examples/base-ui-radio-labeling resolves to BaseUiRadioLabelingExample", () => {
       Story.story(
         update,
@@ -5160,6 +6210,57 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ScrollAreaBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-scroll-area-both-scrollbars resolves to ScrollAreaBothScrollbarsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-scroll-area-both-scrollbars"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaBothScrollbarsExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-scroll-area-gradient resolves to ScrollAreaGradientExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-scroll-area-gradient"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaGradientExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-scroll-area-tabs resolves to ScrollAreaTabsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-scroll-area-tabs"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaTabsExample");
         })
       );
     });

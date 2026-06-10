@@ -37,9 +37,9 @@ describe("Base UI toast Basic example", () => {
       Scene.click(Scene.role("button", { name: "Create toast" })),
       resolveEntryAnimation(),
       Scene.expect(Scene.role("status")).toExist(),
-      Scene.expect(Scene.text("Toast created")).toExist(),
-      Scene.expect(Scene.text("The toast was created successfully.")).toExist(),
-      Scene.click(Scene.role("button", { name: "Dismiss Toast created" })),
+      Scene.expect(Scene.text("Toast 1 created")).toExist(),
+      Scene.expect(Scene.text("This is a toast notification.")).toExist(),
+      Scene.click(Scene.role("button", { name: "Dismiss Toast 1 created" })),
       Scene.expect(Scene.role("status")).toHaveAttr("data-leave", ""),
       resolveEntryAnimation()
     );

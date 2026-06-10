@@ -1402,6 +1402,7 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/accordion/examples/multiple":
     "sources/accordion-multiple.txt",
   "/docs/components/alert/examples/basic": "sources/alert-basic.txt",
+  "/docs/components/alert/examples/action": "sources/alert-action.txt",
   "/docs/components/alert/examples/destructive":
     "sources/alert-destructive.txt",
   "/docs/components/aspect-ratio/examples/basic":
@@ -3657,7 +3658,10 @@ const checkboxDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/checkbox" },
-        { label: "Examples", value: "basic, indeterminate" },
+        {
+          label: "Examples",
+          value: "basic, labeling, native button, form",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -3803,11 +3807,11 @@ const baseUiCheckboxDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/base-ui-checkbox" },
-        { label: "Examples", value: "basic, indeterminate" },
+        { label: "Examples", value: "basic, labeling, native button, form" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Base UI Checkbox documents the simple styled lane: child-owned checked state, parent message delegation, form participation through hidden input attributes, and lightweight class helpers that preserve Foldkit primitive attributes. The Basic example matches the Base UI origin default-checked Enable notifications example; remaining parity work is adding the origin Labeling, native button rendering, and form integration examples."
+        "Base UI Checkbox documents the simple styled lane: child-owned checked state, parent message delegation, form participation through hidden input attributes, and lightweight class helpers that preserve Foldkit primitive attributes. The examples now cover the current Base UI origin Basic, Labeling, native button rendering, and form integration sections."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -3827,14 +3831,36 @@ const baseUiCheckboxDocsView = (model: Model): Html => {
                 linkText: "Open standalone Base UI Checkbox Basic example",
               }),
               docsExampleBlock({
-                title: "Indeterminate",
-                testId: "docs-example-block-base-ui-checkbox-indeterminate",
-                preview: DocsPreviewsCD.checkboxIndeterminateExamplePreview(
-                  model.checkboxIndeterminateExample,
-                  "base-ui-checkbox-docs-indeterminate-preview"
+                title: "Labeling a checkbox",
+                testId: "docs-example-block-base-ui-checkbox-labeling",
+                preview: DocsPreviewsCD.baseUiCheckboxLabelingExamplePreview(
+                  model.baseUiCheckboxLabelingExample,
+                  "base-ui-checkbox-docs-labeling-preview"
                 ),
-                href: "/docs/components/checkbox/examples/indeterminate",
-                linkText: "Open standalone Checkbox Indeterminate example",
+                href: "/docs/components/base-ui-checkbox/examples/labeling",
+                linkText: "Open standalone Base UI Checkbox Labeling example",
+              }),
+              docsExampleBlock({
+                title: "Rendering as a native button",
+                testId: "docs-example-block-base-ui-checkbox-native-button",
+                preview:
+                  DocsPreviewsCD.baseUiCheckboxNativeButtonExamplePreview(
+                    model.baseUiCheckboxNativeButtonExample,
+                    "base-ui-checkbox-docs-native-button-preview"
+                  ),
+                href: "/docs/components/base-ui-checkbox/examples/native-button",
+                linkText:
+                  "Open standalone Base UI Checkbox Native Button example",
+              }),
+              docsExampleBlock({
+                title: "Form integration",
+                testId: "docs-example-block-base-ui-checkbox-form",
+                preview: DocsPreviewsCD.baseUiCheckboxFormExamplePreview(
+                  model.baseUiCheckboxFormExample,
+                  "base-ui-checkbox-docs-form-preview"
+                ),
+                href: "/docs/components/base-ui-checkbox/examples/form",
+                linkText: "Open standalone Base UI Checkbox Form example",
               }),
             ]
           ),
@@ -4858,7 +4884,7 @@ const alertDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/alert" },
-        { label: "Examples", value: "default, destructive" },
+        { label: "Examples", value: "default, action, destructive" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -4882,6 +4908,16 @@ const alertDocsView = (model: Model): Html => {
                 linkText: "Open standalone Alert Basic example",
               }),
               docsExampleBlock({
+                title: "Action",
+                testId: "docs-example-block-alert-action",
+                preview: DocsPreviewsAlert.alertActionExamplePreview(
+                  model.alertActionExample,
+                  "alert-docs-action-preview"
+                ),
+                href: "/docs/components/alert/examples/action",
+                linkText: "Open standalone Alert Action example",
+              }),
+              docsExampleBlock({
                 title: "Destructive",
                 testId: "docs-example-block-alert-destructive",
                 preview: DocsPreviewsAlert.alertDestructiveExamplePreview(
@@ -4897,7 +4933,7 @@ const alertDocsView = (model: Model): Html => {
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/alert.json\nbunx shadcn@latest add <registry-url>/alert-basic.json\nbunx shadcn@latest add <registry-url>/alert-destructive.json",
+          "bunx shadcn@latest add <registry-url>/alert.json\nbunx shadcn@latest add <registry-url>/alert-basic.json\nbunx shadcn@latest add <registry-url>/alert-action.json\nbunx shadcn@latest add <registry-url>/alert-destructive.json",
         usageBody:
           "Render Alert.view for the common title and description case, or compose Root, Icon, Content, Title, Description, and Action helpers when the parent view needs custom structure.",
         usageCode: `import * as Alert from "./ui/alert";
@@ -12234,6 +12270,18 @@ type BaseUiLaneDocsConfig = Readonly<{
 
 const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
   M.value(example).pipe(
+    M.when("base-ui-accordion-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-accordion-basic",
+        preview: DocsPreviewsAccordion.baseUiAccordionBasicExamplePreview(
+          model.baseUiAccordionBasicExample,
+          "base-ui-accordion-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-accordion/examples/basic",
+        linkText: "Open standalone Base UI Accordion Basic example",
+      })
+    ),
     M.when("base-ui-accordion-multiple", () =>
       docsExampleBlock({
         title: "Open multiple panels",
@@ -12257,6 +12305,71 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         href: "/docs/components/base-ui-alert-dialog/examples/close-confirmation",
         linkText:
           "Open standalone Base UI Alert Dialog Close Confirmation example",
+      })
+    ),
+    M.when("base-ui-alert-dialog-controlled-multiple-triggers", () =>
+      docsExampleBlock({
+        title: "Controlled mode with multiple triggers",
+        testId:
+          "docs-example-block-base-ui-alert-dialog-controlled-multiple-triggers",
+        preview:
+          DocsPreviewsB.baseUiAlertDialogControlledMultipleTriggersExamplePreview(
+            model.baseUiAlertDialogControlledMultipleTriggersExample,
+            "base-ui-alert-dialog-docs-controlled-multiple-triggers-preview"
+          ),
+        href: "/docs/components/base-ui-alert-dialog/examples/controlled-multiple-triggers",
+        linkText:
+          "Open standalone Base UI Alert Dialog Controlled Multiple Triggers example",
+      })
+    ),
+    M.when("base-ui-alert-dialog-open-from-menu", () =>
+      docsExampleBlock({
+        title: "Open from a menu",
+        testId: "docs-example-block-base-ui-alert-dialog-open-from-menu",
+        preview: DocsPreviewsB.baseUiAlertDialogOpenFromMenuExamplePreview(
+          model.baseUiAlertDialogOpenFromMenuExample,
+          "base-ui-alert-dialog-docs-open-from-menu-preview"
+        ),
+        href: "/docs/components/base-ui-alert-dialog/examples/open-from-menu",
+        linkText: "Open standalone Base UI Alert Dialog Open From Menu example",
+      })
+    ),
+    M.when("base-ui-alert-dialog-detached-triggers", () =>
+      docsExampleBlock({
+        title: "Detached triggers",
+        testId: "docs-example-block-base-ui-alert-dialog-detached-triggers",
+        preview: DocsPreviewsB.baseUiAlertDialogDetachedTriggersExamplePreview(
+          model.baseUiAlertDialogDetachedTriggersExample,
+          "base-ui-alert-dialog-docs-detached-triggers-preview"
+        ),
+        href: "/docs/components/base-ui-alert-dialog/examples/detached-triggers",
+        linkText:
+          "Open standalone Base UI Alert Dialog Detached Triggers example",
+      })
+    ),
+    M.when("base-ui-alert-dialog-multiple-triggers", () =>
+      docsExampleBlock({
+        title: "Multiple triggers",
+        testId: "docs-example-block-base-ui-alert-dialog-multiple-triggers",
+        preview: DocsPreviewsB.baseUiAlertDialogMultipleTriggersExamplePreview(
+          model.baseUiAlertDialogMultipleTriggersExample,
+          "base-ui-alert-dialog-docs-multiple-triggers-preview"
+        ),
+        href: "/docs/components/base-ui-alert-dialog/examples/multiple-triggers",
+        linkText:
+          "Open standalone Base UI Alert Dialog Multiple Triggers example",
+      })
+    ),
+    M.when("base-ui-alert-dialog-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-alert-dialog-basic",
+        preview: DocsPreviewsB.baseUiAlertDialogBasicExamplePreview(
+          model.baseUiAlertDialogBasicExample,
+          "base-ui-alert-dialog-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-alert-dialog/examples/basic",
+        linkText: "Open standalone Base UI Alert Dialog Basic example",
       })
     ),
     M.when("base-ui-autocomplete-basic", () =>
@@ -12307,6 +12420,119 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone Base UI Checkbox Basic example",
       })
     ),
+    M.when("base-ui-checkbox-labeling", () =>
+      docsExampleBlock({
+        title: "Labeling a checkbox",
+        testId: "docs-example-block-base-ui-checkbox-labeling",
+        preview: DocsPreviewsCD.baseUiCheckboxLabelingExamplePreview(
+          model.baseUiCheckboxLabelingExample,
+          "base-ui-checkbox-docs-labeling-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox/examples/labeling",
+        linkText: "Open standalone Base UI Checkbox Labeling example",
+      })
+    ),
+    M.when("base-ui-checkbox-native-button", () =>
+      docsExampleBlock({
+        title: "Rendering as a native button",
+        testId: "docs-example-block-base-ui-checkbox-native-button",
+        preview: DocsPreviewsCD.baseUiCheckboxNativeButtonExamplePreview(
+          model.baseUiCheckboxNativeButtonExample,
+          "base-ui-checkbox-docs-native-button-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox/examples/native-button",
+        linkText: "Open standalone Base UI Checkbox Native Button example",
+      })
+    ),
+    M.when("base-ui-checkbox-form", () =>
+      docsExampleBlock({
+        title: "Form integration",
+        testId: "docs-example-block-base-ui-checkbox-form",
+        preview: DocsPreviewsCD.baseUiCheckboxFormExamplePreview(
+          model.baseUiCheckboxFormExample,
+          "base-ui-checkbox-docs-form-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox/examples/form",
+        linkText: "Open standalone Base UI Checkbox Form example",
+      })
+    ),
+    M.when("base-ui-checkbox-group-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-checkbox-group-basic",
+        preview: DocsPreviewsCD.baseUiCheckboxGroupBasicExamplePreview(
+          model.baseUiCheckboxGroupBasicExample,
+          "base-ui-checkbox-group-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox-group/examples/basic",
+        linkText: "Open standalone Base UI Checkbox Group Basic example",
+      })
+    ),
+    M.when("base-ui-checkbox-group-labeling", () =>
+      docsExampleBlock({
+        title: "Labeling a checkbox group",
+        testId: "docs-example-block-base-ui-checkbox-group-labeling",
+        preview: DocsPreviewsCD.baseUiCheckboxGroupLabelingExamplePreview(
+          model.baseUiCheckboxGrouplabelingExample,
+          "base-ui-checkbox-group-docs-labeling-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox-group/examples/labeling",
+        linkText:
+          "Open standalone Base UI Checkbox Group Labeling a checkbox group example",
+      })
+    ),
+    M.when("base-ui-checkbox-group-native-button", () =>
+      docsExampleBlock({
+        title: "Rendering as a native button",
+        testId: "docs-example-block-base-ui-checkbox-group-native-button",
+        preview: DocsPreviewsCD.baseUiCheckboxGroupNativeButtonExamplePreview(
+          model.baseUiCheckboxGroupnativeButtonExample,
+          "base-ui-checkbox-group-docs-native-button-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox-group/examples/native-button",
+        linkText:
+          "Open standalone Base UI Checkbox Group Rendering as a native button example",
+      })
+    ),
+    M.when("base-ui-checkbox-group-form", () =>
+      docsExampleBlock({
+        title: "Form integration",
+        testId: "docs-example-block-base-ui-checkbox-group-form",
+        preview: DocsPreviewsCD.baseUiCheckboxGroupFormExamplePreview(
+          model.baseUiCheckboxGroupformExample,
+          "base-ui-checkbox-group-docs-form-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox-group/examples/form",
+        linkText:
+          "Open standalone Base UI Checkbox Group Form integration example",
+      })
+    ),
+    M.when("base-ui-checkbox-group-parent", () =>
+      docsExampleBlock({
+        title: "Parent checkbox",
+        testId: "docs-example-block-base-ui-checkbox-group-parent",
+        preview: DocsPreviewsCD.baseUiCheckboxGroupParentExamplePreview(
+          model.baseUiCheckboxGroupparentExample,
+          "base-ui-checkbox-group-docs-parent-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox-group/examples/parent",
+        linkText:
+          "Open standalone Base UI Checkbox Group Parent checkbox example",
+      })
+    ),
+    M.when("base-ui-checkbox-group-nested-parent", () =>
+      docsExampleBlock({
+        title: "Nested parent checkbox",
+        testId: "docs-example-block-base-ui-checkbox-group-nested-parent",
+        preview: DocsPreviewsCD.baseUiCheckboxGroupNestedParentExamplePreview(
+          model.baseUiCheckboxGroupnestedParentExample,
+          "base-ui-checkbox-group-docs-nested-parent-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox-group/examples/nested-parent",
+        linkText:
+          "Open standalone Base UI Checkbox Group Nested parent checkbox example",
+      })
+    ),
     M.when("base-ui-combobox-basic", () =>
       docsExampleBlock({
         title: "Basic",
@@ -12319,6 +12545,18 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone Base UI Combobox Basic example",
       })
     ),
+    M.when("base-ui-context-menu-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-context-menu-basic",
+        preview: DocsPreviewsCD.baseUiContextMenuBasicExamplePreview(
+          model.baseUiContextMenuBasicExample,
+          "base-ui-context-menu-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-context-menu/examples/basic",
+        linkText: "Open standalone Base UI Context Menu Basic example",
+      })
+    ),
     M.when("base-ui-scroll-area-basic", () =>
       docsExampleBlock({
         title: "Basic",
@@ -12329,6 +12567,42 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         ),
         href: "/docs/components/base-ui-scroll-area/examples/basic",
         linkText: "Open standalone Base UI Scroll Area Basic example",
+      })
+    ),
+    M.when("base-ui-scroll-area-both-scrollbars", () =>
+      docsExampleBlock({
+        title: "Both Scrollbars",
+        testId: "docs-example-block-base-ui-scroll-area-both-scrollbars",
+        preview: DocsPreviewsNZ.scrollAreaBothScrollbarsExamplePreview(
+          model.scrollAreaBothScrollbarsExample,
+          "base-ui-scroll-area-docs-both-scrollbars-preview"
+        ),
+        href: "/docs/components/base-ui-scroll-area/examples/both-scrollbars",
+        linkText: "Open standalone Base UI Scroll Area Both Scrollbars example",
+      })
+    ),
+    M.when("base-ui-scroll-area-gradient", () =>
+      docsExampleBlock({
+        title: "Gradient",
+        testId: "docs-example-block-base-ui-scroll-area-gradient",
+        preview: DocsPreviewsNZ.scrollAreaGradientExamplePreview(
+          model.scrollAreaGradientExample,
+          "base-ui-scroll-area-docs-gradient-preview"
+        ),
+        href: "/docs/components/base-ui-scroll-area/examples/gradient",
+        linkText: "Open standalone Base UI Scroll Area Gradient example",
+      })
+    ),
+    M.when("base-ui-scroll-area-tabs", () =>
+      docsExampleBlock({
+        title: "Combining with Tabs",
+        testId: "docs-example-block-base-ui-scroll-area-tabs",
+        preview: DocsPreviewsNZ.scrollAreaTabsExamplePreview(
+          model.scrollAreaTabsExample,
+          "base-ui-scroll-area-docs-tabs-preview"
+        ),
+        href: "/docs/components/base-ui-scroll-area/examples/tabs",
+        linkText: "Open standalone Base UI Scroll Area Tabs example",
       })
     ),
     M.when("base-ui-radio-basic", () =>
@@ -12379,6 +12653,18 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone Base UI Radio Form example",
       })
     ),
+    M.when("base-ui-context-menu-nested", () =>
+      docsExampleBlock({
+        title: "Nested menu",
+        testId: "docs-example-block-base-ui-context-menu-nested",
+        preview: DocsPreviewsCD.baseUiContextMenuNestedExamplePreview(
+          model.baseUiContextMenuNestedExample,
+          "base-ui-context-menu-docs-nested-preview"
+        ),
+        href: "/docs/components/base-ui-context-menu/examples/nested",
+        linkText: "Open standalone Base UI Context Menu Nested example",
+      })
+    ),
     M.when("base-ui-dialog-basic", () =>
       docsExampleBlock({
         title: "Basic",
@@ -12391,6 +12677,30 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone Base UI Dialog Basic example",
       })
     ),
+    M.when("base-ui-dialog-close-confirmation", () =>
+      docsExampleBlock({
+        title: "Close confirmation",
+        testId: "docs-example-block-base-ui-dialog-close-confirmation",
+        preview: DocsPreviewsCD.baseUiDialogCloseConfirmationExamplePreview(
+          model.baseUiDialogCloseConfirmationExample,
+          "base-ui-dialog-docs-close-confirmation-preview"
+        ),
+        href: "/docs/components/base-ui-dialog/examples/close-confirmation",
+        linkText: "Open standalone Base UI Dialog Close Confirmation example",
+      })
+    ),
+    M.when("base-ui-dialog-nested", () =>
+      docsExampleBlock({
+        title: "Nested dialogs",
+        testId: "docs-example-block-base-ui-dialog-nested",
+        preview: DocsPreviewsCD.baseUiDialogNestedExamplePreview(
+          model.baseUiDialogNestedExample,
+          "base-ui-dialog-docs-nested-preview"
+        ),
+        href: "/docs/components/base-ui-dialog/examples/nested",
+        linkText: "Open standalone Base UI Dialog Nested example",
+      })
+    ),
     M.when("base-ui-drawer-basic", () =>
       docsExampleBlock({
         title: "Basic",
@@ -12401,6 +12711,30 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         ),
         href: "/docs/components/base-ui-drawer/examples/basic",
         linkText: "Open standalone Base UI Drawer Basic example",
+      })
+    ),
+    M.when("base-ui-drawer-position", () =>
+      docsExampleBlock({
+        title: "Position",
+        testId: "docs-example-block-base-ui-drawer-position",
+        preview: DocsPreviewsCD.baseUiDrawerPositionExamplePreview(
+          model.baseUiDrawerpositionExample,
+          "base-ui-drawer-docs-position-preview"
+        ),
+        href: "/docs/components/base-ui-drawer/examples/position",
+        linkText: "Open standalone Base UI Drawer Position example",
+      })
+    ),
+    M.when("base-ui-drawer-non-modal", () =>
+      docsExampleBlock({
+        title: "Non-modal",
+        testId: "docs-example-block-base-ui-drawer-non-modal",
+        preview: DocsPreviewsCD.baseUiDrawerNonModalExamplePreview(
+          model.baseUiDrawernonModalExample,
+          "base-ui-drawer-docs-non-modal-preview"
+        ),
+        href: "/docs/components/base-ui-drawer/examples/non-modal",
+        linkText: "Open standalone Base UI Drawer Non-modal example",
       })
     ),
     M.when("base-ui-field-basic", () =>
@@ -12439,6 +12773,18 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone Base UI Form Basic example",
       })
     ),
+    M.when("base-ui-form-server-function", () =>
+      docsExampleBlock({
+        title: "Server Function",
+        testId: "docs-example-block-base-ui-form-server-function",
+        preview: DocsPreviewsCD.baseUiFormServerFunctionExamplePreview(
+          model.baseUiFormServerFunctionExample,
+          "base-ui-form-docs-server-function-preview"
+        ),
+        href: "/docs/components/base-ui-form/examples/server-function",
+        linkText: "Open standalone Base UI Form Server Function example",
+      })
+    ),
     M.when("base-ui-input-basic", () =>
       docsExampleBlock({
         title: "Basic",
@@ -12461,6 +12807,18 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         ),
         href: "/docs/components/base-ui-menu/examples/basic",
         linkText: "Open standalone Base UI Menu Basic example",
+      })
+    ),
+    M.when("base-ui-menu-nested", () =>
+      docsExampleBlock({
+        title: "Nested",
+        testId: "docs-example-block-base-ui-menu-nested",
+        preview: DocsPreviewsCD.baseUiMenuNestedExamplePreview(
+          model.baseUiMenuNestedExample,
+          "base-ui-menu-docs-nested-preview"
+        ),
+        href: "/docs/components/base-ui-menu/examples/nested",
+        linkText: "Open standalone Base UI Menu Nested example",
       })
     ),
     M.when("base-ui-menubar-basic", () =>
@@ -12557,6 +12915,18 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         ),
         href: "/docs/components/base-ui-popover/examples/basic",
         linkText: "Open standalone Base UI Popover Basic example",
+      })
+    ),
+    M.when("base-ui-popover-multiple-triggers", () =>
+      docsExampleBlock({
+        title: "Multiple Triggers",
+        testId: "docs-example-block-base-ui-popover-multiple-triggers",
+        preview: DocsPreviewsNZ.baseUiPopoverMultipleTriggersExamplePreview(
+          model.baseUiPopoverMultipleTriggersExample,
+          "base-ui-popover-docs-multiple-triggers-preview"
+        ),
+        href: "/docs/components/base-ui-popover/examples/multiple-triggers",
+        linkText: "Open standalone Base UI Popover Multiple Triggers example",
       })
     ),
     M.when("base-ui-collapsible-basic", () =>
@@ -12812,7 +13182,10 @@ const shadcnNewPrimitiveExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-toggle-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnToggleBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnToggleBasicExamplePreview(
+          model.shadcnToggleBasicExample,
+          "shadcn-toggle-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-toggle/examples/basic",
         linkText: "Open standalone shadcn Toggle Basic example",
       })
@@ -12821,8 +13194,10 @@ const shadcnNewPrimitiveExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-toggle-group-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnToggleGroupBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnToggleGroupBasicExamplePreview(
+          model.shadcnToggleGroupBasicExample,
+          "shadcn-toggle-group-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-toggle-group/examples/basic",
         linkText: "Open standalone shadcn Toggle Group Basic example",
       })
@@ -12831,7 +13206,10 @@ const shadcnNewPrimitiveExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-tooltip-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnTooltipBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnTooltipBasicExamplePreview(
+          model.shadcnTooltipBasicExample,
+          "shadcn-tooltip-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-tooltip/examples/basic",
         linkText: "Open standalone shadcn Tooltip Basic example",
       })
@@ -12894,8 +13272,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-context-menu-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnContextMenuBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnContextMenuBasicExamplePreview(
+          model.shadcnContextMenuBasicExample,
+          "shadcn-context-menu-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-context-menu/examples/basic",
         linkText: "Open standalone shadcn Context Menu Basic example",
       })
@@ -12904,8 +13284,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-date-picker-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnDatePickerBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnDatePickerBasicExamplePreview(
+          model.shadcnDatePickerBasicExample,
+          "shadcn-date-picker-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-date-picker/examples/basic",
         linkText: "Open standalone shadcn Date Picker Basic example",
       })
@@ -12914,7 +13296,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-dialog-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(
+          model.shadcnDialogBasicExample,
+          "shadcn-dialog-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-dialog/examples/basic",
         linkText: "Open standalone shadcn Dialog Basic example",
       })
@@ -12923,7 +13308,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-drawer-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnDrawerBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnDrawerBasicExamplePreview(
+          model.shadcnDrawerBasicExample,
+          "shadcn-drawer-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-drawer/examples/basic",
         linkText: "Open standalone shadcn Drawer Basic example",
       })
@@ -12932,7 +13320,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-field-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnFieldBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnFieldBasicExamplePreview(
+          model.shadcnFieldBasicExample,
+          "shadcn-field-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-field/examples/basic",
         linkText: "Open standalone shadcn Field Basic example",
       })
@@ -12941,7 +13332,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-input-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnInputBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnInputBasicExamplePreview(
+          model.shadcnInputBasicExample,
+          "shadcn-input-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-input/examples/basic",
         linkText: "Open standalone shadcn Input Basic example",
       })
@@ -12950,7 +13344,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-menubar-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnMenubarBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnMenubarBasicExamplePreview(
+          model.shadcnMenubarBasicExample,
+          "shadcn-menubar-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-menubar/examples/basic",
         linkText: "Open standalone shadcn Menubar Basic example",
       })
@@ -12969,7 +13366,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-popover-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnPopoverBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnPopoverBasicExamplePreview(
+          model.shadcnPopoverBasicExample,
+          "shadcn-popover-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-popover/examples/basic",
         linkText: "Open standalone shadcn Popover Basic example",
       })
@@ -13006,7 +13406,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-textarea-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnTextareaBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnTextareaBasicExamplePreview(
+          model.shadcnTextareaBasicExample,
+          "shadcn-textarea-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-textarea/examples/basic",
         linkText: "Open standalone shadcn Textarea Basic example",
       })
@@ -13015,7 +13418,10 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-toast-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnToastBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnToastBasicExamplePreview(
+          model.shadcnToastBasicExample,
+          "shadcn-toast-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-toast/examples/basic",
         linkText: "Open standalone shadcn Toast Basic example",
       })
@@ -16662,6 +17068,8 @@ const contentView = (model: Model): Html => {
     M.tagsExhaustive({
       Home: homeView,
       AccordionDocs: () => accordionDocsView(model),
+      BaseUiAccordionBasicExample: () =>
+        DocsRoutes.baseUiAccordionBasicExampleRouteView(model),
       BaseUiAccordionMultipleExample: () =>
         DocsRoutes.baseUiAccordionMultipleExampleRouteView(model),
       BaseUiAccordionDocs: () =>
@@ -16687,7 +17095,7 @@ Accordion.rootView<Message>({
   openValues: model.openValues,
   children,
 });`,
-          examples: ["base-ui-accordion-multiple"],
+          examples: ["base-ui-accordion-basic", "base-ui-accordion-multiple"],
         }),
       ShadcnAccordionDocs: () =>
         shadcnLaneDocsView(model, {
@@ -16768,6 +17176,7 @@ Accordion.rootView<Message>({
         DocsRoutes.accordionMultipleExampleRouteView(model),
       AlertDocs: () => alertDocsView(model),
       AlertBasicExample: () => DocsRoutes.alertBasicExampleRouteView(model),
+      AlertActionExample: () => DocsRoutes.alertActionExampleRouteView(model),
       AlertDestructiveExample: () =>
         DocsRoutes.alertDestructiveExampleRouteView(model),
       AspectRatioDocs: () => aspectRatioDocsView(model),
@@ -16816,15 +17225,27 @@ Accordion.rootView<Message>({
       ButtonGroupRtlExample: () =>
         DocsRoutes.buttonGroupRtlExampleRouteView(model),
       AlertDialogDocs: () => alertDialogDocsView(model),
+      BaseUiAlertDialogBasicExample: () =>
+        DocsRoutes.baseUiAlertDialogBasicExampleRouteView(model),
       BaseUiAlertDialogCloseConfirmationExample: () =>
         DocsRoutes.baseUiAlertDialogCloseConfirmationExampleRouteView(model),
+      BaseUiAlertDialogControlledMultipleTriggersExample: () =>
+        DocsRoutes.baseUiAlertDialogControlledMultipleTriggersExampleRouteView(
+          model
+        ),
+      BaseUiAlertDialogOpenFromMenuExample: () =>
+        DocsRoutes.baseUiAlertDialogOpenFromMenuExampleRouteView(model),
+      BaseUiAlertDialogDetachedTriggersExample: () =>
+        DocsRoutes.baseUiAlertDialogDetachedTriggersExampleRouteView(model),
+      BaseUiAlertDialogMultipleTriggersExample: () =>
+        DocsRoutes.baseUiAlertDialogMultipleTriggersExampleRouteView(model),
       BaseUiAlertDialogDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Alert Dialog",
           source: "registry/default/ui/base-ui-alert-dialog",
           primitive: "Alert Dialog view helpers",
           description:
-            "A Base UI style-lane Alert Dialog slice that reuses the existing alert-dialog anatomy for trigger, portal, backdrop, popup, title, description, and action buttons. The installable examples now cover the default Discard draft flow and the Close confirmation nested-dialog flow.",
+            "A Base UI style-lane Alert Dialog slice that reuses the existing alert-dialog anatomy for trigger, portal, backdrop, popup, title, description, and action buttons. The installable examples now cover the default Discard draft flow, menu-triggered flow, detached-trigger flow, multiple-trigger flow, controlled multiple-trigger flow, and Close confirmation nested-dialog flow.",
           usage:
             "Install the Base UI lane wrapper when you want Alert Dialog composition with Base UI naming and class hooks.",
           classHelpers: [
@@ -16844,7 +17265,14 @@ AlertDialog.rootView<Message>({
     AlertDialog.portalView({ open: model.open, children: [content] }),
   ],
 });`,
-          examples: ["base-ui-alert-dialog-close-confirmation"],
+          examples: [
+            "base-ui-alert-dialog-basic",
+            "base-ui-alert-dialog-open-from-menu",
+            "base-ui-alert-dialog-controlled-multiple-triggers",
+            "base-ui-alert-dialog-detached-triggers",
+            "base-ui-alert-dialog-multiple-triggers",
+            "base-ui-alert-dialog-close-confirmation",
+          ],
         }),
       ShadcnAlertDialogDocs: () =>
         shadcnLaneDocsView(model, {
@@ -16894,7 +17322,11 @@ AlertDialog.rootView<Message>({
             "drawerPopupClassName",
             "drawerCloseClassName",
           ],
-          examples: ["base-ui-drawer-basic"],
+          examples: [
+            "base-ui-drawer-basic",
+            "base-ui-drawer-position",
+            "base-ui-drawer-non-modal",
+          ],
           anatomyCode: `import * as Drawer from "./ui/base-ui-drawer";
 
 Drawer.rootView<Message>({
@@ -16906,6 +17338,10 @@ Drawer.rootView<Message>({
         }),
       BaseUiDrawerBasicExample: () =>
         DocsRoutes.baseUiDrawerBasicExampleRouteView(model),
+      BaseUiDrawerPositionExample: () =>
+        DocsRoutes.baseUiDrawerPositionExampleRouteView(model),
+      BaseUiDrawerNonModalExample: () =>
+        DocsRoutes.baseUiDrawerNonModalExampleRouteView(model),
       ShadcnDrawerDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Drawer",
@@ -16960,6 +17396,10 @@ ContextMenu.rootView<Message>({
     ContextMenu.portalView({ open: model.open, children: [menu] }),
   ],
 });`,
+          examples: [
+            "base-ui-context-menu-basic",
+            "base-ui-context-menu-nested",
+          ],
         }),
       ShadcnContextMenuDocs: () =>
         shadcnLaneDocsView(model, {
@@ -16988,6 +17428,10 @@ ContextMenu.rootView<Message>({
   ],
 });`,
         }),
+      BaseUiContextMenuBasicExample: () =>
+        DocsRoutes.baseUiContextMenuBasicExampleRouteView(model),
+      BaseUiContextMenuNestedExample: () =>
+        DocsRoutes.baseUiContextMenuNestedExampleRouteView(model),
       ContextMenuBasicExample: () =>
         DocsRoutes.contextMenuBasicExampleRouteView(model),
       MenubarDocs: () => menubarDocsView(model),
@@ -17350,7 +17794,7 @@ NumberField.rootView<Message>({
             "formErrorClassName",
             "formSubmitClassName",
           ],
-          examples: ["base-ui-form-basic"],
+          examples: ["base-ui-form-basic", "base-ui-form-server-function"],
           anatomyCode: `import * as Form from "./ui/base-ui-form";
 
 Form.rootView<Message>({
@@ -17363,6 +17807,8 @@ Form.rootView<Message>({
         }),
       BaseUiFormBasicExample: () =>
         DocsRoutes.baseUiFormBasicExampleRouteView(model),
+      BaseUiFormServerFunctionExample: () =>
+        DocsRoutes.baseUiFormServerFunctionExampleRouteView(model),
       FormBasicExample: () => DocsRoutes.formBasicExampleRouteView(model),
       AutocompleteDocs: () => autocompleteDocsView(model),
       BaseUiAutocompleteDocs: () =>
@@ -17714,6 +18160,12 @@ h.submodel({
       BaseUiCheckboxDocs: () => baseUiCheckboxDocsView(model),
       BaseUiCheckboxBasicExample: () =>
         DocsRoutes.baseUiCheckboxBasicExampleRouteView(model),
+      BaseUiCheckboxLabelingExample: () =>
+        DocsRoutes.baseUiCheckboxLabelingExampleRouteView(model),
+      BaseUiCheckboxNativeButtonExample: () =>
+        DocsRoutes.baseUiCheckboxNativeButtonExampleRouteView(model),
+      BaseUiCheckboxFormExample: () =>
+        DocsRoutes.baseUiCheckboxFormExampleRouteView(model),
       ShadcnCheckboxDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Checkbox",
@@ -17767,7 +18219,27 @@ CheckboxGroup.groupView<Message>({
   labelId: "apples",
   children,
 });`,
+          examples: [
+            "base-ui-checkbox-group-basic",
+            "base-ui-checkbox-group-labeling",
+            "base-ui-checkbox-group-native-button",
+            "base-ui-checkbox-group-form",
+            "base-ui-checkbox-group-parent",
+            "base-ui-checkbox-group-nested-parent",
+          ],
         }),
+      BaseUiCheckboxGroupBasicExample: () =>
+        DocsRoutes.baseUiCheckboxGroupBasicExampleRouteView(model),
+      BaseUiCheckboxGroupLabelingExample: () =>
+        DocsRoutes.baseUiCheckboxGroupLabelingExampleRouteView(model),
+      BaseUiCheckboxGroupNativeButtonExample: () =>
+        DocsRoutes.baseUiCheckboxGroupNativeButtonExampleRouteView(model),
+      BaseUiCheckboxGroupFormExample: () =>
+        DocsRoutes.baseUiCheckboxGroupFormExampleRouteView(model),
+      BaseUiCheckboxGroupParentExample: () =>
+        DocsRoutes.baseUiCheckboxGroupParentExampleRouteView(model),
+      BaseUiCheckboxGroupNestedParentExample: () =>
+        DocsRoutes.baseUiCheckboxGroupNestedParentExampleRouteView(model),
       CheckboxGroupBasicExample: () =>
         DocsRoutes.checkboxGroupBasicExampleRouteView(model),
       CheckboxIndeterminateExample: () =>
@@ -17870,7 +18342,7 @@ h.submodel({
           source: "registry/default/ui/base-ui-dialog",
           primitive: "Ui.Dialog",
           description:
-            "A Base UI style-lane Dialog slice with a Basic example matching the origin notifications dialog.",
+            "A Base UI style-lane Dialog slice with Basic, Close confirmation, and Nested dialogs examples matching the origin notifications dialog patterns.",
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Dialog behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
@@ -17879,7 +18351,11 @@ h.submodel({
             "baseUiDialogTitleClassName",
             "baseUiDialogDescriptionClassName",
           ],
-          examples: ["base-ui-dialog-basic"],
+          examples: [
+            "base-ui-dialog-basic",
+            "base-ui-dialog-close-confirmation",
+            "base-ui-dialog-nested",
+          ],
           anatomyCode: `import * as Dialog from "./ui/base-ui-dialog";
 
 Dialog.view<Message>({
@@ -17890,6 +18366,10 @@ Dialog.view<Message>({
         }),
       BaseUiDialogBasicExample: () =>
         DocsRoutes.baseUiDialogBasicExampleRouteView(model),
+      BaseUiDialogCloseConfirmationExample: () =>
+        DocsRoutes.baseUiDialogCloseConfirmationExampleRouteView(model),
+      BaseUiDialogNestedExample: () =>
+        DocsRoutes.baseUiDialogNestedExampleRouteView(model),
       ShadcnDialogDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Dialog",
@@ -18075,7 +18555,12 @@ Meter.view<Message>({
             "scrollAreaScrollbarClassName",
             "scrollAreaThumbClassName",
           ],
-          examples: ["base-ui-scroll-area-basic"],
+          examples: [
+            "base-ui-scroll-area-basic",
+            "base-ui-scroll-area-both-scrollbars",
+            "base-ui-scroll-area-gradient",
+            "base-ui-scroll-area-tabs",
+          ],
           anatomyCode: `import * as ScrollArea from "./ui/base-ui-scroll-area";
 
 ScrollArea.view<Message>({
@@ -18107,6 +18592,12 @@ ScrollArea.view<Message>({
         }),
       ScrollAreaBasicExample: () =>
         DocsRoutes.scrollAreaBasicExampleRouteView(model),
+      ScrollAreaBothScrollbarsExample: () =>
+        DocsRoutes.scrollAreaBothScrollbarsExampleRouteView(model),
+      ScrollAreaGradientExample: () =>
+        DocsRoutes.scrollAreaGradientExampleRouteView(model),
+      ScrollAreaTabsExample: () =>
+        DocsRoutes.scrollAreaTabsExampleRouteView(model),
       Toggle: () => embedUi("ui-toggle", View.toggle),
       ToggleDocs: () => toggleDocsView(model),
       BaseUiToggleDocs: () =>
@@ -18270,7 +18761,7 @@ Progress.view<Message>({
             "baseUiMenuItemClassName",
             "baseUiMenuBackdropClassName",
           ],
-          examples: ["base-ui-menu-basic"],
+          examples: ["base-ui-menu-basic", "base-ui-menu-nested"],
           anatomyCode: `import * as Menu from "./ui/base-ui-menu";
 
 Menu.view<Message>({
@@ -18281,6 +18772,8 @@ Menu.view<Message>({
         }),
       BaseUiMenuBasicExample: () =>
         DocsRoutes.baseUiMenuBasicExampleRouteView(model),
+      BaseUiMenuNestedExample: () =>
+        DocsRoutes.baseUiMenuNestedExampleRouteView(model),
       MenuBasicExample: () => DocsRoutes.menuBasicExampleRouteView(model),
       MenuAnimatedExample: () => DocsRoutes.menuAnimatedExampleRouteView(model),
       Popover: () => embedUi("ui-popover", View.popover),
@@ -18300,7 +18793,10 @@ Menu.view<Message>({
             "baseUiPopoverPanelClassName",
             "baseUiPopoverBackdropClassName",
           ],
-          examples: ["base-ui-popover-basic"],
+          examples: [
+            "base-ui-popover-basic",
+            "base-ui-popover-multiple-triggers",
+          ],
           anatomyCode: `import * as Popover from "./ui/base-ui-popover";
 
 Popover.view<Message>({
@@ -18314,6 +18810,8 @@ Popover.view<Message>({
         }),
       BaseUiPopoverBasicExample: () =>
         DocsRoutes.baseUiPopoverBasicExampleRouteView(model),
+      BaseUiPopoverMultipleTriggersExample: () =>
+        DocsRoutes.baseUiPopoverMultipleTriggersExampleRouteView(model),
       ShadcnPopoverDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Popover",
