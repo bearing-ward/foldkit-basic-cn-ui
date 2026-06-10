@@ -37,11 +37,6 @@ proof.
 
 Affected Base UI wrappers:
 
-- `base-ui-button`
-- `base-ui-checkbox`
-- `base-ui-combobox`
-- `base-ui-dialog`
-- `base-ui-fieldset`
 - `base-ui-input`
 - `base-ui-menu`
 - `base-ui-popover`
@@ -163,8 +158,16 @@ Completed wrapper-specific example batch:
 
 Next wrapper-specific example batch:
 
-- `base-ui-button`
-- `base-ui-checkbox`
-- `base-ui-combobox`
-- `base-ui-dialog`
-- `base-ui-fieldset`
+- `base-ui-button` - done in `base-ui-button-basic`
+- `base-ui-checkbox` - done in `base-ui-checkbox-basic`
+- `base-ui-combobox` - done in `base-ui-combobox-basic`
+- `base-ui-dialog` - done in `base-ui-dialog-basic`
+- `base-ui-fieldset` - done in `base-ui-fieldset-basic`
+
+Next wrapper-specific example batch:
+
+- `base-ui-input`
+- `base-ui-menu`
+- `base-ui-popover`
+- `base-ui-radio`
+- `base-ui-select`

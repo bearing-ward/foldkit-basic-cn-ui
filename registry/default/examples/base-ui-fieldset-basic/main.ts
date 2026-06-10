@@ -64,13 +64,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
             ["Billing details"]
           ),
-          h.p(
-            [
-              ...attributes.description,
-              h.Class(Fieldset.baseUiFieldsetDescriptionClassName),
-            ],
-            ["Add your company details for invoices and receipts."]
-          ),
           h.div(
             [h.Class(Fieldset.baseUiFieldsetFieldsClassName)],
             [
@@ -84,7 +77,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   h.input([
                     h.AriaLabel("Company"),
                     h.Value(model.company),
-                    h.Placeholder("Acme Inc."),
+                    h.Placeholder("Enter company name"),
                     h.OnInput((value) => UpdatedCompany({ value })),
                     h.Class(Fieldset.baseUiFieldsetInputClassName),
                   ]),
@@ -100,7 +93,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   h.input([
                     h.AriaLabel("Tax ID"),
                     h.Value(model.taxId),
-                    h.Placeholder("US123456789"),
+                    h.Placeholder("Enter fiscal number"),
                     h.OnInput((value) => UpdatedTaxId({ value })),
                     h.Class(Fieldset.baseUiFieldsetInputClassName),
                   ]),
