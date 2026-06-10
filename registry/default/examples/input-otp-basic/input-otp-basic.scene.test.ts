@@ -30,6 +30,33 @@ describe("Input OTP Basic example", () => {
         InputOtpBasicExample.FocusedInputOtpDigit()
       ),
       Scene.expect(Scene.role("textbox", { name: "Digit 2" })).toHaveValue("2"),
+      Scene.type(Scene.role("textbox", { name: "Digit 3" }), "CDE"),
+      Scene.Command.expectExact(
+        InputOtpBasicExample.FocusInputOtpDigit({ index: 5 })
+      ),
+      Scene.Command.resolve(
+        InputOtpBasicExample.FocusInputOtpDigit({ index: 5 }),
+        InputOtpBasicExample.FocusedInputOtpDigit()
+      ),
+      Scene.expect(Scene.role("textbox", { name: "Digit 3" })).toHaveValue("C"),
+      Scene.expect(Scene.role("textbox", { name: "Digit 4" })).toHaveValue("D"),
+      Scene.expect(Scene.role("textbox", { name: "Digit 5" })).toHaveValue("E"),
+      Scene.keydown(Scene.role("textbox", { name: "Digit 6" }), "ArrowLeft"),
+      Scene.Command.expectExact(
+        InputOtpBasicExample.FocusInputOtpDigit({ index: 4 })
+      ),
+      Scene.Command.resolve(
+        InputOtpBasicExample.FocusInputOtpDigit({ index: 4 }),
+        InputOtpBasicExample.FocusedInputOtpDigit()
+      ),
+      Scene.keydown(Scene.role("textbox", { name: "Digit 6" }), "Backspace"),
+      Scene.Command.expectExact(
+        InputOtpBasicExample.FocusInputOtpDigit({ index: 4 })
+      ),
+      Scene.Command.resolve(
+        InputOtpBasicExample.FocusInputOtpDigit({ index: 4 }),
+        InputOtpBasicExample.FocusedInputOtpDigit()
+      ),
       Scene.expect(Scene.text("Code:")).not.toExist()
     );
   });

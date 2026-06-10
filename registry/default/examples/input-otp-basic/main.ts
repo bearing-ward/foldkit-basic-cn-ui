@@ -1,4 +1,4 @@
-import { Array, Effect, Match as M, Schema as S } from "effect";
+import { Array, Effect, Match as M, Option, Schema as S, String } from "effect";
 import { Command, Submodel } from "foldkit";
 import * as Dom from "foldkit/dom";
 import type { Html } from "foldkit/html";
@@ -21,8 +21,16 @@ export const UpdatedInputOtpDigit = m("UpdatedInputOtpDigit", {
   index: S.Number,
   value: S.String,
 });
+export const PressedInputOtpKey = m("PressedInputOtpKey", {
+  index: S.Number,
+  key: S.String,
+});
 export const FocusedInputOtpDigit = m("FocusedInputOtpDigit");
-export const Message = S.Union([UpdatedInputOtpDigit, FocusedInputOtpDigit]);
+export const Message = S.Union([
+  UpdatedInputOtpDigit,
+  PressedInputOtpKey,
+  FocusedInputOtpDigit,
+]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -34,7 +42,8 @@ export const init = (): readonly [
 
 // UPDATE
 
-const normalizeSlotValue = (value: string): string => value.slice(-1);
+const slotCharacters = (value: string): readonly string[] =>
+  String.split(value, "").slice(0, 6);
 
 const slotId = (index: number): string => `input-otp-digit-${index + 1}`;
 
@@ -49,6 +58,52 @@ export const FocusInputOtpDigit = Command.define(
   )
 );
 
+const setSlotValues = (
+  digits: readonly string[],
+  index: number,
+  value: string
+): readonly string[] => {
+  const values = slotCharacters(value);
+
+  if (Array.isReadonlyArrayEmpty(values)) {
+    return Array.map(digits, (digit, digitIndex) =>
+      digitIndex === index ? "" : digit
+    );
+  }
+
+  return Array.reduce(values, digits, (nextDigits, slotValue, offset) => {
+    const nextIndex = index + offset;
+
+    if (nextIndex >= nextDigits.length) {
+      return nextDigits;
+    }
+
+    return Array.map(nextDigits, (digit, digitIndex) =>
+      digitIndex === nextIndex ? slotValue : digit
+    );
+  });
+};
+
+const focusNextCommand = (
+  digits: readonly string[],
+  index: number,
+  value: string
+): readonly Command.Command<Message>[] => {
+  const values = slotCharacters(value);
+
+  if (Array.isReadonlyArrayEmpty(values)) {
+    return [];
+  }
+
+  const nextIndex = index + values.length;
+
+  if (nextIndex >= digits.length) {
+    return [];
+  }
+
+  return [FocusInputOtpDigit({ index: nextIndex })];
+};
+
 export const update = (
   model: Model,
   message: Message
@@ -56,21 +111,32 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      UpdatedInputOtpDigit: ({ index, value }) => {
-        const slotValue = normalizeSlotValue(value);
-
-        return [
-          evo(model, {
-            digits: (digits) =>
-              Array.map(digits, (digit, digitIndex) =>
-                digitIndex === index ? slotValue : digit
-              ),
-          }),
-          slotValue !== "" && index < model.digits.length - 1
-            ? [FocusInputOtpDigit({ index: index + 1 })]
-            : [],
-        ];
-      },
+      UpdatedInputOtpDigit: ({ index, value }) => [
+        evo(model, {
+          digits: (digits) => setSlotValues(digits, index, value),
+        }),
+        focusNextCommand(model.digits, index, value),
+      ],
+      PressedInputOtpKey: ({ index, key }) =>
+        M.value(key).pipe(
+          M.when("ArrowLeft", () => [
+            model,
+            index > 0 ? [FocusInputOtpDigit({ index: index - 1 })] : [],
+          ]),
+          M.when("ArrowRight", () => [
+            model,
+            index < model.digits.length - 1
+              ? [FocusInputOtpDigit({ index: index + 1 })]
+              : [],
+          ]),
+          M.when("Backspace", () => [
+            model,
+            model.digits[index] === "" && index > 0
+              ? [FocusInputOtpDigit({ index: index - 1 })]
+              : [],
+          ]),
+          M.orElse(() => [model, []])
+        ),
       FocusedInputOtpDigit: () => [model, []],
     })
   );
@@ -83,6 +149,12 @@ const slotView = (digit: string, index: number): Html =>
     value: digit,
     ariaLabel: `Digit ${index + 1}`,
     onInput: (value) => UpdatedInputOtpDigit({ index, value }),
+    onKeyDown: (key) =>
+      key === "ArrowLeft" ||
+      key === "ArrowRight" ||
+      (key === "Backspace" && digit === "")
+        ? Option.some(PressedInputOtpKey({ index, key }))
+        : Option.none(),
     active: digit === "",
   });
 

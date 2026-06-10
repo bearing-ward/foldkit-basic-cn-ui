@@ -8164,7 +8164,7 @@ const inputOtpDocsView = (model: Model): Html => {
           h.p(
             [h.Class("max-w-2xl text-base text-gray-600")],
             [
-              "Grouped one-character OTP inputs with optional pattern/input-mode attributes, separators, and parent-owned value normalization.",
+              "Grouped one-character OTP inputs with optional pattern/input-mode attributes, separators, paste distribution, and parent-owned value normalization.",
             ]
           ),
         ]
@@ -8175,7 +8175,7 @@ const inputOtpDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Input OTP renders grouped one-character inputs with an optional separator while the parent model owns the digit array and normalization."
+        "Input OTP renders grouped one-character inputs with an optional separator while the parent model owns the slot array, normalization, paste distribution, and keyboard navigation."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -8217,7 +8217,7 @@ InputOtp.rootView<Message>({
   ],
 });`,
         integrationCode:
-          "The Basic example stores slot values in the Foldkit model, sends UpdatedInputOtpDigit from each slot, and normalizes each update to the latest character. Pass inputMode or pattern to slotView when a numeric-only code is required.",
+          "The Basic example stores slot values in the Foldkit model, distributes multi-character input across following slots, and moves focus with entry, ArrowLeft, ArrowRight, and Backspace on an empty slot. Pass inputMode or pattern to slotView when a numeric-only code is required.",
         anatomySection: docsAnatomyBlock(
           `InputOtp.rootView<Message>({
   children: [

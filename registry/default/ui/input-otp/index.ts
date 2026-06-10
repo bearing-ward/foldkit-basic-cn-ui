@@ -1,3 +1,4 @@
+import type { Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -25,6 +26,7 @@ export type SlotViewConfig<ParentMessage> = Readonly<{
   value: string;
   ariaLabel: string;
   onInput: (value: string) => ParentMessage;
+  onKeyDown?: ((key: string) => Option.Option<ParentMessage>) | undefined;
   inputMode?: string | undefined;
   pattern?: string | undefined;
   active?: boolean | undefined;
@@ -71,6 +73,7 @@ export const slotView = <ParentMessage>({
   value,
   ariaLabel,
   onInput,
+  onKeyDown,
   inputMode,
   pattern,
   active = false,
@@ -84,8 +87,10 @@ export const slotView = <ParentMessage>({
     h.Value(value),
     h.AriaLabel(ariaLabel),
     h.Autocomplete("one-time-code"),
-    h.Attribute("maxlength", "1"),
     h.OnInput(onInput),
+    ...(onKeyDown === undefined
+      ? []
+      : [h.OnKeyDownPreventDefault((key) => onKeyDown(key))]),
     ...(inputMode === undefined ? [] : [h.Attribute("inputmode", inputMode)]),
     ...(pattern === undefined ? [] : [h.Attribute("pattern", pattern)]),
     h.DataAttribute("slot", "input-otp-slot"),
