@@ -6,7 +6,7 @@
   "description": "shadcn style-lane alert-dialog wrapper backed by the existing alert-dialog component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/alert-dialog"],
+  "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-alert-dialog/index.ts",

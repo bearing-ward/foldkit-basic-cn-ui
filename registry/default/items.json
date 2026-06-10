@@ -1,41 +1,5 @@
 [
   {
-    "name": "accordion",
-    "type": "registry:ui",
-    "title": "Accordion",
-    "description": "A Base UI-informed accordion component for controlled groups of collapsible panels.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/accordion/index.ts",
-        "target": "src/ui/accordion/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/accordion/view.ts",
-        "target": "src/ui/accordion/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/accordion/accordion.scene.test.ts",
-        "target": "src/ui/accordion/accordion.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "AccordionPrimitive",
-        "origin": "https://base-ui.com/react/components/accordion",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-accordion"
-      }
-    }
-  },
-  {
     "name": "alert",
     "type": "registry:ui",
     "title": "Alert",
@@ -66,42 +30,6 @@
         "origin": "https://ui.shadcn.com/docs/components/radix/alert",
         "artifact": "component",
         "stateful": false
-      }
-    }
-  },
-  {
-    "name": "alert-dialog",
-    "type": "registry:ui",
-    "title": "Alert Dialog",
-    "description": "A Base UI-informed alert dialog component for controlled destructive confirmations.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/alert-dialog/index.ts",
-        "target": "src/ui/alert-dialog/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/alert-dialog/view.ts",
-        "target": "src/ui/alert-dialog/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/alert-dialog/alert-dialog.scene.test.ts",
-        "target": "src/ui/alert-dialog/alert-dialog.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "AlertDialog",
-        "origin": "https://base-ui.com/react/components/alert-dialog",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-alert-dialog"
       }
     }
   },
@@ -171,42 +99,6 @@
         "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
         "artifact": "component",
         "stateful": false
-      }
-    }
-  },
-  {
-    "name": "autocomplete",
-    "type": "registry:ui",
-    "title": "Autocomplete",
-    "description": "A Base UI-informed autocomplete component for controlled text input, filtered options, and empty states.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/autocomplete/index.ts",
-        "target": "src/ui/autocomplete/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/autocomplete/view.ts",
-        "target": "src/ui/autocomplete/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/autocomplete/autocomplete.scene.test.ts",
-        "target": "src/ui/autocomplete/autocomplete.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Autocomplete",
-        "origin": "https://base-ui.com/react/components/autocomplete",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-autocomplete"
       }
     }
   },
@@ -287,7 +179,7 @@
     "description": "Base UI style-lane Accordion wrapper backed by the existing Foldkit CN Accordion component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["accordion"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-accordion/index.ts",
@@ -321,7 +213,7 @@
     "description": "Base UI style-lane Alert Dialog wrapper backed by the existing Foldkit CN Alert Dialog component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["alert-dialog"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-alert-dialog/index.ts",
@@ -355,7 +247,7 @@
     "description": "Base UI style-lane Autocomplete wrapper backed by the existing Foldkit CN Autocomplete component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["autocomplete"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-autocomplete/index.ts",
@@ -3378,7 +3270,7 @@
     "description": "shadcn style-lane accordion wrapper backed by the existing accordion component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["accordion"],
+    "registryDependencies": ["base-ui-accordion"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-accordion/index.ts",
@@ -3411,7 +3303,7 @@
     "description": "shadcn style-lane alert-dialog wrapper backed by the existing alert-dialog component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["alert-dialog"],
+    "registryDependencies": ["base-ui-alert-dialog"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-alert-dialog/index.ts",
@@ -3477,7 +3369,7 @@
     "description": "A shadcn Base UI accordion component page backed by the Foldkit accordion primitive.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["accordion"],
+    "registryDependencies": ["base-ui-accordion"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-base-accordion/index.ts",
@@ -5011,7 +4903,7 @@
     "description": "A runnable Foldkit version of the Base UI Accordion single-panel example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["accordion"],
+    "registryDependencies": ["base-ui-accordion"],
     "files": [
       {
         "path": "registry/default/examples/accordion-basic/main.ts",
@@ -5049,7 +4941,7 @@
     "description": "A runnable Foldkit version of the Base UI Accordion open multiple panels example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["accordion"],
+    "registryDependencies": ["base-ui-accordion"],
     "files": [
       {
         "path": "registry/default/examples/accordion-multiple/main.ts",
@@ -5204,7 +5096,7 @@
     "description": "A runnable Foldkit version of the Base UI Alert Dialog default Discard draft example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["alert-dialog"],
+    "registryDependencies": ["base-ui-alert-dialog"],
     "files": [
       {
         "path": "registry/default/examples/alert-dialog-basic/main.ts",
@@ -5425,7 +5317,7 @@
     "description": "A runnable Foldkit version of the Base UI Autocomplete default Search tags example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["autocomplete"],
+    "registryDependencies": ["base-ui-autocomplete"],
     "files": [
       {
         "path": "registry/default/examples/autocomplete-basic/main.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Autocomplete default Search tags example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/autocomplete"],
+  "registryDependencies": ["@foldkit-cn/base-ui-autocomplete"],
   "files": [
     {
       "path": "registry/default/examples/autocomplete-basic/main.ts",

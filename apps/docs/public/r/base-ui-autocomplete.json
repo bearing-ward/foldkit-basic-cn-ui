@@ -6,7 +6,7 @@
   "description": "Base UI style-lane Autocomplete wrapper backed by the existing Foldkit CN Autocomplete component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/autocomplete"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-autocomplete/index.ts",

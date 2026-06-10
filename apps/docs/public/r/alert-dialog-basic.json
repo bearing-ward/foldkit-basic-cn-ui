@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Alert Dialog default Discard draft example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/alert-dialog"],
+  "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
   "files": [
     {
       "path": "registry/default/examples/alert-dialog-basic/main.ts",

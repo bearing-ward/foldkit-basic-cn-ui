@@ -56,10 +56,10 @@ batches. Compatibility aliases are not required.
 
 Highest-value first batches:
 
-- Base UI interactive primitives: `accordion`, `alert-dialog`, `autocomplete`,
-  `checkbox-group`, `collapsible`, `context-menu`, `drawer`, `field`, `form`,
-  `menubar`, `navigation-menu`, `number-field`, `preview-card`, `radio`,
-  `toggle`, `toggle-group`, and `toolbar`.
+- Base UI interactive primitives: `checkbox-group`, `collapsible`,
+  `context-menu`, `drawer`, `field`, `form`, `menubar`, `navigation-menu`,
+  `number-field`, `preview-card`, `radio`, `toggle`, `toggle-group`, and
+  `toolbar`.
 - shadcn presentation and layout entries: `alert`, `aspect-ratio`,
   `breadcrumb`, `button-group`, `card`, `carousel`, `chart`, `data-table`,
   `direction`, `dropdown-menu`, `empty`, `hover-card`, `input-group`,
@@ -172,6 +172,10 @@ Next wrapper-specific example batch:
 
 Next recommended slice:
 
-- Resolve remaining unprefixed style-lane names in small batches.
+- Removed unprefixed Base UI aliases: `accordion`, `alert-dialog`, and
+  `autocomplete`. Their installable dependents now point at
+  `base-ui-accordion`, `base-ui-alert-dialog`, and `base-ui-autocomplete`.
+- Next unprefixed Base UI alias batch: `checkbox-group`, `collapsible`, and
+  `context-menu`.
 - Continue side-by-side origin visual signoff from
   `docs/product/origin-content-parity-review.md`.

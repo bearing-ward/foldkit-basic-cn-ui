@@ -6,7 +6,7 @@
   "description": "A shadcn Base UI accordion component page backed by the Foldkit accordion primitive.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/accordion"],
+  "registryDependencies": ["@foldkit-cn/base-ui-accordion"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-base-accordion/index.ts",

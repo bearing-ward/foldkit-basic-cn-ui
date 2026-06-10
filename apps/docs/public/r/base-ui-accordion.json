@@ -6,7 +6,7 @@
   "description": "Base UI style-lane Accordion wrapper backed by the existing Foldkit CN Accordion component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/accordion"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-accordion/index.ts",

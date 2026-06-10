@@ -6,7 +6,7 @@
   "description": "Base UI style-lane Alert Dialog wrapper backed by the existing Foldkit CN Alert Dialog component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/alert-dialog"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-alert-dialog/index.ts",

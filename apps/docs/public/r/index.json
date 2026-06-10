@@ -147,7 +147,7 @@
       "description": "Base UI style-lane Accordion wrapper backed by the existing Foldkit CN Accordion component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/accordion"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-accordion/index.ts",
@@ -181,7 +181,7 @@
       "description": "Base UI style-lane Alert Dialog wrapper backed by the existing Foldkit CN Alert Dialog component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/alert-dialog"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-alert-dialog/index.ts",
@@ -215,7 +215,7 @@
       "description": "Base UI style-lane Autocomplete wrapper backed by the existing Foldkit CN Autocomplete component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/autocomplete"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-autocomplete/index.ts",
@@ -2646,7 +2646,7 @@
       "description": "shadcn style-lane accordion wrapper backed by the existing accordion component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/accordion"],
+      "registryDependencies": ["@foldkit-cn/base-ui-accordion"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-accordion/index.ts",
@@ -2679,7 +2679,7 @@
       "description": "shadcn style-lane alert-dialog wrapper backed by the existing alert-dialog component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/alert-dialog"],
+      "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-alert-dialog/index.ts",
@@ -2745,7 +2745,7 @@
       "description": "A shadcn Base UI accordion component page backed by the Foldkit accordion primitive.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/accordion"],
+      "registryDependencies": ["@foldkit-cn/base-ui-accordion"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-base-accordion/index.ts",
@@ -4171,7 +4171,7 @@
       "description": "A runnable Foldkit version of the Base UI Accordion single-panel example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/accordion"],
+      "registryDependencies": ["@foldkit-cn/base-ui-accordion"],
       "files": [
         {
           "path": "registry/default/examples/accordion-basic/main.ts",
@@ -4209,7 +4209,7 @@
       "description": "A runnable Foldkit version of the Base UI Accordion open multiple panels example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/accordion"],
+      "registryDependencies": ["@foldkit-cn/base-ui-accordion"],
       "files": [
         {
           "path": "registry/default/examples/accordion-multiple/main.ts",
@@ -4364,7 +4364,7 @@
       "description": "A runnable Foldkit version of the Base UI Alert Dialog default Discard draft example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/alert-dialog"],
+      "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
       "files": [
         {
           "path": "registry/default/examples/alert-dialog-basic/main.ts",
@@ -4585,7 +4585,7 @@
       "description": "A runnable Foldkit version of the Base UI Autocomplete default Search tags example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/autocomplete"],
+      "registryDependencies": ["@foldkit-cn/base-ui-autocomplete"],
       "files": [
         {
           "path": "registry/default/examples/autocomplete-basic/main.ts",
