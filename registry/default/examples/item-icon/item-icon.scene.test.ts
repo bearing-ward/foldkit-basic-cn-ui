@@ -8,7 +8,8 @@ describe("item-icon example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.text("Security Alert")).not.toHaveHandler("click")
+      Scene.expect(Scene.text("Security Alert")).not.toHaveHandler("click"),
+      Scene.expect(Scene.role("button", { name: "Review" })).toExist()
     );
   });
 });

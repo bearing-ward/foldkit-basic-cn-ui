@@ -29,10 +29,12 @@
   ],
   "meta": {
     "foldkit": {
-      "component": "Accordion",
+      "component": "AccordionPrimitive",
       "origin": "https://base-ui.com/react/components/accordion",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-accordion"
     }
   }
 }

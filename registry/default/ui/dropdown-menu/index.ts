@@ -4,6 +4,7 @@ import { html } from "foldkit/html";
 import {
   dropdownMenuBackdropClassName,
   dropdownMenuItemClassName,
+  dropdownMenuLabelClassName,
   dropdownMenuPopupClassName,
   dropdownMenuPortalClassName,
   dropdownMenuPositionerClassName,
@@ -16,6 +17,7 @@ import {
 export {
   dropdownMenuBackdropClassName,
   dropdownMenuItemClassName,
+  dropdownMenuLabelClassName,
   dropdownMenuPopupClassName,
   dropdownMenuPortalClassName,
   dropdownMenuPositionerClassName,
@@ -218,6 +220,23 @@ export const itemView = <ParentMessage>({
         : [h.OnClick(onSelect)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(dropdownMenuItemClassName, className)),
+    ],
+    children
+  );
+};
+
+export const labelView = <ParentMessage>({
+  children,
+  className,
+  style,
+}: PartViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.div(
+    [
+      h.DataAttribute("slot", "dropdown-menu-label"),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(classNames(dropdownMenuLabelClassName, className)),
     ],
     children
   );

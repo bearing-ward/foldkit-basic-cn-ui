@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-select-basic",
+  "type": "registry:example",
+  "title": "Base UI Select Basic",
+  "description": "A runnable Foldkit version of the Base UI Select default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-select"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-select-basic/main.ts",
+      "target": "src/examples/base-ui-select-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Select from \"../../ui/base-ui-select\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  value: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedApple = m(\"UpdatedApple\", { value: S.String });\n\nexport const Message = S.Union([UpdatedApple]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ value: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedApple: ({ value }) => [evo(model, { value: () => value }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"max-w-sm space-y-2\")],\n    [\n      Select.view<Message>({\n        id: \"apple-select\",\n        value: model.value,\n        onChange: (value) => UpdatedApple({ value }),\n        toView: (attributes) =>\n          h.div(\n            [h.Class(\"space-y-2\")],\n            [\n              h.label(attributes.label, [\"Apple\"]),\n              h.div(\n                [h.Class(Select.baseUiSelectWrapperClassName)],\n                [\n                  h.select(\n                    [\n                      ...attributes.select,\n                      h.Class(Select.baseUiSelectControlClassName),\n                    ],\n                    [\n                      h.option([h.Value(\"\")], [\"Select apple\"]),\n                      h.option([h.Value(\"gala\")], [\"Gala\"]),\n                      h.option([h.Value(\"fuji\")], [\"Fuji\"]),\n                      h.option([h.Value(\"honeycrisp\")], [\"Honeycrisp\"]),\n                      h.option([h.Value(\"granny-smith\")], [\"Granny Smith\"]),\n                    ]\n                  ),\n                  h.span([h.Class(Select.baseUiSelectChevronClassName)], [\"v\"]),\n                ]\n              ),\n              h.p(attributes.description, [\"Choose your favorite apple.\"]),\n            ]\n          ),\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-select-basic/base-ui-select-basic.scene.test.ts",
+      "target": "src/examples/base-ui-select-basic/base-ui-select-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BaseUiSelectBasicExample from \"./main\";\n\ndescribe(\"Base UI select Basic example\", () => {\n  test(\"updates the selected apple\", () => {\n    Scene.scene(\n      {\n        update: BaseUiSelectBasicExample.update,\n        view: BaseUiSelectBasicExample.view,\n      },\n      Scene.with(BaseUiSelectBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Apple\" })).toExist(),\n      Scene.expect(Scene.text(\"Select apple\")).toExist(),\n      Scene.change(Scene.role(\"combobox\", { name: \"Apple\" }), \"fuji\"),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Apple\" })).toHaveValue(\n        \"fuji\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Select",
+      "example": "basic",
+      "originExample": "select-default",
+      "origin": "https://base-ui.com/react/components/select"
+    }
+  }
+}

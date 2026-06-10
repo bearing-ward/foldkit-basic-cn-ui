@@ -59,6 +59,7 @@ export type BarChartViewConfig = ChartDimensions &
     series: readonly ChartSeries[];
     showGrid?: boolean;
     showAxis?: boolean;
+    axisLabelFormatter?: (label: string) => string;
     rtl?: boolean;
     className?: string;
   }>;
@@ -120,6 +121,7 @@ export const barChartView = <ParentMessage>({
   padding = 32,
   showGrid = true,
   showAxis = true,
+  axisLabelFormatter = (label) => label,
   rtl = false,
   className,
 }: BarChartViewConfig): Html => {
@@ -202,7 +204,7 @@ export const barChartView = <ParentMessage>({
                 h.Attribute("text-anchor", "middle"),
                 h.Class(chartAxisClassName),
               ],
-              [datum.label]
+              [axisLabelFormatter(datum.label)]
             )
           )
         : []),

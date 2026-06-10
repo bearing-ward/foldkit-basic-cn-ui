@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/tabs",
+      "origin": "https://ui.shadcn.com/docs/components/radix/tabs",
       "artifact": "component",
       "primitive": "Ui.Tabs",
       "stateful": true

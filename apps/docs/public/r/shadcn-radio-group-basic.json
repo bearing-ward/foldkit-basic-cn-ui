@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "RadioGroup",
       "example": "shadcn-basic",
-      "origin": "https://ui.shadcn.com/docs/components/radio"
+      "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
     }
   }
 }

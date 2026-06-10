@@ -53,7 +53,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             children: [
               h.button(
                 [h.Type("button"), h.Class(Item.itemButtonClassName)],
-                ["Action"]
+                ["Review"]
               ),
             ],
           }),

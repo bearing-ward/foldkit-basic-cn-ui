@@ -1,6 +1,18 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
+import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
+import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
+import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
+import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
+import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
+import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CardBasicExample from "../registry/default/examples/card-basic/main";
@@ -47,10 +59,14 @@ import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/m
 import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
 import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarDateTimePickerExample from "../registry/default/examples/shadcn-calendar-date-time-picker/main";
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as Main from "./main";
 
 type Message = Main.Message;
@@ -440,6 +456,21 @@ export const collapsibleBasicExamplePreview = (
   });
 };
 
+export const baseUiCollapsibleBasicExamplePreview = (
+  model: BaseUiCollapsibleBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCollapsibleBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCollapsibleBasicExampleMessage({ message }),
+  });
+};
+
 export const calendarBasicExamplePreview = (
   model: CalendarBasicExample.Model,
   slotId: string
@@ -500,6 +531,9 @@ export const shadcnCalendarMonthYearSelectorExamplePreview = (
   });
 };
 
+export const shadcnCalendarRangeExamplePreview = (): Html =>
+  ShadcnCalendarRangeExample.view(ShadcnCalendarRangeExample.init()[0]);
+
 export const shadcnCalendarDateOfBirthExamplePreview = (
   model: ShadcnCalendarDateOfBirthExample.Model,
   slotId: string
@@ -514,6 +548,11 @@ export const shadcnCalendarDateOfBirthExamplePreview = (
       Main.GotShadcnCalendarDateOfBirthExampleMessage({ message }),
   });
 };
+
+export const shadcnCalendarDateTimePickerExamplePreview = (): Html =>
+  ShadcnCalendarDateTimePickerExample.view(
+    ShadcnCalendarDateTimePickerExample.init()[0]
+  );
 
 export const shadcnCalendarPresetsExamplePreview = (
   model: ShadcnCalendarPresetsExample.Model,
@@ -545,6 +584,16 @@ export const shadcnCalendarBookedExamplePreview = (
   });
 };
 
+export const shadcnCalendarCustomCellSizeExamplePreview = (): Html =>
+  ShadcnCalendarCustomCellSizeExample.view(
+    ShadcnCalendarCustomCellSizeExample.init()[0]
+  );
+
+export const shadcnCalendarWeekNumbersExamplePreview = (): Html =>
+  ShadcnCalendarWeekNumbersExample.view(
+    ShadcnCalendarWeekNumbersExample.init()[0]
+  );
+
 export const shadcnCalendarRtlExamplePreview = (
   model: ShadcnCalendarRtlExample.Model,
   slotId: string
@@ -572,6 +621,21 @@ export const checkboxBasicExamplePreview = (
     view: CheckboxBasicExample.view,
     toParentMessage: (message) =>
       Main.GotCheckboxBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiCheckboxBasicExamplePreview = (
+  model: BaseUiCheckboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiCheckboxBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiCheckboxBasicExampleMessage({ message }),
   });
 };
 
@@ -617,6 +681,141 @@ export const dialogBasicExamplePreview = (
     view: DialogBasicExample.view,
     toParentMessage: (message) =>
       Main.GotDialogBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiDialogBasicExamplePreview = (
+  model: BaseUiDialogBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiDialogBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiDialogBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiDrawerBasicExamplePreview = (
+  model: BaseUiDrawerBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiDrawerBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiDrawerBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiFieldBasicExamplePreview = (
+  model: BaseUiFieldBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiFieldBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiFieldBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiFieldsetBasicExamplePreview = (
+  model: BaseUiFieldsetBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiFieldsetBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiFieldsetBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiFormBasicExamplePreview = (
+  model: BaseUiFormBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiFormBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiFormBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiInputBasicExamplePreview = (
+  model: BaseUiInputBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiInputBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiInputBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiMenuBasicExamplePreview = (
+  model: BaseUiMenuBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiMenuBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiMenuBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiMenubarBasicExamplePreview = (
+  model: BaseUiMenubarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiMenubarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiMenubarBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiMeterBasicExamplePreview = (
+  model: BaseUiMeterBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiMeterBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiMeterBasicExampleMessage({ message }),
   });
 };
 
@@ -752,6 +951,21 @@ export const comboboxBasicExamplePreview = (
     view: ComboboxBasicExample.view,
     toParentMessage: (message) =>
       Main.GotComboboxBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiComboboxBasicExamplePreview = (
+  model: BaseUiComboboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiComboboxBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiComboboxBasicExampleMessage({ message }),
   });
 };
 

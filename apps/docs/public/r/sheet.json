@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Sheet",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/sheet",
+      "origin": "https://ui.shadcn.com/docs/components/radix/sheet",
       "artifact": "component"
     }
   }

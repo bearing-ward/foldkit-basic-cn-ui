@@ -38,7 +38,7 @@
       "component": "AspectRatio",
       "example": "rtl",
       "originExample": "aspect-ratio-rtl",
-      "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
+      "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio"
     }
   }
 }

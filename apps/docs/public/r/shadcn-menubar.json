@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/menubar",
+      "origin": "https://ui.shadcn.com/docs/components/radix/menubar",
       "artifact": "component",
       "stateful": false
     }

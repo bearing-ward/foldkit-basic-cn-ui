@@ -17,6 +17,44 @@ import * as AutocompleteBasicExample from "../registry/default/examples/autocomp
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
+import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
+import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
+import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
+import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
+import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
+import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
+import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
+import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
+import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
+import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
+import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
+import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
+import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
+import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
+import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-radio-form/main";
+import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
+import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
+import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
+import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
+import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
+import * as BaseUiSwitchBasicExample from "../registry/default/examples/base-ui-switch-basic/main";
+import * as BaseUiTabsBasicExample from "../registry/default/examples/base-ui-tabs-basic/main";
+import * as BaseUiToastBasicExample from "../registry/default/examples/base-ui-toast-basic/main";
+import * as BaseUiToggleBasicExample from "../registry/default/examples/base-ui-toggle-basic/main";
+import * as BaseUiToggleGroupBasicExample from "../registry/default/examples/base-ui-toggle-group-basic/main";
+import * as BaseUiToolbarBasicExample from "../registry/default/examples/base-ui-toolbar-basic/main";
+import * as BaseUiTooltipBasicExample from "../registry/default/examples/base-ui-tooltip-basic/main";
 import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
 import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
 import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
@@ -94,6 +132,7 @@ import * as InputDisabledExample from "../registry/default/examples/input-disabl
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
+import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
 import * as ItemGroupExample from "../registry/default/examples/item-group/main";
 import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
 import * as ItemIconExample from "../registry/default/examples/item-icon/main";
@@ -124,7 +163,6 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
-import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-area-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -137,6 +175,7 @@ import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-
 import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
 import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
 import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
 import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
@@ -144,6 +183,9 @@ import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
+import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
 import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
 import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
@@ -181,12 +223,15 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
+const [shadcnBaseAccordionBasicExample] =
+  ShadcnBaseAccordionBasicExample.init();
 const [shadcnAccordionBordersExample] = ShadcnAccordionBordersExample.init();
 const [shadcnAccordionCardExample] = ShadcnAccordionCardExample.init();
 const [shadcnAccordionDisabledExample] = ShadcnAccordionDisabledExample.init();
 const [shadcnAccordionMultipleExample] = ShadcnAccordionMultipleExample.init();
 const [shadcnAccordionRtlExample] = ShadcnAccordionRtlExample.init();
 const [accordionMultipleExample] = AccordionMultipleExample.init();
+const [baseUiAccordionMultipleExample] = BaseUiAccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
 const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
@@ -194,20 +239,31 @@ const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
 const [aspectRatioRtlExample] = AspectRatioRtlExample.init();
 const [alertDialogBasicExample] = AlertDialogBasicExample.init();
+const [baseUiAlertDialogCloseConfirmationExample] =
+  BaseUiAlertDialogCloseConfirmationExample.init();
 const [shadcnAlertDialogBasicExample] = ShadcnAlertDialogBasicExample.init();
 const [drawerBasicExample] = DrawerBasicExample.init();
 const [contextMenuBasicExample] = ContextMenuBasicExample.init();
 const [menubarBasicExample] = MenubarBasicExample.init();
+const [baseUiNavigationMenuBasicExample] =
+  BaseUiNavigationMenuBasicExample.init();
 const [navigationMenuBasicExample] = NavigationMenuBasicExample.init();
+const [baseUiOtpFieldBasicExample] = BaseUiOtpFieldBasicExample.init();
 const [otpFieldBasicExample] = OtpFieldBasicExample.init();
+const [baseUiPreviewCardBasicExample] = BaseUiPreviewCardBasicExample.init();
 const [previewCardBasicExample] = PreviewCardBasicExample.init();
 const [autocompleteBasicExample] = AutocompleteBasicExample.init();
+const [baseUiAutocompleteBasicExample] = BaseUiAutocompleteBasicExample.init();
 const [collapsibleBasicExample] = CollapsibleBasicExample.init();
+const [baseUiCollapsibleBasicExample] = BaseUiCollapsibleBasicExample.init();
+const [shadcnCollapsibleBasicExample] = ShadcnCollapsibleBasicExample.init();
 const [fieldBasicExample] = FieldBasicExample.init();
 const [formBasicExample] = FormBasicExample.init();
+const [baseUiNumberFieldBasicExample] = BaseUiNumberFieldBasicExample.init();
 const [numberFieldBasicExample] = NumberFieldBasicExample.init();
 const [animationBasicExample] = AnimationBasicExample.init();
 const [avatarBasicExample] = AvatarBasicExample.init();
+const [baseUiAvatarBasicExample] = BaseUiAvatarBasicExample.init();
 const [shadcnAvatarBasicExample] = ShadcnAvatarBasicExample.init();
 const [shadcnAvatarDropdownExample] = ShadcnAvatarDropdownExample.init();
 const [badgeBasicExample] = BadgeBasicExample.init();
@@ -245,6 +301,7 @@ const [itemHeaderExample] = ItemHeaderExample.init();
 const [itemIconExample] = ItemIconExample.init();
 const [itemImageExample] = ItemImageExample.init();
 const [itemLinkExample] = ItemLinkExample.init();
+const [itemDropdownExample] = ItemDropdownExample.init();
 const [itemRtlExample] = ItemRtlExample.init();
 const [itemSizeExample] = ItemSizeExample.init();
 const [itemVariantExample] = ItemVariantExample.init();
@@ -254,6 +311,7 @@ const [resizableBasicExample] = ResizableBasicExample.init();
 const [sidebarBasicExample] = SidebarBasicExample.init();
 const [tableBasicExample] = TableBasicExample.init();
 const [cardBasicExample] = CardBasicExample.init();
+const [baseUiSeparatorBasicExample] = BaseUiSeparatorBasicExample.init();
 const [separatorBasicExample] = SeparatorBasicExample.init();
 const [skeletonBasicExample] = SkeletonBasicExample.init();
 const [kbdBasicExample] = KbdBasicExample.init();
@@ -268,6 +326,7 @@ const [breadcrumbCollapsedExample] = BreadcrumbCollapsedExample.init();
 const [breadcrumbLinkExample] = BreadcrumbLinkExample.init();
 const [breadcrumbRtlExample] = BreadcrumbRtlExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
+const [baseUiButtonBasicExample] = BaseUiButtonBasicExample.init();
 const [shadcnButtonBasicExample] = ShadcnButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [buttonGroupBasicExample] = ButtonGroupBasicExample.init();
@@ -292,12 +351,17 @@ const [shadcnCalendarPresetsExample] = ShadcnCalendarPresetsExample.init();
 const [shadcnCalendarRtlExample] = ShadcnCalendarRtlExample.init();
 const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
+const [shadcnCheckboxBasicExample] = ShadcnCheckboxBasicExample.init();
+const [baseUiCheckboxBasicExample] = BaseUiCheckboxBasicExample.init();
 const [checkboxGroupBasicExample] = CheckboxGroupBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
+const [baseUiComboboxBasicExample] = BaseUiComboboxBasicExample.init();
+const [shadcnComboboxBasicExample] = ShadcnComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [datePickerBasicExample] = DatePickerBasicExample.init();
 const [datePickerBoundsExample] = DatePickerBoundsExample.init();
+const [baseUiDialogBasicExample] = BaseUiDialogBasicExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -308,44 +372,67 @@ const [disclosureBasicExample] = DisclosureBasicExample.init();
 const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
 const [dragAndDropDisabledExample] = DragAndDropDisabledExample.init();
+const [baseUiDrawerBasicExample] = BaseUiDrawerBasicExample.init();
+const [baseUiFieldBasicExample] = BaseUiFieldBasicExample.init();
+const [baseUiFieldsetBasicExample] = BaseUiFieldsetBasicExample.init();
+const [baseUiFormBasicExample] = BaseUiFormBasicExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
 const [fileDropDisabledExample] = FileDropDisabledExample.init();
+const [baseUiInputBasicExample] = BaseUiInputBasicExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
+const [baseUiMenuBasicExample] = BaseUiMenuBasicExample.init();
+const [baseUiMenubarBasicExample] = BaseUiMenubarBasicExample.init();
+const [baseUiMeterBasicExample] = BaseUiMeterBasicExample.init();
 const [meterBasicExample] = MeterBasicExample.init();
 const [scrollAreaBasicExample] = ScrollAreaBasicExample.init();
+const [baseUiToggleBasicExample] = BaseUiToggleBasicExample.init();
 const [toggleBasicExample] = ToggleBasicExample.init();
+const [baseUiToggleGroupBasicExample] = BaseUiToggleGroupBasicExample.init();
 const [toggleGroupBasicExample] = ToggleGroupBasicExample.init();
 const [radioBasicExample] = RadioBasicExample.init();
+const [baseUiToolbarBasicExample] = BaseUiToolbarBasicExample.init();
 const [toolbarBasicExample] = ToolbarBasicExample.init();
+const [baseUiProgressBasicExample] = BaseUiProgressBasicExample.init();
 const [progressBasicExample] = ProgressBasicExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
 const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
+const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
+const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
+const [baseUiRadioLabelingExample] = BaseUiRadioLabelingExample.init();
+const [baseUiRadioNativeButtonExample] = BaseUiRadioNativeButtonExample.init();
+const [baseUiRadioFormExample] = BaseUiRadioFormExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [radioGroupBasicExample] = RadioGroupBasicExample.init();
 const [shadcnRadioGroupBasicExample] = ShadcnRadioGroupBasicExample.init();
 const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
+const [baseUiSelectBasicExample] = BaseUiSelectBasicExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [shadcnSelectBasicExample] = ShadcnSelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [baseUiSliderBasicExample] = BaseUiSliderBasicExample.init();
 const [sliderBasicExample] = SliderBasicExample.init();
 const [shadcnSliderBasicExample] = ShadcnSliderBasicExample.init();
 const [sliderDisabledExample] = SliderDisabledExample.init();
+const [baseUiSwitchBasicExample] = BaseUiSwitchBasicExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
 const [shadcnSwitchBasicExample] = ShadcnSwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
+const [baseUiTabsBasicExample] = BaseUiTabsBasicExample.init();
 const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
+const [baseUiToastBasicExample] = BaseUiToastBasicExample.init();
 const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
+const [baseUiTooltipBasicExample] = BaseUiTooltipBasicExample.init();
 const [tooltipBasicExample] = TooltipBasicExample.init();
 const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
 const [virtualListBasicExample] = VirtualListBasicExample.init();
@@ -356,12 +443,14 @@ const initialModel: Model = {
   uiModel: initialUiModel,
   accordionBasicExample,
   shadcnAccordionBasicExample,
+  shadcnBaseAccordionBasicExample,
   shadcnAccordionBordersExample,
   shadcnAccordionCardExample,
   shadcnAccordionDisabledExample,
   shadcnAccordionMultipleExample,
   shadcnAccordionRtlExample,
   accordionMultipleExample,
+  baseUiAccordionMultipleExample,
   alertBasicExample,
   alertDestructiveExample,
   aspectRatioBasicExample,
@@ -369,20 +458,29 @@ const initialModel: Model = {
   aspectRatioPortraitExample,
   aspectRatioRtlExample,
   alertDialogBasicExample,
+  baseUiAlertDialogCloseConfirmationExample,
   shadcnAlertDialogBasicExample,
   drawerBasicExample,
   contextMenuBasicExample,
   menubarBasicExample,
+  baseUiNavigationMenuBasicExample,
   navigationMenuBasicExample,
+  baseUiOtpFieldBasicExample,
   otpFieldBasicExample,
+  baseUiPreviewCardBasicExample,
   previewCardBasicExample,
   autocompleteBasicExample,
+  baseUiAutocompleteBasicExample,
   collapsibleBasicExample,
+  baseUiCollapsibleBasicExample,
+  shadcnCollapsibleBasicExample,
   fieldBasicExample,
   formBasicExample,
+  baseUiNumberFieldBasicExample,
   numberFieldBasicExample,
   animationBasicExample,
   avatarBasicExample,
+  baseUiAvatarBasicExample,
   shadcnAvatarBasicExample,
   shadcnAvatarDropdownExample,
   badgeBasicExample,
@@ -414,6 +512,7 @@ const initialModel: Model = {
   dataTableVisibilityExample,
   dataTableRowSelectionExample,
   cardBasicExample,
+  baseUiSeparatorBasicExample,
   separatorBasicExample,
   skeletonBasicExample,
   kbdBasicExample,
@@ -428,6 +527,7 @@ const initialModel: Model = {
   breadcrumbLinkExample,
   breadcrumbRtlExample,
   buttonBasicExample,
+  baseUiButtonBasicExample,
   shadcnButtonBasicExample,
   buttonDisabledExample,
   buttonGroupBasicExample,
@@ -450,17 +550,26 @@ const initialModel: Model = {
   shadcnCalendarRtlExample,
   calendarBoundsExample,
   checkboxBasicExample,
+  shadcnCheckboxBasicExample,
+  baseUiCheckboxBasicExample,
   checkboxGroupBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
+  baseUiComboboxBasicExample,
+  shadcnComboboxBasicExample,
   comboboxMultiExample,
   datePickerBasicExample,
   datePickerBoundsExample,
+  baseUiDialogBasicExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
+  baseUiDrawerBasicExample,
+  baseUiFieldBasicExample,
+  baseUiFieldsetBasicExample,
+  baseUiFormBasicExample,
   directionBasicExample,
   itemAvatarExample,
   itemBasicExample,
@@ -469,6 +578,7 @@ const initialModel: Model = {
   itemIconExample,
   itemImageExample,
   itemLinkExample,
+  itemDropdownExample,
   itemRtlExample,
   itemSizeExample,
   itemVariantExample,
@@ -485,40 +595,59 @@ const initialModel: Model = {
   fieldsetDisabledExample,
   fileDropBasicExample,
   fileDropDisabledExample,
+  baseUiInputBasicExample,
   inputBasicExample,
   inputDisabledExample,
+  baseUiMenuBasicExample,
+  baseUiMenubarBasicExample,
+  baseUiMeterBasicExample,
   meterBasicExample,
   scrollAreaBasicExample,
+  baseUiToggleBasicExample,
   toggleBasicExample,
+  baseUiToggleGroupBasicExample,
   toggleGroupBasicExample,
   radioBasicExample,
+  baseUiToolbarBasicExample,
   toolbarBasicExample,
+  baseUiProgressBasicExample,
   progressBasicExample,
   listboxBasicExample,
   listboxAnimatedExample,
   menuBasicExample,
   menuAnimatedExample,
+  baseUiPopoverBasicExample,
+  baseUiRadioBasicExample,
+  baseUiRadioLabelingExample,
+  baseUiRadioNativeButtonExample,
+  baseUiRadioFormExample,
   popoverBasicExample,
   popoverAnimatedExample,
   radioGroupBasicExample,
   shadcnRadioGroupBasicExample,
   radioGroupHorizontalExample,
+  baseUiSelectBasicExample,
   selectBasicExample,
   shadcnSelectBasicExample,
   selectDisabledExample,
+  baseUiSliderBasicExample,
   sliderBasicExample,
   shadcnSliderBasicExample,
   sliderDisabledExample,
+  baseUiSwitchBasicExample,
   switchBasicExample,
   shadcnSwitchBasicExample,
   switchDisabledExample,
+  baseUiTabsBasicExample,
   tabsBasicExample,
   shadcnTabsBasicExample,
   tabsManualExample,
   textareaBasicExample,
   textareaDisabledExample,
+  baseUiToastBasicExample,
   toastBasicExample,
   toastVariantsExample,
+  baseUiTooltipBasicExample,
   tooltipBasicExample,
   tooltipNoDelayExample,
   virtualListBasicExample,
@@ -557,7 +686,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/accordion resolves to AccordionDocs", () => {
+    test("/docs/components/accordion resolves to BaseUiAccordionDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -567,7 +696,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("AccordionDocs");
+          expect(model.route._tag).toBe("BaseUiAccordionDocs");
         })
       );
     });
@@ -606,6 +735,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-accordion/examples/multiple resolves to BaseUiAccordionMultipleExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-accordion/examples/multiple"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAccordionMultipleExample");
+        })
+      );
+    });
+
     test("/examples/accordion-multiple resolves to AccordionMultipleExample", () => {
       Story.story(
         update,
@@ -617,6 +763,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("AccordionMultipleExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-accordion-multiple resolves to BaseUiAccordionMultipleExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-accordion-multiple"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAccordionMultipleExample");
         })
       );
     });
@@ -668,7 +831,41 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/alert-dialog resolves to AlertDialogDocs", () => {
+    test("/docs/components/base-ui-collapsible/examples/basic resolves to BaseUiCollapsibleBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-collapsible/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCollapsibleBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-collapsible-basic resolves to BaseUiCollapsibleBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-collapsible-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCollapsibleBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/alert-dialog resolves to BaseUiAlertDialogDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -678,7 +875,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("AlertDialogDocs");
+          expect(model.route._tag).toBe("BaseUiAlertDialogDocs");
         })
       );
     });
@@ -1187,6 +1384,38 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ItemBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/item/examples/dropdown resolves to ItemDropdownExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/item/examples/dropdown"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ItemDropdownExample");
+        })
+      );
+    });
+
+    test("/examples/item-dropdown resolves to ItemDropdownExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/item-dropdown"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ItemDropdownExample");
         })
       );
     });
@@ -1881,7 +2110,45 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/drawer resolves to DrawerDocs", () => {
+    test("/docs/components/base-ui-alert-dialog/examples/close-confirmation resolves to BaseUiAlertDialogCloseConfirmationExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-alert-dialog/examples/close-confirmation"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogCloseConfirmationExample"
+          );
+        })
+      );
+    });
+
+    test("/examples/base-ui-alert-dialog-close-confirmation resolves to BaseUiAlertDialogCloseConfirmationExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-alert-dialog-close-confirmation"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiAlertDialogCloseConfirmationExample"
+          );
+        })
+      );
+    });
+
+    test("/docs/components/drawer resolves to BaseUiDrawerDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -1891,7 +2158,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("DrawerDocs");
+          expect(model.route._tag).toBe("BaseUiDrawerDocs");
         })
       );
     });
@@ -1928,7 +2195,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/context-menu resolves to ContextMenuDocs", () => {
+    test("/docs/components/context-menu resolves to BaseUiContextMenuDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -1938,7 +2205,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ContextMenuDocs");
+          expect(model.route._tag).toBe("BaseUiContextMenuDocs");
         })
       );
     });
@@ -1975,7 +2242,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/menubar resolves to MenubarDocs", () => {
+    test("/docs/components/menubar resolves to BaseUiMenubarDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -1985,7 +2252,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("MenubarDocs");
+          expect(model.route._tag).toBe("BaseUiMenubarDocs");
         })
       );
     });
@@ -2022,7 +2289,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/navigation-menu resolves to NavigationMenuDocs", () => {
+    test("/docs/components/navigation-menu resolves to BaseUiNavigationMenuDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2032,7 +2299,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("NavigationMenuDocs");
+          expect(model.route._tag).toBe("BaseUiNavigationMenuDocs");
         })
       );
     });
@@ -2069,7 +2336,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/otp-field resolves to OtpFieldDocs", () => {
+    test("/docs/components/otp-field resolves to BaseUiOtpFieldDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2079,7 +2346,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("OtpFieldDocs");
+          expect(model.route._tag).toBe("BaseUiOtpFieldDocs");
         })
       );
     });
@@ -2116,7 +2383,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/preview-card resolves to PreviewCardDocs", () => {
+    test("/docs/components/preview-card resolves to BaseUiPreviewCardDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2126,7 +2393,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("PreviewCardDocs");
+          expect(model.route._tag).toBe("BaseUiPreviewCardDocs");
         })
       );
     });
@@ -2163,7 +2430,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/field resolves to FieldDocs", () => {
+    test("/docs/components/field resolves to BaseUiFieldDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2173,7 +2440,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("FieldDocs");
+          expect(model.route._tag).toBe("BaseUiFieldDocs");
         })
       );
     });
@@ -2210,7 +2477,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/number-field resolves to NumberFieldDocs", () => {
+    test("/docs/components/number-field resolves to BaseUiNumberFieldDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2220,7 +2487,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("NumberFieldDocs");
+          expect(model.route._tag).toBe("BaseUiNumberFieldDocs");
         })
       );
     });
@@ -2257,7 +2524,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/form resolves to FormDocs", () => {
+    test("/docs/components/form resolves to BaseUiFormDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2267,7 +2534,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("FormDocs");
+          expect(model.route._tag).toBe("BaseUiFormDocs");
         })
       );
     });
@@ -2304,7 +2571,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/autocomplete resolves to AutocompleteDocs", () => {
+    test("/docs/components/autocomplete resolves to BaseUiAutocompleteDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2314,7 +2581,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("AutocompleteDocs");
+          expect(model.route._tag).toBe("BaseUiAutocompleteDocs");
         })
       );
     });
@@ -2347,6 +2614,72 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("AutocompleteBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-autocomplete/examples/basic resolves to BaseUiAutocompleteBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-autocomplete/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAutocompleteBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-autocomplete-basic resolves to BaseUiAutocompleteBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-autocomplete-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAutocompleteBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-avatar/examples/basic resolves to BaseUiAvatarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-avatar/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAvatarBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-avatar-basic resolves to BaseUiAvatarBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-avatar-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiAvatarBasicExample");
         })
       );
     });
@@ -2477,7 +2810,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/button resolves to ButtonDocs", () => {
+    test("/docs/components/button resolves to BaseUiButtonDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2487,7 +2820,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ButtonDocs");
+          expect(model.route._tag).toBe("BaseUiButtonDocs");
         })
       );
     });
@@ -2505,6 +2838,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("ButtonBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-button/examples/basic resolves to BaseUiButtonBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-button/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiButtonBasicExample");
         })
       );
     });
@@ -2650,7 +3000,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/combobox resolves to ComboboxDocs", () => {
+    test("/docs/components/combobox resolves to BaseUiComboboxDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2660,7 +3010,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ComboboxDocs");
+          expect(model.route._tag).toBe("BaseUiComboboxDocs");
         })
       );
     });
@@ -2682,6 +3032,38 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-combobox/examples/basic resolves to BaseUiComboboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-combobox/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiComboboxBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-combobox-basic resolves to BaseUiComboboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-combobox-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiComboboxBasicExample");
+        })
+      );
+    });
+
     test("/docs/components/combobox/examples/multi resolves to ComboboxMultiExample", () => {
       Story.story(
         update,
@@ -2699,7 +3081,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/dialog resolves to DialogDocs", () => {
+    test("/docs/components/dialog resolves to BaseUiDialogDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2709,7 +3091,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("DialogDocs");
+          expect(model.route._tag).toBe("BaseUiDialogDocs");
         })
       );
     });
@@ -2727,6 +3109,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-dialog/examples/basic resolves to BaseUiDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-dialog/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDialogBasicExample");
         })
       );
     });
@@ -2927,7 +3326,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/popover resolves to PopoverDocs", () => {
+    test("/docs/components/popover resolves to BaseUiPopoverDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2937,12 +3336,12 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("PopoverDocs");
+          expect(model.route._tag).toBe("BaseUiPopoverDocs");
         })
       );
     });
 
-    test("/docs/components/menu resolves to MenuDocs", () => {
+    test("/docs/components/menu resolves to BaseUiMenuDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2952,7 +3351,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("MenuDocs");
+          expect(model.route._tag).toBe("BaseUiMenuDocs");
         })
       );
     });
@@ -2972,7 +3371,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/input resolves to InputDocs", () => {
+    test("/docs/components/input resolves to BaseUiInputDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2982,12 +3381,12 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("InputDocs");
+          expect(model.route._tag).toBe("BaseUiInputDocs");
         })
       );
     });
 
-    test("/docs/components/fieldset resolves to FieldsetDocs", () => {
+    test("/docs/components/fieldset resolves to BaseUiFieldsetDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -2997,7 +3396,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("FieldsetDocs");
+          expect(model.route._tag).toBe("BaseUiFieldsetDocs");
         })
       );
     });
@@ -3085,7 +3484,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/checkbox resolves to CheckboxDocs", () => {
+    test("/docs/components/checkbox resolves to BaseUiCheckboxDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3095,7 +3494,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("CheckboxDocs");
+          expect(model.route._tag).toBe("BaseUiCheckboxDocs");
         })
       );
     });
@@ -3113,6 +3512,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("CheckboxBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-checkbox/examples/basic resolves to BaseUiCheckboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-checkbox/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxBasicExample");
         })
       );
     });
@@ -3249,7 +3665,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/meter resolves to MeterDocs", () => {
+    test("/docs/components/meter resolves to BaseUiMeterDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3259,7 +3675,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("MeterDocs");
+          expect(model.route._tag).toBe("BaseUiMeterDocs");
         })
       );
     });
@@ -3281,7 +3697,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/scroll-area resolves to ScrollAreaDocs", () => {
+    test("/docs/components/scroll-area resolves to BaseUiScrollAreaDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3291,7 +3707,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ScrollAreaDocs");
+          expect(model.route._tag).toBe("BaseUiScrollAreaDocs");
         })
       );
     });
@@ -3313,7 +3729,24 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/toggle resolves to ToggleDocs", () => {
+    test("/docs/components/base-ui-scroll-area/examples/basic resolves to ScrollAreaBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-scroll-area/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/toggle resolves to BaseUiToggleDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3323,7 +3756,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ToggleDocs");
+          expect(model.route._tag).toBe("BaseUiToggleDocs");
         })
       );
     });
@@ -3345,7 +3778,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/toggle-group resolves to ToggleGroupDocs", () => {
+    test("/docs/components/toggle-group resolves to BaseUiToggleGroupDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3355,7 +3788,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ToggleGroupDocs");
+          expect(model.route._tag).toBe("BaseUiToggleGroupDocs");
         })
       );
     });
@@ -3409,7 +3842,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/toolbar resolves to ToolbarDocs", () => {
+    test("/docs/components/toolbar resolves to BaseUiToolbarDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3419,7 +3852,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ToolbarDocs");
+          expect(model.route._tag).toBe("BaseUiToolbarDocs");
         })
       );
     });
@@ -3441,7 +3874,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/progress resolves to ProgressDocs", () => {
+    test("/docs/components/progress resolves to BaseUiProgressDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3451,7 +3884,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("ProgressDocs");
+          expect(model.route._tag).toBe("BaseUiProgressDocs");
         })
       );
     });
@@ -3752,7 +4185,7 @@ describe(update, () => {
       );
     });
 
-    test("/docs/components/radio-group resolves to RadioGroupDocs", () => {
+    test("/docs/components/radio-group resolves to BaseUiRadioDocs", () => {
       Story.story(
         update,
         Story.with(initialModel),
@@ -3762,7 +4195,75 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe("RadioGroupDocs");
+          expect(model.route._tag).toBe("BaseUiRadioDocs");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-radio/examples/basic resolves to BaseUiRadioBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-radio/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-radio/examples/labeling resolves to BaseUiRadioLabelingExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-radio/examples/labeling"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioLabelingExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-radio/examples/native-button resolves to BaseUiRadioNativeButtonExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-radio/examples/native-button"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioNativeButtonExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-radio/examples/form resolves to BaseUiRadioFormExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-radio/examples/form"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioFormExample");
         })
       );
     });
@@ -3852,6 +4353,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-popover/examples/basic resolves to BaseUiPopoverBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-popover/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverBasicExample");
+        })
+      );
+    });
+
     test("/docs/components/popover/examples/animated resolves to PopoverAnimatedExample", () => {
       Story.story(
         update,
@@ -3867,6 +4385,38 @@ describe(update, () => {
           expect(model.route._tag).toBe("PopoverAnimatedExample");
         })
       );
+    });
+
+    test("legacy Base UI docs paths resolve to base-ui docs route aliases", () => {
+      const cases = [
+        {
+          url: "http://localhost/docs/components/accordion",
+          routeTag: "BaseUiAccordionDocs",
+        },
+        {
+          url: "http://localhost/docs/components/form",
+          routeTag: "BaseUiFormDocs",
+        },
+        {
+          url: "http://localhost/docs/components/popover",
+          routeTag: "BaseUiPopoverDocs",
+        },
+        {
+          url: "http://localhost/docs/components/radio-group",
+          routeTag: "BaseUiRadioDocs",
+        },
+      ];
+
+      for (const testCase of cases) {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(ChangedUrl({ url: urlOrThrow(testCase.url) })),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(testCase.routeTag);
+          })
+        );
+      }
     });
 
     test("an unknown path resolves to NotFound", () => {
@@ -3897,6 +4447,21 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("DialogBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-dialog-basic resolves to BaseUiDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-dialog-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiDialogBasicExample");
         })
       );
     });
@@ -4002,6 +4567,21 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("PopoverBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-popover-basic resolves to BaseUiPopoverBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-popover-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverBasicExample");
         })
       );
     });
@@ -4456,6 +5036,130 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("PopoverAnimatedExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-radio-basic resolves to BaseUiRadioBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-radio-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-button-basic resolves to BaseUiButtonBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-button-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiButtonBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-checkbox-basic resolves to BaseUiCheckboxBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-checkbox-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiCheckboxBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-radio-labeling resolves to BaseUiRadioLabelingExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-radio-labeling"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioLabelingExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-radio-native-button resolves to BaseUiRadioNativeButtonExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-radio-native-button"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioNativeButtonExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-radio-form resolves to BaseUiRadioFormExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/base-ui-radio-form"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiRadioFormExample");
+        })
+      );
+    });
+
+    test("/examples/scroll-area-basic resolves to ScrollAreaBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/scroll-area-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-scroll-area-basic resolves to ScrollAreaBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-scroll-area-basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ScrollAreaBasicExample");
         })
       );
     });

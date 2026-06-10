@@ -32,7 +32,9 @@
       "component": "ToggleGroup",
       "origin": "https://base-ui.com/react/components/toggle-group",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-toggle-group"
     }
   }
 }

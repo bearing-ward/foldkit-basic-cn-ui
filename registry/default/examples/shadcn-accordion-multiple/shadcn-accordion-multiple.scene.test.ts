@@ -9,18 +9,19 @@ describe("shadcn Accordion Multiple example", () => {
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(
-        Scene.role("button", { name: "Security alerts" })
+        Scene.role("button", { name: "Notification Settings" })
       ).toHaveAttr("aria-expanded", "true"),
-      Scene.click(Scene.role("button", { name: "Member invites" })),
+      Scene.click(Scene.role("button", { name: "Privacy & Security" })),
       Scene.expect(
-        Scene.role("button", { name: "Security alerts" })
+        Scene.role("button", { name: "Notification Settings" })
       ).toHaveAttr("aria-expanded", "true"),
-      Scene.expect(Scene.role("button", { name: "Member invites" })).toHaveAttr(
-        "aria-expanded",
-        "true"
-      ),
       Scene.expect(
-        Scene.text("Invite approvals, role changes, and pending seat requests.")
+        Scene.role("button", { name: "Privacy & Security" })
+      ).toHaveAttr("aria-expanded", "true"),
+      Scene.expect(
+        Scene.text(
+          "Control your privacy settings, manage two-factor authentication, and review active sessions."
+        )
       ).toExist()
     );
   });

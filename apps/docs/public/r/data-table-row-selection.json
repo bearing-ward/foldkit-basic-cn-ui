@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "DataTable",
       "example": "row-selection",
-      "origin": "https://ui.shadcn.com/docs/components/data-table"
+      "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
     }
   }
 }

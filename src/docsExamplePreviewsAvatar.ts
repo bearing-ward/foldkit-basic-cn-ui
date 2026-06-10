@@ -2,6 +2,7 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
+import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
 import * as ShadcnAvatarBadgeIconExample from "../registry/default/examples/shadcn-avatar-badge-icon/main";
 import * as ShadcnAvatarBadgeExample from "../registry/default/examples/shadcn-avatar-badge/main";
 import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
@@ -26,6 +27,21 @@ export const avatarBasicExamplePreview = (
     view: AvatarBasicExample.view,
     toParentMessage: (message) =>
       Main.GotAvatarBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiAvatarBasicExamplePreview = (
+  model: BaseUiAvatarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAvatarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAvatarBasicExampleMessage({ message }),
   });
 };
 

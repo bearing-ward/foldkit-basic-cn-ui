@@ -8,12 +8,12 @@ describe("button-group-split example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.role("button", { name: "Button" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Save" })).toExist(),
       Scene.expect(
-        Scene.role("button", { name: "More create actions" })
+        Scene.role("button", { name: "More save actions" })
       ).toExist(),
       Scene.expect(
-        Scene.role("group", { name: "Create actions" })
+        Scene.role("group", { name: "Split save actions" })
       ).not.toHaveHandler("click")
     );
   });

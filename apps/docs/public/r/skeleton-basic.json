@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Skeleton",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/skeleton"
+      "origin": "https://ui.shadcn.com/docs/components/radix/skeleton"
     }
   }
 }

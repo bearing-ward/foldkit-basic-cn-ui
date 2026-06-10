@@ -5,4 +5,9 @@ export {
   fieldsetClassName as baseUiFieldsetRootClassName,
   legendClassName as baseUiFieldsetLegendClassName,
   descriptionClassName as baseUiFieldsetDescriptionClassName,
+  baseUiFieldsetFieldsClassName,
+  baseUiFieldsetFieldClassName,
+  baseUiFieldsetLabelClassName,
+  baseUiFieldsetInputClassName,
+  baseUiFieldsetTextareaClassName,
 } from "./view";

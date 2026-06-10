@@ -12,21 +12,26 @@ describe("shadcn Accordion Basic example", () => {
       },
       Scene.with(ShadcnAccordionBasicExample.init()[0]),
       Scene.expect(
-        Scene.role("button", { name: "Product updates" })
+        Scene.role("button", { name: "How do I reset my password?" })
       ).toHaveAttr("aria-expanded", "true"),
       Scene.expect(
-        Scene.text("Ship notes, releases, and roadmap changes.")
+        Scene.text(
+          "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password. The link will expire in 24 hours."
+        )
       ).toExist(),
-      Scene.click(Scene.role("button", { name: "Billing" })),
-      Scene.expect(Scene.role("button", { name: "Billing" })).toHaveAttr(
-        "aria-expanded",
-        "true"
+      Scene.click(
+        Scene.role("button", { name: "Can I change my subscription plan?" })
       ),
       Scene.expect(
-        Scene.text("Manage invoices, plans, and payment methods.")
+        Scene.role("button", { name: "Can I change my subscription plan?" })
+      ).toHaveAttr("aria-expanded", "true"),
+      Scene.expect(
+        Scene.text(
+          "Yes, you can upgrade or downgrade your subscription plan at any time from your account settings. Changes will take effect immediately."
+        )
       ).toExist(),
       Scene.expect(
-        Scene.role("button", { name: "Product updates" })
+        Scene.role("button", { name: "How do I reset my password?" })
       ).toHaveAttr("aria-expanded", "false")
     );
   });

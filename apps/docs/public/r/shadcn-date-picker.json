@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/date-picker",
+      "origin": "https://ui.shadcn.com/docs/components/radix/date-picker",
       "artifact": "component",
       "primitive": "Ui.DatePicker",
       "stateful": true

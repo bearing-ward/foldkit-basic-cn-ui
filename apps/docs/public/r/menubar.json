@@ -32,7 +32,9 @@
       "component": "Menubar",
       "origin": "https://base-ui.com/react/components/menubar",
       "artifact": "component",
-      "stateful": false
+      "stateful": false,
+      "public": false,
+      "publicAliasOf": "base-ui-menubar"
     }
   }
 }

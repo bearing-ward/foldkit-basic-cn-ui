@@ -72,56 +72,47 @@ export const update = (
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class("space-y-3")],
-    [
-      h.submodel({
-        slotId: model.checkbox.id,
-        model: model.checkbox,
-        view: Checkbox.view,
-        viewInputs: {
-          name: "terms",
-          value: "accepted",
-          toView: (attributes) =>
-            h.div(
-              [h.Class(Checkbox.shadcnCheckboxRowClassName)],
+  return h.submodel({
+    slotId: model.checkbox.id,
+    model: model.checkbox,
+    view: Checkbox.view,
+    viewInputs: {
+      name: "terms",
+      value: "accepted",
+      toView: (attributes) =>
+        h.div(
+          [h.Class(Checkbox.shadcnCheckboxRowClassName)],
+          [
+            h.button(
               [
-                h.button(
+                ...attributes.checkbox,
+                h.Class(Checkbox.shadcnCheckboxControlClassName),
+              ],
+              model.checkbox.isChecked ? ["✓"] : []
+            ),
+            h.input(attributes.hiddenInput),
+            h.div(
+              [h.Class(Checkbox.shadcnCheckboxTextClassName)],
+              [
+                h.label(
                   [
-                    ...attributes.checkbox,
-                    h.Class(Checkbox.shadcnCheckboxControlClassName),
+                    ...attributes.label,
+                    h.Class(Checkbox.shadcnCheckboxLabelClassName),
                   ],
-                  model.checkbox.isChecked ? ["✓"] : []
+                  ["Accept terms and conditions"]
                 ),
-                h.input(attributes.hiddenInput),
-                h.div(
-                  [h.Class(Checkbox.shadcnCheckboxTextClassName)],
+                h.p(
                   [
-                    h.label(
-                      [
-                        ...attributes.label,
-                        h.Class(Checkbox.shadcnCheckboxLabelClassName),
-                      ],
-                      ["Accept terms and conditions"]
-                    ),
-                    h.p(
-                      [
-                        ...attributes.description,
-                        h.Class(Checkbox.shadcnCheckboxDescriptionClassName),
-                      ],
-                      ["You agree to the Terms of Service and Privacy Policy."]
-                    ),
-                  ]
+                    ...attributes.description,
+                    h.Class(Checkbox.shadcnCheckboxDescriptionClassName),
+                  ],
+                  ["You agree to our Terms of Service and Privacy Policy."]
                 ),
               ]
             ),
-        },
-        toParentMessage: (message) => GotCheckboxMessage({ message }),
-      }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Accepted: ${model.checkbox.isChecked ? "yes" : "no"}`]
-      ),
-    ]
-  );
+          ]
+        ),
+    },
+    toParentMessage: (message) => GotCheckboxMessage({ message }),
+  });
 });

@@ -32,7 +32,9 @@
       "component": "Separator",
       "origin": "https://base-ui.com/react/components/separator",
       "artifact": "component",
-      "stateful": false
+      "stateful": false,
+      "public": false,
+      "publicAliasOf": "base-ui-separator"
     }
   }
 }

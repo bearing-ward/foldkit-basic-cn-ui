@@ -26,10 +26,12 @@
     ],
     "meta": {
       "foldkit": {
-        "component": "Accordion",
+        "component": "AccordionPrimitive",
         "origin": "https://base-ui.com/react/components/accordion",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-accordion"
       }
     }
   },
@@ -61,7 +63,7 @@
     "meta": {
       "foldkit": {
         "component": "Alert",
-        "origin": "https://ui.shadcn.com/docs/components/alert",
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert",
         "artifact": "component",
         "stateful": false
       }
@@ -97,7 +99,9 @@
         "component": "AlertDialog",
         "origin": "https://base-ui.com/react/components/alert-dialog",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-alert-dialog"
       }
     }
   },
@@ -164,7 +168,7 @@
     "meta": {
       "foldkit": {
         "component": "AspectRatio",
-        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio",
+        "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
         "artifact": "component",
         "stateful": false
       }
@@ -200,7 +204,9 @@
         "component": "Autocomplete",
         "origin": "https://base-ui.com/react/components/autocomplete",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-autocomplete"
       }
     }
   },
@@ -234,7 +240,9 @@
         "component": "Avatar",
         "origin": "https://base-ui.com/react/components/avatar",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-avatar"
       }
     }
   },
@@ -267,8 +275,145 @@
       "foldkit": {
         "component": "Badge",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/badge",
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge",
         "artifact": "component"
+      }
+    }
+  },
+  {
+    "name": "base-ui-accordion",
+    "type": "registry:ui",
+    "title": "Accordion",
+    "description": "Base UI style-lane Accordion wrapper backed by the existing Foldkit CN Accordion component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["accordion"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-accordion/index.ts",
+        "target": "src/ui/base-ui-accordion/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-accordion/view.ts",
+        "target": "src/ui/base-ui-accordion/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-accordion/base-ui-accordion.scene.test.ts",
+        "target": "src/ui/base-ui-accordion/base-ui-accordion.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Accordion",
+        "origin": "https://base-ui.com/react/components/accordion",
+        "artifact": "component",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "base-ui-alert-dialog",
+    "type": "registry:ui",
+    "title": "Alert Dialog",
+    "description": "Base UI style-lane Alert Dialog wrapper backed by the existing Foldkit CN Alert Dialog component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["alert-dialog"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-alert-dialog/index.ts",
+        "target": "src/ui/base-ui-alert-dialog/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-alert-dialog/view.ts",
+        "target": "src/ui/base-ui-alert-dialog/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-alert-dialog/base-ui-alert-dialog.scene.test.ts",
+        "target": "src/ui/base-ui-alert-dialog/base-ui-alert-dialog.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "AlertDialog",
+        "origin": "https://base-ui.com/react/components/alert-dialog",
+        "artifact": "component",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "base-ui-autocomplete",
+    "type": "registry:ui",
+    "title": "Autocomplete",
+    "description": "Base UI style-lane Autocomplete wrapper backed by the existing Foldkit CN Autocomplete component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["autocomplete"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-autocomplete/index.ts",
+        "target": "src/ui/base-ui-autocomplete/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-autocomplete/view.ts",
+        "target": "src/ui/base-ui-autocomplete/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-autocomplete/base-ui-autocomplete.scene.test.ts",
+        "target": "src/ui/base-ui-autocomplete/base-ui-autocomplete.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Autocomplete",
+        "origin": "https://base-ui.com/react/components/autocomplete",
+        "artifact": "component",
+        "stateful": true
+      }
+    }
+  },
+  {
+    "name": "base-ui-avatar",
+    "type": "registry:ui",
+    "title": "Avatar",
+    "description": "Base UI style-lane Avatar wrapper backed by the existing Foldkit CN Avatar component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["avatar"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-avatar/index.ts",
+        "target": "src/ui/base-ui-avatar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-avatar/view.ts",
+        "target": "src/ui/base-ui-avatar/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
+        "target": "src/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "origin": "https://base-ui.com/react/components/avatar",
+        "artifact": "component",
+        "stateful": true,
+        "primitive": "Avatar view helpers"
       }
     }
   },
@@ -343,6 +488,76 @@
     }
   },
   {
+    "name": "base-ui-checkbox-group",
+    "type": "registry:ui",
+    "title": "Checkbox Group",
+    "description": "Base UI style-lane Checkbox Group wrapper backed by the existing Foldkit CN Checkbox Group component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["checkbox-group"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-checkbox-group/index.ts",
+        "target": "src/ui/base-ui-checkbox-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-checkbox-group/view.ts",
+        "target": "src/ui/base-ui-checkbox-group/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-checkbox-group/base-ui-checkbox-group.scene.test.ts",
+        "target": "src/ui/base-ui-checkbox-group/base-ui-checkbox-group.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "CheckboxGroup",
+        "origin": "https://base-ui.com/react/components/checkbox-group",
+        "artifact": "component",
+        "stateful": true,
+        "primitive": "Checkbox Group view helpers"
+      }
+    }
+  },
+  {
+    "name": "base-ui-collapsible",
+    "type": "registry:ui",
+    "title": "Collapsible",
+    "description": "Base UI style-lane Collapsible wrapper backed by the existing Foldkit CN Collapsible component.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["collapsible"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-collapsible/index.ts",
+        "target": "src/ui/base-ui-collapsible/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-collapsible/view.ts",
+        "target": "src/ui/base-ui-collapsible/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-collapsible/base-ui-collapsible.scene.test.ts",
+        "target": "src/ui/base-ui-collapsible/base-ui-collapsible.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Collapsible",
+        "origin": "https://base-ui.com/react/components/collapsible",
+        "artifact": "component",
+        "stateful": true,
+        "primitive": "Collapsible view helpers"
+      }
+    }
+  },
+  {
     "name": "base-ui-combobox",
     "type": "registry:ui",
     "title": "Base UI Combobox",
@@ -376,6 +591,41 @@
         "artifact": "component"
       }
     }
+  },
+  {
+    "name": "base-ui-context-menu",
+    "type": "registry:ui",
+    "title": "Base UI Context Menu",
+    "description": "A Base UI Base UI-informed context menu component for controlled command menus.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["context-menu"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-context-menu/index.ts",
+        "target": "src/ui/base-ui-context-menu/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-context-menu/view.ts",
+        "target": "src/ui/base-ui-context-menu/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-context-menu/base-ui-context-menu.scene.test.ts",
+        "target": "src/ui/base-ui-context-menu/base-ui-context-menu.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ContextMenu",
+        "origin": "https://base-ui.com/react/components/context-menu",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/context-menu"
   },
   {
     "name": "base-ui-dialog",
@@ -413,6 +663,76 @@
     }
   },
   {
+    "name": "base-ui-drawer",
+    "type": "registry:ui",
+    "title": "Base UI Drawer",
+    "description": "A Base UI Base UI-informed drawer component for controlled side panels.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["drawer"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-drawer/index.ts",
+        "target": "src/ui/base-ui-drawer/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-drawer/view.ts",
+        "target": "src/ui/base-ui-drawer/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-drawer/base-ui-drawer.scene.test.ts",
+        "target": "src/ui/base-ui-drawer/base-ui-drawer.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Drawer",
+        "origin": "https://base-ui.com/react/components/drawer",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/drawer"
+  },
+  {
+    "name": "base-ui-field",
+    "type": "registry:ui",
+    "title": "Base UI Field",
+    "description": "A Base UI Base UI-informed field component for labeling, descriptions, validation errors, and form control state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["field"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-field/index.ts",
+        "target": "src/ui/base-ui-field/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-field/view.ts",
+        "target": "src/ui/base-ui-field/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-field/base-ui-field.scene.test.ts",
+        "target": "src/ui/base-ui-field/base-ui-field.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Field",
+        "origin": "https://base-ui.com/react/components/field",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/field"
+  },
+  {
     "name": "base-ui-fieldset",
     "type": "registry:ui",
     "title": "Base UI Fieldset",
@@ -446,6 +766,41 @@
         "artifact": "component"
       }
     }
+  },
+  {
+    "name": "base-ui-form",
+    "type": "registry:ui",
+    "title": "Base UI Form",
+    "description": "A Base UI Base UI-informed form component for native submission, labelled controls, and parent-owned error state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["form"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-form/index.ts",
+        "target": "src/ui/base-ui-form/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-form/view.ts",
+        "target": "src/ui/base-ui-form/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-form/base-ui-form.scene.test.ts",
+        "target": "src/ui/base-ui-form/base-ui-form.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Form",
+        "origin": "https://base-ui.com/react/components/form",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/form"
   },
   {
     "name": "base-ui-input",
@@ -518,6 +873,181 @@
     }
   },
   {
+    "name": "base-ui-menubar",
+    "type": "registry:ui",
+    "title": "Base UI Menubar",
+    "description": "A Base UI Base UI-informed controlled menubar component for horizontal command menus.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["menubar"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-menubar/index.ts",
+        "target": "src/ui/base-ui-menubar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-menubar/view.ts",
+        "target": "src/ui/base-ui-menubar/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-menubar/base-ui-menubar.scene.test.ts",
+        "target": "src/ui/base-ui-menubar/base-ui-menubar.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Menubar",
+        "origin": "https://base-ui.com/react/components/menubar",
+        "artifact": "component",
+        "stateful": false
+      }
+    },
+    "origin": "https://base-ui.com/react/components/menubar"
+  },
+  {
+    "name": "base-ui-meter",
+    "type": "registry:ui",
+    "title": "Base UI Meter",
+    "description": "A Base UI Base UI-informed meter component for displaying a numeric measurement within a known range.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["meter"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-meter/index.ts",
+        "target": "src/ui/base-ui-meter/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-meter/view.ts",
+        "target": "src/ui/base-ui-meter/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-meter/base-ui-meter.scene.test.ts",
+        "target": "src/ui/base-ui-meter/base-ui-meter.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Meter",
+        "origin": "https://base-ui.com/react/components/meter",
+        "artifact": "component",
+        "stateful": false
+      }
+    },
+    "origin": "https://base-ui.com/react/components/meter"
+  },
+  {
+    "name": "base-ui-navigation-menu",
+    "type": "registry:ui",
+    "title": "Base UI Navigation Menu",
+    "description": "A Base UI Base UI-informed navigation menu component for controlled popup panels.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["navigation-menu"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-navigation-menu/index.ts",
+        "target": "src/ui/base-ui-navigation-menu/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-navigation-menu/view.ts",
+        "target": "src/ui/base-ui-navigation-menu/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-navigation-menu/base-ui-navigation-menu.scene.test.ts",
+        "target": "src/ui/base-ui-navigation-menu/base-ui-navigation-menu.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NavigationMenu",
+        "origin": "https://base-ui.com/react/components/navigation-menu",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/navigation-menu"
+  },
+  {
+    "name": "base-ui-number-field",
+    "type": "registry:ui",
+    "title": "Base UI Number Field",
+    "description": "A Base UI Base UI-informed number field component for controlled numeric input with increment and decrement controls.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["number-field"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-number-field/index.ts",
+        "target": "src/ui/base-ui-number-field/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-number-field/view.ts",
+        "target": "src/ui/base-ui-number-field/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-number-field/base-ui-number-field.scene.test.ts",
+        "target": "src/ui/base-ui-number-field/base-ui-number-field.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NumberField",
+        "origin": "https://base-ui.com/react/components/number-field",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/number-field"
+  },
+  {
+    "name": "base-ui-otp-field",
+    "type": "registry:ui",
+    "title": "Base UI OTP Field",
+    "description": "A Base UI Base UI-informed one-time-code input component for controlled verification-code entry.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["otp-field"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-otp-field/index.ts",
+        "target": "src/ui/base-ui-otp-field/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-otp-field/view.ts",
+        "target": "src/ui/base-ui-otp-field/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-otp-field/base-ui-otp-field.scene.test.ts",
+        "target": "src/ui/base-ui-otp-field/base-ui-otp-field.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "OtpField",
+        "origin": "https://base-ui.com/react/components/otp-field",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/otp-field"
+  },
+  {
     "name": "base-ui-popover",
     "type": "registry:ui",
     "title": "Popover",
@@ -552,27 +1082,97 @@
     }
   },
   {
-    "name": "base-ui-radio-group",
+    "name": "base-ui-preview-card",
     "type": "registry:ui",
-    "title": "Radio Group",
-    "description": "Base UI style-lane radio-group wrapper backed by the Foldkit Ui.RadioGroup component.",
+    "title": "Base UI Preview Card",
+    "description": "A Base UI Base UI-informed preview card component for controlled contextual previews.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["preview-card"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-preview-card/index.ts",
+        "target": "src/ui/base-ui-preview-card/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-preview-card/view.ts",
+        "target": "src/ui/base-ui-preview-card/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-preview-card/base-ui-preview-card.scene.test.ts",
+        "target": "src/ui/base-ui-preview-card/base-ui-preview-card.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "PreviewCard",
+        "origin": "https://base-ui.com/react/components/preview-card",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/preview-card"
+  },
+  {
+    "name": "base-ui-progress",
+    "type": "registry:ui",
+    "title": "Base UI Progress",
+    "description": "A Base UI Base UI-informed progress component for displaying long-running task status with accessible value semantics.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["progress"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-progress/index.ts",
+        "target": "src/ui/base-ui-progress/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-progress/view.ts",
+        "target": "src/ui/base-ui-progress/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-progress/base-ui-progress.scene.test.ts",
+        "target": "src/ui/base-ui-progress/base-ui-progress.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Progress",
+        "origin": "https://base-ui.com/react/components/progress",
+        "artifact": "component",
+        "stateful": false
+      }
+    },
+    "origin": "https://base-ui.com/react/components/progress"
+  },
+  {
+    "name": "base-ui-radio",
+    "type": "registry:ui",
+    "title": "Radio",
+    "description": "Base UI style-lane Radio wrapper backed by the Foldkit Ui.RadioGroup component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
     "registryDependencies": ["radio-group"],
     "files": [
       {
-        "path": "registry/default/ui/base-ui-radio-group/index.ts",
-        "target": "src/ui/base-ui-radio-group/index.ts",
+        "path": "registry/default/ui/base-ui-radio/index.ts",
+        "target": "src/ui/base-ui-radio/index.ts",
         "type": "registry:ui"
       },
       {
-        "path": "registry/default/ui/base-ui-radio-group/view.ts",
-        "target": "src/ui/base-ui-radio-group/view.ts",
+        "path": "registry/default/ui/base-ui-radio/view.ts",
+        "target": "src/ui/base-ui-radio/view.ts",
         "type": "registry:ui"
       },
       {
-        "path": "registry/default/ui/base-ui-radio-group/base-ui-radio-group.scene.test.ts",
-        "target": "src/ui/base-ui-radio-group/base-ui-radio-group.scene.test.ts",
+        "path": "registry/default/ui/base-ui-radio/base-ui-radio.scene.test.ts",
+        "target": "src/ui/base-ui-radio/base-ui-radio.scene.test.ts",
         "type": "registry:ui"
       }
     ],
@@ -584,6 +1184,41 @@
         "stateful": true
       }
     }
+  },
+  {
+    "name": "base-ui-scroll-area",
+    "type": "registry:ui",
+    "title": "Base UI Scroll Area",
+    "description": "A Base UI Base UI-informed native scroll container with styled viewport, content, scrollbar, thumb, and corner anatomy.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["scroll-area"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-scroll-area/index.ts",
+        "target": "src/ui/base-ui-scroll-area/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-scroll-area/view.ts",
+        "target": "src/ui/base-ui-scroll-area/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-scroll-area/base-ui-scroll-area.scene.test.ts",
+        "target": "src/ui/base-ui-scroll-area/base-ui-scroll-area.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ScrollArea",
+        "origin": "https://base-ui.com/react/components/scroll-area",
+        "artifact": "component",
+        "stateful": false
+      }
+    },
+    "origin": "https://base-ui.com/react/components/scroll-area"
   },
   {
     "name": "base-ui-select",
@@ -618,6 +1253,41 @@
         "stateful": false
       }
     }
+  },
+  {
+    "name": "base-ui-separator",
+    "type": "registry:ui",
+    "title": "Base UI Separator",
+    "description": "A Base UI Base UI-informed separator component for accessible horizontal and vertical content separation.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["separator"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-separator/index.ts",
+        "target": "src/ui/base-ui-separator/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-separator/view.ts",
+        "target": "src/ui/base-ui-separator/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-separator/base-ui-separator.scene.test.ts",
+        "target": "src/ui/base-ui-separator/base-ui-separator.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Separator",
+        "origin": "https://base-ui.com/react/components/separator",
+        "artifact": "component",
+        "stateful": false
+      }
+    },
+    "origin": "https://base-ui.com/react/components/separator"
   },
   {
     "name": "base-ui-slider",
@@ -756,6 +1426,111 @@
     }
   },
   {
+    "name": "base-ui-toggle",
+    "type": "registry:ui",
+    "title": "Base UI Toggle",
+    "description": "A Base UI Base UI-informed two-state button with controlled pressed state, aria-pressed semantics, data-pressed styling, and disabled handling.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["toggle"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-toggle/index.ts",
+        "target": "src/ui/base-ui-toggle/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toggle/view.ts",
+        "target": "src/ui/base-ui-toggle/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toggle/base-ui-toggle.scene.test.ts",
+        "target": "src/ui/base-ui-toggle/base-ui-toggle.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toggle",
+        "origin": "https://base-ui.com/react/components/toggle",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/toggle"
+  },
+  {
+    "name": "base-ui-toggle-group",
+    "type": "registry:ui",
+    "title": "Base UI Toggle Group",
+    "description": "A Base UI Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["toggle-group"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-toggle-group/index.ts",
+        "target": "src/ui/base-ui-toggle-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toggle-group/view.ts",
+        "target": "src/ui/base-ui-toggle-group/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toggle-group/base-ui-toggle-group.scene.test.ts",
+        "target": "src/ui/base-ui-toggle-group/base-ui-toggle-group.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ToggleGroup",
+        "origin": "https://base-ui.com/react/components/toggle-group",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/toggle-group"
+  },
+  {
+    "name": "base-ui-toolbar",
+    "type": "registry:ui",
+    "title": "Base UI Toolbar",
+    "description": "A Base UI Base UI-informed toolbar component for grouped editor controls, compact actions, separators, links, and inputs.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["toolbar"],
+    "files": [
+      {
+        "path": "registry/default/ui/base-ui-toolbar/index.ts",
+        "target": "src/ui/base-ui-toolbar/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toolbar/view.ts",
+        "target": "src/ui/base-ui-toolbar/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/base-ui-toolbar/base-ui-toolbar.scene.test.ts",
+        "target": "src/ui/base-ui-toolbar/base-ui-toolbar.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toolbar",
+        "origin": "https://base-ui.com/react/components/toolbar",
+        "artifact": "component",
+        "stateful": true
+      }
+    },
+    "origin": "https://base-ui.com/react/components/toolbar"
+  },
+  {
     "name": "base-ui-tooltip",
     "type": "registry:ui",
     "title": "Tooltip",
@@ -817,7 +1592,7 @@
     "meta": {
       "foldkit": {
         "component": "Breadcrumb",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb",
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
         "artifact": "component",
         "stateful": false
       }
@@ -886,7 +1661,7 @@
     "meta": {
       "foldkit": {
         "component": "ButtonGroup",
-        "origin": "https://ui.shadcn.com/docs/components/button-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group",
         "artifact": "component",
         "stateful": false
       }
@@ -955,7 +1730,7 @@
     "meta": {
       "foldkit": {
         "component": "Card",
-        "origin": "https://ui.shadcn.com/docs/components/card",
+        "origin": "https://ui.shadcn.com/docs/components/radix/card",
         "artifact": "component",
         "stateful": false
       }
@@ -989,7 +1764,7 @@
     "meta": {
       "foldkit": {
         "component": "Carousel",
-        "origin": "https://ui.shadcn.com/docs/components/carousel",
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel",
         "artifact": "component",
         "stateful": false
       }
@@ -1024,7 +1799,7 @@
       "foldkit": {
         "component": "Chart",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/chart",
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart",
         "artifact": "component"
       }
     }
@@ -1094,7 +1869,9 @@
         "component": "CheckboxGroup",
         "origin": "https://base-ui.com/react/components/checkbox-group",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-checkbox-group"
       }
     }
   },
@@ -1128,7 +1905,9 @@
         "component": "Collapsible",
         "origin": "https://base-ui.com/react/components/collapsible",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-collapsible"
       }
     }
   },
@@ -1201,7 +1980,7 @@
       "foldkit": {
         "component": "Command",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/command",
+        "origin": "https://ui.shadcn.com/docs/components/radix/command",
         "artifact": "component"
       }
     }
@@ -1236,7 +2015,9 @@
         "component": "ContextMenu",
         "origin": "https://base-ui.com/react/components/context-menu",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-context-menu"
       }
     }
   },
@@ -1269,7 +2050,7 @@
       "foldkit": {
         "component": "DataTable",
         "stateful": true,
-        "origin": "https://ui.shadcn.com/docs/components/data-table",
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table",
         "artifact": "component"
       }
     }
@@ -1378,7 +2159,7 @@
       "foldkit": {
         "component": "Direction",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/direction",
+        "origin": "https://ui.shadcn.com/docs/components/radix/direction",
         "artifact": "component"
       }
     }
@@ -1483,7 +2264,9 @@
         "component": "Drawer",
         "origin": "https://base-ui.com/react/components/drawer",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-drawer"
       }
     }
   },
@@ -1516,7 +2299,7 @@
       "foldkit": {
         "component": "DropdownMenu",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/dropdown-menu",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu",
         "artifact": "component"
       }
     }
@@ -1549,7 +2332,7 @@
     "meta": {
       "foldkit": {
         "component": "Empty",
-        "origin": "https://ui.shadcn.com/docs/components/empty",
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty",
         "artifact": "component",
         "stateful": false
       }
@@ -1585,7 +2368,9 @@
         "component": "Field",
         "origin": "https://base-ui.com/react/components/field",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-field"
       }
     }
   },
@@ -1689,7 +2474,9 @@
         "component": "Form",
         "origin": "https://base-ui.com/react/components/form",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-form"
       }
     }
   },
@@ -1722,7 +2509,7 @@
       "foldkit": {
         "component": "HoverCard",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/hover-card",
+        "origin": "https://ui.shadcn.com/docs/components/radix/hover-card",
         "artifact": "component"
       }
     }
@@ -1790,7 +2577,7 @@
     "meta": {
       "foldkit": {
         "component": "InputGroup",
-        "origin": "https://ui.shadcn.com/docs/components/input-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group",
         "artifact": "component",
         "stateful": false
       }
@@ -1825,7 +2612,7 @@
       "foldkit": {
         "component": "InputOtp",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/input-otp",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp",
         "artifact": "component"
       }
     }
@@ -1859,7 +2646,7 @@
       "foldkit": {
         "component": "Item",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/item",
+        "origin": "https://ui.shadcn.com/docs/components/radix/item",
         "artifact": "component"
       }
     }
@@ -1892,7 +2679,7 @@
     "meta": {
       "foldkit": {
         "component": "Kbd",
-        "origin": "https://ui.shadcn.com/docs/components/kbd",
+        "origin": "https://ui.shadcn.com/docs/components/radix/kbd",
         "artifact": "component",
         "stateful": false
       }
@@ -1927,7 +2714,7 @@
       "foldkit": {
         "component": "Label",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/label",
+        "origin": "https://ui.shadcn.com/docs/components/radix/label",
         "artifact": "component"
       }
     }
@@ -2042,7 +2829,9 @@
         "component": "Menubar",
         "origin": "https://base-ui.com/react/components/menubar",
         "artifact": "component",
-        "stateful": false
+        "stateful": false,
+        "public": false,
+        "publicAliasOf": "base-ui-menubar"
       }
     }
   },
@@ -2076,7 +2865,9 @@
         "component": "Meter",
         "origin": "https://base-ui.com/react/components/meter",
         "artifact": "component",
-        "stateful": false
+        "stateful": false,
+        "public": false,
+        "publicAliasOf": "base-ui-meter"
       }
     }
   },
@@ -2109,7 +2900,7 @@
       "foldkit": {
         "component": "NativeSelect",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/native-select",
+        "origin": "https://ui.shadcn.com/docs/components/radix/native-select",
         "artifact": "component"
       }
     }
@@ -2144,7 +2935,9 @@
         "component": "NavigationMenu",
         "origin": "https://base-ui.com/react/components/navigation-menu",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-navigation-menu"
       }
     }
   },
@@ -2178,7 +2971,9 @@
         "component": "NumberField",
         "origin": "https://base-ui.com/react/components/number-field",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-number-field"
       }
     }
   },
@@ -2212,7 +3007,9 @@
         "component": "OtpField",
         "origin": "https://base-ui.com/react/components/otp-field",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-otp-field"
       }
     }
   },
@@ -2245,7 +3042,7 @@
       "foldkit": {
         "component": "Pagination",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/pagination",
+        "origin": "https://ui.shadcn.com/docs/components/radix/pagination",
         "artifact": "component"
       }
     }
@@ -2320,7 +3117,9 @@
         "component": "PreviewCard",
         "origin": "https://base-ui.com/react/components/preview-card",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-preview-card"
       }
     }
   },
@@ -2354,7 +3153,9 @@
         "component": "Progress",
         "origin": "https://base-ui.com/react/components/progress",
         "artifact": "component",
-        "stateful": false
+        "stateful": false,
+        "public": false,
+        "publicAliasOf": "base-ui-progress"
       }
     }
   },
@@ -2388,7 +3189,9 @@
         "component": "Radio",
         "origin": "https://base-ui.com/react/components/radio",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-radio"
       }
     }
   },
@@ -2456,7 +3259,7 @@
       "foldkit": {
         "component": "Resizable",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/resizable",
+        "origin": "https://ui.shadcn.com/docs/components/radix/resizable",
         "artifact": "component"
       }
     }
@@ -2491,7 +3294,9 @@
         "component": "ScrollArea",
         "origin": "https://base-ui.com/react/components/scroll-area",
         "artifact": "component",
-        "stateful": false
+        "stateful": false,
+        "public": false,
+        "publicAliasOf": "base-ui-scroll-area"
       }
     }
   },
@@ -2560,7 +3365,9 @@
         "component": "Separator",
         "origin": "https://base-ui.com/react/components/separator",
         "artifact": "component",
-        "stateful": false
+        "stateful": false,
+        "public": false,
+        "publicAliasOf": "base-ui-separator"
       }
     }
   },
@@ -2624,7 +3431,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/alert-dialog",
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert-dialog",
         "artifact": "component",
         "stateful": false
       }
@@ -2664,6 +3471,40 @@
     }
   },
   {
+    "name": "shadcn-base-accordion",
+    "type": "registry:ui",
+    "title": "shadcn Base Accordion",
+    "description": "A shadcn Base UI accordion component page backed by the Foldkit accordion primitive.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["accordion"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-base-accordion/index.ts",
+        "target": "src/ui/shadcn-base-accordion/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-base-accordion/view.ts",
+        "target": "src/ui/shadcn-base-accordion/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-base-accordion/shadcn-base-accordion.scene.test.ts",
+        "target": "src/ui/shadcn-base-accordion/shadcn-base-accordion.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Accordion",
+        "origin": "https://ui.shadcn.com/docs/components/base/accordion",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  },
+  {
     "name": "shadcn-button",
     "type": "registry:ui",
     "title": "Button",
@@ -2690,7 +3531,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/button",
+        "origin": "https://ui.shadcn.com/docs/components/radix/button",
         "artifact": "component",
         "primitive": "Ui.Button",
         "stateful": false
@@ -2758,7 +3599,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/checkbox",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox",
         "artifact": "component",
         "primitive": "Ui.Checkbox",
         "stateful": true
@@ -2792,7 +3633,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/collapsible",
+        "origin": "https://ui.shadcn.com/docs/components/radix/collapsible",
         "artifact": "component",
         "stateful": false
       }
@@ -2825,7 +3666,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/combobox",
+        "origin": "https://ui.shadcn.com/docs/components/radix/combobox",
         "artifact": "component",
         "primitive": "Ui.Combobox",
         "stateful": true
@@ -2859,7 +3700,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/context-menu",
+        "origin": "https://ui.shadcn.com/docs/components/radix/context-menu",
         "artifact": "component",
         "stateful": false
       }
@@ -2892,7 +3733,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/date-picker",
+        "origin": "https://ui.shadcn.com/docs/components/radix/date-picker",
         "artifact": "component",
         "primitive": "Ui.DatePicker",
         "stateful": true
@@ -2926,7 +3767,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/dialog",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dialog",
         "artifact": "component",
         "primitive": "Ui.Dialog",
         "stateful": true
@@ -2960,7 +3801,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/drawer",
+        "origin": "https://ui.shadcn.com/docs/components/radix/drawer",
         "artifact": "component",
         "stateful": false
       }
@@ -2993,7 +3834,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/field",
+        "origin": "https://ui.shadcn.com/docs/components/radix/field",
         "artifact": "component",
         "stateful": false
       }
@@ -3026,7 +3867,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/input",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input",
         "artifact": "component",
         "primitive": "Ui.Input",
         "stateful": false
@@ -3060,7 +3901,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/menubar",
+        "origin": "https://ui.shadcn.com/docs/components/radix/menubar",
         "artifact": "component",
         "stateful": false
       }
@@ -3093,7 +3934,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/navigation-menu",
+        "origin": "https://ui.shadcn.com/docs/components/radix/navigation-menu",
         "artifact": "component",
         "stateful": false
       }
@@ -3126,7 +3967,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/popover",
+        "origin": "https://ui.shadcn.com/docs/components/radix/popover",
         "artifact": "component",
         "primitive": "Ui.Popover",
         "stateful": true
@@ -3160,7 +4001,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/progress",
+        "origin": "https://ui.shadcn.com/docs/components/radix/progress",
         "artifact": "component",
         "stateful": false
       }
@@ -3193,7 +4034,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/radio",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group",
         "artifact": "component",
         "primitive": "Ui.RadioGroup",
         "stateful": true
@@ -3227,7 +4068,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/scroll-area",
+        "origin": "https://ui.shadcn.com/docs/components/radix/scroll-area",
         "artifact": "component",
         "stateful": false
       }
@@ -3260,7 +4101,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/select",
+        "origin": "https://ui.shadcn.com/docs/components/radix/select",
         "artifact": "component",
         "primitive": "Ui.Select",
         "stateful": false
@@ -3294,7 +4135,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/separator",
+        "origin": "https://ui.shadcn.com/docs/components/radix/separator",
         "artifact": "component",
         "stateful": false
       }
@@ -3327,7 +4168,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/slider",
+        "origin": "https://ui.shadcn.com/docs/components/radix/slider",
         "artifact": "component",
         "primitive": "Ui.Slider",
         "stateful": true
@@ -3361,7 +4202,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/switch",
+        "origin": "https://ui.shadcn.com/docs/components/radix/switch",
         "artifact": "component",
         "primitive": "Ui.Switch",
         "stateful": true
@@ -3395,7 +4236,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/tabs",
+        "origin": "https://ui.shadcn.com/docs/components/radix/tabs",
         "artifact": "component",
         "primitive": "Ui.Tabs",
         "stateful": true
@@ -3429,7 +4270,7 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/textarea",
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea",
         "artifact": "component",
         "primitive": "Ui.Textarea",
         "stateful": false
@@ -3463,10 +4304,112 @@
     ],
     "meta": {
       "foldkit": {
-        "origin": "https://ui.shadcn.com/docs/components/toast",
+        "origin": "https://ui.shadcn.com/docs/components/radix/toast",
         "artifact": "component",
         "primitive": "Ui.Toast",
         "stateful": true
+      }
+    }
+  },
+  {
+    "name": "shadcn-toggle",
+    "type": "registry:ui",
+    "title": "shadcn Toggle",
+    "description": "A shadcn-origin toggle component page backed by the Foldkit Toggle primitive.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["toggle"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-toggle/index.ts",
+        "target": "src/ui/shadcn-toggle/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-toggle/view.ts",
+        "target": "src/ui/shadcn-toggle/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-toggle/shadcn-toggle.scene.test.ts",
+        "target": "src/ui/shadcn-toggle/shadcn-toggle.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toggle",
+        "origin": "https://ui.shadcn.com/docs/components/radix/toggle",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "shadcn-toggle-group",
+    "type": "registry:ui",
+    "title": "shadcn Toggle Group",
+    "description": "A shadcn-origin toggle group component page backed by the Foldkit Toggle Group primitive.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["toggle-group"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-toggle-group/index.ts",
+        "target": "src/ui/shadcn-toggle-group/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-toggle-group/view.ts",
+        "target": "src/ui/shadcn-toggle-group/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-toggle-group/shadcn-toggle-group.scene.test.ts",
+        "target": "src/ui/shadcn-toggle-group/shadcn-toggle-group.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toggle Group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/toggle-group",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  },
+  {
+    "name": "shadcn-tooltip",
+    "type": "registry:ui",
+    "title": "shadcn Tooltip",
+    "description": "A shadcn-origin tooltip component page backed by the Foldkit Tooltip primitive.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["tooltip"],
+    "files": [
+      {
+        "path": "registry/default/ui/shadcn-tooltip/index.ts",
+        "target": "src/ui/shadcn-tooltip/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-tooltip/view.ts",
+        "target": "src/ui/shadcn-tooltip/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/shadcn-tooltip/shadcn-tooltip.scene.test.ts",
+        "target": "src/ui/shadcn-tooltip/shadcn-tooltip.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tooltip",
+        "origin": "https://ui.shadcn.com/docs/components/radix/tooltip",
+        "artifact": "component",
+        "stateful": false
       }
     }
   },
@@ -3499,7 +4442,7 @@
       "foldkit": {
         "component": "Sheet",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/sheet",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sheet",
         "artifact": "component"
       }
     }
@@ -3533,7 +4476,7 @@
       "foldkit": {
         "component": "Sidebar",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/sidebar",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sidebar",
         "artifact": "component"
       }
     }
@@ -3566,7 +4509,7 @@
     "meta": {
       "foldkit": {
         "component": "Skeleton",
-        "origin": "https://ui.shadcn.com/docs/components/skeleton",
+        "origin": "https://ui.shadcn.com/docs/components/radix/skeleton",
         "artifact": "component",
         "stateful": false
       }
@@ -3636,7 +4579,7 @@
       "foldkit": {
         "component": "Sonner",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/sonner",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sonner",
         "artifact": "component"
       }
     }
@@ -3669,7 +4612,7 @@
     "meta": {
       "foldkit": {
         "component": "Spinner",
-        "origin": "https://ui.shadcn.com/docs/components/spinner",
+        "origin": "https://ui.shadcn.com/docs/components/radix/spinner",
         "artifact": "component",
         "stateful": false
       }
@@ -3739,7 +4682,7 @@
       "foldkit": {
         "component": "Table",
         "stateful": false,
-        "origin": "https://ui.shadcn.com/docs/components/table",
+        "origin": "https://ui.shadcn.com/docs/components/radix/table",
         "artifact": "component"
       }
     }
@@ -3876,10 +4819,12 @@
     ],
     "meta": {
       "foldkit": {
-        "component": "Toggle",
+        "component": "TogglePrimitive",
         "origin": "https://base-ui.com/react/components/toggle",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-toggle"
       }
     }
   },
@@ -3913,7 +4858,9 @@
         "component": "ToggleGroup",
         "origin": "https://base-ui.com/react/components/toggle-group",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-toggle-group"
       }
     }
   },
@@ -3947,7 +4894,9 @@
         "component": "Toolbar",
         "origin": "https://base-ui.com/react/components/toolbar",
         "artifact": "component",
-        "stateful": true
+        "stateful": true,
+        "public": false,
+        "publicAliasOf": "base-ui-toolbar"
       }
     }
   },
@@ -4014,7 +4963,7 @@
     "meta": {
       "foldkit": {
         "component": "Typography",
-        "origin": "https://ui.shadcn.com/docs/components/typography",
+        "origin": "https://ui.shadcn.com/docs/components/radix/typography",
         "artifact": "component",
         "stateful": false
       }
@@ -4166,7 +5115,7 @@
         "component": "Alert",
         "example": "basic",
         "originExample": "alert-default",
-        "origin": "https://ui.shadcn.com/docs/components/alert"
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert"
       }
     }
   },
@@ -4205,7 +5154,7 @@
         "component": "Alert",
         "example": "destructive",
         "originExample": "alert-destructive",
-        "origin": "https://ui.shadcn.com/docs/components/alert"
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert"
       }
     }
   },
@@ -4309,7 +5258,7 @@
         "component": "AspectRatio",
         "example": "basic",
         "originExample": "aspect-ratio-default",
-        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
+        "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio"
       }
     }
   },
@@ -4348,7 +5297,7 @@
         "component": "AspectRatio",
         "example": "portrait",
         "originExample": "aspect-ratio-portrait",
-        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
+        "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio"
       }
     }
   },
@@ -4387,7 +5336,7 @@
         "component": "AspectRatio",
         "example": "rtl",
         "originExample": "aspect-ratio-rtl",
-        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
+        "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio"
       }
     }
   },
@@ -4426,7 +5375,7 @@
         "component": "AspectRatio",
         "example": "square",
         "originExample": "aspect-ratio-square",
-        "origin": "https://ui.shadcn.com/docs/components/aspect-ratio"
+        "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio"
       }
     }
   },
@@ -4530,7 +5479,7 @@
       "foldkit": {
         "component": "Badge",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/badge"
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge"
       }
     }
   },
@@ -4559,7 +5508,1241 @@
         "component": "Badge",
         "example": "spinner",
         "originExample": "badge-spinner",
-        "origin": "https://ui.shadcn.com/docs/components/badge"
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+      }
+    }
+  },
+  {
+    "name": "base-ui-accordion-basic",
+    "type": "registry:example",
+    "title": "Base UI Accordion Basic",
+    "description": "A runnable Foldkit version of the Base UI Accordion default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-accordion"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-accordion-basic/main.ts",
+        "target": "src/examples/base-ui-accordion-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-accordion-basic/base-ui-accordion-basic.scene.test.ts",
+        "target": "src/examples/base-ui-accordion-basic/base-ui-accordion-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Accordion",
+        "example": "basic",
+        "originExample": "accordion-default",
+        "origin": "https://base-ui.com/react/components/accordion"
+      }
+    }
+  },
+  {
+    "name": "base-ui-accordion-multiple",
+    "type": "registry:example",
+    "title": "Base UI Accordion Multiple",
+    "description": "A runnable Foldkit version of the Base UI Accordion open multiple panels example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-accordion"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-accordion-multiple/main.ts",
+        "target": "src/examples/base-ui-accordion-multiple/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-accordion-multiple/base-ui-accordion-multiple.scene.test.ts",
+        "target": "src/examples/base-ui-accordion-multiple/base-ui-accordion-multiple.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Accordion",
+        "example": "multiple",
+        "originExample": "open-multiple-panels",
+        "origin": "https://base-ui.com/react/components/accordion"
+      }
+    }
+  },
+  {
+    "name": "base-ui-alert-dialog-basic",
+    "type": "registry:example",
+    "title": "Base UI Alert Dialog Basic",
+    "description": "A runnable Foldkit version of the Base UI Alert Dialog default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-alert-dialog"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-alert-dialog-basic/main.ts",
+        "target": "src/examples/base-ui-alert-dialog-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-alert-dialog-basic/base-ui-alert-dialog-basic.scene.test.ts",
+        "target": "src/examples/base-ui-alert-dialog-basic/base-ui-alert-dialog-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Alert Dialog",
+        "example": "basic",
+        "originExample": "alert-dialog-default",
+        "origin": "https://base-ui.com/react/components/alert-dialog"
+      }
+    }
+  },
+  {
+    "name": "base-ui-alert-dialog-close-confirmation",
+    "type": "registry:example",
+    "title": "Base UI Alert Dialog Close Confirmation",
+    "description": "A runnable Foldkit version of the Base UI Alert Dialog Close confirmation nested-dialog example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-alert-dialog"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-alert-dialog-close-confirmation/main.ts",
+        "target": "src/examples/base-ui-alert-dialog-close-confirmation/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-alert-dialog-close-confirmation/base-ui-alert-dialog-close-confirmation.scene.test.ts",
+        "target": "src/examples/base-ui-alert-dialog-close-confirmation/base-ui-alert-dialog-close-confirmation.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Alert Dialog",
+        "example": "close-confirmation",
+        "originExample": "close-confirmation",
+        "origin": "https://base-ui.com/react/components/alert-dialog"
+      }
+    }
+  },
+  {
+    "name": "base-ui-autocomplete-basic",
+    "type": "registry:example",
+    "title": "Base UI Autocomplete Basic",
+    "description": "A runnable Foldkit version of the Base UI Autocomplete default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-autocomplete"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-autocomplete-basic/main.ts",
+        "target": "src/examples/base-ui-autocomplete-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-autocomplete-basic/base-ui-autocomplete-basic.scene.test.ts",
+        "target": "src/examples/base-ui-autocomplete-basic/base-ui-autocomplete-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Autocomplete",
+        "example": "basic",
+        "originExample": "autocomplete-default",
+        "origin": "https://base-ui.com/react/components/autocomplete"
+      }
+    }
+  },
+  {
+    "name": "base-ui-avatar-basic",
+    "type": "registry:example",
+    "title": "Base UI Avatar Basic",
+    "description": "A runnable Foldkit version of the Base UI Avatar default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-avatar-basic/main.ts",
+        "target": "src/examples/base-ui-avatar-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-avatar-basic/base-ui-avatar-basic.scene.test.ts",
+        "target": "src/examples/base-ui-avatar-basic/base-ui-avatar-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Avatar",
+        "example": "basic",
+        "originExample": "avatar-default",
+        "origin": "https://base-ui.com/react/components/avatar"
+      }
+    }
+  },
+  {
+    "name": "base-ui-button-basic",
+    "type": "registry:example",
+    "title": "Base UI Button Basic",
+    "description": "A runnable Foldkit version of the Base UI Button default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-button"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-button-basic/main.ts",
+        "target": "src/examples/base-ui-button-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-button-basic/base-ui-button-basic.scene.test.ts",
+        "target": "src/examples/base-ui-button-basic/base-ui-button-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "basic",
+        "originExample": "button-default",
+        "origin": "https://base-ui.com/react/components/button"
+      }
+    }
+  },
+  {
+    "name": "base-ui-checkbox-basic",
+    "type": "registry:example",
+    "title": "Base UI Checkbox Basic",
+    "description": "A runnable Foldkit version of the Base UI Checkbox default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-checkbox-basic/main.ts",
+        "target": "src/examples/base-ui-checkbox-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-checkbox-basic/base-ui-checkbox-basic.scene.test.ts",
+        "target": "src/examples/base-ui-checkbox-basic/base-ui-checkbox-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "basic",
+        "originExample": "checkbox-default",
+        "origin": "https://base-ui.com/react/components/checkbox"
+      }
+    }
+  },
+  {
+    "name": "base-ui-checkbox-group-basic",
+    "type": "registry:example",
+    "title": "Base UI Checkbox Group Basic",
+    "description": "A runnable Foldkit version of the Base UI Checkbox Group default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-checkbox-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-checkbox-group-basic/main.ts",
+        "target": "src/examples/base-ui-checkbox-group-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-checkbox-group-basic/base-ui-checkbox-group-basic.scene.test.ts",
+        "target": "src/examples/base-ui-checkbox-group-basic/base-ui-checkbox-group-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox Group",
+        "example": "basic",
+        "originExample": "checkbox-group-default",
+        "origin": "https://base-ui.com/react/components/checkbox-group"
+      }
+    }
+  },
+  {
+    "name": "base-ui-collapsible-basic",
+    "type": "registry:example",
+    "title": "Base UI Collapsible Basic",
+    "description": "A runnable Foldkit version of the Base UI Collapsible default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-collapsible"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-collapsible-basic/main.ts",
+        "target": "src/examples/base-ui-collapsible-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-collapsible-basic/base-ui-collapsible-basic.scene.test.ts",
+        "target": "src/examples/base-ui-collapsible-basic/base-ui-collapsible-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Collapsible",
+        "example": "basic",
+        "originExample": "collapsible-default",
+        "origin": "https://base-ui.com/react/components/collapsible"
+      }
+    }
+  },
+  {
+    "name": "base-ui-combobox-basic",
+    "type": "registry:example",
+    "title": "Base UI Combobox Basic",
+    "description": "A runnable Foldkit version of the Base UI Combobox default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-combobox"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-combobox-basic/main.ts",
+        "target": "src/examples/base-ui-combobox-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-combobox-basic/base-ui-combobox-basic.scene.test.ts",
+        "target": "src/examples/base-ui-combobox-basic/base-ui-combobox-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Combobox",
+        "example": "basic",
+        "originExample": "combobox-default",
+        "origin": "https://base-ui.com/react/components/combobox"
+      }
+    }
+  },
+  {
+    "name": "base-ui-context-menu-basic",
+    "type": "registry:example",
+    "title": "Base UI Context Menu Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Context Menu default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-context-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-context-menu-basic/main.ts",
+        "target": "src/examples/base-ui-context-menu-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-context-menu-basic/base-ui-context-menu-basic.scene.test.ts",
+        "target": "src/examples/base-ui-context-menu-basic/base-ui-context-menu-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ContextMenu",
+        "example": "basic",
+        "originExample": "context-menu-default",
+        "origin": "https://base-ui.com/react/components/context-menu"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/context-menu"
+  },
+  {
+    "name": "base-ui-dialog-basic",
+    "type": "registry:example",
+    "title": "Base UI Dialog Basic",
+    "description": "A runnable Foldkit version of the Base UI Dialog default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-dialog"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-dialog-basic/main.ts",
+        "target": "src/examples/base-ui-dialog-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-dialog-basic/base-ui-dialog-basic.scene.test.ts",
+        "target": "src/examples/base-ui-dialog-basic/base-ui-dialog-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Dialog",
+        "example": "basic",
+        "originExample": "dialog-default",
+        "origin": "https://base-ui.com/react/components/dialog"
+      }
+    }
+  },
+  {
+    "name": "base-ui-drawer-basic",
+    "type": "registry:example",
+    "title": "Base UI Drawer Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Drawer default side panel example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-drawer"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-drawer-basic/main.ts",
+        "target": "src/examples/base-ui-drawer-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-drawer-basic/base-ui-drawer-basic.scene.test.ts",
+        "target": "src/examples/base-ui-drawer-basic/base-ui-drawer-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Drawer",
+        "example": "basic",
+        "originExample": "drawer-default-side",
+        "origin": "https://base-ui.com/react/components/drawer"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/drawer"
+  },
+  {
+    "name": "base-ui-field-basic",
+    "type": "registry:example",
+    "title": "Base UI Field Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Field default Name example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-field"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-field-basic/main.ts",
+        "target": "src/examples/base-ui-field-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-field-basic/base-ui-field-basic.scene.test.ts",
+        "target": "src/examples/base-ui-field-basic/base-ui-field-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Field",
+        "example": "basic",
+        "originExample": "field-default-name",
+        "origin": "https://base-ui.com/react/components/field"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/field"
+  },
+  {
+    "name": "base-ui-fieldset-basic",
+    "type": "registry:example",
+    "title": "Base UI Fieldset Basic",
+    "description": "A runnable Foldkit version of the Base UI Fieldset default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-fieldset"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-fieldset-basic/main.ts",
+        "target": "src/examples/base-ui-fieldset-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-fieldset-basic/base-ui-fieldset-basic.scene.test.ts",
+        "target": "src/examples/base-ui-fieldset-basic/base-ui-fieldset-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Fieldset",
+        "example": "basic",
+        "originExample": "fieldset-default",
+        "origin": "https://base-ui.com/react/components/fieldset"
+      }
+    }
+  },
+  {
+    "name": "base-ui-form-basic",
+    "type": "registry:example",
+    "title": "Base UI Form Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Form default Homepage example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-form"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-form-basic/main.ts",
+        "target": "src/examples/base-ui-form-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-form-basic/base-ui-form-basic.scene.test.ts",
+        "target": "src/examples/base-ui-form-basic/base-ui-form-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Form",
+        "example": "basic",
+        "originExample": "form-default-homepage",
+        "origin": "https://base-ui.com/react/components/form"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/form"
+  },
+  {
+    "name": "base-ui-input-basic",
+    "type": "registry:example",
+    "title": "Base UI Input Basic",
+    "description": "A runnable Foldkit version of the Base UI Input default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-input-basic/main.ts",
+        "target": "src/examples/base-ui-input-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-input-basic/base-ui-input-basic.scene.test.ts",
+        "target": "src/examples/base-ui-input-basic/base-ui-input-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "basic",
+        "originExample": "input-default",
+        "origin": "https://base-ui.com/react/components/input"
+      }
+    }
+  },
+  {
+    "name": "base-ui-menu-basic",
+    "type": "registry:example",
+    "title": "Base UI Menu Basic",
+    "description": "A runnable Foldkit version of the Base UI Menu default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-menu-basic/main.ts",
+        "target": "src/examples/base-ui-menu-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-menu-basic/base-ui-menu-basic.scene.test.ts",
+        "target": "src/examples/base-ui-menu-basic/base-ui-menu-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Menu",
+        "example": "basic",
+        "originExample": "menu-default",
+        "origin": "https://base-ui.com/react/components/menu"
+      }
+    }
+  },
+  {
+    "name": "base-ui-menubar-basic",
+    "type": "registry:example",
+    "title": "Base UI Menubar Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Menubar default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-menubar"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-menubar-basic/main.ts",
+        "target": "src/examples/base-ui-menubar-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-menubar-basic/base-ui-menubar-basic.scene.test.ts",
+        "target": "src/examples/base-ui-menubar-basic/base-ui-menubar-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Menubar",
+        "example": "basic",
+        "originExample": "menubar-default",
+        "origin": "https://base-ui.com/react/components/menubar"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/menubar"
+  },
+  {
+    "name": "base-ui-meter-basic",
+    "type": "registry:example",
+    "title": "Base UI Meter Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Meter hero example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-meter"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-meter-basic/main.ts",
+        "target": "src/examples/base-ui-meter-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-meter-basic/base-ui-meter-basic.scene.test.ts",
+        "target": "src/examples/base-ui-meter-basic/base-ui-meter-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Meter",
+        "example": "basic",
+        "originExample": "meter-hero",
+        "origin": "https://base-ui.com/react/components/meter"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/meter"
+  },
+  {
+    "name": "base-ui-navigation-menu-basic",
+    "type": "registry:example",
+    "title": "Base UI Navigation Menu Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Navigation Menu default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-navigation-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-navigation-menu-basic/main.ts",
+        "target": "src/examples/base-ui-navigation-menu-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-navigation-menu-basic/base-ui-navigation-menu-basic.scene.test.ts",
+        "target": "src/examples/base-ui-navigation-menu-basic/base-ui-navigation-menu-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NavigationMenu",
+        "example": "basic",
+        "originExample": "navigation-menu-default",
+        "origin": "https://base-ui.com/react/components/navigation-menu"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/navigation-menu"
+  },
+  {
+    "name": "base-ui-number-field-basic",
+    "type": "registry:example",
+    "title": "Base UI Number Field Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Number Field default Amount example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-number-field"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-number-field-basic/main.ts",
+        "target": "src/examples/base-ui-number-field-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-number-field-basic/base-ui-number-field-basic.scene.test.ts",
+        "target": "src/examples/base-ui-number-field-basic/base-ui-number-field-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NumberField",
+        "example": "basic",
+        "originExample": "number-field-default-amount",
+        "origin": "https://base-ui.com/react/components/number-field"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/number-field"
+  },
+  {
+    "name": "base-ui-otp-field-basic",
+    "type": "registry:example",
+    "title": "Base UI OTP Field Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI OTP Field default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-otp-field"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-otp-field-basic/main.ts",
+        "target": "src/examples/base-ui-otp-field-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-otp-field-basic/base-ui-otp-field-basic.scene.test.ts",
+        "target": "src/examples/base-ui-otp-field-basic/base-ui-otp-field-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "OtpField",
+        "example": "basic",
+        "originExample": "otp-field-default",
+        "origin": "https://base-ui.com/react/components/otp-field"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/otp-field"
+  },
+  {
+    "name": "base-ui-popover-basic",
+    "type": "registry:example",
+    "title": "Base UI Popover Basic",
+    "description": "A runnable Foldkit version of the Base UI Popover default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-popover"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-popover-basic/main.ts",
+        "target": "src/examples/base-ui-popover-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-popover-basic/base-ui-popover-basic.scene.test.ts",
+        "target": "src/examples/base-ui-popover-basic/base-ui-popover-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Popover",
+        "example": "basic",
+        "originExample": "popover-default",
+        "origin": "https://base-ui.com/react/components/popover"
+      }
+    }
+  },
+  {
+    "name": "base-ui-preview-card-basic",
+    "type": "registry:example",
+    "title": "Base UI Preview Card Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Preview Card default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-preview-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-preview-card-basic/main.ts",
+        "target": "src/examples/base-ui-preview-card-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-preview-card-basic/base-ui-preview-card-basic.scene.test.ts",
+        "target": "src/examples/base-ui-preview-card-basic/base-ui-preview-card-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "PreviewCard",
+        "example": "basic",
+        "originExample": "preview-card-default",
+        "origin": "https://base-ui.com/react/components/preview-card"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/preview-card"
+  },
+  {
+    "name": "base-ui-progress-basic",
+    "type": "registry:example",
+    "title": "Base UI Progress Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Progress hero example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-progress"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-progress-basic/main.ts",
+        "target": "src/examples/base-ui-progress-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-progress-basic/base-ui-progress-basic.scene.test.ts",
+        "target": "src/examples/base-ui-progress-basic/base-ui-progress-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Progress",
+        "example": "basic",
+        "originExample": "progress-hero",
+        "origin": "https://base-ui.com/react/components/progress"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/progress"
+  },
+  {
+    "name": "base-ui-radio-basic",
+    "type": "registry:example",
+    "title": "Base UI Radio Basic",
+    "description": "A runnable Foldkit version of the Base UI Radio default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-radio"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-radio-basic/main.ts",
+        "target": "src/examples/base-ui-radio-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-radio-basic/base-ui-radio-basic.scene.test.ts",
+        "target": "src/examples/base-ui-radio-basic/base-ui-radio-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Radio",
+        "example": "basic",
+        "originExample": "radio-default",
+        "origin": "https://base-ui.com/react/components/radio"
+      }
+    }
+  },
+  {
+    "name": "base-ui-radio-form",
+    "type": "registry:example",
+    "title": "Base UI Radio Form",
+    "description": "A runnable Foldkit version of the Base UI Radio form integration example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-radio"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-radio-form/main.ts",
+        "target": "src/examples/base-ui-radio-form/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-radio-form/base-ui-radio-form.scene.test.ts",
+        "target": "src/examples/base-ui-radio-form/base-ui-radio-form.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Radio",
+        "example": "form",
+        "originExample": "form-integration",
+        "origin": "https://base-ui.com/react/components/radio"
+      }
+    }
+  },
+  {
+    "name": "base-ui-radio-labeling",
+    "type": "registry:example",
+    "title": "Base UI Radio Labeling",
+    "description": "A runnable Foldkit version of the Base UI Radio labeling example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-radio"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-radio-labeling/main.ts",
+        "target": "src/examples/base-ui-radio-labeling/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-radio-labeling/base-ui-radio-labeling.scene.test.ts",
+        "target": "src/examples/base-ui-radio-labeling/base-ui-radio-labeling.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Radio",
+        "example": "labeling",
+        "originExample": "labeling-a-radio-group",
+        "origin": "https://base-ui.com/react/components/radio"
+      }
+    }
+  },
+  {
+    "name": "base-ui-radio-native-button",
+    "type": "registry:example",
+    "title": "Base UI Radio Native Button",
+    "description": "A runnable Foldkit version of the Base UI Radio native button rendering example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-radio"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-radio-native-button/main.ts",
+        "target": "src/examples/base-ui-radio-native-button/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-radio-native-button/base-ui-radio-native-button.scene.test.ts",
+        "target": "src/examples/base-ui-radio-native-button/base-ui-radio-native-button.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Radio",
+        "example": "native-button",
+        "originExample": "rendering-as-a-native-button",
+        "origin": "https://base-ui.com/react/components/radio"
+      }
+    }
+  },
+  {
+    "name": "base-ui-scroll-area-basic",
+    "type": "registry:example",
+    "title": "Base UI Scroll Area Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Scroll Area hero example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-scroll-area"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-scroll-area-basic/main.ts",
+        "target": "src/examples/base-ui-scroll-area-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-scroll-area-basic/base-ui-scroll-area-basic.scene.test.ts",
+        "target": "src/examples/base-ui-scroll-area-basic/base-ui-scroll-area-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ScrollArea",
+        "example": "basic",
+        "originExample": "scroll-area-hero",
+        "origin": "https://base-ui.com/react/components/scroll-area"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/scroll-area"
+  },
+  {
+    "name": "base-ui-select-basic",
+    "type": "registry:example",
+    "title": "Base UI Select Basic",
+    "description": "A runnable Foldkit version of the Base UI Select default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-select"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-select-basic/main.ts",
+        "target": "src/examples/base-ui-select-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-select-basic/base-ui-select-basic.scene.test.ts",
+        "target": "src/examples/base-ui-select-basic/base-ui-select-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Select",
+        "example": "basic",
+        "originExample": "select-default",
+        "origin": "https://base-ui.com/react/components/select"
+      }
+    }
+  },
+  {
+    "name": "base-ui-separator-basic",
+    "type": "registry:example",
+    "title": "Base UI Separator Basic",
+    "description": "A Base UI runnable Foldkit example showing the Separator component with parent-owned example state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-separator"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-separator-basic/main.ts",
+        "target": "src/examples/base-ui-separator-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-separator-basic/base-ui-separator-basic.scene.test.ts",
+        "target": "src/examples/base-ui-separator-basic/base-ui-separator-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Separator",
+        "example": "basic",
+        "originExample": "separator-default",
+        "origin": "https://base-ui.com/react/components/separator"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/separator"
+  },
+  {
+    "name": "base-ui-slider-basic",
+    "type": "registry:example",
+    "title": "Base UI Slider Basic",
+    "description": "A runnable Foldkit version of the Base UI Slider default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-slider"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-slider-basic/main.ts",
+        "target": "src/examples/base-ui-slider-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-slider-basic/base-ui-slider-basic.scene.test.ts",
+        "target": "src/examples/base-ui-slider-basic/base-ui-slider-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Slider",
+        "example": "basic",
+        "originExample": "slider-default",
+        "origin": "https://base-ui.com/react/components/slider"
+      }
+    }
+  },
+  {
+    "name": "base-ui-switch-basic",
+    "type": "registry:example",
+    "title": "Base UI Switch Basic",
+    "description": "A runnable Foldkit version of the Base UI Switch default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-switch"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-switch-basic/main.ts",
+        "target": "src/examples/base-ui-switch-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-switch-basic/base-ui-switch-basic.scene.test.ts",
+        "target": "src/examples/base-ui-switch-basic/base-ui-switch-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Switch",
+        "example": "basic",
+        "originExample": "switch-default",
+        "origin": "https://base-ui.com/react/components/switch"
+      }
+    }
+  },
+  {
+    "name": "base-ui-tabs-basic",
+    "type": "registry:example",
+    "title": "Base UI Tabs Basic",
+    "description": "A runnable Foldkit version of the Base UI Tabs default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-tabs"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-tabs-basic/main.ts",
+        "target": "src/examples/base-ui-tabs-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-tabs-basic/base-ui-tabs-basic.scene.test.ts",
+        "target": "src/examples/base-ui-tabs-basic/base-ui-tabs-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tabs",
+        "example": "basic",
+        "originExample": "tabs-default",
+        "origin": "https://base-ui.com/react/components/tabs"
+      }
+    }
+  },
+  {
+    "name": "base-ui-toast-basic",
+    "type": "registry:example",
+    "title": "Base UI Toast Basic",
+    "description": "A runnable Foldkit version of the Base UI Toast default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-toast"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-toast-basic/main.ts",
+        "target": "src/examples/base-ui-toast-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-toast-basic/base-ui-toast-basic.scene.test.ts",
+        "target": "src/examples/base-ui-toast-basic/base-ui-toast-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toast",
+        "example": "basic",
+        "originExample": "toast-default",
+        "origin": "https://base-ui.com/react/components/toast"
+      }
+    }
+  },
+  {
+    "name": "base-ui-toggle-basic",
+    "type": "registry:example",
+    "title": "Base UI Toggle Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Toggle hero example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-toggle"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-toggle-basic/main.ts",
+        "target": "src/examples/base-ui-toggle-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-toggle-basic/base-ui-toggle-basic.scene.test.ts",
+        "target": "src/examples/base-ui-toggle-basic/base-ui-toggle-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toggle",
+        "example": "basic",
+        "originExample": "toggle-hero",
+        "origin": "https://base-ui.com/react/components/toggle"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/toggle"
+  },
+  {
+    "name": "base-ui-toggle-group-basic",
+    "type": "registry:example",
+    "title": "Base UI Toggle Group Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Toggle Group hero example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-toggle-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-toggle-group-basic/main.ts",
+        "target": "src/examples/base-ui-toggle-group-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-toggle-group-basic/base-ui-toggle-group-basic.scene.test.ts",
+        "target": "src/examples/base-ui-toggle-group-basic/base-ui-toggle-group-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ToggleGroup",
+        "example": "basic",
+        "originExample": "toggle-group-hero",
+        "origin": "https://base-ui.com/react/components/toggle-group"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/toggle-group"
+  },
+  {
+    "name": "base-ui-toolbar-basic",
+    "type": "registry:example",
+    "title": "Base UI Toolbar Basic",
+    "description": "A Base UI runnable Foldkit version of the Base UI Toolbar hero example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-toolbar"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-toolbar-basic/main.ts",
+        "target": "src/examples/base-ui-toolbar-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-toolbar-basic/base-ui-toolbar-basic.scene.test.ts",
+        "target": "src/examples/base-ui-toolbar-basic/base-ui-toolbar-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toolbar",
+        "example": "basic",
+        "originExample": "toolbar-hero",
+        "origin": "https://base-ui.com/react/components/toolbar"
+      }
+    },
+    "origin": "https://base-ui.com/react/components/toolbar"
+  },
+  {
+    "name": "base-ui-tooltip-basic",
+    "type": "registry:example",
+    "title": "Base UI Tooltip Basic",
+    "description": "A runnable Foldkit version of the Base UI Tooltip default example using the Base UI style-lane wrapper.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-tooltip"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-tooltip-basic/main.ts",
+        "target": "src/examples/base-ui-tooltip-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-tooltip-basic/base-ui-tooltip-basic.scene.test.ts",
+        "target": "src/examples/base-ui-tooltip-basic/base-ui-tooltip-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tooltip",
+        "example": "basic",
+        "originExample": "tooltip-default",
+        "origin": "https://base-ui.com/react/components/tooltip"
       }
     }
   },
@@ -4598,7 +6781,7 @@
         "component": "Breadcrumb",
         "example": "basic",
         "originExample": "breadcrumb-basic",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
       }
     }
   },
@@ -4637,7 +6820,7 @@
         "component": "Breadcrumb",
         "example": "collapsed",
         "originExample": "breadcrumb-collapsed",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
       }
     }
   },
@@ -4676,7 +6859,7 @@
         "component": "Breadcrumb",
         "example": "dropdown",
         "originExample": "breadcrumb-dropdown",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
       }
     }
   },
@@ -4715,7 +6898,7 @@
         "component": "Breadcrumb",
         "example": "link",
         "originExample": "breadcrumb-link",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
       }
     }
   },
@@ -4754,7 +6937,7 @@
         "component": "Breadcrumb",
         "example": "rtl",
         "originExample": "breadcrumb-rtl",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
       }
     }
   },
@@ -4793,7 +6976,7 @@
         "component": "Breadcrumb",
         "example": "separator",
         "originExample": "breadcrumb-separator",
-        "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+        "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
       }
     }
   },
@@ -4875,7 +7058,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -4903,7 +7086,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "input",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -4931,7 +7114,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "input-group",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -4959,7 +7142,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "nested",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -4987,7 +7170,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "orientation",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5015,7 +7198,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "popover",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5043,7 +7226,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "rtl",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5071,7 +7254,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "select",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5099,7 +7282,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "separator",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5127,7 +7310,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "size",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5155,7 +7338,7 @@
       "foldkit": {
         "component": "ButtonGroup",
         "example": "split",
-        "origin": "https://ui.shadcn.com/docs/components/button-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -5237,7 +7420,7 @@
       "foldkit": {
         "component": "Card",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/card"
+        "origin": "https://ui.shadcn.com/docs/components/radix/card"
       }
     }
   },
@@ -5265,7 +7448,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "api",
-        "origin": "https://ui.shadcn.com/docs/components/carousel"
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
   },
@@ -5293,7 +7476,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/carousel"
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
   },
@@ -5321,7 +7504,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "orientation",
-        "origin": "https://ui.shadcn.com/docs/components/carousel"
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
   },
@@ -5349,7 +7532,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "rtl",
-        "origin": "https://ui.shadcn.com/docs/components/carousel"
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
   },
@@ -5377,7 +7560,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "sizes",
-        "origin": "https://ui.shadcn.com/docs/components/carousel"
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
   },
@@ -5405,7 +7588,7 @@
       "foldkit": {
         "component": "Carousel",
         "example": "spacing",
-        "origin": "https://ui.shadcn.com/docs/components/carousel"
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
   },
@@ -5433,7 +7616,7 @@
       "foldkit": {
         "component": "Chart",
         "example": "axis",
-        "origin": "https://ui.shadcn.com/docs/components/chart"
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart"
       }
     }
   },
@@ -5461,7 +7644,7 @@
       "foldkit": {
         "component": "Chart",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/chart"
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart"
       }
     }
   },
@@ -5489,7 +7672,7 @@
       "foldkit": {
         "component": "Chart",
         "example": "grid",
-        "origin": "https://ui.shadcn.com/docs/components/chart"
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart"
       }
     }
   },
@@ -5517,7 +7700,7 @@
       "foldkit": {
         "component": "Chart",
         "example": "legend",
-        "origin": "https://ui.shadcn.com/docs/components/chart"
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart"
       }
     }
   },
@@ -5545,7 +7728,7 @@
       "foldkit": {
         "component": "Chart",
         "example": "rtl",
-        "origin": "https://ui.shadcn.com/docs/components/chart"
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart"
       }
     }
   },
@@ -5573,7 +7756,7 @@
       "foldkit": {
         "component": "Chart",
         "example": "tooltip",
-        "origin": "https://ui.shadcn.com/docs/components/chart"
+        "origin": "https://ui.shadcn.com/docs/components/radix/chart"
       }
     }
   },
@@ -5785,7 +7968,7 @@
       "foldkit": {
         "component": "Command",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/command"
+        "origin": "https://ui.shadcn.com/docs/components/radix/command"
       }
     }
   },
@@ -5851,7 +8034,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -5879,7 +8062,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "filtering",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -5907,7 +8090,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "pagination",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -5935,7 +8118,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "row-actions",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -5963,7 +8146,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "row-selection",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -5991,7 +8174,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "sorting",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -6019,7 +8202,7 @@
       "foldkit": {
         "component": "DataTable",
         "example": "visibility",
-        "origin": "https://ui.shadcn.com/docs/components/data-table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
       }
     }
   },
@@ -6236,7 +8419,7 @@
       "foldkit": {
         "component": "Direction",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/direction"
+        "origin": "https://ui.shadcn.com/docs/components/radix/direction"
       }
     }
   },
@@ -6410,7 +8593,7 @@
       "foldkit": {
         "component": "DropdownMenu",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/dropdown-menu"
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
       }
     }
   },
@@ -6438,7 +8621,7 @@
       "foldkit": {
         "component": "Empty",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/empty"
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
       }
     }
   },
@@ -6467,7 +8650,7 @@
         "component": "Empty",
         "example": "input-group",
         "originExample": "empty-input-group",
-        "origin": "https://ui.shadcn.com/docs/components/empty"
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
       }
     }
   },
@@ -6679,7 +8862,7 @@
       "foldkit": {
         "component": "HoverCard",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/hover-card"
+        "origin": "https://ui.shadcn.com/docs/components/radix/hover-card"
       }
     }
   },
@@ -6761,7 +8944,7 @@
       "foldkit": {
         "component": "InputGroup",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/input-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
       }
     }
   },
@@ -6789,7 +8972,7 @@
       "foldkit": {
         "component": "InputOtp",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/input-otp"
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
       }
     }
   },
@@ -6817,7 +9000,7 @@
       "foldkit": {
         "component": "Item",
         "example": "avatar",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -6845,7 +9028,35 @@
       "foldkit": {
         "component": "Item",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
+      }
+    }
+  },
+  {
+    "name": "item-dropdown",
+    "type": "registry:example",
+    "title": "Item Dropdown",
+    "description": "A runnable Foldkit example showing the shadcn Item Dropdown action composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["item", "base-ui-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/item-dropdown/main.ts",
+        "target": "src/examples/item-dropdown/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/item-dropdown/item-dropdown.scene.test.ts",
+        "target": "src/examples/item-dropdown/item-dropdown.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Item",
+        "example": "dropdown",
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -6873,7 +9084,7 @@
       "foldkit": {
         "component": "Item",
         "example": "group",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -6901,7 +9112,7 @@
       "foldkit": {
         "component": "Item",
         "example": "header",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -6929,7 +9140,7 @@
       "foldkit": {
         "component": "Item",
         "example": "icon",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -6957,7 +9168,7 @@
       "foldkit": {
         "component": "Item",
         "example": "image",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -6985,7 +9196,7 @@
       "foldkit": {
         "component": "Item",
         "example": "link",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -7013,7 +9224,7 @@
       "foldkit": {
         "component": "Item",
         "example": "rtl",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -7041,7 +9252,7 @@
       "foldkit": {
         "component": "Item",
         "example": "size",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -7069,7 +9280,7 @@
       "foldkit": {
         "component": "Item",
         "example": "variant",
-        "origin": "https://ui.shadcn.com/docs/components/item"
+        "origin": "https://ui.shadcn.com/docs/components/radix/item"
       }
     }
   },
@@ -7097,7 +9308,7 @@
       "foldkit": {
         "component": "Kbd",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/kbd"
+        "origin": "https://ui.shadcn.com/docs/components/radix/kbd"
       }
     }
   },
@@ -7126,7 +9337,7 @@
         "component": "Kbd",
         "example": "input-group",
         "originExample": "kbd-input-group",
-        "origin": "https://ui.shadcn.com/docs/components/input-group"
+        "origin": "https://ui.shadcn.com/docs/components/radix/kbd"
       }
     }
   },
@@ -7154,7 +9365,7 @@
       "foldkit": {
         "component": "Label",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/label"
+        "origin": "https://ui.shadcn.com/docs/components/radix/label"
       }
     }
   },
@@ -7366,7 +9577,7 @@
       "foldkit": {
         "component": "NativeSelect",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/native-select"
+        "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
       }
     }
   },
@@ -7508,7 +9719,7 @@
       "foldkit": {
         "component": "Pagination",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/pagination"
+        "origin": "https://ui.shadcn.com/docs/components/radix/pagination"
       }
     }
   },
@@ -7758,7 +9969,7 @@
       "foldkit": {
         "component": "Resizable",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/resizable"
+        "origin": "https://ui.shadcn.com/docs/components/radix/resizable"
       }
     }
   },
@@ -8083,7 +10294,7 @@
       "foldkit": {
         "component": "AlertDialog",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert-dialog"
       }
     }
   },
@@ -8312,6 +10523,35 @@
     }
   },
   {
+    "name": "shadcn-base-accordion-basic",
+    "type": "registry:example",
+    "title": "shadcn Base Accordion Basic",
+    "description": "A runnable Foldkit version of the shadcn Base Accordion default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-base-accordion"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-base-accordion-basic/main.ts",
+        "target": "src/examples/shadcn-base-accordion-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-base-accordion-basic/shadcn-base-accordion-basic.scene.test.ts",
+        "target": "src/examples/shadcn-base-accordion-basic/shadcn-base-accordion-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Accordion",
+        "example": "basic",
+        "originExample": "base-accordion-default",
+        "origin": "https://ui.shadcn.com/docs/components/base/accordion"
+      }
+    }
+  },
+  {
     "name": "shadcn-button-as-child",
     "type": "registry:example",
     "title": "shadcn Button As Child",
@@ -8335,7 +10575,7 @@
       "foldkit": {
         "component": "Button",
         "example": "as-child",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8363,7 +10603,7 @@
       "foldkit": {
         "component": "Button",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8391,7 +10631,7 @@
       "foldkit": {
         "component": "Button",
         "example": "default",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8419,7 +10659,7 @@
       "foldkit": {
         "component": "Button",
         "example": "destructive",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8447,7 +10687,35 @@
       "foldkit": {
         "component": "Button",
         "example": "ghost",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-button-group",
+    "type": "registry:example",
+    "title": "shadcn Button Group",
+    "description": "A runnable Foldkit example matching the shadcn Button Group example on the Button docs page.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-button", "button-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-button-group/main.ts",
+        "target": "src/examples/shadcn-button-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
+        "target": "src/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Button",
+        "example": "button-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
       }
     }
   },
@@ -8475,7 +10743,7 @@
       "foldkit": {
         "component": "Button",
         "example": "icon",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8503,7 +10771,7 @@
       "foldkit": {
         "component": "Button",
         "example": "link",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8531,7 +10799,7 @@
       "foldkit": {
         "component": "Button",
         "example": "outline",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8559,7 +10827,7 @@
       "foldkit": {
         "component": "Button",
         "example": "rounded",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8587,7 +10855,7 @@
       "foldkit": {
         "component": "Button",
         "example": "rtl",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8615,7 +10883,7 @@
       "foldkit": {
         "component": "Button",
         "example": "secondary",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8643,7 +10911,7 @@
       "foldkit": {
         "component": "Button",
         "example": "size",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8671,7 +10939,7 @@
       "foldkit": {
         "component": "Button",
         "example": "spinner",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8699,7 +10967,7 @@
       "foldkit": {
         "component": "Button",
         "example": "with-icon",
-        "origin": "https://ui.shadcn.com/docs/components/button"
+        "origin": "https://ui.shadcn.com/docs/components/radix/button"
       }
     }
   },
@@ -8760,6 +11028,34 @@
     "devDependencies": []
   },
   {
+    "name": "shadcn-calendar-custom-cell-size",
+    "type": "registry:example",
+    "title": "shadcn Calendar Custom Cell Size",
+    "description": "A runnable Foldkit example matching the shadcn Calendar Custom Cell Size example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-calendar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-custom-cell-size/main.ts",
+        "target": "src/examples/shadcn-calendar-custom-cell-size/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-custom-cell-size/shadcn-calendar-custom-cell-size.scene.test.ts",
+        "target": "src/examples/shadcn-calendar-custom-cell-size/shadcn-calendar-custom-cell-size.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Calendar",
+        "example": "custom-cell-size",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    }
+  },
+  {
     "name": "shadcn-calendar-date-of-birth",
     "type": "registry:example",
     "title": "shadcn Calendar Date of Birth",
@@ -8786,6 +11082,34 @@
     ],
     "dependencies": [],
     "devDependencies": []
+  },
+  {
+    "name": "shadcn-calendar-date-time-picker",
+    "type": "registry:example",
+    "title": "shadcn Calendar Date and Time Picker",
+    "description": "A runnable Foldkit example matching the shadcn Calendar Date and Time Picker example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-calendar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-date-time-picker/main.ts",
+        "target": "src/examples/shadcn-calendar-date-time-picker/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-date-time-picker/shadcn-calendar-date-time-picker.scene.test.ts",
+        "target": "src/examples/shadcn-calendar-date-time-picker/shadcn-calendar-date-time-picker.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Calendar",
+        "example": "date-time-picker",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    }
   },
   {
     "name": "shadcn-calendar-month-year-selector",
@@ -8844,6 +11168,34 @@
     "devDependencies": []
   },
   {
+    "name": "shadcn-calendar-range",
+    "type": "registry:example",
+    "title": "shadcn Calendar Range",
+    "description": "A runnable Foldkit example matching the shadcn Calendar Range example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-calendar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-range/main.ts",
+        "target": "src/examples/shadcn-calendar-range/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-range/shadcn-calendar-range.scene.test.ts",
+        "target": "src/examples/shadcn-calendar-range/shadcn-calendar-range.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Calendar",
+        "example": "range",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    }
+  },
+  {
     "name": "shadcn-calendar-rtl",
     "type": "registry:example",
     "title": "shadcn Calendar RTL",
@@ -8872,6 +11224,34 @@
     "devDependencies": []
   },
   {
+    "name": "shadcn-calendar-week-numbers",
+    "type": "registry:example",
+    "title": "shadcn Calendar Week Numbers",
+    "description": "A runnable Foldkit example matching the shadcn Calendar Week Numbers example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-calendar"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-calendar-week-numbers/main.ts",
+        "target": "src/examples/shadcn-calendar-week-numbers/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-calendar-week-numbers/shadcn-calendar-week-numbers.scene.test.ts",
+        "target": "src/examples/shadcn-calendar-week-numbers/shadcn-calendar-week-numbers.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Calendar",
+        "example": "week-numbers",
+        "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+      }
+    }
+  },
+  {
     "name": "shadcn-checkbox-basic",
     "type": "registry:example",
     "title": "shadcn Checkbox Basic",
@@ -8895,7 +11275,7 @@
       "foldkit": {
         "component": "Checkbox",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/checkbox"
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox"
       }
     }
   },
@@ -8923,7 +11303,7 @@
       "foldkit": {
         "component": "Collapsible",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/collapsible"
+        "origin": "https://ui.shadcn.com/docs/components/radix/collapsible"
       }
     }
   },
@@ -8951,7 +11331,7 @@
       "foldkit": {
         "component": "Combobox",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/combobox"
+        "origin": "https://ui.shadcn.com/docs/components/radix/combobox"
       }
     }
   },
@@ -8979,7 +11359,7 @@
       "foldkit": {
         "component": "ContextMenu",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/context-menu"
+        "origin": "https://ui.shadcn.com/docs/components/radix/context-menu"
       }
     }
   },
@@ -9007,7 +11387,7 @@
       "foldkit": {
         "component": "DatePicker",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/date-picker"
+        "origin": "https://ui.shadcn.com/docs/components/radix/date-picker"
       }
     }
   },
@@ -9035,7 +11415,7 @@
       "foldkit": {
         "component": "Dialog",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/dialog"
+        "origin": "https://ui.shadcn.com/docs/components/radix/dialog"
       }
     }
   },
@@ -9063,7 +11443,7 @@
       "foldkit": {
         "component": "Drawer",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/drawer"
+        "origin": "https://ui.shadcn.com/docs/components/radix/drawer"
       }
     }
   },
@@ -9091,7 +11471,7 @@
       "foldkit": {
         "component": "Field",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/field"
+        "origin": "https://ui.shadcn.com/docs/components/radix/field"
       }
     }
   },
@@ -9119,7 +11499,7 @@
       "foldkit": {
         "component": "Input",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/input"
+        "origin": "https://ui.shadcn.com/docs/components/radix/input"
       }
     }
   },
@@ -9147,7 +11527,7 @@
       "foldkit": {
         "component": "Menubar",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/menubar"
+        "origin": "https://ui.shadcn.com/docs/components/radix/menubar"
       }
     }
   },
@@ -9175,7 +11555,7 @@
       "foldkit": {
         "component": "NavigationMenu",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/navigation-menu"
+        "origin": "https://ui.shadcn.com/docs/components/radix/navigation-menu"
       }
     }
   },
@@ -9203,7 +11583,7 @@
       "foldkit": {
         "component": "Popover",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/popover"
+        "origin": "https://ui.shadcn.com/docs/components/radix/popover"
       }
     }
   },
@@ -9231,7 +11611,7 @@
       "foldkit": {
         "component": "Progress",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/progress"
+        "origin": "https://ui.shadcn.com/docs/components/radix/progress"
       }
     }
   },
@@ -9259,7 +11639,7 @@
       "foldkit": {
         "component": "RadioGroup",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/radio"
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
       }
     }
   },
@@ -9287,7 +11667,7 @@
       "foldkit": {
         "component": "ScrollArea",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/scroll-area"
+        "origin": "https://ui.shadcn.com/docs/components/radix/scroll-area"
       }
     }
   },
@@ -9315,7 +11695,7 @@
       "foldkit": {
         "component": "Select",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/select"
+        "origin": "https://ui.shadcn.com/docs/components/radix/select"
       }
     }
   },
@@ -9343,7 +11723,7 @@
       "foldkit": {
         "component": "Separator",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/separator"
+        "origin": "https://ui.shadcn.com/docs/components/radix/separator"
       }
     }
   },
@@ -9371,7 +11751,7 @@
       "foldkit": {
         "component": "Slider",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/slider"
+        "origin": "https://ui.shadcn.com/docs/components/radix/slider"
       }
     }
   },
@@ -9399,7 +11779,7 @@
       "foldkit": {
         "component": "Switch",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/switch"
+        "origin": "https://ui.shadcn.com/docs/components/radix/switch"
       }
     }
   },
@@ -9427,7 +11807,7 @@
       "foldkit": {
         "component": "Tabs",
         "example": "shadcn-basic",
-        "origin": "https://ui.shadcn.com/docs/components/tabs"
+        "origin": "https://ui.shadcn.com/docs/components/radix/tabs"
       }
     }
   },
@@ -9455,7 +11835,7 @@
       "foldkit": {
         "component": "Textarea",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/textarea"
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea"
       }
     }
   },
@@ -9483,7 +11863,94 @@
       "foldkit": {
         "component": "Toast",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/toast"
+        "origin": "https://ui.shadcn.com/docs/components/radix/toast"
+      }
+    }
+  },
+  {
+    "name": "shadcn-toggle-basic",
+    "type": "registry:example",
+    "title": "shadcn Toggle Basic",
+    "description": "A runnable Foldkit version of the shadcn Toggle default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-toggle"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-toggle-basic/main.ts",
+        "target": "src/examples/shadcn-toggle-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-toggle-basic/shadcn-toggle-basic.scene.test.ts",
+        "target": "src/examples/shadcn-toggle-basic/shadcn-toggle-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Toggle",
+        "example": "basic",
+        "originExample": "toggle-default",
+        "origin": "https://ui.shadcn.com/docs/components/radix/toggle"
+      }
+    }
+  },
+  {
+    "name": "shadcn-toggle-group-basic",
+    "type": "registry:example",
+    "title": "shadcn Toggle Group Basic",
+    "description": "A runnable Foldkit version of the shadcn Toggle Group default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-toggle-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-toggle-group-basic/main.ts",
+        "target": "src/examples/shadcn-toggle-group-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-toggle-group-basic/shadcn-toggle-group-basic.scene.test.ts",
+        "target": "src/examples/shadcn-toggle-group-basic/shadcn-toggle-group-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ToggleGroup",
+        "example": "basic",
+        "originExample": "toggle-group-default",
+        "origin": "https://ui.shadcn.com/docs/components/radix/toggle-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-tooltip-basic",
+    "type": "registry:example",
+    "title": "shadcn Tooltip Basic",
+    "description": "A runnable Foldkit version of the shadcn Tooltip default example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-tooltip"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-tooltip-basic/main.ts",
+        "target": "src/examples/shadcn-tooltip-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-tooltip-basic/shadcn-tooltip-basic.scene.test.ts",
+        "target": "src/examples/shadcn-tooltip-basic/shadcn-tooltip-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Tooltip",
+        "example": "basic",
+        "originExample": "tooltip-default",
+        "origin": "https://ui.shadcn.com/docs/components/radix/tooltip"
       }
     }
   },
@@ -9511,7 +11978,7 @@
       "foldkit": {
         "component": "Sheet",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/sheet"
+        "origin": "https://ui.shadcn.com/docs/components/radix/sheet"
       }
     }
   },
@@ -9539,7 +12006,7 @@
       "foldkit": {
         "component": "Sidebar",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/sidebar"
+        "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
       }
     }
   },
@@ -9567,7 +12034,7 @@
       "foldkit": {
         "component": "Skeleton",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/skeleton"
+        "origin": "https://ui.shadcn.com/docs/components/radix/skeleton"
       }
     }
   },
@@ -9649,7 +12116,7 @@
       "foldkit": {
         "component": "Sonner",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/sonner"
+        "origin": "https://ui.shadcn.com/docs/components/radix/sonner"
       }
     }
   },
@@ -9677,7 +12144,7 @@
       "foldkit": {
         "component": "Spinner",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/spinner"
+        "origin": "https://ui.shadcn.com/docs/components/radix/spinner"
       }
     }
   },
@@ -9759,7 +12226,7 @@
       "foldkit": {
         "component": "Table",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/table"
+        "origin": "https://ui.shadcn.com/docs/components/radix/table"
       }
     }
   },
@@ -9959,7 +12426,8 @@
       "foldkit": {
         "component": "Toggle",
         "example": "basic",
-        "originExample": "toggle-hero"
+        "originExample": "toggle-hero",
+        "origin": "https://base-ui.com/react/components/toggle"
       }
     }
   },
@@ -9997,7 +12465,8 @@
       "foldkit": {
         "component": "ToggleGroup",
         "example": "basic",
-        "originExample": "toggle-group-hero"
+        "originExample": "toggle-group-hero",
+        "origin": "https://base-ui.com/react/components/toggle-group"
       }
     }
   },
@@ -10117,7 +12586,7 @@
       "foldkit": {
         "component": "Typography",
         "example": "basic",
-        "origin": "https://ui.shadcn.com/docs/components/typography"
+        "origin": "https://ui.shadcn.com/docs/components/radix/typography"
       }
     }
   },

@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Resizable",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/resizable",
+      "origin": "https://ui.shadcn.com/docs/components/radix/resizable",
       "artifact": "component"
     }
   }

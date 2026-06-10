@@ -32,7 +32,9 @@
       "component": "CheckboxGroup",
       "origin": "https://base-ui.com/react/components/checkbox-group",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-checkbox-group"
     }
   }
 }

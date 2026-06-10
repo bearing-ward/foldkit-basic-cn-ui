@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("usage"),
-  S.Literal("sso"),
-  S.Literal("retention"),
+  S.Literal("history"),
+  S.Literal("premium"),
+  S.Literal("email"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["usage"] }, []];
+] => [{ openValues: ["history"] }, []];
 
 // UPDATE
 
@@ -70,31 +70,31 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "usage",
+          value: "history",
           openValues: model.openValues,
-          title: "Usage reports",
-          onValueChange: ToggledPanel({ value: "usage" }),
+          title: "Can I access my account history?",
+          onValueChange: ToggledPanel({ value: "history" }),
           children: panel(
-            "Review workspace activity, audit trails, and export history."
+            "Yes, you can view your account history in the dashboard under the Activity tab."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "sso",
+          value: "premium",
           openValues: model.openValues,
-          title: "Single sign-on",
-          onValueChange: ToggledPanel({ value: "sso" }),
+          title: "Premium feature information",
+          onValueChange: ToggledPanel({ value: "premium" }),
           children: panel(
-            "SAML setup is available after your organization upgrades."
+            "This feature is available for Premium subscribers only. Upgrade your plan to access advanced analytics."
           ),
           disabled: true,
         }),
         Accordion.itemView<Message>({
-          value: "retention",
+          value: "email",
           openValues: model.openValues,
-          title: "Retention policy",
-          onValueChange: ToggledPanel({ value: "retention" }),
+          title: "How do I update my email address?",
+          onValueChange: ToggledPanel({ value: "email" }),
           children: panel(
-            "Set how long events and attachments remain available."
+            "Go to your account settings and update your email address in the Profile section."
           ),
         }),
       ],

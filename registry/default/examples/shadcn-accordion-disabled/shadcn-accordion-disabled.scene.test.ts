@@ -9,14 +9,16 @@ describe("shadcn Accordion Disabled example", () => {
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(
-        Scene.role("button", { name: "Single sign-on" })
+        Scene.role("button", { name: "Premium feature information" })
       ).toBeDisabled(),
       Scene.expect(
-        Scene.role("button", { name: "Single sign-on" })
+        Scene.role("button", { name: "Premium feature information" })
       ).not.toHaveHandler("click"),
-      Scene.click(Scene.role("button", { name: "Retention policy" })),
+      Scene.click(
+        Scene.role("button", { name: "How do I update my email address?" })
+      ),
       Scene.expect(
-        Scene.role("button", { name: "Retention policy" })
+        Scene.role("button", { name: "How do I update my email address?" })
       ).toHaveAttr("aria-expanded", "true")
     );
   });

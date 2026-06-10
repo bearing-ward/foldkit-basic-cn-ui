@@ -26,7 +26,7 @@
       "component": "Badge",
       "example": "spinner",
       "originExample": "badge-spinner",
-      "origin": "https://ui.shadcn.com/docs/components/badge"
+      "origin": "https://ui.shadcn.com/docs/components/radix/badge"
     }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-calendar-custom-cell-size",
+  "type": "registry:example",
+  "title": "shadcn Calendar Custom Cell Size",
+  "description": "A runnable Foldkit example matching the shadcn Calendar Custom Cell Size example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-calendar"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-calendar-custom-cell-size/main.ts",
+      "target": "src/examples/shadcn-calendar-custom-cell-size/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst prices = [\"$100\", \"$100\", \"$100\", \"$100\", \"$120\"];\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"rounded-lg border border-gray-200 bg-white p-3\")],\n    [\n      h.div(\n        [h.Class(\"mb-3 text-center text-sm font-medium\")],\n        [\"December 2026\"]\n      ),\n      h.div(\n        [h.Class(\"grid grid-cols-7 gap-1 text-center text-sm\")],\n        [\n          ...[\"Su\", \"Mo\", \"Tu\", \"We\", \"Th\", \"Fr\", \"Sa\"].map((day) =>\n            h.div([h.Class(\"h-10 text-gray-500\")], [day])\n          ),\n          ...Array.from({ length: 35 }, (_, index) => {\n            const day = index < 2 ? index + 29 : index - 1;\n            const price = prices[index % prices.length] ?? \"$100\";\n            return h.button(\n              [\n                h.Type(\"button\"),\n                h.Disabled(true),\n                h.AriaLabel(`December ${day} ${price}`),\n                h.Class(\n                  \"flex size-12 flex-col items-center justify-center rounded-md text-sm data-[disabled]:cursor-default\"\n                ),\n              ],\n              [\n                h.span([], [String(day)]),\n                h.span([h.Class(\"text-[10px] text-gray-500\")], [price]),\n              ]\n            );\n          }),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-calendar-custom-cell-size/shadcn-calendar-custom-cell-size.scene.test.ts",
+      "target": "src/examples/shadcn-calendar-custom-cell-size/shadcn-calendar-custom-cell-size.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Calendar Custom Cell Size example\", () => {\n  test(\"renders the origin custom cell size price layout as inert cells\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"December 2026\")).toExist(),\n      Scene.expect(Scene.text(\"$100\")).toExist(),\n      Scene.expect(Scene.text(\"$120\")).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"December 1 $100\" })\n      ).toBeDisabled()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Calendar",
+      "example": "custom-cell-size",
+      "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+    }
+  }
+}

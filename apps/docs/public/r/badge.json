@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Badge",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/badge",
+      "origin": "https://ui.shadcn.com/docs/components/radix/badge",
       "artifact": "component"
     }
   }

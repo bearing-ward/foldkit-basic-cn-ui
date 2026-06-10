@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Menubar",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/menubar"
+      "origin": "https://ui.shadcn.com/docs/components/radix/menubar"
     }
   }
 }

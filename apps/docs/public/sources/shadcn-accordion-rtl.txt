@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("billing"),
-  S.Literal("team"),
-  S.Literal("security"),
+  S.Literal("password"),
+  S.Literal("subscription"),
+  S.Literal("payment"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["billing"] }, []];
+] => [{ openValues: ["password"] }, []];
 
 // UPDATE
 
@@ -74,25 +74,31 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         openValues: model.openValues,
         children: [
           Accordion.itemView<Message>({
-            value: "billing",
+            value: "password",
             openValues: model.openValues,
-            title: "الفواتير",
-            onValueChange: ToggledPanel({ value: "billing" }),
-            children: panel("راجع الفواتير وخطط الدفع وبيانات الضريبة."),
+            title: "كيف يمكنني إعادة تعيين كلمة المرور؟",
+            onValueChange: ToggledPanel({ value: "password" }),
+            children: panel(
+              "انقر على 'نسيت كلمة المرور' في صفحة تسجيل الدخول، أدخل عنوان بريدك الإلكتروني، وسنرسل لك رابطًا لإعادة تعيين كلمة المرور. سينتهي صلاحية الرابط خلال 24 ساعة."
+            ),
           }),
           Accordion.itemView<Message>({
-            value: "team",
+            value: "subscription",
             openValues: model.openValues,
-            title: "الفريق",
-            onValueChange: ToggledPanel({ value: "team" }),
-            children: panel("ادع اعضاء الفريق وحدث صلاحيات الوصول."),
+            title: "هل يمكنني تغيير خطة الاشتراك الخاصة بي؟",
+            onValueChange: ToggledPanel({ value: "subscription" }),
+            children: panel(
+              "نعم، يمكنك ترقية خطتك أو تخفيضها في أي وقت من صفحة إعدادات الفوترة."
+            ),
           }),
           Accordion.itemView<Message>({
-            value: "security",
+            value: "payment",
             openValues: model.openValues,
-            title: "الامان",
-            onValueChange: ToggledPanel({ value: "security" }),
-            children: panel("ادارة تسجيل الدخول والاجهزة الموثوقة."),
+            title: "ما هي طرق الدفع التي تقبلونها؟",
+            onValueChange: ToggledPanel({ value: "payment" }),
+            children: panel(
+              "نقبل بطاقات الائتمان الرئيسية وطرق الدفع المعتمدة."
+            ),
           }),
         ],
         className: Accordion.shadcnAccordionRootClassName,

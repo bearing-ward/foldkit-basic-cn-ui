@@ -8,17 +8,17 @@ import { m } from "foldkit/message";
 import * as Chart from "../../ui/chart";
 
 const chartData: readonly Chart.ChartDatum[] = [
-  { label: "Jan", values: { desktop: 186, mobile: 80 } },
-  { label: "Feb", values: { desktop: 305, mobile: 200 } },
-  { label: "Mar", values: { desktop: 237, mobile: 120 } },
-  { label: "Apr", values: { desktop: 73, mobile: 190 } },
+  { label: "January", values: { desktop: 186, mobile: 80 } },
+  { label: "February", values: { desktop: 305, mobile: 200 } },
+  { label: "March", values: { desktop: 237, mobile: 120 } },
+  { label: "April", values: { desktop: 73, mobile: 190 } },
   { label: "May", values: { desktop: 209, mobile: 130 } },
-  { label: "Jun", values: { desktop: 214, mobile: 140 } },
+  { label: "June", values: { desktop: 214, mobile: 140 } },
 ];
 
 const chartSeries: readonly Chart.ChartSeries[] = [
   { key: "desktop", label: "Desktop", color: "#2563eb" },
-  { key: "mobile", label: "Mobile", color: "#16a34a" },
+  { key: "mobile", label: "Mobile", color: "#60a5fa" },
 ];
 
 // MODEL
@@ -67,6 +67,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             series: chartSeries,
             showGrid: false,
             showAxis: true,
+            axisLabelFormatter: (label) => label.slice(0, 3),
           }),
         ],
       }),

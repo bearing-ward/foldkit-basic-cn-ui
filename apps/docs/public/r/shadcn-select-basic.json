@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Select",
       "example": "shadcn-basic",
-      "origin": "https://ui.shadcn.com/docs/components/select"
+      "origin": "https://ui.shadcn.com/docs/components/radix/select"
     }
   }
 }

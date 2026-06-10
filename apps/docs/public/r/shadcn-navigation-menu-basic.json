@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "NavigationMenu",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/navigation-menu"
+      "origin": "https://ui.shadcn.com/docs/components/radix/navigation-menu"
     }
   }
 }

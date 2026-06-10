@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "HoverCard",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/hover-card"
+      "origin": "https://ui.shadcn.com/docs/components/radix/hover-card"
     }
   }
 }

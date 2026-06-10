@@ -29,10 +29,12 @@
   ],
   "meta": {
     "foldkit": {
-      "component": "Toggle",
+      "component": "TogglePrimitive",
       "origin": "https://base-ui.com/react/components/toggle",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-toggle"
     }
   }
 }

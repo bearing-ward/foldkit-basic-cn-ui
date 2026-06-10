@@ -26,7 +26,7 @@
       "component": "Kbd",
       "example": "input-group",
       "originExample": "kbd-input-group",
-      "origin": "https://ui.shadcn.com/docs/components/input-group"
+      "origin": "https://ui.shadcn.com/docs/components/radix/kbd"
     }
   }
 }

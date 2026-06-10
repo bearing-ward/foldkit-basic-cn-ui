@@ -32,7 +32,9 @@
       "component": "Collapsible",
       "origin": "https://base-ui.com/react/components/collapsible",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-collapsible"
     }
   }
 }

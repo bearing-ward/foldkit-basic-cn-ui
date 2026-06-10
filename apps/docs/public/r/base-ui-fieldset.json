@@ -12,13 +12,13 @@
       "path": "registry/default/ui/base-ui-fieldset/index.ts",
       "target": "src/ui/base-ui-fieldset/index.ts",
       "type": "registry:ui",
-      "content": "export { descriptionId, legendId, view } from \"../fieldset\";\nexport type { FieldsetAttributes, ViewConfig } from \"../fieldset\";\n\nexport {\n  fieldsetClassName as baseUiFieldsetRootClassName,\n  legendClassName as baseUiFieldsetLegendClassName,\n  descriptionClassName as baseUiFieldsetDescriptionClassName,\n} from \"./view\";\n"
+      "content": "export { descriptionId, legendId, view } from \"../fieldset\";\nexport type { FieldsetAttributes, ViewConfig } from \"../fieldset\";\n\nexport {\n  fieldsetClassName as baseUiFieldsetRootClassName,\n  legendClassName as baseUiFieldsetLegendClassName,\n  descriptionClassName as baseUiFieldsetDescriptionClassName,\n  baseUiFieldsetFieldsClassName,\n  baseUiFieldsetFieldClassName,\n  baseUiFieldsetLabelClassName,\n  baseUiFieldsetInputClassName,\n  baseUiFieldsetTextareaClassName,\n} from \"./view\";\n"
     },
     {
       "path": "registry/default/ui/base-ui-fieldset/view.ts",
       "target": "src/ui/base-ui-fieldset/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  fieldsetClassName,\n  legendClassName,\n  descriptionClassName,\n} from \"../fieldset/view\";\n"
+      "content": "export {\n  fieldsetClassName,\n  legendClassName,\n  descriptionClassName,\n  fieldsClassName as baseUiFieldsetFieldsClassName,\n  fieldClassName as baseUiFieldsetFieldClassName,\n  labelClassName as baseUiFieldsetLabelClassName,\n  inputClassName as baseUiFieldsetInputClassName,\n  textareaClassName as baseUiFieldsetTextareaClassName,\n} from \"../fieldset/view\";\n"
     },
     {
       "path": "registry/default/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",

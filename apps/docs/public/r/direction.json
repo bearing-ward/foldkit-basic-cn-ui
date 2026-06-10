@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Direction",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/direction",
+      "origin": "https://ui.shadcn.com/docs/components/radix/direction",
       "artifact": "component"
     }
   }

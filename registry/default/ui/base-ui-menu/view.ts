@@ -5,4 +5,5 @@ export {
   animatedItemsClassName,
   itemClassName,
   backdropClassName,
+  defaultAnchor as baseUiMenuDefaultAnchor,
 } from "../menu/view";

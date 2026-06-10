@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "NativeSelect",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/native-select"
+      "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
     }
   }
 }

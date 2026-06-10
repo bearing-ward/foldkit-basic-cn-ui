@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "InputGroup",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/input-group"
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
     }
   }
 }

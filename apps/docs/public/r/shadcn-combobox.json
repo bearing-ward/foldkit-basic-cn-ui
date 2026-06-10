@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/combobox",
+      "origin": "https://ui.shadcn.com/docs/components/radix/combobox",
       "artifact": "component",
       "primitive": "Ui.Combobox",
       "stateful": true

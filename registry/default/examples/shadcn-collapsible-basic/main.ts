@@ -47,27 +47,51 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
-  const panelId = "recovery-keys-panel";
+  const panelId = "peduarte-repositories";
 
   return Collapsible.rootView<Message>({
     open: model.open,
+    className: "space-y-2 border-0 p-0 shadow-none",
     children: [
-      Collapsible.triggerView<Message>({
-        open: model.open,
-        onOpenChange: ClickedTrigger(),
-        ariaLabel: "Recovery keys",
-        panelId,
-        children: [h.span([], ["Recovery keys"])],
-      }),
+      h.div(
+        [h.Class("flex items-center justify-between space-x-4 px-4")],
+        [
+          h.h4(
+            [h.Class("text-sm font-semibold")],
+            ["@peduarte starred 3 repositories"]
+          ),
+          Collapsible.triggerView<Message>({
+            open: model.open,
+            onOpenChange: ClickedTrigger(),
+            ariaLabel: "Toggle",
+            panelId,
+            className: "size-9 shrink-0 justify-center px-0",
+            children: [],
+          }),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-md border px-4 py-3 font-mono text-sm")],
+        ["@radix-ui/primitives"]
+      ),
       Collapsible.panelView<Message>({
         open: model.open,
         id: panelId,
+        className: "border-0 bg-transparent",
         children: [
-          Collapsible.contentView<Message>([
-            h.div([], ["alien-bean-pasta"]),
-            h.div([], ["wild-irish-burrito"]),
-            h.div([], ["horse-battery-staple"]),
-          ]),
+          Collapsible.contentView<Message>(
+            [
+              h.div(
+                [h.Class("rounded-md border px-4 py-3 font-mono text-sm")],
+                ["@radix-ui/colors"]
+              ),
+              h.div(
+                [h.Class("rounded-md border px-4 py-3 font-mono text-sm")],
+                ["@stitches/react"]
+              ),
+            ],
+            "space-y-2 p-0"
+          ),
         ],
       }),
     ],

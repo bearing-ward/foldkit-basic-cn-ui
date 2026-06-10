@@ -1,8 +1,10 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
+import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
+import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
 import * as ShadcnDatePickerBasicExample from "../registry/default/examples/shadcn-date-picker-basic/main";
 import * as ShadcnDialogBasicExample from "../registry/default/examples/shadcn-dialog-basic/main";
@@ -17,22 +19,72 @@ import * as ShadcnScrollAreaBasicExample from "../registry/default/examples/shad
 import * as ShadcnSeparatorBasicExample from "../registry/default/examples/shadcn-separator-basic/main";
 import * as ShadcnTextareaBasicExample from "../registry/default/examples/shadcn-textarea-basic/main";
 import * as ShadcnToastBasicExample from "../registry/default/examples/shadcn-toast-basic/main";
+import * as ShadcnToggleBasicExample from "../registry/default/examples/shadcn-toggle-basic/main";
+import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/shadcn-toggle-group-basic/main";
+import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
+import * as Main from "./main";
 
-export const shadcnCheckboxBasicExamplePreview = (): Html =>
-  ShadcnCheckboxBasicExample.view(ShadcnCheckboxBasicExample.init()[0]);
+type Message = Main.Message;
 
-export const shadcnCollapsibleBasicExamplePreview = (): Html =>
-  ShadcnCollapsibleBasicExample.view(ShadcnCollapsibleBasicExample.init()[0]);
+export const shadcnBaseAccordionBasicExamplePreview = (
+  model: ShadcnBaseAccordionBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnComboboxBasicExamplePreview = (): Html =>
-  html<never>().div(
-    [
-      html<never>().Class(
-        "rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700"
-      ),
-    ],
-    ["Search cities..."]
-  );
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnBaseAccordionBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnBaseAccordionBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnCheckboxBasicExamplePreview = (
+  model: ShadcnCheckboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCheckboxBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCheckboxBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnCollapsibleBasicExamplePreview = (
+  model: ShadcnCollapsibleBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCollapsibleBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCollapsibleBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnComboboxBasicExamplePreview = (
+  model: ShadcnComboboxBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnComboboxBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnComboboxBasicExampleMessage({ message }),
+  });
+};
 
 export const shadcnContextMenuBasicExamplePreview = (): Html =>
   ShadcnContextMenuBasicExample.view(ShadcnContextMenuBasicExample.init()[0]);
@@ -75,5 +127,14 @@ export const shadcnSeparatorBasicExamplePreview = (): Html =>
 export const shadcnTextareaBasicExamplePreview = (): Html =>
   ShadcnTextareaBasicExample.view(ShadcnTextareaBasicExample.init()[0]);
 
+export const shadcnToggleBasicExamplePreview = (): Html =>
+  ShadcnToggleBasicExample.view(ShadcnToggleBasicExample.init()[0]);
+
+export const shadcnToggleGroupBasicExamplePreview = (): Html =>
+  ShadcnToggleGroupBasicExample.view(ShadcnToggleGroupBasicExample.init()[0]);
+
 export const shadcnToastBasicExamplePreview = (): Html =>
   ShadcnToastBasicExample.view(ShadcnToastBasicExample.init()[0]);
+
+export const shadcnTooltipBasicExamplePreview = (): Html =>
+  ShadcnTooltipBasicExample.view(ShadcnTooltipBasicExample.init()[0]);

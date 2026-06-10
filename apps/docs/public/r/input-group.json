@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "InputGroup",
-      "origin": "https://ui.shadcn.com/docs/components/input-group",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group",
       "artifact": "component",
       "stateful": false
     }

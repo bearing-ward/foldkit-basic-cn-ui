@@ -88,6 +88,33 @@ style lane visible in install names, docs routes, search, and generated
 registry output. Existing non-Foldkit items should migrate to prefixed names;
 compatibility aliases are not required.
 
+Base UI and shadcn component identity is origin-page based. For every upstream
+Base UI component page, the Base UI lane should have exactly one matching
+component page and registry UI item named from that page. For every upstream
+shadcn component page, the shadcn lane should have exactly one matching
+component page and registry UI item named from that page. Do not split an
+origin page into separate local component pages just because the upstream
+implementation exposes sub-parts. Example: Base UI has a `Radio` page whose
+anatomy uses `RadioGroup`; it does not have a `Radio Group` page, so the local
+Base UI lane should be `base-ui-radio`, not `base-ui-radio-group`.
+
+Base UI and shadcn are open-source source references, not inspiration boards.
+When implementing or reviewing a Base UI or shadcn-origin component, compare
+against the upstream docs and source code. Local markup, part nesting,
+attributes, interaction behavior, keyboard behavior, spacing, orientation, and
+visual output should match the origin as closely as Foldkit allows. Any
+unavoidable Foldkit-specific difference must be documented as a parity gap, not
+silently shipped as an approximation.
+
+Origin examples are content contracts. Do not replace upstream demo content with
+local product copy, generic placeholder copy, or a different scenario just
+because the local component API is easier to demonstrate that way. Example names,
+visible copy, labels, placeholders, button text, links, media, icon intent,
+grouping, header/content/footer placement, and action layout must come from the
+origin page/source unless the row explicitly documents why the exact content
+cannot be represented in Foldkit yet. A component with invented content is
+registry-covered, but it is not origin-parity complete.
+
 Examples should use upstream example names when matching Base UI or shadcn:
 
 - Base UI examples should match the Base UI page's demo names, visible content,
@@ -107,6 +134,25 @@ Examples should use upstream example names when matching Base UI or shadcn:
   `registry/default/examples/{origin-lane}-{name}-*`, docs example blocks, source
   snapshots, generated registry JSON, and scene tests, then either add the
   missing matching example or document the deliberate deferral with the reason.
+- Reconciliation must compare more than names and text. Match the origin
+  example's structure, orientation, and visual design intent: which component
+  parts are nested, whether content is vertical or horizontal, where media,
+  headers, actions, and footers sit, and which visual variant makes the example
+  distinct. If the local primitive cannot match that structure, document the
+  gap instead of publishing a same-named approximation.
+- Use `docs/product/origin-parity-prompt.md` as the required prompt/checklist for
+  Base UI and shadcn origin parity work. The acceptance bar is side-by-side
+  visual and behavior parity with the origin, with documented constraints for
+  any unavoidable local differences.
+- Track the current reconciliation agenda in
+  `docs/product/origin-parity-audit.md`. Do not treat a covered example as
+  complete until it is marked verified/fixed there or in a newer audit artifact.
+- Track the active row-by-row origin-content review in
+  `docs/product/origin-content-parity-review.md`. That file is the checklist for
+  current shadcn and Base UI rows that still need content, structure, behavior,
+  and visual parity review. A row should stay unchecked until side-by-side origin
+  comparison, local browser evidence, scene/browser tests, source snapshots, and
+  generated registry JSON all agree.
 
 ## Required Files
 

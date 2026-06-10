@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "InputOtp",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/input-otp",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-otp",
       "artifact": "component"
     }
   }

@@ -4,14 +4,17 @@ import { describe, test } from "vitest";
 import * as Example from "./main";
 
 describe("shadcn Button Size example", () => {
-  test("renders and handles the Size button", () => {
+  test("renders the origin size buttons as inert", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
+      Scene.expect(Scene.role("button", { name: "Extra Small" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Small" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Default" })).toExist(),
-      Scene.expect(Scene.text("Clicked 0 times")).toExist(),
-      Scene.click(Scene.role("button", { name: "Default" })),
-      Scene.expect(Scene.text("Clicked 1 time")).toExist()
+      Scene.expect(Scene.role("button", { name: "Large" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Default" })).not.toHaveHandler(
+        "click"
+      )
     );
   });
 });

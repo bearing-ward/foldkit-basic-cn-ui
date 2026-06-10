@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Popover",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/popover"
+      "origin": "https://ui.shadcn.com/docs/components/radix/popover"
     }
   }
 }

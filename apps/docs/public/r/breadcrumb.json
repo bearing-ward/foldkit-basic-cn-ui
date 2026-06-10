@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Breadcrumb",
-      "origin": "https://ui.shadcn.com/docs/components/breadcrumb",
+      "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
       "artifact": "component",
       "stateful": false
     }

@@ -32,20 +32,19 @@ const resolvePreventBlurMount = () =>
   );
 
 describe("Shadcn Combobox Basic example", () => {
-  test("filters cities in the popup", () => {
+  test("filters the shadcn framework options", () => {
     Scene.scene(
       {
         update: ShadcnComboboxBasicExample.update,
         view: ShadcnComboboxBasicExample.view,
       },
       Scene.with(ShadcnComboboxBasicExample.init()[0]),
-      Scene.expect(Scene.placeholder("Search cities...")).toExist(),
-      Scene.expect(Scene.text("Selected city: No city selected")).toExist(),
+      Scene.expect(Scene.placeholder("Select framework...")).toExist(),
       resolvePreventBlurMount(),
-      Scene.type(Scene.placeholder("Search cities..."), "qui"),
+      Scene.type(Scene.placeholder("Select framework..."), "sv"),
       resolveComboboxMounts(),
-      Scene.expect(Scene.text("Quito")).toExist(),
-      Scene.expect(Scene.text("Oxford")).not.toExist()
+      Scene.expect(Scene.text("SvelteKit")).toExist(),
+      Scene.expect(Scene.text("Next.js")).not.toExist()
     );
   });
 });

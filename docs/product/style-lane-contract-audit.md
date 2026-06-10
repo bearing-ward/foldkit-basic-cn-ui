@@ -45,7 +45,7 @@ Affected Base UI wrappers:
 - `base-ui-input`
 - `base-ui-menu`
 - `base-ui-popover`
-- `base-ui-radio-group`
+- `base-ui-radio`
 - `base-ui-select`
 - `base-ui-slider`
 - `base-ui-switch`

@@ -32,7 +32,9 @@
       "component": "PreviewCard",
       "origin": "https://base-ui.com/react/components/preview-card",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-preview-card"
     }
   }
 }

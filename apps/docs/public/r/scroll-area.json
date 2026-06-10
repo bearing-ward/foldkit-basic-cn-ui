@@ -32,7 +32,9 @@
       "component": "ScrollArea",
       "origin": "https://base-ui.com/react/components/scroll-area",
       "artifact": "component",
-      "stateful": false
+      "stateful": false,
+      "public": false,
+      "publicAliasOf": "base-ui-scroll-area"
     }
   }
 }

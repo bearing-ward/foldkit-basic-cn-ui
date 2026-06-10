@@ -32,7 +32,9 @@
       "component": "Progress",
       "origin": "https://base-ui.com/react/components/progress",
       "artifact": "component",
-      "stateful": false
+      "stateful": false,
+      "public": false,
+      "publicAliasOf": "base-ui-progress"
     }
   }
 }

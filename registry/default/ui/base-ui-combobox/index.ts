@@ -59,4 +59,6 @@ export {
   baseUiComboboxItemClassName,
   baseUiComboboxBackdropClassName,
   baseUiComboboxWrapperClassName,
+  baseUiComboboxDefaultAnchor,
+  baseUiComboboxSelectedIcon,
 } from "./view";

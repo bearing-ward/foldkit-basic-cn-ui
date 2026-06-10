@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/textarea",
+      "origin": "https://ui.shadcn.com/docs/components/radix/textarea",
       "artifact": "component",
       "primitive": "Ui.Textarea",
       "stateful": false

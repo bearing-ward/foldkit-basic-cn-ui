@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "ContextMenu",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/context-menu"
+      "origin": "https://ui.shadcn.com/docs/components/radix/context-menu"
     }
   }
 }

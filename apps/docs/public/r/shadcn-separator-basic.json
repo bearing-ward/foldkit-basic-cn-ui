@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Separator",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/separator"
+      "origin": "https://ui.shadcn.com/docs/components/radix/separator"
     }
   }
 }

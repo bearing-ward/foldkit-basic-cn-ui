@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Carousel",
       "example": "rtl",
-      "origin": "https://ui.shadcn.com/docs/components/carousel"
+      "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
     }
   }
 }

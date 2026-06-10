@@ -94,17 +94,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             children: [
               DropdownMenu.popupView<Message>({
                 children: [
-                  itemView("Profile", "⇧⌘P"),
-                  itemView("Billing", "⌘B"),
-                  itemView("Settings", "⌘S"),
-                  DropdownMenu.separatorView<Message>({}),
-                  DropdownMenu.itemView<Message>({
-                    disabled: true,
-                    onSelect: SelectedDropdownMenuItem({ value: "API" }),
-                    children: [h.span([], ["API"])],
+                  DropdownMenu.labelView<Message>({
+                    children: [h.span([], ["My Account"])],
                   }),
                   DropdownMenu.separatorView<Message>({}),
-                  itemView("Log out", "⇧⌘Q"),
+                  itemView("Profile"),
+                  itemView("Billing"),
+                  DropdownMenu.separatorView<Message>({}),
+                  itemView("Team"),
+                  itemView("Subscription"),
                 ],
               }),
             ],

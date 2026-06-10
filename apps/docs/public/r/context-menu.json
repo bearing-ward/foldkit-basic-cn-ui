@@ -32,7 +32,9 @@
       "component": "ContextMenu",
       "origin": "https://base-ui.com/react/components/context-menu",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-context-menu"
     }
   }
 }

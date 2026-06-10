@@ -4,7 +4,7 @@ import { describe, test } from "vitest";
 import * as ShadcnCheckboxBasicExample from "./main";
 
 describe("Shadcn Checkbox Basic example", () => {
-  test("toggles accepted feedback", () => {
+  test("matches the shadcn terms example", () => {
     Scene.scene(
       {
         update: ShadcnCheckboxBasicExample.update,
@@ -14,11 +14,15 @@ describe("Shadcn Checkbox Basic example", () => {
       Scene.expect(
         Scene.role("checkbox", { name: "Accept terms and conditions" })
       ).toExist(),
-      Scene.expect(Scene.text("Accepted: no")).toExist(),
+      Scene.expect(
+        Scene.text("You agree to our Terms of Service and Privacy Policy.")
+      ).toExist(),
       Scene.click(
         Scene.role("checkbox", { name: "Accept terms and conditions" })
       ),
-      Scene.expect(Scene.text("Accepted: yes")).toExist()
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toBeChecked()
     );
   });
 });

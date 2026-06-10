@@ -3,15 +3,15 @@ import { describe, test } from "vitest";
 
 import * as Example from "./main";
 
-describe("shadcn Button With Icon example", () => {
-  test("renders and handles the With Icon button", () => {
+describe("shadcn button with icon example", () => {
+  test("renders the origin visual button as inert", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(Scene.role("button", { name: "New Branch" })).toExist(),
-      Scene.expect(Scene.text("Clicked 0 times")).toExist(),
-      Scene.click(Scene.role("button", { name: "New Branch" })),
-      Scene.expect(Scene.text("Clicked 1 time")).toExist()
+      Scene.expect(
+        Scene.role("button", { name: "New Branch" })
+      ).not.toHaveHandler("click")
     );
   });
 });

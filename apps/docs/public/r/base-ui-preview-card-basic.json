@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-preview-card-basic",
+  "type": "registry:example",
+  "title": "Base UI Preview Card Basic",
+  "description": "A Base UI runnable Foldkit version of the Base UI Preview Card default example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-preview-card"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-preview-card-basic/main.ts",
+      "target": "src/examples/base-ui-preview-card-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as PreviewCard from \"../../ui/base-ui-preview-card\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const OpenedPreviewCard = m(\"OpenedPreviewCard\");\nexport const ClosedPreviewCard = m(\"ClosedPreviewCard\");\n\nexport const Message = S.Union([OpenedPreviewCard, ClosedPreviewCard]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      OpenedPreviewCard: () => [evo(model, { open: () => true }), []],\n      ClosedPreviewCard: () => [evo(model, { open: () => false }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"max-w-lg text-sm leading-6 text-gray-700\")],\n    [\n      h.p(\n        [],\n        [\n          \"Build accessible React components with \",\n          PreviewCard.rootView<Message>({\n            children: [\n              PreviewCard.triggerView<Message>({\n                open: model.open,\n                onOpen: OpenedPreviewCard(),\n                children: [\"Base UI\"],\n              }),\n              PreviewCard.portalView<Message>({\n                open: model.open,\n                children: [\n                  PreviewCard.backdropView<Message>({\n                    onClose: ClosedPreviewCard(),\n                  }),\n                  PreviewCard.positionerView<Message>({\n                    children: [\n                      PreviewCard.arrowView<Message>({}),\n                      PreviewCard.popupView<Message>({\n                        children: [\n                          PreviewCard.viewportView<Message>({\n                            children: [\n                              h.div(\n                                [\n                                  h.Class(\n                                    \"flex items-center gap-3 border-b border-gray-100 pb-3\"\n                                  ),\n                                ],\n                                [\n                                  h.div(\n                                    [\n                                      h.Class(\n                                        \"grid size-10 place-items-center rounded-md bg-accent-600 text-sm font-semibold text-white\"\n                                      ),\n                                    ],\n                                    [\"BU\"]\n                                  ),\n                                  h.div(\n                                    [],\n                                    [\n                                      h.p(\n                                        [\n                                          h.Class(\n                                            \"text-sm font-semibold text-gray-950\"\n                                          ),\n                                        ],\n                                        [\"Base UI\"]\n                                      ),\n                                      h.p(\n                                        [h.Class(\"text-xs text-gray-500\")],\n                                        [\"@base-ui\"]\n                                      ),\n                                    ]\n                                  ),\n                                ]\n                              ),\n                              h.p(\n                                [h.Class(\"text-sm text-gray-600\")],\n                                [\n                                  \"Unstyled, accessible components for building high-quality design systems.\",\n                                ]\n                              ),\n                            ],\n                          }),\n                        ],\n                      }),\n                    ],\n                  }),\n                ],\n              }),\n            ],\n          }),\n          \".\",\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-preview-card-basic/base-ui-preview-card-basic.scene.test.ts",
+      "target": "src/examples/base-ui-preview-card-basic/base-ui-preview-card-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"preview-card-basic example\", () => {\n  test(\"opens and closes the preview card\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.click(Scene.role(\"button\", { name: \"Base UI\" })),\n      Scene.expect(Scene.role(\"dialog\")).toExist(),\n      Scene.expect(Scene.text(\"@base-ui\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Close preview card\" })),\n      Scene.expect(Scene.role(\"dialog\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "PreviewCard",
+      "example": "basic",
+      "originExample": "preview-card-default",
+      "origin": "https://base-ui.com/react/components/preview-card"
+    }
+  },
+  "origin": "https://base-ui.com/react/components/preview-card"
+}

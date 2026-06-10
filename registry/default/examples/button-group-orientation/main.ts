@@ -31,7 +31,7 @@ export const update = (
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
 const iconButtonClassName =
-  "inline-flex h-9 w-9 items-center justify-center bg-white text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 w-9 items-center justify-center bg-white text-sm font-semibold text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
 
@@ -42,21 +42,29 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex items-start gap-6")],
     [
       ButtonGroup.view<Message>({
-        ariaLabel: "Horizontal quantity controls",
+        ariaLabel: "Horizontal text formatting",
         children: [
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Decrease")],
-                ["-"]
+                [h.Class(iconButtonClassName), h.AriaLabel("Bold")],
+                ["B"]
               ),
             ],
           }),
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Increase")],
-                ["+"]
+                [h.Class(iconButtonClassName), h.AriaLabel("Italic")],
+                ["I"]
+              ),
+            ],
+          }),
+          ButtonGroup.itemView<Message>({
+            children: [
+              h.button(
+                [h.Class(iconButtonClassName), h.AriaLabel("Underline")],
+                ["U"]
               ),
             ],
           }),
@@ -64,27 +72,29 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       }),
       ButtonGroup.view<Message>({
         orientation: "vertical",
-        ariaLabel: "Vertical quantity controls",
+        ariaLabel: "Vertical text alignment",
         children: [
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [
-                  h.Class(iconButtonClassName),
-                  h.AriaLabel("Increase vertical"),
-                ],
-                ["+"]
+                [h.Class(iconButtonClassName), h.AriaLabel("Align left")],
+                ["L"]
               ),
             ],
           }),
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [
-                  h.Class(iconButtonClassName),
-                  h.AriaLabel("Decrease vertical"),
-                ],
-                ["-"]
+                [h.Class(iconButtonClassName), h.AriaLabel("Align center")],
+                ["C"]
+              ),
+            ],
+          }),
+          ButtonGroup.itemView<Message>({
+            children: [
+              h.button(
+                [h.Class(iconButtonClassName), h.AriaLabel("Align right")],
+                ["R"]
               ),
             ],
           }),

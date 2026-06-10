@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Kbd",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/kbd"
+      "origin": "https://ui.shadcn.com/docs/components/radix/kbd"
     }
   }
 }

@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Input",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/input"
+      "origin": "https://ui.shadcn.com/docs/components/radix/input"
     }
   }
 }

@@ -62,4 +62,5 @@ export {
   animatedItemsClassName as baseUiMenuAnimatedPopupClassName,
   itemClassName as baseUiMenuItemClassName,
   backdropClassName as baseUiMenuBackdropClassName,
+  baseUiMenuDefaultAnchor,
 } from "./view";

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-meter-basic",
+  "type": "registry:example",
+  "title": "Base UI Meter Basic",
+  "description": "A Base UI runnable Foldkit version of the Base UI Meter hero example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-meter"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-meter-basic/main.ts",
+      "target": "src/examples/base-ui-meter-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Meter from \"../../ui/base-ui-meter\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  value: S.Number,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = m(\"Message\");\n\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ value: 24 }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      Message: () => [model, []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-4\")],\n    [\n      Meter.view<Message>({\n        value: model.value,\n        label: \"Storage Used\",\n        id: \"storage-used-meter-label\",\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-meter-basic/base-ui-meter-basic.scene.test.ts",
+      "target": "src/examples/base-ui-meter-basic/base-ui-meter-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as MeterBasicExample from \"./main\";\n\ndescribe(\"Base UI Meter Basic example\", () => {\n  test(\"matches the Base UI meter hero example content\", () => {\n    Scene.scene(\n      { update: MeterBasicExample.update, view: MeterBasicExample.view },\n      Scene.with(MeterBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"Storage Used\")).toExist(),\n      Scene.expect(Scene.text(\"24%\")).toExist(),\n      Scene.expect(Scene.role(\"meter\", { name: \"Storage Used\" })).toHaveAttr(\n        \"aria-valuenow\",\n        \"24\"\n      ),\n      Scene.expect(Scene.role(\"meter\", { name: \"Storage Used\" })).toHaveAttr(\n        \"aria-valuemin\",\n        \"0\"\n      ),\n      Scene.expect(Scene.role(\"meter\", { name: \"Storage Used\" })).toHaveAttr(\n        \"aria-valuemax\",\n        \"100\"\n      ),\n      Scene.expect(Scene.role(\"meter\", { name: \"Storage Used\" })).toHaveAttr(\n        \"aria-valuetext\",\n        \"24%\"\n      ),\n      Scene.expect(Scene.role(\"meter\", { name: \"Storage Used\" })).toHaveAttr(\n        \"data-metering\",\n        \"\"\n      ),\n      Scene.expect(Scene.text(\"Storage Used\")).not.toHaveHandler(\"click\"),\n      Scene.expect(Scene.text(\"24%\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Meter",
+      "example": "basic",
+      "originExample": "meter-hero",
+      "origin": "https://base-ui.com/react/components/meter"
+    }
+  },
+  "origin": "https://base-ui.com/react/components/meter"
+}

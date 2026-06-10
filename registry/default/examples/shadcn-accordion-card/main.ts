@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("plan"),
-  S.Literal("renewal"),
-  S.Literal("receipts"),
+  S.Literal("plans"),
+  S.Literal("billing"),
+  S.Literal("cancel"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["plan"] }, []];
+] => [{ openValues: ["plans"] }, []];
 
 // UPDATE
 
@@ -79,11 +79,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [
           h.h3(
             [h.Class("text-base font-semibold text-gray-950")],
-            ["Subscription"]
+            ["Subscription & Billing"]
           ),
           h.p(
             [h.Class("text-sm text-gray-600")],
-            ["Manage billing details from one card."]
+            [
+              "Common questions about your account, plans, payments and cancellations.",
+            ]
           ),
         ]
       ),
@@ -91,28 +93,30 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         openValues: model.openValues,
         children: [
           Accordion.itemView<Message>({
-            value: "plan",
+            value: "plans",
             openValues: model.openValues,
-            title: "Current plan",
-            onValueChange: ToggledPanel({ value: "plan" }),
+            title: "What subscription plans do you offer?",
+            onValueChange: ToggledPanel({ value: "plans" }),
             children: panel(
-              "Team plan with shared projects, usage alerts, and priority support."
+              "We offer three subscription tiers: Starter ($9/month), Professional ($29/month), and Enterprise ($99/month). Each plan includes increasing storage limits, API access, priority support, and team collaboration features."
             ),
           }),
           Accordion.itemView<Message>({
-            value: "renewal",
+            value: "billing",
             openValues: model.openValues,
-            title: "Renewal",
-            onValueChange: ToggledPanel({ value: "renewal" }),
-            children: panel("Annual renewal is scheduled for April 16, 2026."),
+            title: "How does billing work?",
+            onValueChange: ToggledPanel({ value: "billing" }),
+            children: panel(
+              "Billing is monthly or annual depending on your plan. You can update your payment method, download invoices, and change billing contacts from account settings."
+            ),
           }),
           Accordion.itemView<Message>({
-            value: "receipts",
+            value: "cancel",
             openValues: model.openValues,
-            title: "Receipts",
-            onValueChange: ToggledPanel({ value: "receipts" }),
+            title: "How do I cancel my subscription?",
+            onValueChange: ToggledPanel({ value: "cancel" }),
             children: panel(
-              "Monthly receipts are sent to finance@example.com."
+              "You can cancel from the billing page at any time. Your account keeps access until the end of the current billing period."
             ),
           }),
         ],

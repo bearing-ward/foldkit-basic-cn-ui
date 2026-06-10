@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Label",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/label",
+      "origin": "https://ui.shadcn.com/docs/components/radix/label",
       "artifact": "component"
     }
   }

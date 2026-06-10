@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Empty",
-      "origin": "https://ui.shadcn.com/docs/components/empty",
+      "origin": "https://ui.shadcn.com/docs/components/radix/empty",
       "artifact": "component",
       "stateful": false
     }

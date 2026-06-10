@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Spinner",
-      "origin": "https://ui.shadcn.com/docs/components/spinner",
+      "origin": "https://ui.shadcn.com/docs/components/radix/spinner",
       "artifact": "component",
       "stateful": false
     }

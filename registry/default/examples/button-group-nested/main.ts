@@ -31,10 +31,7 @@ export const update = (
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
 const buttonClassName =
-  "inline-flex h-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
-
-const iconButtonClassName =
-  "inline-flex h-9 w-9 items-center justify-center bg-white text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 min-w-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
 
@@ -42,38 +39,48 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return ButtonGroup.view<Message>({
-    ariaLabel: "Nested audio actions",
-    className: "gap-2 overflow-visible border-0 bg-transparent shadow-none",
+    ariaLabel: "Nested editor controls",
     children: [
       ButtonGroup.view<Message>({
-        ariaLabel: "Voice controls",
+        ariaLabel: "Text alignment",
         children: [
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["Audio"])],
+            children: [
+              h.button(
+                [h.Class(buttonClassName), h.AriaLabel("Align left")],
+                ["L"]
+              ),
+            ],
           }),
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Add audio")],
-                ["+"]
+                [h.Class(buttonClassName), h.AriaLabel("Align center")],
+                ["C"]
+              ),
+            ],
+          }),
+          ButtonGroup.itemView<Message>({
+            children: [
+              h.button(
+                [h.Class(buttonClassName), h.AriaLabel("Align right")],
+                ["R"]
               ),
             ],
           }),
         ],
       }),
       ButtonGroup.view<Message>({
-        ariaLabel: "Text controls",
+        ariaLabel: "Text formatting",
         children: [
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["Text"])],
+            children: [h.button([h.Class(buttonClassName)], ["B"])],
           }),
           ButtonGroup.itemView<Message>({
-            children: [
-              h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Add text")],
-                ["+"]
-              ),
-            ],
+            children: [h.button([h.Class(buttonClassName)], ["I"])],
+          }),
+          ButtonGroup.itemView<Message>({
+            children: [h.button([h.Class(buttonClassName)], ["U"])],
           }),
         ],
       }),

@@ -32,7 +32,9 @@
       "component": "Form",
       "origin": "https://base-ui.com/react/components/form",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-form"
     }
   }
 }

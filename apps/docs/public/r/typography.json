@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Typography",
-      "origin": "https://ui.shadcn.com/docs/components/typography",
+      "origin": "https://ui.shadcn.com/docs/components/radix/typography",
       "artifact": "component",
       "stateful": false
     }

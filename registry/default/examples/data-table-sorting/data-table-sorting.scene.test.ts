@@ -8,9 +8,12 @@ describe("data-table-sorting example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.text("Sort: email ascending")).toExist(),
-      Scene.click(Scene.role("button", { name: "Amount" })),
-      Scene.expect(Scene.text("Sort: amount ascending")).toExist()
+      Scene.expect(Scene.role("button", { name: "Email" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Status" })).toBeAbsent(),
+      Scene.expect(Scene.role("button", { name: "Amount" })).toBeAbsent(),
+      Scene.expect(Scene.text("Monserrat44@example.com")).toBeAbsent(),
+      Scene.click(Scene.role("button", { name: "Email" })),
+      Scene.expect(Scene.text("Monserrat44@example.com")).toExist()
     );
   });
 });

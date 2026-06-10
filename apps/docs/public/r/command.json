@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "Command",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/command",
+      "origin": "https://ui.shadcn.com/docs/components/radix/command",
       "artifact": "component"
     }
   }

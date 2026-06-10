@@ -1,23 +1,23 @@
 export type ButtonGroupOrientation = "horizontal" | "vertical";
 
 export const buttonGroupClassName =
-  "inline-flex isolate items-stretch overflow-hidden rounded-lg border border-gray-300 bg-white shadow-sm";
+  "flex w-fit items-stretch [&>*]:focus-visible:relative [&>*]:focus-visible:z-10";
 
 export const buttonGroupClassNameByOrientation = (
   orientation: ButtonGroupOrientation = "horizontal"
 ): string => {
   if (orientation === "vertical") {
-    return "flex-col divide-y divide-gray-200";
+    return "flex-col [&>*:not(:first-child)]:rounded-t-none [&>*:not(:first-child)]:border-t-0 [&>*:not(:last-child)]:rounded-b-none";
   }
 
-  return "flex-row divide-x divide-gray-200";
+  return "flex-row has-[>[data-slot=button-group]]:gap-2 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:first-child)]:border-l-0 [&>*:not(:last-child)]:rounded-r-none [&>input]:flex-1";
 };
 
 export const buttonGroupItemClassName =
-  "relative z-0 flex min-w-0 items-stretch focus-within:z-10";
+  "relative z-0 flex min-w-0 items-stretch rounded-md border border-gray-300 shadow-xs focus-within:z-10";
 
 export const buttonGroupSeparatorClassName =
-  "shrink-0 self-stretch bg-gray-200 data-[orientation=horizontal]:h-auto data-[orientation=horizontal]:w-px data-[orientation=vertical]:h-px data-[orientation=vertical]:w-auto";
+  "relative !m-0 shrink-0 self-stretch bg-gray-300 data-[orientation=horizontal]:h-auto data-[orientation=horizontal]:w-px data-[orientation=vertical]:h-auto data-[orientation=vertical]:w-px";
 
 export const buttonGroupTextClassName =
-  "inline-flex items-center justify-center whitespace-nowrap bg-gray-50 px-3 text-sm font-medium text-gray-500";
+  "flex items-center gap-2 rounded-md border border-gray-300 bg-gray-50 px-4 text-sm font-medium text-gray-900 shadow-xs";

@@ -15,6 +15,44 @@ import * as AutocompleteBasicExample from "../registry/default/examples/autocomp
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
+import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
+import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
+import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
+import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
+import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
+import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
+import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
+import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
+import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
+import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
+import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
+import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
+import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
+import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
+import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-radio-form/main";
+import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
+import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
+import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
+import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
+import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
+import * as BaseUiSwitchBasicExample from "../registry/default/examples/base-ui-switch-basic/main";
+import * as BaseUiTabsBasicExample from "../registry/default/examples/base-ui-tabs-basic/main";
+import * as BaseUiToastBasicExample from "../registry/default/examples/base-ui-toast-basic/main";
+import * as BaseUiToggleBasicExample from "../registry/default/examples/base-ui-toggle-basic/main";
+import * as BaseUiToggleGroupBasicExample from "../registry/default/examples/base-ui-toggle-group-basic/main";
+import * as BaseUiToolbarBasicExample from "../registry/default/examples/base-ui-toolbar-basic/main";
+import * as BaseUiTooltipBasicExample from "../registry/default/examples/base-ui-tooltip-basic/main";
 import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
 import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
 import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
@@ -92,6 +130,7 @@ import * as InputDisabledExample from "../registry/default/examples/input-disabl
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
+import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
 import * as ItemGroupExample from "../registry/default/examples/item-group/main";
 import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
 import * as ItemIconExample from "../registry/default/examples/item-icon/main";
@@ -122,7 +161,6 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
-import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-area-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -135,6 +173,7 @@ import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-
 import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
 import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
 import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
 import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
@@ -142,6 +181,9 @@ import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
+import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
 import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
 import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
@@ -192,19 +234,25 @@ import {
   DrawerBasicExampleRoute,
   DrawerDocsRoute,
   ShadcnDrawerDocsRoute,
+  BaseUiDrawerDocsRoute,
   ContextMenuBasicExampleRoute,
   ContextMenuDocsRoute,
   ShadcnContextMenuDocsRoute,
+  BaseUiContextMenuDocsRoute,
   MenubarBasicExampleRoute,
   MenubarDocsRoute,
   ShadcnMenubarDocsRoute,
+  BaseUiMenubarDocsRoute,
   NavigationMenuBasicExampleRoute,
   NavigationMenuDocsRoute,
   ShadcnNavigationMenuDocsRoute,
+  BaseUiNavigationMenuDocsRoute,
   OtpFieldBasicExampleRoute,
+  BaseUiOtpFieldDocsRoute,
   OtpFieldDocsRoute,
   GotOtpFieldBasicExampleMessage,
   PreviewCardBasicExampleRoute,
+  BaseUiPreviewCardDocsRoute,
   PreviewCardDocsRoute,
   AnimationBasicExampleRoute,
   AnimationDocsRoute,
@@ -258,7 +306,18 @@ import {
   CalendarBoundsExampleRoute,
   CalendarDocsRoute,
   ShadcnCalendarDocsRoute,
+  BaseUiAccordionDocsRoute,
+  BaseUiAccordionMultipleExampleRoute,
+  BaseUiAlertDialogDocsRoute,
+  BaseUiAlertDialogCloseConfirmationExampleRoute,
+  BaseUiAutocompleteDocsRoute,
+  BaseUiAutocompleteBasicExampleRoute,
+  BaseUiAvatarDocsRoute,
+  BaseUiAvatarBasicExampleRoute,
   BaseUiCheckboxDocsRoute,
+  BaseUiCheckboxGroupDocsRoute,
+  BaseUiCollapsibleBasicExampleRoute,
+  BaseUiCollapsibleDocsRoute,
   ShadcnCheckboxDocsRoute,
   CheckboxBasicExampleRoute,
   CheckboxDocsRoute,
@@ -266,6 +325,7 @@ import {
   CheckboxGroupDocsRoute,
   CheckboxIndeterminateExampleRoute,
   CheckboxRoute,
+  BaseUiComboboxBasicExampleRoute,
   BaseUiComboboxDocsRoute,
   ShadcnComboboxDocsRoute,
   CollapsibleBasicExampleRoute,
@@ -274,18 +334,21 @@ import {
   AutocompleteBasicExampleRoute,
   AutocompleteDocsRoute,
   BaseUiDialogDocsRoute,
+  BaseUiFieldDocsRoute,
   ShadcnDialogDocsRoute,
   BaseUiFieldsetDocsRoute,
   FieldBasicExampleRoute,
   FieldDocsRoute,
   ShadcnFieldDocsRoute,
   BaseUiInputDocsRoute,
+  BaseUiNumberFieldDocsRoute,
   ShadcnInputDocsRoute,
   FormBasicExampleRoute,
+  BaseUiFormDocsRoute,
   FormDocsRoute,
   BaseUiMenuDocsRoute,
   BaseUiPopoverDocsRoute,
-  BaseUiRadioGroupDocsRoute,
+  BaseUiRadioDocsRoute,
   ShadcnRadioGroupDocsRoute,
   BaseUiSelectDocsRoute,
   ShadcnSelectDocsRoute,
@@ -306,6 +369,7 @@ import {
   DatePickerBoundsExampleRoute,
   DatePickerDocsRoute,
   ShadcnDatePickerDocsRoute,
+  BaseUiDialogBasicExampleRoute,
   DialogAnimatedExampleRoute,
   DialogBasicExampleRoute,
   DialogDestructiveExampleRoute,
@@ -328,8 +392,10 @@ import {
   FileDropBasicExampleRoute,
   FileDropDisabledExampleRoute,
   FileDropDocsRoute,
+  GotBaseUiComboboxBasicExampleMessage,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
+  GotShadcnComboboxBasicExampleMessage,
   HomeRoute,
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
@@ -337,19 +403,25 @@ import {
   InputGroupDocsRoute,
   InputRoute,
   MeterBasicExampleRoute,
+  BaseUiMeterDocsRoute,
   MeterDocsRoute,
   ScrollAreaBasicExampleRoute,
+  BaseUiScrollAreaDocsRoute,
   ScrollAreaDocsRoute,
   ShadcnScrollAreaDocsRoute,
   ToggleBasicExampleRoute,
+  BaseUiToggleDocsRoute,
   ToggleDocsRoute,
   ToggleGroupBasicExampleRoute,
+  BaseUiToggleGroupDocsRoute,
   ToggleGroupDocsRoute,
   RadioBasicExampleRoute,
   RadioDocsRoute,
   ToolbarBasicExampleRoute,
+  BaseUiToolbarDocsRoute,
   ToolbarDocsRoute,
   ProgressBasicExampleRoute,
+  BaseUiProgressDocsRoute,
   ProgressDocsRoute,
   ShadcnProgressDocsRoute,
   KbdDocsRoute,
@@ -361,6 +433,11 @@ import {
   MenuBasicExampleRoute,
   MenuDocsRoute,
   NotFoundRoute,
+  BaseUiPopoverBasicExampleRoute,
+  BaseUiRadioBasicExampleRoute,
+  BaseUiRadioFormExampleRoute,
+  BaseUiRadioLabelingExampleRoute,
+  BaseUiRadioNativeButtonExampleRoute,
   PopoverAnimatedExampleRoute,
   PopoverBasicExampleRoute,
   PopoverDocsRoute,
@@ -376,6 +453,7 @@ import {
   SliderBasicExampleRoute,
   SliderDisabledExampleRoute,
   SliderDocsRoute,
+  BaseUiSeparatorDocsRoute,
   ShadcnSeparatorDocsRoute,
   ShadcnSliderDocsRoute,
   SwitchBasicExampleRoute,
@@ -405,12 +483,15 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
+const [shadcnBaseAccordionBasicExample] =
+  ShadcnBaseAccordionBasicExample.init();
 const [shadcnAccordionBordersExample] = ShadcnAccordionBordersExample.init();
 const [shadcnAccordionCardExample] = ShadcnAccordionCardExample.init();
 const [shadcnAccordionDisabledExample] = ShadcnAccordionDisabledExample.init();
 const [shadcnAccordionMultipleExample] = ShadcnAccordionMultipleExample.init();
 const [shadcnAccordionRtlExample] = ShadcnAccordionRtlExample.init();
 const [accordionMultipleExample] = AccordionMultipleExample.init();
+const [baseUiAccordionMultipleExample] = BaseUiAccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
 const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
@@ -418,20 +499,31 @@ const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
 const [aspectRatioRtlExample] = AspectRatioRtlExample.init();
 const [alertDialogBasicExample] = AlertDialogBasicExample.init();
+const [baseUiAlertDialogCloseConfirmationExample] =
+  BaseUiAlertDialogCloseConfirmationExample.init();
 const [shadcnAlertDialogBasicExample] = ShadcnAlertDialogBasicExample.init();
 const [drawerBasicExample] = DrawerBasicExample.init();
 const [contextMenuBasicExample] = ContextMenuBasicExample.init();
 const [menubarBasicExample] = MenubarBasicExample.init();
+const [baseUiNavigationMenuBasicExample] =
+  BaseUiNavigationMenuBasicExample.init();
 const [navigationMenuBasicExample] = NavigationMenuBasicExample.init();
+const [baseUiOtpFieldBasicExample] = BaseUiOtpFieldBasicExample.init();
 const [otpFieldBasicExample] = OtpFieldBasicExample.init();
+const [baseUiPreviewCardBasicExample] = BaseUiPreviewCardBasicExample.init();
 const [previewCardBasicExample] = PreviewCardBasicExample.init();
 const [autocompleteBasicExample] = AutocompleteBasicExample.init();
+const [baseUiAutocompleteBasicExample] = BaseUiAutocompleteBasicExample.init();
 const [collapsibleBasicExample] = CollapsibleBasicExample.init();
+const [baseUiCollapsibleBasicExample] = BaseUiCollapsibleBasicExample.init();
+const [shadcnCollapsibleBasicExample] = ShadcnCollapsibleBasicExample.init();
 const [fieldBasicExample] = FieldBasicExample.init();
 const [formBasicExample] = FormBasicExample.init();
+const [baseUiNumberFieldBasicExample] = BaseUiNumberFieldBasicExample.init();
 const [numberFieldBasicExample] = NumberFieldBasicExample.init();
 const [animationBasicExample] = AnimationBasicExample.init();
 const [avatarBasicExample] = AvatarBasicExample.init();
+const [baseUiAvatarBasicExample] = BaseUiAvatarBasicExample.init();
 const [shadcnAvatarBasicExample] = ShadcnAvatarBasicExample.init();
 const [shadcnAvatarDropdownExample] = ShadcnAvatarDropdownExample.init();
 const [badgeBasicExample] = BadgeBasicExample.init();
@@ -469,6 +561,7 @@ const [itemHeaderExample] = ItemHeaderExample.init();
 const [itemIconExample] = ItemIconExample.init();
 const [itemImageExample] = ItemImageExample.init();
 const [itemLinkExample] = ItemLinkExample.init();
+const [itemDropdownExample] = ItemDropdownExample.init();
 const [itemRtlExample] = ItemRtlExample.init();
 const [itemSizeExample] = ItemSizeExample.init();
 const [itemVariantExample] = ItemVariantExample.init();
@@ -478,6 +571,7 @@ const [resizableBasicExample] = ResizableBasicExample.init();
 const [sidebarBasicExample] = SidebarBasicExample.init();
 const [tableBasicExample] = TableBasicExample.init();
 const [cardBasicExample] = CardBasicExample.init();
+const [baseUiSeparatorBasicExample] = BaseUiSeparatorBasicExample.init();
 const [separatorBasicExample] = SeparatorBasicExample.init();
 const [skeletonBasicExample] = SkeletonBasicExample.init();
 const [kbdBasicExample] = KbdBasicExample.init();
@@ -492,6 +586,7 @@ const [breadcrumbCollapsedExample] = BreadcrumbCollapsedExample.init();
 const [breadcrumbLinkExample] = BreadcrumbLinkExample.init();
 const [breadcrumbRtlExample] = BreadcrumbRtlExample.init();
 const [buttonBasicExample] = ButtonBasicExample.init();
+const [baseUiButtonBasicExample] = BaseUiButtonBasicExample.init();
 const [shadcnButtonBasicExample] = ShadcnButtonBasicExample.init();
 const [buttonDisabledExample] = ButtonDisabledExample.init();
 const [buttonGroupBasicExample] = ButtonGroupBasicExample.init();
@@ -516,12 +611,17 @@ const [shadcnCalendarPresetsExample] = ShadcnCalendarPresetsExample.init();
 const [shadcnCalendarRtlExample] = ShadcnCalendarRtlExample.init();
 const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
+const [shadcnCheckboxBasicExample] = ShadcnCheckboxBasicExample.init();
+const [baseUiCheckboxBasicExample] = BaseUiCheckboxBasicExample.init();
 const [checkboxGroupBasicExample] = CheckboxGroupBasicExample.init();
 const [checkboxIndeterminateExample] = CheckboxIndeterminateExample.init();
 const [comboboxBasicExample] = ComboboxBasicExample.init();
+const [baseUiComboboxBasicExample] = BaseUiComboboxBasicExample.init();
+const [shadcnComboboxBasicExample] = ShadcnComboboxBasicExample.init();
 const [comboboxMultiExample] = ComboboxMultiExample.init();
 const [datePickerBasicExample] = DatePickerBasicExample.init();
 const [datePickerBoundsExample] = DatePickerBoundsExample.init();
+const [baseUiDialogBasicExample] = BaseUiDialogBasicExample.init();
 const [dialogBasicExample] = DialogBasicExample.init();
 const [dialogAnimatedExample] = DialogAnimatedExample.init();
 const [dialogDestructiveExample] = DialogDestructiveExample.init();
@@ -532,44 +632,67 @@ const [disclosureBasicExample] = DisclosureBasicExample.init();
 const [disclosureDisabledExample] = DisclosureDisabledExample.init();
 const [dragAndDropBasicExample] = DragAndDropBasicExample.init();
 const [dragAndDropDisabledExample] = DragAndDropDisabledExample.init();
+const [baseUiDrawerBasicExample] = BaseUiDrawerBasicExample.init();
+const [baseUiFieldBasicExample] = BaseUiFieldBasicExample.init();
+const [baseUiFieldsetBasicExample] = BaseUiFieldsetBasicExample.init();
+const [baseUiFormBasicExample] = BaseUiFormBasicExample.init();
 const [fieldsetBasicExample] = FieldsetBasicExample.init();
 const [fieldsetDisabledExample] = FieldsetDisabledExample.init();
 const [fileDropBasicExample] = FileDropBasicExample.init();
 const [fileDropDisabledExample] = FileDropDisabledExample.init();
+const [baseUiInputBasicExample] = BaseUiInputBasicExample.init();
 const [inputBasicExample] = InputBasicExample.init();
 const [inputDisabledExample] = InputDisabledExample.init();
+const [baseUiMenuBasicExample] = BaseUiMenuBasicExample.init();
+const [baseUiMenubarBasicExample] = BaseUiMenubarBasicExample.init();
+const [baseUiMeterBasicExample] = BaseUiMeterBasicExample.init();
 const [meterBasicExample] = MeterBasicExample.init();
 const [scrollAreaBasicExample] = ScrollAreaBasicExample.init();
+const [baseUiToggleBasicExample] = BaseUiToggleBasicExample.init();
 const [toggleBasicExample] = ToggleBasicExample.init();
+const [baseUiToggleGroupBasicExample] = BaseUiToggleGroupBasicExample.init();
 const [toggleGroupBasicExample] = ToggleGroupBasicExample.init();
 const [radioBasicExample] = RadioBasicExample.init();
+const [baseUiToolbarBasicExample] = BaseUiToolbarBasicExample.init();
 const [toolbarBasicExample] = ToolbarBasicExample.init();
+const [baseUiProgressBasicExample] = BaseUiProgressBasicExample.init();
 const [progressBasicExample] = ProgressBasicExample.init();
 const [listboxBasicExample] = ListboxBasicExample.init();
 const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
+const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
+const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
+const [baseUiRadioLabelingExample] = BaseUiRadioLabelingExample.init();
+const [baseUiRadioNativeButtonExample] = BaseUiRadioNativeButtonExample.init();
+const [baseUiRadioFormExample] = BaseUiRadioFormExample.init();
 const [popoverBasicExample] = PopoverBasicExample.init();
 const [popoverAnimatedExample] = PopoverAnimatedExample.init();
 const [radioGroupBasicExample] = RadioGroupBasicExample.init();
 const [shadcnRadioGroupBasicExample] = ShadcnRadioGroupBasicExample.init();
 const [radioGroupHorizontalExample] = RadioGroupHorizontalExample.init();
+const [baseUiSelectBasicExample] = BaseUiSelectBasicExample.init();
 const [selectBasicExample] = SelectBasicExample.init();
 const [shadcnSelectBasicExample] = ShadcnSelectBasicExample.init();
 const [selectDisabledExample] = SelectDisabledExample.init();
+const [baseUiSliderBasicExample] = BaseUiSliderBasicExample.init();
 const [sliderBasicExample] = SliderBasicExample.init();
 const [shadcnSliderBasicExample] = ShadcnSliderBasicExample.init();
 const [sliderDisabledExample] = SliderDisabledExample.init();
+const [baseUiSwitchBasicExample] = BaseUiSwitchBasicExample.init();
 const [switchBasicExample] = SwitchBasicExample.init();
 const [shadcnSwitchBasicExample] = ShadcnSwitchBasicExample.init();
 const [switchDisabledExample] = SwitchDisabledExample.init();
+const [baseUiTabsBasicExample] = BaseUiTabsBasicExample.init();
 const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [textareaBasicExample] = TextareaBasicExample.init();
 const [textareaDisabledExample] = TextareaDisabledExample.init();
+const [baseUiToastBasicExample] = BaseUiToastBasicExample.init();
 const [toastBasicExample] = ToastBasicExample.init();
 const [toastVariantsExample] = ToastVariantsExample.init();
+const [baseUiTooltipBasicExample] = BaseUiTooltipBasicExample.init();
 const [tooltipBasicExample] = TooltipBasicExample.init();
 const [tooltipNoDelayExample] = TooltipNoDelayExample.init();
 const [virtualListBasicExample] = VirtualListBasicExample.init();
@@ -580,12 +703,14 @@ const modelForRoute = (route: Model["route"]): Model => ({
   uiModel: initialUiModel,
   accordionBasicExample,
   shadcnAccordionBasicExample,
+  shadcnBaseAccordionBasicExample,
   shadcnAccordionBordersExample,
   shadcnAccordionCardExample,
   shadcnAccordionDisabledExample,
   shadcnAccordionMultipleExample,
   shadcnAccordionRtlExample,
   accordionMultipleExample,
+  baseUiAccordionMultipleExample,
   alertBasicExample,
   alertDestructiveExample,
   aspectRatioBasicExample,
@@ -593,20 +718,29 @@ const modelForRoute = (route: Model["route"]): Model => ({
   aspectRatioPortraitExample,
   aspectRatioRtlExample,
   alertDialogBasicExample,
+  baseUiAlertDialogCloseConfirmationExample,
   shadcnAlertDialogBasicExample,
   drawerBasicExample,
   contextMenuBasicExample,
   menubarBasicExample,
+  baseUiNavigationMenuBasicExample,
   navigationMenuBasicExample,
+  baseUiOtpFieldBasicExample,
   otpFieldBasicExample,
+  baseUiPreviewCardBasicExample,
   previewCardBasicExample,
   autocompleteBasicExample,
+  baseUiAutocompleteBasicExample,
   collapsibleBasicExample,
+  baseUiCollapsibleBasicExample,
+  shadcnCollapsibleBasicExample,
   fieldBasicExample,
   formBasicExample,
+  baseUiNumberFieldBasicExample,
   numberFieldBasicExample,
   animationBasicExample,
   avatarBasicExample,
+  baseUiAvatarBasicExample,
   shadcnAvatarBasicExample,
   shadcnAvatarDropdownExample,
   badgeBasicExample,
@@ -638,6 +772,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dataTableVisibilityExample,
   dataTableRowSelectionExample,
   cardBasicExample,
+  baseUiSeparatorBasicExample,
   separatorBasicExample,
   skeletonBasicExample,
   kbdBasicExample,
@@ -652,6 +787,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   breadcrumbLinkExample,
   breadcrumbRtlExample,
   buttonBasicExample,
+  baseUiButtonBasicExample,
   shadcnButtonBasicExample,
   buttonDisabledExample,
   buttonGroupBasicExample,
@@ -674,18 +810,27 @@ const modelForRoute = (route: Model["route"]): Model => ({
   shadcnCalendarRtlExample,
   calendarBoundsExample,
   checkboxBasicExample,
+  shadcnCheckboxBasicExample,
+  baseUiCheckboxBasicExample,
   checkboxGroupBasicExample,
   checkboxIndeterminateExample,
   comboboxBasicExample,
+  baseUiComboboxBasicExample,
+  shadcnComboboxBasicExample,
   comboboxMultiExample,
   datePickerBasicExample,
   datePickerBoundsExample,
+  baseUiDialogBasicExample,
   dialogBasicExample,
   dialogAnimatedExample,
   dialogDestructiveExample,
   dialogFocusExample,
   dialogScrollableExample,
   directionBasicExample,
+  baseUiDrawerBasicExample,
+  baseUiFieldBasicExample,
+  baseUiFieldsetBasicExample,
+  baseUiFormBasicExample,
   itemAvatarExample,
   itemBasicExample,
   itemGroupExample,
@@ -693,6 +838,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   itemIconExample,
   itemImageExample,
   itemLinkExample,
+  itemDropdownExample,
   itemRtlExample,
   itemSizeExample,
   itemVariantExample,
@@ -709,40 +855,59 @@ const modelForRoute = (route: Model["route"]): Model => ({
   fieldsetDisabledExample,
   fileDropBasicExample,
   fileDropDisabledExample,
+  baseUiInputBasicExample,
   inputBasicExample,
   inputDisabledExample,
+  baseUiMenuBasicExample,
+  baseUiMenubarBasicExample,
+  baseUiMeterBasicExample,
   meterBasicExample,
   scrollAreaBasicExample,
+  baseUiToggleBasicExample,
   toggleBasicExample,
+  baseUiToggleGroupBasicExample,
   toggleGroupBasicExample,
   radioBasicExample,
+  baseUiToolbarBasicExample,
   toolbarBasicExample,
+  baseUiProgressBasicExample,
   progressBasicExample,
   listboxBasicExample,
   listboxAnimatedExample,
   menuBasicExample,
   menuAnimatedExample,
+  baseUiPopoverBasicExample,
+  baseUiRadioBasicExample,
+  baseUiRadioLabelingExample,
+  baseUiRadioNativeButtonExample,
+  baseUiRadioFormExample,
   popoverBasicExample,
   popoverAnimatedExample,
   radioGroupBasicExample,
   shadcnRadioGroupBasicExample,
   radioGroupHorizontalExample,
+  baseUiSelectBasicExample,
   selectBasicExample,
   shadcnSelectBasicExample,
   selectDisabledExample,
+  baseUiSliderBasicExample,
   sliderBasicExample,
   shadcnSliderBasicExample,
   sliderDisabledExample,
+  baseUiSwitchBasicExample,
   switchBasicExample,
   shadcnSwitchBasicExample,
   switchDisabledExample,
+  baseUiTabsBasicExample,
   tabsBasicExample,
   shadcnTabsBasicExample,
   tabsManualExample,
   textareaBasicExample,
   textareaDisabledExample,
+  baseUiToastBasicExample,
   toastBasicExample,
   toastVariantsExample,
+  baseUiTooltipBasicExample,
   tooltipBasicExample,
   tooltipNoDelayExample,
   virtualListBasicExample,
@@ -758,6 +923,26 @@ const resolveComboboxBasicPreventBlurMount = () =>
     (message) =>
       GotComboboxBasicExampleMessage({
         message: ComboboxBasicExample.GotComboboxMessage({ message }),
+      })
+  );
+
+const resolveBaseUiComboboxBasicPreventBlurMount = () =>
+  Scene.Mount.resolve(
+    Combobox.AttachComboboxPreventBlur,
+    Combobox.CompletedAttachComboboxPreventBlur(),
+    (message) =>
+      GotBaseUiComboboxBasicExampleMessage({
+        message: BaseUiComboboxBasicExample.GotComboboxMessage({ message }),
+      })
+  );
+
+const resolveShadcnComboboxBasicPreventBlurMount = () =>
+  Scene.Mount.resolve(
+    Combobox.AttachComboboxPreventBlur,
+    Combobox.CompletedAttachComboboxPreventBlur(),
+    (message) =>
+      GotShadcnComboboxBasicExampleMessage({
+        message: ShadcnComboboxBasicExample.GotComboboxMessage({ message }),
       })
   );
 
@@ -921,6 +1106,19 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Accordion Multiple example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiAccordionMultipleExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Accordion Multiple" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "What is Base UI?" })
+      ).toHaveAttr("aria-expanded", "true")
+    );
+  });
+
   test("the Collapsible docs route renders Base UI docs and default preview", () => {
     Scene.scene(
       { update, view },
@@ -967,6 +1165,22 @@ describe("scene", () => {
         "aria-expanded",
         "false"
       )
+    );
+  });
+
+  test("the Base UI Collapsible Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiCollapsibleBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Collapsible Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Recovery keys" })).toHaveAttr(
+        "aria-expanded",
+        "false"
+      ),
+      Scene.click(Scene.role("button", { name: "Recovery keys" })),
+      Scene.expect(Scene.text("alien-bean-pasta")).toExist()
     );
   });
 
@@ -1140,7 +1354,9 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-button-group-popover")
       ).toExist(),
-      Scene.expect(Scene.text("أرشفة تقرير")).toExist()
+      Scene.expect(
+        Scene.testId("docs-example-block-button-group-rtl")
+      ).toExist()
     );
   });
 
@@ -1151,7 +1367,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Button Group Basic" })
       ).toExist(),
-      Scene.expect(Scene.role("group", { name: "Report actions" })).toExist()
+      Scene.expect(Scene.role("group", { name: "Text formatting" })).toExist()
     );
   });
 
@@ -1342,11 +1558,14 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Command" })).toExist(),
       Scene.expect(Scene.text("shadcn")).toExist(),
       Scene.expect(Scene.testId("docs-example-block-command-basic")).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open Menu" })).toExist(),
+      Scene.click(Scene.role("button", { name: "Open Menu" })),
+      Scene.expect(Scene.role("dialog", { name: "Command Palette" })).toExist(),
       Scene.expect(
         Scene.role("combobox", { name: "Command search" })
       ).toExist(),
-      Scene.type(Scene.role("combobox", { name: "Command search" }), "bill"),
-      Scene.expect(Scene.text("Billing")).toExist(),
+      Scene.type(Scene.role("combobox", { name: "Command search" }), "emoji"),
+      Scene.expect(Scene.role("option", { name: "Search Emoji" })).toExist(),
       Scene.expect(Scene.role("option", { name: "Calendar" })).toBeAbsent()
     );
   });
@@ -1356,12 +1575,16 @@ describe("scene", () => {
       { update, view },
       Scene.with(modelForRoute(CommandBasicExampleRoute())),
       Scene.expect(Scene.role("heading", { name: "Command Basic" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open Menu" })).toExist(),
+      Scene.click(Scene.role("button", { name: "Open Menu" })),
+      Scene.expect(Scene.role("dialog", { name: "Command Palette" })).toExist(),
       Scene.expect(
         Scene.role("combobox", { name: "Command search" })
       ).toExist(),
-      Scene.type(Scene.role("combobox", { name: "Command search" }), "bill"),
-      Scene.click(Scene.text("Billing")),
-      Scene.expect(Scene.text("Selected Billing")).toExist()
+      Scene.expect(Scene.text("Suggestions")).toExist(),
+      Scene.expect(Scene.role("option", { name: "Calendar" })).toExist(),
+      Scene.expect(Scene.role("option", { name: "Search Emoji" })).toExist(),
+      Scene.expect(Scene.role("option", { name: "Calculator" })).toExist()
     );
   });
 
@@ -1576,6 +1799,22 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("alertdialog", { name: "Discard draft?" })
       ).toExist()
+    );
+  });
+
+  test("the Base UI Alert Dialog Close Confirmation example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(
+        modelForRoute(BaseUiAlertDialogCloseConfirmationExampleRoute())
+      ),
+      Scene.expect(
+        Scene.role("heading", {
+          name: "Base UI Alert Dialog Close Confirmation",
+        })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Tweet" })),
+      Scene.expect(Scene.role("alertdialog", { name: "New tweet" })).toExist()
     );
   });
 
@@ -1944,6 +2183,34 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Autocomplete Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiAutocompleteBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Autocomplete Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("combobox", { name: "Search tags" })).toHaveAttr(
+        "placeholder",
+        "e.g. feature"
+      ),
+      Scene.type(Scene.role("combobox", { name: "Search tags" }), "zzzz"),
+      Scene.expect(Scene.text("No tags found.")).toExist()
+    );
+  });
+
+  test("the Base UI Avatar Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiAvatarBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Avatar Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("img", { name: "Lena Taylor" })).toExist(),
+      Scene.expect(Scene.text("LT")).toExist()
+    );
+  });
+
   test("the Animation docs route renders docs and inline preview", () => {
     Scene.scene(
       { update, view },
@@ -2090,7 +2357,7 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Button" })).toExist(),
       Scene.expect(Scene.text("Base UI")).toExist(),
       Scene.expect(Scene.text("registry/default/ui/base-ui-button")).toExist(),
-      Scene.expect(Scene.role("button", { name: "Click me" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Submit" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled(),
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
         "Button"
@@ -2291,7 +2558,7 @@ describe("scene", () => {
         Scene.text("registry/default/ui/base-ui-checkbox")
       ).toExist(),
       Scene.expect(
-        Scene.role("checkbox", { name: "Accept terms and conditions" })
+        Scene.role("checkbox", { name: "Enable notifications" })
       ).toExist(),
       Scene.expect(
         Scene.role("checkbox", { name: "All notification channels" })
@@ -2305,9 +2572,45 @@ describe("scene", () => {
   test("the next Base UI lane docs routes render active docs pages", () => {
     const baseUiDocsRoutes = [
       {
+        route: BaseUiAccordionDocsRoute(),
+        heading: "Accordion",
+        source: "registry/default/ui/base-ui-accordion",
+      },
+      {
+        route: BaseUiAlertDialogDocsRoute(),
+        heading: "Alert Dialog",
+        source: "registry/default/ui/base-ui-alert-dialog",
+      },
+      {
+        route: BaseUiAutocompleteDocsRoute(),
+        heading: "Autocomplete",
+        source: "registry/default/ui/base-ui-autocomplete",
+      },
+      {
+        route: BaseUiAvatarDocsRoute(),
+        heading: "Avatar",
+        source: "registry/default/ui/base-ui-avatar",
+      },
+      {
         route: BaseUiComboboxDocsRoute(),
         heading: "Combobox",
         source: "registry/default/ui/base-ui-combobox",
+        resolveMounts: [resolveBaseUiComboboxBasicPreventBlurMount()],
+      },
+      {
+        route: BaseUiCheckboxGroupDocsRoute(),
+        heading: "Checkbox Group",
+        source: "registry/default/ui/base-ui-checkbox-group",
+      },
+      {
+        route: BaseUiCollapsibleDocsRoute(),
+        heading: "Collapsible",
+        source: "registry/default/ui/base-ui-collapsible",
+      },
+      {
+        route: BaseUiContextMenuDocsRoute(),
+        heading: "Context Menu",
+        source: "registry/default/ui/base-ui-context-menu",
       },
       {
         route: BaseUiDialogDocsRoute(),
@@ -2315,9 +2618,24 @@ describe("scene", () => {
         source: "registry/default/ui/base-ui-dialog",
       },
       {
+        route: BaseUiDrawerDocsRoute(),
+        heading: "Drawer",
+        source: "registry/default/ui/base-ui-drawer",
+      },
+      {
+        route: BaseUiFieldDocsRoute(),
+        heading: "Field",
+        source: "registry/default/ui/base-ui-field",
+      },
+      {
         route: BaseUiFieldsetDocsRoute(),
         heading: "Fieldset",
         source: "registry/default/ui/base-ui-fieldset",
+      },
+      {
+        route: BaseUiFormDocsRoute(),
+        heading: "Form",
+        source: "registry/default/ui/base-ui-form",
       },
       {
         route: BaseUiInputDocsRoute(),
@@ -2325,9 +2643,34 @@ describe("scene", () => {
         source: "registry/default/ui/base-ui-input",
       },
       {
+        route: BaseUiMenubarDocsRoute(),
+        heading: "Menubar",
+        source: "registry/default/ui/base-ui-menubar",
+      },
+      {
+        route: BaseUiMeterDocsRoute(),
+        heading: "Meter",
+        source: "registry/default/ui/base-ui-meter",
+      },
+      {
         route: BaseUiMenuDocsRoute(),
         heading: "Menu",
         source: "registry/default/ui/base-ui-menu",
+      },
+      {
+        route: BaseUiNavigationMenuDocsRoute(),
+        heading: "Navigation Menu",
+        source: "registry/default/ui/base-ui-navigation-menu",
+      },
+      {
+        route: BaseUiNumberFieldDocsRoute(),
+        heading: "Number Field",
+        source: "registry/default/ui/base-ui-number-field",
+      },
+      {
+        route: BaseUiOtpFieldDocsRoute(),
+        heading: "OTP Field",
+        source: "registry/default/ui/base-ui-otp-field",
       },
       {
         route: BaseUiPopoverDocsRoute(),
@@ -2335,9 +2678,29 @@ describe("scene", () => {
         source: "registry/default/ui/base-ui-popover",
       },
       {
-        route: BaseUiRadioGroupDocsRoute(),
-        heading: "Radio Group",
-        source: "registry/default/ui/base-ui-radio-group",
+        route: BaseUiPreviewCardDocsRoute(),
+        heading: "Preview Card",
+        source: "registry/default/ui/base-ui-preview-card",
+      },
+      {
+        route: BaseUiProgressDocsRoute(),
+        heading: "Progress",
+        source: "registry/default/ui/base-ui-progress",
+      },
+      {
+        route: BaseUiRadioDocsRoute(),
+        heading: "Radio",
+        source: "registry/default/ui/base-ui-radio",
+      },
+      {
+        route: BaseUiScrollAreaDocsRoute(),
+        heading: "Scroll Area",
+        source: "registry/default/ui/base-ui-scroll-area",
+      },
+      {
+        route: BaseUiSeparatorDocsRoute(),
+        heading: "Separator",
+        source: "registry/default/ui/base-ui-separator",
       },
       {
         route: BaseUiSelectDocsRoute(),
@@ -2360,6 +2723,21 @@ describe("scene", () => {
         source: "registry/default/ui/base-ui-tabs",
       },
       {
+        route: BaseUiToggleDocsRoute(),
+        heading: "Toggle",
+        source: "registry/default/ui/base-ui-toggle",
+      },
+      {
+        route: BaseUiToggleGroupDocsRoute(),
+        heading: "Toggle Group",
+        source: "registry/default/ui/base-ui-toggle-group",
+      },
+      {
+        route: BaseUiToolbarDocsRoute(),
+        heading: "Toolbar",
+        source: "registry/default/ui/base-ui-toolbar",
+      },
+      {
         route: BaseUiToastDocsRoute(),
         heading: "Toast",
         source: "registry/default/ui/base-ui-toast",
@@ -2371,23 +2749,30 @@ describe("scene", () => {
       },
     ];
 
-    baseUiDocsRoutes.forEach(({ route, heading, source }) => {
-      Scene.scene(
-        { update, view },
-        Scene.with(modelForRoute(route)),
-        Scene.expect(Scene.role("heading", { name: heading })).toExist(),
-        Scene.expect(Scene.text("Base UI")).toExist(),
-        Scene.expect(Scene.text(source)).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
-        Scene.expect(
-          Scene.role("heading", { name: "Foldkit integration" })
-        ).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
-        Scene.expect(Scene.role("heading", { name: "API reference" })).toExist()
-      );
-    });
+    baseUiDocsRoutes.forEach(
+      ({ route, heading, source, resolveMounts = [] }) => {
+        Scene.scene(
+          { update, view },
+          Scene.with(modelForRoute(route)),
+          Scene.expect(Scene.role("heading", { name: heading })).toExist(),
+          Scene.expect(Scene.text("Base UI")).toExist(),
+          Scene.expect(Scene.text(source)).toExist(),
+          Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+          Scene.expect(
+            Scene.role("heading", { name: "Installation" })
+          ).toExist(),
+          Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+          Scene.expect(
+            Scene.role("heading", { name: "Foldkit integration" })
+          ).toExist(),
+          Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
+          Scene.expect(
+            Scene.role("heading", { name: "API reference" })
+          ).toExist(),
+          ...resolveMounts
+        );
+      }
+    );
   });
 
   test("the first shadcn lane docs routes render active docs pages", () => {
@@ -2442,6 +2827,7 @@ describe("scene", () => {
         route: ShadcnComboboxDocsRoute(),
         heading: "Combobox",
         source: "registry/default/ui/shadcn-combobox",
+        resolveMounts: [resolveShadcnComboboxBasicPreventBlurMount()],
       },
       {
         route: ShadcnContextMenuDocsRoute(),
@@ -2540,41 +2926,46 @@ describe("scene", () => {
       },
     ];
 
-    shadcnDocsRoutes.forEach(({ route, heading, source, origin, example }) => {
-      Scene.scene(
-        { update, view },
-        Scene.with(modelForRoute(route)),
-        Scene.expect(Scene.role("heading", { name: heading })).toExist(),
-        Scene.expect(Scene.text("shadcn")).toExist(),
-        Scene.expect(Scene.text(source)).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Installation" })).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
-        Scene.expect(
-          Scene.role("heading", { name: "Foldkit integration" })
-        ).toExist(),
-        Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
-        Scene.expect(
-          Scene.role("heading", { name: "API reference" })
-        ).toExist(),
-        ...(origin === undefined
-          ? []
-          : [
-              Scene.expect(Scene.role("link", { name: origin })).toHaveAttr(
-                "href",
-                origin
-              ),
-            ]),
-        ...(example === undefined
-          ? []
-          : [
-              Scene.expect(
-                Scene.role("heading", { name: "Examples" })
-              ).toExist(),
-              Scene.expect(Scene.text(example)).toExist(),
-            ])
-      );
-    });
+    shadcnDocsRoutes.forEach(
+      ({ route, heading, source, origin, example, resolveMounts = [] }) => {
+        Scene.scene(
+          { update, view },
+          Scene.with(modelForRoute(route)),
+          Scene.expect(Scene.role("heading", { name: heading })).toExist(),
+          Scene.expect(Scene.text("shadcn")).toExist(),
+          Scene.expect(Scene.text(source)).toExist(),
+          Scene.expect(Scene.role("heading", { name: "Overview" })).toExist(),
+          Scene.expect(
+            Scene.role("heading", { name: "Installation" })
+          ).toExist(),
+          Scene.expect(Scene.role("heading", { name: "Usage" })).toExist(),
+          Scene.expect(
+            Scene.role("heading", { name: "Foldkit integration" })
+          ).toExist(),
+          Scene.expect(Scene.role("heading", { name: "Anatomy" })).toExist(),
+          Scene.expect(
+            Scene.role("heading", { name: "API reference" })
+          ).toExist(),
+          ...(origin === undefined
+            ? []
+            : [
+                Scene.expect(Scene.role("link", { name: origin })).toHaveAttr(
+                  "href",
+                  origin
+                ),
+              ]),
+          ...(example === undefined
+            ? []
+            : [
+                Scene.expect(
+                  Scene.role("heading", { name: "Examples" })
+                ).toExist(),
+                Scene.expect(Scene.text(example)).toExist(),
+              ]),
+          ...resolveMounts
+        );
+      }
+    );
   });
 
   test("the shadcn Accordion docs Multiple preview updates through its submodel", () => {
@@ -2584,20 +2975,21 @@ describe("scene", () => {
       Scene.expect(Scene.text("Multiple")).toExist(),
       Scene.expect(
         Scene.text(
-          "Critical sign-in and device alerts stay open while you review other settings."
+          "Manage how you receive notifications. You can enable email alerts for updates or push notifications for mobile devices."
         )
       ).toExist(),
-      Scene.click(Scene.role("button", { name: "Member invites" })),
+      Scene.click(Scene.role("button", { name: "Privacy & Security" })),
       Scene.expect(
-        Scene.text("Invite approvals, role changes, and pending seat requests.")
+        Scene.text(
+          "Control your privacy settings, manage two-factor authentication, and review active sessions."
+        )
       ).toExist(),
       Scene.expect(
-        Scene.role("button", { name: "Security alerts" })
+        Scene.role("button", { name: "Notification Settings" })
       ).toHaveAttr("aria-expanded", "true"),
-      Scene.expect(Scene.role("button", { name: "Member invites" })).toHaveAttr(
-        "aria-expanded",
-        "true"
-      )
+      Scene.expect(
+        Scene.role("button", { name: "Privacy & Security" })
+      ).toHaveAttr("aria-expanded", "true")
     );
   });
 
@@ -3323,7 +3715,7 @@ describe("scene", () => {
       { update, view },
       Scene.with(modelForRoute(ScrollAreaBasicExampleRoute())),
       Scene.expect(
-        Scene.role("heading", { name: "Scroll Area Basic" })
+        Scene.role("heading", { name: "Base UI Scroll Area Basic" })
       ).toExist(),
       Scene.expect(
         Scene.role("region", { name: "Vernacular architecture excerpt" })
@@ -3691,6 +4083,22 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Combobox Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiComboboxBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Combobox Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Choose a fruit")).toExist(),
+      Scene.expect(Scene.placeholder("e.g. Apple")).toExist(),
+      Scene.expect(
+        Scene.text("Selected fruit: No fruit selected")
+      ).not.toExist(),
+      resolveBaseUiComboboxBasicPreventBlurMount()
+    );
+  });
+
   test("the Combobox Multi example route renders the standalone example", () => {
     Scene.scene(
       { update, view },
@@ -3707,6 +4115,20 @@ describe("scene", () => {
       Scene.with(modelForRoute(DialogBasicExampleRoute())),
       Scene.expect(Scene.role("heading", { name: "Dialog Basic" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Open dialog" })).toExist()
+    );
+  });
+
+  test("the Base UI Dialog Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiDialogBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Dialog Basic" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "View notifications" })
+      ).toExist(),
+      Scene.expect(Scene.text("Good job!")).not.toExist()
     );
   });
 
@@ -4178,6 +4600,70 @@ describe("scene", () => {
       Scene.with(modelForRoute(PopoverBasicExampleRoute())),
       Scene.expect(Scene.role("heading", { name: "Popover Basic" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Open popover" })).toExist()
+    );
+  });
+
+  test("the Base UI Popover Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiPopoverBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Popover Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Notifications" })).toExist(),
+      Scene.expect(Scene.text("Good job!")).not.toExist()
+    );
+  });
+
+  test("the Base UI Radio Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiRadioBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Radio Basic" })
+      ).toExist(),
+      Scene.expect(Scene.text("Best apple")).toExist(),
+      Scene.expect(Scene.role("radio", { name: "Fuji" })).toBeChecked(),
+      Scene.expect(Scene.text("Sweet and crisp.")).not.toExist()
+    );
+  });
+
+  test("the Base UI Radio Labeling example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiRadioLabelingExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Radio Labeling" })
+      ).toExist(),
+      Scene.expect(Scene.text("Storage type")).toExist(),
+      Scene.expect(Scene.role("radio", { name: "SSD" })).toBeChecked(),
+      Scene.expect(Scene.role("radio", { name: "HDD" })).not.toBeChecked()
+    );
+  });
+
+  test("the Base UI Radio Native Button example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiRadioNativeButtonExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Radio Native Button" })
+      ).toExist(),
+      Scene.expect(Scene.text("Storage type")).toExist(),
+      Scene.expect(Scene.role("radio", { name: "SSD" })).toBeChecked(),
+      Scene.expect(Scene.role("radio", { name: "HDD" })).not.toBeChecked()
+    );
+  });
+
+  test("the Base UI Radio Form example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiRadioFormExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Radio Form" })
+      ).toExist(),
+      Scene.expect(Scene.text("Storage type")).toExist(),
+      Scene.expect(Scene.role("radio", { name: "SSD" })).toBeChecked(),
+      Scene.expect(Scene.role("radio", { name: "HDD" })).not.toBeChecked()
     );
   });
 

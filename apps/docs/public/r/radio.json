@@ -32,7 +32,9 @@
       "component": "Radio",
       "origin": "https://base-ui.com/react/components/radio",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-radio"
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-autocomplete-basic",
+  "type": "registry:example",
+  "title": "Base UI Autocomplete Basic",
+  "description": "A runnable Foldkit version of the Base UI Autocomplete default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-autocomplete"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-autocomplete-basic/main.ts",
+      "target": "src/examples/base-ui-autocomplete-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Array, Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Autocomplete from \"../../ui/base-ui-autocomplete\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  query: S.String,\n  selected: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedQuery = m(\"UpdatedQuery\", { value: S.String });\nexport const SelectedTag = m(\"SelectedTag\", { value: S.String });\n\nexport const Message = S.Union([UpdatedQuery, SelectedTag]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ query: \"\", selected: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedQuery: ({ value }) => [evo(model, { query: () => value }), []],\n      SelectedTag: ({ value }) => [\n        evo(model, { query: () => value, selected: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst tags = [\n  \"feature\",\n  \"bug\",\n  \"design\",\n  \"documentation\",\n  \"component: accordion\",\n  \"component: alert dialog\",\n  \"component: autocomplete\",\n] as const;\n\nconst filteredTags = (query: string): readonly string[] => {\n  const normalizedQuery = query.trim().toLowerCase();\n\n  if (normalizedQuery === \"\") {\n    return tags;\n  }\n\n  return Array.filter(tags, (tag) =>\n    tag.toLowerCase().includes(normalizedQuery)\n  );\n};\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const inputId = \"tag-search\";\n  const listId = \"tag-search-list\";\n  const items = filteredTags(model.query);\n\n  return Autocomplete.rootView<Message>({\n    children: [\n      Autocomplete.labelView<Message>({\n        forId: inputId,\n        children: [h.span([], [\"Search tags\"])],\n      }),\n      Autocomplete.inputView<Message>({\n        id: inputId,\n        value: model.query,\n        onInput: (value) => UpdatedQuery({ value }),\n        ariaLabel: \"Search tags\",\n        listId,\n        placeholder: \"e.g. feature\",\n      }),\n      Autocomplete.listView<Message>({\n        id: listId,\n        children: Array.match(items, {\n          onEmpty: () => [\n            Autocomplete.emptyView<Message>({\n              children: [h.span([], [\"No tags found.\"])],\n            }),\n          ],\n          onNonEmpty: (nonEmptyItems) =>\n            Array.map(nonEmptyItems, (tag) =>\n              Autocomplete.itemView<Message>({\n                selected: model.selected === tag,\n                onClick: SelectedTag({ value: tag }),\n                children: [h.span([], [tag])],\n              })\n            ),\n        }),\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-autocomplete-basic/base-ui-autocomplete-basic.scene.test.ts",
+      "target": "src/examples/base-ui-autocomplete-basic/base-ui-autocomplete-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BaseUiAutocompleteBasicExample from \"./main\";\n\ndescribe(\"Base UI Autocomplete Basic example\", () => {\n  test(\"matches the Base UI default Search tags example\", () => {\n    Scene.scene(\n      {\n        update: BaseUiAutocompleteBasicExample.update,\n        view: BaseUiAutocompleteBasicExample.view,\n      },\n      Scene.with(BaseUiAutocompleteBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Search tags\" })).toHaveAttr(\n        \"placeholder\",\n        \"e.g. feature\"\n      ),\n      Scene.expect(\n        Scene.role(\"option\", { name: \"component: accordion\" })\n      ).toExist(),\n      Scene.type(Scene.role(\"combobox\", { name: \"Search tags\" }), \"zzzz\"),\n      Scene.expect(Scene.text(\"No tags found.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Autocomplete",
+      "example": "basic",
+      "originExample": "autocomplete-default",
+      "origin": "https://base-ui.com/react/components/autocomplete"
+    }
+  }
+}

@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Skeleton",
-      "origin": "https://ui.shadcn.com/docs/components/skeleton",
+      "origin": "https://ui.shadcn.com/docs/components/radix/skeleton",
       "artifact": "component",
       "stateful": false
     }

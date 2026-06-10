@@ -3,6 +3,8 @@ import { html } from "foldkit/html";
 
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
 import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
 import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
 import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
@@ -27,6 +29,7 @@ import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-b
 import * as ShadcnButtonDefaultExample from "../registry/default/examples/shadcn-button-default/main";
 import * as ShadcnButtonDestructiveExample from "../registry/default/examples/shadcn-button-destructive/main";
 import * as ShadcnButtonGhostExample from "../registry/default/examples/shadcn-button-ghost/main";
+import * as ShadcnButtonGroupExample from "../registry/default/examples/shadcn-button-group/main";
 import * as ShadcnButtonIconExample from "../registry/default/examples/shadcn-button-icon/main";
 import * as ShadcnButtonLinkExample from "../registry/default/examples/shadcn-button-link/main";
 import * as ShadcnButtonOutlineExample from "../registry/default/examples/shadcn-button-outline/main";
@@ -333,6 +336,36 @@ export const buttonBasicExamplePreview = (
   });
 };
 
+export const baseUiButtonBasicExamplePreview = (
+  model: BaseUiButtonBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiButtonBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiButtonBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiAlertDialogCloseConfirmationExamplePreview = (
+  model: BaseUiAlertDialogCloseConfirmationExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAlertDialogCloseConfirmationExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAlertDialogCloseConfirmationExampleMessage({ message }),
+  });
+};
+
 export const shadcnButtonBasicExamplePreview = (
   model: ShadcnButtonBasicExample.Model,
   slotId: string
@@ -395,6 +428,9 @@ export const shadcnButtonRoundedExamplePreview = (): Html =>
 
 export const shadcnButtonSpinnerExamplePreview = (): Html =>
   ShadcnButtonSpinnerExample.view(ShadcnButtonSpinnerExample.init()[0]);
+
+export const shadcnButtonGroupExamplePreview = (): Html =>
+  ShadcnButtonGroupExample.view(ShadcnButtonGroupExample.init()[0]);
 
 export const shadcnButtonAsChildExamplePreview = (): Html =>
   ShadcnButtonAsChildExample.view(ShadcnButtonAsChildExample.init()[0]);

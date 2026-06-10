@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Textarea",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/textarea"
+      "origin": "https://ui.shadcn.com/docs/components/radix/textarea"
     }
   }
 }

@@ -53,11 +53,6 @@ type DocsNavGroup = Readonly<{
 const NAV_ITEMS: readonly NavItem[] = [
   {
     label: "Accordion Docs",
-    routeTag: "AccordionDocs",
-    href: "/docs/components/accordion",
-  },
-  {
-    label: "Accordion Docs",
     routeTag: "ShadcnAccordionDocs",
     href: "/docs/components/shadcn-accordion",
   },
@@ -208,11 +203,6 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Alert Dialog Docs",
-    routeTag: "AlertDialogDocs",
-    href: "/docs/components/alert-dialog",
-  },
-  {
-    label: "Alert Dialog Docs",
     routeTag: "ShadcnAlertDialogDocs",
     href: "/docs/components/shadcn-alert-dialog",
   },
@@ -223,13 +213,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Drawer Docs",
-    routeTag: "DrawerDocs",
-    href: "/docs/components/drawer",
+    routeTag: "ShadcnDrawerDocs",
+    href: "/docs/components/shadcn-drawer",
   },
   {
     label: "Drawer Docs",
-    routeTag: "ShadcnDrawerDocs",
-    href: "/docs/components/shadcn-drawer",
+    routeTag: "BaseUiDrawerDocs",
+    href: "/docs/components/base-ui-drawer",
   },
   {
     label: "Drawer Basic Example",
@@ -238,13 +228,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Context Menu Docs",
-    routeTag: "ContextMenuDocs",
-    href: "/docs/components/context-menu",
+    routeTag: "ShadcnContextMenuDocs",
+    href: "/docs/components/shadcn-context-menu",
   },
   {
     label: "Context Menu Docs",
-    routeTag: "ShadcnContextMenuDocs",
-    href: "/docs/components/shadcn-context-menu",
+    routeTag: "BaseUiContextMenuDocs",
+    href: "/docs/components/base-ui-context-menu",
   },
   {
     label: "Context Menu Basic Example",
@@ -253,13 +243,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Menubar Docs",
-    routeTag: "MenubarDocs",
-    href: "/docs/components/menubar",
+    routeTag: "ShadcnMenubarDocs",
+    href: "/docs/components/shadcn-menubar",
   },
   {
     label: "Menubar Docs",
-    routeTag: "ShadcnMenubarDocs",
-    href: "/docs/components/shadcn-menubar",
+    routeTag: "BaseUiMenubarDocs",
+    href: "/docs/components/base-ui-menubar",
   },
   {
     label: "Menubar Basic Example",
@@ -268,13 +258,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Navigation Menu Docs",
-    routeTag: "NavigationMenuDocs",
-    href: "/docs/components/navigation-menu",
+    routeTag: "ShadcnNavigationMenuDocs",
+    href: "/docs/components/shadcn-navigation-menu",
   },
   {
     label: "Navigation Menu Docs",
-    routeTag: "ShadcnNavigationMenuDocs",
-    href: "/docs/components/shadcn-navigation-menu",
+    routeTag: "BaseUiNavigationMenuDocs",
+    href: "/docs/components/base-ui-navigation-menu",
   },
   {
     label: "Navigation Menu Basic Example",
@@ -283,8 +273,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "OTP Field Docs",
-    routeTag: "OtpFieldDocs",
-    href: "/docs/components/otp-field",
+    routeTag: "BaseUiOtpFieldDocs",
+    href: "/docs/components/base-ui-otp-field",
   },
   {
     label: "OTP Field Basic Example",
@@ -293,8 +283,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Preview Card Docs",
-    routeTag: "PreviewCardDocs",
-    href: "/docs/components/preview-card",
+    routeTag: "BaseUiPreviewCardDocs",
+    href: "/docs/components/base-ui-preview-card",
   },
   {
     label: "Preview Card Basic Example",
@@ -318,13 +308,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Field Docs",
-    routeTag: "FieldDocs",
-    href: "/docs/components/field",
+    routeTag: "ShadcnFieldDocs",
+    href: "/docs/components/shadcn-field",
   },
   {
     label: "Field Docs",
-    routeTag: "ShadcnFieldDocs",
-    href: "/docs/components/shadcn-field",
+    routeTag: "BaseUiFieldDocs",
+    href: "/docs/components/base-ui-field",
   },
   {
     label: "Field Basic Example",
@@ -333,24 +323,23 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Number Field Docs",
-    routeTag: "NumberFieldDocs",
-    href: "/docs/components/number-field",
+    routeTag: "BaseUiNumberFieldDocs",
+    href: "/docs/components/base-ui-number-field",
   },
   {
     label: "Number Field Basic Example",
     routeTag: "NumberFieldBasicExample",
     href: "/docs/components/number-field/examples/basic",
   },
-  { label: "Form Docs", routeTag: "FormDocs", href: "/docs/components/form" },
+  {
+    label: "Form Docs",
+    routeTag: "BaseUiFormDocs",
+    href: "/docs/components/base-ui-form",
+  },
   {
     label: "Form Basic Example",
     routeTag: "FormBasicExample",
     href: "/docs/components/form/examples/basic",
-  },
-  {
-    label: "Autocomplete Docs",
-    routeTag: "AutocompleteDocs",
-    href: "/docs/components/autocomplete",
   },
   {
     label: "Autocomplete Basic Example",
@@ -617,6 +606,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/item/examples/link",
   },
   {
+    label: "Item Dropdown Example",
+    routeTag: "ItemDropdownExample",
+    href: "/docs/components/item/examples/dropdown",
+  },
+  {
     label: "Item RTL Example",
     routeTag: "ItemRtlExample",
     href: "/docs/components/item/examples/rtl",
@@ -691,13 +685,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Separator", routeTag: "Separator", href: "/separator" },
   {
     label: "Separator Docs",
-    routeTag: "SeparatorDocs",
-    href: "/docs/components/separator",
+    routeTag: "ShadcnSeparatorDocs",
+    href: "/docs/components/shadcn-separator",
   },
   {
     label: "Separator Docs",
-    routeTag: "ShadcnSeparatorDocs",
-    href: "/docs/components/shadcn-separator",
+    routeTag: "BaseUiSeparatorDocs",
+    href: "/docs/components/base-ui-separator",
   },
   {
     label: "Separator Basic Example",
@@ -763,11 +757,6 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Button", routeTag: "Button", href: "/button" },
   {
     label: "Button Docs",
-    routeTag: "ButtonDocs",
-    href: "/docs/components/button",
-  },
-  {
-    label: "Button Docs",
     routeTag: "BaseUiButtonDocs",
     href: "/docs/components/base-ui-button",
   },
@@ -777,9 +766,19 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/shadcn-button",
   },
   {
+    label: "Base Accordion Docs",
+    routeTag: "ShadcnBaseAccordionDocs",
+    href: "/docs/components/shadcn-base-accordion",
+  },
+  {
     label: "Button Basic Example",
     routeTag: "ButtonBasicExample",
     href: "/docs/components/button/examples/basic",
+  },
+  {
+    label: "Base UI Button Basic Example",
+    routeTag: "BaseUiButtonBasicExample",
+    href: "/docs/components/base-ui-button/examples/basic",
   },
   {
     label: "Button Disabled Example",
@@ -795,8 +794,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Meter", routeTag: "Meter", href: "/meter" },
   {
     label: "Meter Docs",
-    routeTag: "MeterDocs",
-    href: "/docs/components/meter",
+    routeTag: "BaseUiMeterDocs",
+    href: "/docs/components/base-ui-meter",
   },
   {
     label: "Meter Basic Example",
@@ -810,13 +809,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Scroll Area Docs",
-    routeTag: "ScrollAreaDocs",
-    href: "/docs/components/scroll-area",
+    routeTag: "ShadcnScrollAreaDocs",
+    href: "/docs/components/shadcn-scroll-area",
   },
   {
     label: "Scroll Area Docs",
-    routeTag: "ShadcnScrollAreaDocs",
-    href: "/docs/components/shadcn-scroll-area",
+    routeTag: "BaseUiScrollAreaDocs",
+    href: "/docs/components/base-ui-scroll-area",
   },
   {
     label: "Scroll Area Basic Example",
@@ -826,8 +825,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Toggle", routeTag: "Toggle", href: "/toggle" },
   {
     label: "Toggle Docs",
-    routeTag: "ToggleDocs",
-    href: "/docs/components/toggle",
+    routeTag: "BaseUiToggleDocs",
+    href: "/docs/components/base-ui-toggle",
   },
   {
     label: "Toggle Basic Example",
@@ -836,8 +835,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Toggle Group Docs",
-    routeTag: "ToggleGroupDocs",
-    href: "/docs/components/toggle-group",
+    routeTag: "BaseUiToggleGroupDocs",
+    href: "/docs/components/base-ui-toggle-group",
   },
   {
     label: "Toggle Group Basic Example",
@@ -856,8 +855,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Toolbar Docs",
-    routeTag: "ToolbarDocs",
-    href: "/docs/components/toolbar",
+    routeTag: "BaseUiToolbarDocs",
+    href: "/docs/components/base-ui-toolbar",
   },
   {
     label: "Toolbar Basic Example",
@@ -867,13 +866,13 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Progress", routeTag: "Progress", href: "/progress" },
   {
     label: "Progress Docs",
-    routeTag: "ProgressDocs",
-    href: "/docs/components/progress",
+    routeTag: "ShadcnProgressDocs",
+    href: "/docs/components/shadcn-progress",
   },
   {
     label: "Progress Docs",
-    routeTag: "ShadcnProgressDocs",
-    href: "/docs/components/shadcn-progress",
+    routeTag: "BaseUiProgressDocs",
+    href: "/docs/components/base-ui-progress",
   },
   {
     label: "Progress Basic Example",
@@ -904,11 +903,6 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Checkbox", routeTag: "Checkbox", href: "/checkbox" },
   {
     label: "Checkbox Docs",
-    routeTag: "CheckboxDocs",
-    href: "/docs/components/checkbox",
-  },
-  {
-    label: "Checkbox Docs",
     routeTag: "BaseUiCheckboxDocs",
     href: "/docs/components/base-ui-checkbox",
   },
@@ -921,6 +915,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Checkbox Basic Example",
     routeTag: "CheckboxBasicExample",
     href: "/docs/components/checkbox/examples/basic",
+  },
+  {
+    label: "Base UI Checkbox Basic Example",
+    routeTag: "BaseUiCheckboxBasicExample",
+    href: "/docs/components/base-ui-checkbox/examples/basic",
   },
   {
     label: "Checkbox Group Docs",
@@ -938,11 +937,6 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/checkbox/examples/indeterminate",
   },
   { label: "Combobox", routeTag: "Combobox", href: "/combobox" },
-  {
-    label: "Combobox Docs",
-    routeTag: "ComboboxDocs",
-    href: "/docs/components/combobox",
-  },
   {
     label: "Combobox Docs",
     routeTag: "BaseUiComboboxDocs",
@@ -985,11 +979,6 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/date-picker/examples/bounds",
   },
   { label: "Dialog", routeTag: "Dialog", href: "/dialog" },
-  {
-    label: "Dialog Docs",
-    routeTag: "DialogDocs",
-    href: "/docs/components/dialog",
-  },
   {
     label: "Dialog Docs",
     routeTag: "BaseUiDialogDocs",
@@ -1064,11 +1053,6 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Fieldset", routeTag: "Fieldset", href: "/fieldset" },
   {
     label: "Fieldset Docs",
-    routeTag: "FieldsetDocs",
-    href: "/docs/components/fieldset",
-  },
-  {
-    label: "Fieldset Docs",
     routeTag: "BaseUiFieldsetDocs",
     href: "/docs/components/base-ui-fieldset",
   },
@@ -1099,11 +1083,6 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/file-drop/examples/disabled",
   },
   { label: "Input", routeTag: "Input", href: "/input" },
-  {
-    label: "Input Docs",
-    routeTag: "InputDocs",
-    href: "/docs/components/input",
-  },
   {
     label: "Input Docs",
     routeTag: "BaseUiInputDocs",
@@ -1141,7 +1120,6 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/listbox/examples/animated",
   },
   { label: "Menu", routeTag: "Menu", href: "/menu" },
-  { label: "Menu Docs", routeTag: "MenuDocs", href: "/docs/components/menu" },
   {
     label: "Menu Docs",
     routeTag: "BaseUiMenuDocs",
@@ -1160,11 +1138,6 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Popover", routeTag: "Popover", href: "/popover" },
   {
     label: "Popover Docs",
-    routeTag: "PopoverDocs",
-    href: "/docs/components/popover",
-  },
-  {
-    label: "Popover Docs",
     routeTag: "BaseUiPopoverDocs",
     href: "/docs/components/base-ui-popover",
   },
@@ -1172,6 +1145,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Popover Docs",
     routeTag: "ShadcnPopoverDocs",
     href: "/docs/components/shadcn-popover",
+  },
+  {
+    label: "Accordion Docs",
+    routeTag: "BaseUiAccordionDocs",
+    href: "/docs/components/base-ui-accordion",
+  },
+  {
+    label: "Alert Dialog Docs",
+    routeTag: "BaseUiAlertDialogDocs",
+    href: "/docs/components/base-ui-alert-dialog",
+  },
+  {
+    label: "Autocomplete Docs",
+    routeTag: "BaseUiAutocompleteDocs",
+    href: "/docs/components/base-ui-autocomplete",
   },
   {
     label: "Popover Basic Example",
@@ -1186,13 +1174,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   { label: "Radio Group", routeTag: "RadioGroup", href: "/radio-group" },
   {
     label: "Radio Group Docs",
-    routeTag: "RadioGroupDocs",
-    href: "/docs/components/radio-group",
-  },
-  {
-    label: "Radio Group Docs",
-    routeTag: "BaseUiRadioGroupDocs",
-    href: "/docs/components/base-ui-radio-group",
+    routeTag: "BaseUiRadioDocs",
+    href: "/docs/components/base-ui-radio",
   },
   {
     label: "Radio Group Docs",
@@ -1584,14 +1567,20 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-button-rounded.txt",
   "/docs/components/shadcn-button/examples/spinner":
     "sources/shadcn-button-spinner.txt",
+  "/docs/components/shadcn-button/examples/button-group":
+    "sources/shadcn-button-group.txt",
   "/docs/components/shadcn-button/examples/as-child":
     "sources/shadcn-button-as-child.txt",
   "/docs/components/shadcn-button/examples/rtl":
     "sources/shadcn-button-rtl.txt",
+  "/docs/components/shadcn-base-accordion/examples/basic":
+    "sources/shadcn-base-accordion-basic.txt",
   "/docs/components/button/examples/disabled": "sources/button-disabled.txt",
   "/docs/components/meter/examples/basic": "sources/meter-basic.txt",
   "/docs/components/scroll-area/examples/basic":
     "sources/scroll-area-basic.txt",
+  "/docs/components/base-ui-scroll-area/examples/basic":
+    "sources/base-ui-scroll-area-basic.txt",
   "/docs/components/toggle/examples/basic": "sources/toggle-basic.txt",
   "/docs/components/toggle-group/examples/basic":
     "sources/toggle-group-basic.txt",
@@ -1602,16 +1591,30 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-calendar-basic.txt",
   "/docs/components/shadcn-calendar/examples/month-year-selector":
     "sources/shadcn-calendar-month-year-selector.txt",
+  "/docs/components/shadcn-calendar/examples/range":
+    "sources/shadcn-calendar-range.txt",
   "/docs/components/shadcn-calendar/examples/date-of-birth":
     "sources/shadcn-calendar-date-of-birth.txt",
+  "/docs/components/shadcn-calendar/examples/date-time-picker":
+    "sources/shadcn-calendar-date-time-picker.txt",
   "/docs/components/shadcn-calendar/examples/presets":
     "sources/shadcn-calendar-presets.txt",
   "/docs/components/shadcn-calendar/examples/booked-dates":
     "sources/shadcn-calendar-booked.txt",
+  "/docs/components/shadcn-calendar/examples/custom-cell-size":
+    "sources/shadcn-calendar-custom-cell-size.txt",
+  "/docs/components/shadcn-calendar/examples/week-numbers":
+    "sources/shadcn-calendar-week-numbers.txt",
   "/docs/components/shadcn-calendar/examples/rtl":
     "sources/shadcn-calendar-rtl.txt",
   "/docs/components/shadcn-toast/examples/basic":
     "sources/shadcn-toast-basic.txt",
+  "/docs/components/shadcn-toggle/examples/basic":
+    "sources/shadcn-toggle-basic.txt",
+  "/docs/components/shadcn-toggle-group/examples/basic":
+    "sources/shadcn-toggle-group-basic.txt",
+  "/docs/components/shadcn-tooltip/examples/basic":
+    "sources/shadcn-tooltip-basic.txt",
   "/docs/components/shadcn-textarea/examples/basic":
     "sources/shadcn-textarea-basic.txt",
   "/docs/components/shadcn-separator/examples/basic":
@@ -1751,6 +1754,7 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "TypographyDocs",
     "EmptyDocs",
     "InputGroupDocs",
+    "ShadcnBaseAccordionDocs",
     "ShadcnButtonDocs",
     "ShadcnCheckboxDocs",
     "ShadcnInputDocs",
@@ -1777,6 +1781,9 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnSwitchDocs",
     "ShadcnTabsDocs",
     "ShadcnTextareaDocs",
+    "ShadcnToggleDocs",
+    "ShadcnToggleGroupDocs",
+    "ShadcnTooltipDocs",
     "ShadcnToastDocs",
   ].includes(navItem.routeTag)
     ? "shadcn"
@@ -1804,21 +1811,43 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
           "RadioDocs",
           "ToolbarDocs",
           "CheckboxGroupDocs",
+          "BaseUiAccordionDocs",
+          "BaseUiAlertDialogDocs",
+          "BaseUiAutocompleteDocs",
+          "BaseUiAvatarDocs",
           "BaseUiButtonDocs",
           "BaseUiCheckboxDocs",
+          "BaseUiCheckboxGroupDocs",
+          "BaseUiCollapsibleDocs",
           "BaseUiComboboxDocs",
+          "BaseUiContextMenuDocs",
           "BaseUiDialogDocs",
+          "BaseUiDrawerDocs",
+          "BaseUiFieldDocs",
           "BaseUiFieldsetDocs",
+          "BaseUiFormDocs",
           "BaseUiInputDocs",
+          "BaseUiMenubarDocs",
+          "BaseUiMeterDocs",
           "BaseUiMenuDocs",
+          "BaseUiNavigationMenuDocs",
+          "BaseUiNumberFieldDocs",
+          "BaseUiOtpFieldDocs",
           "BaseUiPopoverDocs",
-          "BaseUiRadioGroupDocs",
+          "BaseUiPreviewCardDocs",
+          "BaseUiProgressDocs",
+          "BaseUiRadioDocs",
+          "BaseUiScrollAreaDocs",
+          "BaseUiSeparatorDocs",
           "BaseUiSelectDocs",
           "BaseUiSliderDocs",
           "BaseUiSwitchDocs",
           "BaseUiTabsDocs",
+          "BaseUiToggleDocs",
+          "BaseUiToggleGroupDocs",
           "BaseUiToastDocs",
           "BaseUiTooltipDocs",
+          "BaseUiToolbarDocs",
         ].includes(navItem.routeTag)
       ? "Base UI"
       : "Foldkit";
@@ -2420,6 +2449,21 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Base UI",
     primitive: "Ui.Dialog",
   },
+  "base-ui-accordion": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Accordion view helpers",
+  },
+  "base-ui-alert-dialog": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Alert Dialog view helpers",
+  },
+  "base-ui-autocomplete": {
+    artifact: "component",
+    origin: "Base UI",
+    primitive: "Autocomplete view helpers",
+  },
   "shadcn-dialog": {
     artifact: "component",
     origin: "shadcn",
@@ -2507,7 +2551,7 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "Foldkit",
     primitive: "Ui.RadioGroup",
   },
-  "base-ui-radio-group": {
+  "base-ui-radio": {
     artifact: "component",
     origin: "Base UI",
     primitive: "Ui.RadioGroup",
@@ -2596,11 +2640,23 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-drawer": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   "context-menu": {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-context-menu": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   menubar: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-menubar": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2609,8 +2665,16 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-navigation-menu": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   "shadcn-navigation-menu": { artifact: "component", origin: "shadcn" },
   "otp-field": {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-otp-field": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2618,7 +2682,15 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-preview-card": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   field: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-field": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2626,7 +2698,15 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-number-field": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   form: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-form": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2643,6 +2723,10 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     origin: "shadcn",
   },
   separator: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-separator": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2674,7 +2758,15 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-meter": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   "scroll-area": {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-scroll-area": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2682,7 +2774,15 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-toggle": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   "toggle-group": {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-toggle-group": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -2698,7 +2798,15 @@ const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
     artifact: "component",
     origin: "Base UI",
   },
+  "base-ui-toolbar": {
+    artifact: "component",
+    origin: "Base UI",
+  },
   progress: {
+    artifact: "component",
+    origin: "Base UI",
+  },
+  "base-ui-progress": {
     artifact: "component",
     origin: "Base UI",
   },
@@ -3699,7 +3807,7 @@ const baseUiCheckboxDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Base UI Checkbox documents the simple styled lane: child-owned checked state, parent message delegation, form participation through hidden input attributes, and lightweight class helpers that preserve Foldkit primitive attributes."
+        "Base UI Checkbox documents the simple styled lane: child-owned checked state, parent message delegation, form participation through hidden input attributes, and lightweight class helpers that preserve Foldkit primitive attributes. The Basic example matches the Base UI origin default-checked Enable notifications example; remaining parity work is adding the origin Labeling, native button rendering, and form integration examples."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -3711,12 +3819,12 @@ const baseUiCheckboxDocsView = (model: Model): Html => {
               docsExampleBlock({
                 title: "Basic",
                 testId: "docs-example-block-base-ui-checkbox-basic",
-                preview: DocsPreviewsCD.checkboxBasicExamplePreview(
-                  model.checkboxBasicExample,
+                preview: DocsPreviewsCD.baseUiCheckboxBasicExamplePreview(
+                  model.baseUiCheckboxBasicExample,
                   "base-ui-checkbox-docs-basic-preview"
                 ),
-                href: "/docs/components/checkbox/examples/basic",
-                linkText: "Open standalone Checkbox Basic example",
+                href: "/docs/components/base-ui-checkbox/examples/basic",
+                linkText: "Open standalone Base UI Checkbox Basic example",
               }),
               docsExampleBlock({
                 title: "Indeterminate",
@@ -7589,7 +7697,7 @@ const commandDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Command provides the shadcn command palette anatomy with controlled query and selection state. The Basic example filters grouped command items and renders shortcut hints; dialog presentation, global shortcuts, active-option roving focus, and command-dialog keyboard behavior are deferred to a later overlay slice."
+        "Command provides the shadcn command palette anatomy with parent-owned open/query state. The Basic example matches the origin Open Menu command palette copy, suggestions group, placeholder, and empty state. Remaining parity work is adding the origin Shortcuts, Groups, Scrollable, and RTL examples plus full CommandDialog focus-trap behavior."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -7616,11 +7724,11 @@ const commandDocsView = (model: Model): Html => {
         installCommands:
           "bunx shadcn@latest add <registry-url>/command.json\nbunx shadcn@latest add <registry-url>/command-basic.json",
         usageBody:
-          "Keep the query and selected command in the parent Foldkit model, then compose rootView, inputView, listView, groupView, itemView, separatorView, and shortcutView.",
+          "Keep open/query state in the parent Foldkit model, then compose rootView, inputView, listView, groupView, itemView, separatorView, and shortcutView inside the dialog surface.",
         usageCode:
-          'import * as Command from "./ui/command";\n\nconst items = Command.filterItems(Command.defaultItems, model.query);\n\nCommand.rootView<Message>({\n  children: [\n    Command.inputView({\n      value: model.query,\n      onInput: (value) => UpdatedCommandQuery({ value }),\n    }),\n    Command.listView({ children: itemViews }),\n  ],\n});',
+          'import * as Command from "./ui/command";\n\nconst items = Command.filterItems(suggestionItems, model.query);\n\nCommand.rootView<Message>({\n  children: [\n    Command.inputView({\n      value: model.query,\n      onInput: (value) => UpdatedCommandQuery({ value }),\n      placeholder: "Type a command or search...",\n    }),\n    Command.listView({ children: itemViews }),\n  ],\n});',
         integrationCode:
-          "query: S.String;\nselected: S.String;\n\nUpdatedCommandQuery and SelectedCommandItem messages keep search and selection in the parent model.",
+          "query: S.String;\nisOpen: S.Boolean;\n\nClickedOpenMenu, ClickedCloseMenu, UpdatedCommandQuery, and SelectedCommandItem messages keep dialog and search state in the parent model.",
         anatomySection: docsAnatomyBlock(
           "Command.rootView({ children: [input, list] });"
         ),
@@ -7743,7 +7851,7 @@ const dropdownMenuDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Dropdown Menu provides shadcn menu anatomy with parent-owned open and selected state. The Basic example mirrors the account menu pattern with Profile, Billing, Settings, API, and Log out actions. Collision-aware positioning, submenus, checkbox/radio items, and keyboard roving focus are deferred."
+        "Dropdown Menu provides shadcn menu anatomy with parent-owned open and selected state. The Basic example now mirrors the origin Open trigger, My Account label, Profile, Billing, Team, and Subscription items with separators. Remaining parity work is adding the origin Checkbox, Radio Group, and Sub Menu examples plus collision-aware positioning and keyboard roving focus."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -7770,7 +7878,7 @@ const dropdownMenuDocsView = (model: Model): Html => {
         installCommands:
           "bunx shadcn@latest add <registry-url>/dropdown-menu.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-basic.json",
         usageBody:
-          "Keep open and selected item state in the parent Foldkit model, then compose Root, Trigger, Portal, Backdrop, Positioner, Popup, Item, Separator, and Shortcut parts.",
+          "Keep open and selected item state in the parent Foldkit model, then compose Root, Trigger, Portal, Backdrop, Positioner, Popup, Label, Item, Separator, and Shortcut parts.",
         usageCode:
           'import * as DropdownMenu from "./ui/dropdown-menu";\n\nDropdownMenu.rootView<Message>({\n  children: [trigger, portal],\n});',
         integrationCode:
@@ -7827,6 +7935,13 @@ const dropdownMenuDocsView = (model: Model): Html => {
               "Renders one role=menuitem command with disabled state hooks.",
           },
           {
+            part: "Label",
+            prop: "labelView(config)",
+            type: "function",
+            defaultValue: "-",
+            description: "Renders non-interactive menu label content.",
+          },
+          {
             part: "Shortcut",
             prop: "shortcutView(label)",
             type: "function",
@@ -7845,6 +7960,7 @@ const dropdownMenuDocsView = (model: Model): Html => {
         accessibilityItems: [
           "The trigger exposes aria-haspopup=menu and aria-expanded.",
           "The popup exposes role=menu and each selectable action exposes role=menuitem.",
+          "Labels are non-interactive content inside the menu.",
           "Disabled items use native disabled state and data-disabled styling hooks.",
           "The backdrop has a Close dropdown menu accessible name for outside dismissal.",
         ],
@@ -8449,7 +8565,7 @@ const dataTableDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Data Table follows shadcn's guide model rather than a single monolithic primitive. The reusable helpers render table anatomy and pure row operations while each Foldkit example owns its sort, filter, pagination, visibility, and selection state. VirtualList is intentionally deferred as a large-data enhancement after the table API stabilizes."
+        "Data Table follows shadcn's payments guide rather than a single monolithic primitive. The reusable helpers render table anatomy and pure row operations while each Foldkit example owns its sort, filter, pagination, visibility, action menu, and selection state. The current examples now use the origin payment rows, Email sorting step, Filter emails toolbar, Columns control, row action menu labels, pagination, and row selection summary; remaining parity work is replacing the simplified local controls with full dropdown/focus behavior and any missing guide section structure."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -8765,6 +8881,8 @@ const itemDocsView = (model: Model): Html => {
               }),
               docsExampleBlock({
                 title: "Header",
+                description:
+                  "Matches the origin ItemHeader structure: a vertical item card with media/header content above the title and description.",
                 testId: "docs-example-block-item-header",
                 preview: DocsPreviewsEI.itemHeaderExamplePreview(
                   model.itemHeaderExample,
@@ -9995,7 +10113,7 @@ const emptyDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Empty v1 documents a static empty-state pattern: icon slot, title, description, optional action slot, and no hidden state transitions."
+        "Empty follows shadcn's empty-state composition: media, title, description, and content/action slots. The current Basic and Input Group examples now match the origin visible copy; remaining parity work is adding the origin Outline, Background, Avatar, Avatar Group, and RTL examples."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -10055,7 +10173,7 @@ const emptyDocsView = (model: Model): Html => {
       ]),
       docsTextListSection("Coverage", [
         "Registry scene tests verify the documented static rendering surface.",
-        "Example scene tests verify the runnable example and parent-owned state change.",
+        "Example scene tests verify the runnable examples against origin visible copy.",
         "Registry checks verify metadata, generated JSON, and example test coverage.",
       ]),
     ]
@@ -10502,10 +10620,10 @@ const scrollAreaDocsView = (model: Model): Html => {
                 testId: "docs-example-block-scroll-area-basic",
                 preview: DocsPreviewsNZ.scrollAreaBasicExamplePreview(
                   model.scrollAreaBasicExample,
-                  "scroll-area-docs-basic-preview"
+                  "base-ui-scroll-area-docs-basic-preview"
                 ),
-                href: "/docs/components/scroll-area/examples/basic",
-                linkText: "Open standalone Scroll Area Basic example",
+                href: "/docs/components/base-ui-scroll-area/examples/basic",
+                linkText: "Open standalone Base UI Scroll Area Basic example",
               }),
             ]
           ),
@@ -10513,7 +10631,7 @@ const scrollAreaDocsView = (model: Model): Html => {
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/scroll-area.json\nbunx shadcn@latest add <registry-url>/scroll-area-basic.json",
+          "bunx shadcn@latest add <registry-url>/base-ui-scroll-area.json\nbunx shadcn@latest add <registry-url>/base-ui-scroll-area-basic.json",
         usageBody:
           "Use ScrollArea.view for the Base UI hero composition, or compose rootView, viewportView, contentView, scrollbarView, thumbView, and cornerView directly when you need custom layout.",
         usageCode: `import * as ScrollArea from "./ui/scroll-area";
@@ -12007,7 +12125,7 @@ const baseUiButtonDocsView = (model: Model): Html => {
           h.p(
             [h.Class("max-w-2xl text-base text-gray-600")],
             [
-              "A Base UI style-lane Button slice that reuses the official Foldkit Ui.Button primitive for native button behavior while exposing simple, unopinionated class helpers.",
+              "A Base UI style-lane Button slice that matches the origin Submit demo while reusing the official Foldkit Ui.Button primitive for native button behavior.",
             ]
           ),
         ]
@@ -12018,7 +12136,7 @@ const baseUiButtonDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Base UI Button documents the simple styled lane: parent-owned click handling, native disabled semantics, and lightweight classes that preserve the Foldkit primitive attributes."
+        "Base UI Button documents the simple styled lane: parent-owned click handling, native disabled semantics, render-as guidance through toView, and lightweight classes that preserve the Foldkit primitive attributes."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -12030,12 +12148,12 @@ const baseUiButtonDocsView = (model: Model): Html => {
               docsExampleBlock({
                 title: "Basic",
                 testId: "docs-example-block-base-ui-button-basic",
-                preview: DocsPreviewsB.buttonBasicExamplePreview(
-                  model.buttonBasicExample,
+                preview: DocsPreviewsB.baseUiButtonBasicExamplePreview(
+                  model.baseUiButtonBasicExample,
                   "base-ui-button-docs-basic-preview"
                 ),
-                href: "/docs/components/button/examples/basic",
-                linkText: "Open standalone Button Basic example",
+                href: "/docs/components/base-ui-button/examples/basic",
+                linkText: "Open standalone Base UI Button Basic example",
               }),
               docsExampleBlock({
                 title: "Disabled",
@@ -12055,7 +12173,7 @@ const baseUiButtonDocsView = (model: Model): Html => {
         installCommands:
           "bunx shadcn@latest add <registry-url>/base-ui-button.json",
         usageBody:
-          "Map the button click to a verb-first Foldkit message and render a native button with the supplied button attributes plus the Base UI class helper.",
+          "Map the button click to a verb-first Foldkit message and render the supplied button attributes plus the Base UI class helper. To mirror Base UI's render-as pattern, keep Button.view as the behavior source and choose the rendered element inside toView.",
         usageCode: `import * as Button from "./ui/base-ui-button";
 
 Button.view<Message>({
@@ -12085,6 +12203,7 @@ ClickedSave: () => [
           "view(config): renders a native button through the supplied toView callback.",
           "ButtonAttributes: grouped button attributes that include click, disabled, type, and autofocus behavior.",
           "ViewConfig: onClick, isDisabled, type, isAutofocus, and toView.",
+          "toView can render another focusable element when a consumer needs Base UI's render-as-another-tag pattern.",
           "Class helpers: baseUiButtonClassName, baseUiSecondaryButtonClassName, and baseUiDestructiveButtonClassName.",
         ],
         accessibilityItems: [
@@ -12110,9 +12229,475 @@ type BaseUiLaneDocsConfig = Readonly<{
   usage: string;
   classHelpers: readonly string[];
   anatomyCode: string;
+  examples?: readonly string[];
 }>;
 
-const baseUiLaneDocsView = (config: BaseUiLaneDocsConfig): Html => {
+const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
+  M.value(example).pipe(
+    M.when("base-ui-accordion-multiple", () =>
+      docsExampleBlock({
+        title: "Open multiple panels",
+        testId: "docs-example-block-base-ui-accordion-multiple",
+        preview: DocsPreviewsAccordion.baseUiAccordionMultipleExamplePreview(
+          model.baseUiAccordionMultipleExample,
+          "base-ui-accordion-docs-multiple-preview"
+        ),
+        href: "/docs/components/base-ui-accordion/examples/multiple",
+        linkText: "Open standalone Base UI Accordion Multiple example",
+      })
+    ),
+    M.when("base-ui-alert-dialog-close-confirmation", () =>
+      docsExampleBlock({
+        title: "Close confirmation",
+        testId: "docs-example-block-base-ui-alert-dialog-close-confirmation",
+        preview: DocsPreviewsB.baseUiAlertDialogCloseConfirmationExamplePreview(
+          model.baseUiAlertDialogCloseConfirmationExample,
+          "base-ui-alert-dialog-docs-close-confirmation-preview"
+        ),
+        href: "/docs/components/base-ui-alert-dialog/examples/close-confirmation",
+        linkText:
+          "Open standalone Base UI Alert Dialog Close Confirmation example",
+      })
+    ),
+    M.when("base-ui-autocomplete-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-autocomplete-basic",
+        preview: DocsPreviewsAutocomplete.baseUiAutocompleteBasicExamplePreview(
+          model.baseUiAutocompleteBasicExample,
+          "base-ui-autocomplete-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-autocomplete/examples/basic",
+        linkText: "Open standalone Base UI Autocomplete Basic example",
+      })
+    ),
+    M.when("base-ui-avatar-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-avatar-basic",
+        preview: DocsPreviewsAvatar.baseUiAvatarBasicExamplePreview(
+          model.baseUiAvatarBasicExample,
+          "base-ui-avatar-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-avatar/examples/basic",
+        linkText: "Open standalone Base UI Avatar Basic example",
+      })
+    ),
+    M.when("base-ui-button-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-button-basic",
+        preview: DocsPreviewsB.baseUiButtonBasicExamplePreview(
+          model.baseUiButtonBasicExample,
+          "base-ui-button-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-button/examples/basic",
+        linkText: "Open standalone Base UI Button Basic example",
+      })
+    ),
+    M.when("base-ui-checkbox-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-checkbox-basic",
+        preview: DocsPreviewsCD.baseUiCheckboxBasicExamplePreview(
+          model.baseUiCheckboxBasicExample,
+          "base-ui-checkbox-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-checkbox/examples/basic",
+        linkText: "Open standalone Base UI Checkbox Basic example",
+      })
+    ),
+    M.when("base-ui-combobox-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-combobox-basic",
+        preview: DocsPreviewsCD.baseUiComboboxBasicExamplePreview(
+          model.baseUiComboboxBasicExample,
+          "base-ui-combobox-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-combobox/examples/basic",
+        linkText: "Open standalone Base UI Combobox Basic example",
+      })
+    ),
+    M.when("base-ui-scroll-area-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-scroll-area-basic",
+        preview: DocsPreviewsNZ.scrollAreaBasicExamplePreview(
+          model.scrollAreaBasicExample,
+          "base-ui-scroll-area-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-scroll-area/examples/basic",
+        linkText: "Open standalone Base UI Scroll Area Basic example",
+      })
+    ),
+    M.when("base-ui-radio-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-radio-basic",
+        preview: DocsPreviewsNZ.baseUiRadioBasicExamplePreview(
+          model.baseUiRadioBasicExample,
+          "base-ui-radio-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-radio/examples/basic",
+        linkText: "Open standalone Base UI Radio Basic example",
+      })
+    ),
+    M.when("base-ui-radio-labeling", () =>
+      docsExampleBlock({
+        title: "Labeling a radio group",
+        testId: "docs-example-block-base-ui-radio-labeling",
+        preview: DocsPreviewsNZ.baseUiRadioLabelingExamplePreview(
+          model.baseUiRadioLabelingExample,
+          "base-ui-radio-docs-labeling-preview"
+        ),
+        href: "/docs/components/base-ui-radio/examples/labeling",
+        linkText: "Open standalone Base UI Radio Labeling example",
+      })
+    ),
+    M.when("base-ui-radio-native-button", () =>
+      docsExampleBlock({
+        title: "Rendering as a native button",
+        testId: "docs-example-block-base-ui-radio-native-button",
+        preview: DocsPreviewsNZ.baseUiRadioNativeButtonExamplePreview(
+          model.baseUiRadioNativeButtonExample,
+          "base-ui-radio-docs-native-button-preview"
+        ),
+        href: "/docs/components/base-ui-radio/examples/native-button",
+        linkText: "Open standalone Base UI Radio Native Button example",
+      })
+    ),
+    M.when("base-ui-radio-form", () =>
+      docsExampleBlock({
+        title: "Form integration",
+        testId: "docs-example-block-base-ui-radio-form",
+        preview: DocsPreviewsNZ.baseUiRadioFormExamplePreview(
+          model.baseUiRadioFormExample,
+          "base-ui-radio-docs-form-preview"
+        ),
+        href: "/docs/components/base-ui-radio/examples/form",
+        linkText: "Open standalone Base UI Radio Form example",
+      })
+    ),
+    M.when("base-ui-dialog-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-dialog-basic",
+        preview: DocsPreviewsCD.baseUiDialogBasicExamplePreview(
+          model.baseUiDialogBasicExample,
+          "base-ui-dialog-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-dialog/examples/basic",
+        linkText: "Open standalone Base UI Dialog Basic example",
+      })
+    ),
+    M.when("base-ui-drawer-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-drawer-basic",
+        preview: DocsPreviewsCD.baseUiDrawerBasicExamplePreview(
+          model.baseUiDrawerBasicExample,
+          "base-ui-drawer-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-drawer/examples/basic",
+        linkText: "Open standalone Base UI Drawer Basic example",
+      })
+    ),
+    M.when("base-ui-field-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-field-basic",
+        preview: DocsPreviewsCD.baseUiFieldBasicExamplePreview(
+          model.baseUiFieldBasicExample,
+          "base-ui-field-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-field/examples/basic",
+        linkText: "Open standalone Base UI Field Basic example",
+      })
+    ),
+    M.when("base-ui-fieldset-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-fieldset-basic",
+        preview: DocsPreviewsCD.baseUiFieldsetBasicExamplePreview(
+          model.baseUiFieldsetBasicExample,
+          "base-ui-fieldset-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-fieldset/examples/basic",
+        linkText: "Open standalone Base UI Fieldset Basic example",
+      })
+    ),
+    M.when("base-ui-form-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-form-basic",
+        preview: DocsPreviewsCD.baseUiFormBasicExamplePreview(
+          model.baseUiFormBasicExample,
+          "base-ui-form-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-form/examples/basic",
+        linkText: "Open standalone Base UI Form Basic example",
+      })
+    ),
+    M.when("base-ui-input-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-input-basic",
+        preview: DocsPreviewsCD.baseUiInputBasicExamplePreview(
+          model.baseUiInputBasicExample,
+          "base-ui-input-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-input/examples/basic",
+        linkText: "Open standalone Base UI Input Basic example",
+      })
+    ),
+    M.when("base-ui-menu-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-menu-basic",
+        preview: DocsPreviewsCD.baseUiMenuBasicExamplePreview(
+          model.baseUiMenuBasicExample,
+          "base-ui-menu-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-menu/examples/basic",
+        linkText: "Open standalone Base UI Menu Basic example",
+      })
+    ),
+    M.when("base-ui-menubar-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-menubar-basic",
+        preview: DocsPreviewsCD.baseUiMenubarBasicExamplePreview(
+          model.baseUiMenubarBasicExample,
+          "base-ui-menubar-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-menubar/examples/basic",
+        linkText: "Open standalone Base UI Menubar Basic example",
+      })
+    ),
+    M.when("base-ui-meter-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-meter-basic",
+        preview: DocsPreviewsCD.baseUiMeterBasicExamplePreview(
+          model.baseUiMeterBasicExample,
+          "base-ui-meter-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-meter/examples/basic",
+        linkText: "Open standalone Base UI Meter Basic example",
+      })
+    ),
+    M.when("base-ui-navigation-menu-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-navigation-menu-basic",
+        preview: DocsPreviewsNZ.baseUiNavigationMenuBasicExamplePreview(
+          model.baseUiNavigationMenuBasicExample,
+          "base-ui-navigation-menu-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-navigation-menu/examples/basic",
+        linkText: "Open standalone Base UI Navigation Menu Basic example",
+      })
+    ),
+    M.when("base-ui-number-field-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-number-field-basic",
+        preview: DocsPreviewsNZ.baseUiNumberFieldBasicExamplePreview(
+          model.baseUiNumberFieldBasicExample,
+          "base-ui-number-field-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-number-field/examples/basic",
+        linkText: "Open standalone Base UI Number Field Basic example",
+      })
+    ),
+    M.when("base-ui-otp-field-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-otp-field-basic",
+        preview: DocsPreviewsNZ.baseUiOtpFieldBasicExamplePreview(
+          model.baseUiOtpFieldBasicExample,
+          "base-ui-otp-field-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-otp-field/examples/basic",
+        linkText: "Open standalone Base UI OTP Field Basic example",
+      })
+    ),
+    M.when("base-ui-preview-card-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-preview-card-basic",
+        preview: DocsPreviewsNZ.baseUiPreviewCardBasicExamplePreview(
+          model.baseUiPreviewCardBasicExample,
+          "base-ui-preview-card-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-preview-card/examples/basic",
+        linkText: "Open standalone Base UI Preview Card Basic example",
+      })
+    ),
+    M.when("base-ui-progress-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-progress-basic",
+        preview: DocsPreviewsNZ.baseUiProgressBasicExamplePreview(
+          model.baseUiProgressBasicExample,
+          "base-ui-progress-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-progress/examples/basic",
+        linkText: "Open standalone Base UI Progress Basic example",
+      })
+    ),
+    M.when("base-ui-popover-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-popover-basic",
+        preview: DocsPreviewsNZ.baseUiPopoverBasicExamplePreview(
+          model.baseUiPopoverBasicExample,
+          "base-ui-popover-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-popover/examples/basic",
+        linkText: "Open standalone Base UI Popover Basic example",
+      })
+    ),
+    M.when("base-ui-collapsible-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-collapsible-basic",
+        preview: DocsPreviewsCD.baseUiCollapsibleBasicExamplePreview(
+          model.baseUiCollapsibleBasicExample,
+          "base-ui-collapsible-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-collapsible/examples/basic",
+        linkText: "Open standalone Base UI Collapsible Basic example",
+      })
+    ),
+    M.when("base-ui-select-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-select-basic",
+        preview: DocsPreviewsNZ.baseUiSelectBasicExamplePreview(
+          model.baseUiSelectBasicExample,
+          "base-ui-select-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-select/examples/basic",
+        linkText: "Open standalone Base UI Select Basic example",
+      })
+    ),
+    M.when("base-ui-separator-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-separator-basic",
+        preview: DocsPreviewsNZ.baseUiSeparatorBasicExamplePreview(
+          model.baseUiSeparatorBasicExample,
+          "base-ui-separator-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-separator/examples/basic",
+        linkText: "Open standalone Base UI Separator Basic example",
+      })
+    ),
+    M.when("base-ui-slider-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-slider-basic",
+        preview: DocsPreviewsNZ.baseUiSliderBasicExamplePreview(
+          model.baseUiSliderBasicExample,
+          "base-ui-slider-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-slider/examples/basic",
+        linkText: "Open standalone Base UI Slider Basic example",
+      })
+    ),
+    M.when("base-ui-switch-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-switch-basic",
+        preview: DocsPreviewsNZ.baseUiSwitchBasicExamplePreview(
+          model.baseUiSwitchBasicExample,
+          "base-ui-switch-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-switch/examples/basic",
+        linkText: "Open standalone Base UI Switch Basic example",
+      })
+    ),
+    M.when("base-ui-tabs-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-tabs-basic",
+        preview: DocsPreviewsNZ.baseUiTabsBasicExamplePreview(
+          model.baseUiTabsBasicExample,
+          "base-ui-tabs-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-tabs/examples/basic",
+        linkText: "Open standalone Base UI Tabs Basic example",
+      })
+    ),
+    M.when("base-ui-toast-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-toast-basic",
+        preview: DocsPreviewsNZ.baseUiToastBasicExamplePreview(
+          model.baseUiToastBasicExample,
+          "base-ui-toast-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-toast/examples/basic",
+        linkText: "Open standalone Base UI Toast Basic example",
+      })
+    ),
+    M.when("base-ui-toggle-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-toggle-basic",
+        preview: DocsPreviewsNZ.baseUiToggleBasicExamplePreview(
+          model.baseUiToggleBasicExample,
+          "base-ui-toggle-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-toggle/examples/basic",
+        linkText: "Open standalone Base UI Toggle Basic example",
+      })
+    ),
+    M.when("base-ui-toggle-group-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-toggle-group-basic",
+        preview: DocsPreviewsNZ.baseUiToggleGroupBasicExamplePreview(
+          model.baseUiToggleGroupBasicExample,
+          "base-ui-toggle-group-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-toggle-group/examples/basic",
+        linkText: "Open standalone Base UI Toggle Group Basic example",
+      })
+    ),
+    M.when("base-ui-toolbar-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-toolbar-basic",
+        preview: DocsPreviewsNZ.baseUiToolbarBasicExamplePreview(
+          model.baseUiToolbarBasicExample,
+          "base-ui-toolbar-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-toolbar/examples/basic",
+        linkText: "Open standalone Base UI Toolbar Basic example",
+      })
+    ),
+    M.when("base-ui-tooltip-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-base-ui-tooltip-basic",
+        preview: DocsPreviewsNZ.baseUiTooltipBasicExamplePreview(
+          model.baseUiTooltipBasicExample,
+          "base-ui-tooltip-docs-basic-preview"
+        ),
+        href: "/docs/components/base-ui-tooltip/examples/basic",
+        linkText: "Open standalone Base UI Tooltip Basic example",
+      })
+    ),
+    M.orElse(() => html<Message>().empty)
+  );
+
+const baseUiLaneDocsView = (
+  model: Model,
+  config: BaseUiLaneDocsConfig
+): Html => {
   const h = html<Message>();
 
   return h.div(
@@ -12138,12 +12723,37 @@ const baseUiLaneDocsView = (config: BaseUiLaneDocsConfig): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: config.source },
-        { label: "Examples", value: "reuses Foldkit examples" },
+        {
+          label: "Examples",
+          value:
+            config.examples === undefined
+              ? "reuses Foldkit examples"
+              : config.examples.join(", "),
+        },
         { label: "Proof", value: "wrapper tests, registry JSON" },
       ]),
       docsOverviewBlock(
         `${config.label} documents the Base UI style lane for ${config.primitive}: the behavior remains owned by Foldkit, while the installable slice exposes simple Base UI naming and class hooks for consumers who want a lighter presentation layer.`
       ),
+      ...(config.examples === undefined
+        ? []
+        : [
+            h.section(
+              [h.Class("space-y-4")],
+              [
+                h.h2(
+                  [h.Class("text-xl font-semibold text-gray-950")],
+                  ["Examples"]
+                ),
+                h.div(
+                  [h.Class("grid gap-4 lg:grid-cols-2")],
+                  config.examples.map((example) =>
+                    baseUiGeneratedExampleBlock(model, example)
+                  )
+                ),
+              ]
+            ),
+          ]),
       ...docsStandardComponentSections({
         installCommands: `bunx shadcn@latest add <registry-url>/${config.source.replace(
           "registry/default/ui/",
@@ -12170,6 +12780,13 @@ const baseUiLaneDocsView = (config: BaseUiLaneDocsConfig): Html => {
         ],
         coverageItems: [
           "Registry wrapper tests verify exported class helpers and functional re-exports.",
+          ...(config.examples === undefined
+            ? []
+            : [
+                `Wrapper-specific installable examples: ${config.examples.join(
+                  ", "
+                )}.`,
+              ]),
           "Generated registry JSON includes the Base UI origin metadata and dependency link to the Foldkit component.",
           "Install smoke verifies the wrapper and its registry dependency install together.",
         ],
@@ -12189,13 +12806,62 @@ type ShadcnLaneDocsConfig = Readonly<{
   examples?: readonly string[];
 }>;
 
-const shadcnGeneratedExampleBlock = (example: string): Html =>
+const shadcnNewPrimitiveExampleBlock = (model: Model, example: string): Html =>
+  M.value(example).pipe(
+    M.when("shadcn-toggle-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-toggle-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnToggleBasicExamplePreview(),
+        href: "/docs/components/shadcn-toggle/examples/basic",
+        linkText: "Open standalone shadcn Toggle Basic example",
+      })
+    ),
+    M.when("shadcn-toggle-group-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-toggle-group-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnToggleGroupBasicExamplePreview(),
+        href: "/docs/components/shadcn-toggle-group/examples/basic",
+        linkText: "Open standalone shadcn Toggle Group Basic example",
+      })
+    ),
+    M.when("shadcn-tooltip-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-tooltip-basic",
+        preview: DocsPreviewsShadcnMissing.shadcnTooltipBasicExamplePreview(),
+        href: "/docs/components/shadcn-tooltip/examples/basic",
+        linkText: "Open standalone shadcn Tooltip Basic example",
+      })
+    ),
+    M.when("shadcn-base-accordion-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-shadcn-base-accordion-basic",
+        preview:
+          DocsPreviewsShadcnMissing.shadcnBaseAccordionBasicExamplePreview(
+            model.shadcnBaseAccordionBasicExample,
+            "shadcn-base-accordion-docs-basic-preview"
+          ),
+        href: "/docs/components/shadcn-base-accordion/examples/basic",
+        linkText: "Open standalone shadcn Base Accordion Basic example",
+      })
+    ),
+    M.orElse(() => html<Message>().empty)
+  );
+
+const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
   M.value(example).pipe(
     M.when("shadcn-checkbox-basic", () =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-checkbox-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnCheckboxBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnCheckboxBasicExamplePreview(
+          model.shadcnCheckboxBasicExample,
+          "shadcn-checkbox-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-checkbox/examples/basic",
         linkText: "Open standalone shadcn Checkbox Basic example",
       })
@@ -12204,8 +12870,10 @@ const shadcnGeneratedExampleBlock = (example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-collapsible-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnCollapsibleBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnCollapsibleBasicExamplePreview(
+          model.shadcnCollapsibleBasicExample,
+          "shadcn-collapsible-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-collapsible/examples/basic",
         linkText: "Open standalone shadcn Collapsible Basic example",
       })
@@ -12214,7 +12882,10 @@ const shadcnGeneratedExampleBlock = (example: string): Html =>
       docsExampleBlock({
         title: "Basic",
         testId: "docs-example-block-shadcn-combobox-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnComboboxBasicExamplePreview(),
+        preview: DocsPreviewsShadcnMissing.shadcnComboboxBasicExamplePreview(
+          model.shadcnComboboxBasicExample,
+          "shadcn-combobox-docs-basic-preview"
+        ),
         href: "/docs/components/shadcn-combobox/examples/basic",
         linkText: "Open standalone shadcn Combobox Basic example",
       })
@@ -12349,10 +13020,10 @@ const shadcnGeneratedExampleBlock = (example: string): Html =>
         linkText: "Open standalone shadcn Toast Basic example",
       })
     ),
-    M.orElse(() => shadcnGeneratedExampleBlock(example))
+    M.orElse(() => shadcnNewPrimitiveExampleBlock(model, example))
   );
 
-const shadcnButtonExampleBlock = (example: string): Html =>
+const shadcnButtonExampleBlock = (model: Model, example: string): Html =>
   M.value(example).pipe(
     M.when("shadcn-button-size", () =>
       docsExampleBlock({
@@ -12453,6 +13124,15 @@ const shadcnButtonExampleBlock = (example: string): Html =>
         linkText: "Open standalone shadcn Button Spinner example",
       })
     ),
+    M.when("shadcn-button-group", () =>
+      docsExampleBlock({
+        title: "Button Group",
+        testId: "docs-example-block-shadcn-button-group",
+        preview: DocsPreviewsB.shadcnButtonGroupExamplePreview(),
+        href: "/docs/components/shadcn-button/examples/button-group",
+        linkText: "Open standalone shadcn Button Group example",
+      })
+    ),
     M.when("shadcn-button-as-child", () =>
       docsExampleBlock({
         title: "As Child",
@@ -12471,7 +13151,7 @@ const shadcnButtonExampleBlock = (example: string): Html =>
         linkText: "Open standalone shadcn Button RTL example",
       })
     ),
-    M.orElse(() => shadcnGeneratedExampleBlock(example))
+    M.orElse(() => shadcnGeneratedExampleBlock(model, example))
   );
 
 const shadcnAccordionExampleBlock = (model: Model, example: string): Html =>
@@ -12560,7 +13240,7 @@ const shadcnAccordionExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone shadcn Accordion RTL example",
       })
     ),
-    M.orElse(() => shadcnButtonExampleBlock(example))
+    M.orElse(() => shadcnButtonExampleBlock(model, example))
   );
 
 const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
@@ -12594,6 +13274,17 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
           "Open standalone shadcn Calendar Month and Year Selector example",
       })
     ),
+    M.when("shadcn-calendar-range", () =>
+      docsExampleBlock({
+        title: "Range Calendar",
+        description:
+          "Represents the origin range layout while the local Calendar primitive remains single-date.",
+        testId: "docs-example-block-shadcn-calendar-range",
+        preview: DocsPreviewsCD.shadcnCalendarRangeExamplePreview(),
+        href: "/docs/components/shadcn-calendar/examples/range",
+        linkText: "Open standalone shadcn Calendar Range example",
+      })
+    ),
     M.when("shadcn-calendar-date-of-birth", () =>
       docsExampleBlock({
         title: "Date of Birth",
@@ -12606,6 +13297,18 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
         ),
         href: "/docs/components/shadcn-calendar/examples/date-of-birth",
         linkText: "Open standalone shadcn Calendar Date of Birth example",
+      })
+    ),
+    M.when("shadcn-calendar-date-time-picker", () =>
+      docsExampleBlock({
+        title: "Date and Time Picker",
+        description:
+          "Represents the origin date-time composition with static time fields.",
+        testId: "docs-example-block-shadcn-calendar-date-time-picker",
+        preview: DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(),
+        href: "/docs/components/shadcn-calendar/examples/date-time-picker",
+        linkText:
+          "Open standalone shadcn Calendar Date and Time Picker example",
       })
     ),
     M.when("shadcn-calendar-presets", () =>
@@ -12634,6 +13337,28 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
         ),
         href: "/docs/components/shadcn-calendar/examples/booked-dates",
         linkText: "Open standalone shadcn Calendar Booked Dates example",
+      })
+    ),
+    M.when("shadcn-calendar-custom-cell-size", () =>
+      docsExampleBlock({
+        title: "Custom Cell Size",
+        description:
+          "Represents the origin larger day cells with secondary price text.",
+        testId: "docs-example-block-shadcn-calendar-custom-cell-size",
+        preview: DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(),
+        href: "/docs/components/shadcn-calendar/examples/custom-cell-size",
+        linkText: "Open standalone shadcn Calendar Custom Cell Size example",
+      })
+    ),
+    M.when("shadcn-calendar-week-numbers", () =>
+      docsExampleBlock({
+        title: "Week Numbers",
+        description:
+          "Represents the origin week-number column as an inert calendar table.",
+        testId: "docs-example-block-shadcn-calendar-week-numbers",
+        preview: DocsPreviewsCD.shadcnCalendarWeekNumbersExamplePreview(),
+        href: "/docs/components/shadcn-calendar/examples/week-numbers",
+        linkText: "Open standalone shadcn Calendar Week Numbers example",
       })
     ),
     M.when("shadcn-calendar-rtl", () =>
@@ -15937,6 +16662,33 @@ const contentView = (model: Model): Html => {
     M.tagsExhaustive({
       Home: homeView,
       AccordionDocs: () => accordionDocsView(model),
+      BaseUiAccordionMultipleExample: () =>
+        DocsRoutes.baseUiAccordionMultipleExampleRouteView(model),
+      BaseUiAccordionDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Accordion",
+          source: "registry/default/ui/base-ui-accordion",
+          primitive: "Accordion view helpers",
+          description:
+            "A Base UI style-lane Accordion slice that reuses the existing controlled open-values behavior with root, item, trigger, icon, and panel helpers. The installable examples now cover the Base UI FAQ copy and the Open multiple panels behavior.",
+          usage:
+            "Install the Base UI lane wrapper when you want Accordion composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "accordionRootClassName",
+            "accordionItemClassName",
+            "accordionHeaderClassName",
+            "accordionTriggerClassName",
+            "accordionIconClassName",
+            "accordionPanelClassName",
+          ],
+          anatomyCode: `import * as Accordion from "./ui/base-ui-accordion";
+
+Accordion.rootView<Message>({
+  openValues: model.openValues,
+  children,
+});`,
+          examples: ["base-ui-accordion-multiple"],
+        }),
       ShadcnAccordionDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Accordion",
@@ -15963,6 +16715,39 @@ const contentView = (model: Model): Html => {
             "shadcn-accordion-rtl",
           ],
           anatomyCode: `import * as Accordion from "./ui/shadcn-accordion";
+
+Accordion.rootView<Message>({
+  openValues: model.openValues,
+  children: [
+    Accordion.itemView({
+      value: "item-1",
+      openValues: model.openValues,
+      onValueChange: ToggledItem({ value: "item-1" }),
+      title: "Is it accessible?",
+      children: ["Yes. It follows the Foldkit behavior contract."],
+    }),
+  ],
+});`,
+        }),
+      ShadcnBaseAccordionDocs: () =>
+        shadcnLaneDocsView(model, {
+          label: "Base Accordion",
+          source: "registry/default/ui/shadcn-base-accordion",
+          primitive: "Accordion view helpers",
+          description:
+            "A shadcn Base UI Accordion slice that mirrors the origin Base UI Accordion structure while using the same controlled open-values behavior as the Foldkit accordion primitive.",
+          usage:
+            "Install the shadcn Base Accordion wrapper when you want Base UI accordion composition with shadcn naming and style hooks.",
+          classHelpers: [
+            "shadcnBaseAccordionRootClassName",
+            "shadcnBaseAccordionItemClassName",
+            "shadcnBaseAccordionHeaderClassName",
+            "shadcnBaseAccordionTriggerClassName",
+            "shadcnBaseAccordionIconClassName",
+            "shadcnBaseAccordionPanelClassName",
+          ],
+          examples: ["shadcn-base-accordion-basic"],
+          anatomyCode: `import * as Accordion from "./ui/shadcn-base-accordion";
 
 Accordion.rootView<Message>({
   openValues: model.openValues,
@@ -16031,6 +16816,36 @@ Accordion.rootView<Message>({
       ButtonGroupRtlExample: () =>
         DocsRoutes.buttonGroupRtlExampleRouteView(model),
       AlertDialogDocs: () => alertDialogDocsView(model),
+      BaseUiAlertDialogCloseConfirmationExample: () =>
+        DocsRoutes.baseUiAlertDialogCloseConfirmationExampleRouteView(model),
+      BaseUiAlertDialogDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Alert Dialog",
+          source: "registry/default/ui/base-ui-alert-dialog",
+          primitive: "Alert Dialog view helpers",
+          description:
+            "A Base UI style-lane Alert Dialog slice that reuses the existing alert-dialog anatomy for trigger, portal, backdrop, popup, title, description, and action buttons. The installable examples now cover the default Discard draft flow and the Close confirmation nested-dialog flow.",
+          usage:
+            "Install the Base UI lane wrapper when you want Alert Dialog composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "alertDialogTriggerClassName",
+            "alertDialogPortalClassName",
+            "alertDialogBackdropClassName",
+            "alertDialogPopupClassName",
+            "alertDialogTitleClassName",
+            "alertDialogDescriptionClassName",
+            "alertDialogActionsClassName",
+          ],
+          anatomyCode: `import * as AlertDialog from "./ui/base-ui-alert-dialog";
+
+AlertDialog.rootView<Message>({
+  children: [
+    AlertDialog.triggerView({ onClick: OpenedDialog(), children: ["Delete"] }),
+    AlertDialog.portalView({ open: model.open, children: [content] }),
+  ],
+});`,
+          examples: ["base-ui-alert-dialog-close-confirmation"],
+        }),
       ShadcnAlertDialogDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Alert Dialog",
@@ -16062,6 +16877,35 @@ AlertDialog.rootView<Message>({
       AlertDialogBasicExample: () =>
         DocsRoutes.alertDialogBasicExampleRouteView(model),
       DrawerDocs: () => drawerDocsView(model),
+      BaseUiDrawerDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Drawer",
+          source: "registry/default/ui/base-ui-drawer",
+          primitive: "Drawer view helpers",
+          description:
+            "A Base UI style-lane Drawer slice that reuses the existing trigger, portal, backdrop, viewport, popup, content, title, description, and close helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Drawer composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "drawerTriggerClassName",
+            "drawerPortalClassName",
+            "drawerBackdropClassName",
+            "drawerViewportClassName",
+            "drawerPopupClassName",
+            "drawerCloseClassName",
+          ],
+          examples: ["base-ui-drawer-basic"],
+          anatomyCode: `import * as Drawer from "./ui/base-ui-drawer";
+
+Drawer.rootView<Message>({
+  children: [
+    Drawer.triggerView({ onClick: ClickedOpen(), children: ["Open"] }),
+    Drawer.portalView({ open: model.open, children: [content] }),
+  ],
+});`,
+        }),
+      BaseUiDrawerBasicExample: () =>
+        DocsRoutes.baseUiDrawerBasicExampleRouteView(model),
       ShadcnDrawerDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Drawer",
@@ -16091,6 +16935,32 @@ Drawer.rootView<Message>({
         }),
       DrawerBasicExample: () => DocsRoutes.drawerBasicExampleRouteView(model),
       ContextMenuDocs: () => contextMenuDocsView(model),
+      BaseUiContextMenuDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Context Menu",
+          source: "registry/default/ui/base-ui-context-menu",
+          primitive: "Context Menu view helpers",
+          description:
+            "A Base UI style-lane Context Menu slice that reuses the existing root, trigger, portal, backdrop, positioner, popup, item, and separator helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Context Menu composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "contextMenuTriggerClassName",
+            "contextMenuPortalClassName",
+            "contextMenuBackdropClassName",
+            "contextMenuPositionerClassName",
+            "contextMenuPopupClassName",
+            "contextMenuItemClassName",
+          ],
+          anatomyCode: `import * as ContextMenu from "./ui/base-ui-context-menu";
+
+ContextMenu.rootView<Message>({
+  children: [
+    ContextMenu.triggerView({ onOpen: ClickedOpen(), children: ["Open"] }),
+    ContextMenu.portalView({ open: model.open, children: [menu] }),
+  ],
+});`,
+        }),
       ShadcnContextMenuDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Context Menu",
@@ -16121,6 +16991,39 @@ ContextMenu.rootView<Message>({
       ContextMenuBasicExample: () =>
         DocsRoutes.contextMenuBasicExampleRouteView(model),
       MenubarDocs: () => menubarDocsView(model),
+      BaseUiMenubarDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Menubar",
+          source: "registry/default/ui/base-ui-menubar",
+          primitive: "Menubar view helpers",
+          description:
+            "A Base UI style-lane Menubar slice that reuses the existing root, menu, trigger, popup, item, and separator helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Menubar composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "menubarRootClassName",
+            "menubarMenuClassName",
+            "menubarTriggerClassName",
+            "menubarPopupClassName",
+            "menubarItemClassName",
+            "menubarSeparatorClassName",
+          ],
+          examples: ["base-ui-menubar-basic"],
+          anatomyCode: `import * as Menubar from "./ui/base-ui-menubar";
+
+Menubar.rootView<Message>({
+  children: [
+    Menubar.menuView({
+      children: [
+        Menubar.triggerView({ open: model.open, onToggle: ClickedToggle(), children: ["File"] }),
+        Menubar.popupView({ open: model.open, children: [Menubar.itemView({ children: ["New"] })] }),
+      ],
+    }),
+  ],
+});`,
+        }),
+      BaseUiMenubarBasicExample: () =>
+        DocsRoutes.baseUiMenubarBasicExampleRouteView(model),
       ShadcnMenubarDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Menubar",
@@ -16154,6 +17057,39 @@ Menubar.rootView<Message>({
         }),
       MenubarBasicExample: () => DocsRoutes.menubarBasicExampleRouteView(model),
       NavigationMenuDocs: () => navigationMenuDocsView(model),
+      BaseUiNavigationMenuDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Navigation Menu",
+          source: "registry/default/ui/base-ui-navigation-menu",
+          primitive: "Navigation Menu view helpers",
+          description:
+            "A Base UI style-lane Navigation Menu slice that reuses the existing root, list, item, trigger, link, portal, positioner, popup, viewport, content, and arrow helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Navigation Menu composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "navigationMenuRootClassName",
+            "navigationMenuListClassName",
+            "navigationMenuTriggerClassName",
+            "navigationMenuLinkClassName",
+            "navigationMenuPopupClassName",
+            "navigationMenuViewportClassName",
+          ],
+          examples: ["base-ui-navigation-menu-basic"],
+          anatomyCode: `import * as NavigationMenu from "./ui/base-ui-navigation-menu";
+
+NavigationMenu.rootView<Message>({
+  children: [
+    NavigationMenu.listView({
+      children: [
+        NavigationMenu.triggerView({ open: model.open, onToggle: ClickedToggle(), children: ["Components"] }),
+        NavigationMenu.portalView({ open: model.open, children: [NavigationMenu.popupView({ children: [content] })] }),
+      ],
+    }),
+  ],
+});`,
+        }),
+      BaseUiNavigationMenuBasicExample: () =>
+        DocsRoutes.baseUiNavigationMenuBasicExampleRouteView(model),
       ShadcnNavigationMenuDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Navigation Menu",
@@ -16188,12 +17124,94 @@ NavigationMenu.rootView<Message>({
       NavigationMenuBasicExample: () =>
         DocsRoutes.navigationMenuBasicExampleRouteView(model),
       OtpFieldDocs: () => otpFieldDocsView(model),
+      BaseUiOtpFieldDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "OTP Field",
+          source: "registry/default/ui/base-ui-otp-field",
+          primitive: "OTP Field view helpers",
+          description:
+            "A Base UI style-lane OTP Field slice that reuses the existing root, input group, input, and separator helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want OTP Field composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "otpFieldRootClassName",
+            "otpFieldInputGroupClassName",
+            "otpFieldInputClassName",
+            "otpFieldSeparatorClassName",
+          ],
+          examples: ["base-ui-otp-field-basic"],
+          anatomyCode: `import * as OtpField from "./ui/base-ui-otp-field";
+
+OtpField.rootView<Message>({
+  children: [
+    OtpField.inputGroupView({ children: inputs }),
+    OtpField.separatorView({}),
+  ],
+});`,
+        }),
+      BaseUiOtpFieldBasicExample: () =>
+        DocsRoutes.baseUiOtpFieldBasicExampleRouteView(model),
       OtpFieldBasicExample: () =>
         DocsRoutes.otpFieldBasicExampleRouteView(model),
       PreviewCardDocs: () => previewCardDocsView(model),
+      BaseUiPreviewCardDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Preview Card",
+          source: "registry/default/ui/base-ui-preview-card",
+          primitive: "Preview Card view helpers",
+          description:
+            "A Base UI style-lane Preview Card slice that reuses the existing root, trigger, portal, backdrop, positioner, popup, viewport, and arrow helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Preview Card composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "previewCardRootClassName",
+            "previewCardTriggerClassName",
+            "previewCardPortalClassName",
+            "previewCardPositionerClassName",
+            "previewCardPopupClassName",
+            "previewCardViewportClassName",
+          ],
+          examples: ["base-ui-preview-card-basic"],
+          anatomyCode: `import * as PreviewCard from "./ui/base-ui-preview-card";
+
+PreviewCard.rootView<Message>({
+  children: [
+    PreviewCard.triggerView({ onOpen: OpenedPreview(), children: ["Preview"] }),
+    PreviewCard.portalView({ open: model.open, children: [card] }),
+  ],
+});`,
+        }),
+      BaseUiPreviewCardBasicExample: () =>
+        DocsRoutes.baseUiPreviewCardBasicExampleRouteView(model),
       PreviewCardBasicExample: () =>
         DocsRoutes.previewCardBasicExampleRouteView(model),
       CollapsibleDocs: () => collapsibleDocsView(model),
+      BaseUiCollapsibleBasicExample: () =>
+        DocsRoutes.baseUiCollapsibleBasicExampleRouteView(model),
+      BaseUiCollapsibleDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Collapsible",
+          source: "registry/default/ui/base-ui-collapsible",
+          primitive: "Collapsible view helpers",
+          description:
+            "A Base UI style-lane Collapsible slice with a Basic example matching the origin Recovery keys trigger and key list.",
+          usage:
+            "Install the Base UI lane wrapper when you want controlled Collapsible behavior with Base UI naming, class hooks, and origin-matched example content.",
+          classHelpers: [
+            "collapsibleRootClassName",
+            "collapsibleTriggerClassName",
+            "collapsibleIconClassName",
+            "collapsiblePanelClassName",
+            "collapsibleContentClassName",
+          ],
+          examples: ["base-ui-collapsible-basic"],
+          anatomyCode: `import * as Collapsible from "./ui/base-ui-collapsible";
+
+Collapsible.rootView<Message>({
+  open: model.open,
+  children,
+});`,
+        }),
       ShadcnCollapsibleDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Collapsible",
@@ -16224,6 +17242,36 @@ Collapsible.rootView<Message>({
       CollapsibleBasicExample: () =>
         DocsRoutes.collapsibleBasicExampleRouteView(model),
       FieldDocs: () => fieldDocsView(model),
+      BaseUiFieldDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Field",
+          source: "registry/default/ui/base-ui-field",
+          primitive: "Field view helpers",
+          description:
+            "A Base UI style-lane Field slice that reuses the existing root, label, control, description, error, item, and validity helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Field composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "fieldRootClassName",
+            "fieldLabelClassName",
+            "fieldControlClassName",
+            "fieldDescriptionClassName",
+            "fieldErrorClassName",
+            "fieldValidityClassName",
+          ],
+          examples: ["base-ui-field-basic"],
+          anatomyCode: `import * as Field from "./ui/base-ui-field";
+
+Field.rootView<Message>({
+  children: [
+    Field.labelView({ forId: "email", children: ["Email"] }),
+    Field.controlView({ id: "email", value: model.email, onInput: UpdatedEmail }),
+    Field.descriptionView({ children: ["Use your work email."] }),
+  ],
+});`,
+        }),
+      BaseUiFieldBasicExample: () =>
+        DocsRoutes.baseUiFieldBasicExampleRouteView(model),
       ShadcnFieldDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Field",
@@ -16254,15 +17302,130 @@ Field.rootView<Message>({
         }),
       FieldBasicExample: () => DocsRoutes.fieldBasicExampleRouteView(model),
       NumberFieldDocs: () => numberFieldDocsView(model),
+      BaseUiNumberFieldDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Number Field",
+          source: "registry/default/ui/base-ui-number-field",
+          primitive: "Number Field view helpers",
+          description:
+            "A Base UI style-lane Number Field slice that reuses the existing root, scrub area, group, button, and input helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Number Field composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "numberFieldRootClassName",
+            "numberFieldScrubAreaClassName",
+            "numberFieldGroupClassName",
+            "numberFieldButtonClassName",
+            "numberFieldInputClassName",
+          ],
+          examples: ["base-ui-number-field-basic"],
+          anatomyCode: `import * as NumberField from "./ui/base-ui-number-field";
+
+NumberField.rootView<Message>({
+  children: [
+    NumberField.scrubAreaView({ children: ["Amount"] }),
+    NumberField.groupView({ children: [decrement, input, increment] }),
+  ],
+});`,
+        }),
+      BaseUiNumberFieldBasicExample: () =>
+        DocsRoutes.baseUiNumberFieldBasicExampleRouteView(model),
       NumberFieldBasicExample: () =>
         DocsRoutes.numberFieldBasicExampleRouteView(model),
       FormDocs: () => formDocsView(model),
+      BaseUiFormDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Form",
+          source: "registry/default/ui/base-ui-form",
+          primitive: "Form view helpers",
+          description:
+            "A Base UI style-lane Form slice that reuses the existing root, field, label, control, error, and submit helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Form composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "formRootClassName",
+            "formFieldClassName",
+            "formLabelClassName",
+            "formControlClassName",
+            "formErrorClassName",
+            "formSubmitClassName",
+          ],
+          examples: ["base-ui-form-basic"],
+          anatomyCode: `import * as Form from "./ui/base-ui-form";
+
+Form.rootView<Message>({
+  onSubmit: SubmittedForm(),
+  children: [
+    Form.fieldView({ children: [label, control, error] }),
+    Form.submitView({ children: ["Submit"] }),
+  ],
+});`,
+        }),
+      BaseUiFormBasicExample: () =>
+        DocsRoutes.baseUiFormBasicExampleRouteView(model),
       FormBasicExample: () => DocsRoutes.formBasicExampleRouteView(model),
       AutocompleteDocs: () => autocompleteDocsView(model),
+      BaseUiAutocompleteDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Autocomplete",
+          source: "registry/default/ui/base-ui-autocomplete",
+          primitive: "Autocomplete view helpers",
+          description:
+            "A Base UI style-lane Autocomplete slice that reuses the existing input, listbox, option, empty-state, and label helpers. The installable Basic example matches the origin Search tags demo, including the e.g. feature placeholder and No tags found empty state. The current origin page documents Clear as an API part but does not publish a separate clear-button example section.",
+          usage:
+            "Install the Base UI lane wrapper when you want Autocomplete composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "autocompleteRootClassName",
+            "autocompleteLabelClassName",
+            "autocompleteInputClassName",
+            "autocompleteListClassName",
+            "autocompleteItemClassName",
+            "autocompleteEmptyClassName",
+          ],
+          anatomyCode: `import * as Autocomplete from "./ui/base-ui-autocomplete";
+
+Autocomplete.rootView<Message>({
+  children: [
+    Autocomplete.inputView({ id, value, onInput, ariaLabel }),
+    Autocomplete.listView({ id: listId, children: options }),
+  ],
+});`,
+          examples: ["base-ui-autocomplete-basic"],
+        }),
       AutocompleteBasicExample: () =>
         DocsRoutes.autocompleteBasicExampleRouteView(model),
+      BaseUiAutocompleteBasicExample: () =>
+        DocsRoutes.baseUiAutocompleteBasicExampleRouteView(model),
       Avatar: () => embedUi("ui-avatar", View.avatar),
       AvatarDocs: () => avatarDocsView(model),
+      BaseUiAvatarDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Avatar",
+          source: "registry/default/ui/base-ui-avatar",
+          primitive: "Avatar view helpers",
+          description:
+            "A Base UI style-lane Avatar slice that reuses the existing root, image, fallback, badge, group, and count helpers. The installable Basic example matches the origin two-avatar demo with the Unsplash image plus LT fallback and the fallback-only LT avatar.",
+          usage:
+            "Install the Base UI lane wrapper when you want Avatar composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "avatarBaseClassName",
+            "avatarImageClassName",
+            "avatarFallbackClassName",
+            "avatarBadgeClassName",
+            "avatarGroupClassName",
+            "avatarGroupCountClassName",
+          ],
+          anatomyCode: `import * as Avatar from "./ui/base-ui-avatar";
+
+Avatar.view<Message>({
+  fallback: "LT",
+  src,
+  alt: "Lena Taylor",
+});`,
+          examples: ["base-ui-avatar-basic"],
+        }),
+      BaseUiAvatarBasicExample: () =>
+        DocsRoutes.baseUiAvatarBasicExampleRouteView(model),
       ShadcnAvatarDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Avatar",
@@ -16347,6 +17510,7 @@ Avatar.view<Message>({
       ItemIconExample: () => DocsRoutes.itemIconExampleRouteView(model),
       ItemImageExample: () => DocsRoutes.itemImageExampleRouteView(model),
       ItemLinkExample: () => DocsRoutes.itemLinkExampleRouteView(model),
+      ItemDropdownExample: () => DocsRoutes.itemDropdownExampleRouteView(model),
       ItemRtlExample: () => DocsRoutes.itemRtlExampleRouteView(model),
       ItemSizeExample: () => DocsRoutes.itemSizeExampleRouteView(model),
       ItemVariantExample: () => DocsRoutes.itemVariantExampleRouteView(model),
@@ -16385,6 +17549,26 @@ Avatar.view<Message>({
       CardBasicExample: () => DocsRoutes.cardBasicExampleRouteView(model),
       Separator: () => embedUi("ui-separator", View.separator),
       SeparatorDocs: () => separatorDocsView(model),
+      BaseUiSeparatorDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Separator",
+          source: "registry/default/ui/base-ui-separator",
+          primitive: "Separator view helpers",
+          description:
+            "A Base UI style-lane Separator slice that reuses the existing accessible orientation-aware separator helper.",
+          usage:
+            "Install the Base UI lane wrapper when you want Separator composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "separatorBaseClassName",
+            "horizontalSeparatorClassName",
+            "verticalSeparatorClassName",
+            "separatorClassNameByOrientation",
+          ],
+          examples: ["base-ui-separator-basic"],
+          anatomyCode: `import * as Separator from "./ui/base-ui-separator";
+
+Separator.view<Message>({ orientation: "horizontal" });`,
+        }),
       ShadcnSeparatorDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Separator",
@@ -16405,6 +17589,8 @@ Avatar.view<Message>({
 
 Separator.view<Message>({ orientation: "horizontal" });`,
         }),
+      BaseUiSeparatorBasicExample: () =>
+        DocsRoutes.baseUiSeparatorBasicExampleRouteView(model),
       SeparatorBasicExample: () =>
         DocsRoutes.separatorBasicExampleRouteView(model),
       Skeleton: () => embedUi("ui-skeleton", View.skeleton),
@@ -16459,6 +17645,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
             "shadcn-button-with-icon",
             "shadcn-button-rounded",
             "shadcn-button-spinner",
+            "shadcn-button-group",
             "shadcn-button-as-child",
             "shadcn-button-rtl",
           ],
@@ -16474,6 +17661,8 @@ Button.view<Message>({
 });`,
         }),
       ButtonBasicExample: () => DocsRoutes.buttonBasicExampleRouteView(model),
+      BaseUiButtonBasicExample: () =>
+        DocsRoutes.baseUiButtonBasicExampleRouteView(model),
       ButtonDisabledExample: () =>
         DocsRoutes.buttonDisabledExampleRouteView(model),
       Calendar: () => embedUi("ui-calendar", View.calendar),
@@ -16497,10 +17686,14 @@ Button.view<Message>({
           ],
           examples: [
             "shadcn-calendar-basic",
+            "shadcn-calendar-range",
             "shadcn-calendar-month-year-selector",
             "shadcn-calendar-date-of-birth",
+            "shadcn-calendar-date-time-picker",
             "shadcn-calendar-presets",
             "shadcn-calendar-booked",
+            "shadcn-calendar-custom-cell-size",
+            "shadcn-calendar-week-numbers",
             "shadcn-calendar-rtl",
           ],
           anatomyCode: `import * as Calendar from "./ui/shadcn-calendar";
@@ -16519,6 +17712,8 @@ h.submodel({
       Checkbox: () => embedUi("ui-checkbox", View.checkbox),
       CheckboxDocs: () => checkboxDocsView(model),
       BaseUiCheckboxDocs: () => baseUiCheckboxDocsView(model),
+      BaseUiCheckboxBasicExample: () =>
+        DocsRoutes.baseUiCheckboxBasicExampleRouteView(model),
       ShadcnCheckboxDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Checkbox",
@@ -16548,6 +17743,31 @@ h.submodel({
       CheckboxBasicExample: () =>
         DocsRoutes.checkboxBasicExampleRouteView(model),
       CheckboxGroupDocs: () => checkboxGroupDocsView(model),
+      BaseUiCheckboxGroupDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Checkbox Group",
+          source: "registry/default/ui/base-ui-checkbox-group",
+          primitive: "Checkbox Group view helpers",
+          description:
+            "A Base UI style-lane Checkbox Group slice that reuses the existing grouped checkbox, parent checkbox, checked, unchecked, and indeterminate helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Checkbox Group composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "checkboxGroupRootClassName",
+            "checkboxGroupCaptionClassName",
+            "checkboxGroupItemsClassName",
+            "checkboxGroupItemClassName",
+            "checkboxGroupControlClassName",
+            "checkboxGroupIndicatorClassName",
+          ],
+          anatomyCode: `import * as CheckboxGroup from "./ui/base-ui-checkbox-group";
+
+CheckboxGroup.groupView<Message>({
+  label: "Apples",
+  labelId: "apples",
+  children,
+});`,
+        }),
       CheckboxGroupBasicExample: () =>
         DocsRoutes.checkboxGroupBasicExampleRouteView(model),
       CheckboxIndeterminateExample: () =>
@@ -16555,14 +17775,14 @@ h.submodel({
       Combobox: () => embedUi("ui-combobox", View.combobox),
       ComboboxDocs: () => comboboxDocsView(model),
       BaseUiComboboxDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Combobox",
           source: "registry/default/ui/base-ui-combobox",
           primitive: "Ui.Combobox",
           description:
-            "A Base UI style-lane Combobox slice that reuses the official Foldkit Ui.Combobox primitive for controlled input, popup, item selection, and multi-select behavior.",
+            "A Base UI style-lane Combobox slice with a Basic example matching the origin fruit picker label, placeholder, and fruit list.",
           usage:
-            "Install the Base UI lane wrapper when you want the Foldkit Combobox behavior with Base UI naming and class helpers.",
+            "Install the Base UI lane wrapper when you want Foldkit Combobox behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
             "baseUiComboboxInputClassName",
             "baseUiComboboxButtonClassName",
@@ -16570,6 +17790,7 @@ h.submodel({
             "baseUiComboboxItemClassName",
             "baseUiComboboxBackdropClassName",
           ],
+          examples: ["base-ui-combobox-basic"],
           anatomyCode: `import * as Combobox from "./ui/base-ui-combobox";
 
 Combobox.view<Message>({
@@ -16578,6 +17799,8 @@ Combobox.view<Message>({
   items,
 });`,
         }),
+      BaseUiComboboxBasicExample: () =>
+        DocsRoutes.baseUiComboboxBasicExampleRouteView(model),
       ShadcnComboboxDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Combobox",
@@ -16642,20 +17865,21 @@ h.submodel({
       Dialog: () => embedUi("ui-dialog", View.dialog),
       DialogDocs: () => dialogDocsView(model),
       BaseUiDialogDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Dialog",
           source: "registry/default/ui/base-ui-dialog",
           primitive: "Ui.Dialog",
           description:
-            "A Base UI style-lane Dialog slice that reuses the official Foldkit Ui.Dialog primitive for open state, modal semantics, labelled content, dismissal, and focus commands.",
+            "A Base UI style-lane Dialog slice with a Basic example matching the origin notifications dialog.",
           usage:
-            "Install the Base UI lane wrapper when you want Foldkit Dialog behavior with a simple Base UI presentation surface.",
+            "Install the Base UI lane wrapper when you want Foldkit Dialog behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
             "baseUiDialogBackdropClassName",
             "baseUiDialogPanelClassName",
             "baseUiDialogTitleClassName",
             "baseUiDialogDescriptionClassName",
           ],
+          examples: ["base-ui-dialog-basic"],
           anatomyCode: `import * as Dialog from "./ui/base-ui-dialog";
 
 Dialog.view<Message>({
@@ -16664,6 +17888,8 @@ Dialog.view<Message>({
   toContentView: (attributes) => h.div(attributes.panel, ["Dialog content"]),
 });`,
         }),
+      BaseUiDialogBasicExample: () =>
+        DocsRoutes.baseUiDialogBasicExampleRouteView(model),
       ShadcnDialogDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Dialog",
@@ -16711,7 +17937,7 @@ Dialog.view<Message>({
       Fieldset: () => embedUi("ui-fieldset", View.fieldset),
       FieldsetDocs: () => fieldsetDocsView(model),
       BaseUiFieldsetDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Fieldset",
           source: "registry/default/ui/base-ui-fieldset",
           primitive: "Ui.Fieldset",
@@ -16724,6 +17950,7 @@ Dialog.view<Message>({
             "baseUiFieldsetLegendClassName",
             "baseUiFieldsetDescriptionClassName",
           ],
+          examples: ["base-ui-fieldset-basic"],
           anatomyCode: `import * as Fieldset from "./ui/base-ui-fieldset";
 
 Fieldset.view<Message>({
@@ -16732,6 +17959,8 @@ Fieldset.view<Message>({
   children: [field],
 });`,
         }),
+      BaseUiFieldsetBasicExample: () =>
+        DocsRoutes.baseUiFieldsetBasicExampleRouteView(model),
       FieldsetBasicExample: () =>
         DocsRoutes.fieldsetBasicExampleRouteView(model),
       FieldsetDisabledExample: () =>
@@ -16745,7 +17974,7 @@ Fieldset.view<Message>({
       Input: () => embedUi("ui-input", View.input),
       InputDocs: () => inputDocsView(model),
       BaseUiInputDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Input",
           source: "registry/default/ui/base-ui-input",
           primitive: "Ui.Input",
@@ -16759,6 +17988,7 @@ Fieldset.view<Message>({
             "baseUiInputControlClassName",
             "baseUiInputDescriptionClassName",
           ],
+          examples: ["base-ui-input-basic"],
           anatomyCode: `import * as Input from "./ui/base-ui-input";
 
 Input.view<Message>({
@@ -16767,6 +17997,8 @@ Input.view<Message>({
   label: "Name",
 });`,
         }),
+      BaseUiInputBasicExample: () =>
+        DocsRoutes.baseUiInputBasicExampleRouteView(model),
       ShadcnInputDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Input",
@@ -16796,9 +18028,60 @@ Input.view<Message>({
         DocsRoutes.inputDisabledExampleRouteView(model),
       Meter: () => embedUi("ui-meter", View.meter),
       MeterDocs: () => meterDocsView(model),
+      BaseUiMeterDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Meter",
+          source: "registry/default/ui/base-ui-meter",
+          primitive: "Meter view helpers",
+          description:
+            "A Base UI style-lane Meter slice that reuses the existing root, label, value, track, and indicator helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Meter composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "meterRootClassName",
+            "meterLabelClassName",
+            "meterValueClassName",
+            "meterTrackClassName",
+            "meterIndicatorClassName",
+          ],
+          examples: ["base-ui-meter-basic"],
+          anatomyCode: `import * as Meter from "./ui/base-ui-meter";
+
+Meter.view<Message>({
+  label: "Storage",
+  value: 64,
+  min: 0,
+  max: 100,
+});`,
+        }),
+      BaseUiMeterBasicExample: () =>
+        DocsRoutes.baseUiMeterBasicExampleRouteView(model),
       MeterBasicExample: () => DocsRoutes.meterBasicExampleRouteView(model),
       ScrollArea: () => embedUi("ui-scroll-area", View.scrollArea),
       ScrollAreaDocs: () => scrollAreaDocsView(model),
+      BaseUiScrollAreaDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Scroll Area",
+          source: "registry/default/ui/base-ui-scroll-area",
+          primitive: "Scroll Area view helpers",
+          description:
+            "A Base UI style-lane Scroll Area slice that reuses the existing root, viewport, content, scrollbar, thumb, corner, and fade helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Scroll Area composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "scrollAreaRootClassName",
+            "scrollAreaViewportClassName",
+            "scrollAreaContentClassName",
+            "scrollAreaScrollbarClassName",
+            "scrollAreaThumbClassName",
+          ],
+          examples: ["base-ui-scroll-area-basic"],
+          anatomyCode: `import * as ScrollArea from "./ui/base-ui-scroll-area";
+
+ScrollArea.view<Message>({
+  children: items.map((item) => h.p([], [item])),
+});`,
+        }),
       ShadcnScrollAreaDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Scroll Area",
@@ -16826,16 +18109,117 @@ ScrollArea.view<Message>({
         DocsRoutes.scrollAreaBasicExampleRouteView(model),
       Toggle: () => embedUi("ui-toggle", View.toggle),
       ToggleDocs: () => toggleDocsView(model),
+      BaseUiToggleDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Toggle",
+          source: "registry/default/ui/base-ui-toggle",
+          primitive: "Toggle view helpers",
+          description:
+            "A Base UI style-lane Toggle slice that reuses the existing pressed-state root and icon helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Toggle composition with Base UI naming and class hooks.",
+          classHelpers: ["toggleRootClassName", "toggleIconClassName"],
+          examples: ["base-ui-toggle-basic"],
+          anatomyCode: `import * as Toggle from "./ui/base-ui-toggle";
+
+Toggle.view<Message>({
+  pressed: model.pressed,
+  onPressedChange: ToggledPressed(),
+  children: ["Bold"],
+});`,
+        }),
+      BaseUiToggleBasicExample: () =>
+        DocsRoutes.baseUiToggleBasicExampleRouteView(model),
       ToggleBasicExample: () => DocsRoutes.toggleBasicExampleRouteView(model),
       ToggleGroupDocs: () => toggleGroupDocsView(model),
+      BaseUiToggleGroupDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Toggle Group",
+          source: "registry/default/ui/base-ui-toggle-group",
+          primitive: "Toggle Group view helpers",
+          description:
+            "A Base UI style-lane Toggle Group slice that reuses the existing group root, item, and icon helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Toggle Group composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "toggleGroupRootClassName",
+            "toggleGroupItemClassName",
+            "toggleGroupIconClassName",
+          ],
+          examples: ["base-ui-toggle-group-basic"],
+          anatomyCode: `import * as ToggleGroup from "./ui/base-ui-toggle-group";
+
+ToggleGroup.rootView<Message>({
+  children: [
+    ToggleGroup.itemView({ pressed: model.bold, onPressedChange: ToggledBold(), children: ["Bold"] }),
+  ],
+});`,
+        }),
+      BaseUiToggleGroupBasicExample: () =>
+        DocsRoutes.baseUiToggleGroupBasicExampleRouteView(model),
       ToggleGroupBasicExample: () =>
         DocsRoutes.toggleGroupBasicExampleRouteView(model),
       RadioDocs: () => radioDocsView(model),
       RadioBasicExample: () => DocsRoutes.radioBasicExampleRouteView(model),
       ToolbarDocs: () => toolbarDocsView(model),
+      BaseUiToolbarDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Toolbar",
+          source: "registry/default/ui/base-ui-toolbar",
+          primitive: "Toolbar view helpers",
+          description:
+            "A Base UI style-lane Toolbar slice that reuses the existing root, group, button, link, input, and separator helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Toolbar composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "toolbarRootClassName",
+            "toolbarGroupClassName",
+            "toolbarButtonClassName",
+            "toolbarLinkClassName",
+            "toolbarInputClassName",
+            "toolbarSeparatorClassName",
+          ],
+          examples: ["base-ui-toolbar-basic"],
+          anatomyCode: `import * as Toolbar from "./ui/base-ui-toolbar";
+
+Toolbar.rootView<Message>({
+  children: [
+    Toolbar.groupView({ children: [button, link, input] }),
+    Toolbar.separatorView({}),
+  ],
+});`,
+        }),
+      BaseUiToolbarBasicExample: () =>
+        DocsRoutes.baseUiToolbarBasicExampleRouteView(model),
       ToolbarBasicExample: () => DocsRoutes.toolbarBasicExampleRouteView(model),
       Progress: () => embedUi("ui-progress", View.progress),
       ProgressDocs: () => progressDocsView(model),
+      BaseUiProgressDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Progress",
+          source: "registry/default/ui/base-ui-progress",
+          primitive: "Progress view helpers",
+          description:
+            "A Base UI style-lane Progress slice that reuses the existing accessible root, label, value, track, and indicator helpers.",
+          usage:
+            "Install the Base UI lane wrapper when you want Progress composition with Base UI naming and class hooks.",
+          classHelpers: [
+            "progressRootClassName",
+            "progressLabelClassName",
+            "progressValueClassName",
+            "progressTrackClassName",
+            "progressIndicatorClassName",
+          ],
+          examples: ["base-ui-progress-basic"],
+          anatomyCode: `import * as Progress from "./ui/base-ui-progress";
+
+Progress.view<Message>({
+  value: model.uploadPercent,
+  label: "Upload progress",
+});`,
+        }),
+      BaseUiProgressBasicExample: () =>
+        DocsRoutes.baseUiProgressBasicExampleRouteView(model),
       ShadcnProgressDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Progress",
@@ -16870,7 +18254,7 @@ Progress.view<Message>({
       Menu: () => embedUi("ui-menu", View.menu),
       MenuDocs: () => menuDocsView(model),
       BaseUiMenuDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Menu",
           source: "registry/default/ui/base-ui-menu",
           primitive: "Ui.Menu",
@@ -16886,6 +18270,7 @@ Progress.view<Message>({
             "baseUiMenuItemClassName",
             "baseUiMenuBackdropClassName",
           ],
+          examples: ["base-ui-menu-basic"],
           anatomyCode: `import * as Menu from "./ui/base-ui-menu";
 
 Menu.view<Message>({
@@ -16894,25 +18279,28 @@ Menu.view<Message>({
   items,
 });`,
         }),
+      BaseUiMenuBasicExample: () =>
+        DocsRoutes.baseUiMenuBasicExampleRouteView(model),
       MenuBasicExample: () => DocsRoutes.menuBasicExampleRouteView(model),
       MenuAnimatedExample: () => DocsRoutes.menuAnimatedExampleRouteView(model),
       Popover: () => embedUi("ui-popover", View.popover),
       PopoverDocs: () => popoverDocsView(model),
       BaseUiPopoverDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Popover",
           source: "registry/default/ui/base-ui-popover",
           primitive: "Ui.Popover",
           description:
-            "A Base UI style-lane Popover slice that reuses the official Foldkit Ui.Popover primitive for controlled open state, anchored panel rendering, backdrop dismissal, and focus commands.",
+            "A Base UI style-lane Popover slice with a Basic example matching the origin notifications popup.",
           usage:
-            "Install the Base UI lane wrapper when you want Foldkit Popover behavior with simple Base UI naming and class helpers.",
+            "Install the Base UI lane wrapper when you want Foldkit Popover behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
             "baseUiPopoverTriggerClassName",
             "baseUiPopoverRootClassName",
             "baseUiPopoverPanelClassName",
             "baseUiPopoverBackdropClassName",
           ],
+          examples: ["base-ui-popover-basic"],
           anatomyCode: `import * as Popover from "./ui/base-ui-popover";
 
 Popover.view<Message>({
@@ -16924,6 +18312,8 @@ Popover.view<Message>({
   ],
 });`,
         }),
+      BaseUiPopoverBasicExample: () =>
+        DocsRoutes.baseUiPopoverBasicExampleRouteView(model),
       ShadcnPopoverDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Popover",
@@ -16956,31 +18346,37 @@ Popover.view<Message>({
         DocsRoutes.popoverAnimatedExampleRouteView(model),
       RadioGroup: () => embedUi("ui-radio-group", View.radioGroup),
       RadioGroupDocs: () => radioGroupDocsView(model),
-      BaseUiRadioGroupDocs: () =>
-        baseUiLaneDocsView({
-          label: "Radio Group",
-          source: "registry/default/ui/base-ui-radio-group",
+      BaseUiRadioDocs: () =>
+        baseUiLaneDocsView(model, {
+          label: "Radio",
+          source: "registry/default/ui/base-ui-radio",
           primitive: "Ui.RadioGroup",
           description:
-            "A Base UI style-lane Radio Group slice that reuses the official Foldkit Ui.RadioGroup primitive for controlled selection, orientation, option focus, and labelled choices.",
+            "A Base UI style-lane Radio slice that reuses the official Foldkit Ui.RadioGroup primitive for controlled selection, orientation, option focus, and labelled choices.",
           usage:
             "Install the Base UI lane wrapper when you want Foldkit RadioGroup behavior with Base UI class helper names.",
           classHelpers: [
-            "baseUiRadioGroupVerticalClassName",
-            "baseUiRadioGroupHorizontalClassName",
-            "baseUiRadioGroupVerticalOptionClassName",
-            "baseUiRadioGroupHorizontalOptionClassName",
-            "baseUiRadioGroupLabelClassName",
-            "baseUiRadioGroupDescriptionClassName",
+            "baseUiRadioVerticalClassName",
+            "baseUiRadioHorizontalClassName",
+            "baseUiRadioVerticalOptionClassName",
+            "baseUiRadioHorizontalOptionClassName",
+            "baseUiRadioLabelClassName",
+            "baseUiRadioDescriptionClassName",
           ],
-          anatomyCode: `import * as RadioGroup from "./ui/base-ui-radio-group";
+          examples: [
+            "base-ui-radio-basic",
+            "base-ui-radio-labeling",
+            "base-ui-radio-native-button",
+            "base-ui-radio-form",
+          ],
+          anatomyCode: `import * as Radio from "./ui/base-ui-radio";
 
-const RadioGroup = RadioGroup.create<"starter" | "pro">();
+const PlanRadio = Radio.create<"starter" | "pro">();
 
 h.submodel({
   slotId: model.radioGroup.id,
   model: model.radioGroup,
-  view: RadioGroup.view,
+  view: PlanRadio.view,
   viewInputs: { options },
   toParentMessage: (message) => GotRadioGroupMessage({ message }),
 });`,
@@ -17015,6 +18411,14 @@ h.submodel({
   toParentMessage: (message) => GotRadioGroupMessage({ message }),
 });`,
         }),
+      BaseUiRadioBasicExample: () =>
+        DocsRoutes.baseUiRadioBasicExampleRouteView(model),
+      BaseUiRadioLabelingExample: () =>
+        DocsRoutes.baseUiRadioLabelingExampleRouteView(model),
+      BaseUiRadioNativeButtonExample: () =>
+        DocsRoutes.baseUiRadioNativeButtonExampleRouteView(model),
+      BaseUiRadioFormExample: () =>
+        DocsRoutes.baseUiRadioFormExampleRouteView(model),
       RadioGroupBasicExample: () =>
         DocsRoutes.radioGroupBasicExampleRouteView(model),
       RadioGroupHorizontalExample: () =>
@@ -17022,7 +18426,7 @@ h.submodel({
       Select: () => embedUi("ui-select", View.select),
       SelectDocs: () => selectDocsView(model),
       BaseUiSelectDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Select",
           source: "registry/default/ui/base-ui-select",
           primitive: "Ui.Select",
@@ -17037,6 +18441,7 @@ h.submodel({
             "baseUiSelectLabelClassName",
             "baseUiSelectDescriptionClassName",
           ],
+          examples: ["base-ui-select-basic"],
           anatomyCode: `import * as Select from "./ui/base-ui-select";
 
 Select.view<Message>({
@@ -17072,13 +18477,15 @@ Select.view<Message>({
   options,
 });`,
         }),
+      BaseUiSelectBasicExample: () =>
+        DocsRoutes.baseUiSelectBasicExampleRouteView(model),
       SelectBasicExample: () => DocsRoutes.selectBasicExampleRouteView(model),
       SelectDisabledExample: () =>
         DocsRoutes.selectDisabledExampleRouteView(model),
       Slider: () => embedUi("ui-slider", View.slider),
       SliderDocs: () => sliderDocsView(model),
       BaseUiSliderDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Slider",
           source: "registry/default/ui/base-ui-slider",
           primitive: "Ui.Slider",
@@ -17094,6 +18501,7 @@ Select.view<Message>({
             "baseUiSliderLabelClassName",
             "baseUiSliderValueClassName",
           ],
+          examples: ["base-ui-slider-basic"],
           anatomyCode: `import * as Slider from "./ui/base-ui-slider";
 
 h.submodel({
@@ -17130,13 +18538,15 @@ h.submodel({
   toParentMessage: (message) => GotSliderMessage({ message }),
 });`,
         }),
+      BaseUiSliderBasicExample: () =>
+        DocsRoutes.baseUiSliderBasicExampleRouteView(model),
       SliderBasicExample: () => DocsRoutes.sliderBasicExampleRouteView(model),
       SliderDisabledExample: () =>
         DocsRoutes.sliderDisabledExampleRouteView(model),
       Switch: () => embedUi("ui-switch", View.switch_),
       SwitchDocs: () => switchDocsView(model),
       BaseUiSwitchDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Switch",
           source: "registry/default/ui/base-ui-switch",
           primitive: "Ui.Switch",
@@ -17152,6 +18562,7 @@ h.submodel({
             "baseUiSwitchDescriptionClassName",
             "baseUiSwitchTextClassName",
           ],
+          examples: ["base-ui-switch-basic"],
           anatomyCode: `import * as Switch from "./ui/base-ui-switch";
 
 h.submodel({
@@ -17188,13 +18599,15 @@ h.submodel({
   toParentMessage: (message) => GotSwitchMessage({ message }),
 });`,
         }),
+      BaseUiSwitchBasicExample: () =>
+        DocsRoutes.baseUiSwitchBasicExampleRouteView(model),
       SwitchBasicExample: () => DocsRoutes.switchBasicExampleRouteView(model),
       SwitchDisabledExample: () =>
         DocsRoutes.switchDisabledExampleRouteView(model),
       Tabs: () => embedUi("ui-tabs", View.tabs),
       TabsDocs: () => tabsDocsView(model),
       BaseUiTabsDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Tabs",
           source: "registry/default/ui/base-ui-tabs",
           primitive: "Ui.Tabs",
@@ -17210,6 +18623,7 @@ h.submodel({
             "baseUiTabsVerticalRootClassName",
             "baseUiTabsVerticalListClassName",
           ],
+          examples: ["base-ui-tabs-basic"],
           anatomyCode: `import * as Tabs from "./ui/base-ui-tabs";
 
 const Tabs = Tabs.create<"overview" | "settings">();
@@ -17252,6 +18666,8 @@ h.submodel({
   toParentMessage: (message) => GotTabsMessage({ message }),
 });`,
         }),
+      BaseUiTabsBasicExample: () =>
+        DocsRoutes.baseUiTabsBasicExampleRouteView(model),
       TabsBasicExample: () => DocsRoutes.tabsBasicExampleRouteView(model),
       TabsManualExample: () => DocsRoutes.tabsManualExampleRouteView(model),
       Textarea: () => embedUi("ui-textarea", View.textarea),
@@ -17288,7 +18704,7 @@ Textarea.view<Message>({
       Toast: () => embedUi("ui-toast", View.toast),
       ToastDocs: () => toastDocsView(model),
       BaseUiToastDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Toast",
           source: "registry/default/ui/base-ui-toast",
           primitive: "Ui.Toast",
@@ -17304,6 +18720,7 @@ Textarea.view<Message>({
             "baseUiToastDescriptionClassName",
             "baseUiToastCloseButtonClassName",
           ],
+          examples: ["base-ui-toast-basic"],
           anatomyCode: `import * as Toast from "./ui/base-ui-toast";
 
 const [toast, commands] = Toast.init();
@@ -17340,13 +18757,15 @@ Toast.view<Message>({
   toParentMessage: (message) => GotToastMessage({ message }),
 });`,
         }),
+      BaseUiToastBasicExample: () =>
+        DocsRoutes.baseUiToastBasicExampleRouteView(model),
       ToastBasicExample: () => DocsRoutes.toastBasicExampleRouteView(model),
       ToastVariantsExample: () =>
         DocsRoutes.toastVariantsExampleRouteView(model),
       Tooltip: () => embedUi("ui-tooltip", View.tooltip),
       TooltipDocs: () => tooltipDocsView(model),
       BaseUiTooltipDocs: () =>
-        baseUiLaneDocsView({
+        baseUiLaneDocsView(model, {
           label: "Tooltip",
           source: "registry/default/ui/base-ui-tooltip",
           primitive: "Ui.Tooltip",
@@ -17361,6 +18780,7 @@ Toast.view<Message>({
             "baseUiTooltipAnchor",
             "baseUiTooltipView",
           ],
+          examples: ["base-ui-tooltip-basic"],
           anatomyCode: `import * as Tooltip from "./ui/base-ui-tooltip";
 
 h.submodel({
@@ -17370,6 +18790,8 @@ h.submodel({
   toParentMessage: (message) => GotTooltipMessage({ message }),
 });`,
         }),
+      BaseUiTooltipBasicExample: () =>
+        DocsRoutes.baseUiTooltipBasicExampleRouteView(model),
       TooltipBasicExample: () => DocsRoutes.tooltipBasicExampleRouteView(model),
       TooltipNoDelayExample: () =>
         DocsRoutes.tooltipNoDelayExampleRouteView(model),

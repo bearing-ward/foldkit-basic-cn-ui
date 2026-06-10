@@ -38,7 +38,7 @@
       "component": "Alert",
       "example": "basic",
       "originExample": "alert-default",
-      "origin": "https://ui.shadcn.com/docs/components/alert"
+      "origin": "https://ui.shadcn.com/docs/components/radix/alert"
     }
   }
 }

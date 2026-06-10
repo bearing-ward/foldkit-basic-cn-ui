@@ -8,10 +8,19 @@ describe("shadcn Accordion Card example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.text("Subscription")).toExist(),
-      Scene.click(Scene.role("button", { name: "Receipts" })),
+      Scene.expect(Scene.text("Subscription & Billing")).toExist(),
       Scene.expect(
-        Scene.text("Monthly receipts are sent to finance@example.com.")
+        Scene.text(
+          "Common questions about your account, plans, payments and cancellations."
+        )
+      ).toExist(),
+      Scene.click(
+        Scene.role("button", { name: "How do I cancel my subscription?" })
+      ),
+      Scene.expect(
+        Scene.text(
+          "You can cancel from the billing page at any time. Your account keeps access until the end of the current billing period."
+        )
       ).toExist()
     );
   });

@@ -21,6 +21,44 @@ import * as AutocompleteBasicExample from "../registry/default/examples/autocomp
 import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
+import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
+import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
+import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
+import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
+import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
+import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
+import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
+import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
+import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
+import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
+import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
+import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
+import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
+import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
+import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
+import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
+import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
+import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
+import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
+import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-radio-form/main";
+import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
+import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
+import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
+import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
+import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
+import * as BaseUiSwitchBasicExample from "../registry/default/examples/base-ui-switch-basic/main";
+import * as BaseUiTabsBasicExample from "../registry/default/examples/base-ui-tabs-basic/main";
+import * as BaseUiToastBasicExample from "../registry/default/examples/base-ui-toast-basic/main";
+import * as BaseUiToggleBasicExample from "../registry/default/examples/base-ui-toggle-basic/main";
+import * as BaseUiToggleGroupBasicExample from "../registry/default/examples/base-ui-toggle-group-basic/main";
+import * as BaseUiToolbarBasicExample from "../registry/default/examples/base-ui-toolbar-basic/main";
+import * as BaseUiTooltipBasicExample from "../registry/default/examples/base-ui-tooltip-basic/main";
 import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
 import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
 import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
@@ -98,6 +136,7 @@ import * as InputDisabledExample from "../registry/default/examples/input-disabl
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
+import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
 import * as ItemGroupExample from "../registry/default/examples/item-group/main";
 import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
 import * as ItemIconExample from "../registry/default/examples/item-icon/main";
@@ -128,7 +167,6 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
-import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-area-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -141,6 +179,7 @@ import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-
 import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
 import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
 import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
 import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
@@ -148,6 +187,9 @@ import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
+import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
 import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
 import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
@@ -187,6 +229,11 @@ import { uiUpdate } from "./ui/update";
 export const HomeRoute = r("Home");
 export const AccordionDocsRoute = r("AccordionDocs");
 export const ShadcnAccordionDocsRoute = r("ShadcnAccordionDocs");
+export const ShadcnBaseAccordionDocsRoute = r("ShadcnBaseAccordionDocs");
+export const BaseUiAccordionDocsRoute = r("BaseUiAccordionDocs");
+export const BaseUiAccordionMultipleExampleRoute = r(
+  "BaseUiAccordionMultipleExample"
+);
 export const AccordionBasicExampleRoute = r("AccordionBasicExample");
 export const AccordionMultipleExampleRoute = r("AccordionMultipleExample");
 export const AlertDocsRoute = r("AlertDocs");
@@ -224,38 +271,75 @@ export const ButtonGroupPopoverExampleRoute = r("ButtonGroupPopoverExample");
 export const ButtonGroupRtlExampleRoute = r("ButtonGroupRtlExample");
 export const AlertDialogDocsRoute = r("AlertDialogDocs");
 export const ShadcnAlertDialogDocsRoute = r("ShadcnAlertDialogDocs");
+export const BaseUiAlertDialogDocsRoute = r("BaseUiAlertDialogDocs");
+export const BaseUiAlertDialogCloseConfirmationExampleRoute = r(
+  "BaseUiAlertDialogCloseConfirmationExample"
+);
 export const AlertDialogBasicExampleRoute = r("AlertDialogBasicExample");
 export const DrawerDocsRoute = r("DrawerDocs");
 export const ShadcnDrawerDocsRoute = r("ShadcnDrawerDocs");
+export const BaseUiDrawerDocsRoute = r("BaseUiDrawerDocs");
+export const BaseUiDrawerBasicExampleRoute = r("BaseUiDrawerBasicExample");
 export const DrawerBasicExampleRoute = r("DrawerBasicExample");
 export const ContextMenuDocsRoute = r("ContextMenuDocs");
 export const ShadcnContextMenuDocsRoute = r("ShadcnContextMenuDocs");
+export const BaseUiContextMenuDocsRoute = r("BaseUiContextMenuDocs");
 export const ContextMenuBasicExampleRoute = r("ContextMenuBasicExample");
 export const MenubarDocsRoute = r("MenubarDocs");
 export const ShadcnMenubarDocsRoute = r("ShadcnMenubarDocs");
+export const BaseUiMenubarDocsRoute = r("BaseUiMenubarDocs");
+export const BaseUiMenubarBasicExampleRoute = r("BaseUiMenubarBasicExample");
 export const MenubarBasicExampleRoute = r("MenubarBasicExample");
 export const NavigationMenuDocsRoute = r("NavigationMenuDocs");
 export const ShadcnNavigationMenuDocsRoute = r("ShadcnNavigationMenuDocs");
+export const BaseUiNavigationMenuDocsRoute = r("BaseUiNavigationMenuDocs");
+export const BaseUiNavigationMenuBasicExampleRoute = r(
+  "BaseUiNavigationMenuBasicExample"
+);
 export const NavigationMenuBasicExampleRoute = r("NavigationMenuBasicExample");
 export const OtpFieldDocsRoute = r("OtpFieldDocs");
+export const BaseUiOtpFieldDocsRoute = r("BaseUiOtpFieldDocs");
+export const BaseUiOtpFieldBasicExampleRoute = r("BaseUiOtpFieldBasicExample");
 export const OtpFieldBasicExampleRoute = r("OtpFieldBasicExample");
 export const PreviewCardDocsRoute = r("PreviewCardDocs");
+export const BaseUiPreviewCardDocsRoute = r("BaseUiPreviewCardDocs");
+export const BaseUiPreviewCardBasicExampleRoute = r(
+  "BaseUiPreviewCardBasicExample"
+);
 export const PreviewCardBasicExampleRoute = r("PreviewCardBasicExample");
 export const CollapsibleDocsRoute = r("CollapsibleDocs");
 export const ShadcnCollapsibleDocsRoute = r("ShadcnCollapsibleDocs");
+export const BaseUiCollapsibleDocsRoute = r("BaseUiCollapsibleDocs");
 export const CollapsibleBasicExampleRoute = r("CollapsibleBasicExample");
+export const BaseUiCollapsibleBasicExampleRoute = r(
+  "BaseUiCollapsibleBasicExample"
+);
 export const FieldDocsRoute = r("FieldDocs");
 export const ShadcnFieldDocsRoute = r("ShadcnFieldDocs");
+export const BaseUiFieldDocsRoute = r("BaseUiFieldDocs");
+export const BaseUiFieldBasicExampleRoute = r("BaseUiFieldBasicExample");
 export const FieldBasicExampleRoute = r("FieldBasicExample");
 export const NumberFieldDocsRoute = r("NumberFieldDocs");
+export const BaseUiNumberFieldDocsRoute = r("BaseUiNumberFieldDocs");
+export const BaseUiNumberFieldBasicExampleRoute = r(
+  "BaseUiNumberFieldBasicExample"
+);
 export const NumberFieldBasicExampleRoute = r("NumberFieldBasicExample");
 export const FormDocsRoute = r("FormDocs");
+export const BaseUiFormDocsRoute = r("BaseUiFormDocs");
+export const BaseUiFormBasicExampleRoute = r("BaseUiFormBasicExample");
 export const FormBasicExampleRoute = r("FormBasicExample");
 export const AutocompleteDocsRoute = r("AutocompleteDocs");
+export const BaseUiAutocompleteDocsRoute = r("BaseUiAutocompleteDocs");
+export const BaseUiAutocompleteBasicExampleRoute = r(
+  "BaseUiAutocompleteBasicExample"
+);
 export const AutocompleteBasicExampleRoute = r("AutocompleteBasicExample");
 export const AvatarRoute = r("Avatar");
 export const AvatarDocsRoute = r("AvatarDocs");
 export const ShadcnAvatarDocsRoute = r("ShadcnAvatarDocs");
+export const BaseUiAvatarDocsRoute = r("BaseUiAvatarDocs");
+export const BaseUiAvatarBasicExampleRoute = r("BaseUiAvatarBasicExample");
 export const AvatarBasicExampleRoute = r("AvatarBasicExample");
 export const BadgeRoute = r("Badge");
 export const BadgeDocsRoute = r("BadgeDocs");
@@ -309,6 +393,7 @@ export const ItemHeaderExampleRoute = r("ItemHeaderExample");
 export const ItemIconExampleRoute = r("ItemIconExample");
 export const ItemImageExampleRoute = r("ItemImageExample");
 export const ItemLinkExampleRoute = r("ItemLinkExample");
+export const ItemDropdownExampleRoute = r("ItemDropdownExample");
 export const ItemRtlExampleRoute = r("ItemRtlExample");
 export const ItemSizeExampleRoute = r("ItemSizeExample");
 export const ItemVariantExampleRoute = r("ItemVariantExample");
@@ -328,6 +413,10 @@ export const CardBasicExampleRoute = r("CardBasicExample");
 export const SeparatorRoute = r("Separator");
 export const SeparatorDocsRoute = r("SeparatorDocs");
 export const ShadcnSeparatorDocsRoute = r("ShadcnSeparatorDocs");
+export const BaseUiSeparatorDocsRoute = r("BaseUiSeparatorDocs");
+export const BaseUiSeparatorBasicExampleRoute = r(
+  "BaseUiSeparatorBasicExample"
+);
 export const SeparatorBasicExampleRoute = r("SeparatorBasicExample");
 export const SkeletonRoute = r("Skeleton");
 export const SkeletonDocsRoute = r("SkeletonDocs");
@@ -350,28 +439,42 @@ export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
 export const ButtonDisabledExampleRoute = r("ButtonDisabledExample");
 export const BaseUiButtonDocsRoute = r("BaseUiButtonDocs");
+export const BaseUiButtonBasicExampleRoute = r("BaseUiButtonBasicExample");
 export const ShadcnButtonDocsRoute = r("ShadcnButtonDocs");
 export const InputGroupRoute = r("InputGroup");
 export const InputGroupDocsRoute = r("InputGroupDocs");
 export const MeterRoute = r("Meter");
 export const MeterDocsRoute = r("MeterDocs");
+export const BaseUiMeterDocsRoute = r("BaseUiMeterDocs");
+export const BaseUiMeterBasicExampleRoute = r("BaseUiMeterBasicExample");
 export const MeterBasicExampleRoute = r("MeterBasicExample");
 export const ScrollAreaRoute = r("ScrollArea");
 export const ScrollAreaDocsRoute = r("ScrollAreaDocs");
 export const ShadcnScrollAreaDocsRoute = r("ShadcnScrollAreaDocs");
+export const BaseUiScrollAreaDocsRoute = r("BaseUiScrollAreaDocs");
 export const ScrollAreaBasicExampleRoute = r("ScrollAreaBasicExample");
 export const ToggleRoute = r("Toggle");
 export const ToggleDocsRoute = r("ToggleDocs");
+export const BaseUiToggleDocsRoute = r("BaseUiToggleDocs");
+export const BaseUiToggleBasicExampleRoute = r("BaseUiToggleBasicExample");
 export const ToggleBasicExampleRoute = r("ToggleBasicExample");
 export const ToggleGroupDocsRoute = r("ToggleGroupDocs");
+export const BaseUiToggleGroupDocsRoute = r("BaseUiToggleGroupDocs");
+export const BaseUiToggleGroupBasicExampleRoute = r(
+  "BaseUiToggleGroupBasicExample"
+);
 export const ToggleGroupBasicExampleRoute = r("ToggleGroupBasicExample");
 export const RadioDocsRoute = r("RadioDocs");
 export const RadioBasicExampleRoute = r("RadioBasicExample");
 export const ToolbarDocsRoute = r("ToolbarDocs");
+export const BaseUiToolbarDocsRoute = r("BaseUiToolbarDocs");
+export const BaseUiToolbarBasicExampleRoute = r("BaseUiToolbarBasicExample");
 export const ToolbarBasicExampleRoute = r("ToolbarBasicExample");
 export const ProgressRoute = r("Progress");
 export const ProgressDocsRoute = r("ProgressDocs");
 export const ShadcnProgressDocsRoute = r("ShadcnProgressDocs");
+export const BaseUiProgressDocsRoute = r("BaseUiProgressDocs");
+export const BaseUiProgressBasicExampleRoute = r("BaseUiProgressBasicExample");
 export const ProgressBasicExampleRoute = r("ProgressBasicExample");
 export const CalendarRoute = r("Calendar");
 export const CalendarDocsRoute = r("CalendarDocs");
@@ -382,8 +485,10 @@ export const CheckboxRoute = r("Checkbox");
 export const CheckboxDocsRoute = r("CheckboxDocs");
 export const CheckboxBasicExampleRoute = r("CheckboxBasicExample");
 export const BaseUiCheckboxDocsRoute = r("BaseUiCheckboxDocs");
+export const BaseUiCheckboxBasicExampleRoute = r("BaseUiCheckboxBasicExample");
 export const ShadcnCheckboxDocsRoute = r("ShadcnCheckboxDocs");
 export const CheckboxGroupDocsRoute = r("CheckboxGroupDocs");
+export const BaseUiCheckboxGroupDocsRoute = r("BaseUiCheckboxGroupDocs");
 export const CheckboxGroupBasicExampleRoute = r("CheckboxGroupBasicExample");
 export const CheckboxIndeterminateExampleRoute = r(
   "CheckboxIndeterminateExample"
@@ -392,6 +497,7 @@ export const ComboboxRoute = r("Combobox");
 export const ComboboxDocsRoute = r("ComboboxDocs");
 export const ShadcnComboboxDocsRoute = r("ShadcnComboboxDocs");
 export const BaseUiComboboxDocsRoute = r("BaseUiComboboxDocs");
+export const BaseUiComboboxBasicExampleRoute = r("BaseUiComboboxBasicExample");
 export const ComboboxBasicExampleRoute = r("ComboboxBasicExample");
 export const ComboboxMultiExampleRoute = r("ComboboxMultiExample");
 export const DatePickerRoute = r("DatePicker");
@@ -403,6 +509,7 @@ export const DialogRoute = r("Dialog");
 export const DialogDocsRoute = r("DialogDocs");
 export const ShadcnDialogDocsRoute = r("ShadcnDialogDocs");
 export const BaseUiDialogDocsRoute = r("BaseUiDialogDocs");
+export const BaseUiDialogBasicExampleRoute = r("BaseUiDialogBasicExample");
 export const DialogBasicExampleRoute = r("DialogBasicExample");
 export const DialogAnimatedExampleRoute = r("DialogAnimatedExample");
 export const DialogDestructiveExampleRoute = r("DialogDestructiveExample");
@@ -419,6 +526,7 @@ export const DragAndDropDisabledExampleRoute = r("DragAndDropDisabledExample");
 export const FieldsetRoute = r("Fieldset");
 export const FieldsetDocsRoute = r("FieldsetDocs");
 export const BaseUiFieldsetDocsRoute = r("BaseUiFieldsetDocs");
+export const BaseUiFieldsetBasicExampleRoute = r("BaseUiFieldsetBasicExample");
 export const FieldsetBasicExampleRoute = r("FieldsetBasicExample");
 export const FieldsetDisabledExampleRoute = r("FieldsetDisabledExample");
 export const FileDropRoute = r("FileDrop");
@@ -429,6 +537,7 @@ export const InputRoute = r("Input");
 export const InputDocsRoute = r("InputDocs");
 export const BaseUiInputDocsRoute = r("BaseUiInputDocs");
 export const ShadcnInputDocsRoute = r("ShadcnInputDocs");
+export const BaseUiInputBasicExampleRoute = r("BaseUiInputBasicExample");
 export const InputBasicExampleRoute = r("InputBasicExample");
 export const InputDisabledExampleRoute = r("InputDisabledExample");
 export const ListboxRoute = r("Listbox");
@@ -438,18 +547,26 @@ export const ListboxAnimatedExampleRoute = r("ListboxAnimatedExample");
 export const MenuRoute = r("Menu");
 export const MenuDocsRoute = r("MenuDocs");
 export const BaseUiMenuDocsRoute = r("BaseUiMenuDocs");
+export const BaseUiMenuBasicExampleRoute = r("BaseUiMenuBasicExample");
 export const MenuBasicExampleRoute = r("MenuBasicExample");
 export const MenuAnimatedExampleRoute = r("MenuAnimatedExample");
 export const PopoverRoute = r("Popover");
 export const PopoverDocsRoute = r("PopoverDocs");
 export const ShadcnPopoverDocsRoute = r("ShadcnPopoverDocs");
 export const BaseUiPopoverDocsRoute = r("BaseUiPopoverDocs");
+export const BaseUiPopoverBasicExampleRoute = r("BaseUiPopoverBasicExample");
+export const BaseUiRadioBasicExampleRoute = r("BaseUiRadioBasicExample");
+export const BaseUiRadioLabelingExampleRoute = r("BaseUiRadioLabelingExample");
+export const BaseUiRadioNativeButtonExampleRoute = r(
+  "BaseUiRadioNativeButtonExample"
+);
+export const BaseUiRadioFormExampleRoute = r("BaseUiRadioFormExample");
 export const PopoverBasicExampleRoute = r("PopoverBasicExample");
 export const PopoverAnimatedExampleRoute = r("PopoverAnimatedExample");
 export const RadioGroupRoute = r("RadioGroup");
 export const RadioGroupDocsRoute = r("RadioGroupDocs");
 export const ShadcnRadioGroupDocsRoute = r("ShadcnRadioGroupDocs");
-export const BaseUiRadioGroupDocsRoute = r("BaseUiRadioGroupDocs");
+export const BaseUiRadioDocsRoute = r("BaseUiRadioDocs");
 export const RadioGroupBasicExampleRoute = r("RadioGroupBasicExample");
 export const RadioGroupHorizontalExampleRoute = r(
   "RadioGroupHorizontalExample"
@@ -458,24 +575,28 @@ export const SelectRoute = r("Select");
 export const SelectDocsRoute = r("SelectDocs");
 export const ShadcnSelectDocsRoute = r("ShadcnSelectDocs");
 export const BaseUiSelectDocsRoute = r("BaseUiSelectDocs");
+export const BaseUiSelectBasicExampleRoute = r("BaseUiSelectBasicExample");
 export const SelectBasicExampleRoute = r("SelectBasicExample");
 export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
 export const SliderDocsRoute = r("SliderDocs");
 export const ShadcnSliderDocsRoute = r("ShadcnSliderDocs");
 export const BaseUiSliderDocsRoute = r("BaseUiSliderDocs");
+export const BaseUiSliderBasicExampleRoute = r("BaseUiSliderBasicExample");
 export const SliderBasicExampleRoute = r("SliderBasicExample");
 export const SliderDisabledExampleRoute = r("SliderDisabledExample");
 export const SwitchRoute = r("Switch");
 export const SwitchDocsRoute = r("SwitchDocs");
 export const ShadcnSwitchDocsRoute = r("ShadcnSwitchDocs");
 export const BaseUiSwitchDocsRoute = r("BaseUiSwitchDocs");
+export const BaseUiSwitchBasicExampleRoute = r("BaseUiSwitchBasicExample");
 export const SwitchBasicExampleRoute = r("SwitchBasicExample");
 export const SwitchDisabledExampleRoute = r("SwitchDisabledExample");
 export const TabsRoute = r("Tabs");
 export const TabsDocsRoute = r("TabsDocs");
 export const ShadcnTabsDocsRoute = r("ShadcnTabsDocs");
 export const BaseUiTabsDocsRoute = r("BaseUiTabsDocs");
+export const BaseUiTabsBasicExampleRoute = r("BaseUiTabsBasicExample");
 export const TabsBasicExampleRoute = r("TabsBasicExample");
 export const TabsManualExampleRoute = r("TabsManualExample");
 export const TextareaRoute = r("Textarea");
@@ -487,11 +608,13 @@ export const ToastRoute = r("Toast");
 export const ToastDocsRoute = r("ToastDocs");
 export const ShadcnToastDocsRoute = r("ShadcnToastDocs");
 export const BaseUiToastDocsRoute = r("BaseUiToastDocs");
+export const BaseUiToastBasicExampleRoute = r("BaseUiToastBasicExample");
 export const ToastBasicExampleRoute = r("ToastBasicExample");
 export const ToastVariantsExampleRoute = r("ToastVariantsExample");
 export const TooltipRoute = r("Tooltip");
 export const TooltipDocsRoute = r("TooltipDocs");
 export const BaseUiTooltipDocsRoute = r("BaseUiTooltipDocs");
+export const BaseUiTooltipBasicExampleRoute = r("BaseUiTooltipBasicExample");
 export const TooltipBasicExampleRoute = r("TooltipBasicExample");
 export const TooltipNoDelayExampleRoute = r("TooltipNoDelayExample");
 export const AnimationRoute = r("Animation");
@@ -507,6 +630,9 @@ const AppRoute = S.Union([
   HomeRoute,
   AccordionDocsRoute,
   ShadcnAccordionDocsRoute,
+  ShadcnBaseAccordionDocsRoute,
+  BaseUiAccordionDocsRoute,
+  BaseUiAccordionMultipleExampleRoute,
   AccordionBasicExampleRoute,
   AccordionMultipleExampleRoute,
   AlertDocsRoute,
@@ -538,38 +664,63 @@ const AppRoute = S.Union([
   ButtonGroupRtlExampleRoute,
   AlertDialogDocsRoute,
   ShadcnAlertDialogDocsRoute,
+  BaseUiAlertDialogDocsRoute,
+  BaseUiAlertDialogCloseConfirmationExampleRoute,
   AlertDialogBasicExampleRoute,
   DrawerDocsRoute,
   ShadcnDrawerDocsRoute,
+  BaseUiDrawerDocsRoute,
+  BaseUiDrawerBasicExampleRoute,
   DrawerBasicExampleRoute,
   ContextMenuDocsRoute,
   ShadcnContextMenuDocsRoute,
+  BaseUiContextMenuDocsRoute,
   ContextMenuBasicExampleRoute,
   MenubarDocsRoute,
   ShadcnMenubarDocsRoute,
+  BaseUiMenubarDocsRoute,
+  BaseUiMenubarBasicExampleRoute,
   MenubarBasicExampleRoute,
   NavigationMenuDocsRoute,
   ShadcnNavigationMenuDocsRoute,
+  BaseUiNavigationMenuDocsRoute,
+  BaseUiNavigationMenuBasicExampleRoute,
   NavigationMenuBasicExampleRoute,
   OtpFieldDocsRoute,
+  BaseUiOtpFieldDocsRoute,
+  BaseUiOtpFieldBasicExampleRoute,
   OtpFieldBasicExampleRoute,
   PreviewCardDocsRoute,
+  BaseUiPreviewCardDocsRoute,
+  BaseUiPreviewCardBasicExampleRoute,
   PreviewCardBasicExampleRoute,
   CollapsibleDocsRoute,
   ShadcnCollapsibleDocsRoute,
+  BaseUiCollapsibleDocsRoute,
   CollapsibleBasicExampleRoute,
+  BaseUiCollapsibleBasicExampleRoute,
   FieldDocsRoute,
   ShadcnFieldDocsRoute,
+  BaseUiFieldDocsRoute,
+  BaseUiFieldBasicExampleRoute,
   FieldBasicExampleRoute,
   NumberFieldDocsRoute,
+  BaseUiNumberFieldDocsRoute,
+  BaseUiNumberFieldBasicExampleRoute,
   NumberFieldBasicExampleRoute,
   FormDocsRoute,
+  BaseUiFormDocsRoute,
+  BaseUiFormBasicExampleRoute,
   FormBasicExampleRoute,
   AutocompleteDocsRoute,
+  BaseUiAutocompleteDocsRoute,
+  BaseUiAutocompleteBasicExampleRoute,
   AutocompleteBasicExampleRoute,
   AvatarRoute,
   AvatarDocsRoute,
   ShadcnAvatarDocsRoute,
+  BaseUiAvatarDocsRoute,
+  BaseUiAvatarBasicExampleRoute,
   AvatarBasicExampleRoute,
   BadgeRoute,
   BadgeDocsRoute,
@@ -621,6 +772,7 @@ const AppRoute = S.Union([
   ItemIconExampleRoute,
   ItemImageExampleRoute,
   ItemLinkExampleRoute,
+  ItemDropdownExampleRoute,
   ItemRtlExampleRoute,
   ItemSizeExampleRoute,
   ItemVariantExampleRoute,
@@ -640,6 +792,8 @@ const AppRoute = S.Union([
   SeparatorRoute,
   SeparatorDocsRoute,
   ShadcnSeparatorDocsRoute,
+  BaseUiSeparatorDocsRoute,
+  BaseUiSeparatorBasicExampleRoute,
   SeparatorBasicExampleRoute,
   SkeletonRoute,
   SkeletonDocsRoute,
@@ -662,28 +816,40 @@ const AppRoute = S.Union([
   ButtonBasicExampleRoute,
   ButtonDisabledExampleRoute,
   BaseUiButtonDocsRoute,
+  BaseUiButtonBasicExampleRoute,
   ShadcnButtonDocsRoute,
   InputGroupRoute,
   InputGroupDocsRoute,
   MeterRoute,
   MeterDocsRoute,
+  BaseUiMeterDocsRoute,
+  BaseUiMeterBasicExampleRoute,
   MeterBasicExampleRoute,
   ScrollAreaRoute,
   ScrollAreaDocsRoute,
   ShadcnScrollAreaDocsRoute,
+  BaseUiScrollAreaDocsRoute,
   ScrollAreaBasicExampleRoute,
   ToggleRoute,
   ToggleDocsRoute,
+  BaseUiToggleDocsRoute,
+  BaseUiToggleBasicExampleRoute,
   ToggleBasicExampleRoute,
   ToggleGroupDocsRoute,
+  BaseUiToggleGroupDocsRoute,
+  BaseUiToggleGroupBasicExampleRoute,
   ToggleGroupBasicExampleRoute,
   RadioDocsRoute,
   RadioBasicExampleRoute,
   ToolbarDocsRoute,
+  BaseUiToolbarDocsRoute,
+  BaseUiToolbarBasicExampleRoute,
   ToolbarBasicExampleRoute,
   ProgressRoute,
   ProgressDocsRoute,
   ShadcnProgressDocsRoute,
+  BaseUiProgressDocsRoute,
+  BaseUiProgressBasicExampleRoute,
   ProgressBasicExampleRoute,
   CalendarRoute,
   CalendarDocsRoute,
@@ -694,14 +860,17 @@ const AppRoute = S.Union([
   CheckboxDocsRoute,
   CheckboxBasicExampleRoute,
   BaseUiCheckboxDocsRoute,
+  BaseUiCheckboxBasicExampleRoute,
   ShadcnCheckboxDocsRoute,
   CheckboxGroupDocsRoute,
+  BaseUiCheckboxGroupDocsRoute,
   CheckboxGroupBasicExampleRoute,
   CheckboxIndeterminateExampleRoute,
   ComboboxRoute,
   ComboboxDocsRoute,
   ShadcnComboboxDocsRoute,
   BaseUiComboboxDocsRoute,
+  BaseUiComboboxBasicExampleRoute,
   ComboboxBasicExampleRoute,
   ComboboxMultiExampleRoute,
   DatePickerRoute,
@@ -713,6 +882,7 @@ const AppRoute = S.Union([
   DialogDocsRoute,
   ShadcnDialogDocsRoute,
   BaseUiDialogDocsRoute,
+  BaseUiDialogBasicExampleRoute,
   DialogBasicExampleRoute,
   DialogAnimatedExampleRoute,
   DialogDestructiveExampleRoute,
@@ -729,6 +899,7 @@ const AppRoute = S.Union([
   FieldsetRoute,
   FieldsetDocsRoute,
   BaseUiFieldsetDocsRoute,
+  BaseUiFieldsetBasicExampleRoute,
   FieldsetBasicExampleRoute,
   FieldsetDisabledExampleRoute,
   FileDropRoute,
@@ -739,6 +910,7 @@ const AppRoute = S.Union([
   InputDocsRoute,
   BaseUiInputDocsRoute,
   ShadcnInputDocsRoute,
+  BaseUiInputBasicExampleRoute,
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
   ListboxRoute,
@@ -748,42 +920,52 @@ const AppRoute = S.Union([
   MenuRoute,
   MenuDocsRoute,
   BaseUiMenuDocsRoute,
+  BaseUiMenuBasicExampleRoute,
   MenuBasicExampleRoute,
   MenuAnimatedExampleRoute,
   PopoverRoute,
   PopoverDocsRoute,
   ShadcnPopoverDocsRoute,
   BaseUiPopoverDocsRoute,
+  BaseUiPopoverBasicExampleRoute,
+  BaseUiRadioBasicExampleRoute,
+  BaseUiRadioLabelingExampleRoute,
+  BaseUiRadioNativeButtonExampleRoute,
+  BaseUiRadioFormExampleRoute,
   PopoverBasicExampleRoute,
   PopoverAnimatedExampleRoute,
   RadioGroupRoute,
   RadioGroupDocsRoute,
   ShadcnRadioGroupDocsRoute,
-  BaseUiRadioGroupDocsRoute,
+  BaseUiRadioDocsRoute,
   RadioGroupBasicExampleRoute,
   RadioGroupHorizontalExampleRoute,
   SelectRoute,
   SelectDocsRoute,
   ShadcnSelectDocsRoute,
   BaseUiSelectDocsRoute,
+  BaseUiSelectBasicExampleRoute,
   SelectBasicExampleRoute,
   SelectDisabledExampleRoute,
   SliderRoute,
   SliderDocsRoute,
   ShadcnSliderDocsRoute,
   BaseUiSliderDocsRoute,
+  BaseUiSliderBasicExampleRoute,
   SliderBasicExampleRoute,
   SliderDisabledExampleRoute,
   SwitchRoute,
   SwitchDocsRoute,
   ShadcnSwitchDocsRoute,
   BaseUiSwitchDocsRoute,
+  BaseUiSwitchBasicExampleRoute,
   SwitchBasicExampleRoute,
   SwitchDisabledExampleRoute,
   TabsRoute,
   TabsDocsRoute,
   ShadcnTabsDocsRoute,
   BaseUiTabsDocsRoute,
+  BaseUiTabsBasicExampleRoute,
   TabsBasicExampleRoute,
   TabsManualExampleRoute,
   TextareaRoute,
@@ -795,11 +977,13 @@ const AppRoute = S.Union([
   ToastDocsRoute,
   ShadcnToastDocsRoute,
   BaseUiToastDocsRoute,
+  BaseUiToastBasicExampleRoute,
   ToastBasicExampleRoute,
   ToastVariantsExampleRoute,
   TooltipRoute,
   TooltipDocsRoute,
   BaseUiTooltipDocsRoute,
+  BaseUiTooltipBasicExampleRoute,
   TooltipBasicExampleRoute,
   TooltipNoDelayExampleRoute,
   AnimationRoute,
@@ -1142,13 +1326,19 @@ export const alertDialogDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("alert-dialog")),
-  Route.mapTo(AlertDialogDocsRoute)
+  Route.mapTo(BaseUiAlertDialogDocsRoute)
 );
 export const shadcnAlertDialogDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-alert-dialog")),
   Route.mapTo(ShadcnAlertDialogDocsRoute)
+);
+export const baseUiAlertDialogDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-alert-dialog")),
+  Route.mapTo(BaseUiAlertDialogDocsRoute)
 );
 export const alertDialogBasicExampleRouter = pipe(
   literal("docs"),
@@ -1163,17 +1353,49 @@ export const alertDialogBasicStandaloneExampleRouter = pipe(
   slash(literal("alert-dialog-basic")),
   Route.mapTo(AlertDialogBasicExampleRoute)
 );
+export const baseUiAlertDialogCloseConfirmationExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-alert-dialog")),
+  slash(literal("examples")),
+  slash(literal("close-confirmation")),
+  Route.mapTo(BaseUiAlertDialogCloseConfirmationExampleRoute)
+);
+export const baseUiAlertDialogCloseConfirmationStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-alert-dialog-close-confirmation")),
+  Route.mapTo(BaseUiAlertDialogCloseConfirmationExampleRoute)
+);
 export const drawerDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("drawer")),
-  Route.mapTo(DrawerDocsRoute)
+  Route.mapTo(BaseUiDrawerDocsRoute)
 );
 export const shadcnDrawerDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-drawer")),
   Route.mapTo(ShadcnDrawerDocsRoute)
+);
+export const baseUiDrawerDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-drawer")),
+  Route.mapTo(BaseUiDrawerDocsRoute)
+);
+export const baseUiDrawerBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-drawer")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiDrawerBasicExampleRoute)
+);
+export const baseUiDrawerBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-drawer-basic")),
+  Route.mapTo(BaseUiDrawerBasicExampleRoute)
 );
 export const drawerBasicExampleRouter = pipe(
   literal("docs"),
@@ -1192,13 +1414,19 @@ export const contextMenuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("context-menu")),
-  Route.mapTo(ContextMenuDocsRoute)
+  Route.mapTo(BaseUiContextMenuDocsRoute)
 );
 export const shadcnContextMenuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-context-menu")),
   Route.mapTo(ShadcnContextMenuDocsRoute)
+);
+export const baseUiContextMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-context-menu")),
+  Route.mapTo(BaseUiContextMenuDocsRoute)
 );
 export const contextMenuBasicExampleRouter = pipe(
   literal("docs"),
@@ -1217,13 +1445,32 @@ export const menubarDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("menubar")),
-  Route.mapTo(MenubarDocsRoute)
+  Route.mapTo(BaseUiMenubarDocsRoute)
 );
 export const shadcnMenubarDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-menubar")),
   Route.mapTo(ShadcnMenubarDocsRoute)
+);
+export const baseUiMenubarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-menubar")),
+  Route.mapTo(BaseUiMenubarDocsRoute)
+);
+export const baseUiMenubarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-menubar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiMenubarBasicExampleRoute)
+);
+export const baseUiMenubarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-menubar-basic")),
+  Route.mapTo(BaseUiMenubarBasicExampleRoute)
 );
 export const menubarBasicExampleRouter = pipe(
   literal("docs"),
@@ -1242,13 +1489,32 @@ export const navigationMenuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("navigation-menu")),
-  Route.mapTo(NavigationMenuDocsRoute)
+  Route.mapTo(BaseUiNavigationMenuDocsRoute)
 );
 export const shadcnNavigationMenuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-navigation-menu")),
   Route.mapTo(ShadcnNavigationMenuDocsRoute)
+);
+export const baseUiNavigationMenuDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-navigation-menu")),
+  Route.mapTo(BaseUiNavigationMenuDocsRoute)
+);
+export const baseUiNavigationMenuBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-navigation-menu")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiNavigationMenuBasicExampleRoute)
+);
+export const baseUiNavigationMenuBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-navigation-menu-basic")),
+  Route.mapTo(BaseUiNavigationMenuBasicExampleRoute)
 );
 export const navigationMenuBasicExampleRouter = pipe(
   literal("docs"),
@@ -1267,7 +1533,26 @@ export const otpFieldDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("otp-field")),
-  Route.mapTo(OtpFieldDocsRoute)
+  Route.mapTo(BaseUiOtpFieldDocsRoute)
+);
+export const baseUiOtpFieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-otp-field")),
+  Route.mapTo(BaseUiOtpFieldDocsRoute)
+);
+export const baseUiOtpFieldBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-otp-field")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiOtpFieldBasicExampleRoute)
+);
+export const baseUiOtpFieldBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-otp-field-basic")),
+  Route.mapTo(BaseUiOtpFieldBasicExampleRoute)
 );
 export const otpFieldBasicExampleRouter = pipe(
   literal("docs"),
@@ -1286,7 +1571,26 @@ export const previewCardDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("preview-card")),
-  Route.mapTo(PreviewCardDocsRoute)
+  Route.mapTo(BaseUiPreviewCardDocsRoute)
+);
+export const baseUiPreviewCardDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-preview-card")),
+  Route.mapTo(BaseUiPreviewCardDocsRoute)
+);
+export const baseUiPreviewCardBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-preview-card")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiPreviewCardBasicExampleRoute)
+);
+export const baseUiPreviewCardBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-preview-card-basic")),
+  Route.mapTo(BaseUiPreviewCardBasicExampleRoute)
 );
 export const previewCardBasicExampleRouter = pipe(
   literal("docs"),
@@ -1305,13 +1609,25 @@ export const accordionDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("accordion")),
-  Route.mapTo(AccordionDocsRoute)
+  Route.mapTo(BaseUiAccordionDocsRoute)
 );
 export const shadcnAccordionDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-accordion")),
   Route.mapTo(ShadcnAccordionDocsRoute)
+);
+export const shadcnBaseAccordionDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-base-accordion")),
+  Route.mapTo(ShadcnBaseAccordionDocsRoute)
+);
+export const baseUiAccordionDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-accordion")),
+  Route.mapTo(BaseUiAccordionDocsRoute)
 );
 export const accordionBasicExampleRouter = pipe(
   literal("docs"),
@@ -1334,10 +1650,23 @@ export const accordionMultipleExampleRouter = pipe(
   slash(literal("multiple")),
   Route.mapTo(AccordionMultipleExampleRoute)
 );
+export const baseUiAccordionMultipleExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-accordion")),
+  slash(literal("examples")),
+  slash(literal("multiple")),
+  Route.mapTo(BaseUiAccordionMultipleExampleRoute)
+);
 export const accordionMultipleStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("accordion-multiple")),
   Route.mapTo(AccordionMultipleExampleRoute)
+);
+export const baseUiAccordionMultipleStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-accordion-multiple")),
+  Route.mapTo(BaseUiAccordionMultipleExampleRoute)
 );
 export const collapsibleDocsRouter = pipe(
   literal("docs"),
@@ -1350,6 +1679,12 @@ export const shadcnCollapsibleDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("shadcn-collapsible")),
   Route.mapTo(ShadcnCollapsibleDocsRoute)
+);
+export const baseUiCollapsibleDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-collapsible")),
+  Route.mapTo(BaseUiCollapsibleDocsRoute)
 );
 export const collapsibleBasicExampleRouter = pipe(
   literal("docs"),
@@ -1364,17 +1699,49 @@ export const collapsibleBasicStandaloneExampleRouter = pipe(
   slash(literal("collapsible-basic")),
   Route.mapTo(CollapsibleBasicExampleRoute)
 );
+export const baseUiCollapsibleBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-collapsible")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiCollapsibleBasicExampleRoute)
+);
+export const baseUiCollapsibleBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-collapsible-basic")),
+  Route.mapTo(BaseUiCollapsibleBasicExampleRoute)
+);
 export const fieldDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("field")),
-  Route.mapTo(FieldDocsRoute)
+  Route.mapTo(BaseUiFieldDocsRoute)
 );
 export const shadcnFieldDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-field")),
   Route.mapTo(ShadcnFieldDocsRoute)
+);
+export const baseUiFieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-field")),
+  Route.mapTo(BaseUiFieldDocsRoute)
+);
+export const baseUiFieldBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-field")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiFieldBasicExampleRoute)
+);
+export const baseUiFieldBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-field-basic")),
+  Route.mapTo(BaseUiFieldBasicExampleRoute)
 );
 export const fieldBasicExampleRouter = pipe(
   literal("docs"),
@@ -1393,7 +1760,26 @@ export const numberFieldDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("number-field")),
-  Route.mapTo(NumberFieldDocsRoute)
+  Route.mapTo(BaseUiNumberFieldDocsRoute)
+);
+export const baseUiNumberFieldDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-number-field")),
+  Route.mapTo(BaseUiNumberFieldDocsRoute)
+);
+export const baseUiNumberFieldBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-number-field")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiNumberFieldBasicExampleRoute)
+);
+export const baseUiNumberFieldBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-number-field-basic")),
+  Route.mapTo(BaseUiNumberFieldBasicExampleRoute)
 );
 export const numberFieldBasicExampleRouter = pipe(
   literal("docs"),
@@ -1412,7 +1798,26 @@ export const formDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("form")),
-  Route.mapTo(FormDocsRoute)
+  Route.mapTo(BaseUiFormDocsRoute)
+);
+export const baseUiFormDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-form")),
+  Route.mapTo(BaseUiFormDocsRoute)
+);
+export const baseUiFormBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-form")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiFormBasicExampleRoute)
+);
+export const baseUiFormBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-form-basic")),
+  Route.mapTo(BaseUiFormBasicExampleRoute)
 );
 export const formBasicExampleRouter = pipe(
   literal("docs"),
@@ -1431,7 +1836,13 @@ export const autocompleteDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("autocomplete")),
-  Route.mapTo(AutocompleteDocsRoute)
+  Route.mapTo(BaseUiAutocompleteDocsRoute)
+);
+export const baseUiAutocompleteDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-autocomplete")),
+  Route.mapTo(BaseUiAutocompleteDocsRoute)
 );
 export const autocompleteBasicExampleRouter = pipe(
   literal("docs"),
@@ -1446,6 +1857,19 @@ export const autocompleteBasicStandaloneExampleRouter = pipe(
   slash(literal("autocomplete-basic")),
   Route.mapTo(AutocompleteBasicExampleRoute)
 );
+export const baseUiAutocompleteBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-autocomplete")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiAutocompleteBasicExampleRoute)
+);
+export const baseUiAutocompleteBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-autocomplete-basic")),
+  Route.mapTo(BaseUiAutocompleteBasicExampleRoute)
+);
 export const avatarRouter = pipe(literal("avatar"), Route.mapTo(AvatarRoute));
 export const avatarDocsRouter = pipe(
   literal("docs"),
@@ -1459,6 +1883,12 @@ export const shadcnAvatarDocsRouter = pipe(
   slash(literal("shadcn-avatar")),
   Route.mapTo(ShadcnAvatarDocsRoute)
 );
+export const baseUiAvatarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-avatar")),
+  Route.mapTo(BaseUiAvatarDocsRoute)
+);
 export const avatarBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -1471,6 +1901,19 @@ export const avatarBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("avatar-basic")),
   Route.mapTo(AvatarBasicExampleRoute)
+);
+export const baseUiAvatarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-avatar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiAvatarBasicExampleRoute)
+);
+export const baseUiAvatarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-avatar-basic")),
+  Route.mapTo(BaseUiAvatarBasicExampleRoute)
 );
 export const badgeRouter = pipe(literal("badge"), Route.mapTo(BadgeRoute));
 export const badgeDocsRouter = pipe(
@@ -2000,6 +2443,21 @@ export const itemLinkStandaloneExampleRouter = pipe(
   slash(literal("item-link")),
   Route.mapTo(ItemLinkExampleRoute)
 );
+export const itemDropdownExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("item")),
+  slash(literal("examples")),
+  slash(literal("dropdown")),
+  Route.mapTo(ItemDropdownExampleRoute)
+);
+
+export const itemDropdownStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("item-dropdown")),
+  Route.mapTo(ItemDropdownExampleRoute)
+);
+
 export const itemRtlExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2162,13 +2620,32 @@ export const separatorDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("separator")),
-  Route.mapTo(SeparatorDocsRoute)
+  Route.mapTo(BaseUiSeparatorDocsRoute)
 );
 export const shadcnSeparatorDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-separator")),
   Route.mapTo(ShadcnSeparatorDocsRoute)
+);
+export const baseUiSeparatorDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-separator")),
+  Route.mapTo(BaseUiSeparatorDocsRoute)
+);
+export const baseUiSeparatorBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-separator")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiSeparatorBasicExampleRoute)
+);
+export const baseUiSeparatorBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-separator-basic")),
+  Route.mapTo(BaseUiSeparatorBasicExampleRoute)
 );
 export const separatorBasicExampleRouter = pipe(
   literal("docs"),
@@ -2310,7 +2787,7 @@ export const buttonDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("button")),
-  Route.mapTo(ButtonDocsRoute)
+  Route.mapTo(BaseUiButtonDocsRoute)
 );
 export const buttonBasicExampleRouter = pipe(
   literal("docs"),
@@ -2333,6 +2810,19 @@ export const baseUiButtonDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-button")),
   Route.mapTo(BaseUiButtonDocsRoute)
+);
+export const baseUiButtonBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-button")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiButtonBasicExampleRoute)
+);
+export const baseUiButtonBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-button-basic")),
+  Route.mapTo(BaseUiButtonBasicExampleRoute)
 );
 export const shadcnButtonDocsRouter = pipe(
   literal("docs"),
@@ -2365,7 +2855,26 @@ export const meterDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("meter")),
-  Route.mapTo(MeterDocsRoute)
+  Route.mapTo(BaseUiMeterDocsRoute)
+);
+export const baseUiMeterDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-meter")),
+  Route.mapTo(BaseUiMeterDocsRoute)
+);
+export const baseUiMeterBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-meter")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiMeterBasicExampleRoute)
+);
+export const baseUiMeterBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-meter-basic")),
+  Route.mapTo(BaseUiMeterBasicExampleRoute)
 );
 export const meterBasicExampleRouter = pipe(
   literal("docs"),
@@ -2388,13 +2897,19 @@ export const scrollAreaDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("scroll-area")),
-  Route.mapTo(ScrollAreaDocsRoute)
+  Route.mapTo(BaseUiScrollAreaDocsRoute)
 );
 export const shadcnScrollAreaDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-scroll-area")),
   Route.mapTo(ShadcnScrollAreaDocsRoute)
+);
+export const baseUiScrollAreaDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-scroll-area")),
+  Route.mapTo(BaseUiScrollAreaDocsRoute)
 );
 export const scrollAreaBasicExampleRouter = pipe(
   literal("docs"),
@@ -2404,9 +2919,22 @@ export const scrollAreaBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ScrollAreaBasicExampleRoute)
 );
+export const baseUiScrollAreaBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-scroll-area")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ScrollAreaBasicExampleRoute)
+);
 export const scrollAreaBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("scroll-area-basic")),
+  Route.mapTo(ScrollAreaBasicExampleRoute)
+);
+export const baseUiScrollAreaBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-scroll-area-basic")),
   Route.mapTo(ScrollAreaBasicExampleRoute)
 );
 export const toggleRouter = pipe(literal("toggle"), Route.mapTo(ToggleRoute));
@@ -2414,7 +2942,26 @@ export const toggleDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("toggle")),
-  Route.mapTo(ToggleDocsRoute)
+  Route.mapTo(BaseUiToggleDocsRoute)
+);
+export const baseUiToggleDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toggle")),
+  Route.mapTo(BaseUiToggleDocsRoute)
+);
+export const baseUiToggleBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toggle")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiToggleBasicExampleRoute)
+);
+export const baseUiToggleBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-toggle-basic")),
+  Route.mapTo(BaseUiToggleBasicExampleRoute)
 );
 export const toggleBasicExampleRouter = pipe(
   literal("docs"),
@@ -2433,7 +2980,26 @@ export const toggleGroupDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("toggle-group")),
-  Route.mapTo(ToggleGroupDocsRoute)
+  Route.mapTo(BaseUiToggleGroupDocsRoute)
+);
+export const baseUiToggleGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toggle-group")),
+  Route.mapTo(BaseUiToggleGroupDocsRoute)
+);
+export const baseUiToggleGroupBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toggle-group")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiToggleGroupBasicExampleRoute)
+);
+export const baseUiToggleGroupBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-toggle-group-basic")),
+  Route.mapTo(BaseUiToggleGroupBasicExampleRoute)
 );
 export const toggleGroupBasicExampleRouter = pipe(
   literal("docs"),
@@ -2471,7 +3037,26 @@ export const toolbarDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("toolbar")),
-  Route.mapTo(ToolbarDocsRoute)
+  Route.mapTo(BaseUiToolbarDocsRoute)
+);
+export const baseUiToolbarDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toolbar")),
+  Route.mapTo(BaseUiToolbarDocsRoute)
+);
+export const baseUiToolbarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toolbar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiToolbarBasicExampleRoute)
+);
+export const baseUiToolbarBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-toolbar-basic")),
+  Route.mapTo(BaseUiToolbarBasicExampleRoute)
 );
 export const toolbarBasicExampleRouter = pipe(
   literal("docs"),
@@ -2494,13 +3079,32 @@ export const progressDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("progress")),
-  Route.mapTo(ProgressDocsRoute)
+  Route.mapTo(BaseUiProgressDocsRoute)
 );
 export const shadcnProgressDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("shadcn-progress")),
   Route.mapTo(ShadcnProgressDocsRoute)
+);
+export const baseUiProgressDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-progress")),
+  Route.mapTo(BaseUiProgressDocsRoute)
+);
+export const baseUiProgressBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-progress")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiProgressBasicExampleRoute)
+);
+export const baseUiProgressBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-progress-basic")),
+  Route.mapTo(BaseUiProgressBasicExampleRoute)
 );
 export const progressBasicExampleRouter = pipe(
   literal("docs"),
@@ -2565,13 +3169,26 @@ export const checkboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("checkbox")),
-  Route.mapTo(CheckboxDocsRoute)
+  Route.mapTo(BaseUiCheckboxDocsRoute)
 );
 export const baseUiCheckboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("base-ui-checkbox")),
   Route.mapTo(BaseUiCheckboxDocsRoute)
+);
+export const baseUiCheckboxBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-checkbox")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiCheckboxBasicExampleRoute)
+);
+export const baseUiCheckboxBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-checkbox-basic")),
+  Route.mapTo(BaseUiCheckboxBasicExampleRoute)
 );
 export const shadcnCheckboxDocsRouter = pipe(
   literal("docs"),
@@ -2600,6 +3217,12 @@ export const checkboxGroupDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("checkbox-group")),
   Route.mapTo(CheckboxGroupDocsRoute)
+);
+export const baseUiCheckboxGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-checkbox-group")),
+  Route.mapTo(BaseUiCheckboxGroupDocsRoute)
 );
 export const checkboxGroupBasicExampleRouter = pipe(
   literal("docs"),
@@ -2632,7 +3255,7 @@ export const comboboxDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("combobox")),
-  Route.mapTo(ComboboxDocsRoute)
+  Route.mapTo(BaseUiComboboxDocsRoute)
 );
 export const shadcnComboboxDocsRouter = pipe(
   literal("docs"),
@@ -2645,6 +3268,14 @@ export const baseUiComboboxDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-combobox")),
   Route.mapTo(BaseUiComboboxDocsRoute)
+);
+export const baseUiComboboxBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-combobox")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiComboboxBasicExampleRoute)
 );
 export const comboboxBasicExampleRouter = pipe(
   literal("docs"),
@@ -2671,6 +3302,11 @@ export const comboboxMultiStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("combobox-multi")),
   Route.mapTo(ComboboxMultiExampleRoute)
+);
+export const baseUiComboboxBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-combobox-basic")),
+  Route.mapTo(BaseUiComboboxBasicExampleRoute)
 );
 export const datePickerRouter = pipe(
   literal("date-picker"),
@@ -2719,7 +3355,7 @@ export const dialogDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("dialog")),
-  Route.mapTo(DialogDocsRoute)
+  Route.mapTo(BaseUiDialogDocsRoute)
 );
 export const shadcnDialogDocsRouter = pipe(
   literal("docs"),
@@ -2732,6 +3368,14 @@ export const baseUiDialogDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-dialog")),
   Route.mapTo(BaseUiDialogDocsRoute)
+);
+export const baseUiDialogBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-dialog")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiDialogBasicExampleRoute)
 );
 export const dialogBasicExampleRouter = pipe(
   literal("docs"),
@@ -2777,6 +3421,11 @@ export const dialogBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dialog-basic")),
   Route.mapTo(DialogBasicExampleRoute)
+);
+export const baseUiDialogBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-dialog-basic")),
+  Route.mapTo(BaseUiDialogBasicExampleRoute)
 );
 export const dialogAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
@@ -2897,13 +3546,26 @@ export const fieldsetDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("fieldset")),
-  Route.mapTo(FieldsetDocsRoute)
+  Route.mapTo(BaseUiFieldsetDocsRoute)
 );
 export const baseUiFieldsetDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("base-ui-fieldset")),
   Route.mapTo(BaseUiFieldsetDocsRoute)
+);
+export const baseUiFieldsetBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-fieldset")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiFieldsetBasicExampleRoute)
+);
+export const baseUiFieldsetBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-fieldset-basic")),
+  Route.mapTo(BaseUiFieldsetBasicExampleRoute)
 );
 export const fieldsetBasicExampleRouter = pipe(
   literal("docs"),
@@ -2972,7 +3634,7 @@ export const inputDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("input")),
-  Route.mapTo(InputDocsRoute)
+  Route.mapTo(BaseUiInputDocsRoute)
 );
 export const baseUiInputDocsRouter = pipe(
   literal("docs"),
@@ -2985,6 +3647,19 @@ export const shadcnInputDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("shadcn-input")),
   Route.mapTo(ShadcnInputDocsRoute)
+);
+export const baseUiInputBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-input")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiInputBasicExampleRoute)
+);
+export const baseUiInputBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-input-basic")),
+  Route.mapTo(BaseUiInputBasicExampleRoute)
 );
 export const inputBasicExampleRouter = pipe(
   literal("docs"),
@@ -3053,13 +3728,26 @@ export const menuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("menu")),
-  Route.mapTo(MenuDocsRoute)
+  Route.mapTo(BaseUiMenuDocsRoute)
 );
 export const baseUiMenuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("base-ui-menu")),
   Route.mapTo(BaseUiMenuDocsRoute)
+);
+export const baseUiMenuBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-menu")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiMenuBasicExampleRoute)
+);
+export const baseUiMenuBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-menu-basic")),
+  Route.mapTo(BaseUiMenuBasicExampleRoute)
 );
 export const menuBasicExampleRouter = pipe(
   literal("docs"),
@@ -3095,7 +3783,7 @@ export const popoverDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("popover")),
-  Route.mapTo(PopoverDocsRoute)
+  Route.mapTo(BaseUiPopoverDocsRoute)
 );
 export const shadcnPopoverDocsRouter = pipe(
   literal("docs"),
@@ -3108,6 +3796,14 @@ export const baseUiPopoverDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-popover")),
   Route.mapTo(BaseUiPopoverDocsRoute)
+);
+export const baseUiPopoverBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-popover")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiPopoverBasicExampleRoute)
 );
 export const popoverBasicExampleRouter = pipe(
   literal("docs"),
@@ -3130,6 +3826,11 @@ export const popoverBasicStandaloneExampleRouter = pipe(
   slash(literal("popover-basic")),
   Route.mapTo(PopoverBasicExampleRoute)
 );
+export const baseUiPopoverBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-popover-basic")),
+  Route.mapTo(BaseUiPopoverBasicExampleRoute)
+);
 export const popoverAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("popover-animated")),
@@ -3143,7 +3844,7 @@ export const radioGroupDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
   slash(literal("radio-group")),
-  Route.mapTo(RadioGroupDocsRoute)
+  Route.mapTo(BaseUiRadioDocsRoute)
 );
 export const shadcnRadioGroupDocsRouter = pipe(
   literal("docs"),
@@ -3151,12 +3852,67 @@ export const shadcnRadioGroupDocsRouter = pipe(
   slash(literal("shadcn-radio-group")),
   Route.mapTo(ShadcnRadioGroupDocsRoute)
 );
-export const baseUiRadioGroupDocsRouter = pipe(
+export const baseUiRadioDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("base-ui-radio-group")),
-  Route.mapTo(BaseUiRadioGroupDocsRoute)
+  slash(literal("base-ui-radio")),
+  Route.mapTo(BaseUiRadioDocsRoute)
 );
+export const baseUiRadioBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-radio")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiRadioBasicExampleRoute)
+);
+export const baseUiRadioBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-radio-basic")),
+  Route.mapTo(BaseUiRadioBasicExampleRoute)
+);
+
+export const baseUiRadioLabelingExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-radio")),
+  slash(literal("examples")),
+  slash(literal("labeling")),
+  Route.mapTo(BaseUiRadioLabelingExampleRoute)
+);
+export const baseUiRadioLabelingStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-radio-labeling")),
+  Route.mapTo(BaseUiRadioLabelingExampleRoute)
+);
+
+export const baseUiRadioNativeButtonExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-radio")),
+  slash(literal("examples")),
+  slash(literal("native-button")),
+  Route.mapTo(BaseUiRadioNativeButtonExampleRoute)
+);
+export const baseUiRadioNativeButtonStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-radio-native-button")),
+  Route.mapTo(BaseUiRadioNativeButtonExampleRoute)
+);
+export const baseUiRadioFormExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-radio")),
+  slash(literal("examples")),
+  slash(literal("form")),
+  Route.mapTo(BaseUiRadioFormExampleRoute)
+);
+export const baseUiRadioFormStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-radio-form")),
+  Route.mapTo(BaseUiRadioFormExampleRoute)
+);
+
 export const radioGroupBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3201,6 +3957,19 @@ export const baseUiSelectDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-select")),
   Route.mapTo(BaseUiSelectDocsRoute)
+);
+export const baseUiSelectBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-select")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiSelectBasicExampleRoute)
+);
+export const baseUiSelectBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-select-basic")),
+  Route.mapTo(BaseUiSelectBasicExampleRoute)
 );
 export const selectBasicExampleRouter = pipe(
   literal("docs"),
@@ -3247,6 +4016,19 @@ export const baseUiSliderDocsRouter = pipe(
   slash(literal("base-ui-slider")),
   Route.mapTo(BaseUiSliderDocsRoute)
 );
+export const baseUiSliderBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-slider")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiSliderBasicExampleRoute)
+);
+export const baseUiSliderBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-slider-basic")),
+  Route.mapTo(BaseUiSliderBasicExampleRoute)
+);
 export const sliderBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3292,6 +4074,19 @@ export const baseUiSwitchDocsRouter = pipe(
   slash(literal("base-ui-switch")),
   Route.mapTo(BaseUiSwitchDocsRoute)
 );
+export const baseUiSwitchBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-switch")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiSwitchBasicExampleRoute)
+);
+export const baseUiSwitchBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-switch-basic")),
+  Route.mapTo(BaseUiSwitchBasicExampleRoute)
+);
 export const switchBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3336,6 +4131,19 @@ export const baseUiTabsDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-tabs")),
   Route.mapTo(BaseUiTabsDocsRoute)
+);
+export const baseUiTabsBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-tabs")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiTabsBasicExampleRoute)
+);
+export const baseUiTabsBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-tabs-basic")),
+  Route.mapTo(BaseUiTabsBasicExampleRoute)
 );
 export const tabsBasicExampleRouter = pipe(
   literal("docs"),
@@ -3424,6 +4232,19 @@ export const baseUiToastDocsRouter = pipe(
   slash(literal("base-ui-toast")),
   Route.mapTo(BaseUiToastDocsRoute)
 );
+export const baseUiToastBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-toast")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiToastBasicExampleRoute)
+);
+export const baseUiToastBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-toast-basic")),
+  Route.mapTo(BaseUiToastBasicExampleRoute)
+);
 export const toastBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3465,6 +4286,19 @@ export const baseUiTooltipDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("base-ui-tooltip")),
   Route.mapTo(BaseUiTooltipDocsRoute)
+);
+export const baseUiTooltipBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-tooltip")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(BaseUiTooltipBasicExampleRoute)
+);
+export const baseUiTooltipBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-tooltip-basic")),
+  Route.mapTo(BaseUiTooltipBasicExampleRoute)
 );
 export const tooltipBasicExampleRouter = pipe(
   literal("docs"),
@@ -3556,8 +4390,11 @@ const routeParser = Route.oneOf(
   avatarRouter,
   avatarBasicExampleRouter,
   avatarBasicStandaloneExampleRouter,
+  baseUiAvatarBasicExampleRouter,
+  baseUiAvatarBasicStandaloneExampleRouter,
   avatarDocsRouter,
   shadcnAvatarDocsRouter,
+  baseUiAvatarDocsRouter,
   badgeRouter,
   badgeBasicExampleRouter,
   badgeBasicStandaloneExampleRouter,
@@ -3644,6 +4481,8 @@ const routeParser = Route.oneOf(
   itemImageStandaloneExampleRouter,
   itemLinkExampleRouter,
   itemLinkStandaloneExampleRouter,
+  itemDropdownExampleRouter,
+  itemDropdownStandaloneExampleRouter,
   itemRtlExampleRouter,
   itemRtlStandaloneExampleRouter,
   itemSizeExampleRouter,
@@ -3675,6 +4514,9 @@ const routeParser = Route.oneOf(
   separatorBasicStandaloneExampleRouter,
   separatorDocsRouter,
   shadcnSeparatorDocsRouter,
+  baseUiSeparatorBasicExampleRouter,
+  baseUiSeparatorBasicStandaloneExampleRouter,
+  baseUiSeparatorDocsRouter,
   skeletonRouter,
   skeletonBasicExampleRouter,
   skeletonBasicStandaloneExampleRouter,
@@ -3700,6 +4542,8 @@ const routeParser = Route.oneOf(
   buttonRouter,
   buttonBasicExampleRouter,
   buttonDisabledExampleRouter,
+  baseUiButtonBasicExampleRouter,
+  baseUiButtonBasicStandaloneExampleRouter,
   buttonBasicStandaloneExampleRouter,
   buttonDisabledStandaloneExampleRouter,
   buttonDocsRouter,
@@ -3708,32 +4552,50 @@ const routeParser = Route.oneOf(
   inputGroupRouter,
   inputGroupDocsRouter,
   meterRouter,
+  baseUiMeterBasicExampleRouter,
   meterBasicExampleRouter,
+  baseUiMeterBasicStandaloneExampleRouter,
   meterBasicStandaloneExampleRouter,
   meterDocsRouter,
+  baseUiMeterDocsRouter,
   scrollAreaRouter,
   scrollAreaBasicExampleRouter,
+  baseUiScrollAreaBasicExampleRouter,
   scrollAreaBasicStandaloneExampleRouter,
+  baseUiScrollAreaBasicStandaloneExampleRouter,
   scrollAreaDocsRouter,
   shadcnScrollAreaDocsRouter,
+  baseUiScrollAreaDocsRouter,
   toggleRouter,
   toggleBasicExampleRouter,
   toggleBasicStandaloneExampleRouter,
   toggleDocsRouter,
+  baseUiToggleBasicExampleRouter,
+  baseUiToggleBasicStandaloneExampleRouter,
+  baseUiToggleDocsRouter,
   toggleGroupBasicExampleRouter,
   toggleGroupBasicStandaloneExampleRouter,
   toggleGroupDocsRouter,
+  baseUiToggleGroupBasicExampleRouter,
+  baseUiToggleGroupBasicStandaloneExampleRouter,
+  baseUiToggleGroupDocsRouter,
   radioBasicExampleRouter,
   radioBasicStandaloneExampleRouter,
   radioDocsRouter,
   toolbarBasicExampleRouter,
   toolbarBasicStandaloneExampleRouter,
   toolbarDocsRouter,
+  baseUiToolbarBasicExampleRouter,
+  baseUiToolbarBasicStandaloneExampleRouter,
+  baseUiToolbarDocsRouter,
   progressRouter,
   progressBasicExampleRouter,
   progressBasicStandaloneExampleRouter,
   progressDocsRouter,
   shadcnProgressDocsRouter,
+  baseUiProgressBasicExampleRouter,
+  baseUiProgressBasicStandaloneExampleRouter,
+  baseUiProgressDocsRouter,
   calendarRouter,
   calendarBasicExampleRouter,
   calendarBoundsExampleRouter,
@@ -3743,6 +4605,8 @@ const routeParser = Route.oneOf(
   shadcnCalendarDocsRouter,
   checkboxRouter,
   checkboxBasicExampleRouter,
+  baseUiCheckboxBasicExampleRouter,
+  baseUiCheckboxBasicStandaloneExampleRouter,
   checkboxIndeterminateExampleRouter,
   checkboxBasicStandaloneExampleRouter,
   checkboxIndeterminateStandaloneExampleRouter,
@@ -3752,11 +4616,14 @@ const routeParser = Route.oneOf(
   checkboxGroupBasicExampleRouter,
   checkboxGroupBasicStandaloneExampleRouter,
   checkboxGroupDocsRouter,
+  baseUiCheckboxGroupDocsRouter,
   comboboxRouter,
   comboboxBasicExampleRouter,
   comboboxMultiExampleRouter,
+  baseUiComboboxBasicExampleRouter,
   comboboxBasicStandaloneExampleRouter,
   comboboxMultiStandaloneExampleRouter,
+  baseUiComboboxBasicStandaloneExampleRouter,
   comboboxDocsRouter,
   shadcnComboboxDocsRouter,
   baseUiComboboxDocsRouter,
@@ -3768,12 +4635,14 @@ const routeParser = Route.oneOf(
   datePickerDocsRouter,
   shadcnDatePickerDocsRouter,
   dialogRouter,
+  baseUiDialogBasicExampleRouter,
   dialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
   dialogDestructiveExampleRouter,
   dialogFocusExampleRouter,
   dialogScrollableExampleRouter,
   dialogBasicStandaloneExampleRouter,
+  baseUiDialogBasicStandaloneExampleRouter,
   dialogAnimatedStandaloneExampleRouter,
   dialogDestructiveStandaloneExampleRouter,
   dialogFocusStandaloneExampleRouter,
@@ -3794,8 +4663,10 @@ const routeParser = Route.oneOf(
   dragAndDropDisabledStandaloneExampleRouter,
   dragAndDropDocsRouter,
   fieldsetRouter,
+  baseUiFieldsetBasicExampleRouter,
   fieldsetBasicExampleRouter,
   fieldsetDisabledExampleRouter,
+  baseUiFieldsetBasicStandaloneExampleRouter,
   fieldsetBasicStandaloneExampleRouter,
   fieldsetDisabledStandaloneExampleRouter,
   fieldsetDocsRouter,
@@ -3807,8 +4678,10 @@ const routeParser = Route.oneOf(
   fileDropDisabledStandaloneExampleRouter,
   fileDropDocsRouter,
   inputRouter,
+  baseUiInputBasicExampleRouter,
   inputBasicExampleRouter,
   inputDisabledExampleRouter,
+  baseUiInputBasicStandaloneExampleRouter,
   inputBasicStandaloneExampleRouter,
   inputDisabledStandaloneExampleRouter,
   inputDocsRouter,
@@ -3826,23 +4699,35 @@ const routeParser = Route.oneOf(
   menuBasicStandaloneExampleRouter,
   menuAnimatedStandaloneExampleRouter,
   menuDocsRouter,
+  baseUiMenuBasicExampleRouter,
+  baseUiMenuBasicStandaloneExampleRouter,
   baseUiMenuDocsRouter,
   popoverRouter,
+  baseUiPopoverBasicExampleRouter,
   popoverBasicExampleRouter,
   popoverAnimatedExampleRouter,
+  baseUiPopoverBasicStandaloneExampleRouter,
   popoverBasicStandaloneExampleRouter,
   popoverAnimatedStandaloneExampleRouter,
   popoverDocsRouter,
   shadcnPopoverDocsRouter,
   baseUiPopoverDocsRouter,
   radioGroupRouter,
+  baseUiRadioBasicExampleRouter,
+  baseUiRadioBasicStandaloneExampleRouter,
+  baseUiRadioLabelingExampleRouter,
+  baseUiRadioLabelingStandaloneExampleRouter,
+  baseUiRadioNativeButtonExampleRouter,
+  baseUiRadioNativeButtonStandaloneExampleRouter,
+  baseUiRadioFormExampleRouter,
+  baseUiRadioFormStandaloneExampleRouter,
   radioGroupBasicExampleRouter,
   radioGroupHorizontalExampleRouter,
   radioGroupBasicStandaloneExampleRouter,
   radioGroupHorizontalStandaloneExampleRouter,
   radioGroupDocsRouter,
   shadcnRadioGroupDocsRouter,
-  baseUiRadioGroupDocsRouter,
+  baseUiRadioDocsRouter,
   selectRouter,
   selectBasicExampleRouter,
   selectDisabledExampleRouter,
@@ -3850,6 +4735,8 @@ const routeParser = Route.oneOf(
   selectDisabledStandaloneExampleRouter,
   selectDocsRouter,
   shadcnSelectDocsRouter,
+  baseUiSelectBasicExampleRouter,
+  baseUiSelectBasicStandaloneExampleRouter,
   baseUiSelectDocsRouter,
   sliderRouter,
   sliderBasicExampleRouter,
@@ -3858,6 +4745,8 @@ const routeParser = Route.oneOf(
   sliderDisabledStandaloneExampleRouter,
   sliderDocsRouter,
   shadcnSliderDocsRouter,
+  baseUiSliderBasicExampleRouter,
+  baseUiSliderBasicStandaloneExampleRouter,
   baseUiSliderDocsRouter,
   switchRouter,
   switchBasicExampleRouter,
@@ -3866,6 +4755,8 @@ const routeParser = Route.oneOf(
   switchDisabledStandaloneExampleRouter,
   switchDocsRouter,
   shadcnSwitchDocsRouter,
+  baseUiSwitchBasicExampleRouter,
+  baseUiSwitchBasicStandaloneExampleRouter,
   baseUiSwitchDocsRouter,
   tabsRouter,
   tabsBasicExampleRouter,
@@ -3874,6 +4765,8 @@ const routeParser = Route.oneOf(
   tabsManualStandaloneExampleRouter,
   tabsDocsRouter,
   shadcnTabsDocsRouter,
+  baseUiTabsBasicExampleRouter,
+  baseUiTabsBasicStandaloneExampleRouter,
   baseUiTabsDocsRouter,
   textareaRouter,
   textareaBasicExampleRouter,
@@ -3889,6 +4782,8 @@ const routeParser = Route.oneOf(
   toastVariantsStandaloneExampleRouter,
   toastDocsRouter,
   shadcnToastDocsRouter,
+  baseUiToastBasicExampleRouter,
+  baseUiToastBasicStandaloneExampleRouter,
   baseUiToastDocsRouter,
   tooltipRouter,
   tooltipBasicExampleRouter,
@@ -3896,6 +4791,8 @@ const routeParser = Route.oneOf(
   tooltipBasicStandaloneExampleRouter,
   tooltipNoDelayStandaloneExampleRouter,
   tooltipDocsRouter,
+  baseUiTooltipBasicExampleRouter,
+  baseUiTooltipBasicStandaloneExampleRouter,
   baseUiTooltipDocsRouter,
   animationRouter,
   animationBasicExampleRouter,
@@ -3910,7 +4807,9 @@ const routeParser = Route.oneOf(
   accordionBasicExampleRouter,
   accordionBasicStandaloneExampleRouter,
   accordionMultipleExampleRouter,
+  baseUiAccordionMultipleExampleRouter,
   accordionMultipleStandaloneExampleRouter,
+  baseUiAccordionMultipleStandaloneExampleRouter,
   alertBasicExampleRouter,
   alertBasicStandaloneExampleRouter,
   alertDestructiveExampleRouter,
@@ -3963,49 +4862,85 @@ const routeParser = Route.oneOf(
   buttonGroupDocsRouter,
   alertDialogBasicExampleRouter,
   alertDialogBasicStandaloneExampleRouter,
+  baseUiAlertDialogCloseConfirmationExampleRouter,
+  baseUiAlertDialogCloseConfirmationStandaloneExampleRouter,
   alertDialogDocsRouter,
   shadcnAlertDialogDocsRouter,
+  baseUiAlertDialogDocsRouter,
   drawerBasicExampleRouter,
   drawerBasicStandaloneExampleRouter,
   drawerDocsRouter,
   shadcnDrawerDocsRouter,
+  baseUiDrawerBasicExampleRouter,
+  baseUiDrawerBasicStandaloneExampleRouter,
+  baseUiDrawerDocsRouter,
   contextMenuBasicExampleRouter,
   contextMenuBasicStandaloneExampleRouter,
   contextMenuDocsRouter,
   shadcnContextMenuDocsRouter,
+  baseUiContextMenuDocsRouter,
   menubarBasicExampleRouter,
   menubarBasicStandaloneExampleRouter,
   menubarDocsRouter,
   shadcnMenubarDocsRouter,
+  baseUiMenubarBasicExampleRouter,
+  baseUiMenubarBasicStandaloneExampleRouter,
+  baseUiMenubarDocsRouter,
   navigationMenuBasicExampleRouter,
   navigationMenuBasicStandaloneExampleRouter,
   navigationMenuDocsRouter,
   shadcnNavigationMenuDocsRouter,
+  baseUiNavigationMenuBasicExampleRouter,
+  baseUiNavigationMenuBasicStandaloneExampleRouter,
+  baseUiNavigationMenuDocsRouter,
   otpFieldBasicExampleRouter,
   otpFieldBasicStandaloneExampleRouter,
   otpFieldDocsRouter,
+  baseUiOtpFieldBasicExampleRouter,
+  baseUiOtpFieldBasicStandaloneExampleRouter,
+  baseUiOtpFieldDocsRouter,
   previewCardBasicExampleRouter,
   previewCardBasicStandaloneExampleRouter,
   previewCardDocsRouter,
+  baseUiPreviewCardBasicExampleRouter,
+  baseUiPreviewCardBasicStandaloneExampleRouter,
+  baseUiPreviewCardDocsRouter,
   accordionDocsRouter,
   shadcnAccordionDocsRouter,
+  shadcnBaseAccordionDocsRouter,
+  baseUiAccordionDocsRouter,
   collapsibleBasicExampleRouter,
   collapsibleBasicStandaloneExampleRouter,
+  baseUiCollapsibleBasicExampleRouter,
+  baseUiCollapsibleBasicStandaloneExampleRouter,
   collapsibleDocsRouter,
   shadcnCollapsibleDocsRouter,
+  baseUiCollapsibleDocsRouter,
   fieldBasicExampleRouter,
   fieldBasicStandaloneExampleRouter,
   fieldDocsRouter,
   shadcnFieldDocsRouter,
+  baseUiFieldBasicExampleRouter,
+  baseUiFieldBasicStandaloneExampleRouter,
+  baseUiFieldDocsRouter,
   numberFieldBasicExampleRouter,
   numberFieldBasicStandaloneExampleRouter,
   numberFieldDocsRouter,
+  baseUiNumberFieldBasicExampleRouter,
+  baseUiNumberFieldBasicStandaloneExampleRouter,
+  baseUiNumberFieldDocsRouter,
   formBasicExampleRouter,
   formBasicStandaloneExampleRouter,
   formDocsRouter,
+  baseUiFormBasicExampleRouter,
+  baseUiFormBasicStandaloneExampleRouter,
+  baseUiFormDocsRouter,
   autocompleteBasicExampleRouter,
   autocompleteBasicStandaloneExampleRouter,
+  baseUiAutocompleteBasicExampleRouter,
+  baseUiAutocompleteBasicStandaloneExampleRouter,
   autocompleteDocsRouter,
+  baseUiAutocompleteDocsRouter,
   homeRouter
 );
 
@@ -4051,7 +4986,9 @@ const urlToBaseAwareAppRoute = (url: Url): AppRoute =>
 export const Model = S.Struct({
   route: AppRoute,
   accordionBasicExample: AccordionBasicExample.Model,
+  baseUiAccordionMultipleExample: BaseUiAccordionMultipleExample.Model,
   shadcnAccordionBasicExample: ShadcnAccordionBasicExample.Model,
+  shadcnBaseAccordionBasicExample: ShadcnBaseAccordionBasicExample.Model,
   shadcnAccordionBordersExample: ShadcnAccordionBordersExample.Model,
   shadcnAccordionCardExample: ShadcnAccordionCardExample.Model,
   shadcnAccordionDisabledExample: ShadcnAccordionDisabledExample.Model,
@@ -4082,21 +5019,35 @@ export const Model = S.Struct({
   buttonGroupPopoverExample: ButtonGroupPopoverExample.Model,
   buttonGroupRtlExample: ButtonGroupRtlExample.Model,
   alertDialogBasicExample: AlertDialogBasicExample.Model,
+  baseUiAlertDialogCloseConfirmationExample:
+    BaseUiAlertDialogCloseConfirmationExample.Model,
   shadcnAlertDialogBasicExample: ShadcnAlertDialogBasicExample.Model,
+  baseUiDrawerBasicExample: BaseUiDrawerBasicExample.Model,
   drawerBasicExample: DrawerBasicExample.Model,
   contextMenuBasicExample: ContextMenuBasicExample.Model,
+  baseUiMenubarBasicExample: BaseUiMenubarBasicExample.Model,
   menubarBasicExample: MenubarBasicExample.Model,
+  baseUiNavigationMenuBasicExample: BaseUiNavigationMenuBasicExample.Model,
   navigationMenuBasicExample: NavigationMenuBasicExample.Model,
+  baseUiOtpFieldBasicExample: BaseUiOtpFieldBasicExample.Model,
   otpFieldBasicExample: OtpFieldBasicExample.Model,
+  baseUiPreviewCardBasicExample: BaseUiPreviewCardBasicExample.Model,
   previewCardBasicExample: PreviewCardBasicExample.Model,
   collapsibleBasicExample: CollapsibleBasicExample.Model,
+  baseUiCollapsibleBasicExample: BaseUiCollapsibleBasicExample.Model,
+  shadcnCollapsibleBasicExample: ShadcnCollapsibleBasicExample.Model,
+  baseUiFieldBasicExample: BaseUiFieldBasicExample.Model,
   fieldBasicExample: FieldBasicExample.Model,
+  baseUiNumberFieldBasicExample: BaseUiNumberFieldBasicExample.Model,
   numberFieldBasicExample: NumberFieldBasicExample.Model,
+  baseUiFormBasicExample: BaseUiFormBasicExample.Model,
   formBasicExample: FormBasicExample.Model,
   autocompleteBasicExample: AutocompleteBasicExample.Model,
+  baseUiAutocompleteBasicExample: BaseUiAutocompleteBasicExample.Model,
   uiModel: UiModel,
   animationBasicExample: AnimationBasicExample.Model,
   avatarBasicExample: AvatarBasicExample.Model,
+  baseUiAvatarBasicExample: BaseUiAvatarBasicExample.Model,
   shadcnAvatarBasicExample: ShadcnAvatarBasicExample.Model,
   shadcnAvatarDropdownExample: ShadcnAvatarDropdownExample.Model,
   badgeBasicExample: BadgeBasicExample.Model,
@@ -4135,6 +5086,7 @@ export const Model = S.Struct({
   itemIconExample: ItemIconExample.Model,
   itemImageExample: ItemImageExample.Model,
   itemLinkExample: ItemLinkExample.Model,
+  itemDropdownExample: ItemDropdownExample.Model,
   itemRtlExample: ItemRtlExample.Model,
   itemSizeExample: ItemSizeExample.Model,
   itemVariantExample: ItemVariantExample.Model,
@@ -4144,6 +5096,7 @@ export const Model = S.Struct({
   sidebarBasicExample: SidebarBasicExample.Model,
   tableBasicExample: TableBasicExample.Model,
   cardBasicExample: CardBasicExample.Model,
+  baseUiSeparatorBasicExample: BaseUiSeparatorBasicExample.Model,
   separatorBasicExample: SeparatorBasicExample.Model,
   skeletonBasicExample: SkeletonBasicExample.Model,
   kbdBasicExample: KbdBasicExample.Model,
@@ -4152,6 +5105,7 @@ export const Model = S.Struct({
   emptyBasicExample: EmptyBasicExample.Model,
   emptyInputGroupExample: EmptyInputGroupExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
+  baseUiButtonBasicExample: BaseUiButtonBasicExample.Model,
   shadcnButtonBasicExample: ShadcnButtonBasicExample.Model,
   buttonDisabledExample: ButtonDisabledExample.Model,
   calendarBasicExample: CalendarBasicExample.Model,
@@ -4164,12 +5118,17 @@ export const Model = S.Struct({
   shadcnCalendarRtlExample: ShadcnCalendarRtlExample.Model,
   calendarBoundsExample: CalendarBoundsExample.Model,
   checkboxBasicExample: CheckboxBasicExample.Model,
+  shadcnCheckboxBasicExample: ShadcnCheckboxBasicExample.Model,
+  baseUiCheckboxBasicExample: BaseUiCheckboxBasicExample.Model,
   checkboxGroupBasicExample: CheckboxGroupBasicExample.Model,
   checkboxIndeterminateExample: CheckboxIndeterminateExample.Model,
+  baseUiComboboxBasicExample: BaseUiComboboxBasicExample.Model,
   comboboxBasicExample: ComboboxBasicExample.Model,
+  shadcnComboboxBasicExample: ShadcnComboboxBasicExample.Model,
   comboboxMultiExample: ComboboxMultiExample.Model,
   datePickerBasicExample: DatePickerBasicExample.Model,
   datePickerBoundsExample: DatePickerBoundsExample.Model,
+  baseUiDialogBasicExample: BaseUiDialogBasicExample.Model,
   dialogBasicExample: DialogBasicExample.Model,
   dialogAnimatedExample: DialogAnimatedExample.Model,
   dialogDestructiveExample: DialogDestructiveExample.Model,
@@ -4179,44 +5138,63 @@ export const Model = S.Struct({
   disclosureDisabledExample: DisclosureDisabledExample.Model,
   dragAndDropBasicExample: DragAndDropBasicExample.Model,
   dragAndDropDisabledExample: DragAndDropDisabledExample.Model,
+  baseUiFieldsetBasicExample: BaseUiFieldsetBasicExample.Model,
   fieldsetBasicExample: FieldsetBasicExample.Model,
   fieldsetDisabledExample: FieldsetDisabledExample.Model,
   fileDropBasicExample: FileDropBasicExample.Model,
   fileDropDisabledExample: FileDropDisabledExample.Model,
+  baseUiInputBasicExample: BaseUiInputBasicExample.Model,
   inputBasicExample: InputBasicExample.Model,
   inputDisabledExample: InputDisabledExample.Model,
+  baseUiMeterBasicExample: BaseUiMeterBasicExample.Model,
   meterBasicExample: MeterBasicExample.Model,
   scrollAreaBasicExample: ScrollAreaBasicExample.Model,
+  baseUiToggleBasicExample: BaseUiToggleBasicExample.Model,
   toggleBasicExample: ToggleBasicExample.Model,
+  baseUiToggleGroupBasicExample: BaseUiToggleGroupBasicExample.Model,
   toggleGroupBasicExample: ToggleGroupBasicExample.Model,
   radioBasicExample: RadioBasicExample.Model,
+  baseUiToolbarBasicExample: BaseUiToolbarBasicExample.Model,
   toolbarBasicExample: ToolbarBasicExample.Model,
+  baseUiProgressBasicExample: BaseUiProgressBasicExample.Model,
   progressBasicExample: ProgressBasicExample.Model,
   listboxBasicExample: ListboxBasicExample.Model,
   listboxAnimatedExample: ListboxAnimatedExample.Model,
+  baseUiMenuBasicExample: BaseUiMenuBasicExample.Model,
   menuBasicExample: MenuBasicExample.Model,
   menuAnimatedExample: MenuAnimatedExample.Model,
+  baseUiPopoverBasicExample: BaseUiPopoverBasicExample.Model,
+  baseUiRadioBasicExample: BaseUiRadioBasicExample.Model,
+  baseUiRadioLabelingExample: BaseUiRadioLabelingExample.Model,
+  baseUiRadioNativeButtonExample: BaseUiRadioNativeButtonExample.Model,
+  baseUiRadioFormExample: BaseUiRadioFormExample.Model,
   popoverBasicExample: PopoverBasicExample.Model,
   popoverAnimatedExample: PopoverAnimatedExample.Model,
   radioGroupBasicExample: RadioGroupBasicExample.Model,
   shadcnRadioGroupBasicExample: ShadcnRadioGroupBasicExample.Model,
   radioGroupHorizontalExample: RadioGroupHorizontalExample.Model,
+  baseUiSelectBasicExample: BaseUiSelectBasicExample.Model,
   selectBasicExample: SelectBasicExample.Model,
   shadcnSelectBasicExample: ShadcnSelectBasicExample.Model,
   selectDisabledExample: SelectDisabledExample.Model,
+  baseUiSliderBasicExample: BaseUiSliderBasicExample.Model,
   sliderBasicExample: SliderBasicExample.Model,
   shadcnSliderBasicExample: ShadcnSliderBasicExample.Model,
   sliderDisabledExample: SliderDisabledExample.Model,
+  baseUiSwitchBasicExample: BaseUiSwitchBasicExample.Model,
   switchBasicExample: SwitchBasicExample.Model,
   shadcnSwitchBasicExample: ShadcnSwitchBasicExample.Model,
   switchDisabledExample: SwitchDisabledExample.Model,
+  baseUiTabsBasicExample: BaseUiTabsBasicExample.Model,
   tabsBasicExample: TabsBasicExample.Model,
   shadcnTabsBasicExample: ShadcnTabsBasicExample.Model,
   tabsManualExample: TabsManualExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
   textareaDisabledExample: TextareaDisabledExample.Model,
+  baseUiToastBasicExample: BaseUiToastBasicExample.Model,
   toastBasicExample: ToastBasicExample.Model,
   toastVariantsExample: ToastVariantsExample.Model,
+  baseUiTooltipBasicExample: BaseUiTooltipBasicExample.Model,
   tooltipBasicExample: TooltipBasicExample.Model,
   tooltipNoDelayExample: TooltipNoDelayExample.Model,
   virtualListBasicExample: VirtualListBasicExample.Model,
@@ -4242,10 +5220,22 @@ export const GotAccordionBasicExampleMessage = m(
     message: AccordionBasicExample.Message,
   }
 );
+export const GotBaseUiAccordionMultipleExampleMessage = m(
+  "GotBaseUiAccordionMultipleExampleMessage",
+  {
+    message: BaseUiAccordionMultipleExample.Message,
+  }
+);
 export const GotShadcnAccordionBasicExampleMessage = m(
   "GotShadcnAccordionBasicExampleMessage",
   {
     message: ShadcnAccordionBasicExample.Message,
+  }
+);
+export const GotShadcnBaseAccordionBasicExampleMessage = m(
+  "GotShadcnBaseAccordionBasicExampleMessage",
+  {
+    message: ShadcnBaseAccordionBasicExample.Message,
   }
 );
 export const GotShadcnAccordionBordersExampleMessage = m(
@@ -4391,6 +5381,12 @@ export const GotAlertDialogBasicExampleMessage = m(
     message: AlertDialogBasicExample.Message,
   }
 );
+export const GotBaseUiAlertDialogCloseConfirmationExampleMessage = m(
+  "GotBaseUiAlertDialogCloseConfirmationExampleMessage",
+  {
+    message: BaseUiAlertDialogCloseConfirmationExample.Message,
+  }
+);
 export const GotShadcnAlertDialogBasicExampleMessage = m(
   "GotShadcnAlertDialogBasicExampleMessage",
   {
@@ -4400,6 +5396,12 @@ export const GotShadcnAlertDialogBasicExampleMessage = m(
 export const GotDrawerBasicExampleMessage = m("GotDrawerBasicExampleMessage", {
   message: DrawerBasicExample.Message,
 });
+export const GotBaseUiDrawerBasicExampleMessage = m(
+  "GotBaseUiDrawerBasicExampleMessage",
+  {
+    message: BaseUiDrawerBasicExample.Message,
+  }
+);
 export const GotContextMenuBasicExampleMessage = m(
   "GotContextMenuBasicExampleMessage",
   {
@@ -4412,16 +5414,40 @@ export const GotMenubarBasicExampleMessage = m(
     message: MenubarBasicExample.Message,
   }
 );
+export const GotBaseUiMenubarBasicExampleMessage = m(
+  "GotBaseUiMenubarBasicExampleMessage",
+  {
+    message: BaseUiMenubarBasicExample.Message,
+  }
+);
+export const GotBaseUiNavigationMenuBasicExampleMessage = m(
+  "GotBaseUiNavigationMenuBasicExampleMessage",
+  {
+    message: BaseUiNavigationMenuBasicExample.Message,
+  }
+);
 export const GotNavigationMenuBasicExampleMessage = m(
   "GotNavigationMenuBasicExampleMessage",
   {
     message: NavigationMenuBasicExample.Message,
   }
 );
+export const GotBaseUiOtpFieldBasicExampleMessage = m(
+  "GotBaseUiOtpFieldBasicExampleMessage",
+  {
+    message: BaseUiOtpFieldBasicExample.Message,
+  }
+);
 export const GotOtpFieldBasicExampleMessage = m(
   "GotOtpFieldBasicExampleMessage",
   {
     message: OtpFieldBasicExample.Message,
+  }
+);
+export const GotBaseUiPreviewCardBasicExampleMessage = m(
+  "GotBaseUiPreviewCardBasicExampleMessage",
+  {
+    message: BaseUiPreviewCardBasicExample.Message,
   }
 );
 export const GotPreviewCardBasicExampleMessage = m(
@@ -4436,9 +5462,33 @@ export const GotCollapsibleBasicExampleMessage = m(
     message: CollapsibleBasicExample.Message,
   }
 );
+export const GotBaseUiCollapsibleBasicExampleMessage = m(
+  "GotBaseUiCollapsibleBasicExampleMessage",
+  {
+    message: BaseUiCollapsibleBasicExample.Message,
+  }
+);
+export const GotShadcnCollapsibleBasicExampleMessage = m(
+  "GotShadcnCollapsibleBasicExampleMessage",
+  {
+    message: ShadcnCollapsibleBasicExample.Message,
+  }
+);
 export const GotFieldBasicExampleMessage = m("GotFieldBasicExampleMessage", {
   message: FieldBasicExample.Message,
 });
+export const GotBaseUiFieldBasicExampleMessage = m(
+  "GotBaseUiFieldBasicExampleMessage",
+  {
+    message: BaseUiFieldBasicExample.Message,
+  }
+);
+export const GotBaseUiNumberFieldBasicExampleMessage = m(
+  "GotBaseUiNumberFieldBasicExampleMessage",
+  {
+    message: BaseUiNumberFieldBasicExample.Message,
+  }
+);
 export const GotNumberFieldBasicExampleMessage = m(
   "GotNumberFieldBasicExampleMessage",
   {
@@ -4448,10 +5498,22 @@ export const GotNumberFieldBasicExampleMessage = m(
 export const GotFormBasicExampleMessage = m("GotFormBasicExampleMessage", {
   message: FormBasicExample.Message,
 });
+export const GotBaseUiFormBasicExampleMessage = m(
+  "GotBaseUiFormBasicExampleMessage",
+  {
+    message: BaseUiFormBasicExample.Message,
+  }
+);
 export const GotAutocompleteBasicExampleMessage = m(
   "GotAutocompleteBasicExampleMessage",
   {
     message: AutocompleteBasicExample.Message,
+  }
+);
+export const GotBaseUiAutocompleteBasicExampleMessage = m(
+  "GotBaseUiAutocompleteBasicExampleMessage",
+  {
+    message: BaseUiAutocompleteBasicExample.Message,
   }
 );
 export const GotAnimationBasicExampleMessage = m(
@@ -4463,6 +5525,12 @@ export const GotAnimationBasicExampleMessage = m(
 export const GotAvatarBasicExampleMessage = m("GotAvatarBasicExampleMessage", {
   message: AvatarBasicExample.Message,
 });
+export const GotBaseUiAvatarBasicExampleMessage = m(
+  "GotBaseUiAvatarBasicExampleMessage",
+  {
+    message: BaseUiAvatarBasicExample.Message,
+  }
+);
 export const GotShadcnAvatarBasicExampleMessage = m(
   "GotShadcnAvatarBasicExampleMessage",
   {
@@ -4604,6 +5672,12 @@ export const GotItemImageExampleMessage = m("GotItemImageExampleMessage", {
 export const GotItemLinkExampleMessage = m("GotItemLinkExampleMessage", {
   message: ItemLinkExample.Message,
 });
+export const GotItemDropdownExampleMessage = m(
+  "GotItemDropdownExampleMessage",
+  {
+    message: ItemDropdownExample.Message,
+  }
+);
 export const GotItemRtlExampleMessage = m("GotItemRtlExampleMessage", {
   message: ItemRtlExample.Message,
 });
@@ -4660,6 +5734,12 @@ export const GotSonnerBasicExampleMessage = m("GotSonnerBasicExampleMessage", {
 export const GotCardBasicExampleMessage = m("GotCardBasicExampleMessage", {
   message: CardBasicExample.Message,
 });
+export const GotBaseUiSeparatorBasicExampleMessage = m(
+  "GotBaseUiSeparatorBasicExampleMessage",
+  {
+    message: BaseUiSeparatorBasicExample.Message,
+  }
+);
 export const GotSeparatorBasicExampleMessage = m(
   "GotSeparatorBasicExampleMessage",
   {
@@ -4699,6 +5779,12 @@ export const GotEmptyInputGroupExampleMessage = m(
 export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
   message: ButtonBasicExample.Message,
 });
+export const GotBaseUiButtonBasicExampleMessage = m(
+  "GotBaseUiButtonBasicExampleMessage",
+  {
+    message: BaseUiButtonBasicExample.Message,
+  }
+);
 export const GotShadcnButtonBasicExampleMessage = m(
   "GotShadcnButtonBasicExampleMessage",
   {
@@ -4765,6 +5851,18 @@ export const GotCheckboxBasicExampleMessage = m(
     message: CheckboxBasicExample.Message,
   }
 );
+export const GotShadcnCheckboxBasicExampleMessage = m(
+  "GotShadcnCheckboxBasicExampleMessage",
+  {
+    message: ShadcnCheckboxBasicExample.Message,
+  }
+);
+export const GotBaseUiCheckboxBasicExampleMessage = m(
+  "GotBaseUiCheckboxBasicExampleMessage",
+  {
+    message: BaseUiCheckboxBasicExample.Message,
+  }
+);
 export const GotCheckboxGroupBasicExampleMessage = m(
   "GotCheckboxGroupBasicExampleMessage",
   {
@@ -4781,6 +5879,18 @@ export const GotComboboxBasicExampleMessage = m(
   "GotComboboxBasicExampleMessage",
   {
     message: ComboboxBasicExample.Message,
+  }
+);
+export const GotBaseUiComboboxBasicExampleMessage = m(
+  "GotBaseUiComboboxBasicExampleMessage",
+  {
+    message: BaseUiComboboxBasicExample.Message,
+  }
+);
+export const GotShadcnComboboxBasicExampleMessage = m(
+  "GotShadcnComboboxBasicExampleMessage",
+  {
+    message: ShadcnComboboxBasicExample.Message,
   }
 );
 export const GotComboboxMultiExampleMessage = m(
@@ -4804,6 +5914,12 @@ export const GotDatePickerBoundsExampleMessage = m(
 export const GotDialogBasicExampleMessage = m("GotDialogBasicExampleMessage", {
   message: DialogBasicExample.Message,
 });
+export const GotBaseUiDialogBasicExampleMessage = m(
+  "GotBaseUiDialogBasicExampleMessage",
+  {
+    message: BaseUiDialogBasicExample.Message,
+  }
+);
 export const GotDialogAnimatedExampleMessage = m(
   "GotDialogAnimatedExampleMessage",
   {
@@ -4855,6 +5971,12 @@ export const GotFieldsetBasicExampleMessage = m(
     message: FieldsetBasicExample.Message,
   }
 );
+export const GotBaseUiFieldsetBasicExampleMessage = m(
+  "GotBaseUiFieldsetBasicExampleMessage",
+  {
+    message: BaseUiFieldsetBasicExample.Message,
+  }
+);
 export const GotFieldsetDisabledExampleMessage = m(
   "GotFieldsetDisabledExampleMessage",
   {
@@ -4876,6 +5998,12 @@ export const GotFileDropDisabledExampleMessage = m(
 export const GotInputBasicExampleMessage = m("GotInputBasicExampleMessage", {
   message: InputBasicExample.Message,
 });
+export const GotBaseUiInputBasicExampleMessage = m(
+  "GotBaseUiInputBasicExampleMessage",
+  {
+    message: BaseUiInputBasicExample.Message,
+  }
+);
 export const GotInputDisabledExampleMessage = m(
   "GotInputDisabledExampleMessage",
   {
@@ -4885,15 +6013,33 @@ export const GotInputDisabledExampleMessage = m(
 export const GotMeterBasicExampleMessage = m("GotMeterBasicExampleMessage", {
   message: MeterBasicExample.Message,
 });
+export const GotBaseUiMeterBasicExampleMessage = m(
+  "GotBaseUiMeterBasicExampleMessage",
+  {
+    message: BaseUiMeterBasicExample.Message,
+  }
+);
 export const GotScrollAreaBasicExampleMessage = m(
   "GotScrollAreaBasicExampleMessage",
   {
     message: ScrollAreaBasicExample.Message,
   }
 );
+export const GotBaseUiToggleBasicExampleMessage = m(
+  "GotBaseUiToggleBasicExampleMessage",
+  {
+    message: BaseUiToggleBasicExample.Message,
+  }
+);
 export const GotToggleBasicExampleMessage = m("GotToggleBasicExampleMessage", {
   message: ToggleBasicExample.Message,
 });
+export const GotBaseUiToggleGroupBasicExampleMessage = m(
+  "GotBaseUiToggleGroupBasicExampleMessage",
+  {
+    message: BaseUiToggleGroupBasicExample.Message,
+  }
+);
 export const GotToggleGroupBasicExampleMessage = m(
   "GotToggleGroupBasicExampleMessage",
   {
@@ -4903,10 +6049,22 @@ export const GotToggleGroupBasicExampleMessage = m(
 export const GotRadioBasicExampleMessage = m("GotRadioBasicExampleMessage", {
   message: RadioBasicExample.Message,
 });
+export const GotBaseUiToolbarBasicExampleMessage = m(
+  "GotBaseUiToolbarBasicExampleMessage",
+  {
+    message: BaseUiToolbarBasicExample.Message,
+  }
+);
 export const GotToolbarBasicExampleMessage = m(
   "GotToolbarBasicExampleMessage",
   {
     message: ToolbarBasicExample.Message,
+  }
+);
+export const GotBaseUiProgressBasicExampleMessage = m(
+  "GotBaseUiProgressBasicExampleMessage",
+  {
+    message: BaseUiProgressBasicExample.Message,
   }
 );
 export const GotProgressBasicExampleMessage = m(
@@ -4930,6 +6088,12 @@ export const GotListboxAnimatedExampleMessage = m(
 export const GotMenuBasicExampleMessage = m("GotMenuBasicExampleMessage", {
   message: MenuBasicExample.Message,
 });
+export const GotBaseUiMenuBasicExampleMessage = m(
+  "GotBaseUiMenuBasicExampleMessage",
+  {
+    message: BaseUiMenuBasicExample.Message,
+  }
+);
 export const GotMenuAnimatedExampleMessage = m(
   "GotMenuAnimatedExampleMessage",
   {
@@ -4942,10 +6106,40 @@ export const GotPopoverBasicExampleMessage = m(
     message: PopoverBasicExample.Message,
   }
 );
+export const GotBaseUiPopoverBasicExampleMessage = m(
+  "GotBaseUiPopoverBasicExampleMessage",
+  {
+    message: BaseUiPopoverBasicExample.Message,
+  }
+);
 export const GotPopoverAnimatedExampleMessage = m(
   "GotPopoverAnimatedExampleMessage",
   {
     message: PopoverAnimatedExample.Message,
+  }
+);
+export const GotBaseUiRadioBasicExampleMessage = m(
+  "GotBaseUiRadioBasicExampleMessage",
+  {
+    message: BaseUiRadioBasicExample.Message,
+  }
+);
+export const GotBaseUiRadioLabelingExampleMessage = m(
+  "GotBaseUiRadioLabelingExampleMessage",
+  {
+    message: BaseUiRadioLabelingExample.Message,
+  }
+);
+export const GotBaseUiRadioNativeButtonExampleMessage = m(
+  "GotBaseUiRadioNativeButtonExampleMessage",
+  {
+    message: BaseUiRadioNativeButtonExample.Message,
+  }
+);
+export const GotBaseUiRadioFormExampleMessage = m(
+  "GotBaseUiRadioFormExampleMessage",
+  {
+    message: BaseUiRadioFormExample.Message,
   }
 );
 export const GotRadioGroupBasicExampleMessage = m(
@@ -4966,6 +6160,12 @@ export const GotRadioGroupHorizontalExampleMessage = m(
     message: RadioGroupHorizontalExample.Message,
   }
 );
+export const GotBaseUiSelectBasicExampleMessage = m(
+  "GotBaseUiSelectBasicExampleMessage",
+  {
+    message: BaseUiSelectBasicExample.Message,
+  }
+);
 export const GotSelectBasicExampleMessage = m("GotSelectBasicExampleMessage", {
   message: SelectBasicExample.Message,
 });
@@ -4979,6 +6179,12 @@ export const GotSelectDisabledExampleMessage = m(
   "GotSelectDisabledExampleMessage",
   {
     message: SelectDisabledExample.Message,
+  }
+);
+export const GotBaseUiSliderBasicExampleMessage = m(
+  "GotBaseUiSliderBasicExampleMessage",
+  {
+    message: BaseUiSliderBasicExample.Message,
   }
 );
 export const GotSliderBasicExampleMessage = m("GotSliderBasicExampleMessage", {
@@ -4996,6 +6202,12 @@ export const GotSliderDisabledExampleMessage = m(
     message: SliderDisabledExample.Message,
   }
 );
+export const GotBaseUiSwitchBasicExampleMessage = m(
+  "GotBaseUiSwitchBasicExampleMessage",
+  {
+    message: BaseUiSwitchBasicExample.Message,
+  }
+);
 export const GotSwitchBasicExampleMessage = m("GotSwitchBasicExampleMessage", {
   message: SwitchBasicExample.Message,
 });
@@ -5009,6 +6221,12 @@ export const GotSwitchDisabledExampleMessage = m(
   "GotSwitchDisabledExampleMessage",
   {
     message: SwitchDisabledExample.Message,
+  }
+);
+export const GotBaseUiTabsBasicExampleMessage = m(
+  "GotBaseUiTabsBasicExampleMessage",
+  {
+    message: BaseUiTabsBasicExample.Message,
   }
 );
 export const GotTabsBasicExampleMessage = m("GotTabsBasicExampleMessage", {
@@ -5035,6 +6253,12 @@ export const GotTextareaDisabledExampleMessage = m(
     message: TextareaDisabledExample.Message,
   }
 );
+export const GotBaseUiToastBasicExampleMessage = m(
+  "GotBaseUiToastBasicExampleMessage",
+  {
+    message: BaseUiToastBasicExample.Message,
+  }
+);
 export const GotToastBasicExampleMessage = m("GotToastBasicExampleMessage", {
   message: ToastBasicExample.Message,
 });
@@ -5042,6 +6266,12 @@ export const GotToastVariantsExampleMessage = m(
   "GotToastVariantsExampleMessage",
   {
     message: ToastVariantsExample.Message,
+  }
+);
+export const GotBaseUiTooltipBasicExampleMessage = m(
+  "GotBaseUiTooltipBasicExampleMessage",
+  {
+    message: BaseUiTooltipBasicExample.Message,
   }
 );
 export const GotTooltipBasicExampleMessage = m(
@@ -5076,7 +6306,9 @@ export const Message = S.Union([
   ChangedUrl,
   GotUiMessage,
   GotAccordionBasicExampleMessage,
+  GotBaseUiAccordionMultipleExampleMessage,
   GotShadcnAccordionBasicExampleMessage,
+  GotShadcnBaseAccordionBasicExampleMessage,
   GotShadcnAccordionBordersExampleMessage,
   GotShadcnAccordionCardExampleMessage,
   GotShadcnAccordionDisabledExampleMessage,
@@ -5107,20 +6339,29 @@ export const Message = S.Union([
   GotButtonGroupPopoverExampleMessage,
   GotButtonGroupRtlExampleMessage,
   GotAlertDialogBasicExampleMessage,
+  GotBaseUiAlertDialogCloseConfirmationExampleMessage,
   GotShadcnAlertDialogBasicExampleMessage,
   GotDrawerBasicExampleMessage,
   GotContextMenuBasicExampleMessage,
   GotMenubarBasicExampleMessage,
+  GotBaseUiNavigationMenuBasicExampleMessage,
   GotNavigationMenuBasicExampleMessage,
+  GotBaseUiOtpFieldBasicExampleMessage,
   GotOtpFieldBasicExampleMessage,
+  GotBaseUiPreviewCardBasicExampleMessage,
   GotPreviewCardBasicExampleMessage,
   GotCollapsibleBasicExampleMessage,
+  GotBaseUiCollapsibleBasicExampleMessage,
+  GotShadcnCollapsibleBasicExampleMessage,
   GotFieldBasicExampleMessage,
+  GotBaseUiNumberFieldBasicExampleMessage,
   GotNumberFieldBasicExampleMessage,
   GotFormBasicExampleMessage,
   GotAutocompleteBasicExampleMessage,
+  GotBaseUiAutocompleteBasicExampleMessage,
   GotAnimationBasicExampleMessage,
   GotAvatarBasicExampleMessage,
+  GotBaseUiAvatarBasicExampleMessage,
   GotShadcnAvatarBasicExampleMessage,
   GotShadcnAvatarDropdownExampleMessage,
   GotBadgeBasicExampleMessage,
@@ -5152,6 +6393,7 @@ export const Message = S.Union([
   GotItemIconExampleMessage,
   GotItemImageExampleMessage,
   GotItemLinkExampleMessage,
+  GotItemDropdownExampleMessage,
   GotItemRtlExampleMessage,
   GotItemSizeExampleMessage,
   GotItemVariantExampleMessage,
@@ -5168,6 +6410,7 @@ export const Message = S.Union([
   GotSheetBasicExampleMessage,
   GotSonnerBasicExampleMessage,
   GotCardBasicExampleMessage,
+  GotBaseUiSeparatorBasicExampleMessage,
   GotSeparatorBasicExampleMessage,
   GotSkeletonBasicExampleMessage,
   GotKbdBasicExampleMessage,
@@ -5176,6 +6419,7 @@ export const Message = S.Union([
   GotEmptyBasicExampleMessage,
   GotEmptyInputGroupExampleMessage,
   GotButtonBasicExampleMessage,
+  GotBaseUiButtonBasicExampleMessage,
   GotShadcnButtonBasicExampleMessage,
   GotButtonDisabledExampleMessage,
   GotCalendarBasicExampleMessage,
@@ -5187,59 +6431,87 @@ export const Message = S.Union([
   GotShadcnCalendarRtlExampleMessage,
   GotCalendarBoundsExampleMessage,
   GotCheckboxBasicExampleMessage,
+  GotShadcnCheckboxBasicExampleMessage,
+  GotBaseUiCheckboxBasicExampleMessage,
   GotCheckboxGroupBasicExampleMessage,
   GotCheckboxIndeterminateExampleMessage,
+  GotBaseUiComboboxBasicExampleMessage,
   GotComboboxBasicExampleMessage,
+  GotShadcnComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
   GotDatePickerBasicExampleMessage,
   GotDatePickerBoundsExampleMessage,
+  GotBaseUiDialogBasicExampleMessage,
   GotDialogBasicExampleMessage,
   GotDialogAnimatedExampleMessage,
   GotDialogDestructiveExampleMessage,
   GotDialogFocusExampleMessage,
   GotDialogScrollableExampleMessage,
+  GotBaseUiDrawerBasicExampleMessage,
   GotDisclosureBasicExampleMessage,
   GotDisclosureDisabledExampleMessage,
   GotDragAndDropBasicExampleMessage,
   GotDragAndDropDisabledExampleMessage,
+  GotBaseUiFormBasicExampleMessage,
+  GotBaseUiFieldsetBasicExampleMessage,
+  GotBaseUiFieldBasicExampleMessage,
   GotFieldsetBasicExampleMessage,
   GotFieldsetDisabledExampleMessage,
   GotFileDropBasicExampleMessage,
   GotFileDropDisabledExampleMessage,
+  GotBaseUiInputBasicExampleMessage,
   GotInputBasicExampleMessage,
   GotInputDisabledExampleMessage,
+  GotBaseUiMeterBasicExampleMessage,
   GotMeterBasicExampleMessage,
   GotScrollAreaBasicExampleMessage,
+  GotBaseUiToggleBasicExampleMessage,
   GotToggleBasicExampleMessage,
+  GotBaseUiToggleGroupBasicExampleMessage,
   GotToggleGroupBasicExampleMessage,
   GotRadioBasicExampleMessage,
+  GotBaseUiToolbarBasicExampleMessage,
   GotToolbarBasicExampleMessage,
+  GotBaseUiProgressBasicExampleMessage,
   GotProgressBasicExampleMessage,
   GotListboxBasicExampleMessage,
   GotListboxAnimatedExampleMessage,
+  GotBaseUiMenuBasicExampleMessage,
   GotMenuBasicExampleMessage,
   GotMenuAnimatedExampleMessage,
+  GotBaseUiMenubarBasicExampleMessage,
+  GotBaseUiPopoverBasicExampleMessage,
+  GotBaseUiRadioBasicExampleMessage,
+  GotBaseUiRadioLabelingExampleMessage,
+  GotBaseUiRadioNativeButtonExampleMessage,
+  GotBaseUiRadioFormExampleMessage,
   GotPopoverBasicExampleMessage,
   GotPopoverAnimatedExampleMessage,
   GotRadioGroupBasicExampleMessage,
   GotShadcnRadioGroupBasicExampleMessage,
   GotRadioGroupHorizontalExampleMessage,
+  GotBaseUiSelectBasicExampleMessage,
   GotSelectBasicExampleMessage,
   GotShadcnSelectBasicExampleMessage,
   GotSelectDisabledExampleMessage,
+  GotBaseUiSliderBasicExampleMessage,
   GotSliderBasicExampleMessage,
   GotShadcnSliderBasicExampleMessage,
   GotSliderDisabledExampleMessage,
+  GotBaseUiSwitchBasicExampleMessage,
   GotSwitchBasicExampleMessage,
   GotShadcnSwitchBasicExampleMessage,
   GotSwitchDisabledExampleMessage,
+  GotBaseUiTabsBasicExampleMessage,
   GotTabsBasicExampleMessage,
   GotShadcnTabsBasicExampleMessage,
   GotTabsManualExampleMessage,
   GotTextareaBasicExampleMessage,
   GotTextareaDisabledExampleMessage,
+  GotBaseUiToastBasicExampleMessage,
   GotToastBasicExampleMessage,
   GotToastVariantsExampleMessage,
+  GotBaseUiTooltipBasicExampleMessage,
   GotTooltipBasicExampleMessage,
   GotTooltipNoDelayExampleMessage,
   GotVirtualListBasicExampleMessage,
@@ -5281,8 +6553,16 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [initialUiModel, uiCommands] = uiInit(flags.today);
   const [accordionBasicExample, accordionBasicExampleCommands] =
     AccordionBasicExample.init();
+  const [
+    baseUiAccordionMultipleExample,
+    baseUiAccordionMultipleExampleCommands,
+  ] = BaseUiAccordionMultipleExample.init();
   const [shadcnAccordionBasicExample, shadcnAccordionBasicExampleCommands] =
     ShadcnAccordionBasicExample.init();
+  const [
+    shadcnBaseAccordionBasicExample,
+    shadcnBaseAccordionBasicExampleCommands,
+  ] = ShadcnBaseAccordionBasicExample.init();
   const [shadcnAccordionBordersExample, shadcnAccordionBordersExampleCommands] =
     ShadcnAccordionBordersExample.init();
   const [shadcnAccordionCardExample, shadcnAccordionCardExampleCommands] =
@@ -5347,33 +6627,65 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ButtonGroupRtlExample.init();
   const [alertDialogBasicExample, alertDialogBasicExampleCommands] =
     AlertDialogBasicExample.init();
+  const [
+    baseUiAlertDialogCloseConfirmationExample,
+    baseUiAlertDialogCloseConfirmationExampleCommands,
+  ] = BaseUiAlertDialogCloseConfirmationExample.init();
   const [shadcnAlertDialogBasicExample, shadcnAlertDialogBasicExampleCommands] =
     ShadcnAlertDialogBasicExample.init();
+  const [baseUiDrawerBasicExample, baseUiDrawerBasicExampleCommands] =
+    BaseUiDrawerBasicExample.init();
   const [drawerBasicExample, drawerBasicExampleCommands] =
     DrawerBasicExample.init();
   const [contextMenuBasicExample, contextMenuBasicExampleCommands] =
     ContextMenuBasicExample.init();
+  const [baseUiMenubarBasicExample, baseUiMenubarBasicExampleCommands] =
+    BaseUiMenubarBasicExample.init();
   const [menubarBasicExample, menubarBasicExampleCommands] =
     MenubarBasicExample.init();
+  const [
+    baseUiNavigationMenuBasicExample,
+    baseUiNavigationMenuBasicExampleCommands,
+  ] = BaseUiNavigationMenuBasicExample.init();
   const [navigationMenuBasicExample, navigationMenuBasicExampleCommands] =
     NavigationMenuBasicExample.init();
+  const [baseUiOtpFieldBasicExample, baseUiOtpFieldBasicExampleCommands] =
+    BaseUiOtpFieldBasicExample.init();
   const [otpFieldBasicExample, otpFieldBasicExampleCommands] =
     OtpFieldBasicExample.init();
+  const [baseUiPreviewCardBasicExample, baseUiPreviewCardBasicExampleCommands] =
+    BaseUiPreviewCardBasicExample.init();
   const [previewCardBasicExample, previewCardBasicExampleCommands] =
     PreviewCardBasicExample.init();
   const [collapsibleBasicExample, collapsibleBasicExampleCommands] =
     CollapsibleBasicExample.init();
+  const [baseUiCollapsibleBasicExample, baseUiCollapsibleBasicExampleCommands] =
+    BaseUiCollapsibleBasicExample.init();
+  const [shadcnCollapsibleBasicExample, shadcnCollapsibleBasicExampleCommands] =
+    ShadcnCollapsibleBasicExample.init();
+  const [baseUiFieldBasicExample, baseUiFieldBasicExampleCommands] =
+    BaseUiFieldBasicExample.init();
   const [fieldBasicExample, fieldBasicExampleCommands] =
     FieldBasicExample.init();
+  const [baseUiNumberFieldBasicExample, baseUiNumberFieldBasicExampleCommands] =
+    BaseUiNumberFieldBasicExample.init();
   const [numberFieldBasicExample, numberFieldBasicExampleCommands] =
     NumberFieldBasicExample.init();
+  const [baseUiFormBasicExample, baseUiFormBasicExampleCommands] =
+    BaseUiFormBasicExample.init();
   const [formBasicExample, formBasicExampleCommands] = FormBasicExample.init();
   const [autocompleteBasicExample, autocompleteBasicExampleCommands] =
     AutocompleteBasicExample.init();
+  const [
+    baseUiAutocompleteBasicExample,
+    baseUiAutocompleteBasicExampleCommands,
+  ] = BaseUiAutocompleteBasicExample.init();
   const [animationBasicExample, animationBasicExampleCommands] =
     AnimationBasicExample.init();
   const [avatarBasicExample, avatarBasicExampleCommands] =
     AvatarBasicExample.init();
+  const [baseUiAvatarBasicExample, baseUiAvatarBasicExampleCommands] =
+    BaseUiAvatarBasicExample.init();
   const [shadcnAvatarBasicExample, shadcnAvatarBasicExampleCommands] =
     ShadcnAvatarBasicExample.init();
   const [shadcnAvatarDropdownExample, shadcnAvatarDropdownExampleCommands] =
@@ -5442,6 +6754,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [itemIconExample, itemIconExampleCommands] = ItemIconExample.init();
   const [itemImageExample, itemImageExampleCommands] = ItemImageExample.init();
   const [itemLinkExample, itemLinkExampleCommands] = ItemLinkExample.init();
+  const [itemDropdownExample, itemDropdownExampleCommands] =
+    ItemDropdownExample.init();
   const [itemRtlExample, itemRtlExampleCommands] = ItemRtlExample.init();
   const [itemSizeExample, itemSizeExampleCommands] = ItemSizeExample.init();
   const [itemVariantExample, itemVariantExampleCommands] =
@@ -5457,6 +6771,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [tableBasicExample, tableBasicExampleCommands] =
     TableBasicExample.init();
   const [cardBasicExample, cardBasicExampleCommands] = CardBasicExample.init();
+  const [baseUiSeparatorBasicExample, baseUiSeparatorBasicExampleCommands] =
+    BaseUiSeparatorBasicExample.init();
   const [separatorBasicExample, separatorBasicExampleCommands] =
     SeparatorBasicExample.init();
   const [skeletonBasicExample, skeletonBasicExampleCommands] =
@@ -5472,6 +6788,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     EmptyInputGroupExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
     ButtonBasicExample.init();
+  const [baseUiButtonBasicExample, baseUiButtonBasicExampleCommands] =
+    BaseUiButtonBasicExample.init();
   const [shadcnButtonBasicExample, shadcnButtonBasicExampleCommands] =
     ShadcnButtonBasicExample.init();
   const [buttonDisabledExample, buttonDisabledExampleCommands] =
@@ -5498,18 +6816,28 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     CalendarBoundsExample.init();
   const [checkboxBasicExample, checkboxBasicExampleCommands] =
     CheckboxBasicExample.init();
+  const [shadcnCheckboxBasicExample, shadcnCheckboxBasicExampleCommands] =
+    ShadcnCheckboxBasicExample.init();
+  const [baseUiCheckboxBasicExample, baseUiCheckboxBasicExampleCommands] =
+    BaseUiCheckboxBasicExample.init();
   const [checkboxGroupBasicExample, checkboxGroupBasicExampleCommands] =
     CheckboxGroupBasicExample.init();
   const [checkboxIndeterminateExample, checkboxIndeterminateExampleCommands] =
     CheckboxIndeterminateExample.init();
+  const [baseUiComboboxBasicExample, baseUiComboboxBasicExampleCommands] =
+    BaseUiComboboxBasicExample.init();
   const [comboboxBasicExample, comboboxBasicExampleCommands] =
     ComboboxBasicExample.init();
+  const [shadcnComboboxBasicExample, shadcnComboboxBasicExampleCommands] =
+    ShadcnComboboxBasicExample.init();
   const [comboboxMultiExample, comboboxMultiExampleCommands] =
     ComboboxMultiExample.init();
   const [datePickerBasicExample, datePickerBasicExampleCommands] =
     DatePickerBasicExample.init();
   const [datePickerBoundsExample, datePickerBoundsExampleCommands] =
     DatePickerBoundsExample.init();
+  const [baseUiDialogBasicExample, baseUiDialogBasicExampleCommands] =
+    BaseUiDialogBasicExample.init();
   const [dialogBasicExample, dialogBasicExampleCommands] =
     DialogBasicExample.init();
   const [dialogAnimatedExample, dialogAnimatedExampleCommands] =
@@ -5528,6 +6856,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     DragAndDropBasicExample.init();
   const [dragAndDropDisabledExample, dragAndDropDisabledExampleCommands] =
     DragAndDropDisabledExample.init();
+  const [baseUiFieldsetBasicExample, baseUiFieldsetBasicExampleCommands] =
+    BaseUiFieldsetBasicExample.init();
   const [fieldsetBasicExample, fieldsetBasicExampleCommands] =
     FieldsetBasicExample.init();
   const [fieldsetDisabledExample, fieldsetDisabledExampleCommands] =
@@ -5536,59 +6866,93 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     FileDropBasicExample.init();
   const [fileDropDisabledExample, fileDropDisabledExampleCommands] =
     FileDropDisabledExample.init();
+  const [baseUiInputBasicExample, baseUiInputBasicExampleCommands] =
+    BaseUiInputBasicExample.init();
   const [inputBasicExample, inputBasicExampleCommands] =
     InputBasicExample.init();
   const [inputDisabledExample, inputDisabledExampleCommands] =
     InputDisabledExample.init();
+  const [baseUiMeterBasicExample, baseUiMeterBasicExampleCommands] =
+    BaseUiMeterBasicExample.init();
   const [meterBasicExample, meterBasicExampleCommands] =
     MeterBasicExample.init();
   const [scrollAreaBasicExample, scrollAreaBasicExampleCommands] =
     ScrollAreaBasicExample.init();
+  const [baseUiToggleBasicExample, baseUiToggleBasicExampleCommands] =
+    BaseUiToggleBasicExample.init();
   const [toggleBasicExample, toggleBasicExampleCommands] =
     ToggleBasicExample.init();
+  const [baseUiToggleGroupBasicExample, baseUiToggleGroupBasicExampleCommands] =
+    BaseUiToggleGroupBasicExample.init();
   const [toggleGroupBasicExample, toggleGroupBasicExampleCommands] =
     ToggleGroupBasicExample.init();
   const [radioBasicExample, radioBasicExampleCommands] =
     RadioBasicExample.init();
+  const [baseUiToolbarBasicExample, baseUiToolbarBasicExampleCommands] =
+    BaseUiToolbarBasicExample.init();
   const [toolbarBasicExample, toolbarBasicExampleCommands] =
     ToolbarBasicExample.init();
+  const [baseUiProgressBasicExample, baseUiProgressBasicExampleCommands] =
+    BaseUiProgressBasicExample.init();
   const [progressBasicExample, progressBasicExampleCommands] =
     ProgressBasicExample.init();
   const [listboxBasicExample, listboxBasicExampleCommands] =
     ListboxBasicExample.init();
   const [listboxAnimatedExample, listboxAnimatedExampleCommands] =
     ListboxAnimatedExample.init();
+  const [baseUiMenuBasicExample, baseUiMenuBasicExampleCommands] =
+    BaseUiMenuBasicExample.init();
   const [menuBasicExample, menuBasicExampleCommands] = MenuBasicExample.init();
   const [menuAnimatedExample, menuAnimatedExampleCommands] =
     MenuAnimatedExample.init();
+  const [baseUiPopoverBasicExample, baseUiPopoverBasicExampleCommands] =
+    BaseUiPopoverBasicExample.init();
   const [popoverBasicExample, popoverBasicExampleCommands] =
     PopoverBasicExample.init();
   const [popoverAnimatedExample, popoverAnimatedExampleCommands] =
     PopoverAnimatedExample.init();
+  const [baseUiRadioBasicExample, baseUiRadioBasicExampleCommands] =
+    BaseUiRadioBasicExample.init();
+  const [baseUiRadioLabelingExample, baseUiRadioLabelingExampleCommands] =
+    BaseUiRadioLabelingExample.init();
+  const [
+    baseUiRadioNativeButtonExample,
+    baseUiRadioNativeButtonExampleCommands,
+  ] = BaseUiRadioNativeButtonExample.init();
+  const [baseUiRadioFormExample, baseUiRadioFormExampleCommands] =
+    BaseUiRadioFormExample.init();
   const [radioGroupBasicExample, radioGroupBasicExampleCommands] =
     RadioGroupBasicExample.init();
   const [shadcnRadioGroupBasicExample, shadcnRadioGroupBasicExampleCommands] =
     ShadcnRadioGroupBasicExample.init();
   const [radioGroupHorizontalExample, radioGroupHorizontalExampleCommands] =
     RadioGroupHorizontalExample.init();
+  const [baseUiSelectBasicExample, baseUiSelectBasicExampleCommands] =
+    BaseUiSelectBasicExample.init();
   const [selectBasicExample, selectBasicExampleCommands] =
     SelectBasicExample.init();
   const [shadcnSelectBasicExample, shadcnSelectBasicExampleCommands] =
     ShadcnSelectBasicExample.init();
   const [selectDisabledExample, selectDisabledExampleCommands] =
     SelectDisabledExample.init();
+  const [baseUiSliderBasicExample, baseUiSliderBasicExampleCommands] =
+    BaseUiSliderBasicExample.init();
   const [sliderBasicExample, sliderBasicExampleCommands] =
     SliderBasicExample.init();
   const [shadcnSliderBasicExample, shadcnSliderBasicExampleCommands] =
     ShadcnSliderBasicExample.init();
   const [sliderDisabledExample, sliderDisabledExampleCommands] =
     SliderDisabledExample.init();
+  const [baseUiSwitchBasicExample, baseUiSwitchBasicExampleCommands] =
+    BaseUiSwitchBasicExample.init();
   const [switchBasicExample, switchBasicExampleCommands] =
     SwitchBasicExample.init();
   const [shadcnSwitchBasicExample, shadcnSwitchBasicExampleCommands] =
     ShadcnSwitchBasicExample.init();
   const [switchDisabledExample, switchDisabledExampleCommands] =
     SwitchDisabledExample.init();
+  const [baseUiTabsBasicExample, baseUiTabsBasicExampleCommands] =
+    BaseUiTabsBasicExample.init();
   const [tabsBasicExample, tabsBasicExampleCommands] = TabsBasicExample.init();
   const [shadcnTabsBasicExample, shadcnTabsBasicExampleCommands] =
     ShadcnTabsBasicExample.init();
@@ -5598,10 +6962,14 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     TextareaBasicExample.init();
   const [textareaDisabledExample, textareaDisabledExampleCommands] =
     TextareaDisabledExample.init();
+  const [baseUiToastBasicExample, baseUiToastBasicExampleCommands] =
+    BaseUiToastBasicExample.init();
   const [toastBasicExample, toastBasicExampleCommands] =
     ToastBasicExample.init();
   const [toastVariantsExample, toastVariantsExampleCommands] =
     ToastVariantsExample.init();
+  const [baseUiTooltipBasicExample, baseUiTooltipBasicExampleCommands] =
+    BaseUiTooltipBasicExample.init();
   const [tooltipBasicExample, tooltipBasicExampleCommands] =
     TooltipBasicExample.init();
   const [tooltipNoDelayExample, tooltipNoDelayExampleCommands] =
@@ -5616,7 +6984,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
       accordionBasicExample,
+      baseUiAccordionMultipleExample,
       shadcnAccordionBasicExample,
+      shadcnBaseAccordionBasicExample,
       shadcnAccordionBordersExample,
       shadcnAccordionCardExample,
       shadcnAccordionDisabledExample,
@@ -5647,20 +7017,33 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       buttonGroupPopoverExample,
       buttonGroupRtlExample,
       alertDialogBasicExample,
+      baseUiAlertDialogCloseConfirmationExample,
       shadcnAlertDialogBasicExample,
+      baseUiDrawerBasicExample,
       drawerBasicExample,
       contextMenuBasicExample,
+      baseUiMenubarBasicExample,
       menubarBasicExample,
+      baseUiNavigationMenuBasicExample,
       navigationMenuBasicExample,
+      baseUiOtpFieldBasicExample,
       otpFieldBasicExample,
+      baseUiPreviewCardBasicExample,
       previewCardBasicExample,
       collapsibleBasicExample,
+      baseUiCollapsibleBasicExample,
+      shadcnCollapsibleBasicExample,
+      baseUiFieldBasicExample,
       fieldBasicExample,
+      baseUiNumberFieldBasicExample,
       numberFieldBasicExample,
+      baseUiFormBasicExample,
       formBasicExample,
       autocompleteBasicExample,
+      baseUiAutocompleteBasicExample,
       animationBasicExample,
       avatarBasicExample,
+      baseUiAvatarBasicExample,
       shadcnAvatarBasicExample,
       shadcnAvatarDropdownExample,
       badgeBasicExample,
@@ -5699,6 +7082,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       itemIconExample,
       itemImageExample,
       itemLinkExample,
+      itemDropdownExample,
       itemRtlExample,
       itemSizeExample,
       itemVariantExample,
@@ -5708,6 +7092,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       sidebarBasicExample,
       tableBasicExample,
       cardBasicExample,
+      baseUiSeparatorBasicExample,
       separatorBasicExample,
       skeletonBasicExample,
       kbdBasicExample,
@@ -5716,6 +7101,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       emptyBasicExample,
       emptyInputGroupExample,
       buttonBasicExample,
+      baseUiButtonBasicExample,
       shadcnButtonBasicExample,
       buttonDisabledExample,
       calendarBasicExample,
@@ -5727,12 +7113,17 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       shadcnCalendarRtlExample,
       calendarBoundsExample,
       checkboxBasicExample,
+      shadcnCheckboxBasicExample,
+      baseUiCheckboxBasicExample,
       checkboxGroupBasicExample,
       checkboxIndeterminateExample,
+      baseUiComboboxBasicExample,
       comboboxBasicExample,
+      shadcnComboboxBasicExample,
       comboboxMultiExample,
       datePickerBasicExample,
       datePickerBoundsExample,
+      baseUiDialogBasicExample,
       dialogBasicExample,
       dialogAnimatedExample,
       dialogDestructiveExample,
@@ -5742,44 +7133,63 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       disclosureDisabledExample,
       dragAndDropBasicExample,
       dragAndDropDisabledExample,
+      baseUiFieldsetBasicExample,
       fieldsetBasicExample,
       fieldsetDisabledExample,
       fileDropBasicExample,
       fileDropDisabledExample,
+      baseUiInputBasicExample,
       inputBasicExample,
       inputDisabledExample,
+      baseUiMeterBasicExample,
       meterBasicExample,
       scrollAreaBasicExample,
+      baseUiToggleBasicExample,
       toggleBasicExample,
+      baseUiToggleGroupBasicExample,
       toggleGroupBasicExample,
       radioBasicExample,
+      baseUiToolbarBasicExample,
       toolbarBasicExample,
+      baseUiProgressBasicExample,
       progressBasicExample,
       listboxBasicExample,
       listboxAnimatedExample,
+      baseUiMenuBasicExample,
       menuBasicExample,
       menuAnimatedExample,
+      baseUiPopoverBasicExample,
+      baseUiRadioBasicExample,
+      baseUiRadioLabelingExample,
+      baseUiRadioNativeButtonExample,
+      baseUiRadioFormExample,
       popoverBasicExample,
       popoverAnimatedExample,
       radioGroupBasicExample,
       shadcnRadioGroupBasicExample,
       radioGroupHorizontalExample,
+      baseUiSelectBasicExample,
       selectBasicExample,
       shadcnSelectBasicExample,
       selectDisabledExample,
+      baseUiSliderBasicExample,
       sliderBasicExample,
       shadcnSliderBasicExample,
       sliderDisabledExample,
+      baseUiSwitchBasicExample,
       switchBasicExample,
       shadcnSwitchBasicExample,
       switchDisabledExample,
+      baseUiTabsBasicExample,
       tabsBasicExample,
       shadcnTabsBasicExample,
       tabsManualExample,
       textareaBasicExample,
       textareaDisabledExample,
+      baseUiToastBasicExample,
       toastBasicExample,
       toastVariantsExample,
+      baseUiTooltipBasicExample,
       tooltipBasicExample,
       tooltipNoDelayExample,
       virtualListBasicExample,
@@ -5792,8 +7202,16 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(accordionBasicExampleCommands, (message) =>
         GotAccordionBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(
+        baseUiAccordionMultipleExampleCommands,
+        (message) => GotBaseUiAccordionMultipleExampleMessage({ message })
+      ),
       ...Command.mapMessages(shadcnAccordionBasicExampleCommands, (message) =>
         GotShadcnAccordionBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnBaseAccordionBasicExampleCommands,
+        (message) => GotShadcnBaseAccordionBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(shadcnAccordionBordersExampleCommands, (message) =>
         GotShadcnAccordionBordersExampleMessage({ message })
@@ -5887,8 +7305,16 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(alertDialogBasicExampleCommands, (message) =>
         GotAlertDialogBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(
+        baseUiAlertDialogCloseConfirmationExampleCommands,
+        (message) =>
+          GotBaseUiAlertDialogCloseConfirmationExampleMessage({ message })
+      ),
       ...Command.mapMessages(shadcnAlertDialogBasicExampleCommands, (message) =>
         GotShadcnAlertDialogBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiDrawerBasicExampleCommands, (message) =>
+        GotBaseUiDrawerBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(drawerBasicExampleCommands, (message) =>
         GotDrawerBasicExampleMessage({ message })
@@ -5896,14 +7322,27 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(contextMenuBasicExampleCommands, (message) =>
         GotContextMenuBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiMenubarBasicExampleCommands, (message) =>
+        GotBaseUiMenubarBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(menubarBasicExampleCommands, (message) =>
         GotMenubarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        baseUiNavigationMenuBasicExampleCommands,
+        (message) => GotBaseUiNavigationMenuBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(navigationMenuBasicExampleCommands, (message) =>
         GotNavigationMenuBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiOtpFieldBasicExampleCommands, (message) =>
+        GotBaseUiOtpFieldBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(otpFieldBasicExampleCommands, (message) =>
         GotOtpFieldBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiPreviewCardBasicExampleCommands, (message) =>
+        GotBaseUiPreviewCardBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(previewCardBasicExampleCommands, (message) =>
         GotPreviewCardBasicExampleMessage({ message })
@@ -5911,11 +7350,26 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(collapsibleBasicExampleCommands, (message) =>
         GotCollapsibleBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiCollapsibleBasicExampleCommands, (message) =>
+        GotBaseUiCollapsibleBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnCollapsibleBasicExampleCommands, (message) =>
+        GotShadcnCollapsibleBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiFieldBasicExampleCommands, (message) =>
+        GotBaseUiFieldBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(fieldBasicExampleCommands, (message) =>
         GotFieldBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiNumberFieldBasicExampleCommands, (message) =>
+        GotBaseUiNumberFieldBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(numberFieldBasicExampleCommands, (message) =>
         GotNumberFieldBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiFormBasicExampleCommands, (message) =>
+        GotBaseUiFormBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(formBasicExampleCommands, (message) =>
         GotFormBasicExampleMessage({ message })
@@ -5923,11 +7377,18 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(autocompleteBasicExampleCommands, (message) =>
         GotAutocompleteBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(
+        baseUiAutocompleteBasicExampleCommands,
+        (message) => GotBaseUiAutocompleteBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(animationBasicExampleCommands, (message) =>
         GotAnimationBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(avatarBasicExampleCommands, (message) =>
         GotAvatarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiAvatarBasicExampleCommands, (message) =>
+        GotBaseUiAvatarBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(shadcnAvatarBasicExampleCommands, (message) =>
         GotShadcnAvatarBasicExampleMessage({ message })
@@ -6043,6 +7504,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(itemLinkExampleCommands, (message) =>
         GotItemLinkExampleMessage({ message })
       ),
+      ...Command.mapMessages(itemDropdownExampleCommands, (message) =>
+        GotItemDropdownExampleMessage({ message })
+      ),
       ...Command.mapMessages(itemRtlExampleCommands, (message) =>
         GotItemRtlExampleMessage({ message })
       ),
@@ -6070,6 +7534,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(cardBasicExampleCommands, (message) =>
         GotCardBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiSeparatorBasicExampleCommands, (message) =>
+        GotBaseUiSeparatorBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(separatorBasicExampleCommands, (message) =>
         GotSeparatorBasicExampleMessage({ message })
       ),
@@ -6093,6 +7560,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
         GotButtonBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiButtonBasicExampleCommands, (message) =>
+        GotBaseUiButtonBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(shadcnButtonBasicExampleCommands, (message) =>
         GotShadcnButtonBasicExampleMessage({ message })
@@ -6130,14 +7600,26 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(checkboxBasicExampleCommands, (message) =>
         GotCheckboxBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnCheckboxBasicExampleCommands, (message) =>
+        GotShadcnCheckboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiCheckboxBasicExampleCommands, (message) =>
+        GotBaseUiCheckboxBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(checkboxGroupBasicExampleCommands, (message) =>
         GotCheckboxGroupBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(checkboxIndeterminateExampleCommands, (message) =>
         GotCheckboxIndeterminateExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiComboboxBasicExampleCommands, (message) =>
+        GotBaseUiComboboxBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(comboboxBasicExampleCommands, (message) =>
         GotComboboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnComboboxBasicExampleCommands, (message) =>
+        GotShadcnComboboxBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(comboboxMultiExampleCommands, (message) =>
         GotComboboxMultiExampleMessage({ message })
@@ -6147,6 +7629,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(datePickerBoundsExampleCommands, (message) =>
         GotDatePickerBoundsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiDialogBasicExampleCommands, (message) =>
+        GotBaseUiDialogBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(dialogBasicExampleCommands, (message) =>
         GotDialogBasicExampleMessage({ message })
@@ -6175,6 +7660,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(dragAndDropDisabledExampleCommands, (message) =>
         GotDragAndDropDisabledExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiFieldsetBasicExampleCommands, (message) =>
+        GotBaseUiFieldsetBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(fieldsetBasicExampleCommands, (message) =>
         GotFieldsetBasicExampleMessage({ message })
       ),
@@ -6187,11 +7675,17 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(fileDropDisabledExampleCommands, (message) =>
         GotFileDropDisabledExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiInputBasicExampleCommands, (message) =>
+        GotBaseUiInputBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(inputBasicExampleCommands, (message) =>
         GotInputBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(inputDisabledExampleCommands, (message) =>
         GotInputDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiMeterBasicExampleCommands, (message) =>
+        GotBaseUiMeterBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(meterBasicExampleCommands, (message) =>
         GotMeterBasicExampleMessage({ message })
@@ -6199,8 +7693,14 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(scrollAreaBasicExampleCommands, (message) =>
         GotScrollAreaBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiToggleBasicExampleCommands, (message) =>
+        GotBaseUiToggleBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(toggleBasicExampleCommands, (message) =>
         GotToggleBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiToggleGroupBasicExampleCommands, (message) =>
+        GotBaseUiToggleGroupBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(toggleGroupBasicExampleCommands, (message) =>
         GotToggleGroupBasicExampleMessage({ message })
@@ -6208,8 +7708,14 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(radioBasicExampleCommands, (message) =>
         GotRadioBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiToolbarBasicExampleCommands, (message) =>
+        GotBaseUiToolbarBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(toolbarBasicExampleCommands, (message) =>
         GotToolbarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiProgressBasicExampleCommands, (message) =>
+        GotBaseUiProgressBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(progressBasicExampleCommands, (message) =>
         GotProgressBasicExampleMessage({ message })
@@ -6220,17 +7726,36 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(listboxAnimatedExampleCommands, (message) =>
         GotListboxAnimatedExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiMenuBasicExampleCommands, (message) =>
+        GotBaseUiMenuBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(menuBasicExampleCommands, (message) =>
         GotMenuBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(menuAnimatedExampleCommands, (message) =>
         GotMenuAnimatedExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiPopoverBasicExampleCommands, (message) =>
+        GotBaseUiPopoverBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(popoverBasicExampleCommands, (message) =>
         GotPopoverBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(popoverAnimatedExampleCommands, (message) =>
         GotPopoverAnimatedExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiRadioBasicExampleCommands, (message) =>
+        GotBaseUiRadioBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiRadioLabelingExampleCommands, (message) =>
+        GotBaseUiRadioLabelingExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        baseUiRadioNativeButtonExampleCommands,
+        (message) => GotBaseUiRadioNativeButtonExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiRadioFormExampleCommands, (message) =>
+        GotBaseUiRadioFormExampleMessage({ message })
       ),
       ...Command.mapMessages(radioGroupBasicExampleCommands, (message) =>
         GotRadioGroupBasicExampleMessage({ message })
@@ -6241,6 +7766,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(radioGroupHorizontalExampleCommands, (message) =>
         GotRadioGroupHorizontalExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiSelectBasicExampleCommands, (message) =>
+        GotBaseUiSelectBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(selectBasicExampleCommands, (message) =>
         GotSelectBasicExampleMessage({ message })
       ),
@@ -6249,6 +7777,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(selectDisabledExampleCommands, (message) =>
         GotSelectDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiSliderBasicExampleCommands, (message) =>
+        GotBaseUiSliderBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(sliderBasicExampleCommands, (message) =>
         GotSliderBasicExampleMessage({ message })
@@ -6259,6 +7790,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(sliderDisabledExampleCommands, (message) =>
         GotSliderDisabledExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiSwitchBasicExampleCommands, (message) =>
+        GotBaseUiSwitchBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(switchBasicExampleCommands, (message) =>
         GotSwitchBasicExampleMessage({ message })
       ),
@@ -6267,6 +7801,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(switchDisabledExampleCommands, (message) =>
         GotSwitchDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiTabsBasicExampleCommands, (message) =>
+        GotBaseUiTabsBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(tabsBasicExampleCommands, (message) =>
         GotTabsBasicExampleMessage({ message })
@@ -6283,11 +7820,17 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(textareaDisabledExampleCommands, (message) =>
         GotTextareaDisabledExampleMessage({ message })
       ),
+      ...Command.mapMessages(baseUiToastBasicExampleCommands, (message) =>
+        GotBaseUiToastBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(toastBasicExampleCommands, (message) =>
         GotToastBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(toastVariantsExampleCommands, (message) =>
         GotToastVariantsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiTooltipBasicExampleCommands, (message) =>
+        GotBaseUiTooltipBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(tooltipBasicExampleCommands, (message) =>
         GotTooltipBasicExampleMessage({ message })
@@ -6385,6 +7928,27 @@ export const update = (
         ];
       },
 
+      GotBaseUiAccordionMultipleExampleMessage: ({ message }) => {
+        const [
+          baseUiAccordionMultipleExample,
+          baseUiAccordionMultipleExampleCommands,
+        ] = BaseUiAccordionMultipleExample.update(
+          model.baseUiAccordionMultipleExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiAccordionMultipleExample: () =>
+              baseUiAccordionMultipleExample,
+          }),
+          Command.mapMessages(
+            baseUiAccordionMultipleExampleCommands,
+            (message) => GotBaseUiAccordionMultipleExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotShadcnAccordionBasicExampleMessage: ({ message }) => {
         const [
           shadcnAccordionBasicExample,
@@ -6400,6 +7964,27 @@ export const update = (
           }),
           Command.mapMessages(shadcnAccordionBasicExampleCommands, (message) =>
             GotShadcnAccordionBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnBaseAccordionBasicExampleMessage: ({ message }) => {
+        const [
+          shadcnBaseAccordionBasicExample,
+          shadcnBaseAccordionBasicExampleCommands,
+        ] = ShadcnBaseAccordionBasicExample.update(
+          model.shadcnBaseAccordionBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnBaseAccordionBasicExample: () =>
+              shadcnBaseAccordionBasicExample,
+          }),
+          Command.mapMessages(
+            shadcnBaseAccordionBasicExampleCommands,
+            (message) => GotShadcnBaseAccordionBasicExampleMessage({ message })
           ),
         ];
       },
@@ -6882,6 +8467,28 @@ export const update = (
         ];
       },
 
+      GotBaseUiAlertDialogCloseConfirmationExampleMessage: ({ message }) => {
+        const [
+          baseUiAlertDialogCloseConfirmationExample,
+          baseUiAlertDialogCloseConfirmationExampleCommands,
+        ] = BaseUiAlertDialogCloseConfirmationExample.update(
+          model.baseUiAlertDialogCloseConfirmationExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiAlertDialogCloseConfirmationExample: () =>
+              baseUiAlertDialogCloseConfirmationExample,
+          }),
+          Command.mapMessages(
+            baseUiAlertDialogCloseConfirmationExampleCommands,
+            (message) =>
+              GotBaseUiAlertDialogCloseConfirmationExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotShadcnAlertDialogBasicExampleMessage: ({ message }) => {
         const [
           shadcnAlertDialogBasicExample,
@@ -6898,6 +8505,23 @@ export const update = (
           Command.mapMessages(
             shadcnAlertDialogBasicExampleCommands,
             (message) => GotShadcnAlertDialogBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiDrawerBasicExampleMessage: ({ message }) => {
+        const [baseUiDrawerBasicExample, baseUiDrawerBasicExampleCommands] =
+          BaseUiDrawerBasicExample.update(
+            model.baseUiDrawerBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiDrawerBasicExample: () => baseUiDrawerBasicExample,
+          }),
+          Command.mapMessages(baseUiDrawerBasicExampleCommands, (message) =>
+            GotBaseUiDrawerBasicExampleMessage({ message })
           ),
         ];
       },
@@ -6931,6 +8555,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiMenubarBasicExampleMessage: ({ message }) => {
+        const [baseUiMenubarBasicExample, baseUiMenubarBasicExampleCommands] =
+          BaseUiMenubarBasicExample.update(
+            model.baseUiMenubarBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiMenubarBasicExample: () => baseUiMenubarBasicExample,
+          }),
+          Command.mapMessages(baseUiMenubarBasicExampleCommands, (message) =>
+            GotBaseUiMenubarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotMenubarBasicExampleMessage: ({ message }) => {
         const [menubarBasicExample, menubarBasicExampleCommands] =
           MenubarBasicExample.update(model.menubarBasicExample, message);
@@ -6939,6 +8580,27 @@ export const update = (
           evo(model, { menubarBasicExample: () => menubarBasicExample }),
           Command.mapMessages(menubarBasicExampleCommands, (message) =>
             GotMenubarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiNavigationMenuBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiNavigationMenuBasicExample,
+          baseUiNavigationMenuBasicExampleCommands,
+        ] = BaseUiNavigationMenuBasicExample.update(
+          model.baseUiNavigationMenuBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiNavigationMenuBasicExample: () =>
+              baseUiNavigationMenuBasicExample,
+          }),
+          Command.mapMessages(
+            baseUiNavigationMenuBasicExampleCommands,
+            (message) => GotBaseUiNavigationMenuBasicExampleMessage({ message })
           ),
         ];
       },
@@ -6960,6 +8622,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiOtpFieldBasicExampleMessage: ({ message }) => {
+        const [baseUiOtpFieldBasicExample, baseUiOtpFieldBasicExampleCommands] =
+          BaseUiOtpFieldBasicExample.update(
+            model.baseUiOtpFieldBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiOtpFieldBasicExample: () => baseUiOtpFieldBasicExample,
+          }),
+          Command.mapMessages(baseUiOtpFieldBasicExampleCommands, (message) =>
+            GotBaseUiOtpFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotOtpFieldBasicExampleMessage: ({ message }) => {
         const [otpFieldBasicExample, otpFieldBasicExampleCommands] =
           OtpFieldBasicExample.update(model.otpFieldBasicExample, message);
@@ -6968,6 +8647,26 @@ export const update = (
           evo(model, { otpFieldBasicExample: () => otpFieldBasicExample }),
           Command.mapMessages(otpFieldBasicExampleCommands, (message) =>
             GotOtpFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiPreviewCardBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiPreviewCardBasicExample,
+          baseUiPreviewCardBasicExampleCommands,
+        ] = BaseUiPreviewCardBasicExample.update(
+          model.baseUiPreviewCardBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiPreviewCardBasicExample: () => baseUiPreviewCardBasicExample,
+          }),
+          Command.mapMessages(
+            baseUiPreviewCardBasicExampleCommands,
+            (message) => GotBaseUiPreviewCardBasicExampleMessage({ message })
           ),
         ];
       },
@@ -7006,6 +8705,63 @@ export const update = (
         ];
       },
 
+      GotBaseUiCollapsibleBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiCollapsibleBasicExample,
+          baseUiCollapsibleBasicExampleCommands,
+        ] = BaseUiCollapsibleBasicExample.update(
+          model.baseUiCollapsibleBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiCollapsibleBasicExample: () => baseUiCollapsibleBasicExample,
+          }),
+          Command.mapMessages(
+            baseUiCollapsibleBasicExampleCommands,
+            (message) => GotBaseUiCollapsibleBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCollapsibleBasicExampleMessage: ({ message }) => {
+        const [
+          shadcnCollapsibleBasicExample,
+          shadcnCollapsibleBasicExampleCommands,
+        ] = ShadcnCollapsibleBasicExample.update(
+          model.shadcnCollapsibleBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCollapsibleBasicExample: () => shadcnCollapsibleBasicExample,
+          }),
+          Command.mapMessages(
+            shadcnCollapsibleBasicExampleCommands,
+            (message) => GotShadcnCollapsibleBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiFieldBasicExampleMessage: ({ message }) => {
+        const [baseUiFieldBasicExample, baseUiFieldBasicExampleCommands] =
+          BaseUiFieldBasicExample.update(
+            model.baseUiFieldBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiFieldBasicExample: () => baseUiFieldBasicExample,
+          }),
+          Command.mapMessages(baseUiFieldBasicExampleCommands, (message) =>
+            GotBaseUiFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotFieldBasicExampleMessage: ({ message }) => {
         const [fieldBasicExample, fieldBasicExampleCommands] =
           FieldBasicExample.update(model.fieldBasicExample, message);
@@ -7014,6 +8770,26 @@ export const update = (
           evo(model, { fieldBasicExample: () => fieldBasicExample }),
           Command.mapMessages(fieldBasicExampleCommands, (message) =>
             GotFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiNumberFieldBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiNumberFieldBasicExample,
+          baseUiNumberFieldBasicExampleCommands,
+        ] = BaseUiNumberFieldBasicExample.update(
+          model.baseUiNumberFieldBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiNumberFieldBasicExample: () => baseUiNumberFieldBasicExample,
+          }),
+          Command.mapMessages(
+            baseUiNumberFieldBasicExampleCommands,
+            (message) => GotBaseUiNumberFieldBasicExampleMessage({ message })
           ),
         ];
       },
@@ -7031,6 +8807,20 @@ export const update = (
           }),
           Command.mapMessages(numberFieldBasicExampleCommands, (message) =>
             GotNumberFieldBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiFormBasicExampleMessage: ({ message }) => {
+        const [baseUiFormBasicExample, baseUiFormBasicExampleCommands] =
+          BaseUiFormBasicExample.update(model.baseUiFormBasicExample, message);
+
+        return [
+          evo(model, {
+            baseUiFormBasicExample: () => baseUiFormBasicExample,
+          }),
+          Command.mapMessages(baseUiFormBasicExampleCommands, (message) =>
+            GotBaseUiFormBasicExampleMessage({ message })
           ),
         ];
       },
@@ -7064,6 +8854,27 @@ export const update = (
         ];
       },
 
+      GotBaseUiAutocompleteBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiAutocompleteBasicExample,
+          baseUiAutocompleteBasicExampleCommands,
+        ] = BaseUiAutocompleteBasicExample.update(
+          model.baseUiAutocompleteBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiAutocompleteBasicExample: () =>
+              baseUiAutocompleteBasicExample,
+          }),
+          Command.mapMessages(
+            baseUiAutocompleteBasicExampleCommands,
+            (message) => GotBaseUiAutocompleteBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotAnimationBasicExampleMessage: ({ message }) => {
         const [animationBasicExample, animationBasicExampleCommands] =
           AnimationBasicExample.update(model.animationBasicExample, message);
@@ -7084,6 +8895,23 @@ export const update = (
           evo(model, { avatarBasicExample: () => avatarBasicExample }),
           Command.mapMessages(avatarBasicExampleCommands, (message) =>
             GotAvatarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiAvatarBasicExampleMessage: ({ message }) => {
+        const [baseUiAvatarBasicExample, baseUiAvatarBasicExampleCommands] =
+          BaseUiAvatarBasicExample.update(
+            model.baseUiAvatarBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiAvatarBasicExample: () => baseUiAvatarBasicExample,
+          }),
+          Command.mapMessages(baseUiAvatarBasicExampleCommands, (message) =>
+            GotBaseUiAvatarBasicExampleMessage({ message })
           ),
         ];
       },
@@ -7566,6 +9394,18 @@ export const update = (
           ),
         ];
       },
+      GotItemDropdownExampleMessage: ({ message }) => {
+        const [itemDropdownExample, itemDropdownExampleCommands] =
+          ItemDropdownExample.update(model.itemDropdownExample, message);
+
+        return [
+          evo(model, { itemDropdownExample: () => itemDropdownExample }),
+          Command.mapMessages(itemDropdownExampleCommands, (message) =>
+            GotItemDropdownExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotItemRtlExampleMessage: ({ message }) => {
         const [itemRtlExample, itemRtlExampleCommands] = ItemRtlExample.update(
           model.itemRtlExample,
@@ -7668,6 +9508,25 @@ export const update = (
         ];
       },
 
+      GotBaseUiSeparatorBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiSeparatorBasicExample,
+          baseUiSeparatorBasicExampleCommands,
+        ] = BaseUiSeparatorBasicExample.update(
+          model.baseUiSeparatorBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiSeparatorBasicExample: () => baseUiSeparatorBasicExample,
+          }),
+          Command.mapMessages(baseUiSeparatorBasicExampleCommands, (message) =>
+            GotBaseUiSeparatorBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSeparatorBasicExampleMessage: ({ message }) => {
         const [separatorBasicExample, separatorBasicExampleCommands] =
           SeparatorBasicExample.update(model.separatorBasicExample, message);
@@ -7760,6 +9619,23 @@ export const update = (
           evo(model, { buttonBasicExample: () => buttonBasicExample }),
           Command.mapMessages(buttonBasicExampleCommands, (message) =>
             GotButtonBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiButtonBasicExampleMessage: ({ message }) => {
+        const [baseUiButtonBasicExample, baseUiButtonBasicExampleCommands] =
+          BaseUiButtonBasicExample.update(
+            model.baseUiButtonBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiButtonBasicExample: () => baseUiButtonBasicExample,
+          }),
+          Command.mapMessages(baseUiButtonBasicExampleCommands, (message) =>
+            GotBaseUiButtonBasicExampleMessage({ message })
           ),
         ];
       },
@@ -7944,6 +9820,40 @@ export const update = (
         ];
       },
 
+      GotShadcnCheckboxBasicExampleMessage: ({ message }) => {
+        const [shadcnCheckboxBasicExample, shadcnCheckboxBasicExampleCommands] =
+          ShadcnCheckboxBasicExample.update(
+            model.shadcnCheckboxBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnCheckboxBasicExample: () => shadcnCheckboxBasicExample,
+          }),
+          Command.mapMessages(shadcnCheckboxBasicExampleCommands, (message) =>
+            GotShadcnCheckboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiCheckboxBasicExampleMessage: ({ message }) => {
+        const [baseUiCheckboxBasicExample, baseUiCheckboxBasicExampleCommands] =
+          BaseUiCheckboxBasicExample.update(
+            model.baseUiCheckboxBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiCheckboxBasicExample: () => baseUiCheckboxBasicExample,
+          }),
+          Command.mapMessages(baseUiCheckboxBasicExampleCommands, (message) =>
+            GotBaseUiCheckboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotCheckboxGroupBasicExampleMessage: ({ message }) => {
         const [checkboxGroupBasicExample, checkboxGroupBasicExampleCommands] =
           CheckboxGroupBasicExample.update(
@@ -7994,6 +9904,40 @@ export const update = (
         ];
       },
 
+      GotBaseUiComboboxBasicExampleMessage: ({ message }) => {
+        const [baseUiComboboxBasicExample, baseUiComboboxBasicExampleCommands] =
+          BaseUiComboboxBasicExample.update(
+            model.baseUiComboboxBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiComboboxBasicExample: () => baseUiComboboxBasicExample,
+          }),
+          Command.mapMessages(baseUiComboboxBasicExampleCommands, (message) =>
+            GotBaseUiComboboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnComboboxBasicExampleMessage: ({ message }) => {
+        const [shadcnComboboxBasicExample, shadcnComboboxBasicExampleCommands] =
+          ShadcnComboboxBasicExample.update(
+            model.shadcnComboboxBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnComboboxBasicExample: () => shadcnComboboxBasicExample,
+          }),
+          Command.mapMessages(shadcnComboboxBasicExampleCommands, (message) =>
+            GotShadcnComboboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotComboboxMultiExampleMessage: ({ message }) => {
         const [comboboxMultiExample, comboboxMultiExampleCommands] =
           ComboboxMultiExample.update(model.comboboxMultiExample, message);
@@ -8033,6 +9977,23 @@ export const update = (
           }),
           Command.mapMessages(datePickerBoundsExampleCommands, (message) =>
             GotDatePickerBoundsExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiDialogBasicExampleMessage: ({ message }) => {
+        const [baseUiDialogBasicExample, baseUiDialogBasicExampleCommands] =
+          BaseUiDialogBasicExample.update(
+            model.baseUiDialogBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiDialogBasicExample: () => baseUiDialogBasicExample,
+          }),
+          Command.mapMessages(baseUiDialogBasicExampleCommands, (message) =>
+            GotBaseUiDialogBasicExampleMessage({ message })
           ),
         ];
       },
@@ -8172,6 +10133,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiFieldsetBasicExampleMessage: ({ message }) => {
+        const [baseUiFieldsetBasicExample, baseUiFieldsetBasicExampleCommands] =
+          BaseUiFieldsetBasicExample.update(
+            model.baseUiFieldsetBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiFieldsetBasicExample: () => baseUiFieldsetBasicExample,
+          }),
+          Command.mapMessages(baseUiFieldsetBasicExampleCommands, (message) =>
+            GotBaseUiFieldsetBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotFieldsetBasicExampleMessage: ({ message }) => {
         const [fieldsetBasicExample, fieldsetBasicExampleCommands] =
           FieldsetBasicExample.update(model.fieldsetBasicExample, message);
@@ -8230,6 +10208,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiInputBasicExampleMessage: ({ message }) => {
+        const [baseUiInputBasicExample, baseUiInputBasicExampleCommands] =
+          BaseUiInputBasicExample.update(
+            model.baseUiInputBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiInputBasicExample: () => baseUiInputBasicExample,
+          }),
+          Command.mapMessages(baseUiInputBasicExampleCommands, (message) =>
+            GotBaseUiInputBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotInputBasicExampleMessage: ({ message }) => {
         const [inputBasicExample, inputBasicExampleCommands] =
           InputBasicExample.update(model.inputBasicExample, message);
@@ -8250,6 +10245,23 @@ export const update = (
           evo(model, { inputDisabledExample: () => inputDisabledExample }),
           Command.mapMessages(inputDisabledExampleCommands, (message) =>
             GotInputDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiMeterBasicExampleMessage: ({ message }) => {
+        const [baseUiMeterBasicExample, baseUiMeterBasicExampleCommands] =
+          BaseUiMeterBasicExample.update(
+            model.baseUiMeterBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiMeterBasicExample: () => baseUiMeterBasicExample,
+          }),
+          Command.mapMessages(baseUiMeterBasicExampleCommands, (message) =>
+            GotBaseUiMeterBasicExampleMessage({ message })
           ),
         ];
       },
@@ -8278,6 +10290,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiToggleBasicExampleMessage: ({ message }) => {
+        const [baseUiToggleBasicExample, baseUiToggleBasicExampleCommands] =
+          BaseUiToggleBasicExample.update(
+            model.baseUiToggleBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiToggleBasicExample: () => baseUiToggleBasicExample,
+          }),
+          Command.mapMessages(baseUiToggleBasicExampleCommands, (message) =>
+            GotBaseUiToggleBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotToggleBasicExampleMessage: ({ message }) => {
         const [toggleBasicExample, toggleBasicExampleCommands] =
           ToggleBasicExample.update(model.toggleBasicExample, message);
@@ -8286,6 +10315,26 @@ export const update = (
           evo(model, { toggleBasicExample: () => toggleBasicExample }),
           Command.mapMessages(toggleBasicExampleCommands, (message) =>
             GotToggleBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiToggleGroupBasicExampleMessage: ({ message }) => {
+        const [
+          baseUiToggleGroupBasicExample,
+          baseUiToggleGroupBasicExampleCommands,
+        ] = BaseUiToggleGroupBasicExample.update(
+          model.baseUiToggleGroupBasicExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiToggleGroupBasicExample: () => baseUiToggleGroupBasicExample,
+          }),
+          Command.mapMessages(
+            baseUiToggleGroupBasicExampleCommands,
+            (message) => GotBaseUiToggleGroupBasicExampleMessage({ message })
           ),
         ];
       },
@@ -8319,6 +10368,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiToolbarBasicExampleMessage: ({ message }) => {
+        const [baseUiToolbarBasicExample, baseUiToolbarBasicExampleCommands] =
+          BaseUiToolbarBasicExample.update(
+            model.baseUiToolbarBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiToolbarBasicExample: () => baseUiToolbarBasicExample,
+          }),
+          Command.mapMessages(baseUiToolbarBasicExampleCommands, (message) =>
+            GotBaseUiToolbarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotToolbarBasicExampleMessage: ({ message }) => {
         const [toolbarBasicExample, toolbarBasicExampleCommands] =
           ToolbarBasicExample.update(model.toolbarBasicExample, message);
@@ -8327,6 +10393,23 @@ export const update = (
           evo(model, { toolbarBasicExample: () => toolbarBasicExample }),
           Command.mapMessages(toolbarBasicExampleCommands, (message) =>
             GotToolbarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiProgressBasicExampleMessage: ({ message }) => {
+        const [baseUiProgressBasicExample, baseUiProgressBasicExampleCommands] =
+          BaseUiProgressBasicExample.update(
+            model.baseUiProgressBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiProgressBasicExample: () => baseUiProgressBasicExample,
+          }),
+          Command.mapMessages(baseUiProgressBasicExampleCommands, (message) =>
+            GotBaseUiProgressBasicExampleMessage({ message })
           ),
         ];
       },
@@ -8371,6 +10454,20 @@ export const update = (
         ];
       },
 
+      GotBaseUiMenuBasicExampleMessage: ({ message }) => {
+        const [baseUiMenuBasicExample, baseUiMenuBasicExampleCommands] =
+          BaseUiMenuBasicExample.update(model.baseUiMenuBasicExample, message);
+
+        return [
+          evo(model, {
+            baseUiMenuBasicExample: () => baseUiMenuBasicExample,
+          }),
+          Command.mapMessages(baseUiMenuBasicExampleCommands, (message) =>
+            GotBaseUiMenuBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotMenuBasicExampleMessage: ({ message }) => {
         const [menuBasicExample, menuBasicExampleCommands] =
           MenuBasicExample.update(model.menuBasicExample, message);
@@ -8399,6 +10496,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiPopoverBasicExampleMessage: ({ message }) => {
+        const [baseUiPopoverBasicExample, baseUiPopoverBasicExampleCommands] =
+          BaseUiPopoverBasicExample.update(
+            model.baseUiPopoverBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiPopoverBasicExample: () => baseUiPopoverBasicExample,
+          }),
+          Command.mapMessages(baseUiPopoverBasicExampleCommands, (message) =>
+            GotBaseUiPopoverBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotPopoverBasicExampleMessage: ({ message }) => {
         const [popoverBasicExample, popoverBasicExampleCommands] =
           PopoverBasicExample.update(model.popoverBasicExample, message);
@@ -8423,6 +10537,75 @@ export const update = (
           }),
           Command.mapMessages(popoverAnimatedExampleCommands, (message) =>
             GotPopoverAnimatedExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiRadioBasicExampleMessage: ({ message }) => {
+        const [baseUiRadioBasicExample, baseUiRadioBasicExampleCommands] =
+          BaseUiRadioBasicExample.update(
+            model.baseUiRadioBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiRadioBasicExample: () => baseUiRadioBasicExample,
+          }),
+          Command.mapMessages(baseUiRadioBasicExampleCommands, (message) =>
+            GotBaseUiRadioBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiRadioLabelingExampleMessage: ({ message }) => {
+        const [baseUiRadioLabelingExample, baseUiRadioLabelingExampleCommands] =
+          BaseUiRadioLabelingExample.update(
+            model.baseUiRadioLabelingExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiRadioLabelingExample: () => baseUiRadioLabelingExample,
+          }),
+          Command.mapMessages(baseUiRadioLabelingExampleCommands, (message) =>
+            GotBaseUiRadioLabelingExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiRadioNativeButtonExampleMessage: ({ message }) => {
+        const [
+          baseUiRadioNativeButtonExample,
+          baseUiRadioNativeButtonExampleCommands,
+        ] = BaseUiRadioNativeButtonExample.update(
+          model.baseUiRadioNativeButtonExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiRadioNativeButtonExample: () =>
+              baseUiRadioNativeButtonExample,
+          }),
+          Command.mapMessages(
+            baseUiRadioNativeButtonExampleCommands,
+            (message) => GotBaseUiRadioNativeButtonExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiRadioFormExampleMessage: ({ message }) => {
+        const [baseUiRadioFormExample, baseUiRadioFormExampleCommands] =
+          BaseUiRadioFormExample.update(model.baseUiRadioFormExample, message);
+
+        return [
+          evo(model, {
+            baseUiRadioFormExample: () => baseUiRadioFormExample,
+          }),
+          Command.mapMessages(baseUiRadioFormExampleCommands, (message) =>
+            GotBaseUiRadioFormExampleMessage({ message })
           ),
         ];
       },
@@ -8479,6 +10662,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiSelectBasicExampleMessage: ({ message }) => {
+        const [baseUiSelectBasicExample, baseUiSelectBasicExampleCommands] =
+          BaseUiSelectBasicExample.update(
+            model.baseUiSelectBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiSelectBasicExample: () => baseUiSelectBasicExample,
+          }),
+          Command.mapMessages(baseUiSelectBasicExampleCommands, (message) =>
+            GotBaseUiSelectBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSelectBasicExampleMessage: ({ message }) => {
         const [selectBasicExample, selectBasicExampleCommands] =
           SelectBasicExample.update(model.selectBasicExample, message);
@@ -8524,6 +10724,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiSliderBasicExampleMessage: ({ message }) => {
+        const [baseUiSliderBasicExample, baseUiSliderBasicExampleCommands] =
+          BaseUiSliderBasicExample.update(
+            model.baseUiSliderBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiSliderBasicExample: () => baseUiSliderBasicExample,
+          }),
+          Command.mapMessages(baseUiSliderBasicExampleCommands, (message) =>
+            GotBaseUiSliderBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotSliderBasicExampleMessage: ({ message }) => {
         const [sliderBasicExample, sliderBasicExampleCommands] =
           SliderBasicExample.update(model.sliderBasicExample, message);
@@ -8561,6 +10778,23 @@ export const update = (
           evo(model, { sliderDisabledExample: () => sliderDisabledExample }),
           Command.mapMessages(sliderDisabledExampleCommands, (message) =>
             GotSliderDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiSwitchBasicExampleMessage: ({ message }) => {
+        const [baseUiSwitchBasicExample, baseUiSwitchBasicExampleCommands] =
+          BaseUiSwitchBasicExample.update(
+            model.baseUiSwitchBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiSwitchBasicExample: () => baseUiSwitchBasicExample,
+          }),
+          Command.mapMessages(baseUiSwitchBasicExampleCommands, (message) =>
+            GotBaseUiSwitchBasicExampleMessage({ message })
           ),
         ];
       },
@@ -8606,6 +10840,18 @@ export const update = (
           }),
           Command.mapMessages(switchDisabledExampleCommands, (message) =>
             GotSwitchDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiTabsBasicExampleMessage: ({ message }) => {
+        const [baseUiTabsBasicExample, baseUiTabsBasicExampleCommands] =
+          BaseUiTabsBasicExample.update(model.baseUiTabsBasicExample, message);
+
+        return [
+          evo(model, { baseUiTabsBasicExample: () => baseUiTabsBasicExample }),
+          Command.mapMessages(baseUiTabsBasicExampleCommands, (message) =>
+            GotBaseUiTabsBasicExampleMessage({ message })
           ),
         ];
       },
@@ -8679,6 +10925,23 @@ export const update = (
         ];
       },
 
+      GotBaseUiToastBasicExampleMessage: ({ message }) => {
+        const [baseUiToastBasicExample, baseUiToastBasicExampleCommands] =
+          BaseUiToastBasicExample.update(
+            model.baseUiToastBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiToastBasicExample: () => baseUiToastBasicExample,
+          }),
+          Command.mapMessages(baseUiToastBasicExampleCommands, (message) =>
+            GotBaseUiToastBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotToastBasicExampleMessage: ({ message }) => {
         const [toastBasicExample, toastBasicExampleCommands] =
           ToastBasicExample.update(model.toastBasicExample, message);
@@ -8699,6 +10962,23 @@ export const update = (
           evo(model, { toastVariantsExample: () => toastVariantsExample }),
           Command.mapMessages(toastVariantsExampleCommands, (message) =>
             GotToastVariantsExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiTooltipBasicExampleMessage: ({ message }) => {
+        const [baseUiTooltipBasicExample, baseUiTooltipBasicExampleCommands] =
+          BaseUiTooltipBasicExample.update(
+            model.baseUiTooltipBasicExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            baseUiTooltipBasicExample: () => baseUiTooltipBasicExample,
+          }),
+          Command.mapMessages(baseUiTooltipBasicExampleCommands, (message) =>
+            GotBaseUiTooltipBasicExampleMessage({ message })
           ),
         ];
       },

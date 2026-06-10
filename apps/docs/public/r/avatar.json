@@ -32,7 +32,9 @@
       "component": "Avatar",
       "origin": "https://base-ui.com/react/components/avatar",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-avatar"
     }
   }
 }

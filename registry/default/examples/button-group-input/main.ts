@@ -32,7 +32,7 @@ export const update = (
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
 const primaryButtonClassName =
-  "inline-flex h-9 items-center justify-center bg-gray-950 px-3 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 items-center justify-center bg-gray-950 px-4 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
 
@@ -41,10 +41,10 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
 
   return ButtonGroup.view<Message>({
     ariaLabel: "Search actions",
-    className: "w-full max-w-md",
+    className: "w-full max-w-sm",
     children: [
       ButtonGroup.itemView<Message>({
-        className: "min-w-0 flex-1",
+        className: "min-w-0 flex-1 shadow-xs",
         children: [
           Input.view<Message>({
             id: "button-group-search",
@@ -54,9 +54,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.input([
                 ...attributes.input,
                 h.Class(
-                  "h-9 min-w-0 border-0 bg-transparent px-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:ring-0"
+                  "h-9 min-w-0 rounded-md border-0 bg-white px-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:ring-0"
                 ),
-                h.Placeholder("Search documentation..."),
+                h.Placeholder("Search..."),
               ]),
           }),
         ],

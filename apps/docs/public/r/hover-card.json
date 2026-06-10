@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "HoverCard",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/hover-card",
+      "origin": "https://ui.shadcn.com/docs/components/radix/hover-card",
       "artifact": "component"
     }
   }

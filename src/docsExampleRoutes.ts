@@ -17,6 +17,33 @@ import type * as Main from "./main";
 type Model = Main.Model;
 type Message = Main.Message;
 
+export const standaloneExampleRouteView = (
+  title: string,
+  slug: string,
+  preview: Html
+): Html => {
+  const h = html<Message>();
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], [title]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [`Standalone route for the installable ${slug} registry example.`]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [preview]
+      ),
+    ]
+  );
+};
+
 export const animationBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -215,6 +242,40 @@ export const avatarBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiAvatarBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Avatar Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-avatar-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsAvatar.baseUiAvatarBasicExamplePreview(
+            model.baseUiAvatarBasicExample,
+            "base-ui-avatar-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const cardBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -245,6 +306,16 @@ export const cardBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiSeparatorBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Separator Basic",
+    "base-ui-separator-basic",
+    DocsPreviewsNZ.baseUiSeparatorBasicExamplePreview(
+      model.baseUiSeparatorBasicExample,
+      "base-ui-separator-basic-standalone"
+    )
+  );
 
 export const separatorBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -507,6 +578,40 @@ export const buttonBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiButtonBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Button Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-button-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsB.baseUiButtonBasicExamplePreview(
+            model.baseUiButtonBasicExample,
+            "base-ui-button-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const buttonDisabledExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -711,6 +816,40 @@ export const checkboxBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiCheckboxBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Checkbox Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-checkbox-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiCheckboxBasicExamplePreview(
+            model.baseUiCheckboxBasicExample,
+            "base-ui-checkbox-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const checkboxGroupBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -813,28 +952,35 @@ export const accordionMultipleExampleRouteView = (model: Model): Html => {
   );
 };
 
-export const standaloneExampleRouteView = (
-  title: string,
-  slug: string,
-  preview: Html
-): Html => {
+export const baseUiAccordionMultipleExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
+
   return h.div(
     [h.Class("max-w-4xl space-y-6")],
     [
       h.header(
         [h.Class("space-y-2")],
         [
-          h.h1([h.Class("text-3xl font-bold text-gray-950")], [title]),
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Accordion Multiple"]
+          ),
           h.p(
             [h.Class("max-w-2xl text-base text-gray-600")],
-            [`Standalone route for the installable ${slug} registry example.`]
+            [
+              "Standalone route for the installable base-ui-accordion-multiple registry example.",
+            ]
           ),
         ]
       ),
       h.div(
         [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
-        [preview]
+        [
+          DocsPreviewsAccordion.baseUiAccordionMultipleExamplePreview(
+            model.baseUiAccordionMultipleExample,
+            "base-ui-accordion-multiple-standalone"
+          ),
+        ]
       ),
     ]
   );
@@ -1237,6 +1383,15 @@ export const itemLinkExampleRouteView = (model: Model): Html =>
       "item-link-standalone"
     )
   );
+export const itemDropdownExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Item Dropdown",
+    "item-dropdown",
+    DocsPreviewsEI.itemDropdownExamplePreview(
+      model.itemDropdownExample,
+      "item-dropdown-standalone"
+    )
+  );
 export const itemRtlExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Item RTL",
@@ -1399,6 +1554,18 @@ export const alertDialogBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiAlertDialogCloseConfirmationExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "Base UI Alert Dialog Close Confirmation",
+    "base-ui-alert-dialog-close-confirmation",
+    DocsPreviewsB.baseUiAlertDialogCloseConfirmationExamplePreview(
+      model.baseUiAlertDialogCloseConfirmationExample,
+      "base-ui-alert-dialog-close-confirmation-standalone"
+    )
+  );
 
 export const alertBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -1734,6 +1901,42 @@ export const navigationMenuBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiNavigationMenuBasicExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Navigation Menu Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-navigation-menu-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiNavigationMenuBasicExamplePreview(
+            model.baseUiNavigationMenuBasicExample,
+            "base-ui-navigation-menu-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const otpFieldBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1761,6 +1964,40 @@ export const otpFieldBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsNZ.otpFieldBasicExamplePreview(
             model.otpFieldBasicExample,
             "otp-field-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiOtpFieldBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI OTP Field Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-otp-field-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiOtpFieldBasicExamplePreview(
+            model.baseUiOtpFieldBasicExample,
+            "base-ui-otp-field-basic-standalone"
           ),
         ]
       ),
@@ -1802,6 +2039,40 @@ export const previewCardBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiPreviewCardBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Preview Card Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-preview-card-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiPreviewCardBasicExamplePreview(
+            model.baseUiPreviewCardBasicExample,
+            "base-ui-preview-card-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const collapsibleBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1829,6 +2100,40 @@ export const collapsibleBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsCD.collapsibleBasicExamplePreview(
             model.collapsibleBasicExample,
             "collapsible-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiCollapsibleBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Collapsible Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-collapsible-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiCollapsibleBasicExamplePreview(
+            model.baseUiCollapsibleBasicExample,
+            "base-ui-collapsible-basic-standalone"
           ),
         ]
       ),
@@ -1901,6 +2206,40 @@ export const numberFieldBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiNumberFieldBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Number Field Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-number-field-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiNumberFieldBasicExamplePreview(
+            model.baseUiNumberFieldBasicExample,
+            "base-ui-number-field-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const autocompleteBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1935,6 +2274,16 @@ export const autocompleteBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiAutocompleteBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Autocomplete Basic",
+    "base-ui-autocomplete-basic",
+    DocsPreviewsAutocomplete.baseUiAutocompleteBasicExamplePreview(
+      model.baseUiAutocompleteBasicExample,
+      "base-ui-autocomplete-basic-standalone"
+    )
+  );
+
 export const formBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -1959,6 +2308,278 @@ export const formBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsEI.formBasicExamplePreview(
             model.formBasicExample,
             "form-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiFieldsetBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Fieldset Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-fieldset-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiFieldsetBasicExamplePreview(
+            model.baseUiFieldsetBasicExample,
+            "base-ui-fieldset-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiDrawerBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Drawer Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-drawer-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiDrawerBasicExamplePreview(
+            model.baseUiDrawerBasicExample,
+            "base-ui-drawer-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiFieldBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Field Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-field-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiFieldBasicExamplePreview(
+            model.baseUiFieldBasicExample,
+            "base-ui-field-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiFormBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Form Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-form-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiFormBasicExamplePreview(
+            model.baseUiFormBasicExample,
+            "base-ui-form-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiInputBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Input Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-input-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiInputBasicExamplePreview(
+            model.baseUiInputBasicExample,
+            "base-ui-input-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiMenuBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Menu Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-menu-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiMenuBasicExamplePreview(
+            model.baseUiMenuBasicExample,
+            "base-ui-menu-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiMenubarBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Menubar Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-menubar-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiMenubarBasicExamplePreview(
+            model.baseUiMenubarBasicExample,
+            "base-ui-menubar-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiMeterBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Meter Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-meter-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiMeterBasicExamplePreview(
+            model.baseUiMeterBasicExample,
+            "base-ui-meter-basic-standalone"
           ),
         ]
       ),
@@ -1999,6 +2620,16 @@ export const checkboxIndeterminateExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiSliderBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Slider Basic",
+    "base-ui-slider-basic",
+    DocsPreviewsNZ.baseUiSliderBasicExamplePreview(
+      model.baseUiSliderBasicExample,
+      "base-ui-slider-basic-standalone"
+    )
+  );
 
 export const sliderBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2065,6 +2696,16 @@ export const sliderDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiTabsBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Tabs Basic",
+    "base-ui-tabs-basic",
+    DocsPreviewsNZ.baseUiTabsBasicExamplePreview(
+      model.baseUiTabsBasicExample,
+      "base-ui-tabs-basic-standalone"
+    )
+  );
+
 export const tabsBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2126,6 +2767,16 @@ export const tabsManualExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiSwitchBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Switch Basic",
+    "base-ui-switch-basic",
+    DocsPreviewsNZ.baseUiSwitchBasicExamplePreview(
+      model.baseUiSwitchBasicExample,
+      "base-ui-switch-basic-standalone"
+    )
+  );
 
 export const switchBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2427,6 +3078,40 @@ export const progressBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiProgressBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Progress Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-progress-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiProgressBasicExamplePreview(
+            model.baseUiProgressBasicExample,
+            "base-ui-progress-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const meterBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2469,12 +3154,12 @@ export const scrollAreaBasicExampleRouteView = (model: Model): Html => {
         [
           h.h1(
             [h.Class("text-3xl font-bold text-gray-950")],
-            ["Scroll Area Basic"]
+            ["Base UI Scroll Area Basic"]
           ),
           h.p(
             [h.Class("max-w-2xl text-base text-gray-600")],
             [
-              "Standalone route for the installable scroll-area-basic registry example.",
+              "Standalone route for the installable base-ui-scroll-area-basic registry example.",
             ]
           ),
         ]
@@ -2484,13 +3169,23 @@ export const scrollAreaBasicExampleRouteView = (model: Model): Html => {
         [
           DocsPreviewsNZ.scrollAreaBasicExamplePreview(
             model.scrollAreaBasicExample,
-            "scroll-area-basic-standalone"
+            "base-ui-scroll-area-basic-standalone"
           ),
         ]
       ),
     ]
   );
 };
+
+export const baseUiToggleBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Toggle Basic",
+    "base-ui-toggle-basic",
+    DocsPreviewsNZ.baseUiToggleBasicExamplePreview(
+      model.baseUiToggleBasicExample,
+      "base-ui-toggle-basic-standalone"
+    )
+  );
 
 export const toggleBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2522,6 +3217,16 @@ export const toggleBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiToggleGroupBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Toggle Group Basic",
+    "base-ui-toggle-group-basic",
+    DocsPreviewsNZ.baseUiToggleGroupBasicExamplePreview(
+      model.baseUiToggleGroupBasicExample,
+      "base-ui-toggle-group-basic-standalone"
+    )
+  );
 
 export const toggleGroupBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2556,6 +3261,16 @@ export const toggleGroupBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiToolbarBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Toolbar Basic",
+    "base-ui-toolbar-basic",
+    DocsPreviewsNZ.baseUiToolbarBasicExamplePreview(
+      model.baseUiToolbarBasicExample,
+      "base-ui-toolbar-basic-standalone"
+    )
+  );
 
 export const toolbarBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2690,6 +3405,16 @@ export const textareaDisabledExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiToastBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Toast Basic",
+    "base-ui-toast-basic",
+    DocsPreviewsNZ.baseUiToastBasicExamplePreview(
+      model.baseUiToastBasicExample,
+      "base-ui-toast-basic-standalone"
+    )
+  );
+
 export const toastBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -2754,6 +3479,16 @@ export const toastVariantsExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiTooltipBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Tooltip Basic",
+    "base-ui-tooltip-basic",
+    DocsPreviewsNZ.baseUiTooltipBasicExamplePreview(
+      model.baseUiTooltipBasicExample,
+      "base-ui-tooltip-basic-standalone"
+    )
+  );
 
 export const tooltipBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -2847,6 +3582,40 @@ export const dialogBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsCD.dialogBasicExamplePreview(
             model.dialogBasicExample,
             "dialog-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiDialogBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Dialog Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-dialog-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiDialogBasicExamplePreview(
+            model.baseUiDialogBasicExample,
+            "base-ui-dialog-basic-standalone"
           ),
         ]
       ),
@@ -3290,6 +4059,40 @@ export const popoverBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiPopoverBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Popover Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-popover-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiPopoverBasicExamplePreview(
+            model.baseUiPopoverBasicExample,
+            "base-ui-popover-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const popoverAnimatedExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3317,6 +4120,142 @@ export const popoverAnimatedExampleRouteView = (model: Model): Html => {
           DocsPreviewsNZ.popoverAnimatedExamplePreview(
             model.popoverAnimatedExample,
             "popover-animated-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiRadioBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Radio Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-radio-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiRadioBasicExamplePreview(
+            model.baseUiRadioBasicExample,
+            "base-ui-radio-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiRadioLabelingExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Radio Labeling"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-radio-labeling registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiRadioLabelingExamplePreview(
+            model.baseUiRadioLabelingExample,
+            "base-ui-radio-labeling-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiRadioNativeButtonExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Radio Native Button"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-radio-native-button registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiRadioNativeButtonExamplePreview(
+            model.baseUiRadioNativeButtonExample,
+            "base-ui-radio-native-button-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiRadioFormExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Radio Form"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-radio-form registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiRadioFormExamplePreview(
+            model.baseUiRadioFormExample,
+            "base-ui-radio-form-standalone"
           ),
         ]
       ),
@@ -3391,6 +4330,16 @@ export const radioGroupHorizontalExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const baseUiSelectBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Base UI Select Basic",
+    "base-ui-select-basic",
+    DocsPreviewsNZ.baseUiSelectBasicExamplePreview(
+      model.baseUiSelectBasicExample,
+      "base-ui-select-basic-standalone"
+    )
+  );
 
 export const selectBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -3484,6 +4433,40 @@ export const comboboxBasicExampleRouteView = (model: Model): Html => {
           DocsPreviewsCD.comboboxBasicExamplePreview(
             model.comboboxBasicExample,
             "combobox-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiComboboxBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Combobox Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-combobox-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiComboboxBasicExamplePreview(
+            model.baseUiComboboxBasicExample,
+            "base-ui-combobox-basic-standalone"
           ),
         ]
       ),

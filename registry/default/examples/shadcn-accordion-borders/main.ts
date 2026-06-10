@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("overview"),
-  S.Literal("security"),
-  S.Literal("exports"),
+  S.Literal("billing"),
+  S.Literal("secure"),
+  S.Literal("integrations"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["overview"] }, []];
+] => [{ openValues: ["billing"] }, []];
 
 // UPDATE
 
@@ -70,33 +70,33 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "overview",
+          value: "billing",
           openValues: model.openValues,
-          title: "Account overview",
-          onValueChange: ToggledPanel({ value: "overview" }),
+          title: "How does billing work?",
+          onValueChange: ToggledPanel({ value: "billing" }),
           className: "last:border-b-0",
           children: panel(
-            "Workspace identity, billing contact, and owner details."
+            "We offer monthly and annual subscription plans. Billing is charged at the beginning of each cycle, and you can cancel anytime. All plans include automatic backups, 24/7 support, and unlimited team members."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "security",
+          value: "secure",
           openValues: model.openValues,
-          title: "Security posture",
-          onValueChange: ToggledPanel({ value: "security" }),
+          title: "Is my data secure?",
+          onValueChange: ToggledPanel({ value: "secure" }),
           className: "last:border-b-0",
           children: panel(
-            "Password policy, device sessions, and recovery settings."
+            "Yes, we use enterprise-grade encryption, regular security audits, and comply with SOC 2 Type II standards to protect your data."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "exports",
+          value: "integrations",
           openValues: model.openValues,
-          title: "Exports",
-          onValueChange: ToggledPanel({ value: "exports" }),
+          title: "What integrations do you support?",
+          onValueChange: ToggledPanel({ value: "integrations" }),
           className: "last:border-b-0",
           children: panel(
-            "CSV, JSON, and archive exports for compliance workflows."
+            "We support integrations with Slack, GitHub, Google Workspace, Microsoft Teams, Zapier, and over 100 other popular tools."
           ),
         }),
       ],

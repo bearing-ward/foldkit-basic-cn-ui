@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("product"),
-  S.Literal("billing"),
-  S.Literal("team"),
+  S.Literal("password"),
+  S.Literal("subscription"),
+  S.Literal("payment"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["product"] }, []];
+] => [{ openValues: ["password"] }, []];
 
 // UPDATE
 
@@ -70,25 +70,31 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "product",
+          value: "password",
           openValues: model.openValues,
-          title: "Product updates",
-          onValueChange: ToggledPanel({ value: "product" }),
-          children: panel("Ship notes, releases, and roadmap changes."),
+          title: "How do I reset my password?",
+          onValueChange: ToggledPanel({ value: "password" }),
+          children: panel(
+            "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password. The link will expire in 24 hours."
+          ),
         }),
         Accordion.itemView<Message>({
-          value: "billing",
+          value: "subscription",
           openValues: model.openValues,
-          title: "Billing",
-          onValueChange: ToggledPanel({ value: "billing" }),
-          children: panel("Manage invoices, plans, and payment methods."),
+          title: "Can I change my subscription plan?",
+          onValueChange: ToggledPanel({ value: "subscription" }),
+          children: panel(
+            "Yes, you can upgrade or downgrade your subscription plan at any time from your account settings. Changes will take effect immediately."
+          ),
         }),
         Accordion.itemView<Message>({
-          value: "team",
+          value: "payment",
           openValues: model.openValues,
-          title: "Team access",
-          onValueChange: ToggledPanel({ value: "team" }),
-          children: panel("Invite teammates and adjust permissions."),
+          title: "What payment methods do you accept?",
+          onValueChange: ToggledPanel({ value: "payment" }),
+          children: panel(
+            "We accept all major credit cards, PayPal, and bank transfers for annual plans."
+          ),
         }),
       ],
       className: Accordion.shadcnAccordionRootClassName,

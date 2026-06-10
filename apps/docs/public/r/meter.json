@@ -32,7 +32,9 @@
       "component": "Meter",
       "origin": "https://base-ui.com/react/components/meter",
       "artifact": "component",
-      "stateful": false
+      "stateful": false,
+      "public": false,
+      "publicAliasOf": "base-ui-meter"
     }
   }
 }

@@ -31,10 +31,7 @@ export const update = (
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
 const buttonClassName =
-  "inline-flex h-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-700 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
-
-const primaryButtonClassName =
-  "inline-flex h-9 items-center justify-center bg-gray-950 px-3 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 min-w-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
 
@@ -45,15 +42,16 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Dir("rtl")],
     [
       ButtonGroup.view<Message>({
-        ariaLabel: "إجراءات التقرير",
+        ariaLabel: "تنسيق النص",
         children: [
           ButtonGroup.itemView<Message>({
-            children: [
-              h.button([h.Class(primaryButtonClassName)], ["أرشفة تقرير"]),
-            ],
+            children: [h.button([h.Class(buttonClassName)], ["غامق"])],
           }),
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["تأجيل"])],
+            children: [h.button([h.Class(buttonClassName)], ["مائل"])],
+          }),
+          ButtonGroup.itemView<Message>({
+            children: [h.button([h.Class(buttonClassName)], ["تحته خط"])],
           }),
         ],
       }),

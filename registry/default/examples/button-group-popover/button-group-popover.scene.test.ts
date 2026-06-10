@@ -33,8 +33,10 @@ describe("button-group-popover example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.role("group", { name: "Copilot actions" })).toExist(),
-      Scene.click(Scene.role("button", { name: "Open Copilot options" })),
+      Scene.expect(
+        Scene.role("group", { name: "Assistant actions" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Open AI options" })),
       resolvePopoverMounts(),
       Scene.expect(
         Scene.text("Generate, summarize, or rewrite the current selection.")

@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Tabs",
       "example": "shadcn-basic",
-      "origin": "https://ui.shadcn.com/docs/components/tabs"
+      "origin": "https://ui.shadcn.com/docs/components/radix/tabs"
     }
   }
 }

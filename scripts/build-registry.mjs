@@ -185,11 +185,12 @@ const qualifyRegistryDependency = (dependency) => {
 };
 const registryConfig = await readJson(configPath);
 const items = await Promise.all(sourceItems.map(expandItem));
+const isPublicRegistryItem = (item) => item.meta?.foldkit?.public !== false;
 const index = {
   $schema: registrySchemaUrl,
   name: registryConfig.name,
   homepage: registryConfig.homepage,
-  items: items.map((item) => ({
+  items: items.filter(isPublicRegistryItem).map((item) => ({
     name: item.name,
     type: item.type,
     title: item.title,

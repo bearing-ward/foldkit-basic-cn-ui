@@ -32,7 +32,9 @@
       "component": "NavigationMenu",
       "origin": "https://base-ui.com/react/components/navigation-menu",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-navigation-menu"
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-dialog-basic",
+  "type": "registry:example",
+  "title": "Base UI Dialog Basic",
+  "description": "A runnable Foldkit version of the Base UI Dialog default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-dialog"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-dialog-basic/main.ts",
+      "target": "src/examples/base-ui-dialog-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Dialog from \"../../ui/base-ui-dialog\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  dialog: Dialog.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotDialogMessage = m(\"GotDialogMessage\", {\n  message: Dialog.Message,\n});\n\nexport const Message = S.Union([GotDialogMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [dialog, dialogCommands] = Dialog.init({ id: \"dialog-basic\" });\n\n  return [\n    { dialog },\n    Command.mapMessages(dialogCommands, (message) =>\n      GotDialogMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotDialogMessage: ({ message }) => {\n        const [dialog, dialogCommands] = Dialog.update(model.dialog, message);\n\n        return [\n          evo(model, { dialog: () => dialog }),\n          Command.mapMessages(dialogCommands, (message) =>\n            GotDialogMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  const toDialogMessage = (message: Dialog.Message): Message =>\n    GotDialogMessage({ message });\n\n  return h.div(\n    [h.Class(\"space-y-4\")],\n    [\n      Dialog.trigger<Message>({\n        label: \"View notifications\",\n        onClick: toDialogMessage(Dialog.RequestedOpen()),\n      }),\n      h.submodel({\n        slotId: model.dialog.id,\n        model: model.dialog,\n        view: Dialog.view,\n        viewInputs: {\n          toView: (render) =>\n            Dialog.root<Message>({\n              render,\n              children: [\n                Dialog.backdrop<Message>(render),\n                Dialog.panel<Message>({\n                  render,\n                  children: [\n                    Dialog.title<Message>({\n                      model: model.dialog,\n                      children: [\"Notifications\"],\n                    }),\n                    Dialog.description<Message>({\n                      model: model.dialog,\n                      children: [\"You are all caught up. Good job!\"],\n                    }),\n                    Dialog.footer<Message>({\n                      children: [\n                        Dialog.confirmButton<Message>({\n                          label: \"Close\",\n                          onClick: toDialogMessage(Dialog.RequestedClose()),\n                        }),\n                      ],\n                    }),\n                  ],\n                }),\n              ],\n            }),\n        },\n        toParentMessage: toDialogMessage,\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-dialog-basic/base-ui-dialog-basic.scene.test.ts",
+      "target": "src/examples/base-ui-dialog-basic/base-ui-dialog-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Option } from \"effect\";\nimport { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Dialog from \"../../ui/dialog\";\nimport { GotDialogMessage, init, update, view } from \"./main\";\n\nconst [initialModel] = init();\n\nconst ShowDialog = Dialog.ShowDialog({\n  id: \"dialog-basic\",\n  maybeFocusSelector: Option.none(),\n});\n\nconst CloseDialog = Dialog.CloseDialog({ id: \"dialog-basic\" });\n\ndescribe(\"dialog-basic example\", () => {\n  test(\"opens and closes through documented controls\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"View notifications\" })\n      ).toExist(),\n      Scene.expect(Scene.text(\"Notifications\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"View notifications\" })),\n      Scene.Command.expectExact(ShowDialog),\n      Scene.Command.resolve(\n        ShowDialog,\n        Dialog.CompletedShowDialog(),\n        (message) => GotDialogMessage({ message })\n      ),\n      Scene.expect(Scene.role(\"dialog\", { name: \"Notifications\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"dialog\", { name: \"Notifications\" })\n      ).toHaveAccessibleDescription(\"You are all caught up. Good job!\"),\n      Scene.expect(Scene.role(\"button\", { name: \"Cancel\" })).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Close\" })),\n      Scene.Command.expectExact(CloseDialog),\n      Scene.Command.resolve(\n        CloseDialog,\n        Dialog.CompletedCloseDialog(),\n        (message) => GotDialogMessage({ message })\n      ),\n      Scene.expect(Scene.text(\"Notifications\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Dialog",
+      "example": "basic",
+      "originExample": "dialog-default",
+      "origin": "https://base-ui.com/react/components/dialog"
+    }
+  }
+}

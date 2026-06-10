@@ -32,7 +32,9 @@
       "component": "OtpField",
       "origin": "https://base-ui.com/react/components/otp-field",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-otp-field"
     }
   }
 }

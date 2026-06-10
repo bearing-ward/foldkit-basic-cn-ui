@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Spinner",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/spinner"
+      "origin": "https://ui.shadcn.com/docs/components/radix/spinner"
     }
   }
 }

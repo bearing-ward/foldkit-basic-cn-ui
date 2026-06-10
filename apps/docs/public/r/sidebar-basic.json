@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Sidebar",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/sidebar"
+      "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
     }
   }
 }

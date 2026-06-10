@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "DatePicker",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/date-picker"
+      "origin": "https://ui.shadcn.com/docs/components/radix/date-picker"
     }
   }
 }

@@ -31,7 +31,10 @@ export const update = (
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
 const primaryButtonClassName =
-  "inline-flex h-9 items-center justify-center bg-gray-950 px-3 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 items-center justify-center bg-gray-950 px-4 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+
+const iconButtonClassName =
+  "inline-flex h-9 w-9 items-center justify-center bg-gray-950 text-sm font-semibold text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
 
@@ -39,21 +42,16 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return ButtonGroup.view<Message>({
-    ariaLabel: "Create actions",
+    ariaLabel: "Split save actions",
     children: [
       ButtonGroup.itemView<Message>({
-        children: [h.button([h.Class(primaryButtonClassName)], ["Button"])],
+        children: [h.button([h.Class(primaryButtonClassName)], ["Save"])],
       }),
       ButtonGroup.separatorView<Message>(),
       ButtonGroup.itemView<Message>({
         children: [
           h.button(
-            [
-              h.Class(
-                "inline-flex h-9 w-9 items-center justify-center bg-gray-950 text-sm font-semibold text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600"
-              ),
-              h.AriaLabel("More create actions"),
-            ],
+            [h.Class(iconButtonClassName), h.AriaLabel("More save actions")],
             ["+"]
           ),
         ],

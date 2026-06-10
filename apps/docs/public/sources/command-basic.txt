@@ -12,7 +12,7 @@ import * as Command from "../../ui/command";
 
 export const Model = S.Struct({
   query: S.String,
-  selected: S.String,
+  isOpen: S.Boolean,
 });
 export type Model = typeof Model.Type;
 
@@ -21,10 +21,17 @@ export type Model = typeof Model.Type;
 export const UpdatedCommandQuery = m("UpdatedCommandQuery", {
   value: S.String,
 });
+export const ClickedOpenMenu = m("ClickedOpenMenu");
+export const ClickedCloseMenu = m("ClickedCloseMenu");
 export const SelectedCommandItem = m("SelectedCommandItem", {
   value: S.String,
 });
-export const Message = S.Union([UpdatedCommandQuery, SelectedCommandItem]);
+export const Message = S.Union([
+  UpdatedCommandQuery,
+  ClickedOpenMenu,
+  ClickedCloseMenu,
+  SelectedCommandItem,
+]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -34,7 +41,7 @@ type UpdateReturn = readonly [
   readonly FoldkitCommand.Command<Message>[],
 ];
 
-export const init = (): UpdateReturn => [{ query: "", selected: "" }, []];
+export const init = (): UpdateReturn => [{ query: "", isOpen: false }, []];
 
 // UPDATE
 
@@ -46,8 +53,16 @@ export const update = (model: Model, message: Message): UpdateReturn =>
         evo(model, { query: () => value }),
         [],
       ],
-      SelectedCommandItem: ({ value }) => [
-        evo(model, { selected: () => value, query: () => value }),
+      ClickedOpenMenu: () => [
+        evo(model, { isOpen: () => true, query: () => "" }),
+        [],
+      ],
+      ClickedCloseMenu: () => [
+        evo(model, { isOpen: () => false, query: () => "" }),
+        [],
+      ],
+      SelectedCommandItem: () => [
+        evo(model, { isOpen: () => false, query: () => "" }),
         [],
       ],
     })
@@ -63,52 +78,119 @@ const groupedItems = (
     items.filter((item) => item.group === group),
   ]);
 
+const basicItems: readonly Command.CommandItem[] = [
+  { group: "Suggestions", label: "Calendar" },
+  { group: "Suggestions", label: "Search Emoji" },
+  { group: "Suggestions", label: "Calculator" },
+];
+
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
   const listId = "command-basic-list";
-  const items = Command.filterItems(Command.defaultItems, model.query);
+  const items = Command.filterItems(basicItems, model.query);
 
   return h.div(
-    [h.Class("w-full max-w-md space-y-3")],
+    [h.Class("flex w-full max-w-md flex-col items-start gap-4")],
     [
-      Command.rootView<Message>({
-        children: [
-          Command.inputView<Message>({
-            value: model.query,
-            onInput: (value) => UpdatedCommandQuery({ value }),
-            listId,
-          }),
-          Command.listView<Message>({
-            attributes: [h.Id(listId)],
-            children:
-              items.length === 0
-                ? [
-                    Command.emptyView<Message>({
-                      children: ["No results found."],
-                    }),
-                  ]
-                : groupedItems(items).flatMap(([group, groupItems], index) => [
-                    ...(index === 0 ? [] : [Command.separatorView<Message>()]),
-                    Command.groupView<Message>({
-                      heading: group,
-                      children: groupItems.map((item) =>
-                        Command.itemView<Message>({
-                          item,
-                          selected: item.label === model.selected,
-                          onSelect: SelectedCommandItem({ value: item.label }),
-                        })
-                      ),
-                    }),
-                  ]),
-          }),
-        ],
-      }),
-      model.selected === ""
-        ? h.empty
-        : h.p(
-            [h.Class("text-sm text-gray-600")],
-            [`Selected ${model.selected}`]
+      h.button(
+        [
+          h.Type("button"),
+          h.OnClick(ClickedOpenMenu()),
+          h.Class(
+            "inline-flex h-9 items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-950 shadow-sm transition-colors hover:bg-gray-100"
           ),
+        ],
+        ["Open Menu"]
+      ),
+      model.isOpen
+        ? h.div(
+            [
+              h.Attribute("role", "dialog"),
+              h.Attribute("aria-modal", "true"),
+              h.Attribute("aria-labelledby", "command-basic-title"),
+              h.Attribute("aria-describedby", "command-basic-description"),
+              h.Class(
+                "w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg"
+              ),
+            ],
+            [
+              h.div(
+                [h.Class("flex items-start justify-between gap-4 p-4 pb-2")],
+                [
+                  h.div(
+                    [h.Class("space-y-1")],
+                    [
+                      h.h2(
+                        [
+                          h.Id("command-basic-title"),
+                          h.Class("text-base font-semibold text-gray-950"),
+                        ],
+                        ["Command Palette"]
+                      ),
+                      h.p(
+                        [
+                          h.Id("command-basic-description"),
+                          h.Class("text-sm text-gray-500"),
+                        ],
+                        ["Search for a command to run..."]
+                      ),
+                    ]
+                  ),
+                  h.button(
+                    [
+                      h.Type("button"),
+                      h.OnClick(ClickedCloseMenu()),
+                      h.AriaLabel("Close"),
+                      h.Class(
+                        "rounded-md px-2 py-1 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-950"
+                      ),
+                    ],
+                    ["Close"]
+                  ),
+                ]
+              ),
+              Command.rootView<Message>({
+                className: "border-0 shadow-none",
+                children: [
+                  Command.inputView<Message>({
+                    value: model.query,
+                    onInput: (value) => UpdatedCommandQuery({ value }),
+                    listId,
+                  }),
+                  Command.listView<Message>({
+                    attributes: [h.Id(listId)],
+                    children:
+                      items.length === 0
+                        ? [
+                            Command.emptyView<Message>({
+                              children: ["No results found."],
+                            }),
+                          ]
+                        : groupedItems(items).flatMap(
+                            ([group, groupItems], index) => [
+                              ...(index === 0
+                                ? []
+                                : [Command.separatorView<Message>()]),
+                              Command.groupView<Message>({
+                                heading: group,
+                                children: groupItems.map((item) =>
+                                  Command.itemView<Message>({
+                                    item,
+                                    selected: false,
+                                    onSelect: SelectedCommandItem({
+                                      value: item.label,
+                                    }),
+                                  })
+                                ),
+                              }),
+                            ]
+                          ),
+                  }),
+                ],
+              }),
+            ]
+          )
+        : h.empty,
     ]
   );
 });

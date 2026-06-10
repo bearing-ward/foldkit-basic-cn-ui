@@ -96,6 +96,10 @@ const legacyUnprefixedStyleLaneItems = new Set([
 
 const uiItems = registryItems.filter((item) => item.type === "registry:ui");
 const failures = [];
+const itemNames = new Set(registryItems.map((item) => item.name));
+const publicUiItems = uiItems.filter(
+  (item) => item.meta?.foldkit?.public !== false
+);
 
 const routeTagFromComponentName = (name) =>
   `${name
@@ -184,9 +188,23 @@ for (const item of uiItems) {
   ) {
     failures.push(`${item.name}: unknown artifact ${artifact}`);
   }
+
+  if (foldkitMeta?.public === false) {
+    const { publicAliasOf } = foldkitMeta;
+
+    if (typeof publicAliasOf !== "string") {
+      failures.push(
+        `${item.name}: non-public registry items require meta.foldkit.publicAliasOf`
+      );
+    } else if (!itemNames.has(publicAliasOf)) {
+      failures.push(
+        `${item.name}: meta.foldkit.publicAliasOf points to missing item ${publicAliasOf}`
+      );
+    }
+  }
 }
 
-for (const item of uiItems) {
+for (const item of publicUiItems) {
   const origin = item.meta?.foldkit?.origin;
   const originLane = originLaneFromUrl(origin);
   const routeTag = routeTagFromComponentName(item.name);

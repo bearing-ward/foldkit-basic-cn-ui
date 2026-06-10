@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Typography",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/typography"
+      "origin": "https://ui.shadcn.com/docs/components/radix/typography"
     }
   }
 }

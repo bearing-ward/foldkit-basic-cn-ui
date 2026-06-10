@@ -37,11 +37,13 @@ export const view = Submodel.defineView<Model, Message>(() => {
     Avatar.view<Message>({ fallback: "CN" }),
     Avatar.view<Message>({ fallback: "LR" }),
     Avatar.view<Message>({ fallback: "ER" }),
-    Avatar.countView<Message>({
-      count: 3,
-      label: "Add three more people",
-      className: "text-base",
-    }),
-    h.span([h.AriaHidden(true), h.Class("-ml-7 text-xs")], ["+"]),
+    h.span(
+      [
+        h.Attribute("role", "img"),
+        h.AriaLabel("Add three more people"),
+        h.Class(`${Avatar.shadcnAvatarGroupCountClassName} text-base`),
+      ],
+      ["+"]
+    ),
   ]);
 });

@@ -32,7 +32,9 @@
       "component": "Toolbar",
       "origin": "https://base-ui.com/react/components/toolbar",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-toolbar"
     }
   }
 }

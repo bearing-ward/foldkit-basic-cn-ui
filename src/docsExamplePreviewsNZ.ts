@@ -1,6 +1,27 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
+import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
+import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
+import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
+import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
+import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
+import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-radio-form/main";
+import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
+import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
+import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
+import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
+import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
+import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
+import * as BaseUiSwitchBasicExample from "../registry/default/examples/base-ui-switch-basic/main";
+import * as BaseUiTabsBasicExample from "../registry/default/examples/base-ui-tabs-basic/main";
+import * as BaseUiToastBasicExample from "../registry/default/examples/base-ui-toast-basic/main";
+import * as BaseUiToggleBasicExample from "../registry/default/examples/base-ui-toggle-basic/main";
+import * as BaseUiToggleGroupBasicExample from "../registry/default/examples/base-ui-toggle-group-basic/main";
+import * as BaseUiToolbarBasicExample from "../registry/default/examples/base-ui-toolbar-basic/main";
+import * as BaseUiTooltipBasicExample from "../registry/default/examples/base-ui-tooltip-basic/main";
 import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
 import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
 import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
@@ -14,7 +35,6 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
-import * as ScrollAreaBasicExample from "../registry/default/examples/scroll-area-basic/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -153,6 +173,21 @@ export const tableBasicExamplePreview = (
   });
 };
 
+export const baseUiSeparatorBasicExamplePreview = (
+  model: BaseUiSeparatorBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiSeparatorBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiSeparatorBasicExampleMessage({ message }),
+  });
+};
+
 export const separatorBasicExamplePreview = (
   model: SeparatorBasicExample.Model,
   slotId: string
@@ -213,6 +248,21 @@ export const navigationMenuBasicExamplePreview = (
   });
 };
 
+export const baseUiNavigationMenuBasicExamplePreview = (
+  model: BaseUiNavigationMenuBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiNavigationMenuBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiNavigationMenuBasicExampleMessage({ message }),
+  });
+};
+
 export const otpFieldBasicExamplePreview = (
   model: OtpFieldBasicExample.Model,
   slotId: string
@@ -225,6 +275,21 @@ export const otpFieldBasicExamplePreview = (
     view: OtpFieldBasicExample.view,
     toParentMessage: (message) =>
       Main.GotOtpFieldBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiOtpFieldBasicExamplePreview = (
+  model: BaseUiOtpFieldBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiOtpFieldBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiOtpFieldBasicExampleMessage({ message }),
   });
 };
 
@@ -243,6 +308,21 @@ export const previewCardBasicExamplePreview = (
   });
 };
 
+export const baseUiPreviewCardBasicExamplePreview = (
+  model: BaseUiPreviewCardBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiPreviewCardBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiPreviewCardBasicExampleMessage({ message }),
+  });
+};
+
 export const numberFieldBasicExamplePreview = (
   model: NumberFieldBasicExample.Model,
   slotId: string
@@ -255,6 +335,36 @@ export const numberFieldBasicExamplePreview = (
     view: NumberFieldBasicExample.view,
     toParentMessage: (message) =>
       Main.GotNumberFieldBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiNumberFieldBasicExamplePreview = (
+  model: BaseUiNumberFieldBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiNumberFieldBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiNumberFieldBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiSwitchBasicExamplePreview = (
+  model: BaseUiSwitchBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiSwitchBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiSwitchBasicExampleMessage({ message }),
   });
 };
 
@@ -303,6 +413,21 @@ export const switchDisabledExamplePreview = (
   });
 };
 
+export const baseUiSliderBasicExamplePreview = (
+  model: BaseUiSliderBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiSliderBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiSliderBasicExampleMessage({ message }),
+  });
+};
+
 export const sliderBasicExamplePreview = (
   model: SliderBasicExample.Model,
   slotId: string
@@ -348,6 +473,21 @@ export const sliderDisabledExamplePreview = (
   });
 };
 
+export const baseUiTabsBasicExamplePreview = (
+  model: BaseUiTabsBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiTabsBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiTabsBasicExampleMessage({ message }),
+  });
+};
+
 export const tabsBasicExamplePreview = (
   model: TabsBasicExample.Model,
   slotId: string
@@ -388,6 +528,21 @@ export const tabsManualExamplePreview = (
     model,
     view: TabsManualExample.view,
     toParentMessage: (message) => Main.GotTabsManualExampleMessage({ message }),
+  });
+};
+
+export const baseUiTooltipBasicExamplePreview = (
+  model: BaseUiTooltipBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiTooltipBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiTooltipBasicExampleMessage({ message }),
   });
 };
 
@@ -466,6 +621,21 @@ export const popoverBasicExamplePreview = (
   });
 };
 
+export const baseUiPopoverBasicExamplePreview = (
+  model: BaseUiPopoverBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiPopoverBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiPopoverBasicExampleMessage({ message }),
+  });
+};
+
 export const popoverAnimatedExamplePreview = (
   model: PopoverAnimatedExample.Model,
   slotId: string
@@ -478,6 +648,66 @@ export const popoverAnimatedExamplePreview = (
     view: PopoverAnimatedExample.view,
     toParentMessage: (message) =>
       Main.GotPopoverAnimatedExampleMessage({ message }),
+  });
+};
+
+export const baseUiRadioBasicExamplePreview = (
+  model: BaseUiRadioBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiRadioBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiRadioBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiRadioLabelingExamplePreview = (
+  model: BaseUiRadioLabelingExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiRadioLabelingExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiRadioLabelingExampleMessage({ message }),
+  });
+};
+
+export const baseUiRadioNativeButtonExamplePreview = (
+  model: BaseUiRadioNativeButtonExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiRadioNativeButtonExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiRadioNativeButtonExampleMessage({ message }),
+  });
+};
+
+export const baseUiRadioFormExamplePreview = (
+  model: BaseUiRadioFormExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiRadioFormExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiRadioFormExampleMessage({ message }),
   });
 };
 
@@ -523,6 +753,21 @@ export const radioGroupHorizontalExamplePreview = (
     view: RadioGroupHorizontalExample.view,
     toParentMessage: (message) =>
       Main.GotRadioGroupHorizontalExampleMessage({ message }),
+  });
+};
+
+export const baseUiSelectBasicExamplePreview = (
+  model: BaseUiSelectBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiSelectBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiSelectBasicExampleMessage({ message }),
   });
 };
 
@@ -586,6 +831,21 @@ export const scrollAreaBasicExamplePreview = (
   });
 };
 
+export const baseUiToggleBasicExamplePreview = (
+  model: BaseUiToggleBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiToggleBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiToggleBasicExampleMessage({ message }),
+  });
+};
+
 export const toggleBasicExamplePreview = (
   model: ToggleBasicExample.Model,
   slotId: string
@@ -598,6 +858,21 @@ export const toggleBasicExamplePreview = (
     view: ToggleBasicExample.view,
     toParentMessage: (message) =>
       Main.GotToggleBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiToggleGroupBasicExamplePreview = (
+  model: BaseUiToggleGroupBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiToggleGroupBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiToggleGroupBasicExampleMessage({ message }),
   });
 };
 
@@ -627,6 +902,21 @@ export const radioBasicExamplePreview = (
     model,
     view: RadioBasicExample.view,
     toParentMessage: (message) => Main.GotRadioBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiToolbarBasicExamplePreview = (
+  model: BaseUiToolbarBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiToolbarBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiToolbarBasicExampleMessage({ message }),
   });
 };
 
@@ -660,6 +950,21 @@ export const progressBasicExamplePreview = (
   });
 };
 
+export const baseUiProgressBasicExamplePreview = (
+  model: BaseUiProgressBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiProgressBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiProgressBasicExampleMessage({ message }),
+  });
+};
+
 export const textareaBasicExamplePreview = (
   model: TextareaBasicExample.Model,
   slotId: string
@@ -687,6 +992,21 @@ export const textareaDisabledExamplePreview = (
     view: TextareaDisabledExample.view,
     toParentMessage: (message) =>
       Main.GotTextareaDisabledExampleMessage({ message }),
+  });
+};
+
+export const baseUiToastBasicExamplePreview = (
+  model: BaseUiToastBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiToastBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiToastBasicExampleMessage({ message }),
   });
 };
 

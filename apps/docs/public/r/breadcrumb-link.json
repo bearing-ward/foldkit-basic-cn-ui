@@ -38,7 +38,7 @@
       "component": "Breadcrumb",
       "example": "link",
       "originExample": "breadcrumb-link",
-      "origin": "https://ui.shadcn.com/docs/components/breadcrumb"
+      "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
     }
   }
 }

@@ -35,55 +35,45 @@ export const update = (
 export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
   return h.div(
-    [h.Class("w-full")],
+    [h.Class("flex w-full max-w-md flex-col gap-6")],
     [
-      h.div(
-        [h.Class("grid gap-3")],
-        [
-          Item.view<Message>({
-            size: "default",
-            variant: "outline",
+      Item.view<Message>({
+        variant: "outline",
+        children: [
+          Item.contentView<Message>({
             children: [
-              Item.contentView<Message>({
-                children: [
-                  Item.titleView<Message>({ children: ["Default Size"] }),
-                  Item.descriptionView<Message>({
-                    children: ["The standard size for most use cases."],
-                  }),
-                ],
+              Item.titleView<Message>({ children: ["Basic Item"] }),
+              Item.descriptionView<Message>({
+                children: ["A simple item with title and description."],
               }),
             ],
           }),
-          Item.view<Message>({
-            size: "sm",
-            variant: "outline",
+          Item.actionsView<Message>({
             children: [
-              Item.contentView<Message>({
-                children: [
-                  Item.titleView<Message>({ children: ["Small Size"] }),
-                  Item.descriptionView<Message>({
-                    children: ["A compact size for dense layouts."],
-                  }),
-                ],
+              h.button(
+                [h.Type("button"), h.Class(Item.itemButtonClassName)],
+                ["Action"]
+              ),
+            ],
+          }),
+        ],
+      }),
+      Item.view<Message>({
+        variant: "outline",
+        size: "sm",
+        href: "#",
+        children: [
+          Item.mediaView<Message>({ children: ["✓"] }),
+          Item.contentView<Message>({
+            children: [
+              Item.titleView<Message>({
+                children: ["Your profile has been verified."],
               }),
             ],
           }),
-          Item.view<Message>({
-            size: "xs",
-            variant: "outline",
-            children: [
-              Item.contentView<Message>({
-                children: [
-                  Item.titleView<Message>({ children: ["Extra Small Size"] }),
-                  Item.descriptionView<Message>({
-                    children: ["The most compact size available."],
-                  }),
-                ],
-              }),
-            ],
-          }),
-        ]
-      ),
+          Item.actionsView<Message>({ children: ["›"] }),
+        ],
+      }),
     ]
   );
 });

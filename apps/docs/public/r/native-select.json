@@ -31,7 +31,7 @@
     "foldkit": {
       "component": "NativeSelect",
       "stateful": false,
-      "origin": "https://ui.shadcn.com/docs/components/native-select",
+      "origin": "https://ui.shadcn.com/docs/components/radix/native-select",
       "artifact": "component"
     }
   }

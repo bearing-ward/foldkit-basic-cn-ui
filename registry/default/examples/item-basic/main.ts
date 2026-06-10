@@ -35,7 +35,7 @@ export const update = (
 export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
   return h.div(
-    [h.Class("w-full")],
+    [h.Class("flex w-full max-w-md flex-col gap-6")],
     [
       Item.view<Message>({
         variant: "outline",
@@ -57,6 +57,22 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               ),
             ],
           }),
+        ],
+      }),
+      Item.view<Message>({
+        variant: "outline",
+        size: "sm",
+        href: "#",
+        children: [
+          Item.mediaView<Message>({ children: ["✓"] }),
+          Item.contentView<Message>({
+            children: [
+              Item.titleView<Message>({
+                children: ["Your profile has been verified."],
+              }),
+            ],
+          }),
+          Item.actionsView<Message>({ children: ["›"] }),
         ],
       }),
     ]

@@ -32,7 +32,9 @@
       "component": "NumberField",
       "origin": "https://base-ui.com/react/components/number-field",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-number-field"
     }
   }
 }

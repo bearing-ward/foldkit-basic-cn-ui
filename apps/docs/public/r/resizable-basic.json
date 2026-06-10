@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Resizable",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/resizable"
+      "origin": "https://ui.shadcn.com/docs/components/radix/resizable"
     }
   }
 }

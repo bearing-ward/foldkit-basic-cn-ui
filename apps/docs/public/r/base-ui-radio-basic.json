@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-radio-basic",
+  "type": "registry:example",
+  "title": "Base UI Radio Basic",
+  "description": "A runnable Foldkit version of the Base UI Radio default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-radio"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-radio-basic/main.ts",
+      "target": "src/examples/base-ui-radio-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as RadioGroup from \"../../ui/base-ui-radio\";\n\ntype Apple = \"Fuji\" | \"Gala\" | \"Granny Smith\";\n\nconst AppleRadioGroup = RadioGroup.create<Apple>();\nconst apples: readonly Apple[] = [\"Fuji\", \"Gala\", \"Granny Smith\"];\n\n// MODEL\n\nexport const Model = S.Struct({\n  radioGroup: RadioGroup.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotRadioGroupMessage = m(\"GotRadioGroupMessage\", {\n  message: RadioGroup.Message,\n});\n\nexport const Message = S.Union([GotRadioGroupMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [radioGroup, radioGroupCommands] = RadioGroup.init({\n    id: \"radio-group-basic\",\n    selectedValue: \"Fuji\",\n  });\n\n  return [\n    { radioGroup },\n    Command.mapMessages(radioGroupCommands, (message) =>\n      GotRadioGroupMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotRadioGroupMessage: ({ message }) => {\n        const [radioGroup, radioGroupCommands] = AppleRadioGroup.update(\n          model.radioGroup,\n          message\n        );\n\n        return [\n          evo(model, { radioGroup: () => radioGroup }),\n          Command.mapMessages(radioGroupCommands, (message) =>\n            GotRadioGroupMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.submodel({\n    slotId: model.radioGroup.id,\n    model: model.radioGroup,\n    view: AppleRadioGroup.view,\n    viewInputs: {\n      options: apples,\n      ariaLabel: \"Best apple\",\n      name: \"apple\",\n      toView: ({ group, hiddenInput, options }) =>\n        h.div(\n          [...group, h.Class(RadioGroup.baseUiRadioVerticalClassName)],\n          [\n            h.input(hiddenInput),\n            h.div(\n              [h.Class(RadioGroup.baseUiRadioLabelClassName)],\n              [\"Best apple\"]\n            ),\n            ...options.map((option) =>\n              h.label(\n                [\n                  ...option.label,\n                  h.Class(\"flex cursor-pointer items-center gap-2\"),\n                ],\n                [\n                  h.span(\n                    [\n                      ...option.option,\n                      h.Class(RadioGroup.baseUiRadioVerticalOptionClassName),\n                    ],\n                    [\n                      option.isSelected\n                        ? RadioGroup.baseUiRadioCheckIcon()\n                        : RadioGroup.baseUiRadioCheckPlaceholder(),\n                    ]\n                  ),\n                  h.span(\n                    [h.Class(RadioGroup.baseUiRadioLabelClassName)],\n                    [option.value]\n                  ),\n                ]\n              )\n            ),\n          ]\n        ),\n    },\n    toParentMessage: (message) => GotRadioGroupMessage({ message }),\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-radio-basic/base-ui-radio-basic.scene.test.ts",
+      "target": "src/examples/base-ui-radio-basic/base-ui-radio-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Radio from \"../../ui/base-ui-radio\";\nimport * as BaseUiRadioBasicExample from \"./main\";\n\ndescribe(\"Base UI radio Basic example\", () => {\n  test(\"updates selected apple\", () => {\n    Scene.scene(\n      {\n        update: BaseUiRadioBasicExample.update,\n        view: BaseUiRadioBasicExample.view,\n      },\n      Scene.with(BaseUiRadioBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"Best apple\")).toExist(),\n      Scene.expect(Scene.role(\"radio\", { name: \"Fuji\" })).toBeChecked(),\n      Scene.expect(Scene.role(\"radio\", { name: \"Gala\" })).not.toBeChecked(),\n      Scene.expect(\n        Scene.role(\"radio\", { name: \"Granny Smith\" })\n      ).not.toBeChecked(),\n      Scene.expect(Scene.text(\"Sweet and crisp.\")).not.toExist(),\n      Scene.click(Scene.role(\"radio\", { name: \"Gala\" })),\n      Scene.Command.expectHas(\n        Radio.FocusOption({ id: \"radio-group-basic\", index: 1 })\n      ),\n      Scene.Command.resolve(\n        Radio.FocusOption({ id: \"radio-group-basic\", index: 1 }),\n        Radio.CompletedFocusOption(),\n        (message) => BaseUiRadioBasicExample.GotRadioGroupMessage({ message })\n      ),\n      Scene.expect(Scene.role(\"radio\", { name: \"Gala\" })).toBeChecked()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Radio",
+      "example": "basic",
+      "originExample": "radio-default",
+      "origin": "https://base-ui.com/react/components/radio"
+    }
+  }
+}

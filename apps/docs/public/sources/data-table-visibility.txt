@@ -10,12 +10,16 @@ import * as DataTable from "../../ui/data-table";
 
 // MODEL
 export const Model = S.Struct({
+  filter: S.String,
   status: S.Boolean,
   email: S.Boolean,
   amount: S.Boolean,
+  isColumnsOpen: S.Boolean,
 });
 export type Model = typeof Model.Type;
 // MESSAGE
+export const UpdatedFilter = m("UpdatedFilter", { value: S.String });
+export const ClickedToggleColumnsMenu = m("ClickedToggleColumnsMenu");
 export const ClickedToggleColumn = m("ClickedToggleColumn", {
   column: S.Union([
     S.Literal("status"),
@@ -23,13 +27,17 @@ export const ClickedToggleColumn = m("ClickedToggleColumn", {
     S.Literal("amount"),
   ]),
 });
-export const Message = S.Union([ClickedToggleColumn]);
+export const Message = S.Union([
+  UpdatedFilter,
+  ClickedToggleColumnsMenu,
+  ClickedToggleColumn,
+]);
 export type Message = typeof Message.Type;
 // INIT
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ status: true, email: true, amount: true }, []];
+] => [{ filter: "", status: true, email: true, amount: true, isColumnsOpen: false }, []];
 // UPDATE
 export const update = (
   model: Model,
@@ -38,6 +46,11 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
+      UpdatedFilter: ({ value }) => [evo(model, { filter: () => value }), []],
+      ClickedToggleColumnsMenu: () => [
+        evo(model, { isColumnsOpen: (isColumnsOpen) => !isColumnsOpen }),
+        [],
+      ],
       ClickedToggleColumn: ({ column }) => {
         if (column === "status") {
           return [evo(model, { status: (status) => !status }), []];
@@ -52,28 +65,72 @@ export const update = (
 // VIEW
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
-  const button = (column: "status" | "email" | "amount", label: string): Html =>
+  const rows = DataTable.filterPayments(DataTable.payments, model.filter);
+  const columnMenuItem = (
+    column: "status" | "email" | "amount",
+    label: string,
+    checked: boolean
+  ): Html =>
     h.button(
       [
         h.Type("button"),
+        h.Attribute("role", "menuitemcheckbox"),
+        h.Attribute("aria-checked", checked ? "true" : "false"),
         h.AriaLabel(`Toggle ${column} column`),
-        h.Class(DataTable.dataTableButtonClassName),
+        h.Class(DataTable.dataTableMenuItemClassName),
         h.OnClick(ClickedToggleColumn({ column })),
       ],
-      [label]
+      [`${checked ? "✓ " : ""}${label}`]
     );
+
   return h.div(
     [h.Class("space-y-4")],
     [
       DataTable.toolbarView<Message>({
         children: [
-          button("status", "Status"),
-          button("email", "Email"),
-          button("amount", "Amount"),
+          h.input([
+            h.Type("text"),
+            h.AriaLabel("Filter emails"),
+            h.Placeholder("Filter emails..."),
+            h.Value(model.filter),
+            h.OnInput((value) => UpdatedFilter({ value })),
+            h.Class(DataTable.dataTableInputClassName),
+          ]),
+          h.div(
+            [h.Class("relative inline-flex flex-col items-end gap-2")],
+            [
+              h.button(
+                [
+                  h.Type("button"),
+                  h.Attribute("aria-haspopup", "menu"),
+                  h.Attribute(
+                    "aria-expanded",
+                    model.isColumnsOpen ? "true" : "false"
+                  ),
+                  h.Class(DataTable.dataTableButtonClassName),
+                  h.OnClick(ClickedToggleColumnsMenu()),
+                ],
+                ["Columns"]
+              ),
+              model.isColumnsOpen
+                ? h.div(
+                    [
+                      h.Attribute("role", "menu"),
+                      h.Class(`${DataTable.dataTableMenuClassName} min-w-32`),
+                    ],
+                    [
+                      columnMenuItem("status", "Status", model.status),
+                      columnMenuItem("email", "Email", model.email),
+                      columnMenuItem("amount", "Amount", model.amount),
+                    ]
+                  )
+                : h.empty,
+            ]
+          ),
         ],
       }),
       DataTable.paymentsTableView<Message>({
-        payments: DataTable.payments.slice(0, 5),
+        payments: rows.slice(0, 5),
         visibleColumns: model,
       }),
     ]

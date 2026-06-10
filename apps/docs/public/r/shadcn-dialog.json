@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/dialog",
+      "origin": "https://ui.shadcn.com/docs/components/radix/dialog",
       "artifact": "component",
       "primitive": "Ui.Dialog",
       "stateful": true

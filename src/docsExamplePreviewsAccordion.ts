@@ -3,6 +3,7 @@ import { html } from "foldkit/html";
 
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
 import * as ShadcnAccordionBasicExample from "../registry/default/examples/shadcn-accordion-basic/main";
 import * as ShadcnAccordionBordersExample from "../registry/default/examples/shadcn-accordion-borders/main";
 import * as ShadcnAccordionCardExample from "../registry/default/examples/shadcn-accordion-card/main";
@@ -40,6 +41,21 @@ export const accordionMultipleExamplePreview = (
     view: AccordionMultipleExample.view,
     toParentMessage: (message) =>
       Main.GotAccordionMultipleExampleMessage({ message }),
+  });
+};
+
+export const baseUiAccordionMultipleExamplePreview = (
+  model: BaseUiAccordionMultipleExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiAccordionMultipleExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiAccordionMultipleExampleMessage({ message }),
   });
 };
 

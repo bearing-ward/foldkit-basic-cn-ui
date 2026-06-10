@@ -29,7 +29,7 @@
   ],
   "meta": {
     "foldkit": {
-      "origin": "https://ui.shadcn.com/docs/components/switch",
+      "origin": "https://ui.shadcn.com/docs/components/radix/switch",
       "artifact": "component",
       "primitive": "Ui.Switch",
       "stateful": true

@@ -1,0 +1,70 @@
+import { Match as M, Schema as S } from "effect";
+import type { Command } from "foldkit";
+import { Submodel } from "foldkit";
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+import { m } from "foldkit/message";
+import { evo } from "foldkit/struct";
+
+import * as AlertDialog from "../../ui/base-ui-alert-dialog";
+
+export const Model = S.Struct({
+  tweetOpen: S.Boolean,
+  confirmationOpen: S.Boolean,
+  tweet: S.String,
+  discarded: S.Boolean,
+});
+
+export type Model = typeof Model.Type;
+
+export const ClickedTweet = m("ClickedTweet");
+export const UpdatedTweet = m("UpdatedTweet", { value: S.String });
+export const RequestedCloseTweet = m("RequestedCloseTweet");
+export const ClickedGoBack = m("ClickedGoBack");
+export const ClickedDiscardTweet = m("ClickedDiscardTweet");
+
+export const Message = S.Union([
+  ClickedTweet,
+  UpdatedTweet,
+  RequestedCloseTweet,
+  ClickedGoBack,
+  ClickedDiscardTweet,
+]);
+export type Message = typeof Message.Type;
+
+export const init = (): readonly [
+  Model,
+  readonly Command.Command<Message>[],
+] => [{ tweetOpen: false, confirmationOpen: false, tweet: "", discarded: false }, []];
+
+export const update = (
+  model: Model,
+  message: Message
+): readonly [Model, readonly Command.Command<Message>[]] =>
+  M.value(message).pipe(
+    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
+    M.tagsExhaustive({
+      ClickedTweet: () => [
+        evo(model, { tweetOpen: () => true, discarded: () => false }),
+        [],
+      ],
+      UpdatedTweet: ({ value }) => [evo(model, { tweet: () => value }), []],
+      RequestedCloseTweet: () =>
+        model.tweet.trim() === ""
+          ? [evo(model, { tweetOpen: () => false }), []]
+          : [evo(model, { confirmationOpen: () => true }), []],
+      ClickedGoBack: () => [
+        evo(model, { confirmationOpen: () => false }),
+        [],
+      ],
+      ClickedDiscardTweet: () => [
+        evo(model, {
+          tweetOpen: () => false,
+          confirmationOpen: () => false,
+          tweet: () => "",
+          discarded: () => true,
+        }),
+        [],
+      ],
+    })
+  );

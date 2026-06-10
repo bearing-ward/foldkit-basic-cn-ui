@@ -37,7 +37,8 @@
     "foldkit": {
       "component": "Toggle",
       "example": "basic",
-      "originExample": "toggle-hero"
+      "originExample": "toggle-hero",
+      "origin": "https://base-ui.com/react/components/toggle"
     }
   }
 }

@@ -7,21 +7,19 @@ import { m } from "foldkit/message";
 
 import * as DataTable from "../../ui/data-table";
 
-export const SortColumn = S.Union([
-  S.Literal("email"),
-  S.Literal("amount"),
-  S.Literal("status"),
-]);
 export const SortDirection = S.Union([
   S.Literal("ascending"),
   S.Literal("descending"),
 ]);
 // MODEL
-export const Model = S.Struct({ column: SortColumn, direction: SortDirection });
+export const Model = S.Struct({
+  column: S.Literal("email"),
+  direction: SortDirection,
+});
 export type Model = typeof Model.Type;
 // MESSAGE
-export const ClickedSort = m("ClickedSort", { column: SortColumn });
-export const Message = S.Union([ClickedSort]);
+export const ClickedSortEmail = m("ClickedSortEmail");
+export const Message = S.Union([ClickedSortEmail]);
 export type Message = typeof Message.Type;
 // INIT
 export const init = (): readonly [
@@ -36,7 +34,7 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      ClickedSort: ({ column }) => [DataTable.toggleSort(model, column), []],
+      ClickedSortEmail: () => [DataTable.toggleSort(model, "email"), []],
     })
   );
 // VIEW
@@ -46,10 +44,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   return h.div(
     [h.Class("space-y-4")],
     [
-      h.p(
-        [h.Class("text-sm text-gray-600")],
-        [`Sort: ${model.column} ${model.direction}`]
-      ),
       DataTable.containerView<Message>({
         children: [
           h.table(
@@ -63,14 +57,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     [
                       h.th(
                         [h.Class(DataTable.dataTableHeadClassName)],
-                        [
-                          DataTable.sortHeaderView<Message>({
-                            label: "Status",
-                            active: model.column === "status",
-                            direction: model.direction,
-                            onClick: ClickedSort({ column: "status" }),
-                          }),
-                        ]
+                        ["Status"]
                       ),
                       h.th(
                         [h.Class(DataTable.dataTableHeadClassName)],
@@ -79,20 +66,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                             label: "Email",
                             active: model.column === "email",
                             direction: model.direction,
-                            onClick: ClickedSort({ column: "email" }),
+                            onClick: ClickedSortEmail(),
                           }),
                         ]
                       ),
                       h.th(
                         [h.Class(DataTable.dataTableHeadClassName)],
-                        [
-                          DataTable.sortHeaderView<Message>({
-                            label: "Amount",
-                            active: model.column === "amount",
-                            direction: model.direction,
-                            onClick: ClickedSort({ column: "amount" }),
-                          }),
-                        ]
+                        ["Amount"]
                       ),
                     ]
                   ),

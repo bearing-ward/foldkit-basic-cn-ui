@@ -15,6 +15,7 @@ import * as InputDisabledExample from "../registry/default/examples/input-disabl
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
+import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
 import * as ItemGroupExample from "../registry/default/examples/item-group/main";
 import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
 import * as ItemIconExample from "../registry/default/examples/item-icon/main";
@@ -152,6 +153,21 @@ export const itemLinkExamplePreview = (
     model,
     view: ItemLinkExample.view,
     toParentMessage: (message) => Main.GotItemLinkExampleMessage({ message }),
+  });
+};
+
+export const itemDropdownExamplePreview = (
+  model: ItemDropdownExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ItemDropdownExample.view,
+    toParentMessage: (message) =>
+      Main.GotItemDropdownExampleMessage({ message }),
   });
 };
 

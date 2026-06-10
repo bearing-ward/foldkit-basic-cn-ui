@@ -1,4 +1,4 @@
-import { Array, Match as M, Option, Schema as S } from "effect";
+import { Array, Match as M, Schema as S } from "effect";
 import { Command, Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { childAttributes, html } from "foldkit/html";
@@ -8,10 +8,16 @@ import { evo } from "foldkit/struct";
 import { defaultAnchor, selectedIcon } from "../../ui/combobox/view";
 import * as Combobox from "../../ui/shadcn-combobox";
 
-type City = "Kyiv" | "Oxford" | "Quito";
+type Framework = "Next.js" | "SvelteKit" | "Nuxt.js" | "Remix" | "Astro";
 
-const CityCombobox = Combobox.create<City>();
-const cities: readonly City[] = ["Kyiv", "Oxford", "Quito"];
+const FrameworkCombobox = Combobox.create<Framework>();
+const frameworks: readonly Framework[] = [
+  "Next.js",
+  "SvelteKit",
+  "Nuxt.js",
+  "Remix",
+  "Astro",
+];
 
 // MODEL
 
@@ -58,7 +64,7 @@ export const update = (
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
       GotComboboxMessage: ({ message }) => {
-        const [combobox, comboboxCommands] = CityCombobox.update(
+        const [combobox, comboboxCommands] = FrameworkCombobox.update(
           model.combobox,
           message
         );
@@ -75,31 +81,31 @@ export const update = (
 
 // VIEW
 
-const filterCities = (inputValue: string): readonly City[] =>
+const filterFrameworks = (inputValue: string): readonly Framework[] =>
   inputValue === ""
-    ? cities
-    : Array.filter(cities, (city) =>
-        city.toLowerCase().includes(inputValue.toLowerCase())
+    ? frameworks
+    : Array.filter(frameworks, (framework) =>
+        framework.toLowerCase().includes(inputValue.toLowerCase())
       );
 
-const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
+const viewInputs = (inputValue: string): Combobox.ViewInputs<Framework> => {
   const h = html<Message>();
 
   return {
-    items: filterCities(inputValue),
-    itemToConfig: (city, context) => ({
+    items: filterFrameworks(inputValue),
+    itemToConfig: (framework, context) => ({
       className: Combobox.shadcnComboboxItemClassName,
       content: h.div(
         [h.Class("flex items-center gap-2")],
-        [selectedIcon(context.isSelected), h.span([], [city])]
+        [selectedIcon(context.isSelected), h.span([], [framework])]
       ),
     }),
-    itemToValue: (city) => city,
-    itemToDisplayText: (city) => city,
+    itemToValue: (framework) => framework,
+    itemToDisplayText: (framework) => framework,
     inputAttributes: childAttributes([
       h.Class(Combobox.shadcnComboboxInputClassName),
-      h.Placeholder("Search cities..."),
-      h.AriaLabel("City"),
+      h.Placeholder("Select framework..."),
+      h.AriaLabel("Framework"),
     ]),
     inputWrapperAttributes: childAttributes([
       h.Class(Combobox.shadcnComboboxInputWrapperClassName),
@@ -124,25 +130,11 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  const selectedLabel = Option.getOrElse(
-    model.combobox.maybeSelectedDisplayText,
-    () => "No city selected"
-  );
-
-  return h.div(
-    [h.Class("space-y-3")],
-    [
-      h.submodel({
-        slotId: model.combobox.id,
-        model: model.combobox,
-        view: CityCombobox.view,
-        viewInputs: viewInputs(model.combobox.inputValue),
-        toParentMessage: (message) => GotComboboxMessage({ message }),
-      }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Selected city: ${selectedLabel}`]
-      ),
-    ]
-  );
+  return h.submodel({
+    slotId: model.combobox.id,
+    model: model.combobox,
+    view: FrameworkCombobox.view,
+    viewInputs: viewInputs(model.combobox.inputValue),
+    toParentMessage: (message) => GotComboboxMessage({ message }),
+  });
 });

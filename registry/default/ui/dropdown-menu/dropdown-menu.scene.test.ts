@@ -23,6 +23,10 @@ const view = (open: boolean): Html => {
             children: [
               DropdownMenu.popupView<string>({
                 children: [
+                  DropdownMenu.labelView<string>({
+                    children: [h.span([], ["My Account"])],
+                  }),
+                  DropdownMenu.separatorView<string>({}),
                   DropdownMenu.itemView<string>({
                     onSelect: "profile",
                     children: [h.span([], ["Profile"])],
@@ -78,6 +82,7 @@ describe("Dropdown Menu registry view", () => {
         "true"
       ),
       Scene.expect(Scene.role("menu")).toExist(),
+      Scene.expect(Scene.text("My Account")).toExist(),
       Scene.expect(Scene.role("menuitem", { name: "Profile" })).toExist(),
       Scene.expect(Scene.text("⌘B")).toHaveAttr(
         "data-slot",

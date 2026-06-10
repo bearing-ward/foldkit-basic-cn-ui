@@ -75,10 +75,10 @@ export const update = (
   );
 
 const primaryButtonClassName =
-  "inline-flex h-9 items-center justify-center bg-gray-950 px-3 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 items-center justify-center bg-gray-950 px-4 text-sm font-medium text-white transition hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 const iconButtonClassName =
-  "inline-flex h-9 w-9 items-center justify-center bg-white text-sm font-semibold text-gray-700 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
+  "inline-flex h-9 w-9 items-center justify-center bg-white text-sm font-semibold text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
 
@@ -98,11 +98,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         Popover.root<Message>({
           children: [
             ButtonGroup.view<Message>({
-              ariaLabel: "Copilot actions",
+              ariaLabel: "Assistant actions",
               children: [
                 ButtonGroup.itemView<Message>({
                   children: [
-                    h.button([h.Class(primaryButtonClassName)], ["Copilot"]),
+                    h.button([h.Class(primaryButtonClassName)], ["Ask AI"]),
                   ],
                 }),
                 ButtonGroup.itemView<Message>({
@@ -111,7 +111,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       [
                         ...render.button,
                         h.Type("button"),
-                        h.AriaLabel("Open Copilot options"),
+                        h.AriaLabel("Open AI options"),
                         h.Class(iconButtonClassName),
                       ],
                       ["v"]
@@ -128,7 +128,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     children: [
                       h.p(
                         [h.Class("text-sm font-semibold text-gray-900")],
-                        ["Copilot"]
+                        ["Ask AI"]
                       ),
                       h.p(
                         [h.Class("mt-2 text-sm text-gray-600")],

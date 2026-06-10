@@ -32,7 +32,9 @@
       "component": "Autocomplete",
       "origin": "https://base-ui.com/react/components/autocomplete",
       "artifact": "component",
-      "stateful": true
+      "stateful": true,
+      "public": false,
+      "publicAliasOf": "base-ui-autocomplete"
     }
   }
 }

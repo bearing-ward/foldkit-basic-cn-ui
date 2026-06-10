@@ -11,8 +11,8 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("security"),
-  S.Literal("members"),
+  S.Literal("notifications"),
+  S.Literal("privacy"),
   S.Literal("billing"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["security"] }, []];
+] => [{ openValues: ["notifications"] }, []];
 
 // UPDATE
 
@@ -69,30 +69,30 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "security",
+          value: "notifications",
           openValues: model.openValues,
-          title: "Security alerts",
-          onValueChange: ToggledPanel({ value: "security" }),
+          title: "Notification Settings",
+          onValueChange: ToggledPanel({ value: "notifications" }),
           children: panel(
-            "Critical sign-in and device alerts stay open while you review other settings."
+            "Manage how you receive notifications. You can enable email alerts for updates or push notifications for mobile devices."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "members",
+          value: "privacy",
           openValues: model.openValues,
-          title: "Member invites",
-          onValueChange: ToggledPanel({ value: "members" }),
+          title: "Privacy & Security",
+          onValueChange: ToggledPanel({ value: "privacy" }),
           children: panel(
-            "Invite approvals, role changes, and pending seat requests."
+            "Control your privacy settings, manage two-factor authentication, and review active sessions."
           ),
         }),
         Accordion.itemView<Message>({
           value: "billing",
           openValues: model.openValues,
-          title: "Billing notices",
+          title: "Billing & Subscription",
           onValueChange: ToggledPanel({ value: "billing" }),
           children: panel(
-            "Plan changes, failed payments, and invoice delivery settings."
+            "Update your billing information, view invoices, and manage your subscription plan."
           ),
         }),
       ],

@@ -9,12 +9,12 @@ describe("button-group-nested example", () => {
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(
-        Scene.role("group", { name: "Nested audio actions" })
+        Scene.role("group", { name: "Nested editor controls" })
       ).toExist(),
-      Scene.expect(Scene.role("group", { name: "Voice controls" })).toExist(),
-      Scene.expect(Scene.role("group", { name: "Text controls" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Text alignment" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Text formatting" })).toExist(),
       Scene.expect(
-        Scene.role("group", { name: "Nested audio actions" })
+        Scene.role("group", { name: "Nested editor controls" })
       ).not.toHaveHandler("click")
     );
   });

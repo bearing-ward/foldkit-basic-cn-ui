@@ -30,7 +30,7 @@
   "meta": {
     "foldkit": {
       "component": "Alert",
-      "origin": "https://ui.shadcn.com/docs/components/alert",
+      "origin": "https://ui.shadcn.com/docs/components/radix/alert",
       "artifact": "component",
       "stateful": false
     }

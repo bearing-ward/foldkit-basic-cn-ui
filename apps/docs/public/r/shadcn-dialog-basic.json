@@ -25,7 +25,7 @@
     "foldkit": {
       "component": "Dialog",
       "example": "basic",
-      "origin": "https://ui.shadcn.com/docs/components/dialog"
+      "origin": "https://ui.shadcn.com/docs/components/radix/dialog"
     }
   }
 }

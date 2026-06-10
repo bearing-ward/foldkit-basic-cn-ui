@@ -8,7 +8,11 @@ describe("item-basic example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.text("Basic Item")).not.toHaveHandler("click")
+      Scene.expect(Scene.text("Basic Item")).not.toHaveHandler("click"),
+      Scene.expect(Scene.text("Your profile has been verified.")).toExist(),
+      Scene.expect(
+        Scene.role("link", { name: /Your profile has been verified/u })
+      ).toHaveAttr("href", "#")
     );
   });
 });

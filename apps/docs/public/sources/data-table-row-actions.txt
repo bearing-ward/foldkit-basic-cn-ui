@@ -9,17 +9,33 @@ import { evo } from "foldkit/struct";
 import * as DataTable from "../../ui/data-table";
 
 // MODEL
-export const Model = S.Struct({ status: S.String });
+export const Model = S.Struct({ openPaymentId: S.String });
 export type Model = typeof Model.Type;
 // MESSAGE
-export const ClickedOpenActions = m("ClickedOpenActions", { email: S.String });
-export const Message = S.Union([ClickedOpenActions]);
+export const ClickedOpenActions = m("ClickedOpenActions", {
+  paymentId: S.String,
+});
+export const ClickedCopyPaymentId = m("ClickedCopyPaymentId", {
+  paymentId: S.String,
+});
+export const ClickedViewCustomer = m("ClickedViewCustomer", {
+  paymentId: S.String,
+});
+export const ClickedViewPaymentDetails = m("ClickedViewPaymentDetails", {
+  paymentId: S.String,
+});
+export const Message = S.Union([
+  ClickedOpenActions,
+  ClickedCopyPaymentId,
+  ClickedViewCustomer,
+  ClickedViewPaymentDetails,
+]);
 export type Message = typeof Message.Type;
 // INIT
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ status: "No row action selected." }, []];
+] => [{ openPaymentId: "" }, []];
 // UPDATE
 export const update = (
   model: Model,
@@ -28,8 +44,23 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      ClickedOpenActions: ({ email }) => [
-        evo(model, { status: () => `Opened actions for ${email}.` }),
+      ClickedOpenActions: ({ paymentId }) => [
+        evo(model, {
+          openPaymentId: (openPaymentId) =>
+            openPaymentId === paymentId ? "" : paymentId,
+        }),
+        [],
+      ],
+      ClickedCopyPaymentId: () => [
+        evo(model, { openPaymentId: () => "" }),
+        [],
+      ],
+      ClickedViewCustomer: () => [
+        evo(model, { openPaymentId: () => "" }),
+        [],
+      ],
+      ClickedViewPaymentDetails: () => [
+        evo(model, { openPaymentId: () => "" }),
         [],
       ],
     })
@@ -40,18 +71,72 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   return h.div(
     [h.Class("space-y-4")],
     [
-      h.p([h.Class("text-sm text-gray-600")], [model.status]),
       DataTable.paymentsTableView<Message>({
         payments: DataTable.payments.slice(0, 5),
         actionView: (payment) =>
-          h.button(
+          h.div(
+            [h.Class("relative inline-flex flex-col items-end gap-2")],
             [
-              h.Type("button"),
-              h.AriaLabel(`Open menu for ${payment.email}`),
-              h.Class(DataTable.dataTableButtonClassName),
-              h.OnClick(ClickedOpenActions({ email: payment.email })),
-            ],
-            ["Open menu"]
+              h.button(
+                [
+                  h.Type("button"),
+                  h.AriaLabel(`Open menu for ${payment.email}`),
+                  h.Attribute("aria-haspopup", "menu"),
+                  h.Attribute(
+                    "aria-expanded",
+                    model.openPaymentId === payment.id ? "true" : "false"
+                  ),
+                  h.Class(DataTable.dataTableButtonClassName),
+                  h.OnClick(ClickedOpenActions({ paymentId: payment.id })),
+                ],
+                ["Open menu"]
+              ),
+              model.openPaymentId === payment.id
+                ? h.div(
+                    [
+                      h.Attribute("role", "menu"),
+                      h.Class(`${DataTable.dataTableMenuClassName} min-w-40`),
+                    ],
+                    [
+                      h.button(
+                        [
+                          h.Type("button"),
+                          h.Attribute("role", "menuitem"),
+                          h.Class(DataTable.dataTableMenuItemClassName),
+                          h.OnClick(
+                            ClickedCopyPaymentId({ paymentId: payment.id })
+                          ),
+                        ],
+                        ["Copy payment ID"]
+                      ),
+                      h.button(
+                        [
+                          h.Type("button"),
+                          h.Attribute("role", "menuitem"),
+                          h.Class(DataTable.dataTableMenuItemClassName),
+                          h.OnClick(
+                            ClickedViewCustomer({ paymentId: payment.id })
+                          ),
+                        ],
+                        ["View customer"]
+                      ),
+                      h.button(
+                        [
+                          h.Type("button"),
+                          h.Attribute("role", "menuitem"),
+                          h.Class(DataTable.dataTableMenuItemClassName),
+                          h.OnClick(
+                            ClickedViewPaymentDetails({
+                              paymentId: payment.id,
+                            })
+                          ),
+                        ],
+                        ["View payment details"]
+                      ),
+                    ]
+                  )
+                : h.empty,
+            ]
           ),
       }),
     ]
