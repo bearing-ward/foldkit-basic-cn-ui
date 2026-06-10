@@ -18893,9 +18893,14 @@ Separator.view<Message>({ orientation: "horizontal" });`,
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Button behavior with shadcn naming and style hooks.",
           classHelpers: [
+            "shadcnButtonBaseClassName",
             "shadcnButtonClassName",
+            "shadcnOutlineButtonClassName",
             "shadcnSecondaryButtonClassName",
             "shadcnDestructiveButtonClassName",
+            "shadcnGhostButtonClassName",
+            "shadcnLinkButtonClassName",
+            "shadcnIconButtonClassName",
           ],
           examples: [
             "shadcn-button-basic",

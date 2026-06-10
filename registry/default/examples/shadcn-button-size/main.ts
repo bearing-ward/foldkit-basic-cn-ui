@@ -46,7 +46,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.button(
                 [
                   ...attributes.button,
-                  h.Class(`${Button.shadcnButtonClassName} px-2 py-1 text-xs`),
+                  h.Class(
+                    `${Button.shadcnButtonBaseClassName} ${Button.shadcnButtonVariantClassName} ${Button.shadcnButtonExtraSmallSizeClassName}`
+                  ),
                 ],
                 ["Extra Small"]
               ),
@@ -57,7 +59,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
                 [
                   ...attributes.button,
                   h.Class(
-                    `${Button.shadcnButtonClassName} px-2.5 py-1.5 text-sm`
+                    `${Button.shadcnButtonBaseClassName} ${Button.shadcnButtonVariantClassName} ${Button.shadcnButtonSmallSizeClassName}`
                   ),
                 ],
                 ["Small"]
@@ -76,7 +78,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
                 [
                   ...attributes.button,
                   h.Class(
-                    `${Button.shadcnButtonClassName} px-4 py-2.5 text-lg`
+                    `${Button.shadcnButtonBaseClassName} ${Button.shadcnButtonVariantClassName} ${Button.shadcnButtonLargeSizeClassName}`
                   ),
                 ],
                 ["Large"]

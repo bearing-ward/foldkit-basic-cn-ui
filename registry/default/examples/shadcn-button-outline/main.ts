@@ -43,9 +43,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           h.button(
             [
               ...attributes.button,
-              h.Class(
-                `${Button.shadcnSecondaryButtonClassName} bg-transparent`
-              ),
+              h.Class(Button.shadcnOutlineButtonClassName),
             ],
             ["Outline"]
           ),

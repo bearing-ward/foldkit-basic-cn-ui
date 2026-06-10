@@ -1,15 +1,19 @@
-import type { Html } from "foldkit/html";
+import type { Attribute, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import { spinnerClassName } from "./view";
 
 export { spinnerClassName } from "./view";
 
-export type ViewConfig = Readonly<{
+export type ViewConfig<ParentMessage> = Readonly<{
   className?: string;
+  attributes?: readonly Attribute<ParentMessage>[] | undefined;
 }>;
 
-export const view = <ParentMessage>({ className }: ViewConfig = {}): Html => {
+export const view = <ParentMessage>({
+  attributes = [],
+  className,
+}: ViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
   const classNames = [spinnerClassName, className]
     .filter((value): value is string => value !== undefined && value !== "")
@@ -17,6 +21,7 @@ export const view = <ParentMessage>({ className }: ViewConfig = {}): Html => {
 
   return h.svg(
     [
+      ...attributes,
       h.Attribute("role", "status"),
       h.AriaLabel("Loading"),
       h.Class(classNames),
