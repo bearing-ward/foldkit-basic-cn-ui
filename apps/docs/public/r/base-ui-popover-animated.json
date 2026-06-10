@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-popover-animated",
+  "type": "registry:example",
+  "title": "Base UI Popover Animated",
+  "description": "A runnable Foldkit version of the Base UI Popover animated example using the built-in Popover animation lifecycle.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-popover"],
+  "files": [
+    {
+      "path": "registry/default/examples/base-ui-popover-animated/main.ts",
+      "target": "src/examples/base-ui-popover-animated/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Popover from \"../../ui/base-ui-popover\";\n\nconst anchor: Popover.ViewInputs[\"anchor\"] = {\n  placement: \"bottom-start\",\n  gap: 8,\n  padding: 8,\n};\n\n// MODEL\n\nexport const Model = S.Struct({\n  popover: Popover.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotPopoverMessage = m(\"GotPopoverMessage\", {\n  message: Popover.Message,\n});\n\nexport const Message = S.Union([GotPopoverMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [popover, popoverCommands] = Popover.init({\n    id: \"base-ui-popover-animated\",\n    isAnimated: true,\n  });\n\n  return [\n    { popover },\n    Command.mapMessages(popoverCommands, (message) =>\n      GotPopoverMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotPopoverMessage: ({ message }) => {\n        const [popover, popoverCommands] = Popover.update(\n          model.popover,\n          message\n        );\n\n        return [\n          evo(model, { popover: () => popover }),\n          Command.mapMessages(popoverCommands, (message) =>\n            GotPopoverMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.submodel({\n    slotId: model.popover.id,\n    model: model.popover,\n    view: Popover.view,\n    viewInputs: {\n      anchor,\n      toView: (render) =>\n        Popover.root<Message>({\n          children: [\n            Popover.trigger<Message>({\n              render,\n              label: \"Notifications\",\n            }),\n            ...(render.isVisible\n              ? [\n                  Popover.backdrop<Message>({ render }),\n                  Popover.panel<Message>({\n                    render,\n                    children: [\n                      h.div(\n                        [h.Class(\"space-y-1\")],\n                        [\n                          h.p(\n                            [h.Class(\"text-sm font-semibold text-gray-950\")],\n                            [\"Notifications\"]\n                          ),\n                          h.p(\n                            [h.Class(\"text-sm text-gray-600\")],\n                            [\n                              \"Animated popover content enters and exits with the Foldkit Popover animation lifecycle.\",\n                            ]\n                          ),\n                        ]\n                      ),\n                    ],\n                  }),\n                ]\n              : []),\n          ],\n        }),\n    },\n    toParentMessage: (message): Message => GotPopoverMessage({ message }),\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/base-ui-popover-animated/base-ui-popover-animated.scene.test.ts",
+      "target": "src/examples/base-ui-popover-animated/base-ui-popover-animated.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene, Ui } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Popover from \"../../ui/base-ui-popover\";\nimport { GotPopoverMessage, init, update, view } from \"./main\";\n\nconst [initialModel] = init();\n\nconst AnchorPopover = Popover.AnchorPopover({\n  buttonId: \"base-ui-popover-animated-button\",\n  anchor: {\n    placement: \"bottom-start\",\n    gap: 8,\n    padding: 8,\n  },\n});\n\nconst SettlePanelAnimation = Ui.Animation.WaitForAnimationSettled({\n  id: \"base-ui-popover-animated-panel\",\n});\nconst bodyText =\n  \"Animated popover content enters and exits with the Foldkit Popover animation lifecycle.\";\n\nconst toPopoverMessage = (message: Popover.Message) =>\n  GotPopoverMessage({ message });\n\nconst toAnimationMessage = (message: Ui.Animation.Message) =>\n  GotPopoverMessage({ message: Popover.GotAnimationMessage({ message }) });\n\ndescribe(\"Base UI Popover Animated example\", () => {\n  test(\"opens through the animated Foldkit popover lifecycle\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.text(bodyText)).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Notifications\" })),\n      Scene.Command.expectHas(Ui.Animation.RequestFrame),\n      Scene.Command.resolve(\n        Ui.Animation.RequestFrame,\n        Ui.Animation.AdvancedAnimationFrame(),\n        toAnimationMessage\n      ),\n      Scene.Mount.resolveAll(\n        [\n          Popover.PortalPopoverBackdrop,\n          Popover.CompletedPortalPopoverBackdrop(),\n          toPopoverMessage,\n        ],\n        [AnchorPopover, Popover.CompletedAnchorPopover(), toPopoverMessage]\n      ),\n      Scene.Command.resolve(\n        SettlePanelAnimation,\n        Ui.Animation.EndedAnimation(),\n        toAnimationMessage\n      ),\n      Scene.expect(Scene.text(\"Notifications\")).toExist(),\n      Scene.expect(Scene.text(bodyText)).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Popover",
+      "example": "animated",
+      "originExample": "animating-the-popover",
+      "origin": "https://base-ui.com/react/components/popover"
+    }
+  }
+}

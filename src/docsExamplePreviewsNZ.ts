@@ -4,6 +4,7 @@ import { html } from "foldkit/html";
 import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
@@ -637,6 +638,21 @@ export const baseUiPopoverBasicExamplePreview = (
     view: BaseUiPopoverBasicExample.view,
     toParentMessage: (message) =>
       Main.GotBaseUiPopoverBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiPopoverAnimatedExamplePreview = (
+  model: BaseUiPopoverAnimatedExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiPopoverAnimatedExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiPopoverAnimatedExampleMessage({ message }),
   });
 };
 

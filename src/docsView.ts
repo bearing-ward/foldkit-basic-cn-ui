@@ -12935,6 +12935,18 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone Base UI Popover Basic example",
       })
     ),
+    M.when("base-ui-popover-animated", () =>
+      docsExampleBlock({
+        title: "Animated",
+        testId: "docs-example-block-base-ui-popover-animated",
+        preview: DocsPreviewsNZ.baseUiPopoverAnimatedExamplePreview(
+          model.baseUiPopoverAnimatedExample,
+          "base-ui-popover-docs-animated-preview"
+        ),
+        href: "/docs/components/base-ui-popover/examples/animated",
+        linkText: "Open standalone Base UI Popover Animated example",
+      })
+    ),
     M.when("base-ui-popover-multiple-triggers", () =>
       docsExampleBlock({
         title: "Multiple Triggers",
@@ -19195,6 +19207,7 @@ Menu.view<Message>({
           ],
           examples: [
             "base-ui-popover-basic",
+            "base-ui-popover-animated",
             "base-ui-popover-multiple-triggers",
           ],
           anatomyCode: `import * as Popover from "./ui/base-ui-popover";
@@ -19210,6 +19223,8 @@ Popover.view<Message>({
         }),
       BaseUiPopoverBasicExample: () =>
         DocsRoutes.baseUiPopoverBasicExampleRouteView(model),
+      BaseUiPopoverAnimatedExample: () =>
+        DocsRoutes.baseUiPopoverAnimatedExampleRouteView(model),
       BaseUiPopoverMultipleTriggersExample: () =>
         DocsRoutes.baseUiPopoverMultipleTriggersExampleRouteView(model),
       ShadcnPopoverDocs: () =>

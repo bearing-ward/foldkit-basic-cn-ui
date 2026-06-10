@@ -65,6 +65,7 @@ import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-m
 import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
@@ -673,6 +674,9 @@ export const PopoverDocsRoute = r("PopoverDocs");
 export const ShadcnPopoverDocsRoute = r("ShadcnPopoverDocs");
 export const BaseUiPopoverDocsRoute = r("BaseUiPopoverDocs");
 export const BaseUiPopoverBasicExampleRoute = r("BaseUiPopoverBasicExample");
+export const BaseUiPopoverAnimatedExampleRoute = r(
+  "BaseUiPopoverAnimatedExample"
+);
 export const BaseUiPopoverMultipleTriggersExampleRoute = r(
   "BaseUiPopoverMultipleTriggersExample"
 );
@@ -1084,6 +1088,7 @@ const AppRoute = S.Union([
   ShadcnPopoverDocsRoute,
   BaseUiPopoverDocsRoute,
   BaseUiPopoverBasicExampleRoute,
+  BaseUiPopoverAnimatedExampleRoute,
   BaseUiPopoverMultipleTriggersExampleRoute,
   BaseUiRadioBasicExampleRoute,
   BaseUiRadioLabelingExampleRoute,
@@ -4526,6 +4531,14 @@ export const baseUiPopoverBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(BaseUiPopoverBasicExampleRoute)
 );
+export const baseUiPopoverAnimatedExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-popover")),
+  slash(literal("examples")),
+  slash(literal("animated")),
+  Route.mapTo(BaseUiPopoverAnimatedExampleRoute)
+);
 export const baseUiPopoverMultipleTriggersExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -4559,6 +4572,11 @@ export const baseUiPopoverBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("base-ui-popover-basic")),
   Route.mapTo(BaseUiPopoverBasicExampleRoute)
+);
+export const baseUiPopoverAnimatedStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-popover-animated")),
+  Route.mapTo(BaseUiPopoverAnimatedExampleRoute)
 );
 export const baseUiPopoverMultipleTriggersStandaloneExampleRouter = pipe(
   literal("examples"),
@@ -5479,10 +5497,12 @@ const routeParser = Route.oneOf(
   baseUiMenuDocsRouter,
   popoverRouter,
   baseUiPopoverBasicExampleRouter,
+  baseUiPopoverAnimatedExampleRouter,
   baseUiPopoverMultipleTriggersExampleRouter,
   popoverBasicExampleRouter,
   popoverAnimatedExampleRouter,
   baseUiPopoverBasicStandaloneExampleRouter,
+  baseUiPopoverAnimatedStandaloneExampleRouter,
   baseUiPopoverMultipleTriggersStandaloneExampleRouter,
   popoverBasicStandaloneExampleRouter,
   popoverAnimatedStandaloneExampleRouter,
@@ -6023,6 +6043,7 @@ export const Model = S.Struct({
   menuBasicExample: MenuBasicExample.Model,
   menuAnimatedExample: MenuAnimatedExample.Model,
   baseUiPopoverBasicExample: BaseUiPopoverBasicExample.Model,
+  baseUiPopoverAnimatedExample: BaseUiPopoverAnimatedExample.Model,
   baseUiPopoverMultipleTriggersExample:
     BaseUiPopoverMultipleTriggersExample.Model,
   baseUiRadioBasicExample: BaseUiRadioBasicExample.Model,
@@ -7134,6 +7155,12 @@ export const GotBaseUiPopoverBasicExampleMessage = m(
     message: BaseUiPopoverBasicExample.Message,
   }
 );
+export const GotBaseUiPopoverAnimatedExampleMessage = m(
+  "GotBaseUiPopoverAnimatedExampleMessage",
+  {
+    message: BaseUiPopoverAnimatedExample.Message,
+  }
+);
 export const GotBaseUiPopoverMultipleTriggersExampleMessage = m(
   "GotBaseUiPopoverMultipleTriggersExampleMessage",
   {
@@ -7614,6 +7641,7 @@ export const Message = S.Union([
   GotMenuAnimatedExampleMessage,
   GotBaseUiMenubarBasicExampleMessage,
   GotBaseUiPopoverBasicExampleMessage,
+  GotBaseUiPopoverAnimatedExampleMessage,
   GotBaseUiPopoverMultipleTriggersExampleMessage,
   GotBaseUiRadioBasicExampleMessage,
   GotBaseUiRadioLabelingExampleMessage,
@@ -8138,6 +8166,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     MenuAnimatedExample.init();
   const [baseUiPopoverBasicExample, baseUiPopoverBasicExampleCommands] =
     BaseUiPopoverBasicExample.init();
+  const [baseUiPopoverAnimatedExample, baseUiPopoverAnimatedExampleCommands] =
+    BaseUiPopoverAnimatedExample.init();
   const [
     baseUiPopoverMultipleTriggersExample,
     baseUiPopoverMultipleTriggersExampleCommands,
@@ -8447,6 +8477,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       menuBasicExample,
       menuAnimatedExample,
       baseUiPopoverBasicExample,
+      baseUiPopoverAnimatedExample,
       baseUiPopoverMultipleTriggersExample,
       baseUiRadioBasicExample,
       baseUiRadioLabelingExample,
@@ -9142,6 +9173,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(baseUiPopoverBasicExampleCommands, (message) =>
         GotBaseUiPopoverBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(baseUiPopoverAnimatedExampleCommands, (message) =>
+        GotBaseUiPopoverAnimatedExampleMessage({ message })
       ),
       ...Command.mapMessages(
         baseUiPopoverMultipleTriggersExampleCommands,
@@ -12494,6 +12528,25 @@ export const update = (
           }),
           Command.mapMessages(baseUiPopoverBasicExampleCommands, (message) =>
             GotBaseUiPopoverBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiPopoverAnimatedExampleMessage: ({ message }) => {
+        const [
+          baseUiPopoverAnimatedExample,
+          baseUiPopoverAnimatedExampleCommands,
+        ] = BaseUiPopoverAnimatedExample.update(
+          model.baseUiPopoverAnimatedExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiPopoverAnimatedExample: () => baseUiPopoverAnimatedExample,
+          }),
+          Command.mapMessages(baseUiPopoverAnimatedExampleCommands, (message) =>
+            GotBaseUiPopoverAnimatedExampleMessage({ message })
           ),
         ];
       },

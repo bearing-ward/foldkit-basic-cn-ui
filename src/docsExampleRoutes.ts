@@ -4520,6 +4520,40 @@ export const baseUiPopoverBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiPopoverAnimatedExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Popover Animated"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-popover-animated registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiPopoverAnimatedExamplePreview(
+            model.baseUiPopoverAnimatedExample,
+            "base-ui-popover-animated-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const baseUiPopoverMultipleTriggersExampleRouteView = (
   model: Model
 ): Html => {

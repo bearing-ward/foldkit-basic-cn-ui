@@ -61,6 +61,7 @@ import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-m
 import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
@@ -483,6 +484,7 @@ const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
+const [baseUiPopoverAnimatedExample] = BaseUiPopoverAnimatedExample.init();
 const [baseUiPopoverMultipleTriggersExample] =
   BaseUiPopoverMultipleTriggersExample.init();
 const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
@@ -740,6 +742,7 @@ const initialModel: Model = {
   menuBasicExample,
   menuAnimatedExample,
   baseUiPopoverBasicExample,
+  baseUiPopoverAnimatedExample,
   baseUiPopoverMultipleTriggersExample,
   baseUiRadioBasicExample,
   baseUiRadioLabelingExample,
@@ -5233,6 +5236,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-popover/examples/animated resolves to BaseUiPopoverAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-popover/examples/animated"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverAnimatedExample");
+        })
+      );
+    });
+
     test("/docs/components/base-ui-popover/examples/multiple-triggers resolves to BaseUiPopoverMultipleTriggersExample", () => {
       Story.story(
         update,
@@ -5494,6 +5514,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiPopoverBasicExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-popover-animated resolves to BaseUiPopoverAnimatedExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-popover-animated"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverAnimatedExample");
         })
       );
     });

@@ -6115,6 +6115,35 @@
     "origin": "https://base-ui.com/react/components/otp-field"
   },
   {
+    "name": "base-ui-popover-animated",
+    "type": "registry:example",
+    "title": "Base UI Popover Animated",
+    "description": "A runnable Foldkit version of the Base UI Popover animated example using the built-in Popover animation lifecycle.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-popover"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-popover-animated/main.ts",
+        "target": "src/examples/base-ui-popover-animated/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-popover-animated/base-ui-popover-animated.scene.test.ts",
+        "target": "src/examples/base-ui-popover-animated/base-ui-popover-animated.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Popover",
+        "example": "animated",
+        "originExample": "animating-the-popover",
+        "origin": "https://base-ui.com/react/components/popover"
+      }
+    }
+  },
+  {
     "name": "base-ui-popover-basic",
     "type": "registry:example",
     "title": "Base UI Popover Basic",

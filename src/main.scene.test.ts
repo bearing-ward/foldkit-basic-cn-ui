@@ -60,6 +60,7 @@ import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-m
 import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
 import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
@@ -506,6 +507,7 @@ import {
   MenuBasicExampleRoute,
   MenuDocsRoute,
   NotFoundRoute,
+  BaseUiPopoverAnimatedExampleRoute,
   BaseUiPopoverBasicExampleRoute,
   BaseUiPopoverMultipleTriggersExampleRoute,
   BaseUiRadioBasicExampleRoute,
@@ -790,6 +792,7 @@ const [listboxAnimatedExample] = ListboxAnimatedExample.init();
 const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
+const [baseUiPopoverAnimatedExample] = BaseUiPopoverAnimatedExample.init();
 const [baseUiPopoverMultipleTriggersExample] =
   BaseUiPopoverMultipleTriggersExample.init();
 const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
@@ -1047,6 +1050,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   menuBasicExample,
   menuAnimatedExample,
   baseUiPopoverBasicExample,
+  baseUiPopoverAnimatedExample,
   baseUiPopoverMultipleTriggersExample,
   baseUiRadioBasicExample,
   baseUiRadioLabelingExample,
@@ -5254,6 +5258,17 @@ describe("scene", () => {
       ).toExist(),
       Scene.expect(Scene.role("button", { name: "Notifications" })).toExist(),
       Scene.expect(Scene.text("Good job!")).not.toExist()
+    );
+  });
+
+  test("the Base UI Popover Animated example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiPopoverAnimatedExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Popover Animated" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Notifications" })).toExist()
     );
   });
 

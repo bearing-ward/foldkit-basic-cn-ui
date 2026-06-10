@@ -1,0 +1,51 @@
+import { Command, Submodel } from "foldkit";
+import { html } from "foldkit/html";
+import { m } from "foldkit/message";
+import * as Popover from "@/components/ui/base-ui-popover";
+
+const GotPopoverMessage = m("GotPopoverMessage", {
+  message: Popover.Message,
+});
+
+const init = () => {
+  const [popover, popoverCommands] = Popover.init({
+    id: "base-ui-popover-animated",
+    isAnimated: true,
+  });
+
+  return [
+    { popover },
+    Command.mapMessages(popoverCommands, (message) =>
+      GotPopoverMessage({ message })
+    ),
+  ];
+};
+
+const view = Submodel.defineView((model) => {
+  const h = html();
+
+  return h.submodel({
+    slotId: model.popover.id,
+    model: model.popover,
+    view: Popover.view,
+    viewInputs: {
+      anchor: { placement: "bottom-start", gap: 8, padding: 8 },
+      toView: (render) =>
+        Popover.root({
+          children: [
+            Popover.trigger({ render, label: "Notifications" }),
+            ...(render.isVisible
+              ? [
+                  Popover.backdrop({ render }),
+                  Popover.panel({
+                    render,
+                    children: ["Animated popover content"],
+                  }),
+                ]
+              : []),
+          ],
+        }),
+    },
+    toParentMessage: (message) => GotPopoverMessage({ message }),
+  });
+});
