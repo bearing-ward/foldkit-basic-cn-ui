@@ -104,6 +104,11 @@ const focusNextCommand = (
   return [FocusInputOtpDigit({ index: nextIndex })];
 };
 
+const updateReturn = (
+  model: Model,
+  commands: readonly Command.Command<Message>[]
+): readonly [Model, readonly Command.Command<Message>[]] => [model, commands];
+
 export const update = (
   model: Model,
   message: Message
@@ -119,23 +124,29 @@ export const update = (
       ],
       PressedInputOtpKey: ({ index, key }) =>
         M.value(key).pipe(
-          M.when("ArrowLeft", () => [
-            model,
-            index > 0 ? [FocusInputOtpDigit({ index: index - 1 })] : [],
-          ]),
-          M.when("ArrowRight", () => [
-            model,
-            index < model.digits.length - 1
-              ? [FocusInputOtpDigit({ index: index + 1 })]
-              : [],
-          ]),
-          M.when("Backspace", () => [
-            model,
-            model.digits[index] === "" && index > 0
-              ? [FocusInputOtpDigit({ index: index - 1 })]
-              : [],
-          ]),
-          M.orElse(() => [model, []])
+          M.when("ArrowLeft", () =>
+            updateReturn(
+              model,
+              index > 0 ? [FocusInputOtpDigit({ index: index - 1 })] : []
+            )
+          ),
+          M.when("ArrowRight", () =>
+            updateReturn(
+              model,
+              index < model.digits.length - 1
+                ? [FocusInputOtpDigit({ index: index + 1 })]
+                : []
+            )
+          ),
+          M.when("Backspace", () =>
+            updateReturn(
+              model,
+              model.digits[index] === "" && index > 0
+                ? [FocusInputOtpDigit({ index: index - 1 })]
+                : []
+            )
+          ),
+          M.orElse(() => updateReturn(model, []))
         ),
       FocusedInputOtpDigit: () => [model, []],
     })

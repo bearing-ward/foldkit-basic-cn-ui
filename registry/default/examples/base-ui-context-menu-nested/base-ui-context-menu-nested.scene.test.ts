@@ -16,10 +16,11 @@ describe("Base UI Context Menu Nested example", () => {
       Scene.click(Scene.text("Add to Playlist")),
       Scene.expect(Scene.role("menuitem", { name: "Get Up!" })).toExist(),
       Scene.expect(Scene.role("menuitem", { name: "Inside Out" })).toExist(),
-      Scene.expect(Scene.role("menuitem", { name: "Nightcall" })).toExist(),
-      Scene.click(Scene.role("menuitem", { name: "Nightcall" })),
+      Scene.expect(Scene.role("menuitem", { name: "Night Beats" })).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "New playlist…" })).toExist(),
+      Scene.click(Scene.role("menuitem", { name: "New playlist…" })),
       Scene.expect(Scene.role("menu")).not.toExist(),
-      Scene.expect(Scene.text("Selected: Nightcall")).toExist()
+      Scene.expect(Scene.text("Selected: New playlist…")).toExist()
     );
   });
 });

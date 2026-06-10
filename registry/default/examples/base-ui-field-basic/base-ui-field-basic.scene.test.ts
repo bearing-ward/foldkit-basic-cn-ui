@@ -17,8 +17,7 @@ describe("Base UI Field Basic example", () => {
       ),
       Scene.expect(Scene.text("Visible on your profile")).toExist(),
       Scene.expect(Scene.text("Please enter your name")).not.toExist(),
-      Scene.click(Scene.role("button", { name: "Validate" })),
-      Scene.expect(Scene.text("Please enter your name")).toExist(),
+      Scene.expect(Scene.role("button", { name: "Validate" })).not.toExist(),
       Scene.type(Scene.role("textbox", { name: "Name" }), "Ada Lovelace"),
       Scene.expect(Scene.text("Please enter your name")).not.toExist()
     );

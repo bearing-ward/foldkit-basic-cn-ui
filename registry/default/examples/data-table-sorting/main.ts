@@ -34,7 +34,14 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      ClickedSortEmail: () => [DataTable.toggleSort(model, "email"), []],
+      ClickedSortEmail: () => [
+        {
+          column: "email",
+          direction:
+            model.direction === "ascending" ? "descending" : "ascending",
+        },
+        [],
+      ],
     })
   );
 // VIEW

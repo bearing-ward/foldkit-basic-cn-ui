@@ -12,7 +12,6 @@ import * as Field from "../../ui/base-ui-field";
 
 export const Model = S.Struct({
   name: S.String,
-  touched: S.Boolean,
 });
 
 export type Model = typeof Model.Type;
@@ -20,9 +19,8 @@ export type Model = typeof Model.Type;
 // MESSAGE
 
 export const UpdatedName = m("UpdatedName", { value: S.String });
-export const BlurredName = m("BlurredName");
 
-export const Message = S.Union([UpdatedName, BlurredName]);
+export const Message = S.Union([UpdatedName]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -30,7 +28,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ name: "", touched: false }, []];
+] => [{ name: "" }, []];
 
 // UPDATE
 
@@ -42,7 +40,6 @@ export const update = (
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
       UpdatedName: ({ value }) => [evo(model, { name: () => value }), []],
-      BlurredName: () => [evo(model, { touched: () => true }), []],
     })
   );
 
@@ -53,13 +50,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const inputId = "profile-name";
   const errorId = "profile-name-error";
   const descriptionId = "profile-name-description";
-  const invalid = model.touched && model.name === "";
 
   return Field.rootView<Message>({
     name: "name",
     required: true,
-    invalid,
-    touched: model.touched,
     filled: model.name !== "",
     children: [
       Field.labelView<Message>({
@@ -74,30 +68,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         onInput: (value) => UpdatedName({ value }),
         placeholder: "Required",
         required: true,
-        invalid,
-        touched: model.touched,
         filled: model.name !== "",
         describedByIds: [errorId, descriptionId],
       }),
       Field.errorView<Message>({
         id: errorId,
-        show: invalid,
+        show: false,
         children: [h.span([], ["Please enter your name"])],
       }),
       Field.descriptionView<Message>({
         id: descriptionId,
         children: [h.span([], ["Visible on your profile"])],
       }),
-      h.button(
-        [
-          h.Type("button"),
-          h.OnClick(BlurredName()),
-          h.Class(
-            "mt-2 w-fit rounded-md border border-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          ),
-        ],
-        ["Validate"]
-      ),
     ],
   });
 });

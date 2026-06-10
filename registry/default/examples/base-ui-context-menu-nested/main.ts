@@ -113,7 +113,9 @@ const submenuView = (open: boolean): Html => {
         children: [
           itemView("Get Up!"),
           itemView("Inside Out"),
-          itemView("Nightcall"),
+          itemView("Night Beats"),
+          ContextMenu.separatorView<Message>({}),
+          itemView("New playlist…"),
         ],
       }),
     ]

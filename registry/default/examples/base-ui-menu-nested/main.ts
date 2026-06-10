@@ -1,4 +1,4 @@
-import { Match as M, Schema as S } from "effect";
+import { Match as M, Option, Schema as S } from "effect";
 import type { Command } from "foldkit";
 import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
@@ -76,7 +76,7 @@ const menuItemView = (value: string): Html => {
     [
       h.Type("button"),
       h.Attribute("role", "menuitem"),
-      h.OnPointerDown(() => selected),
+      h.OnPointerDown(() => Option.some(selected)),
       h.OnClick(selected),
       h.Class(`block w-full text-left ${Menu.baseUiMenuItemClassName}`),
     ],

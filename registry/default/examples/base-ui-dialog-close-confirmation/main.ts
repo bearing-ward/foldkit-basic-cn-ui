@@ -144,13 +144,8 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const tweetButtonClassName =
   "inline-flex h-8 items-center justify-center gap-2 border border-neutral-950 bg-white px-3 text-sm leading-none font-normal text-neutral-950 hover:bg-neutral-100";
-
-const dangerButtonClassName = `${buttonClassName} text-red-700`;
-
-const panelClassName =
-  "grid w-full max-w-sm gap-4 rounded-none border border-neutral-950 bg-white p-4 text-neutral-950 shadow-[0.25rem_0.25rem_0_rgba(0,0,0,0.12)]";
 
 const confirmationDialogView = (model: Model): Html => {
   const toConfirmationMessage = (message: Dialog.Message): Message =>
@@ -167,7 +162,6 @@ const confirmationDialogView = (model: Model): Html => {
           children: [
             Dialog.panel<Message>({
               render,
-              className: panelClassName,
               children: [
                 Dialog.title<Message>({
                   model: model.confirmationDialog,
@@ -182,12 +176,11 @@ const confirmationDialogView = (model: Model): Html => {
                     Dialog.confirmButton<Message>({
                       label: "Go back",
                       onClick: ClickedGoBack(),
-                      className: buttonClassName,
                     }),
                     Dialog.confirmButton<Message>({
                       label: "Discard",
                       onClick: ClickedDiscardTweet(),
-                      className: dangerButtonClassName,
+                      variant: "destructive",
                     }),
                   ],
                 }),
@@ -211,7 +204,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       Dialog.trigger<Message>({
         label: "Tweet",
         onClick: toTweetMessage(Dialog.RequestedOpen()),
-        className: buttonClassName,
       }),
       ...(model.discarded
         ? [h.p([h.Class("text-sm text-neutral-600")], ["Tweet discarded."])]
@@ -228,7 +220,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 Dialog.backdrop<Message>(render),
                 Dialog.panel<Message>({
                   render,
-                  className: panelClassName,
                   children: [
                     Dialog.title<Message>({
                       model: model.tweetDialog,
@@ -236,7 +227,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     }),
                     Dialog.description<Message>({
                       model: model.tweetDialog,
-                      className: "sr-only",
                       children: ["Write and post a tweet."],
                     }),
                     h.textarea(
@@ -256,10 +246,9 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         Dialog.confirmButton<Message>({
                           label: "Cancel",
                           onClick: RequestedCloseTweet(),
-                          className: buttonClassName,
                         }),
                         h.button(
-                          [h.Type("button"), h.Class(buttonClassName)],
+                          [h.Type("button"), h.Class(tweetButtonClassName)],
                           ["Tweet"]
                         ),
                       ]

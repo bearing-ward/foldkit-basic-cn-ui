@@ -90,9 +90,9 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     viewInputs: {
       anchor: Menu.baseUiMenuDefaultAnchor,
       items: actions,
-      itemToConfig: (item, index) => ({
+      itemToConfig: (item) => ({
         className:
-          index === 2 || index === 4
+          actions.indexOf(item) === 2 || actions.indexOf(item) === 4
             ? `${Menu.baseUiMenuItemClassName} border-t border-gray-200`
             : Menu.baseUiMenuItemClassName,
         content: h.span([], [item]),
