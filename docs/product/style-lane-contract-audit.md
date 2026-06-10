@@ -35,13 +35,8 @@ and docs routes, but they do not yet have wrapper-specific installable examples.
 They currently lean on the underlying Foldkit/Base UI example pages for behavior
 proof.
 
-Affected Base UI wrappers:
-
-- `base-ui-slider`
-- `base-ui-switch`
-- `base-ui-tabs`
-- `base-ui-toast`
-- `base-ui-tooltip`
+Affected Base UI wrappers: none. All prefixed Base UI wrappers now have a
+wrapper-specific installable Basic example with scene coverage.
 
 Affected shadcn wrappers: none. All prefixed shadcn wrappers now have a
 wrapper-specific installable Basic example with scene coverage.
@@ -169,8 +164,14 @@ Next wrapper-specific example batch:
 
 Next wrapper-specific example batch:
 
-- `base-ui-slider`
-- `base-ui-switch`
-- `base-ui-tabs`
-- `base-ui-toast`
-- `base-ui-tooltip`
+- `base-ui-slider` - done in `base-ui-slider-basic`
+- `base-ui-switch` - done in `base-ui-switch-basic`
+- `base-ui-tabs` - done in `base-ui-tabs-basic`
+- `base-ui-toast` - done in `base-ui-toast-basic`
+- `base-ui-tooltip` - done in `base-ui-tooltip-basic`
+
+Next recommended slice:
+
+- Resolve remaining unprefixed style-lane names in small batches.
+- Continue side-by-side origin visual signoff from
+  `docs/product/origin-content-parity-review.md`.
