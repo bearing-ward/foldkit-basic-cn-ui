@@ -37,11 +37,6 @@ proof.
 
 Affected Base UI wrappers:
 
-- `base-ui-input`
-- `base-ui-menu`
-- `base-ui-popover`
-- `base-ui-radio`
-- `base-ui-select`
 - `base-ui-slider`
 - `base-ui-switch`
 - `base-ui-tabs`
@@ -166,8 +161,16 @@ Next wrapper-specific example batch:
 
 Next wrapper-specific example batch:
 
-- `base-ui-input`
-- `base-ui-menu`
-- `base-ui-popover`
-- `base-ui-radio`
-- `base-ui-select`
+- `base-ui-input` - done in `base-ui-input-basic`
+- `base-ui-menu` - done in `base-ui-menu-basic`
+- `base-ui-popover` - done in `base-ui-popover-basic`
+- `base-ui-radio` - done in `base-ui-radio-basic`
+- `base-ui-select` - done in `base-ui-select-basic`
+
+Next wrapper-specific example batch:
+
+- `base-ui-slider`
+- `base-ui-switch`
+- `base-ui-tabs`
+- `base-ui-toast`
+- `base-ui-tooltip`

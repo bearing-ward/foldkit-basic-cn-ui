@@ -13,6 +13,7 @@ describe("Base UI select Basic example", () => {
       Scene.with(BaseUiSelectBasicExample.init()[0]),
       Scene.expect(Scene.role("combobox", { name: "Apple" })).toExist(),
       Scene.expect(Scene.text("Select apple")).toExist(),
+      Scene.expect(Scene.text("Pink Lady")).toExist(),
       Scene.change(Scene.role("combobox", { name: "Apple" }), "fuji"),
       Scene.expect(Scene.role("combobox", { name: "Apple" })).toHaveValue(
         "fuji"

@@ -74,6 +74,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       h.option([h.Value("fuji")], ["Fuji"]),
                       h.option([h.Value("honeycrisp")], ["Honeycrisp"]),
                       h.option([h.Value("granny-smith")], ["Granny Smith"]),
+                      h.option([h.Value("pink-lady")], ["Pink Lady"]),
                     ]
                   ),
                   h.span([h.Class(Select.baseUiSelectChevronClassName)], ["v"]),

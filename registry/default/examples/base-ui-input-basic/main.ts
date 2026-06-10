@@ -11,16 +11,16 @@ import * as Input from "../../ui/base-ui-input";
 // MODEL
 
 export const Model = S.Struct({
-  value: S.String,
+  name: S.String,
 });
 
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const UpdatedEmail = m("UpdatedEmail", { value: S.String });
+export const UpdatedName = m("UpdatedName", { value: S.String });
 
-export const Message = S.Union([UpdatedEmail]);
+export const Message = S.Union([UpdatedName]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -28,7 +28,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ value: "" }, []];
+] => [{ name: "" }, []];
 
 // UPDATE
 
@@ -39,7 +39,7 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      UpdatedEmail: ({ value }) => [evo(model, { value: () => value }), []],
+      UpdatedName: ({ value }) => [evo(model, { name: () => value }), []],
     })
   );
 
@@ -49,29 +49,23 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return Input.view<Message>({
-    id: "email-input",
-    value: model.value,
-    placeholder: "name@example.com",
-    onInput: (value) => UpdatedEmail({ value }),
+    id: "name-input",
+    value: model.name,
+    placeholder: "e.g. Colm Tuite",
+    onInput: (value) => UpdatedName({ value }),
     toView: (attributes) =>
-      h.div(
+      h.label(
         [h.Class(Input.baseUiInputRootClassName)],
         [
-          h.label(
+          h.span(
             [...attributes.label, h.Class(Input.baseUiInputLabelClassName)],
-            ["Email"]
+            ["Name"]
           ),
           h.input([
             ...attributes.input,
+            h.AriaLabel("Name"),
             h.Class(Input.baseUiInputControlClassName),
           ]),
-          h.p(
-            [
-              ...attributes.description,
-              h.Class(Input.baseUiInputDescriptionClassName),
-            ],
-            ["Enter your email address."]
-          ),
         ]
       ),
   });

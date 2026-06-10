@@ -7,14 +7,22 @@ import { evo } from "foldkit/struct";
 
 import * as Menu from "../../ui/base-ui-menu";
 
-type Action = "Bold" | "Italic" | "Underline" | "Strikethrough";
+type Action =
+  | "Add to Library"
+  | "Add to Playlist"
+  | "Play Next"
+  | "Play Last"
+  | "Favorite"
+  | "Share";
 
 const ActionMenu = Menu.create<Action>();
 const actions: readonly Action[] = [
-  "Bold",
-  "Italic",
-  "Underline",
-  "Strikethrough",
+  "Add to Library",
+  "Add to Playlist",
+  "Play Next",
+  "Play Last",
+  "Favorite",
+  "Share",
 ];
 
 // MODEL
@@ -82,11 +90,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     viewInputs: {
       anchor: Menu.baseUiMenuDefaultAnchor,
       items: actions,
-      itemToConfig: (item) => ({
-        className: Menu.baseUiMenuItemClassName,
+      itemToConfig: (item, index) => ({
+        className:
+          index === 2 || index === 4
+            ? `${Menu.baseUiMenuItemClassName} border-t border-gray-200`
+            : Menu.baseUiMenuItemClassName,
         content: h.span([], [item]),
       }),
-      buttonContent: h.span([], ["Format"]),
+      buttonContent: h.span([], ["Song"]),
       buttonAttributes: childAttributes([
         h.Class(Menu.baseUiMenuTriggerClassName),
       ]),

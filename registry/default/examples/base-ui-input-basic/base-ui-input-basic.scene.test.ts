@@ -11,10 +11,14 @@ describe("Base UI input Basic example", () => {
         view: BaseUiInputBasicExample.view,
       },
       Scene.with(BaseUiInputBasicExample.init()[0]),
-      Scene.expect(Scene.role("textbox", { name: "Email" })).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Email" }), "ada@example.com"),
-      Scene.expect(Scene.role("textbox", { name: "Email" })).toHaveValue(
-        "ada@example.com"
+      Scene.expect(Scene.role("textbox", { name: "Name" })).toHaveAttr(
+        "placeholder",
+        "e.g. Colm Tuite"
+      ),
+      Scene.expect(Scene.text("Enter your email address.")).not.toExist(),
+      Scene.type(Scene.role("textbox", { name: "Name" }), "Ada Lovelace"),
+      Scene.expect(Scene.role("textbox", { name: "Name" })).toHaveValue(
+        "Ada Lovelace"
       )
     );
   });
