@@ -16,7 +16,8 @@ export type Model = typeof Model.Type;
 // MESSAGE
 
 export const ClickedToggleMenu = m("ClickedToggleMenu");
-export const Message = S.Union([ClickedToggleMenu]);
+export const ClickedDropdownItem = m("ClickedDropdownItem");
+export const Message = S.Union([ClickedToggleMenu, ClickedDropdownItem]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -36,6 +37,7 @@ export const update = (
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
       ClickedToggleMenu: () => [evo(model, { open: (open) => !open }), []],
+      ClickedDropdownItem: () => [evo(model, { open: () => false }), []],
     })
   );
 
@@ -44,7 +46,7 @@ export const update = (
 const menuClassName =
   "absolute z-10 mt-2 min-w-36 rounded-md border border-gray-200 bg-white p-1 text-sm shadow-lg";
 const itemClassName =
-  "block rounded px-2 py-1.5 text-gray-700 hover:bg-gray-100";
+  "block w-full rounded px-2 py-1.5 text-left text-gray-700 hover:bg-gray-100";
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
@@ -71,6 +73,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     [
                       h.Type("button"),
                       h.Attribute("aria-label", "Toggle menu"),
+                      h.Attribute(
+                        "aria-expanded",
+                        model.open ? "true" : "false"
+                      ),
+                      h.Attribute("aria-haspopup", "menu"),
                       h.OnClick(ClickedToggleMenu()),
                       h.Class(
                         "inline-flex items-center gap-1 rounded-sm text-gray-600 hover:text-gray-950"
@@ -86,26 +93,29 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         h.div(
                           [h.Attribute("role", "menu"), h.Class(menuClassName)],
                           [
-                            h.a(
+                            h.button(
                               [
-                                h.Href("#"),
+                                h.Type("button"),
                                 h.Attribute("role", "menuitem"),
+                                h.OnClick(ClickedDropdownItem()),
                                 h.Class(itemClassName),
                               ],
                               ["Documentation"]
                             ),
-                            h.a(
+                            h.button(
                               [
-                                h.Href("#"),
+                                h.Type("button"),
                                 h.Attribute("role", "menuitem"),
+                                h.OnClick(ClickedDropdownItem()),
                                 h.Class(itemClassName),
                               ],
                               ["Themes"]
                             ),
-                            h.a(
+                            h.button(
                               [
-                                h.Href("#"),
+                                h.Type("button"),
                                 h.Attribute("role", "menuitem"),
+                                h.OnClick(ClickedDropdownItem()),
                                 h.Class(itemClassName),
                               ],
                               ["GitHub"]
