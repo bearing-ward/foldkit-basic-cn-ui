@@ -10,11 +10,7 @@ import * as Accordion from "../../ui/shadcn-base-accordion";
 
 // MODEL
 
-export const AccordionValue = S.Union([
-  S.Literal("base-ui"),
-  S.Literal("getting-started"),
-  S.Literal("design-systems"),
-]);
+export const AccordionValue = S.Literal("item-1");
 export type AccordionValue = typeof AccordionValue.Type;
 
 export const Model = S.Struct({
@@ -35,7 +31,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["base-ui"] }, []];
+] => [{ openValues: ["item-1"] }, []];
 
 // UPDATE
 
@@ -65,45 +61,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     openValues: model.openValues,
     children: [
       Accordion.itemView<Message>({
-        value: "base-ui",
+        value: "item-1",
         openValues: model.openValues,
-        title: "What is Base UI?",
-        onValueChange: ToggledPanel({ value: "base-ui" }),
+        title: "Is it accessible?",
+        onValueChange: ToggledPanel({ value: "item-1" }),
         children: [
-          h.p(
-            [],
-            [
-              "Base UI is a library of high-quality unstyled components for design systems and web apps.",
-            ]
-          ),
-        ],
-      }),
-      Accordion.itemView<Message>({
-        value: "getting-started",
-        openValues: model.openValues,
-        title: "How do I get started?",
-        onValueChange: ToggledPanel({ value: "getting-started" }),
-        children: [
-          h.p(
-            [],
-            [
-              "Install the registry item, keep state in your Foldkit model, and route trigger clicks through messages.",
-            ]
-          ),
-        ],
-      }),
-      Accordion.itemView<Message>({
-        value: "design-systems",
-        openValues: model.openValues,
-        title: "Can I use it for my design system?",
-        onValueChange: ToggledPanel({ value: "design-systems" }),
-        children: [
-          h.p(
-            [],
-            [
-              "Yes. The default classes are replaceable, and each public anatomy part has a class export.",
-            ]
-          ),
+          h.p([], ["Yes. It adheres to the WAI-ARIA design pattern."]),
         ],
       }),
     ],

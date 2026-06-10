@@ -12,21 +12,21 @@ import * as AlertDialog from "../../ui/shadcn-alert-dialog";
 
 export const Model = S.Struct({
   open: S.Boolean,
-  archived: S.Boolean,
+  continued: S.Boolean,
 });
 
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const ClickedArchiveProject = m("ClickedArchiveProject");
-export const ClickedCancelArchive = m("ClickedCancelArchive");
-export const ClickedConfirmArchive = m("ClickedConfirmArchive");
+export const ClickedShowDialog = m("ClickedShowDialog");
+export const ClickedCancel = m("ClickedCancel");
+export const ClickedContinue = m("ClickedContinue");
 
 export const Message = S.Union([
-  ClickedArchiveProject,
-  ClickedCancelArchive,
-  ClickedConfirmArchive,
+  ClickedShowDialog,
+  ClickedCancel,
+  ClickedContinue,
 ]);
 export type Message = typeof Message.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ open: false, archived: false }, []];
+] => [{ open: false, continued: false }, []];
 
 // UPDATE
 
@@ -46,10 +46,10 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      ClickedArchiveProject: () => [evo(model, { open: () => true }), []],
-      ClickedCancelArchive: () => [evo(model, { open: () => false }), []],
-      ClickedConfirmArchive: () => [
-        evo(model, { open: () => false, archived: () => true }),
+      ClickedShowDialog: () => [evo(model, { open: () => true }), []],
+      ClickedCancel: () => [evo(model, { open: () => false }), []],
+      ClickedContinue: () => [
+        evo(model, { open: () => false, continued: () => true }),
         [],
       ],
     })
@@ -59,8 +59,8 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
-  const titleId = "archive-project-title";
-  const descriptionId = "archive-project-description";
+  const titleId = "alert-dialog-title";
+  const descriptionId = "alert-dialog-description";
 
   return h.div(
     [h.Class("space-y-3")],
@@ -68,8 +68,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       AlertDialog.rootView<Message>({
         children: [
           AlertDialog.triggerView<Message>({
-            onClick: ClickedArchiveProject(),
-            children: [h.span([], ["Archive project"])],
+            onClick: ClickedShowDialog(),
+            children: [h.span([], ["Show Dialog"])],
           }),
           AlertDialog.portalView<Message>({
             open: model.open,
@@ -77,33 +77,41 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               AlertDialog.backdropView<Message>({ children: [] }),
               AlertDialog.viewportView<Message>({
                 children: [
-                  AlertDialog.popupView<Message>({
+                  AlertDialog.contentView<Message>({
                     titleId,
                     descriptionId,
                     children: [
-                      AlertDialog.titleView<Message>({
-                        id: titleId,
-                        children: [h.span([], ["Archive project?"])],
-                      }),
-                      AlertDialog.descriptionView<Message>({
-                        id: descriptionId,
+                      AlertDialog.headerView<Message>({
                         children: [
-                          h.span(
-                            [],
-                            ["This removes the project from active dashboards."]
-                          ),
+                          AlertDialog.titleView<Message>({
+                            id: titleId,
+                            children: [
+                              h.span([], ["Are you absolutely sure?"]),
+                            ],
+                          }),
+                          AlertDialog.descriptionView<Message>({
+                            id: descriptionId,
+                            children: [
+                              h.span(
+                                [],
+                                [
+                                  "This action cannot be undone. This will permanently delete your account from our servers.",
+                                ]
+                              ),
+                            ],
+                          }),
                         ],
                       }),
-                      AlertDialog.actionsView<Message>({
+                      AlertDialog.footerView<Message>({
                         children: [
                           AlertDialog.closeView<Message>({
-                            onClick: ClickedCancelArchive(),
+                            onClick: ClickedCancel(),
                             children: [h.span([], ["Cancel"])],
                           }),
                           AlertDialog.closeView<Message>({
-                            onClick: ClickedConfirmArchive(),
+                            onClick: ClickedContinue(),
                             variant: "Confirm",
-                            children: [h.span([], ["Archive"])],
+                            children: [h.span([], ["Continue"])],
                           }),
                         ],
                       }),
@@ -117,7 +125,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       }),
       h.p(
         [h.Class("text-sm text-gray-700")],
-        [`Project archived: ${model.archived ? "yes" : "no"}`]
+        [`Continued: ${model.continued ? "yes" : "no"}`]
       ),
     ]
   );

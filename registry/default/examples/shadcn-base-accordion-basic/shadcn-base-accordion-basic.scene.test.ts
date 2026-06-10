@@ -12,20 +12,18 @@ describe("shadcn Base Accordion Basic example", () => {
       },
       Scene.with(ShadcnBaseAccordionBasicExample.init()[0]),
       Scene.expect(
-        Scene.role("button", { name: "What is Base UI?" })
+        Scene.role("button", { name: "Is it accessible?" })
       ).toHaveAttr("aria-expanded", "true"),
       Scene.expect(
-        Scene.text(
-          "Base UI is a library of high-quality unstyled components for design systems and web apps."
-        )
+        Scene.text("Yes. It adheres to the WAI-ARIA design pattern.")
       ).toExist(),
-      Scene.click(Scene.role("button", { name: "How do I get started?" })),
+      Scene.click(Scene.role("button", { name: "Is it accessible?" })),
       Scene.expect(
-        Scene.role("button", { name: "How do I get started?" })
-      ).toHaveAttr("aria-expanded", "true"),
+        Scene.role("button", { name: "Is it accessible?" })
+      ).toHaveAttr("aria-expanded", "false"),
       Scene.expect(
-        Scene.role("button", { name: "What is Base UI?" })
-      ).toHaveAttr("aria-expanded", "false")
+        Scene.text("Yes. It adheres to the WAI-ARIA design pattern.")
+      ).not.toExist()
     );
   });
 });
