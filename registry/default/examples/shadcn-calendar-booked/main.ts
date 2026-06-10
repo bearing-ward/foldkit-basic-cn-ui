@@ -27,7 +27,7 @@ export type Message = typeof Message.Type;
 
 // INIT
 
-const initialDate = Calendar.make(2026, 4, 16);
+const initialDate = Calendar.make(2026, 2, 16);
 
 const formatDate = (date: Calendar.CalendarDate): string =>
   `${date.year}-${String(date.month).padStart(2, "0")}-${String(date.day).padStart(2, "0")}`;
@@ -39,9 +39,9 @@ export const init = (): readonly [
   {
     calendar: UiCalendar.init({
       id: "shadcn-calendar-booked",
-      today: Calendar.make(2026, 4, 16),
+      today: Calendar.make(2026, 2, 16),
       initialSelectedDate: initialDate,
-      disabledDates: [Calendar.make(2026, 4, 18), Calendar.make(2026, 4, 19)],
+      disabledDates: [Calendar.make(2026, 2, 18), Calendar.make(2026, 2, 19)],
       disabledDaysOfWeek: ["Sunday", "Saturday"],
     }),
     selectedDate: initialDate,
@@ -113,7 +113,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       ),
       h.p(
         [h.Class("text-sm text-gray-700")],
-        ["April 18, April 19, and weekends are unavailable."]
+        ["February 18, February 19, and weekends are unavailable."]
       ),
     ]
   );

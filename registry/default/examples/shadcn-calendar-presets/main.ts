@@ -12,7 +12,9 @@ import * as UiCalendar from "../../ui/shadcn-calendar";
 export const Preset = S.Union([
   S.Literal("today"),
   S.Literal("tomorrow"),
-  S.Literal("next-week"),
+  S.Literal("in-3-days"),
+  S.Literal("in-a-week"),
+  S.Literal("in-2-weeks"),
 ]);
 export type Preset = typeof Preset.Type;
 
@@ -45,7 +47,9 @@ const presetDate = (preset: Preset): Calendar.CalendarDate =>
     M.withReturnType<Calendar.CalendarDate>(),
     M.when("today", () => today),
     M.when("tomorrow", () => Calendar.addDays(today, 1)),
-    M.when("next-week", () => Calendar.addDays(today, 7)),
+    M.when("in-3-days", () => Calendar.addDays(today, 3)),
+    M.when("in-a-week", () => Calendar.addDays(today, 7)),
+    M.when("in-2-weeks", () => Calendar.addDays(today, 14)),
     M.exhaustive
   );
 
@@ -146,7 +150,9 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [
           presetButton("Today", "today"),
           presetButton("Tomorrow", "tomorrow"),
-          presetButton("Next week", "next-week"),
+          presetButton("In 3 days", "in-3-days"),
+          presetButton("In a week", "in-a-week"),
+          presetButton("In 2 weeks", "in-2-weeks"),
         ]
       ),
       h.submodel({

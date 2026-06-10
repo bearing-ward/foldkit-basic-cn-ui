@@ -30,9 +30,6 @@ export type Message = typeof Message.Type;
 
 const today = Calendar.make(2026, 4, 16);
 
-const formatDate = (date: Calendar.CalendarDate): string =>
-  `${date.year}-${String(date.month).padStart(2, "0")}-${String(date.day).padStart(2, "0")}`;
-
 const formatMonth = (date: Calendar.CalendarDate): string =>
   `${date.year}-${String(date.month).padStart(2, "0")}`;
 
@@ -113,14 +110,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         },
         toParentMessage: (message) => GotCalendarMessage({ message }),
       }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Selected date: ${formatDate(model.selectedDate)}`]
-      ),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Viewed month: ${model.viewedMonth}`]
-      ),
     ]
   );
 });

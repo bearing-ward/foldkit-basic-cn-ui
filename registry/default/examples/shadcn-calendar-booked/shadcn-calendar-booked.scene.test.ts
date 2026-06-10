@@ -9,10 +9,10 @@ describe("shadcn Calendar Booked Dates example", () => {
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(
-        Scene.role("button", { name: "Saturday, April 18, 2026" })
+        Scene.role("button", { name: "Wednesday, February 18, 2026" })
       ).toBeDisabled(),
-      Scene.click(Scene.role("button", { name: "Monday, April 20, 2026" })),
-      Scene.expect(Scene.text("Selected stay: 2026-04-20")).toExist()
+      Scene.click(Scene.role("button", { name: "Friday, February 20, 2026" })),
+      Scene.expect(Scene.text("Selected stay: 2026-02-20")).toExist()
     );
   });
 });

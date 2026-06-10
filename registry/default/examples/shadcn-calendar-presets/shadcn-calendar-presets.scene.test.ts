@@ -10,8 +10,12 @@ describe("shadcn Calendar Presets example", () => {
       Scene.with(Example.init()[0]),
       Scene.click(Scene.role("button", { name: "Tomorrow" })),
       Scene.expect(Scene.text("Selected preset: 2026-04-17")).toExist(),
-      Scene.click(Scene.role("button", { name: "Next week" })),
-      Scene.expect(Scene.text("Selected preset: 2026-04-23")).toExist()
+      Scene.click(Scene.role("button", { name: "In 3 days" })),
+      Scene.expect(Scene.text("Selected preset: 2026-04-19")).toExist(),
+      Scene.click(Scene.role("button", { name: "In a week" })),
+      Scene.expect(Scene.text("Selected preset: 2026-04-23")).toExist(),
+      Scene.click(Scene.role("button", { name: "In 2 weeks" })),
+      Scene.expect(Scene.text("Selected preset: 2026-04-30")).toExist()
     );
   });
 });
