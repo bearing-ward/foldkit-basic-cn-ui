@@ -53,25 +53,8 @@ Affected Base UI wrappers:
 - `base-ui-toast`
 - `base-ui-tooltip`
 
-Affected shadcn wrappers:
-
-- `shadcn-checkbox`
-- `shadcn-collapsible`
-- `shadcn-combobox`
-- `shadcn-context-menu`
-- `shadcn-date-picker`
-- `shadcn-dialog`
-- `shadcn-drawer`
-- `shadcn-field`
-- `shadcn-input`
-- `shadcn-menubar`
-- `shadcn-navigation-menu`
-- `shadcn-popover`
-- `shadcn-progress`
-- `shadcn-scroll-area`
-- `shadcn-separator`
-- `shadcn-textarea`
-- `shadcn-toast`
+Affected shadcn wrappers: none. All prefixed shadcn wrappers now have a
+wrapper-specific installable Basic example with scene coverage.
 
 Remediation rule: each wrapper should either get at least one installable
 wrapper-specific example or explicitly document why the underlying example is
@@ -149,10 +132,39 @@ Completed wrapper-specific example batch:
 - `shadcn-button` - done in `shadcn-button-basic`
 - `shadcn-calendar` - done in `shadcn-calendar-basic`
 
+Completed wrapper-specific example batch:
+
+- `shadcn-checkbox` - done in `shadcn-checkbox-basic`
+- `shadcn-collapsible` - done in `shadcn-collapsible-basic`
+- `shadcn-combobox` - done in `shadcn-combobox-basic`
+- `shadcn-context-menu` - done in `shadcn-context-menu-basic`
+- `shadcn-date-picker` - done in `shadcn-date-picker-basic`
+
+Completed wrapper-specific example batch:
+
+- `shadcn-dialog` - done in `shadcn-dialog-basic`
+- `shadcn-drawer` - done in `shadcn-drawer-basic`
+- `shadcn-field` - done in `shadcn-field-basic`
+- `shadcn-input` - done in `shadcn-input-basic`
+- `shadcn-menubar` - done in `shadcn-menubar-basic`
+
+Completed wrapper-specific example batch:
+
+- `shadcn-navigation-menu` - done in `shadcn-navigation-menu-basic`
+- `shadcn-popover` - done in `shadcn-popover-basic`
+- `shadcn-progress` - done in `shadcn-progress-basic`
+- `shadcn-scroll-area` - done in `shadcn-scroll-area-basic`
+- `shadcn-separator` - done in `shadcn-separator-basic`
+
+Completed wrapper-specific example batch:
+
+- `shadcn-textarea` - done in `shadcn-textarea-basic`
+- `shadcn-toast` - done in `shadcn-toast-basic`
+
 Next wrapper-specific example batch:
 
-- `shadcn-checkbox`
-- `shadcn-collapsible`
-- `shadcn-combobox`
-- `shadcn-context-menu`
-- `shadcn-date-picker`
+- `base-ui-button`
+- `base-ui-checkbox`
+- `base-ui-combobox`
+- `base-ui-dialog`
+- `base-ui-fieldset`
