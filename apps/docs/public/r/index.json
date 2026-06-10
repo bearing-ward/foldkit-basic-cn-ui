@@ -354,7 +354,7 @@
       "description": "Base UI style-lane Checkbox Group wrapper backed by the existing Foldkit CN Checkbox Group component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/checkbox-group"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-checkbox-group/index.ts",
@@ -389,7 +389,7 @@
       "description": "Base UI style-lane Collapsible wrapper backed by the existing Foldkit CN Collapsible component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/collapsible"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-collapsible/index.ts",
@@ -459,7 +459,7 @@
       "description": "A Base UI Base UI-informed context menu component for controlled command menus.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/context-menu"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-context-menu/index.ts",
@@ -2881,7 +2881,7 @@
       "description": "shadcn style-lane collapsible wrapper backed by the existing collapsible component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/collapsible"],
+      "registryDependencies": ["@foldkit-cn/base-ui-collapsible"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-collapsible/index.ts",
@@ -2948,7 +2948,7 @@
       "description": "shadcn style-lane context menu wrapper backed by the existing Context Menu component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/context-menu"],
+      "registryDependencies": ["@foldkit-cn/base-ui-context-menu"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-context-menu/index.ts",
@@ -7572,7 +7572,7 @@
       "description": "A runnable Foldkit version of the Base UI Checkbox Group hero and parent-checkbox behavior.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/checkbox-group"],
+      "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
       "files": [
         {
           "path": "registry/default/examples/checkbox-group-basic/main.ts",
@@ -7637,7 +7637,7 @@
       "description": "A runnable Foldkit version of the Base UI Collapsible default Recovery keys example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/collapsible"],
+      "registryDependencies": ["@foldkit-cn/base-ui-collapsible"],
       "files": [
         {
           "path": "registry/default/examples/collapsible-basic/main.ts",
@@ -7757,7 +7757,7 @@
       "description": "A runnable Foldkit version of the Base UI Context Menu default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/context-menu"],
+      "registryDependencies": ["@foldkit-cn/base-ui-context-menu"],
       "files": [
         {
           "path": "registry/default/examples/context-menu-basic/main.ts",

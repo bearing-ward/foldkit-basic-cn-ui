@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed context menu component for controlled command menus.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/context-menu"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-context-menu/index.ts",

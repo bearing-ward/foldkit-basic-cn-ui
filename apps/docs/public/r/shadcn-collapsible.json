@@ -6,7 +6,7 @@
   "description": "shadcn style-lane collapsible wrapper backed by the existing collapsible component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/collapsible"],
+  "registryDependencies": ["@foldkit-cn/base-ui-collapsible"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-collapsible/index.ts",

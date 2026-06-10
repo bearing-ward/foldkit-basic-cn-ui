@@ -6,7 +6,7 @@
   "description": "Base UI style-lane Checkbox Group wrapper backed by the existing Foldkit CN Checkbox Group component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/checkbox-group"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-checkbox-group/index.ts",

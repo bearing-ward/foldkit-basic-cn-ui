@@ -6,7 +6,7 @@
   "description": "Base UI style-lane Collapsible wrapper backed by the existing Foldkit CN Collapsible component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/collapsible"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-collapsible/index.ts",
