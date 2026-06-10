@@ -47,50 +47,83 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
-  const panelId = "peduarte-repositories";
+  const panelId = "order-4189-details";
 
   return Collapsible.rootView<Message>({
     open: model.open,
-    className: "space-y-2 border-0 p-0 shadow-none",
+    className:
+      "flex w-[350px] max-w-full flex-col gap-2 border-0 p-0 shadow-none",
     children: [
       h.div(
-        [h.Class("flex items-center justify-between space-x-4 px-4")],
+        [h.Class("flex items-center justify-between gap-4 px-4")],
         [
-          h.h4(
-            [h.Class("text-sm font-semibold")],
-            ["@peduarte starred 3 repositories"]
+          h.h4([h.Class("text-sm font-semibold")], ["Order #4189"]),
+          h.button(
+            [
+              h.Type("button"),
+              h.AriaLabel("Toggle details"),
+              h.AriaControls(panelId),
+              h.AriaExpanded(model.open),
+              h.OnClick(ClickedTrigger()),
+              h.Class(
+                "inline-flex size-8 shrink-0 items-center justify-center rounded-lg border border-transparent text-sm font-medium transition-colors hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
+              ),
+            ],
+            [
+              h.span(
+                [h.AriaHidden(true), h.Class("text-base leading-none")],
+                ["↕"]
+              ),
+              h.span([h.Class("sr-only")], ["Toggle details"]),
+            ]
           ),
-          Collapsible.triggerView<Message>({
-            open: model.open,
-            onOpenChange: ClickedTrigger(),
-            ariaLabel: "Toggle",
-            panelId,
-            className: "size-9 shrink-0 justify-center px-0",
-            children: [],
-          }),
         ]
       ),
       h.div(
-        [h.Class("rounded-md border px-4 py-3 font-mono text-sm")],
-        ["@radix-ui/primitives"]
+        [
+          h.Class(
+            "flex items-center justify-between rounded-md border border-gray-200 px-4 py-2 text-sm"
+          ),
+        ],
+        [
+          h.span([h.Class("text-gray-500")], ["Status"]),
+          h.span([h.Class("font-medium")], ["Shipped"]),
+        ]
       ),
       Collapsible.panelView<Message>({
         open: model.open,
         id: panelId,
-        className: "border-0 bg-transparent",
+        className: "mt-0 border-0 bg-transparent",
         children: [
           Collapsible.contentView<Message>(
             [
               h.div(
-                [h.Class("rounded-md border px-4 py-3 font-mono text-sm")],
-                ["@radix-ui/colors"]
+                [
+                  h.Class(
+                    "rounded-md border border-gray-200 px-4 py-2 text-sm"
+                  ),
+                ],
+                [
+                  h.p([h.Class("font-medium")], ["Shipping address"]),
+                  h.p(
+                    [h.Class("text-gray-500")],
+                    ["100 Market St, San Francisco"]
+                  ),
+                ]
               ),
               h.div(
-                [h.Class("rounded-md border px-4 py-3 font-mono text-sm")],
-                ["@stitches/react"]
+                [
+                  h.Class(
+                    "rounded-md border border-gray-200 px-4 py-2 text-sm"
+                  ),
+                ],
+                [
+                  h.p([h.Class("font-medium")], ["Items"]),
+                  h.p([h.Class("text-gray-500")], ["2x Studio Headphones"]),
+                ]
               ),
             ],
-            "space-y-2 p-0"
+            "flex flex-col gap-2 p-0"
           ),
         ],
       }),
