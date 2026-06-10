@@ -34,8 +34,7 @@ export const init = (): readonly [
 
 // UPDATE
 
-const normalizeDigit = (value: string): string =>
-  value.replaceAll(/\D/gu, "").slice(-1);
+const normalizeSlotValue = (value: string): string => value.slice(-1);
 
 const slotId = (index: number): string => `input-otp-digit-${index + 1}`;
 
@@ -58,16 +57,16 @@ export const update = (
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
       UpdatedInputOtpDigit: ({ index, value }) => {
-        const digitValue = normalizeDigit(value);
+        const slotValue = normalizeSlotValue(value);
 
         return [
           evo(model, {
             digits: (digits) =>
               Array.map(digits, (digit, digitIndex) =>
-                digitIndex === index ? digitValue : digit
+                digitIndex === index ? slotValue : digit
               ),
           }),
-          digitValue !== "" && index < model.digits.length - 1
+          slotValue !== "" && index < model.digits.length - 1
             ? [FocusInputOtpDigit({ index: index + 1 })]
             : [],
         ];

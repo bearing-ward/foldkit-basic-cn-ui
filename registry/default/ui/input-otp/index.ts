@@ -25,6 +25,8 @@ export type SlotViewConfig<ParentMessage> = Readonly<{
   value: string;
   ariaLabel: string;
   onInput: (value: string) => ParentMessage;
+  inputMode?: string | undefined;
+  pattern?: string | undefined;
   active?: boolean | undefined;
   className?: string | undefined;
 }>;
@@ -69,6 +71,8 @@ export const slotView = <ParentMessage>({
   value,
   ariaLabel,
   onInput,
+  inputMode,
+  pattern,
   active = false,
   className,
 }: SlotViewConfig<ParentMessage>): Html => {
@@ -80,10 +84,10 @@ export const slotView = <ParentMessage>({
     h.Value(value),
     h.AriaLabel(ariaLabel),
     h.Autocomplete("one-time-code"),
-    h.Attribute("inputmode", "numeric"),
     h.Attribute("maxlength", "1"),
     h.OnInput(onInput),
-    h.Attribute("pattern", "[0-9]*"),
+    ...(inputMode === undefined ? [] : [h.Attribute("inputmode", inputMode)]),
+    ...(pattern === undefined ? [] : [h.Attribute("pattern", pattern)]),
     h.DataAttribute("slot", "input-otp-slot"),
     h.DataAttribute("active", active ? "true" : "false"),
     h.DataAttribute("filled", value === "" ? "false" : "true"),

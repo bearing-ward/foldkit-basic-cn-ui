@@ -8164,7 +8164,7 @@ const inputOtpDocsView = (model: Model): Html => {
           h.p(
             [h.Class("max-w-2xl text-base text-gray-600")],
             [
-              "Grouped one-character OTP inputs with numeric slot attributes, separators, and parent-owned digit normalization.",
+              "Grouped one-character OTP inputs with optional pattern/input-mode attributes, separators, and parent-owned value normalization.",
             ]
           ),
         ]
@@ -8217,7 +8217,7 @@ InputOtp.rootView<Message>({
   ],
 });`,
         integrationCode:
-          "The Basic example stores digits in the Foldkit model, sends UpdatedInputOtpDigit from each slot, and normalizes each update to the latest numeric character.",
+          "The Basic example stores slot values in the Foldkit model, sends UpdatedInputOtpDigit from each slot, and normalizes each update to the latest character. Pass inputMode or pattern to slotView when a numeric-only code is required.",
         anatomySection: docsAnatomyBlock(
           `InputOtp.rootView<Message>({
   children: [

@@ -12,7 +12,7 @@ describe("Input OTP Basic example", () => {
       },
       Scene.with(InputOtpBasicExample.init()[0]),
       Scene.expect(Scene.role("textbox", { name: "Digit 1" })).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Digit 1" }), "1"),
+      Scene.type(Scene.role("textbox", { name: "Digit 1" }), "A"),
       Scene.Command.expectExact(
         InputOtpBasicExample.FocusInputOtpDigit({ index: 1 })
       ),
@@ -20,7 +20,7 @@ describe("Input OTP Basic example", () => {
         InputOtpBasicExample.FocusInputOtpDigit({ index: 1 }),
         InputOtpBasicExample.FocusedInputOtpDigit()
       ),
-      Scene.expect(Scene.role("textbox", { name: "Digit 1" })).toHaveValue("1"),
+      Scene.expect(Scene.role("textbox", { name: "Digit 1" })).toHaveValue("A"),
       Scene.type(Scene.role("textbox", { name: "Digit 2" }), "2"),
       Scene.Command.expectExact(
         InputOtpBasicExample.FocusInputOtpDigit({ index: 2 })
