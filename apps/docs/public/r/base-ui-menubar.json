@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed controlled menubar component for horizontal command menus.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/menubar"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-menubar/index.ts",

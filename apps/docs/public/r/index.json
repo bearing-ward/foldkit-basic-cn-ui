@@ -735,7 +735,7 @@
       "description": "A Base UI Base UI-informed controlled menubar component for horizontal command menus.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/menubar"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-menubar/index.ts",
@@ -803,7 +803,7 @@
       "description": "A Base UI Base UI-informed navigation menu component for controlled popup panels.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/navigation-menu"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-navigation-menu/index.ts",
@@ -837,7 +837,7 @@
       "description": "A Base UI Base UI-informed number field component for controlled numeric input with increment and decrement controls.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/number-field"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-number-field/index.ts",
@@ -3149,7 +3149,7 @@
       "description": "shadcn style-lane menubar wrapper backed by the existing Menubar component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/menubar"],
+      "registryDependencies": ["@foldkit-cn/base-ui-menubar"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-menubar/index.ts",
@@ -3182,7 +3182,7 @@
       "description": "shadcn style-lane navigation menu wrapper backed by the existing Navigation Menu component.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/navigation-menu"],
+      "registryDependencies": ["@foldkit-cn/base-ui-navigation-menu"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-navigation-menu/index.ts",
@@ -9266,7 +9266,7 @@
       "description": "A runnable Foldkit version of the Base UI Menubar default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/menubar"],
+      "registryDependencies": ["@foldkit-cn/base-ui-menubar"],
       "files": [
         {
           "path": "registry/default/examples/menubar-basic/main.ts",
@@ -9370,7 +9370,7 @@
       "description": "A runnable Foldkit version of the Base UI Navigation Menu default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/navigation-menu"],
+      "registryDependencies": ["@foldkit-cn/base-ui-navigation-menu"],
       "files": [
         {
           "path": "registry/default/examples/navigation-menu-basic/main.ts",
@@ -9408,7 +9408,7 @@
       "description": "A runnable Foldkit version of the Base UI Number Field default Amount example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/number-field"],
+      "registryDependencies": ["@foldkit-cn/base-ui-number-field"],
       "files": [
         {
           "path": "registry/default/examples/number-field-basic/main.ts",

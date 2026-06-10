@@ -6,7 +6,7 @@
   "description": "shadcn style-lane navigation menu wrapper backed by the existing Navigation Menu component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/navigation-menu"],
+  "registryDependencies": ["@foldkit-cn/base-ui-navigation-menu"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-navigation-menu/index.ts",

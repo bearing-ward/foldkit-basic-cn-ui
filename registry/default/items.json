@@ -771,7 +771,7 @@
     "description": "A Base UI Base UI-informed controlled menubar component for horizontal command menus.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["menubar"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-menubar/index.ts",
@@ -841,7 +841,7 @@
     "description": "A Base UI Base UI-informed navigation menu component for controlled popup panels.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["navigation-menu"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-navigation-menu/index.ts",
@@ -876,7 +876,7 @@
     "description": "A Base UI Base UI-informed number field component for controlled numeric input with increment and decrement controls.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["number-field"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-number-field/index.ts",
@@ -2476,42 +2476,6 @@
     }
   },
   {
-    "name": "menubar",
-    "type": "registry:ui",
-    "title": "Menubar",
-    "description": "A Base UI-informed controlled menubar component for horizontal command menus.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/menubar/index.ts",
-        "target": "src/ui/menubar/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/menubar/view.ts",
-        "target": "src/ui/menubar/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/menubar/menubar.scene.test.ts",
-        "target": "src/ui/menubar/menubar.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Menubar",
-        "origin": "https://base-ui.com/react/components/menubar",
-        "artifact": "component",
-        "stateful": false,
-        "public": false,
-        "publicAliasOf": "base-ui-menubar"
-      }
-    }
-  },
-  {
     "name": "meter",
     "type": "registry:ui",
     "title": "Meter",
@@ -2578,78 +2542,6 @@
         "stateful": false,
         "origin": "https://ui.shadcn.com/docs/components/radix/native-select",
         "artifact": "component"
-      }
-    }
-  },
-  {
-    "name": "navigation-menu",
-    "type": "registry:ui",
-    "title": "Navigation Menu",
-    "description": "A Base UI-informed navigation menu component for controlled popup panels.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/navigation-menu/index.ts",
-        "target": "src/ui/navigation-menu/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/navigation-menu/view.ts",
-        "target": "src/ui/navigation-menu/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/navigation-menu/navigation-menu.scene.test.ts",
-        "target": "src/ui/navigation-menu/navigation-menu.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "NavigationMenu",
-        "origin": "https://base-ui.com/react/components/navigation-menu",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-navigation-menu"
-      }
-    }
-  },
-  {
-    "name": "number-field",
-    "type": "registry:ui",
-    "title": "Number Field",
-    "description": "A Base UI-informed number field component for controlled numeric input with increment and decrement controls.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/number-field/index.ts",
-        "target": "src/ui/number-field/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/number-field/view.ts",
-        "target": "src/ui/number-field/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/number-field/number-field.scene.test.ts",
-        "target": "src/ui/number-field/number-field.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "NumberField",
-        "origin": "https://base-ui.com/react/components/number-field",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-number-field"
       }
     }
   },
@@ -3557,7 +3449,7 @@
     "description": "shadcn style-lane menubar wrapper backed by the existing Menubar component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["menubar"],
+    "registryDependencies": ["base-ui-menubar"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-menubar/index.ts",
@@ -3590,7 +3482,7 @@
     "description": "shadcn style-lane navigation menu wrapper backed by the existing Navigation Menu component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["navigation-menu"],
+    "registryDependencies": ["base-ui-navigation-menu"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-navigation-menu/index.ts",
@@ -9789,7 +9681,7 @@
     "description": "A runnable Foldkit version of the Base UI Menubar default example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["menubar"],
+    "registryDependencies": ["base-ui-menubar"],
     "files": [
       {
         "path": "registry/default/examples/menubar-basic/main.ts",
@@ -9893,7 +9785,7 @@
     "description": "A runnable Foldkit version of the Base UI Navigation Menu default example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["navigation-menu"],
+    "registryDependencies": ["base-ui-navigation-menu"],
     "files": [
       {
         "path": "registry/default/examples/navigation-menu-basic/main.ts",
@@ -9931,7 +9823,7 @@
     "description": "A runnable Foldkit version of the Base UI Number Field default Amount example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["number-field"],
+    "registryDependencies": ["base-ui-number-field"],
     "files": [
       {
         "path": "registry/default/examples/number-field-basic/main.ts",

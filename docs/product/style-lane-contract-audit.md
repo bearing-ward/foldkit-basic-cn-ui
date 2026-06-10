@@ -56,9 +56,8 @@ batches. Compatibility aliases are not required.
 
 Highest-value first batches:
 
-- Base UI interactive primitives: `menubar`, `navigation-menu`,
-  `number-field`, `preview-card`, `radio`, `toggle`, `toggle-group`, and
-  `toolbar`.
+- Base UI interactive primitives: `preview-card`, `radio`, `toggle`,
+  `toggle-group`, and `toolbar`.
 - shadcn presentation and layout entries: `alert`, `aspect-ratio`,
   `breadcrumb`, `button-group`, `card`, `carousel`, `chart`, `data-table`,
   `direction`, `dropdown-menu`, `empty`, `hover-card`, `input-group`,
@@ -181,7 +180,9 @@ Next recommended slice:
 - Removed unprefixed Base UI aliases: `drawer`, `field`, and `form`. Their
   installable dependents now point at `base-ui-drawer`, `base-ui-field`, and
   `base-ui-form`.
-- Next unprefixed Base UI alias batch: `menubar`, `navigation-menu`, and
-  `number-field`.
+- Removed unprefixed Base UI aliases: `menubar`, `navigation-menu`, and
+  `number-field`. Their installable dependents now point at
+  `base-ui-menubar`, `base-ui-navigation-menu`, and `base-ui-number-field`.
+- Next unprefixed Base UI alias batch: `preview-card`, `radio`, and `toggle`.
 - Continue side-by-side origin visual signoff from
   `docs/product/origin-content-parity-review.md`.

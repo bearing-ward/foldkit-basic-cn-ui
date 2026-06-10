@@ -6,7 +6,7 @@
   "description": "shadcn style-lane menubar wrapper backed by the existing Menubar component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/menubar"],
+  "registryDependencies": ["@foldkit-cn/base-ui-menubar"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-menubar/index.ts",

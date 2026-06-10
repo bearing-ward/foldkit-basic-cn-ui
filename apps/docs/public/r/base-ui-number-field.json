@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed number field component for controlled numeric input with increment and decrement controls.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/number-field"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-number-field/index.ts",

@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed navigation menu component for controlled popup panels.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/navigation-menu"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-navigation-menu/index.ts",
