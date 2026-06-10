@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("billing"),
-  S.Literal("secure"),
-  S.Literal("integrations"),
+  S.Literal("accessible"),
+  S.Literal("styled"),
+  S.Literal("animated"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["billing"] }, []];
+] => [{ openValues: ["accessible"] }, []];
 
 // UPDATE
 
@@ -70,33 +70,31 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "billing",
+          value: "accessible",
           openValues: model.openValues,
-          title: "How does billing work?",
-          onValueChange: ToggledPanel({ value: "billing" }),
+          title: "Is it accessible?",
+          onValueChange: ToggledPanel({ value: "accessible" }),
+          className: "last:border-b-0",
+          children: panel("Yes. It adheres to the WAI-ARIA design pattern."),
+        }),
+        Accordion.itemView<Message>({
+          value: "styled",
+          openValues: model.openValues,
+          title: "Is it styled?",
+          onValueChange: ToggledPanel({ value: "styled" }),
           className: "last:border-b-0",
           children: panel(
-            "We offer monthly and annual subscription plans. Billing is charged at the beginning of each cycle, and you can cancel anytime. All plans include automatic backups, 24/7 support, and unlimited team members."
+            "Yes. It comes with default styles that matches the other components' aesthetic."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "secure",
+          value: "animated",
           openValues: model.openValues,
-          title: "Is my data secure?",
-          onValueChange: ToggledPanel({ value: "secure" }),
+          title: "Is it animated?",
+          onValueChange: ToggledPanel({ value: "animated" }),
           className: "last:border-b-0",
           children: panel(
-            "Yes, we use enterprise-grade encryption, regular security audits, and comply with SOC 2 Type II standards to protect your data."
-          ),
-        }),
-        Accordion.itemView<Message>({
-          value: "integrations",
-          openValues: model.openValues,
-          title: "What integrations do you support?",
-          onValueChange: ToggledPanel({ value: "integrations" }),
-          className: "last:border-b-0",
-          children: panel(
-            "We support integrations with Slack, GitHub, Google Workspace, Microsoft Teams, Zapier, and over 100 other popular tools."
+            "Yes. It's animated by default, but you can disable it if you prefer."
           ),
         }),
       ],

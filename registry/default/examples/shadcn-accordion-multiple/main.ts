@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("notifications"),
-  S.Literal("privacy"),
-  S.Literal("billing"),
+  S.Literal("accessible"),
+  S.Literal("styled"),
+  S.Literal("animated"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["notifications"] }, []];
+] => [{ openValues: ["accessible"] }, []];
 
 // UPDATE
 
@@ -69,30 +69,28 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "notifications",
+          value: "accessible",
           openValues: model.openValues,
-          title: "Notification Settings",
-          onValueChange: ToggledPanel({ value: "notifications" }),
+          title: "Is it accessible?",
+          onValueChange: ToggledPanel({ value: "accessible" }),
+          children: panel("Yes. It adheres to the WAI-ARIA design pattern."),
+        }),
+        Accordion.itemView<Message>({
+          value: "styled",
+          openValues: model.openValues,
+          title: "Is it styled?",
+          onValueChange: ToggledPanel({ value: "styled" }),
           children: panel(
-            "Manage how you receive notifications. You can enable email alerts for updates or push notifications for mobile devices."
+            "Yes. It comes with default styles that matches the other components' aesthetic."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "privacy",
+          value: "animated",
           openValues: model.openValues,
-          title: "Privacy & Security",
-          onValueChange: ToggledPanel({ value: "privacy" }),
+          title: "Is it animated?",
+          onValueChange: ToggledPanel({ value: "animated" }),
           children: panel(
-            "Control your privacy settings, manage two-factor authentication, and review active sessions."
-          ),
-        }),
-        Accordion.itemView<Message>({
-          value: "billing",
-          openValues: model.openValues,
-          title: "Billing & Subscription",
-          onValueChange: ToggledPanel({ value: "billing" }),
-          children: panel(
-            "Update your billing information, view invoices, and manage your subscription plan."
+            "Yes. It's animated by default, but you can disable it if you prefer."
           ),
         }),
       ],

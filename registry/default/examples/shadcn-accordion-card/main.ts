@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("plans"),
-  S.Literal("billing"),
-  S.Literal("cancel"),
+  S.Literal("accessible"),
+  S.Literal("styled"),
+  S.Literal("animated"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["plans"] }, []];
+] => [{ openValues: ["accessible"] }, []];
 
 // UPDATE
 
@@ -79,13 +79,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [
           h.h3(
             [h.Class("text-base font-semibold text-gray-950")],
-            ["Subscription & Billing"]
+            ["Accordion"]
           ),
           h.p(
             [h.Class("text-sm text-gray-600")],
-            [
-              "Common questions about your account, plans, payments and cancellations.",
-            ]
+            ["Common questions about the accordion component."]
           ),
         ]
       ),
@@ -93,30 +91,28 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         openValues: model.openValues,
         children: [
           Accordion.itemView<Message>({
-            value: "plans",
+            value: "accessible",
             openValues: model.openValues,
-            title: "What subscription plans do you offer?",
-            onValueChange: ToggledPanel({ value: "plans" }),
+            title: "Is it accessible?",
+            onValueChange: ToggledPanel({ value: "accessible" }),
+            children: panel("Yes. It adheres to the WAI-ARIA design pattern."),
+          }),
+          Accordion.itemView<Message>({
+            value: "styled",
+            openValues: model.openValues,
+            title: "Is it styled?",
+            onValueChange: ToggledPanel({ value: "styled" }),
             children: panel(
-              "We offer three subscription tiers: Starter ($9/month), Professional ($29/month), and Enterprise ($99/month). Each plan includes increasing storage limits, API access, priority support, and team collaboration features."
+              "Yes. It comes with default styles that matches the other components' aesthetic."
             ),
           }),
           Accordion.itemView<Message>({
-            value: "billing",
+            value: "animated",
             openValues: model.openValues,
-            title: "How does billing work?",
-            onValueChange: ToggledPanel({ value: "billing" }),
+            title: "Is it animated?",
+            onValueChange: ToggledPanel({ value: "animated" }),
             children: panel(
-              "Billing is monthly or annual depending on your plan. You can update your payment method, download invoices, and change billing contacts from account settings."
-            ),
-          }),
-          Accordion.itemView<Message>({
-            value: "cancel",
-            openValues: model.openValues,
-            title: "How do I cancel my subscription?",
-            onValueChange: ToggledPanel({ value: "cancel" }),
-            children: panel(
-              "You can cancel from the billing page at any time. Your account keeps access until the end of the current billing period."
+              "Yes. It's animated by default, but you can disable it if you prefer."
             ),
           }),
         ],

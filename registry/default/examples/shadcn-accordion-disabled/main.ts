@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("history"),
-  S.Literal("premium"),
-  S.Literal("email"),
+  S.Literal("accessible"),
+  S.Literal("styled"),
+  S.Literal("animated"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["history"] }, []];
+] => [{ openValues: ["accessible"] }, []];
 
 // UPDATE
 
@@ -70,31 +70,29 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "history",
+          value: "accessible",
           openValues: model.openValues,
-          title: "Can I access my account history?",
-          onValueChange: ToggledPanel({ value: "history" }),
-          children: panel(
-            "Yes, you can view your account history in the dashboard under the Activity tab."
-          ),
+          title: "Is it accessible?",
+          onValueChange: ToggledPanel({ value: "accessible" }),
+          children: panel("Yes. It adheres to the WAI-ARIA design pattern."),
         }),
         Accordion.itemView<Message>({
-          value: "premium",
+          value: "styled",
           openValues: model.openValues,
-          title: "Premium feature information",
-          onValueChange: ToggledPanel({ value: "premium" }),
+          title: "Is it styled?",
+          onValueChange: ToggledPanel({ value: "styled" }),
           children: panel(
-            "This feature is available for Premium subscribers only. Upgrade your plan to access advanced analytics."
+            "Yes. It comes with default styles that matches the other components' aesthetic."
           ),
           disabled: true,
         }),
         Accordion.itemView<Message>({
-          value: "email",
+          value: "animated",
           openValues: model.openValues,
-          title: "How do I update my email address?",
-          onValueChange: ToggledPanel({ value: "email" }),
+          title: "Is it animated?",
+          onValueChange: ToggledPanel({ value: "animated" }),
           children: panel(
-            "Go to your account settings and update your email address in the Profile section."
+            "Yes. It's animated by default, but you can disable it if you prefer."
           ),
         }),
       ],

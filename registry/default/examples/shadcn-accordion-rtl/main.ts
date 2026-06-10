@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("password"),
-  S.Literal("subscription"),
-  S.Literal("payment"),
+  S.Literal("accessible"),
+  S.Literal("styled"),
+  S.Literal("animated"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["password"] }, []];
+] => [{ openValues: ["accessible"] }, []];
 
 // UPDATE
 
@@ -74,30 +74,28 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         openValues: model.openValues,
         children: [
           Accordion.itemView<Message>({
-            value: "password",
+            value: "accessible",
             openValues: model.openValues,
-            title: "كيف يمكنني إعادة تعيين كلمة المرور؟",
-            onValueChange: ToggledPanel({ value: "password" }),
+            title: "هل يمكن الوصول إليه؟",
+            onValueChange: ToggledPanel({ value: "accessible" }),
+            children: panel("نعم. يلتزم بنمط تصميم WAI-ARIA."),
+          }),
+          Accordion.itemView<Message>({
+            value: "styled",
+            openValues: model.openValues,
+            title: "هل يأتي بتنسيق جاهز؟",
+            onValueChange: ToggledPanel({ value: "styled" }),
             children: panel(
-              "انقر على 'نسيت كلمة المرور' في صفحة تسجيل الدخول، أدخل عنوان بريدك الإلكتروني، وسنرسل لك رابطًا لإعادة تعيين كلمة المرور. سينتهي صلاحية الرابط خلال 24 ساعة."
+              "نعم. يأتي بأنماط افتراضية تتوافق مع جمالية المكونات الأخرى."
             ),
           }),
           Accordion.itemView<Message>({
-            value: "subscription",
+            value: "animated",
             openValues: model.openValues,
-            title: "هل يمكنني تغيير خطة الاشتراك الخاصة بي؟",
-            onValueChange: ToggledPanel({ value: "subscription" }),
+            title: "هل يحتوي على حركة؟",
+            onValueChange: ToggledPanel({ value: "animated" }),
             children: panel(
-              "نعم، يمكنك ترقية خطتك أو تخفيضها في أي وقت من صفحة إعدادات الفوترة."
-            ),
-          }),
-          Accordion.itemView<Message>({
-            value: "payment",
-            openValues: model.openValues,
-            title: "ما هي طرق الدفع التي تقبلونها؟",
-            onValueChange: ToggledPanel({ value: "payment" }),
-            children: panel(
-              "نقبل بطاقات الائتمان الرئيسية وطرق الدفع المعتمدة."
+              "نعم. يحتوي على حركة افتراضيًا، ويمكنك تعطيلها إذا رغبت."
             ),
           }),
         ],

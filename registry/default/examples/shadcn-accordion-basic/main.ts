@@ -11,9 +11,9 @@ import * as Accordion from "../../ui/shadcn-accordion";
 // MODEL
 
 export const AccordionValue = S.Union([
-  S.Literal("password"),
-  S.Literal("subscription"),
-  S.Literal("payment"),
+  S.Literal("accessible"),
+  S.Literal("styled"),
+  S.Literal("animated"),
 ]);
 export type AccordionValue = typeof AccordionValue.Type;
 
@@ -35,7 +35,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openValues: ["password"] }, []];
+] => [{ openValues: ["accessible"] }, []];
 
 // UPDATE
 
@@ -70,30 +70,28 @@ export const view = Submodel.defineView<Model, Message>(
       openValues: model.openValues,
       children: [
         Accordion.itemView<Message>({
-          value: "password",
+          value: "accessible",
           openValues: model.openValues,
-          title: "How do I reset my password?",
-          onValueChange: ToggledPanel({ value: "password" }),
+          title: "Is it accessible?",
+          onValueChange: ToggledPanel({ value: "accessible" }),
+          children: panel("Yes. It adheres to the WAI-ARIA design pattern."),
+        }),
+        Accordion.itemView<Message>({
+          value: "styled",
+          openValues: model.openValues,
+          title: "Is it styled?",
+          onValueChange: ToggledPanel({ value: "styled" }),
           children: panel(
-            "Click on 'Forgot Password' on the login page, enter your email address, and we'll send you a link to reset your password. The link will expire in 24 hours."
+            "Yes. It comes with default styles that matches the other components' aesthetic."
           ),
         }),
         Accordion.itemView<Message>({
-          value: "subscription",
+          value: "animated",
           openValues: model.openValues,
-          title: "Can I change my subscription plan?",
-          onValueChange: ToggledPanel({ value: "subscription" }),
+          title: "Is it animated?",
+          onValueChange: ToggledPanel({ value: "animated" }),
           children: panel(
-            "Yes, you can upgrade or downgrade your subscription plan at any time from your account settings. Changes will take effect immediately."
-          ),
-        }),
-        Accordion.itemView<Message>({
-          value: "payment",
-          openValues: model.openValues,
-          title: "What payment methods do you accept?",
-          onValueChange: ToggledPanel({ value: "payment" }),
-          children: panel(
-            "We accept all major credit cards, PayPal, and bank transfers for annual plans."
+            "Yes. It's animated by default, but you can disable it if you prefer."
           ),
         }),
       ],

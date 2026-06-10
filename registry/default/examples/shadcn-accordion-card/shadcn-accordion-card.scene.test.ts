@@ -8,18 +8,14 @@ describe("shadcn Accordion Card example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.text("Subscription & Billing")).toExist(),
+      Scene.expect(Scene.text("Accordion")).toExist(),
       Scene.expect(
-        Scene.text(
-          "Common questions about your account, plans, payments and cancellations."
-        )
+        Scene.text("Common questions about the accordion component.")
       ).toExist(),
-      Scene.click(
-        Scene.role("button", { name: "How do I cancel my subscription?" })
-      ),
+      Scene.click(Scene.role("button", { name: "Is it animated?" })),
       Scene.expect(
         Scene.text(
-          "You can cancel from the billing page at any time. Your account keeps access until the end of the current billing period."
+          "Yes. It's animated by default, but you can disable it if you prefer."
         )
       ).toExist()
     );
