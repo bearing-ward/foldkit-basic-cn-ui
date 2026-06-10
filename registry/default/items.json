@@ -1359,7 +1359,7 @@
     "description": "A Base UI Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle-group"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-toggle-group/index.ts",
@@ -1394,7 +1394,7 @@
     "description": "A Base UI Base UI-informed toolbar component for grouped editor controls, compact actions, separators, links, and inputs.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toolbar"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-toolbar/index.ts",
@@ -3848,7 +3848,7 @@
     "description": "A shadcn-origin toggle group component page backed by the Foldkit Toggle Group primitive.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle-group"],
+    "registryDependencies": ["base-ui-toggle-group"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-toggle-group/index.ts",
@@ -4285,78 +4285,6 @@
         "stateful": true,
         "origin": "https://foldkit.dev/ui/toast",
         "artifact": "primitive-backed-component"
-      }
-    }
-  },
-  {
-    "name": "toggle-group",
-    "type": "registry:ui",
-    "title": "Toggle Group",
-    "description": "A Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": ["base-ui-toggle"],
-    "files": [
-      {
-        "path": "registry/default/ui/toggle-group/index.ts",
-        "target": "src/ui/toggle-group/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/toggle-group/view.ts",
-        "target": "src/ui/toggle-group/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/toggle-group/toggle-group.scene.test.ts",
-        "target": "src/ui/toggle-group/toggle-group.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "ToggleGroup",
-        "origin": "https://base-ui.com/react/components/toggle-group",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-toggle-group"
-      }
-    }
-  },
-  {
-    "name": "toolbar",
-    "type": "registry:ui",
-    "title": "Toolbar",
-    "description": "A Base UI-informed toolbar component for grouped editor controls, compact actions, separators, links, and inputs.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/toolbar/index.ts",
-        "target": "src/ui/toolbar/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/toolbar/view.ts",
-        "target": "src/ui/toolbar/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/toolbar/toolbar.scene.test.ts",
-        "target": "src/ui/toolbar/toolbar.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Toolbar",
-        "origin": "https://base-ui.com/react/components/toolbar",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-toolbar"
       }
     }
   },
@@ -12527,7 +12455,7 @@
     "description": "A runnable Foldkit version of the Base UI Toggle Group hero example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle-group"],
+    "registryDependencies": ["base-ui-toggle-group"],
     "files": [
       {
         "path": "registry/default/examples/toggle-group-basic/main.ts",
@@ -12566,7 +12494,7 @@
     "description": "A runnable Foldkit version of the Base UI Toolbar hero example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toolbar"],
+    "registryDependencies": ["base-ui-toolbar"],
     "files": [
       {
         "path": "registry/default/examples/toolbar-basic/main.ts",

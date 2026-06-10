@@ -1313,7 +1313,7 @@
       "description": "A Base UI Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toggle-group"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-toggle-group/index.ts",
@@ -1347,7 +1347,7 @@
       "description": "A Base UI Base UI-informed toolbar component for grouped editor controls, compact actions, separators, links, and inputs.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toolbar"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-toolbar/index.ts",
@@ -3620,7 +3620,7 @@
       "description": "A shadcn-origin toggle group component page backed by the Foldkit Toggle Group primitive.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toggle-group"],
+      "registryDependencies": ["@foldkit-cn/base-ui-toggle-group"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-toggle-group/index.ts",
@@ -12229,7 +12229,7 @@
       "description": "A runnable Foldkit version of the Base UI Toggle Group hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toggle-group"],
+      "registryDependencies": ["@foldkit-cn/base-ui-toggle-group"],
       "files": [
         {
           "path": "registry/default/examples/toggle-group-basic/main.ts",
@@ -12268,7 +12268,7 @@
       "description": "A runnable Foldkit version of the Base UI Toolbar hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toolbar"],
+      "registryDependencies": ["@foldkit-cn/base-ui-toolbar"],
       "files": [
         {
           "path": "registry/default/examples/toolbar-basic/main.ts",
