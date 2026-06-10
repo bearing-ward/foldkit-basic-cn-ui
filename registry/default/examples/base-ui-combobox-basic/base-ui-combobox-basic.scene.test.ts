@@ -64,6 +64,7 @@ describe("Base UI combobox Basic example", () => {
       },
       Scene.with(BaseUiComboboxBasicExample.init()[0]),
       Scene.expect(Scene.role("button", { name: "Clear selection" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open popup" })).toExist(),
       resolvePreventBlurMount(),
       Scene.type(Scene.placeholder("e.g. Apple"), "ap"),
       resolveComboboxMounts(),
