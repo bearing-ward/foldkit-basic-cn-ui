@@ -12,6 +12,7 @@ import * as Menubar from "../../ui/base-ui-menubar";
 
 export const Model = S.Struct({
   openMenu: S.String,
+  openSubmenu: S.String,
   selected: S.String,
 });
 
@@ -25,8 +26,15 @@ export const ToggledMenubarMenu = m("ToggledMenubarMenu", {
 export const SelectedMenubarItem = m("SelectedMenubarItem", {
   value: S.String,
 });
+export const ToggledMenubarSubmenu = m("ToggledMenubarSubmenu", {
+  value: S.String,
+});
 
-export const Message = S.Union([ToggledMenubarMenu, SelectedMenubarItem]);
+export const Message = S.Union([
+  ToggledMenubarMenu,
+  SelectedMenubarItem,
+  ToggledMenubarSubmenu,
+]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -34,7 +42,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ openMenu: "", selected: "" }, []];
+] => [{ openMenu: "", openSubmenu: "", selected: "" }, []];
 
 // UPDATE
 
@@ -48,13 +56,21 @@ export const update = (
       ToggledMenubarMenu: ({ value }) => [
         evo(model, {
           openMenu: (openMenu) => (openMenu === value ? "" : value),
+          openSubmenu: () => "",
         }),
         [],
       ],
       SelectedMenubarItem: ({ value }) => [
         evo(model, {
           openMenu: () => "",
+          openSubmenu: () => "",
           selected: () => value,
+        }),
+        [],
+      ],
+      ToggledMenubarSubmenu: ({ value }) => [
+        evo(model, {
+          openSubmenu: (openSubmenu) => (openSubmenu === value ? "" : value),
         }),
         [],
       ],
@@ -63,6 +79,22 @@ export const update = (
 
 // VIEW
 
+const caretRightIcon = (): Html => {
+  const h = html<Message>();
+
+  return h.svg(
+    [
+      h.Attribute("width", "16"),
+      h.Attribute("height", "16"),
+      h.Attribute("viewBox", "0 0 16 16"),
+      h.Attribute("fill", "currentColor"),
+      h.AriaHidden(true),
+      h.Class("block"),
+    ],
+    [h.path([h.Attribute("d", "M6 12V4l4.5 4z")], [])]
+  );
+};
+
 const itemView = (label: string): Html => {
   const h = html<Message>();
 
@@ -70,6 +102,41 @@ const itemView = (label: string): Html => {
     onSelect: SelectedMenubarItem({ value: label }),
     children: [h.span([], [label])],
   });
+};
+
+const submenuTriggerView = (label: string, open: boolean): Html => {
+  const h = html<Message>();
+
+  return h.button(
+    [
+      h.Type("button"),
+      h.Attribute("role", "menuitem"),
+      h.Attribute("aria-haspopup", "menu"),
+      h.Attribute("aria-expanded", open ? "true" : "false"),
+      ...(open ? [h.DataAttribute("popup-open", "")] : []),
+      h.OnClick(ToggledMenubarSubmenu({ value: label })),
+      h.Class(
+        `flex w-full items-center justify-between gap-4 ${Menubar.menubarItemClassName} data-[popup-open]:bg-gray-100`
+      ),
+    ],
+    [h.span([], [label]), caretRightIcon()]
+  );
+};
+
+const submenuPopupView = (open: boolean, labels: readonly string[]): Html => {
+  const h = html<Message>();
+
+  if (!open) {
+    return h.empty;
+  }
+
+  return h.div(
+    [
+      h.Attribute("role", "menu"),
+      h.Class(`${Menubar.menubarPopupClassName} left-full top-8 -ml-1 mt-0`),
+    ],
+    labels.map(itemView)
+  );
 };
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
@@ -91,8 +158,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               itemView("New"),
               itemView("Open"),
               itemView("Save"),
+              h.div(
+                [h.Class("relative")],
+                [
+                  submenuTriggerView("Export", model.openSubmenu === "Export"),
+                  submenuPopupView(model.openSubmenu === "Export", [
+                    "PDF",
+                    "PNG",
+                    "SVG",
+                  ]),
+                ]
+              ),
               Menubar.separatorView<Message>({}),
-              itemView("Export"),
               itemView("Print"),
             ],
           }),
@@ -120,7 +197,23 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           }),
           Menubar.popupView<Message>({
             open: isOpen("View"),
-            children: [itemView("Zoom In"), itemView("Zoom Out")],
+            children: [
+              itemView("Zoom In"),
+              itemView("Zoom Out"),
+              h.div(
+                [h.Class("relative")],
+                [
+                  submenuTriggerView("Layout", model.openSubmenu === "Layout"),
+                  submenuPopupView(model.openSubmenu === "Layout", [
+                    "Single Page",
+                    "Two Pages",
+                    "Continuous",
+                  ]),
+                ]
+              ),
+              Menubar.separatorView<Message>({}),
+              itemView("Full Screen"),
+            ],
           }),
         ],
       }),
@@ -128,12 +221,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         children: [
           Menubar.triggerView<Message>({
             open: isOpen("Help"),
-            onToggle: ToggledMenubarMenu({ value: "Help" }),
+            disabled: true,
             children: [h.span([], ["Help"])],
-          }),
-          Menubar.popupView<Message>({
-            open: isOpen("Help"),
-            children: [itemView("Documentation"), itemView("About")],
           }),
         ],
       }),

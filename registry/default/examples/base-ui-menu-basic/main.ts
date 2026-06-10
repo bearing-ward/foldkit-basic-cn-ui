@@ -25,6 +25,22 @@ const actions: readonly Action[] = [
   "Share",
 ];
 
+const caretDownIcon = (): Html => {
+  const h = html<Message>();
+
+  return h.svg(
+    [
+      h.Attribute("width", "16"),
+      h.Attribute("height", "16"),
+      h.Attribute("viewBox", "0 0 16 16"),
+      h.Attribute("fill", "currentColor"),
+      h.AriaHidden(true),
+      h.Class("block"),
+    ],
+    [h.path([h.Attribute("d", "M12 6H4l4 4.5z")], [])]
+  );
+};
+
 // MODEL
 
 export const Model = S.Struct({
@@ -97,7 +113,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             : Menu.baseUiMenuItemClassName,
         content: h.span([], [item]),
       }),
-      buttonContent: h.span([], ["Song"]),
+      buttonContent: h.span(
+        [h.Class("inline-flex items-center gap-2")],
+        [h.span([], ["Song"]), caretDownIcon()]
+      ),
       buttonAttributes: childAttributes([
         h.Class(Menu.baseUiMenuTriggerClassName),
       ]),

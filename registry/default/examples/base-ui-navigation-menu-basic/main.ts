@@ -119,24 +119,33 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       isOpen("Overview")
         ? popupView([
             cardView(
-              "Introduction",
-              "Start with the product overview and component principles."
+              "Quick Start",
+              "Install and assemble your first component."
             ),
             cardView(
-              "Installation",
-              "Install the registry package and copy the source into your app."
+              "Accessibility",
+              "Learn how we build accessible components."
             ),
+            cardView(
+              "Releases",
+              "See what’s new in the latest Base UI versions."
+            ),
+            cardView("About", "Learn more about Base UI and our mission."),
           ])
         : h.empty,
       isOpen("Handbook")
         ? popupView([
             cardView(
-              "Components",
-              "Browse guidance for composing navigation and overlays."
+              "Styling",
+              "Base UI components can be styled with plain CSS, Tailwind CSS, CSS-in-JS, or CSS Modules."
             ),
             cardView(
-              "Patterns",
-              "Review accessibility, state, and styling conventions."
+              "Animation",
+              "Base UI components can be animated with CSS transitions, CSS animations, or JavaScript libraries."
+            ),
+            cardView(
+              "Composition",
+              "Base UI components can be replaced and composed with your own existing components."
             ),
           ])
         : h.empty,

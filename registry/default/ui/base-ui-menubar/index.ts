@@ -37,6 +37,7 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   children: readonly Html[];
   onToggle?: ParentMessage | undefined;
   open?: boolean | undefined;
+  disabled?: boolean | undefined;
   className?: string | undefined;
   style?: MenubarStyle | undefined;
 }>;
@@ -98,6 +99,7 @@ export const triggerView = <ParentMessage>({
   children,
   onToggle,
   open = false,
+  disabled = false,
   className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
@@ -110,6 +112,7 @@ export const triggerView = <ParentMessage>({
       h.Attribute("aria-haspopup", "menu"),
       h.Attribute("aria-expanded", open ? "true" : "false"),
       ...(open ? [h.Attribute("data-open", "")] : []),
+      ...(disabled ? [h.Disabled(true), h.Attribute("data-disabled", "")] : []),
       ...(onToggle === undefined ? [] : [h.OnClick(onToggle)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(menubarTriggerClassName, className)),

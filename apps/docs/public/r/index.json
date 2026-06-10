@@ -5614,6 +5614,35 @@
       }
     },
     {
+      "name": "base-ui-form-schema-validation",
+      "type": "registry:example",
+      "title": "Base UI Form Schema Validation",
+      "description": "A Base UI runnable Foldkit version of the Form schema validation example using effect Schema.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/base-ui-form"],
+      "files": [
+        {
+          "path": "registry/default/examples/base-ui-form-schema-validation/main.ts",
+          "target": "src/examples/base-ui-form-schema-validation/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/base-ui-form-schema-validation/base-ui-form-schema-validation.scene.test.ts",
+          "target": "src/examples/base-ui-form-schema-validation/base-ui-form-schema-validation.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Form",
+          "example": "schema-validation",
+          "originExample": "using-with-zod-reproduced-with-effect-schema",
+          "origin": "https://base-ui.com/react/components/form"
+        }
+      }
+    },
+    {
       "name": "base-ui-form-server-function",
       "type": "registry:example",
       "title": "Base UI Form Server Function",

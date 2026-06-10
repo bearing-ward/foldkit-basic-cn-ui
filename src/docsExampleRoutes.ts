@@ -2688,6 +2688,42 @@ export const baseUiFormBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiFormSchemaValidationExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Form Schema Validation"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-form-schema-validation registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsCD.baseUiFormSchemaValidationExamplePreview(
+            model.baseUiFormSchemaValidationExample,
+            "base-ui-form-schema-validation-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const baseUiFormServerFunctionExampleRouteView = (
   model: Model
 ): Html => {

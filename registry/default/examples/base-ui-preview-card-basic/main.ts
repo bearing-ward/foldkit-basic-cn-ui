@@ -56,13 +56,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       h.p(
         [],
         [
-          "Build accessible React components with ",
+          "The principles of good ",
           PreviewCard.rootView<Message>({
             children: [
               PreviewCard.triggerView<Message>({
                 open: model.open,
                 onOpen: OpenedPreviewCard(),
-                children: ["Base UI"],
+                children: ["typography"],
               }),
               PreviewCard.portalView<Message>({
                 open: model.open,
@@ -77,44 +77,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         children: [
                           PreviewCard.viewportView<Message>({
                             children: [
-                              h.div(
+                              h.p(
                                 [
                                   h.Class(
-                                    "flex items-center gap-3 border-b border-gray-100 pb-3"
+                                    "text-sm font-semibold text-gray-950"
                                   ),
                                 ],
-                                [
-                                  h.div(
-                                    [
-                                      h.Class(
-                                        "grid size-10 place-items-center rounded-md bg-accent-600 text-sm font-semibold text-white"
-                                      ),
-                                    ],
-                                    ["BU"]
-                                  ),
-                                  h.div(
-                                    [],
-                                    [
-                                      h.p(
-                                        [
-                                          h.Class(
-                                            "text-sm font-semibold text-gray-950"
-                                          ),
-                                        ],
-                                        ["Base UI"]
-                                      ),
-                                      h.p(
-                                        [h.Class("text-xs text-gray-500")],
-                                        ["@base-ui"]
-                                      ),
-                                    ]
-                                  ),
-                                ]
+                                ["Typography"]
                               ),
                               h.p(
                                 [h.Class("text-sm text-gray-600")],
                                 [
-                                  "Unstyled, accessible components for building high-quality design systems.",
+                                  "The art and science of arranging type to make written language clear, visually appealing, and effective in communication.",
                                 ]
                               ),
                             ],
@@ -127,7 +101,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               }),
             ],
           }),
-          ".",
+          " remain in the digital age.",
         ]
       ),
     ]

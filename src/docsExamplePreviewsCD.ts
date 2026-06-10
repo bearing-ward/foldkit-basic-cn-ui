@@ -24,6 +24,7 @@ import * as BaseUiDrawerPositionExample from "../registry/default/examples/base-
 import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
 import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
 import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiFormSchemaValidationExample from "../registry/default/examples/base-ui-form-schema-validation/main";
 import * as BaseUiFormServerFunctionExample from "../registry/default/examples/base-ui-form-server-function/main";
 import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
 import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
@@ -995,6 +996,21 @@ export const baseUiFormBasicExamplePreview = (
     view: BaseUiFormBasicExample.view,
     toParentMessage: (message) =>
       Main.GotBaseUiFormBasicExampleMessage({ message }),
+  });
+};
+
+export const baseUiFormSchemaValidationExamplePreview = (
+  model: BaseUiFormSchemaValidationExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiFormSchemaValidationExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiFormSchemaValidationExampleMessage({ message }),
   });
 };
 

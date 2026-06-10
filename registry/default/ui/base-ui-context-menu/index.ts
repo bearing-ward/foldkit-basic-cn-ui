@@ -23,6 +23,8 @@ export {
   contextMenuTriggerClassName,
 } from "./view";
 
+export { contextMenuSubmenuPopupClassName } from "./view";
+
 export type ContextMenuStyle = Readonly<Record<string, string>>;
 
 export type RootViewConfig = Readonly<{

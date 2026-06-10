@@ -61,12 +61,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       Drawer.portalView<Message>({
         open: model.open,
         children: [
-          Drawer.backdropView<Message>({ children: [] }),
+          Drawer.backdropView<Message>({
+            state: { open: model.open },
+            children: [],
+          }),
           Drawer.viewportView<Message>({
+            state: { open: model.open },
             children: [
               Drawer.popupView<Message>({
                 titleId,
                 descriptionId,
+                state: { open: model.open },
                 children: [
                   Drawer.contentView<Message>({
                     children: [

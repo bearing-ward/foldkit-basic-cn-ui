@@ -37,15 +37,15 @@ export const init = (): readonly [
 
 // UPDATE
 
-const digitCharacters = (value: string): readonly string[] =>
-  String.split(value.replaceAll(/\D/gu, ""), "");
+const inputCharacters = (value: string): readonly string[] =>
+  String.split(value, "");
 
 const setDigit = (
   digits: readonly string[],
   index: number,
   value: string
 ): readonly string[] => {
-  const values = digitCharacters(value);
+  const values = inputCharacters(value);
 
   const replaceAt = (
     currentDigits: readonly string[],
@@ -87,7 +87,7 @@ const focusNextCommand = (
   index: number,
   value: string
 ): readonly Command.Command<Message>[] => {
-  const values = digitCharacters(value);
+  const values = inputCharacters(value);
 
   if (values.length === 0) {
     return [];
@@ -130,7 +130,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       id: `verification-code-${index}`,
       value: model.digits[index] ?? "",
       index,
-      ariaLabel: `Digit ${index + 1}`,
+      ariaLabel: `Character ${index + 1} of 6`,
       name: "verification-code",
       onInput: (value, index) => UpdatedDigit({ value, index }),
     });
@@ -155,7 +155,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       }),
       h.p(
         [h.Class("text-sm text-gray-600")],
-        [value === "" ? "Enter the 6-digit code" : `Code: ${value}`]
+        [
+          value === ""
+            ? "Enter the 6-character code we sent to your device."
+            : `Code: ${value}`,
+        ]
       ),
     ],
   });

@@ -13,6 +13,9 @@ export const contextMenuPositionerClassName = "absolute left-6 top-6 z-20";
 export const contextMenuPopupClassName =
   "w-56 overflow-hidden rounded-lg border border-gray-200 bg-white py-1 shadow-lg outline-none";
 
+export const contextMenuSubmenuPopupClassName =
+  "w-56 overflow-hidden rounded-lg border border-gray-200 bg-white py-1 shadow-lg outline-none";
+
 export const contextMenuItemClassName =
   "w-full px-3 py-2 text-left text-base text-gray-700 transition hover:bg-gray-100 focus:bg-gray-100 focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50";
 

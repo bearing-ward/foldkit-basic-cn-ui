@@ -36,6 +36,16 @@ const shadcnExamples = registryItems.filter(
 
 const sourceHrefForExample = (exampleName) => `sources/${exampleName}.txt`;
 
+const escapeRegExp = (value) =>
+  value.replaceAll(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+
+const hasLiveExampleResolver = (exampleName) =>
+  docsViewSource.includes(`M.when("${exampleName}"`) ||
+  new RegExp(
+    `\\[\\s*"${escapeRegExp(exampleName)}"\\s*,\\s*\\(\\)\\s*=>`,
+    "u"
+  ).test(docsViewSource);
+
 for (const example of shadcnExamples) {
   const sourceHref = sourceHrefForExample(example.name);
   const sourcePath = path.join(rootDir, "apps/docs/public", sourceHref);
@@ -44,7 +54,7 @@ for (const example of shadcnExamples) {
     failures.push(`${example.name}: missing docs examples declaration`);
   }
 
-  if (!docsViewSource.includes(`M.when("${example.name}"`)) {
+  if (!hasLiveExampleResolver(example.name)) {
     failures.push(`${example.name}: missing live shadcn example resolver`);
   }
 

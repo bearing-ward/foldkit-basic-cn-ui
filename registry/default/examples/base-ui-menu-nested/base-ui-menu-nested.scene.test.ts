@@ -11,9 +11,14 @@ describe("Base UI Menu Nested example", () => {
         view: MenuNestedExample.view,
       },
       Scene.with(MenuNestedExample.init()[0]),
-      Scene.click(Scene.role("button", { name: "Format" })),
-      Scene.expect(Scene.text("Add to Playlist")).toExist(),
-      Scene.click(Scene.text("Add to Playlist")),
+      Scene.click(Scene.role("button", { name: "Song" })),
+      Scene.expect(
+        Scene.role("menuitem", { name: "Add to Playlist" })
+      ).toHaveAttr("aria-expanded", "false"),
+      Scene.click(Scene.role("menuitem", { name: "Add to Playlist" })),
+      Scene.expect(
+        Scene.role("menuitem", { name: "Add to Playlist" })
+      ).toHaveAttr("aria-expanded", "true"),
       Scene.expect(Scene.text("Get Up!")).toExist(),
       Scene.expect(Scene.text("Inside Out")).toExist(),
       Scene.expect(Scene.text("Nightcall")).toExist(),

@@ -15,19 +15,22 @@ describe("otp-field-basic example", () => {
       Scene.expect(
         Scene.role("group", { name: "Verification code" })
       ).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Digit 1" }), "1"),
+      Scene.expect(
+        Scene.text("Enter the 6-character code we sent to your device.")
+      ).toExist(),
+      Scene.type(Scene.role("textbox", { name: "Character 1 of 6" }), "A"),
       Scene.Command.expectExact(FocusSecondDigit),
       Scene.Command.resolve(
         FocusSecondDigit,
         CompletedFocusDigit({ id: "verification-code-1" })
       ),
-      Scene.type(Scene.role("textbox", { name: "Digit 2" }), "2"),
+      Scene.type(Scene.role("textbox", { name: "Character 2 of 6" }), "7"),
       Scene.Command.expectExact(FocusThirdDigit),
       Scene.Command.resolve(
         FocusThirdDigit,
         CompletedFocusDigit({ id: "verification-code-2" })
       ),
-      Scene.expect(Scene.text("Code: 12")).toExist()
+      Scene.expect(Scene.text("Code: A7")).toExist()
     );
   });
 });

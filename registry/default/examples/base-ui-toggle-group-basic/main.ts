@@ -54,10 +54,30 @@ export const update = (
 
 // VIEW
 
-const alignIcon = (label: string): Html => {
+const alignIcon = (path: string): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(ToggleGroup.toggleGroupIconClassName)], [label]);
+  return h.svg(
+    [
+      h.Attribute("width", "16"),
+      h.Attribute("height", "16"),
+      h.Attribute("viewBox", "0 0 16 16"),
+      h.Attribute("fill", "none"),
+      h.Attribute("stroke", "currentColor"),
+      h.AriaHidden(true),
+      h.Class(ToggleGroup.toggleGroupIconClassName),
+    ],
+    [
+      h.path(
+        [
+          h.Attribute("stroke-linecap", "square"),
+          h.Attribute("stroke-linejoin", "round"),
+          h.Attribute("d", path),
+        ],
+        []
+      ),
+    ]
+  );
 };
 
 export const view = Submodel.defineView<Model, Message>(
@@ -70,21 +90,21 @@ export const view = Submodel.defineView<Model, Message>(
           pressedValues: model.alignment,
           ariaLabel: "Align left",
           onPressedChange: ClickedAlignment({ value: "left" }),
-          children: [alignIcon("L")],
+          children: [alignIcon("M2.5 4.5h11m-11 7h9M2.5 8h5")],
         }),
         ToggleGroup.itemView<Message>({
           value: "center",
           pressedValues: model.alignment,
           ariaLabel: "Align center",
           onPressedChange: ClickedAlignment({ value: "center" }),
-          children: [alignIcon("C")],
+          children: [alignIcon("M2.5 4.5h11m-10 7h9M5.5 8h5")],
         }),
         ToggleGroup.itemView<Message>({
           value: "right",
           pressedValues: model.alignment,
           ariaLabel: "Align right",
           onPressedChange: ClickedAlignment({ value: "right" }),
-          children: [alignIcon("R")],
+          children: [alignIcon("M2.5 4.5h11m-9 7h9M8.5 8h5")],
         }),
       ],
     })

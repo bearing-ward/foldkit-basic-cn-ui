@@ -29,6 +29,10 @@ export {
 
 export type DrawerStyle = Readonly<Record<string, string>>;
 
+export type DrawerState = Readonly<{
+  open?: boolean | undefined;
+}>;
+
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   className?: string | undefined;
@@ -54,6 +58,7 @@ export type PartViewConfig = Readonly<{
   children: readonly Html[];
   className?: string | undefined;
   style?: DrawerStyle | undefined;
+  state?: DrawerState | undefined;
 }>;
 
 export type PopupViewConfig = Readonly<{
@@ -62,6 +67,8 @@ export type PopupViewConfig = Readonly<{
   children: readonly Html[];
   className?: string | undefined;
   style?: DrawerStyle | undefined;
+  state?: DrawerState | undefined;
+  modal?: boolean | undefined;
 }>;
 
 export type CloseViewConfig<ParentMessage> = Readonly<{
@@ -76,15 +83,29 @@ const classNames = (base: string, className?: string): string =>
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
+const stateAttributes = <ParentMessage>(
+  h: ReturnType<typeof html<ParentMessage>>,
+  state?: DrawerState
+) => {
+  if (state === undefined || state.open === undefined) {
+    return [];
+  }
+
+  return state.open
+    ? [h.Attribute("data-open", "")]
+    : [h.Attribute("data-closed", "")];
+};
+
 const partView = <ParentMessage>(
   tagName: "div" | "h2" | "p",
   baseClassName: string,
-  { id, children, className, style }: PartViewConfig
+  { id, children, className, style, state }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
   const attributes = [
     ...(id === undefined ? [] : [h.Id(id)]),
     ...(style === undefined ? [] : [h.Style(style)]),
+    ...stateAttributes(h, state),
     h.Class(classNames(baseClassName, className)),
   ];
 
@@ -154,16 +175,19 @@ export const popupView = <ParentMessage>({
   children,
   className,
   style,
+  state,
+  modal = true,
 }: PopupViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.aside(
     [
       h.Attribute("role", "dialog"),
-      h.Attribute("aria-modal", "true"),
+      h.Attribute("aria-modal", modal ? "true" : "false"),
       h.Attribute("aria-labelledby", titleId),
       h.Attribute("aria-describedby", descriptionId),
       ...(style === undefined ? [] : [h.Style(style)]),
+      ...stateAttributes(h, state),
       h.Class(classNames(drawerPopupClassName, className)),
     ],
     children

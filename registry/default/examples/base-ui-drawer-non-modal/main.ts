@@ -62,10 +62,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         open: model.open,
         children: [
           Drawer.viewportView<Message>({
+            state: { open: model.open },
             children: [
               Drawer.popupView<Message>({
                 titleId,
                 descriptionId,
+                state: { open: model.open },
+                modal: false,
                 children: [
                   Drawer.contentView<Message>({
                     children: [

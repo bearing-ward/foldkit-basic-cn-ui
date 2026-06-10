@@ -33,6 +33,38 @@ export const Message = S.Union([
 ]);
 export type Message = typeof Message.Type;
 
+const caretDownIcon = (): Html => {
+  const h = html<Message>();
+
+  return h.svg(
+    [
+      h.Attribute("width", "16"),
+      h.Attribute("height", "16"),
+      h.Attribute("viewBox", "0 0 16 16"),
+      h.Attribute("fill", "currentColor"),
+      h.AriaHidden(true),
+      h.Class("block"),
+    ],
+    [h.path([h.Attribute("d", "M12 6H4l4 4.5z")], [])]
+  );
+};
+
+const caretRightIcon = (): Html => {
+  const h = html<Message>();
+
+  return h.svg(
+    [
+      h.Attribute("width", "16"),
+      h.Attribute("height", "16"),
+      h.Attribute("viewBox", "0 0 16 16"),
+      h.Attribute("fill", "currentColor"),
+      h.AriaHidden(true),
+      h.Class("block"),
+    ],
+    [h.path([h.Attribute("d", "M6 12V4l4.5 4z")], [])]
+  );
+};
+
 // INIT
 
 export const init = (): readonly [
@@ -84,7 +116,20 @@ const menuItemView = (value: string): Html => {
   );
 };
 
-const submenuTriggerView = (): Html => {
+const separatorView = (): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.Attribute("role", "separator"),
+      h.AriaHidden(true),
+      h.Class("my-1 h-px bg-gray-200"),
+    ],
+    []
+  );
+};
+
+const submenuTriggerView = (open: boolean): Html => {
   const h = html<Message>();
 
   return h.button(
@@ -92,12 +137,14 @@ const submenuTriggerView = (): Html => {
       h.Type("button"),
       h.Attribute("role", "menuitem"),
       h.Attribute("aria-haspopup", "menu"),
+      h.Attribute("aria-expanded", open ? "true" : "false"),
+      ...(open ? [h.DataAttribute("popup-open", "")] : []),
       h.OnClick(ClickedAddToPlaylist()),
       h.Class(
-        `flex w-full items-center justify-between gap-4 ${Menu.baseUiMenuItemClassName}`
+        `flex w-full items-center justify-between gap-4 ${Menu.baseUiMenuItemClassName} data-[popup-open]:bg-gray-100`
       ),
     ],
-    [h.span([], ["Add to Playlist"]), h.span([h.AriaHidden(true)], [">"])]
+    [h.span([], ["Add to Playlist"]), caretRightIcon()]
   );
 };
 
@@ -111,7 +158,7 @@ const submenuView = (open: boolean): Html => {
   return h.div(
     [
       h.Attribute("role", "menu"),
-      h.Class(`${Menu.baseUiMenuPopupClassName} left-full top-10 ml-2 mt-0`),
+      h.Class(`${Menu.baseUiMenuPopupClassName} left-full top-8 -ml-1 mt-0`),
     ],
     [
       menuItemView("Get Up!"),
@@ -136,9 +183,11 @@ const popupView = (model: Model): Html => {
         [h.Attribute("role", "menu"), h.Class(Menu.baseUiMenuPopupClassName)],
         [
           menuItemView("Add to Library"),
-          submenuTriggerView(),
+          submenuTriggerView(model.submenuOpen),
+          separatorView(),
           menuItemView("Play Next"),
           menuItemView("Play Last"),
+          separatorView(),
           menuItemView("Favorite"),
           menuItemView("Share"),
         ]
@@ -160,7 +209,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.OnClick(ClickedFormat()),
           h.Class(Menu.baseUiMenuTriggerClassName),
         ],
-        [h.span([], ["Format"])]
+        [
+          h.span(
+            [h.Class("inline-flex items-center gap-2")],
+            [h.span([], ["Song"]), caretDownIcon()]
+          ),
+        ]
       ),
       model.open
         ? h.button(

@@ -56,6 +56,7 @@ import * as BaseUiDrawerPositionExample from "../registry/default/examples/base-
 import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
 import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
 import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
+import * as BaseUiFormSchemaValidationExample from "../registry/default/examples/base-ui-form-schema-validation/main";
 import * as BaseUiFormServerFunctionExample from "../registry/default/examples/base-ui-form-server-function/main";
 import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
 import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
@@ -406,6 +407,9 @@ export const NumberFieldBasicExampleRoute = r("NumberFieldBasicExample");
 export const FormDocsRoute = r("FormDocs");
 export const BaseUiFormDocsRoute = r("BaseUiFormDocs");
 export const BaseUiFormBasicExampleRoute = r("BaseUiFormBasicExample");
+export const BaseUiFormSchemaValidationExampleRoute = r(
+  "BaseUiFormSchemaValidationExample"
+);
 export const BaseUiFormServerFunctionExampleRoute = r(
   "BaseUiFormServerFunctionExample"
 );
@@ -852,6 +856,7 @@ const AppRoute = S.Union([
   FormDocsRoute,
   BaseUiFormDocsRoute,
   BaseUiFormBasicExampleRoute,
+  BaseUiFormSchemaValidationExampleRoute,
   BaseUiFormServerFunctionExampleRoute,
   FormBasicExampleRoute,
   AutocompleteDocsRoute,
@@ -2225,6 +2230,19 @@ export const baseUiFormBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("base-ui-form-basic")),
   Route.mapTo(BaseUiFormBasicExampleRoute)
+);
+export const baseUiFormSchemaValidationExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-form")),
+  slash(literal("examples")),
+  slash(literal("schema-validation")),
+  Route.mapTo(BaseUiFormSchemaValidationExampleRoute)
+);
+export const baseUiFormSchemaValidationStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-form-schema-validation")),
+  Route.mapTo(BaseUiFormSchemaValidationExampleRoute)
 );
 export const baseUiFormServerFunctionExampleRouter = pipe(
   literal("docs"),
@@ -5770,6 +5788,8 @@ const routeParser = Route.oneOf(
   formDocsRouter,
   baseUiFormBasicExampleRouter,
   baseUiFormBasicStandaloneExampleRouter,
+  baseUiFormSchemaValidationExampleRouter,
+  baseUiFormSchemaValidationStandaloneExampleRouter,
   baseUiFormServerFunctionExampleRouter,
   baseUiFormServerFunctionStandaloneExampleRouter,
   baseUiFormDocsRouter,
@@ -5894,6 +5914,7 @@ export const Model = S.Struct({
   baseUiNumberFieldBasicExample: BaseUiNumberFieldBasicExample.Model,
   numberFieldBasicExample: NumberFieldBasicExample.Model,
   baseUiFormBasicExample: BaseUiFormBasicExample.Model,
+  baseUiFormSchemaValidationExample: BaseUiFormSchemaValidationExample.Model,
   baseUiFormServerFunctionExample: BaseUiFormServerFunctionExample.Model,
   formBasicExample: FormBasicExample.Model,
   autocompleteBasicExample: AutocompleteBasicExample.Model,
@@ -6441,6 +6462,12 @@ export const GotBaseUiFormBasicExampleMessage = m(
   "GotBaseUiFormBasicExampleMessage",
   {
     message: BaseUiFormBasicExample.Message,
+  }
+);
+export const GotBaseUiFormSchemaValidationExampleMessage = m(
+  "GotBaseUiFormSchemaValidationExampleMessage",
+  {
+    message: BaseUiFormSchemaValidationExample.Message,
   }
 );
 export const GotBaseUiFormServerFunctionExampleMessage = m(
@@ -7608,6 +7635,7 @@ export const Message = S.Union([
   GotDragAndDropBasicExampleMessage,
   GotDragAndDropDisabledExampleMessage,
   GotBaseUiFormBasicExampleMessage,
+  GotBaseUiFormSchemaValidationExampleMessage,
   GotBaseUiFormServerFunctionExampleMessage,
   GotBaseUiFieldsetBasicExampleMessage,
   GotBaseUiFieldBasicExampleMessage,
@@ -7880,6 +7908,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     NumberFieldBasicExample.init();
   const [baseUiFormBasicExample, baseUiFormBasicExampleCommands] =
     BaseUiFormBasicExample.init();
+  const [
+    baseUiFormSchemaValidationExample,
+    baseUiFormSchemaValidationExampleCommands,
+  ] = BaseUiFormSchemaValidationExample.init();
   const [
     baseUiFormServerFunctionExample,
     baseUiFormServerFunctionExampleCommands,
@@ -8340,6 +8372,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       baseUiNumberFieldBasicExample,
       numberFieldBasicExample,
       baseUiFormBasicExample,
+      baseUiFormSchemaValidationExample,
       baseUiFormServerFunctionExample,
       formBasicExample,
       autocompleteBasicExample,
@@ -8746,6 +8779,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(baseUiFormBasicExampleCommands, (message) =>
         GotBaseUiFormBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        baseUiFormSchemaValidationExampleCommands,
+        (message) => GotBaseUiFormSchemaValidationExampleMessage({ message })
       ),
       ...Command.mapMessages(
         baseUiFormServerFunctionExampleCommands,
@@ -10466,6 +10503,28 @@ export const update = (
           }),
           Command.mapMessages(baseUiFormBasicExampleCommands, (message) =>
             GotBaseUiFormBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiFormSchemaValidationExampleMessage: ({ message }) => {
+        const [
+          baseUiFormSchemaValidationExample,
+          baseUiFormSchemaValidationExampleCommands,
+        ] = BaseUiFormSchemaValidationExample.update(
+          model.baseUiFormSchemaValidationExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiFormSchemaValidationExample: () =>
+              baseUiFormSchemaValidationExample,
+          }),
+          Command.mapMessages(
+            baseUiFormSchemaValidationExampleCommands,
+            (message) =>
+              GotBaseUiFormSchemaValidationExampleMessage({ message })
           ),
         ];
       },

@@ -1505,6 +1505,12 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/number-field/examples/basic":
     "sources/number-field-basic.txt",
   "/docs/components/form/examples/basic": "sources/form-basic.txt",
+  "/docs/components/base-ui-form/examples/basic":
+    "sources/base-ui-form-basic.txt",
+  "/docs/components/base-ui-form/examples/schema-validation":
+    "sources/base-ui-form-schema-validation.txt",
+  "/docs/components/base-ui-form/examples/server-function":
+    "sources/base-ui-form-server-function.txt",
   "/docs/components/autocomplete/examples/basic":
     "sources/autocomplete-basic.txt",
   "/docs/components/animation/examples/basic": "sources/animation-basic.txt",
@@ -12286,812 +12292,982 @@ type BaseUiLaneDocsConfig = Readonly<{
   examples?: readonly string[];
 }>;
 
+type GeneratedExampleCase = readonly [string, () => Html];
+
+const generatedExampleBlock = (
+  example: string,
+  cases: readonly GeneratedExampleCase[],
+  fallback: () => Html
+): Html =>
+  cases.find(([candidate]) => candidate === example)?.[1]() ?? fallback();
+
 const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("base-ui-accordion-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-accordion-basic",
-        preview: DocsPreviewsAccordion.baseUiAccordionBasicExamplePreview(
-          model.baseUiAccordionBasicExample,
-          "base-ui-accordion-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-accordion/examples/basic",
-        linkText: "Open standalone Base UI Accordion Basic example",
-      })
-    ),
-    M.when("base-ui-accordion-multiple", () =>
-      docsExampleBlock({
-        title: "Open multiple panels",
-        testId: "docs-example-block-base-ui-accordion-multiple",
-        preview: DocsPreviewsAccordion.baseUiAccordionMultipleExamplePreview(
-          model.baseUiAccordionMultipleExample,
-          "base-ui-accordion-docs-multiple-preview"
-        ),
-        href: "/docs/components/base-ui-accordion/examples/multiple",
-        linkText: "Open standalone Base UI Accordion Multiple example",
-      })
-    ),
-    M.when("base-ui-alert-dialog-close-confirmation", () =>
-      docsExampleBlock({
-        title: "Close confirmation",
-        testId: "docs-example-block-base-ui-alert-dialog-close-confirmation",
-        preview: DocsPreviewsB.baseUiAlertDialogCloseConfirmationExamplePreview(
-          model.baseUiAlertDialogCloseConfirmationExample,
-          "base-ui-alert-dialog-docs-close-confirmation-preview"
-        ),
-        href: "/docs/components/base-ui-alert-dialog/examples/close-confirmation",
-        linkText:
-          "Open standalone Base UI Alert Dialog Close Confirmation example",
-      })
-    ),
-    M.when("base-ui-alert-dialog-controlled-multiple-triggers", () =>
-      docsExampleBlock({
-        title: "Controlled mode with multiple triggers",
-        testId:
-          "docs-example-block-base-ui-alert-dialog-controlled-multiple-triggers",
-        preview:
-          DocsPreviewsB.baseUiAlertDialogControlledMultipleTriggersExamplePreview(
-            model.baseUiAlertDialogControlledMultipleTriggersExample,
-            "base-ui-alert-dialog-docs-controlled-multiple-triggers-preview"
-          ),
-        href: "/docs/components/base-ui-alert-dialog/examples/controlled-multiple-triggers",
-        linkText:
-          "Open standalone Base UI Alert Dialog Controlled Multiple Triggers example",
-      })
-    ),
-    M.when("base-ui-alert-dialog-open-from-menu", () =>
-      docsExampleBlock({
-        title: "Open from a menu",
-        testId: "docs-example-block-base-ui-alert-dialog-open-from-menu",
-        preview: DocsPreviewsB.baseUiAlertDialogOpenFromMenuExamplePreview(
-          model.baseUiAlertDialogOpenFromMenuExample,
-          "base-ui-alert-dialog-docs-open-from-menu-preview"
-        ),
-        href: "/docs/components/base-ui-alert-dialog/examples/open-from-menu",
-        linkText: "Open standalone Base UI Alert Dialog Open From Menu example",
-      })
-    ),
-    M.when("base-ui-alert-dialog-detached-triggers", () =>
-      docsExampleBlock({
-        title: "Detached triggers",
-        testId: "docs-example-block-base-ui-alert-dialog-detached-triggers",
-        preview: DocsPreviewsB.baseUiAlertDialogDetachedTriggersExamplePreview(
-          model.baseUiAlertDialogDetachedTriggersExample,
-          "base-ui-alert-dialog-docs-detached-triggers-preview"
-        ),
-        href: "/docs/components/base-ui-alert-dialog/examples/detached-triggers",
-        linkText:
-          "Open standalone Base UI Alert Dialog Detached Triggers example",
-      })
-    ),
-    M.when("base-ui-alert-dialog-multiple-triggers", () =>
-      docsExampleBlock({
-        title: "Multiple triggers",
-        testId: "docs-example-block-base-ui-alert-dialog-multiple-triggers",
-        preview: DocsPreviewsB.baseUiAlertDialogMultipleTriggersExamplePreview(
-          model.baseUiAlertDialogMultipleTriggersExample,
-          "base-ui-alert-dialog-docs-multiple-triggers-preview"
-        ),
-        href: "/docs/components/base-ui-alert-dialog/examples/multiple-triggers",
-        linkText:
-          "Open standalone Base UI Alert Dialog Multiple Triggers example",
-      })
-    ),
-    M.when("base-ui-alert-dialog-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-alert-dialog-basic",
-        preview: DocsPreviewsB.baseUiAlertDialogBasicExamplePreview(
-          model.baseUiAlertDialogBasicExample,
-          "base-ui-alert-dialog-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-alert-dialog/examples/basic",
-        linkText: "Open standalone Base UI Alert Dialog Basic example",
-      })
-    ),
-    M.when("base-ui-autocomplete-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-autocomplete-basic",
-        preview: DocsPreviewsAutocomplete.baseUiAutocompleteBasicExamplePreview(
-          model.baseUiAutocompleteBasicExample,
-          "base-ui-autocomplete-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-autocomplete/examples/basic",
-        linkText: "Open standalone Base UI Autocomplete Basic example",
-      })
-    ),
-    M.when("base-ui-avatar-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-avatar-basic",
-        preview: DocsPreviewsAvatar.baseUiAvatarBasicExamplePreview(
-          model.baseUiAvatarBasicExample,
-          "base-ui-avatar-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-avatar/examples/basic",
-        linkText: "Open standalone Base UI Avatar Basic example",
-      })
-    ),
-    M.when("base-ui-button-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-button-basic",
-        preview: DocsPreviewsB.baseUiButtonBasicExamplePreview(
-          model.baseUiButtonBasicExample,
-          "base-ui-button-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-button/examples/basic",
-        linkText: "Open standalone Base UI Button Basic example",
-      })
-    ),
-    M.when("base-ui-checkbox-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-checkbox-basic",
-        preview: DocsPreviewsCD.baseUiCheckboxBasicExamplePreview(
-          model.baseUiCheckboxBasicExample,
-          "base-ui-checkbox-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox/examples/basic",
-        linkText: "Open standalone Base UI Checkbox Basic example",
-      })
-    ),
-    M.when("base-ui-checkbox-labeling", () =>
-      docsExampleBlock({
-        title: "Labeling a checkbox",
-        testId: "docs-example-block-base-ui-checkbox-labeling",
-        preview: DocsPreviewsCD.baseUiCheckboxLabelingExamplePreview(
-          model.baseUiCheckboxLabelingExample,
-          "base-ui-checkbox-docs-labeling-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox/examples/labeling",
-        linkText: "Open standalone Base UI Checkbox Labeling example",
-      })
-    ),
-    M.when("base-ui-checkbox-native-button", () =>
-      docsExampleBlock({
-        title: "Rendering as a native button",
-        testId: "docs-example-block-base-ui-checkbox-native-button",
-        preview: DocsPreviewsCD.baseUiCheckboxNativeButtonExamplePreview(
-          model.baseUiCheckboxNativeButtonExample,
-          "base-ui-checkbox-docs-native-button-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox/examples/native-button",
-        linkText: "Open standalone Base UI Checkbox Native Button example",
-      })
-    ),
-    M.when("base-ui-checkbox-form", () =>
-      docsExampleBlock({
-        title: "Form integration",
-        testId: "docs-example-block-base-ui-checkbox-form",
-        preview: DocsPreviewsCD.baseUiCheckboxFormExamplePreview(
-          model.baseUiCheckboxFormExample,
-          "base-ui-checkbox-docs-form-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox/examples/form",
-        linkText: "Open standalone Base UI Checkbox Form example",
-      })
-    ),
-    M.when("base-ui-checkbox-group-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-checkbox-group-basic",
-        preview: DocsPreviewsCD.baseUiCheckboxGroupBasicExamplePreview(
-          model.baseUiCheckboxGroupBasicExample,
-          "base-ui-checkbox-group-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox-group/examples/basic",
-        linkText: "Open standalone Base UI Checkbox Group Basic example",
-      })
-    ),
-    M.when("base-ui-checkbox-group-labeling", () =>
-      docsExampleBlock({
-        title: "Labeling a checkbox group",
-        testId: "docs-example-block-base-ui-checkbox-group-labeling",
-        preview: DocsPreviewsCD.baseUiCheckboxGroupLabelingExamplePreview(
-          model.baseUiCheckboxGrouplabelingExample,
-          "base-ui-checkbox-group-docs-labeling-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox-group/examples/labeling",
-        linkText:
-          "Open standalone Base UI Checkbox Group Labeling a checkbox group example",
-      })
-    ),
-    M.when("base-ui-checkbox-group-native-button", () =>
-      docsExampleBlock({
-        title: "Rendering as a native button",
-        testId: "docs-example-block-base-ui-checkbox-group-native-button",
-        preview: DocsPreviewsCD.baseUiCheckboxGroupNativeButtonExamplePreview(
-          model.baseUiCheckboxGroupnativeButtonExample,
-          "base-ui-checkbox-group-docs-native-button-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox-group/examples/native-button",
-        linkText:
-          "Open standalone Base UI Checkbox Group Rendering as a native button example",
-      })
-    ),
-    M.when("base-ui-checkbox-group-form", () =>
-      docsExampleBlock({
-        title: "Form integration",
-        testId: "docs-example-block-base-ui-checkbox-group-form",
-        preview: DocsPreviewsCD.baseUiCheckboxGroupFormExamplePreview(
-          model.baseUiCheckboxGroupformExample,
-          "base-ui-checkbox-group-docs-form-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox-group/examples/form",
-        linkText:
-          "Open standalone Base UI Checkbox Group Form integration example",
-      })
-    ),
-    M.when("base-ui-checkbox-group-parent", () =>
-      docsExampleBlock({
-        title: "Parent checkbox",
-        testId: "docs-example-block-base-ui-checkbox-group-parent",
-        preview: DocsPreviewsCD.baseUiCheckboxGroupParentExamplePreview(
-          model.baseUiCheckboxGroupparentExample,
-          "base-ui-checkbox-group-docs-parent-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox-group/examples/parent",
-        linkText:
-          "Open standalone Base UI Checkbox Group Parent checkbox example",
-      })
-    ),
-    M.when("base-ui-checkbox-group-nested-parent", () =>
-      docsExampleBlock({
-        title: "Nested parent checkbox",
-        testId: "docs-example-block-base-ui-checkbox-group-nested-parent",
-        preview: DocsPreviewsCD.baseUiCheckboxGroupNestedParentExamplePreview(
-          model.baseUiCheckboxGroupnestedParentExample,
-          "base-ui-checkbox-group-docs-nested-parent-preview"
-        ),
-        href: "/docs/components/base-ui-checkbox-group/examples/nested-parent",
-        linkText:
-          "Open standalone Base UI Checkbox Group Nested parent checkbox example",
-      })
-    ),
-    M.when("base-ui-combobox-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-combobox-basic",
-        preview: DocsPreviewsCD.baseUiComboboxBasicExamplePreview(
-          model.baseUiComboboxBasicExample,
-          "base-ui-combobox-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-combobox/examples/basic",
-        linkText: "Open standalone Base UI Combobox Basic example",
-      })
-    ),
-    M.when("base-ui-context-menu-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-context-menu-basic",
-        preview: DocsPreviewsCD.baseUiContextMenuBasicExamplePreview(
-          model.baseUiContextMenuBasicExample,
-          "base-ui-context-menu-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-context-menu/examples/basic",
-        linkText: "Open standalone Base UI Context Menu Basic example",
-      })
-    ),
-    M.when("base-ui-scroll-area-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-scroll-area-basic",
-        preview: DocsPreviewsNZ.scrollAreaBasicExamplePreview(
-          model.scrollAreaBasicExample,
-          "base-ui-scroll-area-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-scroll-area/examples/basic",
-        linkText: "Open standalone Base UI Scroll Area Basic example",
-      })
-    ),
-    M.when("base-ui-scroll-area-both-scrollbars", () =>
-      docsExampleBlock({
-        title: "Both Scrollbars",
-        testId: "docs-example-block-base-ui-scroll-area-both-scrollbars",
-        preview: DocsPreviewsNZ.scrollAreaBothScrollbarsExamplePreview(
-          model.scrollAreaBothScrollbarsExample,
-          "base-ui-scroll-area-docs-both-scrollbars-preview"
-        ),
-        href: "/docs/components/base-ui-scroll-area/examples/both-scrollbars",
-        linkText: "Open standalone Base UI Scroll Area Both Scrollbars example",
-      })
-    ),
-    M.when("base-ui-scroll-area-gradient", () =>
-      docsExampleBlock({
-        title: "Gradient",
-        testId: "docs-example-block-base-ui-scroll-area-gradient",
-        preview: DocsPreviewsNZ.scrollAreaGradientExamplePreview(
-          model.scrollAreaGradientExample,
-          "base-ui-scroll-area-docs-gradient-preview"
-        ),
-        href: "/docs/components/base-ui-scroll-area/examples/gradient",
-        linkText: "Open standalone Base UI Scroll Area Gradient example",
-      })
-    ),
-    M.when("base-ui-scroll-area-tabs", () =>
-      docsExampleBlock({
-        title: "Combining with Tabs",
-        testId: "docs-example-block-base-ui-scroll-area-tabs",
-        preview: DocsPreviewsNZ.scrollAreaTabsExamplePreview(
-          model.scrollAreaTabsExample,
-          "base-ui-scroll-area-docs-tabs-preview"
-        ),
-        href: "/docs/components/base-ui-scroll-area/examples/tabs",
-        linkText: "Open standalone Base UI Scroll Area Tabs example",
-      })
-    ),
-    M.when("base-ui-radio-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-radio-basic",
-        preview: DocsPreviewsNZ.baseUiRadioBasicExamplePreview(
-          model.baseUiRadioBasicExample,
-          "base-ui-radio-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-radio/examples/basic",
-        linkText: "Open standalone Base UI Radio Basic example",
-      })
-    ),
-    M.when("base-ui-radio-labeling", () =>
-      docsExampleBlock({
-        title: "Labeling a radio group",
-        testId: "docs-example-block-base-ui-radio-labeling",
-        preview: DocsPreviewsNZ.baseUiRadioLabelingExamplePreview(
-          model.baseUiRadioLabelingExample,
-          "base-ui-radio-docs-labeling-preview"
-        ),
-        href: "/docs/components/base-ui-radio/examples/labeling",
-        linkText: "Open standalone Base UI Radio Labeling example",
-      })
-    ),
-    M.when("base-ui-radio-native-button", () =>
-      docsExampleBlock({
-        title: "Rendering as a native button",
-        testId: "docs-example-block-base-ui-radio-native-button",
-        preview: DocsPreviewsNZ.baseUiRadioNativeButtonExamplePreview(
-          model.baseUiRadioNativeButtonExample,
-          "base-ui-radio-docs-native-button-preview"
-        ),
-        href: "/docs/components/base-ui-radio/examples/native-button",
-        linkText: "Open standalone Base UI Radio Native Button example",
-      })
-    ),
-    M.when("base-ui-radio-form", () =>
-      docsExampleBlock({
-        title: "Form integration",
-        testId: "docs-example-block-base-ui-radio-form",
-        preview: DocsPreviewsNZ.baseUiRadioFormExamplePreview(
-          model.baseUiRadioFormExample,
-          "base-ui-radio-docs-form-preview"
-        ),
-        href: "/docs/components/base-ui-radio/examples/form",
-        linkText: "Open standalone Base UI Radio Form example",
-      })
-    ),
-    M.when("base-ui-context-menu-nested", () =>
-      docsExampleBlock({
-        title: "Nested menu",
-        testId: "docs-example-block-base-ui-context-menu-nested",
-        preview: DocsPreviewsCD.baseUiContextMenuNestedExamplePreview(
-          model.baseUiContextMenuNestedExample,
-          "base-ui-context-menu-docs-nested-preview"
-        ),
-        href: "/docs/components/base-ui-context-menu/examples/nested",
-        linkText: "Open standalone Base UI Context Menu Nested example",
-      })
-    ),
-    M.when("base-ui-dialog-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-dialog-basic",
-        preview: DocsPreviewsCD.baseUiDialogBasicExamplePreview(
-          model.baseUiDialogBasicExample,
-          "base-ui-dialog-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-dialog/examples/basic",
-        linkText: "Open standalone Base UI Dialog Basic example",
-      })
-    ),
-    M.when("base-ui-dialog-close-confirmation", () =>
-      docsExampleBlock({
-        title: "Close confirmation",
-        testId: "docs-example-block-base-ui-dialog-close-confirmation",
-        preview: DocsPreviewsCD.baseUiDialogCloseConfirmationExamplePreview(
-          model.baseUiDialogCloseConfirmationExample,
-          "base-ui-dialog-docs-close-confirmation-preview"
-        ),
-        href: "/docs/components/base-ui-dialog/examples/close-confirmation",
-        linkText: "Open standalone Base UI Dialog Close Confirmation example",
-      })
-    ),
-    M.when("base-ui-dialog-nested", () =>
-      docsExampleBlock({
-        title: "Nested dialogs",
-        testId: "docs-example-block-base-ui-dialog-nested",
-        preview: DocsPreviewsCD.baseUiDialogNestedExamplePreview(
-          model.baseUiDialogNestedExample,
-          "base-ui-dialog-docs-nested-preview"
-        ),
-        href: "/docs/components/base-ui-dialog/examples/nested",
-        linkText: "Open standalone Base UI Dialog Nested example",
-      })
-    ),
-    M.when("base-ui-drawer-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-drawer-basic",
-        preview: DocsPreviewsCD.baseUiDrawerBasicExamplePreview(
-          model.baseUiDrawerBasicExample,
-          "base-ui-drawer-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-drawer/examples/basic",
-        linkText: "Open standalone Base UI Drawer Basic example",
-      })
-    ),
-    M.when("base-ui-drawer-position", () =>
-      docsExampleBlock({
-        title: "Position",
-        testId: "docs-example-block-base-ui-drawer-position",
-        preview: DocsPreviewsCD.baseUiDrawerPositionExamplePreview(
-          model.baseUiDrawerpositionExample,
-          "base-ui-drawer-docs-position-preview"
-        ),
-        href: "/docs/components/base-ui-drawer/examples/position",
-        linkText: "Open standalone Base UI Drawer Position example",
-      })
-    ),
-    M.when("base-ui-drawer-non-modal", () =>
-      docsExampleBlock({
-        title: "Non-modal",
-        testId: "docs-example-block-base-ui-drawer-non-modal",
-        preview: DocsPreviewsCD.baseUiDrawerNonModalExamplePreview(
-          model.baseUiDrawernonModalExample,
-          "base-ui-drawer-docs-non-modal-preview"
-        ),
-        href: "/docs/components/base-ui-drawer/examples/non-modal",
-        linkText: "Open standalone Base UI Drawer Non-modal example",
-      })
-    ),
-    M.when("base-ui-field-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-field-basic",
-        preview: DocsPreviewsCD.baseUiFieldBasicExamplePreview(
-          model.baseUiFieldBasicExample,
-          "base-ui-field-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-field/examples/basic",
-        linkText: "Open standalone Base UI Field Basic example",
-      })
-    ),
-    M.when("base-ui-fieldset-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-fieldset-basic",
-        preview: DocsPreviewsCD.baseUiFieldsetBasicExamplePreview(
-          model.baseUiFieldsetBasicExample,
-          "base-ui-fieldset-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-fieldset/examples/basic",
-        linkText: "Open standalone Base UI Fieldset Basic example",
-      })
-    ),
-    M.when("base-ui-form-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-form-basic",
-        preview: DocsPreviewsCD.baseUiFormBasicExamplePreview(
-          model.baseUiFormBasicExample,
-          "base-ui-form-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-form/examples/basic",
-        linkText: "Open standalone Base UI Form Basic example",
-      })
-    ),
-    M.when("base-ui-form-server-function", () =>
-      docsExampleBlock({
-        title: "Server Function",
-        testId: "docs-example-block-base-ui-form-server-function",
-        preview: DocsPreviewsCD.baseUiFormServerFunctionExamplePreview(
-          model.baseUiFormServerFunctionExample,
-          "base-ui-form-docs-server-function-preview"
-        ),
-        href: "/docs/components/base-ui-form/examples/server-function",
-        linkText: "Open standalone Base UI Form Server Function example",
-      })
-    ),
-    M.when("base-ui-input-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-input-basic",
-        preview: DocsPreviewsCD.baseUiInputBasicExamplePreview(
-          model.baseUiInputBasicExample,
-          "base-ui-input-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-input/examples/basic",
-        linkText: "Open standalone Base UI Input Basic example",
-      })
-    ),
-    M.when("base-ui-menu-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-menu-basic",
-        preview: DocsPreviewsCD.baseUiMenuBasicExamplePreview(
-          model.baseUiMenuBasicExample,
-          "base-ui-menu-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-menu/examples/basic",
-        linkText: "Open standalone Base UI Menu Basic example",
-      })
-    ),
-    M.when("base-ui-menu-nested", () =>
-      docsExampleBlock({
-        title: "Nested",
-        testId: "docs-example-block-base-ui-menu-nested",
-        preview: DocsPreviewsCD.baseUiMenuNestedExamplePreview(
-          model.baseUiMenuNestedExample,
-          "base-ui-menu-docs-nested-preview"
-        ),
-        href: "/docs/components/base-ui-menu/examples/nested",
-        linkText: "Open standalone Base UI Menu Nested example",
-      })
-    ),
-    M.when("base-ui-menubar-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-menubar-basic",
-        preview: DocsPreviewsCD.baseUiMenubarBasicExamplePreview(
-          model.baseUiMenubarBasicExample,
-          "base-ui-menubar-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-menubar/examples/basic",
-        linkText: "Open standalone Base UI Menubar Basic example",
-      })
-    ),
-    M.when("base-ui-meter-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-meter-basic",
-        preview: DocsPreviewsCD.baseUiMeterBasicExamplePreview(
-          model.baseUiMeterBasicExample,
-          "base-ui-meter-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-meter/examples/basic",
-        linkText: "Open standalone Base UI Meter Basic example",
-      })
-    ),
-    M.when("base-ui-navigation-menu-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-navigation-menu-basic",
-        preview: DocsPreviewsNZ.baseUiNavigationMenuBasicExamplePreview(
-          model.baseUiNavigationMenuBasicExample,
-          "base-ui-navigation-menu-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-navigation-menu/examples/basic",
-        linkText: "Open standalone Base UI Navigation Menu Basic example",
-      })
-    ),
-    M.when("base-ui-number-field-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-number-field-basic",
-        preview: DocsPreviewsNZ.baseUiNumberFieldBasicExamplePreview(
-          model.baseUiNumberFieldBasicExample,
-          "base-ui-number-field-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-number-field/examples/basic",
-        linkText: "Open standalone Base UI Number Field Basic example",
-      })
-    ),
-    M.when("base-ui-otp-field-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-otp-field-basic",
-        preview: DocsPreviewsNZ.baseUiOtpFieldBasicExamplePreview(
-          model.baseUiOtpFieldBasicExample,
-          "base-ui-otp-field-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-otp-field/examples/basic",
-        linkText: "Open standalone Base UI OTP Field Basic example",
-      })
-    ),
-    M.when("base-ui-preview-card-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-preview-card-basic",
-        preview: DocsPreviewsNZ.baseUiPreviewCardBasicExamplePreview(
-          model.baseUiPreviewCardBasicExample,
-          "base-ui-preview-card-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-preview-card/examples/basic",
-        linkText: "Open standalone Base UI Preview Card Basic example",
-      })
-    ),
-    M.when("base-ui-progress-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-progress-basic",
-        preview: DocsPreviewsNZ.baseUiProgressBasicExamplePreview(
-          model.baseUiProgressBasicExample,
-          "base-ui-progress-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-progress/examples/basic",
-        linkText: "Open standalone Base UI Progress Basic example",
-      })
-    ),
-    M.when("base-ui-popover-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-popover-basic",
-        preview: DocsPreviewsNZ.baseUiPopoverBasicExamplePreview(
-          model.baseUiPopoverBasicExample,
-          "base-ui-popover-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-popover/examples/basic",
-        linkText: "Open standalone Base UI Popover Basic example",
-      })
-    ),
-    M.when("base-ui-popover-animated", () =>
-      docsExampleBlock({
-        title: "Animated",
-        testId: "docs-example-block-base-ui-popover-animated",
-        preview: DocsPreviewsNZ.baseUiPopoverAnimatedExamplePreview(
-          model.baseUiPopoverAnimatedExample,
-          "base-ui-popover-docs-animated-preview"
-        ),
-        href: "/docs/components/base-ui-popover/examples/animated",
-        linkText: "Open standalone Base UI Popover Animated example",
-      })
-    ),
-    M.when("base-ui-popover-multiple-triggers", () =>
-      docsExampleBlock({
-        title: "Multiple Triggers",
-        testId: "docs-example-block-base-ui-popover-multiple-triggers",
-        preview: DocsPreviewsNZ.baseUiPopoverMultipleTriggersExamplePreview(
-          model.baseUiPopoverMultipleTriggersExample,
-          "base-ui-popover-docs-multiple-triggers-preview"
-        ),
-        href: "/docs/components/base-ui-popover/examples/multiple-triggers",
-        linkText: "Open standalone Base UI Popover Multiple Triggers example",
-      })
-    ),
-    M.when("base-ui-collapsible-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-collapsible-basic",
-        preview: DocsPreviewsCD.baseUiCollapsibleBasicExamplePreview(
-          model.baseUiCollapsibleBasicExample,
-          "base-ui-collapsible-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-collapsible/examples/basic",
-        linkText: "Open standalone Base UI Collapsible Basic example",
-      })
-    ),
-    M.when("base-ui-select-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-select-basic",
-        preview: DocsPreviewsNZ.baseUiSelectBasicExamplePreview(
-          model.baseUiSelectBasicExample,
-          "base-ui-select-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-select/examples/basic",
-        linkText: "Open standalone Base UI Select Basic example",
-      })
-    ),
-    M.when("base-ui-separator-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-separator-basic",
-        preview: DocsPreviewsNZ.baseUiSeparatorBasicExamplePreview(
-          model.baseUiSeparatorBasicExample,
-          "base-ui-separator-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-separator/examples/basic",
-        linkText: "Open standalone Base UI Separator Basic example",
-      })
-    ),
-    M.when("base-ui-slider-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-slider-basic",
-        preview: DocsPreviewsNZ.baseUiSliderBasicExamplePreview(
-          model.baseUiSliderBasicExample,
-          "base-ui-slider-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-slider/examples/basic",
-        linkText: "Open standalone Base UI Slider Basic example",
-      })
-    ),
-    M.when("base-ui-switch-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-switch-basic",
-        preview: DocsPreviewsNZ.baseUiSwitchBasicExamplePreview(
-          model.baseUiSwitchBasicExample,
-          "base-ui-switch-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-switch/examples/basic",
-        linkText: "Open standalone Base UI Switch Basic example",
-      })
-    ),
-    M.when("base-ui-tabs-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-tabs-basic",
-        preview: DocsPreviewsNZ.baseUiTabsBasicExamplePreview(
-          model.baseUiTabsBasicExample,
-          "base-ui-tabs-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-tabs/examples/basic",
-        linkText: "Open standalone Base UI Tabs Basic example",
-      })
-    ),
-    M.when("base-ui-toast-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-toast-basic",
-        preview: DocsPreviewsNZ.baseUiToastBasicExamplePreview(
-          model.baseUiToastBasicExample,
-          "base-ui-toast-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-toast/examples/basic",
-        linkText: "Open standalone Base UI Toast Basic example",
-      })
-    ),
-    M.when("base-ui-toggle-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-toggle-basic",
-        preview: DocsPreviewsNZ.baseUiToggleBasicExamplePreview(
-          model.baseUiToggleBasicExample,
-          "base-ui-toggle-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-toggle/examples/basic",
-        linkText: "Open standalone Base UI Toggle Basic example",
-      })
-    ),
-    M.when("base-ui-toggle-group-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-toggle-group-basic",
-        preview: DocsPreviewsNZ.baseUiToggleGroupBasicExamplePreview(
-          model.baseUiToggleGroupBasicExample,
-          "base-ui-toggle-group-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-toggle-group/examples/basic",
-        linkText: "Open standalone Base UI Toggle Group Basic example",
-      })
-    ),
-    M.when("base-ui-toolbar-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-toolbar-basic",
-        preview: DocsPreviewsNZ.baseUiToolbarBasicExamplePreview(
-          model.baseUiToolbarBasicExample,
-          "base-ui-toolbar-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-toolbar/examples/basic",
-        linkText: "Open standalone Base UI Toolbar Basic example",
-      })
-    ),
-    M.when("base-ui-tooltip-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-base-ui-tooltip-basic",
-        preview: DocsPreviewsNZ.baseUiTooltipBasicExamplePreview(
-          model.baseUiTooltipBasicExample,
-          "base-ui-tooltip-docs-basic-preview"
-        ),
-        href: "/docs/components/base-ui-tooltip/examples/basic",
-        linkText: "Open standalone Base UI Tooltip Basic example",
-      })
-    ),
-    M.orElse(() => html<Message>().empty)
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "base-ui-accordion-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-accordion-basic",
+            preview: DocsPreviewsAccordion.baseUiAccordionBasicExamplePreview(
+              model.baseUiAccordionBasicExample,
+              "base-ui-accordion-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-accordion/examples/basic",
+            linkText: "Open standalone Base UI Accordion Basic example",
+          }),
+      ],
+      [
+        "base-ui-accordion-multiple",
+        () =>
+          docsExampleBlock({
+            title: "Open multiple panels",
+            testId: "docs-example-block-base-ui-accordion-multiple",
+            preview:
+              DocsPreviewsAccordion.baseUiAccordionMultipleExamplePreview(
+                model.baseUiAccordionMultipleExample,
+                "base-ui-accordion-docs-multiple-preview"
+              ),
+            href: "/docs/components/base-ui-accordion/examples/multiple",
+            linkText: "Open standalone Base UI Accordion Multiple example",
+          }),
+      ],
+      [
+        "base-ui-alert-dialog-close-confirmation",
+        () =>
+          docsExampleBlock({
+            title: "Close confirmation",
+            testId:
+              "docs-example-block-base-ui-alert-dialog-close-confirmation",
+            preview:
+              DocsPreviewsB.baseUiAlertDialogCloseConfirmationExamplePreview(
+                model.baseUiAlertDialogCloseConfirmationExample,
+                "base-ui-alert-dialog-docs-close-confirmation-preview"
+              ),
+            href: "/docs/components/base-ui-alert-dialog/examples/close-confirmation",
+            linkText:
+              "Open standalone Base UI Alert Dialog Close Confirmation example",
+          }),
+      ],
+      [
+        "base-ui-alert-dialog-controlled-multiple-triggers",
+        () =>
+          docsExampleBlock({
+            title: "Controlled mode with multiple triggers",
+            testId:
+              "docs-example-block-base-ui-alert-dialog-controlled-multiple-triggers",
+            preview:
+              DocsPreviewsB.baseUiAlertDialogControlledMultipleTriggersExamplePreview(
+                model.baseUiAlertDialogControlledMultipleTriggersExample,
+                "base-ui-alert-dialog-docs-controlled-multiple-triggers-preview"
+              ),
+            href: "/docs/components/base-ui-alert-dialog/examples/controlled-multiple-triggers",
+            linkText:
+              "Open standalone Base UI Alert Dialog Controlled Multiple Triggers example",
+          }),
+      ],
+      [
+        "base-ui-alert-dialog-open-from-menu",
+        () =>
+          docsExampleBlock({
+            title: "Open from a menu",
+            testId: "docs-example-block-base-ui-alert-dialog-open-from-menu",
+            preview: DocsPreviewsB.baseUiAlertDialogOpenFromMenuExamplePreview(
+              model.baseUiAlertDialogOpenFromMenuExample,
+              "base-ui-alert-dialog-docs-open-from-menu-preview"
+            ),
+            href: "/docs/components/base-ui-alert-dialog/examples/open-from-menu",
+            linkText:
+              "Open standalone Base UI Alert Dialog Open From Menu example",
+          }),
+      ],
+      [
+        "base-ui-alert-dialog-detached-triggers",
+        () =>
+          docsExampleBlock({
+            title: "Detached triggers",
+            testId: "docs-example-block-base-ui-alert-dialog-detached-triggers",
+            preview:
+              DocsPreviewsB.baseUiAlertDialogDetachedTriggersExamplePreview(
+                model.baseUiAlertDialogDetachedTriggersExample,
+                "base-ui-alert-dialog-docs-detached-triggers-preview"
+              ),
+            href: "/docs/components/base-ui-alert-dialog/examples/detached-triggers",
+            linkText:
+              "Open standalone Base UI Alert Dialog Detached Triggers example",
+          }),
+      ],
+      [
+        "base-ui-alert-dialog-multiple-triggers",
+        () =>
+          docsExampleBlock({
+            title: "Multiple triggers",
+            testId: "docs-example-block-base-ui-alert-dialog-multiple-triggers",
+            preview:
+              DocsPreviewsB.baseUiAlertDialogMultipleTriggersExamplePreview(
+                model.baseUiAlertDialogMultipleTriggersExample,
+                "base-ui-alert-dialog-docs-multiple-triggers-preview"
+              ),
+            href: "/docs/components/base-ui-alert-dialog/examples/multiple-triggers",
+            linkText:
+              "Open standalone Base UI Alert Dialog Multiple Triggers example",
+          }),
+      ],
+      [
+        "base-ui-alert-dialog-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-alert-dialog-basic",
+            preview: DocsPreviewsB.baseUiAlertDialogBasicExamplePreview(
+              model.baseUiAlertDialogBasicExample,
+              "base-ui-alert-dialog-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-alert-dialog/examples/basic",
+            linkText: "Open standalone Base UI Alert Dialog Basic example",
+          }),
+      ],
+      [
+        "base-ui-autocomplete-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-autocomplete-basic",
+            preview:
+              DocsPreviewsAutocomplete.baseUiAutocompleteBasicExamplePreview(
+                model.baseUiAutocompleteBasicExample,
+                "base-ui-autocomplete-docs-basic-preview"
+              ),
+            href: "/docs/components/base-ui-autocomplete/examples/basic",
+            linkText: "Open standalone Base UI Autocomplete Basic example",
+          }),
+      ],
+      [
+        "base-ui-avatar-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-avatar-basic",
+            preview: DocsPreviewsAvatar.baseUiAvatarBasicExamplePreview(
+              model.baseUiAvatarBasicExample,
+              "base-ui-avatar-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-avatar/examples/basic",
+            linkText: "Open standalone Base UI Avatar Basic example",
+          }),
+      ],
+      [
+        "base-ui-button-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-button-basic",
+            preview: DocsPreviewsB.baseUiButtonBasicExamplePreview(
+              model.baseUiButtonBasicExample,
+              "base-ui-button-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-button/examples/basic",
+            linkText: "Open standalone Base UI Button Basic example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-checkbox-basic",
+            preview: DocsPreviewsCD.baseUiCheckboxBasicExamplePreview(
+              model.baseUiCheckboxBasicExample,
+              "base-ui-checkbox-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox/examples/basic",
+            linkText: "Open standalone Base UI Checkbox Basic example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-labeling",
+        () =>
+          docsExampleBlock({
+            title: "Labeling a checkbox",
+            testId: "docs-example-block-base-ui-checkbox-labeling",
+            preview: DocsPreviewsCD.baseUiCheckboxLabelingExamplePreview(
+              model.baseUiCheckboxLabelingExample,
+              "base-ui-checkbox-docs-labeling-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox/examples/labeling",
+            linkText: "Open standalone Base UI Checkbox Labeling example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-native-button",
+        () =>
+          docsExampleBlock({
+            title: "Rendering as a native button",
+            testId: "docs-example-block-base-ui-checkbox-native-button",
+            preview: DocsPreviewsCD.baseUiCheckboxNativeButtonExamplePreview(
+              model.baseUiCheckboxNativeButtonExample,
+              "base-ui-checkbox-docs-native-button-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox/examples/native-button",
+            linkText: "Open standalone Base UI Checkbox Native Button example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-form",
+        () =>
+          docsExampleBlock({
+            title: "Form integration",
+            testId: "docs-example-block-base-ui-checkbox-form",
+            preview: DocsPreviewsCD.baseUiCheckboxFormExamplePreview(
+              model.baseUiCheckboxFormExample,
+              "base-ui-checkbox-docs-form-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox/examples/form",
+            linkText: "Open standalone Base UI Checkbox Form example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-group-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-checkbox-group-basic",
+            preview: DocsPreviewsCD.baseUiCheckboxGroupBasicExamplePreview(
+              model.baseUiCheckboxGroupBasicExample,
+              "base-ui-checkbox-group-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox-group/examples/basic",
+            linkText: "Open standalone Base UI Checkbox Group Basic example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-group-labeling",
+        () =>
+          docsExampleBlock({
+            title: "Labeling a checkbox group",
+            testId: "docs-example-block-base-ui-checkbox-group-labeling",
+            preview: DocsPreviewsCD.baseUiCheckboxGroupLabelingExamplePreview(
+              model.baseUiCheckboxGrouplabelingExample,
+              "base-ui-checkbox-group-docs-labeling-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox-group/examples/labeling",
+            linkText:
+              "Open standalone Base UI Checkbox Group Labeling a checkbox group example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-group-native-button",
+        () =>
+          docsExampleBlock({
+            title: "Rendering as a native button",
+            testId: "docs-example-block-base-ui-checkbox-group-native-button",
+            preview:
+              DocsPreviewsCD.baseUiCheckboxGroupNativeButtonExamplePreview(
+                model.baseUiCheckboxGroupnativeButtonExample,
+                "base-ui-checkbox-group-docs-native-button-preview"
+              ),
+            href: "/docs/components/base-ui-checkbox-group/examples/native-button",
+            linkText:
+              "Open standalone Base UI Checkbox Group Rendering as a native button example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-group-form",
+        () =>
+          docsExampleBlock({
+            title: "Form integration",
+            testId: "docs-example-block-base-ui-checkbox-group-form",
+            preview: DocsPreviewsCD.baseUiCheckboxGroupFormExamplePreview(
+              model.baseUiCheckboxGroupformExample,
+              "base-ui-checkbox-group-docs-form-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox-group/examples/form",
+            linkText:
+              "Open standalone Base UI Checkbox Group Form integration example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-group-parent",
+        () =>
+          docsExampleBlock({
+            title: "Parent checkbox",
+            testId: "docs-example-block-base-ui-checkbox-group-parent",
+            preview: DocsPreviewsCD.baseUiCheckboxGroupParentExamplePreview(
+              model.baseUiCheckboxGroupparentExample,
+              "base-ui-checkbox-group-docs-parent-preview"
+            ),
+            href: "/docs/components/base-ui-checkbox-group/examples/parent",
+            linkText:
+              "Open standalone Base UI Checkbox Group Parent checkbox example",
+          }),
+      ],
+      [
+        "base-ui-checkbox-group-nested-parent",
+        () =>
+          docsExampleBlock({
+            title: "Nested parent checkbox",
+            testId: "docs-example-block-base-ui-checkbox-group-nested-parent",
+            preview:
+              DocsPreviewsCD.baseUiCheckboxGroupNestedParentExamplePreview(
+                model.baseUiCheckboxGroupnestedParentExample,
+                "base-ui-checkbox-group-docs-nested-parent-preview"
+              ),
+            href: "/docs/components/base-ui-checkbox-group/examples/nested-parent",
+            linkText:
+              "Open standalone Base UI Checkbox Group Nested parent checkbox example",
+          }),
+      ],
+      [
+        "base-ui-combobox-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-combobox-basic",
+            preview: DocsPreviewsCD.baseUiComboboxBasicExamplePreview(
+              model.baseUiComboboxBasicExample,
+              "base-ui-combobox-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-combobox/examples/basic",
+            linkText: "Open standalone Base UI Combobox Basic example",
+          }),
+      ],
+      [
+        "base-ui-context-menu-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-context-menu-basic",
+            preview: DocsPreviewsCD.baseUiContextMenuBasicExamplePreview(
+              model.baseUiContextMenuBasicExample,
+              "base-ui-context-menu-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-context-menu/examples/basic",
+            linkText: "Open standalone Base UI Context Menu Basic example",
+          }),
+      ],
+      [
+        "base-ui-scroll-area-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-scroll-area-basic",
+            preview: DocsPreviewsNZ.scrollAreaBasicExamplePreview(
+              model.scrollAreaBasicExample,
+              "base-ui-scroll-area-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-scroll-area/examples/basic",
+            linkText: "Open standalone Base UI Scroll Area Basic example",
+          }),
+      ],
+      [
+        "base-ui-scroll-area-both-scrollbars",
+        () =>
+          docsExampleBlock({
+            title: "Both Scrollbars",
+            testId: "docs-example-block-base-ui-scroll-area-both-scrollbars",
+            preview: DocsPreviewsNZ.scrollAreaBothScrollbarsExamplePreview(
+              model.scrollAreaBothScrollbarsExample,
+              "base-ui-scroll-area-docs-both-scrollbars-preview"
+            ),
+            href: "/docs/components/base-ui-scroll-area/examples/both-scrollbars",
+            linkText:
+              "Open standalone Base UI Scroll Area Both Scrollbars example",
+          }),
+      ],
+      [
+        "base-ui-scroll-area-gradient",
+        () =>
+          docsExampleBlock({
+            title: "Gradient",
+            testId: "docs-example-block-base-ui-scroll-area-gradient",
+            preview: DocsPreviewsNZ.scrollAreaGradientExamplePreview(
+              model.scrollAreaGradientExample,
+              "base-ui-scroll-area-docs-gradient-preview"
+            ),
+            href: "/docs/components/base-ui-scroll-area/examples/gradient",
+            linkText: "Open standalone Base UI Scroll Area Gradient example",
+          }),
+      ],
+      [
+        "base-ui-scroll-area-tabs",
+        () =>
+          docsExampleBlock({
+            title: "Combining with Tabs",
+            testId: "docs-example-block-base-ui-scroll-area-tabs",
+            preview: DocsPreviewsNZ.scrollAreaTabsExamplePreview(
+              model.scrollAreaTabsExample,
+              "base-ui-scroll-area-docs-tabs-preview"
+            ),
+            href: "/docs/components/base-ui-scroll-area/examples/tabs",
+            linkText: "Open standalone Base UI Scroll Area Tabs example",
+          }),
+      ],
+      [
+        "base-ui-radio-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-radio-basic",
+            preview: DocsPreviewsNZ.baseUiRadioBasicExamplePreview(
+              model.baseUiRadioBasicExample,
+              "base-ui-radio-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-radio/examples/basic",
+            linkText: "Open standalone Base UI Radio Basic example",
+          }),
+      ],
+      [
+        "base-ui-radio-labeling",
+        () =>
+          docsExampleBlock({
+            title: "Labeling a radio group",
+            testId: "docs-example-block-base-ui-radio-labeling",
+            preview: DocsPreviewsNZ.baseUiRadioLabelingExamplePreview(
+              model.baseUiRadioLabelingExample,
+              "base-ui-radio-docs-labeling-preview"
+            ),
+            href: "/docs/components/base-ui-radio/examples/labeling",
+            linkText: "Open standalone Base UI Radio Labeling example",
+          }),
+      ],
+      [
+        "base-ui-radio-native-button",
+        () =>
+          docsExampleBlock({
+            title: "Rendering as a native button",
+            testId: "docs-example-block-base-ui-radio-native-button",
+            preview: DocsPreviewsNZ.baseUiRadioNativeButtonExamplePreview(
+              model.baseUiRadioNativeButtonExample,
+              "base-ui-radio-docs-native-button-preview"
+            ),
+            href: "/docs/components/base-ui-radio/examples/native-button",
+            linkText: "Open standalone Base UI Radio Native Button example",
+          }),
+      ],
+      [
+        "base-ui-radio-form",
+        () =>
+          docsExampleBlock({
+            title: "Form integration",
+            testId: "docs-example-block-base-ui-radio-form",
+            preview: DocsPreviewsNZ.baseUiRadioFormExamplePreview(
+              model.baseUiRadioFormExample,
+              "base-ui-radio-docs-form-preview"
+            ),
+            href: "/docs/components/base-ui-radio/examples/form",
+            linkText: "Open standalone Base UI Radio Form example",
+          }),
+      ],
+      [
+        "base-ui-context-menu-nested",
+        () =>
+          docsExampleBlock({
+            title: "Nested menu",
+            testId: "docs-example-block-base-ui-context-menu-nested",
+            preview: DocsPreviewsCD.baseUiContextMenuNestedExamplePreview(
+              model.baseUiContextMenuNestedExample,
+              "base-ui-context-menu-docs-nested-preview"
+            ),
+            href: "/docs/components/base-ui-context-menu/examples/nested",
+            linkText: "Open standalone Base UI Context Menu Nested example",
+          }),
+      ],
+      [
+        "base-ui-dialog-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-dialog-basic",
+            preview: DocsPreviewsCD.baseUiDialogBasicExamplePreview(
+              model.baseUiDialogBasicExample,
+              "base-ui-dialog-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-dialog/examples/basic",
+            linkText: "Open standalone Base UI Dialog Basic example",
+          }),
+      ],
+      [
+        "base-ui-dialog-close-confirmation",
+        () =>
+          docsExampleBlock({
+            title: "Close confirmation",
+            testId: "docs-example-block-base-ui-dialog-close-confirmation",
+            preview: DocsPreviewsCD.baseUiDialogCloseConfirmationExamplePreview(
+              model.baseUiDialogCloseConfirmationExample,
+              "base-ui-dialog-docs-close-confirmation-preview"
+            ),
+            href: "/docs/components/base-ui-dialog/examples/close-confirmation",
+            linkText:
+              "Open standalone Base UI Dialog Close Confirmation example",
+          }),
+      ],
+      [
+        "base-ui-dialog-nested",
+        () =>
+          docsExampleBlock({
+            title: "Nested dialogs",
+            testId: "docs-example-block-base-ui-dialog-nested",
+            preview: DocsPreviewsCD.baseUiDialogNestedExamplePreview(
+              model.baseUiDialogNestedExample,
+              "base-ui-dialog-docs-nested-preview"
+            ),
+            href: "/docs/components/base-ui-dialog/examples/nested",
+            linkText: "Open standalone Base UI Dialog Nested example",
+          }),
+      ],
+      [
+        "base-ui-drawer-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-drawer-basic",
+            preview: DocsPreviewsCD.baseUiDrawerBasicExamplePreview(
+              model.baseUiDrawerBasicExample,
+              "base-ui-drawer-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-drawer/examples/basic",
+            linkText: "Open standalone Base UI Drawer Basic example",
+          }),
+      ],
+      [
+        "base-ui-drawer-position",
+        () =>
+          docsExampleBlock({
+            title: "Position",
+            testId: "docs-example-block-base-ui-drawer-position",
+            preview: DocsPreviewsCD.baseUiDrawerPositionExamplePreview(
+              model.baseUiDrawerpositionExample,
+              "base-ui-drawer-docs-position-preview"
+            ),
+            href: "/docs/components/base-ui-drawer/examples/position",
+            linkText: "Open standalone Base UI Drawer Position example",
+          }),
+      ],
+      [
+        "base-ui-drawer-non-modal",
+        () =>
+          docsExampleBlock({
+            title: "Non-modal",
+            testId: "docs-example-block-base-ui-drawer-non-modal",
+            preview: DocsPreviewsCD.baseUiDrawerNonModalExamplePreview(
+              model.baseUiDrawernonModalExample,
+              "base-ui-drawer-docs-non-modal-preview"
+            ),
+            href: "/docs/components/base-ui-drawer/examples/non-modal",
+            linkText: "Open standalone Base UI Drawer Non-modal example",
+          }),
+      ],
+      [
+        "base-ui-field-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-field-basic",
+            preview: DocsPreviewsCD.baseUiFieldBasicExamplePreview(
+              model.baseUiFieldBasicExample,
+              "base-ui-field-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-field/examples/basic",
+            linkText: "Open standalone Base UI Field Basic example",
+          }),
+      ],
+      [
+        "base-ui-fieldset-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-fieldset-basic",
+            preview: DocsPreviewsCD.baseUiFieldsetBasicExamplePreview(
+              model.baseUiFieldsetBasicExample,
+              "base-ui-fieldset-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-fieldset/examples/basic",
+            linkText: "Open standalone Base UI Fieldset Basic example",
+          }),
+      ],
+      [
+        "base-ui-form-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-form-basic",
+            preview: DocsPreviewsCD.baseUiFormBasicExamplePreview(
+              model.baseUiFormBasicExample,
+              "base-ui-form-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-form/examples/basic",
+            linkText: "Open standalone Base UI Form Basic example",
+          }),
+      ],
+      [
+        "base-ui-form-schema-validation",
+        () =>
+          docsExampleBlock({
+            title: "Schema validation",
+            testId: "docs-example-block-base-ui-form-schema-validation",
+            preview: DocsPreviewsCD.baseUiFormSchemaValidationExamplePreview(
+              model.baseUiFormSchemaValidationExample,
+              "base-ui-form-docs-schema-validation-preview"
+            ),
+            href: "/docs/components/base-ui-form/examples/schema-validation",
+            linkText: "Open standalone Base UI Form Schema Validation example",
+          }),
+      ],
+      [
+        "base-ui-form-server-function",
+        () =>
+          docsExampleBlock({
+            title: "Server Function",
+            testId: "docs-example-block-base-ui-form-server-function",
+            preview: DocsPreviewsCD.baseUiFormServerFunctionExamplePreview(
+              model.baseUiFormServerFunctionExample,
+              "base-ui-form-docs-server-function-preview"
+            ),
+            href: "/docs/components/base-ui-form/examples/server-function",
+            linkText: "Open standalone Base UI Form Server Function example",
+          }),
+      ],
+      [
+        "base-ui-input-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-input-basic",
+            preview: DocsPreviewsCD.baseUiInputBasicExamplePreview(
+              model.baseUiInputBasicExample,
+              "base-ui-input-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-input/examples/basic",
+            linkText: "Open standalone Base UI Input Basic example",
+          }),
+      ],
+      [
+        "base-ui-menu-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-menu-basic",
+            preview: DocsPreviewsCD.baseUiMenuBasicExamplePreview(
+              model.baseUiMenuBasicExample,
+              "base-ui-menu-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-menu/examples/basic",
+            linkText: "Open standalone Base UI Menu Basic example",
+          }),
+      ],
+      [
+        "base-ui-menu-nested",
+        () =>
+          docsExampleBlock({
+            title: "Nested",
+            testId: "docs-example-block-base-ui-menu-nested",
+            preview: DocsPreviewsCD.baseUiMenuNestedExamplePreview(
+              model.baseUiMenuNestedExample,
+              "base-ui-menu-docs-nested-preview"
+            ),
+            href: "/docs/components/base-ui-menu/examples/nested",
+            linkText: "Open standalone Base UI Menu Nested example",
+          }),
+      ],
+      [
+        "base-ui-menubar-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-menubar-basic",
+            preview: DocsPreviewsCD.baseUiMenubarBasicExamplePreview(
+              model.baseUiMenubarBasicExample,
+              "base-ui-menubar-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-menubar/examples/basic",
+            linkText: "Open standalone Base UI Menubar Basic example",
+          }),
+      ],
+      [
+        "base-ui-meter-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-meter-basic",
+            preview: DocsPreviewsCD.baseUiMeterBasicExamplePreview(
+              model.baseUiMeterBasicExample,
+              "base-ui-meter-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-meter/examples/basic",
+            linkText: "Open standalone Base UI Meter Basic example",
+          }),
+      ],
+      [
+        "base-ui-navigation-menu-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-navigation-menu-basic",
+            preview: DocsPreviewsNZ.baseUiNavigationMenuBasicExamplePreview(
+              model.baseUiNavigationMenuBasicExample,
+              "base-ui-navigation-menu-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-navigation-menu/examples/basic",
+            linkText: "Open standalone Base UI Navigation Menu Basic example",
+          }),
+      ],
+      [
+        "base-ui-number-field-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-number-field-basic",
+            preview: DocsPreviewsNZ.baseUiNumberFieldBasicExamplePreview(
+              model.baseUiNumberFieldBasicExample,
+              "base-ui-number-field-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-number-field/examples/basic",
+            linkText: "Open standalone Base UI Number Field Basic example",
+          }),
+      ],
+      [
+        "base-ui-otp-field-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-otp-field-basic",
+            preview: DocsPreviewsNZ.baseUiOtpFieldBasicExamplePreview(
+              model.baseUiOtpFieldBasicExample,
+              "base-ui-otp-field-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-otp-field/examples/basic",
+            linkText: "Open standalone Base UI OTP Field Basic example",
+          }),
+      ],
+      [
+        "base-ui-preview-card-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-preview-card-basic",
+            preview: DocsPreviewsNZ.baseUiPreviewCardBasicExamplePreview(
+              model.baseUiPreviewCardBasicExample,
+              "base-ui-preview-card-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-preview-card/examples/basic",
+            linkText: "Open standalone Base UI Preview Card Basic example",
+          }),
+      ],
+      [
+        "base-ui-progress-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-progress-basic",
+            preview: DocsPreviewsNZ.baseUiProgressBasicExamplePreview(
+              model.baseUiProgressBasicExample,
+              "base-ui-progress-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-progress/examples/basic",
+            linkText: "Open standalone Base UI Progress Basic example",
+          }),
+      ],
+      [
+        "base-ui-popover-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-popover-basic",
+            preview: DocsPreviewsNZ.baseUiPopoverBasicExamplePreview(
+              model.baseUiPopoverBasicExample,
+              "base-ui-popover-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-popover/examples/basic",
+            linkText: "Open standalone Base UI Popover Basic example",
+          }),
+      ],
+      [
+        "base-ui-popover-animated",
+        () =>
+          docsExampleBlock({
+            title: "Animated",
+            testId: "docs-example-block-base-ui-popover-animated",
+            preview: DocsPreviewsNZ.baseUiPopoverAnimatedExamplePreview(
+              model.baseUiPopoverAnimatedExample,
+              "base-ui-popover-docs-animated-preview"
+            ),
+            href: "/docs/components/base-ui-popover/examples/animated",
+            linkText: "Open standalone Base UI Popover Animated example",
+          }),
+      ],
+      [
+        "base-ui-popover-multiple-triggers",
+        () =>
+          docsExampleBlock({
+            title: "Multiple Triggers",
+            testId: "docs-example-block-base-ui-popover-multiple-triggers",
+            preview: DocsPreviewsNZ.baseUiPopoverMultipleTriggersExamplePreview(
+              model.baseUiPopoverMultipleTriggersExample,
+              "base-ui-popover-docs-multiple-triggers-preview"
+            ),
+            href: "/docs/components/base-ui-popover/examples/multiple-triggers",
+            linkText:
+              "Open standalone Base UI Popover Multiple Triggers example",
+          }),
+      ],
+      [
+        "base-ui-collapsible-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-collapsible-basic",
+            preview: DocsPreviewsCD.baseUiCollapsibleBasicExamplePreview(
+              model.baseUiCollapsibleBasicExample,
+              "base-ui-collapsible-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-collapsible/examples/basic",
+            linkText: "Open standalone Base UI Collapsible Basic example",
+          }),
+      ],
+      [
+        "base-ui-select-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-select-basic",
+            preview: DocsPreviewsNZ.baseUiSelectBasicExamplePreview(
+              model.baseUiSelectBasicExample,
+              "base-ui-select-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-select/examples/basic",
+            linkText: "Open standalone Base UI Select Basic example",
+          }),
+      ],
+      [
+        "base-ui-separator-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-separator-basic",
+            preview: DocsPreviewsNZ.baseUiSeparatorBasicExamplePreview(
+              model.baseUiSeparatorBasicExample,
+              "base-ui-separator-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-separator/examples/basic",
+            linkText: "Open standalone Base UI Separator Basic example",
+          }),
+      ],
+      [
+        "base-ui-slider-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-slider-basic",
+            preview: DocsPreviewsNZ.baseUiSliderBasicExamplePreview(
+              model.baseUiSliderBasicExample,
+              "base-ui-slider-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-slider/examples/basic",
+            linkText: "Open standalone Base UI Slider Basic example",
+          }),
+      ],
+      [
+        "base-ui-switch-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-switch-basic",
+            preview: DocsPreviewsNZ.baseUiSwitchBasicExamplePreview(
+              model.baseUiSwitchBasicExample,
+              "base-ui-switch-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-switch/examples/basic",
+            linkText: "Open standalone Base UI Switch Basic example",
+          }),
+      ],
+      [
+        "base-ui-tabs-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-tabs-basic",
+            preview: DocsPreviewsNZ.baseUiTabsBasicExamplePreview(
+              model.baseUiTabsBasicExample,
+              "base-ui-tabs-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-tabs/examples/basic",
+            linkText: "Open standalone Base UI Tabs Basic example",
+          }),
+      ],
+      [
+        "base-ui-toast-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-toast-basic",
+            preview: DocsPreviewsNZ.baseUiToastBasicExamplePreview(
+              model.baseUiToastBasicExample,
+              "base-ui-toast-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-toast/examples/basic",
+            linkText: "Open standalone Base UI Toast Basic example",
+          }),
+      ],
+      [
+        "base-ui-toggle-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-toggle-basic",
+            preview: DocsPreviewsNZ.baseUiToggleBasicExamplePreview(
+              model.baseUiToggleBasicExample,
+              "base-ui-toggle-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-toggle/examples/basic",
+            linkText: "Open standalone Base UI Toggle Basic example",
+          }),
+      ],
+      [
+        "base-ui-toggle-group-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-toggle-group-basic",
+            preview: DocsPreviewsNZ.baseUiToggleGroupBasicExamplePreview(
+              model.baseUiToggleGroupBasicExample,
+              "base-ui-toggle-group-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-toggle-group/examples/basic",
+            linkText: "Open standalone Base UI Toggle Group Basic example",
+          }),
+      ],
+      [
+        "base-ui-toolbar-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-toolbar-basic",
+            preview: DocsPreviewsNZ.baseUiToolbarBasicExamplePreview(
+              model.baseUiToolbarBasicExample,
+              "base-ui-toolbar-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-toolbar/examples/basic",
+            linkText: "Open standalone Base UI Toolbar Basic example",
+          }),
+      ],
+      [
+        "base-ui-tooltip-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-base-ui-tooltip-basic",
+            preview: DocsPreviewsNZ.baseUiTooltipBasicExamplePreview(
+              model.baseUiTooltipBasicExample,
+              "base-ui-tooltip-docs-basic-preview"
+            ),
+            href: "/docs/components/base-ui-tooltip/examples/basic",
+            linkText: "Open standalone Base UI Tooltip Basic example",
+          }),
+      ],
+    ],
+    () => html<Message>().empty
   );
 
 const baseUiLaneDocsView = (
@@ -13207,1150 +13383,1377 @@ type ShadcnLaneDocsConfig = Readonly<{
 }>;
 
 const shadcnNewPrimitiveExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("shadcn-toggle-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-toggle-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnToggleBasicExamplePreview(
-          model.shadcnToggleBasicExample,
-          "shadcn-toggle-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-toggle/examples/basic",
-        linkText: "Open standalone shadcn Toggle Basic example",
-      })
-    ),
-    M.when("shadcn-toggle-group-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-toggle-group-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnToggleGroupBasicExamplePreview(
-          model.shadcnToggleGroupBasicExample,
-          "shadcn-toggle-group-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-toggle-group/examples/basic",
-        linkText: "Open standalone shadcn Toggle Group Basic example",
-      })
-    ),
-    M.when("shadcn-tooltip-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-tooltip-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnTooltipBasicExamplePreview(
-          model.shadcnTooltipBasicExample,
-          "shadcn-tooltip-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-tooltip/examples/basic",
-        linkText: "Open standalone shadcn Tooltip Basic example",
-      })
-    ),
-    M.when("shadcn-base-accordion-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-base-accordion-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnBaseAccordionBasicExamplePreview(
-            model.shadcnBaseAccordionBasicExample,
-            "shadcn-base-accordion-docs-basic-preview"
-          ),
-        href: "/docs/components/shadcn-base-accordion/examples/basic",
-        linkText: "Open standalone shadcn Base Accordion Basic example",
-      })
-    ),
-    M.orElse(() => html<Message>().empty)
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "shadcn-toggle-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-toggle-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnToggleBasicExamplePreview(
+              model.shadcnToggleBasicExample,
+              "shadcn-toggle-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-toggle/examples/basic",
+            linkText: "Open standalone shadcn Toggle Basic example",
+          }),
+      ],
+      [
+        "shadcn-toggle-group-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-toggle-group-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnToggleGroupBasicExamplePreview(
+                model.shadcnToggleGroupBasicExample,
+                "shadcn-toggle-group-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-toggle-group/examples/basic",
+            linkText: "Open standalone shadcn Toggle Group Basic example",
+          }),
+      ],
+      [
+        "shadcn-tooltip-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-tooltip-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnTooltipBasicExamplePreview(
+              model.shadcnTooltipBasicExample,
+              "shadcn-tooltip-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-tooltip/examples/basic",
+            linkText: "Open standalone shadcn Tooltip Basic example",
+          }),
+      ],
+      [
+        "shadcn-base-accordion-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-base-accordion-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnBaseAccordionBasicExamplePreview(
+                model.shadcnBaseAccordionBasicExample,
+                "shadcn-base-accordion-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-base-accordion/examples/basic",
+            linkText: "Open standalone shadcn Base Accordion Basic example",
+          }),
+      ],
+    ],
+    () => html<Message>().empty
   );
 
 const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("alert-action", () =>
-      docsExampleBlock({
-        title: "Action",
-        testId: "docs-example-block-alert-action",
-        preview: DocsPreviewsAlert.alertActionExamplePreview(
-          model.alertActionExample,
-          "shadcn-alert-docs-action-preview"
-        ),
-        href: "/docs/components/shadcn-alert/examples/action",
-        linkText: "Open standalone shadcn Alert Action example",
-      })
-    ),
-    M.when("alert-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-alert-basic",
-        preview: DocsPreviewsAlert.alertBasicExamplePreview(
-          model.alertBasicExample,
-          "shadcn-alert-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-alert/examples/basic",
-        linkText: "Open standalone shadcn Alert Basic example",
-      })
-    ),
-    M.when("alert-destructive", () =>
-      docsExampleBlock({
-        title: "Destructive",
-        testId: "docs-example-block-alert-destructive",
-        preview: DocsPreviewsAlert.alertDestructiveExamplePreview(
-          model.alertDestructiveExample,
-          "shadcn-alert-docs-destructive-preview"
-        ),
-        href: "/docs/components/shadcn-alert/examples/destructive",
-        linkText: "Open standalone shadcn Alert Destructive example",
-      })
-    ),
-    M.when("aspect-ratio-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-aspect-ratio-basic",
-        preview: DocsPreviewsAspect.aspectRatioBasicExamplePreview(
-          model.aspectRatioBasicExample,
-          "shadcn-aspect-ratio-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-aspect-ratio/examples/basic",
-        linkText: "Open standalone shadcn Aspect Ratio Basic example",
-      })
-    ),
-    M.when("aspect-ratio-portrait", () =>
-      docsExampleBlock({
-        title: "Portrait",
-        testId: "docs-example-block-aspect-ratio-portrait",
-        preview: DocsPreviewsAspect.aspectRatioPortraitExamplePreview(
-          model.aspectRatioPortraitExample,
-          "shadcn-aspect-ratio-docs-portrait-preview"
-        ),
-        href: "/docs/components/shadcn-aspect-ratio/examples/portrait",
-        linkText: "Open standalone shadcn Aspect Ratio Portrait example",
-      })
-    ),
-    M.when("aspect-ratio-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        testId: "docs-example-block-aspect-ratio-rtl",
-        preview: DocsPreviewsAspect.aspectRatioRtlExamplePreview(
-          model.aspectRatioRtlExample,
-          "shadcn-aspect-ratio-docs-rtl-preview"
-        ),
-        href: "/docs/components/shadcn-aspect-ratio/examples/rtl",
-        linkText: "Open standalone shadcn Aspect Ratio RTL example",
-      })
-    ),
-    M.when("aspect-ratio-square", () =>
-      docsExampleBlock({
-        title: "Square",
-        testId: "docs-example-block-aspect-ratio-square",
-        preview: DocsPreviewsAspect.aspectRatioSquareExamplePreview(
-          model.aspectRatioSquareExample,
-          "shadcn-aspect-ratio-docs-square-preview"
-        ),
-        href: "/docs/components/shadcn-aspect-ratio/examples/square",
-        linkText: "Open standalone shadcn Aspect Ratio Square example",
-      })
-    ),
-    M.when("breadcrumb-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-breadcrumb-basic",
-        preview: DocsPreviewsB.breadcrumbBasicExamplePreview(
-          model.breadcrumbBasicExample,
-          "shadcn-breadcrumb-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-breadcrumb/examples/basic",
-        linkText: "Open standalone shadcn Breadcrumb Basic example",
-      })
-    ),
-    M.when("breadcrumb-collapsed", () =>
-      docsExampleBlock({
-        title: "Collapsed",
-        testId: "docs-example-block-breadcrumb-collapsed",
-        preview: DocsPreviewsB.breadcrumbCollapsedExamplePreview(
-          model.breadcrumbCollapsedExample,
-          "shadcn-breadcrumb-docs-collapsed-preview"
-        ),
-        href: "/docs/components/shadcn-breadcrumb/examples/collapsed",
-        linkText: "Open standalone shadcn Breadcrumb Collapsed example",
-      })
-    ),
-    M.when("breadcrumb-dropdown", () =>
-      docsExampleBlock({
-        title: "Dropdown",
-        testId: "docs-example-block-breadcrumb-dropdown",
-        preview: DocsPreviewsB.breadcrumbDropdownExamplePreview(
-          model.breadcrumbDropdownExample,
-          "shadcn-breadcrumb-docs-dropdown-preview"
-        ),
-        href: "/docs/components/shadcn-breadcrumb/examples/dropdown",
-        linkText: "Open standalone shadcn Breadcrumb Dropdown example",
-      })
-    ),
-    M.when("breadcrumb-link", () =>
-      docsExampleBlock({
-        title: "Link component",
-        testId: "docs-example-block-breadcrumb-link",
-        preview: DocsPreviewsB.breadcrumbLinkExamplePreview(
-          model.breadcrumbLinkExample,
-          "shadcn-breadcrumb-docs-link-preview"
-        ),
-        href: "/docs/components/shadcn-breadcrumb/examples/link",
-        linkText: "Open standalone shadcn Breadcrumb Link example",
-      })
-    ),
-    M.when("breadcrumb-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        testId: "docs-example-block-breadcrumb-rtl",
-        preview: DocsPreviewsB.breadcrumbRtlExamplePreview(
-          model.breadcrumbRtlExample,
-          "shadcn-breadcrumb-docs-rtl-preview"
-        ),
-        href: "/docs/components/shadcn-breadcrumb/examples/rtl",
-        linkText: "Open standalone shadcn Breadcrumb RTL example",
-      })
-    ),
-    M.when("breadcrumb-separator", () =>
-      docsExampleBlock({
-        title: "Custom separator",
-        testId: "docs-example-block-breadcrumb-separator",
-        preview: DocsPreviewsB.breadcrumbSeparatorExamplePreview(
-          model.breadcrumbSeparatorExample,
-          "shadcn-breadcrumb-docs-separator-preview"
-        ),
-        href: "/docs/components/shadcn-breadcrumb/examples/separator",
-        linkText: "Open standalone shadcn Breadcrumb Separator example",
-      })
-    ),
-    M.when("shadcn-checkbox-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-checkbox-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnCheckboxBasicExamplePreview(
-          model.shadcnCheckboxBasicExample,
-          "shadcn-checkbox-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-checkbox/examples/basic",
-        linkText: "Open standalone shadcn Checkbox Basic example",
-      })
-    ),
-    M.when("shadcn-collapsible-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-collapsible-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnCollapsibleBasicExamplePreview(
-          model.shadcnCollapsibleBasicExample,
-          "shadcn-collapsible-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-collapsible/examples/basic",
-        linkText: "Open standalone shadcn Collapsible Basic example",
-      })
-    ),
-    M.when("shadcn-combobox-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-combobox-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnComboboxBasicExamplePreview(
-          model.shadcnComboboxBasicExample,
-          "shadcn-combobox-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-combobox/examples/basic",
-        linkText: "Open standalone shadcn Combobox Basic example",
-      })
-    ),
-    M.when("shadcn-context-menu-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-context-menu-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnContextMenuBasicExamplePreview(
-          model.shadcnContextMenuBasicExample,
-          "shadcn-context-menu-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-context-menu/examples/basic",
-        linkText: "Open standalone shadcn Context Menu Basic example",
-      })
-    ),
-    M.when("shadcn-date-picker-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-date-picker-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnDatePickerBasicExamplePreview(
-          model.shadcnDatePickerBasicExample,
-          "shadcn-date-picker-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-date-picker/examples/basic",
-        linkText: "Open standalone shadcn Date Picker Basic example",
-      })
-    ),
-    M.when("shadcn-dialog-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-dialog-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(
-          model.shadcnDialogBasicExample,
-          "shadcn-dialog-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-dialog/examples/basic",
-        linkText: "Open standalone shadcn Dialog Basic example",
-      })
-    ),
-    M.when("shadcn-drawer-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-drawer-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnDrawerBasicExamplePreview(
-          model.shadcnDrawerBasicExample,
-          "shadcn-drawer-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-drawer/examples/basic",
-        linkText: "Open standalone shadcn Drawer Basic example",
-      })
-    ),
-    M.when("shadcn-field-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-field-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnFieldBasicExamplePreview(
-          model.shadcnFieldBasicExample,
-          "shadcn-field-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-field/examples/basic",
-        linkText: "Open standalone shadcn Field Basic example",
-      })
-    ),
-    M.when("shadcn-input-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-input-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnInputBasicExamplePreview(
-          model.shadcnInputBasicExample,
-          "shadcn-input-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-input/examples/basic",
-        linkText: "Open standalone shadcn Input Basic example",
-      })
-    ),
-    M.when("shadcn-menubar-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-menubar-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnMenubarBasicExamplePreview(
-          model.shadcnMenubarBasicExample,
-          "shadcn-menubar-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-menubar/examples/basic",
-        linkText: "Open standalone shadcn Menubar Basic example",
-      })
-    ),
-    M.when("shadcn-navigation-menu-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-navigation-menu-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnNavigationMenuBasicExamplePreview(),
-        href: "/docs/components/shadcn-navigation-menu/examples/basic",
-        linkText: "Open standalone shadcn Navigation Menu Basic example",
-      })
-    ),
-    M.when("shadcn-popover-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-popover-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnPopoverBasicExamplePreview(
-          model.shadcnPopoverBasicExample,
-          "shadcn-popover-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-popover/examples/basic",
-        linkText: "Open standalone shadcn Popover Basic example",
-      })
-    ),
-    M.when("shadcn-progress-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-progress-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnProgressBasicExamplePreview(),
-        href: "/docs/components/shadcn-progress/examples/basic",
-        linkText: "Open standalone shadcn Progress Basic example",
-      })
-    ),
-    M.when("shadcn-scroll-area-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-scroll-area-basic",
-        preview:
-          DocsPreviewsShadcnMissing.shadcnScrollAreaBasicExamplePreview(),
-        href: "/docs/components/shadcn-scroll-area/examples/basic",
-        linkText: "Open standalone shadcn Scroll Area Basic example",
-      })
-    ),
-    M.when("shadcn-separator-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-separator-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnSeparatorBasicExamplePreview(),
-        href: "/docs/components/shadcn-separator/examples/basic",
-        linkText: "Open standalone shadcn Separator Basic example",
-      })
-    ),
-    M.when("shadcn-textarea-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-textarea-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnTextareaBasicExamplePreview(
-          model.shadcnTextareaBasicExample,
-          "shadcn-textarea-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-textarea/examples/basic",
-        linkText: "Open standalone shadcn Textarea Basic example",
-      })
-    ),
-    M.when("shadcn-toast-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-toast-basic",
-        preview: DocsPreviewsShadcnMissing.shadcnToastBasicExamplePreview(
-          model.shadcnToastBasicExample,
-          "shadcn-toast-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-toast/examples/basic",
-        linkText: "Open standalone shadcn Toast Basic example",
-      })
-    ),
-    M.orElse(() => shadcnNewPrimitiveExampleBlock(model, example))
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "alert-action",
+        () =>
+          docsExampleBlock({
+            title: "Action",
+            testId: "docs-example-block-alert-action",
+            preview: DocsPreviewsAlert.alertActionExamplePreview(
+              model.alertActionExample,
+              "shadcn-alert-docs-action-preview"
+            ),
+            href: "/docs/components/shadcn-alert/examples/action",
+            linkText: "Open standalone shadcn Alert Action example",
+          }),
+      ],
+      [
+        "alert-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-alert-basic",
+            preview: DocsPreviewsAlert.alertBasicExamplePreview(
+              model.alertBasicExample,
+              "shadcn-alert-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-alert/examples/basic",
+            linkText: "Open standalone shadcn Alert Basic example",
+          }),
+      ],
+      [
+        "alert-destructive",
+        () =>
+          docsExampleBlock({
+            title: "Destructive",
+            testId: "docs-example-block-alert-destructive",
+            preview: DocsPreviewsAlert.alertDestructiveExamplePreview(
+              model.alertDestructiveExample,
+              "shadcn-alert-docs-destructive-preview"
+            ),
+            href: "/docs/components/shadcn-alert/examples/destructive",
+            linkText: "Open standalone shadcn Alert Destructive example",
+          }),
+      ],
+      [
+        "aspect-ratio-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-aspect-ratio-basic",
+            preview: DocsPreviewsAspect.aspectRatioBasicExamplePreview(
+              model.aspectRatioBasicExample,
+              "shadcn-aspect-ratio-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-aspect-ratio/examples/basic",
+            linkText: "Open standalone shadcn Aspect Ratio Basic example",
+          }),
+      ],
+      [
+        "aspect-ratio-portrait",
+        () =>
+          docsExampleBlock({
+            title: "Portrait",
+            testId: "docs-example-block-aspect-ratio-portrait",
+            preview: DocsPreviewsAspect.aspectRatioPortraitExamplePreview(
+              model.aspectRatioPortraitExample,
+              "shadcn-aspect-ratio-docs-portrait-preview"
+            ),
+            href: "/docs/components/shadcn-aspect-ratio/examples/portrait",
+            linkText: "Open standalone shadcn Aspect Ratio Portrait example",
+          }),
+      ],
+      [
+        "aspect-ratio-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-aspect-ratio-rtl",
+            preview: DocsPreviewsAspect.aspectRatioRtlExamplePreview(
+              model.aspectRatioRtlExample,
+              "shadcn-aspect-ratio-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-aspect-ratio/examples/rtl",
+            linkText: "Open standalone shadcn Aspect Ratio RTL example",
+          }),
+      ],
+      [
+        "aspect-ratio-square",
+        () =>
+          docsExampleBlock({
+            title: "Square",
+            testId: "docs-example-block-aspect-ratio-square",
+            preview: DocsPreviewsAspect.aspectRatioSquareExamplePreview(
+              model.aspectRatioSquareExample,
+              "shadcn-aspect-ratio-docs-square-preview"
+            ),
+            href: "/docs/components/shadcn-aspect-ratio/examples/square",
+            linkText: "Open standalone shadcn Aspect Ratio Square example",
+          }),
+      ],
+      [
+        "breadcrumb-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-breadcrumb-basic",
+            preview: DocsPreviewsB.breadcrumbBasicExamplePreview(
+              model.breadcrumbBasicExample,
+              "shadcn-breadcrumb-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-breadcrumb/examples/basic",
+            linkText: "Open standalone shadcn Breadcrumb Basic example",
+          }),
+      ],
+      [
+        "breadcrumb-collapsed",
+        () =>
+          docsExampleBlock({
+            title: "Collapsed",
+            testId: "docs-example-block-breadcrumb-collapsed",
+            preview: DocsPreviewsB.breadcrumbCollapsedExamplePreview(
+              model.breadcrumbCollapsedExample,
+              "shadcn-breadcrumb-docs-collapsed-preview"
+            ),
+            href: "/docs/components/shadcn-breadcrumb/examples/collapsed",
+            linkText: "Open standalone shadcn Breadcrumb Collapsed example",
+          }),
+      ],
+      [
+        "breadcrumb-dropdown",
+        () =>
+          docsExampleBlock({
+            title: "Dropdown",
+            testId: "docs-example-block-breadcrumb-dropdown",
+            preview: DocsPreviewsB.breadcrumbDropdownExamplePreview(
+              model.breadcrumbDropdownExample,
+              "shadcn-breadcrumb-docs-dropdown-preview"
+            ),
+            href: "/docs/components/shadcn-breadcrumb/examples/dropdown",
+            linkText: "Open standalone shadcn Breadcrumb Dropdown example",
+          }),
+      ],
+      [
+        "breadcrumb-link",
+        () =>
+          docsExampleBlock({
+            title: "Link component",
+            testId: "docs-example-block-breadcrumb-link",
+            preview: DocsPreviewsB.breadcrumbLinkExamplePreview(
+              model.breadcrumbLinkExample,
+              "shadcn-breadcrumb-docs-link-preview"
+            ),
+            href: "/docs/components/shadcn-breadcrumb/examples/link",
+            linkText: "Open standalone shadcn Breadcrumb Link example",
+          }),
+      ],
+      [
+        "breadcrumb-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-breadcrumb-rtl",
+            preview: DocsPreviewsB.breadcrumbRtlExamplePreview(
+              model.breadcrumbRtlExample,
+              "shadcn-breadcrumb-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-breadcrumb/examples/rtl",
+            linkText: "Open standalone shadcn Breadcrumb RTL example",
+          }),
+      ],
+      [
+        "breadcrumb-separator",
+        () =>
+          docsExampleBlock({
+            title: "Custom separator",
+            testId: "docs-example-block-breadcrumb-separator",
+            preview: DocsPreviewsB.breadcrumbSeparatorExamplePreview(
+              model.breadcrumbSeparatorExample,
+              "shadcn-breadcrumb-docs-separator-preview"
+            ),
+            href: "/docs/components/shadcn-breadcrumb/examples/separator",
+            linkText: "Open standalone shadcn Breadcrumb Separator example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-checkbox-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxBasicExamplePreview(
+                model.shadcnCheckboxBasicExample,
+                "shadcn-checkbox-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-checkbox/examples/basic",
+            linkText: "Open standalone shadcn Checkbox Basic example",
+          }),
+      ],
+      [
+        "shadcn-collapsible-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-collapsible-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCollapsibleBasicExamplePreview(
+                model.shadcnCollapsibleBasicExample,
+                "shadcn-collapsible-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-collapsible/examples/basic",
+            linkText: "Open standalone shadcn Collapsible Basic example",
+          }),
+      ],
+      [
+        "shadcn-combobox-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-combobox-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnComboboxBasicExamplePreview(
+                model.shadcnComboboxBasicExample,
+                "shadcn-combobox-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-combobox/examples/basic",
+            linkText: "Open standalone shadcn Combobox Basic example",
+          }),
+      ],
+      [
+        "shadcn-context-menu-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-context-menu-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnContextMenuBasicExamplePreview(
+                model.shadcnContextMenuBasicExample,
+                "shadcn-context-menu-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-context-menu/examples/basic",
+            linkText: "Open standalone shadcn Context Menu Basic example",
+          }),
+      ],
+      [
+        "shadcn-date-picker-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-date-picker-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDatePickerBasicExamplePreview(
+                model.shadcnDatePickerBasicExample,
+                "shadcn-date-picker-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-date-picker/examples/basic",
+            linkText: "Open standalone shadcn Date Picker Basic example",
+          }),
+      ],
+      [
+        "shadcn-dialog-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-dialog-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(
+              model.shadcnDialogBasicExample,
+              "shadcn-dialog-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-dialog/examples/basic",
+            linkText: "Open standalone shadcn Dialog Basic example",
+          }),
+      ],
+      [
+        "shadcn-drawer-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-drawer-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnDrawerBasicExamplePreview(
+              model.shadcnDrawerBasicExample,
+              "shadcn-drawer-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-drawer/examples/basic",
+            linkText: "Open standalone shadcn Drawer Basic example",
+          }),
+      ],
+      [
+        "shadcn-field-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-field-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnFieldBasicExamplePreview(
+              model.shadcnFieldBasicExample,
+              "shadcn-field-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-field/examples/basic",
+            linkText: "Open standalone shadcn Field Basic example",
+          }),
+      ],
+      [
+        "shadcn-input-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-input-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnInputBasicExamplePreview(
+              model.shadcnInputBasicExample,
+              "shadcn-input-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/basic",
+            linkText: "Open standalone shadcn Input Basic example",
+          }),
+      ],
+      [
+        "shadcn-menubar-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-menubar-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnMenubarBasicExamplePreview(
+              model.shadcnMenubarBasicExample,
+              "shadcn-menubar-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-menubar/examples/basic",
+            linkText: "Open standalone shadcn Menubar Basic example",
+          }),
+      ],
+      [
+        "shadcn-navigation-menu-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-navigation-menu-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnNavigationMenuBasicExamplePreview(),
+            href: "/docs/components/shadcn-navigation-menu/examples/basic",
+            linkText: "Open standalone shadcn Navigation Menu Basic example",
+          }),
+      ],
+      [
+        "shadcn-popover-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-popover-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnPopoverBasicExamplePreview(
+              model.shadcnPopoverBasicExample,
+              "shadcn-popover-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-popover/examples/basic",
+            linkText: "Open standalone shadcn Popover Basic example",
+          }),
+      ],
+      [
+        "shadcn-progress-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-progress-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnProgressBasicExamplePreview(),
+            href: "/docs/components/shadcn-progress/examples/basic",
+            linkText: "Open standalone shadcn Progress Basic example",
+          }),
+      ],
+      [
+        "shadcn-scroll-area-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-scroll-area-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnScrollAreaBasicExamplePreview(),
+            href: "/docs/components/shadcn-scroll-area/examples/basic",
+            linkText: "Open standalone shadcn Scroll Area Basic example",
+          }),
+      ],
+      [
+        "shadcn-separator-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-separator-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnSeparatorBasicExamplePreview(),
+            href: "/docs/components/shadcn-separator/examples/basic",
+            linkText: "Open standalone shadcn Separator Basic example",
+          }),
+      ],
+      [
+        "shadcn-textarea-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-textarea-basic",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnTextareaBasicExamplePreview(
+                model.shadcnTextareaBasicExample,
+                "shadcn-textarea-docs-basic-preview"
+              ),
+            href: "/docs/components/shadcn-textarea/examples/basic",
+            linkText: "Open standalone shadcn Textarea Basic example",
+          }),
+      ],
+      [
+        "shadcn-toast-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-toast-basic",
+            preview: DocsPreviewsShadcnMissing.shadcnToastBasicExamplePreview(
+              model.shadcnToastBasicExample,
+              "shadcn-toast-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-toast/examples/basic",
+            linkText: "Open standalone shadcn Toast Basic example",
+          }),
+      ],
+    ],
+    () => shadcnNewPrimitiveExampleBlock(model, example)
   );
 
 const shadcnButtonExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("shadcn-button-size", () =>
-      docsExampleBlock({
-        title: "Size",
-        testId: "docs-example-block-shadcn-button-size",
-        preview: DocsPreviewsB.shadcnButtonSizeExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/size",
-        linkText: "Open standalone shadcn Button Size example",
-      })
-    ),
-    M.when("shadcn-button-default", () =>
-      docsExampleBlock({
-        title: "Default",
-        testId: "docs-example-block-shadcn-button-default",
-        preview: DocsPreviewsB.shadcnButtonDefaultExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/default",
-        linkText: "Open standalone shadcn Button Default example",
-      })
-    ),
-    M.when("shadcn-button-outline", () =>
-      docsExampleBlock({
-        title: "Outline",
-        testId: "docs-example-block-shadcn-button-outline",
-        preview: DocsPreviewsB.shadcnButtonOutlineExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/outline",
-        linkText: "Open standalone shadcn Button Outline example",
-      })
-    ),
-    M.when("shadcn-button-secondary", () =>
-      docsExampleBlock({
-        title: "Secondary",
-        testId: "docs-example-block-shadcn-button-secondary",
-        preview: DocsPreviewsB.shadcnButtonSecondaryExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/secondary",
-        linkText: "Open standalone shadcn Button Secondary example",
-      })
-    ),
-    M.when("shadcn-button-ghost", () =>
-      docsExampleBlock({
-        title: "Ghost",
-        testId: "docs-example-block-shadcn-button-ghost",
-        preview: DocsPreviewsB.shadcnButtonGhostExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/ghost",
-        linkText: "Open standalone shadcn Button Ghost example",
-      })
-    ),
-    M.when("shadcn-button-destructive", () =>
-      docsExampleBlock({
-        title: "Destructive",
-        testId: "docs-example-block-shadcn-button-destructive",
-        preview: DocsPreviewsB.shadcnButtonDestructiveExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/destructive",
-        linkText: "Open standalone shadcn Button Destructive example",
-      })
-    ),
-    M.when("shadcn-button-link", () =>
-      docsExampleBlock({
-        title: "Link",
-        testId: "docs-example-block-shadcn-button-link",
-        preview: DocsPreviewsB.shadcnButtonLinkExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/link",
-        linkText: "Open standalone shadcn Button Link example",
-      })
-    ),
-    M.when("shadcn-button-icon", () =>
-      docsExampleBlock({
-        title: "Icon",
-        testId: "docs-example-block-shadcn-button-icon",
-        preview: DocsPreviewsB.shadcnButtonIconExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/icon",
-        linkText: "Open standalone shadcn Button Icon example",
-      })
-    ),
-    M.when("shadcn-button-with-icon", () =>
-      docsExampleBlock({
-        title: "With Icon",
-        testId: "docs-example-block-shadcn-button-with-icon",
-        preview: DocsPreviewsB.shadcnButtonWithIconExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/with-icon",
-        linkText: "Open standalone shadcn Button With Icon example",
-      })
-    ),
-    M.when("shadcn-button-rounded", () =>
-      docsExampleBlock({
-        title: "Rounded",
-        testId: "docs-example-block-shadcn-button-rounded",
-        preview: DocsPreviewsB.shadcnButtonRoundedExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/rounded",
-        linkText: "Open standalone shadcn Button Rounded example",
-      })
-    ),
-    M.when("shadcn-button-spinner", () =>
-      docsExampleBlock({
-        title: "Spinner",
-        testId: "docs-example-block-shadcn-button-spinner",
-        preview: DocsPreviewsB.shadcnButtonSpinnerExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/spinner",
-        linkText: "Open standalone shadcn Button Spinner example",
-      })
-    ),
-    M.when("shadcn-button-button-group", () =>
-      docsExampleBlock({
-        title: "Button Group",
-        testId: "docs-example-block-shadcn-button-button-group",
-        preview: DocsPreviewsB.shadcnButtonGroupExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/button-group",
-        linkText: "Open standalone shadcn Button Group example",
-      })
-    ),
-    M.when("shadcn-button-as-child", () =>
-      docsExampleBlock({
-        title: "As Child",
-        testId: "docs-example-block-shadcn-button-as-child",
-        preview: DocsPreviewsB.shadcnButtonAsChildExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/as-child",
-        linkText: "Open standalone shadcn Button As Child example",
-      })
-    ),
-    M.when("shadcn-button-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        testId: "docs-example-block-shadcn-button-rtl",
-        preview: DocsPreviewsB.shadcnButtonRtlExamplePreview(),
-        href: "/docs/components/shadcn-button/examples/rtl",
-        linkText: "Open standalone shadcn Button RTL example",
-      })
-    ),
-    M.when("button-group-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-button-group-basic",
-        preview: DocsPreviewsB.buttonGroupBasicExamplePreview(
-          model.buttonGroupBasicExample,
-          "shadcn-button-group-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/basic",
-        linkText: "Open standalone Button Group Basic example",
-      })
-    ),
-    M.when("button-group-orientation", () =>
-      docsExampleBlock({
-        title: "Orientation",
-        testId: "docs-example-block-button-group-orientation",
-        preview: DocsPreviewsB.buttonGroupOrientationExamplePreview(
-          model.buttonGroupOrientationExample,
-          "shadcn-button-group-docs-orientation-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/orientation",
-        linkText: "Open standalone Button Group Orientation example",
-      })
-    ),
-    M.when("button-group-size", () =>
-      docsExampleBlock({
-        title: "Size",
-        testId: "docs-example-block-button-group-size",
-        preview: DocsPreviewsB.buttonGroupSizeExamplePreview(
-          model.buttonGroupSizeExample,
-          "shadcn-button-group-docs-size-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/size",
-        linkText: "Open standalone Button Group Size example",
-      })
-    ),
-    M.when("button-group-nested", () =>
-      docsExampleBlock({
-        title: "Nested",
-        testId: "docs-example-block-button-group-nested",
-        preview: DocsPreviewsB.buttonGroupNestedExamplePreview(
-          model.buttonGroupNestedExample,
-          "shadcn-button-group-docs-nested-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/nested",
-        linkText: "Open standalone Button Group Nested example",
-      })
-    ),
-    M.when("button-group-separator", () =>
-      docsExampleBlock({
-        title: "Separator",
-        testId: "docs-example-block-button-group-separator",
-        preview: DocsPreviewsB.buttonGroupSeparatorExamplePreview(
-          model.buttonGroupSeparatorExample,
-          "shadcn-button-group-docs-separator-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/separator",
-        linkText: "Open standalone Button Group Separator example",
-      })
-    ),
-    M.when("button-group-split", () =>
-      docsExampleBlock({
-        title: "Split",
-        testId: "docs-example-block-button-group-split",
-        preview: DocsPreviewsB.buttonGroupSplitExamplePreview(
-          model.buttonGroupSplitExample,
-          "shadcn-button-group-docs-split-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/split",
-        linkText: "Open standalone Button Group Split example",
-      })
-    ),
-    M.when("button-group-input", () =>
-      docsExampleBlock({
-        title: "Input",
-        testId: "docs-example-block-button-group-input",
-        preview: DocsPreviewsB.buttonGroupInputExamplePreview(
-          model.buttonGroupInputExample,
-          "shadcn-button-group-docs-input-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/input",
-        linkText: "Open standalone Button Group Input example",
-      })
-    ),
-    M.when("button-group-input-group", () =>
-      docsExampleBlock({
-        title: "Input group",
-        testId: "docs-example-block-button-group-input-group",
-        preview: DocsPreviewsB.buttonGroupInputGroupExamplePreview(
-          model.buttonGroupInputGroupExample,
-          "shadcn-button-group-docs-input-group-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/input-group",
-        linkText: "Open standalone Button Group Input Group example",
-      })
-    ),
-    M.when("button-group-select", () =>
-      docsExampleBlock({
-        title: "Select",
-        testId: "docs-example-block-button-group-select",
-        preview: DocsPreviewsB.buttonGroupSelectExamplePreview(
-          model.buttonGroupSelectExample,
-          "shadcn-button-group-docs-select-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/select",
-        linkText: "Open standalone Button Group Select example",
-      })
-    ),
-    M.when("button-group-popover", () =>
-      docsExampleBlock({
-        title: "Popover",
-        testId: "docs-example-block-button-group-popover",
-        preview: DocsPreviewsB.buttonGroupPopoverExamplePreview(
-          model.buttonGroupPopoverExample,
-          "shadcn-button-group-docs-popover-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/popover",
-        linkText: "Open standalone Button Group Popover example",
-      })
-    ),
-    M.when("button-group-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        testId: "docs-example-block-button-group-rtl",
-        preview: DocsPreviewsB.buttonGroupRtlExamplePreview(
-          model.buttonGroupRtlExample,
-          "shadcn-button-group-docs-rtl-preview"
-        ),
-        href: "/docs/components/shadcn-button-group/examples/rtl",
-        linkText: "Open standalone Button Group RTL example",
-      })
-    ),
-    M.when("card-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-card-basic",
-        preview: DocsPreviewsCD.cardBasicExamplePreview(
-          model.cardBasicExample,
-          "shadcn-card-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-card/examples/basic",
-        linkText: "Open standalone Card Basic example",
-      })
-    ),
-    M.when("carousel-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-carousel-basic",
-        preview: DocsPreviewsCD.carouselBasicExamplePreview(
-          model.carouselBasicExample,
-          "shadcn-carousel-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-carousel/examples/basic",
-        linkText: "Open standalone Carousel Basic example",
-      })
-    ),
-    M.when("carousel-sizes", () =>
-      docsExampleBlock({
-        title: "Sizes",
-        testId: "docs-example-block-carousel-sizes",
-        preview: DocsPreviewsCD.carouselSizesExamplePreview(
-          model.carouselSizesExample,
-          "shadcn-carousel-docs-sizes-preview"
-        ),
-        href: "/docs/components/shadcn-carousel/examples/sizes",
-        linkText: "Open standalone Carousel Sizes example",
-      })
-    ),
-    M.when("carousel-spacing", () =>
-      docsExampleBlock({
-        title: "Spacing",
-        testId: "docs-example-block-carousel-spacing",
-        preview: DocsPreviewsCD.carouselSpacingExamplePreview(
-          model.carouselSpacingExample,
-          "shadcn-carousel-docs-spacing-preview"
-        ),
-        href: "/docs/components/shadcn-carousel/examples/spacing",
-        linkText: "Open standalone Carousel Spacing example",
-      })
-    ),
-    M.when("carousel-orientation", () =>
-      docsExampleBlock({
-        title: "Orientation",
-        testId: "docs-example-block-carousel-orientation",
-        preview: DocsPreviewsCD.carouselOrientationExamplePreview(
-          model.carouselOrientationExample,
-          "shadcn-carousel-docs-orientation-preview"
-        ),
-        href: "/docs/components/shadcn-carousel/examples/orientation",
-        linkText: "Open standalone Carousel Orientation example",
-      })
-    ),
-    M.when("carousel-api", () =>
-      docsExampleBlock({
-        title: "API",
-        testId: "docs-example-block-carousel-api",
-        preview: DocsPreviewsCD.carouselApiExamplePreview(
-          model.carouselApiExample,
-          "shadcn-carousel-docs-api-preview"
-        ),
-        href: "/docs/components/shadcn-carousel/examples/api",
-        linkText: "Open standalone Carousel API example",
-      })
-    ),
-    M.when("carousel-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        testId: "docs-example-block-carousel-rtl",
-        preview: DocsPreviewsCD.carouselRtlExamplePreview(
-          model.carouselRtlExample,
-          "shadcn-carousel-docs-rtl-preview"
-        ),
-        href: "/docs/components/shadcn-carousel/examples/rtl",
-        linkText: "Open standalone Carousel RTL example",
-      })
-    ),
-    M.orElse(() => shadcnGeneratedExampleBlock(model, example))
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "shadcn-button-size",
+        () =>
+          docsExampleBlock({
+            title: "Size",
+            testId: "docs-example-block-shadcn-button-size",
+            preview: DocsPreviewsB.shadcnButtonSizeExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/size",
+            linkText: "Open standalone shadcn Button Size example",
+          }),
+      ],
+      [
+        "shadcn-button-default",
+        () =>
+          docsExampleBlock({
+            title: "Default",
+            testId: "docs-example-block-shadcn-button-default",
+            preview: DocsPreviewsB.shadcnButtonDefaultExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/default",
+            linkText: "Open standalone shadcn Button Default example",
+          }),
+      ],
+      [
+        "shadcn-button-outline",
+        () =>
+          docsExampleBlock({
+            title: "Outline",
+            testId: "docs-example-block-shadcn-button-outline",
+            preview: DocsPreviewsB.shadcnButtonOutlineExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/outline",
+            linkText: "Open standalone shadcn Button Outline example",
+          }),
+      ],
+      [
+        "shadcn-button-secondary",
+        () =>
+          docsExampleBlock({
+            title: "Secondary",
+            testId: "docs-example-block-shadcn-button-secondary",
+            preview: DocsPreviewsB.shadcnButtonSecondaryExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/secondary",
+            linkText: "Open standalone shadcn Button Secondary example",
+          }),
+      ],
+      [
+        "shadcn-button-ghost",
+        () =>
+          docsExampleBlock({
+            title: "Ghost",
+            testId: "docs-example-block-shadcn-button-ghost",
+            preview: DocsPreviewsB.shadcnButtonGhostExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/ghost",
+            linkText: "Open standalone shadcn Button Ghost example",
+          }),
+      ],
+      [
+        "shadcn-button-destructive",
+        () =>
+          docsExampleBlock({
+            title: "Destructive",
+            testId: "docs-example-block-shadcn-button-destructive",
+            preview: DocsPreviewsB.shadcnButtonDestructiveExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/destructive",
+            linkText: "Open standalone shadcn Button Destructive example",
+          }),
+      ],
+      [
+        "shadcn-button-link",
+        () =>
+          docsExampleBlock({
+            title: "Link",
+            testId: "docs-example-block-shadcn-button-link",
+            preview: DocsPreviewsB.shadcnButtonLinkExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/link",
+            linkText: "Open standalone shadcn Button Link example",
+          }),
+      ],
+      [
+        "shadcn-button-icon",
+        () =>
+          docsExampleBlock({
+            title: "Icon",
+            testId: "docs-example-block-shadcn-button-icon",
+            preview: DocsPreviewsB.shadcnButtonIconExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/icon",
+            linkText: "Open standalone shadcn Button Icon example",
+          }),
+      ],
+      [
+        "shadcn-button-with-icon",
+        () =>
+          docsExampleBlock({
+            title: "With Icon",
+            testId: "docs-example-block-shadcn-button-with-icon",
+            preview: DocsPreviewsB.shadcnButtonWithIconExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/with-icon",
+            linkText: "Open standalone shadcn Button With Icon example",
+          }),
+      ],
+      [
+        "shadcn-button-rounded",
+        () =>
+          docsExampleBlock({
+            title: "Rounded",
+            testId: "docs-example-block-shadcn-button-rounded",
+            preview: DocsPreviewsB.shadcnButtonRoundedExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/rounded",
+            linkText: "Open standalone shadcn Button Rounded example",
+          }),
+      ],
+      [
+        "shadcn-button-spinner",
+        () =>
+          docsExampleBlock({
+            title: "Spinner",
+            testId: "docs-example-block-shadcn-button-spinner",
+            preview: DocsPreviewsB.shadcnButtonSpinnerExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/spinner",
+            linkText: "Open standalone shadcn Button Spinner example",
+          }),
+      ],
+      [
+        "shadcn-button-button-group",
+        () =>
+          docsExampleBlock({
+            title: "Button Group",
+            testId: "docs-example-block-shadcn-button-button-group",
+            preview: DocsPreviewsB.shadcnButtonGroupExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/button-group",
+            linkText: "Open standalone shadcn Button Group example",
+          }),
+      ],
+      [
+        "shadcn-button-as-child",
+        () =>
+          docsExampleBlock({
+            title: "As Child",
+            testId: "docs-example-block-shadcn-button-as-child",
+            preview: DocsPreviewsB.shadcnButtonAsChildExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/as-child",
+            linkText: "Open standalone shadcn Button As Child example",
+          }),
+      ],
+      [
+        "shadcn-button-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-button-rtl",
+            preview: DocsPreviewsB.shadcnButtonRtlExamplePreview(),
+            href: "/docs/components/shadcn-button/examples/rtl",
+            linkText: "Open standalone shadcn Button RTL example",
+          }),
+      ],
+      [
+        "button-group-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-button-group-basic",
+            preview: DocsPreviewsB.buttonGroupBasicExamplePreview(
+              model.buttonGroupBasicExample,
+              "shadcn-button-group-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/basic",
+            linkText: "Open standalone Button Group Basic example",
+          }),
+      ],
+      [
+        "button-group-orientation",
+        () =>
+          docsExampleBlock({
+            title: "Orientation",
+            testId: "docs-example-block-button-group-orientation",
+            preview: DocsPreviewsB.buttonGroupOrientationExamplePreview(
+              model.buttonGroupOrientationExample,
+              "shadcn-button-group-docs-orientation-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/orientation",
+            linkText: "Open standalone Button Group Orientation example",
+          }),
+      ],
+      [
+        "button-group-size",
+        () =>
+          docsExampleBlock({
+            title: "Size",
+            testId: "docs-example-block-button-group-size",
+            preview: DocsPreviewsB.buttonGroupSizeExamplePreview(
+              model.buttonGroupSizeExample,
+              "shadcn-button-group-docs-size-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/size",
+            linkText: "Open standalone Button Group Size example",
+          }),
+      ],
+      [
+        "button-group-nested",
+        () =>
+          docsExampleBlock({
+            title: "Nested",
+            testId: "docs-example-block-button-group-nested",
+            preview: DocsPreviewsB.buttonGroupNestedExamplePreview(
+              model.buttonGroupNestedExample,
+              "shadcn-button-group-docs-nested-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/nested",
+            linkText: "Open standalone Button Group Nested example",
+          }),
+      ],
+      [
+        "button-group-separator",
+        () =>
+          docsExampleBlock({
+            title: "Separator",
+            testId: "docs-example-block-button-group-separator",
+            preview: DocsPreviewsB.buttonGroupSeparatorExamplePreview(
+              model.buttonGroupSeparatorExample,
+              "shadcn-button-group-docs-separator-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/separator",
+            linkText: "Open standalone Button Group Separator example",
+          }),
+      ],
+      [
+        "button-group-split",
+        () =>
+          docsExampleBlock({
+            title: "Split",
+            testId: "docs-example-block-button-group-split",
+            preview: DocsPreviewsB.buttonGroupSplitExamplePreview(
+              model.buttonGroupSplitExample,
+              "shadcn-button-group-docs-split-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/split",
+            linkText: "Open standalone Button Group Split example",
+          }),
+      ],
+      [
+        "button-group-input",
+        () =>
+          docsExampleBlock({
+            title: "Input",
+            testId: "docs-example-block-button-group-input",
+            preview: DocsPreviewsB.buttonGroupInputExamplePreview(
+              model.buttonGroupInputExample,
+              "shadcn-button-group-docs-input-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/input",
+            linkText: "Open standalone Button Group Input example",
+          }),
+      ],
+      [
+        "button-group-input-group",
+        () =>
+          docsExampleBlock({
+            title: "Input group",
+            testId: "docs-example-block-button-group-input-group",
+            preview: DocsPreviewsB.buttonGroupInputGroupExamplePreview(
+              model.buttonGroupInputGroupExample,
+              "shadcn-button-group-docs-input-group-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/input-group",
+            linkText: "Open standalone Button Group Input Group example",
+          }),
+      ],
+      [
+        "button-group-select",
+        () =>
+          docsExampleBlock({
+            title: "Select",
+            testId: "docs-example-block-button-group-select",
+            preview: DocsPreviewsB.buttonGroupSelectExamplePreview(
+              model.buttonGroupSelectExample,
+              "shadcn-button-group-docs-select-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/select",
+            linkText: "Open standalone Button Group Select example",
+          }),
+      ],
+      [
+        "button-group-popover",
+        () =>
+          docsExampleBlock({
+            title: "Popover",
+            testId: "docs-example-block-button-group-popover",
+            preview: DocsPreviewsB.buttonGroupPopoverExamplePreview(
+              model.buttonGroupPopoverExample,
+              "shadcn-button-group-docs-popover-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/popover",
+            linkText: "Open standalone Button Group Popover example",
+          }),
+      ],
+      [
+        "button-group-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-button-group-rtl",
+            preview: DocsPreviewsB.buttonGroupRtlExamplePreview(
+              model.buttonGroupRtlExample,
+              "shadcn-button-group-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-button-group/examples/rtl",
+            linkText: "Open standalone Button Group RTL example",
+          }),
+      ],
+      [
+        "card-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-card-basic",
+            preview: DocsPreviewsCD.cardBasicExamplePreview(
+              model.cardBasicExample,
+              "shadcn-card-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-card/examples/basic",
+            linkText: "Open standalone Card Basic example",
+          }),
+      ],
+      [
+        "carousel-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-carousel-basic",
+            preview: DocsPreviewsCD.carouselBasicExamplePreview(
+              model.carouselBasicExample,
+              "shadcn-carousel-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/basic",
+            linkText: "Open standalone Carousel Basic example",
+          }),
+      ],
+      [
+        "carousel-sizes",
+        () =>
+          docsExampleBlock({
+            title: "Sizes",
+            testId: "docs-example-block-carousel-sizes",
+            preview: DocsPreviewsCD.carouselSizesExamplePreview(
+              model.carouselSizesExample,
+              "shadcn-carousel-docs-sizes-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/sizes",
+            linkText: "Open standalone Carousel Sizes example",
+          }),
+      ],
+      [
+        "carousel-spacing",
+        () =>
+          docsExampleBlock({
+            title: "Spacing",
+            testId: "docs-example-block-carousel-spacing",
+            preview: DocsPreviewsCD.carouselSpacingExamplePreview(
+              model.carouselSpacingExample,
+              "shadcn-carousel-docs-spacing-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/spacing",
+            linkText: "Open standalone Carousel Spacing example",
+          }),
+      ],
+      [
+        "carousel-orientation",
+        () =>
+          docsExampleBlock({
+            title: "Orientation",
+            testId: "docs-example-block-carousel-orientation",
+            preview: DocsPreviewsCD.carouselOrientationExamplePreview(
+              model.carouselOrientationExample,
+              "shadcn-carousel-docs-orientation-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/orientation",
+            linkText: "Open standalone Carousel Orientation example",
+          }),
+      ],
+      [
+        "carousel-api",
+        () =>
+          docsExampleBlock({
+            title: "API",
+            testId: "docs-example-block-carousel-api",
+            preview: DocsPreviewsCD.carouselApiExamplePreview(
+              model.carouselApiExample,
+              "shadcn-carousel-docs-api-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/api",
+            linkText: "Open standalone Carousel API example",
+          }),
+      ],
+      [
+        "carousel-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-carousel-rtl",
+            preview: DocsPreviewsCD.carouselRtlExamplePreview(
+              model.carouselRtlExample,
+              "shadcn-carousel-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/rtl",
+            linkText: "Open standalone Carousel RTL example",
+          }),
+      ],
+    ],
+    () => shadcnGeneratedExampleBlock(model, example)
   );
 
 const shadcnAccordionExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("shadcn-accordion-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        description:
-          "Single-value accordion behavior: one trigger opens its content and closes the previously open item.",
-        testId: "docs-example-block-shadcn-accordion-basic",
-        preview: DocsPreviewsAccordion.shadcnAccordionBasicExamplePreview(
-          model.shadcnAccordionBasicExample,
-          "shadcn-accordion-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-accordion/examples/basic",
-        linkText: "Open standalone shadcn Accordion Basic example",
-      })
-    ),
-    M.when("shadcn-accordion-multiple", () =>
-      docsExampleBlock({
-        title: "Multiple",
-        description:
-          "Multiple-value accordion behavior: opening another item keeps the existing item open.",
-        testId: "docs-example-block-shadcn-accordion-multiple",
-        preview: DocsPreviewsAccordion.shadcnAccordionMultipleExamplePreview(
-          model.shadcnAccordionMultipleExample,
-          "shadcn-accordion-docs-multiple-preview"
-        ),
-        href: "/docs/components/shadcn-accordion/examples/multiple",
-        linkText: "Open standalone shadcn Accordion Multiple example",
-      })
-    ),
-    M.when("shadcn-accordion-disabled", () =>
-      docsExampleBlock({
-        title: "Disabled",
-        description:
-          "Disabled items stay visible in the set but do not dispatch toggle messages.",
-        testId: "docs-example-block-shadcn-accordion-disabled",
-        preview: DocsPreviewsAccordion.shadcnAccordionDisabledExamplePreview(
-          model.shadcnAccordionDisabledExample,
-          "shadcn-accordion-docs-disabled-preview"
-        ),
-        href: "/docs/components/shadcn-accordion/examples/disabled",
-        linkText: "Open standalone shadcn Accordion Disabled example",
-      })
-    ),
-    M.when("shadcn-accordion-borders", () =>
-      docsExampleBlock({
-        title: "Borders",
-        description:
-          "Adds the outer rounded border while item dividers remain internal and the last divider is removed.",
-        testId: "docs-example-block-shadcn-accordion-borders",
-        preview: DocsPreviewsAccordion.shadcnAccordionBordersExamplePreview(
-          model.shadcnAccordionBordersExample,
-          "shadcn-accordion-docs-borders-preview"
-        ),
-        href: "/docs/components/shadcn-accordion/examples/borders",
-        linkText: "Open standalone shadcn Accordion Borders example",
-      })
-    ),
-    M.when("shadcn-accordion-card", () =>
-      docsExampleBlock({
-        title: "Card",
-        description:
-          "Places the accordion inside a card shell with contextual title copy and contained spacing.",
-        testId: "docs-example-block-shadcn-accordion-card",
-        preview: DocsPreviewsAccordion.shadcnAccordionCardExamplePreview(
-          model.shadcnAccordionCardExample,
-          "shadcn-accordion-docs-card-preview"
-        ),
-        href: "/docs/components/shadcn-accordion/examples/card",
-        linkText: "Open standalone shadcn Accordion Card example",
-      })
-    ),
-    M.when("shadcn-accordion-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        description:
-          "Renders the same controlled accordion interaction inside a right-to-left container.",
-        testId: "docs-example-block-shadcn-accordion-rtl",
-        preview: DocsPreviewsAccordion.shadcnAccordionRtlExamplePreview(
-          model.shadcnAccordionRtlExample,
-          "shadcn-accordion-docs-rtl-preview"
-        ),
-        href: "/docs/components/shadcn-accordion/examples/rtl",
-        linkText: "Open standalone shadcn Accordion RTL example",
-      })
-    ),
-    M.orElse(() => shadcnButtonExampleBlock(model, example))
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "shadcn-accordion-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            description:
+              "Single-value accordion behavior: one trigger opens its content and closes the previously open item.",
+            testId: "docs-example-block-shadcn-accordion-basic",
+            preview: DocsPreviewsAccordion.shadcnAccordionBasicExamplePreview(
+              model.shadcnAccordionBasicExample,
+              "shadcn-accordion-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-accordion/examples/basic",
+            linkText: "Open standalone shadcn Accordion Basic example",
+          }),
+      ],
+      [
+        "shadcn-accordion-multiple",
+        () =>
+          docsExampleBlock({
+            title: "Multiple",
+            description:
+              "Multiple-value accordion behavior: opening another item keeps the existing item open.",
+            testId: "docs-example-block-shadcn-accordion-multiple",
+            preview:
+              DocsPreviewsAccordion.shadcnAccordionMultipleExamplePreview(
+                model.shadcnAccordionMultipleExample,
+                "shadcn-accordion-docs-multiple-preview"
+              ),
+            href: "/docs/components/shadcn-accordion/examples/multiple",
+            linkText: "Open standalone shadcn Accordion Multiple example",
+          }),
+      ],
+      [
+        "shadcn-accordion-disabled",
+        () =>
+          docsExampleBlock({
+            title: "Disabled",
+            description:
+              "Disabled items stay visible in the set but do not dispatch toggle messages.",
+            testId: "docs-example-block-shadcn-accordion-disabled",
+            preview:
+              DocsPreviewsAccordion.shadcnAccordionDisabledExamplePreview(
+                model.shadcnAccordionDisabledExample,
+                "shadcn-accordion-docs-disabled-preview"
+              ),
+            href: "/docs/components/shadcn-accordion/examples/disabled",
+            linkText: "Open standalone shadcn Accordion Disabled example",
+          }),
+      ],
+      [
+        "shadcn-accordion-borders",
+        () =>
+          docsExampleBlock({
+            title: "Borders",
+            description:
+              "Adds the outer rounded border while item dividers remain internal and the last divider is removed.",
+            testId: "docs-example-block-shadcn-accordion-borders",
+            preview: DocsPreviewsAccordion.shadcnAccordionBordersExamplePreview(
+              model.shadcnAccordionBordersExample,
+              "shadcn-accordion-docs-borders-preview"
+            ),
+            href: "/docs/components/shadcn-accordion/examples/borders",
+            linkText: "Open standalone shadcn Accordion Borders example",
+          }),
+      ],
+      [
+        "shadcn-accordion-card",
+        () =>
+          docsExampleBlock({
+            title: "Card",
+            description:
+              "Places the accordion inside a card shell with contextual title copy and contained spacing.",
+            testId: "docs-example-block-shadcn-accordion-card",
+            preview: DocsPreviewsAccordion.shadcnAccordionCardExamplePreview(
+              model.shadcnAccordionCardExample,
+              "shadcn-accordion-docs-card-preview"
+            ),
+            href: "/docs/components/shadcn-accordion/examples/card",
+            linkText: "Open standalone shadcn Accordion Card example",
+          }),
+      ],
+      [
+        "shadcn-accordion-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            description:
+              "Renders the same controlled accordion interaction inside a right-to-left container.",
+            testId: "docs-example-block-shadcn-accordion-rtl",
+            preview: DocsPreviewsAccordion.shadcnAccordionRtlExamplePreview(
+              model.shadcnAccordionRtlExample,
+              "shadcn-accordion-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-accordion/examples/rtl",
+            linkText: "Open standalone shadcn Accordion RTL example",
+          }),
+      ],
+    ],
+    () => shadcnButtonExampleBlock(model, example)
   );
 
 const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("shadcn-calendar-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        description:
-          "Single-date selection with parent-visible selected date and viewed month feedback.",
-        testId: "docs-example-block-shadcn-calendar-basic",
-        preview: DocsPreviewsCD.shadcnCalendarBasicExamplePreview(
-          model.shadcnCalendarBasicExample,
-          "shadcn-calendar-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-calendar/examples/basic",
-        linkText: "Open standalone shadcn Calendar Basic example",
-      })
-    ),
-    M.when("shadcn-calendar-month-year-selector", () =>
-      docsExampleBlock({
-        title: "Month and Year Selector",
-        description:
-          "Uses Foldkit Calendar day, month, and year modes to navigate bounded birth-year selection.",
-        testId: "docs-example-block-shadcn-calendar-month-year-selector",
-        preview: DocsPreviewsCD.shadcnCalendarMonthYearSelectorExamplePreview(
-          model.shadcnCalendarMonthYearSelectorExample,
-          "shadcn-calendar-docs-month-year-selector-preview"
-        ),
-        href: "/docs/components/shadcn-calendar/examples/month-year-selector",
-        linkText:
-          "Open standalone shadcn Calendar Month and Year Selector example",
-      })
-    ),
-    M.when("shadcn-calendar-range", () =>
-      docsExampleBlock({
-        title: "Range Calendar",
-        description:
-          "Represents the origin range layout while the local Calendar primitive remains single-date.",
-        testId: "docs-example-block-shadcn-calendar-range",
-        preview: DocsPreviewsCD.shadcnCalendarRangeExamplePreview(),
-        href: "/docs/components/shadcn-calendar/examples/range",
-        linkText: "Open standalone shadcn Calendar Range example",
-      })
-    ),
-    M.when("shadcn-calendar-date-of-birth", () =>
-      docsExampleBlock({
-        title: "Date of Birth",
-        description:
-          "Constrains date selection to an application-defined birth-date range.",
-        testId: "docs-example-block-shadcn-calendar-date-of-birth",
-        preview: DocsPreviewsCD.shadcnCalendarDateOfBirthExamplePreview(
-          model.shadcnCalendarDateOfBirthExample,
-          "shadcn-calendar-docs-date-of-birth-preview"
-        ),
-        href: "/docs/components/shadcn-calendar/examples/date-of-birth",
-        linkText: "Open standalone shadcn Calendar Date of Birth example",
-      })
-    ),
-    M.when("shadcn-calendar-date-time-picker", () =>
-      docsExampleBlock({
-        title: "Date and Time Picker",
-        description:
-          "Represents the origin date-time composition with static time fields.",
-        testId: "docs-example-block-shadcn-calendar-date-time-picker",
-        preview: DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(),
-        href: "/docs/components/shadcn-calendar/examples/date-time-picker",
-        linkText:
-          "Open standalone shadcn Calendar Date and Time Picker example",
-      })
-    ),
-    M.when("shadcn-calendar-presets", () =>
-      docsExampleBlock({
-        title: "Presets",
-        description:
-          "Parent-owned preset buttons select concrete CalendarDate values through the Calendar update path.",
-        testId: "docs-example-block-shadcn-calendar-presets",
-        preview: DocsPreviewsCD.shadcnCalendarPresetsExamplePreview(
-          model.shadcnCalendarPresetsExample,
-          "shadcn-calendar-docs-presets-preview"
-        ),
-        href: "/docs/components/shadcn-calendar/examples/presets",
-        linkText: "Open standalone shadcn Calendar Presets example",
-      })
-    ),
-    M.when("shadcn-calendar-booked", () =>
-      docsExampleBlock({
-        title: "Booked Dates",
-        description:
-          "Marks booked days as disabled with Calendar disabled-date and disabled-weekday reflection.",
-        testId: "docs-example-block-shadcn-calendar-booked",
-        preview: DocsPreviewsCD.shadcnCalendarBookedExamplePreview(
-          model.shadcnCalendarBookedExample,
-          "shadcn-calendar-docs-booked-preview"
-        ),
-        href: "/docs/components/shadcn-calendar/examples/booked-dates",
-        linkText: "Open standalone shadcn Calendar Booked Dates example",
-      })
-    ),
-    M.when("shadcn-calendar-custom-cell-size", () =>
-      docsExampleBlock({
-        title: "Custom Cell Size",
-        description:
-          "Represents the origin larger day cells with secondary price text.",
-        testId: "docs-example-block-shadcn-calendar-custom-cell-size",
-        preview: DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(),
-        href: "/docs/components/shadcn-calendar/examples/custom-cell-size",
-        linkText: "Open standalone shadcn Calendar Custom Cell Size example",
-      })
-    ),
-    M.when("shadcn-calendar-week-numbers", () =>
-      docsExampleBlock({
-        title: "Week Numbers",
-        description:
-          "Represents the origin week-number column as an inert calendar table.",
-        testId: "docs-example-block-shadcn-calendar-week-numbers",
-        preview: DocsPreviewsCD.shadcnCalendarWeekNumbersExamplePreview(),
-        href: "/docs/components/shadcn-calendar/examples/week-numbers",
-        linkText: "Open standalone shadcn Calendar Week Numbers example",
-      })
-    ),
-    M.when("shadcn-calendar-rtl", () =>
-      docsExampleBlock({
-        title: "RTL",
-        description:
-          "Uses an Arabic locale and right-to-left container while keeping Calendar selection behavior intact.",
-        testId: "docs-example-block-shadcn-calendar-rtl",
-        preview: DocsPreviewsCD.shadcnCalendarRtlExamplePreview(
-          model.shadcnCalendarRtlExample,
-          "shadcn-calendar-docs-rtl-preview"
-        ),
-        href: "/docs/components/shadcn-calendar/examples/rtl",
-        linkText: "Open standalone shadcn Calendar RTL example",
-      })
-    ),
-    M.orElse(() => shadcnAccordionExampleBlock(model, example))
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "shadcn-calendar-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            description:
+              "Single-date selection with parent-visible selected date and viewed month feedback.",
+            testId: "docs-example-block-shadcn-calendar-basic",
+            preview: DocsPreviewsCD.shadcnCalendarBasicExamplePreview(
+              model.shadcnCalendarBasicExample,
+              "shadcn-calendar-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-calendar/examples/basic",
+            linkText: "Open standalone shadcn Calendar Basic example",
+          }),
+      ],
+      [
+        "shadcn-calendar-month-year-selector",
+        () =>
+          docsExampleBlock({
+            title: "Month and Year Selector",
+            description:
+              "Uses Foldkit Calendar day, month, and year modes to navigate bounded birth-year selection.",
+            testId: "docs-example-block-shadcn-calendar-month-year-selector",
+            preview:
+              DocsPreviewsCD.shadcnCalendarMonthYearSelectorExamplePreview(
+                model.shadcnCalendarMonthYearSelectorExample,
+                "shadcn-calendar-docs-month-year-selector-preview"
+              ),
+            href: "/docs/components/shadcn-calendar/examples/month-year-selector",
+            linkText:
+              "Open standalone shadcn Calendar Month and Year Selector example",
+          }),
+      ],
+      [
+        "shadcn-calendar-range",
+        () =>
+          docsExampleBlock({
+            title: "Range Calendar",
+            description:
+              "Represents the origin range layout while the local Calendar primitive remains single-date.",
+            testId: "docs-example-block-shadcn-calendar-range",
+            preview: DocsPreviewsCD.shadcnCalendarRangeExamplePreview(),
+            href: "/docs/components/shadcn-calendar/examples/range",
+            linkText: "Open standalone shadcn Calendar Range example",
+          }),
+      ],
+      [
+        "shadcn-calendar-date-of-birth",
+        () =>
+          docsExampleBlock({
+            title: "Date of Birth",
+            description:
+              "Constrains date selection to an application-defined birth-date range.",
+            testId: "docs-example-block-shadcn-calendar-date-of-birth",
+            preview: DocsPreviewsCD.shadcnCalendarDateOfBirthExamplePreview(
+              model.shadcnCalendarDateOfBirthExample,
+              "shadcn-calendar-docs-date-of-birth-preview"
+            ),
+            href: "/docs/components/shadcn-calendar/examples/date-of-birth",
+            linkText: "Open standalone shadcn Calendar Date of Birth example",
+          }),
+      ],
+      [
+        "shadcn-calendar-date-time-picker",
+        () =>
+          docsExampleBlock({
+            title: "Date and Time Picker",
+            description:
+              "Represents the origin date-time composition with static time fields.",
+            testId: "docs-example-block-shadcn-calendar-date-time-picker",
+            preview:
+              DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(),
+            href: "/docs/components/shadcn-calendar/examples/date-time-picker",
+            linkText:
+              "Open standalone shadcn Calendar Date and Time Picker example",
+          }),
+      ],
+      [
+        "shadcn-calendar-presets",
+        () =>
+          docsExampleBlock({
+            title: "Presets",
+            description:
+              "Parent-owned preset buttons select concrete CalendarDate values through the Calendar update path.",
+            testId: "docs-example-block-shadcn-calendar-presets",
+            preview: DocsPreviewsCD.shadcnCalendarPresetsExamplePreview(
+              model.shadcnCalendarPresetsExample,
+              "shadcn-calendar-docs-presets-preview"
+            ),
+            href: "/docs/components/shadcn-calendar/examples/presets",
+            linkText: "Open standalone shadcn Calendar Presets example",
+          }),
+      ],
+      [
+        "shadcn-calendar-booked",
+        () =>
+          docsExampleBlock({
+            title: "Booked Dates",
+            description:
+              "Marks booked days as disabled with Calendar disabled-date and disabled-weekday reflection.",
+            testId: "docs-example-block-shadcn-calendar-booked",
+            preview: DocsPreviewsCD.shadcnCalendarBookedExamplePreview(
+              model.shadcnCalendarBookedExample,
+              "shadcn-calendar-docs-booked-preview"
+            ),
+            href: "/docs/components/shadcn-calendar/examples/booked-dates",
+            linkText: "Open standalone shadcn Calendar Booked Dates example",
+          }),
+      ],
+      [
+        "shadcn-calendar-custom-cell-size",
+        () =>
+          docsExampleBlock({
+            title: "Custom Cell Size",
+            description:
+              "Represents the origin larger day cells with secondary price text.",
+            testId: "docs-example-block-shadcn-calendar-custom-cell-size",
+            preview:
+              DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(),
+            href: "/docs/components/shadcn-calendar/examples/custom-cell-size",
+            linkText:
+              "Open standalone shadcn Calendar Custom Cell Size example",
+          }),
+      ],
+      [
+        "shadcn-calendar-week-numbers",
+        () =>
+          docsExampleBlock({
+            title: "Week Numbers",
+            description:
+              "Represents the origin week-number column as an inert calendar table.",
+            testId: "docs-example-block-shadcn-calendar-week-numbers",
+            preview: DocsPreviewsCD.shadcnCalendarWeekNumbersExamplePreview(),
+            href: "/docs/components/shadcn-calendar/examples/week-numbers",
+            linkText: "Open standalone shadcn Calendar Week Numbers example",
+          }),
+      ],
+      [
+        "shadcn-calendar-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            description:
+              "Uses an Arabic locale and right-to-left container while keeping Calendar selection behavior intact.",
+            testId: "docs-example-block-shadcn-calendar-rtl",
+            preview: DocsPreviewsCD.shadcnCalendarRtlExamplePreview(
+              model.shadcnCalendarRtlExample,
+              "shadcn-calendar-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-calendar/examples/rtl",
+            linkText: "Open standalone shadcn Calendar RTL example",
+          }),
+      ],
+    ],
+    () => shadcnAccordionExampleBlock(model, example)
   );
 
 const shadcnExampleBlock = (model: Model, example: string): Html =>
-  M.value(example).pipe(
-    M.when("shadcn-alert-dialog-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-alert-dialog-basic",
-        preview: DocsPreviewsAlert.shadcnAlertDialogBasicExamplePreview(
-          model.shadcnAlertDialogBasicExample,
-          "shadcn-alert-dialog-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-alert-dialog/examples/basic",
-        linkText: "Open standalone shadcn Alert Dialog Basic example",
-      })
-    ),
-    M.when("shadcn-avatar-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-avatar-basic",
-        preview: DocsPreviewsAvatar.shadcnAvatarBasicExamplePreview(
-          model.shadcnAvatarBasicExample,
-          "shadcn-avatar-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-avatar/examples/basic",
-        linkText: "Open standalone shadcn Avatar Basic example",
-      })
-    ),
-    M.when("shadcn-avatar-badge", () =>
-      docsExampleBlock({
-        title: "Badge",
-        testId: "docs-example-block-shadcn-avatar-badge",
-        preview: DocsPreviewsAvatar.shadcnAvatarBadgeExamplePreview(),
-        href: "/docs/components/shadcn-avatar/examples/badge",
-        linkText: "Open standalone shadcn Avatar Badge example",
-      })
-    ),
-    M.when("shadcn-avatar-badge-icon", () =>
-      docsExampleBlock({
-        title: "Badge with Icon",
-        testId: "docs-example-block-shadcn-avatar-badge-icon",
-        preview: DocsPreviewsAvatar.shadcnAvatarBadgeIconExamplePreview(),
-        href: "/docs/components/shadcn-avatar/examples/badge-icon",
-        linkText: "Open standalone shadcn Avatar Badge with Icon example",
-      })
-    ),
-    M.when("shadcn-avatar-group", () =>
-      docsExampleBlock({
-        title: "Avatar Group",
-        testId: "docs-example-block-shadcn-avatar-group",
-        preview: DocsPreviewsAvatar.shadcnAvatarGroupExamplePreview(),
-        href: "/docs/components/shadcn-avatar/examples/group",
-        linkText: "Open standalone shadcn Avatar Group example",
-      })
-    ),
-    M.when("shadcn-avatar-group-count", () =>
-      docsExampleBlock({
-        title: "Avatar Group Count",
-        testId: "docs-example-block-shadcn-avatar-group-count",
-        preview: DocsPreviewsAvatar.shadcnAvatarGroupCountExamplePreview(),
-        href: "/docs/components/shadcn-avatar/examples/group-count",
-        linkText: "Open standalone shadcn Avatar Group Count example",
-      })
-    ),
-    M.when("shadcn-avatar-group-icon", () =>
-      docsExampleBlock({
-        title: "Avatar Group with Icon",
-        testId: "docs-example-block-shadcn-avatar-group-icon",
-        preview: DocsPreviewsAvatar.shadcnAvatarGroupIconExamplePreview(),
-        href: "/docs/components/shadcn-avatar/examples/group-icon",
-        linkText: "Open standalone shadcn Avatar Group with Icon example",
-      })
-    ),
-    M.when("shadcn-avatar-sizes", () =>
-      docsExampleBlock({
-        title: "Sizes",
-        testId: "docs-example-block-shadcn-avatar-sizes",
-        preview: DocsPreviewsAvatar.shadcnAvatarSizesExamplePreview(),
-        href: "/docs/components/shadcn-avatar/examples/sizes",
-        linkText: "Open standalone shadcn Avatar Sizes example",
-      })
-    ),
-    M.when("shadcn-avatar-dropdown", () =>
-      docsExampleBlock({
-        title: "Dropdown",
-        testId: "docs-example-block-shadcn-avatar-dropdown",
-        preview: DocsPreviewsAvatar.shadcnAvatarDropdownExamplePreview(
-          model.shadcnAvatarDropdownExample,
-          "shadcn-avatar-docs-dropdown-preview"
-        ),
-        href: "/docs/components/shadcn-avatar/examples/dropdown",
-        linkText: "Open standalone shadcn Avatar Dropdown example",
-      })
-    ),
-    M.when("shadcn-button-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-button-basic",
-        preview: DocsPreviewsB.shadcnButtonBasicExamplePreview(
-          model.shadcnButtonBasicExample,
-          "shadcn-button-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-button/examples/basic",
-        linkText: "Open standalone shadcn Button Basic example",
-      })
-    ),
-    M.when("shadcn-radio-group-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-radio-group-basic",
-        preview: DocsPreviewsNZ.shadcnRadioGroupBasicExamplePreview(
-          model.shadcnRadioGroupBasicExample,
-          "shadcn-radio-group-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-radio-group/examples/basic",
-        linkText: "Open standalone shadcn Radio Group Basic example",
-      })
-    ),
-    M.when("shadcn-select-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-select-basic",
-        preview: DocsPreviewsNZ.shadcnSelectBasicExamplePreview(
-          model.shadcnSelectBasicExample,
-          "shadcn-select-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-select/examples/basic",
-        linkText: "Open standalone shadcn Select Basic example",
-      })
-    ),
-    M.when("shadcn-slider-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-slider-basic",
-        preview: DocsPreviewsNZ.shadcnSliderBasicExamplePreview(
-          model.shadcnSliderBasicExample,
-          "shadcn-slider-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-slider/examples/basic",
-        linkText: "Open standalone shadcn Slider Basic example",
-      })
-    ),
-    M.when("shadcn-switch-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-switch-basic",
-        preview: DocsPreviewsNZ.shadcnSwitchBasicExamplePreview(
-          model.shadcnSwitchBasicExample,
-          "shadcn-switch-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-switch/examples/basic",
-        linkText: "Open standalone shadcn Switch Basic example",
-      })
-    ),
-    M.when("shadcn-tabs-basic", () =>
-      docsExampleBlock({
-        title: "Basic",
-        testId: "docs-example-block-shadcn-tabs-basic",
-        preview: DocsPreviewsNZ.shadcnTabsBasicExamplePreview(
-          model.shadcnTabsBasicExample,
-          "shadcn-tabs-docs-basic-preview"
-        ),
-        href: "/docs/components/shadcn-tabs/examples/basic",
-        linkText: "Open standalone shadcn Tabs Basic example",
-      })
-    ),
-    M.orElse(() => shadcnCalendarExampleBlock(model, example))
+  generatedExampleBlock(
+    example,
+    [
+      [
+        "shadcn-alert-dialog-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-alert-dialog-basic",
+            preview: DocsPreviewsAlert.shadcnAlertDialogBasicExamplePreview(
+              model.shadcnAlertDialogBasicExample,
+              "shadcn-alert-dialog-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-alert-dialog/examples/basic",
+            linkText: "Open standalone shadcn Alert Dialog Basic example",
+          }),
+      ],
+      [
+        "shadcn-avatar-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-avatar-basic",
+            preview: DocsPreviewsAvatar.shadcnAvatarBasicExamplePreview(
+              model.shadcnAvatarBasicExample,
+              "shadcn-avatar-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-avatar/examples/basic",
+            linkText: "Open standalone shadcn Avatar Basic example",
+          }),
+      ],
+      [
+        "shadcn-avatar-badge",
+        () =>
+          docsExampleBlock({
+            title: "Badge",
+            testId: "docs-example-block-shadcn-avatar-badge",
+            preview: DocsPreviewsAvatar.shadcnAvatarBadgeExamplePreview(),
+            href: "/docs/components/shadcn-avatar/examples/badge",
+            linkText: "Open standalone shadcn Avatar Badge example",
+          }),
+      ],
+      [
+        "shadcn-avatar-badge-icon",
+        () =>
+          docsExampleBlock({
+            title: "Badge with Icon",
+            testId: "docs-example-block-shadcn-avatar-badge-icon",
+            preview: DocsPreviewsAvatar.shadcnAvatarBadgeIconExamplePreview(),
+            href: "/docs/components/shadcn-avatar/examples/badge-icon",
+            linkText: "Open standalone shadcn Avatar Badge with Icon example",
+          }),
+      ],
+      [
+        "shadcn-avatar-group",
+        () =>
+          docsExampleBlock({
+            title: "Avatar Group",
+            testId: "docs-example-block-shadcn-avatar-group",
+            preview: DocsPreviewsAvatar.shadcnAvatarGroupExamplePreview(),
+            href: "/docs/components/shadcn-avatar/examples/group",
+            linkText: "Open standalone shadcn Avatar Group example",
+          }),
+      ],
+      [
+        "shadcn-avatar-group-count",
+        () =>
+          docsExampleBlock({
+            title: "Avatar Group Count",
+            testId: "docs-example-block-shadcn-avatar-group-count",
+            preview: DocsPreviewsAvatar.shadcnAvatarGroupCountExamplePreview(),
+            href: "/docs/components/shadcn-avatar/examples/group-count",
+            linkText: "Open standalone shadcn Avatar Group Count example",
+          }),
+      ],
+      [
+        "shadcn-avatar-group-icon",
+        () =>
+          docsExampleBlock({
+            title: "Avatar Group with Icon",
+            testId: "docs-example-block-shadcn-avatar-group-icon",
+            preview: DocsPreviewsAvatar.shadcnAvatarGroupIconExamplePreview(),
+            href: "/docs/components/shadcn-avatar/examples/group-icon",
+            linkText: "Open standalone shadcn Avatar Group with Icon example",
+          }),
+      ],
+      [
+        "shadcn-avatar-sizes",
+        () =>
+          docsExampleBlock({
+            title: "Sizes",
+            testId: "docs-example-block-shadcn-avatar-sizes",
+            preview: DocsPreviewsAvatar.shadcnAvatarSizesExamplePreview(),
+            href: "/docs/components/shadcn-avatar/examples/sizes",
+            linkText: "Open standalone shadcn Avatar Sizes example",
+          }),
+      ],
+      [
+        "shadcn-avatar-dropdown",
+        () =>
+          docsExampleBlock({
+            title: "Dropdown",
+            testId: "docs-example-block-shadcn-avatar-dropdown",
+            preview: DocsPreviewsAvatar.shadcnAvatarDropdownExamplePreview(
+              model.shadcnAvatarDropdownExample,
+              "shadcn-avatar-docs-dropdown-preview"
+            ),
+            href: "/docs/components/shadcn-avatar/examples/dropdown",
+            linkText: "Open standalone shadcn Avatar Dropdown example",
+          }),
+      ],
+      [
+        "shadcn-button-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-button-basic",
+            preview: DocsPreviewsB.shadcnButtonBasicExamplePreview(
+              model.shadcnButtonBasicExample,
+              "shadcn-button-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-button/examples/basic",
+            linkText: "Open standalone shadcn Button Basic example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-radio-group-basic",
+            preview: DocsPreviewsNZ.shadcnRadioGroupBasicExamplePreview(
+              model.shadcnRadioGroupBasicExample,
+              "shadcn-radio-group-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-radio-group/examples/basic",
+            linkText: "Open standalone shadcn Radio Group Basic example",
+          }),
+      ],
+      [
+        "shadcn-select-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-select-basic",
+            preview: DocsPreviewsNZ.shadcnSelectBasicExamplePreview(
+              model.shadcnSelectBasicExample,
+              "shadcn-select-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-select/examples/basic",
+            linkText: "Open standalone shadcn Select Basic example",
+          }),
+      ],
+      [
+        "shadcn-slider-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-slider-basic",
+            preview: DocsPreviewsNZ.shadcnSliderBasicExamplePreview(
+              model.shadcnSliderBasicExample,
+              "shadcn-slider-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-slider/examples/basic",
+            linkText: "Open standalone shadcn Slider Basic example",
+          }),
+      ],
+      [
+        "shadcn-switch-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-switch-basic",
+            preview: DocsPreviewsNZ.shadcnSwitchBasicExamplePreview(
+              model.shadcnSwitchBasicExample,
+              "shadcn-switch-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-switch/examples/basic",
+            linkText: "Open standalone shadcn Switch Basic example",
+          }),
+      ],
+      [
+        "shadcn-tabs-basic",
+        () =>
+          docsExampleBlock({
+            title: "Basic",
+            testId: "docs-example-block-shadcn-tabs-basic",
+            preview: DocsPreviewsNZ.shadcnTabsBasicExamplePreview(
+              model.shadcnTabsBasicExample,
+              "shadcn-tabs-docs-basic-preview"
+            ),
+            href: "/docs/components/shadcn-tabs/examples/basic",
+            linkText: "Open standalone shadcn Tabs Basic example",
+          }),
+      ],
+    ],
+    () => shadcnCalendarExampleBlock(model, example)
   );
 
 const shadcnLaneDocsView = (
@@ -18202,7 +18605,11 @@ NumberField.rootView<Message>({
             "formErrorClassName",
             "formSubmitClassName",
           ],
-          examples: ["base-ui-form-basic", "base-ui-form-server-function"],
+          examples: [
+            "base-ui-form-basic",
+            "base-ui-form-schema-validation",
+            "base-ui-form-server-function",
+          ],
           anatomyCode: `import * as Form from "./ui/base-ui-form";
 
 Form.rootView<Message>({
@@ -18215,6 +18622,8 @@ Form.rootView<Message>({
         }),
       BaseUiFormBasicExample: () =>
         DocsRoutes.baseUiFormBasicExampleRouteView(model),
+      BaseUiFormSchemaValidationExample: () =>
+        DocsRoutes.baseUiFormSchemaValidationExampleRouteView(model),
       BaseUiFormServerFunctionExample: () =>
         DocsRoutes.baseUiFormServerFunctionExampleRouteView(model),
       FormBasicExample: () => DocsRoutes.formBasicExampleRouteView(model),

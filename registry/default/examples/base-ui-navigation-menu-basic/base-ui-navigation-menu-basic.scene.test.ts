@@ -20,11 +20,14 @@ describe("Base UI Navigation Menu Basic example", () => {
       Scene.expect(Scene.role("menu")).not.toExist(),
       Scene.click(Scene.role("button", { name: "Overview" })),
       Scene.expect(Scene.role("menu")).toExist(),
-      Scene.expect(Scene.text("Introduction")).toExist(),
-      Scene.expect(Scene.text("Installation")).toExist(),
+      Scene.expect(Scene.text("Quick Start")).toExist(),
+      Scene.expect(Scene.text("Accessibility")).toExist(),
+      Scene.expect(Scene.text("Releases")).toExist(),
+      Scene.expect(Scene.text("About")).toExist(),
       Scene.click(Scene.role("button", { name: "Handbook" })),
-      Scene.expect(Scene.text("Components")).toExist(),
-      Scene.expect(Scene.text("Patterns")).toExist(),
+      Scene.expect(Scene.text("Styling")).toExist(),
+      Scene.expect(Scene.text("Animation")).toExist(),
+      Scene.expect(Scene.text("Composition")).toExist(),
       Scene.click(Scene.role("button", { name: "Handbook" })),
       Scene.expect(Scene.role("menu")).not.toExist()
     );

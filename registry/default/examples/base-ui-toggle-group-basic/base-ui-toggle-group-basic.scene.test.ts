@@ -12,6 +12,9 @@ describe("Base UI Toggle Group Basic example", () => {
       },
       Scene.with(ToggleGroupBasicExample.init()[0]),
       Scene.expect(Scene.role("group", { name: "Text alignment" })).toExist(),
+      Scene.expect(Scene.text("L")).not.toExist(),
+      Scene.expect(Scene.text("C")).not.toExist(),
+      Scene.expect(Scene.text("R")).not.toExist(),
       Scene.expect(Scene.role("button", { name: "Align left" })).toHaveAttr(
         "aria-pressed",
         "true"
