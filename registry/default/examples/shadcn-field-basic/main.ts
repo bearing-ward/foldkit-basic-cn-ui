@@ -54,6 +54,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const errorId = "profile-name-error";
   const descriptionId = "profile-name-description";
   const invalid = model.touched && model.name === "";
+  const valid = model.touched && model.name !== "";
 
   return Field.rootView<Message>({
     name: "name",
@@ -84,6 +85,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         show: invalid,
         children: [h.span([], ["Please enter your name"])],
       }),
+      ...(valid
+        ? [
+            h.p(
+              [h.Class("text-sm font-medium text-green-700")],
+              ["Name looks good"]
+            ),
+          ]
+        : []),
       Field.descriptionView<Message>({
         id: descriptionId,
         children: [h.span([], ["Visible on your profile"])],
