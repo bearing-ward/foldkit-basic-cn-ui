@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit example showing the Card component with parent-owned example state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/card"],
+  "registryDependencies": ["@foldkit-cn/shadcn-card"],
   "files": [
     {
       "path": "registry/default/examples/card-basic/main.ts",

@@ -6,7 +6,10 @@
   "description": "A runnable Foldkit example showing the shadcn Button Group Popover composition.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/button-group", "@foldkit-cn/popover"],
+  "registryDependencies": [
+    "@foldkit-cn/shadcn-button-group",
+    "@foldkit-cn/popover"
+  ],
   "files": [
     {
       "path": "registry/default/examples/button-group-popover/main.ts",

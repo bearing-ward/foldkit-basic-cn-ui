@@ -300,6 +300,7 @@ export const BreadcrumbCollapsedExampleRoute = r("BreadcrumbCollapsedExample");
 export const BreadcrumbLinkExampleRoute = r("BreadcrumbLinkExample");
 export const BreadcrumbRtlExampleRoute = r("BreadcrumbRtlExample");
 export const ButtonGroupDocsRoute = r("ButtonGroupDocs");
+export const ShadcnButtonGroupDocsRoute = r("ShadcnButtonGroupDocs");
 export const ButtonGroupBasicExampleRoute = r("ButtonGroupBasicExample");
 export const ButtonGroupOrientationExampleRoute = r(
   "ButtonGroupOrientationExample"
@@ -425,6 +426,7 @@ export const BadgeDocsRoute = r("BadgeDocs");
 export const BadgeBasicExampleRoute = r("BadgeBasicExample");
 export const BadgeSpinnerExampleRoute = r("BadgeSpinnerExample");
 export const CarouselDocsRoute = r("CarouselDocs");
+export const ShadcnCarouselDocsRoute = r("ShadcnCarouselDocs");
 export const CarouselBasicExampleRoute = r("CarouselBasicExample");
 export const CarouselSizesExampleRoute = r("CarouselSizesExample");
 export const CarouselSpacingExampleRoute = r("CarouselSpacingExample");
@@ -488,6 +490,7 @@ export const TableDocsRoute = r("TableDocs");
 export const TableBasicExampleRoute = r("TableBasicExample");
 export const CardRoute = r("Card");
 export const CardDocsRoute = r("CardDocs");
+export const ShadcnCardDocsRoute = r("ShadcnCardDocs");
 export const CardBasicExampleRoute = r("CardBasicExample");
 export const SeparatorRoute = r("Separator");
 export const SeparatorDocsRoute = r("SeparatorDocs");
@@ -774,6 +777,7 @@ const AppRoute = S.Union([
   BreadcrumbLinkExampleRoute,
   BreadcrumbRtlExampleRoute,
   ButtonGroupDocsRoute,
+  ShadcnButtonGroupDocsRoute,
   ButtonGroupBasicExampleRoute,
   ButtonGroupOrientationExampleRoute,
   ButtonGroupSizeExampleRoute,
@@ -861,6 +865,7 @@ const AppRoute = S.Union([
   BadgeBasicExampleRoute,
   BadgeSpinnerExampleRoute,
   CarouselDocsRoute,
+  ShadcnCarouselDocsRoute,
   CarouselBasicExampleRoute,
   CarouselSizesExampleRoute,
   CarouselSpacingExampleRoute,
@@ -922,6 +927,7 @@ const AppRoute = S.Union([
   TableBasicExampleRoute,
   CardRoute,
   CardDocsRoute,
+  ShadcnCardDocsRoute,
   CardBasicExampleRoute,
   SeparatorRoute,
   SeparatorDocsRoute,
@@ -1361,10 +1367,16 @@ export const buttonGroupDocsRouter = pipe(
   slash(literal("button-group")),
   Route.mapTo(ButtonGroupDocsRoute)
 );
+export const shadcnButtonGroupDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-button-group")),
+  Route.mapTo(ShadcnButtonGroupDocsRoute)
+);
 export const buttonGroupBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("basic")),
   Route.mapTo(ButtonGroupBasicExampleRoute)
@@ -1377,7 +1389,7 @@ export const buttonGroupBasicStandaloneExampleRouter = pipe(
 export const buttonGroupOrientationExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("orientation")),
   Route.mapTo(ButtonGroupOrientationExampleRoute)
@@ -1390,7 +1402,7 @@ export const buttonGroupOrientationStandaloneExampleRouter = pipe(
 export const buttonGroupSizeExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("size")),
   Route.mapTo(ButtonGroupSizeExampleRoute)
@@ -1403,7 +1415,7 @@ export const buttonGroupSizeStandaloneExampleRouter = pipe(
 export const buttonGroupNestedExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("nested")),
   Route.mapTo(ButtonGroupNestedExampleRoute)
@@ -1416,7 +1428,7 @@ export const buttonGroupNestedStandaloneExampleRouter = pipe(
 export const buttonGroupSeparatorExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("separator")),
   Route.mapTo(ButtonGroupSeparatorExampleRoute)
@@ -1429,7 +1441,7 @@ export const buttonGroupSeparatorStandaloneExampleRouter = pipe(
 export const buttonGroupSplitExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("split")),
   Route.mapTo(ButtonGroupSplitExampleRoute)
@@ -1442,7 +1454,7 @@ export const buttonGroupSplitStandaloneExampleRouter = pipe(
 export const buttonGroupInputExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("input")),
   Route.mapTo(ButtonGroupInputExampleRoute)
@@ -1455,7 +1467,7 @@ export const buttonGroupInputStandaloneExampleRouter = pipe(
 export const buttonGroupInputGroupExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("input-group")),
   Route.mapTo(ButtonGroupInputGroupExampleRoute)
@@ -1468,7 +1480,7 @@ export const buttonGroupInputGroupStandaloneExampleRouter = pipe(
 export const buttonGroupSelectExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("select")),
   Route.mapTo(ButtonGroupSelectExampleRoute)
@@ -1481,7 +1493,7 @@ export const buttonGroupSelectStandaloneExampleRouter = pipe(
 export const buttonGroupPopoverExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("popover")),
   Route.mapTo(ButtonGroupPopoverExampleRoute)
@@ -1494,7 +1506,7 @@ export const buttonGroupPopoverStandaloneExampleRouter = pipe(
 export const buttonGroupRtlExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("button-group")),
+  slash(literal("shadcn-button-group")),
   slash(literal("examples")),
   slash(literal("rtl")),
   Route.mapTo(ButtonGroupRtlExampleRoute)
@@ -1522,6 +1534,96 @@ export const baseUiAlertDialogDocsRouter = pipe(
   slash(literal("base-ui-alert-dialog")),
   Route.mapTo(BaseUiAlertDialogDocsRoute)
 );
+
+export const buttonGroupBasicLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ButtonGroupBasicExampleRoute)
+);
+export const buttonGroupOrientationLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("orientation")),
+  Route.mapTo(ButtonGroupOrientationExampleRoute)
+);
+export const buttonGroupSizeLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("size")),
+  Route.mapTo(ButtonGroupSizeExampleRoute)
+);
+export const buttonGroupNestedLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("nested")),
+  Route.mapTo(ButtonGroupNestedExampleRoute)
+);
+export const buttonGroupSeparatorLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("separator")),
+  Route.mapTo(ButtonGroupSeparatorExampleRoute)
+);
+export const buttonGroupSplitLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("split")),
+  Route.mapTo(ButtonGroupSplitExampleRoute)
+);
+export const buttonGroupInputLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("input")),
+  Route.mapTo(ButtonGroupInputExampleRoute)
+);
+export const buttonGroupInputGroupLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("input-group")),
+  Route.mapTo(ButtonGroupInputGroupExampleRoute)
+);
+export const buttonGroupSelectLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("select")),
+  Route.mapTo(ButtonGroupSelectExampleRoute)
+);
+export const buttonGroupPopoverLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("popover")),
+  Route.mapTo(ButtonGroupPopoverExampleRoute)
+);
+export const buttonGroupRtlLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("button-group")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ButtonGroupRtlExampleRoute)
+);
+
 export const alertDialogBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2267,10 +2369,16 @@ export const carouselDocsRouter = pipe(
   slash(literal("carousel")),
   Route.mapTo(CarouselDocsRoute)
 );
+export const shadcnCarouselDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-carousel")),
+  Route.mapTo(ShadcnCarouselDocsRoute)
+);
 export const carouselBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("carousel")),
+  slash(literal("shadcn-carousel")),
   slash(literal("examples")),
   slash(literal("basic")),
   Route.mapTo(CarouselBasicExampleRoute)
@@ -2283,7 +2391,7 @@ export const carouselBasicStandaloneExampleRouter = pipe(
 export const carouselSizesExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("carousel")),
+  slash(literal("shadcn-carousel")),
   slash(literal("examples")),
   slash(literal("sizes")),
   Route.mapTo(CarouselSizesExampleRoute)
@@ -2296,7 +2404,7 @@ export const carouselSizesStandaloneExampleRouter = pipe(
 export const carouselSpacingExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("carousel")),
+  slash(literal("shadcn-carousel")),
   slash(literal("examples")),
   slash(literal("spacing")),
   Route.mapTo(CarouselSpacingExampleRoute)
@@ -2309,7 +2417,7 @@ export const carouselSpacingStandaloneExampleRouter = pipe(
 export const carouselOrientationExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("carousel")),
+  slash(literal("shadcn-carousel")),
   slash(literal("examples")),
   slash(literal("orientation")),
   Route.mapTo(CarouselOrientationExampleRoute)
@@ -2322,7 +2430,7 @@ export const carouselOrientationStandaloneExampleRouter = pipe(
 export const carouselApiExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("carousel")),
+  slash(literal("shadcn-carousel")),
   slash(literal("examples")),
   slash(literal("api")),
   Route.mapTo(CarouselApiExampleRoute)
@@ -2335,7 +2443,7 @@ export const carouselApiStandaloneExampleRouter = pipe(
 export const carouselRtlExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("carousel")),
+  slash(literal("shadcn-carousel")),
   slash(literal("examples")),
   slash(literal("rtl")),
   Route.mapTo(CarouselRtlExampleRoute)
@@ -2351,6 +2459,56 @@ export const chartDocsRouter = pipe(
   slash(literal("chart")),
   Route.mapTo(ChartDocsRoute)
 );
+
+export const carouselBasicLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CarouselBasicExampleRoute)
+);
+export const carouselSizesLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("sizes")),
+  Route.mapTo(CarouselSizesExampleRoute)
+);
+export const carouselSpacingLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("spacing")),
+  Route.mapTo(CarouselSpacingExampleRoute)
+);
+export const carouselOrientationLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("orientation")),
+  Route.mapTo(CarouselOrientationExampleRoute)
+);
+export const carouselApiLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("api")),
+  Route.mapTo(CarouselApiExampleRoute)
+);
+export const carouselRtlLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(CarouselRtlExampleRoute)
+);
+
 export const chartBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2912,10 +3070,16 @@ export const cardDocsRouter = pipe(
   slash(literal("card")),
   Route.mapTo(CardDocsRoute)
 );
+export const shadcnCardDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-card")),
+  Route.mapTo(ShadcnCardDocsRoute)
+);
 export const cardBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
-  slash(literal("card")),
+  slash(literal("shadcn-card")),
   slash(literal("examples")),
   slash(literal("basic")),
   Route.mapTo(CardBasicExampleRoute)
@@ -2925,6 +3089,16 @@ export const cardBasicStandaloneExampleRouter = pipe(
   slash(literal("card-basic")),
   Route.mapTo(CardBasicExampleRoute)
 );
+
+export const cardBasicLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(CardBasicExampleRoute)
+);
+
 export const separatorRouter = pipe(
   literal("separator"),
   Route.mapTo(SeparatorRoute)
@@ -4973,7 +5147,14 @@ const routeParser = Route.oneOf(
   carouselApiStandaloneExampleRouter,
   carouselRtlExampleRouter,
   carouselRtlStandaloneExampleRouter,
+  carouselBasicLegacyExampleRouter,
+  carouselSizesLegacyExampleRouter,
+  carouselSpacingLegacyExampleRouter,
+  carouselOrientationLegacyExampleRouter,
+  carouselApiLegacyExampleRouter,
+  carouselRtlLegacyExampleRouter,
   carouselDocsRouter,
+  shadcnCarouselDocsRouter,
 
   chartBasicExampleRouter,
   chartBasicStandaloneExampleRouter,
@@ -5068,7 +5249,9 @@ const routeParser = Route.oneOf(
   cardRouter,
   cardBasicExampleRouter,
   cardBasicStandaloneExampleRouter,
+  cardBasicLegacyExampleRouter,
   cardDocsRouter,
+  shadcnCardDocsRouter,
   separatorRouter,
   separatorBasicExampleRouter,
   separatorBasicStandaloneExampleRouter,
@@ -5460,7 +5643,19 @@ const routeParser = Route.oneOf(
   buttonGroupPopoverStandaloneExampleRouter,
   buttonGroupRtlExampleRouter,
   buttonGroupRtlStandaloneExampleRouter,
+  buttonGroupBasicLegacyExampleRouter,
+  buttonGroupOrientationLegacyExampleRouter,
+  buttonGroupSizeLegacyExampleRouter,
+  buttonGroupNestedLegacyExampleRouter,
+  buttonGroupSeparatorLegacyExampleRouter,
+  buttonGroupSplitLegacyExampleRouter,
+  buttonGroupInputLegacyExampleRouter,
+  buttonGroupInputGroupLegacyExampleRouter,
+  buttonGroupSelectLegacyExampleRouter,
+  buttonGroupPopoverLegacyExampleRouter,
+  buttonGroupRtlLegacyExampleRouter,
   buttonGroupDocsRouter,
+  shadcnButtonGroupDocsRouter,
   alertDialogBasicExampleRouter,
   alertDialogBasicStandaloneExampleRouter,
   baseUiAlertDialogBasicExampleRouter,

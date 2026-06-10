@@ -7,7 +7,7 @@
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
   "registryDependencies": [
-    "@foldkit-cn/button-group",
+    "@foldkit-cn/shadcn-button-group",
     "@foldkit-cn/input-group"
   ],
   "files": [

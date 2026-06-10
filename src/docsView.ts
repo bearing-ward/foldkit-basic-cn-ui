@@ -143,63 +143,63 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Button Group Docs",
-    routeTag: "ButtonGroupDocs",
-    href: "/docs/components/button-group",
+    routeTag: "ShadcnButtonGroupDocs",
+    href: "/docs/components/shadcn-button-group",
   },
   {
     label: "Button Group Basic Example",
     routeTag: "ButtonGroupBasicExample",
-    href: "/docs/components/button-group/examples/basic",
+    href: "/docs/components/shadcn-button-group/examples/basic",
   },
   {
     label: "Button Group Orientation Example",
     routeTag: "ButtonGroupOrientationExample",
-    href: "/docs/components/button-group/examples/orientation",
+    href: "/docs/components/shadcn-button-group/examples/orientation",
   },
   {
     label: "Button Group Size Example",
     routeTag: "ButtonGroupSizeExample",
-    href: "/docs/components/button-group/examples/size",
+    href: "/docs/components/shadcn-button-group/examples/size",
   },
   {
     label: "Button Group Nested Example",
     routeTag: "ButtonGroupNestedExample",
-    href: "/docs/components/button-group/examples/nested",
+    href: "/docs/components/shadcn-button-group/examples/nested",
   },
   {
     label: "Button Group Separator Example",
     routeTag: "ButtonGroupSeparatorExample",
-    href: "/docs/components/button-group/examples/separator",
+    href: "/docs/components/shadcn-button-group/examples/separator",
   },
   {
     label: "Button Group Split Example",
     routeTag: "ButtonGroupSplitExample",
-    href: "/docs/components/button-group/examples/split",
+    href: "/docs/components/shadcn-button-group/examples/split",
   },
   {
     label: "Button Group Input Example",
     routeTag: "ButtonGroupInputExample",
-    href: "/docs/components/button-group/examples/input",
+    href: "/docs/components/shadcn-button-group/examples/input",
   },
   {
     label: "Button Group Input Group Example",
     routeTag: "ButtonGroupInputGroupExample",
-    href: "/docs/components/button-group/examples/input-group",
+    href: "/docs/components/shadcn-button-group/examples/input-group",
   },
   {
     label: "Button Group Select Example",
     routeTag: "ButtonGroupSelectExample",
-    href: "/docs/components/button-group/examples/select",
+    href: "/docs/components/shadcn-button-group/examples/select",
   },
   {
     label: "Button Group Popover Example",
     routeTag: "ButtonGroupPopoverExample",
-    href: "/docs/components/button-group/examples/popover",
+    href: "/docs/components/shadcn-button-group/examples/popover",
   },
   {
     label: "Button Group RTL Example",
     routeTag: "ButtonGroupRtlExample",
-    href: "/docs/components/button-group/examples/rtl",
+    href: "/docs/components/shadcn-button-group/examples/rtl",
   },
   {
     label: "Alert Dialog Docs",
@@ -396,38 +396,38 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Carousel Docs",
-    routeTag: "CarouselDocs",
-    href: "/docs/components/carousel",
+    routeTag: "ShadcnCarouselDocs",
+    href: "/docs/components/shadcn-carousel",
   },
   {
     label: "Carousel Basic Example",
     routeTag: "CarouselBasicExample",
-    href: "/docs/components/carousel/examples/basic",
+    href: "/docs/components/shadcn-carousel/examples/basic",
   },
   {
     label: "Carousel Sizes Example",
     routeTag: "CarouselSizesExample",
-    href: "/docs/components/carousel/examples/sizes",
+    href: "/docs/components/shadcn-carousel/examples/sizes",
   },
   {
     label: "Carousel Spacing Example",
     routeTag: "CarouselSpacingExample",
-    href: "/docs/components/carousel/examples/spacing",
+    href: "/docs/components/shadcn-carousel/examples/spacing",
   },
   {
     label: "Carousel Orientation Example",
     routeTag: "CarouselOrientationExample",
-    href: "/docs/components/carousel/examples/orientation",
+    href: "/docs/components/shadcn-carousel/examples/orientation",
   },
   {
     label: "Carousel API Example",
     routeTag: "CarouselApiExample",
-    href: "/docs/components/carousel/examples/api",
+    href: "/docs/components/shadcn-carousel/examples/api",
   },
   {
     label: "Carousel RTL Example",
     routeTag: "CarouselRtlExample",
-    href: "/docs/components/carousel/examples/rtl",
+    href: "/docs/components/shadcn-carousel/examples/rtl",
   },
   {
     label: "Chart Docs",
@@ -681,11 +681,15 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/table/examples/basic",
   },
   { label: "Card", routeTag: "Card", href: "/card" },
-  { label: "Card Docs", routeTag: "CardDocs", href: "/docs/components/card" },
+  {
+    label: "Card Docs",
+    routeTag: "ShadcnCardDocs",
+    href: "/docs/components/shadcn-card",
+  },
   {
     label: "Card Basic Example",
     routeTag: "CardBasicExample",
-    href: "/docs/components/card/examples/basic",
+    href: "/docs/components/shadcn-card/examples/basic",
   },
   { label: "Separator", routeTag: "Separator", href: "/separator" },
   {
@@ -1431,27 +1435,28 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/breadcrumb-collapsed.txt",
   "/docs/components/breadcrumb/examples/link": "sources/breadcrumb-link.txt",
   "/docs/components/breadcrumb/examples/rtl": "sources/breadcrumb-rtl.txt",
-  "/docs/components/button-group/examples/basic":
+  "/docs/components/shadcn-button-group/examples/basic":
     "sources/button-group-basic.txt",
-  "/docs/components/button-group/examples/orientation":
+  "/docs/components/shadcn-button-group/examples/orientation":
     "sources/button-group-orientation.txt",
-  "/docs/components/button-group/examples/size":
+  "/docs/components/shadcn-button-group/examples/size":
     "sources/button-group-size.txt",
-  "/docs/components/button-group/examples/nested":
+  "/docs/components/shadcn-button-group/examples/nested":
     "sources/button-group-nested.txt",
-  "/docs/components/button-group/examples/separator":
+  "/docs/components/shadcn-button-group/examples/separator":
     "sources/button-group-separator.txt",
-  "/docs/components/button-group/examples/split":
+  "/docs/components/shadcn-button-group/examples/split":
     "sources/button-group-split.txt",
-  "/docs/components/button-group/examples/input":
+  "/docs/components/shadcn-button-group/examples/input":
     "sources/button-group-input.txt",
-  "/docs/components/button-group/examples/input-group":
+  "/docs/components/shadcn-button-group/examples/input-group":
     "sources/button-group-input-group.txt",
-  "/docs/components/button-group/examples/select":
+  "/docs/components/shadcn-button-group/examples/select":
     "sources/button-group-select.txt",
-  "/docs/components/button-group/examples/popover":
+  "/docs/components/shadcn-button-group/examples/popover":
     "sources/button-group-popover.txt",
-  "/docs/components/button-group/examples/rtl": "sources/button-group-rtl.txt",
+  "/docs/components/shadcn-button-group/examples/rtl":
+    "sources/button-group-rtl.txt",
   "/docs/components/chart/examples/basic": "sources/chart-basic.txt",
   "/docs/components/chart/examples/grid": "sources/chart-grid.txt",
   "/docs/components/chart/examples/axis": "sources/chart-axis.txt",
@@ -1522,13 +1527,16 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-avatar-dropdown.txt",
   "/docs/components/badge/examples/basic": "sources/badge-basic.txt",
   "/docs/components/badge/examples/spinner": "sources/badge-spinner.txt",
-  "/docs/components/carousel/examples/basic": "sources/carousel-basic.txt",
-  "/docs/components/carousel/examples/sizes": "sources/carousel-sizes.txt",
-  "/docs/components/carousel/examples/spacing": "sources/carousel-spacing.txt",
-  "/docs/components/carousel/examples/orientation":
+  "/docs/components/shadcn-carousel/examples/basic":
+    "sources/carousel-basic.txt",
+  "/docs/components/shadcn-carousel/examples/sizes":
+    "sources/carousel-sizes.txt",
+  "/docs/components/shadcn-carousel/examples/spacing":
+    "sources/carousel-spacing.txt",
+  "/docs/components/shadcn-carousel/examples/orientation":
     "sources/carousel-orientation.txt",
-  "/docs/components/carousel/examples/api": "sources/carousel-api.txt",
-  "/docs/components/carousel/examples/rtl": "sources/carousel-rtl.txt",
+  "/docs/components/shadcn-carousel/examples/api": "sources/carousel-api.txt",
+  "/docs/components/shadcn-carousel/examples/rtl": "sources/carousel-rtl.txt",
   "/docs/components/item/examples/avatar": "sources/item-avatar.txt",
   "/docs/components/item/examples/basic": "sources/item-basic.txt",
   "/docs/components/item/examples/group": "sources/item-group.txt",
@@ -1544,7 +1552,7 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/resizable/examples/basic": "sources/resizable-basic.txt",
   "/docs/components/sidebar/examples/basic": "sources/sidebar-basic.txt",
   "/docs/components/table/examples/basic": "sources/table-basic.txt",
-  "/docs/components/card/examples/basic": "sources/card-basic.txt",
+  "/docs/components/shadcn-card/examples/basic": "sources/card-basic.txt",
   "/docs/components/separator/examples/basic": "sources/separator-basic.txt",
   "/docs/components/skeleton/examples/basic": "sources/skeleton-basic.txt",
   "/docs/components/kbd/examples/basic": "sources/kbd-basic.txt",
@@ -1579,7 +1587,7 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/shadcn-button/examples/spinner":
     "sources/shadcn-button-spinner.txt",
   "/docs/components/shadcn-button/examples/button-group":
-    "sources/shadcn-button-group.txt",
+    "sources/shadcn-button-button-group.txt",
   "/docs/components/shadcn-button/examples/as-child":
     "sources/shadcn-button-as-child.txt",
   "/docs/components/shadcn-button/examples/rtl":
@@ -1736,8 +1744,8 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
 
 const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
   [
-    "ButtonGroupDocs",
-    "CarouselDocs",
+    "ShadcnButtonGroupDocs",
+    "ShadcnCarouselDocs",
     "ChartDocs",
     "CommandDocs",
     "DropdownMenuDocs",
@@ -1755,7 +1763,7 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "SidebarDocs",
     "TableDocs",
     "BadgeDocs",
-    "CardDocs",
+    "ShadcnCardDocs",
     "SkeletonDocs",
     "SpinnerDocs",
     "KbdDocs",
@@ -4597,7 +4605,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupBasicExample,
                   "button-group-docs-basic-preview"
                 ),
-                "/docs/components/button-group/examples/basic"
+                "/docs/components/shadcn-button-group/examples/basic"
               ),
               exampleBlock(
                 "Orientation",
@@ -4606,7 +4614,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupOrientationExample,
                   "button-group-docs-orientation-preview"
                 ),
-                "/docs/components/button-group/examples/orientation"
+                "/docs/components/shadcn-button-group/examples/orientation"
               ),
               exampleBlock(
                 "Size",
@@ -4615,7 +4623,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupSizeExample,
                   "button-group-docs-size-preview"
                 ),
-                "/docs/components/button-group/examples/size"
+                "/docs/components/shadcn-button-group/examples/size"
               ),
               exampleBlock(
                 "Nested",
@@ -4624,7 +4632,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupNestedExample,
                   "button-group-docs-nested-preview"
                 ),
-                "/docs/components/button-group/examples/nested"
+                "/docs/components/shadcn-button-group/examples/nested"
               ),
               exampleBlock(
                 "Separator",
@@ -4633,7 +4641,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupSeparatorExample,
                   "button-group-docs-separator-preview"
                 ),
-                "/docs/components/button-group/examples/separator"
+                "/docs/components/shadcn-button-group/examples/separator"
               ),
               exampleBlock(
                 "Split",
@@ -4642,7 +4650,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupSplitExample,
                   "button-group-docs-split-preview"
                 ),
-                "/docs/components/button-group/examples/split"
+                "/docs/components/shadcn-button-group/examples/split"
               ),
               exampleBlock(
                 "Input",
@@ -4651,7 +4659,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupInputExample,
                   "button-group-docs-input-preview"
                 ),
-                "/docs/components/button-group/examples/input"
+                "/docs/components/shadcn-button-group/examples/input"
               ),
               exampleBlock(
                 "Input group",
@@ -4660,7 +4668,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupInputGroupExample,
                   "button-group-docs-input-group-preview"
                 ),
-                "/docs/components/button-group/examples/input-group"
+                "/docs/components/shadcn-button-group/examples/input-group"
               ),
               exampleBlock(
                 "Select",
@@ -4669,7 +4677,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupSelectExample,
                   "button-group-docs-select-preview"
                 ),
-                "/docs/components/button-group/examples/select"
+                "/docs/components/shadcn-button-group/examples/select"
               ),
               exampleBlock(
                 "Popover",
@@ -4678,7 +4686,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupPopoverExample,
                   "button-group-docs-popover-preview"
                 ),
-                "/docs/components/button-group/examples/popover"
+                "/docs/components/shadcn-button-group/examples/popover"
               ),
               exampleBlock(
                 "RTL",
@@ -4687,7 +4695,7 @@ const buttonGroupDocsView = (model: Model): Html => {
                   model.buttonGroupRtlExample,
                   "button-group-docs-rtl-preview"
                 ),
-                "/docs/components/button-group/examples/rtl"
+                "/docs/components/shadcn-button-group/examples/rtl"
               ),
             ]
           ),
@@ -4695,7 +4703,7 @@ const buttonGroupDocsView = (model: Model): Html => {
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/button-group.json\nbunx shadcn@latest add <registry-url>/button-group-basic.json\nbunx shadcn@latest add <registry-url>/button-group-orientation.json\nbunx shadcn@latest add <registry-url>/button-group-size.json\nbunx shadcn@latest add <registry-url>/button-group-nested.json\nbunx shadcn@latest add <registry-url>/button-group-separator.json\nbunx shadcn@latest add <registry-url>/button-group-split.json\nbunx shadcn@latest add <registry-url>/button-group-input.json\nbunx shadcn@latest add <registry-url>/button-group-input-group.json\nbunx shadcn@latest add <registry-url>/button-group-select.json\nbunx shadcn@latest add <registry-url>/button-group-popover.json\nbunx shadcn@latest add <registry-url>/button-group-rtl.json",
+          "bunx shadcn@latest add <registry-url>/shadcn-button-group.json\nbunx shadcn@latest add <registry-url>/button-group-basic.json\nbunx shadcn@latest add <registry-url>/button-group-orientation.json\nbunx shadcn@latest add <registry-url>/button-group-size.json\nbunx shadcn@latest add <registry-url>/button-group-nested.json\nbunx shadcn@latest add <registry-url>/button-group-separator.json\nbunx shadcn@latest add <registry-url>/button-group-split.json\nbunx shadcn@latest add <registry-url>/button-group-input.json\nbunx shadcn@latest add <registry-url>/button-group-input-group.json\nbunx shadcn@latest add <registry-url>/button-group-select.json\nbunx shadcn@latest add <registry-url>/button-group-popover.json\nbunx shadcn@latest add <registry-url>/button-group-rtl.json",
         usageBody:
           "Compose ButtonGroup.view around itemView children. The group stays state-free; child buttons, inputs, selects, and popovers keep their own Foldkit message/update contracts.",
         usageCode: `import * as ButtonGroup from "./ui/button-group";
@@ -7433,7 +7441,7 @@ const carouselDocsView = (model: Model): Html => {
                   model.carouselBasicExample,
                   "carousel-docs-basic-preview"
                 ),
-                "/docs/components/carousel/examples/basic"
+                "/docs/components/shadcn-carousel/examples/basic"
               ),
               exampleBlock(
                 "Sizes",
@@ -7442,7 +7450,7 @@ const carouselDocsView = (model: Model): Html => {
                   model.carouselSizesExample,
                   "carousel-docs-sizes-preview"
                 ),
-                "/docs/components/carousel/examples/sizes"
+                "/docs/components/shadcn-carousel/examples/sizes"
               ),
               exampleBlock(
                 "Spacing",
@@ -7451,7 +7459,7 @@ const carouselDocsView = (model: Model): Html => {
                   model.carouselSpacingExample,
                   "carousel-docs-spacing-preview"
                 ),
-                "/docs/components/carousel/examples/spacing"
+                "/docs/components/shadcn-carousel/examples/spacing"
               ),
               exampleBlock(
                 "Orientation",
@@ -7460,7 +7468,7 @@ const carouselDocsView = (model: Model): Html => {
                   model.carouselOrientationExample,
                   "carousel-docs-orientation-preview"
                 ),
-                "/docs/components/carousel/examples/orientation"
+                "/docs/components/shadcn-carousel/examples/orientation"
               ),
               exampleBlock(
                 "API",
@@ -7469,7 +7477,7 @@ const carouselDocsView = (model: Model): Html => {
                   model.carouselApiExample,
                   "carousel-docs-api-preview"
                 ),
-                "/docs/components/carousel/examples/api"
+                "/docs/components/shadcn-carousel/examples/api"
               ),
               exampleBlock(
                 "RTL",
@@ -7478,7 +7486,7 @@ const carouselDocsView = (model: Model): Html => {
                   model.carouselRtlExample,
                   "carousel-docs-rtl-preview"
                 ),
-                "/docs/components/carousel/examples/rtl"
+                "/docs/components/shadcn-carousel/examples/rtl"
               ),
             ]
           ),
@@ -7486,7 +7494,7 @@ const carouselDocsView = (model: Model): Html => {
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/carousel.json\nbunx shadcn@latest add <registry-url>/carousel-basic.json\nbunx shadcn@latest add <registry-url>/carousel-sizes.json\nbunx shadcn@latest add <registry-url>/carousel-spacing.json\nbunx shadcn@latest add <registry-url>/carousel-orientation.json\nbunx shadcn@latest add <registry-url>/carousel-api.json\nbunx shadcn@latest add <registry-url>/carousel-rtl.json",
+          "bunx shadcn@latest add <registry-url>/shadcn-carousel.json\nbunx shadcn@latest add <registry-url>/carousel-basic.json\nbunx shadcn@latest add <registry-url>/carousel-sizes.json\nbunx shadcn@latest add <registry-url>/carousel-spacing.json\nbunx shadcn@latest add <registry-url>/carousel-orientation.json\nbunx shadcn@latest add <registry-url>/carousel-api.json\nbunx shadcn@latest add <registry-url>/carousel-rtl.json",
         usageBody:
           "Keep the active slide index in the parent model, update it through typed messages, and compose the carousel anatomy helpers around your slide content.",
         usageCode: `import * as Carousel from "./ui/carousel";
@@ -9502,7 +9510,7 @@ const cardDocsView = (model: Model): Html => {
                   model.cardBasicExample,
                   "card-docs-basic-preview"
                 ),
-                href: "/docs/components/card/examples/basic",
+                href: "/docs/components/shadcn-card/examples/basic",
                 linkText: "Open standalone Card Basic example",
               }),
             ]
@@ -9510,7 +9518,7 @@ const cardDocsView = (model: Model): Html => {
         ]
       ),
       docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/card.json\nbunx shadcn@latest add <registry-url>/card-basic.json"
+        "bunx shadcn@latest add <registry-url>/shadcn-card.json\nbunx shadcn@latest add <registry-url>/card-basic.json"
       ),
       docsUsageBlock(
         "Use Card.view as the outer container and compose header, title, description, content, and footer helpers around app-owned content.",
@@ -13696,10 +13704,10 @@ const shadcnButtonExampleBlock = (model: Model, example: string): Html =>
         linkText: "Open standalone shadcn Button Spinner example",
       })
     ),
-    M.when("shadcn-button-group", () =>
+    M.when("shadcn-button-button-group", () =>
       docsExampleBlock({
         title: "Button Group",
-        testId: "docs-example-block-shadcn-button-group",
+        testId: "docs-example-block-shadcn-button-button-group",
         preview: DocsPreviewsB.shadcnButtonGroupExamplePreview(),
         href: "/docs/components/shadcn-button/examples/button-group",
         linkText: "Open standalone shadcn Button Group example",
@@ -13721,6 +13729,222 @@ const shadcnButtonExampleBlock = (model: Model, example: string): Html =>
         preview: DocsPreviewsB.shadcnButtonRtlExamplePreview(),
         href: "/docs/components/shadcn-button/examples/rtl",
         linkText: "Open standalone shadcn Button RTL example",
+      })
+    ),
+    M.when("button-group-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-button-group-basic",
+        preview: DocsPreviewsB.buttonGroupBasicExamplePreview(
+          model.buttonGroupBasicExample,
+          "shadcn-button-group-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/basic",
+        linkText: "Open standalone Button Group Basic example",
+      })
+    ),
+    M.when("button-group-orientation", () =>
+      docsExampleBlock({
+        title: "Orientation",
+        testId: "docs-example-block-button-group-orientation",
+        preview: DocsPreviewsB.buttonGroupOrientationExamplePreview(
+          model.buttonGroupOrientationExample,
+          "shadcn-button-group-docs-orientation-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/orientation",
+        linkText: "Open standalone Button Group Orientation example",
+      })
+    ),
+    M.when("button-group-size", () =>
+      docsExampleBlock({
+        title: "Size",
+        testId: "docs-example-block-button-group-size",
+        preview: DocsPreviewsB.buttonGroupSizeExamplePreview(
+          model.buttonGroupSizeExample,
+          "shadcn-button-group-docs-size-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/size",
+        linkText: "Open standalone Button Group Size example",
+      })
+    ),
+    M.when("button-group-nested", () =>
+      docsExampleBlock({
+        title: "Nested",
+        testId: "docs-example-block-button-group-nested",
+        preview: DocsPreviewsB.buttonGroupNestedExamplePreview(
+          model.buttonGroupNestedExample,
+          "shadcn-button-group-docs-nested-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/nested",
+        linkText: "Open standalone Button Group Nested example",
+      })
+    ),
+    M.when("button-group-separator", () =>
+      docsExampleBlock({
+        title: "Separator",
+        testId: "docs-example-block-button-group-separator",
+        preview: DocsPreviewsB.buttonGroupSeparatorExamplePreview(
+          model.buttonGroupSeparatorExample,
+          "shadcn-button-group-docs-separator-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/separator",
+        linkText: "Open standalone Button Group Separator example",
+      })
+    ),
+    M.when("button-group-split", () =>
+      docsExampleBlock({
+        title: "Split",
+        testId: "docs-example-block-button-group-split",
+        preview: DocsPreviewsB.buttonGroupSplitExamplePreview(
+          model.buttonGroupSplitExample,
+          "shadcn-button-group-docs-split-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/split",
+        linkText: "Open standalone Button Group Split example",
+      })
+    ),
+    M.when("button-group-input", () =>
+      docsExampleBlock({
+        title: "Input",
+        testId: "docs-example-block-button-group-input",
+        preview: DocsPreviewsB.buttonGroupInputExamplePreview(
+          model.buttonGroupInputExample,
+          "shadcn-button-group-docs-input-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/input",
+        linkText: "Open standalone Button Group Input example",
+      })
+    ),
+    M.when("button-group-input-group", () =>
+      docsExampleBlock({
+        title: "Input group",
+        testId: "docs-example-block-button-group-input-group",
+        preview: DocsPreviewsB.buttonGroupInputGroupExamplePreview(
+          model.buttonGroupInputGroupExample,
+          "shadcn-button-group-docs-input-group-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/input-group",
+        linkText: "Open standalone Button Group Input Group example",
+      })
+    ),
+    M.when("button-group-select", () =>
+      docsExampleBlock({
+        title: "Select",
+        testId: "docs-example-block-button-group-select",
+        preview: DocsPreviewsB.buttonGroupSelectExamplePreview(
+          model.buttonGroupSelectExample,
+          "shadcn-button-group-docs-select-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/select",
+        linkText: "Open standalone Button Group Select example",
+      })
+    ),
+    M.when("button-group-popover", () =>
+      docsExampleBlock({
+        title: "Popover",
+        testId: "docs-example-block-button-group-popover",
+        preview: DocsPreviewsB.buttonGroupPopoverExamplePreview(
+          model.buttonGroupPopoverExample,
+          "shadcn-button-group-docs-popover-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/popover",
+        linkText: "Open standalone Button Group Popover example",
+      })
+    ),
+    M.when("button-group-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        testId: "docs-example-block-button-group-rtl",
+        preview: DocsPreviewsB.buttonGroupRtlExamplePreview(
+          model.buttonGroupRtlExample,
+          "shadcn-button-group-docs-rtl-preview"
+        ),
+        href: "/docs/components/shadcn-button-group/examples/rtl",
+        linkText: "Open standalone Button Group RTL example",
+      })
+    ),
+    M.when("card-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-card-basic",
+        preview: DocsPreviewsCD.cardBasicExamplePreview(
+          model.cardBasicExample,
+          "shadcn-card-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-card/examples/basic",
+        linkText: "Open standalone Card Basic example",
+      })
+    ),
+    M.when("carousel-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-carousel-basic",
+        preview: DocsPreviewsCD.carouselBasicExamplePreview(
+          model.carouselBasicExample,
+          "shadcn-carousel-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-carousel/examples/basic",
+        linkText: "Open standalone Carousel Basic example",
+      })
+    ),
+    M.when("carousel-sizes", () =>
+      docsExampleBlock({
+        title: "Sizes",
+        testId: "docs-example-block-carousel-sizes",
+        preview: DocsPreviewsCD.carouselSizesExamplePreview(
+          model.carouselSizesExample,
+          "shadcn-carousel-docs-sizes-preview"
+        ),
+        href: "/docs/components/shadcn-carousel/examples/sizes",
+        linkText: "Open standalone Carousel Sizes example",
+      })
+    ),
+    M.when("carousel-spacing", () =>
+      docsExampleBlock({
+        title: "Spacing",
+        testId: "docs-example-block-carousel-spacing",
+        preview: DocsPreviewsCD.carouselSpacingExamplePreview(
+          model.carouselSpacingExample,
+          "shadcn-carousel-docs-spacing-preview"
+        ),
+        href: "/docs/components/shadcn-carousel/examples/spacing",
+        linkText: "Open standalone Carousel Spacing example",
+      })
+    ),
+    M.when("carousel-orientation", () =>
+      docsExampleBlock({
+        title: "Orientation",
+        testId: "docs-example-block-carousel-orientation",
+        preview: DocsPreviewsCD.carouselOrientationExamplePreview(
+          model.carouselOrientationExample,
+          "shadcn-carousel-docs-orientation-preview"
+        ),
+        href: "/docs/components/shadcn-carousel/examples/orientation",
+        linkText: "Open standalone Carousel Orientation example",
+      })
+    ),
+    M.when("carousel-api", () =>
+      docsExampleBlock({
+        title: "API",
+        testId: "docs-example-block-carousel-api",
+        preview: DocsPreviewsCD.carouselApiExamplePreview(
+          model.carouselApiExample,
+          "shadcn-carousel-docs-api-preview"
+        ),
+        href: "/docs/components/shadcn-carousel/examples/api",
+        linkText: "Open standalone Carousel API example",
+      })
+    ),
+    M.when("carousel-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        testId: "docs-example-block-carousel-rtl",
+        preview: DocsPreviewsCD.carouselRtlExamplePreview(
+          model.carouselRtlExample,
+          "shadcn-carousel-docs-rtl-preview"
+        ),
+        href: "/docs/components/shadcn-carousel/examples/rtl",
+        linkText: "Open standalone Carousel RTL example",
       })
     ),
     M.orElse(() => shadcnGeneratedExampleBlock(model, example))
@@ -17371,6 +17595,7 @@ Accordion.rootView<Message>({
       BreadcrumbRtlExample: () =>
         DocsRoutes.breadcrumbRtlExampleRouteView(model),
       ButtonGroupDocs: () => buttonGroupDocsView(model),
+      ShadcnButtonGroupDocs: () => buttonGroupDocsView(model),
       ButtonGroupBasicExample: () =>
         DocsRoutes.buttonGroupBasicExampleRouteView(model),
       ButtonGroupOrientationExample: () =>
@@ -18084,6 +18309,7 @@ Avatar.view<Message>({
       BadgeBasicExample: () => DocsRoutes.badgeBasicExampleRouteView(model),
       BadgeSpinnerExample: () => DocsRoutes.badgeSpinnerExampleRouteView(model),
       CarouselDocs: () => carouselDocsView(model),
+      ShadcnCarouselDocs: () => carouselDocsView(model),
       CarouselBasicExample: () =>
         DocsRoutes.carouselBasicExampleRouteView(model),
       CarouselSizesExample: () =>
@@ -18163,6 +18389,7 @@ Avatar.view<Message>({
       SonnerBasicExample: () => DocsRoutes.sonnerBasicExampleRouteView(model),
       Card: () => embedUi("ui-card", View.card),
       CardDocs: () => cardDocsView(model),
+      ShadcnCardDocs: () => cardDocsView(model),
       CardBasicExample: () => DocsRoutes.cardBasicExampleRouteView(model),
       Separator: () => embedUi("ui-separator", View.separator),
       SeparatorDocs: () => separatorDocsView(model),
@@ -18262,7 +18489,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
             "shadcn-button-with-icon",
             "shadcn-button-rounded",
             "shadcn-button-spinner",
-            "shadcn-button-group",
+            "shadcn-button-button-group",
             "shadcn-button-as-child",
             "shadcn-button-rtl",
           ],

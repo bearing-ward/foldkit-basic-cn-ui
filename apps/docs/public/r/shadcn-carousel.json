@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "carousel",
+  "name": "shadcn-carousel",
   "type": "registry:ui",
   "title": "Carousel",
   "description": "A shadcn-style carousel component for cycling through slides with native Foldkit messages and installable view helpers.",

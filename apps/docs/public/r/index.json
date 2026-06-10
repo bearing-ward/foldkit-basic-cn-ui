@@ -1376,40 +1376,6 @@
       }
     },
     {
-      "name": "button-group",
-      "type": "registry:ui",
-      "title": "Button Group",
-      "description": "A shadcn-style grouping primitive for visually joining related buttons, inputs, and composed controls while preserving native control semantics.",
-      "dependencies": ["effect", "foldkit"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/default/ui/button-group/index.ts",
-          "target": "src/ui/button-group/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/button-group/view.ts",
-          "target": "src/ui/button-group/view.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/button-group/button-group.scene.test.ts",
-          "target": "src/ui/button-group/button-group.scene.test.ts",
-          "type": "registry:ui"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "ButtonGroup",
-          "origin": "https://ui.shadcn.com/docs/components/radix/button-group",
-          "artifact": "component",
-          "stateful": false
-        }
-      }
-    },
-    {
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
@@ -1441,74 +1407,6 @@
           "stateful": true,
           "origin": "https://foldkit.dev/ui/calendar",
           "artifact": "primitive-backed-component"
-        }
-      }
-    },
-    {
-      "name": "card",
-      "type": "registry:ui",
-      "title": "Card",
-      "description": "A shadcn-style layout component for grouping related content into header, content, and footer regions.",
-      "dependencies": ["effect", "foldkit"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/default/ui/card/index.ts",
-          "target": "src/ui/card/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/card/view.ts",
-          "target": "src/ui/card/view.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/card/card.scene.test.ts",
-          "target": "src/ui/card/card.scene.test.ts",
-          "type": "registry:ui"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "Card",
-          "origin": "https://ui.shadcn.com/docs/components/radix/card",
-          "artifact": "component",
-          "stateful": false
-        }
-      }
-    },
-    {
-      "name": "carousel",
-      "type": "registry:ui",
-      "title": "Carousel",
-      "description": "A shadcn-style carousel component for cycling through slides with native Foldkit messages and installable view helpers.",
-      "dependencies": ["effect", "foldkit", "embla-carousel"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/default/ui/carousel/index.ts",
-          "target": "src/ui/carousel/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/carousel/view.ts",
-          "target": "src/ui/carousel/view.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/carousel/carousel.scene.test.ts",
-          "target": "src/ui/carousel/carousel.scene.test.ts",
-          "type": "registry:ui"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "Carousel",
-          "origin": "https://ui.shadcn.com/docs/components/radix/carousel",
-          "artifact": "component",
-          "stateful": false
         }
       }
     },
@@ -2807,6 +2705,40 @@
       }
     },
     {
+      "name": "shadcn-button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "A shadcn-style grouping primitive for visually joining related buttons, inputs, and composed controls while preserving native control semantics.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/button-group/index.ts",
+          "target": "src/ui/button-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/button-group/view.ts",
+          "target": "src/ui/button-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/button-group/button-group.scene.test.ts",
+          "target": "src/ui/button-group/button-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "ButtonGroup",
+          "origin": "https://ui.shadcn.com/docs/components/radix/button-group",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
       "name": "shadcn-calendar",
       "type": "registry:ui",
       "title": "Calendar",
@@ -2837,6 +2769,74 @@
           "artifact": "component",
           "primitive": "Ui.Calendar",
           "stateful": true
+        }
+      }
+    },
+    {
+      "name": "shadcn-card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A shadcn-style layout component for grouping related content into header, content, and footer regions.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/card/index.ts",
+          "target": "src/ui/card/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/card/view.ts",
+          "target": "src/ui/card/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/card/card.scene.test.ts",
+          "target": "src/ui/card/card.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Card",
+          "origin": "https://ui.shadcn.com/docs/components/radix/card",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "A shadcn-style carousel component for cycling through slides with native Foldkit messages and installable view helpers.",
+      "dependencies": ["effect", "foldkit", "embla-carousel"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/carousel/index.ts",
+          "target": "src/ui/carousel/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/carousel/view.ts",
+          "target": "src/ui/carousel/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/carousel/carousel.scene.test.ts",
+          "target": "src/ui/carousel/carousel.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Carousel",
+          "origin": "https://ui.shadcn.com/docs/components/radix/carousel",
+          "artifact": "component",
+          "stateful": false
         }
       }
     },
@@ -6810,7 +6810,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Basic composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-basic/main.ts",
@@ -6838,7 +6838,10 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Input composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group", "@foldkit-cn/input"],
+      "registryDependencies": [
+        "@foldkit-cn/shadcn-button-group",
+        "@foldkit-cn/input"
+      ],
       "files": [
         {
           "path": "registry/default/examples/button-group-input/main.ts",
@@ -6867,7 +6870,7 @@
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
       "registryDependencies": [
-        "@foldkit-cn/button-group",
+        "@foldkit-cn/shadcn-button-group",
         "@foldkit-cn/input-group"
       ],
       "files": [
@@ -6897,7 +6900,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Nested composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-nested/main.ts",
@@ -6925,7 +6928,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Orientation composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-orientation/main.ts",
@@ -6954,7 +6957,7 @@
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
       "registryDependencies": [
-        "@foldkit-cn/button-group",
+        "@foldkit-cn/shadcn-button-group",
         "@foldkit-cn/popover"
       ],
       "files": [
@@ -6984,7 +6987,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group RTL composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-rtl/main.ts",
@@ -7013,7 +7016,7 @@
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
       "registryDependencies": [
-        "@foldkit-cn/button-group",
+        "@foldkit-cn/shadcn-button-group",
         "@foldkit-cn/select"
       ],
       "files": [
@@ -7043,7 +7046,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Separator composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-separator/main.ts",
@@ -7071,7 +7074,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Size composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-size/main.ts",
@@ -7099,7 +7102,7 @@
       "description": "A runnable Foldkit example showing the shadcn Button Group Split composition.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/button-group"],
+      "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
       "files": [
         {
           "path": "registry/default/examples/button-group-split/main.ts",
@@ -7181,7 +7184,7 @@
       "description": "A runnable Foldkit example showing the Card component with parent-owned example state.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/card"],
+      "registryDependencies": ["@foldkit-cn/shadcn-card"],
       "files": [
         {
           "path": "registry/default/examples/card-basic/main.ts",
@@ -7209,7 +7212,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel API composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/carousel"],
+      "registryDependencies": ["@foldkit-cn/shadcn-carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-api/main.ts",
@@ -7237,7 +7240,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Basic composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/carousel"],
+      "registryDependencies": ["@foldkit-cn/shadcn-carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-basic/main.ts",
@@ -7265,7 +7268,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Orientation composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/carousel"],
+      "registryDependencies": ["@foldkit-cn/shadcn-carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-orientation/main.ts",
@@ -7293,7 +7296,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel RTL composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/carousel"],
+      "registryDependencies": ["@foldkit-cn/shadcn-carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-rtl/main.ts",
@@ -7321,7 +7324,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Sizes composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/carousel"],
+      "registryDependencies": ["@foldkit-cn/shadcn-carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-sizes/main.ts",
@@ -7349,7 +7352,7 @@
       "description": "A runnable Foldkit example showing the shadcn Carousel Spacing composition.",
       "dependencies": ["effect", "foldkit", "embla-carousel"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/carousel"],
+      "registryDependencies": ["@foldkit-cn/shadcn-carousel"],
       "files": [
         {
           "path": "registry/default/examples/carousel-spacing/main.ts",
@@ -10393,6 +10396,37 @@
       }
     },
     {
+      "name": "shadcn-button-button-group",
+      "type": "registry:example",
+      "title": "shadcn Button Button Group",
+      "description": "A runnable Foldkit version of the shadcn Button page Button Group example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [
+        "@foldkit-cn/shadcn-button",
+        "@foldkit-cn/shadcn-button-group"
+      ],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-button-group/main.ts",
+          "target": "src/examples/shadcn-button-group/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
+          "target": "src/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Button",
+          "example": "button-group",
+          "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
+        }
+      }
+    },
+    {
       "name": "shadcn-button-default",
       "type": "registry:example",
       "title": "shadcn Button Default",
@@ -10473,37 +10507,6 @@
           "component": "Button",
           "example": "ghost",
           "origin": "https://ui.shadcn.com/docs/components/radix/button"
-        }
-      }
-    },
-    {
-      "name": "shadcn-button-group",
-      "type": "registry:example",
-      "title": "shadcn Button Group",
-      "description": "A runnable Foldkit example matching the shadcn Button Group example on the Button docs page.",
-      "dependencies": ["effect", "foldkit"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [
-        "@foldkit-cn/shadcn-button",
-        "@foldkit-cn/button-group"
-      ],
-      "files": [
-        {
-          "path": "registry/default/examples/shadcn-button-group/main.ts",
-          "target": "src/examples/shadcn-button-group/main.ts",
-          "type": "registry:example"
-        },
-        {
-          "path": "registry/default/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
-          "target": "src/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
-          "type": "registry:example"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "Button",
-          "example": "button-group",
-          "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
         }
       }
     },

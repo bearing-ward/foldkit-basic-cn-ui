@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "card",
+  "name": "shadcn-card",
   "type": "registry:ui",
   "title": "Card",
   "description": "A shadcn-style layout component for grouping related content into header, content, and footer regions.",

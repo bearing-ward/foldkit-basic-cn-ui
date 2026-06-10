@@ -190,7 +190,10 @@ Next recommended slice:
 - Promoted shadcn presentation/layout entries: `alert`, `aspect-ratio`, and
   `breadcrumb`. Their installable dependents now point at `shadcn-alert`,
   `shadcn-aspect-ratio`, and `shadcn-breadcrumb`.
-- Next shadcn presentation/layout batch: `shadcn-button-group`, `shadcn-card`,
-  and `shadcn-carousel`.
+- Promoted shadcn presentation/layout entries: `button-group`, `card`, and
+  `carousel`. Their installable dependents now point at
+  `shadcn-button-group`, `shadcn-card`, and `shadcn-carousel`.
+- Next shadcn presentation/layout batch: `shadcn-chart`, `shadcn-data-table`,
+  and `shadcn-direction`.
 - Continue side-by-side origin visual signoff from
   `docs/product/origin-content-parity-review.md`.
