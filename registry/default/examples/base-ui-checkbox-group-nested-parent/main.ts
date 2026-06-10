@@ -150,22 +150,15 @@ export const view = Submodel.defineView<Model, Message>(
             values: [...allPermissionValues],
           }),
         }),
-        permissionGroup(
-          "View",
-          viewPermissionValues,
-          model.selectedPermissions,
-          [
-            permissionItem(
-              "Dashboard",
-              "view-dashboard",
-              model.selectedPermissions
-            ),
-            permissionItem(
-              "Access Reports",
-              "access-reports",
-              model.selectedPermissions
-            ),
-          ]
+        permissionItem(
+          "View Dashboard",
+          "view-dashboard",
+          model.selectedPermissions
+        ),
+        permissionItem(
+          "Access Reports",
+          "access-reports",
+          model.selectedPermissions
         ),
         permissionGroup(
           "Manage Users",

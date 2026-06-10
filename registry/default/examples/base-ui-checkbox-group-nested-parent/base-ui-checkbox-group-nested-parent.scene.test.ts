@@ -12,9 +12,15 @@ describe("Base UI Checkbox Group Nested Parent example", () => {
       },
       Scene.with(BaseUiCheckboxGroupNestedParentExample.init()[0]),
       Scene.expect(Scene.role("group", { name: "User Permissions" })).toExist(),
-      Scene.expect(Scene.role("checkbox", { name: "View" })).toHaveAttr(
+      Scene.expect(
+        Scene.role("checkbox", { name: "View Dashboard" })
+      ).toHaveAttr("aria-checked", "true"),
+      Scene.expect(
+        Scene.role("checkbox", { name: "Access Reports" })
+      ).toHaveAttr("aria-checked", "false"),
+      Scene.expect(Scene.role("checkbox", { name: "Manage Users" })).toHaveAttr(
         "aria-checked",
-        "mixed"
+        "false"
       ),
       Scene.click(Scene.role("checkbox", { name: "Manage Users" })),
       Scene.expect(Scene.role("checkbox", { name: "Create User" })).toHaveAttr(
