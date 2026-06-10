@@ -6,7 +6,7 @@
   "description": "A Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/toggle"],
+  "registryDependencies": ["@foldkit-cn/base-ui-toggle"],
   "files": [
     {
       "path": "registry/default/ui/toggle-group/index.ts",

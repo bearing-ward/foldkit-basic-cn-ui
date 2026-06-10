@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed preview card component for controlled contextual previews.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/preview-card"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-preview-card/index.ts",

@@ -6,7 +6,7 @@
   "description": "A shadcn-origin toggle component page backed by the Foldkit Toggle primitive.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/toggle"],
+  "registryDependencies": ["@foldkit-cn/base-ui-toggle"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-toggle/index.ts",

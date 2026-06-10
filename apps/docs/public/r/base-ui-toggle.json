@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed two-state button with controlled pressed state, aria-pressed semantics, data-pressed styling, and disabled handling.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/toggle"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-toggle/index.ts",

@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Toggle hero example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/toggle"],
+  "registryDependencies": ["@foldkit-cn/base-ui-toggle"],
   "files": [
     {
       "path": "registry/default/examples/toggle-basic/main.ts",

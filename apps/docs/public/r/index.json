@@ -939,7 +939,7 @@
       "description": "A Base UI Base UI-informed preview card component for controlled contextual previews.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/preview-card"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-preview-card/index.ts",
@@ -1279,7 +1279,7 @@
       "description": "A Base UI Base UI-informed two-state button with controlled pressed state, aria-pressed semantics, data-pressed styling, and disabled handling.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toggle"],
+      "registryDependencies": [],
       "files": [
         {
           "path": "registry/default/ui/base-ui-toggle/index.ts",
@@ -3586,7 +3586,7 @@
       "description": "A shadcn-origin toggle component page backed by the Foldkit Toggle primitive.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toggle"],
+      "registryDependencies": ["@foldkit-cn/base-ui-toggle"],
       "files": [
         {
           "path": "registry/default/ui/shadcn-toggle/index.ts",
@@ -9566,7 +9566,7 @@
       "description": "A runnable Foldkit version of the Base UI Preview Card default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/preview-card"],
+      "registryDependencies": ["@foldkit-cn/base-ui-preview-card"],
       "files": [
         {
           "path": "registry/default/examples/preview-card-basic/main.ts",
@@ -9642,7 +9642,7 @@
       "description": "A runnable Foldkit version of the Base UI Radio hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/radio"],
+      "registryDependencies": ["@foldkit-cn/base-ui-radio"],
       "files": [
         {
           "path": "registry/default/examples/radio-basic/main.ts",
@@ -12190,7 +12190,7 @@
       "description": "A runnable Foldkit version of the Base UI Toggle hero example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/toggle"],
+      "registryDependencies": ["@foldkit-cn/base-ui-toggle"],
       "files": [
         {
           "path": "registry/default/examples/toggle-basic/main.ts",

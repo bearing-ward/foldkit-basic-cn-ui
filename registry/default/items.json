@@ -980,7 +980,7 @@
     "description": "A Base UI Base UI-informed preview card component for controlled contextual previews.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["preview-card"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-preview-card/index.ts",
@@ -1324,7 +1324,7 @@
     "description": "A Base UI Base UI-informed two-state button with controlled pressed state, aria-pressed semantics, data-pressed styling, and disabled handling.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-toggle/index.ts",
@@ -2656,42 +2656,6 @@
     }
   },
   {
-    "name": "preview-card",
-    "type": "registry:ui",
-    "title": "Preview Card",
-    "description": "A Base UI-informed preview card component for controlled contextual previews.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/preview-card/index.ts",
-        "target": "src/ui/preview-card/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/preview-card/view.ts",
-        "target": "src/ui/preview-card/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/preview-card/preview-card.scene.test.ts",
-        "target": "src/ui/preview-card/preview-card.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "PreviewCard",
-        "origin": "https://base-ui.com/react/components/preview-card",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-preview-card"
-      }
-    }
-  },
-  {
     "name": "progress",
     "type": "registry:ui",
     "title": "Progress",
@@ -2724,42 +2688,6 @@
         "stateful": false,
         "public": false,
         "publicAliasOf": "base-ui-progress"
-      }
-    }
-  },
-  {
-    "name": "radio",
-    "type": "registry:ui",
-    "title": "Radio",
-    "description": "A Base UI-informed radio group component with controlled selected value, labelled group, radio root, and indicator anatomy.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/radio/index.ts",
-        "target": "src/ui/radio/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/radio/view.ts",
-        "target": "src/ui/radio/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/radio/radio.scene.test.ts",
-        "target": "src/ui/radio/radio.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Radio",
-        "origin": "https://base-ui.com/react/components/radio",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-radio"
       }
     }
   },
@@ -3886,7 +3814,7 @@
     "description": "A shadcn-origin toggle component page backed by the Foldkit Toggle primitive.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle"],
+    "registryDependencies": ["base-ui-toggle"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-toggle/index.ts",
@@ -4361,49 +4289,13 @@
     }
   },
   {
-    "name": "toggle",
-    "type": "registry:ui",
-    "title": "Toggle",
-    "description": "A Base UI-informed two-state button with controlled pressed state, aria-pressed semantics, data-pressed styling, and disabled handling.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/toggle/index.ts",
-        "target": "src/ui/toggle/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/toggle/view.ts",
-        "target": "src/ui/toggle/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/toggle/toggle.scene.test.ts",
-        "target": "src/ui/toggle/toggle.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "TogglePrimitive",
-        "origin": "https://base-ui.com/react/components/toggle",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-toggle"
-      }
-    }
-  },
-  {
     "name": "toggle-group",
     "type": "registry:ui",
     "title": "Toggle Group",
     "description": "A Base UI-informed shared state wrapper for a series of toggle buttons using controlled value arrays.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle"],
+    "registryDependencies": ["base-ui-toggle"],
     "files": [
       {
         "path": "registry/default/ui/toggle-group/index.ts",
@@ -9981,7 +9873,7 @@
     "description": "A runnable Foldkit version of the Base UI Preview Card default example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["preview-card"],
+    "registryDependencies": ["base-ui-preview-card"],
     "files": [
       {
         "path": "registry/default/examples/preview-card-basic/main.ts",
@@ -10057,7 +9949,7 @@
     "description": "A runnable Foldkit version of the Base UI Radio hero example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["radio"],
+    "registryDependencies": ["base-ui-radio"],
     "files": [
       {
         "path": "registry/default/examples/radio-basic/main.ts",
@@ -12596,7 +12488,7 @@
     "description": "A runnable Foldkit version of the Base UI Toggle hero example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["toggle"],
+    "registryDependencies": ["base-ui-toggle"],
     "files": [
       {
         "path": "registry/default/examples/toggle-basic/main.ts",
