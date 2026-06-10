@@ -14,7 +14,11 @@ describe("shadcn Avatar Dropdown example", () => {
       Scene.expect(Scene.role("button", { name: "CN" })).toExist(),
       Scene.click(Scene.role("button", { name: "CN" })),
       Scene.expect(Scene.role("menuitem", { name: "Profile" })).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "Billing" })).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "Settings" })).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "Log out" })).toExist(),
       Scene.click(Scene.role("menuitem", { name: "Profile" })),
+      Scene.expect(Scene.role("menuitem", { name: "Profile" })).not.toExist(),
       Scene.expect(Scene.text("Selected: Profile")).toExist()
     );
   });

@@ -85,6 +85,11 @@ export const rootView = <ParentMessage>({
 
   return h.span(
     [
+      h.Attribute("data-slot", "avatar"),
+      h.Attribute(
+        "data-size",
+        size === "Small" ? "sm" : size === "Large" ? "lg" : "default"
+      ),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(avatarClassNameBySize(size), className)),
     ],
@@ -101,6 +106,7 @@ export const imageView = <ParentMessage>({
   const h = html<ParentMessage>();
 
   return h.img([
+    h.Attribute("data-slot", "avatar-image"),
     h.Src(src),
     h.Alt(alt),
     ...(style === undefined ? [] : [h.Style(style)]),
@@ -118,6 +124,7 @@ export const fallbackView = <ParentMessage>({
 
   return h.span(
     [
+      h.Attribute("data-slot", "avatar-fallback"),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(avatarFallbackClassName, className)),
@@ -158,6 +165,7 @@ export const badgeView = <ParentMessage>({
 
   return h.span(
     [
+      h.Attribute("data-slot", "avatar-badge"),
       ...(label === undefined ? [h.AriaHidden(true)] : [h.AriaLabel(label)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(avatarBadgeClassName, className)),
@@ -173,7 +181,10 @@ export const groupView = <ParentMessage>(
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(classNames(avatarGroupClassName, className))],
+    [
+      h.Attribute("data-slot", "avatar-group"),
+      h.Class(classNames(avatarGroupClassName, className)),
+    ],
     children
   );
 };
@@ -188,6 +199,7 @@ export const countView = <ParentMessage>({
 
   return h.span(
     [
+      h.Attribute("data-slot", "avatar-group-count"),
       h.Class(classNames(avatarGroupCountClassName, className)),
       h.AriaLabel(label ?? `${count} more people`),
       h.Attribute("role", "img"),

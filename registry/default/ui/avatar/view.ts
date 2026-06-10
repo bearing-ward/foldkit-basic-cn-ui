@@ -1,33 +1,34 @@
 export type AvatarSize = "Small" | "Default" | "Large";
 
 export const avatarBaseClassName =
-  "relative inline-flex shrink-0 items-center justify-center rounded-full bg-gray-100 font-medium text-gray-700 ring-2 ring-white";
+  "relative flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted text-muted-foreground ring-2 ring-background";
 
 export const avatarImageClassName = "h-full w-full rounded-full object-cover";
 
 export const avatarFallbackClassName =
-  "flex h-full w-full items-center justify-center rounded-full bg-gray-100 text-gray-700";
+  "flex h-full w-full items-center justify-center rounded-full bg-muted text-sm font-medium";
 
 export const avatarBadgeClassName =
-  "absolute right-0 bottom-0 inline-flex h-3 w-3 items-center justify-center rounded-full border-2 border-white bg-green-600 text-[8px] text-white";
+  "absolute right-0 bottom-0 flex size-2.5 items-center justify-center rounded-full bg-green-600 text-[8px] text-white ring-2 ring-background dark:bg-green-800 [&>svg]:size-3";
 
-export const avatarGroupClassName = "flex items-center -space-x-2";
+export const avatarGroupClassName =
+  "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background";
 
 export const avatarGroupCountClassName =
-  "relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-sm font-medium text-gray-700 ring-2 ring-white";
+  "relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3";
 
 export const avatarSizeClassNameBySize = (
   size: AvatarSize = "Default"
 ): string => {
   if (size === "Small") {
-    return "h-8 w-8 text-xs";
+    return "size-6 text-xs";
   }
 
   if (size === "Large") {
-    return "h-12 w-12 text-base";
+    return "size-10 text-base";
   }
 
-  return "h-10 w-10 text-sm";
+  return "size-8 text-sm";
 };
 
 export const avatarClassNameBySize = (size: AvatarSize = "Default"): string =>

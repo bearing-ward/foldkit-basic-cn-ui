@@ -31,13 +31,12 @@ export const update = (
 
 // VIEW
 
-const avatarImageSrc =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%230f172a'/%3E%3Ctext x='40' y='48' text-anchor='middle' font-size='24' font-family='Arial' fill='white'%3ECN%3C/text%3E%3C/svg%3E";
+const avatarImageSrc = "https://github.com/shadcn.png";
 
 export const view = Submodel.defineView<Model, Message>(
   (): Html =>
     Avatar.view<Message>({
-      alt: "Colm Tuite",
+      alt: "@shadcn",
       fallback: "CN",
       src: avatarImageSrc,
     })

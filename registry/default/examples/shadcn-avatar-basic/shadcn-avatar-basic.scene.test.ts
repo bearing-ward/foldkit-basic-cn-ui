@@ -11,8 +11,8 @@ describe("shadcn Avatar Basic example", () => {
         view: ShadcnAvatarBasicExample.view,
       },
       Scene.with(ShadcnAvatarBasicExample.init()[0]),
-      Scene.expect(Scene.role("img", { name: "Colm Tuite" })).toExist(),
-      Scene.expect(Scene.role("img", { name: "Colm Tuite" })).not.toHaveHandler(
+      Scene.expect(Scene.role("img", { name: "@shadcn" })).toExist(),
+      Scene.expect(Scene.role("img", { name: "@shadcn" })).not.toHaveHandler(
         "click"
       )
     );

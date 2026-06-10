@@ -11,9 +11,9 @@ describe("shadcn Avatar Badge example", () => {
         view: ShadcnAvatarBadgeExample.view,
       },
       Scene.with(ShadcnAvatarBadgeExample.init()[0]),
-      Scene.expect(Scene.role("img", { name: "Colm Tuite" })).toExist(),
+      Scene.expect(Scene.role("img", { name: "@shadcn" })).toExist(),
       Scene.expect(Scene.label("Online")).toExist(),
-      Scene.expect(Scene.role("img", { name: "Colm Tuite" })).not.toHaveHandler(
+      Scene.expect(Scene.role("img", { name: "@shadcn" })).not.toHaveHandler(
         "click"
       )
     );
