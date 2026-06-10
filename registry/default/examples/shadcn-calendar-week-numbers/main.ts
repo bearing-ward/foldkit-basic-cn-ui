@@ -1,77 +1,187 @@
-import { Schema as S } from "effect";
-import type { Command } from "foldkit";
-import { Submodel } from "foldkit";
+import { Match as M, Schema as S } from "effect";
+import { Calendar, Command, Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
+import { m } from "foldkit/message";
+import { evo } from "foldkit/struct";
+
+import * as UiCalendar from "../../ui/shadcn-calendar";
 
 // MODEL
 
-export const Model = S.Struct({});
+export const Model = S.Struct({
+  calendar: UiCalendar.Model,
+});
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const Message = S.Never;
+export const GotCalendarMessage = m("GotCalendarMessage", {
+  message: UiCalendar.Message,
+});
+
+export const Message = S.Union([GotCalendarMessage]);
 export type Message = typeof Message.Type;
 
 // INIT
 
+const today = Calendar.make(2026, 2, 16);
+
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{}, []];
+] => [
+  {
+    calendar: UiCalendar.init({
+      id: "shadcn-calendar-week-numbers",
+      today,
+      initialSelectedDate: today,
+    }),
+  },
+  [],
+];
 
 // UPDATE
 
 export const update = (
   model: Model,
-  _message: Message
-): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
+  message: Message
+): readonly [Model, readonly Command.Command<Message>[]] =>
+  M.value(message).pipe(
+    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
+    M.tagsExhaustive({
+      GotCalendarMessage: ({ message }) => {
+        const [calendar, commands] = UiCalendar.update(model.calendar, message);
+
+        return [
+          evo(model, { calendar: () => calendar }),
+          Command.mapMessages(commands, (message) =>
+            GotCalendarMessage({ message })
+          ),
+        ];
+      },
+    })
+  );
 
 // VIEW
 
-const weeks = [
-  ["06", "1", "2", "3", "4", "5", "6", "7"],
-  ["07", "8", "9", "10", "11", "12", "13", "14"],
-  ["08", "15", "16", "17", "18", "19", "20", "21"],
-  ["09", "22", "23", "24", "25", "26", "27", "28"],
-];
+const weekNumbers = ["06", "07", "08", "09"];
 
-export const view = Submodel.defineView<Model, Message>((): Html => {
+const weekNumberCalendarView = (
+  attributes: UiCalendar.CalendarAttributes
+): Html => {
+  const h = html<UiCalendar.Message>();
+
+  return M.value(attributes).pipe(
+    M.tagsExhaustive({
+      Days: (days) =>
+        h.div(
+          [...days.root, h.Class(UiCalendar.shadcnCalendarContainerClassName)],
+          [
+            h.div(
+              [h.Class(UiCalendar.shadcnCalendarHeaderClassName)],
+              [
+                h.button(
+                  [
+                    ...days.previousMonthButton,
+                    h.Class(UiCalendar.shadcnCalendarNavButtonClassName),
+                  ],
+                  ["<"]
+                ),
+                h.button(
+                  [
+                    h.Id(days.heading.id),
+                    ...days.headingButton,
+                    h.Class(UiCalendar.shadcnCalendarHeadingButtonClassName),
+                  ],
+                  [days.heading.text]
+                ),
+                h.button(
+                  [
+                    ...days.nextMonthButton,
+                    h.Class(UiCalendar.shadcnCalendarNavButtonClassName),
+                  ],
+                  [">"]
+                ),
+              ]
+            ),
+            h.div(
+              [...days.grid, h.Class(UiCalendar.shadcnCalendarGridClassName)],
+              [
+                h.div(
+                  [...days.headerRow, h.Class("grid grid-cols-8 gap-1")],
+                  [
+                    h.div(
+                      [h.Class(UiCalendar.shadcnCalendarColumnHeaderClassName)],
+                      [""]
+                    ),
+                    ...days.columnHeaders.map((header) =>
+                      h.div(
+                        [
+                          ...header.attributes,
+                          h.Class(
+                            UiCalendar.shadcnCalendarColumnHeaderClassName
+                          ),
+                        ],
+                        [header.name]
+                      )
+                    ),
+                  ]
+                ),
+                ...days.weeks.map((week, index) =>
+                  h.div(
+                    [...week.attributes, h.Class("grid grid-cols-8 gap-1")],
+                    [
+                      h.div(
+                        [
+                          h.Class(
+                            "flex h-9 w-9 items-center justify-center text-sm tabular-nums text-gray-500"
+                          ),
+                        ],
+                        [weekNumbers[index] ?? ""]
+                      ),
+                      ...week.cells.map((cell) =>
+                        h.div(
+                          [
+                            ...cell.cellAttributes,
+                            h.Class(UiCalendar.shadcnCalendarCellClassName),
+                          ],
+                          [
+                            h.button(
+                              [
+                                ...cell.buttonAttributes,
+                                h.Class(
+                                  UiCalendar.shadcnCalendarDayButtonClassName
+                                ),
+                              ],
+                              [cell.label]
+                            ),
+                          ]
+                        )
+                      ),
+                    ]
+                  )
+                ),
+              ]
+            ),
+          ]
+        ),
+      Months: (months) => UiCalendar.shadcnCalendarView(months),
+      Years: (years) => UiCalendar.shadcnCalendarView(years),
+    })
+  );
+};
+
+export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class("rounded-lg border border-gray-200 bg-white p-3")],
-    [
-      h.div(
-        [h.Class("mb-3 text-center text-sm font-medium")],
-        ["February 2026"]
-      ),
-      h.div(
-        [h.Class("grid grid-cols-8 gap-1 text-center text-sm")],
-        [
-          h.div([h.Class("h-8 text-gray-400")], [""]),
-          ...["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((day) =>
-            h.div([h.Class("h-8 text-gray-500")], [day])
-          ),
-          ...weeks.flatMap((week) =>
-            week.map((cell, index) =>
-              h.button(
-                [
-                  h.Type("button"),
-                  h.Disabled(true),
-                  h.Class(
-                    index === 0
-                      ? "size-8 rounded-md text-gray-500 data-[disabled]:cursor-default"
-                      : "size-8 rounded-md data-[disabled]:cursor-default"
-                  ),
-                ],
-                [cell]
-              )
-            )
-          ),
-        ]
-      ),
-    ]
-  );
+  return h.submodel({
+    slotId: model.calendar.id,
+    model: model.calendar,
+    view: UiCalendar.view,
+    viewInputs: {
+      toView: weekNumberCalendarView,
+    },
+    toParentMessage: (message) => GotCalendarMessage({ message }),
+  });
 });

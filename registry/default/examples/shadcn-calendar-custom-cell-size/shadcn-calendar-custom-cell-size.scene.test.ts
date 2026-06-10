@@ -4,16 +4,16 @@ import { describe, test } from "vitest";
 import * as Example from "./main";
 
 describe("shadcn Calendar Custom Cell Size example", () => {
-  test("renders the origin custom cell size price layout as inert cells", () => {
+  test("renders the origin custom cell size price layout with calendar behavior", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(Scene.text("December 2026")).toExist(),
       Scene.expect(Scene.text("$100")).toExist(),
       Scene.expect(Scene.text("$120")).toExist(),
-      Scene.expect(
-        Scene.role("button", { name: "December 1 $100" })
-      ).toBeDisabled()
+      Scene.expect(Scene.text("Selected date: 2026-12-16")).toExist(),
+      Scene.click(Scene.role("button", { name: "Tuesday, December 8, 2026" })),
+      Scene.expect(Scene.text("Selected date: 2026-12-08")).toExist()
     );
   });
 });
