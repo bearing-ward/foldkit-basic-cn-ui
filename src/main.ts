@@ -13091,6 +13091,17 @@ const sliderBasicExampleSubscriptions = Subscription.lift({
     }),
 });
 
+const shadcnSliderBasicExampleSubscriptions = Subscription.lift({
+  shadcnSliderBasicDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderBasicDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.slider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotSliderMessage({ message }),
+    }),
+});
+
 const virtualListBasicExampleSubscriptions = Subscription.lift({
   virtualListBasicContainerEvents: Ui.VirtualList.subscriptions.containerEvents,
 })<Model, Message>({
@@ -13116,6 +13127,7 @@ export const subscriptions = Subscription.aggregate<Model, Message>()(
   uiSubscriptions,
   dragAndDropBasicExampleSubscriptions,
   sliderBasicExampleSubscriptions,
+  shadcnSliderBasicExampleSubscriptions,
   virtualListBasicExampleSubscriptions,
   virtualListVariableExampleSubscriptions
 );
