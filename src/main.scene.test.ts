@@ -278,6 +278,7 @@ import {
   ShadcnAlertDialogDocsRoute,
   DrawerBasicExampleRoute,
   DrawerDocsRoute,
+  ShadcnDrawerBasicExampleRoute,
   ShadcnDrawerDocsRoute,
   BaseUiDrawerPositionExampleRoute,
   BaseUiDrawerNonModalExampleRoute,
@@ -439,6 +440,7 @@ import {
   BaseUiDialogNestedExampleRoute,
   DialogAnimatedExampleRoute,
   DialogBasicExampleRoute,
+  ShadcnDialogBasicExampleRoute,
   DialogDestructiveExampleRoute,
   DialogDocsRoute,
   DialogFocusExampleRoute,
@@ -2108,6 +2110,17 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Drawer Basic" })).toExist(),
       Scene.click(Scene.role("button", { name: "Open drawer" })),
       Scene.expect(Scene.role("dialog", { name: "Drawer" })).toExist()
+    );
+  });
+
+  test("the shadcn Drawer Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ShadcnDrawerBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "shadcn Drawer Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open drawer" })).toExist()
     );
   });
 
@@ -4670,6 +4683,17 @@ describe("scene", () => {
         Scene.role("button", { name: "View notifications" })
       ).toExist(),
       Scene.expect(Scene.text("Good job!")).not.toExist()
+    );
+  });
+
+  test("the shadcn Dialog Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ShadcnDialogBasicExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "shadcn Dialog Basic" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Open dialog" })).toExist()
     );
   });
 

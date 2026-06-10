@@ -2565,6 +2565,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/shadcn-drawer/examples/basic resolves to ShadcnDrawerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/shadcn-drawer/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ShadcnDrawerBasicExample");
+        })
+      );
+    });
+
     test("/examples/drawer-basic resolves to DrawerBasicExample", () => {
       Story.story(
         update,
@@ -3681,6 +3698,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiDialogBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/shadcn-dialog/examples/basic resolves to ShadcnDialogBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/shadcn-dialog/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ShadcnDialogBasicExample");
         })
       );
     });

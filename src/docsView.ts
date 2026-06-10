@@ -227,6 +227,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/drawer/examples/basic",
   },
   {
+    label: "shadcn Drawer Basic Example",
+    routeTag: "ShadcnDrawerBasicExample",
+    href: "/docs/components/shadcn-drawer/examples/basic",
+  },
+  {
     label: "Context Menu Docs",
     routeTag: "ShadcnContextMenuDocs",
     href: "/docs/components/shadcn-context-menu",
@@ -993,6 +998,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dialog Basic Example",
     routeTag: "DialogBasicExample",
     href: "/docs/components/dialog/examples/basic",
+  },
+  {
+    label: "shadcn Dialog Basic Example",
+    routeTag: "ShadcnDialogBasicExample",
+    href: "/docs/components/shadcn-dialog/examples/basic",
   },
   {
     label: "Dialog Animated Example",
@@ -17369,6 +17379,8 @@ Drawer.rootView<Message>({
   ],
 });`,
         }),
+      ShadcnDrawerBasicExample: () =>
+        DocsRoutes.shadcnDrawerBasicExampleRouteView(model),
       DrawerBasicExample: () => DocsRoutes.drawerBasicExampleRouteView(model),
       ContextMenuDocs: () => contextMenuDocsView(model),
       BaseUiContextMenuDocs: () =>
@@ -18394,6 +18406,8 @@ Dialog.view<Message>({
   toContentView: (attributes) => h.div(attributes.panel, ["Dialog content"]),
 });`,
         }),
+      ShadcnDialogBasicExample: () =>
+        DocsRoutes.shadcnDialogBasicExampleRouteView(model),
       DialogBasicExample: () => DocsRoutes.dialogBasicExampleRouteView(model),
       DialogAnimatedExample: () =>
         DocsRoutes.dialogAnimatedExampleRouteView(model),

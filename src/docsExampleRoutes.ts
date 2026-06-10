@@ -12,6 +12,7 @@ import * as DocsPreviewsCD from "./docsExamplePreviewsCD";
 import * as DocsPreviewsEI from "./docsExamplePreviewsEI";
 import * as DocsPreviewsJM from "./docsExamplePreviewsJM";
 import * as DocsPreviewsNZ from "./docsExamplePreviewsNZ";
+import * as DocsPreviewsShadcnMissing from "./docsExamplePreviewsShadcnMissing";
 import type * as Main from "./main";
 
 type Model = Main.Model;
@@ -2609,6 +2610,16 @@ export const baseUiDrawerBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const shadcnDrawerBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Drawer Basic",
+    "shadcn-drawer-basic",
+    DocsPreviewsShadcnMissing.shadcnDrawerBasicExamplePreview(
+      model.shadcnDrawerBasicExample,
+      "shadcn-drawer-basic-standalone"
+    )
+  );
+
 export const baseUiFieldBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -3958,6 +3969,16 @@ export const baseUiDialogBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const shadcnDialogBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Dialog Basic",
+    "shadcn-dialog-basic",
+    DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(
+      model.shadcnDialogBasicExample,
+      "shadcn-dialog-basic-standalone"
+    )
+  );
 
 export const baseUiDialogCloseConfirmationExampleRouteView = (
   model: Model

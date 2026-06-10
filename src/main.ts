@@ -340,6 +340,7 @@ export const DrawerDocsRoute = r("DrawerDocs");
 export const ShadcnDrawerDocsRoute = r("ShadcnDrawerDocs");
 export const BaseUiDrawerDocsRoute = r("BaseUiDrawerDocs");
 export const BaseUiDrawerBasicExampleRoute = r("BaseUiDrawerBasicExample");
+export const ShadcnDrawerBasicExampleRoute = r("ShadcnDrawerBasicExample");
 export const BaseUiDrawerPositionExampleRoute = r(
   "BaseUiDrawerPositionExample"
 );
@@ -615,6 +616,7 @@ export const DialogDocsRoute = r("DialogDocs");
 export const ShadcnDialogDocsRoute = r("ShadcnDialogDocs");
 export const BaseUiDialogDocsRoute = r("BaseUiDialogDocs");
 export const BaseUiDialogBasicExampleRoute = r("BaseUiDialogBasicExample");
+export const ShadcnDialogBasicExampleRoute = r("ShadcnDialogBasicExample");
 export const BaseUiDialogCloseConfirmationExampleRoute = r(
   "BaseUiDialogCloseConfirmationExample"
 );
@@ -791,6 +793,7 @@ const AppRoute = S.Union([
   ShadcnDrawerDocsRoute,
   BaseUiDrawerDocsRoute,
   BaseUiDrawerBasicExampleRoute,
+  ShadcnDrawerBasicExampleRoute,
   BaseUiDrawerPositionExampleRoute,
   BaseUiDrawerNonModalExampleRoute,
   DrawerBasicExampleRoute,
@@ -1020,6 +1023,7 @@ const AppRoute = S.Union([
   ShadcnDialogDocsRoute,
   BaseUiDialogDocsRoute,
   BaseUiDialogBasicExampleRoute,
+  ShadcnDialogBasicExampleRoute,
   BaseUiDialogCloseConfirmationExampleRoute,
   BaseUiDialogNestedExampleRoute,
   DialogBasicExampleRoute,
@@ -1612,10 +1616,23 @@ export const baseUiDrawerBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(BaseUiDrawerBasicExampleRoute)
 );
+export const shadcnDrawerBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-drawer")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ShadcnDrawerBasicExampleRoute)
+);
 export const baseUiDrawerBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("base-ui-drawer-basic")),
   Route.mapTo(BaseUiDrawerBasicExampleRoute)
+);
+export const shadcnDrawerBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-drawer-basic")),
+  Route.mapTo(ShadcnDrawerBasicExampleRoute)
 );
 export const drawerBasicExampleRouter = pipe(
   literal("docs"),
@@ -3831,6 +3848,14 @@ export const baseUiDialogBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(BaseUiDialogBasicExampleRoute)
 );
+export const shadcnDialogBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ShadcnDialogBasicExampleRoute)
+);
 export const baseUiDialogCloseConfirmationExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3896,6 +3921,11 @@ export const baseUiDialogBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("base-ui-dialog-basic")),
   Route.mapTo(BaseUiDialogBasicExampleRoute)
+);
+export const shadcnDialogBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-dialog-basic")),
+  Route.mapTo(ShadcnDialogBasicExampleRoute)
 );
 export const baseUiDialogCloseConfirmationStandaloneExampleRouter = pipe(
   literal("examples"),
@@ -5169,12 +5199,14 @@ const routeParser = Route.oneOf(
   baseUiDialogCloseConfirmationExampleRouter,
   baseUiDialogNestedExampleRouter,
   dialogBasicExampleRouter,
+  shadcnDialogBasicExampleRouter,
   dialogAnimatedExampleRouter,
   dialogDestructiveExampleRouter,
   dialogFocusExampleRouter,
   dialogScrollableExampleRouter,
   dialogBasicStandaloneExampleRouter,
   baseUiDialogBasicStandaloneExampleRouter,
+  shadcnDialogBasicStandaloneExampleRouter,
   baseUiDialogCloseConfirmationStandaloneExampleRouter,
   baseUiDialogNestedStandaloneExampleRouter,
   dialogAnimatedStandaloneExampleRouter,
@@ -5422,9 +5454,11 @@ const routeParser = Route.oneOf(
   drawerBasicExampleRouter,
   drawerBasicStandaloneExampleRouter,
   drawerDocsRouter,
-  shadcnDrawerDocsRouter,
   baseUiDrawerBasicExampleRouter,
   baseUiDrawerBasicStandaloneExampleRouter,
+  shadcnDrawerBasicExampleRouter,
+  shadcnDrawerBasicStandaloneExampleRouter,
+  shadcnDrawerDocsRouter,
   baseUiDrawerPositionExampleRouter,
   baseUiDrawerPositionStandaloneExampleRouter,
   baseUiDrawerNonModalExampleRouter,
