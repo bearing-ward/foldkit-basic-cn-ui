@@ -68,8 +68,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Alert Docs",
-    routeTag: "AlertDocs",
-    href: "/docs/components/alert",
+    routeTag: "ShadcnAlertDocs",
+    href: "/docs/components/shadcn-alert",
   },
   {
     label: "Alert Basic Example",
@@ -83,8 +83,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Aspect Ratio Docs",
-    routeTag: "AspectRatioDocs",
-    href: "/docs/components/aspect-ratio",
+    routeTag: "ShadcnAspectRatioDocs",
+    href: "/docs/components/shadcn-aspect-ratio",
   },
   {
     label: "Aspect Ratio Basic Example",
@@ -108,8 +108,8 @@ const NAV_ITEMS: readonly NavItem[] = [
   },
   {
     label: "Breadcrumb Docs",
-    routeTag: "BreadcrumbDocs",
-    href: "/docs/components/breadcrumb",
+    routeTag: "ShadcnBreadcrumbDocs",
+    href: "/docs/components/shadcn-breadcrumb",
   },
   {
     label: "Breadcrumb Basic Example",
@@ -1736,9 +1736,6 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
 
 const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
   [
-    "AlertDocs",
-    "AspectRatioDocs",
-    "BreadcrumbDocs",
     "ButtonGroupDocs",
     "CarouselDocs",
     "ChartDocs",
@@ -1770,8 +1767,11 @@ const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
     "ShadcnCheckboxDocs",
     "ShadcnInputDocs",
     "ShadcnAccordionDocs",
+    "ShadcnAlertDocs",
     "ShadcnAlertDialogDocs",
+    "ShadcnAspectRatioDocs",
     "ShadcnAvatarDocs",
+    "ShadcnBreadcrumbDocs",
     "ShadcnCalendarDocs",
     "ShadcnCollapsibleDocs",
     "ShadcnComboboxDocs",
@@ -13242,6 +13242,162 @@ const shadcnNewPrimitiveExampleBlock = (model: Model, example: string): Html =>
 
 const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
   M.value(example).pipe(
+    M.when("alert-action", () =>
+      docsExampleBlock({
+        title: "Action",
+        testId: "docs-example-block-alert-action",
+        preview: DocsPreviewsAlert.alertActionExamplePreview(
+          model.alertActionExample,
+          "shadcn-alert-docs-action-preview"
+        ),
+        href: "/docs/components/shadcn-alert/examples/action",
+        linkText: "Open standalone shadcn Alert Action example",
+      })
+    ),
+    M.when("alert-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-alert-basic",
+        preview: DocsPreviewsAlert.alertBasicExamplePreview(
+          model.alertBasicExample,
+          "shadcn-alert-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-alert/examples/basic",
+        linkText: "Open standalone shadcn Alert Basic example",
+      })
+    ),
+    M.when("alert-destructive", () =>
+      docsExampleBlock({
+        title: "Destructive",
+        testId: "docs-example-block-alert-destructive",
+        preview: DocsPreviewsAlert.alertDestructiveExamplePreview(
+          model.alertDestructiveExample,
+          "shadcn-alert-docs-destructive-preview"
+        ),
+        href: "/docs/components/shadcn-alert/examples/destructive",
+        linkText: "Open standalone shadcn Alert Destructive example",
+      })
+    ),
+    M.when("aspect-ratio-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-aspect-ratio-basic",
+        preview: DocsPreviewsAspect.aspectRatioBasicExamplePreview(
+          model.aspectRatioBasicExample,
+          "shadcn-aspect-ratio-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-aspect-ratio/examples/basic",
+        linkText: "Open standalone shadcn Aspect Ratio Basic example",
+      })
+    ),
+    M.when("aspect-ratio-portrait", () =>
+      docsExampleBlock({
+        title: "Portrait",
+        testId: "docs-example-block-aspect-ratio-portrait",
+        preview: DocsPreviewsAspect.aspectRatioPortraitExamplePreview(
+          model.aspectRatioPortraitExample,
+          "shadcn-aspect-ratio-docs-portrait-preview"
+        ),
+        href: "/docs/components/shadcn-aspect-ratio/examples/portrait",
+        linkText: "Open standalone shadcn Aspect Ratio Portrait example",
+      })
+    ),
+    M.when("aspect-ratio-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        testId: "docs-example-block-aspect-ratio-rtl",
+        preview: DocsPreviewsAspect.aspectRatioRtlExamplePreview(
+          model.aspectRatioRtlExample,
+          "shadcn-aspect-ratio-docs-rtl-preview"
+        ),
+        href: "/docs/components/shadcn-aspect-ratio/examples/rtl",
+        linkText: "Open standalone shadcn Aspect Ratio RTL example",
+      })
+    ),
+    M.when("aspect-ratio-square", () =>
+      docsExampleBlock({
+        title: "Square",
+        testId: "docs-example-block-aspect-ratio-square",
+        preview: DocsPreviewsAspect.aspectRatioSquareExamplePreview(
+          model.aspectRatioSquareExample,
+          "shadcn-aspect-ratio-docs-square-preview"
+        ),
+        href: "/docs/components/shadcn-aspect-ratio/examples/square",
+        linkText: "Open standalone shadcn Aspect Ratio Square example",
+      })
+    ),
+    M.when("breadcrumb-basic", () =>
+      docsExampleBlock({
+        title: "Basic",
+        testId: "docs-example-block-breadcrumb-basic",
+        preview: DocsPreviewsB.breadcrumbBasicExamplePreview(
+          model.breadcrumbBasicExample,
+          "shadcn-breadcrumb-docs-basic-preview"
+        ),
+        href: "/docs/components/shadcn-breadcrumb/examples/basic",
+        linkText: "Open standalone shadcn Breadcrumb Basic example",
+      })
+    ),
+    M.when("breadcrumb-collapsed", () =>
+      docsExampleBlock({
+        title: "Collapsed",
+        testId: "docs-example-block-breadcrumb-collapsed",
+        preview: DocsPreviewsB.breadcrumbCollapsedExamplePreview(
+          model.breadcrumbCollapsedExample,
+          "shadcn-breadcrumb-docs-collapsed-preview"
+        ),
+        href: "/docs/components/shadcn-breadcrumb/examples/collapsed",
+        linkText: "Open standalone shadcn Breadcrumb Collapsed example",
+      })
+    ),
+    M.when("breadcrumb-dropdown", () =>
+      docsExampleBlock({
+        title: "Dropdown",
+        testId: "docs-example-block-breadcrumb-dropdown",
+        preview: DocsPreviewsB.breadcrumbDropdownExamplePreview(
+          model.breadcrumbDropdownExample,
+          "shadcn-breadcrumb-docs-dropdown-preview"
+        ),
+        href: "/docs/components/shadcn-breadcrumb/examples/dropdown",
+        linkText: "Open standalone shadcn Breadcrumb Dropdown example",
+      })
+    ),
+    M.when("breadcrumb-link", () =>
+      docsExampleBlock({
+        title: "Link component",
+        testId: "docs-example-block-breadcrumb-link",
+        preview: DocsPreviewsB.breadcrumbLinkExamplePreview(
+          model.breadcrumbLinkExample,
+          "shadcn-breadcrumb-docs-link-preview"
+        ),
+        href: "/docs/components/shadcn-breadcrumb/examples/link",
+        linkText: "Open standalone shadcn Breadcrumb Link example",
+      })
+    ),
+    M.when("breadcrumb-rtl", () =>
+      docsExampleBlock({
+        title: "RTL",
+        testId: "docs-example-block-breadcrumb-rtl",
+        preview: DocsPreviewsB.breadcrumbRtlExamplePreview(
+          model.breadcrumbRtlExample,
+          "shadcn-breadcrumb-docs-rtl-preview"
+        ),
+        href: "/docs/components/shadcn-breadcrumb/examples/rtl",
+        linkText: "Open standalone shadcn Breadcrumb RTL example",
+      })
+    ),
+    M.when("breadcrumb-separator", () =>
+      docsExampleBlock({
+        title: "Custom separator",
+        testId: "docs-example-block-breadcrumb-separator",
+        preview: DocsPreviewsB.breadcrumbSeparatorExamplePreview(
+          model.breadcrumbSeparatorExample,
+          "shadcn-breadcrumb-docs-separator-preview"
+        ),
+        href: "/docs/components/shadcn-breadcrumb/examples/separator",
+        linkText: "Open standalone shadcn Breadcrumb Separator example",
+      })
+    ),
     M.when("shadcn-checkbox-basic", () =>
       docsExampleBlock({
         title: "Basic",
@@ -17185,11 +17341,13 @@ Accordion.rootView<Message>({
       AccordionMultipleExample: () =>
         DocsRoutes.accordionMultipleExampleRouteView(model),
       AlertDocs: () => alertDocsView(model),
+      ShadcnAlertDocs: () => alertDocsView(model),
       AlertBasicExample: () => DocsRoutes.alertBasicExampleRouteView(model),
       AlertActionExample: () => DocsRoutes.alertActionExampleRouteView(model),
       AlertDestructiveExample: () =>
         DocsRoutes.alertDestructiveExampleRouteView(model),
       AspectRatioDocs: () => aspectRatioDocsView(model),
+      ShadcnAspectRatioDocs: () => aspectRatioDocsView(model),
       AspectRatioBasicExample: () =>
         DocsRoutes.aspectRatioBasicExampleRouteView(model),
       AspectRatioSquareExample: () =>
@@ -17199,6 +17357,7 @@ Accordion.rootView<Message>({
       AspectRatioRtlExample: () =>
         DocsRoutes.aspectRatioRtlExampleRouteView(model),
       BreadcrumbDocs: () => breadcrumbDocsView(model),
+      ShadcnBreadcrumbDocs: () => breadcrumbDocsView(model),
       BreadcrumbBasicExample: () =>
         DocsRoutes.breadcrumbBasicExampleRouteView(model),
       BreadcrumbSeparatorExample: () =>

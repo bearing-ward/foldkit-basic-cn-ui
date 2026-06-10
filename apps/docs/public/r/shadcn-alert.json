@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "alert",
+  "name": "shadcn-alert",
   "type": "registry:ui",
   "title": "Alert",
   "description": "A shadcn-style alert component for inline status, notices, and destructive messages.",

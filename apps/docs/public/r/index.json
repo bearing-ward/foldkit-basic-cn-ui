@@ -4,40 +4,6 @@
   "homepage": "https://bearing-ward.github.io/foldkit-basic-cn-ui",
   "items": [
     {
-      "name": "alert",
-      "type": "registry:ui",
-      "title": "Alert",
-      "description": "A shadcn-style alert component for inline status, notices, and destructive messages.",
-      "dependencies": ["effect", "foldkit"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/default/ui/alert/index.ts",
-          "target": "src/ui/alert/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/alert/view.ts",
-          "target": "src/ui/alert/view.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/alert/alert.scene.test.ts",
-          "target": "src/ui/alert/alert.scene.test.ts",
-          "type": "registry:ui"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "Alert",
-          "origin": "https://ui.shadcn.com/docs/components/radix/alert",
-          "artifact": "component",
-          "stateful": false
-        }
-      }
-    },
-    {
       "name": "animation",
       "type": "registry:ui",
       "title": "Animation",
@@ -69,40 +35,6 @@
           "stateful": true,
           "origin": "https://foldkit.dev/ui/animation",
           "artifact": "primitive-backed-component"
-        }
-      }
-    },
-    {
-      "name": "aspect-ratio",
-      "type": "registry:ui",
-      "title": "Aspect Ratio",
-      "description": "A shadcn-style layout component for reserving a fixed width-to-height ratio around caller-owned media or content.",
-      "dependencies": ["effect", "foldkit"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/default/ui/aspect-ratio/index.ts",
-          "target": "src/ui/aspect-ratio/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/aspect-ratio/view.ts",
-          "target": "src/ui/aspect-ratio/view.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/aspect-ratio/aspect-ratio.scene.test.ts",
-          "target": "src/ui/aspect-ratio/aspect-ratio.scene.test.ts",
-          "type": "registry:ui"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "AspectRatio",
-          "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
-          "artifact": "component",
-          "stateful": false
         }
       }
     },
@@ -1409,40 +1341,6 @@
       }
     },
     {
-      "name": "breadcrumb",
-      "type": "registry:ui",
-      "title": "Breadcrumb",
-      "description": "A shadcn-style breadcrumb component for displaying the path to the current resource using a hierarchy of links.",
-      "dependencies": ["effect", "foldkit"],
-      "devDependencies": ["vitest"],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/default/ui/breadcrumb/index.ts",
-          "target": "src/ui/breadcrumb/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/breadcrumb/view.ts",
-          "target": "src/ui/breadcrumb/view.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/breadcrumb/breadcrumb.scene.test.ts",
-          "target": "src/ui/breadcrumb/breadcrumb.scene.test.ts",
-          "type": "registry:ui"
-        }
-      ],
-      "meta": {
-        "foldkit": {
-          "component": "Breadcrumb",
-          "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
-          "artifact": "component",
-          "stateful": false
-        }
-      }
-    },
-    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -2673,6 +2571,40 @@
       }
     },
     {
+      "name": "shadcn-alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A shadcn-style alert component for inline status, notices, and destructive messages.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/alert/index.ts",
+          "target": "src/ui/alert/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/alert/view.ts",
+          "target": "src/ui/alert/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/alert/alert.scene.test.ts",
+          "target": "src/ui/alert/alert.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Alert",
+          "origin": "https://ui.shadcn.com/docs/components/radix/alert",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
       "name": "shadcn-alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
@@ -2700,6 +2632,40 @@
       "meta": {
         "foldkit": {
           "origin": "https://ui.shadcn.com/docs/components/radix/alert-dialog",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "A shadcn-style layout component for reserving a fixed width-to-height ratio around caller-owned media or content.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/aspect-ratio/index.ts",
+          "target": "src/ui/aspect-ratio/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/aspect-ratio/view.ts",
+          "target": "src/ui/aspect-ratio/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/aspect-ratio/aspect-ratio.scene.test.ts",
+          "target": "src/ui/aspect-ratio/aspect-ratio.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AspectRatio",
+          "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
           "artifact": "component",
           "stateful": false
         }
@@ -2767,6 +2733,40 @@
         "foldkit": {
           "component": "Accordion",
           "origin": "https://ui.shadcn.com/docs/components/base/accordion",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "shadcn-breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "A shadcn-style breadcrumb component for displaying the path to the current resource using a hierarchy of links.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/default/ui/breadcrumb/index.ts",
+          "target": "src/ui/breadcrumb/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/breadcrumb/view.ts",
+          "target": "src/ui/breadcrumb/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/default/ui/breadcrumb/breadcrumb.scene.test.ts",
+          "target": "src/ui/breadcrumb/breadcrumb.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Breadcrumb",
+          "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
           "artifact": "component",
           "stateful": false
         }
@@ -4247,7 +4247,7 @@
       "description": "A runnable Foldkit version of the shadcn Alert action example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/alert"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert"],
       "files": [
         {
           "path": "registry/default/examples/alert-action/main.ts",
@@ -4286,7 +4286,7 @@
       "description": "A runnable Foldkit version of the shadcn Alert default example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/alert"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert"],
       "files": [
         {
           "path": "registry/default/examples/alert-basic/main.ts",
@@ -4325,7 +4325,7 @@
       "description": "A runnable Foldkit version of the shadcn Alert destructive example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/alert"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert"],
       "files": [
         {
           "path": "registry/default/examples/alert-destructive/main.ts",
@@ -4429,7 +4429,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio default 16:9 example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/shadcn-aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-basic/main.ts",
@@ -4468,7 +4468,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio portrait example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/shadcn-aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-portrait/main.ts",
@@ -4507,7 +4507,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio RTL example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/shadcn-aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-rtl/main.ts",
@@ -4546,7 +4546,7 @@
       "description": "A runnable Foldkit version of the shadcn Aspect Ratio square example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/aspect-ratio"],
+      "registryDependencies": ["@foldkit-cn/shadcn-aspect-ratio"],
       "files": [
         {
           "path": "registry/default/examples/aspect-ratio-square/main.ts",
@@ -6522,7 +6522,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Basic example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-basic/main.ts",
@@ -6561,7 +6561,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Collapsed example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-collapsed/main.ts",
@@ -6600,7 +6600,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Dropdown example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-dropdown/main.ts",
@@ -6639,7 +6639,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Link example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-link/main.ts",
@@ -6678,7 +6678,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb RTL example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-rtl/main.ts",
@@ -6717,7 +6717,7 @@
       "description": "A runnable Foldkit version of the shadcn Breadcrumb Separator example.",
       "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
-      "registryDependencies": ["@foldkit-cn/breadcrumb"],
+      "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
       "files": [
         {
           "path": "registry/default/examples/breadcrumb-separator/main.ts",

@@ -57,12 +57,11 @@ batches. Compatibility aliases are not required.
 Highest-value first batches:
 
 - Base UI interactive primitives: done.
-- shadcn presentation and layout entries: `alert`, `aspect-ratio`,
-  `breadcrumb`, `button-group`, `card`, `carousel`, `chart`, `data-table`,
-  `direction`, `dropdown-menu`, `empty`, `hover-card`, `input-group`,
-  `input-otp`, `item`, `kbd`, `label`, `native-select`, `pagination`,
-  `resizable`, `sheet`, `sidebar`, `skeleton`, `sonner`, `spinner`, `table`,
-  and `typography`.
+- shadcn presentation and layout entries: `button-group`, `card`, `carousel`,
+  `chart`, `data-table`, `direction`, `dropdown-menu`, `empty`,
+  `hover-card`, `input-group`, `input-otp`, `item`, `kbd`, `label`,
+  `native-select`, `pagination`, `resizable`, `sheet`, `sidebar`,
+  `skeleton`, `sonner`, `spinner`, `table`, and `typography`.
 
 ### P2: Docs Depth For Bespoke Pages
 
@@ -188,7 +187,10 @@ Next recommended slice:
 - Removed unprefixed Base UI aliases: `toggle-group` and `toolbar`. Their
   installable dependents now point at `base-ui-toggle-group` and
   `base-ui-toolbar`.
-- Next shadcn presentation/layout batch: `shadcn-alert`,
+- Promoted shadcn presentation/layout entries: `alert`, `aspect-ratio`, and
+  `breadcrumb`. Their installable dependents now point at `shadcn-alert`,
   `shadcn-aspect-ratio`, and `shadcn-breadcrumb`.
+- Next shadcn presentation/layout batch: `shadcn-button-group`, `shadcn-card`,
+  and `shadcn-carousel`.
 - Continue side-by-side origin visual signoff from
   `docs/product/origin-content-parity-review.md`.

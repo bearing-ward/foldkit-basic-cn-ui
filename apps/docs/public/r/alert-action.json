@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the shadcn Alert action example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/alert"],
+  "registryDependencies": ["@foldkit-cn/shadcn-alert"],
   "files": [
     {
       "path": "registry/default/examples/alert-action/main.ts",

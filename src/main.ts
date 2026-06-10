@@ -281,15 +281,18 @@ export const BaseUiAccordionMultipleExampleRoute = r(
 export const AccordionBasicExampleRoute = r("AccordionBasicExample");
 export const AccordionMultipleExampleRoute = r("AccordionMultipleExample");
 export const AlertDocsRoute = r("AlertDocs");
+export const ShadcnAlertDocsRoute = r("ShadcnAlertDocs");
 export const AlertBasicExampleRoute = r("AlertBasicExample");
 export const AlertActionExampleRoute = r("AlertActionExample");
 export const AlertDestructiveExampleRoute = r("AlertDestructiveExample");
 export const AspectRatioDocsRoute = r("AspectRatioDocs");
+export const ShadcnAspectRatioDocsRoute = r("ShadcnAspectRatioDocs");
 export const AspectRatioBasicExampleRoute = r("AspectRatioBasicExample");
 export const AspectRatioSquareExampleRoute = r("AspectRatioSquareExample");
 export const AspectRatioPortraitExampleRoute = r("AspectRatioPortraitExample");
 export const AspectRatioRtlExampleRoute = r("AspectRatioRtlExample");
 export const BreadcrumbDocsRoute = r("BreadcrumbDocs");
+export const ShadcnBreadcrumbDocsRoute = r("ShadcnBreadcrumbDocs");
 export const BreadcrumbBasicExampleRoute = r("BreadcrumbBasicExample");
 export const BreadcrumbSeparatorExampleRoute = r("BreadcrumbSeparatorExample");
 export const BreadcrumbDropdownExampleRoute = r("BreadcrumbDropdownExample");
@@ -752,15 +755,18 @@ const AppRoute = S.Union([
   AccordionBasicExampleRoute,
   AccordionMultipleExampleRoute,
   AlertDocsRoute,
+  ShadcnAlertDocsRoute,
   AlertBasicExampleRoute,
   AlertActionExampleRoute,
   AlertDestructiveExampleRoute,
   AspectRatioDocsRoute,
+  ShadcnAspectRatioDocsRoute,
   AspectRatioBasicExampleRoute,
   AspectRatioSquareExampleRoute,
   AspectRatioPortraitExampleRoute,
   AspectRatioRtlExampleRoute,
   BreadcrumbDocsRoute,
+  ShadcnBreadcrumbDocsRoute,
   BreadcrumbBasicExampleRoute,
   BreadcrumbSeparatorExampleRoute,
   BreadcrumbDropdownExampleRoute,
@@ -1150,6 +1156,12 @@ export const alertDocsRouter = pipe(
   slash(literal("alert")),
   Route.mapTo(AlertDocsRoute)
 );
+export const shadcnAlertDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-alert")),
+  Route.mapTo(ShadcnAlertDocsRoute)
+);
 export const alertBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -1194,6 +1206,12 @@ export const aspectRatioDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("aspect-ratio")),
   Route.mapTo(AspectRatioDocsRoute)
+);
+export const shadcnAspectRatioDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-aspect-ratio")),
+  Route.mapTo(ShadcnAspectRatioDocsRoute)
 );
 export const aspectRatioBasicExampleRouter = pipe(
   literal("docs"),
@@ -1252,6 +1270,12 @@ export const breadcrumbDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("breadcrumb")),
   Route.mapTo(BreadcrumbDocsRoute)
+);
+export const shadcnBreadcrumbDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-breadcrumb")),
+  Route.mapTo(ShadcnBreadcrumbDocsRoute)
 );
 export const breadcrumbBasicExampleRouter = pipe(
   literal("docs"),
@@ -5389,6 +5413,7 @@ const routeParser = Route.oneOf(
   alertDestructiveExampleRouter,
   alertDestructiveStandaloneExampleRouter,
   alertDocsRouter,
+  shadcnAlertDocsRouter,
   aspectRatioBasicExampleRouter,
   aspectRatioBasicStandaloneExampleRouter,
   aspectRatioSquareExampleRouter,
@@ -5398,6 +5423,7 @@ const routeParser = Route.oneOf(
   aspectRatioRtlExampleRouter,
   aspectRatioRtlStandaloneExampleRouter,
   aspectRatioDocsRouter,
+  shadcnAspectRatioDocsRouter,
   breadcrumbBasicExampleRouter,
   breadcrumbBasicStandaloneExampleRouter,
   breadcrumbSeparatorExampleRouter,
@@ -5411,6 +5437,7 @@ const routeParser = Route.oneOf(
   breadcrumbRtlExampleRouter,
   breadcrumbRtlStandaloneExampleRouter,
   breadcrumbDocsRouter,
+  shadcnBreadcrumbDocsRouter,
   buttonGroupBasicExampleRouter,
   buttonGroupBasicStandaloneExampleRouter,
   buttonGroupOrientationExampleRouter,

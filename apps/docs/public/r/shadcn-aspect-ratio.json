@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "aspect-ratio",
+  "name": "shadcn-aspect-ratio",
   "type": "registry:ui",
   "title": "Aspect Ratio",
   "description": "A shadcn-style layout component for reserving a fixed width-to-height ratio around caller-owned media or content.",

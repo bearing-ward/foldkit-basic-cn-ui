@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "breadcrumb",
+  "name": "shadcn-breadcrumb",
   "type": "registry:ui",
   "title": "Breadcrumb",
   "description": "A shadcn-style breadcrumb component for displaying the path to the current resource using a hierarchy of links.",
