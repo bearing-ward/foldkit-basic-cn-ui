@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed drawer component for controlled side panels.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/drawer"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-drawer/index.ts",

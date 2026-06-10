@@ -6,7 +6,7 @@
   "description": "shadcn style-lane drawer wrapper backed by the existing Drawer component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/drawer"],
+  "registryDependencies": ["@foldkit-cn/base-ui-drawer"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-drawer/index.ts",

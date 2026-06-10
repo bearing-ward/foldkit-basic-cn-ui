@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Form default Homepage example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/form"],
+  "registryDependencies": ["@foldkit-cn/base-ui-form"],
   "files": [
     {
       "path": "registry/default/examples/form-basic/main.ts",

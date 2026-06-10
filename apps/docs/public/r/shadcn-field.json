@@ -6,7 +6,7 @@
   "description": "shadcn style-lane field wrapper backed by the existing Field component.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/field"],
+  "registryDependencies": ["@foldkit-cn/base-ui-field"],
   "files": [
     {
       "path": "registry/default/ui/shadcn-field/index.ts",

@@ -561,7 +561,7 @@
     "description": "A Base UI Base UI-informed drawer component for controlled side panels.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["drawer"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-drawer/index.ts",
@@ -596,7 +596,7 @@
     "description": "A Base UI Base UI-informed field component for labeling, descriptions, validation errors, and form control state.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["field"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-field/index.ts",
@@ -666,7 +666,7 @@
     "description": "A Base UI Base UI-informed form component for native submission, labelled controls, and parent-owned error state.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["form"],
+    "registryDependencies": [],
     "files": [
       {
         "path": "registry/default/ui/base-ui-form/index.ts",
@@ -2019,42 +2019,6 @@
     }
   },
   {
-    "name": "drawer",
-    "type": "registry:ui",
-    "title": "Drawer",
-    "description": "A Base UI-informed drawer component for controlled side panels.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/drawer/index.ts",
-        "target": "src/ui/drawer/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/drawer/view.ts",
-        "target": "src/ui/drawer/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/drawer/drawer.scene.test.ts",
-        "target": "src/ui/drawer/drawer.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Drawer",
-        "origin": "https://base-ui.com/react/components/drawer",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-drawer"
-      }
-    }
-  },
-  {
     "name": "dropdown-menu",
     "type": "registry:ui",
     "title": "Dropdown Menu",
@@ -2119,42 +2083,6 @@
         "origin": "https://ui.shadcn.com/docs/components/radix/empty",
         "artifact": "component",
         "stateful": false
-      }
-    }
-  },
-  {
-    "name": "field",
-    "type": "registry:ui",
-    "title": "Field",
-    "description": "A Base UI-informed field component for labeling, descriptions, validation errors, and form control state.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/field/index.ts",
-        "target": "src/ui/field/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/field/view.ts",
-        "target": "src/ui/field/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/field/field.scene.test.ts",
-        "target": "src/ui/field/field.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Field",
-        "origin": "https://base-ui.com/react/components/field",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-field"
       }
     }
   },
@@ -2225,42 +2153,6 @@
         "stateful": true,
         "origin": "https://foldkit.dev/ui/file-drop",
         "artifact": "primitive-backed-component"
-      }
-    }
-  },
-  {
-    "name": "form",
-    "type": "registry:ui",
-    "title": "Form",
-    "description": "A Base UI-informed form component for native submission, labelled controls, and parent-owned error state.",
-    "dependencies": ["effect", "foldkit"],
-    "devDependencies": ["vitest"],
-    "registryDependencies": [],
-    "files": [
-      {
-        "path": "registry/default/ui/form/index.ts",
-        "target": "src/ui/form/index.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/form/view.ts",
-        "target": "src/ui/form/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "registry/default/ui/form/form.scene.test.ts",
-        "target": "src/ui/form/form.scene.test.ts",
-        "type": "registry:ui"
-      }
-    ],
-    "meta": {
-      "foldkit": {
-        "component": "Form",
-        "origin": "https://base-ui.com/react/components/form",
-        "artifact": "component",
-        "stateful": true,
-        "public": false,
-        "publicAliasOf": "base-ui-form"
       }
     }
   },
@@ -3565,7 +3457,7 @@
     "description": "shadcn style-lane drawer wrapper backed by the existing Drawer component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["drawer"],
+    "registryDependencies": ["base-ui-drawer"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-drawer/index.ts",
@@ -3598,7 +3490,7 @@
     "description": "shadcn style-lane field wrapper backed by the existing Field component.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["field"],
+    "registryDependencies": ["base-ui-field"],
     "files": [
       {
         "path": "registry/default/ui/shadcn-field/index.ts",
@@ -8951,7 +8843,7 @@
     "description": "A runnable Foldkit version of the Base UI Drawer default side panel example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["drawer"],
+    "registryDependencies": ["base-ui-drawer"],
     "files": [
       {
         "path": "registry/default/examples/drawer-basic/main.ts",
@@ -9074,7 +8966,7 @@
     "description": "A runnable Foldkit version of the Base UI Field default Name example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["field"],
+    "registryDependencies": ["base-ui-field"],
     "files": [
       {
         "path": "registry/default/examples/field-basic/main.ts",
@@ -9220,7 +9112,7 @@
     "description": "A runnable Foldkit version of the Base UI Form default Homepage example.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
-    "registryDependencies": ["form"],
+    "registryDependencies": ["base-ui-form"],
     "files": [
       {
         "path": "registry/default/examples/form-basic/main.ts",

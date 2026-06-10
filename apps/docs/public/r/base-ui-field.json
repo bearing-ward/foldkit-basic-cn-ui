@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed field component for labeling, descriptions, validation errors, and form control state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/field"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-field/index.ts",

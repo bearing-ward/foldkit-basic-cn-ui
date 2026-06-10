@@ -6,7 +6,7 @@
   "description": "A Base UI Base UI-informed form component for native submission, labelled controls, and parent-owned error state.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/form"],
+  "registryDependencies": [],
   "files": [
     {
       "path": "registry/default/ui/base-ui-form/index.ts",

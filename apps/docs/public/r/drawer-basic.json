@@ -6,7 +6,7 @@
   "description": "A runnable Foldkit version of the Base UI Drawer default side panel example.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
-  "registryDependencies": ["@foldkit-cn/drawer"],
+  "registryDependencies": ["@foldkit-cn/base-ui-drawer"],
   "files": [
     {
       "path": "registry/default/examples/drawer-basic/main.ts",
