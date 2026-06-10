@@ -1,6 +1,6 @@
-import { Array, Match as M, Schema as S } from "effect";
-import type { Command } from "foldkit";
-import { Submodel } from "foldkit";
+import { Array, Effect, Match as M, Schema as S } from "effect";
+import { Command, Submodel } from "foldkit";
+import * as Dom from "foldkit/dom";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
@@ -21,7 +21,8 @@ export const UpdatedInputOtpDigit = m("UpdatedInputOtpDigit", {
   index: S.Number,
   value: S.String,
 });
-export const Message = S.Union([UpdatedInputOtpDigit]);
+export const FocusedInputOtpDigit = m("FocusedInputOtpDigit");
+export const Message = S.Union([UpdatedInputOtpDigit, FocusedInputOtpDigit]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -36,6 +37,19 @@ export const init = (): readonly [
 const normalizeDigit = (value: string): string =>
   value.replaceAll(/\D/gu, "").slice(-1);
 
+const slotId = (index: number): string => `input-otp-digit-${index + 1}`;
+
+export const FocusInputOtpDigit = Command.define(
+  "FocusInputOtpDigit",
+  { index: S.Number },
+  FocusedInputOtpDigit
+)(({ index }) =>
+  Dom.focus(`#${slotId(index)}`).pipe(
+    Effect.ignore,
+    Effect.as(FocusedInputOtpDigit())
+  )
+);
+
 export const update = (
   model: Model,
   message: Message
@@ -43,15 +57,22 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      UpdatedInputOtpDigit: ({ index, value }) => [
-        evo(model, {
-          digits: (digits) =>
-            Array.map(digits, (digit, digitIndex) =>
-              digitIndex === index ? normalizeDigit(value) : digit
-            ),
-        }),
-        [],
-      ],
+      UpdatedInputOtpDigit: ({ index, value }) => {
+        const digitValue = normalizeDigit(value);
+
+        return [
+          evo(model, {
+            digits: (digits) =>
+              Array.map(digits, (digit, digitIndex) =>
+                digitIndex === index ? digitValue : digit
+              ),
+          }),
+          digitValue !== "" && index < model.digits.length - 1
+            ? [FocusInputOtpDigit({ index: index + 1 })]
+            : [],
+        ];
+      },
+      FocusedInputOtpDigit: () => [model, []],
     })
   );
 
@@ -59,6 +80,7 @@ export const update = (
 
 const slotView = (digit: string, index: number): Html =>
   InputOtp.slotView<Message>({
+    id: slotId(index),
     value: digit,
     ariaLabel: `Digit ${index + 1}`,
     onInput: (value) => UpdatedInputOtpDigit({ index, value }),
@@ -69,7 +91,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("space-y-3")],
+    [h.Class("flex justify-center")],
     [
       InputOtp.rootView<Message>({
         children: [
@@ -84,10 +106,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           }),
         ],
       }),
-      h.p(
-        [h.Class("text-sm text-gray-600")],
-        [`Code: ${model.digits.join("") || "empty"}`]
-      ),
     ]
   );
 });

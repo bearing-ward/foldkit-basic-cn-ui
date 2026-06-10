@@ -21,6 +21,7 @@ export type ViewConfig = Readonly<{
 }>;
 
 export type SlotViewConfig<ParentMessage> = Readonly<{
+  id?: string | undefined;
   value: string;
   ariaLabel: string;
   onInput: (value: string) => ParentMessage;
@@ -64,6 +65,7 @@ export const groupView = <ParentMessage>({
 };
 
 export const slotView = <ParentMessage>({
+  id,
   value,
   ariaLabel,
   onInput,
@@ -73,6 +75,7 @@ export const slotView = <ParentMessage>({
   const h = html<ParentMessage>();
 
   return h.input([
+    ...(id === undefined ? [] : [h.Id(id)]),
     h.Type("text"),
     h.Value(value),
     h.AriaLabel(ariaLabel),
@@ -80,6 +83,7 @@ export const slotView = <ParentMessage>({
     h.Attribute("inputmode", "numeric"),
     h.Attribute("maxlength", "1"),
     h.OnInput(onInput),
+    h.Attribute("pattern", "[0-9]*"),
     h.DataAttribute("slot", "input-otp-slot"),
     h.DataAttribute("active", active ? "true" : "false"),
     h.DataAttribute("filled", value === "" ? "false" : "true"),
@@ -96,6 +100,6 @@ export const separatorView = <ParentMessage>(): Html => {
       h.DataAttribute("slot", "input-otp-separator"),
       h.Class(inputOtpSeparatorClassName),
     ],
-    ["-"]
+    ["•"]
   );
 };
