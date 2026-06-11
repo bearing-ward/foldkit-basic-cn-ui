@@ -52,13 +52,79 @@ export const update = (
 
 // VIEW
 
-const cardView = (title: string, body: string): Html => {
+const components = [
+  {
+    title: "Alert Dialog",
+    href: "/docs/primitives/alert-dialog",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
+  },
+  {
+    title: "Hover Card",
+    href: "/docs/primitives/hover-card",
+    description:
+      "For sighted users to preview content available behind a link.",
+  },
+  {
+    title: "Progress",
+    href: "/docs/primitives/progress",
+    description:
+      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+  },
+  {
+    title: "Scroll-area",
+    href: "/docs/primitives/scroll-area",
+    description: "Visually or semantically separates content.",
+  },
+  {
+    title: "Tabs",
+    href: "/docs/primitives/tabs",
+    description:
+      "A set of layered sections of content-known as tab panels-that are displayed one at a time.",
+  },
+  {
+    title: "Tooltip",
+    href: "/docs/primitives/tooltip",
+    description:
+      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+  },
+] as const;
+
+const listItemView = (
+  title: string,
+  body: string,
+  href: string,
+  className?: string | undefined
+): Html => {
   const h = html<Message>();
 
-  return NavigationMenu.contentView<Message>({
+  return h.li(
+    className === undefined ? [] : [h.Class(className)],
+    [
+      NavigationMenu.linkView<Message>({
+        href,
+        className: "flex-col items-start",
+        children: [
+          h.div([h.Class("text-sm font-medium leading-none")], [title]),
+          h.p(
+            [h.Class("line-clamp-2 text-sm leading-snug text-gray-500")],
+            [body]
+          ),
+        ],
+      }),
+    ]
+  );
+};
+
+const iconListItemView = (label: string, icon: string): Html => {
+  const h = html<Message>();
+
+  return NavigationMenu.linkView<Message>({
+    href: "#",
+    className: "flex-row items-center justify-start gap-2",
     children: [
-      h.h3([h.Class("text-base font-semibold text-gray-950")], [title]),
-      h.p([h.Class("mt-1 text-sm leading-6 text-gray-600")], [body]),
+      h.span([h.AriaHidden(true), h.Class("text-gray-500")], [icon]),
+      h.span([], [label]),
     ],
   });
 };
@@ -87,57 +153,182 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   return NavigationMenu.rootView<Message>({
     children: [
       NavigationMenu.listView<Message>({
+        className: "flex-wrap",
         children: [
           NavigationMenu.itemView<Message>({
             children: [
               NavigationMenu.triggerView<Message>({
-                open: isOpen("Overview"),
-                onToggle: ToggledNavigationMenuItem({ value: "Overview" }),
-                children: [h.span([], ["Overview"])],
+                open: isOpen("Home"),
+                onToggle: ToggledNavigationMenuItem({ value: "Home" }),
+                children: [h.span([], ["Home"])],
               }),
             ],
           }),
           NavigationMenu.itemView<Message>({
             children: [
               NavigationMenu.triggerView<Message>({
-                open: isOpen("Handbook"),
-                onToggle: ToggledNavigationMenuItem({ value: "Handbook" }),
-                children: [h.span([], ["Handbook"])],
+                open: isOpen("Components"),
+                onToggle: ToggledNavigationMenuItem({ value: "Components" }),
+                children: [h.span([], ["Components"])],
               }),
             ],
           }),
           NavigationMenu.itemView<Message>({
             children: [
               NavigationMenu.linkView<Message>({
-                href: "https://github.com/",
-                children: [h.span([], ["GitHub"])],
+                href: "/docs",
+                children: [h.span([], ["Docs"])],
+              }),
+            ],
+          }),
+          NavigationMenu.itemView<Message>({
+            className: "hidden md:block",
+            children: [
+              NavigationMenu.triggerView<Message>({
+                open: isOpen("List"),
+                onToggle: ToggledNavigationMenuItem({ value: "List" }),
+                children: [h.span([], ["List"])],
+              }),
+            ],
+          }),
+          NavigationMenu.itemView<Message>({
+            className: "hidden md:block",
+            children: [
+              NavigationMenu.triggerView<Message>({
+                open: isOpen("Simple"),
+                onToggle: ToggledNavigationMenuItem({ value: "Simple" }),
+                children: [h.span([], ["Simple"])],
+              }),
+            ],
+          }),
+          NavigationMenu.itemView<Message>({
+            className: "hidden md:block",
+            children: [
+              NavigationMenu.triggerView<Message>({
+                open: isOpen("With Icon"),
+                onToggle: ToggledNavigationMenuItem({ value: "With Icon" }),
+                children: [h.span([], ["With Icon"])],
               }),
             ],
           }),
         ],
       }),
-      isOpen("Overview")
+      isOpen("Home")
         ? popupView([
-            cardView(
-              "Introduction",
-              "Start with the product overview and component principles."
-            ),
-            cardView(
-              "Installation",
-              "Install the registry package and copy the source into your app."
+            h.ul(
+              [
+                h.Class(
+                  "grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]"
+                ),
+              ],
+              [
+                h.li(
+                  [h.Class("row-span-3")],
+                  [
+                    NavigationMenu.linkView<Message>({
+                      href: "/",
+                      className:
+                        "flex h-full w-full flex-col items-start justify-end rounded-md bg-linear-to-b from-gray-50 to-gray-100 p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6",
+                      children: [
+                        h.div(
+                          [h.Class("mb-2 text-lg font-medium sm:mt-4")],
+                          ["shadcn/ui"]
+                        ),
+                        h.p(
+                          [h.Class("text-sm leading-tight text-gray-500")],
+                          [
+                            "Beautifully designed components built with Tailwind CSS.",
+                          ]
+                        ),
+                      ],
+                    }),
+                  ]
+                ),
+                listItemView(
+                  "Introduction",
+                  "Re-usable components built using Radix UI and Tailwind CSS.",
+                  "/docs"
+                ),
+                listItemView(
+                  "Installation",
+                  "How to install dependencies and structure your app.",
+                  "/docs/installation"
+                ),
+                listItemView(
+                  "Typography",
+                  "Styles for headings, paragraphs, lists...etc",
+                  "/docs/primitives/typography"
+                ),
+              ]
             ),
           ])
         : h.empty,
-      isOpen("Handbook")
+      isOpen("Components")
         ? popupView([
-            cardView(
-              "Components",
-              "Browse guidance for composing navigation and overlays."
+            h.ul(
+              [
+                h.Class(
+                  "grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]"
+                ),
+              ],
+              components.map((component) =>
+                listItemView(
+                  component.title,
+                  component.description,
+                  component.href
+                )
+              )
             ),
-            cardView(
-              "Patterns",
-              "Review accessibility, state, and styling conventions."
-            ),
+          ])
+        : h.empty,
+      isOpen("List")
+        ? popupView([
+            h.ul([h.Class("grid w-[300px] gap-4")], [
+              h.li([], [
+                listItemView(
+                  "Components",
+                  "Browse all components in the library.",
+                  "#"
+                ),
+                listItemView(
+                  "Documentation",
+                  "Learn how to use the library.",
+                  "#"
+                ),
+                listItemView("Blog", "Read our latest blog posts.", "#"),
+              ]),
+            ]),
+          ])
+        : h.empty,
+      isOpen("Simple")
+        ? popupView([
+            h.ul([h.Class("grid w-[200px] gap-4")], [
+              h.li([], [
+                NavigationMenu.linkView<Message>({
+                  href: "#",
+                  children: [h.span([], ["Components"])],
+                }),
+                NavigationMenu.linkView<Message>({
+                  href: "#",
+                  children: [h.span([], ["Documentation"])],
+                }),
+                NavigationMenu.linkView<Message>({
+                  href: "#",
+                  children: [h.span([], ["Blocks"])],
+                }),
+              ]),
+            ]),
+          ])
+        : h.empty,
+      isOpen("With Icon")
+        ? popupView([
+            h.ul([h.Class("grid w-[200px] gap-4")], [
+              h.li([], [
+                iconListItemView("Backlog", "?"),
+                iconListItemView("To Do", "○"),
+                iconListItemView("Done", "✓"),
+              ]),
+            ]),
           ])
         : h.empty,
     ],
