@@ -18,9 +18,9 @@ export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const UpdatedTheme = m("UpdatedTheme", { value: S.String });
+export const UpdatedFruit = m("UpdatedFruit", { value: S.String });
 
-export const Message = S.Union([UpdatedTheme]);
+export const Message = S.Union([UpdatedFruit]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -28,7 +28,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ value: "system" }, []];
+] => [{ value: "" }, []];
 
 // UPDATE
 
@@ -39,7 +39,7 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      UpdatedTheme: ({ value }) => [evo(model, { value: () => value }), []],
+      UpdatedFruit: ({ value }) => [evo(model, { value: () => value }), []],
     })
   );
 
@@ -49,48 +49,30 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("max-w-sm space-y-2")],
+    [h.Class("w-[180px]")],
     [
       Select.view<Message>({
-        id: "shadcn-theme-select",
+        id: "shadcn-fruit-select",
         value: model.value,
-        onChange: (value) => UpdatedTheme({ value }),
+        onChange: (value) => UpdatedFruit({ value }),
         toView: (attributes) =>
-          h.div(
-            [h.Class("space-y-2")],
-            [
-              h.label(attributes.label, ["Theme"]),
-              h.div(
-                [h.Class(Select.shadcnSelectWrapperClassName)],
-                [
-                  h.select(
-                    [
-                      ...attributes.select,
-                      h.Class(Select.shadcnSelectClassName),
-                    ],
-                    [
-                      h.option([h.Value("system")], ["System"]),
-                      h.option([h.Value("light")], ["Light"]),
-                      h.option([h.Value("dark")], ["Dark"]),
-                    ]
-                  ),
-                  h.span([h.Class(Select.shadcnSelectChevronClassName)], ["v"]),
-                ]
-              ),
-              h.p(
-                [
-                  ...attributes.description,
-                  h.Class(Select.shadcnSelectDescriptionClassName),
-                ],
-                ["Choose the preferred interface theme."]
-              ),
-            ]
-          ),
+          h.div([h.Class(Select.shadcnSelectWrapperClassName)], [
+            h.select(
+              [...attributes.select, h.Class(Select.shadcnSelectClassName)],
+              [
+                h.option([h.Value(""), h.Disabled(true)], [
+                  "Select a fruit",
+                ]),
+                h.option([h.Value("apple")], ["Apple"]),
+                h.option([h.Value("banana")], ["Banana"]),
+                h.option([h.Value("blueberry")], ["Blueberry"]),
+                h.option([h.Value("grapes")], ["Grapes"]),
+                h.option([h.Value("pineapple")], ["Pineapple"]),
+              ]
+            ),
+            h.span([h.Class(Select.shadcnSelectChevronClassName)], ["v"]),
+          ]),
       }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Selected theme: ${model.value}`]
-      ),
     ]
   );
 });
