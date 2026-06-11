@@ -202,6 +202,36 @@ test("Slider, Tabs, and Disclosure docs examples respond to input", async ({
   await expect(rating).toHaveAttribute("aria-valuenow", "8");
   await expect(sliderBasic.getByText("Rating: 8 of 10")).toBeVisible();
 
+  await page.goto("/docs/components/shadcn-slider");
+
+  const shadcnSliderBasic = page.getByTestId(
+    "docs-example-block-shadcn-slider-basic"
+  );
+  const volume = shadcnSliderBasic.getByRole("slider", { name: "Volume" });
+
+  await expect(volume).toHaveAttribute("aria-valuenow", "40");
+  await volume.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(volume).toHaveAttribute("aria-valuenow", "45");
+  await expect(shadcnSliderBasic.getByText("Volume: 45%")).toBeVisible();
+
+  const shadcnTrack = shadcnSliderBasic.locator(
+    '[data-slider-track-id="shadcn-slider-basic"]'
+  );
+  const shadcnTrackBox = await shadcnTrack.boundingBox();
+
+  expect(shadcnTrackBox).not.toBeNull();
+
+  if (shadcnTrackBox !== null) {
+    await page.mouse.click(
+      shadcnTrackBox.x + shadcnTrackBox.width * 0.8,
+      shadcnTrackBox.y + shadcnTrackBox.height / 2
+    );
+  }
+
+  await expect(volume).toHaveAttribute("aria-valuenow", "80");
+  await expect(shadcnSliderBasic.getByText("Volume: 80%")).toBeVisible();
+
   await page.goto("/docs/components/tabs");
 
   const tabsBasic = page.getByTestId("docs-example-block-tabs-basic");
