@@ -20,6 +20,10 @@ import * as ShadcnDrawerScrollableContentExample from "../registry/default/examp
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnNavigationMenuBasicExample from "../registry/default/examples/shadcn-navigation-menu-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
@@ -317,6 +321,66 @@ export const shadcnInputBasicExamplePreview = (
     view: ShadcnInputBasicExample.view,
     toParentMessage: (message) =>
       Main.GotShadcnInputBasicExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputDisabledExamplePreview = (
+  model: ShadcnInputDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputDisabledExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputDisabledExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputInvalidExamplePreview = (
+  model: ShadcnInputInvalidExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputInvalidExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputInvalidExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputFileExamplePreview = (
+  model: ShadcnInputFileExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputFileExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputFileExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputRtlExamplePreview = (
+  model: ShadcnInputRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputRtlExampleMessage({ message }),
   });
 };
 

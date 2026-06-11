@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-input-rtl",
+  "type": "registry:example",
+  "title": "shadcn Input RTL",
+  "description": "A runnable Foldkit example showing the shadcn Input RTL pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-input"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-input-rtl/main.ts",
+      "target": "src/examples/shadcn-input-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Input from \"../../ui/shadcn-input\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  email: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedEmail = m(\"UpdatedEmail\", { value: S.String });\n\nexport const Message = S.Union([UpdatedEmail]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ email: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedEmail: ({ value }) => [evo(model, { email: () => value }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Dir(\"rtl\"), h.Class(\"w-full max-w-sm\")],\n    [\n      Input.view<Message>({\n        id: \"email-rtl\",\n        value: model.email,\n        placeholder: \"البريد الإلكتروني\",\n        onInput: (value) => UpdatedEmail({ value }),\n        toView: (attributes) =>\n          h.input([\n            ...attributes.input,\n            h.Type(\"email\"),\n            h.AriaLabel(\"البريد الإلكتروني\"),\n            h.Class(Input.shadcnInputClassName),\n          ]),\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-input-rtl/shadcn-input-rtl.scene.test.ts",
+      "target": "src/examples/shadcn-input-rtl/shadcn-input-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnInputRtlExample from \"./main\";\n\ndescribe(\"Shadcn Input RTL example\", () => {\n  test(\"renders and updates email input in RTL context\", () => {\n    Scene.scene(\n      {\n        update: ShadcnInputRtlExample.update,\n        view: ShadcnInputRtlExample.view,\n      },\n      Scene.with(ShadcnInputRtlExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"textbox\", { name: \"البريد الإلكتروني\" })\n      ).toHaveAttr(\"placeholder\", \"البريد الإلكتروني\"),\n      Scene.type(\n        Scene.role(\"textbox\", { name: \"البريد الإلكتروني\" }),\n        \"m@example.com\"\n      ),\n      Scene.expect(\n        Scene.role(\"textbox\", { name: \"البريد الإلكتروني\" })\n      ).toHaveAttr(\"value\", \"m@example.com\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Input",
+      "example": "rtl",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input#rtl"
+    }
+  }
+}

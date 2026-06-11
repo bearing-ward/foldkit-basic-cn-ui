@@ -11,16 +11,16 @@ import * as Input from "../../ui/shadcn-input";
 // MODEL
 
 export const Model = S.Struct({
-  value: S.String,
+  email: S.String,
 });
 
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const UpdatedName = m("UpdatedName", { value: S.String });
+export const UpdatedEmail = m("UpdatedEmail", { value: S.String });
 
-export const Message = S.Union([UpdatedName]);
+export const Message = S.Union([UpdatedEmail]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -28,7 +28,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ value: "" }, []];
+] => [{ email: "" }, []];
 
 // UPDATE
 
@@ -39,7 +39,7 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      UpdatedName: ({ value }) => [evo(model, { value: () => value }), []],
+      UpdatedEmail: ({ value }) => [evo(model, { email: () => value }), []],
     })
   );
 
@@ -48,40 +48,17 @@ export const update = (
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class("space-y-3")],
-    [
-      Input.view<Message>({
-        id: "name-input",
-        value: model.value,
-        placeholder: "Enter your full name",
-        onInput: (value) => UpdatedName({ value }),
-        toView: (attributes) =>
-          h.div(
-            [h.Class(Input.shadcnInputFieldClassName)],
-            [
-              h.label(
-                [...attributes.label, h.Class(Input.shadcnInputLabelClassName)],
-                ["Name"]
-              ),
-              h.input([
-                ...attributes.input,
-                h.Class(Input.shadcnInputClassName),
-              ]),
-              h.p(
-                [
-                  ...attributes.description,
-                  h.Class(Input.shadcnInputDescriptionClassName),
-                ],
-                ["As it appears on your government-issued ID."]
-              ),
-            ]
-          ),
-      }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Current value: ${model.value === "" ? "empty" : model.value}`]
-      ),
-    ]
-  );
+  return Input.view<Message>({
+    id: "email",
+    value: model.email,
+    placeholder: "Email",
+    onInput: (value) => UpdatedEmail({ value }),
+    toView: (attributes) =>
+      h.input([
+        ...attributes.input,
+        h.Type("email"),
+        h.AriaLabel("Email"),
+        h.Class(Input.shadcnInputClassName),
+      ]),
+  });
 });

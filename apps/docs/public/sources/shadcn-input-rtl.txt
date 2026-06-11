@@ -48,17 +48,22 @@ export const update = (
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  return Input.view<Message>({
-    id: "email",
-    value: model.email,
-    placeholder: "Email",
-    onInput: (value) => UpdatedEmail({ value }),
-    toView: (attributes) =>
-      h.input([
-        ...attributes.input,
-        h.Type("email"),
-        h.AriaLabel("Email"),
-        h.Class(Input.shadcnInputClassName),
-      ]),
-  });
+  return h.div(
+    [h.Dir("rtl"), h.Class("w-full max-w-sm")],
+    [
+      Input.view<Message>({
+        id: "email-rtl",
+        value: model.email,
+        placeholder: "البريد الإلكتروني",
+        onInput: (value) => UpdatedEmail({ value }),
+        toView: (attributes) =>
+          h.input([
+            ...attributes.input,
+            h.Type("email"),
+            h.AriaLabel("البريد الإلكتروني"),
+            h.Class(Input.shadcnInputClassName),
+          ]),
+      }),
+    ]
+  );
 });

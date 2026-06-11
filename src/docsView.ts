@@ -1666,6 +1666,12 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-menubar-basic.txt",
   "/docs/components/shadcn-input/examples/basic":
     "sources/shadcn-input-basic.txt",
+  "/docs/components/shadcn-input/examples/disabled":
+    "sources/shadcn-input-disabled.txt",
+  "/docs/components/shadcn-input/examples/invalid":
+    "sources/shadcn-input-invalid.txt",
+  "/docs/components/shadcn-input/examples/file": "sources/shadcn-input-file.txt",
+  "/docs/components/shadcn-input/examples/rtl": "sources/shadcn-input-rtl.txt",
   "/docs/components/shadcn-field/examples/basic":
     "sources/shadcn-field-basic.txt",
   "/docs/components/shadcn-drawer/examples/basic":
@@ -13929,6 +13935,63 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "shadcn-input-disabled",
+        () =>
+          docsExampleBlock({
+            title: "Disabled",
+            testId: "docs-example-block-shadcn-input-disabled",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnInputDisabledExamplePreview(
+                model.shadcnInputDisabledExample,
+                "shadcn-input-docs-disabled-preview"
+              ),
+            href: "/docs/components/shadcn-input/examples/disabled",
+            linkText: "Open standalone shadcn Input Disabled example",
+          }),
+      ],
+      [
+        "shadcn-input-invalid",
+        () =>
+          docsExampleBlock({
+            title: "Invalid",
+            testId: "docs-example-block-shadcn-input-invalid",
+            preview: DocsPreviewsShadcnMissing.shadcnInputInvalidExamplePreview(
+              model.shadcnInputInvalidExample,
+              "shadcn-input-docs-invalid-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/invalid",
+            linkText: "Open standalone shadcn Input Invalid example",
+          }),
+      ],
+      [
+        "shadcn-input-file",
+        () =>
+          docsExampleBlock({
+            title: "File",
+            testId: "docs-example-block-shadcn-input-file",
+            preview: DocsPreviewsShadcnMissing.shadcnInputFileExamplePreview(
+              model.shadcnInputFileExample,
+              "shadcn-input-docs-file-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/file",
+            linkText: "Open standalone shadcn Input File example",
+          }),
+      ],
+      [
+        "shadcn-input-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-input-rtl",
+            preview: DocsPreviewsShadcnMissing.shadcnInputRtlExamplePreview(
+              model.shadcnInputRtlExample,
+              "shadcn-input-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/rtl",
+            linkText: "Open standalone shadcn Input RTL example",
+          }),
+      ],
+      [
         "shadcn-menubar-basic",
         () =>
           docsExampleBlock({
@@ -19603,7 +19666,13 @@ Input.view<Message>({
             "shadcnInputClassName",
             "shadcnInputDescriptionClassName",
           ],
-          examples: ["shadcn-input-basic"],
+          examples: [
+            "shadcn-input-basic",
+            "shadcn-input-disabled",
+            "shadcn-input-invalid",
+            "shadcn-input-file",
+            "shadcn-input-rtl",
+          ],
           anatomyCode: `import * as Input from "./ui/shadcn-input";
 
 Input.view<Message>({
@@ -19615,6 +19684,16 @@ Input.view<Message>({
       InputBasicExample: () => DocsRoutes.inputBasicExampleRouteView(model),
       InputDisabledExample: () =>
         DocsRoutes.inputDisabledExampleRouteView(model),
+      ShadcnInputBasicExample: () =>
+        DocsRoutes.shadcnInputBasicExampleRouteView(model),
+      ShadcnInputDisabledExample: () =>
+        DocsRoutes.shadcnInputDisabledExampleRouteView(model),
+      ShadcnInputInvalidExample: () =>
+        DocsRoutes.shadcnInputInvalidExampleRouteView(model),
+      ShadcnInputFileExample: () =>
+        DocsRoutes.shadcnInputFileExampleRouteView(model),
+      ShadcnInputRtlExample: () =>
+        DocsRoutes.shadcnInputRtlExampleRouteView(model),
       Meter: () => embedUi("ui-meter", View.meter),
       MeterDocs: () => meterDocsView(model),
       BaseUiMeterDocs: () =>

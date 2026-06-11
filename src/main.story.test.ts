@@ -236,6 +236,10 @@ import * as ShadcnDrawerScrollableContentExample from "../registry/default/examp
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
@@ -537,6 +541,10 @@ const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
+const [shadcnInputDisabledExample] = ShadcnInputDisabledExample.init();
+const [shadcnInputInvalidExample] = ShadcnInputInvalidExample.init();
+const [shadcnInputFileExample] = ShadcnInputFileExample.init();
+const [shadcnInputRtlExample] = ShadcnInputRtlExample.init();
 const [shadcnContextMenuBasicExample] = ShadcnContextMenuBasicExample.init();
 const [shadcnDatePickerBasicExample] = ShadcnDatePickerBasicExample.init();
 const [shadcnDialogBasicExample] = ShadcnDialogBasicExample.init();
@@ -815,6 +823,10 @@ const initialModel: Model = {
   shadcnTabsBasicExample,
   tabsManualExample,
   shadcnInputBasicExample,
+  shadcnInputDisabledExample,
+  shadcnInputInvalidExample,
+  shadcnInputFileExample,
+  shadcnInputRtlExample,
   shadcnContextMenuBasicExample,
   shadcnDatePickerBasicExample,
   shadcnDialogBasicExample,
@@ -4221,6 +4233,21 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/shadcn-input resolves to ShadcnInputDocs", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/shadcn-input"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ShadcnInputDocs");
+        })
+      );
+    });
+
     test("/docs/components/fieldset resolves to BaseUiFieldsetDocs", () => {
       Story.story(
         update,
@@ -4607,6 +4634,33 @@ describe(update, () => {
         })
       );
     });
+
+    const shadcnInputExampleCases = [
+      ["basic", "ShadcnInputBasicExample"],
+      ["disabled", "ShadcnInputDisabledExample"],
+      ["invalid", "ShadcnInputInvalidExample"],
+      ["file", "ShadcnInputFileExample"],
+      ["rtl", "ShadcnInputRtlExample"],
+    ] as const;
+
+    for (const [example, routeTag] of shadcnInputExampleCases) {
+      test(`/docs/components/shadcn-input/examples/${example} resolves to ${routeTag}`, () => {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(
+            ChangedUrl({
+              url: urlOrThrow(
+                `http://localhost/docs/components/shadcn-input/examples/${example}`
+              ),
+            })
+          ),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(routeTag);
+          })
+        );
+      });
+    }
 
     test("/docs/components/input-group resolves to InputGroupDocs", () => {
       Story.story(
@@ -5788,6 +5842,23 @@ describe(update, () => {
         })
       );
     });
+
+    for (const [example, routeTag] of shadcnInputExampleCases) {
+      test(`/examples/shadcn-input-${example} resolves to ${routeTag}`, () => {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(
+            ChangedUrl({
+              url: urlOrThrow(`http://localhost/examples/shadcn-input-${example}`),
+            })
+          ),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(routeTag);
+          })
+        );
+      });
+    }
 
     test("/examples/calendar-basic resolves to CalendarBasicExample", () => {
       Story.story(

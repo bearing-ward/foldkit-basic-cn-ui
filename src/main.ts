@@ -240,6 +240,10 @@ import * as ShadcnDrawerScrollableContentExample from "../registry/default/examp
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
@@ -697,6 +701,13 @@ export const ShadcnInputDocsRoute = r("ShadcnInputDocs");
 export const BaseUiInputBasicExampleRoute = r("BaseUiInputBasicExample");
 export const InputBasicExampleRoute = r("InputBasicExample");
 export const InputDisabledExampleRoute = r("InputDisabledExample");
+export const ShadcnInputBasicExampleRoute = r("ShadcnInputBasicExample");
+export const ShadcnInputDisabledExampleRoute = r(
+  "ShadcnInputDisabledExample"
+);
+export const ShadcnInputInvalidExampleRoute = r("ShadcnInputInvalidExample");
+export const ShadcnInputFileExampleRoute = r("ShadcnInputFileExample");
+export const ShadcnInputRtlExampleRoute = r("ShadcnInputRtlExample");
 export const ListboxRoute = r("Listbox");
 export const ListboxDocsRoute = r("ListboxDocs");
 export const ListboxBasicExampleRoute = r("ListboxBasicExample");
@@ -1121,6 +1132,11 @@ const AppRoute = S.Union([
   BaseUiInputBasicExampleRoute,
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
+  ShadcnInputBasicExampleRoute,
+  ShadcnInputDisabledExampleRoute,
+  ShadcnInputInvalidExampleRoute,
+  ShadcnInputFileExampleRoute,
+  ShadcnInputRtlExampleRoute,
   ListboxRoute,
   ListboxDocsRoute,
   ListboxBasicExampleRoute,
@@ -4579,6 +4595,71 @@ export const inputDisabledStandaloneExampleRouter = pipe(
   slash(literal("input-disabled")),
   Route.mapTo(InputDisabledExampleRoute)
 );
+export const shadcnInputBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ShadcnInputBasicExampleRoute)
+);
+export const shadcnInputDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(ShadcnInputDisabledExampleRoute)
+);
+export const shadcnInputInvalidExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("invalid")),
+  Route.mapTo(ShadcnInputInvalidExampleRoute)
+);
+export const shadcnInputFileExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("file")),
+  Route.mapTo(ShadcnInputFileExampleRoute)
+);
+export const shadcnInputRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ShadcnInputRtlExampleRoute)
+);
+export const shadcnInputBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-basic")),
+  Route.mapTo(ShadcnInputBasicExampleRoute)
+);
+export const shadcnInputDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-disabled")),
+  Route.mapTo(ShadcnInputDisabledExampleRoute)
+);
+export const shadcnInputInvalidStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-invalid")),
+  Route.mapTo(ShadcnInputInvalidExampleRoute)
+);
+export const shadcnInputFileStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-file")),
+  Route.mapTo(ShadcnInputFileExampleRoute)
+);
+export const shadcnInputRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-rtl")),
+  Route.mapTo(ShadcnInputRtlExampleRoute)
+);
 export const listboxRouter = pipe(
   literal("listbox"),
   Route.mapTo(ListboxRoute)
@@ -5664,6 +5745,16 @@ const routeParser = Route.oneOf(
   baseUiInputBasicStandaloneExampleRouter,
   inputBasicStandaloneExampleRouter,
   inputDisabledStandaloneExampleRouter,
+  shadcnInputBasicExampleRouter,
+  shadcnInputDisabledExampleRouter,
+  shadcnInputInvalidExampleRouter,
+  shadcnInputFileExampleRouter,
+  shadcnInputRtlExampleRouter,
+  shadcnInputBasicStandaloneExampleRouter,
+  shadcnInputDisabledStandaloneExampleRouter,
+  shadcnInputInvalidStandaloneExampleRouter,
+  shadcnInputFileStandaloneExampleRouter,
+  shadcnInputRtlStandaloneExampleRouter,
   inputDocsRouter,
   baseUiInputDocsRouter,
   shadcnInputDocsRouter,
@@ -6291,6 +6382,10 @@ export const Model = S.Struct({
   shadcnTabsBasicExample: ShadcnTabsBasicExample.Model,
   tabsManualExample: TabsManualExample.Model,
   shadcnInputBasicExample: ShadcnInputBasicExample.Model,
+  shadcnInputDisabledExample: ShadcnInputDisabledExample.Model,
+  shadcnInputInvalidExample: ShadcnInputInvalidExample.Model,
+  shadcnInputFileExample: ShadcnInputFileExample.Model,
+  shadcnInputRtlExample: ShadcnInputRtlExample.Model,
   textareaBasicExample: TextareaBasicExample.Model,
   shadcnTextareaBasicExample: ShadcnTextareaBasicExample.Model,
   textareaDisabledExample: TextareaDisabledExample.Model,
@@ -7653,6 +7748,30 @@ export const GotShadcnInputBasicExampleMessage = m(
     message: ShadcnInputBasicExample.Message,
   }
 );
+export const GotShadcnInputDisabledExampleMessage = m(
+  "GotShadcnInputDisabledExampleMessage",
+  {
+    message: ShadcnInputDisabledExample.Message,
+  }
+);
+export const GotShadcnInputInvalidExampleMessage = m(
+  "GotShadcnInputInvalidExampleMessage",
+  {
+    message: ShadcnInputInvalidExample.Message,
+  }
+);
+export const GotShadcnInputFileExampleMessage = m(
+  "GotShadcnInputFileExampleMessage",
+  {
+    message: ShadcnInputFileExample.Message,
+  }
+);
+export const GotShadcnInputRtlExampleMessage = m(
+  "GotShadcnInputRtlExampleMessage",
+  {
+    message: ShadcnInputRtlExample.Message,
+  }
+);
 export const GotTextareaBasicExampleMessage = m(
   "GotTextareaBasicExampleMessage",
   {
@@ -7984,6 +8103,10 @@ export const Message = S.Union([
   GotShadcnTabsBasicExampleMessage,
   GotTabsManualExampleMessage,
   GotShadcnInputBasicExampleMessage,
+  GotShadcnInputDisabledExampleMessage,
+  GotShadcnInputInvalidExampleMessage,
+  GotShadcnInputFileExampleMessage,
+  GotShadcnInputRtlExampleMessage,
   GotShadcnContextMenuBasicExampleMessage,
   GotShadcnDatePickerBasicExampleMessage,
   GotShadcnDialogBasicExampleMessage,
@@ -8567,6 +8690,14 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     TabsManualExample.init();
   const [shadcnInputBasicExample, shadcnInputBasicExampleCommands] =
     ShadcnInputBasicExample.init();
+  const [shadcnInputDisabledExample, shadcnInputDisabledExampleCommands] =
+    ShadcnInputDisabledExample.init();
+  const [shadcnInputInvalidExample, shadcnInputInvalidExampleCommands] =
+    ShadcnInputInvalidExample.init();
+  const [shadcnInputFileExample, shadcnInputFileExampleCommands] =
+    ShadcnInputFileExample.init();
+  const [shadcnInputRtlExample, shadcnInputRtlExampleCommands] =
+    ShadcnInputRtlExample.init();
   const [shadcnContextMenuBasicExample, shadcnContextMenuBasicExampleCommands] =
     ShadcnContextMenuBasicExample.init();
   const [shadcnDatePickerBasicExample, shadcnDatePickerBasicExampleCommands] =
@@ -8899,6 +9030,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       shadcnMenubarBasicExample,
       shadcnPopoverBasicExample,
       shadcnInputBasicExample,
+      shadcnInputDisabledExample,
+      shadcnInputInvalidExample,
+      shadcnInputFileExample,
+      shadcnInputRtlExample,
       textareaBasicExample,
       shadcnTextareaBasicExample,
       textareaDisabledExample,
@@ -9667,6 +9802,18 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(shadcnInputBasicExampleCommands, (message) =>
         GotShadcnInputBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnInputDisabledExampleCommands, (message) =>
+        GotShadcnInputDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnInputInvalidExampleCommands, (message) =>
+        GotShadcnInputInvalidExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnInputFileExampleCommands, (message) =>
+        GotShadcnInputFileExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnInputRtlExampleCommands, (message) =>
+        GotShadcnInputRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(shadcnContextMenuBasicExampleCommands, (message) =>
         GotShadcnContextMenuBasicExampleMessage({ message })
@@ -13836,6 +13983,68 @@ export const update = (
           }),
           Command.mapMessages(shadcnInputBasicExampleCommands, (message) =>
             GotShadcnInputBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnInputDisabledExampleMessage: ({ message }) => {
+        const [shadcnInputDisabledExample, shadcnInputDisabledExampleCommands] =
+          ShadcnInputDisabledExample.update(
+            model.shadcnInputDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputDisabledExample: () => shadcnInputDisabledExample,
+          }),
+          Command.mapMessages(shadcnInputDisabledExampleCommands, (message) =>
+            GotShadcnInputDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnInputInvalidExampleMessage: ({ message }) => {
+        const [shadcnInputInvalidExample, shadcnInputInvalidExampleCommands] =
+          ShadcnInputInvalidExample.update(
+            model.shadcnInputInvalidExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputInvalidExample: () => shadcnInputInvalidExample,
+          }),
+          Command.mapMessages(shadcnInputInvalidExampleCommands, (message) =>
+            GotShadcnInputInvalidExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnInputFileExampleMessage: ({ message }) => {
+        const [shadcnInputFileExample, shadcnInputFileExampleCommands] =
+          ShadcnInputFileExample.update(model.shadcnInputFileExample, message);
+
+        return [
+          evo(model, {
+            shadcnInputFileExample: () => shadcnInputFileExample,
+          }),
+          Command.mapMessages(shadcnInputFileExampleCommands, (message) =>
+            GotShadcnInputFileExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnInputRtlExampleMessage: ({ message }) => {
+        const [shadcnInputRtlExample, shadcnInputRtlExampleCommands] =
+          ShadcnInputRtlExample.update(model.shadcnInputRtlExample, message);
+
+        return [
+          evo(model, {
+            shadcnInputRtlExample: () => shadcnInputRtlExample,
+          }),
+          Command.mapMessages(shadcnInputRtlExampleCommands, (message) =>
+            GotShadcnInputRtlExampleMessage({ message })
           ),
         ];
       },

@@ -2838,6 +2838,56 @@ export const baseUiInputBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const shadcnInputBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Basic",
+    "shadcn-input-basic",
+    DocsPreviewsShadcnMissing.shadcnInputBasicExamplePreview(
+      model.shadcnInputBasicExample,
+      "shadcn-input-basic-standalone"
+    )
+  );
+
+export const shadcnInputDisabledExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Disabled",
+    "shadcn-input-disabled",
+    DocsPreviewsShadcnMissing.shadcnInputDisabledExamplePreview(
+      model.shadcnInputDisabledExample,
+      "shadcn-input-disabled-standalone"
+    )
+  );
+
+export const shadcnInputInvalidExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Invalid",
+    "shadcn-input-invalid",
+    DocsPreviewsShadcnMissing.shadcnInputInvalidExamplePreview(
+      model.shadcnInputInvalidExample,
+      "shadcn-input-invalid-standalone"
+    )
+  );
+
+export const shadcnInputFileExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input File",
+    "shadcn-input-file",
+    DocsPreviewsShadcnMissing.shadcnInputFileExamplePreview(
+      model.shadcnInputFileExample,
+      "shadcn-input-file-standalone"
+    )
+  );
+
+export const shadcnInputRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input RTL",
+    "shadcn-input-rtl",
+    DocsPreviewsShadcnMissing.shadcnInputRtlExamplePreview(
+      model.shadcnInputRtlExample,
+      "shadcn-input-rtl-standalone"
+    )
+  );
+
 export const baseUiMenuBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 

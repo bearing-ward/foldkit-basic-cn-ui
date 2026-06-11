@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-input-disabled",
+  "type": "registry:example",
+  "title": "shadcn Input Disabled",
+  "description": "A runnable Foldkit example showing the shadcn Input disabled pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-input"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-input-disabled/main.ts",
+      "target": "src/examples/shadcn-input-disabled/main.ts",
+      "type": "registry:example",
+      "content": "import type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { Schema as S } from \"effect\";\n\nimport * as Input from \"../../ui/shadcn-input\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.input([\n    h.Type(\"email\"),\n    h.Placeholder(\"Email\"),\n    h.AriaLabel(\"Email\"),\n    h.Disabled(true),\n    h.DataAttribute(\"disabled\", \"\"),\n    h.Class(Input.shadcnInputClassName),\n  ]);\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-input-disabled/shadcn-input-disabled.scene.test.ts",
+      "target": "src/examples/shadcn-input-disabled/shadcn-input-disabled.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnInputDisabledExample from \"./main\";\n\ndescribe(\"Shadcn Input Disabled example\", () => {\n  test(\"renders the origin disabled email input\", () => {\n    Scene.scene(\n      {\n        update: ShadcnInputDisabledExample.update,\n        view: ShadcnInputDisabledExample.view,\n      },\n      Scene.with(ShadcnInputDisabledExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).toHaveAttr(\n        \"placeholder\",\n        \"Email\"\n      ),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).toHaveAttr(\n        \"disabled\",\n        \"true\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Input",
+      "example": "disabled",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input#disabled"
+    }
+  }
+}

@@ -235,6 +235,10 @@ import * as ShadcnDrawerScrollableContentExample from "../registry/default/examp
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
 import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
@@ -845,6 +849,10 @@ const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
+const [shadcnInputDisabledExample] = ShadcnInputDisabledExample.init();
+const [shadcnInputInvalidExample] = ShadcnInputInvalidExample.init();
+const [shadcnInputFileExample] = ShadcnInputFileExample.init();
+const [shadcnInputRtlExample] = ShadcnInputRtlExample.init();
 const [shadcnContextMenuBasicExample] = ShadcnContextMenuBasicExample.init();
 const [shadcnDatePickerBasicExample] = ShadcnDatePickerBasicExample.init();
 const [shadcnDialogBasicExample] = ShadcnDialogBasicExample.init();
@@ -1123,6 +1131,10 @@ const modelForRoute = (route: Model["route"]): Model => ({
   shadcnTabsBasicExample,
   tabsManualExample,
   shadcnInputBasicExample,
+  shadcnInputDisabledExample,
+  shadcnInputInvalidExample,
+  shadcnInputFileExample,
+  shadcnInputRtlExample,
   shadcnContextMenuBasicExample,
   shadcnDatePickerBasicExample,
   shadcnDialogBasicExample,

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-input-invalid",
+  "type": "registry:example",
+  "title": "shadcn Input Invalid",
+  "description": "A runnable Foldkit example showing the shadcn Input invalid pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-input"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-input-invalid/main.ts",
+      "target": "src/examples/shadcn-input-invalid/main.ts",
+      "type": "registry:example",
+      "content": "import type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { Schema as S } from \"effect\";\n\nimport * as Input from \"../../ui/shadcn-input\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"grid w-full max-w-sm gap-2\")],\n    [\n      h.label(\n        [h.Attribute(\"for\", \"email\"), h.Class(Input.shadcnInputLabelClassName)],\n        [\"Email\"]\n      ),\n      h.input([\n        h.Id(\"email\"),\n        h.Type(\"email\"),\n        h.Value(\"invalid-email\"),\n        h.AriaLabel(\"Email\"),\n        h.Attribute(\"aria-invalid\", \"true\"),\n        h.Class(Input.shadcnInputClassName),\n      ]),\n      h.p(\n        [h.Class(\"text-sm font-medium text-red-700\")],\n        [\"Enter a valid email address.\"]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-input-invalid/shadcn-input-invalid.scene.test.ts",
+      "target": "src/examples/shadcn-input-invalid/shadcn-input-invalid.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnInputInvalidExample from \"./main\";\n\ndescribe(\"Shadcn Input Invalid example\", () => {\n  test(\"renders invalid email state\", () => {\n    Scene.scene(\n      {\n        update: ShadcnInputInvalidExample.update,\n        view: ShadcnInputInvalidExample.view,\n      },\n      Scene.with(ShadcnInputInvalidExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).toHaveAttr(\n        \"aria-invalid\",\n        \"true\"\n      ),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).not.toHaveAttr(\n        \"disabled\",\n        \"true\"\n      ),\n      Scene.expect(Scene.text(\"Enter a valid email address.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Input",
+      "example": "invalid",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input#invalid"
+    }
+  }
+}
