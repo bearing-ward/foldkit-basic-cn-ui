@@ -63,12 +63,34 @@ export const update = (
 
 // VIEW
 
-const itemView = (label: string): Html => {
+const itemChildren = (
+  label: string,
+  shortcut?: string | undefined,
+  inset = false
+): readonly Html[] => {
   const h = html<Message>();
 
+  return [
+    h.span(inset ? [h.Class("pl-5")] : [], [label]),
+    shortcut === undefined
+      ? h.empty
+      : h.span([h.Class("ml-auto pl-6 text-xs tracking-widest text-gray-500")], [
+          shortcut,
+        ]),
+  ];
+};
+
+const itemView = (
+  label: string,
+  shortcut?: string | undefined,
+  options: Readonly<{ disabled?: boolean | undefined; inset?: boolean }> = {}
+): Html => {
+  const { disabled = false, inset = false } = options;
+
   return Menubar.itemView<Message>({
-    onSelect: SelectedMenubarItem({ value: label }),
-    children: [h.span([], [label])],
+    disabled,
+    onSelect: disabled ? undefined : SelectedMenubarItem({ value: label }),
+    children: itemChildren(label, shortcut, inset),
   });
 };
 
@@ -88,12 +110,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           Menubar.popupView<Message>({
             open: isOpen("File"),
             children: [
-              itemView("New"),
-              itemView("Open"),
-              itemView("Save"),
+              itemView("New Tab", "⌘T"),
+              itemView("New Window", "⌘N"),
+              itemView("New Incognito Window", undefined, { disabled: true }),
               Menubar.separatorView<Message>({}),
-              itemView("Export"),
-              itemView("Print"),
+              itemView("Share"),
+              Menubar.separatorView<Message>({}),
+              itemView("Print...", "⌘P"),
             ],
           }),
         ],
@@ -107,7 +130,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           }),
           Menubar.popupView<Message>({
             open: isOpen("Edit"),
-            children: [itemView("Cut"), itemView("Copy"), itemView("Paste")],
+            children: [
+              itemView("Undo", "⌘Z"),
+              itemView("Redo", "⇧⌘Z"),
+              Menubar.separatorView<Message>({}),
+              itemView("Find"),
+              Menubar.separatorView<Message>({}),
+              itemView("Cut"),
+              itemView("Copy"),
+              itemView("Paste"),
+            ],
           }),
         ],
       }),
@@ -120,20 +152,41 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           }),
           Menubar.popupView<Message>({
             open: isOpen("View"),
-            children: [itemView("Zoom In"), itemView("Zoom Out")],
+            children: [
+              itemView("Always Show Bookmarks Bar"),
+              itemView("Always Show Full URLs"),
+              Menubar.separatorView<Message>({}),
+              itemView("Reload", "⌘R", { inset: true }),
+              itemView("Force Reload", "⇧⌘R", {
+                disabled: true,
+                inset: true,
+              }),
+              Menubar.separatorView<Message>({}),
+              itemView("Toggle Fullscreen", undefined, { inset: true }),
+              Menubar.separatorView<Message>({}),
+              itemView("Hide Sidebar", undefined, { inset: true }),
+            ],
           }),
         ],
       }),
       Menubar.menuView<Message>({
         children: [
           Menubar.triggerView<Message>({
-            open: isOpen("Help"),
-            onToggle: ToggledMenubarMenu({ value: "Help" }),
-            children: [h.span([], ["Help"])],
+            open: isOpen("Profiles"),
+            onToggle: ToggledMenubarMenu({ value: "Profiles" }),
+            children: [h.span([], ["Profiles"])],
           }),
           Menubar.popupView<Message>({
-            open: isOpen("Help"),
-            children: [itemView("Documentation"), itemView("About")],
+            open: isOpen("Profiles"),
+            children: [
+              itemView("Andy"),
+              itemView("Benoit"),
+              itemView("Luis"),
+              Menubar.separatorView<Message>({}),
+              itemView("Edit...", undefined, { inset: true }),
+              Menubar.separatorView<Message>({}),
+              itemView("Add Profile...", undefined, { inset: true }),
+            ],
           }),
         ],
       }),
