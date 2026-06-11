@@ -74,7 +74,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-4")],
     [
       Dialog.trigger<Message>({
-        label: "Open dialog",
+        label: "Open Dialog",
         onClick: toDialogMessage(Dialog.RequestedOpen()),
       }),
       h.submodel({
@@ -90,24 +90,24 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 Dialog.panel<Message>({
                   render,
                   children: [
-                    Dialog.title<Message>({
-                      model: model.dialog,
-                      children: ["Edit profile"],
-                    }),
-                    Dialog.description<Message>({
-                      model: model.dialog,
+                    Dialog.headerView<Message>({
                       children: [
-                        "Make changes to your profile. Save when you are done.",
+                        Dialog.title<Message>({
+                          model: model.dialog,
+                          children: ["Are you absolutely sure?"],
+                        }),
+                        Dialog.description<Message>({
+                          model: model.dialog,
+                          children: [
+                            "This action cannot be undone. This will permanently delete your account and remove your data from our servers.",
+                          ],
+                        }),
                       ],
                     }),
-                    Dialog.footer<Message>({
+                    Dialog.footerView<Message>({
                       children: [
                         Dialog.cancelButton<Message>({
-                          label: "Cancel",
-                          onClick: toDialogMessage(Dialog.RequestedClose()),
-                        }),
-                        Dialog.confirmButton<Message>({
-                          label: "Save changes",
+                          label: "Close",
                           onClick: toDialogMessage(Dialog.RequestedClose()),
                         }),
                       ],

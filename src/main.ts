@@ -207,6 +207,11 @@ import * as ShadcnAccordionDisabledExample from "../registry/default/examples/sh
 import * as ShadcnAccordionMultipleExample from "../registry/default/examples/shadcn-accordion-multiple/main";
 import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-accordion-rtl/main";
 import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
+import * as ShadcnAlertDialogDestructiveExample from "../registry/default/examples/shadcn-alert-dialog-destructive/main";
+import * as ShadcnAlertDialogMediaExample from "../registry/default/examples/shadcn-alert-dialog-media/main";
+import * as ShadcnAlertDialogRtlExample from "../registry/default/examples/shadcn-alert-dialog-rtl/main";
+import * as ShadcnAlertDialogSmallMediaExample from "../registry/default/examples/shadcn-alert-dialog-small-media/main";
+import * as ShadcnAlertDialogSmallExample from "../registry/default/examples/shadcn-alert-dialog-small/main";
 import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
 import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
 import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
@@ -223,7 +228,16 @@ import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
 import * as ShadcnDatePickerBasicExample from "../registry/default/examples/shadcn-date-picker-basic/main";
 import * as ShadcnDialogBasicExample from "../registry/default/examples/shadcn-dialog-basic/main";
+import * as ShadcnDialogCustomCloseButtonExample from "../registry/default/examples/shadcn-dialog-custom-close-button/main";
+import * as ShadcnDialogNoCloseButtonExample from "../registry/default/examples/shadcn-dialog-no-close-button/main";
+import * as ShadcnDialogRtlExample from "../registry/default/examples/shadcn-dialog-rtl/main";
+import * as ShadcnDialogScrollableContentExample from "../registry/default/examples/shadcn-dialog-scrollable-content/main";
+import * as ShadcnDialogStickyFooterExample from "../registry/default/examples/shadcn-dialog-sticky-footer/main";
 import * as ShadcnDrawerBasicExample from "../registry/default/examples/shadcn-drawer-basic/main";
+import * as ShadcnDrawerResponsiveDialogExample from "../registry/default/examples/shadcn-drawer-responsive-dialog/main";
+import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-drawer-rtl/main";
+import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
+import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
@@ -347,6 +361,14 @@ export const ShadcnDrawerDocsRoute = r("ShadcnDrawerDocs");
 export const BaseUiDrawerDocsRoute = r("BaseUiDrawerDocs");
 export const BaseUiDrawerBasicExampleRoute = r("BaseUiDrawerBasicExample");
 export const ShadcnDrawerBasicExampleRoute = r("ShadcnDrawerBasicExample");
+export const ShadcnDrawerScrollableContentExampleRoute = r(
+  "ShadcnDrawerScrollableContentExample"
+);
+export const ShadcnDrawerResponsiveDialogExampleRoute = r(
+  "ShadcnDrawerResponsiveDialogExample"
+);
+export const ShadcnDrawerRtlExampleRoute = r("ShadcnDrawerRtlExample");
+export const ShadcnDrawerSidesExampleRoute = r("ShadcnDrawerSidesExample");
 export const BaseUiDrawerPositionExampleRoute = r(
   "BaseUiDrawerPositionExample"
 );
@@ -628,6 +650,19 @@ export const ShadcnDialogDocsRoute = r("ShadcnDialogDocs");
 export const BaseUiDialogDocsRoute = r("BaseUiDialogDocs");
 export const BaseUiDialogBasicExampleRoute = r("BaseUiDialogBasicExample");
 export const ShadcnDialogBasicExampleRoute = r("ShadcnDialogBasicExample");
+export const ShadcnDialogCustomCloseButtonExampleRoute = r(
+  "ShadcnDialogCustomCloseButtonExample"
+);
+export const ShadcnDialogNoCloseButtonExampleRoute = r(
+  "ShadcnDialogNoCloseButtonExample"
+);
+export const ShadcnDialogStickyFooterExampleRoute = r(
+  "ShadcnDialogStickyFooterExample"
+);
+export const ShadcnDialogScrollableContentExampleRoute = r(
+  "ShadcnDialogScrollableContentExample"
+);
+export const ShadcnDialogRtlExampleRoute = r("ShadcnDialogRtlExample");
 export const BaseUiDialogCloseConfirmationExampleRoute = r(
   "BaseUiDialogCloseConfirmationExample"
 );
@@ -812,6 +847,10 @@ const AppRoute = S.Union([
   BaseUiDrawerDocsRoute,
   BaseUiDrawerBasicExampleRoute,
   ShadcnDrawerBasicExampleRoute,
+  ShadcnDrawerScrollableContentExampleRoute,
+  ShadcnDrawerResponsiveDialogExampleRoute,
+  ShadcnDrawerRtlExampleRoute,
+  ShadcnDrawerSidesExampleRoute,
   BaseUiDrawerPositionExampleRoute,
   BaseUiDrawerNonModalExampleRoute,
   DrawerBasicExampleRoute,
@@ -1045,6 +1084,11 @@ const AppRoute = S.Union([
   BaseUiDialogDocsRoute,
   BaseUiDialogBasicExampleRoute,
   ShadcnDialogBasicExampleRoute,
+  ShadcnDialogCustomCloseButtonExampleRoute,
+  ShadcnDialogNoCloseButtonExampleRoute,
+  ShadcnDialogStickyFooterExampleRoute,
+  ShadcnDialogScrollableContentExampleRoute,
+  ShadcnDialogRtlExampleRoute,
   BaseUiDialogCloseConfirmationExampleRoute,
   BaseUiDialogNestedExampleRoute,
   DialogBasicExampleRoute,
@@ -1769,6 +1813,58 @@ export const shadcnDrawerBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("shadcn-drawer-basic")),
   Route.mapTo(ShadcnDrawerBasicExampleRoute)
+);
+export const shadcnDrawerScrollableContentExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-drawer")),
+  slash(literal("examples")),
+  slash(literal("scrollable-content")),
+  Route.mapTo(ShadcnDrawerScrollableContentExampleRoute)
+);
+export const shadcnDrawerScrollableContentStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-drawer-scrollable-content")),
+  Route.mapTo(ShadcnDrawerScrollableContentExampleRoute)
+);
+export const shadcnDrawerResponsiveDialogExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-drawer")),
+  slash(literal("examples")),
+  slash(literal("responsive-dialog")),
+  Route.mapTo(ShadcnDrawerResponsiveDialogExampleRoute)
+);
+export const shadcnDrawerResponsiveDialogStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-drawer-responsive-dialog")),
+  Route.mapTo(ShadcnDrawerResponsiveDialogExampleRoute)
+);
+export const shadcnDrawerRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-drawer")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ShadcnDrawerRtlExampleRoute)
+);
+export const shadcnDrawerRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-drawer-rtl")),
+  Route.mapTo(ShadcnDrawerRtlExampleRoute)
+);
+export const shadcnDrawerSidesExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-drawer")),
+  slash(literal("examples")),
+  slash(literal("sides")),
+  Route.mapTo(ShadcnDrawerSidesExampleRoute)
+);
+export const shadcnDrawerSidesStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-drawer-sides")),
+  Route.mapTo(ShadcnDrawerSidesExampleRoute)
 );
 export const drawerBasicExampleRouter = pipe(
   literal("docs"),
@@ -4077,6 +4173,46 @@ export const shadcnDialogBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ShadcnDialogBasicExampleRoute)
 );
+export const shadcnDialogCustomCloseButtonExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  slash(literal("examples")),
+  slash(literal("custom-close-button")),
+  Route.mapTo(ShadcnDialogCustomCloseButtonExampleRoute)
+);
+export const shadcnDialogNoCloseButtonExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  slash(literal("examples")),
+  slash(literal("no-close-button")),
+  Route.mapTo(ShadcnDialogNoCloseButtonExampleRoute)
+);
+export const shadcnDialogStickyFooterExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  slash(literal("examples")),
+  slash(literal("sticky-footer")),
+  Route.mapTo(ShadcnDialogStickyFooterExampleRoute)
+);
+export const shadcnDialogScrollableContentExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  slash(literal("examples")),
+  slash(literal("scrollable-content")),
+  Route.mapTo(ShadcnDialogScrollableContentExampleRoute)
+);
+export const shadcnDialogRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-dialog")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ShadcnDialogRtlExampleRoute)
+);
 export const baseUiDialogCloseConfirmationExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -4147,6 +4283,31 @@ export const shadcnDialogBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("shadcn-dialog-basic")),
   Route.mapTo(ShadcnDialogBasicExampleRoute)
+);
+export const shadcnDialogCustomCloseButtonStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-dialog-custom-close-button")),
+  Route.mapTo(ShadcnDialogCustomCloseButtonExampleRoute)
+);
+export const shadcnDialogNoCloseButtonStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-dialog-no-close-button")),
+  Route.mapTo(ShadcnDialogNoCloseButtonExampleRoute)
+);
+export const shadcnDialogStickyFooterStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-dialog-sticky-footer")),
+  Route.mapTo(ShadcnDialogStickyFooterExampleRoute)
+);
+export const shadcnDialogScrollableContentStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-dialog-scrollable-content")),
+  Route.mapTo(ShadcnDialogScrollableContentExampleRoute)
+);
+export const shadcnDialogRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-dialog-rtl")),
+  Route.mapTo(ShadcnDialogRtlExampleRoute)
 );
 export const baseUiDialogCloseConfirmationStandaloneExampleRouter = pipe(
   literal("examples"),
@@ -5443,6 +5604,11 @@ const routeParser = Route.oneOf(
   baseUiDialogNestedExampleRouter,
   dialogBasicExampleRouter,
   shadcnDialogBasicExampleRouter,
+  shadcnDialogCustomCloseButtonExampleRouter,
+  shadcnDialogNoCloseButtonExampleRouter,
+  shadcnDialogStickyFooterExampleRouter,
+  shadcnDialogScrollableContentExampleRouter,
+  shadcnDialogRtlExampleRouter,
   dialogAnimatedExampleRouter,
   dialogDestructiveExampleRouter,
   dialogFocusExampleRouter,
@@ -5450,6 +5616,11 @@ const routeParser = Route.oneOf(
   dialogBasicStandaloneExampleRouter,
   baseUiDialogBasicStandaloneExampleRouter,
   shadcnDialogBasicStandaloneExampleRouter,
+  shadcnDialogCustomCloseButtonStandaloneExampleRouter,
+  shadcnDialogNoCloseButtonStandaloneExampleRouter,
+  shadcnDialogStickyFooterStandaloneExampleRouter,
+  shadcnDialogScrollableContentStandaloneExampleRouter,
+  shadcnDialogRtlStandaloneExampleRouter,
   baseUiDialogCloseConfirmationStandaloneExampleRouter,
   baseUiDialogNestedStandaloneExampleRouter,
   dialogAnimatedStandaloneExampleRouter,
@@ -5718,6 +5889,14 @@ const routeParser = Route.oneOf(
   baseUiDrawerBasicStandaloneExampleRouter,
   shadcnDrawerBasicExampleRouter,
   shadcnDrawerBasicStandaloneExampleRouter,
+  shadcnDrawerScrollableContentExampleRouter,
+  shadcnDrawerScrollableContentStandaloneExampleRouter,
+  shadcnDrawerResponsiveDialogExampleRouter,
+  shadcnDrawerResponsiveDialogStandaloneExampleRouter,
+  shadcnDrawerRtlExampleRouter,
+  shadcnDrawerRtlStandaloneExampleRouter,
+  shadcnDrawerSidesExampleRouter,
+  shadcnDrawerSidesStandaloneExampleRouter,
   shadcnDrawerDocsRouter,
   baseUiDrawerPositionExampleRouter,
   baseUiDrawerPositionStandaloneExampleRouter,
@@ -5891,6 +6070,12 @@ export const Model = S.Struct({
   baseUiAlertDialogMultipleTriggersExample:
     BaseUiAlertDialogMultipleTriggersExample.Model,
   shadcnAlertDialogBasicExample: ShadcnAlertDialogBasicExample.Model,
+  shadcnAlertDialogSmallExample: ShadcnAlertDialogSmallExample.Model,
+  shadcnAlertDialogMediaExample: ShadcnAlertDialogMediaExample.Model,
+  shadcnAlertDialogSmallMediaExample: ShadcnAlertDialogSmallMediaExample.Model,
+  shadcnAlertDialogDestructiveExample:
+    ShadcnAlertDialogDestructiveExample.Model,
+  shadcnAlertDialogRtlExample: ShadcnAlertDialogRtlExample.Model,
   baseUiDrawerBasicExample: BaseUiDrawerBasicExample.Model,
   baseUiDrawerpositionExample: BaseUiDrawerPositionExample.Model,
   baseUiDrawernonModalExample: BaseUiDrawerNonModalExample.Model,
@@ -6014,7 +6199,20 @@ export const Model = S.Struct({
   shadcnContextMenuBasicExample: ShadcnContextMenuBasicExample.Model,
   shadcnDatePickerBasicExample: ShadcnDatePickerBasicExample.Model,
   shadcnDialogBasicExample: ShadcnDialogBasicExample.Model,
+  shadcnDialogCustomCloseButtonExample:
+    ShadcnDialogCustomCloseButtonExample.Model,
+  shadcnDialogNoCloseButtonExample: ShadcnDialogNoCloseButtonExample.Model,
+  shadcnDialogStickyFooterExample: ShadcnDialogStickyFooterExample.Model,
+  shadcnDialogScrollableContentExample:
+    ShadcnDialogScrollableContentExample.Model,
+  shadcnDialogRtlExample: ShadcnDialogRtlExample.Model,
   shadcnDrawerBasicExample: ShadcnDrawerBasicExample.Model,
+  shadcnDrawerResponsiveDialogExample:
+    ShadcnDrawerResponsiveDialogExample.Model,
+  shadcnDrawerRtlExample: ShadcnDrawerRtlExample.Model,
+  shadcnDrawerScrollableContentExample:
+    ShadcnDrawerScrollableContentExample.Model,
+  shadcnDrawerSidesExample: ShadcnDrawerSidesExample.Model,
   shadcnFieldBasicExample: ShadcnFieldBasicExample.Model,
   shadcnMenubarBasicExample: ShadcnMenubarBasicExample.Model,
   shadcnPopoverBasicExample: ShadcnPopoverBasicExample.Model,
@@ -6339,6 +6537,36 @@ export const GotShadcnAlertDialogBasicExampleMessage = m(
   "GotShadcnAlertDialogBasicExampleMessage",
   {
     message: ShadcnAlertDialogBasicExample.Message,
+  }
+);
+export const GotShadcnAlertDialogSmallExampleMessage = m(
+  "GotShadcnAlertDialogSmallExampleMessage",
+  {
+    message: ShadcnAlertDialogSmallExample.Message,
+  }
+);
+export const GotShadcnAlertDialogMediaExampleMessage = m(
+  "GotShadcnAlertDialogMediaExampleMessage",
+  {
+    message: ShadcnAlertDialogMediaExample.Message,
+  }
+);
+export const GotShadcnAlertDialogSmallMediaExampleMessage = m(
+  "GotShadcnAlertDialogSmallMediaExampleMessage",
+  {
+    message: ShadcnAlertDialogSmallMediaExample.Message,
+  }
+);
+export const GotShadcnAlertDialogDestructiveExampleMessage = m(
+  "GotShadcnAlertDialogDestructiveExampleMessage",
+  {
+    message: ShadcnAlertDialogDestructiveExample.Message,
+  }
+);
+export const GotShadcnAlertDialogRtlExampleMessage = m(
+  "GotShadcnAlertDialogRtlExampleMessage",
+  {
+    message: ShadcnAlertDialogRtlExample.Message,
   }
 );
 export const GotDrawerBasicExampleMessage = m("GotDrawerBasicExampleMessage", {
@@ -7341,10 +7569,64 @@ export const GotShadcnDialogBasicExampleMessage = m(
     message: ShadcnDialogBasicExample.Message,
   }
 );
+export const GotShadcnDialogCustomCloseButtonExampleMessage = m(
+  "GotShadcnDialogCustomCloseButtonExampleMessage",
+  {
+    message: ShadcnDialogCustomCloseButtonExample.Message,
+  }
+);
+export const GotShadcnDialogNoCloseButtonExampleMessage = m(
+  "GotShadcnDialogNoCloseButtonExampleMessage",
+  {
+    message: ShadcnDialogNoCloseButtonExample.Message,
+  }
+);
+export const GotShadcnDialogStickyFooterExampleMessage = m(
+  "GotShadcnDialogStickyFooterExampleMessage",
+  {
+    message: ShadcnDialogStickyFooterExample.Message,
+  }
+);
+export const GotShadcnDialogScrollableContentExampleMessage = m(
+  "GotShadcnDialogScrollableContentExampleMessage",
+  {
+    message: ShadcnDialogScrollableContentExample.Message,
+  }
+);
+export const GotShadcnDialogRtlExampleMessage = m(
+  "GotShadcnDialogRtlExampleMessage",
+  {
+    message: ShadcnDialogRtlExample.Message,
+  }
+);
 export const GotShadcnDrawerBasicExampleMessage = m(
   "GotShadcnDrawerBasicExampleMessage",
   {
     message: ShadcnDrawerBasicExample.Message,
+  }
+);
+export const GotShadcnDrawerScrollableContentExampleMessage = m(
+  "GotShadcnDrawerScrollableContentExampleMessage",
+  {
+    message: ShadcnDrawerScrollableContentExample.Message,
+  }
+);
+export const GotShadcnDrawerResponsiveDialogExampleMessage = m(
+  "GotShadcnDrawerResponsiveDialogExampleMessage",
+  {
+    message: ShadcnDrawerResponsiveDialogExample.Message,
+  }
+);
+export const GotShadcnDrawerRtlExampleMessage = m(
+  "GotShadcnDrawerRtlExampleMessage",
+  {
+    message: ShadcnDrawerRtlExample.Message,
+  }
+);
+export const GotShadcnDrawerSidesExampleMessage = m(
+  "GotShadcnDrawerSidesExampleMessage",
+  {
+    message: ShadcnDrawerSidesExample.Message,
   }
 );
 export const GotShadcnFieldBasicExampleMessage = m(
@@ -7508,6 +7790,11 @@ export const Message = S.Union([
   GotBaseUiAlertDialogDetachedTriggersExampleMessage,
   GotBaseUiAlertDialogMultipleTriggersExampleMessage,
   GotShadcnAlertDialogBasicExampleMessage,
+  GotShadcnAlertDialogSmallExampleMessage,
+  GotShadcnAlertDialogMediaExampleMessage,
+  GotShadcnAlertDialogSmallMediaExampleMessage,
+  GotShadcnAlertDialogDestructiveExampleMessage,
+  GotShadcnAlertDialogRtlExampleMessage,
   GotDrawerBasicExampleMessage,
   GotContextMenuBasicExampleMessage,
   GotBaseUiContextMenuBasicExampleMessage,
@@ -7700,7 +7987,16 @@ export const Message = S.Union([
   GotShadcnContextMenuBasicExampleMessage,
   GotShadcnDatePickerBasicExampleMessage,
   GotShadcnDialogBasicExampleMessage,
+  GotShadcnDialogCustomCloseButtonExampleMessage,
+  GotShadcnDialogNoCloseButtonExampleMessage,
+  GotShadcnDialogStickyFooterExampleMessage,
+  GotShadcnDialogScrollableContentExampleMessage,
+  GotShadcnDialogRtlExampleMessage,
   GotShadcnDrawerBasicExampleMessage,
+  GotShadcnDrawerScrollableContentExampleMessage,
+  GotShadcnDrawerResponsiveDialogExampleMessage,
+  GotShadcnDrawerRtlExampleMessage,
+  GotShadcnDrawerSidesExampleMessage,
   GotShadcnFieldBasicExampleMessage,
   GotShadcnMenubarBasicExampleMessage,
   GotShadcnPopoverBasicExampleMessage,
@@ -7858,6 +8154,20 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   ] = BaseUiAlertDialogMultipleTriggersExample.init();
   const [shadcnAlertDialogBasicExample, shadcnAlertDialogBasicExampleCommands] =
     ShadcnAlertDialogBasicExample.init();
+  const [shadcnAlertDialogSmallExample, shadcnAlertDialogSmallExampleCommands] =
+    ShadcnAlertDialogSmallExample.init();
+  const [shadcnAlertDialogMediaExample, shadcnAlertDialogMediaExampleCommands] =
+    ShadcnAlertDialogMediaExample.init();
+  const [
+    shadcnAlertDialogSmallMediaExample,
+    shadcnAlertDialogSmallMediaExampleCommands,
+  ] = ShadcnAlertDialogSmallMediaExample.init();
+  const [
+    shadcnAlertDialogDestructiveExample,
+    shadcnAlertDialogDestructiveExampleCommands,
+  ] = ShadcnAlertDialogDestructiveExample.init();
+  const [shadcnAlertDialogRtlExample, shadcnAlertDialogRtlExampleCommands] =
+    ShadcnAlertDialogRtlExample.init();
   const [baseUiDrawerBasicExample, baseUiDrawerBasicExampleCommands] =
     BaseUiDrawerBasicExample.init();
   const [baseUiDrawerpositionExample, baseUiDrawerpositionExampleCommands] =
@@ -8263,8 +8573,38 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ShadcnDatePickerBasicExample.init();
   const [shadcnDialogBasicExample, shadcnDialogBasicExampleCommands] =
     ShadcnDialogBasicExample.init();
+  const [
+    shadcnDialogCustomCloseButtonExample,
+    shadcnDialogCustomCloseButtonExampleCommands,
+  ] = ShadcnDialogCustomCloseButtonExample.init();
+  const [
+    shadcnDialogNoCloseButtonExample,
+    shadcnDialogNoCloseButtonExampleCommands,
+  ] = ShadcnDialogNoCloseButtonExample.init();
+  const [
+    shadcnDialogStickyFooterExample,
+    shadcnDialogStickyFooterExampleCommands,
+  ] = ShadcnDialogStickyFooterExample.init();
+  const [
+    shadcnDialogScrollableContentExample,
+    shadcnDialogScrollableContentExampleCommands,
+  ] = ShadcnDialogScrollableContentExample.init();
+  const [shadcnDialogRtlExample, shadcnDialogRtlExampleCommands] =
+    ShadcnDialogRtlExample.init();
   const [shadcnDrawerBasicExample, shadcnDrawerBasicExampleCommands] =
     ShadcnDrawerBasicExample.init();
+  const [
+    shadcnDrawerScrollableContentExample,
+    shadcnDrawerScrollableContentExampleCommands,
+  ] = ShadcnDrawerScrollableContentExample.init();
+  const [
+    shadcnDrawerResponsiveDialogExample,
+    shadcnDrawerResponsiveDialogExampleCommands,
+  ] = ShadcnDrawerResponsiveDialogExample.init();
+  const [shadcnDrawerRtlExample, shadcnDrawerRtlExampleCommands] =
+    ShadcnDrawerRtlExample.init();
+  const [shadcnDrawerSidesExample, shadcnDrawerSidesExampleCommands] =
+    ShadcnDrawerSidesExample.init();
   const [shadcnFieldBasicExample, shadcnFieldBasicExampleCommands] =
     ShadcnFieldBasicExample.init();
   const [shadcnMenubarBasicExample, shadcnMenubarBasicExampleCommands] =
@@ -8349,6 +8689,11 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       baseUiAlertDialogDetachedTriggersExample,
       baseUiAlertDialogMultipleTriggersExample,
       shadcnAlertDialogBasicExample,
+      shadcnAlertDialogSmallExample,
+      shadcnAlertDialogMediaExample,
+      shadcnAlertDialogSmallMediaExample,
+      shadcnAlertDialogDestructiveExample,
+      shadcnAlertDialogRtlExample,
       baseUiDrawerBasicExample,
       baseUiDrawerpositionExample,
       baseUiDrawernonModalExample,
@@ -8540,7 +8885,16 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       shadcnContextMenuBasicExample,
       shadcnDatePickerBasicExample,
       shadcnDialogBasicExample,
+      shadcnDialogCustomCloseButtonExample,
+      shadcnDialogNoCloseButtonExample,
+      shadcnDialogStickyFooterExample,
+      shadcnDialogScrollableContentExample,
+      shadcnDialogRtlExample,
       shadcnDrawerBasicExample,
+      shadcnDrawerScrollableContentExample,
+      shadcnDrawerResponsiveDialogExample,
+      shadcnDrawerRtlExample,
+      shadcnDrawerSidesExample,
       shadcnFieldBasicExample,
       shadcnMenubarBasicExample,
       shadcnPopoverBasicExample,
@@ -8708,6 +9062,23 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(shadcnAlertDialogBasicExampleCommands, (message) =>
         GotShadcnAlertDialogBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAlertDialogSmallExampleCommands, (message) =>
+        GotShadcnAlertDialogSmallExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAlertDialogMediaExampleCommands, (message) =>
+        GotShadcnAlertDialogMediaExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnAlertDialogSmallMediaExampleCommands,
+        (message) => GotShadcnAlertDialogSmallMediaExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnAlertDialogDestructiveExampleCommands,
+        (message) => GotShadcnAlertDialogDestructiveExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnAlertDialogRtlExampleCommands, (message) =>
+        GotShadcnAlertDialogRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(baseUiDrawerBasicExampleCommands, (message) =>
         GotBaseUiDrawerBasicExampleMessage({ message })
@@ -9306,8 +9677,42 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(shadcnDialogBasicExampleCommands, (message) =>
         GotShadcnDialogBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(
+        shadcnDialogCustomCloseButtonExampleCommands,
+        (message) => GotShadcnDialogCustomCloseButtonExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnDialogNoCloseButtonExampleCommands,
+        (message) => GotShadcnDialogNoCloseButtonExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnDialogStickyFooterExampleCommands,
+        (message) => GotShadcnDialogStickyFooterExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnDialogScrollableContentExampleCommands,
+        (message) =>
+          GotShadcnDialogScrollableContentExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnDialogRtlExampleCommands, (message) =>
+        GotShadcnDialogRtlExampleMessage({ message })
+      ),
       ...Command.mapMessages(shadcnDrawerBasicExampleCommands, (message) =>
         GotShadcnDrawerBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnDrawerScrollableContentExampleCommands,
+        (message) => GotShadcnDrawerScrollableContentExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnDrawerResponsiveDialogExampleCommands,
+        (message) => GotShadcnDrawerResponsiveDialogExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnDrawerRtlExampleCommands, (message) =>
+        GotShadcnDrawerRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(shadcnDrawerSidesExampleCommands, (message) =>
+        GotShadcnDrawerSidesExampleMessage({ message })
       ),
       ...Command.mapMessages(shadcnFieldBasicExampleCommands, (message) =>
         GotShadcnFieldBasicExampleMessage({ message })
@@ -10167,6 +10572,109 @@ export const update = (
           Command.mapMessages(
             shadcnAlertDialogBasicExampleCommands,
             (message) => GotShadcnAlertDialogBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAlertDialogSmallExampleMessage: ({ message }) => {
+        const [
+          shadcnAlertDialogSmallExample,
+          shadcnAlertDialogSmallExampleCommands,
+        ] = ShadcnAlertDialogSmallExample.update(
+          model.shadcnAlertDialogSmallExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAlertDialogSmallExample: () => shadcnAlertDialogSmallExample,
+          }),
+          Command.mapMessages(
+            shadcnAlertDialogSmallExampleCommands,
+            (message) => GotShadcnAlertDialogSmallExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAlertDialogMediaExampleMessage: ({ message }) => {
+        const [
+          shadcnAlertDialogMediaExample,
+          shadcnAlertDialogMediaExampleCommands,
+        ] = ShadcnAlertDialogMediaExample.update(
+          model.shadcnAlertDialogMediaExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAlertDialogMediaExample: () => shadcnAlertDialogMediaExample,
+          }),
+          Command.mapMessages(
+            shadcnAlertDialogMediaExampleCommands,
+            (message) => GotShadcnAlertDialogMediaExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAlertDialogSmallMediaExampleMessage: ({ message }) => {
+        const [
+          shadcnAlertDialogSmallMediaExample,
+          shadcnAlertDialogSmallMediaExampleCommands,
+        ] = ShadcnAlertDialogSmallMediaExample.update(
+          model.shadcnAlertDialogSmallMediaExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAlertDialogSmallMediaExample: () =>
+              shadcnAlertDialogSmallMediaExample,
+          }),
+          Command.mapMessages(
+            shadcnAlertDialogSmallMediaExampleCommands,
+            (message) =>
+              GotShadcnAlertDialogSmallMediaExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAlertDialogDestructiveExampleMessage: ({ message }) => {
+        const [
+          shadcnAlertDialogDestructiveExample,
+          shadcnAlertDialogDestructiveExampleCommands,
+        ] = ShadcnAlertDialogDestructiveExample.update(
+          model.shadcnAlertDialogDestructiveExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAlertDialogDestructiveExample: () =>
+              shadcnAlertDialogDestructiveExample,
+          }),
+          Command.mapMessages(
+            shadcnAlertDialogDestructiveExampleCommands,
+            (message) =>
+              GotShadcnAlertDialogDestructiveExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnAlertDialogRtlExampleMessage: ({ message }) => {
+        const [
+          shadcnAlertDialogRtlExample,
+          shadcnAlertDialogRtlExampleCommands,
+        ] = ShadcnAlertDialogRtlExample.update(
+          model.shadcnAlertDialogRtlExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnAlertDialogRtlExample: () => shadcnAlertDialogRtlExample,
+          }),
+          Command.mapMessages(shadcnAlertDialogRtlExampleCommands, (message) =>
+            GotShadcnAlertDialogRtlExampleMessage({ message })
           ),
         ];
       },
@@ -13069,6 +13577,109 @@ export const update = (
         ];
       },
 
+      GotShadcnDialogCustomCloseButtonExampleMessage: ({ message }) => {
+        const [
+          shadcnDialogCustomCloseButtonExample,
+          shadcnDialogCustomCloseButtonExampleCommands,
+        ] = ShadcnDialogCustomCloseButtonExample.update(
+          model.shadcnDialogCustomCloseButtonExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnDialogCustomCloseButtonExample: () =>
+              shadcnDialogCustomCloseButtonExample,
+          }),
+          Command.mapMessages(
+            shadcnDialogCustomCloseButtonExampleCommands,
+            (message) =>
+              GotShadcnDialogCustomCloseButtonExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDialogNoCloseButtonExampleMessage: ({ message }) => {
+        const [
+          shadcnDialogNoCloseButtonExample,
+          shadcnDialogNoCloseButtonExampleCommands,
+        ] = ShadcnDialogNoCloseButtonExample.update(
+          model.shadcnDialogNoCloseButtonExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnDialogNoCloseButtonExample: () =>
+              shadcnDialogNoCloseButtonExample,
+          }),
+          Command.mapMessages(
+            shadcnDialogNoCloseButtonExampleCommands,
+            (message) => GotShadcnDialogNoCloseButtonExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDialogStickyFooterExampleMessage: ({ message }) => {
+        const [
+          shadcnDialogStickyFooterExample,
+          shadcnDialogStickyFooterExampleCommands,
+        ] = ShadcnDialogStickyFooterExample.update(
+          model.shadcnDialogStickyFooterExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnDialogStickyFooterExample: () =>
+              shadcnDialogStickyFooterExample,
+          }),
+          Command.mapMessages(
+            shadcnDialogStickyFooterExampleCommands,
+            (message) => GotShadcnDialogStickyFooterExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDialogScrollableContentExampleMessage: ({ message }) => {
+        const [
+          shadcnDialogScrollableContentExample,
+          shadcnDialogScrollableContentExampleCommands,
+        ] = ShadcnDialogScrollableContentExample.update(
+          model.shadcnDialogScrollableContentExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnDialogScrollableContentExample: () =>
+              shadcnDialogScrollableContentExample,
+          }),
+          Command.mapMessages(
+            shadcnDialogScrollableContentExampleCommands,
+            (message) =>
+              GotShadcnDialogScrollableContentExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDialogRtlExampleMessage: ({ message }) => {
+        const [shadcnDialogRtlExample, shadcnDialogRtlExampleCommands] =
+          ShadcnDialogRtlExample.update(
+            model.shadcnDialogRtlExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnDialogRtlExample: () => shadcnDialogRtlExample,
+          }),
+          Command.mapMessages(shadcnDialogRtlExampleCommands, (message) =>
+            GotShadcnDialogRtlExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotShadcnDrawerBasicExampleMessage: ({ message }) => {
         const [shadcnDrawerBasicExample, shadcnDrawerBasicExampleCommands] =
           ShadcnDrawerBasicExample.update(
@@ -13082,6 +13693,81 @@ export const update = (
           }),
           Command.mapMessages(shadcnDrawerBasicExampleCommands, (message) =>
             GotShadcnDrawerBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDrawerScrollableContentExampleMessage: ({ message }) => {
+        const [
+          shadcnDrawerScrollableContentExample,
+          shadcnDrawerScrollableContentExampleCommands,
+        ] = ShadcnDrawerScrollableContentExample.update(
+          model.shadcnDrawerScrollableContentExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnDrawerScrollableContentExample: () =>
+              shadcnDrawerScrollableContentExample,
+          }),
+          Command.mapMessages(
+            shadcnDrawerScrollableContentExampleCommands,
+            (message) =>
+              GotShadcnDrawerScrollableContentExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDrawerResponsiveDialogExampleMessage: ({ message }) => {
+        const [
+          shadcnDrawerResponsiveDialogExample,
+          shadcnDrawerResponsiveDialogExampleCommands,
+        ] = ShadcnDrawerResponsiveDialogExample.update(
+          model.shadcnDrawerResponsiveDialogExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnDrawerResponsiveDialogExample: () =>
+              shadcnDrawerResponsiveDialogExample,
+          }),
+          Command.mapMessages(
+            shadcnDrawerResponsiveDialogExampleCommands,
+            (message) =>
+              GotShadcnDrawerResponsiveDialogExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDrawerRtlExampleMessage: ({ message }) => {
+        const [shadcnDrawerRtlExample, shadcnDrawerRtlExampleCommands] =
+          ShadcnDrawerRtlExample.update(model.shadcnDrawerRtlExample, message);
+
+        return [
+          evo(model, {
+            shadcnDrawerRtlExample: () => shadcnDrawerRtlExample,
+          }),
+          Command.mapMessages(shadcnDrawerRtlExampleCommands, (message) =>
+            GotShadcnDrawerRtlExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnDrawerSidesExampleMessage: ({ message }) => {
+        const [shadcnDrawerSidesExample, shadcnDrawerSidesExampleCommands] =
+          ShadcnDrawerSidesExample.update(
+            model.shadcnDrawerSidesExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnDrawerSidesExample: () => shadcnDrawerSidesExample,
+          }),
+          Command.mapMessages(shadcnDrawerSidesExampleCommands, (message) =>
+            GotShadcnDrawerSidesExampleMessage({ message })
           ),
         ];
       },

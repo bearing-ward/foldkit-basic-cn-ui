@@ -7,3 +7,9 @@ export const shadcnDialogPanelClassName =
 export const shadcnDialogTitleClassName = "text-lg font-semibold text-gray-900";
 
 export const shadcnDialogDescriptionClassName = "mt-2 text-base text-gray-600";
+
+export const shadcnDialogHeaderClassName =
+  "grid gap-2 text-center sm:text-left";
+
+export const shadcnDialogFooterClassName =
+  "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end";

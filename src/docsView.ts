@@ -1490,6 +1490,16 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/alert-dialog-basic.txt",
   "/docs/components/shadcn-alert-dialog/examples/basic":
     "sources/shadcn-alert-dialog-basic.txt",
+  "/docs/components/shadcn-alert-dialog/examples/small":
+    "sources/shadcn-alert-dialog-small.txt",
+  "/docs/components/shadcn-alert-dialog/examples/media":
+    "sources/shadcn-alert-dialog-media.txt",
+  "/docs/components/shadcn-alert-dialog/examples/small-media":
+    "sources/shadcn-alert-dialog-small-media.txt",
+  "/docs/components/shadcn-alert-dialog/examples/destructive":
+    "sources/shadcn-alert-dialog-destructive.txt",
+  "/docs/components/shadcn-alert-dialog/examples/rtl":
+    "sources/shadcn-alert-dialog-rtl.txt",
   "/docs/components/drawer/examples/basic": "sources/drawer-basic.txt",
   "/docs/components/context-menu/examples/basic":
     "sources/context-menu-basic.txt",
@@ -1660,8 +1670,26 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-field-basic.txt",
   "/docs/components/shadcn-drawer/examples/basic":
     "sources/shadcn-drawer-basic.txt",
+  "/docs/components/shadcn-drawer/examples/scrollable-content":
+    "sources/shadcn-drawer-scrollable-content.txt",
+  "/docs/components/shadcn-drawer/examples/responsive-dialog":
+    "sources/shadcn-drawer-responsive-dialog.txt",
+  "/docs/components/shadcn-drawer/examples/rtl":
+    "sources/shadcn-drawer-rtl.txt",
+  "/docs/components/shadcn-drawer/examples/sides":
+    "sources/shadcn-drawer-sides.txt",
   "/docs/components/shadcn-dialog/examples/basic":
     "sources/shadcn-dialog-basic.txt",
+  "/docs/components/shadcn-dialog/examples/custom-close-button":
+    "sources/shadcn-dialog-custom-close-button.txt",
+  "/docs/components/shadcn-dialog/examples/no-close-button":
+    "sources/shadcn-dialog-no-close-button.txt",
+  "/docs/components/shadcn-dialog/examples/sticky-footer":
+    "sources/shadcn-dialog-sticky-footer.txt",
+  "/docs/components/shadcn-dialog/examples/scrollable-content":
+    "sources/shadcn-dialog-scrollable-content.txt",
+  "/docs/components/shadcn-dialog/examples/rtl":
+    "sources/shadcn-dialog-rtl.txt",
   "/docs/components/shadcn-date-picker/examples/basic":
     "sources/shadcn-date-picker-basic.txt",
   "/docs/components/shadcn-context-menu/examples/basic":
@@ -13724,6 +13752,82 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "shadcn-dialog-custom-close-button",
+        () =>
+          docsExampleBlock({
+            title: "Custom Close Button",
+            testId: "docs-example-block-shadcn-dialog-custom-close-button",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDialogCustomCloseButtonExamplePreview(
+                model.shadcnDialogCustomCloseButtonExample,
+                "shadcn-dialog-docs-custom-close-button-preview"
+              ),
+            href: "/docs/components/shadcn-dialog/examples/custom-close-button",
+            linkText:
+              "Open standalone shadcn Dialog Custom Close Button example",
+          }),
+      ],
+      [
+        "shadcn-dialog-no-close-button",
+        () =>
+          docsExampleBlock({
+            title: "No Close Button",
+            testId: "docs-example-block-shadcn-dialog-no-close-button",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDialogNoCloseButtonExamplePreview(
+                model.shadcnDialogNoCloseButtonExample,
+                "shadcn-dialog-docs-no-close-button-preview"
+              ),
+            href: "/docs/components/shadcn-dialog/examples/no-close-button",
+            linkText: "Open standalone shadcn Dialog No Close Button example",
+          }),
+      ],
+      [
+        "shadcn-dialog-sticky-footer",
+        () =>
+          docsExampleBlock({
+            title: "Sticky Footer",
+            testId: "docs-example-block-shadcn-dialog-sticky-footer",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDialogStickyFooterExamplePreview(
+                model.shadcnDialogStickyFooterExample,
+                "shadcn-dialog-docs-sticky-footer-preview"
+              ),
+            href: "/docs/components/shadcn-dialog/examples/sticky-footer",
+            linkText: "Open standalone shadcn Dialog Sticky Footer example",
+          }),
+      ],
+      [
+        "shadcn-dialog-scrollable-content",
+        () =>
+          docsExampleBlock({
+            title: "Scrollable Content",
+            testId: "docs-example-block-shadcn-dialog-scrollable-content",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDialogScrollableContentExamplePreview(
+                model.shadcnDialogScrollableContentExample,
+                "shadcn-dialog-docs-scrollable-content-preview"
+              ),
+            href: "/docs/components/shadcn-dialog/examples/scrollable-content",
+            linkText:
+              "Open standalone shadcn Dialog Scrollable Content example",
+          }),
+      ],
+      [
+        "shadcn-dialog-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-dialog-rtl",
+            preview: DocsPreviewsShadcnMissing.shadcnDialogRtlExamplePreview(
+              model.shadcnDialogRtlExample,
+              "shadcn-dialog-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-dialog/examples/rtl",
+            linkText: "Open standalone shadcn Dialog RTL example",
+          }),
+      ],
+      [
         "shadcn-drawer-basic",
         () =>
           docsExampleBlock({
@@ -13735,6 +13839,65 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
             ),
             href: "/docs/components/shadcn-drawer/examples/basic",
             linkText: "Open standalone shadcn Drawer Basic example",
+          }),
+      ],
+      [
+        "shadcn-drawer-scrollable-content",
+        () =>
+          docsExampleBlock({
+            title: "Scrollable Content",
+            testId: "docs-example-block-shadcn-drawer-scrollable-content",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDrawerScrollableContentExamplePreview(
+                model.shadcnDrawerScrollableContentExample,
+                "shadcn-drawer-docs-scrollable-content-preview"
+              ),
+            href: "/docs/components/shadcn-drawer/examples/scrollable-content",
+            linkText:
+              "Open standalone shadcn Drawer Scrollable Content example",
+          }),
+      ],
+      [
+        "shadcn-drawer-sides",
+        () =>
+          docsExampleBlock({
+            title: "Sides",
+            testId: "docs-example-block-shadcn-drawer-sides",
+            preview: DocsPreviewsShadcnMissing.shadcnDrawerSidesExamplePreview(
+              model.shadcnDrawerSidesExample,
+              "shadcn-drawer-docs-sides-preview"
+            ),
+            href: "/docs/components/shadcn-drawer/examples/sides",
+            linkText: "Open standalone shadcn Drawer Sides example",
+          }),
+      ],
+      [
+        "shadcn-drawer-responsive-dialog",
+        () =>
+          docsExampleBlock({
+            title: "Responsive Dialog",
+            testId: "docs-example-block-shadcn-drawer-responsive-dialog",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnDrawerResponsiveDialogExamplePreview(
+                model.shadcnDrawerResponsiveDialogExample,
+                "shadcn-drawer-docs-responsive-dialog-preview"
+              ),
+            href: "/docs/components/shadcn-drawer/examples/responsive-dialog",
+            linkText: "Open standalone shadcn Drawer Responsive Dialog example",
+          }),
+      ],
+      [
+        "shadcn-drawer-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-drawer-rtl",
+            preview: DocsPreviewsShadcnMissing.shadcnDrawerRtlExamplePreview(
+              model.shadcnDrawerRtlExample,
+              "shadcn-drawer-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-drawer/examples/rtl",
+            linkText: "Open standalone shadcn Drawer RTL example",
           }),
       ],
       [
@@ -14572,6 +14735,88 @@ const shadcnExampleBlock = (model: Model, example: string): Html =>
             ),
             href: "/docs/components/shadcn-alert-dialog/examples/basic",
             linkText: "Open standalone shadcn Alert Dialog Basic example",
+          }),
+      ],
+      [
+        "shadcn-alert-dialog-small",
+        () =>
+          docsExampleBlock({
+            title: "Small",
+            description: 'Uses the origin size="sm" content variant.',
+            testId: "docs-example-block-shadcn-alert-dialog-small",
+            preview: DocsPreviewsAlert.shadcnAlertDialogSmallExamplePreview(
+              model.shadcnAlertDialogSmallExample,
+              "shadcn-alert-dialog-docs-small-preview"
+            ),
+            href: "/docs/components/shadcn-alert-dialog/examples/small",
+            linkText: "Open standalone shadcn Alert Dialog Small example",
+          }),
+      ],
+      [
+        "shadcn-alert-dialog-media",
+        () =>
+          docsExampleBlock({
+            title: "Media",
+            description:
+              "Uses AlertDialogMedia to place an icon above the title and description.",
+            testId: "docs-example-block-shadcn-alert-dialog-media",
+            preview: DocsPreviewsAlert.shadcnAlertDialogMediaExamplePreview(
+              model.shadcnAlertDialogMediaExample,
+              "shadcn-alert-dialog-docs-media-preview"
+            ),
+            href: "/docs/components/shadcn-alert-dialog/examples/media",
+            linkText: "Open standalone shadcn Alert Dialog Media example",
+          }),
+      ],
+      [
+        "shadcn-alert-dialog-small-media",
+        () =>
+          docsExampleBlock({
+            title: "Small with Media",
+            description:
+              'Combines the origin size="sm" content variant with AlertDialogMedia.',
+            testId: "docs-example-block-shadcn-alert-dialog-small-media",
+            preview:
+              DocsPreviewsAlert.shadcnAlertDialogSmallMediaExamplePreview(
+                model.shadcnAlertDialogSmallMediaExample,
+                "shadcn-alert-dialog-docs-small-media-preview"
+              ),
+            href: "/docs/components/shadcn-alert-dialog/examples/small-media",
+            linkText:
+              "Open standalone shadcn Alert Dialog Small with Media example",
+          }),
+      ],
+      [
+        "shadcn-alert-dialog-destructive",
+        () =>
+          docsExampleBlock({
+            title: "Destructive",
+            description:
+              "Uses the destructive confirm action pattern from the origin page.",
+            testId: "docs-example-block-shadcn-alert-dialog-destructive",
+            preview:
+              DocsPreviewsAlert.shadcnAlertDialogDestructiveExamplePreview(
+                model.shadcnAlertDialogDestructiveExample,
+                "shadcn-alert-dialog-docs-destructive-preview"
+              ),
+            href: "/docs/components/shadcn-alert-dialog/examples/destructive",
+            linkText: "Open standalone shadcn Alert Dialog Destructive example",
+          }),
+      ],
+      [
+        "shadcn-alert-dialog-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            description:
+              "Wraps the origin dialog composition in an RTL region.",
+            testId: "docs-example-block-shadcn-alert-dialog-rtl",
+            preview: DocsPreviewsAlert.shadcnAlertDialogRtlExamplePreview(
+              model.shadcnAlertDialogRtlExample,
+              "shadcn-alert-dialog-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-alert-dialog/examples/rtl",
+            linkText: "Open standalone shadcn Alert Dialog RTL example",
           }),
       ],
       [
@@ -18101,7 +18346,14 @@ AlertDialog.rootView<Message>({
             "shadcnAlertDialogDescriptionClassName",
             "shadcnAlertDialogActionsClassName",
           ],
-          examples: ["shadcn-alert-dialog-basic"],
+          examples: [
+            "shadcn-alert-dialog-basic",
+            "shadcn-alert-dialog-small",
+            "shadcn-alert-dialog-media",
+            "shadcn-alert-dialog-small-media",
+            "shadcn-alert-dialog-destructive",
+            "shadcn-alert-dialog-rtl",
+          ],
           anatomyCode: `import * as AlertDialog from "./ui/shadcn-alert-dialog";
 
 AlertDialog.rootView<Message>({
@@ -18168,7 +18420,13 @@ Drawer.rootView<Message>({
             "shadcnDrawerPopupClassName",
             "shadcnDrawerCloseClassName",
           ],
-          examples: ["shadcn-drawer-basic"],
+          examples: [
+            "shadcn-drawer-basic",
+            "shadcn-drawer-scrollable-content",
+            "shadcn-drawer-sides",
+            "shadcn-drawer-responsive-dialog",
+            "shadcn-drawer-rtl",
+          ],
           anatomyCode: `import * as Drawer from "./ui/shadcn-drawer";
 
 Drawer.rootView<Message>({
@@ -18178,6 +18436,14 @@ Drawer.rootView<Message>({
   ],
 });`,
         }),
+      ShadcnDrawerScrollableContentExample: () =>
+        DocsRoutes.shadcnDrawerScrollableContentExampleRouteView(model),
+      ShadcnDrawerResponsiveDialogExample: () =>
+        DocsRoutes.shadcnDrawerResponsiveDialogExampleRouteView(model),
+      ShadcnDrawerRtlExample: () =>
+        DocsRoutes.shadcnDrawerRtlExampleRouteView(model),
+      ShadcnDrawerSidesExample: () =>
+        DocsRoutes.shadcnDrawerSidesExampleRouteView(model),
       ShadcnDrawerBasicExample: () =>
         DocsRoutes.shadcnDrawerBasicExampleRouteView(model),
       DrawerBasicExample: () => DocsRoutes.drawerBasicExampleRouteView(model),
@@ -19209,7 +19475,14 @@ Dialog.view<Message>({
             "shadcnDialogTitleClassName",
             "shadcnDialogDescriptionClassName",
           ],
-          examples: ["shadcn-dialog-basic"],
+          examples: [
+            "shadcn-dialog-basic",
+            "shadcn-dialog-custom-close-button",
+            "shadcn-dialog-no-close-button",
+            "shadcn-dialog-sticky-footer",
+            "shadcn-dialog-scrollable-content",
+            "shadcn-dialog-rtl",
+          ],
           anatomyCode: `import * as Dialog from "./ui/shadcn-dialog";
 
 Dialog.view<Message>({
@@ -19220,6 +19493,16 @@ Dialog.view<Message>({
         }),
       ShadcnDialogBasicExample: () =>
         DocsRoutes.shadcnDialogBasicExampleRouteView(model),
+      ShadcnDialogCustomCloseButtonExample: () =>
+        DocsRoutes.shadcnDialogCustomCloseButtonExampleRouteView(model),
+      ShadcnDialogNoCloseButtonExample: () =>
+        DocsRoutes.shadcnDialogNoCloseButtonExampleRouteView(model),
+      ShadcnDialogStickyFooterExample: () =>
+        DocsRoutes.shadcnDialogStickyFooterExampleRouteView(model),
+      ShadcnDialogScrollableContentExample: () =>
+        DocsRoutes.shadcnDialogScrollableContentExampleRouteView(model),
+      ShadcnDialogRtlExample: () =>
+        DocsRoutes.shadcnDialogRtlExampleRouteView(model),
       DialogBasicExample: () => DocsRoutes.dialogBasicExampleRouteView(model),
       DialogAnimatedExample: () =>
         DocsRoutes.dialogAnimatedExampleRouteView(model),

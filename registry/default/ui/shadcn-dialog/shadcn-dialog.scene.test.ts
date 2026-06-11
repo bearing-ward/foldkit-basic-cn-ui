@@ -7,6 +7,8 @@ describe("shadcn Dialog registry view", () => {
     expect(Dialog.init).toBeTypeOf("function");
     expect(Dialog.update).toBeTypeOf("function");
     expect(Dialog.root).toBeTypeOf("function");
+    expect(Dialog.headerView).toBeTypeOf("function");
+    expect(Dialog.footerView).toBeTypeOf("function");
     expect(Dialog.shadcnDialogPanelClassName).toContain("rounded");
   });
 });

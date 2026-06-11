@@ -202,6 +202,11 @@ import * as ShadcnAccordionDisabledExample from "../registry/default/examples/sh
 import * as ShadcnAccordionMultipleExample from "../registry/default/examples/shadcn-accordion-multiple/main";
 import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-accordion-rtl/main";
 import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
+import * as ShadcnAlertDialogDestructiveExample from "../registry/default/examples/shadcn-alert-dialog-destructive/main";
+import * as ShadcnAlertDialogMediaExample from "../registry/default/examples/shadcn-alert-dialog-media/main";
+import * as ShadcnAlertDialogRtlExample from "../registry/default/examples/shadcn-alert-dialog-rtl/main";
+import * as ShadcnAlertDialogSmallMediaExample from "../registry/default/examples/shadcn-alert-dialog-small-media/main";
+import * as ShadcnAlertDialogSmallExample from "../registry/default/examples/shadcn-alert-dialog-small/main";
 import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
 import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
 import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
@@ -218,7 +223,16 @@ import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
 import * as ShadcnDatePickerBasicExample from "../registry/default/examples/shadcn-date-picker-basic/main";
 import * as ShadcnDialogBasicExample from "../registry/default/examples/shadcn-dialog-basic/main";
+import * as ShadcnDialogCustomCloseButtonExample from "../registry/default/examples/shadcn-dialog-custom-close-button/main";
+import * as ShadcnDialogNoCloseButtonExample from "../registry/default/examples/shadcn-dialog-no-close-button/main";
+import * as ShadcnDialogRtlExample from "../registry/default/examples/shadcn-dialog-rtl/main";
+import * as ShadcnDialogScrollableContentExample from "../registry/default/examples/shadcn-dialog-scrollable-content/main";
+import * as ShadcnDialogStickyFooterExample from "../registry/default/examples/shadcn-dialog-sticky-footer/main";
 import * as ShadcnDrawerBasicExample from "../registry/default/examples/shadcn-drawer-basic/main";
+import * as ShadcnDrawerResponsiveDialogExample from "../registry/default/examples/shadcn-drawer-responsive-dialog/main";
+import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-drawer-rtl/main";
+import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
+import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
@@ -604,6 +618,13 @@ const [baseUiAlertDialogMultipleTriggersExample] =
 const [baseUiAlertDialogOpenFromMenuExample] =
   BaseUiAlertDialogOpenFromMenuExample.init();
 const [shadcnAlertDialogBasicExample] = ShadcnAlertDialogBasicExample.init();
+const [shadcnAlertDialogSmallExample] = ShadcnAlertDialogSmallExample.init();
+const [shadcnAlertDialogMediaExample] = ShadcnAlertDialogMediaExample.init();
+const [shadcnAlertDialogSmallMediaExample] =
+  ShadcnAlertDialogSmallMediaExample.init();
+const [shadcnAlertDialogDestructiveExample] =
+  ShadcnAlertDialogDestructiveExample.init();
+const [shadcnAlertDialogRtlExample] = ShadcnAlertDialogRtlExample.init();
 const [drawerBasicExample] = DrawerBasicExample.init();
 const [baseUiContextMenuBasicExample] = BaseUiContextMenuBasicExample.init();
 const [baseUiContextMenuNestedExample] = BaseUiContextMenuNestedExample.init();
@@ -827,7 +848,22 @@ const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
 const [shadcnContextMenuBasicExample] = ShadcnContextMenuBasicExample.init();
 const [shadcnDatePickerBasicExample] = ShadcnDatePickerBasicExample.init();
 const [shadcnDialogBasicExample] = ShadcnDialogBasicExample.init();
+const [shadcnDialogCustomCloseButtonExample] =
+  ShadcnDialogCustomCloseButtonExample.init();
+const [shadcnDialogNoCloseButtonExample] =
+  ShadcnDialogNoCloseButtonExample.init();
+const [shadcnDialogStickyFooterExample] =
+  ShadcnDialogStickyFooterExample.init();
+const [shadcnDialogScrollableContentExample] =
+  ShadcnDialogScrollableContentExample.init();
+const [shadcnDialogRtlExample] = ShadcnDialogRtlExample.init();
 const [shadcnDrawerBasicExample] = ShadcnDrawerBasicExample.init();
+const [shadcnDrawerScrollableContentExample] =
+  ShadcnDrawerScrollableContentExample.init();
+const [shadcnDrawerResponsiveDialogExample] =
+  ShadcnDrawerResponsiveDialogExample.init();
+const [shadcnDrawerRtlExample] = ShadcnDrawerRtlExample.init();
+const [shadcnDrawerSidesExample] = ShadcnDrawerSidesExample.init();
 const [shadcnFieldBasicExample] = ShadcnFieldBasicExample.init();
 const [shadcnMenubarBasicExample] = ShadcnMenubarBasicExample.init();
 const [shadcnPopoverBasicExample] = ShadcnPopoverBasicExample.init();
@@ -876,6 +912,11 @@ const modelForRoute = (route: Model["route"]): Model => ({
   baseUiAlertDialogMultipleTriggersExample,
   baseUiAlertDialogOpenFromMenuExample,
   shadcnAlertDialogBasicExample,
+  shadcnAlertDialogSmallExample,
+  shadcnAlertDialogMediaExample,
+  shadcnAlertDialogSmallMediaExample,
+  shadcnAlertDialogDestructiveExample,
+  shadcnAlertDialogRtlExample,
   drawerBasicExample,
   baseUiContextMenuBasicExample,
   baseUiContextMenuNestedExample,
@@ -1085,7 +1126,16 @@ const modelForRoute = (route: Model["route"]): Model => ({
   shadcnContextMenuBasicExample,
   shadcnDatePickerBasicExample,
   shadcnDialogBasicExample,
+  shadcnDialogCustomCloseButtonExample,
+  shadcnDialogNoCloseButtonExample,
+  shadcnDialogStickyFooterExample,
+  shadcnDialogScrollableContentExample,
+  shadcnDialogRtlExample,
   shadcnDrawerBasicExample,
+  shadcnDrawerScrollableContentExample,
+  shadcnDrawerResponsiveDialogExample,
+  shadcnDrawerRtlExample,
+  shadcnDrawerSidesExample,
   shadcnFieldBasicExample,
   shadcnMenubarBasicExample,
   shadcnPopoverBasicExample,

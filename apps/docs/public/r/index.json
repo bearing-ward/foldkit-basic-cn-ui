@@ -2529,7 +2529,7 @@
       ],
       "meta": {
         "foldkit": {
-          "origin": "https://ui.shadcn.com/docs/components/radix/alert-dialog",
+          "origin": "https://ui.shadcn.com/docs/components/alert-dialog",
           "artifact": "component",
           "stateful": false
         }
@@ -10142,6 +10142,146 @@
       }
     },
     {
+      "name": "shadcn-alert-dialog-destructive",
+      "type": "registry:example",
+      "title": "shadcn Alert Dialog Destructive",
+      "description": "A runnable Foldkit example matching the shadcn Alert Dialog destructive origin example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-destructive/main.ts",
+          "target": "src/examples/shadcn-alert-dialog-destructive/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-destructive/shadcn-alert-dialog-destructive.scene.test.ts",
+          "target": "src/examples/shadcn-alert-dialog-destructive/shadcn-alert-dialog-destructive.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "shadcn-destructive",
+          "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "shadcn-alert-dialog-media",
+      "type": "registry:example",
+      "title": "shadcn Alert Dialog Media",
+      "description": "A runnable Foldkit example matching the shadcn Alert Dialog media origin example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-media/main.ts",
+          "target": "src/examples/shadcn-alert-dialog-media/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-media/shadcn-alert-dialog-media.scene.test.ts",
+          "target": "src/examples/shadcn-alert-dialog-media/shadcn-alert-dialog-media.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "shadcn-media",
+          "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "shadcn-alert-dialog-rtl",
+      "type": "registry:example",
+      "title": "shadcn Alert Dialog RTL",
+      "description": "A runnable Foldkit example matching the shadcn Alert Dialog RTL origin example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-rtl/main.ts",
+          "target": "src/examples/shadcn-alert-dialog-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-rtl/shadcn-alert-dialog-rtl.scene.test.ts",
+          "target": "src/examples/shadcn-alert-dialog-rtl/shadcn-alert-dialog-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "shadcn-rtl",
+          "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "shadcn-alert-dialog-small",
+      "type": "registry:example",
+      "title": "shadcn Alert Dialog Small",
+      "description": "A runnable Foldkit example matching the shadcn Alert Dialog small origin example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-small/main.ts",
+          "target": "src/examples/shadcn-alert-dialog-small/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-small/shadcn-alert-dialog-small.scene.test.ts",
+          "target": "src/examples/shadcn-alert-dialog-small/shadcn-alert-dialog-small.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "shadcn-small",
+          "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+        }
+      }
+    },
+    {
+      "name": "shadcn-alert-dialog-small-media",
+      "type": "registry:example",
+      "title": "shadcn Alert Dialog Small with Media",
+      "description": "A runnable Foldkit example matching the shadcn Alert Dialog small-with-media origin example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-alert-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-small-media/main.ts",
+          "target": "src/examples/shadcn-alert-dialog-small-media/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-alert-dialog-small-media/shadcn-alert-dialog-small-media.scene.test.ts",
+          "target": "src/examples/shadcn-alert-dialog-small-media/shadcn-alert-dialog-small-media.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "AlertDialog",
+          "example": "shadcn-small-media",
+          "origin": "https://ui.shadcn.com/docs/components/alert-dialog"
+        }
+      }
+    },
+    {
       "name": "shadcn-avatar-badge",
       "type": "registry:example",
       "title": "shadcn Avatar Badge",
@@ -11272,6 +11412,146 @@
       }
     },
     {
+      "name": "shadcn-dialog-custom-close-button",
+      "type": "registry:example",
+      "title": "shadcn Dialog Custom Close Button",
+      "description": "A runnable Foldkit example showing the shadcn Dialog custom close button pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-dialog-custom-close-button/main.ts",
+          "target": "src/examples/shadcn-dialog-custom-close-button/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-dialog-custom-close-button/shadcn-dialog-custom-close-button.scene.test.ts",
+          "target": "src/examples/shadcn-dialog-custom-close-button/shadcn-dialog-custom-close-button.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "custom-close-button",
+          "origin": "https://ui.shadcn.com/docs/components/radix/dialog#custom-close-button"
+        }
+      }
+    },
+    {
+      "name": "shadcn-dialog-no-close-button",
+      "type": "registry:example",
+      "title": "shadcn Dialog No Close Button",
+      "description": "A runnable Foldkit example showing the shadcn Dialog no-close-button pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-dialog-no-close-button/main.ts",
+          "target": "src/examples/shadcn-dialog-no-close-button/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-dialog-no-close-button/shadcn-dialog-no-close-button.scene.test.ts",
+          "target": "src/examples/shadcn-dialog-no-close-button/shadcn-dialog-no-close-button.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "no-close-button",
+          "origin": "https://ui.shadcn.com/docs/components/radix/dialog#no-close-button"
+        }
+      }
+    },
+    {
+      "name": "shadcn-dialog-rtl",
+      "type": "registry:example",
+      "title": "shadcn Dialog RTL",
+      "description": "A runnable Foldkit example showing the shadcn Dialog RTL pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-dialog-rtl/main.ts",
+          "target": "src/examples/shadcn-dialog-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-dialog-rtl/shadcn-dialog-rtl.scene.test.ts",
+          "target": "src/examples/shadcn-dialog-rtl/shadcn-dialog-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "rtl",
+          "origin": "https://ui.shadcn.com/docs/components/radix/dialog#rtl"
+        }
+      }
+    },
+    {
+      "name": "shadcn-dialog-scrollable-content",
+      "type": "registry:example",
+      "title": "shadcn Dialog Scrollable Content",
+      "description": "A runnable Foldkit example showing the shadcn Dialog scrollable content pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-dialog-scrollable-content/main.ts",
+          "target": "src/examples/shadcn-dialog-scrollable-content/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-dialog-scrollable-content/shadcn-dialog-scrollable-content.scene.test.ts",
+          "target": "src/examples/shadcn-dialog-scrollable-content/shadcn-dialog-scrollable-content.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "scrollable-content",
+          "origin": "https://ui.shadcn.com/docs/components/radix/dialog#scrollable-content"
+        }
+      }
+    },
+    {
+      "name": "shadcn-dialog-sticky-footer",
+      "type": "registry:example",
+      "title": "shadcn Dialog Sticky Footer",
+      "description": "A runnable Foldkit example showing the shadcn Dialog sticky footer pattern.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-dialog"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-dialog-sticky-footer/main.ts",
+          "target": "src/examples/shadcn-dialog-sticky-footer/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-dialog-sticky-footer/shadcn-dialog-sticky-footer.scene.test.ts",
+          "target": "src/examples/shadcn-dialog-sticky-footer/shadcn-dialog-sticky-footer.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "sticky-footer",
+          "origin": "https://ui.shadcn.com/docs/components/radix/dialog#sticky-footer"
+        }
+      }
+    },
+    {
       "name": "shadcn-drawer-basic",
       "type": "registry:example",
       "title": "shadcn Drawer Basic",
@@ -11295,6 +11575,118 @@
         "foldkit": {
           "component": "Drawer",
           "example": "basic",
+          "origin": "https://ui.shadcn.com/docs/components/radix/drawer"
+        }
+      }
+    },
+    {
+      "name": "shadcn-drawer-responsive-dialog",
+      "type": "registry:example",
+      "title": "shadcn Drawer Responsive Dialog",
+      "description": "A runnable Foldkit example showing the shadcn Drawer responsive dialog example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-drawer-responsive-dialog/main.ts",
+          "target": "src/examples/shadcn-drawer-responsive-dialog/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-drawer-responsive-dialog/shadcn-drawer-responsive-dialog.scene.test.ts",
+          "target": "src/examples/shadcn-drawer-responsive-dialog/shadcn-drawer-responsive-dialog.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "shadcn-responsive-dialog",
+          "origin": "https://ui.shadcn.com/docs/components/radix/drawer"
+        }
+      }
+    },
+    {
+      "name": "shadcn-drawer-rtl",
+      "type": "registry:example",
+      "title": "shadcn Drawer RTL",
+      "description": "A runnable Foldkit example showing the shadcn Drawer RTL example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-drawer-rtl/main.ts",
+          "target": "src/examples/shadcn-drawer-rtl/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-drawer-rtl/shadcn-drawer-rtl.scene.test.ts",
+          "target": "src/examples/shadcn-drawer-rtl/shadcn-drawer-rtl.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "shadcn-rtl",
+          "origin": "https://ui.shadcn.com/docs/components/radix/drawer"
+        }
+      }
+    },
+    {
+      "name": "shadcn-drawer-scrollable-content",
+      "type": "registry:example",
+      "title": "shadcn Drawer Scrollable Content",
+      "description": "A runnable Foldkit example showing the shadcn Drawer scrollable content example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-drawer-scrollable-content/main.ts",
+          "target": "src/examples/shadcn-drawer-scrollable-content/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-drawer-scrollable-content/shadcn-drawer-scrollable-content.scene.test.ts",
+          "target": "src/examples/shadcn-drawer-scrollable-content/shadcn-drawer-scrollable-content.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "scrollable-content",
+          "origin": "https://ui.shadcn.com/docs/components/radix/drawer"
+        }
+      }
+    },
+    {
+      "name": "shadcn-drawer-sides",
+      "type": "registry:example",
+      "title": "shadcn Drawer Sides",
+      "description": "A runnable Foldkit example showing the shadcn Drawer sides example.",
+      "dependencies": ["effect", "foldkit"],
+      "devDependencies": ["vitest"],
+      "registryDependencies": ["@foldkit-cn/shadcn-drawer"],
+      "files": [
+        {
+          "path": "registry/default/examples/shadcn-drawer-sides/main.ts",
+          "target": "src/examples/shadcn-drawer-sides/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/default/examples/shadcn-drawer-sides/shadcn-drawer-sides.scene.test.ts",
+          "target": "src/examples/shadcn-drawer-sides/shadcn-drawer-sides.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Drawer",
+          "example": "sides",
           "origin": "https://ui.shadcn.com/docs/components/radix/drawer"
         }
       }

@@ -2620,6 +2620,50 @@ export const shadcnDrawerBasicExampleRouteView = (model: Model): Html =>
     )
   );
 
+export const shadcnDrawerScrollableContentExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Drawer Scrollable Content",
+    "shadcn-drawer-scrollable-content",
+    DocsPreviewsShadcnMissing.shadcnDrawerScrollableContentExamplePreview(
+      model.shadcnDrawerScrollableContentExample,
+      "shadcn-drawer-scrollable-content-standalone"
+    )
+  );
+
+export const shadcnDrawerResponsiveDialogExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Drawer Responsive Dialog",
+    "shadcn-drawer-responsive-dialog",
+    DocsPreviewsShadcnMissing.shadcnDrawerResponsiveDialogExamplePreview(
+      model.shadcnDrawerResponsiveDialogExample,
+      "shadcn-drawer-responsive-dialog-standalone"
+    )
+  );
+
+export const shadcnDrawerRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Drawer RTL",
+    "shadcn-drawer-rtl",
+    DocsPreviewsShadcnMissing.shadcnDrawerRtlExamplePreview(
+      model.shadcnDrawerRtlExample,
+      "shadcn-drawer-rtl-standalone"
+    )
+  );
+
+export const shadcnDrawerSidesExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Drawer Sides",
+    "shadcn-drawer-sides",
+    DocsPreviewsShadcnMissing.shadcnDrawerSidesExamplePreview(
+      model.shadcnDrawerSidesExample,
+      "shadcn-drawer-sides-standalone"
+    )
+  );
+
 export const baseUiFieldBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -4013,6 +4057,64 @@ export const shadcnDialogBasicExampleRouteView = (model: Model): Html =>
     DocsPreviewsShadcnMissing.shadcnDialogBasicExamplePreview(
       model.shadcnDialogBasicExample,
       "shadcn-dialog-basic-standalone"
+    )
+  );
+
+export const shadcnDialogCustomCloseButtonExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Dialog Custom Close Button",
+    "shadcn-dialog-custom-close-button",
+    DocsPreviewsShadcnMissing.shadcnDialogCustomCloseButtonExamplePreview(
+      model.shadcnDialogCustomCloseButtonExample,
+      "shadcn-dialog-custom-close-button-standalone"
+    )
+  );
+
+export const shadcnDialogNoCloseButtonExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Dialog No Close Button",
+    "shadcn-dialog-no-close-button",
+    DocsPreviewsShadcnMissing.shadcnDialogNoCloseButtonExamplePreview(
+      model.shadcnDialogNoCloseButtonExample,
+      "shadcn-dialog-no-close-button-standalone"
+    )
+  );
+
+export const shadcnDialogStickyFooterExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Dialog Sticky Footer",
+    "shadcn-dialog-sticky-footer",
+    DocsPreviewsShadcnMissing.shadcnDialogStickyFooterExamplePreview(
+      model.shadcnDialogStickyFooterExample,
+      "shadcn-dialog-sticky-footer-standalone"
+    )
+  );
+
+export const shadcnDialogScrollableContentExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Dialog Scrollable Content",
+    "shadcn-dialog-scrollable-content",
+    DocsPreviewsShadcnMissing.shadcnDialogScrollableContentExamplePreview(
+      model.shadcnDialogScrollableContentExample,
+      "shadcn-dialog-scrollable-content-standalone"
+    )
+  );
+
+export const shadcnDialogRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Dialog RTL",
+    "shadcn-dialog-rtl",
+    DocsPreviewsShadcnMissing.shadcnDialogRtlExamplePreview(
+      model.shadcnDialogRtlExample,
+      "shadcn-dialog-rtl-standalone"
     )
   );
 

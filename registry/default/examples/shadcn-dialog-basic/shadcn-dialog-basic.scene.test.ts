@@ -19,27 +19,29 @@ describe("shadcn-dialog-basic example", () => {
     Scene.scene(
       { update, view },
       Scene.with(initialModel),
-      Scene.expect(Scene.role("button", { name: "Open dialog" })).toExist(),
-      Scene.expect(Scene.text("Edit profile")).not.toExist(),
-      Scene.click(Scene.role("button", { name: "Open dialog" })),
+      Scene.expect(Scene.role("button", { name: "Open Dialog" })).toExist(),
+      Scene.expect(Scene.text("Are you absolutely sure?")).not.toExist(),
+      Scene.click(Scene.role("button", { name: "Open Dialog" })),
       Scene.Command.expectExact(ShowDialog),
       Scene.Command.resolve(
         ShowDialog,
         Dialog.CompletedShowDialog(),
         (message) => GotDialogMessage({ message })
       ),
-      Scene.expect(Scene.role("dialog", { name: "Edit profile" })).toExist(),
       Scene.expect(
-        Scene.role("dialog", { name: "Edit profile" })
-      ).toHaveAccessibleDescription(/Make changes to your profile/u),
-      Scene.click(Scene.role("button", { name: "Save changes" })),
+        Scene.role("dialog", { name: "Are you absolutely sure?" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("dialog", { name: "Are you absolutely sure?" })
+      ).toHaveAccessibleDescription(/permanently delete your account/u),
+      Scene.click(Scene.role("button", { name: "Close" })),
       Scene.Command.expectExact(CloseDialog),
       Scene.Command.resolve(
         CloseDialog,
         Dialog.CompletedCloseDialog(),
         (message) => GotDialogMessage({ message })
       ),
-      Scene.expect(Scene.text("Edit profile")).not.toExist()
+      Scene.expect(Scene.text("Are you absolutely sure?")).not.toExist()
     );
   });
 });
