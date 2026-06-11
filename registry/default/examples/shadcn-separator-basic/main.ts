@@ -45,32 +45,30 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("flex flex-col items-start gap-4")],
+    [],
     [
       h.div(
-        [h.Class("space-y-4")],
+        [h.Class("space-y-1")],
         [
-          h.div(
-            [h.Class("space-y-2")],
-            [
-              h.p([h.Class("text-sm font-medium text-gray-950")], ["Account"]),
-              Separator.view<Message>(),
-              h.p(
-                [h.Class("text-sm text-gray-600")],
-                ["Profile, billing, and team settings."]
-              ),
-            ]
+          h.h4(
+            [h.Class("text-sm font-medium leading-none")],
+            ["Radix Primitives"]
           ),
-          h.div(
-            [h.Class("flex h-8 items-center gap-4 text-sm text-gray-700")],
-            [
-              h.span([], ["Preview"]),
-              Separator.view<Message>({ orientation: "vertical" }),
-              h.span([], ["Code"]),
-              Separator.view<Message>({ orientation: "vertical" }),
-              h.span([], ["Deploy"]),
-            ]
+          h.p(
+            [h.Class("text-sm text-gray-500")],
+            ["An open-source UI component library."]
           ),
+        ]
+      ),
+      Separator.view<Message>({ className: "my-4" }),
+      h.div(
+        [h.Class("flex h-5 items-center space-x-4 text-sm")],
+        [
+          h.div([], ["Blog"]),
+          Separator.view<Message>({ orientation: "vertical" }),
+          h.div([], ["Docs"]),
+          Separator.view<Message>({ orientation: "vertical" }),
+          h.div([], ["Source"]),
         ]
       ),
     ]

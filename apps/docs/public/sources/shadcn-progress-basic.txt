@@ -26,7 +26,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ value: 20 }, []];
+] => [{ value: 66 }, []];
 
 // UPDATE
 
@@ -47,12 +47,19 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("flex flex-col items-start gap-4")],
+    [h.Class("w-[60%]")],
     [
-      Progress.view<Message>({
+      Progress.rootView<Message>({
         value: model.value,
-        label: "Export data",
-        id: "export-data-progress-label",
+        children: [
+          Progress.trackView<Message>({
+            children: [
+              Progress.indicatorView<Message>({
+                value: model.value,
+              }),
+            ],
+          }),
+        ],
       }),
     ]
   );

@@ -4,23 +4,21 @@ import { describe, test } from "vitest";
 import * as ShadcnSeparatorBasicExample from "./main";
 
 describe("Shadcn Separator Basic example", () => {
-  test("renders separator utility without an artificial action", () => {
+  test("matches the shadcn separator demo content", () => {
     Scene.scene(
       {
         update: ShadcnSeparatorBasicExample.update,
         view: ShadcnSeparatorBasicExample.view,
       },
       Scene.with(ShadcnSeparatorBasicExample.init()[0]),
-      Scene.expect(Scene.text("Account")).toExist(),
-      Scene.expect(
-        Scene.text("Profile, billing, and team settings.")
-      ).toExist(),
-      Scene.expect(Scene.text("Preview")).toExist(),
-      Scene.expect(Scene.text("Code")).toExist(),
-      Scene.expect(Scene.text("Deploy")).toExist(),
-      Scene.expect(Scene.text("Preview")).not.toHaveHandler("click"),
-      Scene.expect(Scene.text("Code")).not.toHaveHandler("click"),
-      Scene.expect(Scene.text("Deploy")).not.toHaveHandler("click"),
+      Scene.expect(Scene.text("Radix Primitives")).toExist(),
+      Scene.expect(Scene.text("An open-source UI component library.")).toExist(),
+      Scene.expect(Scene.text("Blog")).toExist(),
+      Scene.expect(Scene.text("Docs")).toExist(),
+      Scene.expect(Scene.text("Source")).toExist(),
+      Scene.expect(Scene.text("Blog")).not.toHaveHandler("click"),
+      Scene.expect(Scene.text("Docs")).not.toHaveHandler("click"),
+      Scene.expect(Scene.text("Source")).not.toHaveHandler("click"),
       Scene.expect(Scene.role("button", { name: "Toggle label" })).not.toExist()
     );
   });
