@@ -12,7 +12,7 @@ const resolveFocusTab = (index: number) =>
   );
 
 describe("shadcn Tabs Basic example", () => {
-  test("selects a tab and emits parent-visible feedback", () => {
+  test("renders the origin account and password tabs", () => {
     const [initialModel] = ShadcnTabsBasicExample.init();
 
     Scene.scene(
@@ -25,14 +25,25 @@ describe("shadcn Tabs Basic example", () => {
         "aria-selected",
         "true"
       ),
-      Scene.expect(Scene.text("Selected tab: Account")).toExist(),
-      Scene.click(Scene.role("tab", { name: "Notifications" })),
-      resolveFocusTab(2),
-      Scene.expect(Scene.role("tab", { name: "Notifications" })).toHaveAttr(
+      Scene.expect(
+        Scene.text("Make changes to your account here. Click save when you're done.")
+      ).toExist(),
+      Scene.expect(Scene.label("Name")).toHaveValue("Pedro Duarte"),
+      Scene.expect(Scene.label("Username")).toHaveValue("@peduarte"),
+      Scene.expect(Scene.role("button", { name: "Save changes" })).toExist(),
+      Scene.expect(Scene.role("tab", { name: "Notifications" })).not.toExist(),
+      Scene.click(Scene.role("tab", { name: "Password" })),
+      resolveFocusTab(1),
+      Scene.expect(Scene.role("tab", { name: "Password" })).toHaveAttr(
         "aria-selected",
         "true"
       ),
-      Scene.expect(Scene.text("Selected tab: Notifications")).toExist()
+      Scene.expect(
+        Scene.text("Change your password here. After saving, you'll be logged out.")
+      ).toExist(),
+      Scene.expect(Scene.label("Current password")).toHaveValue(""),
+      Scene.expect(Scene.label("New password")).toHaveValue(""),
+      Scene.expect(Scene.role("button", { name: "Save password" })).toExist()
     );
   });
 });

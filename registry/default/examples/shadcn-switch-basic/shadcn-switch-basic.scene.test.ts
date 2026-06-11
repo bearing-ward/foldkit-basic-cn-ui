@@ -4,20 +4,19 @@ import { describe, test } from "vitest";
 import * as ShadcnSwitchBasicExample from "./main";
 
 describe("shadcn Switch Basic example", () => {
-  test("toggles shadcn switch feedback", () => {
+  test("renders the origin Airplane Mode switch", () => {
     Scene.scene(
       {
         update: ShadcnSwitchBasicExample.update,
         view: ShadcnSwitchBasicExample.view,
       },
       Scene.with(ShadcnSwitchBasicExample.init()[0]),
-      Scene.expect(Scene.role("switch", { name: "Email alerts" })).toExist(),
+      Scene.expect(Scene.role("switch", { name: "Airplane Mode" })).toExist(),
+      Scene.expect(Scene.text("Email alerts")).not.toExist(),
+      Scene.click(Scene.role("switch", { name: "Airplane Mode" })),
       Scene.expect(
-        Scene.text("Receive operational notifications by email.")
-      ).toExist(),
-      Scene.expect(Scene.text("Email alerts: off")).toExist(),
-      Scene.click(Scene.role("switch", { name: "Email alerts" })),
-      Scene.expect(Scene.role("switch", { name: "Email alerts" })).toBeChecked()
+        Scene.role("switch", { name: "Airplane Mode" })
+      ).toBeChecked()
     );
   });
 });

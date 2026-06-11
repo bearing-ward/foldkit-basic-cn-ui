@@ -73,7 +73,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("space-y-3")],
+    [h.Class("flex items-center space-x-2")],
     [
       h.submodel({
         slotId: model.switchModel.id,
@@ -82,7 +82,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         viewInputs: {
           toView: (attributes) =>
             h.div(
-              [h.Class(Switch.shadcnSwitchRowClassName)],
+              [h.Class("flex items-center space-x-2")],
               [
                 h.button(
                   [
@@ -91,34 +91,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   ],
                   [Switch.shadcnSwitchKnob(model.switchModel.isChecked)]
                 ),
-                h.div(
-                  [h.Class(Switch.shadcnSwitchTextClassName)],
+                h.label(
                   [
-                    h.label(
-                      [
-                        ...attributes.label,
-                        h.Class(Switch.shadcnSwitchLabelClassName),
-                      ],
-                      ["Email alerts"]
-                    ),
-                    h.p(
-                      [
-                        ...attributes.description,
-                        h.Class(Switch.shadcnSwitchDescriptionClassName),
-                      ],
-                      ["Receive operational notifications by email."]
-                    ),
-                  ]
+                    ...attributes.label,
+                    h.Class(Switch.shadcnSwitchLabelClassName),
+                  ],
+                  ["Airplane Mode"]
                 ),
               ]
             ),
         },
         toParentMessage: (message) => GotSwitchMessage({ message }),
       }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Email alerts: ${model.switchModel.isChecked ? "on" : "off"}`]
-      ),
     ]
   );
 });
