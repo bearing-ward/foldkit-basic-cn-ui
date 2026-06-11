@@ -72,6 +72,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       ...stateAttributes(h, { hasOverflowX, hasOverflowY, isScrolling }),
+      h.DataAttribute("slot", "scroll-area"),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(shadcnScrollAreaRootClassName, className)),
     ],
@@ -90,6 +91,7 @@ export const viewportView = <ParentMessage>({
   return h.div(
     [
       h.Attribute("tabindex", "0"),
+      h.DataAttribute("slot", "scroll-area-viewport"),
       ...(ariaLabel === undefined
         ? []
         : [h.Attribute("role", "region"), h.AriaLabel(ariaLabel)]),
@@ -126,6 +128,8 @@ export const scrollbarView = <ParentMessage>({
   return h.div(
     [
       h.AriaHidden(true),
+      h.DataAttribute("slot", "scroll-area-scrollbar"),
+      h.DataAttribute("orientation", "vertical"),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(shadcnScrollAreaScrollbarClassName, className)),
     ],
@@ -142,6 +146,7 @@ export const thumbView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
+      h.DataAttribute("slot", "scroll-area-thumb"),
       h.Class(classNames(shadcnScrollAreaThumbClassName, className)),
     ],
     []

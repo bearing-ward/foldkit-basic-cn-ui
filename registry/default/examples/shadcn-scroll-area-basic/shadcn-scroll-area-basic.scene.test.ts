@@ -4,7 +4,7 @@ import { describe, test } from "vitest";
 import * as ShadcnScrollAreaBasicExample from "./main";
 
 describe("Shadcn Scroll Area Basic example", () => {
-  test("matches the Base UI scroll area hero example content", () => {
+  test("matches the shadcn tags scroll area demo content", () => {
     Scene.scene(
       {
         update: ShadcnScrollAreaBasicExample.update,
@@ -12,23 +12,12 @@ describe("Shadcn Scroll Area Basic example", () => {
       },
       Scene.with(ShadcnScrollAreaBasicExample.init()[0]),
       Scene.expect(
-        Scene.role("region", { name: "Vernacular architecture excerpt" })
+        Scene.role("region", { name: "Tags" })
       ).toHaveAttr("tabindex", "0"),
-      Scene.expect(
-        Scene.text(
-          "Vernacular architecture is building done outside any academic tradition, and without professional guidance. It is not a particular architectural movement or style, but rather a broad category, encompassing a wide range and variety of building types, with differing methods of construction, from around the world, both historical and extant and classical and modern."
-        )
-      ).toExist(),
-      Scene.expect(
-        Scene.text(
-          "This type of architecture usually serves immediate, local needs, is constrained by the materials available in its particular region and reflects local traditions and cultural practices."
-        )
-      ).toExist(),
-      Scene.expect(
-        Scene.text(
-          "This type of architecture usually serves immediate, local needs, is constrained by the materials available in its particular region and reflects local traditions and cultural practices."
-        )
-      ).not.toHaveHandler("click")
+      Scene.expect(Scene.text("Tags")).toExist(),
+      Scene.expect(Scene.text("v1.2.0-beta.50")).toExist(),
+      Scene.expect(Scene.text("v1.2.0-beta.1")).toExist(),
+      Scene.expect(Scene.text("v1.2.0-beta.50")).not.toHaveHandler("click")
     );
   });
 });

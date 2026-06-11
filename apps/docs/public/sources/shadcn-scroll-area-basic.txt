@@ -41,29 +41,42 @@ export const update = (
 
 // VIEW
 
-const paragraphs = (): readonly Html[] => {
+const tags = Array.from(
+  { length: 50 },
+  (_, index) => `v1.2.0-beta.${50 - index}`
+);
+
+const tagRows = (): readonly Html[] => {
   const h = html<Message>();
 
-  return [
-    h.p(
-      [],
-      [
-        "Vernacular architecture is building done outside any academic tradition, and without professional guidance. It is not a particular architectural movement or style, but rather a broad category, encompassing a wide range and variety of building types, with differing methods of construction, from around the world, both historical and extant and classical and modern.",
-      ]
-    ),
-    h.p(
-      [],
-      [
-        "This type of architecture usually serves immediate, local needs, is constrained by the materials available in its particular region and reflects local traditions and cultural practices.",
-      ]
-    ),
-  ];
+  return tags.flatMap((tag, index) => [
+    h.div([h.Class("text-sm")], [tag]),
+    ...(index === tags.length - 1
+      ? []
+      : [
+          h.div(
+            [
+              h.Attribute("role", "separator"),
+              h.Attribute("aria-orientation", "horizontal"),
+              h.Class("my-2 h-px bg-gray-200"),
+            ],
+            []
+          ),
+        ]),
+  ]);
 };
 
-export const view = Submodel.defineView<Model, Message>(
-  (): Html =>
-    ScrollArea.view<Message>({
-      ariaLabel: "Vernacular architecture excerpt",
-      children: paragraphs(),
-    })
-);
+export const view = Submodel.defineView<Model, Message>((): Html => {
+  const h = html<Message>();
+
+  return ScrollArea.view<Message>({
+      ariaLabel: "Tags",
+      className: "h-72 w-48 rounded-md border border-gray-200",
+      viewportClassName: "p-4",
+      contentClassName: "space-y-0",
+      children: [
+        h.h4([h.Class("mb-4 text-sm font-medium leading-none")], ["Tags"]),
+        ...tagRows(),
+      ],
+    });
+});

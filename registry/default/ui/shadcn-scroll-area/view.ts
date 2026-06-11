@@ -1,13 +1,13 @@
 export const shadcnScrollAreaRootClassName =
-  "relative h-48 w-80 max-w-full overflow-hidden rounded-md border border-gray-200 bg-white";
+  "relative overflow-hidden";
 export const shadcnScrollAreaViewportClassName =
-  "h-full w-full overflow-auto overscroll-contain rounded-[inherit] p-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
+  "h-full w-full rounded-[inherit] overflow-auto overscroll-contain transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-gray-950/10 focus-visible:outline-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 export const shadcnScrollAreaContentClassName =
-  "space-y-3 text-sm leading-6 text-gray-700";
+  "min-w-0";
 export const shadcnScrollAreaScrollbarClassName =
-  "pointer-events-none absolute inset-y-0 right-0 flex w-2.5 touch-none select-none border-l border-l-transparent p-px transition-colors";
+  "absolute inset-y-0 right-0 flex touch-none select-none p-px transition-colors h-full w-2.5 border-l border-l-transparent";
 export const shadcnScrollAreaThumbClassName =
-  "relative flex-1 rounded-full bg-gray-300";
+  "relative flex-1 rounded-full bg-gray-200";
 export const shadcnScrollAreaCornerClassName =
   "pointer-events-none absolute bottom-0 right-0 h-2.5 w-2.5 bg-white";
 export const shadcnScrollAreaFadeClassName =
