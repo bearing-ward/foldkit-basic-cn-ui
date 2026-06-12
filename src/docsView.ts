@@ -2773,7 +2773,7 @@ const homeView = (): Html => {
             [
               h.h2([h.Class("font-semibold text-gray-950")], ["Foldkit-native"]),
               h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
-                "Examples keep state in Foldkit models and route interactions through messages.",
+                "Foldkit-origin items are initial registry references; default to native Foldkit UI components in app code.",
               ]),
             ]
           ),
@@ -2816,6 +2816,12 @@ const homeView = (): Html => {
             [
               h.li([], [
                 "This is not the official Foldkit UI documentation; it is a styled registry on top of Foldkit.",
+              ]),
+              h.li([], [
+                "Foldkit-origin items are included as initial references for packaging, documenting, and testing native Foldkit UI through the registry workflow.",
+              ]),
+              h.li([], [
+                "Default to native Foldkit UI components first; install registry items when you want project-owned styling, examples, or an adaptable source snapshot.",
               ]),
               h.li([], [
                 "Installed files are intended to be reviewed and owned by the consuming app.",

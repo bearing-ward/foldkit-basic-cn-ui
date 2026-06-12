@@ -13,6 +13,12 @@ Foldkit CN is not the official Foldkit UI documentation. Foldkit UI is the
 headless component layer built into Foldkit; this repo provides styled registry
 items on top of Foldkit.
 
+The Foldkit-origin registry items are included as an initial reference for how
+native Foldkit UI components can be packaged, documented, and tested through the
+registry workflow. When building an app, default to the native Foldkit UI
+components first; install these registry items when you want project-owned
+styling, examples, or a source snapshot to adapt.
+
 ## What You Get
 
 - Installable registry items for Foldkit components and examples.
