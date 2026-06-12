@@ -50,11 +50,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
 
   return HoverCard.rootView<Message>({
     children: [
-      h.span([h.Class("text-sm text-gray-600")], ["Follow "]),
       HoverCard.triggerView<Message>({
         open: model.open,
         onOpen: OpenedHoverCard(),
-        children: [h.span([], ["@foldkit"])],
+        children: [h.span([], ["Hover Here"])],
       }),
       HoverCard.portalView<Message>({
         open: model.open,
@@ -64,20 +63,20 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             children: [
               HoverCard.popupView<Message>({
                 children: [
-                  h.div([h.Class(HoverCard.hoverCardAvatarClassName)], ["FK"]),
+                  h.div([h.Class(HoverCard.hoverCardAvatarClassName)], ["V"]),
                   h.h3(
                     [h.Class(HoverCard.hoverCardTitleClassName)],
-                    ["@foldkit"]
+                    ["@vercel"]
                   ),
                   h.p(
                     [h.Class(HoverCard.hoverCardDescriptionClassName)],
                     [
-                      "A toolkit for building Elm-style applications with Effect and typed messages.",
+                      "The React Framework – created and maintained by @vercel.",
                     ]
                   ),
                   h.div(
                     [h.Class(HoverCard.hoverCardMetaClassName)],
-                    ["12.8k stars"]
+                    ["Joined December 2021"]
                   ),
                 ],
               }),

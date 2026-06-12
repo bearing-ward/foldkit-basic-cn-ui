@@ -35,6 +35,7 @@ export type PanelViewConfig = Readonly<{
 export type HandleViewConfig<ParentMessage> = Readonly<{
   direction?: ResizableDirection;
   label?: string;
+  children?: readonly (Html | string)[];
   className?: string;
   style?: ResizableStyle;
   attributes?: readonly Attribute<ParentMessage>[];
@@ -103,6 +104,7 @@ export const panelView = <ParentMessage>({
 export const handleView = <ParentMessage>({
   direction = "horizontal",
   label = "Resize panels",
+  children = [],
   className,
   style,
   attributes = [],
@@ -120,7 +122,7 @@ export const handleView = <ParentMessage>({
       ...(style === undefined ? [] : [h.Style(style)]),
       ...attributes,
     ],
-    []
+    children
   );
 };
 

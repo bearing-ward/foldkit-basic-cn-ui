@@ -8,11 +8,16 @@ describe("item-size example", () => {
     Scene.scene(
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
-      Scene.expect(Scene.text("Basic Item")).not.toHaveHandler("click"),
-      Scene.expect(Scene.text("Your profile has been verified.")).toExist(),
+      Scene.expect(Scene.text("Default Size")).not.toHaveHandler("click"),
       Scene.expect(
-        Scene.role("link", { name: /Your profile has been verified/u })
-      ).toHaveAttr("href", "#")
+        Scene.text("The standard size for most use cases.")
+      ).toExist(),
+      Scene.expect(Scene.text("Small Size")).toExist(),
+      Scene.expect(Scene.text("A compact size for dense layouts.")).toExist(),
+      Scene.expect(Scene.text("Extra Small Size")).toExist(),
+      Scene.expect(
+        Scene.text("The most compact size available.")
+      ).toExist()
     );
   });
 });

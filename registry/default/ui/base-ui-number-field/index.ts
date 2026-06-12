@@ -1,3 +1,4 @@
+import { Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -7,6 +8,7 @@ import {
   numberFieldInputClassName,
   numberFieldRootClassName,
   numberFieldScrubAreaClassName,
+  numberFieldScrubAreaCursorClassName,
 } from "./view";
 
 export {
@@ -15,6 +17,7 @@ export {
   numberFieldInputClassName,
   numberFieldRootClassName,
   numberFieldScrubAreaClassName,
+  numberFieldScrubAreaCursorClassName,
 } from "./view";
 
 export type NumberFieldStyle = Readonly<Record<string, string>>;
@@ -32,9 +35,20 @@ export type RootViewConfig = NumberFieldState &
     style?: NumberFieldStyle | undefined;
   }>;
 
-export type ScrubAreaViewConfig = NumberFieldState &
+export type ScrubAreaViewConfig<ParentMessage> = NumberFieldState &
   Readonly<{
     id?: string | undefined;
+    testId?: string | undefined;
+    children: readonly Html[];
+    onPointerDown?: (screenX: number) => ParentMessage;
+    onPointerMove?: (screenX: number) => ParentMessage;
+    onPointerUp?: ParentMessage | undefined;
+    className?: string | undefined;
+    style?: NumberFieldStyle | undefined;
+  }>;
+
+export type ScrubAreaCursorViewConfig = NumberFieldState &
+  Readonly<{
     children: readonly Html[];
     className?: string | undefined;
     style?: NumberFieldStyle | undefined;
@@ -105,19 +119,60 @@ export const rootView = <ParentMessage>({
 
 export const scrubAreaView = <ParentMessage>({
   id,
+  testId,
   children,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
   className,
   style,
   ...state
-}: ScrubAreaViewConfig): Html => {
+}: ScrubAreaViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       ...(id === undefined ? [] : [h.Id(id)]),
+      ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
+      ...(onPointerDown === undefined
+        ? []
+        : [
+            h.OnPointerDown(
+              (_pointerType, _button, screenX) =>
+                Option.some(onPointerDown(screenX))
+            ),
+          ]),
+      ...(onPointerMove === undefined
+        ? []
+        : [
+            h.OnPointerMove((screenX) =>
+              Option.some(onPointerMove(screenX))
+            ),
+          ]),
+      ...(onPointerUp === undefined
+        ? []
+        : [h.OnPointerUp(() => Option.some(onPointerUp))]),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(numberFieldScrubAreaClassName, className)),
+    ],
+    children
+  );
+};
+
+export const scrubAreaCursorView = <ParentMessage>({
+  children,
+  className,
+  style,
+  ...state
+}: ScrubAreaCursorViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.span(
+    [
+      ...stateAttributes(h, state),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(classNames(numberFieldScrubAreaCursorClassName, className)),
     ],
     children
   );

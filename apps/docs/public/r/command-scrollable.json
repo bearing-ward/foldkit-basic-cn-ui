@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-scrollable",
+  "type": "registry:example",
+  "title": "Command Scrollable",
+  "description": "A runnable Foldkit version of the upstream shadcn Command Scrollable example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/command"],
+  "files": [
+    {
+      "path": "registry/default/examples/command-scrollable/main.ts",
+      "target": "src/examples/command-scrollable/main.ts",
+      "type": "registry:example",
+      "content": "import { Array, Match as M, Schema as S } from \"effect\";\nimport type { Command as FoldkitCommand } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Command from \"../../ui/command\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  query: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedCommandQuery = m(\"UpdatedCommandQuery\", {\n  value: S.String,\n});\n\nexport const Message = S.Union([UpdatedCommandQuery]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly FoldkitCommand.Command<Message>[],\n] => [{ query: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly FoldkitCommand.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly FoldkitCommand.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedCommandQuery: ({ value }) => [\n        evo(model, { query: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst items: readonly Command.CommandItem[] = [\n  { group: \"Suggestions\", label: \"Calendar\" },\n  { group: \"Suggestions\", label: \"Search Emoji\" },\n  { group: \"Suggestions\", label: \"Calculator\" },\n  { group: \"Settings\", label: \"Profile\", shortcut: \"⌘P\" },\n  { group: \"Settings\", label: \"Billing\", shortcut: \"⌘B\" },\n  { group: \"Settings\", label: \"Settings\", shortcut: \"⌘S\" },\n  { group: \"Pages\", label: \"Dashboard\" },\n  { group: \"Pages\", label: \"Projects\" },\n  { group: \"Pages\", label: \"Tasks\" },\n  { group: \"Pages\", label: \"Reporting\" },\n  { group: \"Pages\", label: \"Notifications\" },\n  { group: \"Pages\", label: \"Support\" },\n];\n\nconst groupedItems = (\n  commandItems: readonly Command.CommandItem[]\n): readonly [string, readonly Command.CommandItem[]][] =>\n  Array.dedupe(commandItems.map((item) => item.group)).map((group) => [\n    group,\n    commandItems.filter((item) => item.group === group),\n  ]);\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const filteredItems = Command.filterItems(items, model.query);\n\n  return Command.rootView<Message>({\n    className: \"max-w-md\",\n    children: [\n      Command.inputView<Message>({\n        value: model.query,\n        onInput: (value) => UpdatedCommandQuery({ value }),\n      }),\n      Command.listView<Message>({\n        className: \"max-h-48\",\n        children:\n          filteredItems.length === 0\n            ? [Command.emptyView<Message>({ children: [\"No results found.\"] })]\n            : groupedItems(filteredItems).flatMap(\n                ([group, groupItems], index) => [\n                  ...(index === 0 ? [] : [Command.separatorView<Message>()]),\n                  Command.groupView<Message>({\n                    heading: group,\n                    children: groupItems.map((item) =>\n                      Command.itemView<Message>({ item })\n                    ),\n                  }),\n                ]\n              ),\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/command-scrollable/command-scrollable.scene.test.ts",
+      "target": "src/examples/command-scrollable/command-scrollable.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Command Scrollable example\", () => {\n  test(\"renders a longer scrollable command list\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Pages\")).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Dashboard\" })).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Support\" })).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Dashboard\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n\n  test(\"filters scrollable command content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.type(Scene.role(\"combobox\", { name: \"Command search\" }), \"report\"),\n      Scene.expect(Scene.role(\"option\", { name: \"Reporting\" })).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Dashboard\" })).toBeAbsent()\n    );\n  });\n\n  test(\"renders empty scrollable command results\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.type(Scene.role(\"combobox\", { name: \"Command search\" }), \"zzz\"),\n      Scene.expect(Scene.text(\"No results found.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Command",
+      "example": "scrollable",
+      "originExample": "command-scrollable",
+      "origin": "https://ui.shadcn.com/docs/components/radix/command"
+    }
+  }
+}

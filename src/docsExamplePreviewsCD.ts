@@ -33,8 +33,13 @@ import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui
 import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
+import * as CardImageExample from "../registry/default/examples/card-image/main";
 import * as CardBasicExample from "../registry/default/examples/card-basic/main";
+import * as CardRtlExample from "../registry/default/examples/card-rtl/main";
+import * as CardSizeExample from "../registry/default/examples/card-size/main";
+import * as CardSpacingExample from "../registry/default/examples/card-spacing/main";
 import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
+import * as CarouselAutoplayExample from "../registry/default/examples/carousel-autoplay/main";
 import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
 import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
 import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
@@ -53,6 +58,10 @@ import * as CollapsibleBasicExample from "../registry/default/examples/collapsib
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
+import * as CommandGroupsExample from "../registry/default/examples/command-groups/main";
+import * as CommandRtlExample from "../registry/default/examples/command-rtl/main";
+import * as CommandScrollableExample from "../registry/default/examples/command-scrollable/main";
+import * as CommandShortcutsExample from "../registry/default/examples/command-shortcuts/main";
 import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
 import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
 import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
@@ -75,6 +84,14 @@ import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
 import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as DropdownMenuCheckboxesExample from "../registry/default/examples/dropdown-menu-checkboxes/main";
+import * as DropdownMenuComplexExample from "../registry/default/examples/dropdown-menu-complex/main";
+import * as DropdownMenuDestructiveExample from "../registry/default/examples/dropdown-menu-destructive/main";
+import * as DropdownMenuIconsExample from "../registry/default/examples/dropdown-menu-icons/main";
+import * as DropdownMenuRadioGroupExample from "../registry/default/examples/dropdown-menu-radio-group/main";
+import * as DropdownMenuRtlExample from "../registry/default/examples/dropdown-menu-rtl/main";
+import * as DropdownMenuShortcutsExample from "../registry/default/examples/dropdown-menu-shortcuts/main";
+import * as DropdownMenuSubmenuExample from "../registry/default/examples/dropdown-menu-submenu/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
 import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
@@ -161,6 +178,21 @@ export const carouselApiExamplePreview = (
     view: CarouselApiExample.view,
     toParentMessage: (message): Message =>
       Main.GotCarouselApiExampleMessage({ message }),
+  });
+};
+
+export const carouselAutoplayExamplePreview = (
+  model: CarouselAutoplayExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CarouselAutoplayExample.view,
+    toParentMessage: (message): Message =>
+      Main.GotCarouselAutoplayExampleMessage({ message }),
   });
 };
 
@@ -277,6 +309,126 @@ export const dropdownMenuBasicExamplePreview = (
     view: DropdownMenuBasicExample.view,
     toParentMessage: (message) =>
       Main.GotDropdownMenuBasicExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuCheckboxesExamplePreview = (
+  model: DropdownMenuCheckboxesExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuCheckboxesExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuCheckboxesExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuComplexExamplePreview = (
+  model: DropdownMenuComplexExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuComplexExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuComplexExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuDestructiveExamplePreview = (
+  model: DropdownMenuDestructiveExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuDestructiveExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuDestructiveExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuIconsExamplePreview = (
+  model: DropdownMenuIconsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuIconsExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuIconsExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuRadioGroupExamplePreview = (
+  model: DropdownMenuRadioGroupExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuRadioGroupExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuRadioGroupExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuRtlExamplePreview = (
+  model: DropdownMenuRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuRtlExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuShortcutsExamplePreview = (
+  model: DropdownMenuShortcutsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuShortcutsExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuShortcutsExampleMessage({ message }),
+  });
+};
+
+export const dropdownMenuSubmenuExamplePreview = (
+  model: DropdownMenuSubmenuExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: DropdownMenuSubmenuExample.view,
+    toParentMessage: (message) =>
+      Main.GotDropdownMenuSubmenuExampleMessage({ message }),
   });
 };
 
@@ -415,6 +567,65 @@ export const commandBasicExamplePreview = (
   });
 };
 
+export const commandGroupsExamplePreview = (
+  model: CommandGroupsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CommandGroupsExample.view,
+    toParentMessage: (message) =>
+      Main.GotCommandGroupsExampleMessage({ message }),
+  });
+};
+
+export const commandRtlExamplePreview = (
+  model: CommandRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CommandRtlExample.view,
+    toParentMessage: (message) => Main.GotCommandRtlExampleMessage({ message }),
+  });
+};
+
+export const commandScrollableExamplePreview = (
+  model: CommandScrollableExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CommandScrollableExample.view,
+    toParentMessage: (message) =>
+      Main.GotCommandScrollableExampleMessage({ message }),
+  });
+};
+
+export const commandShortcutsExamplePreview = (
+  model: CommandShortcutsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CommandShortcutsExample.view,
+    toParentMessage: (message) =>
+      Main.GotCommandShortcutsExampleMessage({ message }),
+  });
+};
+
 export const cardBasicExamplePreview = (
   model: CardBasicExample.Model,
   slotId: string
@@ -426,6 +637,63 @@ export const cardBasicExamplePreview = (
     model,
     view: CardBasicExample.view,
     toParentMessage: (message) => Main.GotCardBasicExampleMessage({ message }),
+  });
+};
+
+export const cardSizeExamplePreview = (
+  model: CardSizeExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CardSizeExample.view,
+    toParentMessage: (message) => Main.GotCardSizeExampleMessage({ message }),
+  });
+};
+
+export const cardSpacingExamplePreview = (
+  model: CardSpacingExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CardSpacingExample.view,
+    toParentMessage: (message) =>
+      Main.GotCardSpacingExampleMessage({ message }),
+  });
+};
+
+export const cardImageExamplePreview = (
+  model: CardImageExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CardImageExample.view,
+    toParentMessage: (message) => Main.GotCardImageExampleMessage({ message }),
+  });
+};
+
+export const cardRtlExamplePreview = (
+  model: CardRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: CardRtlExample.view,
+    toParentMessage: (message) => Main.GotCardRtlExampleMessage({ message }),
   });
 };
 
@@ -564,8 +832,20 @@ export const shadcnCalendarMonthYearSelectorExamplePreview = (
   });
 };
 
-export const shadcnCalendarRangeExamplePreview = (): Html =>
-  ShadcnCalendarRangeExample.view(ShadcnCalendarRangeExample.init()[0]);
+export const shadcnCalendarRangeExamplePreview = (
+  model: ShadcnCalendarRangeExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarRangeExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarRangeExampleMessage({ message }),
+  });
+};
 
 export const shadcnCalendarDateOfBirthExamplePreview = (
   model: ShadcnCalendarDateOfBirthExample.Model,
@@ -582,10 +862,20 @@ export const shadcnCalendarDateOfBirthExamplePreview = (
   });
 };
 
-export const shadcnCalendarDateTimePickerExamplePreview = (): Html =>
-  ShadcnCalendarDateTimePickerExample.view(
-    ShadcnCalendarDateTimePickerExample.init()[0]
-  );
+export const shadcnCalendarDateTimePickerExamplePreview = (
+  model: ShadcnCalendarDateTimePickerExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarDateTimePickerExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarDateTimePickerExampleMessage({ message }),
+  });
+};
 
 export const shadcnCalendarPresetsExamplePreview = (
   model: ShadcnCalendarPresetsExample.Model,
@@ -617,15 +907,35 @@ export const shadcnCalendarBookedExamplePreview = (
   });
 };
 
-export const shadcnCalendarCustomCellSizeExamplePreview = (): Html =>
-  ShadcnCalendarCustomCellSizeExample.view(
-    ShadcnCalendarCustomCellSizeExample.init()[0]
-  );
+export const shadcnCalendarCustomCellSizeExamplePreview = (
+  model: ShadcnCalendarCustomCellSizeExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
 
-export const shadcnCalendarWeekNumbersExamplePreview = (): Html =>
-  ShadcnCalendarWeekNumbersExample.view(
-    ShadcnCalendarWeekNumbersExample.init()[0]
-  );
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarCustomCellSizeExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarCustomCellSizeExampleMessage({ message }),
+  });
+};
+
+export const shadcnCalendarWeekNumbersExamplePreview = (
+  model: ShadcnCalendarWeekNumbersExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCalendarWeekNumbersExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCalendarWeekNumbersExampleMessage({ message }),
+  });
+};
 
 export const shadcnCalendarRtlExamplePreview = (
   model: ShadcnCalendarRtlExample.Model,

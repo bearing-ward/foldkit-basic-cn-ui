@@ -4,25 +4,18 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
-import { evo } from "foldkit/struct";
 
 import * as Kbd from "../../ui/kbd";
 
 // MODEL
 
-export const KbdMode = S.Union([S.Literal("Mac"), S.Literal("Windows")]);
-
-export const Model = S.Struct({
-  mode: KbdMode,
-});
-
+export const Model = S.Struct({});
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const ClickedToggleKbdExample = m("ClickedToggleKbdExample");
-
-export const Message = S.Union([ClickedToggleKbdExample]);
+export const ClickedAccept = m("ClickedAccept");
+export const Message = S.Union([ClickedAccept]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -30,7 +23,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ mode: "Mac" }, []];
+] => [{}, []];
 
 // UPDATE
 
@@ -41,52 +34,84 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      ClickedToggleKbdExample: () => [
-        evo(model, {
-          mode: (mode) => (mode === "Mac" ? "Windows" : "Mac"),
-        }),
-        [],
-      ],
+      ClickedAccept: () => [model, []],
     })
   );
 
 // VIEW
 
-const buttonClassName =
-  "inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600";
+const demoRowClassName = "flex flex-wrap items-center gap-2";
 
-export const view = Submodel.defineView<Model, Message>((model): Html => {
+export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("flex flex-col items-start gap-4")],
+    [h.Class("flex flex-col items-start gap-5")],
     [
       h.div(
-        [h.Class("space-y-4")],
+        [h.Class(demoRowClassName)],
         [
-          h.div(
-            [h.Class("flex items-center gap-3")],
-            [
-              h.span([h.Class("text-sm text-gray-600")], ["Command menu"]),
-              Kbd.groupView<Message>([
-                Kbd.view<Message>({
-                  label: model.mode === "Mac" ? "Cmd" : "Ctrl",
-                }),
-                h.span([h.Class("text-sm text-gray-400")], ["+"]),
-                Kbd.view<Message>({ label: "K" }),
-              ]),
-            ]
+          Kbd.view<Message>({ label: "⌘" }),
+          Kbd.view<Message>({ label: "⇧" }),
+          Kbd.view<Message>({ label: "⌥" }),
+          Kbd.view<Message>({ label: "⌃" }),
+          Kbd.view<Message>({ label: "`" }),
+          Kbd.groupView<Message>([
+            Kbd.view<Message>({ label: "Ctrl" }),
+            h.span([h.Class("text-sm text-gray-500")], ["+"]),
+            Kbd.view<Message>({ label: "B" }),
+          ]),
+        ]
+      ),
+      h.div(
+        [h.Class(demoRowClassName)],
+        [
+          h.span([h.Class("text-sm text-gray-700")], ["Use"]),
+          Kbd.groupView<Message>([
+            Kbd.view<Message>({ label: "Ctrl" }),
+            h.span([h.Class("text-sm text-gray-500")], ["+"]),
+            Kbd.view<Message>({ label: "B" }),
+          ]),
+          Kbd.groupView<Message>([
+            Kbd.view<Message>({ label: "Ctrl" }),
+            h.span([h.Class("text-sm text-gray-500")], ["+"]),
+            Kbd.view<Message>({ label: "K" }),
+          ]),
+          h.span([h.Class("text-sm text-gray-700")], [
+            "to open the command palette",
+          ]),
+        ]
+      ),
+      h.button(
+        [
+          h.Type("button"),
+          h.OnClick(ClickedAccept()),
+          h.Class(
+            "inline-flex h-9 items-center gap-2 rounded-md bg-gray-950 px-4 text-sm font-medium text-white shadow-sm transition hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2"
           ),
-          h.div(
-            [h.Class("flex items-center gap-3")],
+        ],
+        ["Accept", Kbd.view<Message>({ label: "⏎", size: "Small" })]
+      ),
+      h.div(
+        [h.Class(demoRowClassName)],
+        [
+          h.button(
             [
-              h.span([h.Class("text-sm text-gray-600")], ["Dismiss"]),
-              Kbd.view<Message>({ label: "Esc", size: "Small" }),
-            ]
+              h.Type("button"),
+              h.Class(
+                "inline-flex h-9 items-center rounded-l-md border border-gray-300 bg-white px-3 text-sm font-medium text-gray-950 shadow-sm"
+              ),
+            ],
+            ["Save"]
           ),
           h.button(
-            [h.OnClick(ClickedToggleKbdExample()), h.Class(buttonClassName)],
-            ["Switch platform"]
+            [
+              h.Type("button"),
+              h.Class(
+                "-ml-px inline-flex h-9 items-center gap-2 rounded-r-md border border-gray-300 bg-white px-3 text-sm font-medium text-gray-950 shadow-sm"
+              ),
+            ],
+            ["Print", Kbd.view<Message>({ label: "⌘", size: "Small" })]
           ),
         ]
       ),

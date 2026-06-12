@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label-rtl",
+  "type": "registry:example",
+  "title": "Label RTL",
+  "description": "A runnable Foldkit example showing the shadcn Label RTL composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/label"],
+  "files": [
+    {
+      "path": "registry/default/examples/label-rtl/main.ts",
+      "target": "src/examples/label-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Label from \"../../ui/label\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Dir(\"rtl\"), h.Class(\"flex items-center gap-2\")],\n    [\n      h.input([\n        h.Id(\"terms-rtl\"),\n        h.Type(\"checkbox\"),\n        h.Class(\"h-4 w-4 rounded border border-gray-300\"),\n      ]),\n      Label.view<Message>({\n        forId: \"terms-rtl\",\n        children: \"قبول الشروط والأحكام\",\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/label-rtl/label-rtl.scene.test.ts",
+      "target": "src/examples/label-rtl/label-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Label RTL example\", () => {\n  test(\"renders right-to-left checkbox label content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(\n        Scene.role(\"checkbox\", { name: \"قبول الشروط والأحكام\" })\n      ).toExist(),\n      Scene.expect(\n        Scene.role(\"checkbox\", { name: \"قبول الشروط والأحكام\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Label",
+      "example": "rtl",
+      "origin": "https://ui.shadcn.com/docs/components/radix/label"
+    }
+  }
+}

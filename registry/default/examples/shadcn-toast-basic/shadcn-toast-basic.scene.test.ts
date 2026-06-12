@@ -29,24 +29,21 @@ const resolveEntryAnimation = () =>
   );
 
 describe("Shadcn Toast Basic example", () => {
-  test("shows a sticky toast and marks it for dismissal", () => {
+  test("shows the upstream scheduled toast copy", () => {
     Scene.scene(
       {
         update: ShadcnToastBasicExample.update,
         view: ShadcnToastBasicExample.view,
       },
       Scene.with(ShadcnToastBasicExample.init()[0]),
-      Scene.expect(Scene.text("No toast shown yet.")).toExist(),
       Scene.click(Scene.role("button", { name: "Show toast" })),
       resolveEntryAnimation(),
-      Scene.expect(Scene.text("Toast is visible.")).toExist(),
       Scene.expect(Scene.role("status")).toExist(),
-      Scene.expect(Scene.text("Saved")).toExist(),
-      Scene.expect(Scene.text("Your profile changes are live.")).toExist(),
-      Scene.click(Scene.role("button", { name: "Dismiss Saved" })),
+      Scene.expect(Scene.text("Scheduled: Catch up")).toExist(),
+      Scene.expect(Scene.text("Friday, February 10, 2023 at 5:57 PM")).toExist(),
+      Scene.click(Scene.role("button", { name: "Dismiss Scheduled: Catch up" })),
       Scene.expect(Scene.role("status")).toHaveAttr("data-leave", ""),
-      resolveEntryAnimation(),
-      Scene.expect(Scene.text("Dismissed Saved.")).toExist()
+      resolveEntryAnimation()
     );
   });
 });

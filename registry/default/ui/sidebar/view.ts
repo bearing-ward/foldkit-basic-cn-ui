@@ -1,37 +1,83 @@
 export const sidebarProviderClassName =
-  "flex min-h-80 w-full overflow-hidden rounded-lg border border-gray-200 bg-white text-gray-950";
+  "group/sidebar-wrapper flex min-h-80 w-full overflow-hidden rounded-lg border border-sidebar-border bg-white text-sidebar-foreground [--sidebar-width:16rem] [--sidebar-width-icon:3rem] has-data-[variant=inset]:bg-sidebar";
 
 export const sidebarClassName =
-  "flex shrink-0 flex-col border-gray-200 bg-gray-50 transition-[width] duration-200 data-[state=collapsed]:w-16 data-[state=expanded]:w-64";
+  "group peer hidden shrink-0 text-sidebar-foreground md:block data-[collapsible=icon]:data-[state=collapsed]:w-[--sidebar-width-icon] data-[collapsible=none]:block data-[state=expanded]:w-[--sidebar-width] data-[variant=floating]:m-2 data-[variant=floating]:rounded-lg data-[variant=floating]:border data-[variant=floating]:border-sidebar-border data-[variant=floating]:shadow-sm data-[variant=inset]:rounded-r-xl";
+
+export const sidebarGapClassName =
+  "relative hidden w-[--sidebar-width] bg-transparent transition-[width] duration-200 ease-linear md:block data-[collapsible=icon]:w-[--sidebar-width-icon] data-[collapsible=offcanvas]:w-0 data-[variant=floating]:data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+1rem)] data-[variant=inset]:data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+1rem)]";
+
+export const sidebarContainerClassName =
+  "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground transition-[width] duration-200 ease-linear data-[collapsible=icon]:w-[--sidebar-width-icon] data-[collapsible=offcanvas]:w-0 data-[side=left]:border-r data-[side=right]:border-l data-[side=left]:border-sidebar-border data-[side=right]:border-sidebar-border data-[variant=floating]:rounded-lg data-[variant=floating]:border data-[variant=floating]:border-sidebar-border data-[variant=floating]:shadow-sm data-[variant=inset]:rounded-xl";
+
+export const sidebarInnerClassName = "flex size-full min-w-0 flex-col";
+
+export const sidebarTriggerClassName =
+  "inline-flex size-8 items-center justify-center rounded-md text-sm font-medium text-sidebar-foreground transition hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring";
 
 export const sidebarHeaderClassName =
-  "flex min-h-14 items-center gap-3 border-b border-gray-200 px-3";
+  "flex flex-col gap-2 p-2";
 
-export const sidebarContentClassName = "flex-1 space-y-4 overflow-auto p-3";
+export const sidebarInputClassName =
+  "h-8 w-full rounded-md border border-sidebar-border bg-white px-2 text-sm text-sidebar-foreground outline-none transition placeholder:text-muted-foreground focus:border-sidebar-ring focus:ring-2 focus:ring-sidebar-ring/20";
+
+export const sidebarContentClassName =
+  "flex min-h-0 flex-1 flex-col gap-2 overflow-auto p-2 data-[collapsible=icon]:overflow-hidden";
+
+export const sidebarSeparatorClassName = "mx-2 h-px bg-sidebar-border";
 
 export const sidebarFooterClassName =
-  "border-t border-gray-200 p-3 text-xs text-gray-500";
+  "flex flex-col gap-2 p-2 text-xs text-muted-foreground";
 
-export const sidebarGroupClassName = "space-y-2";
+export const sidebarGroupClassName =
+  "relative flex w-full min-w-0 flex-col gap-1 p-2";
 
 export const sidebarGroupLabelClassName =
-  "px-2 text-xs font-medium text-gray-500 data-[state=collapsed]:sr-only";
+  "flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-muted-foreground outline-none data-[state=collapsed]:sr-only";
 
-export const sidebarMenuClassName = "space-y-1";
+export const sidebarGroupActionClassName =
+  "absolute right-3 top-3 inline-flex size-5 items-center justify-center rounded-md text-muted-foreground transition hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring data-[state=collapsed]:hidden";
 
-export const sidebarMenuItemClassName = "list-none";
+export const sidebarGroupContentClassName = "w-full";
+
+export const sidebarMenuClassName = "flex w-full min-w-0 flex-col gap-1";
+
+export const sidebarMenuItemClassName = "group/menu-item relative list-none";
 
 export const sidebarMenuButtonClassName =
-  "flex h-9 w-full items-center gap-3 rounded-md px-2 text-left text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 data-[active=true]:bg-white data-[active=true]:text-gray-950 data-[active=true]:shadow-sm";
+  "peer/menu-button flex h-8 w-full min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 text-left text-sm text-sidebar-foreground outline-none transition hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring disabled:pointer-events-none disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[size=lg]:h-12 data-[size=lg]:px-2.5 data-[size=sm]:h-7 data-[variant=outline]:border data-[variant=outline]:border-sidebar-border data-[variant=outline]:bg-white data-[state=collapsed]:justify-center";
 
 export const sidebarIconClassName =
-  "flex size-6 shrink-0 items-center justify-center rounded-md bg-white text-xs font-semibold text-gray-600 shadow-sm";
+  "flex size-4 shrink-0 items-center justify-center text-sidebar-foreground/80 data-[brand=true]:size-8 data-[brand=true]:rounded-lg data-[brand=true]:bg-sidebar-primary data-[brand=true]:text-sidebar-primary-foreground";
 
 export const sidebarLabelClassName =
   "min-w-0 truncate data-[state=collapsed]:sr-only";
 
+export const sidebarMenuActionClassName =
+  "absolute right-1 top-1.5 ml-auto inline-flex size-5 shrink-0 items-center justify-center rounded-md text-muted-foreground transition hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring data-[show-on-hover=true]:opacity-0 group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=collapsed]:hidden";
+
+export const sidebarMenuBadgeClassName =
+  "pointer-events-none ml-auto flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs tabular-nums text-muted-foreground data-[state=collapsed]:hidden";
+
+export const sidebarMenuSubClassName =
+  "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5 data-[state=collapsed]:hidden";
+
+export const sidebarMenuSubItemClassName = "list-none";
+
+export const sidebarMenuSubButtonClassName =
+  "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sm text-sidebar-foreground/80 outline-none transition hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground";
+
+export const sidebarMenuSkeletonClassName =
+  "flex h-9 items-center gap-3 rounded-md px-2";
+
+export const sidebarMenuSkeletonIconClassName =
+  "size-6 shrink-0 rounded-md bg-gray-200";
+
+export const sidebarMenuSkeletonTextClassName =
+  "h-4 flex-1 rounded bg-gray-200 data-[state=collapsed]:hidden";
+
 export const sidebarInsetClassName =
-  "min-w-0 flex-1 overflow-auto bg-white p-6";
+  "relative flex min-w-0 flex-1 flex-col overflow-auto bg-white";
 
 export const sidebarRailClassName =
-  "w-2 shrink-0 border-l border-gray-200 bg-gray-100";
+  "absolute inset-y-0 z-20 hidden w-4 cursor-w-resize transition-all after:absolute after:inset-y-0 after:left-1/2 after:w-px after:bg-sidebar-border hover:after:bg-sidebar-ring data-[side=left]:-right-4 data-[side=right]:left-0 sm:flex";

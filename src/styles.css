@@ -18,4 +18,14 @@
   --color-accent-700: #4338ca;
   --color-accent-800: #3730a3;
   --color-accent-900: #312e81;
+  --color-sidebar: #f8fafc;
+  --color-sidebar-foreground: #334155;
+  --color-sidebar-primary: #0f172a;
+  --color-sidebar-primary-foreground: #f8fafc;
+  --color-sidebar-accent: #e2e8f0;
+  --color-sidebar-accent-foreground: #0f172a;
+  --color-sidebar-border: #e2e8f0;
+  --color-sidebar-ring: #6366f1;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
 }

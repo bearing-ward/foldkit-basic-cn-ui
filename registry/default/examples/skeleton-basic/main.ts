@@ -62,14 +62,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("flex flex-col items-start gap-4")],
+    [h.Class("flex flex-col items-start gap-6")],
     [
       model.mode === "Loading"
         ? h.div(
-            [h.Class("w-full max-w-sm space-y-4")],
+            [h.Class("w-full max-w-xl space-y-6")],
             [
               h.div(
-                [h.Class("flex items-center gap-3")],
+                [h.Class("flex items-center gap-3"), h.AriaLabel("Avatar skeleton")],
                 [
                   Skeleton.view<Message>({ shape: "Avatar" }),
                   h.div(
@@ -87,7 +87,62 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   ),
                 ]
               ),
-              Skeleton.view<Message>({ shape: "Block" }),
+              h.div(
+                [h.Class("space-y-3 rounded-lg border border-gray-200 p-4"), h.AriaLabel("Card skeleton")],
+                [
+                  Skeleton.view<Message>({
+                    shape: "Block",
+                    className: "h-32",
+                  }),
+                  Skeleton.view<Message>({
+                    shape: "Text",
+                    className: "w-52",
+                  }),
+                  Skeleton.view<Message>({
+                    shape: "Text",
+                    className: "w-36",
+                  }),
+                ]
+              ),
+              h.div([h.Class("space-y-2"), h.AriaLabel("Text skeleton")], [
+                Skeleton.view<Message>({ shape: "Text", className: "w-72" }),
+                Skeleton.view<Message>({ shape: "Text", className: "w-64" }),
+                Skeleton.view<Message>({ shape: "Text", className: "w-56" }),
+              ]),
+              h.div(
+                [h.Class("grid w-full gap-3"), h.AriaLabel("Form skeleton")],
+                [
+                  Skeleton.view<Message>({ shape: "Text", className: "w-24" }),
+                  Skeleton.view<Message>({
+                    shape: "Block",
+                    className: "h-9",
+                  }),
+                  Skeleton.view<Message>({ shape: "Text", className: "w-24" }),
+                  Skeleton.view<Message>({
+                    shape: "Block",
+                    className: "h-9",
+                  }),
+                  Skeleton.view<Message>({ shape: "Button" }),
+                ]
+              ),
+              h.div(
+                [h.Class("grid w-full gap-3"), h.AriaLabel("Table skeleton")],
+                [
+                  Skeleton.view<Message>({ shape: "Text", className: "w-32" }),
+                  Skeleton.view<Message>({
+                    shape: "Block",
+                    className: "h-8",
+                  }),
+                  Skeleton.view<Message>({
+                    shape: "Block",
+                    className: "h-8",
+                  }),
+                  Skeleton.view<Message>({
+                    shape: "Block",
+                    className: "h-8",
+                  }),
+                ]
+              ),
               h.button(
                 [
                   h.OnClick(ClickedToggleSkeletonExample()),

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-checkboxes",
+  "type": "registry:example",
+  "title": "Dropdown Menu Checkboxes",
+  "description": "A runnable Foldkit example showing dropdown menu checkbox items with controlled checked state.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/dropdown-menu"],
+  "files": [
+    {
+      "path": "registry/default/examples/dropdown-menu-checkboxes/main.ts",
+      "target": "src/examples/dropdown-menu-checkboxes/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as DropdownMenu from \"../../ui/dropdown-menu\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  showStatusBar: S.Boolean,\n  showActivityBar: S.Boolean,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ToggledDropdownMenu = m(\"ToggledDropdownMenu\");\nexport const ClosedDropdownMenu = m(\"ClosedDropdownMenu\");\nexport const ToggledStatusBar = m(\"ToggledStatusBar\");\nexport const ToggledActivityBar = m(\"ToggledActivityBar\");\nexport const Message = S.Union([\n  ToggledDropdownMenu,\n  ClosedDropdownMenu,\n  ToggledStatusBar,\n  ToggledActivityBar,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: true, showStatusBar: true, showActivityBar: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledDropdownMenu: () => [evo(model, { open: (open) => !open }), []],\n      ClosedDropdownMenu: () => [evo(model, { open: () => false }), []],\n      ToggledStatusBar: () => [\n        evo(model, { showStatusBar: (showStatusBar) => !showStatusBar }),\n        [],\n      ],\n      ToggledActivityBar: () => [\n        evo(model, { showActivityBar: (showActivityBar) => !showActivityBar }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst checkedItemView = (\n  label: string,\n  checked: boolean,\n  onSelect: Message\n): Html => {\n  const h = html<Message>();\n\n  return DropdownMenu.checkboxItemView<Message>({\n    checked,\n    onSelect,\n    children: [\n      DropdownMenu.itemIndicatorView<Message>({\n        children: [h.span([], [checked ? \"✓\" : \"\"])],\n      }),\n      h.span([], [label]),\n    ],\n  });\n};\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return DropdownMenu.rootView<Message>({\n    children: [\n      DropdownMenu.triggerView<Message>({\n        open: model.open,\n        onToggle: ToggledDropdownMenu(),\n        children: [h.span([], [\"Open checkboxes\"])],\n      }),\n      DropdownMenu.portalView<Message>({\n        open: model.open,\n        children: [\n          DropdownMenu.backdropView<Message>({ onClose: ClosedDropdownMenu() }),\n          DropdownMenu.positionerView<Message>({\n            children: [\n              DropdownMenu.popupView<Message>({\n                children: [\n                  DropdownMenu.labelView<Message>({\n                    children: [h.span([], [\"Panels\"])],\n                  }),\n                  checkedItemView(\n                    \"Status Bar\",\n                    model.showStatusBar,\n                    ToggledStatusBar()\n                  ),\n                  checkedItemView(\n                    \"Activity Bar\",\n                    model.showActivityBar,\n                    ToggledActivityBar()\n                  ),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n      h.p([h.Class(\"mt-3 text-sm text-gray-600\")], [\n        model.showStatusBar ? \"Status Bar: on\" : \"Status Bar: off\",\n      ]),\n      h.p([h.Class(\"text-sm text-gray-600\")], [\n        model.showActivityBar ? \"Activity Bar: on\" : \"Activity Bar: off\",\n      ]),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/dropdown-menu-checkboxes/dropdown-menu-checkboxes.scene.test.ts",
+      "target": "src/examples/dropdown-menu-checkboxes/dropdown-menu-checkboxes.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as DropdownMenuCheckboxesExample from \"./main\";\n\ndescribe(\"Dropdown Menu Checkboxes example\", () => {\n  test(\"toggles checkbox menu items\", () => {\n    Scene.scene(\n      {\n        update: DropdownMenuCheckboxesExample.update,\n        view: DropdownMenuCheckboxesExample.view,\n      },\n      Scene.with(DropdownMenuCheckboxesExample.init()[0]),\n      Scene.expect(Scene.text(\"Status Bar: on\")).toExist(),\n      Scene.expect(Scene.text(\"Activity Bar: off\")).toExist(),\n      Scene.click(Scene.text(\"Activity Bar\")),\n      Scene.expect(Scene.text(\"Activity Bar: on\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "DropdownMenu",
+      "example": "checkboxes",
+      "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+    }
+  }
+}

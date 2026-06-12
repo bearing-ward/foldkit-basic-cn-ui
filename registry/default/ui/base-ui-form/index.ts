@@ -58,6 +58,8 @@ export type ControlViewConfig<ParentMessage> = FormState &
     name?: string | undefined;
     type?: string | undefined;
     placeholder?: string | undefined;
+    required?: boolean | undefined;
+    pattern?: string | undefined;
     describedById?: string | undefined;
     className?: string | undefined;
     style?: FormStyle | undefined;
@@ -157,6 +159,8 @@ export const controlView = <ParentMessage>({
   name,
   type = "text",
   placeholder,
+  required,
+  pattern,
   describedById,
   className,
   style,
@@ -172,6 +176,8 @@ export const controlView = <ParentMessage>({
     ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
     ...(name === undefined ? [] : [h.Attribute("name", name)]),
     ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
+    ...(required === true ? [h.Attribute("required", "")] : []),
+    ...(pattern === undefined ? [] : [h.Attribute("pattern", pattern)]),
     ...(describedById === undefined
       ? []
       : [h.Attribute("aria-describedby", describedById)]),

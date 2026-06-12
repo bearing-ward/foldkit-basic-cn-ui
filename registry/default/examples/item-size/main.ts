@@ -42,18 +42,10 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         children: [
           Item.contentView<Message>({
             children: [
-              Item.titleView<Message>({ children: ["Basic Item"] }),
+              Item.titleView<Message>({ children: ["Default Size"] }),
               Item.descriptionView<Message>({
-                children: ["A simple item with title and description."],
+                children: ["The standard size for most use cases."],
               }),
-            ],
-          }),
-          Item.actionsView<Message>({
-            children: [
-              h.button(
-                [h.Type("button"), h.Class(Item.itemButtonClassName)],
-                ["Action"]
-              ),
             ],
           }),
         ],
@@ -61,17 +53,29 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       Item.view<Message>({
         variant: "outline",
         size: "sm",
-        href: "#",
         children: [
-          Item.mediaView<Message>({ children: ["✓"] }),
           Item.contentView<Message>({
             children: [
-              Item.titleView<Message>({
-                children: ["Your profile has been verified."],
+              Item.titleView<Message>({ children: ["Small Size"] }),
+              Item.descriptionView<Message>({
+                children: ["A compact size for dense layouts."],
               }),
             ],
           }),
-          Item.actionsView<Message>({ children: ["›"] }),
+        ],
+      }),
+      Item.view<Message>({
+        variant: "outline",
+        size: "xs",
+        children: [
+          Item.contentView<Message>({
+            children: [
+              Item.titleView<Message>({ children: ["Extra Small Size"] }),
+              Item.descriptionView<Message>({
+                children: ["The most compact size available."],
+              }),
+            ],
+          }),
         ],
       }),
     ]

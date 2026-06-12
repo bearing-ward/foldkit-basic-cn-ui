@@ -176,129 +176,322 @@ const inputField = (
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  return h.form(
-    [h.Class(formClassName)],
+  return h.div(
+    [h.Class("space-y-8")],
     [
-      h.fieldset(
-        [h.Class(fieldSetClassName)],
+      h.form(
+        [h.Class(formClassName)],
         [
-          h.div(
-            [h.Class("space-y-1")],
+          h.fieldset(
+            [h.Class(fieldSetClassName)],
             [
-              h.legend([h.Class(fieldLegendClassName)], ["Payment Method"]),
-              Field.descriptionView<Message>({
-                children: [h.span([], ["All transactions are secure and encrypted"])],
-              }),
-            ]
-          ),
-          h.div(
-            [h.Class(fieldGroupClassName)],
-            [
-              inputField(h, {
-                id: "name-on-card",
-                label: "Name on Card",
-                value: model.nameOnCard,
-                onInput: (value) => UpdatedNameOnCard({ value }),
-              }),
-              inputField(h, {
-                id: "card-number",
-                label: "Card Number",
-                value: model.cardNumber,
-                onInput: (value) => UpdatedCardNumber({ value }),
-                description: "Enter your 16-digit card number",
-                type: "text",
-              }),
               h.div(
-                [h.Class(rowClassName)],
+                [h.Class("space-y-1")],
                 [
-                  inputField(h, {
-                    id: "month",
-                    label: "Month",
-                    value: model.month,
-                    onInput: (value) => UpdatedMonth({ value }),
-                    placeholder: "MM",
-                  }),
-                  inputField(h, {
-                    id: "year",
-                    label: "Year",
-                    value: model.year,
-                    onInput: (value) => UpdatedYear({ value }),
-                    placeholder: "YYYY",
-                  }),
-                  inputField(h, {
-                    id: "cvv",
-                    label: "CVV",
-                    value: model.cvv,
-                    onInput: (value) => UpdatedCvv({ value }),
+                  h.legend([h.Class(fieldLegendClassName)], ["Payment Method"]),
+                  Field.descriptionView<Message>({
+                    children: [
+                      h.span([], ["All transactions are secure and encrypted"]),
+                    ],
                   }),
                 ]
               ),
-              inputField(h, {
-                id: "billing-address",
-                label: "Billing Address",
-                value: model.billingAddress,
-                onInput: (value) => UpdatedBillingAddress({ value }),
-                description: "The billing address associated with your payment method",
-              }),
-              Field.rootView<Message>({
-                name: "same-as-shipping",
-                className: "flex max-w-none flex-row items-start gap-3",
-                filled: model.sameAsShipping,
-                children: [
-                  h.input([
-                    h.Id("same-as-shipping"),
-                    h.Type("checkbox"),
-                    h.Checked(model.sameAsShipping),
-                    h.OnClick(ToggledSameAsShipping()),
-                    h.Class(checkboxClassName),
-                  ]),
-                  h.label(
+              h.div(
+                [h.Class(fieldGroupClassName)],
+                [
+                  inputField(h, {
+                    id: "name-on-card",
+                    label: "Name on Card",
+                    value: model.nameOnCard,
+                    onInput: (value) => UpdatedNameOnCard({ value }),
+                  }),
+                  inputField(h, {
+                    id: "card-number",
+                    label: "Card Number",
+                    value: model.cardNumber,
+                    onInput: (value) => UpdatedCardNumber({ value }),
+                    description: "Enter your 16-digit card number",
+                    type: "text",
+                  }),
+                  h.div(
+                    [h.Class(rowClassName)],
                     [
-                      h.Attribute("for", "same-as-shipping"),
-                      h.OnClick(ToggledSameAsShipping()),
-                      h.Class(
-                        "cursor-pointer text-sm font-medium text-gray-950"
+                      inputField(h, {
+                        id: "month",
+                        label: "Month",
+                        value: model.month,
+                        onInput: (value) => UpdatedMonth({ value }),
+                        placeholder: "MM",
+                      }),
+                      inputField(h, {
+                        id: "year",
+                        label: "Year",
+                        value: model.year,
+                        onInput: (value) => UpdatedYear({ value }),
+                        placeholder: "YYYY",
+                      }),
+                      inputField(h, {
+                        id: "cvv",
+                        label: "CVV",
+                        value: model.cvv,
+                        onInput: (value) => UpdatedCvv({ value }),
+                      }),
+                    ]
+                  ),
+                  inputField(h, {
+                    id: "billing-address",
+                    label: "Billing Address",
+                    value: model.billingAddress,
+                    onInput: (value) => UpdatedBillingAddress({ value }),
+                    description:
+                      "The billing address associated with your payment method",
+                  }),
+                  Field.rootView<Message>({
+                    name: "same-as-shipping",
+                    className: "flex max-w-none flex-row items-start gap-3",
+                    filled: model.sameAsShipping,
+                    children: [
+                      h.input([
+                        h.Id("same-as-shipping"),
+                        h.Type("checkbox"),
+                        h.Checked(model.sameAsShipping),
+                        h.OnClick(ToggledSameAsShipping()),
+                        h.Class(checkboxClassName),
+                      ]),
+                      h.label(
+                        [
+                          h.Attribute("for", "same-as-shipping"),
+                          h.OnClick(ToggledSameAsShipping()),
+                          h.Class(
+                            "cursor-pointer text-sm font-medium text-gray-950"
+                          ),
+                        ],
+                        ["Same as shipping address"]
                       ),
                     ],
-                    ["Same as shipping address"]
-                  ),
+                  }),
+                  Field.rootView<Message>({
+                    name: "comments",
+                    className: "max-w-none",
+                    filled: model.comments !== "",
+                    children: [
+                      Field.labelView<Message>({
+                        forId: "comments",
+                        children: [h.span([], ["Comments"])],
+                      }),
+                      h.textarea(
+                        [
+                          h.Id("comments"),
+                          h.Attribute("name", "comments"),
+                          h.AriaLabel("Comments"),
+                          h.Value(model.comments),
+                          h.OnInput((value) => UpdatedComments({ value })),
+                          h.Class(textAreaClassName),
+                        ],
+                        []
+                      ),
+                    ],
+                  }),
                 ],
+              ),
+              h.div(
+                [h.Class("flex justify-end gap-2")],
+                [
+                  h.button(
+                    [h.Type("submit"), h.Class(primaryButtonClassName)],
+                    ["Submit"]
+                  ),
+                  h.button(
+                    [h.Type("button"), h.Class(secondaryButtonClassName)],
+                    ["Cancel"]
+                  ),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("grid gap-4 rounded-xl border border-gray-200 bg-white p-6")],
+        [
+          h.h2([h.Class("text-lg font-semibold text-gray-950")], [
+            "Additional Field Examples",
+          ]),
+          h.div(
+            [h.Class("grid gap-4 md:grid-cols-2")],
+            [
+              inputField(h, {
+                id: "email-field",
+                label: "Input",
+                value: "m@example.com",
+                onInput: () => UpdatedNameOnCard({ value: model.nameOnCard }),
+                description: "Enter your email address.",
               }),
               Field.rootView<Message>({
-                name: "comments",
-                className: "max-w-none",
-                filled: model.comments !== "",
+                name: "textarea-field",
+                filled: true,
                 children: [
                   Field.labelView<Message>({
-                    forId: "comments",
-                    children: [h.span([], ["Comments"])],
+                    forId: "textarea-field",
+                    children: [h.span([], ["Textarea"])],
                   }),
                   h.textarea(
                     [
-                      h.Id("comments"),
-                      h.Attribute("name", "comments"),
-                      h.AriaLabel("Comments"),
-                      h.Value(model.comments),
-                      h.OnInput((value) => UpdatedComments({ value })),
+                      h.Id("textarea-field"),
+                      h.AriaLabel("Textarea"),
+                      h.Value("Tell us about your project."),
                       h.Class(textAreaClassName),
                     ],
                     []
                   ),
                 ],
               }),
-            ]
-          ),
-          h.div(
-            [h.Class("flex justify-end gap-2")],
-            [
-              h.button(
-                [h.Type("submit"), h.Class(primaryButtonClassName)],
-                ["Submit"]
+              Field.rootView<Message>({
+                name: "select-field",
+                filled: true,
+                children: [
+                  Field.labelView<Message>({
+                    forId: "select-field",
+                    children: [h.span([], ["Select"])],
+                  }),
+                  h.div(
+                    [
+                      h.Id("select-field"),
+                      h.Attribute("role", "combobox"),
+                      h.AriaLabel("Select"),
+                      h.Class(Field.shadcnFieldControlClassName),
+                    ],
+                    ["Select a verified email"]
+                  ),
+                ],
+              }),
+              Field.rootView<Message>({
+                name: "slider-field",
+                filled: true,
+                children: [
+                  Field.labelView<Message>({
+                    forId: "slider-field",
+                    children: [h.span([], ["Slider"])],
+                  }),
+                  h.div(
+                    [
+                      h.Id("slider-field"),
+                      h.Attribute("role", "slider"),
+                      h.AriaLabel("Slider"),
+                      h.Attribute("aria-valuemin", "0"),
+                      h.Attribute("aria-valuemax", "100"),
+                      h.Attribute("aria-valuenow", "50"),
+                      h.Class("h-2 rounded-full bg-gray-950"),
+                    ],
+                    []
+                  ),
+                ],
+              }),
+              h.fieldset(
+                [h.Class("space-y-2 rounded-md border border-gray-200 p-3")],
+                [
+                  h.legend([h.Class("text-sm font-medium text-gray-950")], [
+                    "Fieldset",
+                  ]),
+                  h.label([h.Class("flex items-center gap-2 text-sm")], [
+                    h.input([h.Type("checkbox"), h.Checked(true)]),
+                    "Checkbox",
+                  ]),
+                  h.label([h.Class("flex items-center gap-2 text-sm")], [
+                    h.input([
+                      h.Type("radio"),
+                      h.Name("field-radio"),
+                      h.Checked(true),
+                    ]),
+                    "Radio",
+                  ]),
+                  h.label([h.Class("flex items-center gap-2 text-sm")], [
+                    h.input([
+                      h.Type("checkbox"),
+                      h.Attribute("role", "switch"),
+                    ]),
+                    "Switch",
+                  ]),
+                ]
               ),
-              h.button(
-                [h.Type("button"), h.Class(secondaryButtonClassName)],
-                ["Cancel"]
+              h.div(
+                [
+                  h.Class(
+                    "rounded-md border border-gray-200 p-3 text-sm text-gray-700"
+                  ),
+                ],
+                [
+                  h.div([h.Class("font-medium text-gray-950")], [
+                    "Choice Card",
+                  ]),
+                  h.p([], ["Notify me about security alerts"]),
+                ]
               ),
+              h.div([h.Class("grid gap-2")], [
+                h.div([h.Class("text-sm font-medium text-gray-950")], [
+                  "Field Group",
+                ]),
+                h.div([h.Class("grid gap-2 md:grid-cols-2")], [
+                  h.input([
+                    h.AriaLabel("First name"),
+                    h.Value("Ada"),
+                    h.Class(Field.shadcnFieldControlClassName),
+                  ]),
+                  h.input([
+                    h.AriaLabel("Last name"),
+                    h.Value("Lovelace"),
+                    h.Class(Field.shadcnFieldControlClassName),
+                  ]),
+                ]),
+              ]),
+              h.div([h.Class("grid gap-2")], [
+                h.div([h.Class("text-sm font-medium text-gray-950")], [
+                  "Responsive",
+                ]),
+                h.div([h.Class("grid gap-2 sm:grid-cols-2")], [
+                  h.input([
+                    h.AriaLabel("Responsive city"),
+                    h.Value("London"),
+                    h.Class(Field.shadcnFieldControlClassName),
+                  ]),
+                  h.input([
+                    h.AriaLabel("Responsive postal code"),
+                    h.Value("SW1A"),
+                    h.Class(Field.shadcnFieldControlClassName),
+                  ]),
+                ]),
+              ]),
+              Field.rootView<Message>({
+                name: "error-field",
+                invalid: true,
+                filled: true,
+                children: [
+                  Field.labelView<Message>({
+                    forId: "error-field",
+                    children: [h.span([], ["Error"])],
+                  }),
+                  Field.controlView<Message>({
+                    id: "error-field",
+                    ariaLabel: "Error",
+                    value: "not-an-email",
+                    invalid: true,
+                    onInput: () =>
+                      UpdatedNameOnCard({ value: model.nameOnCard }),
+                  }),
+                  Field.errorView<Message>({
+                    show: true,
+                    children: [h.span([], ["Enter a valid email address."])],
+                  }),
+                ],
+              }),
+              h.div([h.Attribute("dir", "rtl"), h.Class("grid gap-2")], [
+                h.div([h.Class("text-sm font-medium text-gray-950")], ["RTL"]),
+                h.input([
+                  h.AriaLabel("البريد الإلكتروني"),
+                  h.Value("user@example.com"),
+                  h.Class(Field.shadcnFieldControlClassName),
+                ]),
+              ]),
             ]
           ),
         ]

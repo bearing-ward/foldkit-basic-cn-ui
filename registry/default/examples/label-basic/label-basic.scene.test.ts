@@ -8,13 +8,15 @@ describe("Label Basic example", () => {
     Scene.scene(
       { update: LabelBasicExample.update, view: LabelBasicExample.view },
       Scene.with(LabelBasicExample.init()[0]),
-      Scene.expect(Scene.role("textbox", { name: "Email" })).toHaveAttr(
-        "placeholder",
-        "m@example.com"
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toHaveAttr("aria-checked", "false"),
+      Scene.click(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
       ),
-      Scene.expect(Scene.text("Current value: empty")).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Email" }), "ada@example.com"),
-      Scene.expect(Scene.text("Current value: ada@example.com")).toExist()
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toHaveAttr("aria-checked", "true")
     );
   });
 });

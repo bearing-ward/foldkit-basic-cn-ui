@@ -17,6 +17,13 @@ describe("Shadcn Scroll Area Basic example", () => {
       Scene.expect(Scene.text("Tags")).toExist(),
       Scene.expect(Scene.text("v1.2.0-beta.50")).toExist(),
       Scene.expect(Scene.text("v1.2.0-beta.1")).toExist(),
+      Scene.expect(
+        Scene.role("region", { name: "Horizontal photo gallery" })
+      ).toHaveAttr("tabindex", "0"),
+      Scene.expect(Scene.role("img", { name: "Photo by Ornella Binni" })).toExist(),
+      Scene.expect(Scene.text("Photo by ")).toExist(),
+      Scene.expect(Scene.text("Ornella Binni")).toExist(),
+      Scene.expect(Scene.role("region", { name: "العلامات" })).toExist(),
       Scene.expect(Scene.text("v1.2.0-beta.50")).not.toHaveHandler("click")
     );
   });

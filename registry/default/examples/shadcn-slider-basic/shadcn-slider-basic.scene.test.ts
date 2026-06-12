@@ -4,7 +4,7 @@ import { describe, test } from "vitest";
 import * as ShadcnSliderBasicExample from "./main";
 
 describe("shadcn Slider Basic example", () => {
-  test("updates volume feedback from keyboard navigation", () => {
+  test("matches the upstream bare slider demo", () => {
     const [initialModel] = ShadcnSliderBasicExample.init();
 
     Scene.scene(
@@ -13,17 +13,31 @@ describe("shadcn Slider Basic example", () => {
         view: ShadcnSliderBasicExample.view,
       },
       Scene.with(initialModel),
-      Scene.expect(Scene.role("slider", { name: "Volume" })).toHaveAttr(
+      Scene.expect(Scene.role("slider", { name: "slider-demo" })).toHaveAttr(
         "aria-valuenow",
-        "40"
+        "33"
       ),
-      Scene.expect(Scene.text("Volume: 40%")).toExist(),
-      Scene.keydown(Scene.role("slider", { name: "Volume" }), "ArrowRight"),
-      Scene.expect(Scene.role("slider", { name: "Volume" })).toHaveAttr(
+      Scene.keydown(Scene.role("slider", { name: "slider-demo" }), "ArrowRight"),
+      Scene.expect(Scene.role("slider", { name: "slider-demo" })).toHaveAttr(
         "aria-valuenow",
-        "45"
+        "34"
       ),
-      Scene.expect(Scene.text("Volume: 45%")).toExist()
+      Scene.expect(Scene.role("slider", { name: "Range minimum" })).toHaveAttr(
+        "aria-valuenow",
+        "25"
+      ),
+      Scene.expect(Scene.role("slider", { name: "Range maximum" })).toHaveAttr(
+        "aria-valuenow",
+        "75"
+      ),
+      Scene.expect(Scene.role("slider", { name: "First thumb" })).toExist(),
+      Scene.expect(Scene.role("slider", { name: "Vertical slider" })).toExist(),
+      Scene.expect(Scene.text("Temperature 0.3")).toExist(),
+      Scene.expect(Scene.role("slider", { name: "Disabled slider" })).toHaveAttr(
+        "aria-disabled",
+        "true"
+      ),
+      Scene.expect(Scene.role("slider", { name: "شريط تمرير" })).toExist()
     );
   });
 });

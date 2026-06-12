@@ -12,6 +12,18 @@ describe("Base UI Number Field Basic example", () => {
       },
       Scene.with(NumberFieldBasicExample.init()[0]),
       Scene.expect(Scene.text("Amount")).toExist(),
+      Scene.expect(Scene.testId("number-field-scrub-area")).toHaveHandler(
+        "pointerdown"
+      ),
+      Scene.expect(Scene.testId("number-field-scrub-area")).toHaveHandler(
+        "pointermove"
+      ),
+      Scene.expect(Scene.testId("number-field-scrub-area")).toHaveHandler(
+        "pointerup"
+      ),
+      Scene.expect(Scene.testId("number-field-cursor-grow-icon")).toExist(),
+      Scene.expect(Scene.testId("number-field-minus-icon")).toExist(),
+      Scene.expect(Scene.testId("number-field-plus-icon")).toExist(),
       Scene.expect(Scene.role("spinbutton", { name: "Amount" })).toHaveValue(
         "100"
       ),

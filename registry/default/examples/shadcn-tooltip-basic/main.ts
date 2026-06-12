@@ -78,7 +78,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("space-y-3")],
+    [h.Class("space-y-4")],
     [
       h.submodel({
         slotId: model.tooltip.id,
@@ -89,12 +89,72 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           toView: (render) =>
             Tooltip.tooltipView({
               render,
-              triggerLabel: "Hover or focus me",
-              panelText: "This is a tooltip",
+              triggerLabel: "Hover",
+              panelText: "Add to library",
             }),
         },
         toParentMessage: (message) => GotTooltipMessage({ message }),
       }),
+      h.div(
+        [h.Class("flex flex-wrap gap-2")],
+        [
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["left"]
+          ),
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["top"]
+          ),
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["bottom"]
+          ),
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["right"]
+          ),
+        ]
+      ),
+      h.button(
+        [h.Type("button"), h.Class(`${Tooltip.tooltipTriggerClassName} gap-2`)],
+        [
+          h.span([], ["Save"]),
+          h.span(
+            [h.Class("rounded bg-gray-100 px-1.5 py-0.5 text-xs")],
+            ["⌘S"]
+          ),
+        ]
+      ),
+      h.span(
+        [
+          h.Class(
+            "inline-flex cursor-not-allowed rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-400"
+          ),
+        ],
+        ["Disabled"]
+      ),
+      h.div(
+        [h.Dir("rtl"), h.Class("flex flex-wrap gap-2")],
+        [
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["يسار"]
+          ),
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["أعلى"]
+          ),
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["أسفل"]
+          ),
+          h.button(
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            ["يمين"]
+          ),
+        ]
+      ),
       h.p([h.Class("text-sm text-gray-700")], [model.status]),
     ]
   );

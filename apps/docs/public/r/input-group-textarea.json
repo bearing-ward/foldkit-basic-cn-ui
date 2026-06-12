@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-textarea",
+  "type": "registry:example",
+  "title": "Input Group Textarea",
+  "description": "A runnable Foldkit version of the upstream shadcn Input Group textarea example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/input-group"],
+  "files": [
+    {
+      "path": "registry/default/examples/input-group-textarea/main.ts",
+      "target": "src/examples/input-group-textarea/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as InputGroup from \"../../ui/input-group\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  body: S.String,\n  submitted: S.Boolean,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedBody = m(\"UpdatedBody\", { value: S.String });\nexport const ClickedRun = m(\"ClickedRun\");\nexport const Message = S.Union([UpdatedBody, ClickedRun]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ body: \"console.log('Hello, world!')\", submitted: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedBody: ({ value }) => [\n        evo(model, { body: () => value, submitted: () => false }),\n        [],\n      ],\n      ClickedRun: () => [evo(model, { submitted: () => true }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      InputGroup.view<Message>({\n        className: \"w-full max-w-md flex-wrap items-stretch h-auto\",\n        children: [\n          InputGroup.textareaView<Message>({\n            ariaLabel: \"Script\",\n            value: model.body,\n            onInput: (value) => UpdatedBody({ value }),\n            rows: 5,\n          }),\n          InputGroup.addonView<Message>({\n            align: \"BlockStart\",\n            children: [\n              InputGroup.textView<Message>([\"Line 1, Column 1\"]),\n              InputGroup.buttonView<Message>({\n                onClick: ClickedRun(),\n                children: [\"Run\"],\n              }),\n            ],\n          }),\n          InputGroup.addonView<Message>({\n            align: \"BlockEnd\",\n            children: [\n              InputGroup.textView<Message>([\"script.js\"]),\n              InputGroup.buttonView<Message>({\n                ariaLabel: \"Copy script\",\n                icon: true,\n                children: [\"C\"],\n              }),\n            ],\n          }),\n        ],\n      }),\n      model.submitted\n        ? h.p([h.Class(\"text-sm text-gray-600\")], [\"Ran script.js\"])\n        : h.empty,\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/input-group-textarea/input-group-textarea.scene.test.ts",
+      "target": "src/examples/input-group-textarea/input-group-textarea.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as InputGroupTextareaExample from \"./main\";\n\ndescribe(\"Input Group Textarea example\", () => {\n  test(\"updates textarea content and runs the script\", () => {\n    Scene.scene(\n      {\n        update: InputGroupTextareaExample.update,\n        view: InputGroupTextareaExample.view,\n      },\n      Scene.with(InputGroupTextareaExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Script\" })).toHaveValue(\n        \"console.log('Hello, world!')\"\n      ),\n      Scene.change(Scene.role(\"textbox\", { name: \"Script\" }), \"alert('ok')\"),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Script\" })).toHaveValue(\n        \"alert('ok')\"\n      ),\n      Scene.click(Scene.role(\"button\", { name: \"Run\" })),\n      Scene.expect(Scene.text(\"Ran script.js\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "InputGroup",
+      "example": "textarea",
+      "originExample": "input-group-textarea",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+    }
+  }
+}

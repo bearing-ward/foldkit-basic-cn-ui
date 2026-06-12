@@ -52,30 +52,27 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       Card.headerView<Message>(
         [
           h.div(
-            [h.Class("flex items-start justify-between gap-4")],
+            [h.Class("space-y-1")],
             [
-              h.div(
-                [h.Class("space-y-1.5")],
-                [
-                  Card.titleView<Message>("Login to your account"),
-                  Card.descriptionView<Message>(
-                    "Enter your email below to login to your account"
-                  ),
-                ]
-              ),
-              h.a(
-                [
-                  h.Href("#"),
-                  h.Class(
-                    "text-sm font-medium text-gray-950 underline-offset-4 hover:underline"
-                  ),
-                ],
-                ["Sign Up"]
+              Card.titleView<Message>("Login to your account"),
+              Card.descriptionView<Message>(
+                "Enter your email below to login to your account"
               ),
             ]
           ),
+          Card.actionView<Message>([
+            h.a(
+              [
+                h.Href("#"),
+                h.Class(
+                  "text-sm font-medium text-gray-950 underline-offset-4 hover:underline"
+                ),
+              ],
+              ["Sign Up"]
+            ),
+          ]),
         ],
-        "pb-4"
+        "border-b border-gray-200"
       ),
       Card.contentView<Message>(
         [
@@ -124,8 +121,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               ),
             ]
           ),
-        ],
-        "pb-6"
+        ]
       ),
       Card.footerView<Message>(
         [
@@ -142,8 +138,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               ),
             ]
           ),
-        ],
-        "border-t border-gray-200 pt-6"
+        ]
       ),
     ],
     "w-full max-w-sm"

@@ -1,0 +1,23 @@
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/styles/radix-nova/ui-rtl/field";
+import { Textarea } from "@/styles/radix-nova/ui-rtl/textarea";
+
+export default function TextareaRtl() {
+  return (
+    <Field className="w-full max-w-xs" dir="rtl">
+      <FieldLabel htmlFor="feedback" dir="rtl">
+        التعليقات
+      </FieldLabel>
+      <Textarea
+        id="feedback"
+        placeholder="تعليقاتك تساعدنا على التحسين..."
+        dir="rtl"
+        rows={4}
+      />
+      <FieldDescription dir="rtl">شاركنا أفكارك حول خدمتنا.</FieldDescription>
+    </Field>
+  );
+}

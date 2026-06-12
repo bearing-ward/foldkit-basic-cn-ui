@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-textarea-button",
+  "type": "registry:example",
+  "title": "shadcn Textarea Button",
+  "description": "A runnable Foldkit example matching the shadcn Textarea Button example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-textarea"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-textarea-button/main.ts",
+      "target": "src/examples/shadcn-textarea-button/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Textarea from \"../../ui/shadcn-textarea\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"grid w-full gap-2\")],\n    [\n      Textarea.view<Message>({\n        id: \"textarea-button\",\n        value: \"\",\n        rows: 4,\n        placeholder: \"Type your message here.\",\n        toView: (attributes) =>\n          h.textarea(\n            [...attributes.textarea, h.Class(Textarea.shadcnTextareaClassName)],\n            []\n          ),\n      }),\n      h.button(\n        [\n          h.Type(\"button\"),\n          h.Class(\n            \"inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-xs\"\n          ),\n        ],\n        [\"Send message\"]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-textarea-button/shadcn-textarea-button.scene.test.ts",
+      "target": "src/examples/shadcn-textarea-button/shadcn-textarea-button.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Shadcn Textarea Button example\", () => {\n  test(\"renders the origin textarea with button demo\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.placeholder(\"Type your message here.\")).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Send message\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Send message\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Textarea",
+      "example": "button",
+      "origin": "https://ui.shadcn.com/docs/components/radix/textarea#button"
+    }
+  }
+}

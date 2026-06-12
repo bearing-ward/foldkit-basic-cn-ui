@@ -22,6 +22,11 @@ const view = (open: boolean) => {
               Drawer.popupView({
                 titleId: "title",
                 descriptionId: "description",
+                testId: "drawer-popup",
+                onKeyDown: () => true,
+                onPointerDown: () => true,
+                onPointerMove: () => true,
+                onPointerUp: () => true,
                 children: [
                   Drawer.titleView({
                     id: "title",
@@ -54,7 +59,12 @@ describe("Base UI Drawer registry component", () => {
       Scene.expect(Scene.role("dialog", { name: "Drawer" })).toHaveAttr(
         "aria-describedby",
         "description"
-      )
+      ),
+      Scene.expect(Scene.testId("drawer-popup")).toHaveAttr("tabindex", "-1"),
+      Scene.expect(Scene.testId("drawer-popup")).toHaveHandler("keydown"),
+      Scene.expect(Scene.testId("drawer-popup")).toHaveHandler("pointerdown"),
+      Scene.expect(Scene.testId("drawer-popup")).toHaveHandler("pointermove"),
+      Scene.expect(Scene.testId("drawer-popup")).toHaveHandler("pointerup")
     );
   });
 

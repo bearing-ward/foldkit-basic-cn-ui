@@ -3,7 +3,7 @@
   "name": "shadcn-radio-group-basic",
   "type": "registry:example",
   "title": "shadcn Radio Group Basic",
-  "description": "A runnable Foldkit example showing the shadcn Radio Group wrapper with typed selection and parent-visible feedback.",
+  "description": "A runnable Foldkit example showing the shadcn Radio Group wrapper with the origin density choices.",
   "dependencies": ["effect", "foldkit"],
   "devDependencies": ["vitest"],
   "registryDependencies": ["@foldkit-cn/shadcn-radio-group"],

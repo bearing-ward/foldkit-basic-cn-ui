@@ -34,6 +34,7 @@ describe("Base UI Menubar Basic example", () => {
         "aria-expanded",
         "true"
       ),
+      Scene.expect(Scene.testId("export-submenu")).toHaveClass("left-44"),
       Scene.expect(Scene.role("menuitem", { name: "PDF" })).toExist(),
       Scene.expect(Scene.role("menuitem", { name: "PNG" })).toExist(),
       Scene.expect(Scene.role("menuitem", { name: "SVG" })).toExist(),
@@ -54,6 +55,7 @@ describe("Base UI Menubar Basic example", () => {
         "aria-expanded",
         "true"
       ),
+      Scene.expect(Scene.testId("layout-submenu")).toHaveClass("left-44"),
       Scene.expect(Scene.role("menuitem", { name: "Single Page" })).toExist(),
       Scene.expect(Scene.role("menuitem", { name: "Two Pages" })).toExist(),
       Scene.expect(Scene.role("menuitem", { name: "Continuous" })).toExist(),

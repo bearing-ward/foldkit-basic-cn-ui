@@ -50,7 +50,7 @@ export type InputViewConfig<ParentMessage> = Readonly<{
 
 export type ItemViewConfig<ParentMessage> = Readonly<{
   item: CommandItem;
-  onSelect: ParentMessage;
+  onSelect?: ParentMessage;
   selected?: boolean;
   className?: string;
   attributes?: readonly Attribute<ParentMessage>[];
@@ -229,7 +229,9 @@ export const itemView = <ParentMessage>({
       h.Attribute("aria-selected", selected === true ? "true" : "false"),
       ...(item.disabled === true
         ? [h.Disabled(true), h.AriaDisabled(true)]
-        : [h.OnClick(onSelect)]),
+        : onSelect === undefined
+          ? []
+          : [h.OnClick(onSelect)]),
       h.Class(classNames(commandItemClassName, className)),
       ...attributes,
     ],

@@ -11,14 +11,14 @@ import * as NativeSelect from "../../ui/native-select";
 // MODEL
 
 export const Model = S.Struct({
-  fruit: S.String,
+  status: S.String,
 });
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const ChangedFruit = m("ChangedFruit", { value: S.String });
-export const Message = S.Union([ChangedFruit]);
+export const ChangedStatus = m("ChangedStatus", { value: S.String });
+export const Message = S.Union([ChangedStatus]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -26,7 +26,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ fruit: "apple" }, []];
+] => [{ status: "todo" }, []];
 
 // UPDATE
 
@@ -37,40 +37,33 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      ChangedFruit: ({ value }) => [evo(model, { fruit: () => value }), []],
+      ChangedStatus: ({ value }) => [evo(model, { status: () => value }), []],
     })
   );
 
 // VIEW
 
-const fruitOptions: readonly NativeSelect.OptionConfig[] = [
-  { value: "apple", label: "Apple" },
-  { value: "banana", label: "Banana" },
-  { value: "blueberry", label: "Blueberry" },
-  { value: "grapes", label: "Grapes" },
-  { value: "pineapple", label: "Pineapple" },
+const statusOptions: readonly NativeSelect.OptionConfig[] = [
+  { value: "todo", label: "Todo" },
+  { value: "in-progress", label: "In Progress" },
+  { value: "done", label: "Done" },
+  { value: "cancelled", label: "Cancelled" },
 ];
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
-  const descriptionId = "fruit-description";
 
   return NativeSelect.rootView<Message>({
     children: [
       NativeSelect.labelView<Message>({
-        forId: "fruit",
-        children: [h.span([], ["Fruit"])],
+        forId: "status",
+        children: [h.span([], ["Select status"])],
       }),
       NativeSelect.triggerView<Message>({
-        id: "fruit",
-        value: model.fruit,
-        onChange: (value) => ChangedFruit({ value }),
-        options: fruitOptions,
-        describedById: descriptionId,
-      }),
-      NativeSelect.descriptionView<Message>({
-        id: descriptionId,
-        children: [h.span([], [`Selected: ${model.fruit}`])],
+        id: "status",
+        value: model.status,
+        onChange: (value) => ChangedStatus({ value }),
+        options: statusOptions,
       }),
     ],
   });

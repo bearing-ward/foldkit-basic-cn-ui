@@ -32,22 +32,27 @@ const resolvePopoverMounts = () =>
   );
 
 describe("shadcn-popover-basic example", () => {
-  test("opens the origin dimensions form and closes through the backdrop", () => {
+  test("opens the origin popover variants and closes through the backdrop", () => {
     Scene.scene(
       { update, view },
       Scene.with(initialModel),
-      Scene.expect(Scene.role("button", { name: "Open popover" })).toExist(),
-      Scene.expect(Scene.text("Dimensions")).not.toExist(),
-      Scene.click(Scene.role("button", { name: "Open popover" })),
+      Scene.expect(Scene.role("button", { name: "Open Popover" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Start" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Center" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "End" })).toExist(),
+      Scene.expect(Scene.text("Title")).not.toExist(),
+      Scene.click(Scene.role("button", { name: "Open Popover" })),
       resolvePopoverMounts(),
-      Scene.expect(Scene.text("Dimensions")).toExist(),
-      Scene.expect(Scene.text("Set the dimensions for the layer.")).toExist(),
+      Scene.expect(Scene.text("Title")).toExist(),
+      Scene.expect(Scene.text("Description text here.")).toExist(),
+      Scene.expect(Scene.text("Align: start")).toExist(),
       Scene.expect(Scene.label("Width")).toHaveValue("100%"),
       Scene.expect(Scene.label("Max. width")).toHaveValue("300px"),
       Scene.expect(Scene.label("Height")).toHaveValue("25px"),
       Scene.expect(Scene.label("Max. height")).toHaveValue("none"),
       Scene.change(Scene.label("Width"), "80%"),
       Scene.expect(Scene.label("Width")).toHaveValue("80%"),
+      Scene.expect(Scene.text("يسار أعلى أسفل يمين")).toExist(),
       Scene.click(Scene.testId("popover-backdrop")),
       Scene.Command.expectExact(FocusButton),
       Scene.Command.resolve(
@@ -56,7 +61,7 @@ describe("shadcn-popover-basic example", () => {
         (message) => GotPopoverMessage({ message })
       ),
       Scene.Mount.expectEnded(Popover.PortalPopoverBackdrop, AnchorPopover),
-      Scene.expect(Scene.text("Dimensions")).not.toExist()
+      Scene.expect(Scene.text("Title")).not.toExist()
     );
   });
 });

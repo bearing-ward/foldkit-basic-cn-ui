@@ -11,11 +11,20 @@ describe("Native Select Basic example", () => {
         view: NativeSelectBasicExample.view,
       },
       Scene.with(NativeSelectBasicExample.init()[0]),
-      Scene.expect(Scene.role("combobox", { name: "Fruit" })).toHaveValue(
-        "apple"
+      Scene.expect(Scene.role("combobox", { name: "Select status" })).toHaveValue(
+        "todo"
       ),
-      Scene.change(Scene.role("combobox", { name: "Fruit" }), "banana"),
-      Scene.expect(Scene.text("Selected: banana")).toExist()
+      Scene.change(
+        Scene.role("combobox", { name: "Select status" }),
+        "in-progress"
+      ),
+      Scene.expect(Scene.role("combobox", { name: "Select status" })).toHaveValue(
+        "in-progress"
+      ),
+      Scene.change(Scene.role("combobox", { name: "Select status" }), "done"),
+      Scene.expect(Scene.role("combobox", { name: "Select status" })).toHaveValue(
+        "done"
+      )
     );
   });
 });

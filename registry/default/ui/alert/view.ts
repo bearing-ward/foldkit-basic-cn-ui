@@ -22,3 +22,6 @@ export const alertDescriptionClassName =
   "text-sm leading-5 text-gray-600 data-[variant=Destructive]:text-red-700";
 
 export const alertActionClassName = "mt-2 flex justify-start";
+
+export const alertCustomColorClassName =
+  "border-amber-200 bg-amber-50 text-amber-950";

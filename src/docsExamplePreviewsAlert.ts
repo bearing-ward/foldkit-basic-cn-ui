@@ -3,8 +3,10 @@ import { html } from "foldkit/html";
 
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
+import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
+import * as AlertRtlExample from "../registry/default/examples/alert-rtl/main";
 import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
 import * as ShadcnAlertDialogDestructiveExample from "../registry/default/examples/shadcn-alert-dialog-destructive/main";
 import * as ShadcnAlertDialogMediaExample from "../registry/default/examples/shadcn-alert-dialog-media/main";
@@ -56,6 +58,35 @@ export const alertDestructiveExamplePreview = (
     view: AlertDestructiveExample.view,
     toParentMessage: (message) =>
       Main.GotAlertDestructiveExampleMessage({ message }),
+  });
+};
+
+export const alertCustomColorsExamplePreview = (
+  model: AlertCustomColorsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: AlertCustomColorsExample.view,
+    toParentMessage: (message) =>
+      Main.GotAlertCustomColorsExampleMessage({ message }),
+  });
+};
+
+export const alertRtlExamplePreview = (
+  model: AlertRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: AlertRtlExample.view,
+    toParentMessage: (message) => Main.GotAlertRtlExampleMessage({ message }),
   });
 };
 

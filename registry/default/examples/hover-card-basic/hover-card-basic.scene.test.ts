@@ -12,9 +12,13 @@ describe("Hover Card Basic example", () => {
       },
       Scene.with(HoverCardBasicExample.init()[0]),
       Scene.expect(Scene.role("dialog")).toBeAbsent(),
-      Scene.click(Scene.role("button", { name: "@foldkit" })),
+      Scene.click(Scene.role("button", { name: "Hover Here" })),
       Scene.expect(Scene.role("dialog")).toExist(),
-      Scene.expect(Scene.text("12.8k stars")).toExist(),
+      Scene.expect(Scene.text("@vercel")).toExist(),
+      Scene.expect(
+        Scene.text("The React Framework – created and maintained by @vercel.")
+      ).toExist(),
+      Scene.expect(Scene.text("Joined December 2021")).toExist(),
       Scene.click(Scene.role("button", { name: "Close hover card" })),
       Scene.expect(Scene.role("dialog")).toBeAbsent()
     );

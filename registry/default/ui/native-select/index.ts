@@ -21,6 +21,14 @@ export type OptionConfig = Readonly<{
   disabled?: boolean | undefined;
 }>;
 
+export type OptionGroupConfig = Readonly<{
+  label: string;
+  options: readonly OptionConfig[];
+  disabled?: boolean | undefined;
+}>;
+
+export type OptionItemConfig = OptionConfig | OptionGroupConfig;
+
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   className?: string | undefined;
@@ -36,7 +44,7 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   id: string;
   value: string;
   onChange: (value: string) => ParentMessage;
-  options: readonly OptionConfig[];
+  options: readonly OptionItemConfig[];
   ariaLabel?: string | undefined;
   describedById?: string | undefined;
   disabled?: boolean | undefined;
@@ -53,6 +61,10 @@ const classNames = (base: string, className?: string): string =>
   [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
+
+const isOptionGroupConfig = (
+  option: OptionItemConfig
+): option is OptionGroupConfig => "options" in option;
 
 export const rootView = <ParentMessage>({
   children,
@@ -112,13 +124,29 @@ export const triggerView = <ParentMessage>({
       h.Class(classNames(nativeSelectTriggerClassName, className)),
     ],
     options.map((option) =>
-      h.option(
-        [
-          h.Value(option.value),
-          ...(option.disabled === true ? [h.Disabled(true)] : []),
-        ],
-        [option.label]
-      )
+      isOptionGroupConfig(option)
+        ? h.optgroup(
+            [
+              h.Attribute("label", option.label),
+              ...(option.disabled === true ? [h.Disabled(true)] : []),
+            ],
+            option.options.map((groupOption) =>
+              h.option(
+                [
+                  h.Value(groupOption.value),
+                  ...(groupOption.disabled === true ? [h.Disabled(true)] : []),
+                ],
+                [groupOption.label]
+              )
+            )
+          )
+        : h.option(
+            [
+              h.Value(option.value),
+              ...(option.disabled === true ? [h.Disabled(true)] : []),
+            ],
+            [option.label]
+          )
     )
   );
 };

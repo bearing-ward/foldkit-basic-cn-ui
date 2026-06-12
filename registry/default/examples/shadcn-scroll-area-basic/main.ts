@@ -66,17 +66,85 @@ const tagRows = (): readonly Html[] => {
   ]);
 };
 
+const works = [
+  {
+    artist: "Ornella Binni",
+    image: "Photo by Ornella Binni",
+  },
+  {
+    artist: "Tom Byrom",
+    image: "Photo by Tom Byrom",
+  },
+  {
+    artist: "Vladimir Malyavko",
+    image: "Photo by Vladimir Malyavko",
+  },
+];
+
+const horizontalPhotos = (): readonly Html[] => {
+  const h = html<Message>();
+
+  return works.map((work) =>
+    h.figure(
+      [h.Class("shrink-0 space-y-2")],
+      [
+        h.div(
+          [
+            h.Attribute("role", "img"),
+            h.AriaLabel(work.image),
+            h.Class(
+              "flex h-44 w-64 items-end rounded-md border border-gray-200 bg-gray-100 p-3 text-sm text-gray-600"
+            ),
+          ],
+          [work.image]
+        ),
+        h.figcaption([h.Class("text-sm text-gray-600")], [
+          "Photo by ",
+          h.span([h.Class("font-medium text-gray-900")], [work.artist]),
+        ]),
+      ]
+    )
+  );
+};
+
 export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
-  return ScrollArea.view<Message>({
-      ariaLabel: "Tags",
-      className: "h-72 w-48 rounded-md border border-gray-200",
-      viewportClassName: "p-4",
-      contentClassName: "space-y-0",
-      children: [
-        h.h4([h.Class("mb-4 text-sm font-medium leading-none")], ["Tags"]),
-        ...tagRows(),
-      ],
-    });
+  return h.div(
+    [h.Class("grid gap-8")],
+    [
+      ScrollArea.view<Message>({
+        ariaLabel: "Tags",
+        className: "h-72 w-48 rounded-md border border-gray-200",
+        viewportClassName: "p-4",
+        contentClassName: "space-y-0",
+        children: [
+          h.h4([h.Class("mb-4 text-sm font-medium leading-none")], ["Tags"]),
+          ...tagRows(),
+        ],
+      }),
+      ScrollArea.view<Message>({
+        ariaLabel: "Horizontal photo gallery",
+        className: "w-96 whitespace-nowrap rounded-md border border-gray-200",
+        viewportClassName: "p-4",
+        contentClassName: "flex w-max gap-4",
+        hasHorizontalScrollbar: true,
+        children: horizontalPhotos(),
+      }),
+      h.div([h.Dir("rtl")], [
+        ScrollArea.view<Message>({
+          ariaLabel: "العلامات",
+          className: "h-72 w-48 rounded-md border border-gray-200",
+          viewportClassName: "p-4",
+          contentClassName: "space-y-0",
+          children: [
+            h.h4([h.Class("mb-4 text-sm font-medium leading-none")], [
+              "العلامات",
+            ]),
+            ...tagRows(),
+          ],
+        }),
+      ]),
+    ]
+  );
 });

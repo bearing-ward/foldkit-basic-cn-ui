@@ -3,7 +3,10 @@ import { html } from "foldkit/html";
 
 import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
 import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as KbdRtlExample from "../registry/default/examples/kbd-rtl/main";
 import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
+import * as LabelFieldExample from "../registry/default/examples/label-field/main";
+import * as LabelRtlExample from "../registry/default/examples/label-rtl/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -28,6 +31,34 @@ export const labelBasicExamplePreview = (
   });
 };
 
+export const labelFieldExamplePreview = (
+  model: LabelFieldExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: LabelFieldExample.view,
+    toParentMessage: (message) => Main.GotLabelFieldExampleMessage({ message }),
+  });
+};
+
+export const labelRtlExamplePreview = (
+  model: LabelRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: LabelRtlExample.view,
+    toParentMessage: (message) => Main.GotLabelRtlExampleMessage({ message }),
+  });
+};
+
 export const kbdBasicExamplePreview = (
   model: KbdBasicExample.Model,
   slotId: string
@@ -39,6 +70,20 @@ export const kbdBasicExamplePreview = (
     model,
     view: KbdBasicExample.view,
     toParentMessage: (message) => Main.GotKbdBasicExampleMessage({ message }),
+  });
+};
+
+export const kbdRtlExamplePreview = (
+  model: KbdRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: KbdRtlExample.view,
+    toParentMessage: (message) => Main.GotKbdRtlExampleMessage({ message }),
   });
 };
 

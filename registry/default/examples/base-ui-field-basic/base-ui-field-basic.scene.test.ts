@@ -15,6 +15,10 @@ describe("Base UI Field Basic example", () => {
         "placeholder",
         "Required"
       ),
+      Scene.expect(Scene.role("textbox", { name: "Name" })).toHaveAttr(
+        "required",
+        ""
+      ),
       Scene.expect(Scene.text("Visible on your profile")).toExist(),
       Scene.expect(Scene.text("Please enter your name")).not.toExist(),
       Scene.expect(Scene.role("button", { name: "Validate" })).not.toExist(),

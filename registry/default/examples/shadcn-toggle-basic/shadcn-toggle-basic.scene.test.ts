@@ -4,28 +4,39 @@ import { describe, test } from "vitest";
 import * as ToggleBasicExample from "./main";
 
 describe("shadcn Toggle Basic example", () => {
-  test("matches the shadcn toggle default pressed behavior", () => {
+  test("matches the upstream italic toggle behavior", () => {
     Scene.scene(
       {
         update: ToggleBasicExample.update,
         view: ToggleBasicExample.view,
       },
       Scene.with(ToggleBasicExample.init()[0]),
-      Scene.expect(Scene.role("button", { name: "Favorite" })).toHaveAttr(
+      Scene.expect(Scene.role("button", { name: "Toggle italic" })).toHaveAttr(
         "aria-pressed",
         "false"
       ),
-      Scene.expect(Scene.text("Not favorited")).toExist(),
-      Scene.click(Scene.role("button", { name: "Favorite" })),
-      Scene.expect(Scene.role("button", { name: "Favorite" })).toHaveAttr(
+      Scene.click(Scene.role("button", { name: "Toggle italic" })),
+      Scene.expect(Scene.role("button", { name: "Toggle italic" })).toHaveAttr(
         "aria-pressed",
         "true"
       ),
-      Scene.expect(Scene.role("button", { name: "Favorite" })).toHaveAttr(
+      Scene.expect(Scene.role("button", { name: "Toggle italic" })).toHaveAttr(
         "data-pressed",
         ""
       ),
-      Scene.expect(Scene.text("Added to favorites")).toExist()
+      Scene.expect(
+        Scene.role("button", { name: "Toggle outline italic" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("button", { name: "Toggle italic with text" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Small" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Large" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Disabled" })).toHaveAttr(
+        "disabled",
+        "true"
+      ),
+      Scene.expect(Scene.role("button", { name: "إشارة مرجعية" })).toExist()
     );
   });
 });

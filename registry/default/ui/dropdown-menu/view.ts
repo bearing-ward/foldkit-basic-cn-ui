@@ -16,6 +16,20 @@ export const dropdownMenuPopupClassName =
 export const dropdownMenuItemClassName =
   "flex w-full items-center justify-between gap-3 rounded-sm px-2 py-1.5 text-left text-sm text-gray-700 transition hover:bg-gray-100 focus:bg-gray-100 focus:outline-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50";
 
+export const dropdownMenuInsetItemClassName = "pl-8";
+
+export const dropdownMenuDestructiveItemClassName =
+  "text-red-600 hover:bg-red-50 hover:text-red-700 focus:bg-red-50 focus:text-red-700";
+
+export const dropdownMenuIconClassName =
+  "flex size-4 shrink-0 items-center justify-center text-gray-500";
+
+export const dropdownMenuIndicatorClassName =
+  "flex size-4 shrink-0 items-center justify-center text-gray-950";
+
+export const dropdownMenuSubContentClassName =
+  "ml-1 min-w-44 rounded-md border border-gray-200 bg-white p-1 shadow-lg";
+
 export const dropdownMenuLabelClassName =
   "px-2 py-1.5 text-sm font-semibold text-gray-950";
 

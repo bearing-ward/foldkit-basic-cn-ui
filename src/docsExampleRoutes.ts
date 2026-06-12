@@ -1,18 +1,18 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as DocsPreviewsAccordion from "./docsExamplePreviewsAccordion";
-import * as DocsPreviewsAlert from "./docsExamplePreviewsAlert";
-import * as DocsPreviewsAnimation from "./docsExamplePreviewsAnimation";
-import * as DocsPreviewsAspect from "./docsExamplePreviewsAspect";
-import * as DocsPreviewsAutocomplete from "./docsExamplePreviewsAutocomplete";
-import * as DocsPreviewsAvatar from "./docsExamplePreviewsAvatar";
-import * as DocsPreviewsB from "./docsExamplePreviewsB";
-import * as DocsPreviewsCD from "./docsExamplePreviewsCD";
-import * as DocsPreviewsEI from "./docsExamplePreviewsEI";
-import * as DocsPreviewsJM from "./docsExamplePreviewsJM";
-import * as DocsPreviewsNZ from "./docsExamplePreviewsNZ";
-import * as DocsPreviewsShadcnMissing from "./docsExamplePreviewsShadcnMissing";
+import * as DocsPreviewsAccordion from "docs-example-previews-accordion";
+import * as DocsPreviewsAlert from "docs-example-previews-alert";
+import * as DocsPreviewsAnimation from "docs-example-previews-animation";
+import * as DocsPreviewsAspect from "docs-example-previews-aspect";
+import * as DocsPreviewsAutocomplete from "docs-example-previews-autocomplete";
+import * as DocsPreviewsAvatar from "docs-example-previews-avatar";
+import * as DocsPreviewsB from "docs-example-previews-b";
+import * as DocsPreviewsCD from "docs-example-previews-cd";
+import * as DocsPreviewsEI from "docs-example-previews-ei";
+import * as DocsPreviewsJM from "docs-example-previews-jm";
+import * as DocsPreviewsNZ from "docs-example-previews-nz";
+import * as DocsPreviewsShadcnMissing from "docs-example-previews-shadcn-missing";
 import type * as Main from "./main";
 
 type Model = Main.Model;
@@ -78,6 +78,116 @@ export const animationBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const shadcnCalendarBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Basic",
+    "shadcn-calendar-basic",
+    DocsPreviewsCD.shadcnCalendarBasicExamplePreview(
+      model.shadcnCalendarBasicExample,
+      "shadcn-calendar-basic-standalone"
+    )
+  );
+
+export const shadcnCalendarMonthYearSelectorExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Month and Year Selector",
+    "shadcn-calendar-month-year-selector",
+    DocsPreviewsCD.shadcnCalendarMonthYearSelectorExamplePreview(
+      model.shadcnCalendarMonthYearSelectorExample,
+      "shadcn-calendar-month-year-selector-standalone"
+    )
+  );
+
+export const shadcnCalendarRangeExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Range",
+    "shadcn-calendar-range",
+    DocsPreviewsCD.shadcnCalendarRangeExamplePreview(
+      model.shadcnCalendarRangeExample,
+      "shadcn-calendar-range-standalone"
+    )
+  );
+
+export const shadcnCalendarDateOfBirthExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Date of Birth",
+    "shadcn-calendar-date-of-birth",
+    DocsPreviewsCD.shadcnCalendarDateOfBirthExamplePreview(
+      model.shadcnCalendarDateOfBirthExample,
+      "shadcn-calendar-date-of-birth-standalone"
+    )
+  );
+
+export const shadcnCalendarDateTimePickerExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Date and Time Picker",
+    "shadcn-calendar-date-time-picker",
+    DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(
+      model.shadcnCalendarDateTimePickerExample,
+      "shadcn-calendar-date-time-picker-standalone"
+    )
+  );
+
+export const shadcnCalendarPresetsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Presets",
+    "shadcn-calendar-presets",
+    DocsPreviewsCD.shadcnCalendarPresetsExamplePreview(
+      model.shadcnCalendarPresetsExample,
+      "shadcn-calendar-presets-standalone"
+    )
+  );
+
+export const shadcnCalendarBookedExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Booked Dates",
+    "shadcn-calendar-booked",
+    DocsPreviewsCD.shadcnCalendarBookedExamplePreview(
+      model.shadcnCalendarBookedExample,
+      "shadcn-calendar-booked-standalone"
+    )
+  );
+
+export const shadcnCalendarCustomCellSizeExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Custom Cell Size",
+    "shadcn-calendar-custom-cell-size",
+    DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(
+      model.shadcnCalendarCustomCellSizeExample,
+      "shadcn-calendar-custom-cell-size-standalone"
+    )
+  );
+
+export const shadcnCalendarWeekNumbersExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar Week Numbers",
+    "shadcn-calendar-week-numbers",
+    DocsPreviewsCD.shadcnCalendarWeekNumbersExamplePreview(
+      model.shadcnCalendarWeekNumbersExample,
+      "shadcn-calendar-week-numbers-standalone"
+    )
+  );
+
+export const shadcnCalendarRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Calendar RTL",
+    "shadcn-calendar-rtl",
+    DocsPreviewsCD.shadcnCalendarRtlExamplePreview(
+      model.shadcnCalendarRtlExample,
+      "shadcn-calendar-rtl-standalone"
+    )
+  );
 
 export const virtualListBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
@@ -212,6 +322,68 @@ export const badgeSpinnerExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const badgeIconExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Badge With Icon",
+    "badge-icon",
+    DocsPreviewsB.badgeIconExamplePreview()
+  );
+
+export const badgeLinkExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Badge Link",
+    "badge-link",
+    DocsPreviewsB.badgeLinkExamplePreview()
+  );
+
+export const badgeCustomColorsExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Badge Custom Colors",
+    "badge-custom-colors",
+    DocsPreviewsB.badgeCustomColorsExamplePreview()
+  );
+
+export const badgeRtlExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Badge RTL",
+    "badge-rtl",
+    DocsPreviewsB.badgeRtlExamplePreview()
+  );
+
+export const spinnerBasicExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Spinner Basic"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable spinner-basic registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.spinnerBasicExamplePreview(
+            model.spinnerBasicExample,
+            "spinner-basic-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const avatarBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -307,6 +479,46 @@ export const cardBasicExampleRouteView = (model: Model): Html => {
     ]
   );
 };
+
+export const cardSizeExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Card Size",
+    "card-size",
+    DocsPreviewsCD.cardSizeExamplePreview(
+      model.cardSizeExample,
+      "card-size-standalone"
+    )
+  );
+
+export const cardSpacingExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Card Spacing",
+    "card-spacing",
+    DocsPreviewsCD.cardSpacingExamplePreview(
+      model.cardSpacingExample,
+      "card-spacing-standalone"
+    )
+  );
+
+export const cardImageExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Card Image",
+    "card-image",
+    DocsPreviewsCD.cardImageExamplePreview(
+      model.cardImageExample,
+      "card-image-standalone"
+    )
+  );
+
+export const cardRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Card RTL",
+    "card-rtl",
+    DocsPreviewsCD.cardRtlExamplePreview(
+      model.cardRtlExample,
+      "card-rtl-standalone"
+    )
+  );
 
 export const baseUiSeparatorBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
@@ -449,6 +661,16 @@ export const kbdInputGroupExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const kbdRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Kbd RTL",
+    "kbd-rtl",
+    DocsPreviewsJM.kbdRtlExamplePreview(
+      model.kbdRtlExample,
+      "kbd-rtl-standalone"
+    )
+  );
+
 export const typographyBasicExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -514,6 +736,105 @@ export const emptyBasicExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const emptyBackgroundExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Empty Background"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable empty-background registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsEI.emptyBackgroundExamplePreview(
+            model.emptyBackgroundExample,
+            "empty-background-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const emptyAvatarExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Empty Avatar"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable empty-avatar registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsEI.emptyAvatarExamplePreview(
+            model.emptyAvatarExample,
+            "empty-avatar-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const emptyAvatarGroupExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Empty Avatar Group"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable empty-avatar-group registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsEI.emptyAvatarGroupExamplePreview(
+            model.emptyAvatarGroupExample,
+            "empty-avatar-group-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const emptyInputGroupExampleRouteView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -541,6 +862,71 @@ export const emptyInputGroupExampleRouteView = (model: Model): Html => {
           DocsPreviewsEI.emptyInputGroupExamplePreview(
             model.emptyInputGroupExample,
             "empty-input-group-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const emptyOutlineExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Empty Outline"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable empty-outline registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsEI.emptyOutlineExamplePreview(
+            model.emptyOutlineExample,
+            "empty-outline-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const emptyRtlExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Empty RTL"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable empty-rtl registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsEI.emptyRtlExamplePreview(
+            model.emptyRtlExample,
+            "empty-rtl-standalone"
           ),
         ]
       ),
@@ -1222,6 +1608,60 @@ export const buttonGroupInputGroupExampleRouteView = (model: Model): Html =>
       "button-group-input-group-standalone"
     )
   );
+export const inputGroupAlignExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Align",
+    "input-group-align",
+    DocsPreviewsShadcnMissing.inputGroupAlignExamplePreview()
+  );
+export const inputGroupButtonExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Button",
+    "input-group-button",
+    DocsPreviewsShadcnMissing.inputGroupButtonExamplePreview()
+  );
+export const inputGroupCustomInputExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Custom Input",
+    "input-group-custom-input",
+    DocsPreviewsShadcnMissing.inputGroupCustomInputExamplePreview()
+  );
+export const inputGroupDropdownExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Dropdown",
+    "input-group-dropdown",
+    DocsPreviewsShadcnMissing.inputGroupDropdownExamplePreview()
+  );
+export const inputGroupIconExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Icon",
+    "input-group-icon",
+    DocsPreviewsShadcnMissing.inputGroupIconExamplePreview()
+  );
+export const inputGroupRtlExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group RTL",
+    "input-group-rtl",
+    DocsPreviewsShadcnMissing.inputGroupRtlExamplePreview()
+  );
+export const inputGroupSpinnerExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Spinner",
+    "input-group-spinner",
+    DocsPreviewsShadcnMissing.inputGroupSpinnerExamplePreview()
+  );
+export const inputGroupTextExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Text",
+    "input-group-text",
+    DocsPreviewsShadcnMissing.inputGroupTextExamplePreview()
+  );
+export const inputGroupTextareaExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "Input Group Textarea",
+    "input-group-textarea",
+    DocsPreviewsShadcnMissing.inputGroupTextareaExamplePreview()
+  );
 export const buttonGroupSelectExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Button Group Select",
@@ -1292,6 +1732,15 @@ export const carouselApiExampleRouteView = (model: Model): Html =>
     DocsPreviewsCD.carouselApiExamplePreview(
       model.carouselApiExample,
       "carousel-api-standalone"
+    )
+  );
+export const carouselAutoplayExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Carousel Autoplay",
+    "carousel-autoplay",
+    DocsPreviewsCD.carouselAutoplayExamplePreview(
+      model.carouselAutoplayExample,
+      "carousel-autoplay-standalone"
     )
   );
 export const carouselRtlExampleRouteView = (model: Model): Html =>
@@ -1537,6 +1986,24 @@ export const labelBasicExampleRouteView = (model: Model): Html =>
       "label-basic-standalone"
     )
   );
+export const labelFieldExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Label Field",
+    "label-field",
+    DocsPreviewsJM.labelFieldExamplePreview(
+      model.labelFieldExample,
+      "label-field-standalone"
+    )
+  );
+export const labelRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Label RTL",
+    "label-rtl",
+    DocsPreviewsJM.labelRtlExamplePreview(
+      model.labelRtlExample,
+      "label-rtl-standalone"
+    )
+  );
 export const paginationBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Pagination Basic",
@@ -1544,6 +2011,33 @@ export const paginationBasicExampleRouteView = (model: Model): Html =>
     DocsPreviewsNZ.paginationBasicExamplePreview(
       model.paginationBasicExample,
       "pagination-basic-standalone"
+    )
+  );
+export const paginationSimpleExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Pagination Simple",
+    "pagination-simple",
+    DocsPreviewsNZ.paginationSimpleExamplePreview(
+      model.paginationSimpleExample,
+      "pagination-simple-standalone"
+    )
+  );
+export const paginationIconsOnlyExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Pagination Icons Only",
+    "pagination-icons-only",
+    DocsPreviewsNZ.paginationIconsOnlyExamplePreview(
+      model.paginationIconsOnlyExample,
+      "pagination-icons-only-standalone"
+    )
+  );
+export const paginationRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Pagination RTL",
+    "pagination-rtl",
+    DocsPreviewsNZ.paginationRtlExamplePreview(
+      model.paginationRtlExample,
+      "pagination-rtl-standalone"
     )
   );
 export const resizableBasicExampleRouteView = (model: Model): Html =>
@@ -1555,6 +2049,33 @@ export const resizableBasicExampleRouteView = (model: Model): Html =>
       "resizable-basic-standalone"
     )
   );
+export const resizableHandleExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Resizable Handle",
+    "resizable-handle",
+    DocsPreviewsNZ.resizableHandleExamplePreview(
+      model.resizableHandleExample,
+      "resizable-handle-standalone"
+    )
+  );
+export const resizableRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Resizable RTL",
+    "resizable-rtl",
+    DocsPreviewsNZ.resizableRtlExamplePreview(
+      model.resizableRtlExample,
+      "resizable-rtl-standalone"
+    )
+  );
+export const resizableVerticalExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Resizable Vertical",
+    "resizable-vertical",
+    DocsPreviewsNZ.resizableVerticalExamplePreview(
+      model.resizableVerticalExample,
+      "resizable-vertical-standalone"
+    )
+  );
 export const sidebarBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Sidebar Basic",
@@ -1562,6 +2083,42 @@ export const sidebarBasicExampleRouteView = (model: Model): Html =>
     DocsPreviewsNZ.sidebarBasicExamplePreview(
       model.sidebarBasicExample,
       "sidebar-basic-standalone"
+    )
+  );
+export const sidebarCompositionExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Sidebar Composition",
+    "sidebar-composition",
+    DocsPreviewsNZ.sidebarCompositionExamplePreview(
+      model.sidebarCompositionExample,
+      "sidebar-composition-standalone"
+    )
+  );
+export const sidebarControlledExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Sidebar Controlled",
+    "sidebar-controlled",
+    DocsPreviewsNZ.sidebarControlledExamplePreview(
+      model.sidebarControlledExample,
+      "sidebar-controlled-standalone"
+    )
+  );
+export const sidebarRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Sidebar RTL",
+    "sidebar-rtl",
+    DocsPreviewsNZ.sidebarRtlExamplePreview(
+      model.sidebarRtlExample,
+      "sidebar-rtl-standalone"
+    )
+  );
+export const sidebarVariantsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Sidebar Variants",
+    "sidebar-variants",
+    DocsPreviewsNZ.sidebarVariantsExamplePreview(
+      model.sidebarVariantsExample,
+      "sidebar-variants-standalone"
     )
   );
 export const tableBasicExampleRouteView = (model: Model): Html =>
@@ -1582,6 +2139,47 @@ export const commandBasicExampleRouteView = (model: Model): Html =>
       "command-basic-standalone"
     )
   );
+
+export const commandGroupsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Command Groups",
+    "command-groups",
+    DocsPreviewsCD.commandGroupsExamplePreview(
+      model.commandGroupsExample,
+      "command-groups-standalone"
+    )
+  );
+
+export const commandRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Command RTL",
+    "command-rtl",
+    DocsPreviewsCD.commandRtlExamplePreview(
+      model.commandRtlExample,
+      "command-rtl-standalone"
+    )
+  );
+
+export const commandScrollableExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Command Scrollable",
+    "command-scrollable",
+    DocsPreviewsCD.commandScrollableExamplePreview(
+      model.commandScrollableExample,
+      "command-scrollable-standalone"
+    )
+  );
+
+export const commandShortcutsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Command Shortcuts",
+    "command-shortcuts",
+    DocsPreviewsCD.commandShortcutsExamplePreview(
+      model.commandShortcutsExample,
+      "command-shortcuts-standalone"
+    )
+  );
+
 export const dropdownMenuBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Dropdown Menu Basic",
@@ -1589,6 +2187,78 @@ export const dropdownMenuBasicExampleRouteView = (model: Model): Html =>
     DocsPreviewsCD.dropdownMenuBasicExamplePreview(
       model.dropdownMenuBasicExample,
       "dropdown-menu-basic-standalone"
+    )
+  );
+export const dropdownMenuCheckboxesExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Checkboxes",
+    "dropdown-menu-checkboxes",
+    DocsPreviewsCD.dropdownMenuCheckboxesExamplePreview(
+      model.dropdownMenuCheckboxesExample,
+      "dropdown-menu-checkboxes-standalone"
+    )
+  );
+export const dropdownMenuComplexExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Complex",
+    "dropdown-menu-complex",
+    DocsPreviewsCD.dropdownMenuComplexExamplePreview(
+      model.dropdownMenuComplexExample,
+      "dropdown-menu-complex-standalone"
+    )
+  );
+export const dropdownMenuDestructiveExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Destructive",
+    "dropdown-menu-destructive",
+    DocsPreviewsCD.dropdownMenuDestructiveExamplePreview(
+      model.dropdownMenuDestructiveExample,
+      "dropdown-menu-destructive-standalone"
+    )
+  );
+export const dropdownMenuIconsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Icons",
+    "dropdown-menu-icons",
+    DocsPreviewsCD.dropdownMenuIconsExamplePreview(
+      model.dropdownMenuIconsExample,
+      "dropdown-menu-icons-standalone"
+    )
+  );
+export const dropdownMenuRadioGroupExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Radio Group",
+    "dropdown-menu-radio-group",
+    DocsPreviewsCD.dropdownMenuRadioGroupExamplePreview(
+      model.dropdownMenuRadioGroupExample,
+      "dropdown-menu-radio-group-standalone"
+    )
+  );
+export const dropdownMenuRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu RTL",
+    "dropdown-menu-rtl",
+    DocsPreviewsCD.dropdownMenuRtlExamplePreview(
+      model.dropdownMenuRtlExample,
+      "dropdown-menu-rtl-standalone"
+    )
+  );
+export const dropdownMenuShortcutsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Shortcuts",
+    "dropdown-menu-shortcuts",
+    DocsPreviewsCD.dropdownMenuShortcutsExamplePreview(
+      model.dropdownMenuShortcutsExample,
+      "dropdown-menu-shortcuts-standalone"
+    )
+  );
+export const dropdownMenuSubmenuExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Dropdown Menu Submenu",
+    "dropdown-menu-submenu",
+    DocsPreviewsCD.dropdownMenuSubmenuExamplePreview(
+      model.dropdownMenuSubmenuExample,
+      "dropdown-menu-submenu-standalone"
     )
   );
 export const hoverCardBasicExampleRouteView = (model: Model): Html =>
@@ -1600,6 +2270,24 @@ export const hoverCardBasicExampleRouteView = (model: Model): Html =>
       "hover-card-basic-standalone"
     )
   );
+export const hoverCardSidesExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Hover Card Sides",
+    "hover-card-sides",
+    DocsPreviewsEI.hoverCardSidesExamplePreview(
+      model.hoverCardSidesExample,
+      "hover-card-sides-standalone"
+    )
+  );
+export const hoverCardRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Hover Card RTL",
+    "hover-card-rtl",
+    DocsPreviewsEI.hoverCardRtlExamplePreview(
+      model.hoverCardRtlExample,
+      "hover-card-rtl-standalone"
+    )
+  );
 export const inputOtpBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Input OTP Basic",
@@ -1609,6 +2297,87 @@ export const inputOtpBasicExampleRouteView = (model: Model): Html =>
       "input-otp-basic-standalone"
     )
   );
+export const inputOtpPatternExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Pattern",
+    "input-otp-pattern",
+    DocsPreviewsEI.inputOtpPatternExamplePreview(
+      model.inputOtpPatternExample,
+      "input-otp-pattern-standalone"
+    )
+  );
+export const inputOtpSeparatorExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Separator",
+    "input-otp-separator",
+    DocsPreviewsEI.inputOtpSeparatorExamplePreview(
+      model.inputOtpSeparatorExample,
+      "input-otp-separator-standalone"
+    )
+  );
+export const inputOtpDisabledExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Disabled",
+    "input-otp-disabled",
+    DocsPreviewsEI.inputOtpDisabledExamplePreview(
+      model.inputOtpDisabledExample,
+      "input-otp-disabled-standalone"
+    )
+  );
+export const inputOtpControlledExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Controlled",
+    "input-otp-controlled",
+    DocsPreviewsEI.inputOtpControlledExamplePreview(
+      model.inputOtpControlledExample,
+      "input-otp-controlled-standalone"
+    )
+  );
+export const inputOtpInvalidExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Invalid",
+    "input-otp-invalid",
+    DocsPreviewsEI.inputOtpInvalidExamplePreview(
+      model.inputOtpInvalidExample,
+      "input-otp-invalid-standalone"
+    )
+  );
+export const inputOtpFourDigitsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Four Digits",
+    "input-otp-four-digits",
+    DocsPreviewsEI.inputOtpFourDigitsExamplePreview(
+      model.inputOtpFourDigitsExample,
+      "input-otp-four-digits-standalone"
+    )
+  );
+export const inputOtpAlphanumericExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Alphanumeric",
+    "input-otp-alphanumeric",
+    DocsPreviewsEI.inputOtpAlphanumericExamplePreview(
+      model.inputOtpAlphanumericExample,
+      "input-otp-alphanumeric-standalone"
+    )
+  );
+export const inputOtpFormExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP Form",
+    "input-otp-form",
+    DocsPreviewsEI.inputOtpFormExamplePreview(
+      model.inputOtpFormExample,
+      "input-otp-form-standalone"
+    )
+  );
+export const inputOtpRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Input OTP RTL",
+    "input-otp-rtl",
+    DocsPreviewsEI.inputOtpRtlExamplePreview(
+      model.inputOtpRtlExample,
+      "input-otp-rtl-standalone"
+    )
+  );
 export const nativeSelectBasicExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "Native Select Basic",
@@ -1616,6 +2385,42 @@ export const nativeSelectBasicExampleRouteView = (model: Model): Html =>
     DocsPreviewsNZ.nativeSelectBasicExamplePreview(
       model.nativeSelectBasicExample,
       "native-select-basic-standalone"
+    )
+  );
+export const nativeSelectDisabledExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Native Select Disabled",
+    "native-select-disabled",
+    DocsPreviewsNZ.nativeSelectDisabledExamplePreview(
+      model.nativeSelectDisabledExample,
+      "native-select-disabled-standalone"
+    )
+  );
+export const nativeSelectGroupsExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Native Select Groups",
+    "native-select-groups",
+    DocsPreviewsNZ.nativeSelectGroupsExamplePreview(
+      model.nativeSelectGroupsExample,
+      "native-select-groups-standalone"
+    )
+  );
+export const nativeSelectInvalidExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Native Select Invalid",
+    "native-select-invalid",
+    DocsPreviewsNZ.nativeSelectInvalidExamplePreview(
+      model.nativeSelectInvalidExample,
+      "native-select-invalid-standalone"
+    )
+  );
+export const nativeSelectRtlExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "Native Select RTL",
+    "native-select-rtl",
+    DocsPreviewsNZ.nativeSelectRtlExamplePreview(
+      model.nativeSelectRtlExample,
+      "native-select-rtl-standalone"
     )
   );
 export const sheetBasicExampleRouteView = (model: Model): Html =>
@@ -1823,6 +2628,69 @@ export const alertDestructiveExampleRouteView = (model: Model): Html => {
           DocsPreviewsAlert.alertDestructiveExamplePreview(
             model.alertDestructiveExample,
             "alert-destructive-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const alertCustomColorsExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Alert Custom Colors"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable alert-custom-colors registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsAlert.alertCustomColorsExamplePreview(
+            model.alertCustomColorsExample,
+            "alert-custom-colors-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const alertRtlExampleRouteView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Alert RTL"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            ["Standalone route for the installable alert-rtl registry example."]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsAlert.alertRtlExamplePreview(
+            model.alertRtlExample,
+            "alert-rtl-standalone"
           ),
         ]
       ),
@@ -2848,6 +3716,132 @@ export const shadcnInputBasicExampleRouteView = (model: Model): Html =>
     )
   );
 
+export const shadcnCheckboxCheckedStateExampleRouteView = (
+  model: Model
+): Html =>
+  standaloneExampleRouteView(
+    "shadcn Checkbox Checked State",
+    "shadcn-checkbox-checked-state",
+    DocsPreviewsShadcnMissing.shadcnCheckboxCheckedStateExamplePreview(
+      model.shadcnCheckboxCheckedStateExample,
+      "shadcn-checkbox-checked-state-standalone"
+    )
+  );
+
+export const shadcnCheckboxGroupExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "shadcn Checkbox Group",
+    "shadcn-checkbox-group",
+    DocsPreviewsShadcnMissing.shadcnCheckboxGroupExamplePreview()
+  );
+
+export const shadcnCheckboxTableExampleRouteView = (): Html =>
+  standaloneExampleRouteView(
+    "shadcn Checkbox Table",
+    "shadcn-checkbox-table",
+    DocsPreviewsShadcnMissing.shadcnCheckboxTableExamplePreview()
+  );
+
+export const shadcnInputDemoExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Demo",
+    "shadcn-input-demo",
+    DocsPreviewsShadcnMissing.shadcnInputDemoExamplePreview(
+      model.shadcnInputDemoExample,
+      "shadcn-input-demo-standalone"
+    )
+  );
+
+export const shadcnInputFieldExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Field",
+    "shadcn-input-field",
+    DocsPreviewsShadcnMissing.shadcnInputFieldExamplePreview(
+      model.shadcnInputFieldExample,
+      "shadcn-input-field-standalone"
+    )
+  );
+
+export const shadcnInputFieldGroupExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Field Group",
+    "shadcn-input-field-group",
+    DocsPreviewsShadcnMissing.shadcnInputFieldGroupExamplePreview(
+      model.shadcnInputFieldGroupExample,
+      "shadcn-input-field-group-standalone"
+    )
+  );
+
+export const shadcnInputInlineExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Inline",
+    "shadcn-input-inline",
+    DocsPreviewsShadcnMissing.shadcnInputInlineExamplePreview(
+      model.shadcnInputInlineExample,
+      "shadcn-input-inline-standalone"
+    )
+  );
+
+export const shadcnInputGridExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Grid",
+    "shadcn-input-grid",
+    DocsPreviewsShadcnMissing.shadcnInputGridExamplePreview(
+      model.shadcnInputGridExample,
+      "shadcn-input-grid-standalone"
+    )
+  );
+
+export const shadcnInputRequiredExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Required",
+    "shadcn-input-required",
+    DocsPreviewsShadcnMissing.shadcnInputRequiredExamplePreview(
+      model.shadcnInputRequiredExample,
+      "shadcn-input-required-standalone"
+    )
+  );
+
+export const shadcnInputBadgeExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Badge",
+    "shadcn-input-badge",
+    DocsPreviewsShadcnMissing.shadcnInputBadgeExamplePreview(
+      model.shadcnInputBadgeExample,
+      "shadcn-input-badge-standalone"
+    )
+  );
+
+export const shadcnInputInputGroupExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Input Group",
+    "shadcn-input-input-group",
+    DocsPreviewsShadcnMissing.shadcnInputInputGroupExamplePreview(
+      model.shadcnInputInputGroupExample,
+      "shadcn-input-input-group-standalone"
+    )
+  );
+
+export const shadcnInputButtonGroupExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Button Group",
+    "shadcn-input-button-group",
+    DocsPreviewsShadcnMissing.shadcnInputButtonGroupExamplePreview(
+      model.shadcnInputButtonGroupExample,
+      "shadcn-input-button-group-standalone"
+    )
+  );
+
+export const shadcnInputFormExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Input Form",
+    "shadcn-input-form",
+    DocsPreviewsShadcnMissing.shadcnInputFormExamplePreview(
+      model.shadcnInputFormExample,
+      "shadcn-input-form-standalone"
+    )
+  );
+
 export const shadcnInputDisabledExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "shadcn Input Disabled",
@@ -3065,6 +4059,16 @@ export const baseUiSliderBasicExampleRouteView = (model: Model): Html =>
     DocsPreviewsNZ.baseUiSliderBasicExamplePreview(
       model.baseUiSliderBasicExample,
       "base-ui-slider-basic-standalone"
+    )
+  );
+
+export const shadcnSliderBasicExampleRouteView = (model: Model): Html =>
+  standaloneExampleRouteView(
+    "shadcn Slider Basic",
+    "shadcn-slider-basic",
+    DocsPreviewsNZ.shadcnSliderBasicExamplePreview(
+      model.shadcnSliderBasicExample,
+      "shadcn-slider-basic-standalone"
     )
   );
 
@@ -4122,9 +5126,7 @@ export const shadcnDialogCustomCloseButtonExampleRouteView = (
     )
   );
 
-export const shadcnDialogNoCloseButtonExampleRouteView = (
-  model: Model
-): Html =>
+export const shadcnDialogNoCloseButtonExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "shadcn Dialog No Close Button",
     "shadcn-dialog-no-close-button",
@@ -4134,9 +5136,7 @@ export const shadcnDialogNoCloseButtonExampleRouteView = (
     )
   );
 
-export const shadcnDialogStickyFooterExampleRouteView = (
-  model: Model
-): Html =>
+export const shadcnDialogStickyFooterExampleRouteView = (model: Model): Html =>
   standaloneExampleRouteView(
     "shadcn Dialog Sticky Footer",
     "shadcn-dialog-sticky-footer",
@@ -4742,6 +5742,42 @@ export const baseUiPopoverAnimatedExampleRouteView = (model: Model): Html => {
   );
 };
 
+export const baseUiPopoverDetachedTriggerExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Popover Detached Trigger"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-popover-detached-trigger registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiPopoverDetachedTriggerExamplePreview(
+            model.baseUiPopoverDetachedTriggerExample,
+            "base-ui-popover-detached-trigger-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
 export const baseUiPopoverMultipleTriggersExampleRouteView = (
   model: Model
 ): Html => {
@@ -4771,6 +5807,42 @@ export const baseUiPopoverMultipleTriggersExampleRouteView = (
           DocsPreviewsNZ.baseUiPopoverMultipleTriggersExamplePreview(
             model.baseUiPopoverMultipleTriggersExample,
             "base-ui-popover-multiple-triggers-standalone"
+          ),
+        ]
+      ),
+    ]
+  );
+};
+
+export const baseUiPopoverOpenOnHoverExampleRouteView = (
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1(
+            [h.Class("text-3xl font-bold text-gray-950")],
+            ["Base UI Popover Open on Hover"]
+          ),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "Standalone route for the installable base-ui-popover-open-on-hover registry example.",
+            ]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [
+          DocsPreviewsNZ.baseUiPopoverOpenOnHoverExamplePreview(
+            model.baseUiPopoverOpenOnHoverExample,
+            "base-ui-popover-open-on-hover-standalone"
           ),
         ]
       ),

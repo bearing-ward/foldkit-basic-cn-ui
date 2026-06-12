@@ -12,6 +12,8 @@ import * as ContextMenu from "../../ui/base-ui-context-menu";
 
 export const Model = S.Struct({
   open: S.Boolean,
+  positionX: S.Number,
+  positionY: S.Number,
   selected: S.String,
 });
 
@@ -20,6 +22,10 @@ export type Model = typeof Model.Type;
 // MESSAGE
 
 export const OpenedContextMenu = m("OpenedContextMenu");
+export const PressedContextMenuTrigger = m("PressedContextMenuTrigger", {
+  clientX: S.Number,
+  clientY: S.Number,
+});
 export const ClosedContextMenu = m("ClosedContextMenu");
 export const SelectedContextMenuItem = m("SelectedContextMenuItem", {
   value: S.String,
@@ -27,6 +33,7 @@ export const SelectedContextMenuItem = m("SelectedContextMenuItem", {
 
 export const Message = S.Union([
   OpenedContextMenu,
+  PressedContextMenuTrigger,
   ClosedContextMenu,
   SelectedContextMenuItem,
 ]);
@@ -37,7 +44,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ open: false, selected: "" }, []];
+] => [{ open: false, positionX: 24, positionY: 24, selected: "" }, []];
 
 // UPDATE
 
@@ -49,6 +56,13 @@ export const update = (
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
       OpenedContextMenu: () => [evo(model, { open: () => true }), []],
+      PressedContextMenuTrigger: ({ clientX, clientY }) => [
+        evo(model, {
+          positionX: () => clientX,
+          positionY: () => clientY,
+        }),
+        [],
+      ],
       ClosedContextMenu: () => [evo(model, { open: () => false }), []],
       SelectedContextMenuItem: ({ value }) => [
         evo(model, {
@@ -78,6 +92,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     children: [
       ContextMenu.triggerView<Message>({
         onOpen: OpenedContextMenu(),
+        onPointerDown: (clientX, clientY) =>
+          PressedContextMenuTrigger({ clientX, clientY }),
         children: [h.span([], ["Right click here"])],
       }),
       ContextMenu.portalView<Message>({
@@ -87,6 +103,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             onClose: ClosedContextMenu(),
           }),
           ContextMenu.positionerView<Message>({
+            className: "base-ui-context-menu-positioner",
+            testId: "base-ui-context-menu-positioner",
+            style: {
+              left: `${String(model.positionX)}px`,
+              top: `${String(model.positionY)}px`,
+            },
             children: [
               ContextMenu.popupView<Message>({
                 children: [

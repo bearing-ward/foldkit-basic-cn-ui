@@ -17,11 +17,33 @@ const view = (): Html => {
       InputGroup.addonView({ children: ["S"] }),
       InputGroup.addonView({
         align: "InlineEnd",
-        children: [h.kbd([], ["⌘"]), h.kbd([], ["K"])],
+        children: [
+          h.kbd([], ["⌘"]),
+          h.kbd([], ["K"]),
+          InputGroup.buttonView({
+            ariaLabel: "Search",
+            children: ["Go"],
+          }),
+        ],
       }),
     ],
   });
 };
+
+const textareaView = (): Html =>
+  InputGroup.view({
+    children: [
+      InputGroup.textareaView({
+        ariaLabel: "Message",
+        placeholder: "Type a message...",
+        value: "Draft",
+      }),
+      InputGroup.addonView({
+        align: "BlockEnd",
+        children: [InputGroup.buttonView({ children: ["Send"] })],
+      }),
+    ],
+  });
 
 describe("InputGroup registry view", () => {
   test("renders grouped input, addons, and shortcut content", () => {
@@ -33,8 +55,23 @@ describe("InputGroup registry view", () => {
       Scene.with(undefined),
       Scene.expect(Scene.role("group")).toExist(),
       Scene.expect(Scene.role("textbox", { name: "Search" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Search" })).toExist(),
       Scene.expect(Scene.text("⌘")).toExist(),
       Scene.expect(Scene.text("K")).toExist()
+    );
+  });
+
+  test("renders textarea controls and input group buttons", () => {
+    Scene.scene(
+      {
+        update: (model: undefined): readonly [undefined, []] => [model, []],
+        view: textareaView,
+      },
+      Scene.with(undefined),
+      Scene.expect(Scene.role("textbox", { name: "Message" })).toHaveValue(
+        "Draft"
+      ),
+      Scene.expect(Scene.role("button", { name: "Send" })).toExist()
     );
   });
 });

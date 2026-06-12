@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-groups",
+  "type": "registry:example",
+  "title": "Command Groups",
+  "description": "A runnable Foldkit version of the upstream shadcn Command Groups example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/command"],
+  "files": [
+    {
+      "path": "registry/default/examples/command-groups/main.ts",
+      "target": "src/examples/command-groups/main.ts",
+      "type": "registry:example",
+      "content": "import { Array, Match as M, Schema as S } from \"effect\";\nimport type { Command as FoldkitCommand } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Command from \"../../ui/command\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  query: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedCommandQuery = m(\"UpdatedCommandQuery\", {\n  value: S.String,\n});\n\nexport const Message = S.Union([UpdatedCommandQuery]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly FoldkitCommand.Command<Message>[],\n] => [{ query: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly FoldkitCommand.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly FoldkitCommand.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedCommandQuery: ({ value }) => [\n        evo(model, { query: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst suggestionItems: readonly Command.CommandItem[] = [\n  { group: \"Suggestions\", label: \"Calendar\" },\n  { group: \"Suggestions\", label: \"Search Emoji\" },\n  { group: \"Suggestions\", label: \"Calculator\" },\n];\n\nconst settingItems: readonly Command.CommandItem[] = [\n  { group: \"Settings\", label: \"Profile\" },\n  { group: \"Settings\", label: \"Billing\" },\n  { group: \"Settings\", label: \"Settings\" },\n];\n\nconst groupedItems = (\n  items: readonly Command.CommandItem[]\n): readonly [string, readonly Command.CommandItem[]][] =>\n  Array.dedupe(items.map((item) => item.group)).map((group) => [\n    group,\n    items.filter((item) => item.group === group),\n  ]);\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const items = Command.filterItems(\n    [...suggestionItems, ...settingItems],\n    model.query\n  );\n\n  return Command.rootView<Message>({\n    className: \"max-w-md\",\n    children: [\n      Command.inputView<Message>({\n        value: model.query,\n        onInput: (value) => UpdatedCommandQuery({ value }),\n      }),\n      Command.listView<Message>({\n        children:\n          items.length === 0\n            ? [Command.emptyView<Message>({ children: [\"No results found.\"] })]\n            : groupedItems(items).flatMap(([group, groupItems], index) => [\n                ...(index === 0 ? [] : [Command.separatorView<Message>()]),\n                Command.groupView<Message>({\n                  heading: group,\n                  children: groupItems.map((item) =>\n                    Command.itemView<Message>({ item })\n                  ),\n                }),\n              ]),\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/command-groups/command-groups.scene.test.ts",
+      "target": "src/examples/command-groups/command-groups.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Command Groups example\", () => {\n  test(\"renders grouped command content with a separator\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Suggestions\")).toExist(),\n      Scene.expect(Scene.text(\"Settings\")).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Calendar\" })).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Profile\" })).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Calendar\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n\n  test(\"filters grouped command content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.type(Scene.role(\"combobox\", { name: \"Command search\" }), \"bill\"),\n      Scene.expect(Scene.role(\"option\", { name: \"Billing\" })).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"Calendar\" })).toBeAbsent()\n    );\n  });\n\n  test(\"renders empty grouped command results\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.type(Scene.role(\"combobox\", { name: \"Command search\" }), \"zzz\"),\n      Scene.expect(Scene.text(\"No results found.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Command",
+      "example": "groups",
+      "originExample": "command-groups",
+      "origin": "https://ui.shadcn.com/docs/components/radix/command"
+    }
+  }
+}

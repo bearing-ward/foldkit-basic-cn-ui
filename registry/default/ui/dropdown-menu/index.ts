@@ -3,6 +3,10 @@ import { html } from "foldkit/html";
 
 import {
   dropdownMenuBackdropClassName,
+  dropdownMenuDestructiveItemClassName,
+  dropdownMenuIconClassName,
+  dropdownMenuIndicatorClassName,
+  dropdownMenuInsetItemClassName,
   dropdownMenuItemClassName,
   dropdownMenuLabelClassName,
   dropdownMenuPopupClassName,
@@ -11,11 +15,16 @@ import {
   dropdownMenuRootClassName,
   dropdownMenuSeparatorClassName,
   dropdownMenuShortcutClassName,
+  dropdownMenuSubContentClassName,
   dropdownMenuTriggerClassName,
 } from "./view";
 
 export {
   dropdownMenuBackdropClassName,
+  dropdownMenuDestructiveItemClassName,
+  dropdownMenuIconClassName,
+  dropdownMenuIndicatorClassName,
+  dropdownMenuInsetItemClassName,
   dropdownMenuItemClassName,
   dropdownMenuLabelClassName,
   dropdownMenuPopupClassName,
@@ -24,6 +33,7 @@ export {
   dropdownMenuRootClassName,
   dropdownMenuSeparatorClassName,
   dropdownMenuShortcutClassName,
+  dropdownMenuSubContentClassName,
   dropdownMenuTriggerClassName,
 } from "./view";
 
@@ -60,12 +70,59 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   children: readonly Html[];
   onSelect: ParentMessage;
   disabled?: boolean | undefined;
+  inset?: boolean | undefined;
+  destructive?: boolean | undefined;
+  className?: string | undefined;
+  style?: DropdownMenuStyle | undefined;
+}>;
+
+export type CheckedItemViewConfig<ParentMessage> = ItemViewConfig<ParentMessage> &
+  Readonly<{
+    checked: boolean;
+  }>;
+
+export type RadioGroupViewConfig = Readonly<{
+  children: readonly Html[];
+  label?: string | undefined;
+  className?: string | undefined;
+  style?: DropdownMenuStyle | undefined;
+}>;
+
+export type RadioItemViewConfig<ParentMessage> =
+  ItemViewConfig<ParentMessage> &
+    Readonly<{
+      checked: boolean;
+    }>;
+
+export type SubTriggerViewConfig<ParentMessage> = Readonly<{
+  children: readonly Html[];
+  onOpen: ParentMessage;
+  open?: boolean | undefined;
+  disabled?: boolean | undefined;
   className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
 const classNames = (base: string, className?: string): string =>
   [base, className]
+    .filter((value): value is string => value !== undefined && value !== "")
+    .join(" ");
+
+const itemClassNames = ({
+  className,
+  inset = false,
+  destructive = false,
+}: Readonly<{
+  className?: string | undefined;
+  inset?: boolean | undefined;
+  destructive?: boolean | undefined;
+}>): string =>
+  [
+    dropdownMenuItemClassName,
+    inset ? dropdownMenuInsetItemClassName : undefined,
+    destructive ? dropdownMenuDestructiveItemClassName : undefined,
+    className,
+  ]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -204,6 +261,8 @@ export const itemView = <ParentMessage>({
   onSelect,
   children,
   disabled = false,
+  inset = false,
+  destructive = false,
   className,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
@@ -218,8 +277,173 @@ export const itemView = <ParentMessage>({
       ...(disabled
         ? [h.DataAttribute("disabled", "true")]
         : [h.OnClick(onSelect)]),
+      ...(inset ? [h.DataAttribute("inset", "true")] : []),
+      ...(destructive ? [h.DataAttribute("variant", "destructive")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuItemClassName, className)),
+      h.Class(itemClassNames({ className, inset, destructive })),
+    ],
+    children
+  );
+};
+
+export const checkboxItemView = <ParentMessage>({
+  checked,
+  onSelect,
+  children,
+  disabled = false,
+  inset = false,
+  className,
+  style,
+}: CheckedItemViewConfig<ParentMessage>): Html => {
+  const h = html<ParentMessage>();
+
+  return h.button(
+    [
+      h.Type("button"),
+      h.Attribute("role", "menuitemcheckbox"),
+      h.Attribute("aria-checked", checked ? "true" : "false"),
+      h.Disabled(disabled),
+      h.DataAttribute("slot", "dropdown-menu-checkbox-item"),
+      ...(checked ? [h.DataAttribute("checked", "true")] : []),
+      ...(disabled
+        ? [h.DataAttribute("disabled", "true")]
+        : [h.OnClick(onSelect)]),
+      ...(inset ? [h.DataAttribute("inset", "true")] : []),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(itemClassNames({ className, inset })),
+    ],
+    children
+  );
+};
+
+export const radioGroupView = <ParentMessage>({
+  children,
+  label,
+  className,
+  style,
+}: RadioGroupViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.div(
+    [
+      h.Attribute("role", "group"),
+      ...(label === undefined ? [] : [h.AriaLabel(label)]),
+      h.DataAttribute("slot", "dropdown-menu-radio-group"),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(className ?? ""),
+    ],
+    children
+  );
+};
+
+export const radioItemView = <ParentMessage>({
+  checked,
+  onSelect,
+  children,
+  disabled = false,
+  inset = false,
+  className,
+  style,
+}: RadioItemViewConfig<ParentMessage>): Html => {
+  const h = html<ParentMessage>();
+
+  return h.button(
+    [
+      h.Type("button"),
+      h.Attribute("role", "menuitemradio"),
+      h.Attribute("aria-checked", checked ? "true" : "false"),
+      h.Disabled(disabled),
+      h.DataAttribute("slot", "dropdown-menu-radio-item"),
+      ...(checked ? [h.DataAttribute("checked", "true")] : []),
+      ...(disabled
+        ? [h.DataAttribute("disabled", "true")]
+        : [h.OnClick(onSelect)]),
+      ...(inset ? [h.DataAttribute("inset", "true")] : []),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(itemClassNames({ className, inset })),
+    ],
+    children
+  );
+};
+
+export const subTriggerView = <ParentMessage>({
+  onOpen,
+  children,
+  open = false,
+  disabled = false,
+  className,
+  style,
+}: SubTriggerViewConfig<ParentMessage>): Html => {
+  const h = html<ParentMessage>();
+
+  return h.button(
+    [
+      h.Type("button"),
+      h.Attribute("role", "menuitem"),
+      h.Attribute("aria-haspopup", "menu"),
+      h.Attribute("aria-expanded", open ? "true" : "false"),
+      h.Disabled(disabled),
+      h.DataAttribute("slot", "dropdown-menu-sub-trigger"),
+      ...(open ? [h.DataAttribute("open", "true")] : []),
+      ...(disabled
+        ? [h.DataAttribute("disabled", "true")]
+        : [h.OnClick(onOpen)]),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(itemClassNames({ className })),
+    ],
+    children
+  );
+};
+
+export const subContentView = <ParentMessage>({
+  children,
+  className,
+  style,
+}: PartViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.div(
+    [
+      h.Attribute("role", "menu"),
+      h.DataAttribute("slot", "dropdown-menu-sub-content"),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(classNames(dropdownMenuSubContentClassName, className)),
+    ],
+    children
+  );
+};
+
+export const itemIndicatorView = <ParentMessage>({
+  children,
+  className,
+  style,
+}: PartViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.span(
+    [
+      h.AriaHidden(true),
+      h.DataAttribute("slot", "dropdown-menu-item-indicator"),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(classNames(dropdownMenuIndicatorClassName, className)),
+    ],
+    children
+  );
+};
+
+export const iconView = <ParentMessage>({
+  children,
+  className,
+  style,
+}: PartViewConfig): Html => {
+  const h = html<ParentMessage>();
+
+  return h.span(
+    [
+      h.AriaHidden(true),
+      h.DataAttribute("slot", "dropdown-menu-icon"),
+      ...(style === undefined ? [] : [h.Style(style)]),
+      h.Class(classNames(dropdownMenuIconClassName, className)),
     ],
     children
   );

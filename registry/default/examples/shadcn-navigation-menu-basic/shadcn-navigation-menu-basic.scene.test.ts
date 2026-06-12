@@ -17,9 +17,14 @@ describe("Shadcn Navigation Menu Basic example", () => {
         "href",
         "/docs"
       ),
+      Scene.expect(Scene.role("link", { name: "Documentation" })).toHaveAttr(
+        "href",
+        "/docs"
+      ),
       Scene.expect(Scene.role("button", { name: "List" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Simple" })).toExist(),
       Scene.expect(Scene.role("button", { name: "With Icon" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "الوثائق" })).toExist(),
       Scene.expect(Scene.role("menu")).not.toExist(),
       Scene.click(Scene.role("button", { name: "Home" })),
       Scene.expect(Scene.role("menu")).toExist(),

@@ -1,4 +1,5 @@
 import type { Html } from "foldkit/html";
+import type { Option } from "effect";
 import { html } from "foldkit/html";
 
 import * as Toggle from "../toggle";
@@ -25,6 +26,9 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   onPressedChange: ParentMessage;
   ariaLabel: string;
   children: readonly Html[];
+  id?: string | undefined;
+  tabIndex?: number | undefined;
+  onKeyDown?: ((key: string) => Option.Option<ParentMessage>) | undefined;
   disabled?: boolean | undefined;
   className?: string | undefined;
   style?: ToggleGroupStyle | undefined;
@@ -63,6 +67,9 @@ export const itemView = <ParentMessage>({
   onPressedChange,
   ariaLabel,
   children,
+  id,
+  tabIndex,
+  onKeyDown,
   disabled = false,
   className,
   style,
@@ -72,6 +79,9 @@ export const itemView = <ParentMessage>({
     pressed: isPressed(pressedValues, value),
     onPressedChange,
     ariaLabel,
+    id,
+    tabIndex,
+    onKeyDown,
     disabled,
     className: classNames(toggleGroupItemClassName, className),
     style,

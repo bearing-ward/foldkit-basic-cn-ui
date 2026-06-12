@@ -11,8 +11,10 @@ import * as AccordionBasicExample from "../registry/default/examples/accordion-b
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
+import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
+import * as AlertRtlExample from "../registry/default/examples/alert-rtl/main";
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
 import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
 import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
@@ -68,7 +70,9 @@ import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/bas
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverDetachedTriggerExample from "../registry/default/examples/base-ui-popover-detached-trigger/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
+import * as BaseUiPopoverOpenOnHoverExample from "../registry/default/examples/base-ui-popover-open-on-hover/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -111,7 +115,12 @@ import * as ButtonGroupSplitExample from "../registry/default/examples/button-gr
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CardBasicExample from "../registry/default/examples/card-basic/main";
+import * as CardImageExample from "../registry/default/examples/card-image/main";
+import * as CardRtlExample from "../registry/default/examples/card-rtl/main";
+import * as CardSizeExample from "../registry/default/examples/card-size/main";
+import * as CardSpacingExample from "../registry/default/examples/card-spacing/main";
 import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
+import * as CarouselAutoplayExample from "../registry/default/examples/carousel-autoplay/main";
 import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
 import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
 import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
@@ -130,6 +139,10 @@ import * as CollapsibleBasicExample from "../registry/default/examples/collapsib
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
+import * as CommandGroupsExample from "../registry/default/examples/command-groups/main";
+import * as CommandRtlExample from "../registry/default/examples/command-rtl/main";
+import * as CommandScrollableExample from "../registry/default/examples/command-scrollable/main";
+import * as CommandShortcutsExample from "../registry/default/examples/command-shortcuts/main";
 import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
 import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
 import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
@@ -152,8 +165,21 @@ import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
 import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as DropdownMenuCheckboxesExample from "../registry/default/examples/dropdown-menu-checkboxes/main";
+import * as DropdownMenuComplexExample from "../registry/default/examples/dropdown-menu-complex/main";
+import * as DropdownMenuDestructiveExample from "../registry/default/examples/dropdown-menu-destructive/main";
+import * as DropdownMenuIconsExample from "../registry/default/examples/dropdown-menu-icons/main";
+import * as DropdownMenuRadioGroupExample from "../registry/default/examples/dropdown-menu-radio-group/main";
+import * as DropdownMenuRtlExample from "../registry/default/examples/dropdown-menu-rtl/main";
+import * as DropdownMenuShortcutsExample from "../registry/default/examples/dropdown-menu-shortcuts/main";
+import * as DropdownMenuSubmenuExample from "../registry/default/examples/dropdown-menu-submenu/main";
+import * as EmptyAvatarGroupExample from "../registry/default/examples/empty-avatar-group/main";
+import * as EmptyAvatarExample from "../registry/default/examples/empty-avatar/main";
+import * as EmptyBackgroundExample from "../registry/default/examples/empty-background/main";
 import * as EmptyBasicExample from "../registry/default/examples/empty-basic/main";
 import * as EmptyInputGroupExample from "../registry/default/examples/empty-input-group/main";
+import * as EmptyOutlineExample from "../registry/default/examples/empty-outline/main";
+import * as EmptyRtlExample from "../registry/default/examples/empty-rtl/main";
 import * as FieldBasicExample from "../registry/default/examples/field-basic/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
@@ -161,9 +187,20 @@ import * as FileDropBasicExample from "../registry/default/examples/file-drop-ba
 import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
 import * as FormBasicExample from "../registry/default/examples/form-basic/main";
 import * as HoverCardBasicExample from "../registry/default/examples/hover-card-basic/main";
+import * as HoverCardRtlExample from "../registry/default/examples/hover-card-rtl/main";
+import * as HoverCardSidesExample from "../registry/default/examples/hover-card-sides/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
+import * as InputOtpAlphanumericExample from "../registry/default/examples/input-otp-alphanumeric/main";
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
+import * as InputOtpControlledExample from "../registry/default/examples/input-otp-controlled/main";
+import * as InputOtpDisabledExample from "../registry/default/examples/input-otp-disabled/main";
+import * as InputOtpFormExample from "../registry/default/examples/input-otp-form/main";
+import * as InputOtpFourDigitsExample from "../registry/default/examples/input-otp-four-digits/main";
+import * as InputOtpInvalidExample from "../registry/default/examples/input-otp-invalid/main";
+import * as InputOtpPatternExample from "../registry/default/examples/input-otp-pattern/main";
+import * as InputOtpRtlExample from "../registry/default/examples/input-otp-rtl/main";
+import * as InputOtpSeparatorExample from "../registry/default/examples/input-otp-separator/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
 import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
@@ -177,7 +214,10 @@ import * as ItemSizeExample from "../registry/default/examples/item-size/main";
 import * as ItemVariantExample from "../registry/default/examples/item-variant/main";
 import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
 import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as KbdRtlExample from "../registry/default/examples/kbd-rtl/main";
 import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
+import * as LabelFieldExample from "../registry/default/examples/label-field/main";
+import * as LabelRtlExample from "../registry/default/examples/label-rtl/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -185,10 +225,17 @@ import * as MenuBasicExample from "../registry/default/examples/menu-basic/main"
 import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
 import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
 import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
+import * as NativeSelectDisabledExample from "../registry/default/examples/native-select-disabled/main";
+import * as NativeSelectGroupsExample from "../registry/default/examples/native-select-groups/main";
+import * as NativeSelectInvalidExample from "../registry/default/examples/native-select-invalid/main";
+import * as NativeSelectRtlExample from "../registry/default/examples/native-select-rtl/main";
 import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
 import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
 import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
 import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
+import * as PaginationIconsOnlyExample from "../registry/default/examples/pagination-icons-only/main";
+import * as PaginationRtlExample from "../registry/default/examples/pagination-rtl/main";
+import * as PaginationSimpleExample from "../registry/default/examples/pagination-simple/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
@@ -197,6 +244,9 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
+import * as ResizableHandleExample from "../registry/default/examples/resizable-handle/main";
+import * as ResizableRtlExample from "../registry/default/examples/resizable-rtl/main";
+import * as ResizableVerticalExample from "../registry/default/examples/resizable-vertical/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -218,11 +268,18 @@ import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/s
 import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
 import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarDateTimePickerExample from "../registry/default/examples/shadcn-calendar-date-time-picker/main";
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
+import * as ShadcnCheckboxGroupExample from "../registry/default/examples/shadcn-checkbox-group/main";
+import * as ShadcnCheckboxTableExample from "../registry/default/examples/shadcn-checkbox-table/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
@@ -239,10 +296,20 @@ import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-dra
 import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
+import * as ShadcnInputBadgeExample from "../registry/default/examples/shadcn-input-badge/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputButtonGroupExample from "../registry/default/examples/shadcn-input-button-group/main";
+import * as ShadcnInputDemoExample from "../registry/default/examples/shadcn-input-demo/main";
 import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFieldGroupExample from "../registry/default/examples/shadcn-input-field-group/main";
+import * as ShadcnInputFieldExample from "../registry/default/examples/shadcn-input-field/main";
 import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputFormExample from "../registry/default/examples/shadcn-input-form/main";
+import * as ShadcnInputGridExample from "../registry/default/examples/shadcn-input-grid/main";
+import * as ShadcnInputInlineExample from "../registry/default/examples/shadcn-input-inline/main";
+import * as ShadcnInputInputGroupExample from "../registry/default/examples/shadcn-input-input-group/main";
 import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRequiredExample from "../registry/default/examples/shadcn-input-required/main";
 import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
@@ -258,10 +325,15 @@ import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/sha
 import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
+import * as SidebarCompositionExample from "../registry/default/examples/sidebar-composition/main";
+import * as SidebarControlledExample from "../registry/default/examples/sidebar-controlled/main";
+import * as SidebarRtlExample from "../registry/default/examples/sidebar-rtl/main";
+import * as SidebarVariantsExample from "../registry/default/examples/sidebar-variants/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
 import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
+import * as SpinnerBasicExample from "../registry/default/examples/spinner-basic/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TableBasicExample from "../registry/default/examples/table-basic/main";
@@ -305,6 +377,8 @@ export const ShadcnAlertDocsRoute = r("ShadcnAlertDocs");
 export const AlertBasicExampleRoute = r("AlertBasicExample");
 export const AlertActionExampleRoute = r("AlertActionExample");
 export const AlertDestructiveExampleRoute = r("AlertDestructiveExample");
+export const AlertCustomColorsExampleRoute = r("AlertCustomColorsExample");
+export const AlertRtlExampleRoute = r("AlertRtlExample");
 export const AspectRatioDocsRoute = r("AspectRatioDocs");
 export const ShadcnAspectRatioDocsRoute = r("ShadcnAspectRatioDocs");
 export const AspectRatioBasicExampleRoute = r("AspectRatioBasicExample");
@@ -456,6 +530,10 @@ export const BadgeRoute = r("Badge");
 export const BadgeDocsRoute = r("BadgeDocs");
 export const BadgeBasicExampleRoute = r("BadgeBasicExample");
 export const BadgeSpinnerExampleRoute = r("BadgeSpinnerExample");
+export const BadgeIconExampleRoute = r("BadgeIconExample");
+export const BadgeLinkExampleRoute = r("BadgeLinkExample");
+export const BadgeCustomColorsExampleRoute = r("BadgeCustomColorsExample");
+export const BadgeRtlExampleRoute = r("BadgeRtlExample");
 export const CarouselDocsRoute = r("CarouselDocs");
 export const ShadcnCarouselDocsRoute = r("ShadcnCarouselDocs");
 export const CarouselBasicExampleRoute = r("CarouselBasicExample");
@@ -463,6 +541,7 @@ export const CarouselSizesExampleRoute = r("CarouselSizesExample");
 export const CarouselSpacingExampleRoute = r("CarouselSpacingExample");
 export const CarouselOrientationExampleRoute = r("CarouselOrientationExample");
 export const CarouselApiExampleRoute = r("CarouselApiExample");
+export const CarouselAutoplayExampleRoute = r("CarouselAutoplayExample");
 export const CarouselRtlExampleRoute = r("CarouselRtlExample");
 export const ChartDocsRoute = r("ChartDocs");
 export const ChartBasicExampleRoute = r("ChartBasicExample");
@@ -473,14 +552,53 @@ export const ChartLegendExampleRoute = r("ChartLegendExample");
 export const ChartRtlExampleRoute = r("ChartRtlExample");
 export const CommandDocsRoute = r("CommandDocs");
 export const CommandBasicExampleRoute = r("CommandBasicExample");
+export const CommandGroupsExampleRoute = r("CommandGroupsExample");
+export const CommandRtlExampleRoute = r("CommandRtlExample");
+export const CommandScrollableExampleRoute = r("CommandScrollableExample");
+export const CommandShortcutsExampleRoute = r("CommandShortcutsExample");
 export const DropdownMenuDocsRoute = r("DropdownMenuDocs");
 export const DropdownMenuBasicExampleRoute = r("DropdownMenuBasicExample");
+export const DropdownMenuCheckboxesExampleRoute = r(
+  "DropdownMenuCheckboxesExample"
+);
+export const DropdownMenuComplexExampleRoute = r("DropdownMenuComplexExample");
+export const DropdownMenuDestructiveExampleRoute = r(
+  "DropdownMenuDestructiveExample"
+);
+export const DropdownMenuIconsExampleRoute = r("DropdownMenuIconsExample");
+export const DropdownMenuRadioGroupExampleRoute = r(
+  "DropdownMenuRadioGroupExample"
+);
+export const DropdownMenuRtlExampleRoute = r("DropdownMenuRtlExample");
+export const DropdownMenuShortcutsExampleRoute = r(
+  "DropdownMenuShortcutsExample"
+);
+export const DropdownMenuSubmenuExampleRoute = r("DropdownMenuSubmenuExample");
 export const HoverCardDocsRoute = r("HoverCardDocs");
 export const HoverCardBasicExampleRoute = r("HoverCardBasicExample");
+export const HoverCardSidesExampleRoute = r("HoverCardSidesExample");
+export const HoverCardRtlExampleRoute = r("HoverCardRtlExample");
 export const InputOtpDocsRoute = r("InputOtpDocs");
 export const InputOtpBasicExampleRoute = r("InputOtpBasicExample");
+export const InputOtpPatternExampleRoute = r("InputOtpPatternExample");
+export const InputOtpSeparatorExampleRoute = r("InputOtpSeparatorExample");
+export const InputOtpDisabledExampleRoute = r("InputOtpDisabledExample");
+export const InputOtpControlledExampleRoute = r("InputOtpControlledExample");
+export const InputOtpInvalidExampleRoute = r("InputOtpInvalidExample");
+export const InputOtpFourDigitsExampleRoute = r("InputOtpFourDigitsExample");
+export const InputOtpAlphanumericExampleRoute = r(
+  "InputOtpAlphanumericExample"
+);
+export const InputOtpFormExampleRoute = r("InputOtpFormExample");
+export const InputOtpRtlExampleRoute = r("InputOtpRtlExample");
 export const NativeSelectDocsRoute = r("NativeSelectDocs");
 export const NativeSelectBasicExampleRoute = r("NativeSelectBasicExample");
+export const NativeSelectDisabledExampleRoute = r(
+  "NativeSelectDisabledExample"
+);
+export const NativeSelectGroupsExampleRoute = r("NativeSelectGroupsExample");
+export const NativeSelectInvalidExampleRoute = r("NativeSelectInvalidExample");
+export const NativeSelectRtlExampleRoute = r("NativeSelectRtlExample");
 export const SheetDocsRoute = r("SheetDocs");
 export const SheetBasicExampleRoute = r("SheetBasicExample");
 export const SonnerDocsRoute = r("SonnerDocs");
@@ -511,18 +629,36 @@ export const ItemSizeExampleRoute = r("ItemSizeExample");
 export const ItemVariantExampleRoute = r("ItemVariantExample");
 export const LabelDocsRoute = r("LabelDocs");
 export const LabelBasicExampleRoute = r("LabelBasicExample");
+export const LabelFieldExampleRoute = r("LabelFieldExample");
+export const LabelRtlExampleRoute = r("LabelRtlExample");
 export const PaginationDocsRoute = r("PaginationDocs");
 export const PaginationBasicExampleRoute = r("PaginationBasicExample");
+export const PaginationSimpleExampleRoute = r("PaginationSimpleExample");
+export const PaginationIconsOnlyExampleRoute = r(
+  "PaginationIconsOnlyExample"
+);
+export const PaginationRtlExampleRoute = r("PaginationRtlExample");
 export const ResizableDocsRoute = r("ResizableDocs");
 export const ResizableBasicExampleRoute = r("ResizableBasicExample");
+export const ResizableHandleExampleRoute = r("ResizableHandleExample");
+export const ResizableRtlExampleRoute = r("ResizableRtlExample");
+export const ResizableVerticalExampleRoute = r("ResizableVerticalExample");
 export const SidebarDocsRoute = r("SidebarDocs");
 export const SidebarBasicExampleRoute = r("SidebarBasicExample");
+export const SidebarCompositionExampleRoute = r("SidebarCompositionExample");
+export const SidebarControlledExampleRoute = r("SidebarControlledExample");
+export const SidebarRtlExampleRoute = r("SidebarRtlExample");
+export const SidebarVariantsExampleRoute = r("SidebarVariantsExample");
 export const TableDocsRoute = r("TableDocs");
 export const TableBasicExampleRoute = r("TableBasicExample");
 export const CardRoute = r("Card");
 export const CardDocsRoute = r("CardDocs");
 export const ShadcnCardDocsRoute = r("ShadcnCardDocs");
 export const CardBasicExampleRoute = r("CardBasicExample");
+export const CardSizeExampleRoute = r("CardSizeExample");
+export const CardSpacingExampleRoute = r("CardSpacingExample");
+export const CardImageExampleRoute = r("CardImageExample");
+export const CardRtlExampleRoute = r("CardRtlExample");
 export const SeparatorRoute = r("Separator");
 export const SeparatorDocsRoute = r("SeparatorDocs");
 export const ShadcnSeparatorDocsRoute = r("ShadcnSeparatorDocs");
@@ -536,17 +672,24 @@ export const SkeletonDocsRoute = r("SkeletonDocs");
 export const SkeletonBasicExampleRoute = r("SkeletonBasicExample");
 export const SpinnerRoute = r("Spinner");
 export const SpinnerDocsRoute = r("SpinnerDocs");
+export const SpinnerBasicExampleRoute = r("SpinnerBasicExample");
 export const KbdRoute = r("Kbd");
 export const KbdDocsRoute = r("KbdDocs");
 export const KbdBasicExampleRoute = r("KbdBasicExample");
 export const KbdInputGroupExampleRoute = r("KbdInputGroupExample");
+export const KbdRtlExampleRoute = r("KbdRtlExample");
 export const TypographyRoute = r("Typography");
 export const TypographyDocsRoute = r("TypographyDocs");
 export const TypographyBasicExampleRoute = r("TypographyBasicExample");
 export const EmptyRoute = r("Empty");
 export const EmptyDocsRoute = r("EmptyDocs");
+export const EmptyAvatarExampleRoute = r("EmptyAvatarExample");
+export const EmptyAvatarGroupExampleRoute = r("EmptyAvatarGroupExample");
+export const EmptyBackgroundExampleRoute = r("EmptyBackgroundExample");
 export const EmptyBasicExampleRoute = r("EmptyBasicExample");
 export const EmptyInputGroupExampleRoute = r("EmptyInputGroupExample");
+export const EmptyOutlineExampleRoute = r("EmptyOutlineExample");
+export const EmptyRtlExampleRoute = r("EmptyRtlExample");
 export const ButtonRoute = r("Button");
 export const ButtonDocsRoute = r("ButtonDocs");
 export const ButtonBasicExampleRoute = r("ButtonBasicExample");
@@ -556,6 +699,17 @@ export const BaseUiButtonBasicExampleRoute = r("BaseUiButtonBasicExample");
 export const ShadcnButtonDocsRoute = r("ShadcnButtonDocs");
 export const InputGroupRoute = r("InputGroup");
 export const InputGroupDocsRoute = r("InputGroupDocs");
+export const InputGroupAlignExampleRoute = r("InputGroupAlignExample");
+export const InputGroupButtonExampleRoute = r("InputGroupButtonExample");
+export const InputGroupCustomInputExampleRoute = r(
+  "InputGroupCustomInputExample"
+);
+export const InputGroupDropdownExampleRoute = r("InputGroupDropdownExample");
+export const InputGroupIconExampleRoute = r("InputGroupIconExample");
+export const InputGroupRtlExampleRoute = r("InputGroupRtlExample");
+export const InputGroupSpinnerExampleRoute = r("InputGroupSpinnerExample");
+export const InputGroupTextExampleRoute = r("InputGroupTextExample");
+export const InputGroupTextareaExampleRoute = r("InputGroupTextareaExample");
 export const MeterRoute = r("Meter");
 export const MeterDocsRoute = r("MeterDocs");
 export const BaseUiMeterDocsRoute = r("BaseUiMeterDocs");
@@ -597,6 +751,34 @@ export const ProgressBasicExampleRoute = r("ProgressBasicExample");
 export const CalendarRoute = r("Calendar");
 export const CalendarDocsRoute = r("CalendarDocs");
 export const ShadcnCalendarDocsRoute = r("ShadcnCalendarDocs");
+export const ShadcnCalendarBasicExampleRoute = r(
+  "ShadcnCalendarBasicExample"
+);
+export const ShadcnCalendarMonthYearSelectorExampleRoute = r(
+  "ShadcnCalendarMonthYearSelectorExample"
+);
+export const ShadcnCalendarRangeExampleRoute = r(
+  "ShadcnCalendarRangeExample"
+);
+export const ShadcnCalendarDateOfBirthExampleRoute = r(
+  "ShadcnCalendarDateOfBirthExample"
+);
+export const ShadcnCalendarDateTimePickerExampleRoute = r(
+  "ShadcnCalendarDateTimePickerExample"
+);
+export const ShadcnCalendarPresetsExampleRoute = r(
+  "ShadcnCalendarPresetsExample"
+);
+export const ShadcnCalendarBookedExampleRoute = r(
+  "ShadcnCalendarBookedExample"
+);
+export const ShadcnCalendarCustomCellSizeExampleRoute = r(
+  "ShadcnCalendarCustomCellSizeExample"
+);
+export const ShadcnCalendarWeekNumbersExampleRoute = r(
+  "ShadcnCalendarWeekNumbersExample"
+);
+export const ShadcnCalendarRtlExampleRoute = r("ShadcnCalendarRtlExample");
 export const CalendarBasicExampleRoute = r("CalendarBasicExample");
 export const CalendarBoundsExampleRoute = r("CalendarBoundsExample");
 export const CheckboxRoute = r("Checkbox");
@@ -612,6 +794,11 @@ export const BaseUiCheckboxNativeButtonExampleRoute = r(
 );
 export const BaseUiCheckboxFormExampleRoute = r("BaseUiCheckboxFormExample");
 export const ShadcnCheckboxDocsRoute = r("ShadcnCheckboxDocs");
+export const ShadcnCheckboxCheckedStateExampleRoute = r(
+  "ShadcnCheckboxCheckedStateExample"
+);
+export const ShadcnCheckboxGroupExampleRoute = r("ShadcnCheckboxGroupExample");
+export const ShadcnCheckboxTableExampleRoute = r("ShadcnCheckboxTableExample");
 export const CheckboxGroupDocsRoute = r("CheckboxGroupDocs");
 export const BaseUiCheckboxGroupDocsRoute = r("BaseUiCheckboxGroupDocs");
 export const BaseUiCheckboxGroupBasicExampleRoute = r(
@@ -702,9 +889,23 @@ export const BaseUiInputBasicExampleRoute = r("BaseUiInputBasicExample");
 export const InputBasicExampleRoute = r("InputBasicExample");
 export const InputDisabledExampleRoute = r("InputDisabledExample");
 export const ShadcnInputBasicExampleRoute = r("ShadcnInputBasicExample");
-export const ShadcnInputDisabledExampleRoute = r(
-  "ShadcnInputDisabledExample"
+export const ShadcnInputDemoExampleRoute = r("ShadcnInputDemoExample");
+export const ShadcnInputFieldExampleRoute = r("ShadcnInputFieldExample");
+export const ShadcnInputFieldGroupExampleRoute = r(
+  "ShadcnInputFieldGroupExample"
 );
+export const ShadcnInputInlineExampleRoute = r("ShadcnInputInlineExample");
+export const ShadcnInputGridExampleRoute = r("ShadcnInputGridExample");
+export const ShadcnInputRequiredExampleRoute = r("ShadcnInputRequiredExample");
+export const ShadcnInputBadgeExampleRoute = r("ShadcnInputBadgeExample");
+export const ShadcnInputInputGroupExampleRoute = r(
+  "ShadcnInputInputGroupExample"
+);
+export const ShadcnInputButtonGroupExampleRoute = r(
+  "ShadcnInputButtonGroupExample"
+);
+export const ShadcnInputFormExampleRoute = r("ShadcnInputFormExample");
+export const ShadcnInputDisabledExampleRoute = r("ShadcnInputDisabledExample");
 export const ShadcnInputInvalidExampleRoute = r("ShadcnInputInvalidExample");
 export const ShadcnInputFileExampleRoute = r("ShadcnInputFileExample");
 export const ShadcnInputRtlExampleRoute = r("ShadcnInputRtlExample");
@@ -727,8 +928,14 @@ export const BaseUiPopoverBasicExampleRoute = r("BaseUiPopoverBasicExample");
 export const BaseUiPopoverAnimatedExampleRoute = r(
   "BaseUiPopoverAnimatedExample"
 );
+export const BaseUiPopoverDetachedTriggerExampleRoute = r(
+  "BaseUiPopoverDetachedTriggerExample"
+);
 export const BaseUiPopoverMultipleTriggersExampleRoute = r(
   "BaseUiPopoverMultipleTriggersExample"
+);
+export const BaseUiPopoverOpenOnHoverExampleRoute = r(
+  "BaseUiPopoverOpenOnHoverExample"
 );
 export const BaseUiRadioBasicExampleRoute = r("BaseUiRadioBasicExample");
 export const BaseUiRadioLabelingExampleRoute = r("BaseUiRadioLabelingExample");
@@ -756,6 +963,7 @@ export const SelectDisabledExampleRoute = r("SelectDisabledExample");
 export const SliderRoute = r("Slider");
 export const SliderDocsRoute = r("SliderDocs");
 export const ShadcnSliderDocsRoute = r("ShadcnSliderDocs");
+export const ShadcnSliderBasicExampleRoute = r("ShadcnSliderBasicExample");
 export const BaseUiSliderDocsRoute = r("BaseUiSliderDocs");
 export const BaseUiSliderBasicExampleRoute = r("BaseUiSliderBasicExample");
 export const SliderBasicExampleRoute = r("SliderBasicExample");
@@ -816,6 +1024,8 @@ const AppRoute = S.Union([
   AlertBasicExampleRoute,
   AlertActionExampleRoute,
   AlertDestructiveExampleRoute,
+  AlertCustomColorsExampleRoute,
+  AlertRtlExampleRoute,
   AspectRatioDocsRoute,
   ShadcnAspectRatioDocsRoute,
   AspectRatioBasicExampleRoute,
@@ -923,6 +1133,10 @@ const AppRoute = S.Union([
   BadgeDocsRoute,
   BadgeBasicExampleRoute,
   BadgeSpinnerExampleRoute,
+  BadgeIconExampleRoute,
+  BadgeLinkExampleRoute,
+  BadgeCustomColorsExampleRoute,
+  BadgeRtlExampleRoute,
   CarouselDocsRoute,
   ShadcnCarouselDocsRoute,
   CarouselBasicExampleRoute,
@@ -930,6 +1144,7 @@ const AppRoute = S.Union([
   CarouselSpacingExampleRoute,
   CarouselOrientationExampleRoute,
   CarouselApiExampleRoute,
+  CarouselAutoplayExampleRoute,
   CarouselRtlExampleRoute,
   ChartDocsRoute,
   ChartBasicExampleRoute,
@@ -940,14 +1155,41 @@ const AppRoute = S.Union([
   ChartRtlExampleRoute,
   CommandDocsRoute,
   CommandBasicExampleRoute,
+  CommandGroupsExampleRoute,
+  CommandRtlExampleRoute,
+  CommandScrollableExampleRoute,
+  CommandShortcutsExampleRoute,
   DropdownMenuDocsRoute,
   DropdownMenuBasicExampleRoute,
+  DropdownMenuCheckboxesExampleRoute,
+  DropdownMenuComplexExampleRoute,
+  DropdownMenuDestructiveExampleRoute,
+  DropdownMenuIconsExampleRoute,
+  DropdownMenuRadioGroupExampleRoute,
+  DropdownMenuRtlExampleRoute,
+  DropdownMenuShortcutsExampleRoute,
+  DropdownMenuSubmenuExampleRoute,
   HoverCardDocsRoute,
   HoverCardBasicExampleRoute,
+  HoverCardSidesExampleRoute,
+  HoverCardRtlExampleRoute,
   InputOtpDocsRoute,
   InputOtpBasicExampleRoute,
+  InputOtpPatternExampleRoute,
+  InputOtpSeparatorExampleRoute,
+  InputOtpDisabledExampleRoute,
+  InputOtpControlledExampleRoute,
+  InputOtpInvalidExampleRoute,
+  InputOtpFourDigitsExampleRoute,
+  InputOtpAlphanumericExampleRoute,
+  InputOtpFormExampleRoute,
+  InputOtpRtlExampleRoute,
   NativeSelectDocsRoute,
   NativeSelectBasicExampleRoute,
+  NativeSelectDisabledExampleRoute,
+  NativeSelectGroupsExampleRoute,
+  NativeSelectInvalidExampleRoute,
+  NativeSelectRtlExampleRoute,
   SheetDocsRoute,
   SheetBasicExampleRoute,
   SonnerDocsRoute,
@@ -976,18 +1218,34 @@ const AppRoute = S.Union([
   ItemVariantExampleRoute,
   LabelDocsRoute,
   LabelBasicExampleRoute,
+  LabelFieldExampleRoute,
+  LabelRtlExampleRoute,
   PaginationDocsRoute,
   PaginationBasicExampleRoute,
+  PaginationSimpleExampleRoute,
+  PaginationIconsOnlyExampleRoute,
+  PaginationRtlExampleRoute,
   ResizableDocsRoute,
   ResizableBasicExampleRoute,
+  ResizableHandleExampleRoute,
+  ResizableRtlExampleRoute,
+  ResizableVerticalExampleRoute,
   SidebarDocsRoute,
   SidebarBasicExampleRoute,
+  SidebarCompositionExampleRoute,
+  SidebarControlledExampleRoute,
+  SidebarRtlExampleRoute,
+  SidebarVariantsExampleRoute,
   TableDocsRoute,
   TableBasicExampleRoute,
   CardRoute,
   CardDocsRoute,
   ShadcnCardDocsRoute,
   CardBasicExampleRoute,
+  CardSizeExampleRoute,
+  CardSpacingExampleRoute,
+  CardImageExampleRoute,
+  CardRtlExampleRoute,
   SeparatorRoute,
   SeparatorDocsRoute,
   ShadcnSeparatorDocsRoute,
@@ -999,17 +1257,24 @@ const AppRoute = S.Union([
   SkeletonBasicExampleRoute,
   SpinnerRoute,
   SpinnerDocsRoute,
+  SpinnerBasicExampleRoute,
   KbdRoute,
   KbdDocsRoute,
   KbdBasicExampleRoute,
   KbdInputGroupExampleRoute,
+  KbdRtlExampleRoute,
   TypographyRoute,
   TypographyDocsRoute,
   TypographyBasicExampleRoute,
   EmptyRoute,
   EmptyDocsRoute,
+  EmptyAvatarExampleRoute,
+  EmptyAvatarGroupExampleRoute,
+  EmptyBackgroundExampleRoute,
   EmptyBasicExampleRoute,
   EmptyInputGroupExampleRoute,
+  EmptyOutlineExampleRoute,
+  EmptyRtlExampleRoute,
   ButtonRoute,
   ButtonDocsRoute,
   ButtonBasicExampleRoute,
@@ -1019,6 +1284,15 @@ const AppRoute = S.Union([
   ShadcnButtonDocsRoute,
   InputGroupRoute,
   InputGroupDocsRoute,
+  InputGroupAlignExampleRoute,
+  InputGroupButtonExampleRoute,
+  InputGroupCustomInputExampleRoute,
+  InputGroupDropdownExampleRoute,
+  InputGroupIconExampleRoute,
+  InputGroupRtlExampleRoute,
+  InputGroupSpinnerExampleRoute,
+  InputGroupTextExampleRoute,
+  InputGroupTextareaExampleRoute,
   MeterRoute,
   MeterDocsRoute,
   BaseUiMeterDocsRoute,
@@ -1056,6 +1330,16 @@ const AppRoute = S.Union([
   CalendarRoute,
   CalendarDocsRoute,
   ShadcnCalendarDocsRoute,
+  ShadcnCalendarBasicExampleRoute,
+  ShadcnCalendarMonthYearSelectorExampleRoute,
+  ShadcnCalendarRangeExampleRoute,
+  ShadcnCalendarDateOfBirthExampleRoute,
+  ShadcnCalendarDateTimePickerExampleRoute,
+  ShadcnCalendarPresetsExampleRoute,
+  ShadcnCalendarBookedExampleRoute,
+  ShadcnCalendarCustomCellSizeExampleRoute,
+  ShadcnCalendarWeekNumbersExampleRoute,
+  ShadcnCalendarRtlExampleRoute,
   CalendarBasicExampleRoute,
   CalendarBoundsExampleRoute,
   CheckboxRoute,
@@ -1067,6 +1351,9 @@ const AppRoute = S.Union([
   BaseUiCheckboxNativeButtonExampleRoute,
   BaseUiCheckboxFormExampleRoute,
   ShadcnCheckboxDocsRoute,
+  ShadcnCheckboxCheckedStateExampleRoute,
+  ShadcnCheckboxGroupExampleRoute,
+  ShadcnCheckboxTableExampleRoute,
   CheckboxGroupDocsRoute,
   BaseUiCheckboxGroupDocsRoute,
   BaseUiCheckboxGroupBasicExampleRoute,
@@ -1133,6 +1420,16 @@ const AppRoute = S.Union([
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
   ShadcnInputBasicExampleRoute,
+  ShadcnInputDemoExampleRoute,
+  ShadcnInputFieldExampleRoute,
+  ShadcnInputFieldGroupExampleRoute,
+  ShadcnInputInlineExampleRoute,
+  ShadcnInputGridExampleRoute,
+  ShadcnInputRequiredExampleRoute,
+  ShadcnInputBadgeExampleRoute,
+  ShadcnInputInputGroupExampleRoute,
+  ShadcnInputButtonGroupExampleRoute,
+  ShadcnInputFormExampleRoute,
   ShadcnInputDisabledExampleRoute,
   ShadcnInputInvalidExampleRoute,
   ShadcnInputFileExampleRoute,
@@ -1154,7 +1451,9 @@ const AppRoute = S.Union([
   BaseUiPopoverDocsRoute,
   BaseUiPopoverBasicExampleRoute,
   BaseUiPopoverAnimatedExampleRoute,
+  BaseUiPopoverDetachedTriggerExampleRoute,
   BaseUiPopoverMultipleTriggersExampleRoute,
+  BaseUiPopoverOpenOnHoverExampleRoute,
   BaseUiRadioBasicExampleRoute,
   BaseUiRadioLabelingExampleRoute,
   BaseUiRadioNativeButtonExampleRoute,
@@ -1177,6 +1476,7 @@ const AppRoute = S.Union([
   SliderRoute,
   SliderDocsRoute,
   ShadcnSliderDocsRoute,
+  ShadcnSliderBasicExampleRoute,
   BaseUiSliderDocsRoute,
   BaseUiSliderBasicExampleRoute,
   SliderBasicExampleRoute,
@@ -1276,6 +1576,48 @@ export const alertDestructiveStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("alert-destructive")),
   Route.mapTo(AlertDestructiveExampleRoute)
+);
+export const alertCustomColorsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert")),
+  slash(literal("examples")),
+  slash(literal("custom-colors")),
+  Route.mapTo(AlertCustomColorsExampleRoute)
+);
+export const shadcnAlertCustomColorsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-alert")),
+  slash(literal("examples")),
+  slash(literal("custom-colors")),
+  Route.mapTo(AlertCustomColorsExampleRoute)
+);
+export const alertCustomColorsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("alert-custom-colors")),
+  Route.mapTo(AlertCustomColorsExampleRoute)
+);
+export const alertRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("alert")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(AlertRtlExampleRoute)
+);
+export const shadcnAlertRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-alert")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(AlertRtlExampleRoute)
+);
+export const alertRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("alert-rtl")),
+  Route.mapTo(AlertRtlExampleRoute)
 );
 export const aspectRatioDocsRouter = pipe(
   literal("docs"),
@@ -2498,6 +2840,58 @@ export const badgeSpinnerStandaloneExampleRouter = pipe(
   slash(literal("badge-spinner")),
   Route.mapTo(BadgeSpinnerExampleRoute)
 );
+export const badgeIconExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  slash(literal("examples")),
+  slash(literal("icon")),
+  Route.mapTo(BadgeIconExampleRoute)
+);
+export const badgeIconStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("badge-icon")),
+  Route.mapTo(BadgeIconExampleRoute)
+);
+export const badgeLinkExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  slash(literal("examples")),
+  slash(literal("link")),
+  Route.mapTo(BadgeLinkExampleRoute)
+);
+export const badgeLinkStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("badge-link")),
+  Route.mapTo(BadgeLinkExampleRoute)
+);
+export const badgeCustomColorsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  slash(literal("examples")),
+  slash(literal("custom-colors")),
+  Route.mapTo(BadgeCustomColorsExampleRoute)
+);
+export const badgeCustomColorsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("badge-custom-colors")),
+  Route.mapTo(BadgeCustomColorsExampleRoute)
+);
+export const badgeRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("badge")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(BadgeRtlExampleRoute)
+);
+export const badgeRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("badge-rtl")),
+  Route.mapTo(BadgeRtlExampleRoute)
+);
 export const carouselDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2575,6 +2969,19 @@ export const carouselApiStandaloneExampleRouter = pipe(
   slash(literal("carousel-api")),
   Route.mapTo(CarouselApiExampleRoute)
 );
+export const carouselAutoplayExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-carousel")),
+  slash(literal("examples")),
+  slash(literal("autoplay")),
+  Route.mapTo(CarouselAutoplayExampleRoute)
+);
+export const carouselAutoplayStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("carousel-autoplay")),
+  Route.mapTo(CarouselAutoplayExampleRoute)
+);
 export const carouselRtlExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2634,6 +3041,14 @@ export const carouselApiLegacyExampleRouter = pipe(
   slash(literal("examples")),
   slash(literal("api")),
   Route.mapTo(CarouselApiExampleRoute)
+);
+export const carouselAutoplayLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("carousel")),
+  slash(literal("examples")),
+  slash(literal("autoplay")),
+  Route.mapTo(CarouselAutoplayExampleRoute)
 );
 export const carouselRtlLegacyExampleRouter = pipe(
   literal("docs"),
@@ -2741,6 +3156,58 @@ export const commandBasicStandaloneExampleRouter = pipe(
   slash(literal("command-basic")),
   Route.mapTo(CommandBasicExampleRoute)
 );
+export const commandGroupsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("command")),
+  slash(literal("examples")),
+  slash(literal("groups")),
+  Route.mapTo(CommandGroupsExampleRoute)
+);
+export const commandGroupsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("command-groups")),
+  Route.mapTo(CommandGroupsExampleRoute)
+);
+export const commandRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("command")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(CommandRtlExampleRoute)
+);
+export const commandRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("command-rtl")),
+  Route.mapTo(CommandRtlExampleRoute)
+);
+export const commandScrollableExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("command")),
+  slash(literal("examples")),
+  slash(literal("scrollable")),
+  Route.mapTo(CommandScrollableExampleRoute)
+);
+export const commandScrollableStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("command-scrollable")),
+  Route.mapTo(CommandScrollableExampleRoute)
+);
+export const commandShortcutsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("command")),
+  slash(literal("examples")),
+  slash(literal("shortcuts")),
+  Route.mapTo(CommandShortcutsExampleRoute)
+);
+export const commandShortcutsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("command-shortcuts")),
+  Route.mapTo(CommandShortcutsExampleRoute)
+);
 export const dropdownMenuDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2759,6 +3226,110 @@ export const dropdownMenuBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("dropdown-menu-basic")),
   Route.mapTo(DropdownMenuBasicExampleRoute)
+);
+export const dropdownMenuCheckboxesExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("checkboxes")),
+  Route.mapTo(DropdownMenuCheckboxesExampleRoute)
+);
+export const dropdownMenuCheckboxesStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-checkboxes")),
+  Route.mapTo(DropdownMenuCheckboxesExampleRoute)
+);
+export const dropdownMenuComplexExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("complex")),
+  Route.mapTo(DropdownMenuComplexExampleRoute)
+);
+export const dropdownMenuComplexStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-complex")),
+  Route.mapTo(DropdownMenuComplexExampleRoute)
+);
+export const dropdownMenuDestructiveExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("destructive")),
+  Route.mapTo(DropdownMenuDestructiveExampleRoute)
+);
+export const dropdownMenuDestructiveStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-destructive")),
+  Route.mapTo(DropdownMenuDestructiveExampleRoute)
+);
+export const dropdownMenuIconsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("icons")),
+  Route.mapTo(DropdownMenuIconsExampleRoute)
+);
+export const dropdownMenuIconsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-icons")),
+  Route.mapTo(DropdownMenuIconsExampleRoute)
+);
+export const dropdownMenuRadioGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("radio-group")),
+  Route.mapTo(DropdownMenuRadioGroupExampleRoute)
+);
+export const dropdownMenuRadioGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-radio-group")),
+  Route.mapTo(DropdownMenuRadioGroupExampleRoute)
+);
+export const dropdownMenuRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(DropdownMenuRtlExampleRoute)
+);
+export const dropdownMenuRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-rtl")),
+  Route.mapTo(DropdownMenuRtlExampleRoute)
+);
+export const dropdownMenuShortcutsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("shortcuts")),
+  Route.mapTo(DropdownMenuShortcutsExampleRoute)
+);
+export const dropdownMenuShortcutsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-shortcuts")),
+  Route.mapTo(DropdownMenuShortcutsExampleRoute)
+);
+export const dropdownMenuSubmenuExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("dropdown-menu")),
+  slash(literal("examples")),
+  slash(literal("submenu")),
+  Route.mapTo(DropdownMenuSubmenuExampleRoute)
+);
+export const dropdownMenuSubmenuStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("dropdown-menu-submenu")),
+  Route.mapTo(DropdownMenuSubmenuExampleRoute)
 );
 export const hoverCardDocsRouter = pipe(
   literal("docs"),
@@ -2779,6 +3350,32 @@ export const hoverCardBasicStandaloneExampleRouter = pipe(
   slash(literal("hover-card-basic")),
   Route.mapTo(HoverCardBasicExampleRoute)
 );
+export const hoverCardSidesExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("hover-card")),
+  slash(literal("examples")),
+  slash(literal("sides")),
+  Route.mapTo(HoverCardSidesExampleRoute)
+);
+export const hoverCardSidesStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("hover-card-sides")),
+  Route.mapTo(HoverCardSidesExampleRoute)
+);
+export const hoverCardRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("hover-card")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(HoverCardRtlExampleRoute)
+);
+export const hoverCardRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("hover-card-rtl")),
+  Route.mapTo(HoverCardRtlExampleRoute)
+);
 export const inputOtpDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2798,6 +3395,123 @@ export const inputOtpBasicStandaloneExampleRouter = pipe(
   slash(literal("input-otp-basic")),
   Route.mapTo(InputOtpBasicExampleRoute)
 );
+export const inputOtpPatternExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("pattern")),
+  Route.mapTo(InputOtpPatternExampleRoute)
+);
+export const inputOtpPatternStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-pattern")),
+  Route.mapTo(InputOtpPatternExampleRoute)
+);
+export const inputOtpSeparatorExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("separator")),
+  Route.mapTo(InputOtpSeparatorExampleRoute)
+);
+export const inputOtpSeparatorStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-separator")),
+  Route.mapTo(InputOtpSeparatorExampleRoute)
+);
+export const inputOtpDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(InputOtpDisabledExampleRoute)
+);
+export const inputOtpDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-disabled")),
+  Route.mapTo(InputOtpDisabledExampleRoute)
+);
+export const inputOtpControlledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("controlled")),
+  Route.mapTo(InputOtpControlledExampleRoute)
+);
+export const inputOtpControlledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-controlled")),
+  Route.mapTo(InputOtpControlledExampleRoute)
+);
+export const inputOtpInvalidExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("invalid")),
+  Route.mapTo(InputOtpInvalidExampleRoute)
+);
+export const inputOtpInvalidStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-invalid")),
+  Route.mapTo(InputOtpInvalidExampleRoute)
+);
+export const inputOtpFourDigitsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("four-digits")),
+  Route.mapTo(InputOtpFourDigitsExampleRoute)
+);
+export const inputOtpFourDigitsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-four-digits")),
+  Route.mapTo(InputOtpFourDigitsExampleRoute)
+);
+export const inputOtpAlphanumericExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("alphanumeric")),
+  Route.mapTo(InputOtpAlphanumericExampleRoute)
+);
+export const inputOtpAlphanumericStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-alphanumeric")),
+  Route.mapTo(InputOtpAlphanumericExampleRoute)
+);
+export const inputOtpFormExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("form")),
+  Route.mapTo(InputOtpFormExampleRoute)
+);
+export const inputOtpFormStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-form")),
+  Route.mapTo(InputOtpFormExampleRoute)
+);
+export const inputOtpRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-otp")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(InputOtpRtlExampleRoute)
+);
+export const inputOtpRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-otp-rtl")),
+  Route.mapTo(InputOtpRtlExampleRoute)
+);
 export const nativeSelectDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -2816,6 +3530,58 @@ export const nativeSelectBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("native-select-basic")),
   Route.mapTo(NativeSelectBasicExampleRoute)
+);
+export const nativeSelectDisabledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("native-select")),
+  slash(literal("examples")),
+  slash(literal("disabled")),
+  Route.mapTo(NativeSelectDisabledExampleRoute)
+);
+export const nativeSelectDisabledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("native-select-disabled")),
+  Route.mapTo(NativeSelectDisabledExampleRoute)
+);
+export const nativeSelectGroupsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("native-select")),
+  slash(literal("examples")),
+  slash(literal("groups")),
+  Route.mapTo(NativeSelectGroupsExampleRoute)
+);
+export const nativeSelectGroupsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("native-select-groups")),
+  Route.mapTo(NativeSelectGroupsExampleRoute)
+);
+export const nativeSelectInvalidExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("native-select")),
+  slash(literal("examples")),
+  slash(literal("invalid")),
+  Route.mapTo(NativeSelectInvalidExampleRoute)
+);
+export const nativeSelectInvalidStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("native-select-invalid")),
+  Route.mapTo(NativeSelectInvalidExampleRoute)
+);
+export const nativeSelectRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("native-select")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(NativeSelectRtlExampleRoute)
+);
+export const nativeSelectRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("native-select-rtl")),
+  Route.mapTo(NativeSelectRtlExampleRoute)
 );
 export const sheetDocsRouter = pipe(
   literal("docs"),
@@ -3122,6 +3888,32 @@ export const labelBasicStandaloneExampleRouter = pipe(
   slash(literal("label-basic")),
   Route.mapTo(LabelBasicExampleRoute)
 );
+export const labelFieldExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("label")),
+  slash(literal("examples")),
+  slash(literal("field")),
+  Route.mapTo(LabelFieldExampleRoute)
+);
+export const labelFieldStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("label-field")),
+  Route.mapTo(LabelFieldExampleRoute)
+);
+export const labelRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("label")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(LabelRtlExampleRoute)
+);
+export const labelRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("label-rtl")),
+  Route.mapTo(LabelRtlExampleRoute)
+);
 export const paginationDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3140,6 +3932,45 @@ export const paginationBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("pagination-basic")),
   Route.mapTo(PaginationBasicExampleRoute)
+);
+export const paginationSimpleExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("pagination")),
+  slash(literal("examples")),
+  slash(literal("simple")),
+  Route.mapTo(PaginationSimpleExampleRoute)
+);
+export const paginationSimpleStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("pagination-simple")),
+  Route.mapTo(PaginationSimpleExampleRoute)
+);
+export const paginationIconsOnlyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("pagination")),
+  slash(literal("examples")),
+  slash(literal("icons-only")),
+  Route.mapTo(PaginationIconsOnlyExampleRoute)
+);
+export const paginationIconsOnlyStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("pagination-icons-only")),
+  Route.mapTo(PaginationIconsOnlyExampleRoute)
+);
+export const paginationRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("pagination")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(PaginationRtlExampleRoute)
+);
+export const paginationRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("pagination-rtl")),
+  Route.mapTo(PaginationRtlExampleRoute)
 );
 export const resizableDocsRouter = pipe(
   literal("docs"),
@@ -3160,6 +3991,45 @@ export const resizableBasicStandaloneExampleRouter = pipe(
   slash(literal("resizable-basic")),
   Route.mapTo(ResizableBasicExampleRoute)
 );
+export const resizableHandleExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("resizable")),
+  slash(literal("examples")),
+  slash(literal("handle")),
+  Route.mapTo(ResizableHandleExampleRoute)
+);
+export const resizableHandleStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("resizable-handle")),
+  Route.mapTo(ResizableHandleExampleRoute)
+);
+export const resizableRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("resizable")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ResizableRtlExampleRoute)
+);
+export const resizableRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("resizable-rtl")),
+  Route.mapTo(ResizableRtlExampleRoute)
+);
+export const resizableVerticalExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("resizable")),
+  slash(literal("examples")),
+  slash(literal("vertical")),
+  Route.mapTo(ResizableVerticalExampleRoute)
+);
+export const resizableVerticalStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("resizable-vertical")),
+  Route.mapTo(ResizableVerticalExampleRoute)
+);
 export const sidebarDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3178,6 +4048,58 @@ export const sidebarBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("sidebar-basic")),
   Route.mapTo(SidebarBasicExampleRoute)
+);
+export const sidebarCompositionExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sidebar")),
+  slash(literal("examples")),
+  slash(literal("composition")),
+  Route.mapTo(SidebarCompositionExampleRoute)
+);
+export const sidebarCompositionStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sidebar-composition")),
+  Route.mapTo(SidebarCompositionExampleRoute)
+);
+export const sidebarControlledExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sidebar")),
+  slash(literal("examples")),
+  slash(literal("controlled")),
+  Route.mapTo(SidebarControlledExampleRoute)
+);
+export const sidebarControlledStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sidebar-controlled")),
+  Route.mapTo(SidebarControlledExampleRoute)
+);
+export const sidebarRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sidebar")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(SidebarRtlExampleRoute)
+);
+export const sidebarRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sidebar-rtl")),
+  Route.mapTo(SidebarRtlExampleRoute)
+);
+export const sidebarVariantsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("sidebar")),
+  slash(literal("examples")),
+  slash(literal("variants")),
+  Route.mapTo(SidebarVariantsExampleRoute)
+);
+export const sidebarVariantsStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("sidebar-variants")),
+  Route.mapTo(SidebarVariantsExampleRoute)
 );
 export const tableDocsRouter = pipe(
   literal("docs"),
@@ -3224,6 +4146,58 @@ export const cardBasicStandaloneExampleRouter = pipe(
   slash(literal("card-basic")),
   Route.mapTo(CardBasicExampleRoute)
 );
+export const cardSizeExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-card")),
+  slash(literal("examples")),
+  slash(literal("size")),
+  Route.mapTo(CardSizeExampleRoute)
+);
+export const cardSizeStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("card-size")),
+  Route.mapTo(CardSizeExampleRoute)
+);
+export const cardSpacingExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-card")),
+  slash(literal("examples")),
+  slash(literal("spacing")),
+  Route.mapTo(CardSpacingExampleRoute)
+);
+export const cardSpacingStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("card-spacing")),
+  Route.mapTo(CardSpacingExampleRoute)
+);
+export const cardImageExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-card")),
+  slash(literal("examples")),
+  slash(literal("image")),
+  Route.mapTo(CardImageExampleRoute)
+);
+export const cardImageStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("card-image")),
+  Route.mapTo(CardImageExampleRoute)
+);
+export const cardRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-card")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(CardRtlExampleRoute)
+);
+export const cardRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("card-rtl")),
+  Route.mapTo(CardRtlExampleRoute)
+);
 
 export const cardBasicLegacyExampleRouter = pipe(
   literal("docs"),
@@ -3232,6 +4206,38 @@ export const cardBasicLegacyExampleRouter = pipe(
   slash(literal("examples")),
   slash(literal("basic")),
   Route.mapTo(CardBasicExampleRoute)
+);
+export const cardSizeLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  slash(literal("examples")),
+  slash(literal("size")),
+  Route.mapTo(CardSizeExampleRoute)
+);
+export const cardSpacingLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  slash(literal("examples")),
+  slash(literal("spacing")),
+  Route.mapTo(CardSpacingExampleRoute)
+);
+export const cardImageLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  slash(literal("examples")),
+  slash(literal("image")),
+  Route.mapTo(CardImageExampleRoute)
+);
+export const cardRtlLegacyExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("card")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(CardRtlExampleRoute)
 );
 
 export const separatorRouter = pipe(
@@ -3315,6 +4321,19 @@ export const spinnerDocsRouter = pipe(
   slash(literal("spinner")),
   Route.mapTo(SpinnerDocsRoute)
 );
+export const spinnerBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("spinner")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(SpinnerBasicExampleRoute)
+);
+export const spinnerBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("spinner-basic")),
+  Route.mapTo(SpinnerBasicExampleRoute)
+);
 export const kbdRouter = pipe(literal("kbd"), Route.mapTo(KbdRoute));
 export const kbdDocsRouter = pipe(
   literal("docs"),
@@ -3348,6 +4367,19 @@ export const kbdInputGroupStandaloneExampleRouter = pipe(
   slash(literal("kbd-input-group")),
   Route.mapTo(KbdInputGroupExampleRoute)
 );
+export const kbdRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("kbd")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(KbdRtlExampleRoute)
+);
+export const kbdRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("kbd-rtl")),
+  Route.mapTo(KbdRtlExampleRoute)
+);
 export const typographyRouter = pipe(
   literal("typography"),
   Route.mapTo(TypographyRoute)
@@ -3378,6 +4410,45 @@ export const emptyDocsRouter = pipe(
   slash(literal("empty")),
   Route.mapTo(EmptyDocsRoute)
 );
+export const emptyAvatarExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("avatar")),
+  Route.mapTo(EmptyAvatarExampleRoute)
+);
+export const emptyAvatarStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-avatar")),
+  Route.mapTo(EmptyAvatarExampleRoute)
+);
+export const emptyAvatarGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("avatar-group")),
+  Route.mapTo(EmptyAvatarGroupExampleRoute)
+);
+export const emptyAvatarGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-avatar-group")),
+  Route.mapTo(EmptyAvatarGroupExampleRoute)
+);
+export const emptyBackgroundExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("background")),
+  Route.mapTo(EmptyBackgroundExampleRoute)
+);
+export const emptyBackgroundStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-background")),
+  Route.mapTo(EmptyBackgroundExampleRoute)
+);
 export const emptyBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3403,6 +4474,32 @@ export const emptyInputGroupStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("empty-input-group")),
   Route.mapTo(EmptyInputGroupExampleRoute)
+);
+export const emptyOutlineExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("outline")),
+  Route.mapTo(EmptyOutlineExampleRoute)
+);
+export const emptyOutlineStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-outline")),
+  Route.mapTo(EmptyOutlineExampleRoute)
+);
+export const emptyRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("empty")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(EmptyRtlExampleRoute)
+);
+export const emptyRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("empty-rtl")),
+  Route.mapTo(EmptyRtlExampleRoute)
 );
 export const buttonRouter = pipe(literal("button"), Route.mapTo(ButtonRoute));
 export const buttonDocsRouter = pipe(
@@ -3471,6 +4568,123 @@ export const inputGroupDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("input-group")),
   Route.mapTo(InputGroupDocsRoute)
+);
+export const inputGroupAlignExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("align")),
+  Route.mapTo(InputGroupAlignExampleRoute)
+);
+export const inputGroupAlignStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-align")),
+  Route.mapTo(InputGroupAlignExampleRoute)
+);
+export const inputGroupButtonExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("button")),
+  Route.mapTo(InputGroupButtonExampleRoute)
+);
+export const inputGroupButtonStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-button")),
+  Route.mapTo(InputGroupButtonExampleRoute)
+);
+export const inputGroupCustomInputExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("custom-input")),
+  Route.mapTo(InputGroupCustomInputExampleRoute)
+);
+export const inputGroupCustomInputStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-custom-input")),
+  Route.mapTo(InputGroupCustomInputExampleRoute)
+);
+export const inputGroupDropdownExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("dropdown")),
+  Route.mapTo(InputGroupDropdownExampleRoute)
+);
+export const inputGroupDropdownStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-dropdown")),
+  Route.mapTo(InputGroupDropdownExampleRoute)
+);
+export const inputGroupIconExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("icon")),
+  Route.mapTo(InputGroupIconExampleRoute)
+);
+export const inputGroupIconStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-icon")),
+  Route.mapTo(InputGroupIconExampleRoute)
+);
+export const inputGroupRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(InputGroupRtlExampleRoute)
+);
+export const inputGroupRtlStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-rtl")),
+  Route.mapTo(InputGroupRtlExampleRoute)
+);
+export const inputGroupSpinnerExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("spinner")),
+  Route.mapTo(InputGroupSpinnerExampleRoute)
+);
+export const inputGroupSpinnerStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-spinner")),
+  Route.mapTo(InputGroupSpinnerExampleRoute)
+);
+export const inputGroupTextExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("text")),
+  Route.mapTo(InputGroupTextExampleRoute)
+);
+export const inputGroupTextStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-text")),
+  Route.mapTo(InputGroupTextExampleRoute)
+);
+export const inputGroupTextareaExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("input-group")),
+  slash(literal("examples")),
+  slash(literal("textarea")),
+  Route.mapTo(InputGroupTextareaExampleRoute)
+);
+export const inputGroupTextareaStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("input-group-textarea")),
+  Route.mapTo(InputGroupTextareaExampleRoute)
 );
 export const meterRouter = pipe(literal("meter"), Route.mapTo(MeterRoute));
 export const meterDocsRouter = pipe(
@@ -3796,6 +5010,86 @@ export const shadcnCalendarDocsRouter = pipe(
   slash(literal("shadcn-calendar")),
   Route.mapTo(ShadcnCalendarDocsRoute)
 );
+export const shadcnCalendarBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ShadcnCalendarBasicExampleRoute)
+);
+export const shadcnCalendarMonthYearSelectorExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("month-year-selector")),
+  Route.mapTo(ShadcnCalendarMonthYearSelectorExampleRoute)
+);
+export const shadcnCalendarRangeExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("range")),
+  Route.mapTo(ShadcnCalendarRangeExampleRoute)
+);
+export const shadcnCalendarDateOfBirthExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("date-of-birth")),
+  Route.mapTo(ShadcnCalendarDateOfBirthExampleRoute)
+);
+export const shadcnCalendarDateTimePickerExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("date-time-picker")),
+  Route.mapTo(ShadcnCalendarDateTimePickerExampleRoute)
+);
+export const shadcnCalendarPresetsExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("presets")),
+  Route.mapTo(ShadcnCalendarPresetsExampleRoute)
+);
+export const shadcnCalendarBookedExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("booked-dates")),
+  Route.mapTo(ShadcnCalendarBookedExampleRoute)
+);
+export const shadcnCalendarCustomCellSizeExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("custom-cell-size")),
+  Route.mapTo(ShadcnCalendarCustomCellSizeExampleRoute)
+);
+export const shadcnCalendarWeekNumbersExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("week-numbers")),
+  Route.mapTo(ShadcnCalendarWeekNumbersExampleRoute)
+);
+export const shadcnCalendarRtlExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-calendar")),
+  slash(literal("examples")),
+  slash(literal("rtl")),
+  Route.mapTo(ShadcnCalendarRtlExampleRoute)
+);
 export const calendarBasicExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -3895,6 +5189,45 @@ export const shadcnCheckboxDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("shadcn-checkbox")),
   Route.mapTo(ShadcnCheckboxDocsRoute)
+);
+export const shadcnCheckboxCheckedStateExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-checkbox")),
+  slash(literal("examples")),
+  slash(literal("checked-state")),
+  Route.mapTo(ShadcnCheckboxCheckedStateExampleRoute)
+);
+export const shadcnCheckboxGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-checkbox")),
+  slash(literal("examples")),
+  slash(literal("group")),
+  Route.mapTo(ShadcnCheckboxGroupExampleRoute)
+);
+export const shadcnCheckboxTableExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-checkbox")),
+  slash(literal("examples")),
+  slash(literal("table")),
+  Route.mapTo(ShadcnCheckboxTableExampleRoute)
+);
+export const shadcnCheckboxCheckedStateStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-checkbox-checked-state")),
+  Route.mapTo(ShadcnCheckboxCheckedStateExampleRoute)
+);
+export const shadcnCheckboxGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-checkbox-group")),
+  Route.mapTo(ShadcnCheckboxGroupExampleRoute)
+);
+export const shadcnCheckboxTableStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-checkbox-table")),
+  Route.mapTo(ShadcnCheckboxTableExampleRoute)
 );
 export const checkboxBasicExampleRouter = pipe(
   literal("docs"),
@@ -4603,6 +5936,86 @@ export const shadcnInputBasicExampleRouter = pipe(
   slash(literal("basic")),
   Route.mapTo(ShadcnInputBasicExampleRoute)
 );
+export const shadcnInputDemoExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("demo")),
+  Route.mapTo(ShadcnInputDemoExampleRoute)
+);
+export const shadcnInputFieldExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("field")),
+  Route.mapTo(ShadcnInputFieldExampleRoute)
+);
+export const shadcnInputFieldGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("field-group")),
+  Route.mapTo(ShadcnInputFieldGroupExampleRoute)
+);
+export const shadcnInputInlineExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("inline")),
+  Route.mapTo(ShadcnInputInlineExampleRoute)
+);
+export const shadcnInputGridExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("grid")),
+  Route.mapTo(ShadcnInputGridExampleRoute)
+);
+export const shadcnInputRequiredExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("required")),
+  Route.mapTo(ShadcnInputRequiredExampleRoute)
+);
+export const shadcnInputBadgeExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("badge")),
+  Route.mapTo(ShadcnInputBadgeExampleRoute)
+);
+export const shadcnInputInputGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("input-group")),
+  Route.mapTo(ShadcnInputInputGroupExampleRoute)
+);
+export const shadcnInputButtonGroupExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("button-group")),
+  Route.mapTo(ShadcnInputButtonGroupExampleRoute)
+);
+export const shadcnInputFormExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-input")),
+  slash(literal("examples")),
+  slash(literal("form")),
+  Route.mapTo(ShadcnInputFormExampleRoute)
+);
 export const shadcnInputDisabledExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -4639,6 +6052,56 @@ export const shadcnInputBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("shadcn-input-basic")),
   Route.mapTo(ShadcnInputBasicExampleRoute)
+);
+export const shadcnInputDemoStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-demo")),
+  Route.mapTo(ShadcnInputDemoExampleRoute)
+);
+export const shadcnInputFieldStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-field")),
+  Route.mapTo(ShadcnInputFieldExampleRoute)
+);
+export const shadcnInputFieldGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-field-group")),
+  Route.mapTo(ShadcnInputFieldGroupExampleRoute)
+);
+export const shadcnInputInlineStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-inline")),
+  Route.mapTo(ShadcnInputInlineExampleRoute)
+);
+export const shadcnInputGridStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-grid")),
+  Route.mapTo(ShadcnInputGridExampleRoute)
+);
+export const shadcnInputRequiredStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-required")),
+  Route.mapTo(ShadcnInputRequiredExampleRoute)
+);
+export const shadcnInputBadgeStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-badge")),
+  Route.mapTo(ShadcnInputBadgeExampleRoute)
+);
+export const shadcnInputInputGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-input-group")),
+  Route.mapTo(ShadcnInputInputGroupExampleRoute)
+);
+export const shadcnInputButtonGroupStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-button-group")),
+  Route.mapTo(ShadcnInputButtonGroupExampleRoute)
+);
+export const shadcnInputFormStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-input-form")),
+  Route.mapTo(ShadcnInputFormExampleRoute)
 );
 export const shadcnInputDisabledStandaloneExampleRouter = pipe(
   literal("examples"),
@@ -4799,6 +6262,14 @@ export const baseUiPopoverAnimatedExampleRouter = pipe(
   slash(literal("animated")),
   Route.mapTo(BaseUiPopoverAnimatedExampleRoute)
 );
+export const baseUiPopoverDetachedTriggerExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-popover")),
+  slash(literal("examples")),
+  slash(literal("detached-trigger")),
+  Route.mapTo(BaseUiPopoverDetachedTriggerExampleRoute)
+);
 export const baseUiPopoverMultipleTriggersExampleRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -4806,6 +6277,14 @@ export const baseUiPopoverMultipleTriggersExampleRouter = pipe(
   slash(literal("examples")),
   slash(literal("multiple-triggers")),
   Route.mapTo(BaseUiPopoverMultipleTriggersExampleRoute)
+);
+export const baseUiPopoverOpenOnHoverExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("base-ui-popover")),
+  slash(literal("examples")),
+  slash(literal("open-on-hover")),
+  Route.mapTo(BaseUiPopoverOpenOnHoverExampleRoute)
 );
 export const popoverBasicExampleRouter = pipe(
   literal("docs"),
@@ -4838,10 +6317,20 @@ export const baseUiPopoverAnimatedStandaloneExampleRouter = pipe(
   slash(literal("base-ui-popover-animated")),
   Route.mapTo(BaseUiPopoverAnimatedExampleRoute)
 );
+export const baseUiPopoverDetachedTriggerStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-popover-detached-trigger")),
+  Route.mapTo(BaseUiPopoverDetachedTriggerExampleRoute)
+);
 export const baseUiPopoverMultipleTriggersStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("base-ui-popover-multiple-triggers")),
   Route.mapTo(BaseUiPopoverMultipleTriggersExampleRoute)
+);
+export const baseUiPopoverOpenOnHoverStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("base-ui-popover-open-on-hover")),
+  Route.mapTo(BaseUiPopoverOpenOnHoverExampleRoute)
 );
 export const popoverAnimatedStandaloneExampleRouter = pipe(
   literal("examples"),
@@ -5021,6 +6510,19 @@ export const shadcnSliderDocsRouter = pipe(
   slash(literal("components")),
   slash(literal("shadcn-slider")),
   Route.mapTo(ShadcnSliderDocsRoute)
+);
+export const shadcnSliderBasicExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("shadcn-slider")),
+  slash(literal("examples")),
+  slash(literal("basic")),
+  Route.mapTo(ShadcnSliderBasicExampleRoute)
+);
+export const shadcnSliderBasicStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("shadcn-slider-basic")),
+  Route.mapTo(ShadcnSliderBasicExampleRoute)
 );
 export const baseUiSliderDocsRouter = pipe(
   literal("docs"),
@@ -5412,6 +6914,14 @@ const routeParser = Route.oneOf(
   badgeBasicStandaloneExampleRouter,
   badgeSpinnerExampleRouter,
   badgeSpinnerStandaloneExampleRouter,
+  badgeIconExampleRouter,
+  badgeIconStandaloneExampleRouter,
+  badgeLinkExampleRouter,
+  badgeLinkStandaloneExampleRouter,
+  badgeCustomColorsExampleRouter,
+  badgeCustomColorsStandaloneExampleRouter,
+  badgeRtlExampleRouter,
+  badgeRtlStandaloneExampleRouter,
   badgeDocsRouter,
   carouselBasicExampleRouter,
   carouselBasicStandaloneExampleRouter,
@@ -5423,6 +6933,8 @@ const routeParser = Route.oneOf(
   carouselOrientationStandaloneExampleRouter,
   carouselApiExampleRouter,
   carouselApiStandaloneExampleRouter,
+  carouselAutoplayExampleRouter,
+  carouselAutoplayStandaloneExampleRouter,
   carouselRtlExampleRouter,
   carouselRtlStandaloneExampleRouter,
   carouselBasicLegacyExampleRouter,
@@ -5430,6 +6942,7 @@ const routeParser = Route.oneOf(
   carouselSpacingLegacyExampleRouter,
   carouselOrientationLegacyExampleRouter,
   carouselApiLegacyExampleRouter,
+  carouselAutoplayLegacyExampleRouter,
   carouselRtlLegacyExampleRouter,
   carouselDocsRouter,
   shadcnCarouselDocsRouter,
@@ -5449,18 +6962,72 @@ const routeParser = Route.oneOf(
   chartDocsRouter,
   commandBasicExampleRouter,
   commandBasicStandaloneExampleRouter,
+  commandGroupsExampleRouter,
+  commandGroupsStandaloneExampleRouter,
+  commandRtlExampleRouter,
+  commandRtlStandaloneExampleRouter,
+  commandScrollableExampleRouter,
+  commandScrollableStandaloneExampleRouter,
+  commandShortcutsExampleRouter,
+  commandShortcutsStandaloneExampleRouter,
   commandDocsRouter,
   dropdownMenuBasicExampleRouter,
   dropdownMenuBasicStandaloneExampleRouter,
+  dropdownMenuCheckboxesExampleRouter,
+  dropdownMenuCheckboxesStandaloneExampleRouter,
+  dropdownMenuComplexExampleRouter,
+  dropdownMenuComplexStandaloneExampleRouter,
+  dropdownMenuDestructiveExampleRouter,
+  dropdownMenuDestructiveStandaloneExampleRouter,
+  dropdownMenuIconsExampleRouter,
+  dropdownMenuIconsStandaloneExampleRouter,
+  dropdownMenuRadioGroupExampleRouter,
+  dropdownMenuRadioGroupStandaloneExampleRouter,
+  dropdownMenuRtlExampleRouter,
+  dropdownMenuRtlStandaloneExampleRouter,
+  dropdownMenuShortcutsExampleRouter,
+  dropdownMenuShortcutsStandaloneExampleRouter,
+  dropdownMenuSubmenuExampleRouter,
+  dropdownMenuSubmenuStandaloneExampleRouter,
   dropdownMenuDocsRouter,
   hoverCardBasicExampleRouter,
   hoverCardBasicStandaloneExampleRouter,
+  hoverCardSidesExampleRouter,
+  hoverCardSidesStandaloneExampleRouter,
+  hoverCardRtlExampleRouter,
+  hoverCardRtlStandaloneExampleRouter,
   hoverCardDocsRouter,
   inputOtpBasicExampleRouter,
   inputOtpBasicStandaloneExampleRouter,
+  inputOtpPatternExampleRouter,
+  inputOtpPatternStandaloneExampleRouter,
+  inputOtpSeparatorExampleRouter,
+  inputOtpSeparatorStandaloneExampleRouter,
+  inputOtpDisabledExampleRouter,
+  inputOtpDisabledStandaloneExampleRouter,
+  inputOtpControlledExampleRouter,
+  inputOtpControlledStandaloneExampleRouter,
+  inputOtpInvalidExampleRouter,
+  inputOtpInvalidStandaloneExampleRouter,
+  inputOtpFourDigitsExampleRouter,
+  inputOtpFourDigitsStandaloneExampleRouter,
+  inputOtpAlphanumericExampleRouter,
+  inputOtpAlphanumericStandaloneExampleRouter,
+  inputOtpFormExampleRouter,
+  inputOtpFormStandaloneExampleRouter,
+  inputOtpRtlExampleRouter,
+  inputOtpRtlStandaloneExampleRouter,
   inputOtpDocsRouter,
   nativeSelectBasicExampleRouter,
   nativeSelectBasicStandaloneExampleRouter,
+  nativeSelectDisabledExampleRouter,
+  nativeSelectDisabledStandaloneExampleRouter,
+  nativeSelectGroupsExampleRouter,
+  nativeSelectGroupsStandaloneExampleRouter,
+  nativeSelectInvalidExampleRouter,
+  nativeSelectInvalidStandaloneExampleRouter,
+  nativeSelectRtlExampleRouter,
+  nativeSelectRtlStandaloneExampleRouter,
   nativeSelectDocsRouter,
   sheetBasicExampleRouter,
   sheetBasicStandaloneExampleRouter,
@@ -5511,15 +7078,39 @@ const routeParser = Route.oneOf(
   itemDocsRouter,
   labelBasicExampleRouter,
   labelBasicStandaloneExampleRouter,
+  labelFieldExampleRouter,
+  labelFieldStandaloneExampleRouter,
+  labelRtlExampleRouter,
+  labelRtlStandaloneExampleRouter,
   labelDocsRouter,
   paginationBasicExampleRouter,
   paginationBasicStandaloneExampleRouter,
+  paginationSimpleExampleRouter,
+  paginationSimpleStandaloneExampleRouter,
+  paginationIconsOnlyExampleRouter,
+  paginationIconsOnlyStandaloneExampleRouter,
+  paginationRtlExampleRouter,
+  paginationRtlStandaloneExampleRouter,
   paginationDocsRouter,
   resizableBasicExampleRouter,
   resizableBasicStandaloneExampleRouter,
+  resizableHandleExampleRouter,
+  resizableHandleStandaloneExampleRouter,
+  resizableRtlExampleRouter,
+  resizableRtlStandaloneExampleRouter,
+  resizableVerticalExampleRouter,
+  resizableVerticalStandaloneExampleRouter,
   resizableDocsRouter,
   sidebarBasicExampleRouter,
   sidebarBasicStandaloneExampleRouter,
+  sidebarCompositionExampleRouter,
+  sidebarCompositionStandaloneExampleRouter,
+  sidebarControlledExampleRouter,
+  sidebarControlledStandaloneExampleRouter,
+  sidebarRtlExampleRouter,
+  sidebarRtlStandaloneExampleRouter,
+  sidebarVariantsExampleRouter,
+  sidebarVariantsStandaloneExampleRouter,
   sidebarDocsRouter,
   tableBasicExampleRouter,
   tableBasicStandaloneExampleRouter,
@@ -5527,7 +7118,19 @@ const routeParser = Route.oneOf(
   cardRouter,
   cardBasicExampleRouter,
   cardBasicStandaloneExampleRouter,
+  cardSizeExampleRouter,
+  cardSizeStandaloneExampleRouter,
+  cardSpacingExampleRouter,
+  cardSpacingStandaloneExampleRouter,
+  cardImageExampleRouter,
+  cardImageStandaloneExampleRouter,
+  cardRtlExampleRouter,
+  cardRtlStandaloneExampleRouter,
   cardBasicLegacyExampleRouter,
+  cardSizeLegacyExampleRouter,
+  cardSpacingLegacyExampleRouter,
+  cardImageLegacyExampleRouter,
+  cardRtlLegacyExampleRouter,
   cardDocsRouter,
   shadcnCardDocsRouter,
   separatorRouter,
@@ -5543,22 +7146,36 @@ const routeParser = Route.oneOf(
   skeletonBasicStandaloneExampleRouter,
   skeletonDocsRouter,
   spinnerRouter,
+  spinnerBasicExampleRouter,
+  spinnerBasicStandaloneExampleRouter,
   spinnerDocsRouter,
   kbdRouter,
   kbdBasicExampleRouter,
   kbdBasicStandaloneExampleRouter,
   kbdInputGroupExampleRouter,
   kbdInputGroupStandaloneExampleRouter,
+  kbdRtlExampleRouter,
+  kbdRtlStandaloneExampleRouter,
   kbdDocsRouter,
   typographyRouter,
   typographyBasicExampleRouter,
   typographyBasicStandaloneExampleRouter,
   typographyDocsRouter,
   emptyRouter,
+  emptyAvatarExampleRouter,
+  emptyAvatarStandaloneExampleRouter,
+  emptyAvatarGroupExampleRouter,
+  emptyAvatarGroupStandaloneExampleRouter,
+  emptyBackgroundExampleRouter,
+  emptyBackgroundStandaloneExampleRouter,
   emptyBasicExampleRouter,
   emptyBasicStandaloneExampleRouter,
   emptyInputGroupExampleRouter,
   emptyInputGroupStandaloneExampleRouter,
+  emptyOutlineExampleRouter,
+  emptyOutlineStandaloneExampleRouter,
+  emptyRtlExampleRouter,
+  emptyRtlStandaloneExampleRouter,
   emptyDocsRouter,
   buttonRouter,
   buttonBasicExampleRouter,
@@ -5571,6 +7188,24 @@ const routeParser = Route.oneOf(
   baseUiButtonDocsRouter,
   shadcnButtonDocsRouter,
   inputGroupRouter,
+  inputGroupAlignExampleRouter,
+  inputGroupAlignStandaloneExampleRouter,
+  inputGroupButtonExampleRouter,
+  inputGroupButtonStandaloneExampleRouter,
+  inputGroupCustomInputExampleRouter,
+  inputGroupCustomInputStandaloneExampleRouter,
+  inputGroupDropdownExampleRouter,
+  inputGroupDropdownStandaloneExampleRouter,
+  inputGroupIconExampleRouter,
+  inputGroupIconStandaloneExampleRouter,
+  inputGroupRtlExampleRouter,
+  inputGroupRtlStandaloneExampleRouter,
+  inputGroupSpinnerExampleRouter,
+  inputGroupSpinnerStandaloneExampleRouter,
+  inputGroupTextExampleRouter,
+  inputGroupTextStandaloneExampleRouter,
+  inputGroupTextareaExampleRouter,
+  inputGroupTextareaStandaloneExampleRouter,
   inputGroupDocsRouter,
   meterRouter,
   baseUiMeterBasicExampleRouter,
@@ -5629,6 +7264,16 @@ const routeParser = Route.oneOf(
   calendarBasicStandaloneExampleRouter,
   calendarBoundsStandaloneExampleRouter,
   calendarDocsRouter,
+  shadcnCalendarBasicExampleRouter,
+  shadcnCalendarMonthYearSelectorExampleRouter,
+  shadcnCalendarRangeExampleRouter,
+  shadcnCalendarDateOfBirthExampleRouter,
+  shadcnCalendarDateTimePickerExampleRouter,
+  shadcnCalendarPresetsExampleRouter,
+  shadcnCalendarBookedExampleRouter,
+  shadcnCalendarCustomCellSizeExampleRouter,
+  shadcnCalendarWeekNumbersExampleRouter,
+  shadcnCalendarRtlExampleRouter,
   shadcnCalendarDocsRouter,
   checkboxRouter,
   checkboxBasicExampleRouter,
@@ -5646,6 +7291,12 @@ const routeParser = Route.oneOf(
   checkboxDocsRouter,
   baseUiCheckboxDocsRouter,
   shadcnCheckboxDocsRouter,
+  shadcnCheckboxCheckedStateExampleRouter,
+  shadcnCheckboxGroupExampleRouter,
+  shadcnCheckboxTableExampleRouter,
+  shadcnCheckboxCheckedStateStandaloneExampleRouter,
+  shadcnCheckboxGroupStandaloneExampleRouter,
+  shadcnCheckboxTableStandaloneExampleRouter,
   checkboxGroupBasicExampleRouter,
   checkboxGroupBasicStandaloneExampleRouter,
   baseUiCheckboxGroupBasicExampleRouter,
@@ -5746,11 +7397,31 @@ const routeParser = Route.oneOf(
   inputBasicStandaloneExampleRouter,
   inputDisabledStandaloneExampleRouter,
   shadcnInputBasicExampleRouter,
+  shadcnInputDemoExampleRouter,
+  shadcnInputFieldExampleRouter,
+  shadcnInputFieldGroupExampleRouter,
+  shadcnInputInlineExampleRouter,
+  shadcnInputGridExampleRouter,
+  shadcnInputRequiredExampleRouter,
+  shadcnInputBadgeExampleRouter,
+  shadcnInputInputGroupExampleRouter,
+  shadcnInputButtonGroupExampleRouter,
+  shadcnInputFormExampleRouter,
   shadcnInputDisabledExampleRouter,
   shadcnInputInvalidExampleRouter,
   shadcnInputFileExampleRouter,
   shadcnInputRtlExampleRouter,
   shadcnInputBasicStandaloneExampleRouter,
+  shadcnInputDemoStandaloneExampleRouter,
+  shadcnInputFieldStandaloneExampleRouter,
+  shadcnInputFieldGroupStandaloneExampleRouter,
+  shadcnInputInlineStandaloneExampleRouter,
+  shadcnInputGridStandaloneExampleRouter,
+  shadcnInputRequiredStandaloneExampleRouter,
+  shadcnInputBadgeStandaloneExampleRouter,
+  shadcnInputInputGroupStandaloneExampleRouter,
+  shadcnInputButtonGroupStandaloneExampleRouter,
+  shadcnInputFormStandaloneExampleRouter,
   shadcnInputDisabledStandaloneExampleRouter,
   shadcnInputInvalidStandaloneExampleRouter,
   shadcnInputFileStandaloneExampleRouter,
@@ -5778,12 +7449,16 @@ const routeParser = Route.oneOf(
   popoverRouter,
   baseUiPopoverBasicExampleRouter,
   baseUiPopoverAnimatedExampleRouter,
+  baseUiPopoverDetachedTriggerExampleRouter,
   baseUiPopoverMultipleTriggersExampleRouter,
+  baseUiPopoverOpenOnHoverExampleRouter,
   popoverBasicExampleRouter,
   popoverAnimatedExampleRouter,
   baseUiPopoverBasicStandaloneExampleRouter,
   baseUiPopoverAnimatedStandaloneExampleRouter,
+  baseUiPopoverDetachedTriggerStandaloneExampleRouter,
   baseUiPopoverMultipleTriggersStandaloneExampleRouter,
+  baseUiPopoverOpenOnHoverStandaloneExampleRouter,
   popoverBasicStandaloneExampleRouter,
   popoverAnimatedStandaloneExampleRouter,
   popoverDocsRouter,
@@ -5821,6 +7496,8 @@ const routeParser = Route.oneOf(
   sliderBasicStandaloneExampleRouter,
   sliderDisabledStandaloneExampleRouter,
   sliderDocsRouter,
+  shadcnSliderBasicExampleRouter,
+  shadcnSliderBasicStandaloneExampleRouter,
   shadcnSliderDocsRouter,
   baseUiSliderBasicExampleRouter,
   baseUiSliderBasicStandaloneExampleRouter,
@@ -5895,6 +7572,12 @@ const routeParser = Route.oneOf(
   alertActionStandaloneExampleRouter,
   alertDestructiveExampleRouter,
   alertDestructiveStandaloneExampleRouter,
+  alertCustomColorsExampleRouter,
+  shadcnAlertCustomColorsExampleRouter,
+  alertCustomColorsStandaloneExampleRouter,
+  alertRtlExampleRouter,
+  shadcnAlertRtlExampleRouter,
+  alertRtlStandaloneExampleRouter,
   alertDocsRouter,
   shadcnAlertDocsRouter,
   aspectRatioBasicExampleRouter,
@@ -6127,6 +7810,8 @@ export const Model = S.Struct({
   alertBasicExample: AlertBasicExample.Model,
   alertActionExample: AlertActionExample.Model,
   alertDestructiveExample: AlertDestructiveExample.Model,
+  alertCustomColorsExample: AlertCustomColorsExample.Model,
+  alertRtlExample: AlertRtlExample.Model,
   aspectRatioBasicExample: AspectRatioBasicExample.Model,
   aspectRatioSquareExample: AspectRatioSquareExample.Model,
   aspectRatioPortraitExample: AspectRatioPortraitExample.Model,
@@ -6208,6 +7893,7 @@ export const Model = S.Struct({
   carouselSpacingExample: CarouselSpacingExample.Model,
   carouselOrientationExample: CarouselOrientationExample.Model,
   carouselApiExample: CarouselApiExample.Model,
+  carouselAutoplayExample: CarouselAutoplayExample.Model,
   carouselRtlExample: CarouselRtlExample.Model,
   chartBasicExample: ChartBasicExample.Model,
   chartGridExample: ChartGridExample.Model,
@@ -6216,10 +7902,37 @@ export const Model = S.Struct({
   chartLegendExample: ChartLegendExample.Model,
   chartRtlExample: ChartRtlExample.Model,
   commandBasicExample: CommandBasicExample.Model,
+  commandGroupsExample: CommandGroupsExample.Model,
+  commandRtlExample: CommandRtlExample.Model,
+  commandScrollableExample: CommandScrollableExample.Model,
+  commandShortcutsExample: CommandShortcutsExample.Model,
   dropdownMenuBasicExample: DropdownMenuBasicExample.Model,
+  dropdownMenuCheckboxesExample: DropdownMenuCheckboxesExample.Model,
+  dropdownMenuComplexExample: DropdownMenuComplexExample.Model,
+  dropdownMenuDestructiveExample: DropdownMenuDestructiveExample.Model,
+  dropdownMenuIconsExample: DropdownMenuIconsExample.Model,
+  dropdownMenuRadioGroupExample: DropdownMenuRadioGroupExample.Model,
+  dropdownMenuRtlExample: DropdownMenuRtlExample.Model,
+  dropdownMenuShortcutsExample: DropdownMenuShortcutsExample.Model,
+  dropdownMenuSubmenuExample: DropdownMenuSubmenuExample.Model,
   hoverCardBasicExample: HoverCardBasicExample.Model,
+  hoverCardSidesExample: HoverCardSidesExample.Model,
+  hoverCardRtlExample: HoverCardRtlExample.Model,
   inputOtpBasicExample: InputOtpBasicExample.Model,
+  inputOtpPatternExample: InputOtpPatternExample.Model,
+  inputOtpSeparatorExample: InputOtpSeparatorExample.Model,
+  inputOtpDisabledExample: InputOtpDisabledExample.Model,
+  inputOtpControlledExample: InputOtpControlledExample.Model,
+  inputOtpInvalidExample: InputOtpInvalidExample.Model,
+  inputOtpFourDigitsExample: InputOtpFourDigitsExample.Model,
+  inputOtpAlphanumericExample: InputOtpAlphanumericExample.Model,
+  inputOtpFormExample: InputOtpFormExample.Model,
+  inputOtpRtlExample: InputOtpRtlExample.Model,
   nativeSelectBasicExample: NativeSelectBasicExample.Model,
+  nativeSelectDisabledExample: NativeSelectDisabledExample.Model,
+  nativeSelectGroupsExample: NativeSelectGroupsExample.Model,
+  nativeSelectInvalidExample: NativeSelectInvalidExample.Model,
+  nativeSelectRtlExample: NativeSelectRtlExample.Model,
   sheetBasicExample: SheetBasicExample.Model,
   sonnerBasicExample: SonnerBasicExample.Model,
   dataTableBasicExample: DataTableBasicExample.Model,
@@ -6242,19 +7955,42 @@ export const Model = S.Struct({
   itemSizeExample: ItemSizeExample.Model,
   itemVariantExample: ItemVariantExample.Model,
   labelBasicExample: LabelBasicExample.Model,
+  labelFieldExample: LabelFieldExample.Model,
+  labelRtlExample: LabelRtlExample.Model,
   paginationBasicExample: PaginationBasicExample.Model,
+  paginationSimpleExample: PaginationSimpleExample.Model,
+  paginationIconsOnlyExample: PaginationIconsOnlyExample.Model,
+  paginationRtlExample: PaginationRtlExample.Model,
   resizableBasicExample: ResizableBasicExample.Model,
+  resizableHandleExample: ResizableHandleExample.Model,
+  resizableRtlExample: ResizableRtlExample.Model,
+  resizableVerticalExample: ResizableVerticalExample.Model,
   sidebarBasicExample: SidebarBasicExample.Model,
+  sidebarCompositionExample: SidebarCompositionExample.Model,
+  sidebarControlledExample: SidebarControlledExample.Model,
+  sidebarRtlExample: SidebarRtlExample.Model,
+  sidebarVariantsExample: SidebarVariantsExample.Model,
   tableBasicExample: TableBasicExample.Model,
   cardBasicExample: CardBasicExample.Model,
+  cardSizeExample: CardSizeExample.Model,
+  cardSpacingExample: CardSpacingExample.Model,
+  cardImageExample: CardImageExample.Model,
+  cardRtlExample: CardRtlExample.Model,
   baseUiSeparatorBasicExample: BaseUiSeparatorBasicExample.Model,
   separatorBasicExample: SeparatorBasicExample.Model,
   skeletonBasicExample: SkeletonBasicExample.Model,
+  spinnerBasicExample: SpinnerBasicExample.Model,
   kbdBasicExample: KbdBasicExample.Model,
   kbdInputGroupExample: KbdInputGroupExample.Model,
+  kbdRtlExample: KbdRtlExample.Model,
   typographyBasicExample: TypographyBasicExample.Model,
+  emptyAvatarExample: EmptyAvatarExample.Model,
+  emptyAvatarGroupExample: EmptyAvatarGroupExample.Model,
+  emptyBackgroundExample: EmptyBackgroundExample.Model,
   emptyBasicExample: EmptyBasicExample.Model,
   emptyInputGroupExample: EmptyInputGroupExample.Model,
+  emptyOutlineExample: EmptyOutlineExample.Model,
+  emptyRtlExample: EmptyRtlExample.Model,
   buttonBasicExample: ButtonBasicExample.Model,
   baseUiButtonBasicExample: BaseUiButtonBasicExample.Model,
   shadcnButtonBasicExample: ShadcnButtonBasicExample.Model,
@@ -6262,14 +7998,19 @@ export const Model = S.Struct({
   calendarBasicExample: CalendarBasicExample.Model,
   shadcnCalendarBasicExample: ShadcnCalendarBasicExample.Model,
   shadcnCalendarBookedExample: ShadcnCalendarBookedExample.Model,
+  shadcnCalendarCustomCellSizeExample: ShadcnCalendarCustomCellSizeExample.Model,
   shadcnCalendarDateOfBirthExample: ShadcnCalendarDateOfBirthExample.Model,
+  shadcnCalendarDateTimePickerExample: ShadcnCalendarDateTimePickerExample.Model,
   shadcnCalendarMonthYearSelectorExample:
     ShadcnCalendarMonthYearSelectorExample.Model,
   shadcnCalendarPresetsExample: ShadcnCalendarPresetsExample.Model,
+  shadcnCalendarRangeExample: ShadcnCalendarRangeExample.Model,
   shadcnCalendarRtlExample: ShadcnCalendarRtlExample.Model,
+  shadcnCalendarWeekNumbersExample: ShadcnCalendarWeekNumbersExample.Model,
   calendarBoundsExample: CalendarBoundsExample.Model,
   checkboxBasicExample: CheckboxBasicExample.Model,
   shadcnCheckboxBasicExample: ShadcnCheckboxBasicExample.Model,
+  shadcnCheckboxCheckedStateExample: ShadcnCheckboxCheckedStateExample.Model,
   baseUiCheckboxBasicExample: BaseUiCheckboxBasicExample.Model,
   baseUiCheckboxLabelingExample: BaseUiCheckboxLabelingExample.Model,
   baseUiCheckboxNativeButtonExample: BaseUiCheckboxNativeButtonExample.Model,
@@ -6354,8 +8095,10 @@ export const Model = S.Struct({
   menuAnimatedExample: MenuAnimatedExample.Model,
   baseUiPopoverBasicExample: BaseUiPopoverBasicExample.Model,
   baseUiPopoverAnimatedExample: BaseUiPopoverAnimatedExample.Model,
+  baseUiPopoverDetachedTriggerExample: BaseUiPopoverDetachedTriggerExample.Model,
   baseUiPopoverMultipleTriggersExample:
     BaseUiPopoverMultipleTriggersExample.Model,
+  baseUiPopoverOpenOnHoverExample: BaseUiPopoverOpenOnHoverExample.Model,
   baseUiRadioBasicExample: BaseUiRadioBasicExample.Model,
   baseUiRadioLabelingExample: BaseUiRadioLabelingExample.Model,
   baseUiRadioNativeButtonExample: BaseUiRadioNativeButtonExample.Model,
@@ -6382,6 +8125,16 @@ export const Model = S.Struct({
   shadcnTabsBasicExample: ShadcnTabsBasicExample.Model,
   tabsManualExample: TabsManualExample.Model,
   shadcnInputBasicExample: ShadcnInputBasicExample.Model,
+  shadcnInputDemoExample: ShadcnInputDemoExample.Model,
+  shadcnInputFieldExample: ShadcnInputFieldExample.Model,
+  shadcnInputFieldGroupExample: ShadcnInputFieldGroupExample.Model,
+  shadcnInputInlineExample: ShadcnInputInlineExample.Model,
+  shadcnInputGridExample: ShadcnInputGridExample.Model,
+  shadcnInputRequiredExample: ShadcnInputRequiredExample.Model,
+  shadcnInputBadgeExample: ShadcnInputBadgeExample.Model,
+  shadcnInputInputGroupExample: ShadcnInputInputGroupExample.Model,
+  shadcnInputButtonGroupExample: ShadcnInputButtonGroupExample.Model,
+  shadcnInputFormExample: ShadcnInputFormExample.Model,
   shadcnInputDisabledExample: ShadcnInputDisabledExample.Model,
   shadcnInputInvalidExample: ShadcnInputInvalidExample.Model,
   shadcnInputFileExample: ShadcnInputFileExample.Model,
@@ -6494,6 +8247,15 @@ export const GotAlertDestructiveExampleMessage = m(
     message: AlertDestructiveExample.Message,
   }
 );
+export const GotAlertCustomColorsExampleMessage = m(
+  "GotAlertCustomColorsExampleMessage",
+  {
+    message: AlertCustomColorsExample.Message,
+  }
+);
+export const GotAlertRtlExampleMessage = m("GotAlertRtlExampleMessage", {
+  message: AlertRtlExample.Message,
+});
 export const GotAspectRatioBasicExampleMessage = m(
   "GotAspectRatioBasicExampleMessage",
   {
@@ -6874,6 +8636,12 @@ export const GotCarouselOrientationExampleMessage = m(
 export const GotCarouselApiExampleMessage = m("GotCarouselApiExampleMessage", {
   message: CarouselApiExample.Message,
 });
+export const GotCarouselAutoplayExampleMessage = m(
+  "GotCarouselAutoplayExampleMessage",
+  {
+    message: CarouselAutoplayExample.Message,
+  }
+);
 export const GotCarouselRtlExampleMessage = m("GotCarouselRtlExampleMessage", {
   message: CarouselRtlExample.Message,
 });
@@ -6985,17 +8753,62 @@ export const GotItemVariantExampleMessage = m("GotItemVariantExampleMessage", {
 export const GotLabelBasicExampleMessage = m("GotLabelBasicExampleMessage", {
   message: LabelBasicExample.Message,
 });
+export const GotLabelFieldExampleMessage = m("GotLabelFieldExampleMessage", {
+  message: LabelFieldExample.Message,
+});
+export const GotLabelRtlExampleMessage = m("GotLabelRtlExampleMessage", {
+  message: LabelRtlExample.Message,
+});
 export const GotPaginationBasicExampleMessage = m(
   "GotPaginationBasicExampleMessage",
   { message: PaginationBasicExample.Message }
+);
+export const GotPaginationSimpleExampleMessage = m(
+  "GotPaginationSimpleExampleMessage",
+  { message: PaginationSimpleExample.Message }
+);
+export const GotPaginationIconsOnlyExampleMessage = m(
+  "GotPaginationIconsOnlyExampleMessage",
+  { message: PaginationIconsOnlyExample.Message }
+);
+export const GotPaginationRtlExampleMessage = m(
+  "GotPaginationRtlExampleMessage",
+  { message: PaginationRtlExample.Message }
 );
 export const GotResizableBasicExampleMessage = m(
   "GotResizableBasicExampleMessage",
   { message: ResizableBasicExample.Message }
 );
+export const GotResizableHandleExampleMessage = m(
+  "GotResizableHandleExampleMessage",
+  { message: ResizableHandleExample.Message }
+);
+export const GotResizableRtlExampleMessage = m(
+  "GotResizableRtlExampleMessage",
+  { message: ResizableRtlExample.Message }
+);
+export const GotResizableVerticalExampleMessage = m(
+  "GotResizableVerticalExampleMessage",
+  { message: ResizableVerticalExample.Message }
+);
 export const GotSidebarBasicExampleMessage = m(
   "GotSidebarBasicExampleMessage",
   { message: SidebarBasicExample.Message }
+);
+export const GotSidebarCompositionExampleMessage = m(
+  "GotSidebarCompositionExampleMessage",
+  { message: SidebarCompositionExample.Message }
+);
+export const GotSidebarControlledExampleMessage = m(
+  "GotSidebarControlledExampleMessage",
+  { message: SidebarControlledExample.Message }
+);
+export const GotSidebarRtlExampleMessage = m("GotSidebarRtlExampleMessage", {
+  message: SidebarRtlExample.Message,
+});
+export const GotSidebarVariantsExampleMessage = m(
+  "GotSidebarVariantsExampleMessage",
+  { message: SidebarVariantsExample.Message }
 );
 export const GotTableBasicExampleMessage = m("GotTableBasicExampleMessage", {
   message: TableBasicExample.Message,
@@ -7004,21 +8817,127 @@ export const GotCommandBasicExampleMessage = m(
   "GotCommandBasicExampleMessage",
   { message: CommandBasicExample.Message }
 );
+export const GotCommandGroupsExampleMessage = m(
+  "GotCommandGroupsExampleMessage",
+  { message: CommandGroupsExample.Message }
+);
+export const GotCommandRtlExampleMessage = m("GotCommandRtlExampleMessage", {
+  message: CommandRtlExample.Message,
+});
+export const GotCommandScrollableExampleMessage = m(
+  "GotCommandScrollableExampleMessage",
+  { message: CommandScrollableExample.Message }
+);
+export const GotCommandShortcutsExampleMessage = m(
+  "GotCommandShortcutsExampleMessage",
+  { message: CommandShortcutsExample.Message }
+);
 export const GotDropdownMenuBasicExampleMessage = m(
   "GotDropdownMenuBasicExampleMessage",
   { message: DropdownMenuBasicExample.Message }
+);
+export const GotDropdownMenuCheckboxesExampleMessage = m(
+  "GotDropdownMenuCheckboxesExampleMessage",
+  { message: DropdownMenuCheckboxesExample.Message }
+);
+export const GotDropdownMenuComplexExampleMessage = m(
+  "GotDropdownMenuComplexExampleMessage",
+  { message: DropdownMenuComplexExample.Message }
+);
+export const GotDropdownMenuDestructiveExampleMessage = m(
+  "GotDropdownMenuDestructiveExampleMessage",
+  { message: DropdownMenuDestructiveExample.Message }
+);
+export const GotDropdownMenuIconsExampleMessage = m(
+  "GotDropdownMenuIconsExampleMessage",
+  { message: DropdownMenuIconsExample.Message }
+);
+export const GotDropdownMenuRadioGroupExampleMessage = m(
+  "GotDropdownMenuRadioGroupExampleMessage",
+  { message: DropdownMenuRadioGroupExample.Message }
+);
+export const GotDropdownMenuRtlExampleMessage = m(
+  "GotDropdownMenuRtlExampleMessage",
+  { message: DropdownMenuRtlExample.Message }
+);
+export const GotDropdownMenuShortcutsExampleMessage = m(
+  "GotDropdownMenuShortcutsExampleMessage",
+  { message: DropdownMenuShortcutsExample.Message }
+);
+export const GotDropdownMenuSubmenuExampleMessage = m(
+  "GotDropdownMenuSubmenuExampleMessage",
+  { message: DropdownMenuSubmenuExample.Message }
 );
 export const GotHoverCardBasicExampleMessage = m(
   "GotHoverCardBasicExampleMessage",
   { message: HoverCardBasicExample.Message }
 );
+export const GotHoverCardSidesExampleMessage = m(
+  "GotHoverCardSidesExampleMessage",
+  { message: HoverCardSidesExample.Message }
+);
+export const GotHoverCardRtlExampleMessage = m(
+  "GotHoverCardRtlExampleMessage",
+  { message: HoverCardRtlExample.Message }
+);
 export const GotInputOtpBasicExampleMessage = m(
   "GotInputOtpBasicExampleMessage",
   { message: InputOtpBasicExample.Message }
 );
+export const GotInputOtpPatternExampleMessage = m(
+  "GotInputOtpPatternExampleMessage",
+  { message: InputOtpPatternExample.Message }
+);
+export const GotInputOtpSeparatorExampleMessage = m(
+  "GotInputOtpSeparatorExampleMessage",
+  { message: InputOtpSeparatorExample.Message }
+);
+export const GotInputOtpDisabledExampleMessage = m(
+  "GotInputOtpDisabledExampleMessage",
+  { message: InputOtpDisabledExample.Message }
+);
+export const GotInputOtpControlledExampleMessage = m(
+  "GotInputOtpControlledExampleMessage",
+  { message: InputOtpControlledExample.Message }
+);
+export const GotInputOtpInvalidExampleMessage = m(
+  "GotInputOtpInvalidExampleMessage",
+  { message: InputOtpInvalidExample.Message }
+);
+export const GotInputOtpFourDigitsExampleMessage = m(
+  "GotInputOtpFourDigitsExampleMessage",
+  { message: InputOtpFourDigitsExample.Message }
+);
+export const GotInputOtpAlphanumericExampleMessage = m(
+  "GotInputOtpAlphanumericExampleMessage",
+  { message: InputOtpAlphanumericExample.Message }
+);
+export const GotInputOtpFormExampleMessage = m(
+  "GotInputOtpFormExampleMessage",
+  { message: InputOtpFormExample.Message }
+);
+export const GotInputOtpRtlExampleMessage = m("GotInputOtpRtlExampleMessage", {
+  message: InputOtpRtlExample.Message,
+});
 export const GotNativeSelectBasicExampleMessage = m(
   "GotNativeSelectBasicExampleMessage",
   { message: NativeSelectBasicExample.Message }
+);
+export const GotNativeSelectDisabledExampleMessage = m(
+  "GotNativeSelectDisabledExampleMessage",
+  { message: NativeSelectDisabledExample.Message }
+);
+export const GotNativeSelectGroupsExampleMessage = m(
+  "GotNativeSelectGroupsExampleMessage",
+  { message: NativeSelectGroupsExample.Message }
+);
+export const GotNativeSelectInvalidExampleMessage = m(
+  "GotNativeSelectInvalidExampleMessage",
+  { message: NativeSelectInvalidExample.Message }
+);
+export const GotNativeSelectRtlExampleMessage = m(
+  "GotNativeSelectRtlExampleMessage",
+  { message: NativeSelectRtlExample.Message }
 );
 export const GotSheetBasicExampleMessage = m("GotSheetBasicExampleMessage", {
   message: SheetBasicExample.Message,
@@ -7028,6 +8947,18 @@ export const GotSonnerBasicExampleMessage = m("GotSonnerBasicExampleMessage", {
 });
 export const GotCardBasicExampleMessage = m("GotCardBasicExampleMessage", {
   message: CardBasicExample.Message,
+});
+export const GotCardSizeExampleMessage = m("GotCardSizeExampleMessage", {
+  message: CardSizeExample.Message,
+});
+export const GotCardSpacingExampleMessage = m("GotCardSpacingExampleMessage", {
+  message: CardSpacingExample.Message,
+});
+export const GotCardImageExampleMessage = m("GotCardImageExampleMessage", {
+  message: CardImageExample.Message,
+});
+export const GotCardRtlExampleMessage = m("GotCardRtlExampleMessage", {
+  message: CardRtlExample.Message,
 });
 export const GotBaseUiSeparatorBasicExampleMessage = m(
   "GotBaseUiSeparatorBasicExampleMessage",
@@ -7047,6 +8978,12 @@ export const GotSkeletonBasicExampleMessage = m(
     message: SkeletonBasicExample.Message,
   }
 );
+export const GotSpinnerBasicExampleMessage = m(
+  "GotSpinnerBasicExampleMessage",
+  {
+    message: SpinnerBasicExample.Message,
+  }
+);
 export const GotKbdBasicExampleMessage = m("GotKbdBasicExampleMessage", {
   message: KbdBasicExample.Message,
 });
@@ -7056,6 +8993,9 @@ export const GotKbdInputGroupExampleMessage = m(
     message: KbdInputGroupExample.Message,
   }
 );
+export const GotKbdRtlExampleMessage = m("GotKbdRtlExampleMessage", {
+  message: KbdRtlExample.Message,
+});
 export const GotTypographyBasicExampleMessage = m(
   "GotTypographyBasicExampleMessage",
   {
@@ -7065,12 +9005,36 @@ export const GotTypographyBasicExampleMessage = m(
 export const GotEmptyBasicExampleMessage = m("GotEmptyBasicExampleMessage", {
   message: EmptyBasicExample.Message,
 });
+export const GotEmptyAvatarExampleMessage = m("GotEmptyAvatarExampleMessage", {
+  message: EmptyAvatarExample.Message,
+});
+export const GotEmptyAvatarGroupExampleMessage = m(
+  "GotEmptyAvatarGroupExampleMessage",
+  {
+    message: EmptyAvatarGroupExample.Message,
+  }
+);
+export const GotEmptyBackgroundExampleMessage = m(
+  "GotEmptyBackgroundExampleMessage",
+  {
+    message: EmptyBackgroundExample.Message,
+  }
+);
 export const GotEmptyInputGroupExampleMessage = m(
   "GotEmptyInputGroupExampleMessage",
   {
     message: EmptyInputGroupExample.Message,
   }
 );
+export const GotEmptyOutlineExampleMessage = m(
+  "GotEmptyOutlineExampleMessage",
+  {
+    message: EmptyOutlineExample.Message,
+  }
+);
+export const GotEmptyRtlExampleMessage = m("GotEmptyRtlExampleMessage", {
+  message: EmptyRtlExample.Message,
+});
 export const GotButtonBasicExampleMessage = m("GotButtonBasicExampleMessage", {
   message: ButtonBasicExample.Message,
 });
@@ -7110,10 +9074,22 @@ export const GotShadcnCalendarBookedExampleMessage = m(
     message: ShadcnCalendarBookedExample.Message,
   }
 );
+export const GotShadcnCalendarCustomCellSizeExampleMessage = m(
+  "GotShadcnCalendarCustomCellSizeExampleMessage",
+  {
+    message: ShadcnCalendarCustomCellSizeExample.Message,
+  }
+);
 export const GotShadcnCalendarDateOfBirthExampleMessage = m(
   "GotShadcnCalendarDateOfBirthExampleMessage",
   {
     message: ShadcnCalendarDateOfBirthExample.Message,
+  }
+);
+export const GotShadcnCalendarDateTimePickerExampleMessage = m(
+  "GotShadcnCalendarDateTimePickerExampleMessage",
+  {
+    message: ShadcnCalendarDateTimePickerExample.Message,
   }
 );
 export const GotShadcnCalendarMonthYearSelectorExampleMessage = m(
@@ -7128,10 +9104,22 @@ export const GotShadcnCalendarPresetsExampleMessage = m(
     message: ShadcnCalendarPresetsExample.Message,
   }
 );
+export const GotShadcnCalendarRangeExampleMessage = m(
+  "GotShadcnCalendarRangeExampleMessage",
+  {
+    message: ShadcnCalendarRangeExample.Message,
+  }
+);
 export const GotShadcnCalendarRtlExampleMessage = m(
   "GotShadcnCalendarRtlExampleMessage",
   {
     message: ShadcnCalendarRtlExample.Message,
+  }
+);
+export const GotShadcnCalendarWeekNumbersExampleMessage = m(
+  "GotShadcnCalendarWeekNumbersExampleMessage",
+  {
+    message: ShadcnCalendarWeekNumbersExample.Message,
   }
 );
 export const GotCalendarBoundsExampleMessage = m(
@@ -7150,6 +9138,12 @@ export const GotShadcnCheckboxBasicExampleMessage = m(
   "GotShadcnCheckboxBasicExampleMessage",
   {
     message: ShadcnCheckboxBasicExample.Message,
+  }
+);
+export const GotShadcnCheckboxCheckedStateExampleMessage = m(
+  "GotShadcnCheckboxCheckedStateExampleMessage",
+  {
+    message: ShadcnCheckboxCheckedStateExample.Message,
   }
 );
 export const GotBaseUiCheckboxBasicExampleMessage = m(
@@ -7511,10 +9505,22 @@ export const GotBaseUiPopoverAnimatedExampleMessage = m(
     message: BaseUiPopoverAnimatedExample.Message,
   }
 );
+export const GotBaseUiPopoverDetachedTriggerExampleMessage = m(
+  "GotBaseUiPopoverDetachedTriggerExampleMessage",
+  {
+    message: BaseUiPopoverDetachedTriggerExample.Message,
+  }
+);
 export const GotBaseUiPopoverMultipleTriggersExampleMessage = m(
   "GotBaseUiPopoverMultipleTriggersExampleMessage",
   {
     message: BaseUiPopoverMultipleTriggersExample.Message,
+  }
+);
+export const GotBaseUiPopoverOpenOnHoverExampleMessage = m(
+  "GotBaseUiPopoverOpenOnHoverExampleMessage",
+  {
+    message: BaseUiPopoverOpenOnHoverExample.Message,
   }
 );
 export const GotPopoverAnimatedExampleMessage = m(
@@ -7748,6 +9754,66 @@ export const GotShadcnInputBasicExampleMessage = m(
     message: ShadcnInputBasicExample.Message,
   }
 );
+export const GotShadcnInputDemoExampleMessage = m(
+  "GotShadcnInputDemoExampleMessage",
+  {
+    message: ShadcnInputDemoExample.Message,
+  }
+);
+export const GotShadcnInputFieldExampleMessage = m(
+  "GotShadcnInputFieldExampleMessage",
+  {
+    message: ShadcnInputFieldExample.Message,
+  }
+);
+export const GotShadcnInputFieldGroupExampleMessage = m(
+  "GotShadcnInputFieldGroupExampleMessage",
+  {
+    message: ShadcnInputFieldGroupExample.Message,
+  }
+);
+export const GotShadcnInputInlineExampleMessage = m(
+  "GotShadcnInputInlineExampleMessage",
+  {
+    message: ShadcnInputInlineExample.Message,
+  }
+);
+export const GotShadcnInputGridExampleMessage = m(
+  "GotShadcnInputGridExampleMessage",
+  {
+    message: ShadcnInputGridExample.Message,
+  }
+);
+export const GotShadcnInputRequiredExampleMessage = m(
+  "GotShadcnInputRequiredExampleMessage",
+  {
+    message: ShadcnInputRequiredExample.Message,
+  }
+);
+export const GotShadcnInputBadgeExampleMessage = m(
+  "GotShadcnInputBadgeExampleMessage",
+  {
+    message: ShadcnInputBadgeExample.Message,
+  }
+);
+export const GotShadcnInputInputGroupExampleMessage = m(
+  "GotShadcnInputInputGroupExampleMessage",
+  {
+    message: ShadcnInputInputGroupExample.Message,
+  }
+);
+export const GotShadcnInputButtonGroupExampleMessage = m(
+  "GotShadcnInputButtonGroupExampleMessage",
+  {
+    message: ShadcnInputButtonGroupExample.Message,
+  }
+);
+export const GotShadcnInputFormExampleMessage = m(
+  "GotShadcnInputFormExampleMessage",
+  {
+    message: ShadcnInputFormExample.Message,
+  }
+);
 export const GotShadcnInputDisabledExampleMessage = m(
   "GotShadcnInputDisabledExampleMessage",
   {
@@ -7880,6 +9946,8 @@ export const Message = S.Union([
   GotAlertBasicExampleMessage,
   GotAlertActionExampleMessage,
   GotAlertDestructiveExampleMessage,
+  GotAlertCustomColorsExampleMessage,
+  GotAlertRtlExampleMessage,
   GotAspectRatioBasicExampleMessage,
   GotAspectRatioSquareExampleMessage,
   GotAspectRatioPortraitExampleMessage,
@@ -7946,6 +10014,7 @@ export const Message = S.Union([
   GotCarouselSpacingExampleMessage,
   GotCarouselOrientationExampleMessage,
   GotCarouselApiExampleMessage,
+  GotCarouselAutoplayExampleMessage,
   GotCarouselRtlExampleMessage,
   GotChartBasicExampleMessage,
   GotChartGridExampleMessage,
@@ -7973,26 +10042,76 @@ export const Message = S.Union([
   GotItemSizeExampleMessage,
   GotItemVariantExampleMessage,
   GotLabelBasicExampleMessage,
+  GotLabelFieldExampleMessage,
+  GotLabelRtlExampleMessage,
   GotPaginationBasicExampleMessage,
+  GotPaginationSimpleExampleMessage,
+  GotPaginationIconsOnlyExampleMessage,
+  GotPaginationRtlExampleMessage,
   GotResizableBasicExampleMessage,
+  GotResizableHandleExampleMessage,
+  GotResizableRtlExampleMessage,
+  GotResizableVerticalExampleMessage,
   GotSidebarBasicExampleMessage,
+  GotSidebarCompositionExampleMessage,
+  GotSidebarControlledExampleMessage,
+  GotSidebarRtlExampleMessage,
+  GotSidebarVariantsExampleMessage,
   GotTableBasicExampleMessage,
   GotCommandBasicExampleMessage,
+  GotCommandGroupsExampleMessage,
+  GotCommandRtlExampleMessage,
+  GotCommandScrollableExampleMessage,
+  GotCommandShortcutsExampleMessage,
   GotDropdownMenuBasicExampleMessage,
+  GotDropdownMenuCheckboxesExampleMessage,
+  GotDropdownMenuComplexExampleMessage,
+  GotDropdownMenuDestructiveExampleMessage,
+  GotDropdownMenuIconsExampleMessage,
+  GotDropdownMenuRadioGroupExampleMessage,
+  GotDropdownMenuRtlExampleMessage,
+  GotDropdownMenuShortcutsExampleMessage,
+  GotDropdownMenuSubmenuExampleMessage,
   GotHoverCardBasicExampleMessage,
+  GotHoverCardSidesExampleMessage,
+  GotHoverCardRtlExampleMessage,
   GotInputOtpBasicExampleMessage,
+  GotInputOtpPatternExampleMessage,
+  GotInputOtpSeparatorExampleMessage,
+  GotInputOtpDisabledExampleMessage,
+  GotInputOtpControlledExampleMessage,
+  GotInputOtpInvalidExampleMessage,
+  GotInputOtpFourDigitsExampleMessage,
+  GotInputOtpAlphanumericExampleMessage,
+  GotInputOtpFormExampleMessage,
+  GotInputOtpRtlExampleMessage,
   GotNativeSelectBasicExampleMessage,
+  GotNativeSelectDisabledExampleMessage,
+  GotNativeSelectGroupsExampleMessage,
+  GotNativeSelectInvalidExampleMessage,
+  GotNativeSelectRtlExampleMessage,
   GotSheetBasicExampleMessage,
   GotSonnerBasicExampleMessage,
   GotCardBasicExampleMessage,
+  GotCardSizeExampleMessage,
+  GotCardSpacingExampleMessage,
+  GotCardImageExampleMessage,
+  GotCardRtlExampleMessage,
   GotBaseUiSeparatorBasicExampleMessage,
   GotSeparatorBasicExampleMessage,
   GotSkeletonBasicExampleMessage,
+  GotSpinnerBasicExampleMessage,
   GotKbdBasicExampleMessage,
   GotKbdInputGroupExampleMessage,
+  GotKbdRtlExampleMessage,
   GotTypographyBasicExampleMessage,
+  GotEmptyAvatarExampleMessage,
+  GotEmptyAvatarGroupExampleMessage,
+  GotEmptyBackgroundExampleMessage,
   GotEmptyBasicExampleMessage,
   GotEmptyInputGroupExampleMessage,
+  GotEmptyOutlineExampleMessage,
+  GotEmptyRtlExampleMessage,
   GotButtonBasicExampleMessage,
   GotBaseUiButtonBasicExampleMessage,
   GotShadcnButtonBasicExampleMessage,
@@ -8000,13 +10119,18 @@ export const Message = S.Union([
   GotCalendarBasicExampleMessage,
   GotShadcnCalendarBasicExampleMessage,
   GotShadcnCalendarBookedExampleMessage,
+  GotShadcnCalendarCustomCellSizeExampleMessage,
   GotShadcnCalendarDateOfBirthExampleMessage,
+  GotShadcnCalendarDateTimePickerExampleMessage,
   GotShadcnCalendarMonthYearSelectorExampleMessage,
   GotShadcnCalendarPresetsExampleMessage,
+  GotShadcnCalendarRangeExampleMessage,
   GotShadcnCalendarRtlExampleMessage,
+  GotShadcnCalendarWeekNumbersExampleMessage,
   GotCalendarBoundsExampleMessage,
   GotCheckboxBasicExampleMessage,
   GotShadcnCheckboxBasicExampleMessage,
+  GotShadcnCheckboxCheckedStateExampleMessage,
   GotBaseUiCheckboxBasicExampleMessage,
   GotBaseUiCheckboxLabelingExampleMessage,
   GotBaseUiCheckboxNativeButtonExampleMessage,
@@ -8076,7 +10200,9 @@ export const Message = S.Union([
   GotBaseUiMenubarBasicExampleMessage,
   GotBaseUiPopoverBasicExampleMessage,
   GotBaseUiPopoverAnimatedExampleMessage,
+  GotBaseUiPopoverDetachedTriggerExampleMessage,
   GotBaseUiPopoverMultipleTriggersExampleMessage,
+  GotBaseUiPopoverOpenOnHoverExampleMessage,
   GotBaseUiRadioBasicExampleMessage,
   GotBaseUiRadioLabelingExampleMessage,
   GotBaseUiRadioNativeButtonExampleMessage,
@@ -8103,6 +10229,16 @@ export const Message = S.Union([
   GotShadcnTabsBasicExampleMessage,
   GotTabsManualExampleMessage,
   GotShadcnInputBasicExampleMessage,
+  GotShadcnInputDemoExampleMessage,
+  GotShadcnInputFieldExampleMessage,
+  GotShadcnInputFieldGroupExampleMessage,
+  GotShadcnInputInlineExampleMessage,
+  GotShadcnInputGridExampleMessage,
+  GotShadcnInputRequiredExampleMessage,
+  GotShadcnInputBadgeExampleMessage,
+  GotShadcnInputInputGroupExampleMessage,
+  GotShadcnInputButtonGroupExampleMessage,
+  GotShadcnInputFormExampleMessage,
   GotShadcnInputDisabledExampleMessage,
   GotShadcnInputInvalidExampleMessage,
   GotShadcnInputFileExampleMessage,
@@ -8209,6 +10345,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     AlertActionExample.init();
   const [alertDestructiveExample, alertDestructiveExampleCommands] =
     AlertDestructiveExample.init();
+  const [alertCustomColorsExample, alertCustomColorsExampleCommands] =
+    AlertCustomColorsExample.init();
+  const [alertRtlExample, alertRtlExampleCommands] = AlertRtlExample.init();
   const [aspectRatioBasicExample, aspectRatioBasicExampleCommands] =
     AspectRatioBasicExample.init();
   const [aspectRatioSquareExample, aspectRatioSquareExampleCommands] =
@@ -8380,6 +10519,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     CarouselOrientationExample.init();
   const [carouselApiExample, carouselApiExampleCommands] =
     CarouselApiExample.init();
+  const [carouselAutoplayExample, carouselAutoplayExampleCommands] =
+    CarouselAutoplayExample.init();
   const [carouselRtlExample, carouselRtlExampleCommands] =
     CarouselRtlExample.init();
   const [chartBasicExample, chartBasicExampleCommands] =
@@ -8393,14 +10534,72 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [chartRtlExample, chartRtlExampleCommands] = ChartRtlExample.init();
   const [commandBasicExample, commandBasicExampleCommands] =
     CommandBasicExample.init();
+  const [commandGroupsExample, commandGroupsExampleCommands] =
+    CommandGroupsExample.init();
+  const [commandRtlExample, commandRtlExampleCommands] =
+    CommandRtlExample.init();
+  const [commandScrollableExample, commandScrollableExampleCommands] =
+    CommandScrollableExample.init();
+  const [commandShortcutsExample, commandShortcutsExampleCommands] =
+    CommandShortcutsExample.init();
   const [dropdownMenuBasicExample, dropdownMenuBasicExampleCommands] =
     DropdownMenuBasicExample.init();
+  const [dropdownMenuCheckboxesExample, dropdownMenuCheckboxesExampleCommands] =
+    DropdownMenuCheckboxesExample.init();
+  const [dropdownMenuComplexExample, dropdownMenuComplexExampleCommands] =
+    DropdownMenuComplexExample.init();
+  const [
+    dropdownMenuDestructiveExample,
+    dropdownMenuDestructiveExampleCommands,
+  ] = DropdownMenuDestructiveExample.init();
+  const [dropdownMenuIconsExample, dropdownMenuIconsExampleCommands] =
+    DropdownMenuIconsExample.init();
+  const [
+    dropdownMenuRadioGroupExample,
+    dropdownMenuRadioGroupExampleCommands,
+  ] = DropdownMenuRadioGroupExample.init();
+  const [dropdownMenuRtlExample, dropdownMenuRtlExampleCommands] =
+    DropdownMenuRtlExample.init();
+  const [dropdownMenuShortcutsExample, dropdownMenuShortcutsExampleCommands] =
+    DropdownMenuShortcutsExample.init();
+  const [dropdownMenuSubmenuExample, dropdownMenuSubmenuExampleCommands] =
+    DropdownMenuSubmenuExample.init();
   const [hoverCardBasicExample, hoverCardBasicExampleCommands] =
     HoverCardBasicExample.init();
+  const [hoverCardSidesExample, hoverCardSidesExampleCommands] =
+    HoverCardSidesExample.init();
+  const [hoverCardRtlExample, hoverCardRtlExampleCommands] =
+    HoverCardRtlExample.init();
   const [inputOtpBasicExample, inputOtpBasicExampleCommands] =
     InputOtpBasicExample.init();
+  const [inputOtpPatternExample, inputOtpPatternExampleCommands] =
+    InputOtpPatternExample.init();
+  const [inputOtpSeparatorExample, inputOtpSeparatorExampleCommands] =
+    InputOtpSeparatorExample.init();
+  const [inputOtpDisabledExample, inputOtpDisabledExampleCommands] =
+    InputOtpDisabledExample.init();
+  const [inputOtpControlledExample, inputOtpControlledExampleCommands] =
+    InputOtpControlledExample.init();
+  const [inputOtpInvalidExample, inputOtpInvalidExampleCommands] =
+    InputOtpInvalidExample.init();
+  const [inputOtpFourDigitsExample, inputOtpFourDigitsExampleCommands] =
+    InputOtpFourDigitsExample.init();
+  const [inputOtpAlphanumericExample, inputOtpAlphanumericExampleCommands] =
+    InputOtpAlphanumericExample.init();
+  const [inputOtpFormExample, inputOtpFormExampleCommands] =
+    InputOtpFormExample.init();
+  const [inputOtpRtlExample, inputOtpRtlExampleCommands] =
+    InputOtpRtlExample.init();
   const [nativeSelectBasicExample, nativeSelectBasicExampleCommands] =
     NativeSelectBasicExample.init();
+  const [nativeSelectDisabledExample, nativeSelectDisabledExampleCommands] =
+    NativeSelectDisabledExample.init();
+  const [nativeSelectGroupsExample, nativeSelectGroupsExampleCommands] =
+    NativeSelectGroupsExample.init();
+  const [nativeSelectInvalidExample, nativeSelectInvalidExampleCommands] =
+    NativeSelectInvalidExample.init();
+  const [nativeSelectRtlExample, nativeSelectRtlExampleCommands] =
+    NativeSelectRtlExample.init();
   const [sheetBasicExample, sheetBasicExampleCommands] =
     SheetBasicExample.init();
   const [sonnerBasicExample, sonnerBasicExampleCommands] =
@@ -8438,30 +10637,70 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     ItemVariantExample.init();
   const [labelBasicExample, labelBasicExampleCommands] =
     LabelBasicExample.init();
+  const [labelFieldExample, labelFieldExampleCommands] =
+    LabelFieldExample.init();
+  const [labelRtlExample, labelRtlExampleCommands] = LabelRtlExample.init();
   const [paginationBasicExample, paginationBasicExampleCommands] =
     PaginationBasicExample.init();
+  const [paginationSimpleExample, paginationSimpleExampleCommands] =
+    PaginationSimpleExample.init();
+  const [paginationIconsOnlyExample, paginationIconsOnlyExampleCommands] =
+    PaginationIconsOnlyExample.init();
+  const [paginationRtlExample, paginationRtlExampleCommands] =
+    PaginationRtlExample.init();
   const [resizableBasicExample, resizableBasicExampleCommands] =
     ResizableBasicExample.init();
+  const [resizableHandleExample, resizableHandleExampleCommands] =
+    ResizableHandleExample.init();
+  const [resizableRtlExample, resizableRtlExampleCommands] =
+    ResizableRtlExample.init();
+  const [resizableVerticalExample, resizableVerticalExampleCommands] =
+    ResizableVerticalExample.init();
   const [sidebarBasicExample, sidebarBasicExampleCommands] =
     SidebarBasicExample.init();
+  const [sidebarCompositionExample, sidebarCompositionExampleCommands] =
+    SidebarCompositionExample.init();
+  const [sidebarControlledExample, sidebarControlledExampleCommands] =
+    SidebarControlledExample.init();
+  const [sidebarRtlExample, sidebarRtlExampleCommands] =
+    SidebarRtlExample.init();
+  const [sidebarVariantsExample, sidebarVariantsExampleCommands] =
+    SidebarVariantsExample.init();
   const [tableBasicExample, tableBasicExampleCommands] =
     TableBasicExample.init();
   const [cardBasicExample, cardBasicExampleCommands] = CardBasicExample.init();
+  const [cardSizeExample, cardSizeExampleCommands] = CardSizeExample.init();
+  const [cardSpacingExample, cardSpacingExampleCommands] =
+    CardSpacingExample.init();
+  const [cardImageExample, cardImageExampleCommands] = CardImageExample.init();
+  const [cardRtlExample, cardRtlExampleCommands] = CardRtlExample.init();
   const [baseUiSeparatorBasicExample, baseUiSeparatorBasicExampleCommands] =
     BaseUiSeparatorBasicExample.init();
   const [separatorBasicExample, separatorBasicExampleCommands] =
     SeparatorBasicExample.init();
   const [skeletonBasicExample, skeletonBasicExampleCommands] =
     SkeletonBasicExample.init();
+  const [spinnerBasicExample, spinnerBasicExampleCommands] =
+    SpinnerBasicExample.init();
   const [kbdBasicExample, kbdBasicExampleCommands] = KbdBasicExample.init();
   const [kbdInputGroupExample, kbdInputGroupExampleCommands] =
     KbdInputGroupExample.init();
+  const [kbdRtlExample, kbdRtlExampleCommands] = KbdRtlExample.init();
   const [typographyBasicExample, typographyBasicExampleCommands] =
     TypographyBasicExample.init();
+  const [emptyAvatarExample, emptyAvatarExampleCommands] =
+    EmptyAvatarExample.init();
+  const [emptyAvatarGroupExample, emptyAvatarGroupExampleCommands] =
+    EmptyAvatarGroupExample.init();
+  const [emptyBackgroundExample, emptyBackgroundExampleCommands] =
+    EmptyBackgroundExample.init();
   const [emptyBasicExample, emptyBasicExampleCommands] =
     EmptyBasicExample.init();
   const [emptyInputGroupExample, emptyInputGroupExampleCommands] =
     EmptyInputGroupExample.init();
+  const [emptyOutlineExample, emptyOutlineExampleCommands] =
+    EmptyOutlineExample.init();
+  const [emptyRtlExample, emptyRtlExampleCommands] = EmptyRtlExample.init();
   const [buttonBasicExample, buttonBasicExampleCommands] =
     ButtonBasicExample.init();
   const [baseUiButtonBasicExample, baseUiButtonBasicExampleCommands] =
@@ -8477,23 +10716,41 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [shadcnCalendarBookedExample, shadcnCalendarBookedExampleCommands] =
     ShadcnCalendarBookedExample.init();
   const [
+    shadcnCalendarCustomCellSizeExample,
+    shadcnCalendarCustomCellSizeExampleCommands,
+  ] = ShadcnCalendarCustomCellSizeExample.init();
+  const [
     shadcnCalendarDateOfBirthExample,
     shadcnCalendarDateOfBirthExampleCommands,
   ] = ShadcnCalendarDateOfBirthExample.init();
+  const [
+    shadcnCalendarDateTimePickerExample,
+    shadcnCalendarDateTimePickerExampleCommands,
+  ] = ShadcnCalendarDateTimePickerExample.init();
   const [
     shadcnCalendarMonthYearSelectorExample,
     shadcnCalendarMonthYearSelectorExampleCommands,
   ] = ShadcnCalendarMonthYearSelectorExample.init();
   const [shadcnCalendarPresetsExample, shadcnCalendarPresetsExampleCommands] =
     ShadcnCalendarPresetsExample.init();
+  const [shadcnCalendarRangeExample, shadcnCalendarRangeExampleCommands] =
+    ShadcnCalendarRangeExample.init();
   const [shadcnCalendarRtlExample, shadcnCalendarRtlExampleCommands] =
     ShadcnCalendarRtlExample.init();
+  const [
+    shadcnCalendarWeekNumbersExample,
+    shadcnCalendarWeekNumbersExampleCommands,
+  ] = ShadcnCalendarWeekNumbersExample.init();
   const [calendarBoundsExample, calendarBoundsExampleCommands] =
     CalendarBoundsExample.init();
   const [checkboxBasicExample, checkboxBasicExampleCommands] =
     CheckboxBasicExample.init();
   const [shadcnCheckboxBasicExample, shadcnCheckboxBasicExampleCommands] =
     ShadcnCheckboxBasicExample.init();
+  const [
+    shadcnCheckboxCheckedStateExample,
+    shadcnCheckboxCheckedStateExampleCommands,
+  ] = ShadcnCheckboxCheckedStateExample.init();
   const [baseUiCheckboxBasicExample, baseUiCheckboxBasicExampleCommands] =
     BaseUiCheckboxBasicExample.init();
   const [baseUiCheckboxLabelingExample, baseUiCheckboxLabelingExampleCommands] =
@@ -8634,9 +10891,17 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [baseUiPopoverAnimatedExample, baseUiPopoverAnimatedExampleCommands] =
     BaseUiPopoverAnimatedExample.init();
   const [
+    baseUiPopoverDetachedTriggerExample,
+    baseUiPopoverDetachedTriggerExampleCommands,
+  ] = BaseUiPopoverDetachedTriggerExample.init();
+  const [
     baseUiPopoverMultipleTriggersExample,
     baseUiPopoverMultipleTriggersExampleCommands,
   ] = BaseUiPopoverMultipleTriggersExample.init();
+  const [
+    baseUiPopoverOpenOnHoverExample,
+    baseUiPopoverOpenOnHoverExampleCommands,
+  ] = BaseUiPopoverOpenOnHoverExample.init();
   const [popoverBasicExample, popoverBasicExampleCommands] =
     PopoverBasicExample.init();
   const [popoverAnimatedExample, popoverAnimatedExampleCommands] =
@@ -8690,6 +10955,26 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     TabsManualExample.init();
   const [shadcnInputBasicExample, shadcnInputBasicExampleCommands] =
     ShadcnInputBasicExample.init();
+  const [shadcnInputDemoExample, shadcnInputDemoCommands] =
+    ShadcnInputDemoExample.init();
+  const [shadcnInputFieldExample, shadcnInputFieldCommands] =
+    ShadcnInputFieldExample.init();
+  const [shadcnInputFieldGroupExample, shadcnInputFieldGroupCommands] =
+    ShadcnInputFieldGroupExample.init();
+  const [shadcnInputInlineExample, shadcnInputInlineCommands] =
+    ShadcnInputInlineExample.init();
+  const [shadcnInputGridExample, shadcnInputGridCommands] =
+    ShadcnInputGridExample.init();
+  const [shadcnInputRequiredExample, shadcnInputRequiredCommands] =
+    ShadcnInputRequiredExample.init();
+  const [shadcnInputBadgeExample, shadcnInputBadgeCommands] =
+    ShadcnInputBadgeExample.init();
+  const [shadcnInputInputGroupExample, shadcnInputInputGroupCommands] =
+    ShadcnInputInputGroupExample.init();
+  const [shadcnInputButtonGroupExample, shadcnInputButtonGroupCommands] =
+    ShadcnInputButtonGroupExample.init();
+  const [shadcnInputFormExample, shadcnInputFormCommands] =
+    ShadcnInputFormExample.init();
   const [shadcnInputDisabledExample, shadcnInputDisabledExampleCommands] =
     ShadcnInputDisabledExample.init();
   const [shadcnInputInvalidExample, shadcnInputInvalidExampleCommands] =
@@ -8791,6 +11076,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       alertBasicExample,
       alertActionExample,
       alertDestructiveExample,
+      alertCustomColorsExample,
+      alertRtlExample,
       aspectRatioBasicExample,
       aspectRatioSquareExample,
       aspectRatioPortraitExample,
@@ -8865,6 +11152,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       carouselSpacingExample,
       carouselOrientationExample,
       carouselApiExample,
+      carouselAutoplayExample,
       carouselRtlExample,
       chartBasicExample,
       chartGridExample,
@@ -8873,10 +11161,37 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       chartLegendExample,
       chartRtlExample,
       commandBasicExample,
+      commandGroupsExample,
+      commandRtlExample,
+      commandScrollableExample,
+      commandShortcutsExample,
       dropdownMenuBasicExample,
+      dropdownMenuCheckboxesExample,
+      dropdownMenuComplexExample,
+      dropdownMenuDestructiveExample,
+      dropdownMenuIconsExample,
+      dropdownMenuRadioGroupExample,
+      dropdownMenuRtlExample,
+      dropdownMenuShortcutsExample,
+      dropdownMenuSubmenuExample,
       hoverCardBasicExample,
+      hoverCardSidesExample,
+      hoverCardRtlExample,
       inputOtpBasicExample,
+      inputOtpPatternExample,
+      inputOtpSeparatorExample,
+      inputOtpDisabledExample,
+      inputOtpControlledExample,
+      inputOtpInvalidExample,
+      inputOtpFourDigitsExample,
+      inputOtpAlphanumericExample,
+      inputOtpFormExample,
+      inputOtpRtlExample,
       nativeSelectBasicExample,
+      nativeSelectDisabledExample,
+      nativeSelectGroupsExample,
+      nativeSelectInvalidExample,
+      nativeSelectRtlExample,
       sheetBasicExample,
       sonnerBasicExample,
       dataTableBasicExample,
@@ -8899,19 +11214,42 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       itemSizeExample,
       itemVariantExample,
       labelBasicExample,
+      labelFieldExample,
+      labelRtlExample,
       paginationBasicExample,
+      paginationSimpleExample,
+      paginationIconsOnlyExample,
+      paginationRtlExample,
       resizableBasicExample,
+      resizableHandleExample,
+      resizableRtlExample,
+      resizableVerticalExample,
       sidebarBasicExample,
+      sidebarCompositionExample,
+      sidebarControlledExample,
+      sidebarRtlExample,
+      sidebarVariantsExample,
       tableBasicExample,
       cardBasicExample,
+      cardSizeExample,
+      cardSpacingExample,
+      cardImageExample,
+      cardRtlExample,
       baseUiSeparatorBasicExample,
       separatorBasicExample,
       skeletonBasicExample,
+      spinnerBasicExample,
       kbdBasicExample,
       kbdInputGroupExample,
+      kbdRtlExample,
       typographyBasicExample,
+      emptyAvatarExample,
+      emptyAvatarGroupExample,
+      emptyBackgroundExample,
       emptyBasicExample,
       emptyInputGroupExample,
+      emptyOutlineExample,
+      emptyRtlExample,
       buttonBasicExample,
       baseUiButtonBasicExample,
       shadcnButtonBasicExample,
@@ -8919,13 +11257,18 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       calendarBasicExample,
       shadcnCalendarBasicExample,
       shadcnCalendarBookedExample,
+      shadcnCalendarCustomCellSizeExample,
       shadcnCalendarDateOfBirthExample,
+      shadcnCalendarDateTimePickerExample,
       shadcnCalendarMonthYearSelectorExample,
       shadcnCalendarPresetsExample,
+      shadcnCalendarRangeExample,
       shadcnCalendarRtlExample,
+      shadcnCalendarWeekNumbersExample,
       calendarBoundsExample,
       checkboxBasicExample,
       shadcnCheckboxBasicExample,
+      shadcnCheckboxCheckedStateExample,
       baseUiCheckboxBasicExample,
       baseUiCheckboxLabelingExample,
       baseUiCheckboxNativeButtonExample,
@@ -8987,7 +11330,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       menuAnimatedExample,
       baseUiPopoverBasicExample,
       baseUiPopoverAnimatedExample,
+      baseUiPopoverDetachedTriggerExample,
       baseUiPopoverMultipleTriggersExample,
+      baseUiPopoverOpenOnHoverExample,
       baseUiRadioBasicExample,
       baseUiRadioLabelingExample,
       baseUiRadioNativeButtonExample,
@@ -9030,6 +11375,16 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       shadcnMenubarBasicExample,
       shadcnPopoverBasicExample,
       shadcnInputBasicExample,
+      shadcnInputDemoExample,
+      shadcnInputFieldExample,
+      shadcnInputFieldGroupExample,
+      shadcnInputInlineExample,
+      shadcnInputGridExample,
+      shadcnInputRequiredExample,
+      shadcnInputBadgeExample,
+      shadcnInputInputGroupExample,
+      shadcnInputButtonGroupExample,
+      shadcnInputFormExample,
       shadcnInputDisabledExample,
       shadcnInputInvalidExample,
       shadcnInputFileExample,
@@ -9099,6 +11454,12 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(alertDestructiveExampleCommands, (message) =>
         GotAlertDestructiveExampleMessage({ message })
+      ),
+      ...Command.mapMessages(alertCustomColorsExampleCommands, (message) =>
+        GotAlertCustomColorsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(alertRtlExampleCommands, (message) =>
+        GotAlertRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(aspectRatioBasicExampleCommands, (message) =>
         GotAspectRatioBasicExampleMessage({ message })
@@ -9340,6 +11701,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(carouselApiExampleCommands, (message) =>
         GotCarouselApiExampleMessage({ message })
       ),
+      ...Command.mapMessages(carouselAutoplayExampleCommands, (message) =>
+        GotCarouselAutoplayExampleMessage({ message })
+      ),
       ...Command.mapMessages(carouselRtlExampleCommands, (message) =>
         GotCarouselRtlExampleMessage({ message })
       ),
@@ -9364,17 +11728,100 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(commandBasicExampleCommands, (message) =>
         GotCommandBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(commandGroupsExampleCommands, (message) =>
+        GotCommandGroupsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(commandRtlExampleCommands, (message) =>
+        GotCommandRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(commandScrollableExampleCommands, (message) =>
+        GotCommandScrollableExampleMessage({ message })
+      ),
+      ...Command.mapMessages(commandShortcutsExampleCommands, (message) =>
+        GotCommandShortcutsExampleMessage({ message })
+      ),
       ...Command.mapMessages(dropdownMenuBasicExampleCommands, (message) =>
         GotDropdownMenuBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuCheckboxesExampleCommands, (message) =>
+        GotDropdownMenuCheckboxesExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuComplexExampleCommands, (message) =>
+        GotDropdownMenuComplexExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        dropdownMenuDestructiveExampleCommands,
+        (message) => GotDropdownMenuDestructiveExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuIconsExampleCommands, (message) =>
+        GotDropdownMenuIconsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        dropdownMenuRadioGroupExampleCommands,
+        (message) => GotDropdownMenuRadioGroupExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuRtlExampleCommands, (message) =>
+        GotDropdownMenuRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuShortcutsExampleCommands, (message) =>
+        GotDropdownMenuShortcutsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(dropdownMenuSubmenuExampleCommands, (message) =>
+        GotDropdownMenuSubmenuExampleMessage({ message })
       ),
       ...Command.mapMessages(hoverCardBasicExampleCommands, (message) =>
         GotHoverCardBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(hoverCardSidesExampleCommands, (message) =>
+        GotHoverCardSidesExampleMessage({ message })
+      ),
+      ...Command.mapMessages(hoverCardRtlExampleCommands, (message) =>
+        GotHoverCardRtlExampleMessage({ message })
+      ),
       ...Command.mapMessages(inputOtpBasicExampleCommands, (message) =>
         GotInputOtpBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(inputOtpPatternExampleCommands, (message) =>
+        GotInputOtpPatternExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpSeparatorExampleCommands, (message) =>
+        GotInputOtpSeparatorExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpDisabledExampleCommands, (message) =>
+        GotInputOtpDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpControlledExampleCommands, (message) =>
+        GotInputOtpControlledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpInvalidExampleCommands, (message) =>
+        GotInputOtpInvalidExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpFourDigitsExampleCommands, (message) =>
+        GotInputOtpFourDigitsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpAlphanumericExampleCommands, (message) =>
+        GotInputOtpAlphanumericExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpFormExampleCommands, (message) =>
+        GotInputOtpFormExampleMessage({ message })
+      ),
+      ...Command.mapMessages(inputOtpRtlExampleCommands, (message) =>
+        GotInputOtpRtlExampleMessage({ message })
+      ),
       ...Command.mapMessages(nativeSelectBasicExampleCommands, (message) =>
         GotNativeSelectBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(nativeSelectDisabledExampleCommands, (message) =>
+        GotNativeSelectDisabledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(nativeSelectGroupsExampleCommands, (message) =>
+        GotNativeSelectGroupsExampleMessage({ message })
+      ),
+      ...Command.mapMessages(nativeSelectInvalidExampleCommands, (message) =>
+        GotNativeSelectInvalidExampleMessage({ message })
+      ),
+      ...Command.mapMessages(nativeSelectRtlExampleCommands, (message) =>
+        GotNativeSelectRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(sheetBasicExampleCommands, (message) =>
         GotSheetBasicExampleMessage({ message })
@@ -9442,20 +11889,68 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(labelBasicExampleCommands, (message) =>
         GotLabelBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(labelFieldExampleCommands, (message) =>
+        GotLabelFieldExampleMessage({ message })
+      ),
+      ...Command.mapMessages(labelRtlExampleCommands, (message) =>
+        GotLabelRtlExampleMessage({ message })
+      ),
       ...Command.mapMessages(paginationBasicExampleCommands, (message) =>
         GotPaginationBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(paginationSimpleExampleCommands, (message) =>
+        GotPaginationSimpleExampleMessage({ message })
+      ),
+      ...Command.mapMessages(paginationIconsOnlyExampleCommands, (message) =>
+        GotPaginationIconsOnlyExampleMessage({ message })
+      ),
+      ...Command.mapMessages(paginationRtlExampleCommands, (message) =>
+        GotPaginationRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(resizableBasicExampleCommands, (message) =>
         GotResizableBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(resizableHandleExampleCommands, (message) =>
+        GotResizableHandleExampleMessage({ message })
+      ),
+      ...Command.mapMessages(resizableRtlExampleCommands, (message) =>
+        GotResizableRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(resizableVerticalExampleCommands, (message) =>
+        GotResizableVerticalExampleMessage({ message })
+      ),
       ...Command.mapMessages(sidebarBasicExampleCommands, (message) =>
         GotSidebarBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sidebarCompositionExampleCommands, (message) =>
+        GotSidebarCompositionExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sidebarControlledExampleCommands, (message) =>
+        GotSidebarControlledExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sidebarRtlExampleCommands, (message) =>
+        GotSidebarRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(sidebarVariantsExampleCommands, (message) =>
+        GotSidebarVariantsExampleMessage({ message })
       ),
       ...Command.mapMessages(tableBasicExampleCommands, (message) =>
         GotTableBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(cardBasicExampleCommands, (message) =>
         GotCardBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(cardSizeExampleCommands, (message) =>
+        GotCardSizeExampleMessage({ message })
+      ),
+      ...Command.mapMessages(cardSpacingExampleCommands, (message) =>
+        GotCardSpacingExampleMessage({ message })
+      ),
+      ...Command.mapMessages(cardImageExampleCommands, (message) =>
+        GotCardImageExampleMessage({ message })
+      ),
+      ...Command.mapMessages(cardRtlExampleCommands, (message) =>
+        GotCardRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(baseUiSeparatorBasicExampleCommands, (message) =>
         GotBaseUiSeparatorBasicExampleMessage({ message })
@@ -9466,20 +11961,41 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(skeletonBasicExampleCommands, (message) =>
         GotSkeletonBasicExampleMessage({ message })
       ),
+      ...Command.mapMessages(spinnerBasicExampleCommands, (message) =>
+        GotSpinnerBasicExampleMessage({ message })
+      ),
       ...Command.mapMessages(kbdBasicExampleCommands, (message) =>
         GotKbdBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(kbdInputGroupExampleCommands, (message) =>
         GotKbdInputGroupExampleMessage({ message })
       ),
+      ...Command.mapMessages(kbdRtlExampleCommands, (message) =>
+        GotKbdRtlExampleMessage({ message })
+      ),
       ...Command.mapMessages(typographyBasicExampleCommands, (message) =>
         GotTypographyBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyAvatarExampleCommands, (message) =>
+        GotEmptyAvatarExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyAvatarGroupExampleCommands, (message) =>
+        GotEmptyAvatarGroupExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyBackgroundExampleCommands, (message) =>
+        GotEmptyBackgroundExampleMessage({ message })
       ),
       ...Command.mapMessages(emptyBasicExampleCommands, (message) =>
         GotEmptyBasicExampleMessage({ message })
       ),
       ...Command.mapMessages(emptyInputGroupExampleCommands, (message) =>
         GotEmptyInputGroupExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyOutlineExampleCommands, (message) =>
+        GotEmptyOutlineExampleMessage({ message })
+      ),
+      ...Command.mapMessages(emptyRtlExampleCommands, (message) =>
+        GotEmptyRtlExampleMessage({ message })
       ),
       ...Command.mapMessages(buttonBasicExampleCommands, (message) =>
         GotButtonBasicExampleMessage({ message })
@@ -9503,8 +12019,18 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
         GotShadcnCalendarBookedExampleMessage({ message })
       ),
       ...Command.mapMessages(
+        shadcnCalendarCustomCellSizeExampleCommands,
+        (message) =>
+          GotShadcnCalendarCustomCellSizeExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
         shadcnCalendarDateOfBirthExampleCommands,
         (message) => GotShadcnCalendarDateOfBirthExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnCalendarDateTimePickerExampleCommands,
+        (message) =>
+          GotShadcnCalendarDateTimePickerExampleMessage({ message })
       ),
       ...Command.mapMessages(
         shadcnCalendarMonthYearSelectorExampleCommands,
@@ -9514,8 +12040,15 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(shadcnCalendarPresetsExampleCommands, (message) =>
         GotShadcnCalendarPresetsExampleMessage({ message })
       ),
+      ...Command.mapMessages(shadcnCalendarRangeExampleCommands, (message) =>
+        GotShadcnCalendarRangeExampleMessage({ message })
+      ),
       ...Command.mapMessages(shadcnCalendarRtlExampleCommands, (message) =>
         GotShadcnCalendarRtlExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnCalendarWeekNumbersExampleCommands,
+        (message) => GotShadcnCalendarWeekNumbersExampleMessage({ message })
       ),
       ...Command.mapMessages(calendarBoundsExampleCommands, (message) =>
         GotCalendarBoundsExampleMessage({ message })
@@ -9525,6 +12058,10 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(shadcnCheckboxBasicExampleCommands, (message) =>
         GotShadcnCheckboxBasicExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        shadcnCheckboxCheckedStateExampleCommands,
+        (message) => GotShadcnCheckboxCheckedStateExampleMessage({ message })
       ),
       ...Command.mapMessages(baseUiCheckboxBasicExampleCommands, (message) =>
         GotBaseUiCheckboxBasicExampleMessage({ message })
@@ -9721,8 +12258,17 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
         GotBaseUiPopoverAnimatedExampleMessage({ message })
       ),
       ...Command.mapMessages(
+        baseUiPopoverDetachedTriggerExampleCommands,
+        (message) =>
+          GotBaseUiPopoverDetachedTriggerExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
         baseUiPopoverMultipleTriggersExampleCommands,
         (message) => GotBaseUiPopoverMultipleTriggersExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        baseUiPopoverOpenOnHoverExampleCommands,
+        (message) => GotBaseUiPopoverOpenOnHoverExampleMessage({ message })
       ),
       ...Command.mapMessages(popoverBasicExampleCommands, (message) =>
         GotPopoverBasicExampleMessage({ message })
@@ -9838,8 +12384,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(
         shadcnDialogScrollableContentExampleCommands,
-        (message) =>
-          GotShadcnDialogScrollableContentExampleMessage({ message })
+        (message) => GotShadcnDialogScrollableContentExampleMessage({ message })
       ),
       ...Command.mapMessages(shadcnDialogRtlExampleCommands, (message) =>
         GotShadcnDialogRtlExampleMessage({ message })
@@ -10229,6 +12774,37 @@ export const update = (
           }),
           Command.mapMessages(alertDestructiveExampleCommands, (message) =>
             GotAlertDestructiveExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAlertCustomColorsExampleMessage: ({ message }) => {
+        const [alertCustomColorsExample, alertCustomColorsExampleCommands] =
+          AlertCustomColorsExample.update(
+            model.alertCustomColorsExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            alertCustomColorsExample: () => alertCustomColorsExample,
+          }),
+          Command.mapMessages(alertCustomColorsExampleCommands, (message) =>
+            GotAlertCustomColorsExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAlertRtlExampleMessage: ({ message }) => {
+        const [alertRtlExample, alertRtlExampleCommands] =
+          AlertRtlExample.update(model.alertRtlExample, message);
+
+        return [
+          evo(model, {
+            alertRtlExample: () => alertRtlExample,
+          }),
+          Command.mapMessages(alertRtlExampleCommands, (message) =>
+            GotAlertRtlExampleMessage({ message })
           ),
         ];
       },
@@ -11413,6 +13989,22 @@ export const update = (
           ),
         ];
       },
+      GotCarouselAutoplayExampleMessage: ({ message }) => {
+        const [carouselAutoplayExample, carouselAutoplayExampleCommands] =
+          CarouselAutoplayExample.update(
+            model.carouselAutoplayExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            carouselAutoplayExample: () => carouselAutoplayExample,
+          }),
+          Command.mapMessages(carouselAutoplayExampleCommands, (message) =>
+            GotCarouselAutoplayExampleMessage({ message })
+          ),
+        ];
+      },
       GotCarouselRtlExampleMessage: ({ message }) => {
         const [carouselRtlExample, carouselRtlExampleCommands] =
           CarouselRtlExample.update(model.carouselRtlExample, message);
@@ -11501,6 +14093,57 @@ export const update = (
           ),
         ];
       },
+      GotCommandGroupsExampleMessage: ({ message }) => {
+        const [commandGroupsExample, commandGroupsExampleCommands] =
+          CommandGroupsExample.update(model.commandGroupsExample, message);
+
+        return [
+          evo(model, { commandGroupsExample: () => commandGroupsExample }),
+          Command.mapMessages(commandGroupsExampleCommands, (message) =>
+            GotCommandGroupsExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCommandRtlExampleMessage: ({ message }) => {
+        const [commandRtlExample, commandRtlExampleCommands] =
+          CommandRtlExample.update(model.commandRtlExample, message);
+
+        return [
+          evo(model, { commandRtlExample: () => commandRtlExample }),
+          Command.mapMessages(commandRtlExampleCommands, (message) =>
+            GotCommandRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCommandScrollableExampleMessage: ({ message }) => {
+        const [commandScrollableExample, commandScrollableExampleCommands] =
+          CommandScrollableExample.update(
+            model.commandScrollableExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            commandScrollableExample: () => commandScrollableExample,
+          }),
+          Command.mapMessages(commandScrollableExampleCommands, (message) =>
+            GotCommandScrollableExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCommandShortcutsExampleMessage: ({ message }) => {
+        const [commandShortcutsExample, commandShortcutsExampleCommands] =
+          CommandShortcutsExample.update(model.commandShortcutsExample, message);
+
+        return [
+          evo(model, {
+            commandShortcutsExample: () => commandShortcutsExample,
+          }),
+          Command.mapMessages(commandShortcutsExampleCommands, (message) =>
+            GotCommandShortcutsExampleMessage({ message })
+          ),
+        ];
+      },
       GotDropdownMenuBasicExampleMessage: ({ message }) => {
         const [dropdownMenuBasicExample, dropdownMenuBasicExampleCommands] =
           DropdownMenuBasicExample.update(
@@ -11517,6 +14160,137 @@ export const update = (
           ),
         ];
       },
+      GotDropdownMenuCheckboxesExampleMessage: ({ message }) => {
+        const [
+          dropdownMenuCheckboxesExample,
+          dropdownMenuCheckboxesExampleCommands,
+        ] = DropdownMenuCheckboxesExample.update(
+          model.dropdownMenuCheckboxesExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            dropdownMenuCheckboxesExample: () => dropdownMenuCheckboxesExample,
+          }),
+          Command.mapMessages(
+            dropdownMenuCheckboxesExampleCommands,
+            (message) => GotDropdownMenuCheckboxesExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuComplexExampleMessage: ({ message }) => {
+        const [dropdownMenuComplexExample, dropdownMenuComplexExampleCommands] =
+          DropdownMenuComplexExample.update(
+            model.dropdownMenuComplexExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dropdownMenuComplexExample: () => dropdownMenuComplexExample,
+          }),
+          Command.mapMessages(dropdownMenuComplexExampleCommands, (message) =>
+            GotDropdownMenuComplexExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuDestructiveExampleMessage: ({ message }) => {
+        const [
+          dropdownMenuDestructiveExample,
+          dropdownMenuDestructiveExampleCommands,
+        ] = DropdownMenuDestructiveExample.update(
+          model.dropdownMenuDestructiveExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            dropdownMenuDestructiveExample: () =>
+              dropdownMenuDestructiveExample,
+          }),
+          Command.mapMessages(
+            dropdownMenuDestructiveExampleCommands,
+            (message) => GotDropdownMenuDestructiveExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuIconsExampleMessage: ({ message }) => {
+        const [dropdownMenuIconsExample, dropdownMenuIconsExampleCommands] =
+          DropdownMenuIconsExample.update(model.dropdownMenuIconsExample, message);
+
+        return [
+          evo(model, { dropdownMenuIconsExample: () => dropdownMenuIconsExample }),
+          Command.mapMessages(dropdownMenuIconsExampleCommands, (message) =>
+            GotDropdownMenuIconsExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuRadioGroupExampleMessage: ({ message }) => {
+        const [
+          dropdownMenuRadioGroupExample,
+          dropdownMenuRadioGroupExampleCommands,
+        ] = DropdownMenuRadioGroupExample.update(
+          model.dropdownMenuRadioGroupExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            dropdownMenuRadioGroupExample: () => dropdownMenuRadioGroupExample,
+          }),
+          Command.mapMessages(
+            dropdownMenuRadioGroupExampleCommands,
+            (message) => GotDropdownMenuRadioGroupExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuRtlExampleMessage: ({ message }) => {
+        const [dropdownMenuRtlExample, dropdownMenuRtlExampleCommands] =
+          DropdownMenuRtlExample.update(model.dropdownMenuRtlExample, message);
+
+        return [
+          evo(model, { dropdownMenuRtlExample: () => dropdownMenuRtlExample }),
+          Command.mapMessages(dropdownMenuRtlExampleCommands, (message) =>
+            GotDropdownMenuRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuShortcutsExampleMessage: ({ message }) => {
+        const [
+          dropdownMenuShortcutsExample,
+          dropdownMenuShortcutsExampleCommands,
+        ] = DropdownMenuShortcutsExample.update(
+          model.dropdownMenuShortcutsExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            dropdownMenuShortcutsExample: () => dropdownMenuShortcutsExample,
+          }),
+          Command.mapMessages(
+            dropdownMenuShortcutsExampleCommands,
+            (message) => GotDropdownMenuShortcutsExampleMessage({ message })
+          ),
+        ];
+      },
+      GotDropdownMenuSubmenuExampleMessage: ({ message }) => {
+        const [dropdownMenuSubmenuExample, dropdownMenuSubmenuExampleCommands] =
+          DropdownMenuSubmenuExample.update(
+            model.dropdownMenuSubmenuExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            dropdownMenuSubmenuExample: () => dropdownMenuSubmenuExample,
+          }),
+          Command.mapMessages(dropdownMenuSubmenuExampleCommands, (message) =>
+            GotDropdownMenuSubmenuExampleMessage({ message })
+          ),
+        ];
+      },
       GotHoverCardBasicExampleMessage: ({ message }) => {
         const [hoverCardBasicExample, hoverCardBasicExampleCommands] =
           HoverCardBasicExample.update(model.hoverCardBasicExample, message);
@@ -11528,6 +14302,28 @@ export const update = (
           ),
         ];
       },
+      GotHoverCardSidesExampleMessage: ({ message }) => {
+        const [hoverCardSidesExample, hoverCardSidesExampleCommands] =
+          HoverCardSidesExample.update(model.hoverCardSidesExample, message);
+
+        return [
+          evo(model, { hoverCardSidesExample: () => hoverCardSidesExample }),
+          Command.mapMessages(hoverCardSidesExampleCommands, (message) =>
+            GotHoverCardSidesExampleMessage({ message })
+          ),
+        ];
+      },
+      GotHoverCardRtlExampleMessage: ({ message }) => {
+        const [hoverCardRtlExample, hoverCardRtlExampleCommands] =
+          HoverCardRtlExample.update(model.hoverCardRtlExample, message);
+
+        return [
+          evo(model, { hoverCardRtlExample: () => hoverCardRtlExample }),
+          Command.mapMessages(hoverCardRtlExampleCommands, (message) =>
+            GotHoverCardRtlExampleMessage({ message })
+          ),
+        ];
+      },
       GotInputOtpBasicExampleMessage: ({ message }) => {
         const [inputOtpBasicExample, inputOtpBasicExampleCommands] =
           InputOtpBasicExample.update(model.inputOtpBasicExample, message);
@@ -11536,6 +14332,132 @@ export const update = (
           evo(model, { inputOtpBasicExample: () => inputOtpBasicExample }),
           Command.mapMessages(inputOtpBasicExampleCommands, (message) =>
             GotInputOtpBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpPatternExampleMessage: ({ message }) => {
+        const [inputOtpPatternExample, inputOtpPatternExampleCommands] =
+          InputOtpPatternExample.update(model.inputOtpPatternExample, message);
+
+        return [
+          evo(model, { inputOtpPatternExample: () => inputOtpPatternExample }),
+          Command.mapMessages(inputOtpPatternExampleCommands, (message) =>
+            GotInputOtpPatternExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpSeparatorExampleMessage: ({ message }) => {
+        const [inputOtpSeparatorExample, inputOtpSeparatorExampleCommands] =
+          InputOtpSeparatorExample.update(
+            model.inputOtpSeparatorExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            inputOtpSeparatorExample: () => inputOtpSeparatorExample,
+          }),
+          Command.mapMessages(inputOtpSeparatorExampleCommands, (message) =>
+            GotInputOtpSeparatorExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpDisabledExampleMessage: ({ message }) => {
+        const [inputOtpDisabledExample, inputOtpDisabledExampleCommands] =
+          InputOtpDisabledExample.update(
+            model.inputOtpDisabledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            inputOtpDisabledExample: () => inputOtpDisabledExample,
+          }),
+          Command.mapMessages(inputOtpDisabledExampleCommands, (message) =>
+            GotInputOtpDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpControlledExampleMessage: ({ message }) => {
+        const [inputOtpControlledExample, inputOtpControlledExampleCommands] =
+          InputOtpControlledExample.update(
+            model.inputOtpControlledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            inputOtpControlledExample: () => inputOtpControlledExample,
+          }),
+          Command.mapMessages(inputOtpControlledExampleCommands, (message) =>
+            GotInputOtpControlledExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpInvalidExampleMessage: ({ message }) => {
+        const [inputOtpInvalidExample, inputOtpInvalidExampleCommands] =
+          InputOtpInvalidExample.update(model.inputOtpInvalidExample, message);
+
+        return [
+          evo(model, { inputOtpInvalidExample: () => inputOtpInvalidExample }),
+          Command.mapMessages(inputOtpInvalidExampleCommands, (message) =>
+            GotInputOtpInvalidExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpFourDigitsExampleMessage: ({ message }) => {
+        const [inputOtpFourDigitsExample, inputOtpFourDigitsExampleCommands] =
+          InputOtpFourDigitsExample.update(
+            model.inputOtpFourDigitsExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            inputOtpFourDigitsExample: () => inputOtpFourDigitsExample,
+          }),
+          Command.mapMessages(inputOtpFourDigitsExampleCommands, (message) =>
+            GotInputOtpFourDigitsExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpAlphanumericExampleMessage: ({ message }) => {
+        const [
+          inputOtpAlphanumericExample,
+          inputOtpAlphanumericExampleCommands,
+        ] = InputOtpAlphanumericExample.update(
+          model.inputOtpAlphanumericExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            inputOtpAlphanumericExample: () => inputOtpAlphanumericExample,
+          }),
+          Command.mapMessages(inputOtpAlphanumericExampleCommands, (message) =>
+            GotInputOtpAlphanumericExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpFormExampleMessage: ({ message }) => {
+        const [inputOtpFormExample, inputOtpFormExampleCommands] =
+          InputOtpFormExample.update(model.inputOtpFormExample, message);
+
+        return [
+          evo(model, { inputOtpFormExample: () => inputOtpFormExample }),
+          Command.mapMessages(inputOtpFormExampleCommands, (message) =>
+            GotInputOtpFormExampleMessage({ message })
+          ),
+        ];
+      },
+      GotInputOtpRtlExampleMessage: ({ message }) => {
+        const [inputOtpRtlExample, inputOtpRtlExampleCommands] =
+          InputOtpRtlExample.update(model.inputOtpRtlExample, message);
+
+        return [
+          evo(model, { inputOtpRtlExample: () => inputOtpRtlExample }),
+          Command.mapMessages(inputOtpRtlExampleCommands, (message) =>
+            GotInputOtpRtlExampleMessage({ message })
           ),
         ];
       },
@@ -11552,6 +14474,69 @@ export const update = (
           }),
           Command.mapMessages(nativeSelectBasicExampleCommands, (message) =>
             GotNativeSelectBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotNativeSelectDisabledExampleMessage: ({ message }) => {
+        const [
+          nativeSelectDisabledExample,
+          nativeSelectDisabledExampleCommands,
+        ] = NativeSelectDisabledExample.update(
+          model.nativeSelectDisabledExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            nativeSelectDisabledExample: () => nativeSelectDisabledExample,
+          }),
+          Command.mapMessages(nativeSelectDisabledExampleCommands, (message) =>
+            GotNativeSelectDisabledExampleMessage({ message })
+          ),
+        ];
+      },
+      GotNativeSelectGroupsExampleMessage: ({ message }) => {
+        const [nativeSelectGroupsExample, nativeSelectGroupsExampleCommands] =
+          NativeSelectGroupsExample.update(
+            model.nativeSelectGroupsExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            nativeSelectGroupsExample: () => nativeSelectGroupsExample,
+          }),
+          Command.mapMessages(nativeSelectGroupsExampleCommands, (message) =>
+            GotNativeSelectGroupsExampleMessage({ message })
+          ),
+        ];
+      },
+      GotNativeSelectInvalidExampleMessage: ({ message }) => {
+        const [nativeSelectInvalidExample, nativeSelectInvalidExampleCommands] =
+          NativeSelectInvalidExample.update(
+            model.nativeSelectInvalidExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            nativeSelectInvalidExample: () => nativeSelectInvalidExample,
+          }),
+          Command.mapMessages(nativeSelectInvalidExampleCommands, (message) =>
+            GotNativeSelectInvalidExampleMessage({ message })
+          ),
+        ];
+      },
+      GotNativeSelectRtlExampleMessage: ({ message }) => {
+        const [nativeSelectRtlExample, nativeSelectRtlExampleCommands] =
+          NativeSelectRtlExample.update(model.nativeSelectRtlExample, message);
+
+        return [
+          evo(model, {
+            nativeSelectRtlExample: () => nativeSelectRtlExample,
+          }),
+          Command.mapMessages(nativeSelectRtlExampleCommands, (message) =>
+            GotNativeSelectRtlExampleMessage({ message })
           ),
         ];
       },
@@ -11832,6 +14817,28 @@ export const update = (
           ),
         ];
       },
+      GotLabelFieldExampleMessage: ({ message }) => {
+        const [labelFieldExample, labelFieldExampleCommands] =
+          LabelFieldExample.update(model.labelFieldExample, message);
+
+        return [
+          evo(model, { labelFieldExample: () => labelFieldExample }),
+          Command.mapMessages(labelFieldExampleCommands, (message) =>
+            GotLabelFieldExampleMessage({ message })
+          ),
+        ];
+      },
+      GotLabelRtlExampleMessage: ({ message }) => {
+        const [labelRtlExample, labelRtlExampleCommands] =
+          LabelRtlExample.update(model.labelRtlExample, message);
+
+        return [
+          evo(model, { labelRtlExample: () => labelRtlExample }),
+          Command.mapMessages(labelRtlExampleCommands, (message) =>
+            GotLabelRtlExampleMessage({ message })
+          ),
+        ];
+      },
       GotPaginationBasicExampleMessage: ({ message }) => {
         const [paginationBasicExample, paginationBasicExampleCommands] =
           PaginationBasicExample.update(model.paginationBasicExample, message);
@@ -11840,6 +14847,49 @@ export const update = (
           evo(model, { paginationBasicExample: () => paginationBasicExample }),
           Command.mapMessages(paginationBasicExampleCommands, (message) =>
             GotPaginationBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotPaginationSimpleExampleMessage: ({ message }) => {
+        const [paginationSimpleExample, paginationSimpleExampleCommands] =
+          PaginationSimpleExample.update(
+            model.paginationSimpleExample,
+            message
+          );
+
+        return [
+          evo(model, { paginationSimpleExample: () => paginationSimpleExample }),
+          Command.mapMessages(paginationSimpleExampleCommands, (message) =>
+            GotPaginationSimpleExampleMessage({ message })
+          ),
+        ];
+      },
+      GotPaginationIconsOnlyExampleMessage: ({ message }) => {
+        const [
+          paginationIconsOnlyExample,
+          paginationIconsOnlyExampleCommands,
+        ] = PaginationIconsOnlyExample.update(
+          model.paginationIconsOnlyExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            paginationIconsOnlyExample: () => paginationIconsOnlyExample,
+          }),
+          Command.mapMessages(paginationIconsOnlyExampleCommands, (message) =>
+            GotPaginationIconsOnlyExampleMessage({ message })
+          ),
+        ];
+      },
+      GotPaginationRtlExampleMessage: ({ message }) => {
+        const [paginationRtlExample, paginationRtlExampleCommands] =
+          PaginationRtlExample.update(model.paginationRtlExample, message);
+
+        return [
+          evo(model, { paginationRtlExample: () => paginationRtlExample }),
+          Command.mapMessages(paginationRtlExampleCommands, (message) =>
+            GotPaginationRtlExampleMessage({ message })
           ),
         ];
       },
@@ -11854,6 +14904,44 @@ export const update = (
           ),
         ];
       },
+      GotResizableHandleExampleMessage: ({ message }) => {
+        const [resizableHandleExample, resizableHandleExampleCommands] =
+          ResizableHandleExample.update(model.resizableHandleExample, message);
+
+        return [
+          evo(model, { resizableHandleExample: () => resizableHandleExample }),
+          Command.mapMessages(resizableHandleExampleCommands, (message) =>
+            GotResizableHandleExampleMessage({ message })
+          ),
+        ];
+      },
+      GotResizableRtlExampleMessage: ({ message }) => {
+        const [resizableRtlExample, resizableRtlExampleCommands] =
+          ResizableRtlExample.update(model.resizableRtlExample, message);
+
+        return [
+          evo(model, { resizableRtlExample: () => resizableRtlExample }),
+          Command.mapMessages(resizableRtlExampleCommands, (message) =>
+            GotResizableRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotResizableVerticalExampleMessage: ({ message }) => {
+        const [resizableVerticalExample, resizableVerticalExampleCommands] =
+          ResizableVerticalExample.update(
+            model.resizableVerticalExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            resizableVerticalExample: () => resizableVerticalExample,
+          }),
+          Command.mapMessages(resizableVerticalExampleCommands, (message) =>
+            GotResizableVerticalExampleMessage({ message })
+          ),
+        ];
+      },
       GotSidebarBasicExampleMessage: ({ message }) => {
         const [sidebarBasicExample, sidebarBasicExampleCommands] =
           SidebarBasicExample.update(model.sidebarBasicExample, message);
@@ -11862,6 +14950,62 @@ export const update = (
           evo(model, { sidebarBasicExample: () => sidebarBasicExample }),
           Command.mapMessages(sidebarBasicExampleCommands, (message) =>
             GotSidebarBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSidebarCompositionExampleMessage: ({ message }) => {
+        const [sidebarCompositionExample, sidebarCompositionExampleCommands] =
+          SidebarCompositionExample.update(
+            model.sidebarCompositionExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            sidebarCompositionExample: () => sidebarCompositionExample,
+          }),
+          Command.mapMessages(sidebarCompositionExampleCommands, (message) =>
+            GotSidebarCompositionExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSidebarControlledExampleMessage: ({ message }) => {
+        const [sidebarControlledExample, sidebarControlledExampleCommands] =
+          SidebarControlledExample.update(
+            model.sidebarControlledExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            sidebarControlledExample: () => sidebarControlledExample,
+          }),
+          Command.mapMessages(sidebarControlledExampleCommands, (message) =>
+            GotSidebarControlledExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSidebarRtlExampleMessage: ({ message }) => {
+        const [sidebarRtlExample, sidebarRtlExampleCommands] =
+          SidebarRtlExample.update(model.sidebarRtlExample, message);
+
+        return [
+          evo(model, { sidebarRtlExample: () => sidebarRtlExample }),
+          Command.mapMessages(sidebarRtlExampleCommands, (message) =>
+            GotSidebarRtlExampleMessage({ message })
+          ),
+        ];
+      },
+      GotSidebarVariantsExampleMessage: ({ message }) => {
+        const [sidebarVariantsExample, sidebarVariantsExampleCommands] =
+          SidebarVariantsExample.update(model.sidebarVariantsExample, message);
+
+        return [
+          evo(model, {
+            sidebarVariantsExample: () => sidebarVariantsExample,
+          }),
+          Command.mapMessages(sidebarVariantsExampleCommands, (message) =>
+            GotSidebarVariantsExampleMessage({ message })
           ),
         ];
       },
@@ -11884,6 +15028,52 @@ export const update = (
           evo(model, { cardBasicExample: () => cardBasicExample }),
           Command.mapMessages(cardBasicExampleCommands, (message) =>
             GotCardBasicExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCardSizeExampleMessage: ({ message }) => {
+        const [cardSizeExample, cardSizeExampleCommands] =
+          CardSizeExample.update(model.cardSizeExample, message);
+
+        return [
+          evo(model, { cardSizeExample: () => cardSizeExample }),
+          Command.mapMessages(cardSizeExampleCommands, (message) =>
+            GotCardSizeExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCardSpacingExampleMessage: ({ message }) => {
+        const [cardSpacingExample, cardSpacingExampleCommands] =
+          CardSpacingExample.update(model.cardSpacingExample, message);
+
+        return [
+          evo(model, { cardSpacingExample: () => cardSpacingExample }),
+          Command.mapMessages(cardSpacingExampleCommands, (message) =>
+            GotCardSpacingExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCardImageExampleMessage: ({ message }) => {
+        const [cardImageExample, cardImageExampleCommands] =
+          CardImageExample.update(model.cardImageExample, message);
+
+        return [
+          evo(model, { cardImageExample: () => cardImageExample }),
+          Command.mapMessages(cardImageExampleCommands, (message) =>
+            GotCardImageExampleMessage({ message })
+          ),
+        ];
+      },
+      GotCardRtlExampleMessage: ({ message }) => {
+        const [cardRtlExample, cardRtlExampleCommands] = CardRtlExample.update(
+          model.cardRtlExample,
+          message
+        );
+
+        return [
+          evo(model, { cardRtlExample: () => cardRtlExample }),
+          Command.mapMessages(cardRtlExampleCommands, (message) =>
+            GotCardRtlExampleMessage({ message })
           ),
         ];
       },
@@ -11931,6 +15121,18 @@ export const update = (
         ];
       },
 
+      GotSpinnerBasicExampleMessage: ({ message }) => {
+        const [spinnerBasicExample, spinnerBasicExampleCommands] =
+          SpinnerBasicExample.update(model.spinnerBasicExample);
+
+        return [
+          evo(model, { spinnerBasicExample: () => spinnerBasicExample }),
+          Command.mapMessages(spinnerBasicExampleCommands, (message) =>
+            GotSpinnerBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotKbdBasicExampleMessage: ({ message }) => {
         const [kbdBasicExample, kbdBasicExampleCommands] =
           KbdBasicExample.update(model.kbdBasicExample, message);
@@ -11954,6 +15156,19 @@ export const update = (
           ),
         ];
       },
+      GotKbdRtlExampleMessage: ({ message }) => {
+        const [kbdRtlExample, kbdRtlExampleCommands] = KbdRtlExample.update(
+          model.kbdRtlExample,
+          message
+        );
+
+        return [
+          evo(model, { kbdRtlExample: () => kbdRtlExample }),
+          Command.mapMessages(kbdRtlExampleCommands, (message) =>
+            GotKbdRtlExampleMessage({ message })
+          ),
+        ];
+      },
 
       GotTypographyBasicExampleMessage: ({ message }) => {
         const [typographyBasicExample, typographyBasicExampleCommands] =
@@ -11963,6 +15178,46 @@ export const update = (
           evo(model, { typographyBasicExample: () => typographyBasicExample }),
           Command.mapMessages(typographyBasicExampleCommands, (message) =>
             GotTypographyBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyBackgroundExampleMessage: ({ message }) => {
+        const [emptyBackgroundExample, emptyBackgroundExampleCommands] =
+          EmptyBackgroundExample.update(model.emptyBackgroundExample, message);
+
+        return [
+          evo(model, {
+            emptyBackgroundExample: () => emptyBackgroundExample,
+          }),
+          Command.mapMessages(emptyBackgroundExampleCommands, (message) =>
+            GotEmptyBackgroundExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyAvatarExampleMessage: ({ message }) => {
+        const [emptyAvatarExample, emptyAvatarExampleCommands] =
+          EmptyAvatarExample.update(model.emptyAvatarExample, message);
+
+        return [
+          evo(model, { emptyAvatarExample: () => emptyAvatarExample }),
+          Command.mapMessages(emptyAvatarExampleCommands, (message) =>
+            GotEmptyAvatarExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyAvatarGroupExampleMessage: ({ message }) => {
+        const [emptyAvatarGroupExample, emptyAvatarGroupExampleCommands] =
+          EmptyAvatarGroupExample.update(model.emptyAvatarGroupExample, message);
+
+        return [
+          evo(model, {
+            emptyAvatarGroupExample: () => emptyAvatarGroupExample,
+          }),
+          Command.mapMessages(emptyAvatarGroupExampleCommands, (message) =>
+            GotEmptyAvatarGroupExampleMessage({ message })
           ),
         ];
       },
@@ -11987,6 +15242,30 @@ export const update = (
           evo(model, { emptyInputGroupExample: () => emptyInputGroupExample }),
           Command.mapMessages(emptyInputGroupExampleCommands, (message) =>
             GotEmptyInputGroupExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyOutlineExampleMessage: ({ message }) => {
+        const [emptyOutlineExample, emptyOutlineExampleCommands] =
+          EmptyOutlineExample.update(model.emptyOutlineExample, message);
+
+        return [
+          evo(model, { emptyOutlineExample: () => emptyOutlineExample }),
+          Command.mapMessages(emptyOutlineExampleCommands, (message) =>
+            GotEmptyOutlineExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotEmptyRtlExampleMessage: ({ message }) => {
+        const [emptyRtlExample, emptyRtlExampleCommands] =
+          EmptyRtlExample.update(model.emptyRtlExample, message);
+
+        return [
+          evo(model, { emptyRtlExample: () => emptyRtlExample }),
+          Command.mapMessages(emptyRtlExampleCommands, (message) =>
+            GotEmptyRtlExampleMessage({ message })
           ),
         ];
       },
@@ -12097,6 +15376,28 @@ export const update = (
         ];
       },
 
+      GotShadcnCalendarCustomCellSizeExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarCustomCellSizeExample,
+          shadcnCalendarCustomCellSizeExampleCommands,
+        ] = ShadcnCalendarCustomCellSizeExample.update(
+          model.shadcnCalendarCustomCellSizeExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarCustomCellSizeExample: () =>
+              shadcnCalendarCustomCellSizeExample,
+          }),
+          Command.mapMessages(
+            shadcnCalendarCustomCellSizeExampleCommands,
+            (message) =>
+              GotShadcnCalendarCustomCellSizeExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotShadcnCalendarDateOfBirthExampleMessage: ({ message }) => {
         const [
           shadcnCalendarDateOfBirthExample,
@@ -12114,6 +15415,28 @@ export const update = (
           Command.mapMessages(
             shadcnCalendarDateOfBirthExampleCommands,
             (message) => GotShadcnCalendarDateOfBirthExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarDateTimePickerExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarDateTimePickerExample,
+          shadcnCalendarDateTimePickerExampleCommands,
+        ] = ShadcnCalendarDateTimePickerExample.update(
+          model.shadcnCalendarDateTimePickerExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarDateTimePickerExample: () =>
+              shadcnCalendarDateTimePickerExample,
+          }),
+          Command.mapMessages(
+            shadcnCalendarDateTimePickerExampleCommands,
+            (message) =>
+              GotShadcnCalendarDateTimePickerExampleMessage({ message })
           ),
         ];
       },
@@ -12159,6 +15482,23 @@ export const update = (
         ];
       },
 
+      GotShadcnCalendarRangeExampleMessage: ({ message }) => {
+        const [shadcnCalendarRangeExample, shadcnCalendarRangeExampleCommands] =
+          ShadcnCalendarRangeExample.update(
+            model.shadcnCalendarRangeExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnCalendarRangeExample: () => shadcnCalendarRangeExample,
+          }),
+          Command.mapMessages(shadcnCalendarRangeExampleCommands, (message) =>
+            GotShadcnCalendarRangeExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotShadcnCalendarRtlExampleMessage: ({ message }) => {
         const [shadcnCalendarRtlExample, shadcnCalendarRtlExampleCommands] =
           ShadcnCalendarRtlExample.update(
@@ -12172,6 +15512,27 @@ export const update = (
           }),
           Command.mapMessages(shadcnCalendarRtlExampleCommands, (message) =>
             GotShadcnCalendarRtlExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCalendarWeekNumbersExampleMessage: ({ message }) => {
+        const [
+          shadcnCalendarWeekNumbersExample,
+          shadcnCalendarWeekNumbersExampleCommands,
+        ] = ShadcnCalendarWeekNumbersExample.update(
+          model.shadcnCalendarWeekNumbersExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCalendarWeekNumbersExample: () =>
+              shadcnCalendarWeekNumbersExample,
+          }),
+          Command.mapMessages(
+            shadcnCalendarWeekNumbersExampleCommands,
+            (message) => GotShadcnCalendarWeekNumbersExampleMessage({ message })
           ),
         ];
       },
@@ -12213,6 +15574,28 @@ export const update = (
           }),
           Command.mapMessages(shadcnCheckboxBasicExampleCommands, (message) =>
             GotShadcnCheckboxBasicExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotShadcnCheckboxCheckedStateExampleMessage: ({ message }) => {
+        const [
+          shadcnCheckboxCheckedStateExample,
+          shadcnCheckboxCheckedStateExampleCommands,
+        ] = ShadcnCheckboxCheckedStateExample.update(
+          model.shadcnCheckboxCheckedStateExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            shadcnCheckboxCheckedStateExample: () =>
+              shadcnCheckboxCheckedStateExample,
+          }),
+          Command.mapMessages(
+            shadcnCheckboxCheckedStateExampleCommands,
+            (message) =>
+              GotShadcnCheckboxCheckedStateExampleMessage({ message })
           ),
         ];
       },
@@ -13265,6 +16648,28 @@ export const update = (
         ];
       },
 
+      GotBaseUiPopoverDetachedTriggerExampleMessage: ({ message }) => {
+        const [
+          baseUiPopoverDetachedTriggerExample,
+          baseUiPopoverDetachedTriggerExampleCommands,
+        ] = BaseUiPopoverDetachedTriggerExample.update(
+          model.baseUiPopoverDetachedTriggerExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiPopoverDetachedTriggerExample: () =>
+              baseUiPopoverDetachedTriggerExample,
+          }),
+          Command.mapMessages(
+            baseUiPopoverDetachedTriggerExampleCommands,
+            (message) =>
+              GotBaseUiPopoverDetachedTriggerExampleMessage({ message })
+          ),
+        ];
+      },
+
       GotBaseUiPopoverMultipleTriggersExampleMessage: ({ message }) => {
         const [
           baseUiPopoverMultipleTriggersExample,
@@ -13283,6 +16688,27 @@ export const update = (
             baseUiPopoverMultipleTriggersExampleCommands,
             (message) =>
               GotBaseUiPopoverMultipleTriggersExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotBaseUiPopoverOpenOnHoverExampleMessage: ({ message }) => {
+        const [
+          baseUiPopoverOpenOnHoverExample,
+          baseUiPopoverOpenOnHoverExampleCommands,
+        ] = BaseUiPopoverOpenOnHoverExample.update(
+          model.baseUiPopoverOpenOnHoverExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            baseUiPopoverOpenOnHoverExample: () =>
+              baseUiPopoverOpenOnHoverExample,
+          }),
+          Command.mapMessages(
+            baseUiPopoverOpenOnHoverExampleCommands,
+            (message) => GotBaseUiPopoverOpenOnHoverExampleMessage({ message })
           ),
         ];
       },
@@ -13812,10 +17238,7 @@ export const update = (
 
       GotShadcnDialogRtlExampleMessage: ({ message }) => {
         const [shadcnDialogRtlExample, shadcnDialogRtlExampleCommands] =
-          ShadcnDialogRtlExample.update(
-            model.shadcnDialogRtlExample,
-            message
-          );
+          ShadcnDialogRtlExample.update(model.shadcnDialogRtlExample, message);
 
         return [
           evo(model, {
@@ -13987,6 +17410,157 @@ export const update = (
         ];
       },
 
+      GotShadcnInputDemoExampleMessage: ({ message }) => {
+        const [shadcnInputDemoExample, commands] =
+          ShadcnInputDemoExample.update(model.shadcnInputDemoExample, message);
+
+        return [
+          evo(model, {
+            shadcnInputDemoExample: () => shadcnInputDemoExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputDemoExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputFieldExampleMessage: ({ message }) => {
+        const [shadcnInputFieldExample, commands] =
+          ShadcnInputFieldExample.update(
+            model.shadcnInputFieldExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputFieldExample: () => shadcnInputFieldExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputFieldExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputFieldGroupExampleMessage: ({ message }) => {
+        const [shadcnInputFieldGroupExample, commands] =
+          ShadcnInputFieldGroupExample.update(
+            model.shadcnInputFieldGroupExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputFieldGroupExample: () => shadcnInputFieldGroupExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputFieldGroupExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputInlineExampleMessage: ({ message }) => {
+        const [shadcnInputInlineExample, commands] =
+          ShadcnInputInlineExample.update(
+            model.shadcnInputInlineExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputInlineExample: () => shadcnInputInlineExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputInlineExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputGridExampleMessage: ({ message }) => {
+        const [shadcnInputGridExample, commands] =
+          ShadcnInputGridExample.update(model.shadcnInputGridExample, message);
+
+        return [
+          evo(model, {
+            shadcnInputGridExample: () => shadcnInputGridExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputGridExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputRequiredExampleMessage: ({ message }) => {
+        const [shadcnInputRequiredExample, commands] =
+          ShadcnInputRequiredExample.update(
+            model.shadcnInputRequiredExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputRequiredExample: () => shadcnInputRequiredExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputRequiredExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputBadgeExampleMessage: ({ message }) => {
+        const [shadcnInputBadgeExample, commands] =
+          ShadcnInputBadgeExample.update(
+            model.shadcnInputBadgeExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputBadgeExample: () => shadcnInputBadgeExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputBadgeExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputInputGroupExampleMessage: ({ message }) => {
+        const [shadcnInputInputGroupExample, commands] =
+          ShadcnInputInputGroupExample.update(
+            model.shadcnInputInputGroupExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputInputGroupExample: () => shadcnInputInputGroupExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputInputGroupExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputButtonGroupExampleMessage: ({ message }) => {
+        const [shadcnInputButtonGroupExample, commands] =
+          ShadcnInputButtonGroupExample.update(
+            model.shadcnInputButtonGroupExample,
+            message
+          );
+
+        return [
+          evo(model, {
+            shadcnInputButtonGroupExample: () => shadcnInputButtonGroupExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputButtonGroupExampleMessage({ message })
+          ),
+        ];
+      },
+      GotShadcnInputFormExampleMessage: ({ message }) => {
+        const [shadcnInputFormExample, commands] =
+          ShadcnInputFormExample.update(model.shadcnInputFormExample, message);
+
+        return [
+          evo(model, {
+            shadcnInputFormExample: () => shadcnInputFormExample,
+          }),
+          Command.mapMessages(commands, (message) =>
+            GotShadcnInputFormExampleMessage({ message })
+          ),
+        ];
+      },
       GotShadcnInputDisabledExampleMessage: ({ message }) => {
         const [shadcnInputDisabledExample, shadcnInputDisabledExampleCommands] =
           ShadcnInputDisabledExample.update(
@@ -14324,10 +17898,104 @@ const shadcnSliderBasicExampleSubscriptions = Subscription.lift({
   shadcnSliderBasicDragPointer: Ui.Slider.subscriptions.dragPointer,
   shadcnSliderBasicDragEscape: Ui.Slider.subscriptions.dragEscape,
 })<Model, Message>({
-  toChildModel: (model) => model.shadcnSliderBasicExample.slider,
+  toChildModel: (model) => model.shadcnSliderBasicExample.basicSlider,
   toParentMessage: (message) =>
     GotShadcnSliderBasicExampleMessage({
-      message: ShadcnSliderBasicExample.GotSliderMessage({ message }),
+      message: ShadcnSliderBasicExample.GotBasicSliderMessage({ message }),
+    }),
+});
+
+const shadcnSliderRangeStartExampleSubscriptions = Subscription.lift({
+  shadcnSliderRangeStartDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderRangeStartDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.rangeStartSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotRangeStartSliderMessage({ message }),
+    }),
+});
+
+const shadcnSliderRangeEndExampleSubscriptions = Subscription.lift({
+  shadcnSliderRangeEndDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderRangeEndDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.rangeEndSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotRangeEndSliderMessage({ message }),
+    }),
+});
+
+const shadcnSliderMultipleFirstExampleSubscriptions = Subscription.lift({
+  shadcnSliderMultipleFirstDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderMultipleFirstDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.multipleFirstSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotMultipleFirstSliderMessage({
+        message,
+      }),
+    }),
+});
+
+const shadcnSliderMultipleSecondExampleSubscriptions = Subscription.lift({
+  shadcnSliderMultipleSecondDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderMultipleSecondDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.multipleSecondSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotMultipleSecondSliderMessage({
+        message,
+      }),
+    }),
+});
+
+const shadcnSliderMultipleThirdExampleSubscriptions = Subscription.lift({
+  shadcnSliderMultipleThirdDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderMultipleThirdDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.multipleThirdSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotMultipleThirdSliderMessage({
+        message,
+      }),
+    }),
+});
+
+const shadcnSliderVerticalExampleSubscriptions = Subscription.lift({
+  shadcnSliderVerticalDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderVerticalDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.verticalSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotVerticalSliderMessage({ message }),
+    }),
+});
+
+const shadcnSliderControlledExampleSubscriptions = Subscription.lift({
+  shadcnSliderControlledDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderControlledDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.controlledSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotControlledSliderMessage({ message }),
+    }),
+});
+
+const shadcnSliderRtlExampleSubscriptions = Subscription.lift({
+  shadcnSliderRtlDragPointer: Ui.Slider.subscriptions.dragPointer,
+  shadcnSliderRtlDragEscape: Ui.Slider.subscriptions.dragEscape,
+})<Model, Message>({
+  toChildModel: (model) => model.shadcnSliderBasicExample.rtlSlider,
+  toParentMessage: (message) =>
+    GotShadcnSliderBasicExampleMessage({
+      message: ShadcnSliderBasicExample.GotRtlSliderMessage({ message }),
     }),
 });
 
@@ -14357,6 +18025,14 @@ export const subscriptions = Subscription.aggregate<Model, Message>()(
   dragAndDropBasicExampleSubscriptions,
   sliderBasicExampleSubscriptions,
   shadcnSliderBasicExampleSubscriptions,
+  shadcnSliderRangeStartExampleSubscriptions,
+  shadcnSliderRangeEndExampleSubscriptions,
+  shadcnSliderMultipleFirstExampleSubscriptions,
+  shadcnSliderMultipleSecondExampleSubscriptions,
+  shadcnSliderMultipleThirdExampleSubscriptions,
+  shadcnSliderVerticalExampleSubscriptions,
+  shadcnSliderControlledExampleSubscriptions,
+  shadcnSliderRtlExampleSubscriptions,
   virtualListBasicExampleSubscriptions,
   virtualListVariableExampleSubscriptions
 );

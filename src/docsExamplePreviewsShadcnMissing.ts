@@ -3,6 +3,13 @@ import { html } from "foldkit/html";
 
 import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
+import * as ShadcnCheckboxDescriptionExample from "../registry/default/examples/shadcn-checkbox-description/main";
+import * as ShadcnCheckboxDisabledExample from "../registry/default/examples/shadcn-checkbox-disabled/main";
+import * as ShadcnCheckboxGroupExample from "../registry/default/examples/shadcn-checkbox-group/main";
+import * as ShadcnCheckboxInvalidExample from "../registry/default/examples/shadcn-checkbox-invalid/main";
+import * as ShadcnCheckboxRtlExample from "../registry/default/examples/shadcn-checkbox-rtl/main";
+import * as ShadcnCheckboxTableExample from "../registry/default/examples/shadcn-checkbox-table/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
@@ -19,18 +26,48 @@ import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-dra
 import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
+import * as ShadcnInputBadgeExample from "../registry/default/examples/shadcn-input-badge/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputButtonGroupExample from "../registry/default/examples/shadcn-input-button-group/main";
+import * as ShadcnInputDemoExample from "../registry/default/examples/shadcn-input-demo/main";
 import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFieldGroupExample from "../registry/default/examples/shadcn-input-field-group/main";
+import * as ShadcnInputFieldExample from "../registry/default/examples/shadcn-input-field/main";
 import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputFormExample from "../registry/default/examples/shadcn-input-form/main";
+import * as ShadcnInputGridExample from "../registry/default/examples/shadcn-input-grid/main";
+import * as ShadcnInputInlineExample from "../registry/default/examples/shadcn-input-inline/main";
+import * as ShadcnInputInputGroupExample from "../registry/default/examples/shadcn-input-input-group/main";
 import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRequiredExample from "../registry/default/examples/shadcn-input-required/main";
 import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
+import * as InputGroupAlignExample from "../registry/default/examples/input-group-align/main";
+import * as InputGroupButtonExample from "../registry/default/examples/input-group-button/main";
+import * as InputGroupCustomInputExample from "../registry/default/examples/input-group-custom-input/main";
+import * as InputGroupDropdownExample from "../registry/default/examples/input-group-dropdown/main";
+import * as InputGroupIconExample from "../registry/default/examples/input-group-icon/main";
+import * as InputGroupRtlExample from "../registry/default/examples/input-group-rtl/main";
+import * as InputGroupSpinnerExample from "../registry/default/examples/input-group-spinner/main";
+import * as InputGroupTextExample from "../registry/default/examples/input-group-text/main";
+import * as InputGroupTextareaExample from "../registry/default/examples/input-group-textarea/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnNavigationMenuBasicExample from "../registry/default/examples/shadcn-navigation-menu-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
 import * as ShadcnProgressBasicExample from "../registry/default/examples/shadcn-progress-basic/main";
+import * as ShadcnRadioGroupChoiceCardExample from "../registry/default/examples/shadcn-radio-group-choice-card/main";
+import * as ShadcnRadioGroupDescriptionExample from "../registry/default/examples/shadcn-radio-group-description/main";
+import * as ShadcnRadioGroupDisabledExample from "../registry/default/examples/shadcn-radio-group-disabled/main";
+import * as ShadcnRadioGroupFieldsetExample from "../registry/default/examples/shadcn-radio-group-fieldset/main";
+import * as ShadcnRadioGroupInvalidExample from "../registry/default/examples/shadcn-radio-group-invalid/main";
+import * as ShadcnRadioGroupRtlExample from "../registry/default/examples/shadcn-radio-group-rtl/main";
 import * as ShadcnScrollAreaBasicExample from "../registry/default/examples/shadcn-scroll-area-basic/main";
 import * as ShadcnSeparatorBasicExample from "../registry/default/examples/shadcn-separator-basic/main";
 import * as ShadcnTextareaBasicExample from "../registry/default/examples/shadcn-textarea-basic/main";
+import * as ShadcnTextareaButtonExample from "../registry/default/examples/shadcn-textarea-button/main";
+import * as ShadcnTextareaDisabledExample from "../registry/default/examples/shadcn-textarea-disabled/main";
+import * as ShadcnTextareaFieldExample from "../registry/default/examples/shadcn-textarea-field/main";
+import * as ShadcnTextareaInvalidExample from "../registry/default/examples/shadcn-textarea-invalid/main";
+import * as ShadcnTextareaRtlExample from "../registry/default/examples/shadcn-textarea-rtl/main";
 import * as ShadcnToastBasicExample from "../registry/default/examples/shadcn-toast-basic/main";
 import * as ShadcnToggleBasicExample from "../registry/default/examples/shadcn-toggle-basic/main";
 import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/shadcn-toggle-group-basic/main";
@@ -68,6 +105,41 @@ export const shadcnCheckboxBasicExamplePreview = (
       Main.GotShadcnCheckboxBasicExampleMessage({ message }),
   });
 };
+
+export const shadcnCheckboxDescriptionExamplePreview = (): Html =>
+  ShadcnCheckboxDescriptionExample.view(
+    ShadcnCheckboxDescriptionExample.init()[0]
+  );
+
+export const shadcnCheckboxCheckedStateExamplePreview = (
+  model: ShadcnCheckboxCheckedStateExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnCheckboxCheckedStateExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnCheckboxCheckedStateExampleMessage({ message }),
+  });
+};
+
+export const shadcnCheckboxDisabledExamplePreview = (): Html =>
+  ShadcnCheckboxDisabledExample.view(ShadcnCheckboxDisabledExample.init()[0]);
+
+export const shadcnCheckboxGroupExamplePreview = (): Html =>
+  ShadcnCheckboxGroupExample.view(ShadcnCheckboxGroupExample.init()[0]);
+
+export const shadcnCheckboxInvalidExamplePreview = (): Html =>
+  ShadcnCheckboxInvalidExample.view(ShadcnCheckboxInvalidExample.init()[0]);
+
+export const shadcnCheckboxRtlExamplePreview = (): Html =>
+  ShadcnCheckboxRtlExample.view(ShadcnCheckboxRtlExample.init()[0]);
+
+export const shadcnCheckboxTableExamplePreview = (): Html =>
+  ShadcnCheckboxTableExample.view(ShadcnCheckboxTableExample.init()[0]);
 
 export const shadcnCollapsibleBasicExamplePreview = (
   model: ShadcnCollapsibleBasicExample.Model,
@@ -324,6 +396,156 @@ export const shadcnInputBasicExamplePreview = (
   });
 };
 
+export const shadcnInputDemoExamplePreview = (
+  model: ShadcnInputDemoExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputDemoExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputDemoExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputFieldExamplePreview = (
+  model: ShadcnInputFieldExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputFieldExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputFieldExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputFieldGroupExamplePreview = (
+  model: ShadcnInputFieldGroupExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputFieldGroupExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputFieldGroupExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputInlineExamplePreview = (
+  model: ShadcnInputInlineExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputInlineExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputInlineExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputGridExamplePreview = (
+  model: ShadcnInputGridExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputGridExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputGridExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputRequiredExamplePreview = (
+  model: ShadcnInputRequiredExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputRequiredExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputRequiredExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputBadgeExamplePreview = (
+  model: ShadcnInputBadgeExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputBadgeExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputBadgeExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputInputGroupExamplePreview = (
+  model: ShadcnInputInputGroupExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputInputGroupExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputInputGroupExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputButtonGroupExamplePreview = (
+  model: ShadcnInputButtonGroupExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputButtonGroupExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputButtonGroupExampleMessage({ message }),
+  });
+};
+
+export const shadcnInputFormExamplePreview = (
+  model: ShadcnInputFormExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ShadcnInputFormExample.view,
+    toParentMessage: (message) =>
+      Main.GotShadcnInputFormExampleMessage({ message }),
+  });
+};
+
 export const shadcnInputDisabledExamplePreview = (
   model: ShadcnInputDisabledExample.Model,
   slotId: string
@@ -384,6 +606,33 @@ export const shadcnInputRtlExamplePreview = (
   });
 };
 
+export const inputGroupAlignExamplePreview = (): Html =>
+  InputGroupAlignExample.view(InputGroupAlignExample.init()[0]);
+
+export const inputGroupButtonExamplePreview = (): Html =>
+  InputGroupButtonExample.view(InputGroupButtonExample.init()[0]);
+
+export const inputGroupCustomInputExamplePreview = (): Html =>
+  InputGroupCustomInputExample.view(InputGroupCustomInputExample.init()[0]);
+
+export const inputGroupDropdownExamplePreview = (): Html =>
+  InputGroupDropdownExample.view(InputGroupDropdownExample.init()[0]);
+
+export const inputGroupIconExamplePreview = (): Html =>
+  InputGroupIconExample.view(InputGroupIconExample.init()[0]);
+
+export const inputGroupRtlExamplePreview = (): Html =>
+  InputGroupRtlExample.view(InputGroupRtlExample.init()[0]);
+
+export const inputGroupSpinnerExamplePreview = (): Html =>
+  InputGroupSpinnerExample.view(InputGroupSpinnerExample.init()[0]);
+
+export const inputGroupTextExamplePreview = (): Html =>
+  InputGroupTextExample.view(InputGroupTextExample.init()[0]);
+
+export const inputGroupTextareaExamplePreview = (): Html =>
+  InputGroupTextareaExample.view(InputGroupTextareaExample.init()[0]);
+
 export const shadcnMenubarBasicExamplePreview = (
   model: ShadcnMenubarBasicExample.Model,
   slotId: string
@@ -422,6 +671,32 @@ export const shadcnPopoverBasicExamplePreview = (
 export const shadcnProgressBasicExamplePreview = (): Html =>
   ShadcnProgressBasicExample.view(ShadcnProgressBasicExample.init()[0]);
 
+export const shadcnRadioGroupDescriptionExamplePreview = (): Html =>
+  ShadcnRadioGroupDescriptionExample.view(
+    ShadcnRadioGroupDescriptionExample.init()[0]
+  );
+
+export const shadcnRadioGroupChoiceCardExamplePreview = (): Html =>
+  ShadcnRadioGroupChoiceCardExample.view(
+    ShadcnRadioGroupChoiceCardExample.init()[0]
+  );
+
+export const shadcnRadioGroupFieldsetExamplePreview = (): Html =>
+  ShadcnRadioGroupFieldsetExample.view(
+    ShadcnRadioGroupFieldsetExample.init()[0]
+  );
+
+export const shadcnRadioGroupDisabledExamplePreview = (): Html =>
+  ShadcnRadioGroupDisabledExample.view(
+    ShadcnRadioGroupDisabledExample.init()[0]
+  );
+
+export const shadcnRadioGroupInvalidExamplePreview = (): Html =>
+  ShadcnRadioGroupInvalidExample.view(ShadcnRadioGroupInvalidExample.init()[0]);
+
+export const shadcnRadioGroupRtlExamplePreview = (): Html =>
+  ShadcnRadioGroupRtlExample.view(ShadcnRadioGroupRtlExample.init()[0]);
+
 export const shadcnScrollAreaBasicExamplePreview = (): Html =>
   ShadcnScrollAreaBasicExample.view(ShadcnScrollAreaBasicExample.init()[0]);
 
@@ -442,6 +717,21 @@ export const shadcnTextareaBasicExamplePreview = (
       Main.GotShadcnTextareaBasicExampleMessage({ message }),
   });
 };
+
+export const shadcnTextareaFieldExamplePreview = (): Html =>
+  ShadcnTextareaFieldExample.view(ShadcnTextareaFieldExample.init()[0]);
+
+export const shadcnTextareaDisabledExamplePreview = (): Html =>
+  ShadcnTextareaDisabledExample.view(ShadcnTextareaDisabledExample.init()[0]);
+
+export const shadcnTextareaInvalidExamplePreview = (): Html =>
+  ShadcnTextareaInvalidExample.view(ShadcnTextareaInvalidExample.init()[0]);
+
+export const shadcnTextareaButtonExamplePreview = (): Html =>
+  ShadcnTextareaButtonExample.view(ShadcnTextareaButtonExample.init()[0]);
+
+export const shadcnTextareaRtlExamplePreview = (): Html =>
+  ShadcnTextareaRtlExample.view(ShadcnTextareaRtlExample.init()[0]);
 
 export const shadcnToggleBasicExamplePreview = (
   model: ShadcnToggleBasicExample.Model,

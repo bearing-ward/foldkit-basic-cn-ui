@@ -51,7 +51,8 @@ describe("DatePicker Basic example", () => {
         view: ShadcnDatePickerBasicExample.view,
       },
       Scene.with(ShadcnDatePickerBasicExample.init()[0]),
-      Scene.expect(Scene.text("Selected date: None")).toExist(),
+      Scene.expect(Scene.text("Date")).toExist(),
+      Scene.expect(Scene.text("Selected date: None")).not.toExist(),
       Scene.click(Scene.selector("#date-picker-basic-popover-button")),
       resolveDatePickerMounts(),
       Scene.expect(
@@ -60,8 +61,26 @@ describe("DatePicker Basic example", () => {
       Scene.click(Scene.role("button", { name: "Monday, April 20, 2026" })),
       resolveFocusButton(),
       expectDatePickerMountsEnded(),
-      Scene.expect(Scene.text("Selected date: 2026-04-20")).toExist(),
-      Scene.expect(Scene.text("2026-04-20")).toExist()
+      Scene.expect(Scene.text("2026-04-20")).toExist(),
+      Scene.expect(Scene.text("Range Picker")).toExist(),
+      Scene.expect(Scene.text("Selected range: 2022-01-20 to 2022-02-09"))
+        .toExist(),
+      Scene.expect(Scene.text("Date of Birth")).toExist(),
+      Scene.expect(Scene.text("Choose a birth date between 1900 and today."))
+        .toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Date input" })).toHaveValue(
+        "06/15/1990"
+      ),
+      Scene.expect(Scene.text("Time Picker")).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Start time" })).toHaveValue(
+        "10:30"
+      ),
+      Scene.expect(Scene.text("Natural Language Picker")).toExist(),
+      Scene.expect(
+        Scene.role("textbox", { name: "Natural language date" })
+      ).toHaveValue("tomorrow at 5pm"),
+      Scene.expect(Scene.text("RTL")).toExist(),
+      Scene.expect(Scene.text("اختر تاريخا")).toExist()
     );
   });
 });

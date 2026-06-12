@@ -3,6 +3,8 @@ import { describe, test } from "vitest";
 
 import * as ContextMenuNestedExample from "./main";
 
+const positioner = Scene.testId("base-ui-context-menu-positioner");
+
 describe("Base UI Context Menu Nested example", () => {
   test("opens the Add to Playlist submenu and selects an item", () => {
     Scene.scene(
@@ -11,7 +13,13 @@ describe("Base UI Context Menu Nested example", () => {
         view: ContextMenuNestedExample.view,
       },
       Scene.with(ContextMenuNestedExample.init()[0]),
+      Scene.pointerDown(Scene.role("button", { name: "Right click here" }), {
+        clientX: 112,
+        clientY: 144,
+      }),
       Scene.click(Scene.role("button", { name: "Right click here" })),
+      Scene.expect(positioner).toHaveStyle("left", "112px"),
+      Scene.expect(positioner).toHaveStyle("top", "144px"),
       Scene.expect(
         Scene.role("menuitem", { name: "Add to Playlist" })
       ).toExist(),

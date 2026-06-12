@@ -10,11 +10,18 @@ import * as Sheet from "../../ui/sheet";
 
 const sheetTitleId = "sheet-basic-title";
 const sheetDescriptionId = "sheet-basic-description";
+const SheetSide = S.Union([
+  S.Literal("top"),
+  S.Literal("right"),
+  S.Literal("bottom"),
+  S.Literal("left"),
+]);
 
 // MODEL
 
 export const Model = S.Struct({
   open: S.Boolean,
+  side: SheetSide,
 });
 export type Model = typeof Model.Type;
 
@@ -22,7 +29,10 @@ export type Model = typeof Model.Type;
 
 export const OpenedSheet = m("OpenedSheet");
 export const ClosedSheet = m("ClosedSheet");
-export const Message = S.Union([OpenedSheet, ClosedSheet]);
+export const SelectedSheetSide = m("SelectedSheetSide", {
+  value: SheetSide,
+});
+export const Message = S.Union([OpenedSheet, ClosedSheet, SelectedSheetSide]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -30,7 +40,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ open: false }, []];
+] => [{ open: false, side: "right" }, []];
 
 // UPDATE
 
@@ -43,20 +53,72 @@ export const update = (
     M.tagsExhaustive({
       OpenedSheet: () => [evo(model, { open: () => true }), []],
       ClosedSheet: () => [evo(model, { open: () => false }), []],
+      SelectedSheetSide: ({ value }) => [
+        evo(model, { open: () => true, side: () => value }),
+        [],
+      ],
     })
   );
 
 // VIEW
+
+const sideContentClassNames: Record<Model["side"], string> = {
+  top: "left-0 right-0 top-0 h-auto max-w-none border-b border-l-0",
+  right: "",
+  bottom:
+    "bottom-0 left-0 right-0 top-auto h-auto max-w-none border-l-0 border-t",
+  left: "left-0 right-auto border-l-0 border-r",
+};
+
+const contentClassName = (side: Model["side"]): string =>
+  sideContentClassNames[side];
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return Sheet.rootView<Message>({
     children: [
-      Sheet.triggerView<Message>({
-        onOpen: OpenedSheet(),
-        children: [h.span([], ["Open"])],
-      }),
+      h.div(
+        [h.Class("flex flex-wrap gap-2")],
+        [
+          Sheet.triggerView<Message>({
+            onOpen: OpenedSheet(),
+            children: [h.span([], ["Open"])],
+          }),
+          h.button(
+            [
+              h.Type("button"),
+              h.OnClick(SelectedSheetSide({ value: "top" })),
+              h.Class("rounded-md border px-4 py-2 text-sm"),
+            ],
+            ["top"]
+          ),
+          h.button(
+            [
+              h.Type("button"),
+              h.OnClick(SelectedSheetSide({ value: "right" })),
+              h.Class("rounded-md border px-4 py-2 text-sm"),
+            ],
+            ["right"]
+          ),
+          h.button(
+            [
+              h.Type("button"),
+              h.OnClick(SelectedSheetSide({ value: "bottom" })),
+              h.Class("rounded-md border px-4 py-2 text-sm"),
+            ],
+            ["bottom"]
+          ),
+          h.button(
+            [
+              h.Type("button"),
+              h.OnClick(SelectedSheetSide({ value: "left" })),
+              h.Class("rounded-md border px-4 py-2 text-sm"),
+            ],
+            ["left"]
+          ),
+        ]
+      ),
       Sheet.portalView<Message>({
         open: model.open,
         children: [
@@ -64,6 +126,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           Sheet.contentView<Message>({
             ariaDescribedBy: sheetDescriptionId,
             ariaLabelledBy: sheetTitleId,
+            className: contentClassName(model.side),
             children: [
               Sheet.headerView<Message>({
                 children: [
@@ -107,6 +170,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               ),
               Sheet.footerView<Message>({
                 children: [
+                  h.p(
+                    [h.Class("mr-auto text-sm text-gray-600")],
+                    [`Side: ${model.side}`]
+                  ),
                   h.button(
                     [
                       h.Type("button"),
@@ -123,6 +190,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 onClose: ClosedSheet(),
                 children: [h.span([], ["x"])],
               }),
+              h.p(
+                [h.Class("text-sm text-gray-500")],
+                ["No Close Button variant: omit Sheet.closeView from content."]
+              ),
+              h.p([h.Dir("rtl"), h.Class("text-sm text-gray-700")], ["فتح"]),
             ],
           }),
         ],

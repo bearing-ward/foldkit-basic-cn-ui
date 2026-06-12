@@ -98,22 +98,19 @@ const listItemView = (
 ): Html => {
   const h = html<Message>();
 
-  return h.li(
-    className === undefined ? [] : [h.Class(className)],
-    [
-      NavigationMenu.linkView<Message>({
-        href,
-        className: "flex-col items-start",
-        children: [
-          h.div([h.Class("text-sm font-medium leading-none")], [title]),
-          h.p(
-            [h.Class("line-clamp-2 text-sm leading-snug text-gray-500")],
-            [body]
-          ),
-        ],
-      }),
-    ]
-  );
+  return h.li(className === undefined ? [] : [h.Class(className)], [
+    NavigationMenu.linkView<Message>({
+      href,
+      className: "flex-col items-start",
+      children: [
+        h.div([h.Class("text-sm font-medium leading-none")], [title]),
+        h.p(
+          [h.Class("line-clamp-2 text-sm leading-snug text-gray-500")],
+          [body]
+        ),
+      ],
+    }),
+  ]);
 };
 
 const iconListItemView = (label: string, icon: string): Html => {
@@ -182,6 +179,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
           }),
           NavigationMenu.itemView<Message>({
+            children: [
+              NavigationMenu.linkView<Message>({
+                href: "/docs",
+                children: [h.span([], ["Documentation"])],
+              }),
+            ],
+          }),
+          NavigationMenu.itemView<Message>({
             className: "hidden md:block",
             children: [
               NavigationMenu.triggerView<Message>({
@@ -208,6 +213,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 open: isOpen("With Icon"),
                 onToggle: ToggledNavigationMenuItem({ value: "With Icon" }),
                 children: [h.span([], ["With Icon"])],
+              }),
+            ],
+          }),
+          NavigationMenu.itemView<Message>({
+            className: "hidden md:block",
+            children: [
+              NavigationMenu.linkView<Message>({
+                href: "#",
+                children: [h.span([h.Dir("rtl")], ["الوثائق"])],
               }),
             ],
           }),
@@ -283,52 +297,70 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         : h.empty,
       isOpen("List")
         ? popupView([
-            h.ul([h.Class("grid w-[300px] gap-4")], [
-              h.li([], [
-                listItemView(
-                  "Components",
-                  "Browse all components in the library.",
-                  "#"
+            h.ul(
+              [h.Class("grid w-[300px] gap-4")],
+              [
+                h.li(
+                  [],
+                  [
+                    listItemView(
+                      "Components",
+                      "Browse all components in the library.",
+                      "#"
+                    ),
+                    listItemView(
+                      "Documentation",
+                      "Learn how to use the library.",
+                      "#"
+                    ),
+                    listItemView("Blog", "Read our latest blog posts.", "#"),
+                  ]
                 ),
-                listItemView(
-                  "Documentation",
-                  "Learn how to use the library.",
-                  "#"
-                ),
-                listItemView("Blog", "Read our latest blog posts.", "#"),
-              ]),
-            ]),
+              ]
+            ),
           ])
         : h.empty,
       isOpen("Simple")
         ? popupView([
-            h.ul([h.Class("grid w-[200px] gap-4")], [
-              h.li([], [
-                NavigationMenu.linkView<Message>({
-                  href: "#",
-                  children: [h.span([], ["Components"])],
-                }),
-                NavigationMenu.linkView<Message>({
-                  href: "#",
-                  children: [h.span([], ["Documentation"])],
-                }),
-                NavigationMenu.linkView<Message>({
-                  href: "#",
-                  children: [h.span([], ["Blocks"])],
-                }),
-              ]),
-            ]),
+            h.ul(
+              [h.Class("grid w-[200px] gap-4")],
+              [
+                h.li(
+                  [],
+                  [
+                    NavigationMenu.linkView<Message>({
+                      href: "#",
+                      children: [h.span([], ["Components"])],
+                    }),
+                    NavigationMenu.linkView<Message>({
+                      href: "#",
+                      children: [h.span([], ["Documentation"])],
+                    }),
+                    NavigationMenu.linkView<Message>({
+                      href: "#",
+                      children: [h.span([], ["Blocks"])],
+                    }),
+                  ]
+                ),
+              ]
+            ),
           ])
         : h.empty,
       isOpen("With Icon")
         ? popupView([
-            h.ul([h.Class("grid w-[200px] gap-4")], [
-              h.li([], [
-                iconListItemView("Backlog", "?"),
-                iconListItemView("To Do", "○"),
-                iconListItemView("Done", "✓"),
-              ]),
-            ]),
+            h.ul(
+              [h.Class("grid w-[200px] gap-4")],
+              [
+                h.li(
+                  [],
+                  [
+                    iconListItemView("Backlog", "?"),
+                    iconListItemView("To Do", "○"),
+                    iconListItemView("Done", "✓"),
+                  ]
+                ),
+              ]
+            ),
           ])
         : h.empty,
     ],

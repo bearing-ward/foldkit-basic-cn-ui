@@ -71,6 +71,54 @@ const itemView = (value: string): Html => {
   });
 };
 
+const labelView = (value: string): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("px-2 py-1.5 text-xs font-semibold text-gray-500")],
+    [value]
+  );
+};
+
+const shortcutItemView = (value: string, shortcut: string): Html => {
+  const h = html<Message>();
+
+  return ContextMenu.itemView<Message>({
+    onSelect: SelectedContextMenuItem({ value }),
+    children: [
+      h.span([], [value]),
+      h.span(
+        [h.Class("ml-auto pl-8 text-xs tracking-widest text-gray-500")],
+        [shortcut]
+      ),
+    ],
+  });
+};
+
+const checkedItemView = (value: string, checked: boolean): Html => {
+  const h = html<Message>();
+
+  return ContextMenu.itemView<Message>({
+    onSelect: SelectedContextMenuItem({ value }),
+    children: [
+      h.span([h.Class("w-4 text-center")], [checked ? "✓" : ""]),
+      h.span([], [value]),
+    ],
+  });
+};
+
+const iconItemView = (value: string, icon: string): Html => {
+  const h = html<Message>();
+
+  return ContextMenu.itemView<Message>({
+    onSelect: SelectedContextMenuItem({ value }),
+    children: [
+      h.span([h.AriaHidden(true), h.Class("w-4 text-gray-500")], [icon]),
+      h.span([], [value]),
+    ],
+  });
+};
+
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
@@ -90,14 +138,45 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             children: [
               ContextMenu.popupView<Message>({
                 children: [
-                  itemView("Add to Library"),
-                  itemView("Add to Playlist"),
+                  labelView("Basic"),
+                  itemView("Profile"),
+                  itemView("Billing"),
+                  itemView("Team"),
+                  itemView("Subscription"),
                   ContextMenu.separatorView<Message>({}),
-                  itemView("Play Next"),
-                  itemView("Play Last"),
+                  labelView("Submenu"),
+                  itemView("More Tools >"),
+                  itemView("Create Project"),
+                  itemView("Create Task"),
                   ContextMenu.separatorView<Message>({}),
-                  itemView("Favorite"),
+                  labelView("Shortcuts"),
+                  shortcutItemView("Back", "⌘["),
+                  shortcutItemView("Forward", "⌘]"),
+                  shortcutItemView("Reload", "⌘R"),
+                  ContextMenu.separatorView<Message>({}),
+                  labelView("Groups"),
+                  itemView("People"),
+                  itemView("Teams"),
+                  itemView("Billing"),
+                  ContextMenu.separatorView<Message>({}),
+                  labelView("Icons"),
+                  iconItemView("Copy", "□"),
+                  iconItemView("Paste", "▣"),
                   itemView("Share"),
+                  ContextMenu.separatorView<Message>({}),
+                  labelView("Checkboxes"),
+                  checkedItemView("Show Bookmarks Bar", true),
+                  checkedItemView("Show Full URLs", false),
+                  ContextMenu.separatorView<Message>({}),
+                  labelView("Radio"),
+                  checkedItemView("Panel position: Top", false),
+                  checkedItemView("Panel position: Bottom", true),
+                  ContextMenu.separatorView<Message>({}),
+                  iconItemView("Delete", "!"),
+                  h.div(
+                    [h.Dir("rtl"), h.Class("px-2 py-1.5 text-sm")],
+                    ["انقر بزر الماوس الأيمن هنا"]
+                  ),
                 ],
               }),
             ],

@@ -130,11 +130,219 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Framework> => {
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
-  return h.submodel({
-    slotId: model.combobox.id,
-    model: model.combobox,
-    view: FrameworkCombobox.view,
-    viewInputs: viewInputs(model.combobox.inputValue),
-    toParentMessage: (message) => GotComboboxMessage({ message }),
-  });
+  return h.div(
+    [h.Class("space-y-8")],
+    [
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["Basic"]),
+          h.submodel({
+            slotId: model.combobox.id,
+            model: model.combobox,
+            view: FrameworkCombobox.view,
+            viewInputs: viewInputs(model.combobox.inputValue),
+            toParentMessage: (message) => GotComboboxMessage({ message }),
+          }),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Multiple",
+          ]),
+          h.div(
+            [h.Class("flex flex-wrap gap-2")],
+            [
+              h.span([h.Class(Combobox.shadcnComboboxTagClassName)], [
+                "Next.js",
+              ]),
+              h.span([h.Class(Combobox.shadcnComboboxTagClassName)], ["Remix"]),
+            ]
+          ),
+          h.div(
+            [
+              h.Class(
+                "rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-500"
+              ),
+            ],
+            ["Select frameworks..."]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Clear Button",
+          ]),
+          h.div(
+            [
+              h.Class(
+                "flex max-w-sm items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+              ),
+            ],
+            [
+              h.span([], ["Next.js"]),
+              h.button([h.Type("button"), h.AriaLabel("Clear selection")], [
+                "x",
+              ]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["Groups"]),
+          h.div(
+            [h.Class(Combobox.shadcnComboboxItemsClassName)],
+            [
+              h.div([h.Class("px-3 py-1 text-xs font-medium text-gray-500")], [
+                "Frontend",
+              ]),
+              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+                "Next.js",
+              ]),
+              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+                "SvelteKit",
+              ]),
+              h.div([h.Class("px-3 py-1 text-xs font-medium text-gray-500")], [
+                "Full-stack",
+              ]),
+              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], ["Remix"]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Custom Items",
+          ]),
+          h.div(
+            [h.Class(Combobox.shadcnComboboxItemsClassName)],
+            [
+              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+                h.div([h.Class("font-medium")], ["Next.js"]),
+                h.div([h.Class("text-xs text-gray-500")], [
+                  "The React framework for production",
+                ]),
+              ]),
+              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+                h.div([h.Class("font-medium")], ["Astro"]),
+                h.div([h.Class("text-xs text-gray-500")], [
+                  "Content-driven websites",
+                ]),
+              ]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("grid gap-4 md:grid-cols-2")],
+        [
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h3([h.Class("text-base font-semibold text-gray-950")], [
+                "Invalid",
+              ]),
+              h.input([
+                h.AriaLabel("Invalid framework"),
+                h.Value("Unknown framework"),
+                h.Attribute("aria-invalid", "true"),
+                h.Class(
+                  `${Combobox.shadcnComboboxInputClassName} rounded-md border border-red-500`
+                ),
+              ]),
+            ]
+          ),
+          h.div(
+            [h.Class("space-y-3")],
+            [
+              h.h3([h.Class("text-base font-semibold text-gray-950")], [
+                "Disabled",
+              ]),
+              h.input([
+                h.AriaLabel("Disabled framework"),
+                h.Placeholder("Select framework..."),
+                h.Disabled(true),
+                h.Class(Combobox.shadcnComboboxInputClassName),
+              ]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Auto Highlight",
+          ]),
+          h.div([h.Class(Combobox.shadcnComboboxItemsClassName)], [
+            h.div(
+              [
+                h.Class(Combobox.shadcnComboboxItemClassName),
+                h.DataAttribute("active", "true"),
+              ],
+              ["Next.js"]
+            ),
+            h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+              "SvelteKit",
+            ]),
+          ]),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["Popup"]),
+          h.button(
+            [
+              h.Type("button"),
+              h.Class(Combobox.shadcnComboboxButtonClassName),
+            ],
+            ["Open popup"]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Input Group",
+          ]),
+          h.div(
+            [
+              h.Class(
+                "flex max-w-sm items-center rounded-md border border-gray-300 bg-white"
+              ),
+            ],
+            [
+              h.span([h.Class("px-3 text-sm text-gray-500")], ["Framework"]),
+              h.input([
+                h.AriaLabel("Framework input group"),
+                h.Placeholder("Select framework..."),
+                h.Class(Combobox.shadcnComboboxInputClassName),
+              ]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Attribute("dir", "rtl"), h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["RTL"]),
+          h.input([
+            h.AriaLabel("إطار العمل"),
+            h.Placeholder("اختر إطار العمل..."),
+            h.Class(Combobox.shadcnComboboxInputClassName),
+          ]),
+        ]
+      ),
+    ]
+  );
 });

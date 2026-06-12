@@ -1,3 +1,4 @@
+import { Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -35,6 +36,7 @@ export type RootViewConfig = Readonly<{
 
 export type TriggerViewConfig<ParentMessage> = Readonly<{
   onOpen: ParentMessage;
+  onPointerDown?: (clientX: number, clientY: number) => ParentMessage;
   children: readonly Html[];
   className?: string | undefined;
   style?: ContextMenuStyle | undefined;
@@ -51,6 +53,7 @@ export type PartViewConfig = Readonly<{
   children: readonly Html[];
   className?: string | undefined;
   style?: ContextMenuStyle | undefined;
+  testId?: string | undefined;
 }>;
 
 export type BackdropViewConfig<ParentMessage> = Readonly<{
@@ -90,6 +93,7 @@ export const rootView = <ParentMessage>({
 
 export const triggerView = <ParentMessage>({
   onOpen,
+  onPointerDown,
   children,
   className,
   style,
@@ -102,6 +106,21 @@ export const triggerView = <ParentMessage>({
       h.Attribute("aria-haspopup", "menu"),
       h.OnClick(onOpen),
       h.OnContextMenu(onOpen),
+      ...(onPointerDown === undefined
+        ? []
+        : [
+            h.OnPointerDown(
+              (
+                _pointerType,
+                _button,
+                _screenX,
+                _screenY,
+                _timeStamp,
+                clientX,
+                clientY
+              ) => Option.some(onPointerDown(clientX, clientY))
+            ),
+          ]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(contextMenuTriggerClassName, className)),
     ],
@@ -134,11 +153,13 @@ export const positionerView = <ParentMessage>({
   children,
   className,
   style,
+  testId,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
+      ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(contextMenuPositionerClassName, className)),
     ],

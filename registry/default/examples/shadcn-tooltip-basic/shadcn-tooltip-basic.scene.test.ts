@@ -29,8 +29,16 @@ describe("shadcn Tooltip Basic example", () => {
         view: TooltipBasicExample.view,
       },
       Scene.with(initialModel),
-      Scene.expect(Scene.text("This is a tooltip")).not.toExist(),
-      Scene.hover(Scene.role("button", { name: "Hover or focus me" })),
+      Scene.expect(Scene.text("Add to library")).not.toExist(),
+      Scene.expect(Scene.role("button", { name: "left" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "top" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "bottom" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "right" })).toExist(),
+      Scene.expect(Scene.text("Save")).toExist(),
+      Scene.expect(Scene.text("⌘S")).toExist(),
+      Scene.expect(Scene.text("Disabled")).toExist(),
+      Scene.expect(Scene.role("button", { name: "يسار" })).toExist(),
+      Scene.hover(Scene.role("button", { name: "Hover" })),
       Scene.Command.resolve(
         Tooltip.ShowAfterDelay({
           delay: initialModel.tooltip.showDelay,
@@ -41,7 +49,7 @@ describe("shadcn Tooltip Basic example", () => {
       ),
       resolveTooltipMount(),
       Scene.expect(Scene.role("tooltip")).toExist(),
-      Scene.expect(Scene.text("This is a tooltip")).toExist(),
+      Scene.expect(Scene.text("Add to library")).toExist(),
       Scene.expect(Scene.text("Tooltip shown.")).toExist()
     );
   });

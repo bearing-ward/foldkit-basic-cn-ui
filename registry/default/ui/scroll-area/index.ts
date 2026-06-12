@@ -66,6 +66,8 @@ export type ContentViewConfig = Readonly<{
 export type ScrollbarViewConfig = Readonly<{
   /** Thumb rendered inside the visual scrollbar rail. */
   children: readonly Html[];
+  /** Visual scrollbar orientation. */
+  orientation?: "horizontal" | "vertical" | undefined;
   /** Additional class appended to the default Scrollbar classes. */
   className?: string | undefined;
   /** Inline styles applied to the Scrollbar element. */
@@ -108,6 +110,8 @@ export type ViewConfig = Readonly<{
   contentClassName?: string | undefined;
   /** Inline styles applied to the Content element. */
   contentStyle?: ScrollAreaStyle | undefined;
+  /** Includes a horizontal visual scrollbar. */
+  hasHorizontalScrollbar?: boolean | undefined;
 }>;
 
 const classNames = (base: string, className?: string): string =>
@@ -191,6 +195,7 @@ export const contentView = <ParentMessage>({
 /** Renders a visual Scrollbar rail. Native scrolling remains on the Viewport. */
 export const scrollbarView = <ParentMessage>({
   children,
+  orientation = "vertical",
   className,
   style,
 }: ScrollbarViewConfig): Html => {
@@ -199,6 +204,7 @@ export const scrollbarView = <ParentMessage>({
   return h.div(
     [
       h.AriaHidden(true),
+      h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(scrollAreaScrollbarClassName, className)),
     ],
@@ -250,11 +256,13 @@ export const view = <ParentMessage>({
   viewportStyle,
   contentClassName,
   contentStyle,
+  hasHorizontalScrollbar = false,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
     className,
     style,
     hasOverflowY: true,
+    hasOverflowX: hasHorizontalScrollbar,
     children: [
       viewportView<ParentMessage>({
         ariaLabel,
@@ -273,5 +281,14 @@ export const view = <ParentMessage>({
       scrollbarView<ParentMessage>({
         children: [thumbView<ParentMessage>()],
       }),
+      ...(hasHorizontalScrollbar
+        ? [
+            scrollbarView<ParentMessage>({
+              orientation: "horizontal",
+              className: "inset-x-0 bottom-0 h-2.5 w-full border-l-0 border-t border-t-transparent",
+              children: [thumbView<ParentMessage>()],
+            }),
+          ]
+        : []),
     ],
   });

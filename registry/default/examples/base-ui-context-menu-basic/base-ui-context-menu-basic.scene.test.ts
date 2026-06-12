@@ -3,6 +3,8 @@ import { describe, test } from "vitest";
 
 import * as ContextMenuBasicExample from "./main";
 
+const positioner = Scene.testId("base-ui-context-menu-positioner");
+
 describe("Base UI Context Menu Basic example", () => {
   test("matches the Base UI default context menu content", () => {
     Scene.scene(
@@ -11,8 +13,14 @@ describe("Base UI Context Menu Basic example", () => {
         view: ContextMenuBasicExample.view,
       },
       Scene.with(ContextMenuBasicExample.init()[0]),
+      Scene.pointerDown(Scene.role("button", { name: "Right click here" }), {
+        clientX: 96,
+        clientY: 128,
+      }),
       Scene.click(Scene.role("button", { name: "Right click here" })),
       Scene.expect(Scene.role("menu")).toExist(),
+      Scene.expect(positioner).toHaveStyle("left", "96px"),
+      Scene.expect(positioner).toHaveStyle("top", "128px"),
       Scene.expect(
         Scene.role("menuitem", { name: "Add to Library" })
       ).toExist(),

@@ -1,3 +1,4 @@
+import { Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -40,10 +41,12 @@ export type RootViewConfig = Readonly<{
 }>;
 
 export type TriggerViewConfig<ParentMessage> = Readonly<{
+  id?: string | undefined;
   onClick: ParentMessage;
   children: readonly Html[];
   className?: string | undefined;
   style?: DrawerStyle | undefined;
+  testId?: string | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
@@ -59,9 +62,10 @@ export type PartViewConfig = Readonly<{
   className?: string | undefined;
   style?: DrawerStyle | undefined;
   state?: DrawerState | undefined;
+  testId?: string | undefined;
 }>;
 
-export type PopupViewConfig = Readonly<{
+export type PopupViewConfig<ParentMessage> = Readonly<{
   titleId: string;
   descriptionId: string;
   children: readonly Html[];
@@ -69,13 +73,31 @@ export type PopupViewConfig = Readonly<{
   style?: DrawerStyle | undefined;
   state?: DrawerState | undefined;
   modal?: boolean | undefined;
+  testId?: string | undefined;
+  onKeyDown?: ((key: string, shiftKey: boolean) => ParentMessage) | undefined;
+  onPointerDown?:
+    | ((screenX: number, screenY: number, pointerType: string) => ParentMessage)
+    | undefined;
+  onPointerMove?:
+    | ((screenX: number, screenY: number, pointerType: string) => ParentMessage)
+    | undefined;
+  onPointerUp?:
+    | ((screenX: number, screenY: number, pointerType: string) => ParentMessage)
+    | undefined;
 }>;
 
 export type CloseViewConfig<ParentMessage> = Readonly<{
+  id?: string | undefined;
   onClick: ParentMessage;
   children: readonly Html[];
   className?: string | undefined;
   style?: DrawerStyle | undefined;
+  testId?: string | undefined;
+}>;
+
+export type FocusGuardViewConfig<ParentMessage> = Readonly<{
+  onFocus: ParentMessage;
+  testId?: string | undefined;
 }>;
 
 const classNames = (base: string, className?: string): string =>
@@ -99,11 +121,12 @@ const stateAttributes = <ParentMessage>(
 const partView = <ParentMessage>(
   tagName: "div" | "h2" | "p",
   baseClassName: string,
-  { id, children, className, style, state }: PartViewConfig
+  { id, children, className, style, state, testId }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
   const attributes = [
     ...(id === undefined ? [] : [h.Id(id)]),
+    ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
     ...(style === undefined ? [] : [h.Style(style)]),
     ...stateAttributes(h, state),
     h.Class(classNames(baseClassName, className)),
@@ -124,17 +147,21 @@ export const rootView = <ParentMessage>(config: RootViewConfig): Html =>
   partView<ParentMessage>("div", drawerRootClassName, config);
 
 export const triggerView = <ParentMessage>({
+  id,
   onClick,
   children,
   className,
   style,
+  testId,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
   return h.button(
     [
+      ...(id === undefined ? [] : [h.Id(id)]),
       h.Type("button"),
       h.OnClick(onClick),
+      ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(drawerTriggerClassName, className)),
     ],
@@ -177,7 +204,12 @@ export const popupView = <ParentMessage>({
   style,
   state,
   modal = true,
-}: PopupViewConfig): Html => {
+  testId,
+  onKeyDown,
+  onPointerDown,
+  onPointerMove,
+  onPointerUp,
+}: PopupViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
   return h.aside(
@@ -186,11 +218,61 @@ export const popupView = <ParentMessage>({
       h.Attribute("aria-modal", modal ? "true" : "false"),
       h.Attribute("aria-labelledby", titleId),
       h.Attribute("aria-describedby", descriptionId),
+      h.Attribute("tabindex", "-1"),
+      ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
+      ...(onKeyDown === undefined
+        ? []
+        : [
+            h.OnKeyDownPreventDefault((key, { shiftKey }) =>
+              key === "Tab"
+                ? Option.some(onKeyDown(key, shiftKey))
+                : Option.none()
+            ),
+          ]),
+      ...(onPointerDown === undefined
+        ? []
+        : [
+            h.OnPointerDown((pointerType, _button, screenX, screenY) =>
+              Option.some(onPointerDown(screenX, screenY, pointerType))
+            ),
+          ]),
+      ...(onPointerMove === undefined
+        ? []
+        : [
+            h.OnPointerMove((screenX, screenY, pointerType) =>
+              Option.some(onPointerMove(screenX, screenY, pointerType))
+            ),
+          ]),
+      ...(onPointerUp === undefined
+        ? []
+        : [
+            h.OnPointerUp((screenX, screenY, pointerType) =>
+              Option.some(onPointerUp(screenX, screenY, pointerType))
+            ),
+          ]),
       ...(style === undefined ? [] : [h.Style(style)]),
       ...stateAttributes(h, state),
       h.Class(classNames(drawerPopupClassName, className)),
     ],
     children
+  );
+};
+
+export const focusGuardView = <ParentMessage>({
+  onFocus,
+  testId,
+}: FocusGuardViewConfig<ParentMessage>): Html => {
+  const h = html<ParentMessage>();
+
+  return h.span(
+    [
+      h.Tabindex(0),
+      h.AriaHidden(true),
+      ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
+      h.OnFocus(onFocus),
+      h.Class("sr-only"),
+    ],
+    []
   );
 };
 
@@ -204,17 +286,21 @@ export const descriptionView = <ParentMessage>(config: PartViewConfig): Html =>
   partView<ParentMessage>("p", drawerDescriptionClassName, config);
 
 export const closeView = <ParentMessage>({
+  id,
   onClick,
   children,
   className,
   style,
+  testId,
 }: CloseViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
   return h.button(
     [
+      ...(id === undefined ? [] : [h.Id(id)]),
       h.Type("button"),
       h.OnClick(onClick),
+      ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(drawerCloseClassName, className)),
     ],

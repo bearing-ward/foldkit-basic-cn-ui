@@ -5,6 +5,7 @@ import {
   alertActionClassName,
   alertClassName,
   alertContentClassName,
+  alertCustomColorClassName,
   alertDescriptionClassName,
   alertIconClassName,
   alertTitleClassName,
@@ -16,6 +17,7 @@ export {
   alertActionClassName,
   alertClassName,
   alertContentClassName,
+  alertCustomColorClassName,
   alertDescriptionClassName,
   alertIconClassName,
   alertTitleClassName,
@@ -175,15 +177,18 @@ export const view = <ParentMessage>({
   icon,
   action,
   variant = "Default",
+  className,
 }: Readonly<{
   title: string;
   description: string;
   icon?: string | undefined;
   action?: Html | undefined;
   variant?: AlertVariant | undefined;
+  className?: string | undefined;
 }>): Html =>
   rootView<ParentMessage>({
     variant,
+    className,
     children: [
       iconView<ParentMessage>({ children: [icon ?? "i"] }),
       contentView<ParentMessage>({

@@ -1,0 +1,30 @@
+import { Checkbox } from "@/styles/radix-nova/ui-rtl/checkbox";
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/styles/radix-nova/ui-rtl/field";
+
+export function CheckboxRtl() {
+  return (
+    <FieldGroup className="max-w-sm" dir="rtl">
+      <Field orientation="horizontal">
+        <Checkbox id="terms-checkbox-rtl" name="terms-checkbox" />
+        <FieldLabel htmlFor="terms-checkbox-rtl">قبول الشروط والأحكام</FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="terms-checkbox-2-rtl" name="terms-checkbox-2" defaultChecked />
+        <FieldContent>
+          <FieldLabel htmlFor="terms-checkbox-2-rtl">
+            قبول الشروط والأحكام
+          </FieldLabel>
+          <FieldDescription>
+            بالنقر على هذا المربع، فإنك توافق على الشروط.
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+    </FieldGroup>
+  );
+}

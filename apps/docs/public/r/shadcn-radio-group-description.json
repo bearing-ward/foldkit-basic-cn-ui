@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-radio-group-description",
+  "type": "registry:example",
+  "title": "shadcn Radio Group Description",
+  "description": "A runnable Foldkit example showing shadcn Radio Group items with descriptions.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-radio-group"],
+  "files": [
+    {
+      "path": "registry/default/examples/shadcn-radio-group-description/main.ts",
+      "target": "src/examples/shadcn-radio-group-description/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as RadioGroup from \"../../ui/shadcn-radio-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst optionView = (\n  value: string,\n  description: string,\n  selected: boolean\n): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex items-start gap-3\")],\n    [\n      h.button(\n        [\n          h.Type(\"button\"),\n          h.Role(\"radio\"),\n          h.AriaChecked(selected),\n          h.AriaLabel(value),\n          h.Class(\"mt-0.5\"),\n        ],\n        [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]\n      ),\n      h.div(\n        [h.Class(RadioGroup.shadcnRadioGroupMetaClassName)],\n        [\n          h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),\n          h.p(\n            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClassName)],\n            [description]\n          ),\n        ]\n      ),\n    ]\n  );\n};\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [\n      h.Role(\"radiogroup\"),\n      h.AriaLabel(\"Layout density\"),\n      h.Class(RadioGroup.shadcnRadioGroupVerticalClassName),\n    ],\n    [\n      optionView(\"Default\", \"Standard spacing for most use cases.\", true),\n      optionView(\"Comfortable\", \"More space between elements.\", false),\n      optionView(\"Compact\", \"Minimal spacing for dense layouts.\", false),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/shadcn-radio-group-description/shadcn-radio-group-description.scene.test.ts",
+      "target": "src/examples/shadcn-radio-group-description/shadcn-radio-group-description.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Radio Group Description example\", () => {\n  test(\"renders the origin description radio group demo\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"radiogroup\", { name: \"Layout density\" })).toExist(),\n      Scene.expect(Scene.role(\"radio\", { name: \"Default\" })).toBeChecked(),\n      Scene.expect(Scene.role(\"radio\", { name: \"Default\" })).not.toHaveHandler(\n        \"click\"\n      ),\n      Scene.expect(Scene.text(\"Standard spacing for most use cases.\")).toExist(),\n      Scene.expect(Scene.text(\"More space between elements.\")).toExist(),\n      Scene.expect(Scene.text(\"Minimal spacing for dense layouts.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "RadioGroup",
+      "example": "shadcn-description",
+      "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+    }
+  }
+}

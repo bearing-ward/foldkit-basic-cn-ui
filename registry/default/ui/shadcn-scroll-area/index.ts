@@ -120,6 +120,7 @@ export const contentView = <ParentMessage>({
 
 export const scrollbarView = <ParentMessage>({
   children,
+  orientation = "vertical",
   className,
   style,
 }: ScrollbarViewConfig): Html => {
@@ -129,7 +130,7 @@ export const scrollbarView = <ParentMessage>({
     [
       h.AriaHidden(true),
       h.DataAttribute("slot", "scroll-area-scrollbar"),
-      h.DataAttribute("orientation", "vertical"),
+      h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(shadcnScrollAreaScrollbarClassName, className)),
     ],
@@ -179,11 +180,13 @@ export const view = <ParentMessage>({
   viewportStyle,
   contentClassName,
   contentStyle,
+  hasHorizontalScrollbar = false,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
     className,
     style,
     hasOverflowY: true,
+    hasOverflowX: hasHorizontalScrollbar,
     children: [
       viewportView<ParentMessage>({
         ariaLabel,
@@ -202,5 +205,14 @@ export const view = <ParentMessage>({
       scrollbarView<ParentMessage>({
         children: [thumbView<ParentMessage>()],
       }),
+      ...(hasHorizontalScrollbar
+        ? [
+            scrollbarView<ParentMessage>({
+              orientation: "horizontal",
+              className: "inset-x-0 bottom-0 h-2.5 w-full border-l-0 border-t border-t-transparent",
+              children: [thumbView<ParentMessage>()],
+            }),
+          ]
+        : []),
     ],
   });

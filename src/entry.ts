@@ -11,7 +11,7 @@ import {
   init,
   subscriptions,
   update,
-} from "./main";
+} from "app-main";
 
 const program = Runtime.makeProgram({
   Model,

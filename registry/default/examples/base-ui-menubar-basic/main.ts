@@ -123,7 +123,11 @@ const submenuTriggerView = (label: string, open: boolean): Html => {
   );
 };
 
-const submenuPopupView = (open: boolean, labels: readonly string[]): Html => {
+const submenuPopupView = (
+  open: boolean,
+  testId: string,
+  labels: readonly string[]
+): Html => {
   const h = html<Message>();
 
   if (!open) {
@@ -133,7 +137,8 @@ const submenuPopupView = (open: boolean, labels: readonly string[]): Html => {
   return h.div(
     [
       h.Attribute("role", "menu"),
-      h.Class(`${Menubar.menubarPopupClassName} left-full top-8 -ml-1 mt-0`),
+      h.DataAttribute("testid", testId),
+      h.Class(`${Menubar.menubarPopupClassName} left-44 top-8 -ml-1 mt-0`),
     ],
     labels.map(itemView)
   );
@@ -162,11 +167,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 [h.Class("relative")],
                 [
                   submenuTriggerView("Export", model.openSubmenu === "Export"),
-                  submenuPopupView(model.openSubmenu === "Export", [
-                    "PDF",
-                    "PNG",
-                    "SVG",
-                  ]),
+                  submenuPopupView(
+                    model.openSubmenu === "Export",
+                    "export-submenu",
+                    ["PDF", "PNG", "SVG"]
+                  ),
                 ]
               ),
               Menubar.separatorView<Message>({}),
@@ -204,11 +209,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 [h.Class("relative")],
                 [
                   submenuTriggerView("Layout", model.openSubmenu === "Layout"),
-                  submenuPopupView(model.openSubmenu === "Layout", [
-                    "Single Page",
-                    "Two Pages",
-                    "Continuous",
-                  ]),
+                  submenuPopupView(
+                    model.openSubmenu === "Layout",
+                    "layout-submenu",
+                    ["Single Page", "Two Pages", "Continuous"]
+                  ),
                 ]
               ),
               Menubar.separatorView<Message>({}),

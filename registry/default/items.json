@@ -4547,6 +4547,45 @@
     }
   },
   {
+    "name": "alert-custom-colors",
+    "type": "registry:example",
+    "title": "Alert Custom Colors",
+    "description": "A runnable Foldkit version of the shadcn Alert custom colors example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-alert"],
+    "files": [
+      {
+        "path": "registry/default/examples/alert-custom-colors/main.ts",
+        "target": "src/examples/alert-custom-colors/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/alert-custom-colors/entry.ts",
+        "target": "src/examples/alert-custom-colors/entry.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/alert-custom-colors/index.html",
+        "target": "src/examples/alert-custom-colors/index.html",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/alert-custom-colors/alert-custom-colors.scene.test.ts",
+        "target": "src/examples/alert-custom-colors/alert-custom-colors.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Alert",
+        "example": "custom-colors",
+        "originExample": "alert-custom-colors",
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert"
+      }
+    }
+  },
+  {
     "name": "alert-destructive",
     "type": "registry:example",
     "title": "Alert Destructive",
@@ -4620,6 +4659,45 @@
         "component": "AlertDialog",
         "example": "basic",
         "originExample": "alert-dialog-default-discard-draft"
+      }
+    }
+  },
+  {
+    "name": "alert-rtl",
+    "type": "registry:example",
+    "title": "Alert RTL",
+    "description": "A runnable Foldkit version of the shadcn Alert RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-alert"],
+    "files": [
+      {
+        "path": "registry/default/examples/alert-rtl/main.ts",
+        "target": "src/examples/alert-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/alert-rtl/entry.ts",
+        "target": "src/examples/alert-rtl/entry.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/alert-rtl/index.html",
+        "target": "src/examples/alert-rtl/index.html",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/alert-rtl/alert-rtl.scene.test.ts",
+        "target": "src/examples/alert-rtl/alert-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Alert",
+        "example": "rtl",
+        "originExample": "alert-rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/alert"
       }
     }
   },
@@ -4906,6 +4984,122 @@
       "foldkit": {
         "component": "Badge",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+      }
+    }
+  },
+  {
+    "name": "badge-custom-colors",
+    "type": "registry:example",
+    "title": "Badge Custom Colors",
+    "description": "A runnable Foldkit version of the upstream shadcn badge custom colors example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["badge"],
+    "files": [
+      {
+        "path": "registry/default/examples/badge-custom-colors/main.ts",
+        "target": "src/examples/badge-custom-colors/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/badge-custom-colors/badge-custom-colors.scene.test.ts",
+        "target": "src/examples/badge-custom-colors/badge-custom-colors.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Badge",
+        "example": "custom-colors",
+        "originExample": "badge-custom-colors",
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+      }
+    }
+  },
+  {
+    "name": "badge-icon",
+    "type": "registry:example",
+    "title": "Badge With Icon",
+    "description": "A runnable Foldkit version of the upstream shadcn badge icon example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["badge"],
+    "files": [
+      {
+        "path": "registry/default/examples/badge-icon/main.ts",
+        "target": "src/examples/badge-icon/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/badge-icon/badge-icon.scene.test.ts",
+        "target": "src/examples/badge-icon/badge-icon.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Badge",
+        "example": "icon",
+        "originExample": "badge-with-icon",
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+      }
+    }
+  },
+  {
+    "name": "badge-link",
+    "type": "registry:example",
+    "title": "Badge Link",
+    "description": "A runnable Foldkit version of the upstream shadcn badge link example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["badge"],
+    "files": [
+      {
+        "path": "registry/default/examples/badge-link/main.ts",
+        "target": "src/examples/badge-link/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/badge-link/badge-link.scene.test.ts",
+        "target": "src/examples/badge-link/badge-link.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Badge",
+        "example": "link",
+        "originExample": "badge-link",
+        "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+      }
+    }
+  },
+  {
+    "name": "badge-rtl",
+    "type": "registry:example",
+    "title": "Badge RTL",
+    "description": "A runnable Foldkit version of the upstream shadcn badge RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["badge"],
+    "files": [
+      {
+        "path": "registry/default/examples/badge-rtl/main.ts",
+        "target": "src/examples/badge-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/badge-rtl/badge-rtl.scene.test.ts",
+        "target": "src/examples/badge-rtl/badge-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Badge",
+        "example": "rtl",
+        "originExample": "badge-rtl",
         "origin": "https://ui.shadcn.com/docs/components/radix/badge"
       }
     }
@@ -6203,6 +6397,35 @@
     }
   },
   {
+    "name": "base-ui-popover-detached-trigger",
+    "type": "registry:example",
+    "title": "Base UI Popover Detached Trigger",
+    "description": "A runnable Foldkit version of the Base UI Popover detached trigger example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-popover"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-popover-detached-trigger/main.ts",
+        "target": "src/examples/base-ui-popover-detached-trigger/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-popover-detached-trigger/base-ui-popover-detached-trigger.scene.test.ts",
+        "target": "src/examples/base-ui-popover-detached-trigger/base-ui-popover-detached-trigger.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Popover",
+        "example": "detached-trigger",
+        "originExample": "detached-triggers",
+        "origin": "https://base-ui.com/react/components/popover"
+      }
+    }
+  },
+  {
     "name": "base-ui-popover-multiple-triggers",
     "type": "registry:example",
     "title": "Base UI Popover Multiple Triggers",
@@ -6231,6 +6454,35 @@
       }
     },
     "origin": "https://base-ui.com/react/components/popover"
+  },
+  {
+    "name": "base-ui-popover-open-on-hover",
+    "type": "registry:example",
+    "title": "Base UI Popover Open on Hover",
+    "description": "A runnable Foldkit version of the Base UI Popover open-on-hover example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["base-ui-popover"],
+    "files": [
+      {
+        "path": "registry/default/examples/base-ui-popover-open-on-hover/main.ts",
+        "target": "src/examples/base-ui-popover-open-on-hover/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/base-ui-popover-open-on-hover/base-ui-popover-open-on-hover.scene.test.ts",
+        "target": "src/examples/base-ui-popover-open-on-hover/base-ui-popover-open-on-hover.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Popover",
+        "example": "open-on-hover",
+        "originExample": "open-on-hover",
+        "origin": "https://base-ui.com/react/components/popover"
+      }
+    }
   },
   {
     "name": "base-ui-preview-card-basic",
@@ -7501,6 +7753,118 @@
     }
   },
   {
+    "name": "card-image",
+    "type": "registry:example",
+    "title": "Card Image",
+    "description": "A runnable Foldkit example showing the shadcn Card Image composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/card-image/main.ts",
+        "target": "src/examples/card-image/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/card-image/card-image.scene.test.ts",
+        "target": "src/examples/card-image/card-image.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Card",
+        "example": "image",
+        "origin": "https://ui.shadcn.com/docs/components/radix/card"
+      }
+    }
+  },
+  {
+    "name": "card-rtl",
+    "type": "registry:example",
+    "title": "Card RTL",
+    "description": "A runnable Foldkit example showing the shadcn Card RTL composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/card-rtl/main.ts",
+        "target": "src/examples/card-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/card-rtl/card-rtl.scene.test.ts",
+        "target": "src/examples/card-rtl/card-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Card",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/card"
+      }
+    }
+  },
+  {
+    "name": "card-size",
+    "type": "registry:example",
+    "title": "Card Size",
+    "description": "A runnable Foldkit example showing the shadcn Card Size composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/card-size/main.ts",
+        "target": "src/examples/card-size/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/card-size/card-size.scene.test.ts",
+        "target": "src/examples/card-size/card-size.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Card",
+        "example": "size",
+        "origin": "https://ui.shadcn.com/docs/components/radix/card"
+      }
+    }
+  },
+  {
+    "name": "card-spacing",
+    "type": "registry:example",
+    "title": "Card Spacing",
+    "description": "A runnable Foldkit example showing the shadcn Card Spacing composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/card-spacing/main.ts",
+        "target": "src/examples/card-spacing/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/card-spacing/card-spacing.scene.test.ts",
+        "target": "src/examples/card-spacing/card-spacing.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Card",
+        "example": "spacing",
+        "origin": "https://ui.shadcn.com/docs/components/radix/card"
+      }
+    }
+  },
+  {
     "name": "carousel-api",
     "type": "registry:example",
     "title": "Carousel API",
@@ -7524,6 +7888,34 @@
       "foldkit": {
         "component": "Carousel",
         "example": "api",
+        "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
+      }
+    }
+  },
+  {
+    "name": "carousel-autoplay",
+    "type": "registry:example",
+    "title": "Carousel Autoplay",
+    "description": "A runnable Foldkit example showing the shadcn Carousel Autoplay composition.",
+    "dependencies": ["effect", "foldkit", "embla-carousel"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-carousel"],
+    "files": [
+      {
+        "path": "registry/default/examples/carousel-autoplay/main.ts",
+        "target": "src/examples/carousel-autoplay/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/carousel-autoplay/carousel-autoplay.scene.test.ts",
+        "target": "src/examples/carousel-autoplay/carousel-autoplay.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Carousel",
+        "example": "autoplay",
         "origin": "https://ui.shadcn.com/docs/components/radix/carousel"
       }
     }
@@ -8044,6 +8436,122 @@
       "foldkit": {
         "component": "Command",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/command"
+      }
+    }
+  },
+  {
+    "name": "command-groups",
+    "type": "registry:example",
+    "title": "Command Groups",
+    "description": "A runnable Foldkit version of the upstream shadcn Command Groups example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["command"],
+    "files": [
+      {
+        "path": "registry/default/examples/command-groups/main.ts",
+        "target": "src/examples/command-groups/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/command-groups/command-groups.scene.test.ts",
+        "target": "src/examples/command-groups/command-groups.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Command",
+        "example": "groups",
+        "originExample": "command-groups",
+        "origin": "https://ui.shadcn.com/docs/components/radix/command"
+      }
+    }
+  },
+  {
+    "name": "command-rtl",
+    "type": "registry:example",
+    "title": "Command RTL",
+    "description": "A runnable Foldkit version of the upstream shadcn Command RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["command"],
+    "files": [
+      {
+        "path": "registry/default/examples/command-rtl/main.ts",
+        "target": "src/examples/command-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/command-rtl/command-rtl.scene.test.ts",
+        "target": "src/examples/command-rtl/command-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Command",
+        "example": "rtl",
+        "originExample": "command-rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/command"
+      }
+    }
+  },
+  {
+    "name": "command-scrollable",
+    "type": "registry:example",
+    "title": "Command Scrollable",
+    "description": "A runnable Foldkit version of the upstream shadcn Command Scrollable example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["command"],
+    "files": [
+      {
+        "path": "registry/default/examples/command-scrollable/main.ts",
+        "target": "src/examples/command-scrollable/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/command-scrollable/command-scrollable.scene.test.ts",
+        "target": "src/examples/command-scrollable/command-scrollable.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Command",
+        "example": "scrollable",
+        "originExample": "command-scrollable",
+        "origin": "https://ui.shadcn.com/docs/components/radix/command"
+      }
+    }
+  },
+  {
+    "name": "command-shortcuts",
+    "type": "registry:example",
+    "title": "Command Shortcuts",
+    "description": "A runnable Foldkit version of the upstream shadcn Command Shortcuts example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["command"],
+    "files": [
+      {
+        "path": "registry/default/examples/command-shortcuts/main.ts",
+        "target": "src/examples/command-shortcuts/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/command-shortcuts/command-shortcuts.scene.test.ts",
+        "target": "src/examples/command-shortcuts/command-shortcuts.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Command",
+        "example": "shortcuts",
+        "originExample": "command-shortcuts",
         "origin": "https://ui.shadcn.com/docs/components/radix/command"
       }
     }
@@ -8674,6 +9182,317 @@
     }
   },
   {
+    "name": "dropdown-menu-checkboxes",
+    "type": "registry:example",
+    "title": "Dropdown Menu Checkboxes",
+    "description": "A runnable Foldkit example showing dropdown menu checkbox items with controlled checked state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-checkboxes/main.ts",
+        "target": "src/examples/dropdown-menu-checkboxes/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-checkboxes/dropdown-menu-checkboxes.scene.test.ts",
+        "target": "src/examples/dropdown-menu-checkboxes/dropdown-menu-checkboxes.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "checkboxes",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-complex",
+    "type": "registry:example",
+    "title": "Dropdown Menu Complex",
+    "description": "A runnable Foldkit example showing a composed dropdown menu with icons, shortcuts, checkbox, radio, and destructive items.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-complex/main.ts",
+        "target": "src/examples/dropdown-menu-complex/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-complex/dropdown-menu-complex.scene.test.ts",
+        "target": "src/examples/dropdown-menu-complex/dropdown-menu-complex.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "complex",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-destructive",
+    "type": "registry:example",
+    "title": "Dropdown Menu Destructive",
+    "description": "A runnable Foldkit example showing dropdown menu destructive item styling.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-destructive/main.ts",
+        "target": "src/examples/dropdown-menu-destructive/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-destructive/dropdown-menu-destructive.scene.test.ts",
+        "target": "src/examples/dropdown-menu-destructive/dropdown-menu-destructive.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "destructive",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-icons",
+    "type": "registry:example",
+    "title": "Dropdown Menu Icons",
+    "description": "A runnable Foldkit example showing dropdown menu items with leading icons.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-icons/main.ts",
+        "target": "src/examples/dropdown-menu-icons/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-icons/dropdown-menu-icons.scene.test.ts",
+        "target": "src/examples/dropdown-menu-icons/dropdown-menu-icons.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "icons",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-radio-group",
+    "type": "registry:example",
+    "title": "Dropdown Menu Radio Group",
+    "description": "A runnable Foldkit example showing dropdown menu radio group items with controlled selection.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-radio-group/main.ts",
+        "target": "src/examples/dropdown-menu-radio-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-radio-group/dropdown-menu-radio-group.scene.test.ts",
+        "target": "src/examples/dropdown-menu-radio-group/dropdown-menu-radio-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "radio-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-rtl",
+    "type": "registry:example",
+    "title": "Dropdown Menu RTL",
+    "description": "A runnable Foldkit example showing dropdown menu composition in an RTL container.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-rtl/main.ts",
+        "target": "src/examples/dropdown-menu-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-rtl/dropdown-menu-rtl.scene.test.ts",
+        "target": "src/examples/dropdown-menu-rtl/dropdown-menu-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-shortcuts",
+    "type": "registry:example",
+    "title": "Dropdown Menu Shortcuts",
+    "description": "A runnable Foldkit example showing dropdown menu shortcut affordances.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-shortcuts/main.ts",
+        "target": "src/examples/dropdown-menu-shortcuts/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-shortcuts/dropdown-menu-shortcuts.scene.test.ts",
+        "target": "src/examples/dropdown-menu-shortcuts/dropdown-menu-shortcuts.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "shortcuts",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "dropdown-menu-submenu",
+    "type": "registry:example",
+    "title": "Dropdown Menu Submenu",
+    "description": "A runnable Foldkit example showing dropdown menu submenu trigger and nested content composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/dropdown-menu-submenu/main.ts",
+        "target": "src/examples/dropdown-menu-submenu/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/dropdown-menu-submenu/dropdown-menu-submenu.scene.test.ts",
+        "target": "src/examples/dropdown-menu-submenu/dropdown-menu-submenu.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "DropdownMenu",
+        "example": "submenu",
+        "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+      }
+    }
+  },
+  {
+    "name": "empty-avatar",
+    "type": "registry:example",
+    "title": "Empty Avatar",
+    "description": "A runnable Foldkit version of the upstream shadcn empty avatar example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["empty", "shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/empty-avatar/main.ts",
+        "target": "src/examples/empty-avatar/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/empty-avatar/empty-avatar.scene.test.ts",
+        "target": "src/examples/empty-avatar/empty-avatar.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Empty",
+        "example": "avatar",
+        "originExample": "empty-avatar",
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+      }
+    }
+  },
+  {
+    "name": "empty-avatar-group",
+    "type": "registry:example",
+    "title": "Empty Avatar Group",
+    "description": "A runnable Foldkit version of the upstream shadcn empty avatar group example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["empty", "shadcn-avatar"],
+    "files": [
+      {
+        "path": "registry/default/examples/empty-avatar-group/main.ts",
+        "target": "src/examples/empty-avatar-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/empty-avatar-group/empty-avatar-group.scene.test.ts",
+        "target": "src/examples/empty-avatar-group/empty-avatar-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Empty",
+        "example": "avatar-group",
+        "originExample": "empty-avatar-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+      }
+    }
+  },
+  {
+    "name": "empty-background",
+    "type": "registry:example",
+    "title": "Empty Background",
+    "description": "A runnable Foldkit version of the upstream shadcn empty background example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["empty"],
+    "files": [
+      {
+        "path": "registry/default/examples/empty-background/main.ts",
+        "target": "src/examples/empty-background/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/empty-background/empty-background.scene.test.ts",
+        "target": "src/examples/empty-background/empty-background.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Empty",
+        "example": "background",
+        "originExample": "empty-background",
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+      }
+    }
+  },
+  {
     "name": "empty-basic",
     "type": "registry:example",
     "title": "Empty Basic",
@@ -8726,6 +9545,64 @@
         "component": "Empty",
         "example": "input-group",
         "originExample": "empty-input-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+      }
+    }
+  },
+  {
+    "name": "empty-outline",
+    "type": "registry:example",
+    "title": "Empty Outline",
+    "description": "A runnable Foldkit version of the upstream shadcn empty outline example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["empty"],
+    "files": [
+      {
+        "path": "registry/default/examples/empty-outline/main.ts",
+        "target": "src/examples/empty-outline/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/empty-outline/empty-outline.scene.test.ts",
+        "target": "src/examples/empty-outline/empty-outline.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Empty",
+        "example": "outline",
+        "originExample": "empty-outline",
+        "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+      }
+    }
+  },
+  {
+    "name": "empty-rtl",
+    "type": "registry:example",
+    "title": "Empty RTL",
+    "description": "A runnable Foldkit version of the upstream shadcn empty RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["empty"],
+    "files": [
+      {
+        "path": "registry/default/examples/empty-rtl/main.ts",
+        "target": "src/examples/empty-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/empty-rtl/empty-rtl.scene.test.ts",
+        "target": "src/examples/empty-rtl/empty-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Empty",
+        "example": "rtl",
+        "originExample": "empty-rtl",
         "origin": "https://ui.shadcn.com/docs/components/radix/empty"
       }
     }
@@ -8943,6 +9820,62 @@
     }
   },
   {
+    "name": "hover-card-rtl",
+    "type": "registry:example",
+    "title": "Hover Card RTL",
+    "description": "A runnable Foldkit example showing shadcn Hover Card right-to-left content.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["hover-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/hover-card-rtl/main.ts",
+        "target": "src/examples/hover-card-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/hover-card-rtl/hover-card-rtl.scene.test.ts",
+        "target": "src/examples/hover-card-rtl/hover-card-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "HoverCard",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/hover-card"
+      }
+    }
+  },
+  {
+    "name": "hover-card-sides",
+    "type": "registry:example",
+    "title": "Hover Card Sides",
+    "description": "A runnable Foldkit example showing shadcn Hover Card side positioning.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["hover-card"],
+    "files": [
+      {
+        "path": "registry/default/examples/hover-card-sides/main.ts",
+        "target": "src/examples/hover-card-sides/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/hover-card-sides/hover-card-sides.scene.test.ts",
+        "target": "src/examples/hover-card-sides/hover-card-sides.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "HoverCard",
+        "example": "sides",
+        "origin": "https://ui.shadcn.com/docs/components/radix/hover-card"
+      }
+    }
+  },
+  {
     "name": "input-basic",
     "type": "registry:example",
     "title": "Input Basic",
@@ -8997,6 +9930,35 @@
     }
   },
   {
+    "name": "input-group-align",
+    "type": "registry:example",
+    "title": "Input Group Align",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group align example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-align/main.ts",
+        "target": "src/examples/input-group-align/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-align/input-group-align.scene.test.ts",
+        "target": "src/examples/input-group-align/input-group-align.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "align",
+        "originExample": "input-group-align",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
     "name": "input-group-basic",
     "type": "registry:example",
     "title": "Input Group Basic",
@@ -9025,6 +9987,266 @@
     }
   },
   {
+    "name": "input-group-button",
+    "type": "registry:example",
+    "title": "Input Group Button",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group button example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-button/main.ts",
+        "target": "src/examples/input-group-button/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-button/input-group-button.scene.test.ts",
+        "target": "src/examples/input-group-button/input-group-button.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "button",
+        "originExample": "input-group-button",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-custom-input",
+    "type": "registry:example",
+    "title": "Input Group Custom Input",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group custom input example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-custom-input/main.ts",
+        "target": "src/examples/input-group-custom-input/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-custom-input/input-group-custom-input.scene.test.ts",
+        "target": "src/examples/input-group-custom-input/input-group-custom-input.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "custom-input",
+        "originExample": "input-group-custom-input",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-dropdown",
+    "type": "registry:example",
+    "title": "Input Group Dropdown",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group dropdown example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group", "dropdown-menu"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-dropdown/main.ts",
+        "target": "src/examples/input-group-dropdown/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-dropdown/input-group-dropdown.scene.test.ts",
+        "target": "src/examples/input-group-dropdown/input-group-dropdown.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "dropdown",
+        "originExample": "input-group-dropdown",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-icon",
+    "type": "registry:example",
+    "title": "Input Group Icon",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group icon example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-icon/main.ts",
+        "target": "src/examples/input-group-icon/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-icon/input-group-icon.scene.test.ts",
+        "target": "src/examples/input-group-icon/input-group-icon.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "icon",
+        "originExample": "input-group-icon",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-rtl",
+    "type": "registry:example",
+    "title": "Input Group RTL",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-rtl/main.ts",
+        "target": "src/examples/input-group-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-rtl/input-group-rtl.scene.test.ts",
+        "target": "src/examples/input-group-rtl/input-group-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "rtl",
+        "originExample": "input-group-rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-spinner",
+    "type": "registry:example",
+    "title": "Input Group Spinner",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group spinner example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-spinner/main.ts",
+        "target": "src/examples/input-group-spinner/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-spinner/input-group-spinner.scene.test.ts",
+        "target": "src/examples/input-group-spinner/input-group-spinner.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "spinner",
+        "originExample": "input-group-spinner",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-text",
+    "type": "registry:example",
+    "title": "Input Group Text",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group text example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-text/main.ts",
+        "target": "src/examples/input-group-text/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-text/input-group-text.scene.test.ts",
+        "target": "src/examples/input-group-text/input-group-text.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "text",
+        "originExample": "input-group-text",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-group-textarea",
+    "type": "registry:example",
+    "title": "Input Group Textarea",
+    "description": "A runnable Foldkit version of the upstream shadcn Input Group textarea example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-group-textarea/main.ts",
+        "target": "src/examples/input-group-textarea/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-group-textarea/input-group-textarea.scene.test.ts",
+        "target": "src/examples/input-group-textarea/input-group-textarea.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputGroup",
+        "example": "textarea",
+        "originExample": "input-group-textarea",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+      }
+    }
+  },
+  {
+    "name": "input-otp-alphanumeric",
+    "type": "registry:example",
+    "title": "Input OTP Alphanumeric",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP alphanumeric pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-alphanumeric/main.ts",
+        "target": "src/examples/input-otp-alphanumeric/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-alphanumeric/input-otp-alphanumeric.scene.test.ts",
+        "target": "src/examples/input-otp-alphanumeric/input-otp-alphanumeric.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "alphanumeric",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
     "name": "input-otp-basic",
     "type": "registry:example",
     "title": "Input OTP Basic",
@@ -9048,6 +10270,230 @@
       "foldkit": {
         "component": "InputOtp",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-controlled",
+    "type": "registry:example",
+    "title": "Input OTP Controlled",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP controlled value display.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-controlled/main.ts",
+        "target": "src/examples/input-otp-controlled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-controlled/input-otp-controlled.scene.test.ts",
+        "target": "src/examples/input-otp-controlled/input-otp-controlled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "controlled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-disabled",
+    "type": "registry:example",
+    "title": "Input OTP Disabled",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP disabled state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-disabled/main.ts",
+        "target": "src/examples/input-otp-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-disabled/input-otp-disabled.scene.test.ts",
+        "target": "src/examples/input-otp-disabled/input-otp-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "disabled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-form",
+    "type": "registry:example",
+    "title": "Input OTP Form",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP verification form composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-form/main.ts",
+        "target": "src/examples/input-otp-form/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-form/input-otp-form.scene.test.ts",
+        "target": "src/examples/input-otp-form/input-otp-form.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "form",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-four-digits",
+    "type": "registry:example",
+    "title": "Input OTP Four Digits",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP four-digit PIN pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-four-digits/main.ts",
+        "target": "src/examples/input-otp-four-digits/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-four-digits/input-otp-four-digits.scene.test.ts",
+        "target": "src/examples/input-otp-four-digits/input-otp-four-digits.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "four-digits",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-invalid",
+    "type": "registry:example",
+    "title": "Input OTP Invalid",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP invalid slot state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-invalid/main.ts",
+        "target": "src/examples/input-otp-invalid/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-invalid/input-otp-invalid.scene.test.ts",
+        "target": "src/examples/input-otp-invalid/input-otp-invalid.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "invalid",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-pattern",
+    "type": "registry:example",
+    "title": "Input OTP Pattern",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP digits-only pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-pattern/main.ts",
+        "target": "src/examples/input-otp-pattern/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-pattern/input-otp-pattern.scene.test.ts",
+        "target": "src/examples/input-otp-pattern/input-otp-pattern.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "pattern",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-rtl",
+    "type": "registry:example",
+    "title": "Input OTP RTL",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP right-to-left composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-rtl/main.ts",
+        "target": "src/examples/input-otp-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-rtl/input-otp-rtl.scene.test.ts",
+        "target": "src/examples/input-otp-rtl/input-otp-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
+      }
+    }
+  },
+  {
+    "name": "input-otp-separator",
+    "type": "registry:example",
+    "title": "Input OTP Separator",
+    "description": "A runnable Foldkit example showing the shadcn Input OTP separator composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["input-otp"],
+    "files": [
+      {
+        "path": "registry/default/examples/input-otp-separator/main.ts",
+        "target": "src/examples/input-otp-separator/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/input-otp-separator/input-otp-separator.scene.test.ts",
+        "target": "src/examples/input-otp-separator/input-otp-separator.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "InputOtp",
+        "example": "separator",
         "origin": "https://ui.shadcn.com/docs/components/radix/input-otp"
       }
     }
@@ -9418,6 +10864,34 @@
     }
   },
   {
+    "name": "kbd-rtl",
+    "type": "registry:example",
+    "title": "Kbd RTL",
+    "description": "A runnable Foldkit example showing the shadcn Kbd RTL composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["kbd"],
+    "files": [
+      {
+        "path": "registry/default/examples/kbd-rtl/main.ts",
+        "target": "src/examples/kbd-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/kbd-rtl/kbd-rtl.scene.test.ts",
+        "target": "src/examples/kbd-rtl/kbd-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Kbd",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/kbd"
+      }
+    }
+  },
+  {
     "name": "label-basic",
     "type": "registry:example",
     "title": "Label Basic",
@@ -9441,6 +10915,62 @@
       "foldkit": {
         "component": "Label",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/label"
+      }
+    }
+  },
+  {
+    "name": "label-field",
+    "type": "registry:example",
+    "title": "Label Field",
+    "description": "A runnable Foldkit example showing the shadcn Label field composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["label"],
+    "files": [
+      {
+        "path": "registry/default/examples/label-field/main.ts",
+        "target": "src/examples/label-field/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/label-field/label-field.scene.test.ts",
+        "target": "src/examples/label-field/label-field.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Label",
+        "example": "field",
+        "origin": "https://ui.shadcn.com/docs/components/radix/label"
+      }
+    }
+  },
+  {
+    "name": "label-rtl",
+    "type": "registry:example",
+    "title": "Label RTL",
+    "description": "A runnable Foldkit example showing the shadcn Label RTL composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["label"],
+    "files": [
+      {
+        "path": "registry/default/examples/label-rtl/main.ts",
+        "target": "src/examples/label-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/label-rtl/label-rtl.scene.test.ts",
+        "target": "src/examples/label-rtl/label-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Label",
+        "example": "rtl",
         "origin": "https://ui.shadcn.com/docs/components/radix/label"
       }
     }
@@ -9658,6 +11188,118 @@
     }
   },
   {
+    "name": "native-select-disabled",
+    "type": "registry:example",
+    "title": "Native Select Disabled",
+    "description": "A runnable Foldkit example showing the shadcn Native Select disabled state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["native-select"],
+    "files": [
+      {
+        "path": "registry/default/examples/native-select-disabled/main.ts",
+        "target": "src/examples/native-select-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/native-select-disabled/native-select-disabled.scene.test.ts",
+        "target": "src/examples/native-select-disabled/native-select-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NativeSelect",
+        "example": "disabled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
+      }
+    }
+  },
+  {
+    "name": "native-select-groups",
+    "type": "registry:example",
+    "title": "Native Select Groups",
+    "description": "A runnable Foldkit example showing the shadcn Native Select grouped options pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["native-select"],
+    "files": [
+      {
+        "path": "registry/default/examples/native-select-groups/main.ts",
+        "target": "src/examples/native-select-groups/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/native-select-groups/native-select-groups.scene.test.ts",
+        "target": "src/examples/native-select-groups/native-select-groups.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NativeSelect",
+        "example": "groups",
+        "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
+      }
+    }
+  },
+  {
+    "name": "native-select-invalid",
+    "type": "registry:example",
+    "title": "Native Select Invalid",
+    "description": "A runnable Foldkit example showing the shadcn Native Select invalid state.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["native-select"],
+    "files": [
+      {
+        "path": "registry/default/examples/native-select-invalid/main.ts",
+        "target": "src/examples/native-select-invalid/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/native-select-invalid/native-select-invalid.scene.test.ts",
+        "target": "src/examples/native-select-invalid/native-select-invalid.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NativeSelect",
+        "example": "invalid",
+        "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
+      }
+    }
+  },
+  {
+    "name": "native-select-rtl",
+    "type": "registry:example",
+    "title": "Native Select RTL",
+    "description": "A runnable Foldkit example showing the shadcn Native Select RTL pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["native-select"],
+    "files": [
+      {
+        "path": "registry/default/examples/native-select-rtl/main.ts",
+        "target": "src/examples/native-select-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/native-select-rtl/native-select-rtl.scene.test.ts",
+        "target": "src/examples/native-select-rtl/native-select-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "NativeSelect",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
+      }
+    }
+  },
+  {
     "name": "navigation-menu-basic",
     "type": "registry:example",
     "title": "Navigation Menu Basic",
@@ -9795,6 +11437,90 @@
       "foldkit": {
         "component": "Pagination",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/pagination"
+      }
+    }
+  },
+  {
+    "name": "pagination-icons-only",
+    "type": "registry:example",
+    "title": "Pagination Icons Only",
+    "description": "A runnable Foldkit example showing the shadcn Pagination icons-only composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["pagination"],
+    "files": [
+      {
+        "path": "registry/default/examples/pagination-icons-only/main.ts",
+        "target": "src/examples/pagination-icons-only/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/pagination-icons-only/pagination-icons-only.scene.test.ts",
+        "target": "src/examples/pagination-icons-only/pagination-icons-only.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Pagination",
+        "example": "icons-only",
+        "origin": "https://ui.shadcn.com/docs/components/radix/pagination"
+      }
+    }
+  },
+  {
+    "name": "pagination-rtl",
+    "type": "registry:example",
+    "title": "Pagination RTL",
+    "description": "A runnable Foldkit example showing the shadcn Pagination RTL composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["pagination"],
+    "files": [
+      {
+        "path": "registry/default/examples/pagination-rtl/main.ts",
+        "target": "src/examples/pagination-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/pagination-rtl/pagination-rtl.scene.test.ts",
+        "target": "src/examples/pagination-rtl/pagination-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Pagination",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/pagination"
+      }
+    }
+  },
+  {
+    "name": "pagination-simple",
+    "type": "registry:example",
+    "title": "Pagination Simple",
+    "description": "A runnable Foldkit example showing the shadcn Pagination simple composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["pagination"],
+    "files": [
+      {
+        "path": "registry/default/examples/pagination-simple/main.ts",
+        "target": "src/examples/pagination-simple/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/pagination-simple/pagination-simple.scene.test.ts",
+        "target": "src/examples/pagination-simple/pagination-simple.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Pagination",
+        "example": "simple",
         "origin": "https://ui.shadcn.com/docs/components/radix/pagination"
       }
     }
@@ -10045,6 +11771,90 @@
       "foldkit": {
         "component": "Resizable",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/resizable"
+      }
+    }
+  },
+  {
+    "name": "resizable-handle",
+    "type": "registry:example",
+    "title": "Resizable Handle",
+    "description": "A runnable Foldkit example showing the shadcn Resizable Handle pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["resizable"],
+    "files": [
+      {
+        "path": "registry/default/examples/resizable-handle/main.ts",
+        "target": "src/examples/resizable-handle/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/resizable-handle/resizable-handle.scene.test.ts",
+        "target": "src/examples/resizable-handle/resizable-handle.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Resizable",
+        "example": "handle",
+        "origin": "https://ui.shadcn.com/docs/components/radix/resizable"
+      }
+    }
+  },
+  {
+    "name": "resizable-rtl",
+    "type": "registry:example",
+    "title": "Resizable RTL",
+    "description": "A runnable Foldkit example showing the shadcn Resizable RTL pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["resizable"],
+    "files": [
+      {
+        "path": "registry/default/examples/resizable-rtl/main.ts",
+        "target": "src/examples/resizable-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/resizable-rtl/resizable-rtl.scene.test.ts",
+        "target": "src/examples/resizable-rtl/resizable-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Resizable",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/resizable"
+      }
+    }
+  },
+  {
+    "name": "resizable-vertical",
+    "type": "registry:example",
+    "title": "Resizable Vertical",
+    "description": "A runnable Foldkit example showing the shadcn Resizable Vertical pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["resizable"],
+    "files": [
+      {
+        "path": "registry/default/examples/resizable-vertical/main.ts",
+        "target": "src/examples/resizable-vertical/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/resizable-vertical/resizable-vertical.scene.test.ts",
+        "target": "src/examples/resizable-vertical/resizable-vertical.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Resizable",
+        "example": "vertical",
         "origin": "https://ui.shadcn.com/docs/components/radix/resizable"
       }
     }
@@ -11496,6 +13306,202 @@
     }
   },
   {
+    "name": "shadcn-checkbox-checked-state",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Checked State",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox Checked State example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-checked-state/main.ts",
+        "target": "src/examples/shadcn-checkbox-checked-state/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-checked-state/shadcn-checkbox-checked-state.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-checked-state/shadcn-checkbox-checked-state.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "checked-state",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#checked-state"
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox-description",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Description",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox Description example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-description/main.ts",
+        "target": "src/examples/shadcn-checkbox-description/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-description/shadcn-checkbox-description.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-description/shadcn-checkbox-description.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "description",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#description"
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox-disabled",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Disabled",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox Disabled example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-disabled/main.ts",
+        "target": "src/examples/shadcn-checkbox-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-disabled/shadcn-checkbox-disabled.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-disabled/shadcn-checkbox-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "disabled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#disabled"
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox-group",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Group",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox Group example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-group/main.ts",
+        "target": "src/examples/shadcn-checkbox-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-group/shadcn-checkbox-group.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-group/shadcn-checkbox-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox-invalid",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Invalid",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox Invalid State example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-invalid/main.ts",
+        "target": "src/examples/shadcn-checkbox-invalid/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-invalid/shadcn-checkbox-invalid.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-invalid/shadcn-checkbox-invalid.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "invalid",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#invalid-state"
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox-rtl",
+    "type": "registry:example",
+    "title": "shadcn Checkbox RTL",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-rtl/main.ts",
+        "target": "src/examples/shadcn-checkbox-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-rtl/shadcn-checkbox-rtl.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-rtl/shadcn-checkbox-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#rtl"
+      }
+    }
+  },
+  {
+    "name": "shadcn-checkbox-table",
+    "type": "registry:example",
+    "title": "shadcn Checkbox Table",
+    "description": "A runnable Foldkit example matching the shadcn Checkbox Table example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-checkbox"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-checkbox-table/main.ts",
+        "target": "src/examples/shadcn-checkbox-table/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-checkbox-table/shadcn-checkbox-table.scene.test.ts",
+        "target": "src/examples/shadcn-checkbox-table/shadcn-checkbox-table.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Checkbox",
+        "example": "table",
+        "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#table"
+      }
+    }
+  },
+  {
     "name": "shadcn-collapsible-basic",
     "type": "registry:example",
     "title": "shadcn Collapsible Basic",
@@ -11691,9 +13697,6 @@
       }
     }
   },
-
-
-
   {
     "name": "shadcn-dialog-rtl",
     "type": "registry:example",
@@ -11721,7 +13724,8 @@
         "origin": "https://ui.shadcn.com/docs/components/radix/dialog#rtl"
       }
     }
-  },  {
+  },
+  {
     "name": "shadcn-dialog-scrollable-content",
     "type": "registry:example",
     "title": "shadcn Dialog Scrollable Content",
@@ -11748,7 +13752,8 @@
         "origin": "https://ui.shadcn.com/docs/components/radix/dialog#scrollable-content"
       }
     }
-  },  {
+  },
+  {
     "name": "shadcn-dialog-sticky-footer",
     "type": "registry:example",
     "title": "shadcn Dialog Sticky Footer",
@@ -11775,7 +13780,8 @@
         "origin": "https://ui.shadcn.com/docs/components/radix/dialog#sticky-footer"
       }
     }
-  },  {
+  },
+  {
     "name": "shadcn-drawer-basic",
     "type": "registry:example",
     "title": "shadcn Drawer Basic",
@@ -11944,6 +13950,34 @@
     }
   },
   {
+    "name": "shadcn-input-badge",
+    "type": "registry:example",
+    "title": "shadcn Input Badge",
+    "description": "A runnable Foldkit example matching the shadcn Input Badge origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input", "badge"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-badge/main.ts",
+        "target": "src/examples/shadcn-input-badge/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-badge/shadcn-input-badge.scene.test.ts",
+        "target": "src/examples/shadcn-input-badge/shadcn-input-badge.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "badge",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#badge"
+      }
+    }
+  },
+  {
     "name": "shadcn-input-basic",
     "type": "registry:example",
     "title": "shadcn Input Basic",
@@ -11968,6 +14002,62 @@
         "component": "Input",
         "example": "basic",
         "origin": "https://ui.shadcn.com/docs/components/radix/input"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-button-group",
+    "type": "registry:example",
+    "title": "shadcn Input Button Group",
+    "description": "A runnable Foldkit example matching the shadcn Input Button Group origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input", "button-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-button-group/main.ts",
+        "target": "src/examples/shadcn-input-button-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-button-group/shadcn-input-button-group.scene.test.ts",
+        "target": "src/examples/shadcn-input-button-group/shadcn-input-button-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "button-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#button-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-demo",
+    "type": "registry:example",
+    "title": "shadcn Input Demo",
+    "description": "A runnable Foldkit example matching the shadcn Input Demo origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-demo/main.ts",
+        "target": "src/examples/shadcn-input-demo/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-demo/shadcn-input-demo.scene.test.ts",
+        "target": "src/examples/shadcn-input-demo/shadcn-input-demo.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "demo",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#demo"
       }
     }
   },
@@ -12000,6 +14090,62 @@
     }
   },
   {
+    "name": "shadcn-input-field",
+    "type": "registry:example",
+    "title": "shadcn Input Field",
+    "description": "A runnable Foldkit example matching the shadcn Input Field origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-field/main.ts",
+        "target": "src/examples/shadcn-input-field/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-field/shadcn-input-field.scene.test.ts",
+        "target": "src/examples/shadcn-input-field/shadcn-input-field.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "field",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#field"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-field-group",
+    "type": "registry:example",
+    "title": "shadcn Input Field Group",
+    "description": "A runnable Foldkit example matching the shadcn Input Field Group origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-field-group/main.ts",
+        "target": "src/examples/shadcn-input-field-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-field-group/shadcn-input-field-group.scene.test.ts",
+        "target": "src/examples/shadcn-input-field-group/shadcn-input-field-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "field-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#field-group"
+      }
+    }
+  },
+  {
     "name": "shadcn-input-file",
     "type": "registry:example",
     "title": "shadcn Input File",
@@ -12028,6 +14174,118 @@
     }
   },
   {
+    "name": "shadcn-input-form",
+    "type": "registry:example",
+    "title": "shadcn Input Form",
+    "description": "A runnable Foldkit example matching the shadcn Input Form origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-form/main.ts",
+        "target": "src/examples/shadcn-input-form/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-form/shadcn-input-form.scene.test.ts",
+        "target": "src/examples/shadcn-input-form/shadcn-input-form.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "form",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#form"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-grid",
+    "type": "registry:example",
+    "title": "shadcn Input Grid",
+    "description": "A runnable Foldkit example matching the shadcn Input Grid origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-grid/main.ts",
+        "target": "src/examples/shadcn-input-grid/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-grid/shadcn-input-grid.scene.test.ts",
+        "target": "src/examples/shadcn-input-grid/shadcn-input-grid.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "grid",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#grid"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-inline",
+    "type": "registry:example",
+    "title": "shadcn Input Inline",
+    "description": "A runnable Foldkit example matching the shadcn Input Inline origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-inline/main.ts",
+        "target": "src/examples/shadcn-input-inline/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-inline/shadcn-input-inline.scene.test.ts",
+        "target": "src/examples/shadcn-input-inline/shadcn-input-inline.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "inline",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#inline"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-input-group",
+    "type": "registry:example",
+    "title": "shadcn Input Input Group",
+    "description": "A runnable Foldkit example matching the shadcn Input Input Group origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input", "input-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-input-group/main.ts",
+        "target": "src/examples/shadcn-input-input-group/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-input-group/shadcn-input-input-group.scene.test.ts",
+        "target": "src/examples/shadcn-input-input-group/shadcn-input-input-group.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "input-group",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#input-group"
+      }
+    }
+  },
+  {
     "name": "shadcn-input-invalid",
     "type": "registry:example",
     "title": "shadcn Input Invalid",
@@ -12052,6 +14310,34 @@
         "component": "Input",
         "example": "invalid",
         "origin": "https://ui.shadcn.com/docs/components/radix/input#invalid"
+      }
+    }
+  },
+  {
+    "name": "shadcn-input-required",
+    "type": "registry:example",
+    "title": "shadcn Input Required",
+    "description": "A runnable Foldkit example matching the shadcn Input Required origin pattern.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-input"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-input-required/main.ts",
+        "target": "src/examples/shadcn-input-required/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-input-required/shadcn-input-required.scene.test.ts",
+        "target": "src/examples/shadcn-input-required/shadcn-input-required.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Input",
+        "example": "required",
+        "origin": "https://ui.shadcn.com/docs/components/radix/input#required"
       }
     }
   },
@@ -12199,7 +14485,7 @@
     "name": "shadcn-radio-group-basic",
     "type": "registry:example",
     "title": "shadcn Radio Group Basic",
-    "description": "A runnable Foldkit example showing the shadcn Radio Group wrapper with typed selection and parent-visible feedback.",
+    "description": "A runnable Foldkit example showing the shadcn Radio Group wrapper with the origin density choices.",
     "dependencies": ["effect", "foldkit"],
     "devDependencies": ["vitest"],
     "registryDependencies": ["shadcn-radio-group"],
@@ -12219,6 +14505,174 @@
       "foldkit": {
         "component": "RadioGroup",
         "example": "shadcn-basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-radio-group-choice-card",
+    "type": "registry:example",
+    "title": "shadcn Radio Group Choice Card",
+    "description": "A runnable Foldkit example showing the shadcn Radio Group choice card layout.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-radio-group-choice-card/main.ts",
+        "target": "src/examples/shadcn-radio-group-choice-card/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-radio-group-choice-card/shadcn-radio-group-choice-card.scene.test.ts",
+        "target": "src/examples/shadcn-radio-group-choice-card/shadcn-radio-group-choice-card.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "shadcn-choice-card",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-radio-group-description",
+    "type": "registry:example",
+    "title": "shadcn Radio Group Description",
+    "description": "A runnable Foldkit example showing shadcn Radio Group items with descriptions.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-radio-group-description/main.ts",
+        "target": "src/examples/shadcn-radio-group-description/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-radio-group-description/shadcn-radio-group-description.scene.test.ts",
+        "target": "src/examples/shadcn-radio-group-description/shadcn-radio-group-description.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "shadcn-description",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-radio-group-disabled",
+    "type": "registry:example",
+    "title": "shadcn Radio Group Disabled",
+    "description": "A runnable Foldkit example showing disabled shadcn Radio Group items.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-radio-group-disabled/main.ts",
+        "target": "src/examples/shadcn-radio-group-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-radio-group-disabled/shadcn-radio-group-disabled.scene.test.ts",
+        "target": "src/examples/shadcn-radio-group-disabled/shadcn-radio-group-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "shadcn-disabled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-radio-group-fieldset",
+    "type": "registry:example",
+    "title": "shadcn Radio Group Fieldset",
+    "description": "A runnable Foldkit example showing the shadcn Radio Group fieldset composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-radio-group-fieldset/main.ts",
+        "target": "src/examples/shadcn-radio-group-fieldset/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-radio-group-fieldset/shadcn-radio-group-fieldset.scene.test.ts",
+        "target": "src/examples/shadcn-radio-group-fieldset/shadcn-radio-group-fieldset.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "shadcn-fieldset",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-radio-group-invalid",
+    "type": "registry:example",
+    "title": "shadcn Radio Group Invalid",
+    "description": "A runnable Foldkit example showing invalid shadcn Radio Group items.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-radio-group-invalid/main.ts",
+        "target": "src/examples/shadcn-radio-group-invalid/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-radio-group-invalid/shadcn-radio-group-invalid.scene.test.ts",
+        "target": "src/examples/shadcn-radio-group-invalid/shadcn-radio-group-invalid.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "shadcn-invalid",
+        "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+      }
+    }
+  },
+  {
+    "name": "shadcn-radio-group-rtl",
+    "type": "registry:example",
+    "title": "shadcn Radio Group RTL",
+    "description": "A runnable Foldkit example showing the shadcn Radio Group RTL demo.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-radio-group"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-radio-group-rtl/main.ts",
+        "target": "src/examples/shadcn-radio-group-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-radio-group-rtl/shadcn-radio-group-rtl.scene.test.ts",
+        "target": "src/examples/shadcn-radio-group-rtl/shadcn-radio-group-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "RadioGroup",
+        "example": "shadcn-rtl",
         "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
       }
     }
@@ -12420,6 +14874,146 @@
     }
   },
   {
+    "name": "shadcn-textarea-button",
+    "type": "registry:example",
+    "title": "shadcn Textarea Button",
+    "description": "A runnable Foldkit example matching the shadcn Textarea Button example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-textarea-button/main.ts",
+        "target": "src/examples/shadcn-textarea-button/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-textarea-button/shadcn-textarea-button.scene.test.ts",
+        "target": "src/examples/shadcn-textarea-button/shadcn-textarea-button.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "button",
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea#button"
+      }
+    }
+  },
+  {
+    "name": "shadcn-textarea-disabled",
+    "type": "registry:example",
+    "title": "shadcn Textarea Disabled",
+    "description": "A runnable Foldkit example matching the shadcn Textarea Disabled example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-textarea-disabled/main.ts",
+        "target": "src/examples/shadcn-textarea-disabled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-textarea-disabled/shadcn-textarea-disabled.scene.test.ts",
+        "target": "src/examples/shadcn-textarea-disabled/shadcn-textarea-disabled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "disabled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea#disabled"
+      }
+    }
+  },
+  {
+    "name": "shadcn-textarea-field",
+    "type": "registry:example",
+    "title": "shadcn Textarea Field",
+    "description": "A runnable Foldkit example matching the shadcn Textarea Field example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-textarea-field/main.ts",
+        "target": "src/examples/shadcn-textarea-field/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-textarea-field/shadcn-textarea-field.scene.test.ts",
+        "target": "src/examples/shadcn-textarea-field/shadcn-textarea-field.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "field",
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea#field"
+      }
+    }
+  },
+  {
+    "name": "shadcn-textarea-invalid",
+    "type": "registry:example",
+    "title": "shadcn Textarea Invalid",
+    "description": "A runnable Foldkit example matching the shadcn Textarea Invalid example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-textarea-invalid/main.ts",
+        "target": "src/examples/shadcn-textarea-invalid/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-textarea-invalid/shadcn-textarea-invalid.scene.test.ts",
+        "target": "src/examples/shadcn-textarea-invalid/shadcn-textarea-invalid.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "invalid",
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea#invalid"
+      }
+    }
+  },
+  {
+    "name": "shadcn-textarea-rtl",
+    "type": "registry:example",
+    "title": "shadcn Textarea RTL",
+    "description": "A runnable Foldkit example matching the shadcn Textarea RTL example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["shadcn-textarea"],
+    "files": [
+      {
+        "path": "registry/default/examples/shadcn-textarea-rtl/main.ts",
+        "target": "src/examples/shadcn-textarea-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/shadcn-textarea-rtl/shadcn-textarea-rtl.scene.test.ts",
+        "target": "src/examples/shadcn-textarea-rtl/shadcn-textarea-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Textarea",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/textarea#rtl"
+      }
+    }
+  },
+  {
     "name": "shadcn-toast-basic",
     "type": "registry:example",
     "title": "shadcn Toast Basic",
@@ -12586,6 +15180,118 @@
       "foldkit": {
         "component": "Sidebar",
         "example": "basic",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
+      }
+    }
+  },
+  {
+    "name": "sidebar-composition",
+    "type": "registry:example",
+    "title": "Sidebar Composition",
+    "description": "A runnable Foldkit example showing shadcn Sidebar group, action, badge, submenu, skeleton, rail, and inset composition.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["sidebar"],
+    "files": [
+      {
+        "path": "registry/default/examples/sidebar-composition/main.ts",
+        "target": "src/examples/sidebar-composition/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/sidebar-composition/sidebar-composition.scene.test.ts",
+        "target": "src/examples/sidebar-composition/sidebar-composition.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Sidebar",
+        "example": "composition",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
+      }
+    }
+  },
+  {
+    "name": "sidebar-controlled",
+    "type": "registry:example",
+    "title": "Sidebar Controlled",
+    "description": "A runnable Foldkit example showing parent-owned controlled Sidebar state, trigger behavior, and search input updates.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["sidebar"],
+    "files": [
+      {
+        "path": "registry/default/examples/sidebar-controlled/main.ts",
+        "target": "src/examples/sidebar-controlled/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/sidebar-controlled/sidebar-controlled.scene.test.ts",
+        "target": "src/examples/sidebar-controlled/sidebar-controlled.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Sidebar",
+        "example": "controlled",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
+      }
+    }
+  },
+  {
+    "name": "sidebar-rtl",
+    "type": "registry:example",
+    "title": "Sidebar RTL",
+    "description": "A runnable Foldkit example showing the shadcn Sidebar in an RTL region with a right-side inset layout.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["sidebar"],
+    "files": [
+      {
+        "path": "registry/default/examples/sidebar-rtl/main.ts",
+        "target": "src/examples/sidebar-rtl/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/sidebar-rtl/sidebar-rtl.scene.test.ts",
+        "target": "src/examples/sidebar-rtl/sidebar-rtl.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Sidebar",
+        "example": "rtl",
+        "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
+      }
+    }
+  },
+  {
+    "name": "sidebar-variants",
+    "type": "registry:example",
+    "title": "Sidebar Variants",
+    "description": "A runnable Foldkit example showing shadcn Sidebar side, variant, and collapsible design states.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["sidebar"],
+    "files": [
+      {
+        "path": "registry/default/examples/sidebar-variants/main.ts",
+        "target": "src/examples/sidebar-variants/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/sidebar-variants/sidebar-variants.scene.test.ts",
+        "target": "src/examples/sidebar-variants/sidebar-variants.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "Sidebar",
+        "example": "variants",
         "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
       }
     }

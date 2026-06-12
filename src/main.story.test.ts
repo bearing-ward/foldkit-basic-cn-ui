@@ -7,8 +7,10 @@ import * as AccordionBasicExample from "../registry/default/examples/accordion-b
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
+import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
+import * as AlertRtlExample from "../registry/default/examples/alert-rtl/main";
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
 import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
 import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
@@ -64,7 +66,9 @@ import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/bas
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverDetachedTriggerExample from "../registry/default/examples/base-ui-popover-detached-trigger/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
+import * as BaseUiPopoverOpenOnHoverExample from "../registry/default/examples/base-ui-popover-open-on-hover/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -107,7 +111,12 @@ import * as ButtonGroupSplitExample from "../registry/default/examples/button-gr
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CardBasicExample from "../registry/default/examples/card-basic/main";
+import * as CardImageExample from "../registry/default/examples/card-image/main";
+import * as CardRtlExample from "../registry/default/examples/card-rtl/main";
+import * as CardSizeExample from "../registry/default/examples/card-size/main";
+import * as CardSpacingExample from "../registry/default/examples/card-spacing/main";
 import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
+import * as CarouselAutoplayExample from "../registry/default/examples/carousel-autoplay/main";
 import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
 import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
 import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
@@ -126,6 +135,10 @@ import * as CollapsibleBasicExample from "../registry/default/examples/collapsib
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
+import * as CommandGroupsExample from "../registry/default/examples/command-groups/main";
+import * as CommandRtlExample from "../registry/default/examples/command-rtl/main";
+import * as CommandScrollableExample from "../registry/default/examples/command-scrollable/main";
+import * as CommandShortcutsExample from "../registry/default/examples/command-shortcuts/main";
 import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
 import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
 import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
@@ -148,8 +161,21 @@ import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
 import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as DropdownMenuCheckboxesExample from "../registry/default/examples/dropdown-menu-checkboxes/main";
+import * as DropdownMenuComplexExample from "../registry/default/examples/dropdown-menu-complex/main";
+import * as DropdownMenuDestructiveExample from "../registry/default/examples/dropdown-menu-destructive/main";
+import * as DropdownMenuIconsExample from "../registry/default/examples/dropdown-menu-icons/main";
+import * as DropdownMenuRadioGroupExample from "../registry/default/examples/dropdown-menu-radio-group/main";
+import * as DropdownMenuRtlExample from "../registry/default/examples/dropdown-menu-rtl/main";
+import * as DropdownMenuShortcutsExample from "../registry/default/examples/dropdown-menu-shortcuts/main";
+import * as DropdownMenuSubmenuExample from "../registry/default/examples/dropdown-menu-submenu/main";
+import * as EmptyAvatarGroupExample from "../registry/default/examples/empty-avatar-group/main";
+import * as EmptyAvatarExample from "../registry/default/examples/empty-avatar/main";
+import * as EmptyBackgroundExample from "../registry/default/examples/empty-background/main";
 import * as EmptyBasicExample from "../registry/default/examples/empty-basic/main";
 import * as EmptyInputGroupExample from "../registry/default/examples/empty-input-group/main";
+import * as EmptyOutlineExample from "../registry/default/examples/empty-outline/main";
+import * as EmptyRtlExample from "../registry/default/examples/empty-rtl/main";
 import * as FieldBasicExample from "../registry/default/examples/field-basic/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
@@ -157,9 +183,20 @@ import * as FileDropBasicExample from "../registry/default/examples/file-drop-ba
 import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
 import * as FormBasicExample from "../registry/default/examples/form-basic/main";
 import * as HoverCardBasicExample from "../registry/default/examples/hover-card-basic/main";
+import * as HoverCardRtlExample from "../registry/default/examples/hover-card-rtl/main";
+import * as HoverCardSidesExample from "../registry/default/examples/hover-card-sides/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
+import * as InputOtpAlphanumericExample from "../registry/default/examples/input-otp-alphanumeric/main";
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
+import * as InputOtpControlledExample from "../registry/default/examples/input-otp-controlled/main";
+import * as InputOtpDisabledExample from "../registry/default/examples/input-otp-disabled/main";
+import * as InputOtpFormExample from "../registry/default/examples/input-otp-form/main";
+import * as InputOtpFourDigitsExample from "../registry/default/examples/input-otp-four-digits/main";
+import * as InputOtpInvalidExample from "../registry/default/examples/input-otp-invalid/main";
+import * as InputOtpPatternExample from "../registry/default/examples/input-otp-pattern/main";
+import * as InputOtpRtlExample from "../registry/default/examples/input-otp-rtl/main";
+import * as InputOtpSeparatorExample from "../registry/default/examples/input-otp-separator/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
 import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
@@ -173,7 +210,10 @@ import * as ItemSizeExample from "../registry/default/examples/item-size/main";
 import * as ItemVariantExample from "../registry/default/examples/item-variant/main";
 import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
 import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as KbdRtlExample from "../registry/default/examples/kbd-rtl/main";
 import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
+import * as LabelFieldExample from "../registry/default/examples/label-field/main";
+import * as LabelRtlExample from "../registry/default/examples/label-rtl/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -181,10 +221,17 @@ import * as MenuBasicExample from "../registry/default/examples/menu-basic/main"
 import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
 import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
 import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
+import * as NativeSelectDisabledExample from "../registry/default/examples/native-select-disabled/main";
+import * as NativeSelectGroupsExample from "../registry/default/examples/native-select-groups/main";
+import * as NativeSelectInvalidExample from "../registry/default/examples/native-select-invalid/main";
+import * as NativeSelectRtlExample from "../registry/default/examples/native-select-rtl/main";
 import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
 import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
 import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
 import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
+import * as PaginationIconsOnlyExample from "../registry/default/examples/pagination-icons-only/main";
+import * as PaginationRtlExample from "../registry/default/examples/pagination-rtl/main";
+import * as PaginationSimpleExample from "../registry/default/examples/pagination-simple/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
@@ -193,6 +240,9 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
+import * as ResizableHandleExample from "../registry/default/examples/resizable-handle/main";
+import * as ResizableRtlExample from "../registry/default/examples/resizable-rtl/main";
+import * as ResizableVerticalExample from "../registry/default/examples/resizable-vertical/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -214,11 +264,16 @@ import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/s
 import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
 import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarDateTimePickerExample from "../registry/default/examples/shadcn-calendar-date-time-picker/main";
+import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
+import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
@@ -235,10 +290,20 @@ import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-dra
 import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
+import * as ShadcnInputBadgeExample from "../registry/default/examples/shadcn-input-badge/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputButtonGroupExample from "../registry/default/examples/shadcn-input-button-group/main";
+import * as ShadcnInputDemoExample from "../registry/default/examples/shadcn-input-demo/main";
 import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFieldGroupExample from "../registry/default/examples/shadcn-input-field-group/main";
+import * as ShadcnInputFieldExample from "../registry/default/examples/shadcn-input-field/main";
 import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputFormExample from "../registry/default/examples/shadcn-input-form/main";
+import * as ShadcnInputGridExample from "../registry/default/examples/shadcn-input-grid/main";
+import * as ShadcnInputInlineExample from "../registry/default/examples/shadcn-input-inline/main";
+import * as ShadcnInputInputGroupExample from "../registry/default/examples/shadcn-input-input-group/main";
 import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRequiredExample from "../registry/default/examples/shadcn-input-required/main";
 import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
@@ -254,10 +319,15 @@ import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/sha
 import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
+import * as SidebarCompositionExample from "../registry/default/examples/sidebar-composition/main";
+import * as SidebarControlledExample from "../registry/default/examples/sidebar-controlled/main";
+import * as SidebarRtlExample from "../registry/default/examples/sidebar-rtl/main";
+import * as SidebarVariantsExample from "../registry/default/examples/sidebar-variants/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
 import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
+import * as SpinnerBasicExample from "../registry/default/examples/spinner-basic/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TableBasicExample from "../registry/default/examples/table-basic/main";
@@ -297,6 +367,8 @@ const [baseUiAccordionMultipleExample] = BaseUiAccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
 const [alertActionExample] = AlertActionExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
+const [alertCustomColorsExample] = AlertCustomColorsExample.init();
+const [alertRtlExample] = AlertRtlExample.init();
 const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
 const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
@@ -354,6 +426,7 @@ const [carouselSizesExample] = CarouselSizesExample.init();
 const [carouselSpacingExample] = CarouselSpacingExample.init();
 const [carouselOrientationExample] = CarouselOrientationExample.init();
 const [carouselApiExample] = CarouselApiExample.init();
+const [carouselAutoplayExample] = CarouselAutoplayExample.init();
 const [carouselRtlExample] = CarouselRtlExample.init();
 const [chartBasicExample] = ChartBasicExample.init();
 const [chartGridExample] = ChartGridExample.init();
@@ -362,10 +435,37 @@ const [chartTooltipExample] = ChartTooltipExample.init();
 const [chartLegendExample] = ChartLegendExample.init();
 const [chartRtlExample] = ChartRtlExample.init();
 const [commandBasicExample] = CommandBasicExample.init();
+const [commandGroupsExample] = CommandGroupsExample.init();
+const [commandRtlExample] = CommandRtlExample.init();
+const [commandScrollableExample] = CommandScrollableExample.init();
+const [commandShortcutsExample] = CommandShortcutsExample.init();
 const [dropdownMenuBasicExample] = DropdownMenuBasicExample.init();
+const [dropdownMenuCheckboxesExample] = DropdownMenuCheckboxesExample.init();
+const [dropdownMenuComplexExample] = DropdownMenuComplexExample.init();
+const [dropdownMenuDestructiveExample] = DropdownMenuDestructiveExample.init();
+const [dropdownMenuIconsExample] = DropdownMenuIconsExample.init();
+const [dropdownMenuRadioGroupExample] = DropdownMenuRadioGroupExample.init();
+const [dropdownMenuRtlExample] = DropdownMenuRtlExample.init();
+const [dropdownMenuShortcutsExample] = DropdownMenuShortcutsExample.init();
+const [dropdownMenuSubmenuExample] = DropdownMenuSubmenuExample.init();
 const [hoverCardBasicExample] = HoverCardBasicExample.init();
+const [hoverCardSidesExample] = HoverCardSidesExample.init();
+const [hoverCardRtlExample] = HoverCardRtlExample.init();
 const [inputOtpBasicExample] = InputOtpBasicExample.init();
+const [inputOtpPatternExample] = InputOtpPatternExample.init();
+const [inputOtpSeparatorExample] = InputOtpSeparatorExample.init();
+const [inputOtpDisabledExample] = InputOtpDisabledExample.init();
+const [inputOtpControlledExample] = InputOtpControlledExample.init();
+const [inputOtpInvalidExample] = InputOtpInvalidExample.init();
+const [inputOtpFourDigitsExample] = InputOtpFourDigitsExample.init();
+const [inputOtpAlphanumericExample] = InputOtpAlphanumericExample.init();
+const [inputOtpFormExample] = InputOtpFormExample.init();
+const [inputOtpRtlExample] = InputOtpRtlExample.init();
 const [nativeSelectBasicExample] = NativeSelectBasicExample.init();
+const [nativeSelectDisabledExample] = NativeSelectDisabledExample.init();
+const [nativeSelectGroupsExample] = NativeSelectGroupsExample.init();
+const [nativeSelectInvalidExample] = NativeSelectInvalidExample.init();
+const [nativeSelectRtlExample] = NativeSelectRtlExample.init();
 const [sheetBasicExample] = SheetBasicExample.init();
 const [sonnerBasicExample] = SonnerBasicExample.init();
 const [dataTableBasicExample] = DataTableBasicExample.init();
@@ -387,19 +487,42 @@ const [itemRtlExample] = ItemRtlExample.init();
 const [itemSizeExample] = ItemSizeExample.init();
 const [itemVariantExample] = ItemVariantExample.init();
 const [labelBasicExample] = LabelBasicExample.init();
+const [labelFieldExample] = LabelFieldExample.init();
+const [labelRtlExample] = LabelRtlExample.init();
 const [paginationBasicExample] = PaginationBasicExample.init();
+const [paginationSimpleExample] = PaginationSimpleExample.init();
+const [paginationIconsOnlyExample] = PaginationIconsOnlyExample.init();
+const [paginationRtlExample] = PaginationRtlExample.init();
 const [resizableBasicExample] = ResizableBasicExample.init();
+const [resizableHandleExample] = ResizableHandleExample.init();
+const [resizableRtlExample] = ResizableRtlExample.init();
+const [resizableVerticalExample] = ResizableVerticalExample.init();
 const [sidebarBasicExample] = SidebarBasicExample.init();
+const [sidebarCompositionExample] = SidebarCompositionExample.init();
+const [sidebarControlledExample] = SidebarControlledExample.init();
+const [sidebarRtlExample] = SidebarRtlExample.init();
+const [sidebarVariantsExample] = SidebarVariantsExample.init();
 const [tableBasicExample] = TableBasicExample.init();
 const [cardBasicExample] = CardBasicExample.init();
+const [cardSizeExample] = CardSizeExample.init();
+const [cardSpacingExample] = CardSpacingExample.init();
+const [cardImageExample] = CardImageExample.init();
+const [cardRtlExample] = CardRtlExample.init();
 const [baseUiSeparatorBasicExample] = BaseUiSeparatorBasicExample.init();
 const [separatorBasicExample] = SeparatorBasicExample.init();
 const [skeletonBasicExample] = SkeletonBasicExample.init();
+const [spinnerBasicExample] = SpinnerBasicExample.init();
 const [kbdBasicExample] = KbdBasicExample.init();
 const [kbdInputGroupExample] = KbdInputGroupExample.init();
+const [kbdRtlExample] = KbdRtlExample.init();
 const [typographyBasicExample] = TypographyBasicExample.init();
+const [emptyAvatarExample] = EmptyAvatarExample.init();
+const [emptyAvatarGroupExample] = EmptyAvatarGroupExample.init();
+const [emptyBackgroundExample] = EmptyBackgroundExample.init();
 const [emptyBasicExample] = EmptyBasicExample.init();
 const [emptyInputGroupExample] = EmptyInputGroupExample.init();
+const [emptyOutlineExample] = EmptyOutlineExample.init();
+const [emptyRtlExample] = EmptyRtlExample.init();
 const [breadcrumbBasicExample] = BreadcrumbBasicExample.init();
 const [breadcrumbSeparatorExample] = BreadcrumbSeparatorExample.init();
 const [breadcrumbDropdownExample] = BreadcrumbDropdownExample.init();
@@ -424,8 +547,15 @@ const [buttonGroupRtlExample] = ButtonGroupRtlExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
 const [shadcnCalendarBasicExample] = ShadcnCalendarBasicExample.init();
 const [shadcnCalendarBookedExample] = ShadcnCalendarBookedExample.init();
+const [shadcnCalendarCustomCellSizeExample] =
+  ShadcnCalendarCustomCellSizeExample.init();
 const [shadcnCalendarDateOfBirthExample] =
   ShadcnCalendarDateOfBirthExample.init();
+const [shadcnCalendarDateTimePickerExample] =
+  ShadcnCalendarDateTimePickerExample.init();
+const [shadcnCalendarRangeExample] = ShadcnCalendarRangeExample.init();
+const [shadcnCalendarWeekNumbersExample] =
+  ShadcnCalendarWeekNumbersExample.init();
 const [shadcnCalendarMonthYearSelectorExample] =
   ShadcnCalendarMonthYearSelectorExample.init();
 const [shadcnCalendarPresetsExample] = ShadcnCalendarPresetsExample.init();
@@ -433,6 +563,8 @@ const [shadcnCalendarRtlExample] = ShadcnCalendarRtlExample.init();
 const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [shadcnCheckboxBasicExample] = ShadcnCheckboxBasicExample.init();
+const [shadcnCheckboxCheckedStateExample] =
+  ShadcnCheckboxCheckedStateExample.init();
 const [baseUiCheckboxBasicExample] = BaseUiCheckboxBasicExample.init();
 const [baseUiCheckboxLabelingExample] = BaseUiCheckboxLabelingExample.init();
 const [baseUiCheckboxNativeButtonExample] =
@@ -513,8 +645,12 @@ const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
 const [baseUiPopoverAnimatedExample] = BaseUiPopoverAnimatedExample.init();
+const [baseUiPopoverDetachedTriggerExample] =
+  BaseUiPopoverDetachedTriggerExample.init();
 const [baseUiPopoverMultipleTriggersExample] =
   BaseUiPopoverMultipleTriggersExample.init();
+const [baseUiPopoverOpenOnHoverExample] =
+  BaseUiPopoverOpenOnHoverExample.init();
 const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
 const [baseUiRadioLabelingExample] = BaseUiRadioLabelingExample.init();
 const [baseUiRadioNativeButtonExample] = BaseUiRadioNativeButtonExample.init();
@@ -541,6 +677,16 @@ const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
+const [shadcnInputDemoExample] = ShadcnInputDemoExample.init();
+const [shadcnInputFieldExample] = ShadcnInputFieldExample.init();
+const [shadcnInputFieldGroupExample] = ShadcnInputFieldGroupExample.init();
+const [shadcnInputInlineExample] = ShadcnInputInlineExample.init();
+const [shadcnInputGridExample] = ShadcnInputGridExample.init();
+const [shadcnInputRequiredExample] = ShadcnInputRequiredExample.init();
+const [shadcnInputBadgeExample] = ShadcnInputBadgeExample.init();
+const [shadcnInputInputGroupExample] = ShadcnInputInputGroupExample.init();
+const [shadcnInputButtonGroupExample] = ShadcnInputButtonGroupExample.init();
+const [shadcnInputFormExample] = ShadcnInputFormExample.init();
 const [shadcnInputDisabledExample] = ShadcnInputDisabledExample.init();
 const [shadcnInputInvalidExample] = ShadcnInputInvalidExample.init();
 const [shadcnInputFileExample] = ShadcnInputFileExample.init();
@@ -600,6 +746,8 @@ const initialModel: Model = {
   alertBasicExample,
   alertActionExample,
   alertDestructiveExample,
+  alertCustomColorsExample,
+  alertRtlExample,
   aspectRatioBasicExample,
   aspectRatioSquareExample,
   aspectRatioPortraitExample,
@@ -649,6 +797,7 @@ const initialModel: Model = {
   carouselSpacingExample,
   carouselOrientationExample,
   carouselApiExample,
+  carouselAutoplayExample,
   carouselRtlExample,
   chartBasicExample,
   chartGridExample,
@@ -657,10 +806,37 @@ const initialModel: Model = {
   chartLegendExample,
   chartRtlExample,
   commandBasicExample,
+  commandGroupsExample,
+  commandRtlExample,
+  commandScrollableExample,
+  commandShortcutsExample,
   dropdownMenuBasicExample,
+  dropdownMenuCheckboxesExample,
+  dropdownMenuComplexExample,
+  dropdownMenuDestructiveExample,
+  dropdownMenuIconsExample,
+  dropdownMenuRadioGroupExample,
+  dropdownMenuRtlExample,
+  dropdownMenuShortcutsExample,
+  dropdownMenuSubmenuExample,
   hoverCardBasicExample,
+  hoverCardSidesExample,
+  hoverCardRtlExample,
   inputOtpBasicExample,
+  inputOtpPatternExample,
+  inputOtpSeparatorExample,
+  inputOtpDisabledExample,
+  inputOtpControlledExample,
+  inputOtpInvalidExample,
+  inputOtpFourDigitsExample,
+  inputOtpAlphanumericExample,
+  inputOtpFormExample,
+  inputOtpRtlExample,
   nativeSelectBasicExample,
+  nativeSelectDisabledExample,
+  nativeSelectGroupsExample,
+  nativeSelectInvalidExample,
+  nativeSelectRtlExample,
   sheetBasicExample,
   sonnerBasicExample,
   dataTableBasicExample,
@@ -671,14 +847,25 @@ const initialModel: Model = {
   dataTableVisibilityExample,
   dataTableRowSelectionExample,
   cardBasicExample,
+  cardSizeExample,
+  cardSpacingExample,
+  cardImageExample,
+  cardRtlExample,
   baseUiSeparatorBasicExample,
   separatorBasicExample,
   skeletonBasicExample,
+  spinnerBasicExample,
   kbdBasicExample,
   kbdInputGroupExample,
+  kbdRtlExample,
   typographyBasicExample,
+  emptyAvatarExample,
+  emptyAvatarGroupExample,
+  emptyBackgroundExample,
   emptyBasicExample,
   emptyInputGroupExample,
+  emptyOutlineExample,
+  emptyRtlExample,
   breadcrumbBasicExample,
   breadcrumbSeparatorExample,
   breadcrumbDropdownExample,
@@ -703,13 +890,18 @@ const initialModel: Model = {
   calendarBasicExample,
   shadcnCalendarBasicExample,
   shadcnCalendarBookedExample,
+  shadcnCalendarCustomCellSizeExample,
   shadcnCalendarDateOfBirthExample,
+  shadcnCalendarDateTimePickerExample,
+  shadcnCalendarRangeExample,
+  shadcnCalendarWeekNumbersExample,
   shadcnCalendarMonthYearSelectorExample,
   shadcnCalendarPresetsExample,
   shadcnCalendarRtlExample,
   calendarBoundsExample,
   checkboxBasicExample,
   shadcnCheckboxBasicExample,
+  shadcnCheckboxCheckedStateExample,
   baseUiCheckboxBasicExample,
   baseUiCheckboxLabelingExample,
   baseUiCheckboxNativeButtonExample,
@@ -757,9 +949,21 @@ const initialModel: Model = {
   itemSizeExample,
   itemVariantExample,
   labelBasicExample,
+  labelFieldExample,
+  labelRtlExample,
   paginationBasicExample,
+  paginationSimpleExample,
+  paginationIconsOnlyExample,
+  paginationRtlExample,
   resizableBasicExample,
+  resizableHandleExample,
+  resizableRtlExample,
+  resizableVerticalExample,
   sidebarBasicExample,
+  sidebarCompositionExample,
+  sidebarControlledExample,
+  sidebarRtlExample,
+  sidebarVariantsExample,
   tableBasicExample,
   disclosureBasicExample,
   disclosureDisabledExample,
@@ -796,7 +1000,9 @@ const initialModel: Model = {
   menuAnimatedExample,
   baseUiPopoverBasicExample,
   baseUiPopoverAnimatedExample,
+  baseUiPopoverDetachedTriggerExample,
   baseUiPopoverMultipleTriggersExample,
+  baseUiPopoverOpenOnHoverExample,
   baseUiRadioBasicExample,
   baseUiRadioLabelingExample,
   baseUiRadioNativeButtonExample,
@@ -823,6 +1029,16 @@ const initialModel: Model = {
   shadcnTabsBasicExample,
   tabsManualExample,
   shadcnInputBasicExample,
+  shadcnInputDemoExample,
+  shadcnInputFieldExample,
+  shadcnInputFieldGroupExample,
+  shadcnInputInlineExample,
+  shadcnInputGridExample,
+  shadcnInputRequiredExample,
+  shadcnInputBadgeExample,
+  shadcnInputInputGroupExample,
+  shadcnInputButtonGroupExample,
+  shadcnInputFormExample,
   shadcnInputDisabledExample,
   shadcnInputInvalidExample,
   shadcnInputFileExample,
@@ -1551,6 +1767,23 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/carousel/examples/autoplay resolves to CarouselAutoplayExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/carousel/examples/autoplay"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("CarouselAutoplayExample");
+        })
+      );
+    });
+
     test("/examples/carousel-basic resolves to CarouselBasicExample", () => {
       Story.story(
         update,
@@ -1833,6 +2066,102 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/resizable/examples/handle resolves to ResizableHandleExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/resizable/examples/handle"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableHandleExample");
+        })
+      );
+    });
+
+    test("/examples/resizable-handle resolves to ResizableHandleExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/resizable-handle"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableHandleExample");
+        })
+      );
+    });
+
+    test("/docs/components/resizable/examples/rtl resolves to ResizableRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/resizable/examples/rtl"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableRtlExample");
+        })
+      );
+    });
+
+    test("/examples/resizable-rtl resolves to ResizableRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/resizable-rtl"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableRtlExample");
+        })
+      );
+    });
+
+    test("/docs/components/resizable/examples/vertical resolves to ResizableVerticalExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/resizable/examples/vertical"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableVerticalExample");
+        })
+      );
+    });
+
+    test("/examples/resizable-vertical resolves to ResizableVerticalExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/resizable-vertical"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("ResizableVerticalExample");
+        })
+      );
+    });
+
     test("/docs/components/sidebar resolves to SidebarDocs", () => {
       Story.story(
         update,
@@ -1876,6 +2205,166 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("SidebarBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/sidebar/examples/composition resolves to SidebarCompositionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sidebar/examples/composition"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarCompositionExample");
+        })
+      );
+    });
+
+    test("/examples/sidebar-composition resolves to SidebarCompositionExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sidebar-composition"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarCompositionExample");
+        })
+      );
+    });
+
+    test("/docs/components/sidebar/examples/controlled resolves to SidebarControlledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sidebar/examples/controlled"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarControlledExample");
+        })
+      );
+    });
+
+    test("/examples/sidebar-controlled resolves to SidebarControlledExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sidebar-controlled"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarControlledExample");
+        })
+      );
+    });
+
+    test("/docs/components/sidebar/examples/rtl resolves to SidebarRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sidebar/examples/rtl"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarRtlExample");
+        })
+      );
+    });
+
+    test("/examples/sidebar-rtl resolves to SidebarRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sidebar-rtl"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarRtlExample");
+        })
+      );
+    });
+
+    test("/docs/components/sidebar/examples/variants resolves to SidebarVariantsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/sidebar/examples/variants"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarVariantsExample");
+        })
+      );
+    });
+
+    test("/examples/sidebar-variants resolves to SidebarVariantsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/sidebar-variants"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SidebarVariantsExample");
+        })
+      );
+    });
+
+    test("/docs/components/spinner/examples/basic resolves to SpinnerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/spinner/examples/basic"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SpinnerBasicExample");
+        })
+      );
+    });
+
+    test("/examples/spinner-basic resolves to SpinnerBasicExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/spinner-basic"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("SpinnerBasicExample");
         })
       );
     });
@@ -2021,6 +2510,77 @@ describe(update, () => {
       );
     });
 
+    const dropdownMenuExampleRoutes = [
+      {
+        docsUrl:
+          "http://localhost/docs/components/dropdown-menu/examples/checkboxes",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-checkboxes",
+        routeTag: "DropdownMenuCheckboxesExample",
+      },
+      {
+        docsUrl: "http://localhost/docs/components/dropdown-menu/examples/complex",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-complex",
+        routeTag: "DropdownMenuComplexExample",
+      },
+      {
+        docsUrl:
+          "http://localhost/docs/components/dropdown-menu/examples/destructive",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-destructive",
+        routeTag: "DropdownMenuDestructiveExample",
+      },
+      {
+        docsUrl: "http://localhost/docs/components/dropdown-menu/examples/icons",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-icons",
+        routeTag: "DropdownMenuIconsExample",
+      },
+      {
+        docsUrl:
+          "http://localhost/docs/components/dropdown-menu/examples/radio-group",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-radio-group",
+        routeTag: "DropdownMenuRadioGroupExample",
+      },
+      {
+        docsUrl: "http://localhost/docs/components/dropdown-menu/examples/rtl",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-rtl",
+        routeTag: "DropdownMenuRtlExample",
+      },
+      {
+        docsUrl:
+          "http://localhost/docs/components/dropdown-menu/examples/shortcuts",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-shortcuts",
+        routeTag: "DropdownMenuShortcutsExample",
+      },
+      {
+        docsUrl: "http://localhost/docs/components/dropdown-menu/examples/submenu",
+        standaloneUrl: "http://localhost/examples/dropdown-menu-submenu",
+        routeTag: "DropdownMenuSubmenuExample",
+      },
+    ];
+
+    dropdownMenuExampleRoutes.forEach(({ docsUrl, standaloneUrl, routeTag }) => {
+      test(`${docsUrl} resolves to ${routeTag}`, () => {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(ChangedUrl({ url: urlOrThrow(docsUrl) })),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(routeTag);
+          })
+        );
+      });
+
+      test(`${standaloneUrl} resolves to ${routeTag}`, () => {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(ChangedUrl({ url: urlOrThrow(standaloneUrl) })),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(routeTag);
+          })
+        );
+      });
+    });
+
     test("/docs/components/hover-card resolves to HoverCardDocs", () => {
       Story.story(
         update,
@@ -2158,6 +2718,70 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("NativeSelectBasicExample");
+        })
+      );
+    });
+
+    test("/docs/components/native-select/examples/groups resolves to NativeSelectGroupsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/native-select/examples/groups"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectGroupsExample");
+        })
+      );
+    });
+
+    test("/examples/native-select-groups resolves to NativeSelectGroupsExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/native-select-groups"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectGroupsExample");
+        })
+      );
+    });
+
+    test("/docs/components/native-select/examples/rtl resolves to NativeSelectRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/native-select/examples/rtl"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectRtlExample");
+        })
+      );
+    });
+
+    test("/examples/native-select-rtl resolves to NativeSelectRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/examples/native-select-rtl"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("NativeSelectRtlExample");
         })
       );
     });
@@ -3834,9 +4458,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe(
-            "ShadcnDialogCustomCloseButtonExample"
-          );
+          expect(model.route._tag).toBe("ShadcnDialogCustomCloseButtonExample");
         })
       );
     });
@@ -3887,9 +4509,7 @@ describe(update, () => {
           })
         ),
         Story.model((model) => {
-          expect(model.route._tag).toBe(
-            "ShadcnDialogScrollableContentExample"
-          );
+          expect(model.route._tag).toBe("ShadcnDialogScrollableContentExample");
         })
       );
     });
@@ -4677,6 +5297,49 @@ describe(update, () => {
       );
     });
 
+    const inputGroupExampleRoutes = [
+      {
+        docsUrl:
+          "http://localhost/docs/components/input-group/examples/custom-input",
+        standaloneUrl: "http://localhost/examples/input-group-custom-input",
+        routeTag: "InputGroupCustomInputExample",
+      },
+      {
+        docsUrl: "http://localhost/docs/components/input-group/examples/dropdown",
+        standaloneUrl: "http://localhost/examples/input-group-dropdown",
+        routeTag: "InputGroupDropdownExample",
+      },
+      {
+        docsUrl: "http://localhost/docs/components/input-group/examples/textarea",
+        standaloneUrl: "http://localhost/examples/input-group-textarea",
+        routeTag: "InputGroupTextareaExample",
+      },
+    ];
+
+    inputGroupExampleRoutes.forEach(({ docsUrl, standaloneUrl, routeTag }) => {
+      test(`${docsUrl} resolves to ${routeTag}`, () => {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(ChangedUrl({ url: urlOrThrow(docsUrl) })),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(routeTag);
+          })
+        );
+      });
+
+      test(`${standaloneUrl} resolves to ${routeTag}`, () => {
+        Story.story(
+          update,
+          Story.with(initialModel),
+          Story.message(ChangedUrl({ url: urlOrThrow(standaloneUrl) })),
+          Story.model((model) => {
+            expect(model.route._tag).toBe(routeTag);
+          })
+        );
+      });
+    });
+
     test("/docs/components/kbd/examples/input-group resolves to KbdInputGroupExample", () => {
       Story.story(
         update,
@@ -4707,6 +5370,89 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("EmptyInputGroupExample");
+        })
+      );
+    });
+
+    test("/docs/components/empty/examples/avatar resolves to EmptyAvatarExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/empty/examples/avatar"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("EmptyAvatarExample");
+        })
+      );
+    });
+
+    test("/docs/components/empty/examples/avatar-group resolves to EmptyAvatarGroupExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/empty/examples/avatar-group"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("EmptyAvatarGroupExample");
+        })
+      );
+    });
+
+    test("/docs/components/empty/examples/outline resolves to EmptyOutlineExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/empty/examples/outline"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("EmptyOutlineExample");
+        })
+      );
+    });
+
+    test("/docs/components/empty/examples/background resolves to EmptyBackgroundExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/empty/examples/background"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("EmptyBackgroundExample");
+        })
+      );
+    });
+
+    test("/docs/components/empty/examples/rtl resolves to EmptyRtlExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow("http://localhost/docs/components/empty/examples/rtl"),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("EmptyRtlExample");
         })
       );
     });
@@ -5484,6 +6230,25 @@ describe(update, () => {
       );
     });
 
+    test("/docs/components/base-ui-popover/examples/detached-trigger resolves to BaseUiPopoverDetachedTriggerExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-popover/examples/detached-trigger"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiPopoverDetachedTriggerExample"
+          );
+        })
+      );
+    });
+
     test("/docs/components/base-ui-popover/examples/multiple-triggers resolves to BaseUiPopoverMultipleTriggersExample", () => {
       Story.story(
         update,
@@ -5497,6 +6262,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiPopoverMultipleTriggersExample");
+        })
+      );
+    });
+
+    test("/docs/components/base-ui-popover/examples/open-on-hover resolves to BaseUiPopoverOpenOnHoverExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/docs/components/base-ui-popover/examples/open-on-hover"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverOpenOnHoverExample");
         })
       );
     });
@@ -5766,6 +6548,25 @@ describe(update, () => {
       );
     });
 
+    test("/examples/base-ui-popover-detached-trigger resolves to BaseUiPopoverDetachedTriggerExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-popover-detached-trigger"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe(
+            "BaseUiPopoverDetachedTriggerExample"
+          );
+        })
+      );
+    });
+
     test("/examples/base-ui-popover-multiple-triggers resolves to BaseUiPopoverMultipleTriggersExample", () => {
       Story.story(
         update,
@@ -5779,6 +6580,23 @@ describe(update, () => {
         ),
         Story.model((model) => {
           expect(model.route._tag).toBe("BaseUiPopoverMultipleTriggersExample");
+        })
+      );
+    });
+
+    test("/examples/base-ui-popover-open-on-hover resolves to BaseUiPopoverOpenOnHoverExample", () => {
+      Story.story(
+        update,
+        Story.with(initialModel),
+        Story.message(
+          ChangedUrl({
+            url: urlOrThrow(
+              "http://localhost/examples/base-ui-popover-open-on-hover"
+            ),
+          })
+        ),
+        Story.model((model) => {
+          expect(model.route._tag).toBe("BaseUiPopoverOpenOnHoverExample");
         })
       );
     });
@@ -5850,7 +6668,9 @@ describe(update, () => {
           Story.with(initialModel),
           Story.message(
             ChangedUrl({
-              url: urlOrThrow(`http://localhost/examples/shadcn-input-${example}`),
+              url: urlOrThrow(
+                `http://localhost/examples/shadcn-input-${example}`
+              ),
             })
           ),
           Story.model((model) => {

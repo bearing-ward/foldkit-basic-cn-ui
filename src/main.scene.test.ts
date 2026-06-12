@@ -6,8 +6,10 @@ import * as AccordionBasicExample from "../registry/default/examples/accordion-b
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
+import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
 import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
 import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
+import * as AlertRtlExample from "../registry/default/examples/alert-rtl/main";
 import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
 import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
 import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
@@ -63,7 +65,9 @@ import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/bas
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverDetachedTriggerExample from "../registry/default/examples/base-ui-popover-detached-trigger/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
+import * as BaseUiPopoverOpenOnHoverExample from "../registry/default/examples/base-ui-popover-open-on-hover/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -106,7 +110,12 @@ import * as ButtonGroupSplitExample from "../registry/default/examples/button-gr
 import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
 import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
 import * as CardBasicExample from "../registry/default/examples/card-basic/main";
+import * as CardImageExample from "../registry/default/examples/card-image/main";
+import * as CardRtlExample from "../registry/default/examples/card-rtl/main";
+import * as CardSizeExample from "../registry/default/examples/card-size/main";
+import * as CardSpacingExample from "../registry/default/examples/card-spacing/main";
 import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
+import * as CarouselAutoplayExample from "../registry/default/examples/carousel-autoplay/main";
 import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
 import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
 import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
@@ -125,6 +134,10 @@ import * as CollapsibleBasicExample from "../registry/default/examples/collapsib
 import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
 import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
 import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
+import * as CommandGroupsExample from "../registry/default/examples/command-groups/main";
+import * as CommandRtlExample from "../registry/default/examples/command-rtl/main";
+import * as CommandScrollableExample from "../registry/default/examples/command-scrollable/main";
+import * as CommandShortcutsExample from "../registry/default/examples/command-shortcuts/main";
 import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
 import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
 import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
@@ -147,8 +160,21 @@ import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-
 import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
 import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
 import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
+import * as DropdownMenuCheckboxesExample from "../registry/default/examples/dropdown-menu-checkboxes/main";
+import * as DropdownMenuComplexExample from "../registry/default/examples/dropdown-menu-complex/main";
+import * as DropdownMenuDestructiveExample from "../registry/default/examples/dropdown-menu-destructive/main";
+import * as DropdownMenuIconsExample from "../registry/default/examples/dropdown-menu-icons/main";
+import * as DropdownMenuRadioGroupExample from "../registry/default/examples/dropdown-menu-radio-group/main";
+import * as DropdownMenuRtlExample from "../registry/default/examples/dropdown-menu-rtl/main";
+import * as DropdownMenuShortcutsExample from "../registry/default/examples/dropdown-menu-shortcuts/main";
+import * as DropdownMenuSubmenuExample from "../registry/default/examples/dropdown-menu-submenu/main";
+import * as EmptyAvatarGroupExample from "../registry/default/examples/empty-avatar-group/main";
+import * as EmptyAvatarExample from "../registry/default/examples/empty-avatar/main";
+import * as EmptyBackgroundExample from "../registry/default/examples/empty-background/main";
 import * as EmptyBasicExample from "../registry/default/examples/empty-basic/main";
 import * as EmptyInputGroupExample from "../registry/default/examples/empty-input-group/main";
+import * as EmptyOutlineExample from "../registry/default/examples/empty-outline/main";
+import * as EmptyRtlExample from "../registry/default/examples/empty-rtl/main";
 import * as FieldBasicExample from "../registry/default/examples/field-basic/main";
 import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
 import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
@@ -156,9 +182,20 @@ import * as FileDropBasicExample from "../registry/default/examples/file-drop-ba
 import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
 import * as FormBasicExample from "../registry/default/examples/form-basic/main";
 import * as HoverCardBasicExample from "../registry/default/examples/hover-card-basic/main";
+import * as HoverCardRtlExample from "../registry/default/examples/hover-card-rtl/main";
+import * as HoverCardSidesExample from "../registry/default/examples/hover-card-sides/main";
 import * as InputBasicExample from "../registry/default/examples/input-basic/main";
 import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
+import * as InputOtpAlphanumericExample from "../registry/default/examples/input-otp-alphanumeric/main";
 import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
+import * as InputOtpControlledExample from "../registry/default/examples/input-otp-controlled/main";
+import * as InputOtpDisabledExample from "../registry/default/examples/input-otp-disabled/main";
+import * as InputOtpFormExample from "../registry/default/examples/input-otp-form/main";
+import * as InputOtpFourDigitsExample from "../registry/default/examples/input-otp-four-digits/main";
+import * as InputOtpInvalidExample from "../registry/default/examples/input-otp-invalid/main";
+import * as InputOtpPatternExample from "../registry/default/examples/input-otp-pattern/main";
+import * as InputOtpRtlExample from "../registry/default/examples/input-otp-rtl/main";
+import * as InputOtpSeparatorExample from "../registry/default/examples/input-otp-separator/main";
 import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
 import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
 import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
@@ -172,7 +209,10 @@ import * as ItemSizeExample from "../registry/default/examples/item-size/main";
 import * as ItemVariantExample from "../registry/default/examples/item-variant/main";
 import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
 import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
+import * as KbdRtlExample from "../registry/default/examples/kbd-rtl/main";
 import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
+import * as LabelFieldExample from "../registry/default/examples/label-field/main";
+import * as LabelRtlExample from "../registry/default/examples/label-rtl/main";
 import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
 import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
 import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
@@ -180,10 +220,17 @@ import * as MenuBasicExample from "../registry/default/examples/menu-basic/main"
 import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
 import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
 import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
+import * as NativeSelectDisabledExample from "../registry/default/examples/native-select-disabled/main";
+import * as NativeSelectGroupsExample from "../registry/default/examples/native-select-groups/main";
+import * as NativeSelectInvalidExample from "../registry/default/examples/native-select-invalid/main";
+import * as NativeSelectRtlExample from "../registry/default/examples/native-select-rtl/main";
 import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
 import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
 import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
 import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
+import * as PaginationIconsOnlyExample from "../registry/default/examples/pagination-icons-only/main";
+import * as PaginationRtlExample from "../registry/default/examples/pagination-rtl/main";
+import * as PaginationSimpleExample from "../registry/default/examples/pagination-simple/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
@@ -192,6 +239,9 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
+import * as ResizableHandleExample from "../registry/default/examples/resizable-handle/main";
+import * as ResizableRtlExample from "../registry/default/examples/resizable-rtl/main";
+import * as ResizableVerticalExample from "../registry/default/examples/resizable-vertical/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -213,11 +263,16 @@ import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/s
 import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
 import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
 import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
 import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarDateTimePickerExample from "../registry/default/examples/shadcn-calendar-date-time-picker/main";
+import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
+import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
@@ -234,10 +289,20 @@ import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-dra
 import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
 import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
 import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
+import * as ShadcnInputBadgeExample from "../registry/default/examples/shadcn-input-badge/main";
 import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
+import * as ShadcnInputButtonGroupExample from "../registry/default/examples/shadcn-input-button-group/main";
+import * as ShadcnInputDemoExample from "../registry/default/examples/shadcn-input-demo/main";
 import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFieldGroupExample from "../registry/default/examples/shadcn-input-field-group/main";
+import * as ShadcnInputFieldExample from "../registry/default/examples/shadcn-input-field/main";
 import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
+import * as ShadcnInputFormExample from "../registry/default/examples/shadcn-input-form/main";
+import * as ShadcnInputGridExample from "../registry/default/examples/shadcn-input-grid/main";
+import * as ShadcnInputInlineExample from "../registry/default/examples/shadcn-input-inline/main";
+import * as ShadcnInputInputGroupExample from "../registry/default/examples/shadcn-input-input-group/main";
 import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRequiredExample from "../registry/default/examples/shadcn-input-required/main";
 import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
 import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
 import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
@@ -253,10 +318,15 @@ import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/sha
 import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
+import * as SidebarCompositionExample from "../registry/default/examples/sidebar-composition/main";
+import * as SidebarControlledExample from "../registry/default/examples/sidebar-controlled/main";
+import * as SidebarRtlExample from "../registry/default/examples/sidebar-rtl/main";
+import * as SidebarVariantsExample from "../registry/default/examples/sidebar-variants/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
 import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
+import * as SpinnerBasicExample from "../registry/default/examples/spinner-basic/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
 import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
 import * as TableBasicExample from "../registry/default/examples/table-basic/main";
@@ -331,12 +401,25 @@ import {
   BreadcrumbDropdownExampleRoute,
   ButtonGroupBasicExampleRoute,
   ButtonGroupDocsRoute,
+  CardImageExampleRoute,
+  CardRtlExampleRoute,
+  CardSizeExampleRoute,
+  CardSpacingExampleRoute,
+  CarouselAutoplayExampleRoute,
   CarouselBasicExampleRoute,
   CarouselDocsRoute,
   ChartBasicExampleRoute,
   ChartDocsRoute,
   CommandBasicExampleRoute,
   CommandDocsRoute,
+  DropdownMenuCheckboxesExampleRoute,
+  DropdownMenuComplexExampleRoute,
+  DropdownMenuDestructiveExampleRoute,
+  DropdownMenuIconsExampleRoute,
+  DropdownMenuRadioGroupExampleRoute,
+  DropdownMenuRtlExampleRoute,
+  DropdownMenuShortcutsExampleRoute,
+  DropdownMenuSubmenuExampleRoute,
   DropdownMenuBasicExampleRoute,
   HoverCardBasicExampleRoute,
   HoverCardDocsRoute,
@@ -344,6 +427,8 @@ import {
   InputOtpDocsRoute,
   NativeSelectBasicExampleRoute,
   NativeSelectDocsRoute,
+  NativeSelectGroupsExampleRoute,
+  NativeSelectRtlExampleRoute,
   SheetBasicExampleRoute,
   SheetDocsRoute,
   SonnerBasicExampleRoute,
@@ -361,8 +446,17 @@ import {
   PaginationDocsRoute,
   ResizableBasicExampleRoute,
   ResizableDocsRoute,
+  ResizableHandleExampleRoute,
+  ResizableRtlExampleRoute,
+  ResizableVerticalExampleRoute,
   SidebarBasicExampleRoute,
+  SidebarCompositionExampleRoute,
+  SidebarControlledExampleRoute,
   SidebarDocsRoute,
+  SidebarRtlExampleRoute,
+  SidebarVariantsExampleRoute,
+  SpinnerBasicExampleRoute,
+  SpinnerDocsRoute,
   TableBasicExampleRoute,
   TableDocsRoute,
   BaseUiButtonDocsRoute,
@@ -472,8 +566,13 @@ import {
   DragAndDropBasicExampleRoute,
   DragAndDropDisabledExampleRoute,
   DragAndDropDocsRoute,
+  EmptyAvatarExampleRoute,
+  EmptyAvatarGroupExampleRoute,
+  EmptyBackgroundExampleRoute,
   EmptyDocsRoute,
   EmptyInputGroupExampleRoute,
+  EmptyOutlineExampleRoute,
+  EmptyRtlExampleRoute,
   FieldsetRoute,
   FieldsetBasicExampleRoute,
   FieldsetDisabledExampleRoute,
@@ -489,7 +588,10 @@ import {
   InputBasicExampleRoute,
   InputDisabledExampleRoute,
   InputDocsRoute,
+  InputGroupCustomInputExampleRoute,
   InputGroupDocsRoute,
+  InputGroupDropdownExampleRoute,
+  InputGroupTextareaExampleRoute,
   InputRoute,
   MeterBasicExampleRoute,
   BaseUiMeterDocsRoute,
@@ -528,7 +630,9 @@ import {
   NotFoundRoute,
   BaseUiPopoverAnimatedExampleRoute,
   BaseUiPopoverBasicExampleRoute,
+  BaseUiPopoverDetachedTriggerExampleRoute,
   BaseUiPopoverMultipleTriggersExampleRoute,
+  BaseUiPopoverOpenOnHoverExampleRoute,
   BaseUiRadioBasicExampleRoute,
   BaseUiRadioFormExampleRoute,
   BaseUiRadioLabelingExampleRoute,
@@ -605,6 +709,8 @@ const [baseUiAccordionMultipleExample] = BaseUiAccordionMultipleExample.init();
 const [alertBasicExample] = AlertBasicExample.init();
 const [alertActionExample] = AlertActionExample.init();
 const [alertDestructiveExample] = AlertDestructiveExample.init();
+const [alertCustomColorsExample] = AlertCustomColorsExample.init();
+const [alertRtlExample] = AlertRtlExample.init();
 const [aspectRatioBasicExample] = AspectRatioBasicExample.init();
 const [aspectRatioSquareExample] = AspectRatioSquareExample.init();
 const [aspectRatioPortraitExample] = AspectRatioPortraitExample.init();
@@ -662,6 +768,7 @@ const [carouselSizesExample] = CarouselSizesExample.init();
 const [carouselSpacingExample] = CarouselSpacingExample.init();
 const [carouselOrientationExample] = CarouselOrientationExample.init();
 const [carouselApiExample] = CarouselApiExample.init();
+const [carouselAutoplayExample] = CarouselAutoplayExample.init();
 const [carouselRtlExample] = CarouselRtlExample.init();
 const [chartBasicExample] = ChartBasicExample.init();
 const [chartGridExample] = ChartGridExample.init();
@@ -670,10 +777,37 @@ const [chartTooltipExample] = ChartTooltipExample.init();
 const [chartLegendExample] = ChartLegendExample.init();
 const [chartRtlExample] = ChartRtlExample.init();
 const [commandBasicExample] = CommandBasicExample.init();
+const [commandGroupsExample] = CommandGroupsExample.init();
+const [commandRtlExample] = CommandRtlExample.init();
+const [commandScrollableExample] = CommandScrollableExample.init();
+const [commandShortcutsExample] = CommandShortcutsExample.init();
 const [dropdownMenuBasicExample] = DropdownMenuBasicExample.init();
+const [dropdownMenuCheckboxesExample] = DropdownMenuCheckboxesExample.init();
+const [dropdownMenuComplexExample] = DropdownMenuComplexExample.init();
+const [dropdownMenuDestructiveExample] = DropdownMenuDestructiveExample.init();
+const [dropdownMenuIconsExample] = DropdownMenuIconsExample.init();
+const [dropdownMenuRadioGroupExample] = DropdownMenuRadioGroupExample.init();
+const [dropdownMenuRtlExample] = DropdownMenuRtlExample.init();
+const [dropdownMenuShortcutsExample] = DropdownMenuShortcutsExample.init();
+const [dropdownMenuSubmenuExample] = DropdownMenuSubmenuExample.init();
 const [hoverCardBasicExample] = HoverCardBasicExample.init();
+const [hoverCardSidesExample] = HoverCardSidesExample.init();
+const [hoverCardRtlExample] = HoverCardRtlExample.init();
 const [inputOtpBasicExample] = InputOtpBasicExample.init();
+const [inputOtpPatternExample] = InputOtpPatternExample.init();
+const [inputOtpSeparatorExample] = InputOtpSeparatorExample.init();
+const [inputOtpDisabledExample] = InputOtpDisabledExample.init();
+const [inputOtpControlledExample] = InputOtpControlledExample.init();
+const [inputOtpInvalidExample] = InputOtpInvalidExample.init();
+const [inputOtpFourDigitsExample] = InputOtpFourDigitsExample.init();
+const [inputOtpAlphanumericExample] = InputOtpAlphanumericExample.init();
+const [inputOtpFormExample] = InputOtpFormExample.init();
+const [inputOtpRtlExample] = InputOtpRtlExample.init();
 const [nativeSelectBasicExample] = NativeSelectBasicExample.init();
+const [nativeSelectDisabledExample] = NativeSelectDisabledExample.init();
+const [nativeSelectGroupsExample] = NativeSelectGroupsExample.init();
+const [nativeSelectInvalidExample] = NativeSelectInvalidExample.init();
+const [nativeSelectRtlExample] = NativeSelectRtlExample.init();
 const [sheetBasicExample] = SheetBasicExample.init();
 const [sonnerBasicExample] = SonnerBasicExample.init();
 const [dataTableBasicExample] = DataTableBasicExample.init();
@@ -695,19 +829,42 @@ const [itemRtlExample] = ItemRtlExample.init();
 const [itemSizeExample] = ItemSizeExample.init();
 const [itemVariantExample] = ItemVariantExample.init();
 const [labelBasicExample] = LabelBasicExample.init();
+const [labelFieldExample] = LabelFieldExample.init();
+const [labelRtlExample] = LabelRtlExample.init();
 const [paginationBasicExample] = PaginationBasicExample.init();
+const [paginationSimpleExample] = PaginationSimpleExample.init();
+const [paginationIconsOnlyExample] = PaginationIconsOnlyExample.init();
+const [paginationRtlExample] = PaginationRtlExample.init();
 const [resizableBasicExample] = ResizableBasicExample.init();
+const [resizableHandleExample] = ResizableHandleExample.init();
+const [resizableRtlExample] = ResizableRtlExample.init();
+const [resizableVerticalExample] = ResizableVerticalExample.init();
 const [sidebarBasicExample] = SidebarBasicExample.init();
+const [sidebarCompositionExample] = SidebarCompositionExample.init();
+const [sidebarControlledExample] = SidebarControlledExample.init();
+const [sidebarRtlExample] = SidebarRtlExample.init();
+const [sidebarVariantsExample] = SidebarVariantsExample.init();
 const [tableBasicExample] = TableBasicExample.init();
 const [cardBasicExample] = CardBasicExample.init();
+const [cardSizeExample] = CardSizeExample.init();
+const [cardSpacingExample] = CardSpacingExample.init();
+const [cardImageExample] = CardImageExample.init();
+const [cardRtlExample] = CardRtlExample.init();
 const [baseUiSeparatorBasicExample] = BaseUiSeparatorBasicExample.init();
 const [separatorBasicExample] = SeparatorBasicExample.init();
 const [skeletonBasicExample] = SkeletonBasicExample.init();
+const [spinnerBasicExample] = SpinnerBasicExample.init();
 const [kbdBasicExample] = KbdBasicExample.init();
 const [kbdInputGroupExample] = KbdInputGroupExample.init();
+const [kbdRtlExample] = KbdRtlExample.init();
 const [typographyBasicExample] = TypographyBasicExample.init();
+const [emptyAvatarExample] = EmptyAvatarExample.init();
+const [emptyAvatarGroupExample] = EmptyAvatarGroupExample.init();
+const [emptyBackgroundExample] = EmptyBackgroundExample.init();
 const [emptyBasicExample] = EmptyBasicExample.init();
 const [emptyInputGroupExample] = EmptyInputGroupExample.init();
+const [emptyOutlineExample] = EmptyOutlineExample.init();
+const [emptyRtlExample] = EmptyRtlExample.init();
 const [breadcrumbBasicExample] = BreadcrumbBasicExample.init();
 const [breadcrumbSeparatorExample] = BreadcrumbSeparatorExample.init();
 const [breadcrumbDropdownExample] = BreadcrumbDropdownExample.init();
@@ -732,8 +889,15 @@ const [buttonGroupRtlExample] = ButtonGroupRtlExample.init();
 const [calendarBasicExample] = CalendarBasicExample.init();
 const [shadcnCalendarBasicExample] = ShadcnCalendarBasicExample.init();
 const [shadcnCalendarBookedExample] = ShadcnCalendarBookedExample.init();
+const [shadcnCalendarCustomCellSizeExample] =
+  ShadcnCalendarCustomCellSizeExample.init();
 const [shadcnCalendarDateOfBirthExample] =
   ShadcnCalendarDateOfBirthExample.init();
+const [shadcnCalendarDateTimePickerExample] =
+  ShadcnCalendarDateTimePickerExample.init();
+const [shadcnCalendarRangeExample] = ShadcnCalendarRangeExample.init();
+const [shadcnCalendarWeekNumbersExample] =
+  ShadcnCalendarWeekNumbersExample.init();
 const [shadcnCalendarMonthYearSelectorExample] =
   ShadcnCalendarMonthYearSelectorExample.init();
 const [shadcnCalendarPresetsExample] = ShadcnCalendarPresetsExample.init();
@@ -741,6 +905,8 @@ const [shadcnCalendarRtlExample] = ShadcnCalendarRtlExample.init();
 const [calendarBoundsExample] = CalendarBoundsExample.init();
 const [checkboxBasicExample] = CheckboxBasicExample.init();
 const [shadcnCheckboxBasicExample] = ShadcnCheckboxBasicExample.init();
+const [shadcnCheckboxCheckedStateExample] =
+  ShadcnCheckboxCheckedStateExample.init();
 const [baseUiCheckboxBasicExample] = BaseUiCheckboxBasicExample.init();
 const [baseUiCheckboxLabelingExample] = BaseUiCheckboxLabelingExample.init();
 const [baseUiCheckboxNativeButtonExample] =
@@ -821,8 +987,12 @@ const [menuBasicExample] = MenuBasicExample.init();
 const [menuAnimatedExample] = MenuAnimatedExample.init();
 const [baseUiPopoverBasicExample] = BaseUiPopoverBasicExample.init();
 const [baseUiPopoverAnimatedExample] = BaseUiPopoverAnimatedExample.init();
+const [baseUiPopoverDetachedTriggerExample] =
+  BaseUiPopoverDetachedTriggerExample.init();
 const [baseUiPopoverMultipleTriggersExample] =
   BaseUiPopoverMultipleTriggersExample.init();
+const [baseUiPopoverOpenOnHoverExample] =
+  BaseUiPopoverOpenOnHoverExample.init();
 const [baseUiRadioBasicExample] = BaseUiRadioBasicExample.init();
 const [baseUiRadioLabelingExample] = BaseUiRadioLabelingExample.init();
 const [baseUiRadioNativeButtonExample] = BaseUiRadioNativeButtonExample.init();
@@ -849,6 +1019,16 @@ const [tabsBasicExample] = TabsBasicExample.init();
 const [shadcnTabsBasicExample] = ShadcnTabsBasicExample.init();
 const [tabsManualExample] = TabsManualExample.init();
 const [shadcnInputBasicExample] = ShadcnInputBasicExample.init();
+const [shadcnInputDemoExample] = ShadcnInputDemoExample.init();
+const [shadcnInputFieldExample] = ShadcnInputFieldExample.init();
+const [shadcnInputFieldGroupExample] = ShadcnInputFieldGroupExample.init();
+const [shadcnInputInlineExample] = ShadcnInputInlineExample.init();
+const [shadcnInputGridExample] = ShadcnInputGridExample.init();
+const [shadcnInputRequiredExample] = ShadcnInputRequiredExample.init();
+const [shadcnInputBadgeExample] = ShadcnInputBadgeExample.init();
+const [shadcnInputInputGroupExample] = ShadcnInputInputGroupExample.init();
+const [shadcnInputButtonGroupExample] = ShadcnInputButtonGroupExample.init();
+const [shadcnInputFormExample] = ShadcnInputFormExample.init();
 const [shadcnInputDisabledExample] = ShadcnInputDisabledExample.init();
 const [shadcnInputInvalidExample] = ShadcnInputInvalidExample.init();
 const [shadcnInputFileExample] = ShadcnInputFileExample.init();
@@ -908,6 +1088,8 @@ const modelForRoute = (route: Model["route"]): Model => ({
   alertBasicExample,
   alertActionExample,
   alertDestructiveExample,
+  alertCustomColorsExample,
+  alertRtlExample,
   aspectRatioBasicExample,
   aspectRatioSquareExample,
   aspectRatioPortraitExample,
@@ -957,6 +1139,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   carouselSpacingExample,
   carouselOrientationExample,
   carouselApiExample,
+  carouselAutoplayExample,
   carouselRtlExample,
   chartBasicExample,
   chartGridExample,
@@ -965,10 +1148,37 @@ const modelForRoute = (route: Model["route"]): Model => ({
   chartLegendExample,
   chartRtlExample,
   commandBasicExample,
+  commandGroupsExample,
+  commandRtlExample,
+  commandScrollableExample,
+  commandShortcutsExample,
   dropdownMenuBasicExample,
+  dropdownMenuCheckboxesExample,
+  dropdownMenuComplexExample,
+  dropdownMenuDestructiveExample,
+  dropdownMenuIconsExample,
+  dropdownMenuRadioGroupExample,
+  dropdownMenuRtlExample,
+  dropdownMenuShortcutsExample,
+  dropdownMenuSubmenuExample,
   hoverCardBasicExample,
+  hoverCardSidesExample,
+  hoverCardRtlExample,
   inputOtpBasicExample,
+  inputOtpPatternExample,
+  inputOtpSeparatorExample,
+  inputOtpDisabledExample,
+  inputOtpControlledExample,
+  inputOtpInvalidExample,
+  inputOtpFourDigitsExample,
+  inputOtpAlphanumericExample,
+  inputOtpFormExample,
+  inputOtpRtlExample,
   nativeSelectBasicExample,
+  nativeSelectDisabledExample,
+  nativeSelectGroupsExample,
+  nativeSelectInvalidExample,
+  nativeSelectRtlExample,
   sheetBasicExample,
   sonnerBasicExample,
   dataTableBasicExample,
@@ -979,14 +1189,25 @@ const modelForRoute = (route: Model["route"]): Model => ({
   dataTableVisibilityExample,
   dataTableRowSelectionExample,
   cardBasicExample,
+  cardSizeExample,
+  cardSpacingExample,
+  cardImageExample,
+  cardRtlExample,
   baseUiSeparatorBasicExample,
   separatorBasicExample,
   skeletonBasicExample,
+  spinnerBasicExample,
   kbdBasicExample,
   kbdInputGroupExample,
+  kbdRtlExample,
   typographyBasicExample,
+  emptyAvatarExample,
+  emptyAvatarGroupExample,
+  emptyBackgroundExample,
   emptyBasicExample,
   emptyInputGroupExample,
+  emptyOutlineExample,
+  emptyRtlExample,
   breadcrumbBasicExample,
   breadcrumbSeparatorExample,
   breadcrumbDropdownExample,
@@ -1011,13 +1232,18 @@ const modelForRoute = (route: Model["route"]): Model => ({
   calendarBasicExample,
   shadcnCalendarBasicExample,
   shadcnCalendarBookedExample,
+  shadcnCalendarCustomCellSizeExample,
   shadcnCalendarDateOfBirthExample,
+  shadcnCalendarDateTimePickerExample,
+  shadcnCalendarRangeExample,
+  shadcnCalendarWeekNumbersExample,
   shadcnCalendarMonthYearSelectorExample,
   shadcnCalendarPresetsExample,
   shadcnCalendarRtlExample,
   calendarBoundsExample,
   checkboxBasicExample,
   shadcnCheckboxBasicExample,
+  shadcnCheckboxCheckedStateExample,
   baseUiCheckboxBasicExample,
   baseUiCheckboxLabelingExample,
   baseUiCheckboxNativeButtonExample,
@@ -1065,9 +1291,21 @@ const modelForRoute = (route: Model["route"]): Model => ({
   itemSizeExample,
   itemVariantExample,
   labelBasicExample,
+  labelFieldExample,
+  labelRtlExample,
   paginationBasicExample,
+  paginationSimpleExample,
+  paginationIconsOnlyExample,
+  paginationRtlExample,
   resizableBasicExample,
+  resizableHandleExample,
+  resizableRtlExample,
+  resizableVerticalExample,
   sidebarBasicExample,
+  sidebarCompositionExample,
+  sidebarControlledExample,
+  sidebarRtlExample,
+  sidebarVariantsExample,
   tableBasicExample,
   disclosureBasicExample,
   disclosureDisabledExample,
@@ -1104,7 +1342,9 @@ const modelForRoute = (route: Model["route"]): Model => ({
   menuAnimatedExample,
   baseUiPopoverBasicExample,
   baseUiPopoverAnimatedExample,
+  baseUiPopoverDetachedTriggerExample,
   baseUiPopoverMultipleTriggersExample,
+  baseUiPopoverOpenOnHoverExample,
   baseUiRadioBasicExample,
   baseUiRadioLabelingExample,
   baseUiRadioNativeButtonExample,
@@ -1131,6 +1371,16 @@ const modelForRoute = (route: Model["route"]): Model => ({
   shadcnTabsBasicExample,
   tabsManualExample,
   shadcnInputBasicExample,
+  shadcnInputDemoExample,
+  shadcnInputFieldExample,
+  shadcnInputFieldGroupExample,
+  shadcnInputInlineExample,
+  shadcnInputGridExample,
+  shadcnInputRequiredExample,
+  shadcnInputBadgeExample,
+  shadcnInputInputGroupExample,
+  shadcnInputButtonGroupExample,
+  shadcnInputFormExample,
   shadcnInputDisabledExample,
   shadcnInputInvalidExample,
   shadcnInputFileExample,
@@ -1767,6 +2017,9 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-resizable-basic")
       ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-resizable-vertical")
+      ).toExist(),
       Scene.expect(Scene.text("One")).toHaveAttr("data-size", "50"),
       Scene.expect(Scene.role("separator", { name: "Resize panels" })).toExist()
     );
@@ -1783,6 +2036,39 @@ describe("scene", () => {
     );
   });
 
+  test("the Resizable Handle example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ResizableHandleExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Resizable Handle" })
+      ).toExist(),
+      Scene.expect(Scene.text("||")).toExist()
+    );
+  });
+
+  test("the Resizable RTL example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ResizableRtlExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Resizable RTL" })
+      ).toExist(),
+      Scene.expect(Scene.text("واحد")).toHaveAttr("data-size", "50")
+    );
+  });
+
+  test("the Resizable Vertical example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(ResizableVerticalExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Resizable Vertical" })
+      ).toExist(),
+      Scene.expect(Scene.text("Three")).toHaveAttr("data-size", "25")
+    );
+  });
+
   test("the Sidebar docs route renders shadcn docs and example", () => {
     Scene.scene(
       { update, view },
@@ -1790,6 +2076,16 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Sidebar" })).toExist(),
       Scene.expect(Scene.text("shadcn")).toExist(),
       Scene.expect(Scene.testId("docs-example-block-sidebar-basic")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-sidebar-composition")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-sidebar-controlled")
+      ).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-sidebar-rtl")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-sidebar-variants")
+      ).toExist(),
       Scene.expect(Scene.role("button", { name: "Dashboard" })).toHaveAttr(
         "aria-current",
         "page"
@@ -1806,6 +2102,74 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Sidebar Basic" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Collapse" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Projects" })).toExist()
+    );
+  });
+
+  test("the Sidebar Composition example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SidebarCompositionExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Sidebar Composition" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Add Project" })).toExist(),
+      Scene.expect(Scene.role("link", { name: "Milestones" })).toHaveAttr(
+        "aria-current",
+        "page"
+      )
+    );
+  });
+
+  test("the Sidebar Controlled example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SidebarControlledExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Sidebar Controlled" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Toggle Sidebar" })),
+      Scene.expect(Scene.text("Collapsed")).toExist()
+    );
+  });
+
+  test("the Sidebar RTL example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SidebarRtlExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Sidebar RTL" })).toExist(),
+      Scene.expect(Scene.text("واجهة من اليمين إلى اليسار")).toExist()
+    );
+  });
+
+  test("the Sidebar Variants example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SidebarVariantsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Sidebar Variants" })
+      ).toExist(),
+      Scene.expect(Scene.text("right inset none")).toExist()
+    );
+  });
+
+  test("the Spinner docs route renders shadcn docs and basic example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SpinnerDocsRoute())),
+      Scene.expect(Scene.role("heading", { name: "Spinner" })).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-spinner-basic")).toExist(),
+      Scene.expect(Scene.text("Processing payment...")).toExist(),
+      Scene.expect(Scene.text("Processing your request")).toExist()
+    );
+  });
+
+  test("the Spinner Basic example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(SpinnerBasicExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Spinner Basic" })).toExist(),
+      Scene.expect(Scene.text("Processing payment...")).toExist(),
+      Scene.expect(Scene.text("جاري معالجة الدفع...")).toExist()
     );
   });
 
@@ -1877,6 +2241,12 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-dropdown-menu-basic")
       ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-dropdown-menu-checkboxes")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-dropdown-menu-submenu")
+      ).toExist(),
       Scene.click(Scene.role("button", { name: "Open" })),
       Scene.expect(Scene.role("menu")).toExist(),
       Scene.click(Scene.text("Billing")),
@@ -1895,6 +2265,101 @@ describe("scene", () => {
       Scene.expect(Scene.text("Profile")).toExist(),
       Scene.click(Scene.text("Billing")),
       Scene.expect(Scene.text("Selected: Billing")).toExist()
+    );
+  });
+
+  test("the Dropdown Menu Checkboxes example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuCheckboxesExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Checkboxes" })
+      ).toExist(),
+      Scene.expect(Scene.text("Status Bar")).toExist()
+    );
+  });
+
+  test("the Dropdown Menu Complex example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuComplexExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Complex" })
+      ).toExist(),
+      Scene.expect(Scene.text("Workspace")).toExist()
+    );
+  });
+
+  test("the Dropdown Menu Destructive example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuDestructiveExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Destructive" })
+      ).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "Delete" })).toHaveAttr(
+        "data-variant",
+        "destructive"
+      )
+    );
+  });
+
+  test("the Dropdown Menu Icons example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuIconsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Icons" })
+      ).toExist(),
+      Scene.expect(Scene.text("Profile")).toExist()
+    );
+  });
+
+  test("the Dropdown Menu Radio Group example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuRadioGroupExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Radio Group" })
+      ).toExist(),
+      Scene.expect(Scene.text("Comfortable")).toExist(),
+      Scene.expect(Scene.role("menuitemradio")).toHaveAttr(
+        "aria-checked",
+        "false"
+      )
+    );
+  });
+
+  test("the Dropdown Menu RTL example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuRtlExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu RTL" })
+      ).toExist(),
+      Scene.expect(Scene.text("الحساب")).toExist()
+    );
+  });
+
+  test("the Dropdown Menu Shortcuts example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuShortcutsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Shortcuts" })
+      ).toExist(),
+      Scene.expect(Scene.text("New Tab")).toExist()
+    );
+  });
+
+  test("the Dropdown Menu Submenu example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(DropdownMenuSubmenuExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Dropdown Menu Submenu" })
+      ).toExist(),
+      Scene.expect(Scene.text("More Tools")).toExist()
     );
   });
 
@@ -1955,7 +2420,9 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-native-select-basic")
       ).toExist(),
-      Scene.expect(Scene.text("Fruit")).toExist()
+      Scene.expect(Scene.testId("docs-example-block-native-select-groups")).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-native-select-rtl")).toExist(),
+      Scene.expect(Scene.text("Select status")).toExist()
     );
   });
 
@@ -1966,7 +2433,30 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Native Select Basic" })
       ).toExist(),
-      Scene.expect(Scene.text("Fruit")).toExist()
+      Scene.expect(Scene.text("Select status")).toExist()
+    );
+  });
+
+  test("the Native Select Groups example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(NativeSelectGroupsExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Native Select Groups" })
+      ).toExist(),
+      Scene.expect(Scene.text("Frontend")).toExist(),
+      Scene.expect(Scene.text("Operations Manager")).toExist()
+    );
+  });
+
+  test("the Native Select RTL example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(NativeSelectRtlExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Native Select RTL" })
+      ).toExist(),
+      Scene.expect(Scene.text("اختر الحالة")).toExist()
     );
   });
 
@@ -2065,6 +2555,48 @@ describe("scene", () => {
       Scene.expect(Scene.role("region", { name: "Carousel" })).toExist(),
       Scene.click(Scene.role("button", { name: "Next slide" })),
       Scene.expect(Scene.text("2")).toExist()
+    );
+  });
+
+  test("the Carousel Autoplay example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CarouselAutoplayExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Carousel Autoplay" })
+      ).toExist(),
+      Scene.expect(Scene.role("region", { name: "Carousel" })).toExist(),
+      Scene.expect(Scene.text("Autoplay delay: 2000ms")).toExist()
+    );
+  });
+
+  test("the Card origin parity example routes render standalone examples", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CardSizeExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Card Size" })).toExist(),
+      Scene.expect(Scene.text("Small Card")).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CardSpacingExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Card Spacing" })).toExist(),
+      Scene.expect(Scene.text("Terms of Service")).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CardImageExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Card Image" })).toExist(),
+      Scene.expect(Scene.text("Design systems meetup")).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(CardRtlExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Card RTL" })).toExist(),
+      Scene.expect(Scene.text("تسجيل الدخول إلى حسابك")).toExist()
     );
   });
 
@@ -3314,6 +3846,8 @@ describe("scene", () => {
         route: ShadcnToastDocsRoute(),
         heading: "Toast",
         source: "registry/default/ui/shadcn-toast",
+        example: "Basic",
+        content: "deprecated in favor of Sonner",
       },
       {
         route: ShadcnRadioGroupDocsRoute(),
@@ -3346,7 +3880,15 @@ describe("scene", () => {
     ];
 
     shadcnDocsRoutes.forEach(
-      ({ route, heading, source, origin, example, resolveMounts = [] }) => {
+      ({
+        route,
+        heading,
+        source,
+        origin,
+        example,
+        content,
+        resolveMounts = [],
+      }) => {
         Scene.scene(
           { update, view },
           Scene.with(modelForRoute(route)),
@@ -3381,6 +3923,9 @@ describe("scene", () => {
                 ).toExist(),
                 Scene.expect(Scene.text(example)).toExist(),
               ]),
+          ...(content === undefined
+            ? []
+            : [Scene.expect(Scene.text(content)).toExist()]),
           ...resolveMounts
         );
       }
@@ -3444,15 +3989,31 @@ describe("scene", () => {
     );
   });
 
-  test("the shadcn Field docs Basic preview updates through its submodel", () => {
+  test("the shadcn Field docs Basic preview covers origin field examples", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(ShadcnFieldDocsRoute())),
-      Scene.expect(Scene.text("Please enter your name")).not.toExist(),
-      Scene.click(Scene.role("button", { name: "Validate" })),
-      Scene.expect(Scene.text("Please enter your name")).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Name" }), "Ada Lovelace"),
-      Scene.expect(Scene.text("Please enter your name")).not.toExist()
+      Scene.expect(Scene.text("Payment Method")).toExist(),
+      Scene.expect(Scene.text("Additional Field Examples")).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Input" })).toHaveAttr(
+        "value",
+        "m@example.com"
+      ),
+      Scene.expect(Scene.role("textbox", { name: "Textarea" })).toHaveValue(
+        "Tell us about your project."
+      ),
+      Scene.expect(Scene.role("combobox", { name: "Select" })).toExist(),
+      Scene.expect(Scene.role("slider", { name: "Slider" })).toHaveAttr(
+        "aria-valuenow",
+        "50"
+      ),
+      Scene.expect(Scene.text("Fieldset")).toExist(),
+      Scene.expect(Scene.text("Choice Card")).toExist(),
+      Scene.expect(Scene.text("Field Group")).toExist(),
+      Scene.expect(Scene.text("Responsive")).toExist(),
+      Scene.expect(Scene.text("Enter a valid email address.")).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "البريد الإلكتروني" }))
+        .toHaveAttr("value", "user@example.com")
     );
   });
 
@@ -4189,7 +4750,53 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "API reference" })).toExist(),
       Scene.expect(Scene.role("textbox", { name: "Search" })).toExist(),
       Scene.expect(Scene.role("textbox", { name: "Search pages" })).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-group-custom-input")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-group-dropdown")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-input-group-textarea")
+      ).toExist(),
       Scene.expect(Scene.text("View code")).toExist()
+    );
+  });
+
+  test("the Input Group Custom Input example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(InputGroupCustomInputExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Input Group Custom Input" })
+      ).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Custom message" }))
+        .toHaveAttr("data-slot", "input-group-control")
+    );
+  });
+
+  test("the Input Group Dropdown example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(InputGroupDropdownExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Input Group Dropdown" })
+      ).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Search" })).toExist(),
+      Scene.expect(Scene.text("Search In...")).toExist()
+    );
+  });
+
+  test("the Input Group Textarea example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(InputGroupTextareaExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Input Group Textarea" })
+      ).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Script" })).toHaveValue(
+        "console.log('Hello, world!')"
+      )
     );
   });
 
@@ -4580,6 +5187,62 @@ describe("scene", () => {
     );
   });
 
+  test("the Empty example routes render standalone examples", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(EmptyAvatarExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Empty Avatar" })).toExist(),
+      Scene.expect(Scene.role("heading", { name: "User Offline" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "Leave Message" })).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(EmptyAvatarGroupExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Empty Avatar Group" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "No Team Members" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Invite Members" })).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(EmptyOutlineExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Empty Outline" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "Cloud Storage Empty" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Upload Files" })).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(EmptyBackgroundExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Empty Background" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "No Notifications" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "Refresh" })).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(EmptyRtlExampleRoute())),
+      Scene.expect(Scene.role("heading", { name: "Empty RTL" })).toExist(),
+      Scene.expect(
+        Scene.role("heading", { name: "لا توجد مشاريع بعد" })
+      ).toExist(),
+      Scene.expect(Scene.role("button", { name: "إنشاء مشروع" })).toExist()
+    );
+  });
+
   test("the Kbd and Empty docs routes include the input-group examples", () => {
     Scene.scene(
       { update, view },
@@ -4591,7 +5254,22 @@ describe("scene", () => {
       { update, view },
       Scene.with(modelForRoute(EmptyDocsRoute())),
       Scene.expect(
+        Scene.testId("docs-example-block-empty-avatar")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-empty-avatar-group")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-empty-outline")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-empty-background")
+      ).toExist(),
+      Scene.expect(
         Scene.testId("docs-example-block-empty-input-group")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-empty-rtl")
       ).toExist()
     );
   });
@@ -5247,7 +5925,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Base UI Menu Nested" })
       ).toExist(),
-      Scene.click(Scene.role("button", { name: "Format" })),
+      Scene.click(Scene.role("button", { name: "Song" })),
       Scene.click(Scene.text("Add to Playlist")),
       Scene.expect(Scene.text("Nightcall")).toExist(),
       Scene.click(Scene.text("Nightcall")),
@@ -5338,6 +6016,18 @@ describe("scene", () => {
     );
   });
 
+  test("the Base UI Popover Detached Trigger example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiPopoverDetachedTriggerExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Popover Detached Trigger" })
+      ).toExist(),
+      Scene.click(Scene.role("button", { name: "Trigger outside root" })),
+      Scene.expect(Scene.text("Detached trigger")).toExist()
+    );
+  });
+
   test("the Base UI Popover Multiple Triggers example route renders the standalone example", () => {
     Scene.scene(
       { update, view },
@@ -5351,6 +6041,18 @@ describe("scene", () => {
       Scene.expect(Scene.text("Content for Trigger 2")).toExist(),
       Scene.click(Scene.role("button", { name: "Close" })),
       Scene.expect(Scene.text("Content for Trigger 2")).not.toExist()
+    );
+  });
+
+  test("the Base UI Popover Open on Hover example route renders the standalone example", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(BaseUiPopoverOpenOnHoverExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "Base UI Popover Open on Hover" })
+      ).toExist(),
+      Scene.hover(Scene.role("button", { name: "Hover me" })),
+      Scene.expect(Scene.text("Popover opened on hover")).toExist()
     );
   });
 

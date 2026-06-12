@@ -2,6 +2,8 @@ export const sonnerViewportClassName =
   "fixed bottom-4 right-4 z-50 flex w-full max-w-sm flex-col gap-2";
 export const sonnerToastClassName =
   "rounded-lg border border-gray-200 bg-white p-4 text-sm shadow-lg";
+export const sonnerIconClassName =
+  "absolute left-4 top-4 size-4 shrink-0";
 export const sonnerTitleClassName = "font-semibold text-gray-950";
 export const sonnerDescriptionClassName = "mt-1 text-gray-600";
 export const sonnerActionClassName =

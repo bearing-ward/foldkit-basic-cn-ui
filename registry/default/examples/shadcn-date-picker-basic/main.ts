@@ -99,29 +99,146 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("space-y-3")],
+    [h.Class("space-y-8")],
     [
-      h.submodel({
-        slotId: model.datePicker.id,
-        model: model.datePicker,
-        view: DatePicker.view,
-        viewInputs: viewInputs({
-          name: "appointment-date",
-        }),
-        toParentMessage: (message) => GotDatePickerMessage({ message }),
-      }),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
+      h.section(
+        [h.Class("grid gap-3")],
         [
-          Option.match(model.selectedDate, {
-            onNone: () => "Selected date: None",
-            onSome: (date) => `Selected date: ${DatePicker.formatDate(date)}`,
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["Basic"]),
+          h.label(
+            [h.For("date-picker-basic-popover-button"), h.Class("px-1")],
+            ["Date"]
+          ),
+          h.submodel({
+            slotId: model.datePicker.id,
+            model: model.datePicker,
+            view: DatePicker.view,
+            viewInputs: viewInputs({
+              name: "appointment-date",
+            }),
+            toParentMessage: (message) => GotDatePickerMessage({ message }),
           }),
         ]
       ),
-      h.p(
-        [h.Class("text-sm text-gray-700")],
-        [`Viewed month: ${model.viewedMonth}`]
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Range Picker",
+          ]),
+          h.div(
+            [
+              h.Class(
+                "inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+              ),
+            ],
+            [
+              h.span([], ["Jan 20, 2022"]),
+              h.span([h.AriaHidden(true)], ["-"]),
+              h.span([], ["Feb 09, 2022"]),
+            ]
+          ),
+          h.p([h.Class("text-sm text-gray-600")], [
+            "Selected range: 2022-01-20 to 2022-02-09",
+          ]),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Date of Birth",
+          ]),
+          h.div(
+            [
+              h.Class(
+                "inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+              ),
+            ],
+            [
+              h.span([], ["June 15, 1990"]),
+              h.span([h.Class("text-gray-500")], ["1900 - 2026"]),
+            ]
+          ),
+          h.p([h.Class("text-sm text-gray-600")], [
+            "Choose a birth date between 1900 and today.",
+          ]),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["Input"]),
+          h.input([
+            h.AriaLabel("Date input"),
+            h.Value("06/15/1990"),
+            h.Class(
+              "h-9 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-950"
+            ),
+          ]),
+          h.p([h.Class("text-sm text-gray-600")], [
+            "Parsed date: 1990-06-15",
+          ]),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Time Picker",
+          ]),
+          h.div([h.Class("flex flex-wrap items-center gap-2")], [
+            h.input([
+              h.AriaLabel("Date with time"),
+              h.Value("2026-04-20"),
+              h.Class(
+                "h-9 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-950"
+              ),
+            ]),
+            h.input([
+              h.AriaLabel("Start time"),
+              h.Value("10:30"),
+              h.Class(
+                "h-9 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-950"
+              ),
+            ]),
+          ]),
+          h.p([h.Class("text-sm text-gray-600")], [
+            "Scheduled for 2026-04-20 at 10:30",
+          ]),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], [
+            "Natural Language Picker",
+          ]),
+          h.input([
+            h.AriaLabel("Natural language date"),
+            h.Value("tomorrow at 5pm"),
+            h.Class(
+              "h-9 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-950"
+            ),
+          ]),
+          h.p([h.Class("text-sm text-gray-600")], [
+            "Interpreted as Tomorrow at 5:00 PM",
+          ]),
+        ]
+      ),
+      h.section(
+        [h.Attribute("dir", "rtl"), h.Class("space-y-3")],
+        [
+          h.h3([h.Class("text-base font-semibold text-gray-950")], ["RTL"]),
+          h.div(
+            [
+              h.Class(
+                "inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+              ),
+            ],
+            ["اختر تاريخا"]
+          ),
+        ]
       ),
     ]
   );

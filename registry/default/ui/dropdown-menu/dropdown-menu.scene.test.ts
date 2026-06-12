@@ -44,6 +44,49 @@ const view = (open: boolean): Html => {
                     onSelect: "disabled",
                     children: [h.span([], ["API"])],
                   }),
+                  DropdownMenu.checkboxItemView<string>({
+                    checked: true,
+                    onSelect: "toggle-status",
+                    children: [
+                      DropdownMenu.itemIndicatorView<string>({
+                        children: [h.span([], ["✓"])],
+                      }),
+                      h.span([], ["Status Bar"]),
+                    ],
+                  }),
+                  DropdownMenu.radioGroupView<string>({
+                    label: "Panel position",
+                    children: [
+                      DropdownMenu.radioItemView<string>({
+                        checked: true,
+                        onSelect: "panel-bottom",
+                        children: [h.span([], ["Bottom"])],
+                      }),
+                    ],
+                  }),
+                  DropdownMenu.subTriggerView<string>({
+                    open: true,
+                    onOpen: "open-more-tools",
+                    children: [h.span([], ["More Tools"]), h.span([], [">"])],
+                  }),
+                  DropdownMenu.subContentView<string>({
+                    children: [
+                      DropdownMenu.itemView<string>({
+                        onSelect: "save-page",
+                        children: [
+                          DropdownMenu.iconView<string>({
+                            children: [h.span([], ["□"])],
+                          }),
+                          h.span([], ["Save Page As..."]),
+                        ],
+                      }),
+                    ],
+                  }),
+                  DropdownMenu.itemView<string>({
+                    destructive: true,
+                    onSelect: "delete",
+                    children: [h.span([], ["Delete"])],
+                  }),
                 ],
               }),
             ],
@@ -92,6 +135,23 @@ describe("Dropdown Menu registry view", () => {
       Scene.expect(Scene.role("menuitem", { name: "API" })).toHaveAttr(
         "data-disabled",
         "true"
+      ),
+      Scene.expect(Scene.text("Status Bar")).toExist(),
+      Scene.expect(Scene.role("menuitemcheckbox")).toHaveAttr(
+        "aria-checked",
+        "true"
+      ),
+      Scene.expect(Scene.role("group", { name: "Panel position" })).toExist(),
+      Scene.expect(Scene.role("menuitemradio", { name: "Bottom" })).toHaveAttr(
+        "aria-checked",
+        "true"
+      ),
+      Scene.expect(Scene.text("More Tools")).toExist(),
+      Scene.expect(Scene.text("Save Page As...")).toExist(),
+      Scene.expect(Scene.text("□")).toExist(),
+      Scene.expect(Scene.role("menuitem", { name: "Delete" })).toHaveAttr(
+        "data-variant",
+        "destructive"
       )
     );
   });

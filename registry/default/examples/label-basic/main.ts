@@ -1,26 +1,26 @@
 import { Match as M, Schema as S } from "effect";
-import type { Command } from "foldkit";
-import { Submodel } from "foldkit";
+import { Command, Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
 
+import * as Checkbox from "../../ui/shadcn-checkbox";
 import * as Label from "../../ui/label";
 
 // MODEL
 
 export const Model = S.Struct({
-  email: S.String,
+  checkbox: Checkbox.Model,
 });
-
 export type Model = typeof Model.Type;
 
 // MESSAGE
 
-export const UpdatedEmail = m("UpdatedEmail", { value: S.String });
-
-export const Message = S.Union([UpdatedEmail]);
+export const GotCheckboxMessage = m("GotCheckboxMessage", {
+  message: Checkbox.Message,
+});
+export const Message = S.Union([GotCheckboxMessage]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -28,7 +28,19 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{ email: "" }, []];
+] => {
+  const [checkbox, checkboxCommands] = Checkbox.init({
+    id: "terms-checkbox",
+    isChecked: false,
+  });
+
+  return [
+    { checkbox },
+    Command.mapMessages(checkboxCommands, (message) =>
+      GotCheckboxMessage({ message })
+    ),
+  ];
+};
 
 // UPDATE
 
@@ -39,7 +51,19 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      UpdatedEmail: ({ value }) => [evo(model, { email: () => value }), []],
+      GotCheckboxMessage: ({ message }) => {
+        const [checkbox, checkboxCommands] = Checkbox.update(
+          model.checkbox,
+          message
+        );
+
+        return [
+          evo(model, { checkbox: () => checkbox }),
+          Command.mapMessages(checkboxCommands, (message) =>
+            GotCheckboxMessage({ message })
+          ),
+        ];
+      },
     })
   );
 
@@ -47,29 +71,35 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
-  const inputId = "email";
 
-  return h.div(
-    [h.Class("grid w-full max-w-sm gap-3")],
-    [
-      Label.view<Message>({
-        forId: inputId,
-        children: "Email",
-      }),
-      h.input([
-        h.Id(inputId),
-        h.Type("email"),
-        h.Value(model.email),
-        h.Placeholder("m@example.com"),
-        h.OnInput((value) => UpdatedEmail({ value })),
-        h.Class(
-          "flex h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1 text-base text-gray-950 shadow-sm transition-colors placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 md:text-sm"
+  return h.submodel({
+    slotId: model.checkbox.id,
+    model: model.checkbox,
+    view: Checkbox.view,
+    viewInputs: {
+      name: "terms",
+      value: "accepted",
+      toView: (attributes) =>
+        h.div(
+          [h.Class("flex items-center gap-2")],
+          [
+            h.button(
+              [
+                ...attributes.checkbox,
+                h.Class(Checkbox.shadcnCheckboxControlClassName),
+                h.AriaLabel("Accept terms and conditions"),
+              ],
+              model.checkbox.isChecked ? ["✓"] : []
+            ),
+            h.input(attributes.hiddenInput),
+            Label.view<Message>({
+              forId: model.checkbox.id,
+              className: Checkbox.shadcnCheckboxLabelClassName,
+              children: "Accept terms and conditions",
+            }),
+          ]
         ),
-      ]),
-      h.p(
-        [h.Class("text-sm text-gray-600")],
-        [`Current value: ${model.email === "" ? "empty" : model.email}`]
-      ),
-    ]
-  );
+    },
+    toParentMessage: (message) => GotCheckboxMessage({ message }),
+  });
 });

@@ -2,6 +2,10 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
+import * as BadgeCustomColorsExample from "../registry/default/examples/badge-custom-colors/main";
+import * as BadgeIconExample from "../registry/default/examples/badge-icon/main";
+import * as BadgeLinkExample from "../registry/default/examples/badge-link/main";
+import * as BadgeRtlExample from "../registry/default/examples/badge-rtl/main";
 import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
 import * as BaseUiAlertDialogBasicExample from "../registry/default/examples/base-ui-alert-dialog-basic/main";
 import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
@@ -76,6 +80,18 @@ export const badgeSpinnerExamplePreview = (
       Main.GotBadgeSpinnerExampleMessage({ message }),
   });
 };
+
+export const badgeIconExamplePreview = (): Html =>
+  BadgeIconExample.view(BadgeIconExample.init()[0]);
+
+export const badgeLinkExamplePreview = (): Html =>
+  BadgeLinkExample.view(BadgeLinkExample.init()[0]);
+
+export const badgeCustomColorsExamplePreview = (): Html =>
+  BadgeCustomColorsExample.view(BadgeCustomColorsExample.init()[0]);
+
+export const badgeRtlExamplePreview = (): Html =>
+  BadgeRtlExample.view(BadgeRtlExample.init()[0]);
 
 export const breadcrumbBasicExamplePreview = (
   model: BreadcrumbBasicExample.Model,

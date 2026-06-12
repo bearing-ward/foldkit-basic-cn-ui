@@ -5,24 +5,24 @@ import type { Submodel } from "foldkit";
 import type { Document, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as DocsPreviewsAccordion from "./docsExamplePreviewsAccordion";
-import * as DocsPreviewsAlert from "./docsExamplePreviewsAlert";
-import * as DocsPreviewsAnimation from "./docsExamplePreviewsAnimation";
-import * as DocsPreviewsAspect from "./docsExamplePreviewsAspect";
-import * as DocsPreviewsAutocomplete from "./docsExamplePreviewsAutocomplete";
-import * as DocsPreviewsAvatar from "./docsExamplePreviewsAvatar";
-import * as DocsPreviewsB from "./docsExamplePreviewsB";
-import * as DocsPreviewsCD from "./docsExamplePreviewsCD";
-import * as DocsPreviewsEI from "./docsExamplePreviewsEI";
-import * as DocsPreviewsJM from "./docsExamplePreviewsJM";
-import * as DocsPreviewsNZ from "./docsExamplePreviewsNZ";
-import * as DocsPreviewsShadcnMissing from "./docsExamplePreviewsShadcnMissing";
-import * as DocsRoutes from "./docsExampleRoutes";
+import * as DocsPreviewsAccordion from "docs-example-previews-accordion";
+import * as DocsPreviewsAlert from "docs-example-previews-alert";
+import * as DocsPreviewsAnimation from "docs-example-previews-animation";
+import * as DocsPreviewsAspect from "docs-example-previews-aspect";
+import * as DocsPreviewsAutocomplete from "docs-example-previews-autocomplete";
+import * as DocsPreviewsAvatar from "docs-example-previews-avatar";
+import * as DocsPreviewsB from "docs-example-previews-b";
+import * as DocsPreviewsCD from "docs-example-previews-cd";
+import * as DocsPreviewsEI from "docs-example-previews-ei";
+import * as DocsPreviewsJM from "docs-example-previews-jm";
+import * as DocsPreviewsNZ from "docs-example-previews-nz";
+import * as DocsPreviewsShadcnMissing from "docs-example-previews-shadcn-missing";
+import * as DocsRoutes from "docs-example-routes";
 import * as Icon from "./icon";
-import * as Main from "./main";
+import * as Main from "app-main";
 import type { UiMessage } from "./ui/message";
 import type { UiModel } from "./ui/model";
-import * as View from "./ui/view";
+import * as View from "legacy-ui-views";
 
 type Model = Main.Model;
 type Message = Main.Message;
@@ -395,6 +395,26 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/badge/examples/spinner",
   },
   {
+    label: "Badge With Icon Example",
+    routeTag: "BadgeIconExample",
+    href: "/docs/components/badge/examples/icon",
+  },
+  {
+    label: "Badge Link Example",
+    routeTag: "BadgeLinkExample",
+    href: "/docs/components/badge/examples/link",
+  },
+  {
+    label: "Badge Custom Colors Example",
+    routeTag: "BadgeCustomColorsExample",
+    href: "/docs/components/badge/examples/custom-colors",
+  },
+  {
+    label: "Badge RTL Example",
+    routeTag: "BadgeRtlExample",
+    href: "/docs/components/badge/examples/rtl",
+  },
+  {
     label: "Carousel Docs",
     routeTag: "ShadcnCarouselDocs",
     href: "/docs/components/shadcn-carousel",
@@ -423,6 +443,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Carousel API Example",
     routeTag: "CarouselApiExample",
     href: "/docs/components/shadcn-carousel/examples/api",
+  },
+  {
+    label: "Carousel Autoplay Example",
+    routeTag: "CarouselAutoplayExample",
+    href: "/docs/components/shadcn-carousel/examples/autoplay",
   },
   {
     label: "Carousel RTL Example",
@@ -475,6 +500,26 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/command/examples/basic",
   },
   {
+    label: "Command Groups Example",
+    routeTag: "CommandGroupsExample",
+    href: "/docs/components/command/examples/groups",
+  },
+  {
+    label: "Command RTL Example",
+    routeTag: "CommandRtlExample",
+    href: "/docs/components/command/examples/rtl",
+  },
+  {
+    label: "Command Scrollable Example",
+    routeTag: "CommandScrollableExample",
+    href: "/docs/components/command/examples/scrollable",
+  },
+  {
+    label: "Command Shortcuts Example",
+    routeTag: "CommandShortcutsExample",
+    href: "/docs/components/command/examples/shortcuts",
+  },
+  {
     label: "Dropdown Menu Docs",
     routeTag: "DropdownMenuDocs",
     href: "/docs/components/dropdown-menu",
@@ -483,6 +528,46 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Dropdown Menu Basic Example",
     routeTag: "DropdownMenuBasicExample",
     href: "/docs/components/dropdown-menu/examples/basic",
+  },
+  {
+    label: "Dropdown Menu Checkboxes Example",
+    routeTag: "DropdownMenuCheckboxesExample",
+    href: "/docs/components/dropdown-menu/examples/checkboxes",
+  },
+  {
+    label: "Dropdown Menu Complex Example",
+    routeTag: "DropdownMenuComplexExample",
+    href: "/docs/components/dropdown-menu/examples/complex",
+  },
+  {
+    label: "Dropdown Menu Destructive Example",
+    routeTag: "DropdownMenuDestructiveExample",
+    href: "/docs/components/dropdown-menu/examples/destructive",
+  },
+  {
+    label: "Dropdown Menu Icons Example",
+    routeTag: "DropdownMenuIconsExample",
+    href: "/docs/components/dropdown-menu/examples/icons",
+  },
+  {
+    label: "Dropdown Menu Radio Group Example",
+    routeTag: "DropdownMenuRadioGroupExample",
+    href: "/docs/components/dropdown-menu/examples/radio-group",
+  },
+  {
+    label: "Dropdown Menu RTL Example",
+    routeTag: "DropdownMenuRtlExample",
+    href: "/docs/components/dropdown-menu/examples/rtl",
+  },
+  {
+    label: "Dropdown Menu Shortcuts Example",
+    routeTag: "DropdownMenuShortcutsExample",
+    href: "/docs/components/dropdown-menu/examples/shortcuts",
+  },
+  {
+    label: "Dropdown Menu Submenu Example",
+    routeTag: "DropdownMenuSubmenuExample",
+    href: "/docs/components/dropdown-menu/examples/submenu",
   },
   {
     label: "Hover Card Docs",
@@ -505,6 +590,51 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/input-otp/examples/basic",
   },
   {
+    label: "Input OTP Pattern Example",
+    routeTag: "InputOtpPatternExample",
+    href: "/docs/components/input-otp/examples/pattern",
+  },
+  {
+    label: "Input OTP Separator Example",
+    routeTag: "InputOtpSeparatorExample",
+    href: "/docs/components/input-otp/examples/separator",
+  },
+  {
+    label: "Input OTP Disabled Example",
+    routeTag: "InputOtpDisabledExample",
+    href: "/docs/components/input-otp/examples/disabled",
+  },
+  {
+    label: "Input OTP Controlled Example",
+    routeTag: "InputOtpControlledExample",
+    href: "/docs/components/input-otp/examples/controlled",
+  },
+  {
+    label: "Input OTP Invalid Example",
+    routeTag: "InputOtpInvalidExample",
+    href: "/docs/components/input-otp/examples/invalid",
+  },
+  {
+    label: "Input OTP Four Digits Example",
+    routeTag: "InputOtpFourDigitsExample",
+    href: "/docs/components/input-otp/examples/four-digits",
+  },
+  {
+    label: "Input OTP Alphanumeric Example",
+    routeTag: "InputOtpAlphanumericExample",
+    href: "/docs/components/input-otp/examples/alphanumeric",
+  },
+  {
+    label: "Input OTP Form Example",
+    routeTag: "InputOtpFormExample",
+    href: "/docs/components/input-otp/examples/form",
+  },
+  {
+    label: "Input OTP RTL Example",
+    routeTag: "InputOtpRtlExample",
+    href: "/docs/components/input-otp/examples/rtl",
+  },
+  {
     label: "Native Select Docs",
     routeTag: "NativeSelectDocs",
     href: "/docs/components/native-select",
@@ -513,6 +643,16 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Native Select Basic Example",
     routeTag: "NativeSelectBasicExample",
     href: "/docs/components/native-select/examples/basic",
+  },
+  {
+    label: "Native Select Groups Example",
+    routeTag: "NativeSelectGroupsExample",
+    href: "/docs/components/native-select/examples/groups",
+  },
+  {
+    label: "Native Select RTL Example",
+    routeTag: "NativeSelectRtlExample",
+    href: "/docs/components/native-select/examples/rtl",
   },
   {
     label: "Sheet Docs",
@@ -661,6 +801,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/resizable/examples/basic",
   },
   {
+    label: "Resizable Handle Example",
+    routeTag: "ResizableHandleExample",
+    href: "/docs/components/resizable/examples/handle",
+  },
+  {
+    label: "Resizable RTL Example",
+    routeTag: "ResizableRtlExample",
+    href: "/docs/components/resizable/examples/rtl",
+  },
+  {
+    label: "Resizable Vertical Example",
+    routeTag: "ResizableVerticalExample",
+    href: "/docs/components/resizable/examples/vertical",
+  },
+  {
     label: "Sidebar Docs",
     routeTag: "SidebarDocs",
     href: "/docs/components/sidebar",
@@ -669,6 +824,26 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Sidebar Basic Example",
     routeTag: "SidebarBasicExample",
     href: "/docs/components/sidebar/examples/basic",
+  },
+  {
+    label: "Sidebar Composition Example",
+    routeTag: "SidebarCompositionExample",
+    href: "/docs/components/sidebar/examples/composition",
+  },
+  {
+    label: "Sidebar Controlled Example",
+    routeTag: "SidebarControlledExample",
+    href: "/docs/components/sidebar/examples/controlled",
+  },
+  {
+    label: "Sidebar RTL Example",
+    routeTag: "SidebarRtlExample",
+    href: "/docs/components/sidebar/examples/rtl",
+  },
+  {
+    label: "Sidebar Variants Example",
+    routeTag: "SidebarVariantsExample",
+    href: "/docs/components/sidebar/examples/variants",
   },
   {
     label: "Table Docs",
@@ -690,6 +865,26 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Card Basic Example",
     routeTag: "CardBasicExample",
     href: "/docs/components/shadcn-card/examples/basic",
+  },
+  {
+    label: "Card Size Example",
+    routeTag: "CardSizeExample",
+    href: "/docs/components/shadcn-card/examples/size",
+  },
+  {
+    label: "Card Spacing Example",
+    routeTag: "CardSpacingExample",
+    href: "/docs/components/shadcn-card/examples/spacing",
+  },
+  {
+    label: "Card Image Example",
+    routeTag: "CardImageExample",
+    href: "/docs/components/shadcn-card/examples/image",
+  },
+  {
+    label: "Card RTL Example",
+    routeTag: "CardRtlExample",
+    href: "/docs/components/shadcn-card/examples/rtl",
   },
   { label: "Separator", routeTag: "Separator", href: "/separator" },
   {
@@ -754,6 +949,21 @@ const NAV_ITEMS: readonly NavItem[] = [
     href: "/docs/components/empty",
   },
   {
+    label: "Empty Avatar Example",
+    routeTag: "EmptyAvatarExample",
+    href: "/docs/components/empty/examples/avatar",
+  },
+  {
+    label: "Empty Avatar Group Example",
+    routeTag: "EmptyAvatarGroupExample",
+    href: "/docs/components/empty/examples/avatar-group",
+  },
+  {
+    label: "Empty Background Example",
+    routeTag: "EmptyBackgroundExample",
+    href: "/docs/components/empty/examples/background",
+  },
+  {
     label: "Empty Basic Example",
     routeTag: "EmptyBasicExample",
     href: "/docs/components/empty/examples/basic",
@@ -762,6 +972,16 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Empty Input Group Example",
     routeTag: "EmptyInputGroupExample",
     href: "/docs/components/empty/examples/input-group",
+  },
+  {
+    label: "Empty Outline Example",
+    routeTag: "EmptyOutlineExample",
+    href: "/docs/components/empty/examples/outline",
+  },
+  {
+    label: "Empty RTL Example",
+    routeTag: "EmptyRtlExample",
+    href: "/docs/components/empty/examples/rtl",
   },
   { label: "Button", routeTag: "Button", href: "/button" },
   {
@@ -799,6 +1019,51 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Input Group Docs",
     routeTag: "InputGroupDocs",
     href: "/docs/components/input-group",
+  },
+  {
+    label: "Input Group Align Example",
+    routeTag: "InputGroupAlignExample",
+    href: "/docs/components/input-group/examples/align",
+  },
+  {
+    label: "Input Group Button Example",
+    routeTag: "InputGroupButtonExample",
+    href: "/docs/components/input-group/examples/button",
+  },
+  {
+    label: "Input Group Custom Input Example",
+    routeTag: "InputGroupCustomInputExample",
+    href: "/docs/components/input-group/examples/custom-input",
+  },
+  {
+    label: "Input Group Dropdown Example",
+    routeTag: "InputGroupDropdownExample",
+    href: "/docs/components/input-group/examples/dropdown",
+  },
+  {
+    label: "Input Group Icon Example",
+    routeTag: "InputGroupIconExample",
+    href: "/docs/components/input-group/examples/icon",
+  },
+  {
+    label: "Input Group RTL Example",
+    routeTag: "InputGroupRtlExample",
+    href: "/docs/components/input-group/examples/rtl",
+  },
+  {
+    label: "Input Group Spinner Example",
+    routeTag: "InputGroupSpinnerExample",
+    href: "/docs/components/input-group/examples/spinner",
+  },
+  {
+    label: "Input Group Text Example",
+    routeTag: "InputGroupTextExample",
+    href: "/docs/components/input-group/examples/text",
+  },
+  {
+    label: "Input Group Textarea Example",
+    routeTag: "InputGroupTextareaExample",
+    href: "/docs/components/input-group/examples/textarea",
   },
   { label: "Meter", routeTag: "Meter", href: "/meter" },
   {
@@ -1419,6 +1684,9 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/alert/examples/action": "sources/alert-action.txt",
   "/docs/components/alert/examples/destructive":
     "sources/alert-destructive.txt",
+  "/docs/components/alert/examples/custom-colors":
+    "sources/alert-custom-colors.txt",
+  "/docs/components/alert/examples/rtl": "sources/alert-rtl.txt",
   "/docs/components/aspect-ratio/examples/basic":
     "sources/aspect-ratio-basic.txt",
   "/docs/components/aspect-ratio/examples/square":
@@ -1464,12 +1732,59 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/chart/examples/legend": "sources/chart-legend.txt",
   "/docs/components/chart/examples/rtl": "sources/chart-rtl.txt",
   "/docs/components/command/examples/basic": "sources/command-basic.txt",
+  "/docs/components/command/examples/groups": "sources/command-groups.txt",
+  "/docs/components/command/examples/rtl": "sources/command-rtl.txt",
+  "/docs/components/command/examples/scrollable":
+    "sources/command-scrollable.txt",
+  "/docs/components/command/examples/shortcuts":
+    "sources/command-shortcuts.txt",
   "/docs/components/dropdown-menu/examples/basic":
     "sources/dropdown-menu-basic.txt",
+  "/docs/components/dropdown-menu/examples/checkboxes":
+    "sources/dropdown-menu-checkboxes.txt",
+  "/docs/components/dropdown-menu/examples/complex":
+    "sources/dropdown-menu-complex.txt",
+  "/docs/components/dropdown-menu/examples/destructive":
+    "sources/dropdown-menu-destructive.txt",
+  "/docs/components/dropdown-menu/examples/icons":
+    "sources/dropdown-menu-icons.txt",
+  "/docs/components/dropdown-menu/examples/radio-group":
+    "sources/dropdown-menu-radio-group.txt",
+  "/docs/components/dropdown-menu/examples/rtl":
+    "sources/dropdown-menu-rtl.txt",
+  "/docs/components/dropdown-menu/examples/shortcuts":
+    "sources/dropdown-menu-shortcuts.txt",
+  "/docs/components/dropdown-menu/examples/submenu":
+    "sources/dropdown-menu-submenu.txt",
   "/docs/components/hover-card/examples/basic": "sources/hover-card-basic.txt",
+  "/docs/components/hover-card/examples/sides": "sources/hover-card-sides.txt",
+  "/docs/components/hover-card/examples/rtl": "sources/hover-card-rtl.txt",
   "/docs/components/input-otp/examples/basic": "sources/input-otp-basic.txt",
+  "/docs/components/input-otp/examples/pattern":
+    "sources/input-otp-pattern.txt",
+  "/docs/components/input-otp/examples/separator":
+    "sources/input-otp-separator.txt",
+  "/docs/components/input-otp/examples/disabled":
+    "sources/input-otp-disabled.txt",
+  "/docs/components/input-otp/examples/controlled":
+    "sources/input-otp-controlled.txt",
+  "/docs/components/input-otp/examples/invalid":
+    "sources/input-otp-invalid.txt",
+  "/docs/components/input-otp/examples/four-digits":
+    "sources/input-otp-four-digits.txt",
+  "/docs/components/input-otp/examples/alphanumeric":
+    "sources/input-otp-alphanumeric.txt",
+  "/docs/components/input-otp/examples/form": "sources/input-otp-form.txt",
+  "/docs/components/input-otp/examples/rtl": "sources/input-otp-rtl.txt",
   "/docs/components/native-select/examples/basic":
     "sources/native-select-basic.txt",
+  "/docs/components/native-select/examples/disabled":
+    "sources/native-select-disabled.txt",
+  "/docs/components/native-select/examples/groups":
+    "sources/native-select-groups.txt",
+  "/docs/components/native-select/examples/invalid":
+    "sources/native-select-invalid.txt",
+  "/docs/components/native-select/examples/rtl": "sources/native-select-rtl.txt",
   "/docs/components/sheet/examples/basic": "sources/sheet-basic.txt",
   "/docs/components/sonner/examples/basic": "sources/sonner-basic.txt",
   "/docs/components/data-table/examples/basic": "sources/data-table-basic.txt",
@@ -1543,6 +1858,11 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-avatar-dropdown.txt",
   "/docs/components/badge/examples/basic": "sources/badge-basic.txt",
   "/docs/components/badge/examples/spinner": "sources/badge-spinner.txt",
+  "/docs/components/badge/examples/icon": "sources/badge-icon.txt",
+  "/docs/components/badge/examples/link": "sources/badge-link.txt",
+  "/docs/components/badge/examples/custom-colors":
+    "sources/badge-custom-colors.txt",
+  "/docs/components/badge/examples/rtl": "sources/badge-rtl.txt",
   "/docs/components/shadcn-carousel/examples/basic":
     "sources/carousel-basic.txt",
   "/docs/components/shadcn-carousel/examples/sizes":
@@ -1552,6 +1872,8 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/shadcn-carousel/examples/orientation":
     "sources/carousel-orientation.txt",
   "/docs/components/shadcn-carousel/examples/api": "sources/carousel-api.txt",
+  "/docs/components/shadcn-carousel/examples/autoplay":
+    "sources/carousel-autoplay.txt",
   "/docs/components/shadcn-carousel/examples/rtl": "sources/carousel-rtl.txt",
   "/docs/components/item/examples/avatar": "sources/item-avatar.txt",
   "/docs/components/item/examples/basic": "sources/item-basic.txt",
@@ -1564,19 +1886,63 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
   "/docs/components/item/examples/size": "sources/item-size.txt",
   "/docs/components/item/examples/variant": "sources/item-variant.txt",
   "/docs/components/label/examples/basic": "sources/label-basic.txt",
+  "/docs/components/label/examples/field": "sources/label-field.txt",
+  "/docs/components/label/examples/rtl": "sources/label-rtl.txt",
   "/docs/components/pagination/examples/basic": "sources/pagination-basic.txt",
+  "/docs/components/pagination/examples/simple":
+    "sources/pagination-simple.txt",
+  "/docs/components/pagination/examples/icons-only":
+    "sources/pagination-icons-only.txt",
+  "/docs/components/pagination/examples/rtl": "sources/pagination-rtl.txt",
   "/docs/components/resizable/examples/basic": "sources/resizable-basic.txt",
+  "/docs/components/resizable/examples/handle": "sources/resizable-handle.txt",
+  "/docs/components/resizable/examples/rtl": "sources/resizable-rtl.txt",
+  "/docs/components/resizable/examples/vertical":
+    "sources/resizable-vertical.txt",
   "/docs/components/sidebar/examples/basic": "sources/sidebar-basic.txt",
+  "/docs/components/sidebar/examples/composition":
+    "sources/sidebar-composition.txt",
+  "/docs/components/sidebar/examples/controlled":
+    "sources/sidebar-controlled.txt",
+  "/docs/components/sidebar/examples/rtl": "sources/sidebar-rtl.txt",
+  "/docs/components/sidebar/examples/variants": "sources/sidebar-variants.txt",
   "/docs/components/table/examples/basic": "sources/table-basic.txt",
   "/docs/components/shadcn-card/examples/basic": "sources/card-basic.txt",
+  "/docs/components/shadcn-card/examples/size": "sources/card-size.txt",
+  "/docs/components/shadcn-card/examples/spacing": "sources/card-spacing.txt",
+  "/docs/components/shadcn-card/examples/image": "sources/card-image.txt",
+  "/docs/components/shadcn-card/examples/rtl": "sources/card-rtl.txt",
   "/docs/components/separator/examples/basic": "sources/separator-basic.txt",
   "/docs/components/skeleton/examples/basic": "sources/skeleton-basic.txt",
+  "/docs/components/spinner/examples/basic": "sources/spinner-basic.txt",
   "/docs/components/kbd/examples/basic": "sources/kbd-basic.txt",
   "/docs/components/kbd/examples/input-group": "sources/kbd-input-group.txt",
+  "/docs/components/kbd/examples/rtl": "sources/kbd-rtl.txt",
   "/docs/components/typography/examples/basic": "sources/typography-basic.txt",
+  "/docs/components/empty/examples/avatar": "sources/empty-avatar.txt",
+  "/docs/components/empty/examples/avatar-group":
+    "sources/empty-avatar-group.txt",
+  "/docs/components/empty/examples/background": "sources/empty-background.txt",
   "/docs/components/empty/examples/basic": "sources/empty-basic.txt",
   "/docs/components/empty/examples/input-group":
     "sources/empty-input-group.txt",
+  "/docs/components/empty/examples/outline": "sources/empty-outline.txt",
+  "/docs/components/empty/examples/rtl": "sources/empty-rtl.txt",
+  "/docs/components/input-group/examples/align":
+    "sources/input-group-align.txt",
+  "/docs/components/input-group/examples/button":
+    "sources/input-group-button.txt",
+  "/docs/components/input-group/examples/custom-input":
+    "sources/input-group-custom-input.txt",
+  "/docs/components/input-group/examples/dropdown":
+    "sources/input-group-dropdown.txt",
+  "/docs/components/input-group/examples/icon": "sources/input-group-icon.txt",
+  "/docs/components/input-group/examples/rtl": "sources/input-group-rtl.txt",
+  "/docs/components/input-group/examples/spinner":
+    "sources/input-group-spinner.txt",
+  "/docs/components/input-group/examples/text": "sources/input-group-text.txt",
+  "/docs/components/input-group/examples/textarea":
+    "sources/input-group-textarea.txt",
   "/docs/components/button/examples/basic": "sources/button-basic.txt",
   "/docs/components/shadcn-button/examples/basic":
     "sources/shadcn-button-basic.txt",
@@ -1652,6 +2018,16 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-tooltip-basic.txt",
   "/docs/components/shadcn-textarea/examples/basic":
     "sources/shadcn-textarea-basic.txt",
+  "/docs/components/shadcn-textarea/examples/field":
+    "sources/shadcn-textarea-field.txt",
+  "/docs/components/shadcn-textarea/examples/disabled":
+    "sources/shadcn-textarea-disabled.txt",
+  "/docs/components/shadcn-textarea/examples/invalid":
+    "sources/shadcn-textarea-invalid.txt",
+  "/docs/components/shadcn-textarea/examples/button":
+    "sources/shadcn-textarea-button.txt",
+  "/docs/components/shadcn-textarea/examples/rtl":
+    "sources/shadcn-textarea-rtl.txt",
   "/docs/components/shadcn-separator/examples/basic":
     "sources/shadcn-separator-basic.txt",
   "/docs/components/shadcn-scroll-area/examples/basic":
@@ -1666,11 +2042,32 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-menubar-basic.txt",
   "/docs/components/shadcn-input/examples/basic":
     "sources/shadcn-input-basic.txt",
+  "/docs/components/shadcn-input/examples/demo":
+    "sources/shadcn-input-demo.txt",
+  "/docs/components/shadcn-input/examples/field":
+    "sources/shadcn-input-field.txt",
+  "/docs/components/shadcn-input/examples/field-group":
+    "sources/shadcn-input-field-group.txt",
+  "/docs/components/shadcn-input/examples/inline":
+    "sources/shadcn-input-inline.txt",
+  "/docs/components/shadcn-input/examples/grid":
+    "sources/shadcn-input-grid.txt",
+  "/docs/components/shadcn-input/examples/required":
+    "sources/shadcn-input-required.txt",
+  "/docs/components/shadcn-input/examples/badge":
+    "sources/shadcn-input-badge.txt",
+  "/docs/components/shadcn-input/examples/input-group":
+    "sources/shadcn-input-input-group.txt",
+  "/docs/components/shadcn-input/examples/button-group":
+    "sources/shadcn-input-button-group.txt",
+  "/docs/components/shadcn-input/examples/form":
+    "sources/shadcn-input-form.txt",
   "/docs/components/shadcn-input/examples/disabled":
     "sources/shadcn-input-disabled.txt",
   "/docs/components/shadcn-input/examples/invalid":
     "sources/shadcn-input-invalid.txt",
-  "/docs/components/shadcn-input/examples/file": "sources/shadcn-input-file.txt",
+  "/docs/components/shadcn-input/examples/file":
+    "sources/shadcn-input-file.txt",
   "/docs/components/shadcn-input/examples/rtl": "sources/shadcn-input-rtl.txt",
   "/docs/components/shadcn-field/examples/basic":
     "sources/shadcn-field-basic.txt",
@@ -1706,6 +2103,20 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/shadcn-collapsible-basic.txt",
   "/docs/components/shadcn-checkbox/examples/basic":
     "sources/shadcn-checkbox-basic.txt",
+  "/docs/components/shadcn-checkbox/examples/checked-state":
+    "sources/shadcn-checkbox-checked-state.txt",
+  "/docs/components/shadcn-checkbox/examples/description":
+    "sources/shadcn-checkbox-description.txt",
+  "/docs/components/shadcn-checkbox/examples/disabled":
+    "sources/shadcn-checkbox-disabled.txt",
+  "/docs/components/shadcn-checkbox/examples/group":
+    "sources/shadcn-checkbox-group.txt",
+  "/docs/components/shadcn-checkbox/examples/invalid":
+    "sources/shadcn-checkbox-invalid.txt",
+  "/docs/components/shadcn-checkbox/examples/rtl":
+    "sources/shadcn-checkbox-rtl.txt",
+  "/docs/components/shadcn-checkbox/examples/table":
+    "sources/shadcn-checkbox-table.txt",
   "/docs/components/calendar/examples/bounds": "sources/calendar-bounds.txt",
   "/docs/components/checkbox/examples/basic": "sources/checkbox-basic.txt",
   "/docs/components/checkbox-group/examples/basic":
@@ -1751,6 +2162,18 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/radio-group-basic.txt",
   "/docs/components/shadcn-radio-group/examples/basic":
     "sources/shadcn-radio-group-basic.txt",
+  "/docs/components/shadcn-radio-group/examples/description":
+    "sources/shadcn-radio-group-description.txt",
+  "/docs/components/shadcn-radio-group/examples/choice-card":
+    "sources/shadcn-radio-group-choice-card.txt",
+  "/docs/components/shadcn-radio-group/examples/fieldset":
+    "sources/shadcn-radio-group-fieldset.txt",
+  "/docs/components/shadcn-radio-group/examples/disabled":
+    "sources/shadcn-radio-group-disabled.txt",
+  "/docs/components/shadcn-radio-group/examples/invalid":
+    "sources/shadcn-radio-group-invalid.txt",
+  "/docs/components/shadcn-radio-group/examples/rtl":
+    "sources/shadcn-radio-group-rtl.txt",
   "/docs/components/radio-group/examples/horizontal":
     "sources/radio-group-horizontal.txt",
   "/docs/components/select/examples/basic": "sources/select-basic.txt",
@@ -2308,22 +2731,155 @@ const homeView = (): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("max-w-2xl")],
+    [h.Class("max-w-4xl space-y-8")],
     [
-      h.h1(
-        [h.Class("text-2xl md:text-3xl font-bold text-gray-900 mb-4")],
-        ["Foldkit component registry"]
-      ),
-      h.p(
-        [h.Class("text-gray-600 mb-4")],
+      h.section(
+        [h.Class("space-y-4")],
         [
-          "Browse installable Foldkit, Base UI, and shadcn component slices. Select a component from the menu to update this detail view.",
+          h.p(
+            [
+              h.Class(
+                "inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-900"
+              ),
+            ],
+            ["Sneak peek release · work in progress"]
+          ),
+          h.h1(
+            [h.Class("max-w-3xl text-3xl font-bold text-gray-950 md:text-5xl")],
+            ["Foldkit CN"]
+          ),
+          h.p(
+            [h.Class("max-w-3xl text-lg leading-8 text-gray-600")],
+            [
+              "A shadcn-style registry of styled, installable Foldkit component slices, examples, tests, and documentation. Copy the source into your app, keep ownership of it, and adapt it to your product.",
+            ]
+          ),
         ]
       ),
-      h.p(
-        [h.Class("text-gray-600")],
+      h.section(
+        [h.Class("grid gap-4 md:grid-cols-3")],
         [
-          "Each component is headless. You provide the markup and styling via a callback, and Foldkit handles accessibility, keyboard navigation, and state management.",
+          h.div(
+            [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+            [
+              h.h2([h.Class("font-semibold text-gray-950")], ["Installable"]),
+              h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
+                "Registry items install as project-owned source files through the shadcn CLI.",
+              ]),
+            ]
+          ),
+          h.div(
+            [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+            [
+              h.h2([h.Class("font-semibold text-gray-950")], ["Foldkit-native"]),
+              h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
+                "Examples keep state in Foldkit models and route interactions through messages.",
+              ]),
+            ]
+          ),
+          h.div(
+            [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+            [
+              h.h2([h.Class("font-semibold text-gray-950")], ["Still maturing"]),
+              h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
+                "Visual parity, mobile behavior, keyboard details, and example coverage are actively improving.",
+              ]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], [
+            "Install from the public registry",
+          ]),
+          h.p([h.Class("max-w-3xl text-sm leading-6 text-gray-600")], [
+            "Use the hosted registry URL directly, or copy the published components config into your Foldkit app to enable the @foldkit-cn alias.",
+          ]),
+          codeBlock(
+            "bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar.json\nbunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar-basic.json"
+          ),
+          codeBlock(
+            "curl -L https://bearing-ward.github.io/foldkit-basic-cn-ui/components.json -o components.json\nbunx shadcn@latest add @foldkit-cn/sonner"
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], [
+            "Release expectations",
+          ]),
+          h.ul(
+            [h.Class("list-disc space-y-2 pl-5 text-sm leading-6 text-gray-600")],
+            [
+              h.li([], [
+                "This is not the official Foldkit UI documentation; it is a styled registry on top of Foldkit.",
+              ]),
+              h.li([], [
+                "Installed files are intended to be reviewed and owned by the consuming app.",
+              ]),
+              h.li([], [
+                "Component APIs and example fidelity may change during the sneak peek period.",
+              ]),
+              h.li([], [
+                "The current priority is closer origin parity with shadcn and Base UI examples.",
+              ]),
+            ]
+          ),
+        ]
+      ),
+      h.section(
+        [h.Class("space-y-3")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], [
+            "Acknowledgements",
+          ]),
+          h.p([h.Class("max-w-3xl text-sm leading-6 text-gray-600")], [
+            "Foldkit CN builds on ideas, APIs, examples, and design language from Foldkit, shadcn/ui, and Base UI. Thank you to the maintainers and contributors behind those projects.",
+          ]),
+          h.ul(
+            [h.Class("space-y-2 text-sm leading-6")],
+            [
+              h.li([], [
+                h.a(
+                  [
+                    h.Href("https://github.com/foldkit/foldkit"),
+                    h.Class("font-medium text-accent-700 hover:underline"),
+                  ],
+                  ["Foldkit"]
+                ),
+                h.span([h.Class("text-gray-600")], [
+                  " — Elm-style application architecture, Effect-based runtime, and accessibility-focused primitives.",
+                ]),
+              ]),
+              h.li([], [
+                h.a(
+                  [
+                    h.Href("https://github.com/shadcn-ui/ui"),
+                    h.Class("font-medium text-accent-700 hover:underline"),
+                  ],
+                  ["shadcn/ui"]
+                ),
+                h.span([h.Class("text-gray-600")], [
+                  " — source-owned registry workflow, component naming, and visual reference points.",
+                ]),
+              ]),
+              h.li([], [
+                h.a(
+                  [
+                    h.Href("https://github.com/mui/base-ui"),
+                    h.Class("font-medium text-accent-700 hover:underline"),
+                  ],
+                  ["Base UI"]
+                ),
+                h.span([h.Class("text-gray-600")], [
+                  " — accessible unstyled component patterns and origin examples for parity work.",
+                ]),
+              ]),
+            ]
+          ),
         ]
       ),
     ]
@@ -4985,13 +5541,33 @@ const alertDocsView = (model: Model): Html => {
                 href: "/docs/components/alert/examples/destructive",
                 linkText: "Open standalone Alert Destructive example",
               }),
+              docsExampleBlock({
+                title: "Custom Colors",
+                testId: "docs-example-block-alert-custom-colors",
+                preview: DocsPreviewsAlert.alertCustomColorsExamplePreview(
+                  model.alertCustomColorsExample,
+                  "alert-docs-custom-colors-preview"
+                ),
+                href: "/docs/components/alert/examples/custom-colors",
+                linkText: "Open standalone Alert Custom Colors example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-alert-rtl",
+                preview: DocsPreviewsAlert.alertRtlExamplePreview(
+                  model.alertRtlExample,
+                  "alert-docs-rtl-preview"
+                ),
+                href: "/docs/components/alert/examples/rtl",
+                linkText: "Open standalone Alert RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/alert.json\nbunx shadcn@latest add <registry-url>/alert-basic.json\nbunx shadcn@latest add <registry-url>/alert-action.json\nbunx shadcn@latest add <registry-url>/alert-destructive.json",
+          "bunx shadcn@latest add <registry-url>/alert.json\nbunx shadcn@latest add <registry-url>/alert-basic.json\nbunx shadcn@latest add <registry-url>/alert-action.json\nbunx shadcn@latest add <registry-url>/alert-destructive.json\nbunx shadcn@latest add <registry-url>/alert-custom-colors.json\nbunx shadcn@latest add <registry-url>/alert-rtl.json",
         usageBody:
           "Render Alert.view for the common title and description case, or compose Root, Icon, Content, Title, Description, and Action helpers when the parent view needs custom structure.",
         usageCode: `import * as Alert from "./ui/alert";
@@ -6878,7 +7454,11 @@ const animationDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/animation" },
-        { label: "Examples", value: "basic" },
+        {
+          label: "Examples",
+          value:
+            "basic, pattern, separator, disabled, controlled, invalid, four-digits, alphanumeric, form, rtl",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -7163,7 +7743,10 @@ const badgeDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/badge" },
-        { label: "Examples", value: "basic, spinner" },
+        {
+          label: "Examples",
+          value: "basic, icon, spinner, link, custom-colors, rtl",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -7196,13 +7779,41 @@ const badgeDocsView = (model: Model): Html => {
                 href: "/docs/components/badge/examples/spinner",
                 linkText: "Open standalone Badge Spinner example",
               }),
+              docsExampleBlock({
+                title: "With Icon",
+                testId: "docs-example-block-badge-icon",
+                preview: DocsPreviewsB.badgeIconExamplePreview(),
+                href: "/docs/components/badge/examples/icon",
+                linkText: "Open standalone Badge With Icon example",
+              }),
+              docsExampleBlock({
+                title: "Link",
+                testId: "docs-example-block-badge-link",
+                preview: DocsPreviewsB.badgeLinkExamplePreview(),
+                href: "/docs/components/badge/examples/link",
+                linkText: "Open standalone Badge Link example",
+              }),
+              docsExampleBlock({
+                title: "Custom Colors",
+                testId: "docs-example-block-badge-custom-colors",
+                preview: DocsPreviewsB.badgeCustomColorsExamplePreview(),
+                href: "/docs/components/badge/examples/custom-colors",
+                linkText: "Open standalone Badge Custom Colors example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-badge-rtl",
+                preview: DocsPreviewsB.badgeRtlExamplePreview(),
+                href: "/docs/components/badge/examples/rtl",
+                linkText: "Open standalone Badge RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/badge.json\nbunx shadcn@latest add <registry-url>/spinner.json\nbunx shadcn@latest add <registry-url>/badge-basic.json\nbunx shadcn@latest add <registry-url>/badge-spinner.json",
+          "bunx shadcn@latest add <registry-url>/badge.json\nbunx shadcn@latest add <registry-url>/spinner.json\nbunx shadcn@latest add <registry-url>/badge-basic.json\nbunx shadcn@latest add <registry-url>/badge-icon.json\nbunx shadcn@latest add <registry-url>/badge-spinner.json\nbunx shadcn@latest add <registry-url>/badge-link.json\nbunx shadcn@latest add <registry-url>/badge-custom-colors.json\nbunx shadcn@latest add <registry-url>/badge-rtl.json",
         usageBody:
           "Render Badge.view wherever a compact status label is needed. The parent model owns any status changes and passes the label plus optional variant into the view helper.",
         usageCode: `import * as Badge from "./ui/badge";
@@ -7460,12 +8071,12 @@ const carouselDocsView = (model: Model): Html => {
         { label: "Source", value: "registry/default/ui/carousel" },
         {
           label: "Examples",
-          value: "basic, sizes, spacing, orientation, API, RTL",
+          value: "basic, sizes, spacing, orientation, API, autoplay, RTL",
         },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Carousel v1 mirrors the shadcn anatomy: Root, Viewport, Content, Item, Previous, Next, and API status composition. The examples keep selected slide state in the parent Foldkit model. Autoplay and plugin examples are deferred until the embla-carousel-autoplay dependency and timer/subscription contract are promoted."
+        "Carousel v1 mirrors the shadcn anatomy: Root, Viewport, Content, Item, Previous, Next, API status composition, and plugin-style autoplay coverage. The examples keep selected slide state in the parent Foldkit model and represent autoplay as a completion message from the timer boundary."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -7520,6 +8131,15 @@ const carouselDocsView = (model: Model): Html => {
                 "/docs/components/shadcn-carousel/examples/api"
               ),
               exampleBlock(
+                "Autoplay",
+                "autoplay",
+                DocsPreviewsCD.carouselAutoplayExamplePreview(
+                  model.carouselAutoplayExample,
+                  "carousel-docs-autoplay-preview"
+                ),
+                "/docs/components/shadcn-carousel/examples/autoplay"
+              ),
+              exampleBlock(
                 "RTL",
                 "rtl",
                 DocsPreviewsCD.carouselRtlExamplePreview(
@@ -7534,7 +8154,7 @@ const carouselDocsView = (model: Model): Html => {
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/shadcn-carousel.json\nbunx shadcn@latest add <registry-url>/carousel-basic.json\nbunx shadcn@latest add <registry-url>/carousel-sizes.json\nbunx shadcn@latest add <registry-url>/carousel-spacing.json\nbunx shadcn@latest add <registry-url>/carousel-orientation.json\nbunx shadcn@latest add <registry-url>/carousel-api.json\nbunx shadcn@latest add <registry-url>/carousel-rtl.json",
+          "bunx shadcn@latest add <registry-url>/shadcn-carousel.json\nbunx shadcn@latest add <registry-url>/carousel-basic.json\nbunx shadcn@latest add <registry-url>/carousel-sizes.json\nbunx shadcn@latest add <registry-url>/carousel-spacing.json\nbunx shadcn@latest add <registry-url>/carousel-orientation.json\nbunx shadcn@latest add <registry-url>/carousel-api.json\nbunx shadcn@latest add <registry-url>/carousel-autoplay.json\nbunx shadcn@latest add <registry-url>/carousel-rtl.json",
         usageBody:
           "Keep the active slide index in the parent model, update it through typed messages, and compose the carousel anatomy helpers around your slide content.",
         usageCode: `import * as Carousel from "./ui/carousel";
@@ -7787,11 +8407,14 @@ const commandDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/command" },
-        { label: "Examples", value: "basic" },
+        {
+          label: "Examples",
+          value: "basic, groups, rtl, scrollable, shortcuts",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Command provides the shadcn command palette anatomy with parent-owned open/query state. The Basic example matches the origin Open Menu command palette copy, suggestions group, placeholder, and empty state. Remaining parity work is adding the origin Shortcuts, Groups, Scrollable, and RTL examples plus full CommandDialog focus-trap behavior."
+        "Command provides the shadcn command palette anatomy with parent-owned open/query state. The Basic example matches the origin Open Menu command palette copy, while the static composition examples cover shortcuts, grouped content, scrollable lists, and RTL content. Full CommandDialog focus-trap behavior remains a separate wrapper decision."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -7810,13 +8433,53 @@ const commandDocsView = (model: Model): Html => {
                 href: "/docs/components/command/examples/basic",
                 linkText: "Open standalone Command Basic example",
               }),
+              docsExampleBlock({
+                title: "Groups",
+                testId: "docs-example-block-command-groups",
+                preview: DocsPreviewsCD.commandGroupsExamplePreview(
+                  model.commandGroupsExample,
+                  "command-docs-groups-preview"
+                ),
+                href: "/docs/components/command/examples/groups",
+                linkText: "Open standalone Command Groups example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-command-rtl",
+                preview: DocsPreviewsCD.commandRtlExamplePreview(
+                  model.commandRtlExample,
+                  "command-docs-rtl-preview"
+                ),
+                href: "/docs/components/command/examples/rtl",
+                linkText: "Open standalone Command RTL example",
+              }),
+              docsExampleBlock({
+                title: "Scrollable",
+                testId: "docs-example-block-command-scrollable",
+                preview: DocsPreviewsCD.commandScrollableExamplePreview(
+                  model.commandScrollableExample,
+                  "command-docs-scrollable-preview"
+                ),
+                href: "/docs/components/command/examples/scrollable",
+                linkText: "Open standalone Command Scrollable example",
+              }),
+              docsExampleBlock({
+                title: "Shortcuts",
+                testId: "docs-example-block-command-shortcuts",
+                preview: DocsPreviewsCD.commandShortcutsExamplePreview(
+                  model.commandShortcutsExample,
+                  "command-docs-shortcuts-preview"
+                ),
+                href: "/docs/components/command/examples/shortcuts",
+                linkText: "Open standalone Command Shortcuts example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/command.json\nbunx shadcn@latest add <registry-url>/command-basic.json",
+          "bunx shadcn@latest add <registry-url>/command.json\nbunx shadcn@latest add <registry-url>/command-basic.json\nbunx shadcn@latest add <registry-url>/command-groups.json\nbunx shadcn@latest add <registry-url>/command-rtl.json\nbunx shadcn@latest add <registry-url>/command-scrollable.json\nbunx shadcn@latest add <registry-url>/command-shortcuts.json",
         usageBody:
           "Keep open/query state in the parent Foldkit model, then compose rootView, inputView, listView, groupView, itemView, separatorView, and shortcutView inside the dialog surface.",
         usageCode:
@@ -7941,11 +8604,15 @@ const dropdownMenuDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/dropdown-menu" },
-        { label: "Examples", value: "basic" },
+        {
+          label: "Examples",
+          value:
+            "basic, checkboxes, complex, destructive, icons, radio group, rtl, shortcuts, submenu",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Dropdown Menu provides shadcn menu anatomy with parent-owned open and selected state. The Basic example now mirrors the origin Open trigger, My Account label, Profile, Billing, Team, and Subscription items with separators. Remaining parity work is adding the origin Checkbox, Radio Group, and Sub Menu examples plus collision-aware positioning and keyboard roving focus."
+        "Dropdown Menu provides shadcn menu anatomy with parent-owned open and selected state. The examples cover the origin account menu shape plus checkbox items, radio groups, shortcuts, icons, destructive actions, submenu content, composed menus, and RTL layout. Positioning and keyboard roving focus remain explicit follow-up behavior work for the primitive."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -7964,13 +8631,93 @@ const dropdownMenuDocsView = (model: Model): Html => {
                 href: "/docs/components/dropdown-menu/examples/basic",
                 linkText: "Open standalone Dropdown Menu Basic example",
               }),
+              docsExampleBlock({
+                title: "Checkboxes",
+                testId: "docs-example-block-dropdown-menu-checkboxes",
+                preview: DocsPreviewsCD.dropdownMenuCheckboxesExamplePreview(
+                  model.dropdownMenuCheckboxesExample,
+                  "dropdown-menu-docs-checkboxes-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/checkboxes",
+                linkText: "Open standalone Dropdown Menu Checkboxes example",
+              }),
+              docsExampleBlock({
+                title: "Complex",
+                testId: "docs-example-block-dropdown-menu-complex",
+                preview: DocsPreviewsCD.dropdownMenuComplexExamplePreview(
+                  model.dropdownMenuComplexExample,
+                  "dropdown-menu-docs-complex-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/complex",
+                linkText: "Open standalone Dropdown Menu Complex example",
+              }),
+              docsExampleBlock({
+                title: "Destructive",
+                testId: "docs-example-block-dropdown-menu-destructive",
+                preview: DocsPreviewsCD.dropdownMenuDestructiveExamplePreview(
+                  model.dropdownMenuDestructiveExample,
+                  "dropdown-menu-docs-destructive-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/destructive",
+                linkText: "Open standalone Dropdown Menu Destructive example",
+              }),
+              docsExampleBlock({
+                title: "Icons",
+                testId: "docs-example-block-dropdown-menu-icons",
+                preview: DocsPreviewsCD.dropdownMenuIconsExamplePreview(
+                  model.dropdownMenuIconsExample,
+                  "dropdown-menu-docs-icons-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/icons",
+                linkText: "Open standalone Dropdown Menu Icons example",
+              }),
+              docsExampleBlock({
+                title: "Radio Group",
+                testId: "docs-example-block-dropdown-menu-radio-group",
+                preview: DocsPreviewsCD.dropdownMenuRadioGroupExamplePreview(
+                  model.dropdownMenuRadioGroupExample,
+                  "dropdown-menu-docs-radio-group-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/radio-group",
+                linkText: "Open standalone Dropdown Menu Radio Group example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-dropdown-menu-rtl",
+                preview: DocsPreviewsCD.dropdownMenuRtlExamplePreview(
+                  model.dropdownMenuRtlExample,
+                  "dropdown-menu-docs-rtl-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/rtl",
+                linkText: "Open standalone Dropdown Menu RTL example",
+              }),
+              docsExampleBlock({
+                title: "Shortcuts",
+                testId: "docs-example-block-dropdown-menu-shortcuts",
+                preview: DocsPreviewsCD.dropdownMenuShortcutsExamplePreview(
+                  model.dropdownMenuShortcutsExample,
+                  "dropdown-menu-docs-shortcuts-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/shortcuts",
+                linkText: "Open standalone Dropdown Menu Shortcuts example",
+              }),
+              docsExampleBlock({
+                title: "Submenu",
+                testId: "docs-example-block-dropdown-menu-submenu",
+                preview: DocsPreviewsCD.dropdownMenuSubmenuExamplePreview(
+                  model.dropdownMenuSubmenuExample,
+                  "dropdown-menu-docs-submenu-preview"
+                ),
+                href: "/docs/components/dropdown-menu/examples/submenu",
+                linkText: "Open standalone Dropdown Menu Submenu example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/dropdown-menu.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-basic.json",
+          "bunx shadcn@latest add <registry-url>/dropdown-menu.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-basic.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-checkboxes.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-complex.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-destructive.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-icons.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-radio-group.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-rtl.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-shortcuts.json\nbunx shadcn@latest add <registry-url>/dropdown-menu-submenu.json",
         usageBody:
           "Keep open and selected item state in the parent Foldkit model, then compose Root, Trigger, Portal, Backdrop, Positioner, Popup, Label, Item, Separator, and Shortcut parts.",
         usageCode:
@@ -8096,7 +8843,7 @@ const hoverCardDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/hover-card" },
-        { label: "Examples", value: "basic" },
+        { label: "Examples", value: "basic, disabled, groups, invalid, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -8119,13 +8866,33 @@ const hoverCardDocsView = (model: Model): Html => {
                 href: "/docs/components/hover-card/examples/basic",
                 linkText: "Open standalone Hover Card Basic example",
               }),
+              docsExampleBlock({
+                title: "Sides",
+                testId: "docs-example-block-hover-card-sides",
+                preview: DocsPreviewsEI.hoverCardSidesExamplePreview(
+                  model.hoverCardSidesExample,
+                  "hover-card-docs-sides-preview"
+                ),
+                href: "/docs/components/hover-card/examples/sides",
+                linkText: "Open standalone Hover Card Sides example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-hover-card-rtl",
+                preview: DocsPreviewsEI.hoverCardRtlExamplePreview(
+                  model.hoverCardRtlExample,
+                  "hover-card-docs-rtl-preview"
+                ),
+                href: "/docs/components/hover-card/examples/rtl",
+                linkText: "Open standalone Hover Card RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/hover-card.json\nbunx shadcn@latest add <registry-url>/hover-card-basic.json",
+          "bunx shadcn@latest add <registry-url>/hover-card.json\nbunx shadcn@latest add <registry-url>/hover-card-basic.json\nbunx shadcn@latest add <registry-url>/hover-card-sides.json\nbunx shadcn@latest add <registry-url>/hover-card-rtl.json",
         usageBody:
           "Import the Hover Card helpers and keep interactive state in the parent Foldkit model.",
         usageCode: `import * as HoverCard from "./ui/hover-card";
@@ -8219,7 +8986,7 @@ const inputOtpDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/input-otp" },
-        { label: "Examples", value: "basic" },
+        { label: "Examples", value: "basic, disabled, invalid" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -8242,13 +9009,103 @@ const inputOtpDocsView = (model: Model): Html => {
                 href: "/docs/components/input-otp/examples/basic",
                 linkText: "Open standalone Input OTP Basic example",
               }),
+              docsExampleBlock({
+                title: "Pattern",
+                testId: "docs-example-block-input-otp-pattern",
+                preview: DocsPreviewsEI.inputOtpPatternExamplePreview(
+                  model.inputOtpPatternExample,
+                  "input-otp-docs-pattern-preview"
+                ),
+                href: "/docs/components/input-otp/examples/pattern",
+                linkText: "Open standalone Input OTP Pattern example",
+              }),
+              docsExampleBlock({
+                title: "Separator",
+                testId: "docs-example-block-input-otp-separator",
+                preview: DocsPreviewsEI.inputOtpSeparatorExamplePreview(
+                  model.inputOtpSeparatorExample,
+                  "input-otp-docs-separator-preview"
+                ),
+                href: "/docs/components/input-otp/examples/separator",
+                linkText: "Open standalone Input OTP Separator example",
+              }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-input-otp-disabled",
+                preview: DocsPreviewsEI.inputOtpDisabledExamplePreview(
+                  model.inputOtpDisabledExample,
+                  "input-otp-docs-disabled-preview"
+                ),
+                href: "/docs/components/input-otp/examples/disabled",
+                linkText: "Open standalone Input OTP Disabled example",
+              }),
+              docsExampleBlock({
+                title: "Controlled",
+                testId: "docs-example-block-input-otp-controlled",
+                preview: DocsPreviewsEI.inputOtpControlledExamplePreview(
+                  model.inputOtpControlledExample,
+                  "input-otp-docs-controlled-preview"
+                ),
+                href: "/docs/components/input-otp/examples/controlled",
+                linkText: "Open standalone Input OTP Controlled example",
+              }),
+              docsExampleBlock({
+                title: "Invalid",
+                testId: "docs-example-block-input-otp-invalid",
+                preview: DocsPreviewsEI.inputOtpInvalidExamplePreview(
+                  model.inputOtpInvalidExample,
+                  "input-otp-docs-invalid-preview"
+                ),
+                href: "/docs/components/input-otp/examples/invalid",
+                linkText: "Open standalone Input OTP Invalid example",
+              }),
+              docsExampleBlock({
+                title: "Four Digits",
+                testId: "docs-example-block-input-otp-four-digits",
+                preview: DocsPreviewsEI.inputOtpFourDigitsExamplePreview(
+                  model.inputOtpFourDigitsExample,
+                  "input-otp-docs-four-digits-preview"
+                ),
+                href: "/docs/components/input-otp/examples/four-digits",
+                linkText: "Open standalone Input OTP Four Digits example",
+              }),
+              docsExampleBlock({
+                title: "Alphanumeric",
+                testId: "docs-example-block-input-otp-alphanumeric",
+                preview: DocsPreviewsEI.inputOtpAlphanumericExamplePreview(
+                  model.inputOtpAlphanumericExample,
+                  "input-otp-docs-alphanumeric-preview"
+                ),
+                href: "/docs/components/input-otp/examples/alphanumeric",
+                linkText: "Open standalone Input OTP Alphanumeric example",
+              }),
+              docsExampleBlock({
+                title: "Form",
+                testId: "docs-example-block-input-otp-form",
+                preview: DocsPreviewsEI.inputOtpFormExamplePreview(
+                  model.inputOtpFormExample,
+                  "input-otp-docs-form-preview"
+                ),
+                href: "/docs/components/input-otp/examples/form",
+                linkText: "Open standalone Input OTP Form example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-input-otp-rtl",
+                preview: DocsPreviewsEI.inputOtpRtlExamplePreview(
+                  model.inputOtpRtlExample,
+                  "input-otp-docs-rtl-preview"
+                ),
+                href: "/docs/components/input-otp/examples/rtl",
+                linkText: "Open standalone Input OTP RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/input-otp.json\nbunx shadcn@latest add <registry-url>/input-otp-basic.json",
+          "bunx shadcn@latest add <registry-url>/input-otp.json\nbunx shadcn@latest add <registry-url>/input-otp-basic.json\nbunx shadcn@latest add <registry-url>/input-otp-pattern.json",
         usageBody:
           "Import the Input OTP helpers and keep interactive state in the parent Foldkit model.",
         usageCode: `import * as InputOtp from "./ui/input-otp";
@@ -8333,7 +9190,7 @@ const nativeSelectDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/native-select" },
-        { label: "Examples", value: "basic" },
+        { label: "Examples", value: "basic, handle, rtl, vertical" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -8356,13 +9213,53 @@ const nativeSelectDocsView = (model: Model): Html => {
                 href: "/docs/components/native-select/examples/basic",
                 linkText: "Open standalone Native Select Basic example",
               }),
+              docsExampleBlock({
+                title: "Disabled",
+                testId: "docs-example-block-native-select-disabled",
+                preview: DocsPreviewsNZ.nativeSelectDisabledExamplePreview(
+                  model.nativeSelectDisabledExample,
+                  "native-select-docs-disabled-preview"
+                ),
+                href: "/docs/components/native-select/examples/disabled",
+                linkText: "Open standalone Native Select Disabled example",
+              }),
+              docsExampleBlock({
+                title: "Groups",
+                testId: "docs-example-block-native-select-groups",
+                preview: DocsPreviewsNZ.nativeSelectGroupsExamplePreview(
+                  model.nativeSelectGroupsExample,
+                  "native-select-docs-groups-preview"
+                ),
+                href: "/docs/components/native-select/examples/groups",
+                linkText: "Open standalone Native Select Groups example",
+              }),
+              docsExampleBlock({
+                title: "Invalid",
+                testId: "docs-example-block-native-select-invalid",
+                preview: DocsPreviewsNZ.nativeSelectInvalidExamplePreview(
+                  model.nativeSelectInvalidExample,
+                  "native-select-docs-invalid-preview"
+                ),
+                href: "/docs/components/native-select/examples/invalid",
+                linkText: "Open standalone Native Select Invalid example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-native-select-rtl",
+                preview: DocsPreviewsNZ.nativeSelectRtlExamplePreview(
+                  model.nativeSelectRtlExample,
+                  "native-select-docs-rtl-preview"
+                ),
+                href: "/docs/components/native-select/examples/rtl",
+                linkText: "Open standalone Native Select RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/native-select.json\nbunx shadcn@latest add <registry-url>/native-select-basic.json",
+          "bunx shadcn@latest add <registry-url>/native-select.json\nbunx shadcn@latest add <registry-url>/native-select-basic.json\nbunx shadcn@latest add <registry-url>/native-select-disabled.json\nbunx shadcn@latest add <registry-url>/native-select-groups.json\nbunx shadcn@latest add <registry-url>/native-select-invalid.json\nbunx shadcn@latest add <registry-url>/native-select-rtl.json",
         usageBody:
           "Import the Native Select helpers and keep interactive state in the parent Foldkit model.",
         usageCode: `import * as NativeSelect from "./ui/native-select";
@@ -8408,7 +9305,7 @@ NativeSelect.rootView<Message>({
         apiItems: [
           "rootView(config): renders the native select field wrapper.",
           "labelView(config): renders a label connected by forId.",
-          "triggerView(config): renders a controlled select with id, value, onChange, options, ariaLabel, describedById, disabled, and className.",
+          "triggerView(config): renders a controlled select with id, value, onChange, flat or grouped options, ariaLabel, describedById, disabled, and className.",
           "descriptionView(config): renders helper text that can be referenced by describedById.",
           "Class hooks include root, label, trigger, and description.",
         ],
@@ -8455,7 +9352,7 @@ const sheetDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/sheet" },
-        { label: "Examples", value: "basic" },
+        { label: "Examples", value: "basic, field, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -9099,13 +9996,33 @@ const labelDocsView = (model: Model): Html => {
                 href: "/docs/components/label/examples/basic",
                 linkText: "Open standalone Label Basic example",
               }),
+              docsExampleBlock({
+                title: "Field",
+                testId: "docs-example-block-label-field",
+                preview: DocsPreviewsJM.labelFieldExamplePreview(
+                  model.labelFieldExample,
+                  "label-docs-field-preview"
+                ),
+                href: "/docs/components/label/examples/field",
+                linkText: "Open standalone Label Field example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-label-rtl",
+                preview: DocsPreviewsJM.labelRtlExamplePreview(
+                  model.labelRtlExample,
+                  "label-docs-rtl-preview"
+                ),
+                href: "/docs/components/label/examples/rtl",
+                linkText: "Open standalone Label RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/label.json\nbunx shadcn@latest add <registry-url>/label-basic.json",
+          "bunx shadcn@latest add <registry-url>/label.json\nbunx shadcn@latest add <registry-url>/label-basic.json\nbunx shadcn@latest add <registry-url>/label-field.json\nbunx shadcn@latest add <registry-url>/label-rtl.json",
         usageBody:
           "Use Label.view with forId when visible copy should name a native input, select, textarea, or custom control that forwards an id.",
         usageCode:
@@ -9165,7 +10082,7 @@ const paginationDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/pagination" },
-        { label: "Examples", value: "basic" },
+        { label: "Examples", value: "basic, simple, icons-only, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -9188,13 +10105,43 @@ const paginationDocsView = (model: Model): Html => {
                 href: "/docs/components/pagination/examples/basic",
                 linkText: "Open standalone Pagination Basic example",
               }),
+              docsExampleBlock({
+                title: "Simple",
+                testId: "docs-example-block-pagination-simple",
+                preview: DocsPreviewsNZ.paginationSimpleExamplePreview(
+                  model.paginationSimpleExample,
+                  "pagination-docs-simple-preview"
+                ),
+                href: "/docs/components/pagination/examples/simple",
+                linkText: "Open standalone Pagination Simple example",
+              }),
+              docsExampleBlock({
+                title: "Icons Only",
+                testId: "docs-example-block-pagination-icons-only",
+                preview: DocsPreviewsNZ.paginationIconsOnlyExamplePreview(
+                  model.paginationIconsOnlyExample,
+                  "pagination-docs-icons-only-preview"
+                ),
+                href: "/docs/components/pagination/examples/icons-only",
+                linkText: "Open standalone Pagination Icons Only example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-pagination-rtl",
+                preview: DocsPreviewsNZ.paginationRtlExamplePreview(
+                  model.paginationRtlExample,
+                  "pagination-docs-rtl-preview"
+                ),
+                href: "/docs/components/pagination/examples/rtl",
+                linkText: "Open standalone Pagination RTL example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/pagination.json\nbunx shadcn@latest add <registry-url>/pagination-basic.json",
+          "bunx shadcn@latest add <registry-url>/pagination.json\nbunx shadcn@latest add <registry-url>/pagination-basic.json\nbunx shadcn@latest add <registry-url>/pagination-simple.json\nbunx shadcn@latest add <registry-url>/pagination-icons-only.json\nbunx shadcn@latest add <registry-url>/pagination-rtl.json",
         usageBody:
           "Compose Pagination.rootView with content, item, link, previous, next, and ellipsis helpers. Keep page state in the parent model when links should update in place.",
         usageCode:
@@ -9280,13 +10227,43 @@ const resizableDocsView = (model: Model): Html => {
                 href: "/docs/components/resizable/examples/basic",
                 linkText: "Open standalone Resizable Basic example",
               }),
+              docsExampleBlock({
+                title: "Handle",
+                testId: "docs-example-block-resizable-handle",
+                preview: DocsPreviewsNZ.resizableHandleExamplePreview(
+                  model.resizableHandleExample,
+                  "resizable-docs-handle-preview"
+                ),
+                href: "/docs/components/resizable/examples/handle",
+                linkText: "Open standalone Resizable Handle example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-resizable-rtl",
+                preview: DocsPreviewsNZ.resizableRtlExamplePreview(
+                  model.resizableRtlExample,
+                  "resizable-docs-rtl-preview"
+                ),
+                href: "/docs/components/resizable/examples/rtl",
+                linkText: "Open standalone Resizable RTL example",
+              }),
+              docsExampleBlock({
+                title: "Vertical",
+                testId: "docs-example-block-resizable-vertical",
+                preview: DocsPreviewsNZ.resizableVerticalExamplePreview(
+                  model.resizableVerticalExample,
+                  "resizable-docs-vertical-preview"
+                ),
+                href: "/docs/components/resizable/examples/vertical",
+                linkText: "Open standalone Resizable Vertical example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/resizable.json\nbunx shadcn@latest add <registry-url>/resizable-basic.json",
+          "bunx shadcn@latest add <registry-url>/resizable.json\nbunx shadcn@latest add <registry-url>/resizable-basic.json\nbunx shadcn@latest add <registry-url>/resizable-handle.json\nbunx shadcn@latest add <registry-url>/resizable-rtl.json\nbunx shadcn@latest add <registry-url>/resizable-vertical.json",
         usageBody:
           "Use Resizable.view for simple controlled layouts, or compose panelGroupView, panelView, and handleView directly when you need custom panel content.",
         usageCode:
@@ -9299,7 +10276,7 @@ const resizableDocsView = (model: Model): Html => {
         apiItems: [
           "panelGroupView(config): renders the group wrapper with data-slot=resizable-panel-group.",
           "panelView(config): renders a controlled-size panel with data-size and flex-basis styling.",
-          "handleView(config): renders a separator handle with orientation metadata and accepts extra Foldkit attributes for parent-owned resize events.",
+          "handleView(config): renders a separator handle with orientation metadata, optional children, and extra Foldkit attributes for parent-owned resize events.",
           "view(config): convenience helper for panels separated by handles.",
           "ResizableDirection, PanelGroupViewConfig, PanelViewConfig, HandleViewConfig, and PanelItem describe the public helper props.",
         ],
@@ -9350,7 +10327,7 @@ const sidebarDocsView = (model: Model): Html => {
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Sidebar provides the shadcn app-shell anatomy with parent-owned collapsed state and active menu selection. The Basic example demonstrates the default collapses-to-icons pattern with a content inset."
+        "Sidebar provides the shadcn app-shell anatomy with parent-owned collapsed state, side/variant/collapsible metadata, provider composition, trigger, input, separator, group, menu, submenu, badge, action, skeleton, rail, and inset helpers. The Basic example demonstrates the default collapses-to-icons pattern with a content inset."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -9369,27 +10346,69 @@ const sidebarDocsView = (model: Model): Html => {
                 href: "/docs/components/sidebar/examples/basic",
                 linkText: "Open standalone Sidebar Basic example",
               }),
+              docsExampleBlock({
+                title: "Composition",
+                testId: "docs-example-block-sidebar-composition",
+                preview: DocsPreviewsNZ.sidebarCompositionExamplePreview(
+                  model.sidebarCompositionExample,
+                  "sidebar-docs-composition-preview"
+                ),
+                href: "/docs/components/sidebar/examples/composition",
+                linkText: "Open standalone Sidebar Composition example",
+              }),
+              docsExampleBlock({
+                title: "Controlled",
+                testId: "docs-example-block-sidebar-controlled",
+                preview: DocsPreviewsNZ.sidebarControlledExamplePreview(
+                  model.sidebarControlledExample,
+                  "sidebar-docs-controlled-preview"
+                ),
+                href: "/docs/components/sidebar/examples/controlled",
+                linkText: "Open standalone Sidebar Controlled example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-sidebar-rtl",
+                preview: DocsPreviewsNZ.sidebarRtlExamplePreview(
+                  model.sidebarRtlExample,
+                  "sidebar-docs-rtl-preview"
+                ),
+                href: "/docs/components/sidebar/examples/rtl",
+                linkText: "Open standalone Sidebar RTL example",
+              }),
+              docsExampleBlock({
+                title: "Variants",
+                testId: "docs-example-block-sidebar-variants",
+                preview: DocsPreviewsNZ.sidebarVariantsExamplePreview(
+                  model.sidebarVariantsExample,
+                  "sidebar-docs-variants-preview"
+                ),
+                href: "/docs/components/sidebar/examples/variants",
+                linkText: "Open standalone Sidebar Variants example",
+              }),
             ]
           ),
         ]
       ),
       ...docsStandardComponentSections({
         installCommands:
-          "bunx shadcn@latest add <registry-url>/sidebar.json\nbunx shadcn@latest add <registry-url>/sidebar-basic.json",
+          "bunx shadcn@latest add <registry-url>/sidebar.json\nbunx shadcn@latest add <registry-url>/sidebar-basic.json\nbunx shadcn@latest add <registry-url>/sidebar-composition.json\nbunx shadcn@latest add <registry-url>/sidebar-controlled.json\nbunx shadcn@latest add <registry-url>/sidebar-rtl.json\nbunx shadcn@latest add <registry-url>/sidebar-variants.json",
         usageBody:
-          "Use Sidebar.view for the default app-shell composition, or compose providerView, sidebarView, menu helpers, railView, and insetView directly for custom layouts.",
+          "Use Sidebar.view for the default app-shell composition, or compose providerView, sidebarView, triggerView, inputView, separatorView, group helpers, menu helpers, railView, and insetView directly for custom layouts.",
         usageCode:
           'import * as Sidebar from "./ui/sidebar";\n\nSidebar.view<Message>({\n  state: model.sidebarState,\n  items: [\n    { label: "Dashboard", icon: "D", active: true },\n    { label: "Projects", icon: "P" },\n  ],\n  children: [pageContent],\n});',
         integrationCode:
           'sidebarState: S.Literal("expanded", "collapsed");\nClickedToggleSidebar: () => [\n  evo(model, {\n    sidebarState: (state) =>\n      state === "expanded" ? "collapsed" : "expanded",\n  }),\n  [],\n];',
         anatomySection: docsAnatomyBlock(
-          'Sidebar.providerView({\n  children: [\n    Sidebar.sidebarView({\n      children: [\n        Sidebar.headerView({ children: [brand] }),\n        Sidebar.contentView({ children: [menu] }),\n        Sidebar.footerView({ children: ["Team workspace"] }),\n      ],\n    }),\n    Sidebar.railView(),\n    Sidebar.insetView({ children: [pageContent] }),\n  ],\n});'
+          'Sidebar.providerView({\n  children: [\n    Sidebar.sidebarView({\n      state: model.sidebarState,\n      side: "left",\n      variant: "sidebar",\n      collapsible: "icon",\n      children: [\n        Sidebar.headerView({\n          children: [\n            Sidebar.triggerView({\n              label: "Toggle Sidebar",\n              onClick: ClickedToggleSidebar(),\n            }),\n            Sidebar.inputView({ label: "Search", placeholder: "Search" }),\n          ],\n        }),\n        Sidebar.separatorView(),\n        Sidebar.contentView({ children: [group] }),\n      ],\n    }),\n    Sidebar.railView(),\n    Sidebar.insetView({ children: [pageContent] }),\n  ],\n});'
         ),
         apiItems: [
           "providerView(config): renders the app-shell wrapper with data-slot=sidebar-provider.",
-          "sidebarView(config): renders the labelled aside with data-slot=sidebar and data-state.",
-          "headerView, contentView, footerView, groupView, groupLabelView, menuView, and menuItemView expose the shadcn sidebar anatomy.",
+          "sidebarView(config): renders the labelled aside with data-slot=sidebar plus data-state, data-side, data-variant, and data-collapsible.",
+          "triggerView(config), inputView(config), and separatorView(config) expose the shadcn SidebarTrigger, SidebarInput, and SidebarSeparator roles as Foldkit helpers.",
+          "headerView, contentView, footerView, groupView, groupLabelView, groupActionView, and groupContentView expose the shadcn group anatomy.",
           "menuButtonView(config): renders a native button or anchor with icon, label, active state, aria-current, and optional Foldkit click message.",
+          "menuActionView, menuBadgeView, menuSubView, menuSubItemView, menuSubButtonView, and menuSkeletonView cover the menu action, badge, submenu, and loading anatomy.",
           "railView(): renders the decorative sidebar rail.",
           "insetView(config): renders the main content inset.",
           "view(config): convenience helper for a default collapsible app sidebar composition.",
@@ -9399,9 +10418,10 @@ const sidebarDocsView = (model: Model): Html => {
           "Menu actions are native buttons or anchors with accessible names even when labels are visually collapsed.",
           "Active menu items expose aria-current=page.",
           "Collapsed state is controlled by parent model state and reflected through data-state for visual styling.",
+          "The trigger and action helpers accept parent messages, preserving Foldkit's unidirectional update flow instead of mutating open state internally.",
         ],
         coverageItems: [
-          "Registry scene tests verify sidebar anatomy slots, collapsed state, active menu semantics, links, and click wiring.",
+          "Registry scene tests verify sidebar anatomy slots, side/variant/collapsible metadata, collapsed state, active menu semantics, links, and click wiring.",
           "Example scene tests verify collapse/expand behavior and parent-owned active item selection.",
           "Registry checks verify metadata, generated JSON, source snapshots, example coverage, and docs nav origin grouping.",
         ],
@@ -9530,7 +10550,7 @@ const cardDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/card" },
-        { label: "Examples", value: "basic" },
+        { label: "Examples", value: "basic, size, spacing, image, RTL" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -9553,12 +10573,52 @@ const cardDocsView = (model: Model): Html => {
                 href: "/docs/components/shadcn-card/examples/basic",
                 linkText: "Open standalone Card Basic example",
               }),
+              docsExampleBlock({
+                title: "Size",
+                testId: "docs-example-block-card-size",
+                preview: DocsPreviewsCD.cardSizeExamplePreview(
+                  model.cardSizeExample,
+                  "card-docs-size-preview"
+                ),
+                href: "/docs/components/shadcn-card/examples/size",
+                linkText: "Open standalone Card Size example",
+              }),
+              docsExampleBlock({
+                title: "Spacing",
+                testId: "docs-example-block-card-spacing",
+                preview: DocsPreviewsCD.cardSpacingExamplePreview(
+                  model.cardSpacingExample,
+                  "card-docs-spacing-preview"
+                ),
+                href: "/docs/components/shadcn-card/examples/spacing",
+                linkText: "Open standalone Card Spacing example",
+              }),
+              docsExampleBlock({
+                title: "Image",
+                testId: "docs-example-block-card-image",
+                preview: DocsPreviewsCD.cardImageExamplePreview(
+                  model.cardImageExample,
+                  "card-docs-image-preview"
+                ),
+                href: "/docs/components/shadcn-card/examples/image",
+                linkText: "Open standalone Card Image example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-card-rtl",
+                preview: DocsPreviewsCD.cardRtlExamplePreview(
+                  model.cardRtlExample,
+                  "card-docs-rtl-preview"
+                ),
+                href: "/docs/components/shadcn-card/examples/rtl",
+                linkText: "Open standalone Card RTL example",
+              }),
             ]
           ),
         ]
       ),
       docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/shadcn-card.json\nbunx shadcn@latest add <registry-url>/card-basic.json"
+        "bunx shadcn@latest add <registry-url>/shadcn-card.json\nbunx shadcn@latest add <registry-url>/card-basic.json\nbunx shadcn@latest add <registry-url>/card-size.json\nbunx shadcn@latest add <registry-url>/card-spacing.json\nbunx shadcn@latest add <registry-url>/card-image.json\nbunx shadcn@latest add <registry-url>/card-rtl.json"
       ),
       docsUsageBlock(
         "Use Card.view as the outer container and compose header, title, description, content, and footer helpers around app-owned content.",
@@ -9898,11 +10958,14 @@ const spinnerDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/spinner" },
-        { label: "Examples", value: "badge-spinner" },
+        {
+          label: "Examples",
+          value: "basic, badge-spinner, shadcn-button-spinner",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Spinner v1 mirrors shadcn's Loader2-based status affordance with role=status, aria-label=Loading, and a reusable class helper for inline loading composition."
+        "Spinner v1 mirrors shadcn's Loader2-based status affordance with role=status, aria-label=Loading, reusable class sizing, and examples for payment rows, buttons, badges, input groups, empty states, and RTL copy."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -9911,6 +10974,16 @@ const spinnerDocsView = (model: Model): Html => {
           h.div(
             [h.Class("grid gap-4 lg:grid-cols-2")],
             [
+              docsExampleBlock({
+                title: "Basic",
+                testId: "docs-example-block-spinner-basic",
+                preview: DocsPreviewsNZ.spinnerBasicExamplePreview(
+                  model.spinnerBasicExample,
+                  "spinner-docs-basic-preview"
+                ),
+                href: "/docs/components/spinner/examples/basic",
+                linkText: "Open standalone Spinner Basic example",
+              }),
               docsExampleBlock({
                 title: "Badge Spinner",
                 testId: "docs-example-block-spinner-badge-spinner",
@@ -9926,7 +10999,7 @@ const spinnerDocsView = (model: Model): Html => {
         ]
       ),
       docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/spinner.json\nbunx shadcn@latest add <registry-url>/badge-spinner.json"
+        "bunx shadcn@latest add <registry-url>/spinner.json\nbunx shadcn@latest add <registry-url>/spinner-basic.json\nbunx shadcn@latest add <registry-url>/badge-spinner.json\nbunx shadcn@latest add <registry-url>/shadcn-button-spinner.json"
       ),
       docsUsageBlock(
         "Render Spinner.view inside pending buttons, badges, empty states, or loading rows. The parent model owns when the loading affordance appears.",
@@ -9962,10 +11035,12 @@ Badge.contentView<Message>({
       docsTextListSection("Accessibility", [
         "Spinner.view renders role=status and aria-label=Loading, matching the upstream shadcn semantics.",
         "Use nearby visible copy such as Deleting or Generating to explain what is pending.",
+        "Use dir=rtl on the parent container when rendering RTL loading rows.",
       ]),
       docsTextListSection("Coverage", [
         "Registry scene tests verify the loading status role and accessible name.",
-        "Badge Spinner scene tests verify the upstream example content and status affordance.",
+        "Spinner Basic scene tests verify the upstream payment, size, button, badge, input group, empty, and RTL content surfaces.",
+        "Badge Spinner and shadcn Button Spinner scene tests verify the cross-component loading affordances.",
         "Registry checks verify metadata, generated JSON, and example test coverage.",
       ]),
     ]
@@ -10000,7 +11075,7 @@ const kbdDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/kbd" },
-        { label: "Examples", value: "basic, input-group" },
+        { label: "Examples", value: "basic, input-group, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
@@ -10033,12 +11108,22 @@ const kbdDocsView = (model: Model): Html => {
                 href: "/docs/components/kbd/examples/input-group",
                 linkText: "Open standalone Kbd Input Group example",
               }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-kbd-rtl",
+                preview: DocsPreviewsJM.kbdRtlExamplePreview(
+                  model.kbdRtlExample,
+                  "kbd-docs-rtl-preview"
+                ),
+                href: "/docs/components/kbd/examples/rtl",
+                linkText: "Open standalone Kbd RTL example",
+              }),
             ]
           ),
         ]
       ),
       docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/kbd.json\nbunx shadcn@latest add <registry-url>/kbd-basic.json\nbunx shadcn@latest add <registry-url>/kbd-input-group.json"
+        "bunx shadcn@latest add <registry-url>/kbd.json\nbunx shadcn@latest add <registry-url>/kbd-basic.json\nbunx shadcn@latest add <registry-url>/kbd-input-group.json\nbunx shadcn@latest add <registry-url>/kbd-rtl.json"
       ),
       docsUsageBlock(
         "Use Kbd.view for one key token and Kbd.groupView for shortcuts that combine multiple keys.",
@@ -10131,7 +11216,7 @@ const typographyDocsView = (model: Model): Html => {
         installCommands:
           "bunx shadcn@latest add <registry-url>/typography.json\nbunx shadcn@latest add <registry-url>/typography-basic.json",
         usageBody:
-          "Use Typography helpers to keep example prose consistent while the parent view owns the actual content and hierarchy.",
+          "Use Typography helpers to keep example prose consistent while the parent view owns the actual content, hierarchy, language direction, and any surrounding interactivity.",
         usageCode: `import * as Typography from "./ui/typography";
 
 Typography.h1<Message>("Component registry");
@@ -10153,12 +11238,15 @@ Typography.inlineCode<Message>("Typography.inlineCode");`),
         includeStyling: false,
         includeKeyboardInteraction: false,
         apiItems: [
-          "h1, h2, h3: render semantic headings with registry typography classes.",
+          "h1, h2, h3, h4: render semantic headings with registry typography classes.",
           "p: renders a readable paragraph.",
+          "blockquote: renders quoted prose with the documented left border treatment.",
+          "table: renders a responsive semantic table from headers and rows.",
+          "lead, large, small, muted: render the documented supporting text variants.",
           "muted: renders secondary text.",
           "inlineCode: renders inline code text.",
           "ul: renders a real unordered list from string items.",
-          "h1ClassName, h2ClassName, h3ClassName, paragraphClassName, mutedClassName, inlineCodeClassName, and listClassName expose shadcn-style styling hooks.",
+          "Class name exports expose shadcn-style styling hooks for every helper.",
         ],
         accessibilityItems: [
           "Choose heading helpers by document outline, not visual size alone.",
@@ -10166,8 +11254,8 @@ Typography.inlineCode<Message>("Typography.inlineCode");`),
           "Typography helpers do not create keyboard handlers; nearby interactive controls keep their own native or primitive-backed keyboard contract.",
         ],
         coverageItems: [
-          "Registry scene tests verify the documented static rendering surface.",
-          "Example scene tests verify the runnable example and parent-owned state change.",
+          "Registry scene tests verify the documented static rendering surface across headings, prose, blockquote, table, code, and text variants.",
+          "Example scene tests verify the current upstream Joke Tax sample and individual typography variant coverage.",
           "Registry checks verify metadata, generated JSON, and example test coverage.",
         ],
       }),
@@ -10203,11 +11291,15 @@ const emptyDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/empty" },
-        { label: "Examples", value: "basic, input-group" },
+        {
+          label: "Examples",
+          value:
+            "avatar, avatar-group, background, basic, input-group, outline, rtl",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Empty follows shadcn's empty-state composition: media, title, description, and content/action slots. The current Basic and Input Group examples now match the origin visible copy; remaining parity work is adding the origin Outline, Background, Avatar, Avatar Group, and RTL examples."
+        "Empty follows shadcn's empty-state composition: media, title, description, and content/action slots. The current Basic, Outline, Background, Avatar, Avatar Group, Input Group, and RTL examples match the origin visible copy."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -10216,6 +11308,36 @@ const emptyDocsView = (model: Model): Html => {
           h.div(
             [h.Class("grid gap-4 lg:grid-cols-2")],
             [
+              docsExampleBlock({
+                title: "Avatar",
+                testId: "docs-example-block-empty-avatar",
+                preview: DocsPreviewsEI.emptyAvatarExamplePreview(
+                  model.emptyAvatarExample,
+                  "empty-docs-avatar-preview"
+                ),
+                href: "/docs/components/empty/examples/avatar",
+                linkText: "Open standalone Empty Avatar example",
+              }),
+              docsExampleBlock({
+                title: "Avatar Group",
+                testId: "docs-example-block-empty-avatar-group",
+                preview: DocsPreviewsEI.emptyAvatarGroupExamplePreview(
+                  model.emptyAvatarGroupExample,
+                  "empty-docs-avatar-group-preview"
+                ),
+                href: "/docs/components/empty/examples/avatar-group",
+                linkText: "Open standalone Empty Avatar Group example",
+              }),
+              docsExampleBlock({
+                title: "Background",
+                testId: "docs-example-block-empty-background",
+                preview: DocsPreviewsEI.emptyBackgroundExamplePreview(
+                  model.emptyBackgroundExample,
+                  "empty-docs-background-preview"
+                ),
+                href: "/docs/components/empty/examples/background",
+                linkText: "Open standalone Empty Background example",
+              }),
               docsExampleBlock({
                 title: "Basic",
                 testId: "docs-example-block-empty-basic",
@@ -10236,12 +11358,32 @@ const emptyDocsView = (model: Model): Html => {
                 href: "/docs/components/empty/examples/input-group",
                 linkText: "Open standalone Empty Input Group example",
               }),
+              docsExampleBlock({
+                title: "Outline",
+                testId: "docs-example-block-empty-outline",
+                preview: DocsPreviewsEI.emptyOutlineExamplePreview(
+                  model.emptyOutlineExample,
+                  "empty-docs-outline-preview"
+                ),
+                href: "/docs/components/empty/examples/outline",
+                linkText: "Open standalone Empty Outline example",
+              }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-empty-rtl",
+                preview: DocsPreviewsEI.emptyRtlExamplePreview(
+                  model.emptyRtlExample,
+                  "empty-docs-rtl-preview"
+                ),
+                href: "/docs/components/empty/examples/rtl",
+                linkText: "Open standalone Empty RTL example",
+              }),
             ]
           ),
         ]
       ),
       docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/empty.json\nbunx shadcn@latest add <registry-url>/empty-basic.json\nbunx shadcn@latest add <registry-url>/empty-input-group.json"
+        "bunx shadcn@latest add <registry-url>/empty.json\nbunx shadcn@latest add <registry-url>/empty-basic.json\nbunx shadcn@latest add <registry-url>/empty-outline.json\nbunx shadcn@latest add <registry-url>/empty-background.json\nbunx shadcn@latest add <registry-url>/empty-avatar.json\nbunx shadcn@latest add <registry-url>/empty-avatar-group.json\nbunx shadcn@latest add <registry-url>/empty-input-group.json\nbunx shadcn@latest add <registry-url>/empty-rtl.json"
       ),
       docsUsageBlock(
         "Render Empty.view when a parent model has no records, search results, or configured resources. Pass the action as ordinary Foldkit Html.",
@@ -10302,11 +11444,15 @@ const inputGroupDocsView = (model: Model): Html => {
       ),
       docsMetaGrid([
         { label: "Source", value: "registry/default/ui/input-group" },
-        { label: "Examples", value: "kbd, empty" },
+        {
+          label: "Examples",
+          value:
+            "align, icon, text, button, custom input, dropdown, kbd, spinner, empty, rtl, textarea",
+        },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
       docsOverviewBlock(
-        "Input Group v1 documents the shared container, native input slot, addon alignment slots, and static text helper needed by upstream shadcn examples."
+        "Input Group v1 documents the shared container, native input and textarea slots, addon alignment slots, button helper, and static text helper needed by upstream shadcn examples."
       ),
       h.section(
         [h.Class("space-y-4")],
@@ -10315,6 +11461,50 @@ const inputGroupDocsView = (model: Model): Html => {
           h.div(
             [h.Class("grid gap-4 lg:grid-cols-2")],
             [
+              docsExampleBlock({
+                title: "Align",
+                testId: "docs-example-block-input-group-align",
+                preview: DocsPreviewsShadcnMissing.inputGroupAlignExamplePreview(),
+                href: "/docs/components/input-group/examples/align",
+                linkText: "Open standalone Input Group Align example",
+              }),
+              docsExampleBlock({
+                title: "Icon",
+                testId: "docs-example-block-input-group-icon",
+                preview: DocsPreviewsShadcnMissing.inputGroupIconExamplePreview(),
+                href: "/docs/components/input-group/examples/icon",
+                linkText: "Open standalone Input Group Icon example",
+              }),
+              docsExampleBlock({
+                title: "Text",
+                testId: "docs-example-block-input-group-text",
+                preview: DocsPreviewsShadcnMissing.inputGroupTextExamplePreview(),
+                href: "/docs/components/input-group/examples/text",
+                linkText: "Open standalone Input Group Text example",
+              }),
+              docsExampleBlock({
+                title: "Button",
+                testId: "docs-example-block-input-group-button",
+                preview: DocsPreviewsShadcnMissing.inputGroupButtonExamplePreview(),
+                href: "/docs/components/input-group/examples/button",
+                linkText: "Open standalone Input Group Button example",
+              }),
+              docsExampleBlock({
+                title: "Custom Input",
+                testId: "docs-example-block-input-group-custom-input",
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupCustomInputExamplePreview(),
+                href: "/docs/components/input-group/examples/custom-input",
+                linkText: "Open standalone Input Group Custom Input example",
+              }),
+              docsExampleBlock({
+                title: "Dropdown",
+                testId: "docs-example-block-input-group-dropdown",
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupDropdownExamplePreview(),
+                href: "/docs/components/input-group/examples/dropdown",
+                linkText: "Open standalone Input Group Dropdown example",
+              }),
               docsExampleBlock({
                 title: "Kbd Input Group",
                 testId: "docs-example-block-input-group-kbd",
@@ -10326,6 +11516,13 @@ const inputGroupDocsView = (model: Model): Html => {
                 linkText: "Open standalone Kbd Input Group example",
               }),
               docsExampleBlock({
+                title: "Spinner",
+                testId: "docs-example-block-input-group-spinner",
+                preview: DocsPreviewsShadcnMissing.inputGroupSpinnerExamplePreview(),
+                href: "/docs/components/input-group/examples/spinner",
+                linkText: "Open standalone Input Group Spinner example",
+              }),
+              docsExampleBlock({
                 title: "Empty Input Group",
                 testId: "docs-example-block-input-group-empty",
                 preview: DocsPreviewsEI.emptyInputGroupExamplePreview(
@@ -10335,12 +11532,27 @@ const inputGroupDocsView = (model: Model): Html => {
                 href: "/docs/components/empty/examples/input-group",
                 linkText: "Open standalone Empty Input Group example",
               }),
+              docsExampleBlock({
+                title: "RTL",
+                testId: "docs-example-block-input-group-rtl",
+                preview: DocsPreviewsShadcnMissing.inputGroupRtlExamplePreview(),
+                href: "/docs/components/input-group/examples/rtl",
+                linkText: "Open standalone Input Group RTL example",
+              }),
+              docsExampleBlock({
+                title: "Textarea",
+                testId: "docs-example-block-input-group-textarea",
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupTextareaExamplePreview(),
+                href: "/docs/components/input-group/examples/textarea",
+                linkText: "Open standalone Input Group Textarea example",
+              }),
             ]
           ),
         ]
       ),
       docsInstallBlock(
-        "bunx shadcn@latest add <registry-url>/input-group.json\nbunx shadcn@latest add <registry-url>/kbd-input-group.json\nbunx shadcn@latest add <registry-url>/empty-input-group.json"
+        "bunx shadcn@latest add <registry-url>/input-group.json\nbunx shadcn@latest add <registry-url>/input-group-align.json\nbunx shadcn@latest add <registry-url>/input-group-icon.json\nbunx shadcn@latest add <registry-url>/input-group-text.json\nbunx shadcn@latest add <registry-url>/input-group-button.json\nbunx shadcn@latest add <registry-url>/input-group-custom-input.json\nbunx shadcn@latest add <registry-url>/input-group-dropdown.json\nbunx shadcn@latest add <registry-url>/kbd-input-group.json\nbunx shadcn@latest add <registry-url>/input-group-spinner.json\nbunx shadcn@latest add <registry-url>/empty-input-group.json\nbunx shadcn@latest add <registry-url>/input-group-rtl.json\nbunx shadcn@latest add <registry-url>/input-group-textarea.json"
       ),
       docsUsageBlock(
         "Use InputGroup.view to compose a native input and addon regions. Pass all addon content as ordinary Foldkit Html.",
@@ -10357,8 +11569,10 @@ const inputGroupDocsView = (model: Model): Html => {
       ]),
       docsApiList([
         "view(config): renders the input group container with role=group.",
-        "inputView(config): renders a native input with placeholder, ariaLabel, and classes.",
+        "inputView(config): renders a native input with placeholder, ariaLabel, value, onInput, disabled, name, and classes.",
+        "textareaView(config): renders a native textarea with placeholder, ariaLabel, value, onInput, disabled, name, rows, and classes.",
         "addonView(config): renders an addon region aligned InlineStart, InlineEnd, BlockStart, or BlockEnd.",
+        "buttonView(config): renders a button or icon button for addon actions.",
         "textView(children, className): renders static addon text.",
       ]),
       docsTextListSection("Accessibility", [
@@ -13132,6 +14346,22 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "base-ui-popover-detached-trigger",
+        () =>
+          docsExampleBlock({
+            title: "Detached Trigger",
+            testId: "docs-example-block-base-ui-popover-detached-trigger",
+            preview:
+              DocsPreviewsNZ.baseUiPopoverDetachedTriggerExamplePreview(
+                model.baseUiPopoverDetachedTriggerExample,
+                "base-ui-popover-docs-detached-trigger-preview"
+              ),
+            href: "/docs/components/base-ui-popover/examples/detached-trigger",
+            linkText:
+              "Open standalone Base UI Popover Detached Trigger example",
+          }),
+      ],
+      [
         "base-ui-popover-multiple-triggers",
         () =>
           docsExampleBlock({
@@ -13144,6 +14374,21 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
             href: "/docs/components/base-ui-popover/examples/multiple-triggers",
             linkText:
               "Open standalone Base UI Popover Multiple Triggers example",
+          }),
+      ],
+      [
+        "base-ui-popover-open-on-hover",
+        () =>
+          docsExampleBlock({
+            title: "Open on Hover",
+            testId: "docs-example-block-base-ui-popover-open-on-hover",
+            preview: DocsPreviewsNZ.baseUiPopoverOpenOnHoverExamplePreview(
+              model.baseUiPopoverOpenOnHoverExample,
+              "base-ui-popover-docs-open-on-hover-preview"
+            ),
+            href: "/docs/components/base-ui-popover/examples/open-on-hover",
+            linkText:
+              "Open standalone Base UI Popover Open on Hover example",
           }),
       ],
       [
@@ -13529,6 +14774,34 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "alert-custom-colors",
+        () =>
+          docsExampleBlock({
+            title: "Custom Colors",
+            testId: "docs-example-block-alert-custom-colors",
+            preview: DocsPreviewsAlert.alertCustomColorsExamplePreview(
+              model.alertCustomColorsExample,
+              "shadcn-alert-docs-custom-colors-preview"
+            ),
+            href: "/docs/components/shadcn-alert/examples/custom-colors",
+            linkText: "Open standalone shadcn Alert Custom Colors example",
+          }),
+      ],
+      [
+        "alert-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-alert-rtl",
+            preview: DocsPreviewsAlert.alertRtlExamplePreview(
+              model.alertRtlExample,
+              "shadcn-alert-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-alert/examples/rtl",
+            linkText: "Open standalone shadcn Alert RTL example",
+          }),
+      ],
+      [
         "aspect-ratio-basic",
         () =>
           docsExampleBlock({
@@ -13681,6 +14954,93 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
               ),
             href: "/docs/components/shadcn-checkbox/examples/basic",
             linkText: "Open standalone shadcn Checkbox Basic example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-checked-state",
+        () =>
+          docsExampleBlock({
+            title: "Checked State",
+            testId: "docs-example-block-shadcn-checkbox-checked-state",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxCheckedStateExamplePreview(
+                model.shadcnCheckboxCheckedStateExample,
+                "shadcn-checkbox-docs-checked-state-preview"
+              ),
+            href: "/docs/components/shadcn-checkbox/examples/checked-state",
+            linkText: "Open standalone shadcn Checkbox Checked State example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-description",
+        () =>
+          docsExampleBlock({
+            title: "Description",
+            testId: "docs-example-block-shadcn-checkbox-description",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxDescriptionExamplePreview(),
+            href: "/docs/components/shadcn-checkbox/examples/description",
+            linkText: "Open standalone shadcn Checkbox Description example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-disabled",
+        () =>
+          docsExampleBlock({
+            title: "Disabled",
+            testId: "docs-example-block-shadcn-checkbox-disabled",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxDisabledExamplePreview(),
+            href: "/docs/components/shadcn-checkbox/examples/disabled",
+            linkText: "Open standalone shadcn Checkbox Disabled example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-group",
+        () =>
+          docsExampleBlock({
+            title: "Group",
+            testId: "docs-example-block-shadcn-checkbox-group",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxGroupExamplePreview(),
+            href: "/docs/components/shadcn-checkbox/examples/group",
+            linkText: "Open standalone shadcn Checkbox Group example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-invalid",
+        () =>
+          docsExampleBlock({
+            title: "Invalid State",
+            testId: "docs-example-block-shadcn-checkbox-invalid",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxInvalidExamplePreview(),
+            href: "/docs/components/shadcn-checkbox/examples/invalid",
+            linkText: "Open standalone shadcn Checkbox Invalid example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-checkbox-rtl",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxRtlExamplePreview(),
+            href: "/docs/components/shadcn-checkbox/examples/rtl",
+            linkText: "Open standalone shadcn Checkbox RTL example",
+          }),
+      ],
+      [
+        "shadcn-checkbox-table",
+        () =>
+          docsExampleBlock({
+            title: "Table",
+            testId: "docs-example-block-shadcn-checkbox-table",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnCheckboxTableExamplePreview(),
+            href: "/docs/components/shadcn-checkbox/examples/table",
+            linkText: "Open standalone shadcn Checkbox Table example",
           }),
       ],
       [
@@ -13935,6 +15295,150 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "shadcn-input-demo",
+        () =>
+          docsExampleBlock({
+            title: "Demo",
+            testId: "docs-example-block-shadcn-input-demo",
+            preview: DocsPreviewsShadcnMissing.shadcnInputDemoExamplePreview(
+              model.shadcnInputDemoExample,
+              "shadcn-input-docs-demo-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/demo",
+            linkText: "Open standalone shadcn Input Demo example",
+          }),
+      ],
+      [
+        "shadcn-input-field",
+        () =>
+          docsExampleBlock({
+            title: "Field",
+            testId: "docs-example-block-shadcn-input-field",
+            preview: DocsPreviewsShadcnMissing.shadcnInputFieldExamplePreview(
+              model.shadcnInputFieldExample,
+              "shadcn-input-docs-field-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/field",
+            linkText: "Open standalone shadcn Input Field example",
+          }),
+      ],
+      [
+        "shadcn-input-field-group",
+        () =>
+          docsExampleBlock({
+            title: "Field Group",
+            testId: "docs-example-block-shadcn-input-field-group",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnInputFieldGroupExamplePreview(
+                model.shadcnInputFieldGroupExample,
+                "shadcn-input-docs-field-group-preview"
+              ),
+            href: "/docs/components/shadcn-input/examples/field-group",
+            linkText: "Open standalone shadcn Input Field Group example",
+          }),
+      ],
+      [
+        "shadcn-input-inline",
+        () =>
+          docsExampleBlock({
+            title: "Inline",
+            testId: "docs-example-block-shadcn-input-inline",
+            preview: DocsPreviewsShadcnMissing.shadcnInputInlineExamplePreview(
+              model.shadcnInputInlineExample,
+              "shadcn-input-docs-inline-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/inline",
+            linkText: "Open standalone shadcn Input Inline example",
+          }),
+      ],
+      [
+        "shadcn-input-grid",
+        () =>
+          docsExampleBlock({
+            title: "Grid",
+            testId: "docs-example-block-shadcn-input-grid",
+            preview: DocsPreviewsShadcnMissing.shadcnInputGridExamplePreview(
+              model.shadcnInputGridExample,
+              "shadcn-input-docs-grid-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/grid",
+            linkText: "Open standalone shadcn Input Grid example",
+          }),
+      ],
+      [
+        "shadcn-input-required",
+        () =>
+          docsExampleBlock({
+            title: "Required",
+            testId: "docs-example-block-shadcn-input-required",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnInputRequiredExamplePreview(
+                model.shadcnInputRequiredExample,
+                "shadcn-input-docs-required-preview"
+              ),
+            href: "/docs/components/shadcn-input/examples/required",
+            linkText: "Open standalone shadcn Input Required example",
+          }),
+      ],
+      [
+        "shadcn-input-badge",
+        () =>
+          docsExampleBlock({
+            title: "Badge",
+            testId: "docs-example-block-shadcn-input-badge",
+            preview: DocsPreviewsShadcnMissing.shadcnInputBadgeExamplePreview(
+              model.shadcnInputBadgeExample,
+              "shadcn-input-docs-badge-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/badge",
+            linkText: "Open standalone shadcn Input Badge example",
+          }),
+      ],
+      [
+        "shadcn-input-input-group",
+        () =>
+          docsExampleBlock({
+            title: "Input Group",
+            testId: "docs-example-block-shadcn-input-input-group",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnInputInputGroupExamplePreview(
+                model.shadcnInputInputGroupExample,
+                "shadcn-input-docs-input-group-preview"
+              ),
+            href: "/docs/components/shadcn-input/examples/input-group",
+            linkText: "Open standalone shadcn Input Input Group example",
+          }),
+      ],
+      [
+        "shadcn-input-button-group",
+        () =>
+          docsExampleBlock({
+            title: "Button Group",
+            testId: "docs-example-block-shadcn-input-button-group",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnInputButtonGroupExamplePreview(
+                model.shadcnInputButtonGroupExample,
+                "shadcn-input-docs-button-group-preview"
+              ),
+            href: "/docs/components/shadcn-input/examples/button-group",
+            linkText: "Open standalone shadcn Input Button Group example",
+          }),
+      ],
+      [
+        "shadcn-input-form",
+        () =>
+          docsExampleBlock({
+            title: "Form",
+            testId: "docs-example-block-shadcn-input-form",
+            preview: DocsPreviewsShadcnMissing.shadcnInputFormExamplePreview(
+              model.shadcnInputFormExample,
+              "shadcn-input-docs-form-preview"
+            ),
+            href: "/docs/components/shadcn-input/examples/form",
+            linkText: "Open standalone shadcn Input Form example",
+          }),
+      ],
+      [
         "shadcn-input-disabled",
         () =>
           docsExampleBlock({
@@ -14080,6 +15584,66 @@ const shadcnGeneratedExampleBlock = (model: Model, example: string): Html =>
               ),
             href: "/docs/components/shadcn-textarea/examples/basic",
             linkText: "Open standalone shadcn Textarea Basic example",
+          }),
+      ],
+      [
+        "shadcn-textarea-field",
+        () =>
+          docsExampleBlock({
+            title: "Field",
+            testId: "docs-example-block-shadcn-textarea-field",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnTextareaFieldExamplePreview(),
+            href: "/docs/components/shadcn-textarea/examples/field",
+            linkText: "Open standalone shadcn Textarea Field example",
+          }),
+      ],
+      [
+        "shadcn-textarea-disabled",
+        () =>
+          docsExampleBlock({
+            title: "Disabled",
+            testId: "docs-example-block-shadcn-textarea-disabled",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnTextareaDisabledExamplePreview(),
+            href: "/docs/components/shadcn-textarea/examples/disabled",
+            linkText: "Open standalone shadcn Textarea Disabled example",
+          }),
+      ],
+      [
+        "shadcn-textarea-invalid",
+        () =>
+          docsExampleBlock({
+            title: "Invalid",
+            testId: "docs-example-block-shadcn-textarea-invalid",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnTextareaInvalidExamplePreview(),
+            href: "/docs/components/shadcn-textarea/examples/invalid",
+            linkText: "Open standalone shadcn Textarea Invalid example",
+          }),
+      ],
+      [
+        "shadcn-textarea-button",
+        () =>
+          docsExampleBlock({
+            title: "Button",
+            testId: "docs-example-block-shadcn-textarea-button",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnTextareaButtonExamplePreview(),
+            href: "/docs/components/shadcn-textarea/examples/button",
+            linkText: "Open standalone shadcn Textarea Button example",
+          }),
+      ],
+      [
+        "shadcn-textarea-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-textarea-rtl",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnTextareaRtlExamplePreview(),
+            href: "/docs/components/shadcn-textarea/examples/rtl",
+            linkText: "Open standalone shadcn Textarea RTL example",
           }),
       ],
       [
@@ -14427,6 +15991,62 @@ const shadcnButtonExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "card-image",
+        () =>
+          docsExampleBlock({
+            title: "Image",
+            testId: "docs-example-block-card-image",
+            preview: DocsPreviewsCD.cardImageExamplePreview(
+              model.cardImageExample,
+              "shadcn-card-docs-image-preview"
+            ),
+            href: "/docs/components/shadcn-card/examples/image",
+            linkText: "Open standalone Card Image example",
+          }),
+      ],
+      [
+        "card-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-card-rtl",
+            preview: DocsPreviewsCD.cardRtlExamplePreview(
+              model.cardRtlExample,
+              "shadcn-card-docs-rtl-preview"
+            ),
+            href: "/docs/components/shadcn-card/examples/rtl",
+            linkText: "Open standalone Card RTL example",
+          }),
+      ],
+      [
+        "card-size",
+        () =>
+          docsExampleBlock({
+            title: "Size",
+            testId: "docs-example-block-card-size",
+            preview: DocsPreviewsCD.cardSizeExamplePreview(
+              model.cardSizeExample,
+              "shadcn-card-docs-size-preview"
+            ),
+            href: "/docs/components/shadcn-card/examples/size",
+            linkText: "Open standalone Card Size example",
+          }),
+      ],
+      [
+        "card-spacing",
+        () =>
+          docsExampleBlock({
+            title: "Spacing",
+            testId: "docs-example-block-card-spacing",
+            preview: DocsPreviewsCD.cardSpacingExamplePreview(
+              model.cardSpacingExample,
+              "shadcn-card-docs-spacing-preview"
+            ),
+            href: "/docs/components/shadcn-card/examples/spacing",
+            linkText: "Open standalone Card Spacing example",
+          }),
+      ],
+      [
         "carousel-basic",
         () =>
           docsExampleBlock({
@@ -14494,6 +16114,20 @@ const shadcnButtonExampleBlock = (model: Model, example: string): Html =>
             ),
             href: "/docs/components/shadcn-carousel/examples/api",
             linkText: "Open standalone Carousel API example",
+          }),
+      ],
+      [
+        "carousel-autoplay",
+        () =>
+          docsExampleBlock({
+            title: "Autoplay",
+            testId: "docs-example-block-carousel-autoplay",
+            preview: DocsPreviewsCD.carouselAutoplayExamplePreview(
+              model.carouselAutoplayExample,
+              "shadcn-carousel-docs-autoplay-preview"
+            ),
+            href: "/docs/components/shadcn-carousel/examples/autoplay",
+            linkText: "Open standalone Carousel Autoplay example",
           }),
       ],
       [
@@ -14666,7 +16300,10 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
             description:
               "Represents the origin range layout while the local Calendar primitive remains single-date.",
             testId: "docs-example-block-shadcn-calendar-range",
-            preview: DocsPreviewsCD.shadcnCalendarRangeExamplePreview(),
+            preview: DocsPreviewsCD.shadcnCalendarRangeExamplePreview(
+              model.shadcnCalendarRangeExample,
+              "shadcn-calendar-docs-range-preview"
+            ),
             href: "/docs/components/shadcn-calendar/examples/range",
             linkText: "Open standalone shadcn Calendar Range example",
           }),
@@ -14696,7 +16333,10 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
               "Represents the origin date-time composition with static time fields.",
             testId: "docs-example-block-shadcn-calendar-date-time-picker",
             preview:
-              DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(),
+              DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(
+                model.shadcnCalendarDateTimePickerExample,
+                "shadcn-calendar-docs-date-time-picker-preview"
+              ),
             href: "/docs/components/shadcn-calendar/examples/date-time-picker",
             linkText:
               "Open standalone shadcn Calendar Date and Time Picker example",
@@ -14743,7 +16383,10 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
               "Represents the origin larger day cells with secondary price text.",
             testId: "docs-example-block-shadcn-calendar-custom-cell-size",
             preview:
-              DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(),
+              DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(
+                model.shadcnCalendarCustomCellSizeExample,
+                "shadcn-calendar-docs-custom-cell-size-preview"
+              ),
             href: "/docs/components/shadcn-calendar/examples/custom-cell-size",
             linkText:
               "Open standalone shadcn Calendar Custom Cell Size example",
@@ -14757,7 +16400,10 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
             description:
               "Represents the origin week-number column as an inert calendar table.",
             testId: "docs-example-block-shadcn-calendar-week-numbers",
-            preview: DocsPreviewsCD.shadcnCalendarWeekNumbersExamplePreview(),
+            preview: DocsPreviewsCD.shadcnCalendarWeekNumbersExamplePreview(
+              model.shadcnCalendarWeekNumbersExample,
+              "shadcn-calendar-docs-week-numbers-preview"
+            ),
             href: "/docs/components/shadcn-calendar/examples/week-numbers",
             linkText: "Open standalone shadcn Calendar Week Numbers example",
           }),
@@ -14977,6 +16623,34 @@ const shadcnExampleBlock = (model: Model, example: string): Html =>
           }),
       ],
       [
+        "empty-avatar",
+        () =>
+          docsExampleBlock({
+            title: "Avatar",
+            testId: "docs-example-block-empty-avatar",
+            preview: DocsPreviewsEI.emptyAvatarExamplePreview(
+              model.emptyAvatarExample,
+              "empty-shadcn-docs-avatar-preview"
+            ),
+            href: "/docs/components/empty/examples/avatar",
+            linkText: "Open standalone Empty Avatar example",
+          }),
+      ],
+      [
+        "empty-avatar-group",
+        () =>
+          docsExampleBlock({
+            title: "Avatar Group",
+            testId: "docs-example-block-empty-avatar-group",
+            preview: DocsPreviewsEI.emptyAvatarGroupExamplePreview(
+              model.emptyAvatarGroupExample,
+              "empty-shadcn-docs-avatar-group-preview"
+            ),
+            href: "/docs/components/empty/examples/avatar-group",
+            linkText: "Open standalone Empty Avatar Group example",
+          }),
+      ],
+      [
         "shadcn-button-basic",
         () =>
           docsExampleBlock({
@@ -15002,6 +16676,78 @@ const shadcnExampleBlock = (model: Model, example: string): Html =>
             ),
             href: "/docs/components/shadcn-radio-group/examples/basic",
             linkText: "Open standalone shadcn Radio Group Basic example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-description",
+        () =>
+          docsExampleBlock({
+            title: "Description",
+            testId: "docs-example-block-shadcn-radio-group-description",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnRadioGroupDescriptionExamplePreview(),
+            href: "/docs/components/shadcn-radio-group/examples/description",
+            linkText: "Open standalone shadcn Radio Group Description example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-choice-card",
+        () =>
+          docsExampleBlock({
+            title: "Choice Card",
+            testId: "docs-example-block-shadcn-radio-group-choice-card",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnRadioGroupChoiceCardExamplePreview(),
+            href: "/docs/components/shadcn-radio-group/examples/choice-card",
+            linkText: "Open standalone shadcn Radio Group Choice Card example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-fieldset",
+        () =>
+          docsExampleBlock({
+            title: "Fieldset",
+            testId: "docs-example-block-shadcn-radio-group-fieldset",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnRadioGroupFieldsetExamplePreview(),
+            href: "/docs/components/shadcn-radio-group/examples/fieldset",
+            linkText: "Open standalone shadcn Radio Group Fieldset example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-disabled",
+        () =>
+          docsExampleBlock({
+            title: "Disabled",
+            testId: "docs-example-block-shadcn-radio-group-disabled",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnRadioGroupDisabledExamplePreview(),
+            href: "/docs/components/shadcn-radio-group/examples/disabled",
+            linkText: "Open standalone shadcn Radio Group Disabled example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-invalid",
+        () =>
+          docsExampleBlock({
+            title: "Invalid",
+            testId: "docs-example-block-shadcn-radio-group-invalid",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnRadioGroupInvalidExamplePreview(),
+            href: "/docs/components/shadcn-radio-group/examples/invalid",
+            linkText: "Open standalone shadcn Radio Group Invalid example",
+          }),
+      ],
+      [
+        "shadcn-radio-group-rtl",
+        () =>
+          docsExampleBlock({
+            title: "RTL",
+            testId: "docs-example-block-shadcn-radio-group-rtl",
+            preview:
+              DocsPreviewsShadcnMissing.shadcnRadioGroupRtlExamplePreview(),
+            href: "/docs/components/shadcn-radio-group/examples/rtl",
+            linkText: "Open standalone shadcn Radio Group RTL example",
           }),
       ],
       [
@@ -18293,6 +20039,9 @@ Accordion.rootView<Message>({
       AlertActionExample: () => DocsRoutes.alertActionExampleRouteView(model),
       AlertDestructiveExample: () =>
         DocsRoutes.alertDestructiveExampleRouteView(model),
+      AlertCustomColorsExample: () =>
+        DocsRoutes.alertCustomColorsExampleRouteView(model),
+      AlertRtlExample: () => DocsRoutes.alertRtlExampleRouteView(model),
       AspectRatioDocs: () => aspectRatioDocsView(model),
       ShadcnAspectRatioDocs: () => aspectRatioDocsView(model),
       AspectRatioBasicExample: () =>
@@ -19058,6 +20807,11 @@ Avatar.view<Message>({
       BadgeDocs: () => badgeDocsView(model),
       BadgeBasicExample: () => DocsRoutes.badgeBasicExampleRouteView(model),
       BadgeSpinnerExample: () => DocsRoutes.badgeSpinnerExampleRouteView(model),
+      BadgeIconExample: () => DocsRoutes.badgeIconExampleRouteView(),
+      BadgeLinkExample: () => DocsRoutes.badgeLinkExampleRouteView(),
+      BadgeCustomColorsExample: () =>
+        DocsRoutes.badgeCustomColorsExampleRouteView(),
+      BadgeRtlExample: () => DocsRoutes.badgeRtlExampleRouteView(),
       CarouselDocs: () => carouselDocsView(model),
       ShadcnCarouselDocs: () => carouselDocsView(model),
       CarouselBasicExample: () =>
@@ -19069,6 +20823,8 @@ Avatar.view<Message>({
       CarouselOrientationExample: () =>
         DocsRoutes.carouselOrientationExampleRouteView(model),
       CarouselApiExample: () => DocsRoutes.carouselApiExampleRouteView(model),
+      CarouselAutoplayExample: () =>
+        DocsRoutes.carouselAutoplayExampleRouteView(model),
       CarouselRtlExample: () => DocsRoutes.carouselRtlExampleRouteView(model),
       ChartDocs: () => chartDocsView(model),
       ChartBasicExample: () => DocsRoutes.chartBasicExampleRouteView(model),
@@ -19109,30 +20865,102 @@ Avatar.view<Message>({
       ItemVariantExample: () => DocsRoutes.itemVariantExampleRouteView(model),
       LabelDocs: () => labelDocsView(model),
       LabelBasicExample: () => DocsRoutes.labelBasicExampleRouteView(model),
+      LabelFieldExample: () => DocsRoutes.labelFieldExampleRouteView(model),
+      LabelRtlExample: () => DocsRoutes.labelRtlExampleRouteView(model),
       PaginationDocs: () => paginationDocsView(model),
       PaginationBasicExample: () =>
         DocsRoutes.paginationBasicExampleRouteView(model),
+      PaginationSimpleExample: () =>
+        DocsRoutes.paginationSimpleExampleRouteView(model),
+      PaginationIconsOnlyExample: () =>
+        DocsRoutes.paginationIconsOnlyExampleRouteView(model),
+      PaginationRtlExample: () =>
+        DocsRoutes.paginationRtlExampleRouteView(model),
       ResizableDocs: () => resizableDocsView(model),
       ResizableBasicExample: () =>
         DocsRoutes.resizableBasicExampleRouteView(model),
+      ResizableHandleExample: () =>
+        DocsRoutes.resizableHandleExampleRouteView(model),
+      ResizableRtlExample: () =>
+        DocsRoutes.resizableRtlExampleRouteView(model),
+      ResizableVerticalExample: () =>
+        DocsRoutes.resizableVerticalExampleRouteView(model),
       SidebarDocs: () => sidebarDocsView(model),
       SidebarBasicExample: () => DocsRoutes.sidebarBasicExampleRouteView(model),
+      SidebarCompositionExample: () =>
+        DocsRoutes.sidebarCompositionExampleRouteView(model),
+      SidebarControlledExample: () =>
+        DocsRoutes.sidebarControlledExampleRouteView(model),
+      SidebarRtlExample: () => DocsRoutes.sidebarRtlExampleRouteView(model),
+      SidebarVariantsExample: () =>
+        DocsRoutes.sidebarVariantsExampleRouteView(model),
       TableDocs: () => tableDocsView(model),
       TableBasicExample: () => DocsRoutes.tableBasicExampleRouteView(model),
       CommandDocs: () => commandDocsView(model),
       CommandBasicExample: () => DocsRoutes.commandBasicExampleRouteView(model),
+      CommandGroupsExample: () =>
+        DocsRoutes.commandGroupsExampleRouteView(model),
+      CommandRtlExample: () => DocsRoutes.commandRtlExampleRouteView(model),
+      CommandScrollableExample: () =>
+        DocsRoutes.commandScrollableExampleRouteView(model),
+      CommandShortcutsExample: () =>
+        DocsRoutes.commandShortcutsExampleRouteView(model),
       DropdownMenuDocs: () => dropdownMenuDocsView(model),
       DropdownMenuBasicExample: () =>
         DocsRoutes.dropdownMenuBasicExampleRouteView(model),
+      DropdownMenuCheckboxesExample: () =>
+        DocsRoutes.dropdownMenuCheckboxesExampleRouteView(model),
+      DropdownMenuComplexExample: () =>
+        DocsRoutes.dropdownMenuComplexExampleRouteView(model),
+      DropdownMenuDestructiveExample: () =>
+        DocsRoutes.dropdownMenuDestructiveExampleRouteView(model),
+      DropdownMenuIconsExample: () =>
+        DocsRoutes.dropdownMenuIconsExampleRouteView(model),
+      DropdownMenuRadioGroupExample: () =>
+        DocsRoutes.dropdownMenuRadioGroupExampleRouteView(model),
+      DropdownMenuRtlExample: () =>
+        DocsRoutes.dropdownMenuRtlExampleRouteView(model),
+      DropdownMenuShortcutsExample: () =>
+        DocsRoutes.dropdownMenuShortcutsExampleRouteView(model),
+      DropdownMenuSubmenuExample: () =>
+        DocsRoutes.dropdownMenuSubmenuExampleRouteView(model),
       HoverCardDocs: () => hoverCardDocsView(model),
       HoverCardBasicExample: () =>
         DocsRoutes.hoverCardBasicExampleRouteView(model),
+      HoverCardSidesExample: () =>
+        DocsRoutes.hoverCardSidesExampleRouteView(model),
+      HoverCardRtlExample: () =>
+        DocsRoutes.hoverCardRtlExampleRouteView(model),
       InputOtpDocs: () => inputOtpDocsView(model),
       InputOtpBasicExample: () =>
         DocsRoutes.inputOtpBasicExampleRouteView(model),
+      InputOtpPatternExample: () =>
+        DocsRoutes.inputOtpPatternExampleRouteView(model),
+      InputOtpSeparatorExample: () =>
+        DocsRoutes.inputOtpSeparatorExampleRouteView(model),
+      InputOtpDisabledExample: () =>
+        DocsRoutes.inputOtpDisabledExampleRouteView(model),
+      InputOtpControlledExample: () =>
+        DocsRoutes.inputOtpControlledExampleRouteView(model),
+      InputOtpInvalidExample: () =>
+        DocsRoutes.inputOtpInvalidExampleRouteView(model),
+      InputOtpFourDigitsExample: () =>
+        DocsRoutes.inputOtpFourDigitsExampleRouteView(model),
+      InputOtpAlphanumericExample: () =>
+        DocsRoutes.inputOtpAlphanumericExampleRouteView(model),
+      InputOtpFormExample: () => DocsRoutes.inputOtpFormExampleRouteView(model),
+      InputOtpRtlExample: () => DocsRoutes.inputOtpRtlExampleRouteView(model),
       NativeSelectDocs: () => nativeSelectDocsView(model),
       NativeSelectBasicExample: () =>
         DocsRoutes.nativeSelectBasicExampleRouteView(model),
+      NativeSelectDisabledExample: () =>
+        DocsRoutes.nativeSelectDisabledExampleRouteView(model),
+      NativeSelectGroupsExample: () =>
+        DocsRoutes.nativeSelectGroupsExampleRouteView(model),
+      NativeSelectInvalidExample: () =>
+        DocsRoutes.nativeSelectInvalidExampleRouteView(model),
+      NativeSelectRtlExample: () =>
+        DocsRoutes.nativeSelectRtlExampleRouteView(model),
       SheetDocs: () => sheetDocsView(model),
       SheetBasicExample: () => DocsRoutes.sheetBasicExampleRouteView(model),
       SonnerDocs: () => sonnerDocsView(model),
@@ -19141,6 +20969,10 @@ Avatar.view<Message>({
       CardDocs: () => cardDocsView(model),
       ShadcnCardDocs: () => cardDocsView(model),
       CardBasicExample: () => DocsRoutes.cardBasicExampleRouteView(model),
+      CardSizeExample: () => DocsRoutes.cardSizeExampleRouteView(model),
+      CardSpacingExample: () => DocsRoutes.cardSpacingExampleRouteView(model),
+      CardImageExample: () => DocsRoutes.cardImageExampleRouteView(model),
+      CardRtlExample: () => DocsRoutes.cardRtlExampleRouteView(model),
       Separator: () => embedUi("ui-separator", View.separator),
       SeparatorDocs: () => separatorDocsView(model),
       BaseUiSeparatorDocs: () =>
@@ -19193,22 +21025,49 @@ Separator.view<Message>({ orientation: "horizontal" });`,
         DocsRoutes.skeletonBasicExampleRouteView(model),
       Spinner: () => embedUi("ui-spinner", View.spinner),
       SpinnerDocs: () => spinnerDocsView(model),
+      SpinnerBasicExample: () => DocsRoutes.spinnerBasicExampleRouteView(model),
       Kbd: () => embedUi("ui-kbd", View.kbd),
       KbdDocs: () => kbdDocsView(model),
       KbdBasicExample: () => DocsRoutes.kbdBasicExampleRouteView(model),
       KbdInputGroupExample: () =>
         DocsRoutes.kbdInputGroupExampleRouteView(model),
+      KbdRtlExample: () => DocsRoutes.kbdRtlExampleRouteView(model),
       Typography: () => embedUi("ui-typography", View.typography),
       TypographyDocs: () => typographyDocsView(model),
       TypographyBasicExample: () =>
         DocsRoutes.typographyBasicExampleRouteView(model),
       Empty: () => embedUi("ui-empty", View.empty),
       EmptyDocs: () => emptyDocsView(model),
+      EmptyAvatarExample: () =>
+        DocsRoutes.emptyAvatarExampleRouteView(model),
+      EmptyAvatarGroupExample: () =>
+        DocsRoutes.emptyAvatarGroupExampleRouteView(model),
+      EmptyBackgroundExample: () =>
+        DocsRoutes.emptyBackgroundExampleRouteView(model),
       EmptyBasicExample: () => DocsRoutes.emptyBasicExampleRouteView(model),
       EmptyInputGroupExample: () =>
         DocsRoutes.emptyInputGroupExampleRouteView(model),
+      EmptyOutlineExample: () =>
+        DocsRoutes.emptyOutlineExampleRouteView(model),
+      EmptyRtlExample: () => DocsRoutes.emptyRtlExampleRouteView(model),
       InputGroup: () => embedUi("ui-input-group", View.inputGroup),
       InputGroupDocs: () => inputGroupDocsView(model),
+      InputGroupAlignExample: () =>
+        DocsRoutes.inputGroupAlignExampleRouteView(),
+      InputGroupButtonExample: () =>
+        DocsRoutes.inputGroupButtonExampleRouteView(),
+      InputGroupCustomInputExample: () =>
+        DocsRoutes.inputGroupCustomInputExampleRouteView(),
+      InputGroupDropdownExample: () =>
+        DocsRoutes.inputGroupDropdownExampleRouteView(),
+      InputGroupIconExample: () =>
+        DocsRoutes.inputGroupIconExampleRouteView(),
+      InputGroupRtlExample: () => DocsRoutes.inputGroupRtlExampleRouteView(),
+      InputGroupSpinnerExample: () =>
+        DocsRoutes.inputGroupSpinnerExampleRouteView(),
+      InputGroupTextExample: () => DocsRoutes.inputGroupTextExampleRouteView(),
+      InputGroupTextareaExample: () =>
+        DocsRoutes.inputGroupTextareaExampleRouteView(),
       Button: () => embedUi("ui-button", View.button),
       ButtonDocs: () => buttonDocsView(model),
       BaseUiButtonDocs: () => baseUiButtonDocsView(model),
@@ -19304,6 +21163,26 @@ h.submodel({
   toParentMessage: (message) => GotCalendarMessage({ message }),
 });`,
         }),
+      ShadcnCalendarBasicExample: () =>
+        DocsRoutes.shadcnCalendarBasicExampleRouteView(model),
+      ShadcnCalendarMonthYearSelectorExample: () =>
+        DocsRoutes.shadcnCalendarMonthYearSelectorExampleRouteView(model),
+      ShadcnCalendarRangeExample: () =>
+        DocsRoutes.shadcnCalendarRangeExampleRouteView(model),
+      ShadcnCalendarDateOfBirthExample: () =>
+        DocsRoutes.shadcnCalendarDateOfBirthExampleRouteView(model),
+      ShadcnCalendarDateTimePickerExample: () =>
+        DocsRoutes.shadcnCalendarDateTimePickerExampleRouteView(model),
+      ShadcnCalendarPresetsExample: () =>
+        DocsRoutes.shadcnCalendarPresetsExampleRouteView(model),
+      ShadcnCalendarBookedExample: () =>
+        DocsRoutes.shadcnCalendarBookedExampleRouteView(model),
+      ShadcnCalendarCustomCellSizeExample: () =>
+        DocsRoutes.shadcnCalendarCustomCellSizeExampleRouteView(model),
+      ShadcnCalendarWeekNumbersExample: () =>
+        DocsRoutes.shadcnCalendarWeekNumbersExampleRouteView(model),
+      ShadcnCalendarRtlExample: () =>
+        DocsRoutes.shadcnCalendarRtlExampleRouteView(model),
       CalendarBasicExample: () =>
         DocsRoutes.calendarBasicExampleRouteView(model),
       CalendarBoundsExample: () =>
@@ -19335,7 +21214,16 @@ h.submodel({
             "shadcnCheckboxDescriptionClassName",
             "shadcnCheckboxTextClassName",
           ],
-          examples: ["shadcn-checkbox-basic"],
+          examples: [
+            "shadcn-checkbox-basic",
+            "shadcn-checkbox-checked-state",
+            "shadcn-checkbox-description",
+            "shadcn-checkbox-disabled",
+            "shadcn-checkbox-group",
+            "shadcn-checkbox-invalid",
+            "shadcn-checkbox-rtl",
+            "shadcn-checkbox-table",
+          ],
           anatomyCode: `import * as Checkbox from "./ui/shadcn-checkbox";
 
 h.submodel({
@@ -19345,6 +21233,12 @@ h.submodel({
   toParentMessage: (message) => GotCheckboxMessage({ message }),
 });`,
         }),
+      ShadcnCheckboxCheckedStateExample: () =>
+        DocsRoutes.shadcnCheckboxCheckedStateExampleRouteView(model),
+      ShadcnCheckboxGroupExample: () =>
+        DocsRoutes.shadcnCheckboxGroupExampleRouteView(),
+      ShadcnCheckboxTableExample: () =>
+        DocsRoutes.shadcnCheckboxTableExampleRouteView(),
       CheckboxBasicExample: () =>
         DocsRoutes.checkboxBasicExampleRouteView(model),
       CheckboxGroupDocs: () => checkboxGroupDocsView(model),
@@ -19668,6 +21562,16 @@ Input.view<Message>({
           ],
           examples: [
             "shadcn-input-basic",
+            "shadcn-input-demo",
+            "shadcn-input-field",
+            "shadcn-input-field-group",
+            "shadcn-input-inline",
+            "shadcn-input-grid",
+            "shadcn-input-required",
+            "shadcn-input-badge",
+            "shadcn-input-input-group",
+            "shadcn-input-button-group",
+            "shadcn-input-form",
             "shadcn-input-disabled",
             "shadcn-input-invalid",
             "shadcn-input-file",
@@ -19686,6 +21590,26 @@ Input.view<Message>({
         DocsRoutes.inputDisabledExampleRouteView(model),
       ShadcnInputBasicExample: () =>
         DocsRoutes.shadcnInputBasicExampleRouteView(model),
+      ShadcnInputDemoExample: () =>
+        DocsRoutes.shadcnInputDemoExampleRouteView(model),
+      ShadcnInputFieldExample: () =>
+        DocsRoutes.shadcnInputFieldExampleRouteView(model),
+      ShadcnInputFieldGroupExample: () =>
+        DocsRoutes.shadcnInputFieldGroupExampleRouteView(model),
+      ShadcnInputInlineExample: () =>
+        DocsRoutes.shadcnInputInlineExampleRouteView(model),
+      ShadcnInputGridExample: () =>
+        DocsRoutes.shadcnInputGridExampleRouteView(model),
+      ShadcnInputRequiredExample: () =>
+        DocsRoutes.shadcnInputRequiredExampleRouteView(model),
+      ShadcnInputBadgeExample: () =>
+        DocsRoutes.shadcnInputBadgeExampleRouteView(model),
+      ShadcnInputInputGroupExample: () =>
+        DocsRoutes.shadcnInputInputGroupExampleRouteView(model),
+      ShadcnInputButtonGroupExample: () =>
+        DocsRoutes.shadcnInputButtonGroupExampleRouteView(model),
+      ShadcnInputFormExample: () =>
+        DocsRoutes.shadcnInputFormExampleRouteView(model),
       ShadcnInputDisabledExample: () =>
         DocsRoutes.shadcnInputDisabledExampleRouteView(model),
       ShadcnInputInvalidExample: () =>
@@ -20001,8 +21925,12 @@ Popover.view<Message>({
         DocsRoutes.baseUiPopoverBasicExampleRouteView(model),
       BaseUiPopoverAnimatedExample: () =>
         DocsRoutes.baseUiPopoverAnimatedExampleRouteView(model),
+      BaseUiPopoverDetachedTriggerExample: () =>
+        DocsRoutes.baseUiPopoverDetachedTriggerExampleRouteView(model),
       BaseUiPopoverMultipleTriggersExample: () =>
         DocsRoutes.baseUiPopoverMultipleTriggersExampleRouteView(model),
+      BaseUiPopoverOpenOnHoverExample: () =>
+        DocsRoutes.baseUiPopoverOpenOnHoverExampleRouteView(model),
       ShadcnPopoverDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Popover",
@@ -20087,7 +22015,15 @@ h.submodel({
             "shadcnRadioGroupLabelClassName",
             "shadcnRadioGroupDescriptionClassName",
           ],
-          examples: ["shadcn-radio-group-basic"],
+          examples: [
+            "shadcn-radio-group-basic",
+            "shadcn-radio-group-description",
+            "shadcn-radio-group-choice-card",
+            "shadcn-radio-group-fieldset",
+            "shadcn-radio-group-disabled",
+            "shadcn-radio-group-invalid",
+            "shadcn-radio-group-rtl",
+          ],
           anatomyCode: `import * as RadioGroup from "./ui/shadcn-radio-group";
 
 const PlanRadioGroup = RadioGroup.create<"starter" | "pro">();
@@ -20146,24 +22082,48 @@ Select.view<Message>({
           source: "registry/default/ui/shadcn-select",
           primitive: "Ui.Select",
           description:
-            "A shadcn style-lane Select slice that reuses the official Foldkit Ui.Select native select helper for labels, descriptions, disabled state, and value changes.",
+            "A shadcn style-lane Select slice with composed Root, Trigger, Value, Content, Group, Label, Item, Separator, and ScrollButton parts.",
           usage:
-            "Install the shadcn lane wrapper when you need the native Foldkit Select contract with shadcn naming and style hooks.",
+            "Install the shadcn lane wrapper when you want the shadcn Select anatomy with parent-owned open and selected state in Foldkit.",
           classHelpers: [
-            "shadcnSelectWrapperClassName",
-            "shadcnSelectClassName",
-            "shadcnSelectChevronClassName",
+            "shadcnSelectRootClassName",
+            "shadcnSelectTriggerClassName",
+            "shadcnSelectValueClassName",
+            "shadcnSelectContentClassName",
+            "shadcnSelectItemClassName",
             "shadcnSelectLabelClassName",
-            "shadcnSelectDescriptionClassName",
+            "shadcnSelectSeparatorClassName",
           ],
           examples: ["shadcn-select-basic"],
           anatomyCode: `import * as Select from "./ui/shadcn-select";
 
-Select.view<Message>({
-  id: "plan",
-  value: model.plan,
-  onChange: (value) => SelectedPlan({ value }),
-  options,
+Select.rootView<Message>({
+  children: [
+    Select.triggerView<Message>({
+      open: model.open,
+      onToggle: ToggledSelect(),
+      ariaLabel: "Plan",
+      children: [
+        Select.valueView<Message>({ children: ["Team"] }),
+        Select.iconView<Message>({ open: model.open }),
+      ],
+    }),
+    Select.contentView<Message>({
+      open: model.open,
+      children: [
+        Select.groupView<Message>({
+          children: [
+            Select.labelView<Message>({ children: ["Plans"] }),
+            Select.itemView<Message>({
+              selected: model.plan === "team",
+              onSelect: SelectedPlan({ value: "team" }),
+              children: ["Team"],
+            }),
+          ],
+        }),
+      ],
+    }),
+  ],
 });`,
         }),
       BaseUiSelectBasicExample: () =>
@@ -20229,6 +22189,8 @@ h.submodel({
         }),
       BaseUiSliderBasicExample: () =>
         DocsRoutes.baseUiSliderBasicExampleRouteView(model),
+      ShadcnSliderBasicExample: () =>
+        DocsRoutes.shadcnSliderBasicExampleRouteView(model),
       SliderBasicExample: () => DocsRoutes.sliderBasicExampleRouteView(model),
       SliderDisabledExample: () =>
         DocsRoutes.sliderDisabledExampleRouteView(model),
@@ -20376,7 +22338,14 @@ h.submodel({
             "shadcnTextareaClassName",
             "shadcnTextareaDescriptionClassName",
           ],
-          examples: ["shadcn-textarea-basic"],
+          examples: [
+            "shadcn-textarea-basic",
+            "shadcn-textarea-field",
+            "shadcn-textarea-disabled",
+            "shadcn-textarea-invalid",
+            "shadcn-textarea-button",
+            "shadcn-textarea-rtl",
+          ],
           anatomyCode: `import * as Textarea from "./ui/shadcn-textarea";
 
 Textarea.view<Message>({
@@ -20425,9 +22394,9 @@ Toast.view<Message>({
           source: "registry/default/ui/shadcn-toast",
           primitive: "Ui.Toast",
           description:
-            "A shadcn style-lane Toast slice that reuses the Foldkit Ui.Toast stack for typed payloads, dismissal, hover pause, duration, variants, and positioning.",
+            "A legacy shadcn Toast style-lane slice. The current upstream shadcn Toast page is deprecated in favor of Sonner, so this wrapper remains for compatibility while Sonner is the preferred shadcn toast surface.",
           usage:
-            "Install the shadcn lane wrapper when you want the typed Foldkit Toast model with shadcn naming and style hooks.",
+            "Install the shadcn lane wrapper only when you need the typed Foldkit Toast model with legacy shadcn naming and style hooks. Use Sonner for new shadcn-compatible toast rendering.",
           classHelpers: [
             "shadcnToastContainerClassName",
             "shadcnToastEntryClassName",

@@ -1,6 +1,5 @@
-import { Match as M, Schema as S } from "effect";
-import type { Command } from "foldkit";
-import { Submodel } from "foldkit";
+import { Effect, Match as M, Schema as S } from "effect";
+import { Command, Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
@@ -22,8 +21,15 @@ export type Model = typeof Model.Type;
 
 export const UpdatedUsername = m("UpdatedUsername", { value: S.String });
 export const SubmittedUsername = m("SubmittedUsername");
+export const SucceededSubmitUsername = m("SucceededSubmitUsername", {
+  error: S.optional(S.String),
+});
 
-export const Message = S.Union([UpdatedUsername, SubmittedUsername]);
+export const Message = S.Union([
+  UpdatedUsername,
+  SubmittedUsername,
+  SucceededSubmitUsername,
+]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -34,6 +40,28 @@ export const init = (): readonly [
 ] => [{ username: "admin", submitted: false, submitting: false }, []];
 
 // UPDATE
+
+export const SubmitUsername = Command.define(
+  "SubmitUsername",
+  { username: S.String },
+  SucceededSubmitUsername
+)(({ username }) =>
+  Effect.sleep("1 second").pipe(
+    Effect.as(
+      SucceededSubmitUsername({
+        error:
+          username === "admin"
+            ? "'admin' is reserved for system use"
+            : undefined,
+      })
+    ),
+    Effect.catchEager(() =>
+      Effect.succeed(
+        SucceededSubmitUsername({ error: "A server error has occurred" })
+      )
+    )
+  )
+);
 
 export const update = (
   model: Model,
@@ -52,8 +80,15 @@ export const update = (
       ],
       SubmittedUsername: () => [
         evo(model, {
-          submitted: () => true,
-          submitting: () => model.username === "admin",
+          submitted: () => false,
+          submitting: () => true,
+        }),
+        [SubmitUsername({ username: model.username })],
+      ],
+      SucceededSubmitUsername: ({ error }) => [
+        evo(model, {
+          submitted: () => error !== undefined,
+          submitting: () => false,
         }),
         [],
       ],
@@ -88,13 +123,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             onInput: (value) => UpdatedUsername({ value }),
             ariaLabel: "Username",
             placeholder: "e.g. alice132",
+            required: true,
             describedById: errorId,
             invalid,
           }),
           Form.errorView<Message>({
             id: errorId,
             show: invalid,
-            children: [h.span([], ["This username is reserved"])],
+            children: [h.span([], ["'admin' is reserved for system use"])],
           }),
         ],
       }),

@@ -6,7 +6,9 @@ import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/bas
 import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
 import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
 import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverDetachedTriggerExample from "../registry/default/examples/base-ui-popover-detached-trigger/main";
 import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
+import * as BaseUiPopoverOpenOnHoverExample from "../registry/default/examples/base-ui-popover-open-on-hover/main";
 import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
 import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
 import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
@@ -28,10 +30,17 @@ import * as BaseUiToggleGroupBasicExample from "../registry/default/examples/bas
 import * as BaseUiToolbarBasicExample from "../registry/default/examples/base-ui-toolbar-basic/main";
 import * as BaseUiTooltipBasicExample from "../registry/default/examples/base-ui-tooltip-basic/main";
 import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
+import * as NativeSelectDisabledExample from "../registry/default/examples/native-select-disabled/main";
+import * as NativeSelectGroupsExample from "../registry/default/examples/native-select-groups/main";
+import * as NativeSelectInvalidExample from "../registry/default/examples/native-select-invalid/main";
+import * as NativeSelectRtlExample from "../registry/default/examples/native-select-rtl/main";
 import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
 import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
 import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
 import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
+import * as PaginationIconsOnlyExample from "../registry/default/examples/pagination-icons-only/main";
+import * as PaginationRtlExample from "../registry/default/examples/pagination-rtl/main";
+import * as PaginationSimpleExample from "../registry/default/examples/pagination-simple/main";
 import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
 import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
 import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
@@ -40,6 +49,9 @@ import * as RadioBasicExample from "../registry/default/examples/radio-basic/mai
 import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
 import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
 import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
+import * as ResizableHandleExample from "../registry/default/examples/resizable-handle/main";
+import * as ResizableRtlExample from "../registry/default/examples/resizable-rtl/main";
+import * as ResizableVerticalExample from "../registry/default/examples/resizable-vertical/main";
 import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
 import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
 import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
@@ -50,8 +62,13 @@ import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-s
 import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
 import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
 import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
+import * as SidebarCompositionExample from "../registry/default/examples/sidebar-composition/main";
+import * as SidebarControlledExample from "../registry/default/examples/sidebar-controlled/main";
+import * as SidebarRtlExample from "../registry/default/examples/sidebar-rtl/main";
+import * as SidebarVariantsExample from "../registry/default/examples/sidebar-variants/main";
 import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
 import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
+import * as SpinnerBasicExample from "../registry/default/examples/spinner-basic/main";
 import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
 import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
 import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
@@ -87,6 +104,66 @@ export const nativeSelectBasicExamplePreview = (
     view: NativeSelectBasicExample.view,
     toParentMessage: (message) =>
       Main.GotNativeSelectBasicExampleMessage({ message }),
+  });
+};
+
+export const nativeSelectDisabledExamplePreview = (
+  model: NativeSelectDisabledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: NativeSelectDisabledExample.view,
+    toParentMessage: (message) =>
+      Main.GotNativeSelectDisabledExampleMessage({ message }),
+  });
+};
+
+export const nativeSelectGroupsExamplePreview = (
+  model: NativeSelectGroupsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: NativeSelectGroupsExample.view,
+    toParentMessage: (message) =>
+      Main.GotNativeSelectGroupsExampleMessage({ message }),
+  });
+};
+
+export const nativeSelectInvalidExamplePreview = (
+  model: NativeSelectInvalidExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: NativeSelectInvalidExample.view,
+    toParentMessage: (message) =>
+      Main.GotNativeSelectInvalidExampleMessage({ message }),
+  });
+};
+
+export const nativeSelectRtlExamplePreview = (
+  model: NativeSelectRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: NativeSelectRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotNativeSelectRtlExampleMessage({ message }),
   });
 };
 
@@ -134,6 +211,51 @@ export const paginationBasicExamplePreview = (
   });
 };
 
+export const paginationSimpleExamplePreview = (
+  model: PaginationSimpleExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: PaginationSimpleExample.view,
+    toParentMessage: (message) =>
+      Main.GotPaginationSimpleExampleMessage({ message }),
+  });
+};
+
+export const paginationIconsOnlyExamplePreview = (
+  model: PaginationIconsOnlyExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: PaginationIconsOnlyExample.view,
+    toParentMessage: (message) =>
+      Main.GotPaginationIconsOnlyExampleMessage({ message }),
+  });
+};
+
+export const paginationRtlExamplePreview = (
+  model: PaginationRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: PaginationRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotPaginationRtlExampleMessage({ message }),
+  });
+};
+
 export const resizableBasicExamplePreview = (
   model: ResizableBasicExample.Model,
   slotId: string
@@ -149,6 +271,51 @@ export const resizableBasicExamplePreview = (
   });
 };
 
+export const resizableHandleExamplePreview = (
+  model: ResizableHandleExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ResizableHandleExample.view,
+    toParentMessage: (message) =>
+      Main.GotResizableHandleExampleMessage({ message }),
+  });
+};
+
+export const resizableRtlExamplePreview = (
+  model: ResizableRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ResizableRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotResizableRtlExampleMessage({ message }),
+  });
+};
+
+export const resizableVerticalExamplePreview = (
+  model: ResizableVerticalExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: ResizableVerticalExample.view,
+    toParentMessage: (message) =>
+      Main.GotResizableVerticalExampleMessage({ message }),
+  });
+};
+
 export const sidebarBasicExamplePreview = (
   model: SidebarBasicExample.Model,
   slotId: string
@@ -161,6 +328,66 @@ export const sidebarBasicExamplePreview = (
     view: SidebarBasicExample.view,
     toParentMessage: (message) =>
       Main.GotSidebarBasicExampleMessage({ message }),
+  });
+};
+
+export const sidebarCompositionExamplePreview = (
+  model: SidebarCompositionExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SidebarCompositionExample.view,
+    toParentMessage: (message) =>
+      Main.GotSidebarCompositionExampleMessage({ message }),
+  });
+};
+
+export const sidebarControlledExamplePreview = (
+  model: SidebarControlledExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SidebarControlledExample.view,
+    toParentMessage: (message) =>
+      Main.GotSidebarControlledExampleMessage({ message }),
+  });
+};
+
+export const sidebarRtlExamplePreview = (
+  model: SidebarRtlExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SidebarRtlExample.view,
+    toParentMessage: (message) =>
+      Main.GotSidebarRtlExampleMessage({ message }),
+  });
+};
+
+export const sidebarVariantsExamplePreview = (
+  model: SidebarVariantsExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SidebarVariantsExample.view,
+    toParentMessage: (message) =>
+      Main.GotSidebarVariantsExampleMessage({ message }),
   });
 };
 
@@ -433,6 +660,21 @@ export const baseUiSliderBasicExamplePreview = (
   });
 };
 
+export const spinnerBasicExamplePreview = (
+  model: SpinnerBasicExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: SpinnerBasicExample.view,
+    toParentMessage: (message) =>
+      Main.GotSpinnerBasicExampleMessage({ message }),
+  });
+};
+
 export const sliderBasicExamplePreview = (
   model: SliderBasicExample.Model,
   slotId: string
@@ -656,6 +898,21 @@ export const baseUiPopoverAnimatedExamplePreview = (
   });
 };
 
+export const baseUiPopoverDetachedTriggerExamplePreview = (
+  model: BaseUiPopoverDetachedTriggerExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiPopoverDetachedTriggerExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiPopoverDetachedTriggerExampleMessage({ message }),
+  });
+};
+
 export const baseUiPopoverMultipleTriggersExamplePreview = (
   model: BaseUiPopoverMultipleTriggersExample.Model,
   slotId: string
@@ -668,6 +925,21 @@ export const baseUiPopoverMultipleTriggersExamplePreview = (
     view: BaseUiPopoverMultipleTriggersExample.view,
     toParentMessage: (message) =>
       Main.GotBaseUiPopoverMultipleTriggersExampleMessage({ message }),
+  });
+};
+
+export const baseUiPopoverOpenOnHoverExamplePreview = (
+  model: BaseUiPopoverOpenOnHoverExample.Model,
+  slotId: string
+): Html => {
+  const h = html<Message>();
+
+  return h.submodel({
+    slotId,
+    model,
+    view: BaseUiPopoverOpenOnHoverExample.view,
+    toParentMessage: (message) =>
+      Main.GotBaseUiPopoverOpenOnHoverExampleMessage({ message }),
   });
 };
 

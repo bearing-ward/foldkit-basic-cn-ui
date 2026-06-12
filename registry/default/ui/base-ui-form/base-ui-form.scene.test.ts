@@ -25,6 +25,9 @@ const view = (value: string, invalid = false) => {
             value,
             onInput: (nextValue) => nextValue,
             ariaLabel: "Homepage",
+            placeholder: "https://example.com",
+            required: true,
+            pattern: "https?://.*",
             describedById: "homepage-error",
             invalid,
           }),
@@ -54,6 +57,14 @@ describe("Base UI Form registry component", () => {
       Scene.expect(Scene.role("textbox", { name: "Homepage" })).toHaveAttr(
         "aria-invalid",
         "true"
+      ),
+      Scene.expect(Scene.role("textbox", { name: "Homepage" })).toHaveAttr(
+        "required",
+        ""
+      ),
+      Scene.expect(Scene.role("textbox", { name: "Homepage" })).toHaveAttr(
+        "pattern",
+        "https?://.*"
       ),
       Scene.expect(Scene.text("Use a domain other than example.com")).toExist(),
       Scene.click(Scene.role("button", { name: "Submit" })),

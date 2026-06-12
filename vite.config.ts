@@ -1,6 +1,47 @@
 import { foldkit } from "@foldkit/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
+import { fileURLToPath } from "node:url";
+
 import { defineConfig } from "vite";
+
+const legacyUiViewsEntry = fileURLToPath(
+  new URL("./src/ui/view/index.ts", import.meta.url)
+);
+
+const sourceEntry = (path: string): string =>
+  fileURLToPath(new URL(path, import.meta.url));
+
+const optimizedSourceAliases = {
+  "app-main": sourceEntry("./src/main.ts"),
+  "docs-example-routes": sourceEntry("./src/docsExampleRoutes.ts"),
+  "docs-example-previews-accordion": sourceEntry(
+    "./src/docsExamplePreviewsAccordion.ts"
+  ),
+  "docs-example-previews-alert": sourceEntry(
+    "./src/docsExamplePreviewsAlert.ts"
+  ),
+  "docs-example-previews-animation": sourceEntry(
+    "./src/docsExamplePreviewsAnimation.ts"
+  ),
+  "docs-example-previews-aspect": sourceEntry(
+    "./src/docsExamplePreviewsAspect.ts"
+  ),
+  "docs-example-previews-autocomplete": sourceEntry(
+    "./src/docsExamplePreviewsAutocomplete.ts"
+  ),
+  "docs-example-previews-avatar": sourceEntry(
+    "./src/docsExamplePreviewsAvatar.ts"
+  ),
+  "docs-example-previews-b": sourceEntry("./src/docsExamplePreviewsB.ts"),
+  "docs-example-previews-cd": sourceEntry("./src/docsExamplePreviewsCD.ts"),
+  "docs-example-previews-ei": sourceEntry("./src/docsExamplePreviewsEI.ts"),
+  "docs-example-previews-jm": sourceEntry("./src/docsExamplePreviewsJM.ts"),
+  "docs-example-previews-nz": sourceEntry("./src/docsExamplePreviewsNZ.ts"),
+  "docs-example-previews-shadcn-missing": sourceEntry(
+    "./src/docsExamplePreviewsShadcnMissing.ts"
+  ),
+  "legacy-ui-views": legacyUiViewsEntry,
+} as const;
 
 const registryExampleChunkName = (id: string): string | undefined => {
   const match = id.match(/registry\/default\/examples\/([^/]+)\//u);
@@ -101,6 +142,9 @@ const exactChunkGroup = (modulePath: string, name: string) => ({
 
 export default defineConfig({
   base: process.env.GITHUB_PAGES === "true" ? "/foldkit-basic-cn-ui/" : "/",
+  resolve: {
+    alias: optimizedSourceAliases,
+  },
   plugins: [tailwindcss(), foldkit({ devToolsMcpPort: 9988 })],
   publicDir: "apps/docs/public",
   build: {
@@ -178,5 +222,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     entries: ["src/entry.ts"],
+    include: Object.keys(optimizedSourceAliases),
   },
 });

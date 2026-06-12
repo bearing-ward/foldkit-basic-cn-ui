@@ -10,6 +10,8 @@ export {
   badgeClassName,
   badgeClassNameByVariant,
   destructiveBadgeClassName,
+  ghostBadgeClassName,
+  linkBadgeClassName,
   outlineBadgeClassName,
   secondaryBadgeClassName,
 } from "./view";

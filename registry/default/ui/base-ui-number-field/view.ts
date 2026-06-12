@@ -1,7 +1,10 @@
 export const numberFieldRootClassName = "grid max-w-sm gap-2";
 
 export const numberFieldScrubAreaClassName =
-  "w-fit cursor-ew-resize text-sm font-medium text-gray-950 select-none";
+  "inline-flex w-fit cursor-ew-resize items-center gap-1 text-sm font-medium text-gray-950 select-none";
+
+export const numberFieldScrubAreaCursorClassName =
+  "hidden text-gray-950 sm:block";
 
 export const numberFieldGroupClassName =
   "inline-flex h-10 w-fit items-center overflow-hidden rounded-md border border-gray-300 bg-white shadow-sm data-[disabled]:bg-gray-50";

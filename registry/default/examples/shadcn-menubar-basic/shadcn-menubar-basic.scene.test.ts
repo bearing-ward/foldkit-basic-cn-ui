@@ -23,6 +23,9 @@ describe("Shadcn Menubar Basic example", () => {
       Scene.expect(Scene.text("New Window")).toExist(),
       Scene.expect(Scene.text("⌘N")).toExist(),
       Scene.expect(Scene.text("New Incognito Window")).toExist(),
+      Scene.expect(Scene.text("Open File")).toExist(),
+      Scene.expect(Scene.text("Open Folder")).toExist(),
+      Scene.expect(Scene.text("More Tools >")).toExist(),
       Scene.expect(Scene.text("Share")).toExist(),
       Scene.expect(Scene.text("Print...")).toExist(),
       Scene.expect(Scene.text("⌘P")).toExist(),
@@ -50,6 +53,7 @@ describe("Shadcn Menubar Basic example", () => {
       Scene.expect(Scene.text("Luis")).toExist(),
       Scene.expect(Scene.text("Edit...")).toExist(),
       Scene.expect(Scene.text("Add Profile...")).toExist(),
+      Scene.expect(Scene.text("الملفات الشخصية")).toExist(),
       Scene.click(Scene.text("Benoit")),
       Scene.expect(Scene.role("menu")).not.toExist(),
       Scene.expect(Scene.text("Selected: Benoit")).toExist()

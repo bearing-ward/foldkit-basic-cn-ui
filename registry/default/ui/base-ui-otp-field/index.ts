@@ -129,7 +129,6 @@ export const inputView = <ParentMessage>({
     ...(name === undefined ? [] : [h.Name(name)]),
     h.Attribute("autocomplete", "one-time-code"),
     h.Attribute("inputmode", "numeric"),
-    h.Attribute("maxlength", "1"),
     h.Attribute("pattern", "[0-9]*"),
     ...(state.disabled === true ? [h.Disabled(true)] : []),
     ...(state.invalid === true ? [h.Attribute("aria-invalid", "true")] : []),

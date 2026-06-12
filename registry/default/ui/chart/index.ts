@@ -1,3 +1,4 @@
+import { Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -53,7 +54,7 @@ export type ContainerViewConfig = Readonly<{
 }>;
 
 /** Bar chart rendering props. */
-export type BarChartViewConfig = ChartDimensions &
+export type BarChartViewConfig<ParentMessage> = ChartDimensions &
   Readonly<{
     data: readonly ChartDatum[];
     series: readonly ChartSeries[];
@@ -62,6 +63,9 @@ export type BarChartViewConfig = ChartDimensions &
     axisLabelFormatter?: (label: string) => string;
     rtl?: boolean;
     className?: string;
+    activeDatumLabel?: string;
+    onHoveredDatum?: (label: string) => ParentMessage;
+    onLeftChart?: ParentMessage;
   }>;
 
 /** Static tooltip content props. Interactive hover tooltips are parent-owned. */
@@ -124,7 +128,10 @@ export const barChartView = <ParentMessage>({
   axisLabelFormatter = (label) => label,
   rtl = false,
   className,
-}: BarChartViewConfig): Html => {
+  activeDatumLabel,
+  onHoveredDatum,
+  onLeftChart,
+}: BarChartViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
   const plotWidth = width - padding * 2;
   const plotHeight = height - padding * 2;
@@ -169,6 +176,7 @@ export const barChartView = <ParentMessage>({
         series.map((item, seriesIndex) => {
           const value = datum.values[item.key] ?? 0;
           const barHeight = (value / maximum) * plotHeight;
+          const isActive = datum.label === activeDatumLabel;
           const x =
             padding +
             datumIndex * groupWidth +
@@ -186,12 +194,37 @@ export const barChartView = <ParentMessage>({
               h.Attribute("fill", item.color),
               h.Attribute("data-series", item.key),
               h.Attribute("data-value", String(value)),
-              h.Class(chartBarClassName),
+              h.Class(
+                [
+                  chartBarClassName,
+                  isActive ? "opacity-100" : "opacity-85",
+                ].join(" ")
+              ),
             ],
             []
           );
         })
       ),
+      ...(onHoveredDatum === undefined
+        ? []
+        : orderedData.map((datum, datumIndex) =>
+            h.rect(
+              [
+                h.Attribute("x", String(padding + datumIndex * groupWidth)),
+                h.Attribute("y", String(padding)),
+                h.Attribute("width", String(groupWidth)),
+                h.Attribute("height", String(plotHeight)),
+                h.Attribute("fill", "transparent"),
+                h.Attribute("data-slot", "chart-hover-target"),
+                h.Attribute("data-label", datum.label),
+                h.OnPointerMove(() => Option.some(onHoveredDatum(datum.label))),
+                ...(onLeftChart === undefined
+                  ? []
+                  : [h.OnPointerLeave(() => Option.some(onLeftChart))]),
+              ],
+              []
+            )
+          )),
       ...(showAxis
         ? orderedData.map((datum, datumIndex) =>
             h.text(

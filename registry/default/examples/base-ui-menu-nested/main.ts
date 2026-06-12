@@ -158,7 +158,8 @@ const submenuView = (open: boolean): Html => {
   return h.div(
     [
       h.Attribute("role", "menu"),
-      h.Class(`${Menu.baseUiMenuPopupClassName} left-full top-8 -ml-1 mt-0`),
+      h.DataAttribute("testid", "playlist-submenu"),
+      h.Class(`${Menu.baseUiMenuPopupClassName} left-48 top-8 -ml-1 mt-0`),
     ],
     [
       menuItemView("Get Up!"),

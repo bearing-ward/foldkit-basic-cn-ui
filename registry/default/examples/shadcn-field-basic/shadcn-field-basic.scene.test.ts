@@ -33,6 +33,29 @@ describe("Shadcn Field Basic example", () => {
       ).toExist(),
       Scene.expect(Scene.text("Same as shipping address")).toExist(),
       Scene.expect(Scene.role("textbox", { name: "Comments" })).toExist(),
+      Scene.expect(Scene.text("Additional Field Examples")).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "Input" })).toHaveAttr(
+        "value",
+        "m@example.com"
+      ),
+      Scene.expect(Scene.role("textbox", { name: "Textarea" })).toHaveValue(
+        "Tell us about your project."
+      ),
+      Scene.expect(Scene.role("combobox", { name: "Select" })).toExist(),
+      Scene.expect(Scene.role("slider", { name: "Slider" })).toHaveAttr(
+        "aria-valuenow",
+        "50"
+      ),
+      Scene.expect(Scene.text("Fieldset")).toExist(),
+      Scene.expect(Scene.text("Checkbox")).toExist(),
+      Scene.expect(Scene.text("Radio")).toExist(),
+      Scene.expect(Scene.text("Switch")).toExist(),
+      Scene.expect(Scene.text("Choice Card")).toExist(),
+      Scene.expect(Scene.text("Field Group")).toExist(),
+      Scene.expect(Scene.text("Responsive")).toExist(),
+      Scene.expect(Scene.text("Enter a valid email address.")).toExist(),
+      Scene.expect(Scene.role("textbox", { name: "البريد الإلكتروني" }))
+        .toHaveAttr("value", "user@example.com"),
       Scene.expect(Scene.role("button", { name: "Submit" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Cancel" })).toExist()
     );

@@ -30,4 +30,31 @@ describe("Base UI Toggle Group Basic example", () => {
       )
     );
   });
+
+  test("moves roving focus with arrow keys", () => {
+    Scene.scene(
+      {
+        update: ToggleGroupBasicExample.update,
+        view: ToggleGroupBasicExample.view,
+      },
+      Scene.with(ToggleGroupBasicExample.init()[0]),
+      Scene.expect(Scene.role("button", { name: "Align left" })).toHaveAttr(
+        "tabindex",
+        "0"
+      ),
+      Scene.keydown(Scene.role("button", { name: "Align left" }), "ArrowRight"),
+      Scene.Command.resolve(
+        ToggleGroupBasicExample.FocusAlignmentButton({ value: "center" }),
+        ToggleGroupBasicExample.FocusedAlignment({ value: "center" })
+      ),
+      Scene.expect(Scene.role("button", { name: "Align center" })).toHaveAttr(
+        "tabindex",
+        "0"
+      ),
+      Scene.expect(Scene.role("button", { name: "Align left" })).toHaveAttr(
+        "tabindex",
+        "-1"
+      )
+    );
+  });
 });

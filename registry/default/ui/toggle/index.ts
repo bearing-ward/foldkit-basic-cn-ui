@@ -1,3 +1,4 @@
+import type { Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -13,6 +14,9 @@ export type ViewConfig<ParentMessage> = Readonly<{
   ariaLabel: string;
   children: readonly Html[];
   value?: string | undefined;
+  id?: string | undefined;
+  tabIndex?: number | undefined;
+  onKeyDown?: ((key: string) => Option.Option<ParentMessage>) | undefined;
   disabled?: boolean | undefined;
   className?: string | undefined;
   style?: ToggleStyle | undefined;
@@ -37,6 +41,9 @@ export const view = <ParentMessage>({
   ariaLabel,
   children,
   value,
+  id,
+  tabIndex,
+  onKeyDown,
   disabled = false,
   className,
   style,
@@ -46,9 +53,16 @@ export const view = <ParentMessage>({
   return h.button(
     [
       h.Type("button"),
+      ...(id === undefined ? [] : [h.Id(id)]),
       h.AriaLabel(ariaLabel),
       ...pressedAttributes(h, pressed),
       ...(value === undefined ? [] : [h.Value(value)]),
+      ...(tabIndex === undefined
+        ? []
+        : [h.Attribute("tabindex", String(tabIndex))]),
+      ...(onKeyDown === undefined
+        ? []
+        : [h.OnKeyDownPreventDefault((key) => onKeyDown(key))]),
       ...(disabled ? [h.Disabled(true)] : [h.OnClick(onPressedChange)]),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.Class(classNames(toggleRootClassName, className)),

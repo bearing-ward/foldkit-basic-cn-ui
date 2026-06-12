@@ -17,6 +17,28 @@ const view = (show: boolean): Html =>
       : [],
   });
 
+const flavorView = (): Html =>
+  Sonner.viewportView<string>({
+    children: [
+      Sonner.toastView<string>({
+        title: "Success toast",
+        variant: "success",
+      }),
+      Sonner.toastView<string>({
+        title: "Info toast",
+        variant: "info",
+      }),
+      Sonner.toastView<string>({
+        title: "Warning toast",
+        variant: "warning",
+      }),
+      Sonner.toastView<string>({
+        title: "Error toast",
+        variant: "error",
+      }),
+    ],
+  });
+
 describe("Sonner registry view", () => {
   test("renders an aria-live toast stack", () => {
     Scene.scene(
@@ -28,6 +50,32 @@ describe("Sonner registry view", () => {
       Scene.expect(Scene.text("Event has been created")).toExist(),
       Scene.expect(Scene.role("status")).toExist(),
       Scene.expect(Scene.role("button", { name: "Dismiss toast" })).toExist()
+    );
+  });
+
+  test("renders status icons for every flavored toast", () => {
+    Scene.scene(
+      {
+        update: (model: undefined): readonly [undefined, []] => [model, []],
+        view: flavorView,
+      },
+      Scene.with(undefined),
+      Scene.expect(Scene.role("img", { name: "Success icon" })).toHaveAttr(
+        "data-slot",
+        "sonner-icon"
+      ),
+      Scene.expect(Scene.role("img", { name: "Info icon" })).toHaveAttr(
+        "data-slot",
+        "sonner-icon"
+      ),
+      Scene.expect(Scene.role("img", { name: "Warning icon" })).toHaveAttr(
+        "data-slot",
+        "sonner-icon"
+      ),
+      Scene.expect(Scene.role("img", { name: "Error icon" })).toHaveAttr(
+        "data-slot",
+        "sonner-icon"
+      )
     );
   });
 });

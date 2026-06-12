@@ -11,7 +11,6 @@ import * as Toast from "../../ui/shadcn-toast";
 
 export const Model = S.Struct({
   toast: Toast.Model,
-  status: S.String,
 });
 export type Model = typeof Model.Type;
 
@@ -33,7 +32,6 @@ export const init = (): readonly [
 ] => [
   {
     toast: Toast.init({ id: "toast-basic" }),
-    status: "No toast shown yet.",
   },
   [],
 ];
@@ -46,11 +44,11 @@ const updateToast = (
   commands: readonly Command.Command<Toast.Message>[],
   maybeOutMessage: Option.Option<Toast.OutMessage>
 ): readonly [Model, readonly Command.Command<Message>[]] => {
-  const status = Option.match(maybeOutMessage, {
-    onNone: () => model.status,
+  Option.match(maybeOutMessage, {
+    onNone: () => undefined,
     onSome: M.type<Toast.OutMessage>().pipe(
       M.tagsExhaustive({
-        DismissedToast: ({ payload }) => `Dismissed ${payload.title}.`,
+        DismissedToast: () => undefined,
       })
     ),
   });
@@ -58,7 +56,6 @@ const updateToast = (
   return [
     evo(model, {
       toast: () => toast,
-      status: () => status,
     }),
     Command.mapMessages(commands, (message) => GotToastMessage({ message })),
   ];
@@ -73,20 +70,15 @@ export const update = (
     M.tagsExhaustive({
       ClickedShowToast: () => {
         const [toast, commands, maybeOutMessage] = Toast.show(model.toast, {
-          variant: "Success",
+          variant: "Info",
           sticky: true,
           payload: {
-            title: "Saved",
-            maybeDescription: Option.some("Your profile changes are live."),
+            title: "Scheduled: Catch up",
+            maybeDescription: Option.some("Friday, February 10, 2023 at 5:57 PM"),
           },
         });
 
-        return updateToast(
-          evo(model, { status: () => "Toast is visible." }),
-          toast,
-          commands,
-          maybeOutMessage
-        );
+        return updateToast(model, toast, commands, maybeOutMessage);
       },
       GotToastMessage: ({ message }) => {
         const [toast, commands, maybeOutMessage] = Toast.update(
@@ -117,7 +109,6 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ],
         ["Show toast"]
       ),
-      h.p([h.Class("text-sm text-gray-700")], [model.status]),
       h.submodel({
         slotId: model.toast.id,
         model: model.toast,

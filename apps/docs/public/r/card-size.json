@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-size",
+  "type": "registry:example",
+  "title": "Card Size",
+  "description": "A runnable Foldkit example showing the shadcn Card Size composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-card"],
+  "files": [
+    {
+      "path": "registry/default/examples/card-size/main.ts",
+      "target": "src/examples/card-size/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Card from \"../../ui/card\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return Card.view<Message>(\n    [\n      Card.headerView<Message>(\n        [\n          h.div(\n            [h.Class(\"space-y-1\")],\n            [\n              Card.titleView<Message>(\"Small Card\"),\n              Card.descriptionView<Message>(\n                \"This card uses the small size variant.\"\n              ),\n            ]\n          ),\n        ],\n        \"border-b border-gray-200\"\n      ),\n      Card.contentView<Message>(\n        [\n          h.p(\n            [h.Class(\"text-sm text-gray-600\")],\n            [\n              'The card component supports a size prop that can be set to \"sm\" for a more compact appearance.',\n            ]\n          ),\n        ]\n      ),\n      Card.footerView<Message>(\n        [\n          h.button(\n            [\n              h.Type(\"button\"),\n              h.Class(\n                \"inline-flex h-8 items-center justify-center rounded-md bg-black px-3 text-sm font-medium text-white\"\n              ),\n            ],\n            [\"Action\"]\n          ),\n        ]\n      ),\n    ],\n    \"w-full max-w-sm\",\n    \"Small\"\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/card-size/card-size.scene.test.ts",
+      "target": "src/examples/card-size/card-size.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Card Size example\", () => {\n  test(\"renders the origin small card content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Small Card\")).toExist(),\n      Scene.expect(\n        Scene.text(\"This card uses the small size variant.\")\n      ).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Action\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Action\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Card",
+      "example": "size",
+      "origin": "https://ui.shadcn.com/docs/components/radix/card"
+    }
+  }
+}

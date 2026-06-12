@@ -4,6 +4,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
+import { evo } from "foldkit/struct";
 
 import * as Chart from "../../ui/chart";
 
@@ -23,12 +24,33 @@ const chartSeries: readonly Chart.ChartSeries[] = [
 
 // MODEL
 
-export const Model = S.Struct({});
+export const NoActiveTooltip = S.TaggedStruct("NoActiveTooltip", {});
+export const ActiveTooltip = S.TaggedStruct("ActiveTooltip", {
+  label: S.String,
+});
+export const TooltipState = S.Union([NoActiveTooltip, ActiveTooltip]);
+export type TooltipState = typeof TooltipState.Type;
+
+export const Model = S.Struct({
+  tooltip: TooltipState,
+});
 export type Model = typeof Model.Type;
+
+export const noActiveTooltip = (): TooltipState => ({
+  _tag: "NoActiveTooltip",
+});
+
+export const activeTooltip = (label: string): TooltipState => ({
+  _tag: "ActiveTooltip",
+  label,
+});
 
 // MESSAGE
 
-export const Message = m("Message");
+export const HoveredChartDatum = m("HoveredChartDatum", { label: S.String });
+export const LeftChart = m("LeftChart");
+
+export const Message = S.Union([HoveredChartDatum, LeftChart]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -36,7 +58,7 @@ export type Message = typeof Message.Type;
 export const init = (): readonly [
   Model,
   readonly Command.Command<Message>[],
-] => [{}, []];
+] => [{ tooltip: noActiveTooltip() }, []];
 
 // UPDATE
 
@@ -47,20 +69,39 @@ export const update = (
   M.value(message).pipe(
     M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),
     M.tagsExhaustive({
-      Message: () => [model, []],
+      HoveredChartDatum: ({ label }) => [
+        evo(model, { tooltip: () => activeTooltip(label) }),
+        [],
+      ],
+      LeftChart: () => [evo(model, { tooltip: () => noActiveTooltip() }), []],
     })
   );
 
 // VIEW
 
-export const view = Submodel.defineView<Model, Message>((): Html => {
+const activeDatum = (label: string): Chart.ChartDatum =>
+  chartData.find((datum) => datum.label === label) ?? {
+    label: "February",
+    values: { desktop: 305, mobile: 200 },
+  };
+
+const activeIndex = (label: string): number =>
+  Math.max(
+    0,
+    chartData.findIndex((datum) => datum.label === label)
+  );
+
+const tooltipLeftPercent = (label: string): string =>
+  `${10 + activeIndex(label) * 15}%`;
+
+export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
     [h.Class("w-full")],
     [
       h.div(
-        [h.Class("grid w-full gap-4 md:grid-cols-[1fr_auto]")],
+        [h.Class("relative w-full")],
         [
           Chart.containerView<Message>({
             ariaLabel: "Monthly visitors with tooltip",
@@ -69,16 +110,52 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
                 data: chartData,
                 series: chartSeries,
                 axisLabelFormatter: (label) => label.slice(0, 3),
+                ...(model.tooltip._tag === "ActiveTooltip"
+                  ? { activeDatumLabel: model.tooltip.label }
+                  : {}),
+                onHoveredDatum: (label) => HoveredChartDatum({ label }),
+                onLeftChart: LeftChart(),
               }),
             ],
           }),
-          Chart.tooltipView<Message>({
-            label: "February",
-            rows: [
-              { label: "Desktop", value: "305", color: "#2563eb" },
-              { label: "Mobile", value: "200", color: "#60a5fa" },
-            ],
-          }),
+          M.value(model.tooltip).pipe(
+            M.tagsExhaustive({
+              NoActiveTooltip: () => h.empty,
+              ActiveTooltip: ({ label }) => {
+                const datum = activeDatum(label);
+
+                return h.div(
+                  [
+                    h.Class(
+                      "pointer-events-none absolute top-4 z-10 transition-[left] duration-150"
+                    ),
+                    h.Style({
+                      left: tooltipLeftPercent(label),
+                      transform: "translateX(-50%)",
+                    }),
+                  ],
+                  [
+                    Chart.tooltipView<Message>({
+                      label: datum.label,
+                      className: "shadow-lg",
+                      rows: [
+                        {
+                          label: "Desktop",
+                          value: String(datum.values.desktop),
+                          color: "#2563eb",
+                        },
+                        {
+                          label: "Mobile",
+                          value: String(datum.values.mobile),
+                          color: "#60a5fa",
+                        },
+                      ],
+                    }),
+                  ]
+                );
+              },
+            })
+          ),
         ]
       ),
     ]

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-destructive",
+  "type": "registry:example",
+  "title": "Dropdown Menu Destructive",
+  "description": "A runnable Foldkit example showing dropdown menu destructive item styling.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/dropdown-menu"],
+  "files": [
+    {
+      "path": "registry/default/examples/dropdown-menu-destructive/main.ts",
+      "target": "src/examples/dropdown-menu-destructive/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as DropdownMenu from \"../../ui/dropdown-menu\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  selected: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ToggledDropdownMenu = m(\"ToggledDropdownMenu\");\nexport const ClosedDropdownMenu = m(\"ClosedDropdownMenu\");\nexport const SelectedDropdownMenuItem = m(\"SelectedDropdownMenuItem\", {\n  value: S.String,\n});\nexport const Message = S.Union([\n  ToggledDropdownMenu,\n  ClosedDropdownMenu,\n  SelectedDropdownMenuItem,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: true, selected: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledDropdownMenu: () => [evo(model, { open: (open) => !open }), []],\n      ClosedDropdownMenu: () => [evo(model, { open: () => false }), []],\n      SelectedDropdownMenuItem: ({ value }) => [\n        evo(model, { open: () => false, selected: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return DropdownMenu.rootView<Message>({\n    children: [\n      DropdownMenu.triggerView<Message>({\n        open: model.open,\n        onToggle: ToggledDropdownMenu(),\n        children: [h.span([], [\"Open destructive\"])],\n      }),\n      DropdownMenu.portalView<Message>({\n        open: model.open,\n        children: [\n          DropdownMenu.backdropView<Message>({ onClose: ClosedDropdownMenu() }),\n          DropdownMenu.positionerView<Message>({\n            children: [\n              DropdownMenu.popupView<Message>({\n                children: [\n                  DropdownMenu.itemView<Message>({\n                    onSelect: SelectedDropdownMenuItem({ value: \"Edit\" }),\n                    children: [h.span([], [\"Edit\"])],\n                  }),\n                  DropdownMenu.separatorView<Message>({}),\n                  DropdownMenu.itemView<Message>({\n                    destructive: true,\n                    onSelect: SelectedDropdownMenuItem({ value: \"Delete\" }),\n                    children: [h.span([], [\"Delete\"])],\n                  }),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n      model.selected === \"\"\n        ? h.empty\n        : h.p([h.Class(\"mt-3 text-sm text-gray-600\")], [\n            `Selected: ${model.selected}`,\n          ]),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/dropdown-menu-destructive/dropdown-menu-destructive.scene.test.ts",
+      "target": "src/examples/dropdown-menu-destructive/dropdown-menu-destructive.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as DropdownMenuDestructiveExample from \"./main\";\n\ndescribe(\"Dropdown Menu Destructive example\", () => {\n  test(\"marks destructive items\", () => {\n    Scene.scene(\n      {\n        update: DropdownMenuDestructiveExample.update,\n        view: DropdownMenuDestructiveExample.view,\n      },\n      Scene.with(DropdownMenuDestructiveExample.init()[0]),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Delete\" })).toHaveAttr(\n        \"data-variant\",\n        \"destructive\"\n      ),\n      Scene.click(Scene.role(\"menuitem\", { name: \"Delete\" })),\n      Scene.expect(Scene.text(\"Selected: Delete\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "DropdownMenu",
+      "example": "destructive",
+      "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+    }
+  }
+}

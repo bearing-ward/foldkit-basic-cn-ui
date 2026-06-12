@@ -74,9 +74,10 @@ const itemChildren = (
     h.span(inset ? [h.Class("pl-5")] : [], [label]),
     shortcut === undefined
       ? h.empty
-      : h.span([h.Class("ml-auto pl-6 text-xs tracking-widest text-gray-500")], [
-          shortcut,
-        ]),
+      : h.span(
+          [h.Class("ml-auto pl-6 text-xs tracking-widest text-gray-500")],
+          [shortcut]
+        ),
   ];
 };
 
@@ -91,6 +92,30 @@ const itemView = (
     disabled,
     onSelect: disabled ? undefined : SelectedMenubarItem({ value: label }),
     children: itemChildren(label, shortcut, inset),
+  });
+};
+
+const checkedItemView = (label: string, checked: boolean): Html => {
+  const h = html<Message>();
+
+  return Menubar.itemView<Message>({
+    onSelect: SelectedMenubarItem({ value: label }),
+    children: [
+      h.span([h.Class("w-4 text-center")], [checked ? "✓" : ""]),
+      h.span([], [label]),
+    ],
+  });
+};
+
+const iconItemView = (label: string, icon: string): Html => {
+  const h = html<Message>();
+
+  return Menubar.itemView<Message>({
+    onSelect: SelectedMenubarItem({ value: label }),
+    children: [
+      h.span([h.AriaHidden(true), h.Class("w-4 text-gray-500")], [icon]),
+      h.span([], [label]),
+    ],
   });
 };
 
@@ -113,6 +138,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               itemView("New Tab", "⌘T"),
               itemView("New Window", "⌘N"),
               itemView("New Incognito Window", undefined, { disabled: true }),
+              Menubar.separatorView<Message>({}),
+              iconItemView("Open File", "□"),
+              iconItemView("Open Folder", "▣"),
+              itemView("More Tools >"),
               Menubar.separatorView<Message>({}),
               itemView("Share"),
               Menubar.separatorView<Message>({}),
@@ -153,8 +182,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           Menubar.popupView<Message>({
             open: isOpen("View"),
             children: [
-              itemView("Always Show Bookmarks Bar"),
-              itemView("Always Show Full URLs"),
+              checkedItemView("Always Show Bookmarks Bar", true),
+              checkedItemView("Always Show Full URLs", false),
               Menubar.separatorView<Message>({}),
               itemView("Reload", "⌘R", { inset: true }),
               itemView("Force Reload", "⇧⌘R", {
@@ -179,13 +208,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           Menubar.popupView<Message>({
             open: isOpen("Profiles"),
             children: [
-              itemView("Andy"),
-              itemView("Benoit"),
-              itemView("Luis"),
+              checkedItemView("Andy", false),
+              checkedItemView("Benoit", true),
+              checkedItemView("Luis", false),
               Menubar.separatorView<Message>({}),
               itemView("Edit...", undefined, { inset: true }),
               Menubar.separatorView<Message>({}),
               itemView("Add Profile...", undefined, { inset: true }),
+              h.div(
+                [h.Dir("rtl"), h.Class("px-2 py-1.5 text-sm")],
+                ["الملفات الشخصية"]
+              ),
             ],
           }),
         ],

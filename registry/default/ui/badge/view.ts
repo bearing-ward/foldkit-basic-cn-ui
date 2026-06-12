@@ -1,4 +1,10 @@
-export type BadgeVariant = "Default" | "Secondary" | "Destructive" | "Outline";
+export type BadgeVariant =
+  | "Default"
+  | "Secondary"
+  | "Destructive"
+  | "Outline"
+  | "Ghost"
+  | "Link";
 
 export const badgeClassName =
   "inline-flex items-center rounded-md bg-accent-600 px-2 py-1 text-xs font-medium text-white";
@@ -11,6 +17,12 @@ export const destructiveBadgeClassName =
 
 export const outlineBadgeClassName =
   "inline-flex items-center rounded-md border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700";
+
+export const ghostBadgeClassName =
+  "inline-flex items-center rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700";
+
+export const linkBadgeClassName =
+  "inline-flex items-center rounded-md bg-transparent px-0 py-1 text-xs font-medium text-accent-700 underline-offset-4 hover:underline";
 
 export const badgeClassNameByVariant = (
   variant: BadgeVariant = "Default"
@@ -25,6 +37,14 @@ export const badgeClassNameByVariant = (
 
   if (variant === "Outline") {
     return outlineBadgeClassName;
+  }
+
+  if (variant === "Ghost") {
+    return ghostBadgeClassName;
+  }
+
+  if (variant === "Link") {
+    return linkBadgeClassName;
   }
 
   return badgeClassName;

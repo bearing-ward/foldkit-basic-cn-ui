@@ -13,6 +13,15 @@ export const inputGroupControlClassName =
 export const inputGroupTextClassName =
   "flex items-center gap-2 text-sm text-gray-500";
 
+export const inputGroupButtonClassName =
+  "inline-flex h-7 shrink-0 items-center justify-center gap-1 rounded-md px-2 text-xs font-medium text-gray-700 transition hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 disabled:pointer-events-none disabled:opacity-50";
+
+export const inputGroupIconButtonClassName =
+  "inline-flex size-7 shrink-0 items-center justify-center rounded-md text-gray-600 transition hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 disabled:pointer-events-none disabled:opacity-50";
+
+export const inputGroupTextareaClassName =
+  "min-h-24 min-w-0 flex-1 resize-none rounded-none border-0 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-gray-400 focus:ring-0";
+
 export const inputGroupAddonClassNameByAlign = (
   align: InputGroupAddonAlign = "InlineStart"
 ): string => {

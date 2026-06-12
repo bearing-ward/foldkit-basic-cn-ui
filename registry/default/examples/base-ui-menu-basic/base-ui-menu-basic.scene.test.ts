@@ -43,6 +43,14 @@ describe("menu-basic example", () => {
       resolveMenuMounts(),
       Scene.expect(Scene.text("Add to Library")).toExist(),
       Scene.expect(Scene.text("Add to Playlist")).toExist(),
+      Scene.expect(Scene.text("Library")).toExist(),
+      Scene.expect(Scene.text("Preferences")).toExist(),
+      Scene.expect(Scene.text("Sort")).toExist(),
+      Scene.expect(Scene.text("Playback")).toExist(),
+      Scene.expect(Scene.text("Show Lyrics")).toExist(),
+      Scene.expect(Scene.text("Repeat One")).toExist(),
+      Scene.expect(Scene.text("Sort by Recently Added")).toExist(),
+      Scene.expect(Scene.text("Sort by Title")).toExist(),
       Scene.expect(Scene.text("Play Next")).toExist(),
       Scene.expect(Scene.text("Play Last")).toExist(),
       Scene.expect(Scene.text("Favorite")).toExist(),
@@ -56,6 +64,32 @@ describe("menu-basic example", () => {
       ),
       Scene.Mount.expectEnded(Menu.PortalMenuBackdrop, AnchorMenu),
       Scene.expect(Scene.text("Add to Library")).not.toExist()
+    );
+  });
+
+  test("keeps grouped origin-like anatomy selectable through the menu primitive", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(initialModel),
+      Scene.click(Scene.role("button", { name: "Song" })),
+      Scene.Command.resolve(FocusItems, Menu.CompletedFocusItems(), (message) =>
+        GotMenuMessage({ message })
+      ),
+      resolveMenuMounts(),
+      Scene.expect(Scene.role("group", { name: "Library" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Preferences" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Sort" })).toExist(),
+      Scene.expect(Scene.role("group", { name: "Playback" })).toExist(),
+      Scene.expect(Scene.role("separator")).toExist(),
+      Scene.click(Scene.role("menuitem", { name: "Sort by Recently Added" })),
+      Scene.Command.expectHas(FocusButton),
+      Scene.Command.resolve(
+        FocusButton,
+        Menu.CompletedFocusButton(),
+        (message) => GotMenuMessage({ message })
+      ),
+      Scene.Mount.expectEnded(Menu.PortalMenuBackdrop, AnchorMenu),
+      Scene.expect(Scene.text("Sort by Recently Added")).not.toExist()
     );
   });
 });

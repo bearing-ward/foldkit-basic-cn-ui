@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-button",
+  "type": "registry:example",
+  "title": "Input Group Button",
+  "description": "A runnable Foldkit version of the upstream shadcn Input Group button example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/input-group"],
+  "files": [
+    {
+      "path": "registry/default/examples/input-group-button/main.ts",
+      "target": "src/examples/input-group-button/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as InputGroup from \"../../ui/input-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst buttonClassName =\n  \"inline-flex h-7 items-center rounded-md bg-gray-950 px-2 text-xs font-medium text-white\";\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return InputGroup.view<Message>({\n    className: \"w-full max-w-sm\",\n    children: [\n      InputGroup.inputView<Message>({\n        ariaLabel: \"Email\",\n        placeholder: \"Email\",\n      }),\n      InputGroup.addonView<Message>({\n        align: \"InlineEnd\",\n        children: [\n          h.button([h.Type(\"button\"), h.Class(buttonClassName)], [\"Send\"]),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/input-group-button/input-group-button.scene.test.ts",
+      "target": "src/examples/input-group-button/input-group-button.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as InputGroupButtonExample from \"./main\";\n\ndescribe(\"Input Group Button example\", () => {\n  test(\"renders button addon\", () => {\n    Scene.scene(\n      { update: InputGroupButtonExample.update, view: InputGroupButtonExample.view },\n      Scene.with(InputGroupButtonExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Send\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "InputGroup",
+      "example": "button",
+      "originExample": "input-group-button",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+    }
+  }
+}

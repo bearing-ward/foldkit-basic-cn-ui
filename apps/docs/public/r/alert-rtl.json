@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-rtl",
+  "type": "registry:example",
+  "title": "Alert RTL",
+  "description": "A runnable Foldkit version of the shadcn Alert RTL example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-alert"],
+  "files": [
+    {
+      "path": "registry/default/examples/alert-rtl/main.ts",
+      "target": "src/examples/alert-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Alert from \"../../ui/alert\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Attribute(\"dir\", \"rtl\"), h.Class(\"grid gap-3 text-right\")],\n    [\n      Alert.view<Message>({\n        title: \"تم الدفع بنجاح\",\n        description:\n          \"تمت معالجة دفعتك البالغة 29.99 دولارًا. تم إرسال إيصال إلى عنوان بريدك الإلكتروني.\",\n        icon: \"✓\",\n      }),\n      Alert.view<Message>({\n        title: \"ميزة جديدة متاحة\",\n        description:\n          \"لقد أضفنا دعم الوضع الداكن. يمكنك تفعيله في إعدادات حسابك.\",\n        icon: \"i\",\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/alert-rtl/entry.ts",
+      "target": "src/examples/alert-rtl/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Alert RTL\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/default/examples/alert-rtl/index.html",
+      "target": "src/examples/alert-rtl/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Alert RTL</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/default/examples/alert-rtl/alert-rtl.scene.test.ts",
+      "target": "src/examples/alert-rtl/alert-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"alert-rtl example\", () => {\n  test(\"renders the shadcn RTL alert copy\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.expect(Scene.text(\"تم الدفع بنجاح\")).toExist(),\n      Scene.expect(\n        Scene.text(\n          \"تمت معالجة دفعتك البالغة 29.99 دولارًا. تم إرسال إيصال إلى عنوان بريدك الإلكتروني.\"\n        )\n      ).toExist(),\n      Scene.expect(Scene.text(\"ميزة جديدة متاحة\")).toExist(),\n      Scene.expect(\n        Scene.text(\"لقد أضفنا دعم الوضع الداكن. يمكنك تفعيله في إعدادات حسابك.\")\n      ).toExist(),\n      Scene.expect(Scene.text(\"تم الدفع بنجاح\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Alert",
+      "example": "rtl",
+      "originExample": "alert-rtl",
+      "origin": "https://ui.shadcn.com/docs/components/radix/alert"
+    }
+  }
+}

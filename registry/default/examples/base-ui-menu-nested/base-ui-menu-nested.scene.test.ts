@@ -19,6 +19,7 @@ describe("Base UI Menu Nested example", () => {
       Scene.expect(
         Scene.role("menuitem", { name: "Add to Playlist" })
       ).toHaveAttr("aria-expanded", "true"),
+      Scene.expect(Scene.testId("playlist-submenu")).toHaveClass("left-48"),
       Scene.expect(Scene.text("Get Up!")).toExist(),
       Scene.expect(Scene.text("Inside Out")).toExist(),
       Scene.expect(Scene.text("Nightcall")).toExist(),

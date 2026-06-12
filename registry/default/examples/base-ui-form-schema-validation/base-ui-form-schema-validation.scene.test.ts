@@ -13,6 +13,8 @@ describe("Base UI Form Schema Validation example", () => {
       Scene.with(FormSchemaValidationExample.init()[0]),
       Scene.expect(Scene.role("textbox", { name: "Name" })).toHaveValue(""),
       Scene.expect(Scene.role("textbox", { name: "Age" })).toHaveValue(""),
+      Scene.expect(Scene.placeholder("Enter name")).toExist(),
+      Scene.expect(Scene.placeholder("Enter age")).toExist(),
       Scene.click(Scene.role("button", { name: "Submit" })),
       Scene.expect(Scene.text("Name is required")).toExist(),
       Scene.expect(Scene.text("Age must be a number")).toExist(),

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar-variants",
+  "type": "registry:example",
+  "title": "Sidebar Variants",
+  "description": "A runnable Foldkit example showing shadcn Sidebar side, variant, and collapsible design states.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/sidebar"],
+  "files": [
+    {
+      "path": "registry/default/examples/sidebar-variants/main.ts",
+      "target": "src/examples/sidebar-variants/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Sidebar from \"../../ui/sidebar\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\ntype UpdateReturn = readonly [Model, readonly Command.Command<Message>[]];\n\nexport const init = (): UpdateReturn => [{}, []];\n\n// UPDATE\n\nexport const update = (model: Model, _message: Message): UpdateReturn => [\n  model,\n  [],\n];\n\n// VIEW\n\nconst variantCard = (\n  h: ReturnType<typeof html<Message>>,\n  label: string,\n  state: Sidebar.SidebarState,\n  side: Sidebar.SidebarSide,\n  variant: Sidebar.SidebarVariant,\n  collapsible: Sidebar.SidebarCollapsible\n): Html =>\n  h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.p([h.Class(\"text-sm font-medium text-gray-700\")], [label]),\n      Sidebar.providerView<Message>({\n        className: \"min-h-48\",\n        children: [\n          Sidebar.sidebarView<Message>({\n            state,\n            side,\n            variant,\n            collapsible,\n            children: [\n              Sidebar.headerView<Message>({\n                children: [h.span([h.Class(Sidebar.sidebarIconClassName)], [\"S\"])],\n              }),\n              Sidebar.contentView<Message>({\n                children: [\n                  Sidebar.groupView<Message>({\n                    children: [\n                      Sidebar.groupLabelView<Message>(\"Workspace\", state),\n                      Sidebar.groupContentView<Message>({\n                        children: [\n                          Sidebar.menuView<Message>({\n                            children: [\n                              Sidebar.menuItemView<Message>({\n                                children: [\n                                  Sidebar.menuButtonView<Message>({\n                                    item: {\n                                      label,\n                                      icon: label.slice(0, 1),\n                                      active: true,\n                                    },\n                                    state,\n                                  }),\n                                ],\n                              }),\n                            ],\n                          }),\n                        ],\n                      }),\n                    ],\n                  }),\n                ],\n              }),\n            ],\n          }),\n          Sidebar.insetView<Message>({\n            className: \"p-4\",\n            children: [\n              h.p([h.Class(\"text-sm text-gray-600\")], [\n                `${side} ${variant} ${collapsible}`,\n              ]),\n            ],\n          }),\n        ],\n      }),\n    ]\n  );\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"grid gap-4 lg:grid-cols-3\")],\n    [\n      variantCard(h, \"Icon\", \"collapsed\", \"left\", \"sidebar\", \"icon\"),\n      variantCard(h, \"Floating\", \"expanded\", \"left\", \"floating\", \"offcanvas\"),\n      variantCard(h, \"Right inset\", \"expanded\", \"right\", \"inset\", \"none\"),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/default/examples/sidebar-variants/sidebar-variants.scene.test.ts",
+      "target": "src/examples/sidebar-variants/sidebar-variants.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Sidebar variants example\", () => {\n  test(\"renders side, variant, and collapsible design states\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"left sidebar icon\")).toHaveText(\n        \"left sidebar icon\"\n      ),\n      Scene.expect(Scene.role(\"button\", { name: \"Floating\" })).toHaveAttr(\n        \"data-slot\",\n        \"sidebar-menu-button\"\n      ),\n      Scene.expect(Scene.role(\"button\", { name: \"Floating\" })).not.toHaveHandler(\n        \"click\"\n      ),\n      Scene.expect(Scene.text(\"right inset none\")).toHaveText(\n        \"right inset none\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Sidebar",
+      "example": "variants",
+      "origin": "https://ui.shadcn.com/docs/components/radix/sidebar"
+    }
+  }
+}
