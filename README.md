@@ -58,6 +58,49 @@ Published registry config:
 https://bearing-ward.github.io/foldkit-basic-cn-ui/components.json
 ```
 
+## Generate A Custom Registry Project
+
+Use the generator when another team wants to own a custom registry project
+instead of publishing from this repository:
+
+```bash
+bun run generate-registry-project -- /tmp/acme-foldkit-cn \
+  --name acme-foldkit-cn \
+  --homepage https://example.com/acme-foldkit-cn \
+  --registry-base-url https://example.com/acme-foldkit-cn/r
+```
+
+The generated custom registry project contains the minimum Foldkit CN registry
+contract:
+
+- `package.json` with docs, registry generation, registry validation,
+  typecheck, test, and build scripts.
+- `registry/config.json` for the registry name, homepage, and registry base
+  URL.
+- `registry/default/items.json` for the source registry item manifest.
+- `registry/templates/components.json` for the generated `components.json`
+  template.
+- `registry/default/ui/example-card/` as the example component slice.
+- `registry/default/examples/example-card-basic/` as the example component
+  installation target.
+- `apps/docs/public/components.json` and `apps/docs/public/r/*.json` as
+  generated public registry output.
+- `scripts/build-registry.mjs` and `scripts/check-registry.mjs` as validation
+  scripts.
+- `src/` as a minimal docs app shell.
+
+The generator refuses to write into a non-empty target directory unless
+`--force` is passed. After generating a project, validate the nested project
+from its own directory:
+
+```bash
+bun install
+bun run build:registry
+bun run check:registry
+bun run typecheck
+bun run build
+```
+
 ## Install In A Project
 
 Prerequisites:

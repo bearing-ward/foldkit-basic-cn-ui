@@ -1,0 +1,16 @@
+import { Scene } from "foldkit";
+import { describe, test } from "vitest";
+
+import { view } from "./view";
+
+describe("ExampleCard", () => {
+  test("renders the example card content", () => {
+    Scene.scene(
+      view(),
+      Scene.expect(Scene.text("Example Card")).toExist(),
+      Scene.expect(
+        Scene.text("Replace this slice with your first custom registry component.")
+      ).toExist()
+    );
+  });
+});
