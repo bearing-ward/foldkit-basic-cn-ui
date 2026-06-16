@@ -13,6 +13,7 @@ Custom Foldkit CN registry project generated from `foldkit-basic-cn-ui`.
 - `apps/docs/public/components.json` and `apps/docs/public/r/*.json` are generated public registry output.
 - `scripts/build-registry.mjs` builds the public registry JSON.
 - `scripts/check-registry.mjs` validates the generated output.
+- `scripts/serve-registry.ts`, `Dockerfile`, and `compose.yaml` serve the same generated registry locally or in a container.
 - `src/` contains the docs app shell.
 
 ## Local Development
@@ -29,4 +30,44 @@ bun run build:registry
 bun run check:registry
 bun run typecheck
 bun run build
+```
+
+## Self-Hosted Registry
+
+The generated registry server exposes:
+
+- `/components.json` for shadcn registry alias configuration.
+- `/r/{name}.json` for each generated registry item.
+- Any additional generated public assets under `apps/docs/public/`.
+
+The registry base URL is owned by `registry/config.json` and written into
+`apps/docs/public/components.json` by `bun run build:registry`. For local
+self-hosting, set it to a reachable URL such as `http://127.0.0.1:4174/r`, then
+rebuild the registry.
+
+```bash
+bun run build:registry
+bun run serve:registry -- --host 127.0.0.1 --port 4174
+```
+
+Smoke-test the registry from another terminal:
+
+```bash
+curl -fsS http://127.0.0.1:4174/components.json
+curl -fsS http://127.0.0.1:4174/r/example-card.json
+```
+
+Container self-hosting builds the same generated artifacts into the image:
+
+```bash
+docker build -t {{projectName}}-registry .
+docker run --rm -p 4174:4174 {{projectName}}-registry
+curl -fsS http://127.0.0.1:4174/components.json
+curl -fsS http://127.0.0.1:4174/r/example-card.json
+```
+
+Compose uses the same port mapping:
+
+```bash
+docker compose up --build registry
 ```

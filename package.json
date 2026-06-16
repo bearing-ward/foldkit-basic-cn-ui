@@ -9,6 +9,7 @@
     "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-primitive-coverage.mjs && bun scripts/check-shadcn-doc-examples.mjs && bun scripts/check-origin-content-parity-agenda.mjs",
     "generate-registry-project": "bun scripts/generate-registry-project.ts",
     "registry": "bun scripts/component-registry-cli.ts",
+    "serve:registry": "bun scripts/serve-registry.ts",
     "smoke:install-all": "bun scripts/smoke-install-all.mjs",
     "smoke:public-install": "bun scripts/smoke-public-install.mjs",
     "smoke:public-site": "bun scripts/smoke-public-site.mjs",

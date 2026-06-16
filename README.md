@@ -58,6 +58,51 @@ Published registry config:
 https://bearing-ward.github.io/foldkit-basic-cn-ui/components.json
 ```
 
+## Self-Hosted Registry
+
+The self-hosted server exposes the same static registry contract as GitHub
+Pages:
+
+- `/components.json` for shadcn registry alias configuration.
+- `/r/{name}.json` for each generated registry item.
+- Any additional generated public assets under `apps/docs/public/`, including
+  source viewer assets when docs output includes them.
+
+The registry base URL is owned by `registry/config.json` and is written into
+`apps/docs/public/components.json` by `bun run build:registry`. For local
+self-hosting, set that base URL to the URL that clients can reach, such as
+`http://127.0.0.1:4174/r`, then rebuild the registry.
+
+Serve the generated registry locally:
+
+```bash
+bun run build:registry
+bun run serve:registry -- --host 127.0.0.1 --port 4174
+```
+
+Smoke-test the local registry from another terminal:
+
+```bash
+curl -fsS http://127.0.0.1:4174/components.json
+curl -fsS http://127.0.0.1:4174/r/button.json
+```
+
+Container self-hosting builds the same generated registry artifacts into the
+image and serves them without secrets:
+
+```bash
+docker build -t foldkit-cn-registry .
+docker run --rm -p 4174:4174 foldkit-cn-registry
+curl -fsS http://127.0.0.1:4174/components.json
+curl -fsS http://127.0.0.1:4174/r/button.json
+```
+
+Use compose when you want the same local port mapping:
+
+```bash
+docker compose up --build registry
+```
+
 ## Generate A Custom Registry Project
 
 Use the generator when another team wants to own a custom registry project
@@ -87,6 +132,8 @@ contract:
   generated public registry output.
 - `scripts/build-registry.mjs` and `scripts/check-registry.mjs` as validation
   scripts.
+- `scripts/serve-registry.ts`, `Dockerfile`, and `compose.yaml` for local and
+  container self-hosting.
 - `src/` as a minimal docs app shell.
 
 The generator refuses to write into a non-empty target directory unless
@@ -97,6 +144,7 @@ from its own directory:
 bun install
 bun run build:registry
 bun run check:registry
+bun run serve:registry -- --host 127.0.0.1 --port 4174
 bun run typecheck
 bun run build
 ```
