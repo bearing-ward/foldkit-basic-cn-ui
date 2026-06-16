@@ -680,6 +680,7 @@ import {
 } from "./main";
 import type { Model } from "./main";
 import * as NewComponentAuthoring from "./newComponentAuthoring";
+import * as ThemePlayground from "./themePlayground";
 import { uiInit } from "./ui/init";
 
 const today = Calendar.make(2026, 4, 16);
@@ -697,6 +698,7 @@ const BaseUiDialogCloseConfirmationTweetShowDialog = Dialog.ShowDialog({
 });
 const [initialUiModel] = uiInit(today);
 const [newComponentAuthoring] = NewComponentAuthoring.init();
+const [themePlayground] = ThemePlayground.init();
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
 const [shadcnBaseAccordionBasicExample] =
@@ -1078,6 +1080,7 @@ const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
   newComponentAuthoring,
+  themePlayground,
   accordionBasicExample,
   shadcnAccordionBasicExample,
   shadcnBaseAccordionBasicExample,

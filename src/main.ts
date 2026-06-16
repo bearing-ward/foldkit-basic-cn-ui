@@ -8,6 +8,7 @@ import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
 import * as NewComponentAuthoring from "./newComponentAuthoring";
+import * as ThemePlayground from "./themePlayground";
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
@@ -362,6 +363,7 @@ import { uiUpdate } from "./ui/update";
 
 export const HomeRoute = r("Home");
 export const NewComponentAuthoringRoute = r("NewComponentAuthoring");
+export const ThemePlaygroundRoute = r("ThemePlayground");
 export const AccordionDocsRoute = r("AccordionDocs");
 export const ShadcnAccordionDocsRoute = r("ShadcnAccordionDocs");
 export const ShadcnBaseAccordionDocsRoute = r("ShadcnBaseAccordionDocs");
@@ -1014,6 +1016,7 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 const AppRoute = S.Union([
   HomeRoute,
   NewComponentAuthoringRoute,
+  ThemePlaygroundRoute,
   AccordionDocsRoute,
   ShadcnAccordionDocsRoute,
   ShadcnBaseAccordionDocsRoute,
@@ -1533,6 +1536,11 @@ export const newComponentAuthoringRouter = pipe(
   literal("docs"),
   slash(literal("new-component")),
   Route.mapTo(NewComponentAuthoringRoute)
+);
+export const themePlaygroundRouter = pipe(
+  literal("docs"),
+  slash(literal("theme-playground")),
+  Route.mapTo(ThemePlaygroundRoute)
 );
 export const alertDocsRouter = pipe(
   literal("docs"),
@@ -7761,6 +7769,7 @@ const routeParser = Route.oneOf(
   autocompleteDocsRouter,
   baseUiAutocompleteDocsRouter,
   newComponentAuthoringRouter,
+  themePlaygroundRouter,
   homeRouter
 );
 
@@ -7806,6 +7815,7 @@ const urlToBaseAwareAppRoute = (url: Url): AppRoute =>
 export const Model = S.Struct({
   route: AppRoute,
   newComponentAuthoring: NewComponentAuthoring.Model,
+  themePlayground: ThemePlayground.Model,
   accordionBasicExample: AccordionBasicExample.Model,
   baseUiAccordionBasicExample: BaseUiAccordionBasicExample.Model,
   baseUiAccordionMultipleExample: BaseUiAccordionMultipleExample.Model,
@@ -8185,6 +8195,9 @@ export const GotNewComponentAuthoringMessage = m(
     message: NewComponentAuthoring.Message,
   }
 );
+export const GotThemePlaygroundMessage = m("GotThemePlaygroundMessage", {
+  message: ThemePlayground.Message,
+});
 export const GotAccordionBasicExampleMessage = m(
   "GotAccordionBasicExampleMessage",
   {
@@ -9949,6 +9962,7 @@ export const Message = S.Union([
   ChangedUrl,
   GotUiMessage,
   GotNewComponentAuthoringMessage,
+  GotThemePlaygroundMessage,
   GotAccordionBasicExampleMessage,
   GotBaseUiAccordionBasicExampleMessage,
   GotBaseUiAccordionMultipleExampleMessage,
@@ -10328,6 +10342,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [initialUiModel, uiCommands] = uiInit(flags.today);
   const [newComponentAuthoring, newComponentAuthoringCommands] =
     NewComponentAuthoring.init();
+  const [themePlayground, themePlaygroundCommands] = ThemePlayground.init();
   const [accordionBasicExample, accordionBasicExampleCommands] =
     AccordionBasicExample.init();
   const [baseUiAccordionBasicExample, baseUiAccordionBasicExampleCommands] =
@@ -11082,6 +11097,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
       newComponentAuthoring,
+      themePlayground,
       accordionBasicExample,
       baseUiAccordionBasicExample,
       baseUiAccordionMultipleExample,
@@ -11431,6 +11447,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(newComponentAuthoringCommands, (message) =>
         GotNewComponentAuthoringMessage({ message })
+      ),
+      ...Command.mapMessages(themePlaygroundCommands, (message) =>
+        GotThemePlaygroundMessage({ message })
       ),
       ...Command.mapMessages(accordionBasicExampleCommands, (message) =>
         GotAccordionBasicExampleMessage({ message })
@@ -12565,6 +12584,20 @@ export const update = (
           }),
           Command.mapMessages(newComponentAuthoringCommands, (message) =>
             GotNewComponentAuthoringMessage({ message })
+          ),
+        ];
+      },
+
+      GotThemePlaygroundMessage: ({ message }) => {
+        const [themePlayground, themePlaygroundCommands] =
+          ThemePlayground.update(model.themePlayground, message);
+
+        return [
+          evo(model, {
+            themePlayground: () => themePlayground,
+          }),
+          Command.mapMessages(themePlaygroundCommands, (message) =>
+            GotThemePlaygroundMessage({ message })
           ),
         ];
       },
