@@ -28,6 +28,9 @@ teams own their registry infrastructure instead of depending only on GitHub
 Pages. The implementation should serve the same static registry contract that
 the current docs/public output already exposes.
 
+The local serving command must use the Effect CLI package for command
+definitions, options, help text, and argument parsing.
+
 ## Current state
 
 - `README.md` says deployment builds the registry, builds the docs app with the
@@ -39,6 +42,8 @@ the current docs/public output already exposes.
 - Dependencies include `effect` and `@effect/platform-browser`. The repo
   convention says Foldkit work is tightly coupled to Effect-TS; do not introduce
   unrelated server frameworks without a design reason.
+- CLI convention: command parsing and help text should be implemented with the
+  Effect CLI package.
 
 ## Commands you will need
 
@@ -87,9 +92,9 @@ container execution.
 ### Step 2: Add Effect local serve command
 
 Implement a CLI command that builds or validates registry artifacts and serves
-the generated public directory locally. Prefer Effect platform APIs and keep file
-serving read-only. The command must print the local registry URL and the
-`components.json` URL.
+the generated public directory locally. Define command options with the Effect
+CLI package. Prefer Effect platform APIs and keep file serving read-only. The
+command must print the local registry URL and the `components.json` URL.
 
 **Verify**: start the server, then request `/components.json` and one known
 `/r/{name}.json` locally; both return valid JSON.
@@ -120,6 +125,7 @@ local server route tests automated.
 ## Done criteria
 
 - [ ] Effect CLI serves generated registry artifacts locally.
+- [ ] Local serve command/options/help use the Effect CLI package.
 - [ ] Docker wrapper serves the same artifact contract.
 - [ ] Self-hosting README section includes local and container commands.
 - [ ] `bun run build:registry` exits 0.
@@ -138,10 +144,11 @@ Stop and report back if:
 - Dockerizing requires publishing images or changing CI credentials.
 - An Effect server package dependency is missing and the repo owner must choose
   whether to add it.
+- Implementing command parsing with the Effect CLI package requires an
+  unplanned dependency/version decision.
 
 ## Maintenance notes
 
 Keep the self-hosted stack static-file-oriented until there is a clear need for
 mutable server state. Reviewers should verify that local, Docker, and GitHub
 Pages serving all expose the same registry URLs.
-

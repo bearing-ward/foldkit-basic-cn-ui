@@ -28,6 +28,9 @@ own. The generator should scaffold the minimum viable repo shape: registry
 source, docs shell, generated public output, validation scripts, and one example
 slice.
 
+The generator command must use the Effect CLI package for command definitions,
+options, help text, and argument parsing.
+
 ## Current state
 
 - `registry/config.json` contains `name`, `homepage`, and `registryBaseUrl`.
@@ -38,6 +41,8 @@ slice.
 - `README.md` documents `bun install`, `bun run dev`, and `bun run
   build:registry` for local development.
 - Plan 002 should create reusable slice scaffolding that this generator can use.
+- CLI convention: command parsing and help text should be implemented with the
+  Effect CLI package.
 
 ## Commands you will need
 
@@ -96,10 +101,11 @@ documented contract.
 
 Add a command such as `generate-registry-project <path> --name <name>
 --homepage <url> --registry-base-url <url>`. It must refuse to overwrite a
-non-empty target directory unless an explicit force flag is passed.
+non-empty target directory unless an explicit force flag is passed. Define the
+command with the Effect CLI package rather than custom argument parsing.
 
 **Verify**: generating into a temporary empty directory exits 0 and creates the
-documented files.
+documented files; help output is produced by the Effect CLI package.
 
 ### Step 4: Validate generated project
 
@@ -120,6 +126,7 @@ document the manual verification command.
 ## Done criteria
 
 - [ ] Generator refuses unsafe overwrites by default.
+- [ ] Generator command/options/help use the Effect CLI package.
 - [ ] Generated project contains the documented minimal registry layout.
 - [ ] Generated JSON files parse.
 - [ ] README documents command usage.
@@ -138,10 +145,11 @@ Stop and report back if:
   credentials.
 - The generated project cannot use the same registry JSON contract as this repo.
 - Supporting multiple framework targets becomes necessary.
+- Implementing the generator with the Effect CLI package requires an unplanned
+  dependency/version decision.
 
 ## Maintenance notes
 
 Keep this generator boring and explicit. It should produce a maintainable
 starting point, not a hidden framework with behavior that diverges from this
 repo.
-

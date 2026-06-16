@@ -271,15 +271,17 @@ New Base UI work should focus on simple styled or unstyled contract depth:
 - New-component interface: provide CLI and web flows for adding a component
   slice, including origin/name selection, contract checklist generation,
   registry/example/docs scaffolding, and the validation commands required before
-  the slice enters review.
+  the slice enters review. CLI entrypoints for this workflow should use the
+  Effect CLI package rather than hand-rolled argument parsing.
 - Component registry CLI: list available components, install selected component
   slices into a consuming app, and implement the installed-component update
   workflow defined by the
   [`Installed component updates`](./component-entry-contract.md#installed-component-updates)
-  update contract.
+  update contract. This should be implemented with the Effect CLI package.
 - Custom registry project generator: scaffold a new registry project with the
   expected source layout, docs shell, generated public registry output,
-  validation scripts, and example component slice.
+  validation scripts, and example component slice. The generator command should
+  use the Effect CLI package.
 - Self-hosted registry stack: build an Effect CLI that can serve the registry
   locally, provide a Docker container wrapper for the registry server, and define
   the minimal self-hosted deployment shape for teams that want to own their

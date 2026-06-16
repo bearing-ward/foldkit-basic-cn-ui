@@ -28,6 +28,10 @@ CLI/web authoring interface can make that work repeatable and reduce broken
 slice submissions. This plan should create the first guided path without
 changing the underlying Foldkit component architecture.
 
+Correction after initial execution: all CLI entrypoints in this repo should use
+the Effect CLI package. If a previous implementation used hand-rolled argument
+parsing, revise it before treating this plan as fully integrated.
+
 ## Current state
 
 - `docs/product/base-ui-shadcn-expansion-plan.md` backlog item:
@@ -49,6 +53,8 @@ changing the underlying Foldkit component architecture.
 - Foldkit conventions from `AGENTS.md`: use `Message`, `withReturnType`, `m()`,
   `ts()`, `r()`, `evo()`, `html<Message>()` inside view functions, `empty` for
   conditional rendering, `Effect.Match` instead of `switch`, and no `NoOp`.
+- CLI convention: command parsing and help text should be implemented with the
+  Effect CLI package, not custom positional/flag parsing.
 
 ## Commands you will need
 
@@ -95,13 +101,15 @@ matching the existing `.mjs` scripts; do not introduce a new build system.
 
 ### Step 2: Add a CLI scaffold path
 
-Add a Bun-compatible script command that accepts component origin/name arguments
-and generates a dry-run checklist by default. It should support an explicit
-write flag before creating files. On write, create only a minimal slice skeleton
-that matches the expansion-plan contract and is clearly marked as TODO content.
+Add a Bun-compatible CLI command implemented with the Effect CLI package. It
+should accept component origin/name arguments and generate a dry-run checklist by
+default. It should support an explicit write option before creating files. On
+write, create only a minimal slice skeleton that matches the expansion-plan
+contract and is clearly marked as TODO content.
 
 **Verify**: running the script without a write flag prints the planned files and
-does not change `git status --short`.
+does not change `git status --short`; `rg -n "@effect/cli|@effect/cli" scripts src package.json`
+shows the CLI entrypoint uses the Effect CLI package.
 
 ### Step 3: Add the web authoring surface
 
@@ -132,6 +140,7 @@ scene-test guidance.
 ## Done criteria
 
 - [ ] CLI dry-run exists and does not write without an explicit write flag.
+- [ ] CLI parsing/help is implemented through the Effect CLI package.
 - [ ] Web page renders equivalent checklist output.
 - [ ] Generated skeleton paths match the slice contract when write mode is used.
 - [ ] `bun run build:registry` exits 0.
@@ -150,6 +159,8 @@ Stop and report back if:
 - The web interface would require imperative DOM mutation or two-way bindings.
 - The dry-run and web checklist logic starts diverging; extract shared logic
   instead of duplicating behavior.
+- Implementing the CLI with the Effect CLI package requires a dependency or API
+  decision not already present in the repo.
 
 ## Maintenance notes
 

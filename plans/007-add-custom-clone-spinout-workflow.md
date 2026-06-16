@@ -29,6 +29,9 @@ touches third-party source, trust boundaries, and subjective visual matching.
 This plan should build a bounded, auditable workflow rather than an automatic
 component converter.
 
+Any CLI command added for this workflow must use the Effect CLI package for
+command definitions, options, help text, and argument parsing.
+
 ## Current state
 
 - `docs/product/base-ui-shadcn-expansion-plan.md` backlog item:
@@ -43,6 +46,8 @@ component converter.
   compatibility.
 - Plan 002 should provide local candidate scaffolding; plan 004 should provide
   reusable registry-project generation.
+- CLI convention: command parsing and help text should be implemented with the
+  Effect CLI package.
 
 ## Commands you will need
 
@@ -91,10 +96,12 @@ approval for new registries. Never execute imported code during import.
 
 Implement a dry-run command that reads a trusted registry item URL or alias,
 prints item metadata, files, dependencies, and target local candidate paths. It
-must not write by default.
+must not write by default. Define the command with the Effect CLI package rather
+than custom argument parsing.
 
 **Verify**: dry-run against a known safe local/public registry item exits 0 and
-leaves `git status --short` unchanged except for files modified by this plan.
+leaves `git status --short` unchanged except for files modified by this plan;
+help output is produced by the Effect CLI package.
 
 ### Step 3: Generate candidate slice
 
@@ -127,6 +134,7 @@ the only review gate.
 ## Done criteria
 
 - [ ] Trust policy is documented.
+- [ ] Workflow command/options/help use the Effect CLI package.
 - [ ] Import dry-run is non-mutating.
 - [ ] Write mode creates a candidate slice through the normal scaffold path.
 - [ ] Likeness harness produces deterministic advisory output.
@@ -146,10 +154,11 @@ Stop and report back if:
 - The trust policy cannot be enforced with local code.
 - Likeness scoring becomes subjective or requires hidden external services.
 - Generated candidates would be mistaken for reviewed Foldkit code.
+- Implementing the workflow command with the Effect CLI package requires an
+  unplanned dependency/version decision.
 
 ## Maintenance notes
 
 This workflow should remain conservative. The goal is to speed review and
 scaffold candidate work, not to create a blind import path for third-party UI
 code.
-

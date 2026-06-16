@@ -29,6 +29,9 @@ remaining compatible with generated shadcn registry JSON. It should start small:
 read registry data, list items, install by delegating or copying safely, and
 implement update behavior only according to plan 001.
 
+All CLI entrypoints must use the Effect CLI package for command definitions,
+options, help text, and argument parsing. Do not hand-roll flag parsing.
+
 ## Current state
 
 - `package.json` uses Bun and has scripts for registry generation, registry
@@ -42,6 +45,8 @@ implement update behavior only according to plan 001.
   registry JSON under `apps/docs/public/r/`.
 - Update semantics must come from `docs/product/component-entry-contract.md`
   after plan 001 lands.
+- CLI convention: command parsing and help text should be implemented with the
+  Effect CLI package.
 
 ## Commands you will need
 
@@ -82,12 +87,13 @@ implement update behavior only according to plan 001.
 
 Implement a CLI command that reads local generated registry data. It should list
 component names, type, origin metadata, artifact type, primitive metadata when
-present, and whether the item is public. Prefer local files first:
+present, and whether the item is public. Define the command with the Effect CLI
+package. Prefer local files first:
 `registry/default/items.json` for source truth and `apps/docs/public/r/*.json`
 for generated install payload checks.
 
 **Verify**: CLI `list` exits 0 and includes known items such as `button`,
-`dialog`, and `tabs`.
+`dialog`, and `tabs`; CLI help output is produced by the Effect CLI package.
 
 ### Step 2: Add install dry-run
 
@@ -138,6 +144,7 @@ contains both first-party and shadcn-based install paths.
 ## Done criteria
 
 - [ ] CLI can list registry components with metadata.
+- [ ] CLI commands/options/help use the Effect CLI package.
 - [ ] CLI install has non-mutating dry-run mode.
 - [ ] CLI install execution is explicit and tested.
 - [ ] CLI update is inspection-only or matches plan 001 exactly.
@@ -155,6 +162,8 @@ Stop and report back if:
 - Implementing install requires changing generated registry JSON shape.
 - Update behavior is ambiguous after reading plan 001.
 - The CLI would overwrite existing app files by default.
+- Implementing the CLI with the Effect CLI package requires an unplanned
+  dependency/version decision.
 - Public network smoke checks fail because the hosted registry is unavailable;
   report that separately from local test results.
 
@@ -163,4 +172,3 @@ Stop and report back if:
 The CLI should stay a thin orchestration layer over existing registry artifacts.
 If it starts duplicating `build-registry` expansion logic, extract shared helpers
 or stop for a design review.
-
