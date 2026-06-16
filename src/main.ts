@@ -7,6 +7,7 @@ import { literal, r, slash } from "foldkit/route";
 import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
+import * as NewComponentAuthoring from "./newComponentAuthoring";
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
@@ -360,6 +361,7 @@ import { uiUpdate } from "./ui/update";
 // ROUTE
 
 export const HomeRoute = r("Home");
+export const NewComponentAuthoringRoute = r("NewComponentAuthoring");
 export const AccordionDocsRoute = r("AccordionDocs");
 export const ShadcnAccordionDocsRoute = r("ShadcnAccordionDocs");
 export const ShadcnBaseAccordionDocsRoute = r("ShadcnBaseAccordionDocs");
@@ -1011,6 +1013,7 @@ export const NotFoundRoute = r("NotFound", { path: S.String });
 
 const AppRoute = S.Union([
   HomeRoute,
+  NewComponentAuthoringRoute,
   AccordionDocsRoute,
   ShadcnAccordionDocsRoute,
   ShadcnBaseAccordionDocsRoute,
@@ -1526,6 +1529,11 @@ const AppRoute = S.Union([
 export type AppRoute = typeof AppRoute.Type;
 
 export const homeRouter = pipe(Route.root, Route.mapTo(HomeRoute));
+export const newComponentAuthoringRouter = pipe(
+  literal("docs"),
+  slash(literal("new-component")),
+  Route.mapTo(NewComponentAuthoringRoute)
+);
 export const alertDocsRouter = pipe(
   literal("docs"),
   slash(literal("components")),
@@ -7752,6 +7760,7 @@ const routeParser = Route.oneOf(
   baseUiAutocompleteBasicStandaloneExampleRouter,
   autocompleteDocsRouter,
   baseUiAutocompleteDocsRouter,
+  newComponentAuthoringRouter,
   homeRouter
 );
 
@@ -7796,6 +7805,7 @@ const urlToBaseAwareAppRoute = (url: Url): AppRoute =>
 
 export const Model = S.Struct({
   route: AppRoute,
+  newComponentAuthoring: NewComponentAuthoring.Model,
   accordionBasicExample: AccordionBasicExample.Model,
   baseUiAccordionBasicExample: BaseUiAccordionBasicExample.Model,
   baseUiAccordionMultipleExample: BaseUiAccordionMultipleExample.Model,
@@ -8169,6 +8179,12 @@ export const ChangedUrl = m("ChangedUrl", { url: Url });
 export const GotUiMessage = m("GotUiMessage", {
   message: UiMessage,
 });
+export const GotNewComponentAuthoringMessage = m(
+  "GotNewComponentAuthoringMessage",
+  {
+    message: NewComponentAuthoring.Message,
+  }
+);
 export const GotAccordionBasicExampleMessage = m(
   "GotAccordionBasicExampleMessage",
   {
@@ -9932,6 +9948,7 @@ export const Message = S.Union([
   ClickedLink,
   ChangedUrl,
   GotUiMessage,
+  GotNewComponentAuthoringMessage,
   GotAccordionBasicExampleMessage,
   GotBaseUiAccordionBasicExampleMessage,
   GotBaseUiAccordionMultipleExampleMessage,
@@ -10309,6 +10326,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   url: Url
 ) => {
   const [initialUiModel, uiCommands] = uiInit(flags.today);
+  const [newComponentAuthoring, newComponentAuthoringCommands] =
+    NewComponentAuthoring.init();
   const [accordionBasicExample, accordionBasicExampleCommands] =
     AccordionBasicExample.init();
   const [baseUiAccordionBasicExample, baseUiAccordionBasicExampleCommands] =
@@ -11062,6 +11081,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     {
       route: urlToBaseAwareAppRoute(url),
       uiModel: initialUiModel,
+      newComponentAuthoring,
       accordionBasicExample,
       baseUiAccordionBasicExample,
       baseUiAccordionMultipleExample,
@@ -11408,6 +11428,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     [
       ...Command.mapMessages(uiCommands, (message) =>
         GotUiMessage({ message })
+      ),
+      ...Command.mapMessages(newComponentAuthoringCommands, (message) =>
+        GotNewComponentAuthoringMessage({ message })
       ),
       ...Command.mapMessages(accordionBasicExampleCommands, (message) =>
         GotAccordionBasicExampleMessage({ message })
@@ -12528,6 +12551,20 @@ export const update = (
           evo(model, { uiModel: () => nextUiModel }),
           Command.mapMessages(uiCommands, (message) =>
             GotUiMessage({ message })
+          ),
+        ];
+      },
+
+      GotNewComponentAuthoringMessage: ({ message }) => {
+        const [newComponentAuthoring, newComponentAuthoringCommands] =
+          NewComponentAuthoring.update(model.newComponentAuthoring, message);
+
+        return [
+          evo(model, {
+            newComponentAuthoring: () => newComponentAuthoring,
+          }),
+          Command.mapMessages(newComponentAuthoringCommands, (message) =>
+            GotNewComponentAuthoringMessage({ message })
           ),
         ];
       },

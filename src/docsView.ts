@@ -20,6 +20,7 @@ import * as DocsPreviewsShadcnMissing from "docs-example-previews-shadcn-missing
 import * as DocsRoutes from "docs-example-routes";
 import * as Icon from "./icon";
 import * as Main from "app-main";
+import * as NewComponentAuthoring from "./newComponentAuthoring";
 import type { UiMessage } from "./ui/message";
 import type { UiModel } from "./ui/model";
 import * as View from "legacy-ui-views";
@@ -51,6 +52,11 @@ type DocsNavGroup = Readonly<{
 }>;
 
 const NAV_ITEMS: readonly NavItem[] = [
+  {
+    label: "New Component",
+    routeTag: "NewComponentAuthoring",
+    href: "/docs/new-component",
+  },
   {
     label: "Accordion Docs",
     routeTag: "ShadcnAccordionDocs",
@@ -19932,6 +19938,14 @@ const contentView = (model: Model): Html => {
   return M.value(model.route).pipe(
     M.tagsExhaustive({
       Home: homeView,
+      NewComponentAuthoring: () =>
+        h.submodel({
+          slotId: "new-component-authoring",
+          model: model.newComponentAuthoring,
+          view: NewComponentAuthoring.view,
+          toParentMessage: (message) =>
+            Main.GotNewComponentAuthoringMessage({ message }),
+        }),
       AccordionDocs: () => accordionDocsView(model),
       BaseUiAccordionBasicExample: () =>
         DocsRoutes.baseUiAccordionBasicExampleRouteView(model),
