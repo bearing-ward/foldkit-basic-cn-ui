@@ -67,6 +67,20 @@ Prerequisites:
 - A source root that matches your `components.json` aliases.
 - `bunx` or another way to run the shadcn CLI.
 
+First-party registry CLI from this repository:
+
+```bash
+bun run registry list
+bun run registry install dialog --app-root /path/to/foldkit-app --dry-run
+bun run registry install dialog --app-root /path/to/foldkit-app --execute
+bun run registry update dialog --app-root /path/to/foldkit-app --inspect
+```
+
+Use `install --dry-run` semantics to review planned writes before changing a
+project. The install command is a dry run unless `--execute` is passed. Executed
+installs copy local generated registry payloads into the consuming app and stop
+before overwriting existing app-owned files.
+
 Install one registry item directly by URL:
 
 ```bash
