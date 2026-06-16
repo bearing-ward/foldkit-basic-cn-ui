@@ -6,7 +6,7 @@
 > not improvise.
 >
 > **Drift check (run first)**:
-> `git diff --stat 795046f1..HEAD -- package.json scripts registry apps/docs/public README.md docs/product/component-entry-contract.md plans/README.md`
+> `git diff --stat 82aac163..HEAD -- package.json scripts registry apps/docs/public README.md docs/product/component-entry-contract.md plans/README.md`
 > If any in-scope file changed since this plan was written, compare the "Current
 > state" excerpts against the live files before proceeding; on a mismatch, treat
 > it as a STOP condition.
@@ -18,7 +18,7 @@
 - **Risk**: MED
 - **Depends on**: plans/001-define-component-update-semantics.md, plans/002-add-new-component-interface.md
 - **Category**: direction
-- **Planned at**: commit `795046f1`, 2026-06-16
+- **Planned at**: commit `82aac163`, 2026-06-16
 
 ## Why this matters
 
@@ -46,7 +46,16 @@ options, help text, and argument parsing. Do not hand-roll flag parsing.
 - Update semantics must come from `docs/product/component-entry-contract.md`
   after plan 001 lands.
 - CLI convention: command parsing and help text should be implemented with the
-  Effect CLI package.
+  Effect CLI package. This repo currently uses Effect v4's local CLI export
+  `effect/unstable/cli`; `@effect/platform-node@4.0.0-beta.66` is already in
+  `package.json` for Node services.
+- Plan 002 added `scripts/scaffold-component-slice.ts` as the first Effect CLI
+  command. Reuse its command/testing pattern where it fits, but do not couple
+  registry install/list/update behavior to component-slice scaffolding internals.
+- Known verification baseline: full `bun run test` has unrelated existing
+  failures in docs-preview alias resolution and `shadcn-input-demo` input value
+  expectations. Do not fix those in this plan; run targeted CLI tests and report
+  the full-suite residual if it still reproduces.
 
 ## Commands you will need
 
@@ -55,7 +64,8 @@ options, help text, and argument parsing. Do not hand-roll flag parsing.
 | Registry generation | `bun run build:registry` | exit 0 |
 | Registry guardrails | `bun run check:registry` | exit 0 |
 | Typecheck | `bun run typecheck` | exit 0 |
-| Unit/scene tests | `bun run test` | exit 0 |
+| Targeted CLI tests | `bun run test <new registry CLI tests>` | exit 0 |
+| Full test suite | `bun run test` | exit 0, or only the documented unrelated baseline failures |
 | Docs build | `bun run build` | exit 0 |
 | Public install smoke | `bun run smoke:public-install` | exit 0 when network/public site is available |
 
@@ -88,7 +98,8 @@ options, help text, and argument parsing. Do not hand-roll flag parsing.
 Implement a CLI command that reads local generated registry data. It should list
 component names, type, origin metadata, artifact type, primitive metadata when
 present, and whether the item is public. Define the command with the Effect CLI
-package. Prefer local files first:
+package, matching the `effect/unstable/cli` style already used by
+`scripts/scaffold-component-slice.ts`. Prefer local files first:
 `registry/default/items.json` for source truth and `apps/docs/public/r/*.json`
 for generated install payload checks.
 
@@ -151,7 +162,9 @@ contains both first-party and shadcn-based install paths.
 - [ ] `bun run build:registry` exits 0.
 - [ ] `bun run check:registry` exits 0.
 - [ ] `bun run typecheck` exits 0.
-- [ ] `bun run test` exits 0.
+- [ ] Targeted registry CLI tests exit 0.
+- [ ] Full `bun run test` is attempted; it either exits 0 or fails only on the
+      documented unrelated baseline failures.
 - [ ] `bun run build` exits 0.
 - [ ] `plans/README.md` status row for plan 003 is updated.
 
