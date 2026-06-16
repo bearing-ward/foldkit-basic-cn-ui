@@ -19,7 +19,7 @@ import * as DocsPreviewsNZ from "docs-example-previews-nz";
 import * as DocsPreviewsShadcnMissing from "docs-example-previews-shadcn-missing";
 import * as DocsRoutes from "docs-example-routes";
 import * as Icon from "./icon";
-import * as Main from "app-main";
+import * as Main from "./main";
 import * as NewComponentAuthoring from "./newComponentAuthoring";
 import * as ThemePlayground from "./themePlayground";
 import type { UiMessage } from "./ui/message";

@@ -1,10 +1,18 @@
 import { defineConfig } from "vitest/config";
 
+import { optimizedSourceAliases } from "./vite.aliases";
+
 export default defineConfig({
+  resolve: {
+    alias: optimizedSourceAliases,
+  },
   test: {
     projects: [
       {
         name: "foldkit-basic-cn-ui",
+        resolve: {
+          alias: optimizedSourceAliases,
+        },
         test: {
           environment: "happy-dom",
           include: [

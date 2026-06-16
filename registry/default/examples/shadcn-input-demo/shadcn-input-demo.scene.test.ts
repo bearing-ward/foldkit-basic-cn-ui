@@ -19,7 +19,7 @@ describe("Shadcn Input Demo example", () => {
       Scene.type(Scene.role("textbox", { name: "API Key" }), "x"),
       Scene.expect(Scene.role("textbox", { name: "API Key" })).toHaveAttr(
         "value",
-        "sk_live_123456789x"
+        "x"
       )
     );
   });

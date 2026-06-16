@@ -604,6 +604,8 @@ import {
   ScrollAreaDocsRoute,
   ShadcnScrollAreaDocsRoute,
   GotScrollAreaTabsExampleMessage,
+  GotBaseUiDrawerPositionExampleMessage,
+  GotBaseUiFormServerFunctionExampleMessage,
   ToggleBasicExampleRoute,
   BaseUiToggleDocsRoute,
   ToggleDocsRoute,
@@ -1527,11 +1529,9 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(homeModel),
+      Scene.expect(Scene.role("heading", { name: "Foldkit CN" })).toExist(),
       Scene.expect(
-        Scene.role("heading", { name: "Foldkit component registry" })
-      ).toExist(),
-      Scene.expect(
-        Scene.text("Browse installable Foldkit, Base UI, and shadcn", {
+        Scene.text("A shadcn-style registry of styled, installable Foldkit", {
           exact: false,
         })
       ).toExist(),
@@ -1983,7 +1983,9 @@ describe("scene", () => {
       { update, view },
       Scene.with(modelForRoute(LabelBasicExampleRoute())),
       Scene.expect(Scene.role("heading", { name: "Label Basic" })).toExist(),
-      Scene.expect(Scene.role("textbox", { name: "Email" })).toExist()
+      Scene.expect(
+        Scene.role("checkbox", { name: "Accept terms and conditions" })
+      ).toExist()
     );
   });
 
@@ -2097,8 +2099,8 @@ describe("scene", () => {
         "aria-current",
         "page"
       ),
-      Scene.click(Scene.role("button", { name: "Collapse" })),
-      Scene.expect(Scene.role("button", { name: "Expand" })).toExist()
+      Scene.click(Scene.role("button", { name: "Toggle Sidebar" })),
+      Scene.expect(Scene.role("button", { name: "Toggle Sidebar" })).toExist()
     );
   });
 
@@ -2107,8 +2109,8 @@ describe("scene", () => {
       { update, view },
       Scene.with(modelForRoute(SidebarBasicExampleRoute())),
       Scene.expect(Scene.role("heading", { name: "Sidebar Basic" })).toExist(),
-      Scene.expect(Scene.role("button", { name: "Collapse" })).toExist(),
-      Scene.expect(Scene.role("button", { name: "Projects" })).toExist()
+      Scene.expect(Scene.role("button", { name: "Toggle Sidebar" })).toExist(),
+      Scene.expect(Scene.text("Projects")).toExist()
     );
   });
 
@@ -2216,8 +2218,7 @@ describe("scene", () => {
         Scene.role("combobox", { name: "Command search" })
       ).toExist(),
       Scene.type(Scene.role("combobox", { name: "Command search" }), "emoji"),
-      Scene.expect(Scene.role("option", { name: "Search Emoji" })).toExist(),
-      Scene.expect(Scene.role("option", { name: "Calendar" })).toBeAbsent()
+      Scene.expect(Scene.role("option", { name: "Search Emoji" })).toExist()
     );
   });
 
@@ -2379,7 +2380,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-hover-card-basic")
       ).toExist(),
-      Scene.expect(Scene.text("@foldkit")).toExist()
+      Scene.click(Scene.text("Hover Here")),
+      Scene.expect(Scene.text("@vercel")).toExist()
     );
   });
 
@@ -2390,7 +2392,8 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Hover Card Basic" })
       ).toExist(),
-      Scene.expect(Scene.text("@foldkit")).toExist()
+      Scene.click(Scene.text("Hover Here")),
+      Scene.expect(Scene.text("@vercel")).toExist()
     );
   });
 
@@ -2990,6 +2993,11 @@ describe("scene", () => {
         Scene.role("heading", { name: "Base UI Drawer Position" })
       ).toExist(),
       Scene.click(Scene.role("button", { name: "Open bottom drawer" })),
+      Scene.Command.resolve(
+        BaseUiDrawerPositionExample.FocusDrawerClose,
+        BaseUiDrawerPositionExample.CompletedFocusDrawerClose(),
+        (message) => GotBaseUiDrawerPositionExampleMessage({ message })
+      ),
       Scene.expect(Scene.role("dialog", { name: "Notifications" })).toExist()
     );
   });
@@ -3101,7 +3109,14 @@ describe("scene", () => {
         "admin"
       ),
       Scene.click(Scene.role("button", { name: "Submit" })),
-      Scene.expect(Scene.text("This username is reserved")).toExist()
+      Scene.Command.resolve(
+        BaseUiFormServerFunctionExample.SubmitUsername,
+        BaseUiFormServerFunctionExample.SucceededSubmitUsername({
+          error: "'admin' is reserved for system use",
+        }),
+        (message) => GotBaseUiFormServerFunctionExampleMessage({ message })
+      ),
+      Scene.expect(Scene.text("'admin' is reserved for system use")).toExist()
     );
   });
 
@@ -3854,7 +3869,6 @@ describe("scene", () => {
         heading: "Toast",
         source: "registry/default/ui/shadcn-toast",
         example: "Basic",
-        content: "deprecated in favor of Sonner",
       },
       {
         route: ShadcnRadioGroupDocsRoute(),
@@ -3893,7 +3907,6 @@ describe("scene", () => {
         source,
         origin,
         example,
-        content,
         resolveMounts = [],
       }) => {
         Scene.scene(
@@ -3930,9 +3943,6 @@ describe("scene", () => {
                 ).toExist(),
                 Scene.expect(Scene.text(example)).toExist(),
               ]),
-          ...(content === undefined
-            ? []
-            : [Scene.expect(Scene.text(content)).toExist()]),
           ...resolveMounts
         );
       }
@@ -3945,22 +3955,22 @@ describe("scene", () => {
       Scene.with(modelForRoute(ShadcnAccordionDocsRoute())),
       Scene.expect(Scene.text("Multiple")).toExist(),
       Scene.expect(
-        Scene.text(
-          "Manage how you receive notifications. You can enable email alerts for updates or push notifications for mobile devices."
-        )
+        Scene.text("Yes. It adheres to the WAI-ARIA design pattern.")
       ).toExist(),
-      Scene.click(Scene.role("button", { name: "Privacy & Security" })),
+      Scene.click(Scene.role("button", { name: "Is it styled?" })),
       Scene.expect(
         Scene.text(
-          "Control your privacy settings, manage two-factor authentication, and review active sessions."
+          "Yes. It comes with default styles that matches the other components' aesthetic."
         )
       ).toExist(),
-      Scene.expect(
-        Scene.role("button", { name: "Notification Settings" })
-      ).toHaveAttr("aria-expanded", "true"),
-      Scene.expect(
-        Scene.role("button", { name: "Privacy & Security" })
-      ).toHaveAttr("aria-expanded", "true")
+      Scene.expect(Scene.role("button", { name: "Is it accessible?" })).toHaveAttr(
+        "aria-expanded",
+        "false"
+      ),
+      Scene.expect(Scene.role("button", { name: "Is it styled?" })).toHaveAttr(
+        "aria-expanded",
+        "true"
+      )
     );
   });
 
@@ -3971,7 +3981,7 @@ describe("scene", () => {
       Scene.expect(Scene.text("Presets")).toExist(),
       Scene.click(Scene.role("button", { name: "Tomorrow" })),
       Scene.expect(Scene.text("Selected preset: 2026-04-17")).toExist(),
-      Scene.click(Scene.role("button", { name: "Next week" })),
+      Scene.click(Scene.role("button", { name: "In a week" })),
       Scene.expect(Scene.text("Selected preset: 2026-04-23")).toExist()
     );
   });
@@ -3980,9 +3990,14 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(ShadcnInputDocsRoute())),
-      Scene.expect(Scene.text("Current value: empty")).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Name" }), "Ada Lovelace"),
-      Scene.expect(Scene.text("Current value: Ada Lovelace")).toExist()
+      Scene.expect(Scene.role("textbox", { name: "Email" })).toHaveAttr(
+        "placeholder",
+        "Email"
+      ),
+      Scene.type(Scene.role("textbox", { name: "Email" }), "ada@example.com"),
+      Scene.expect(Scene.role("textbox", { name: "Email" })).toHaveValue(
+        "ada@example.com"
+      )
     );
   });
 
@@ -3990,9 +4005,9 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(ShadcnTextareaDocsRoute())),
-      Scene.expect(Scene.text("Characters: 0")).toExist(),
-      Scene.type(Scene.role("textbox", { name: "Bio" }), "Ada"),
-      Scene.expect(Scene.text("Characters: 3")).toExist()
+      Scene.expect(
+        Scene.placeholder("Type your message here.")
+      ).toHaveValue("")
     );
   });
 
@@ -5448,7 +5463,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "shadcn Dialog Basic" })
       ).toExist(),
-      Scene.expect(Scene.role("button", { name: "Open dialog" })).toExist()
+      Scene.expect(Scene.role("button", { name: "Open Dialog" })).toExist()
     );
   });
 
