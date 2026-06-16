@@ -1,11 +1,16 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+
+import { NodeServices } from "@effect/platform-node";
+import { Effect, Option } from "effect";
+import { Argument, Command, Flag } from "effect/unstable/cli";
+
 import {
   createScaffoldPlan,
-  parseSliceOrigin,
   type ScaffoldFile,
   type ScaffoldPlan,
   type SliceOrigin,
+  sliceOrigins,
 } from "../src/componentSliceManifest";
 
 type ParsedArgs = Readonly<{
@@ -13,50 +18,16 @@ type ParsedArgs = Readonly<{
   name: string;
   primitiveName: string;
   writeMode: boolean;
+  rootDir: string;
 }>;
 
-const rootDir = path.resolve(import.meta.dirname, "..");
+const defaultRootDir = path.resolve(import.meta.dirname, "..");
 
-const readFlag = (
-  args: readonly string[],
-  flagName: string
-): string | undefined => {
-  const index = args.indexOf(flagName);
-
-  if (index === -1) {
-    return undefined;
-  }
-
-  return args[index + 1];
-};
-
-const positionalArgs = (args: readonly string[]): readonly string[] =>
-  args.filter((arg, index) => {
-    if (arg.startsWith("--")) {
-      return false;
-    }
-
-    const previous = args[index - 1];
-    return (
-      previous !== "--origin" &&
-      previous !== "--name" &&
-      previous !== "--primitive"
-    );
+const optionalValue = <A>(maybeValue: Option.Option<A>): A | undefined =>
+  Option.match(maybeValue, {
+    onNone: () => undefined,
+    onSome: (value) => value,
   });
-
-const parseArgs = (args: readonly string[]): ParsedArgs => {
-  const positional = positionalArgs(args);
-  const originValue = readFlag(args, "--origin") ?? positional[0] ?? "foldkit";
-  const name = readFlag(args, "--name") ?? positional[1] ?? "";
-  const primitiveName = readFlag(args, "--primitive") ?? "";
-
-  return {
-    origin: parseSliceOrigin(originValue),
-    name,
-    primitiveName,
-    writeMode: args.includes("--write"),
-  };
-};
 
 const formatFileLine = (file: ScaffoldFile): string =>
   `- ${file.mode}: ${file.path} (${file.purpose})`;
@@ -93,7 +64,9 @@ const printPlan = (plan: ScaffoldPlan, writeMode: boolean): void => {
 
   if (!writeMode) {
     console.log("");
-    console.log("Dry run only. Re-run with --write to create TODO skeleton files.");
+    console.log(
+      "Dry run only. Re-run with --write to create TODO skeleton files."
+    );
   }
 };
 
@@ -106,7 +79,11 @@ const pascalCase = (value: string): string =>
 
 const flatName = (value: string): string => value.replace(/-/gu, "");
 
-const writeFileIfMissing = async (relativePath: string, content: string) => {
+const writeFileIfMissing = async (
+  rootDir: string,
+  relativePath: string,
+  content: string
+) => {
   const absolutePath = path.join(rootDir, relativePath);
 
   await mkdir(path.dirname(absolutePath), { recursive: true });
@@ -163,23 +140,111 @@ const skeletonFiles = (
   ];
 };
 
-const writeSkeleton = async (plan: ScaffoldPlan): Promise<void> => {
+const writeSkeleton = async (
+  rootDir: string,
+  plan: ScaffoldPlan
+): Promise<void> => {
   await Promise.all(
     skeletonFiles(plan).map((file) =>
-      writeFileIfMissing(file.path, file.content)
+      writeFileIfMissing(rootDir, file.path, file.content)
     )
   );
 };
 
-const args = parseArgs(process.argv.slice(2));
-const plan = createScaffoldPlan({
-  origin: args.origin,
-  name: args.name,
-  primitiveName: args.primitiveName,
+const cliConfig = {
+  originFlag: Flag.choice("origin", sliceOrigins).pipe(
+    Flag.optional,
+    Flag.withDescription("Source design system for the component slice.")
+  ),
+  nameFlag: Flag.string("name").pipe(
+    Flag.optional,
+    Flag.withDescription("Component slice name.")
+  ),
+  primitiveName: Flag.string("primitive").pipe(
+    Flag.withDefault(""),
+    Flag.withDescription("Upstream primitive or component name.")
+  ),
+  writeMode: Flag.boolean("write").pipe(
+    Flag.withDescription("Create TODO skeleton files instead of dry-running.")
+  ),
+  rootDir: Flag.directory("root", { mustExist: true }).pipe(
+    Flag.withDefault(defaultRootDir),
+    Flag.withDescription("Project root where write mode creates files.")
+  ),
+  originArgument: Argument.choice("origin", sliceOrigins).pipe(
+    Argument.optional,
+    Argument.withDescription("Optional positional source design system.")
+  ),
+  nameArgument: Argument.string("name").pipe(
+    Argument.optional,
+    Argument.withDescription("Optional positional component slice name.")
+  ),
+};
+
+type CliConfig = Command.Command.Config.Infer<typeof cliConfig>;
+
+const resolveCliConfig = (config: CliConfig): ParsedArgs => ({
+  origin:
+    optionalValue(config.originFlag) ??
+    optionalValue(config.originArgument) ??
+    "foldkit",
+  name:
+    optionalValue(config.nameFlag) ?? optionalValue(config.nameArgument) ?? "",
+  primitiveName: config.primitiveName,
+  writeMode: config.writeMode,
+  rootDir: config.rootDir,
 });
 
-printPlan(plan, args.writeMode);
+export const scaffoldCommand = Command.make(
+  "scaffold-component-slice",
+  cliConfig,
+  (config) =>
+    Effect.gen(function* () {
+      const args = resolveCliConfig(config);
+      const plan = createScaffoldPlan({
+        origin: args.origin,
+        name: args.name,
+        primitiveName: args.primitiveName,
+      });
 
-if (args.writeMode) {
-  await writeSkeleton(plan);
+      yield* Effect.sync(() => printPlan(plan, args.writeMode));
+
+      if (args.writeMode) {
+        yield* Effect.promise(() => writeSkeleton(args.rootDir, plan));
+      }
+    })
+).pipe(
+  Command.withDescription(
+    "Plan or create TODO skeleton files for a new Foldkit CN component slice."
+  ),
+  Command.withExamples([
+    {
+      command: "scaffold-component-slice --origin shadcn --name command-menu",
+      description: "Print the default dry-run plan.",
+    },
+    {
+      command:
+        "scaffold-component-slice --origin base-ui --name dialog --primitive Dialog --write",
+      description: "Create TODO skeleton files for review.",
+    },
+  ])
+);
+
+export const runScaffoldCli = (args: ReadonlyArray<string>) =>
+  Command.runWith(scaffoldCommand, { version: "0.1.0" })(args);
+
+if (import.meta.main) {
+  Effect.runPromise(
+    runScaffoldCli(process.argv.slice(2)).pipe(
+      Effect.provide(NodeServices.layer)
+    )
+  ).catch((error: unknown) => {
+    if (error instanceof Error) {
+      console.error(error.message);
+    } else {
+      console.error(error);
+    }
+
+    process.exitCode = 1;
+  });
 }

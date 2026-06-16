@@ -9,6 +9,7 @@ export default defineConfig({
           environment: "happy-dom",
           include: [
             "src/**/*.{test,spec}.{ts,tsx,js,mjs}",
+            "scripts/**/*.{test,spec}.{ts,tsx,js,mjs}",
             "registry/default/**/*.{test,spec}.{ts,tsx,js,mjs}",
           ],
           setupFiles: ["./src/vitest-setup.ts"],
