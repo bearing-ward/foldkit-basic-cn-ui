@@ -1,0 +1,32 @@
+# {{projectName}}
+
+Custom Foldkit CN registry project generated from `foldkit-basic-cn-ui`.
+
+## Project Layout
+
+- `package.json` wires docs, registry generation, registry validation, tests, and typecheck scripts.
+- `registry/config.json` owns the registry name, docs homepage, and registry base URL.
+- `registry/default/items.json` is the source registry item manifest.
+- `registry/templates/components.json` is the source `components.json` template.
+- `registry/default/ui/example-card/` contains one example component slice.
+- `registry/default/examples/example-card-basic/` contains one installable example.
+- `apps/docs/public/components.json` and `apps/docs/public/r/*.json` are generated public registry output.
+- `scripts/build-registry.mjs` builds the public registry JSON.
+- `scripts/check-registry.mjs` validates the generated output.
+- `src/` contains the docs app shell.
+
+## Local Development
+
+```bash
+bun install
+bun run dev
+```
+
+After editing files under `registry/default`, regenerate and check the registry:
+
+```bash
+bun run build:registry
+bun run check:registry
+bun run typecheck
+bun run build
+```

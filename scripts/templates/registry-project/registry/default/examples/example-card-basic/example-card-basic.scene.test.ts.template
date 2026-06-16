@@ -1,0 +1,13 @@
+import { Scene } from "foldkit";
+import { describe, test } from "vitest";
+
+import * as Main from "./main";
+
+describe("ExampleCard basic example", () => {
+  test("renders the example card", () => {
+    Scene.scene(
+      Main.view({}),
+      Scene.expect(Scene.text("Example Card")).toExist()
+    );
+  });
+});

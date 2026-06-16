@@ -1,0 +1,16 @@
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+
+export const exampleCardRootClassName =
+  "rounded-lg border border-slate-200 bg-white p-5 text-slate-950 shadow-sm";
+
+export const view = <Message>(): Html => {
+  const h = html<Message>();
+
+  return h.article([h.Class(exampleCardRootClassName)], [
+    h.h2([h.Class("text-lg font-semibold")], ["Example Card"]),
+    h.p([h.Class("mt-2 text-sm text-slate-600")], [
+      "Replace this slice with your first custom registry component.",
+    ]),
+  ]);
+};

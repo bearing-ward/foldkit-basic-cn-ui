@@ -1,0 +1,56 @@
+[
+  {
+    "name": "example-card",
+    "type": "registry:ui",
+    "title": "Example Card",
+    "description": "A minimal Foldkit CN registry slice with a component, scene test, and docs example.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/example-card/index.ts",
+        "target": "src/ui/example-card/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/example-card/view.ts",
+        "target": "src/ui/example-card/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/example-card/example-card.scene.test.ts",
+        "target": "src/ui/example-card/example-card.scene.test.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/examples/example-card-basic/main.ts",
+        "target": "src/examples/example-card-basic/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/example-card-basic/entry.ts",
+        "target": "src/examples/example-card-basic/entry.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/example-card-basic/index.html",
+        "target": "src/examples/example-card-basic/index.html",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/example-card-basic/example-card-basic.scene.test.ts",
+        "target": "src/examples/example-card-basic/example-card-basic.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "ExampleCard",
+        "origin": "custom",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  }
+]
