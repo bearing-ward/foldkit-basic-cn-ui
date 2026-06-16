@@ -87,6 +87,19 @@ describe("generate registry project CLI", () => {
         path.join(rootDir, "registry/default/ui/example-card/view.ts"),
         "utf-8"
       );
+      const readme = await readFile(path.join(rootDir, "README.md"), "utf-8");
+      const dockerfile = await readFile(
+        path.join(rootDir, "Dockerfile"),
+        "utf-8"
+      );
+      const compose = await readFile(
+        path.join(rootDir, "compose.yaml"),
+        "utf-8"
+      );
+      const serveRegistry = await readFile(
+        path.join(rootDir, "scripts/serve-registry.ts"),
+        "utf-8"
+      );
       const output = log.mock.calls.map((call) => call.join(" ")).join("\n");
 
       expect(packageJson.scripts["build:registry"]).toBe(
@@ -94,6 +107,9 @@ describe("generate registry project CLI", () => {
       );
       expect(packageJson.scripts["check:registry"]).toContain(
         "scripts/check-registry.mjs"
+      );
+      expect(packageJson.scripts["serve:registry"]).toBe(
+        "bun scripts/serve-registry.ts"
       );
       expect(registryConfig).toEqual({
         name: "acme-foldkit-cn",
@@ -109,6 +125,11 @@ describe("generate registry project CLI", () => {
       );
       expect(publicItem.name).toBe("example-card");
       expect(view).toContain("exampleCardRootClassName");
+      expect(readme).toContain("Self-Hosted Registry");
+      expect(readme).toContain("bun run serve:registry");
+      expect(dockerfile).toContain("bun run serve:registry");
+      expect(compose).toContain("registry:");
+      expect(serveRegistry).toContain("serve-registry");
       expect(output).toContain("Generated Foldkit CN custom registry project");
       expect(output).toContain("bun run check:registry");
     } finally {

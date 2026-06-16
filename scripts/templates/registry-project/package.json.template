@@ -7,6 +7,7 @@
     "build": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
     "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry.mjs",
+    "serve:registry": "bun scripts/serve-registry.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "preview": "vite preview"

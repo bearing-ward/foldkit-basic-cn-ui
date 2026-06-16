@@ -1,0 +1,8 @@
+services:
+  registry:
+    build: .
+    environment:
+      REGISTRY_HOST: 0.0.0.0
+      REGISTRY_PORT: "4174"
+    ports:
+      - "4174:4174"
