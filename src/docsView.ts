@@ -21,6 +21,7 @@ import * as DocsRoutes from "docs-example-routes";
 import * as Icon from "./icon";
 import * as Main from "app-main";
 import * as NewComponentAuthoring from "./newComponentAuthoring";
+import * as ThemePlayground from "./themePlayground";
 import type { UiMessage } from "./ui/message";
 import type { UiModel } from "./ui/model";
 import * as View from "legacy-ui-views";
@@ -56,6 +57,11 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "New Component",
     routeTag: "NewComponentAuthoring",
     href: "/docs/new-component",
+  },
+  {
+    label: "Theme Playground",
+    routeTag: "ThemePlayground",
+    href: "/docs/theme-playground",
   },
   {
     label: "Accordion Docs",
@@ -19945,6 +19951,14 @@ const contentView = (model: Model): Html => {
           view: NewComponentAuthoring.view,
           toParentMessage: (message) =>
             Main.GotNewComponentAuthoringMessage({ message }),
+        }),
+      ThemePlayground: () =>
+        h.submodel({
+          slotId: "theme-playground",
+          model: model.themePlayground,
+          view: ThemePlayground.view,
+          toParentMessage: (message) =>
+            Main.GotThemePlaygroundMessage({ message }),
         }),
       AccordionDocs: () => accordionDocsView(model),
       BaseUiAccordionBasicExample: () =>

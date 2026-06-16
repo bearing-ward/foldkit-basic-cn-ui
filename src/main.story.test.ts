@@ -348,12 +348,14 @@ import * as VirtualListVariableExample from "../registry/default/examples/virtua
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
 import * as NewComponentAuthoring from "./newComponentAuthoring";
+import * as ThemePlayground from "./themePlayground";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage } from "./ui/message";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [newComponentAuthoring] = NewComponentAuthoring.init();
+const [themePlayground] = ThemePlayground.init();
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
 const [shadcnBaseAccordionBasicExample] =
@@ -735,6 +737,7 @@ const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
   newComponentAuthoring,
+  themePlayground,
   accordionBasicExample,
   shadcnAccordionBasicExample,
   shadcnBaseAccordionBasicExample,
