@@ -6,7 +6,7 @@
 > not improvise.
 >
 > **Drift check (run first)**:
-> `git diff --stat 795046f1..HEAD -- registry/default/items.json registry/default/ui registry/default/examples src scripts docs/product/component-entry-contract.md docs/product/base-ui-shadcn-expansion-plan.md plans/README.md`
+> `git diff --stat 0ccff45b..HEAD -- registry/default/items.json registry/default/ui registry/default/examples src scripts docs/product/component-entry-contract.md docs/product/base-ui-shadcn-expansion-plan.md plans/README.md`
 > If any in-scope file changed since this plan was written, compare the "Current
 > state" excerpts against the live files before proceeding; on a mismatch, treat
 > it as a STOP condition.
@@ -18,7 +18,7 @@
 - **Risk**: MED
 - **Depends on**: plans/001-define-component-update-semantics.md
 - **Category**: direction
-- **Planned at**: commit `795046f1`, 2026-06-16
+- **Planned at**: commit `0ccff45b`, 2026-06-16
 
 ## Why this matters
 
@@ -155,4 +155,3 @@ Stop and report back if:
 
 Keep generated content intentionally minimal. The value is repeatable structure,
 not pretending to author high-quality component behavior automatically.
-
