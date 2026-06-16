@@ -12,7 +12,7 @@ starting, honor its STOP conditions, and update your row when done.
 | 002 | Add the new-component authoring interface | P1 | M | 001 | DONE |
 | 003 | Add the component registry CLI | P1 | L | 001, 002 | DONE |
 | 004 | Generate custom registry projects | P2 | M | 002, 003 | DONE |
-| 005 | Build the self-hosted registry stack | P2 | L | 003, 004 | TODO |
+| 005 | Build the self-hosted registry stack | P2 | L | 003, 004 | DONE |
 | 006 | Add the theme playground | P2 | M | - | TODO |
 | 007 | Add the custom-clone spin-out workflow | P3 | L | 002, 004 | TODO |
 
