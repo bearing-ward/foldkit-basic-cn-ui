@@ -95,6 +95,8 @@ bunx shadcn@latest add @foldkit-cn/dialog
 The generated files are intended to be app-owned. After installation, inspect
 the source, wire the view into your Foldkit app, and keep or edit the scene tests
 that match your usage.
+Future update tooling must account for source-owned local edits before changing
+installed files.
 
 ## Useful Items To Try
 

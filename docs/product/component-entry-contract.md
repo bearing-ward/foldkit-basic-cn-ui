@@ -177,6 +177,37 @@ docs route wiring, generated public artifacts, and tests.
 | `apps/docs/public/r/{name}.json`                  | every item          | Generated public registry JSON.                                             |
 | `docs/product/*-coverage-matrix.md`               | complex components  | Optional detail matrix; useful but subordinate to this contract.            |
 
+## Installed component updates
+
+Installed registry files are app-owned source after they are copied into a
+consuming app. Future update tooling must default to non-destructive behavior
+and preserve source-owned local edits unless the operator explicitly opts into
+overwrite behavior.
+
+Supported update modes:
+
+- `inspect`: show the available upstream version and source differences without
+  writing to the consuming app.
+- `apply-clean`: write updated files only when each installed file still matches
+  its recorded source snapshot.
+- `merge-assisted`: produce a patch or conflict report when local files have
+  changed since installation.
+- `force`: overwrite app-owned files only when the operator passes an explicit
+  destructive flag.
+
+To support those modes, a CLI must record minimum metadata for each installed
+component in the consuming app:
+
+- registry URL or registry alias.
+- Component name.
+- Installed registry item version/hash or content digest.
+- file list and target paths.
+- dependency items installed with the component.
+- Timestamp and CLI version when available.
+
+This contract does not choose a storage format. Future CLI work should define
+that implementation detail without weakening the default local-edit protection.
+
 ## Component Source Contract
 
 ## Docs Navigation And Origin Contract
