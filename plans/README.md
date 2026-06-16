@@ -9,7 +9,7 @@ starting, honor its STOP conditions, and update your row when done.
 | Plan | Title | Priority | Effort | Depends on | Status |
 |------|-------|----------|--------|------------|--------|
 | 001 | Define installed component update semantics | P1 | S | - | DONE |
-| 002 | Add the new-component authoring interface | P1 | M | 001 | TODO |
+| 002 | Add the new-component authoring interface | P1 | M | 001 | DONE |
 | 003 | Add the component registry CLI | P1 | L | 001, 002 | TODO |
 | 004 | Generate custom registry projects | P2 | M | 002 | TODO |
 | 005 | Build the self-hosted registry stack | P2 | L | 003, 004 | TODO |
