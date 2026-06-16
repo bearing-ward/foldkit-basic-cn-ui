@@ -627,6 +627,7 @@ import {
   MenuAnimatedExampleRoute,
   MenuBasicExampleRoute,
   MenuDocsRoute,
+  NewComponentAuthoringRoute,
   NotFoundRoute,
   BaseUiPopoverAnimatedExampleRoute,
   BaseUiPopoverBasicExampleRoute,
@@ -678,6 +679,7 @@ import {
   update,
 } from "./main";
 import type { Model } from "./main";
+import * as NewComponentAuthoring from "./newComponentAuthoring";
 import { uiInit } from "./ui/init";
 
 const today = Calendar.make(2026, 4, 16);
@@ -694,6 +696,7 @@ const BaseUiDialogCloseConfirmationTweetShowDialog = Dialog.ShowDialog({
   maybeFocusSelector: Option.none(),
 });
 const [initialUiModel] = uiInit(today);
+const [newComponentAuthoring] = NewComponentAuthoring.init();
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
 const [shadcnBaseAccordionBasicExample] =
@@ -1074,6 +1077,7 @@ const [virtualListVariableExample] = VirtualListVariableExample.init();
 const modelForRoute = (route: Model["route"]): Model => ({
   route,
   uiModel: initialUiModel,
+  newComponentAuthoring,
   accordionBasicExample,
   shadcnAccordionBasicExample,
   shadcnBaseAccordionBasicExample,
@@ -6118,6 +6122,34 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Open animated popover" })
       ).toExist()
+    );
+  });
+
+  test("the new component authoring route updates the scaffold checklist", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(NewComponentAuthoringRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "New component interface" })
+      ).toExist(),
+      Scene.expect(
+        Scene.text("registry/default/ui/example-panel/index.ts")
+      ).toExist(),
+      Scene.change(
+        Scene.role("textbox", { name: "Component name" }),
+        "Command Menu"
+      ),
+      Scene.expect(Scene.text("registry/default/ui/command-menu/index.ts"))
+        .toExist(),
+      Scene.change(Scene.role("combobox", { name: "Origin" }), "shadcn"),
+      Scene.expect(Scene.role("combobox", { name: "Origin" })).toHaveValue(
+        "shadcn"
+      ),
+      Scene.expect(Scene.text("bun run build:registry")).toExist(),
+      Scene.expect(Scene.text("bun run check:registry")).toExist(),
+      Scene.expect(Scene.text("bun run typecheck")).toExist(),
+      Scene.expect(Scene.text("bun run test")).toExist(),
+      Scene.expect(Scene.text("bun run build")).toExist()
     );
   });
 

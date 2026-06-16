@@ -347,11 +347,13 @@ import * as VirtualListBasicExample from "../registry/default/examples/virtual-l
 import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
 import { ChangedUrl, GotUiMessage, HomeRoute, update } from "./main";
 import type { Model } from "./main";
+import * as NewComponentAuthoring from "./newComponentAuthoring";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage } from "./ui/message";
 
 const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
+const [newComponentAuthoring] = NewComponentAuthoring.init();
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
 const [shadcnBaseAccordionBasicExample] =
@@ -732,6 +734,7 @@ const [virtualListVariableExample] = VirtualListVariableExample.init();
 const initialModel: Model = {
   route: HomeRoute(),
   uiModel: initialUiModel,
+  newComponentAuthoring,
   accordionBasicExample,
   shadcnAccordionBasicExample,
   shadcnBaseAccordionBasicExample,
