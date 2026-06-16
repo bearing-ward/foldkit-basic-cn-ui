@@ -140,7 +140,7 @@ const skeletonFiles = (
   ];
 };
 
-const writeSkeleton = async (
+export const writeScaffoldSkeleton = async (
   rootDir: string,
   plan: ScaffoldPlan
 ): Promise<void> => {
@@ -210,7 +210,7 @@ export const scaffoldCommand = Command.make(
       yield* Effect.sync(() => printPlan(plan, args.writeMode));
 
       if (args.writeMode) {
-        yield* Effect.promise(() => writeSkeleton(args.rootDir, plan));
+        yield* Effect.promise(() => writeScaffoldSkeleton(args.rootDir, plan));
       }
     })
 ).pipe(

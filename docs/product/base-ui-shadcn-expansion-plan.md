@@ -168,6 +168,28 @@ New shadcn work should focus on opinionated style parity:
 - data attributes and accessibility notes
 - scene tests for interactive behavior
 
+## Trusted Registry Custom-Clone Workflow
+
+The custom-clone spin-out workflow is a review accelerator, not a registry
+shortcut. A trusted registry is a source allowlisted in
+`scripts/custom-clone-spinout.ts`; adding another registry requires explicit
+operator approval and a code review of the URL policy before any import can use
+it.
+
+Allowed imports are limited to local project registry aliases or registry item
+JSON and files listed by an explicit allowlisted host/path. URLs are checked
+against the allowlist, unsafe paths are rejected, and imported source is written
+only as reference material under
+`registry/candidates/custom-clone/*/reference`. Never execute imported code.
+
+Write mode creates TODO scaffold files through the normal component-slice
+scaffold path under
+`registry/candidates/custom-clone/*/candidate-slice/registry/default`, leaving
+`registry/default/items.json` untouched until a reviewer promotes the candidate
+through the full slice contract. The advisory likeness harness compares
+deterministic snapshots for example names, accessible text, roles, and state
+coverage, plus target file names; it is not a subjective or hidden-service gate.
+
 ## Base UI Lane Coverage
 
 Base UI is the simple styled or unstyled lane. A Foldkit functional

@@ -203,6 +203,57 @@ that match your usage.
 Future update tooling must account for source-owned local edits before changing
 installed files.
 
+## Custom-Clone Spin-Out
+
+Use the custom-clone workflow when a reviewer wants to inspect a component or
+example from a trusted registry before authoring a local Foldkit CN candidate.
+Trusted registry means an allowlist entry in `scripts/custom-clone-spinout.ts`;
+new registries require explicit operator approval and a code review before they
+can be fetched by this workflow.
+
+The import policy is intentionally conservative:
+
+- Local project registry aliases such as `foldkit-cn:button` resolve to this
+  checkout's generated registry JSON.
+- URLs must match the trusted registry allowlist for explicit hosts and paths.
+  `file://` sources are only for operator-provided local review fixtures passed
+  with `--trusted-registry local-file`.
+- The workflow may fetch the registry item JSON and listed file paths only.
+- Imported source is stored under `registry/candidates/custom-clone/*/reference`
+  as reference material.
+- Candidate scaffold output is written under
+  `registry/candidates/custom-clone/*/candidate-slice`, outside
+  `registry/default/items.json`.
+- Never execute imported code during import or likeness review.
+- Advisory likeness scores compare deterministic snapshots such as example
+  names, accessible text, roles, state coverage, and target file names. They
+  cannot replace human review or the normal registry slice contract.
+
+Dry-run an allowlisted local export:
+
+```bash
+bun run custom-clone -- import file:///tmp/review-card.json \
+  --trusted-registry local-file \
+  --name review-card
+```
+
+Write an isolated candidate after reviewing the dry-run:
+
+```bash
+bun run custom-clone -- import file:///tmp/review-card.json \
+  --trusted-registry local-file \
+  --name review-card \
+  --origin shadcn \
+  --primitive Card \
+  --write
+```
+
+Run deterministic advisory likeness scoring:
+
+```bash
+bun run custom-clone -- score /tmp/origin-snapshot.json /tmp/candidate-snapshot.json
+```
+
 ## Useful Items To Try
 
 ```bash
