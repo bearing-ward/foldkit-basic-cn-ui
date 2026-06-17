@@ -15,6 +15,7 @@ starting, honor its STOP conditions, and update your row when done.
 | 005 | Build the self-hosted registry stack | P2 | L | 003, 004 | DONE |
 | 006 | Add the theme playground | P2 | M | - | DONE |
 | 007 | Add the custom-clone spin-out workflow | P3 | L | 002, 004 | DONE |
+| 008 | Document the shipped workflow surfaces | P2 | S | 002, 003, 004, 005, 006, 007 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -32,8 +33,11 @@ REJECTED (with one-line rationale).
 - 007 should follow 002 and 004 because cloning from another registry should
   create the same local candidate slice and project shape as first-party
   generation.
+- 008 follows 002 through 007 because it documents those shipped workflow
+  surfaces and retires stale backlog wording after implementation.
 
 ## Findings considered and rejected
 
-- No rejected items in this planning pass. The user asked to plan every current
-  `Workflow Backlog` todo from `docs/product/base-ui-shadcn-expansion-plan.md`.
+- No rejected items are currently recorded. Plans 001 through 007 covered the
+  workflow backlog; plan 008 adds a documentation follow-up for those shipped
+  surfaces.
