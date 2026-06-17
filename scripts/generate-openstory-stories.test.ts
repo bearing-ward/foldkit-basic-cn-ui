@@ -1,0 +1,228 @@
+import { describe, expect, test } from "vitest";
+
+import {
+  createCatalog,
+  renderGeneratedFiles,
+  storyId,
+} from "./generate-openstory-stories.mjs";
+
+const item = ({
+  name,
+  title,
+  component,
+  example,
+}: {
+  name: string;
+  title: string;
+  component: string;
+  example: string;
+}) => ({
+  name,
+  title,
+  type: "registry:example",
+  meta: {
+    foldkit: {
+      component,
+      example,
+    },
+  },
+});
+
+const catalogFor = (
+  exampleSlugs: ReadonlyArray<string>,
+  registryItems: ReadonlyArray<ReturnType<typeof item>> = []
+) => createCatalog({ exampleSlugs, registryItems });
+
+describe("generate Openstory stories", () => {
+  test("groups shadcn examples by component", () => {
+    const [group] = catalogFor(
+      ["shadcn-calendar-basic"],
+      [
+        item({
+          name: "shadcn-calendar-basic",
+          title: "shadcn Calendar Basic",
+          component: "Calendar",
+          example: "shadcn-basic",
+        }),
+      ]
+    );
+
+    expect(group?.title).toBe("shadcn/Calendar");
+    expect(group?.stories[0]?.name).toBe("Basic");
+  });
+
+  test("groups base-ui examples by component", () => {
+    const [group] = catalogFor(
+      ["base-ui-menu-basic"],
+      [
+        item({
+          name: "base-ui-menu-basic",
+          title: "Base UI Menu Basic",
+          component: "Menu",
+          example: "basic",
+        }),
+      ]
+    );
+
+    expect(group?.title).toBe("base-ui/Menu");
+    expect(group?.stories[0]?.name).toBe("Basic");
+  });
+
+  test("groups default registry examples by component", () => {
+    const [group] = catalogFor(
+      ["alert-dialog-basic"],
+      [
+        item({
+          name: "alert-dialog-basic",
+          title: "Alert Dialog Basic",
+          component: "AlertDialog",
+          example: "basic",
+        }),
+      ]
+    );
+
+    expect(group?.title).toBe("registry/Alert Dialog");
+    expect(group?.stories[0]?.name).toBe("Basic");
+  });
+
+  test("uses filesystem examples as the inventory during metadata drift", () => {
+    const catalog = catalogFor(
+      ["base-ui-checkbox-form"],
+      [
+        item({
+          name: "base-ui-checkbox-missing",
+          title: "Base UI Checkbox Missing",
+          component: "Checkbox",
+          example: "missing",
+        }),
+      ]
+    );
+    const files = renderGeneratedFiles(catalog);
+
+    expect(catalog).toHaveLength(1);
+    expect(catalog[0]?.stories.map((story) => story.slug)).toEqual([
+      "base-ui-checkbox-form",
+    ]);
+    expect([...files.values()].join("\n")).toContain(
+      "base-ui-checkbox-form/main"
+    );
+    expect([...files.values()].join("\n")).not.toContain(
+      "base-ui-checkbox-missing/main"
+    );
+  });
+
+  test("disambiguates duplicate story names within one title group", () => {
+    const [group] = catalogFor(
+      ["button-basic", "button-default"],
+      [
+        item({
+          name: "button-basic",
+          title: "Button Basic",
+          component: "Button",
+          example: "basic",
+        }),
+        item({
+          name: "button-default",
+          title: "Button Basic",
+          component: "Button",
+          example: "basic",
+        }),
+      ]
+    );
+
+    expect(group?.stories.map((story) => story.exportName)).toEqual([
+      "Basic",
+      "Basic2",
+    ]);
+    expect(group?.stories.map((story) => story.name)).toEqual([
+      "Basic",
+      "Basic 2",
+    ]);
+  });
+
+  test("preserves the current calendar Openstory ids", () => {
+    const calendarItems = [
+      item({
+        name: "shadcn-calendar-basic",
+        title: "shadcn Calendar Basic",
+        component: "Calendar",
+        example: "shadcn-basic",
+      }),
+      item({
+        name: "shadcn-calendar-booked",
+        title: "shadcn Calendar Booked Dates",
+        component: "shadcn-calendar",
+        example: "Booked Dates",
+      }),
+      item({
+        name: "shadcn-calendar-custom-cell-size",
+        title: "shadcn Calendar Custom Cell Size",
+        component: "Calendar",
+        example: "custom-cell-size",
+      }),
+      item({
+        name: "shadcn-calendar-date-of-birth",
+        title: "shadcn Calendar Date of Birth",
+        component: "shadcn-calendar",
+        example: "Date of Birth",
+      }),
+      item({
+        name: "shadcn-calendar-date-time-picker",
+        title: "shadcn Calendar Date and Time Picker",
+        component: "Calendar",
+        example: "date-time-picker",
+      }),
+      item({
+        name: "shadcn-calendar-month-year-selector",
+        title: "shadcn Calendar Month and Year Selector",
+        component: "shadcn-calendar",
+        example: "Month and Year Selector",
+      }),
+      item({
+        name: "shadcn-calendar-presets",
+        title: "shadcn Calendar Presets",
+        component: "shadcn-calendar",
+        example: "Presets",
+      }),
+      item({
+        name: "shadcn-calendar-range",
+        title: "shadcn Calendar Range",
+        component: "Calendar",
+        example: "range",
+      }),
+      item({
+        name: "shadcn-calendar-rtl",
+        title: "shadcn Calendar RTL",
+        component: "shadcn-calendar",
+        example: "RTL",
+      }),
+      item({
+        name: "shadcn-calendar-week-numbers",
+        title: "shadcn Calendar Week Numbers",
+        component: "Calendar",
+        example: "week-numbers",
+      }),
+    ];
+    const [group] = catalogFor(
+      calendarItems.map(({ name }) => name),
+      calendarItems
+    );
+
+    expect(
+      group?.stories.map((story) =>
+        storyId({ title: group.title, name: story.name })
+      )
+    ).toEqual([
+      "shadcn-calendar--basic",
+      "shadcn-calendar--booked-dates",
+      "shadcn-calendar--custom-cell-size",
+      "shadcn-calendar--date-of-birth",
+      "shadcn-calendar--date-and-time-picker",
+      "shadcn-calendar--month-and-year-selector",
+      "shadcn-calendar--presets",
+      "shadcn-calendar--range",
+      "shadcn-calendar--rtl",
+      "shadcn-calendar--week-numbers",
+    ]);
+  });
+});

@@ -1,19 +1,20 @@
-import { foldkit } from "@foldkit/vite-plugin";
-import tailwindcss from "@tailwindcss/vite";
+import { foldkit } from "@foldkit/vite-plugin"
+import tailwindcss from "@tailwindcss/vite"
+import { openstory } from "openstory/plugin"
 
-import { defineConfig } from "vite";
+import { defineConfig } from "vite"
 
-import { optimizedSourceAliases } from "./vite.aliases";
+import { optimizedSourceAliases } from "./vite.aliases"
 
 const registryExampleChunkName = (id: string): string | undefined => {
-  const match = id.match(/registry\/default\/examples\/([^/]+)\//u);
+  const match = id.match(/registry\/default\/examples\/([^/]+)\//u)
 
   if (match?.[1] === undefined) {
-    return undefined;
+    return undefined
   }
 
-  const [, slug] = match;
-  const prefix = slug.split("-").at(0) ?? slug;
+  const [, slug] = match
+  const prefix = slug.split("-").at(0) ?? slug
 
   if (
     [
@@ -31,7 +32,7 @@ const registryExampleChunkName = (id: string): string | undefined => {
       "chart",
     ].includes(prefix)
   ) {
-    return "registry-examples-a-c";
+    return "registry-examples-a-c"
   }
 
   if (
@@ -55,7 +56,7 @@ const registryExampleChunkName = (id: string): string | undefined => {
       "form",
     ].includes(prefix)
   ) {
-    return "registry-examples-d-f";
+    return "registry-examples-d-f"
   }
 
   if (
@@ -90,24 +91,24 @@ const registryExampleChunkName = (id: string): string | undefined => {
       "spinner",
     ].includes(prefix)
   ) {
-    return "registry-examples-g-s";
+    return "registry-examples-g-s"
   }
 
-  return "registry-examples-t-z";
-};
+  return "registry-examples-t-z"
+}
 
 const exactChunkGroup = (modulePath: string, name: string) => ({
   name,
   test: (id: string) => id.endsWith(modulePath),
   priority: 50,
-});
+})
 
 export default defineConfig({
   base: process.env.GITHUB_PAGES === "true" ? "/foldkit-basic-cn-ui/" : "/",
   resolve: {
     alias: optimizedSourceAliases,
   },
-  plugins: [tailwindcss(), foldkit({ devToolsMcpPort: 9988 })],
+  plugins: [tailwindcss(), foldkit({ devToolsMcpPort: 9988 }), openstory({ framework: "foldkit" })],
   publicDir: "apps/docs/public",
   build: {
     rolldownOptions: {
@@ -186,4 +187,4 @@ export default defineConfig({
     entries: ["src/entry.ts"],
     include: Object.keys(optimizedSourceAliases),
   },
-});
+})

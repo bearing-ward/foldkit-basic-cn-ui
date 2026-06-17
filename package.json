@@ -6,7 +6,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
-    "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-primitive-coverage.mjs && bun scripts/check-shadcn-doc-examples.mjs && bun scripts/check-origin-content-parity-agenda.mjs",
+    "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-openstory-stories.mjs && bun scripts/check-primitive-coverage.mjs && bun scripts/check-shadcn-doc-examples.mjs && bun scripts/check-origin-content-parity-agenda.mjs",
     "custom-clone": "bun scripts/custom-clone-spinout.ts",
     "generate-registry-project": "bun scripts/generate-registry-project.ts",
     "registry": "bun scripts/component-registry-cli.ts",
@@ -21,7 +21,10 @@
     "test": "vitest run",
     "lint": "ultracite check",
     "check": "ultracite check",
-    "fix": "ultracite fix"
+    "fix": "ultracite fix",
+    "openstory": "openstory dev --framework foldkit",
+    "openstory:generate": "bun scripts/generate-openstory-stories.mjs",
+    "openstory:check": "bun scripts/check-openstory-stories.mjs"
   },
   "dependencies": {
     "@effect/platform-browser": "4.0.0-beta.66",
@@ -38,6 +41,7 @@
     "@foldkit/vite-plugin": "^0.7.0",
     "@playwright/test": "^1.60.0",
     "happy-dom": "^20.9.0",
+    "openstory": "file:../openstory/packages/openstory",
     "oxfmt": "latest",
     "oxlint": "latest",
     "playwright": "^1.60.0",
