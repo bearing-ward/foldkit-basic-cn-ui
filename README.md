@@ -281,6 +281,10 @@ The docs app includes local planning tools for maintainers:
   presets, and representative component surfaces before committing theme changes
   to registry components.
 
+For the shipped maintainer workflows, CLI commands, self-hosting surfaces, and
+safety boundaries, see
+[`Workflow Feature Surfaces`](docs/product/workflow-feature-surfaces.md).
+
 ## Useful Items To Try
 
 ```bash
