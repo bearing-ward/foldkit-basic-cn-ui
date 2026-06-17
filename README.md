@@ -27,6 +27,7 @@ styling, examples, or a source snapshot to adapt.
   dependency.
 - Scene tests and docs examples for the registry items.
 - A hosted registry suitable for `shadcn add` experiments.
+- Docs-app tools for planning new component slices and previewing theme choices.
 
 ## Current Status
 
@@ -172,6 +173,18 @@ project. The install command is a dry run unless `--execute` is passed. Executed
 installs copy local generated registry payloads into the consuming app and stop
 before overwriting existing app-owned files.
 
+`registry update` is intentionally inspect-only today. Run it with `--inspect`
+to compare installed metadata and upstream registry state without writing files:
+
+```bash
+bun run registry update dialog --app-root /path/to/foldkit-app --inspect
+```
+
+Update modes that change app-owned source are still governed by the installed
+component update contract in `docs/product/component-entry-contract.md`.
+Future modes must preserve local edits by default and require an explicit
+operator choice before applying, merging, or overwriting files.
+
 Install one registry item directly by URL:
 
 ```bash
@@ -253,6 +266,20 @@ Run deterministic advisory likeness scoring:
 ```bash
 bun run custom-clone -- score /tmp/origin-snapshot.json /tmp/candidate-snapshot.json
 ```
+
+## Docs App Tools
+
+The docs app includes local planning tools for maintainers:
+
+- `/docs/new-component` opens the New Component interface. Choose an origin,
+  component name, and optional primitive name to preview the same component-slice
+  plan used by the scaffold CLI before writing registry files. It shows the
+  normalized registry name, public name, examples, dependencies, and planned
+  file set.
+- `/docs/theme-playground` opens the Theme Playground. Use it to preview light,
+  dark, and system color modes, density choices, radius presets, typography
+  presets, and representative component surfaces before committing theme changes
+  to registry components.
 
 ## Useful Items To Try
 
