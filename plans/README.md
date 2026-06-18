@@ -6,16 +6,19 @@ starting, honor its STOP conditions, and update your row when done.
 
 ## Execution order & status
 
-| Plan | Title | Priority | Effort | Depends on | Status |
-|------|-------|----------|--------|------------|--------|
-| 001 | Define installed component update semantics | P1 | S | - | DONE |
-| 002 | Add the new-component authoring interface | P1 | M | 001 | DONE |
-| 003 | Add the component registry CLI | P1 | L | 001, 002 | DONE |
-| 004 | Generate custom registry projects | P2 | M | 002, 003 | DONE |
-| 005 | Build the self-hosted registry stack | P2 | L | 003, 004 | DONE |
-| 006 | Add the theme playground | P2 | M | - | DONE |
-| 007 | Add the custom-clone spin-out workflow | P3 | L | 002, 004 | DONE |
-| 008 | Document the shipped workflow surfaces | P2 | S | 002, 003, 004, 005, 006, 007 | DONE |
+| Plan | Title                                            | Priority | Effort | Depends on                   | Status |
+| ---- | ------------------------------------------------ | -------- | ------ | ---------------------------- | ------ |
+| 001  | Define installed component update semantics      | P1       | S      | -                            | DONE   |
+| 002  | Add the new-component authoring interface        | P1       | M      | 001                          | DONE   |
+| 003  | Add the component registry CLI                   | P1       | L      | 001, 002                     | DONE   |
+| 004  | Generate custom registry projects                | P2       | M      | 002, 003                     | DONE   |
+| 005  | Build the self-hosted registry stack             | P2       | L      | 003, 004                     | DONE   |
+| 006  | Add the theme playground                         | P2       | M      | -                            | DONE   |
+| 007  | Add the custom-clone spin-out workflow           | P3       | L      | 002, 004                     | DONE   |
+| 008  | Document the shipped workflow surfaces           | P2       | S      | 002, 003, 004, 005, 006, 007 | DONE   |
+| 009  | Add every registry example to Openstory          | P1       | M      | -                            | DONE   |
+| 010  | Build the Foldkit-native LiveTrace component kit | P1       | L      | 009                          | DONE   |
+| 011  | Build the AI Elements attachments registry slice | P1       | L      | 009                          | DONE   |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -35,6 +38,16 @@ REJECTED (with one-line rationale).
   generation.
 - 008 follows 002 through 007 because it documents those shipped workflow
   surfaces and retires stale backlog wording after implementation.
+- 009 is independent of the registry workflow plans. It should preserve the
+  existing Openstory adapter/setup work and generate coverage from
+  `registry/default/examples/*/main.ts` so the story browser tracks the runnable
+  example inventory.
+- 010 depends on 009 because the LiveTrace component kit should be exposed
+  through the generated OpenStory example inventory rather than hand-authored
+  story files.
+- 011 depends on 009 because the AI Elements attachments examples should appear
+  through the generated OpenStory registry catalog. It is otherwise independent
+  of 010 and should not modify LiveTrace files.
 
 ## Findings considered and rejected
 
