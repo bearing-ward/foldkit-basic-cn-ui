@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-progress",
+  "type": "registry:ui",
+  "title": "Progress",
+  "description": "shadcn style-lane progress wrapper backed by the existing Progress component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/progress"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-progress/index.ts",
+      "target": "src/ui/shadcn-progress/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  ariaValueText,\n  formattedValue,\n  indicatorView,\n  labelView,\n  progressPercent,\n  progressStatus,\n  progressStatusDataAttribute,\n  rootView,\n  trackView,\n  valueView,\n  view,\n} from \"../../../base-ui/ui/progress\";\nexport type {\n  FormatValue,\n  GetAriaValueText,\n  IndicatorViewConfig,\n  LabelViewConfig,\n  ProgressStatus,\n  ProgressStyle,\n  ProgressValueContext,\n  RenderValue,\n  RootViewConfig,\n  TrackViewConfig,\n  ValueViewConfig,\n  ViewConfig,\n} from \"../../../base-ui/ui/progress\";\n\nexport {\n  shadcnProgressIndicatorClassName,\n  shadcnProgressLabelClassName,\n  shadcnProgressRootClassName,\n  shadcnProgressTrackClassName,\n  shadcnProgressValueClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-progress/view.ts",
+      "target": "src/ui/shadcn-progress/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  progressIndicatorClassName as shadcnProgressIndicatorClassName,\n  progressLabelClassName as shadcnProgressLabelClassName,\n  progressRootClassName as shadcnProgressRootClassName,\n  progressTrackClassName as shadcnProgressTrackClassName,\n  progressValueClassName as shadcnProgressValueClassName,\n} from \"../../../base-ui/ui/progress/view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-progress/shadcn-progress.scene.test.ts",
+      "target": "src/ui/shadcn-progress/shadcn-progress.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Progress from \"./index\";\n\ndescribe(\"shadcn Progress registry view\", () => {\n  test(\"reuses the Foldkit Progress view contract\", () => {\n    expect(Progress.rootView).toBeTypeOf(\"function\");\n    expect(Progress.indicatorView).toBeTypeOf(\"function\");\n    expect(Progress.progressPercent(50, 0, 100)).toBe(50);\n    expect(Progress.shadcnProgressIndicatorClassName).toContain(\"transition\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/radix/progress",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

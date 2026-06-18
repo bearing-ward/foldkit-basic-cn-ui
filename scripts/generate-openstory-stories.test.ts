@@ -1,7 +1,12 @@
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+
 import { describe, expect, test } from "vitest";
 
 import {
   createCatalog,
+  discoverExamples,
   renderGeneratedFiles,
   storyId,
 } from "./generate-openstory-stories.mjs";
@@ -34,6 +39,35 @@ const catalogFor = (
 ) => createCatalog({ exampleSlugs, registryItems });
 
 describe("generate Openstory stories", () => {
+  test("discovers examples from all lane folders", async () => {
+    const rootDir = await mkdtemp(path.join(os.tmpdir(), "foldkit-cn-stories-"));
+
+    try {
+      await Promise.all(
+        [
+          "registry/foldkit/examples/button-basic",
+          "registry/base-ui/examples/base-ui-button-basic",
+          "registry/shadcn/examples/shadcn-button-basic",
+          "registry/ai-elements/examples/ai-elements-attachments-list",
+        ].map(async (directory) => {
+          await mkdir(path.join(rootDir, directory), { recursive: true });
+          await writeFile(path.join(rootDir, directory, "main.ts"), "");
+        })
+      );
+
+      expect(discoverExamples(rootDir).map((example) => example.modulePath)).toEqual(
+        [
+          "../../../registry/ai-elements/examples/ai-elements-attachments-list/main",
+          "../../../registry/base-ui/examples/base-ui-button-basic/main",
+          "../../../registry/foldkit/examples/button-basic/main",
+          "../../../registry/shadcn/examples/shadcn-button-basic/main",
+        ]
+      );
+    } finally {
+      await rm(rootDir, { recursive: true, force: true });
+    }
+  });
+
   test("groups shadcn examples by component", () => {
     const [group] = catalogFor(
       ["shadcn-calendar-basic"],
@@ -85,6 +119,33 @@ describe("generate Openstory stories", () => {
     expect(group?.stories[0]?.name).toBe("Basic");
   });
 
+  test("groups AI Elements examples by component", () => {
+    const [group] = catalogFor(
+      ["ai-elements-attachments-list"],
+      [
+        item({
+          name: "ai-elements-attachments-list",
+          title: "AI Elements Attachments List",
+          component: "Attachments",
+          example: "list",
+        }),
+      ]
+    );
+
+    expect(group?.title).toBe("ai-elements/Attachments");
+    expect(group?.stories[0]?.name).toBe("List");
+  });
+
+  test("generates imports to lane example paths", () => {
+    const catalog = catalogFor(["button-basic", "shadcn-button-basic"]);
+    const source = [...renderGeneratedFiles(catalog).values()].join("\n");
+
+    expect(source).toContain("../../../registry/foldkit/examples/button-basic/main");
+    expect(source).toContain(
+      "../../../registry/shadcn/examples/shadcn-button-basic/main"
+    );
+  });
+
   test("uses filesystem examples as the inventory during metadata drift", () => {
     const catalog = catalogFor(
       ["base-ui-checkbox-form"],
@@ -104,7 +165,7 @@ describe("generate Openstory stories", () => {
       "base-ui-checkbox-form",
     ]);
     expect([...files.values()].join("\n")).toContain(
-      "base-ui-checkbox-form/main"
+      "registry/base-ui/examples/base-ui-checkbox-form/main"
     );
     expect([...files.values()].join("\n")).not.toContain(
       "base-ui-checkbox-missing/main"

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "type": "registry:ui",
+  "title": "Select",
+  "description": "A Foldkit Select wrapper for native select controls with accessible label and description helpers, typed onChange messages, and reusable view classes.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/foldkit/ui/select/index.ts",
+      "target": "src/ui/select/index.ts",
+      "type": "registry:ui",
+      "content": "import { Ui } from \"foldkit\";\n\nexport const { descriptionId } = Ui.Select;\nexport const { view } = Ui.Select;\n\nexport type SelectAttributes<ParentMessage> =\n  Ui.Select.SelectAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Select.ViewConfig<ParentMessage>;\n\nexport {\n  chevronClassName,\n  descriptionClassName,\n  labelClassName,\n  selectClassName,\n  selectWrapperClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/foldkit/ui/select/view.ts",
+      "target": "src/ui/select/view.ts",
+      "type": "registry:ui",
+      "content": "export const selectClassName =\n  \"appearance-none inline-flex w-full items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-base font-normal text-gray-900 transition hover:bg-gray-100 focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50\";\n\nexport const selectWrapperClassName = \"relative w-full\";\n\nexport const chevronClassName =\n  \"pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400\";\n\nexport const labelClassName = \"block text-sm font-medium text-gray-700\";\n\nexport const descriptionClassName = \"text-sm text-gray-500\";\n"
+    },
+    {
+      "path": "registry/foldkit/ui/select/select.scene.test.ts",
+      "target": "src/ui/select/select.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Schema as S } from \"effect\";\nimport { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { describe, test } from \"vitest\";\n\nimport * as Select from \"./index\";\n\nconst UpdatedPlan = m(\"UpdatedPlan\", { value: S.String });\n\ninterface Model {\n  readonly value: string;\n}\n\ntype Message = typeof UpdatedPlan.Type;\n\nconst initialModel: Model = { value: \"team\" };\n\nconst update = (model: Model, message: Message): readonly [Model, []] => [\n  { value: message.value },\n  [],\n];\n\nconst view = (model: Model): Html => {\n  const h = html<Message>();\n\n  return Select.view<Message>({\n    id: \"plan-select\",\n    value: model.value,\n    onChange: (value) => UpdatedPlan({ value }),\n    toView: (attributes) =>\n      h.div(\n        [h.Class(\"space-y-2\")],\n        [\n          h.label(attributes.label, [\"Plan\"]),\n          h.div(\n            [h.Class(Select.selectWrapperClassName)],\n            [\n              h.select(\n                [\n                  ...attributes.select,\n                  h.Class(Select.selectClassName),\n                  h.AriaLabel(\"Plan\"),\n                ],\n                [\n                  h.option([h.Value(\"team\")], [\"Team\"]),\n                  h.option([h.Value(\"enterprise\")], [\"Enterprise\"]),\n                ]\n              ),\n              h.span([h.Class(Select.chevronClassName)], [\"v\"]),\n            ]\n          ),\n          h.p(attributes.description, [\"Choose an account plan.\"]),\n        ]\n      ),\n  });\n};\n\nconst disabledView = (): Html => {\n  const h = html<Message>();\n\n  return Select.view<Message>({\n    id: \"disabled-plan-select\",\n    value: \"team\",\n    isDisabled: true,\n    toView: (attributes) =>\n      h.div(\n        [],\n        [\n          h.label(attributes.label, [\"Disabled plan\"]),\n          h.select(\n            [\n              ...attributes.select,\n              h.Class(Select.selectClassName),\n              h.AriaLabel(\"Disabled plan\"),\n            ],\n            [h.option([h.Value(\"team\")], [\"Team\"])]\n          ),\n          h.p(attributes.description, [\"Plan changes are locked.\"]),\n        ]\n      ),\n  });\n};\n\ndescribe(\"Select registry view\", () => {\n  test(\"renders label, description, options, and change messages\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Plan\" })).toExist(),\n      Scene.expect(Scene.text(\"Choose an account plan.\")).toExist(),\n      Scene.change(Scene.role(\"combobox\", { name: \"Plan\" }), \"enterprise\"),\n      Scene.expect(Scene.text(\"Enterprise\")).toExist()\n    );\n  });\n\n  test(\"supports disabled native select state\", () => {\n    Scene.scene(\n      { update, view: disabledView },\n      Scene.with(initialModel),\n      Scene.expect(\n        Scene.role(\"combobox\", { name: \"Disabled plan\" })\n      ).toBeDisabled()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Select",
+      "primitive": "Ui.Select",
+      "stateful": true,
+      "origin": "https://foldkit.dev/ui/select",
+      "artifact": "primitive-backed-component"
+    }
+  }
+}

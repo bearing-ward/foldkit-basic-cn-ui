@@ -1,0 +1,44 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-link",
+  "type": "registry:example",
+  "title": "Breadcrumb Link",
+  "description": "A runnable Foldkit version of the shadcn Breadcrumb Link example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-breadcrumb"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/breadcrumb-link/main.ts",
+      "target": "src/examples/breadcrumb-link/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\n\nimport * as Breadcrumb from \"../../ui/breadcrumb\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html =>\n    Breadcrumb.view<Message>([\n      { label: \"Home\", href: \"/\" },\n      { label: \"Components\", href: \"/docs/components\" },\n      { label: \"Breadcrumb\" },\n    ])\n);\n"
+    },
+    {
+      "path": "registry/shadcn/examples/breadcrumb-link/entry.ts",
+      "target": "src/examples/breadcrumb-link/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({ title: \"Breadcrumb Link Component\", body: view(model) }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/shadcn/examples/breadcrumb-link/index.html",
+      "target": "src/examples/breadcrumb-link/index.html",
+      "type": "registry:example",
+      "content": "<div id=\"root\"></div>\n<script type=\"module\" src=\"./entry.ts\"></script>\n"
+    },
+    {
+      "path": "registry/shadcn/examples/breadcrumb-link/breadcrumb-link.scene.test.ts",
+      "target": "src/examples/breadcrumb-link/breadcrumb-link.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"breadcrumb-link example\", () => {\n  test(\"renders the shadcn Breadcrumb Link Component example\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.expect(Scene.role(\"navigation\", { name: \"breadcrumb\" })).toExist(),\n      Scene.expect(Scene.text(\"Breadcrumb\")).toExist(),\n      Scene.expect(Scene.text(\"Breadcrumb\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Breadcrumb",
+      "example": "link",
+      "originExample": "breadcrumb-link",
+      "origin": "https://ui.shadcn.com/docs/components/radix/breadcrumb"
+    }
+  }
+}

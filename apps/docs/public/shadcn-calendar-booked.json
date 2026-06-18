@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-calendar-booked",
+  "type": "registry:example",
+  "title": "shadcn Calendar Booked Dates",
+  "description": "A Foldkit shadcn Calendar booked-dates example using disabled dates.",
+  "registryDependencies": ["@foldkit-cn/shadcn-calendar"],
+  "meta": {
+    "foldkit": {
+      "component": "shadcn-calendar",
+      "example": "Booked Dates",
+      "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+    }
+  },
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-booked/main.ts",
+      "target": "src/examples/shadcn-calendar-booked/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Calendar, Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as UiCalendar from \"../../ui/shadcn-calendar\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  calendar: UiCalendar.Model,\n  selectedDate: Calendar.CalendarDate,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotCalendarMessage = m(\"GotCalendarMessage\", {\n  message: UiCalendar.Message,\n});\n\nexport const Message = S.Union([GotCalendarMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nconst initialDate = Calendar.make(2026, 2, 16);\n\nconst formatDate = (date: Calendar.CalendarDate): string =>\n  `${date.year}-${String(date.month).padStart(2, \"0\")}-${String(date.day).padStart(2, \"0\")}`;\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [\n  {\n    calendar: UiCalendar.init({\n      id: \"shadcn-calendar-booked\",\n      today: Calendar.make(2026, 2, 16),\n      initialSelectedDate: initialDate,\n      disabledDates: [Calendar.make(2026, 2, 18), Calendar.make(2026, 2, 19)],\n      disabledDaysOfWeek: [\"Sunday\", \"Saturday\"],\n    }),\n    selectedDate: initialDate,\n  },\n  [],\n];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotCalendarMessage: ({ message }) => {\n        const [calendar, commands, maybeOutMessage] = UiCalendar.update(\n          model.calendar,\n          message\n        );\n\n        const nextModel = Option.match(maybeOutMessage, {\n          onNone: () => evo(model, { calendar: () => calendar }),\n          onSome: M.type<UiCalendar.OutMessage>().pipe(\n            M.tagsExhaustive({\n              ChangedViewMonth: () => evo(model, { calendar: () => calendar }),\n              SelectedDate: ({ date }) =>\n                evo(model, {\n                  calendar: () => calendar,\n                  selectedDate: () => date,\n                }),\n            })\n          ),\n        });\n\n        return [\n          nextModel,\n          Command.mapMessages(commands, (message) =>\n            GotCalendarMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  const calendar = h.submodel({\n    slotId: model.calendar.id,\n    model: model.calendar,\n    view: UiCalendar.view,\n    viewInputs: {\n      toView: UiCalendar.shadcnCalendarView,\n    },\n    toParentMessage: (message) => GotCalendarMessage({ message }),\n  });\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      calendar,\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [`Selected stay: ${formatDate(model.selectedDate)}`]\n      ),\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [\"February 18, February 19, and weekends are unavailable.\"]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-booked/shadcn-calendar-booked.scene.test.ts",
+      "target": "src/examples/shadcn-calendar-booked/shadcn-calendar-booked.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Calendar Booked Dates example\", () => {\n  test(\"marks booked dates disabled\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Wednesday, February 18, 2026\" })\n      ).toBeDisabled(),\n      Scene.click(Scene.role(\"button\", { name: \"Friday, February 20, 2026\" })),\n      Scene.expect(Scene.text(\"Selected stay: 2026-02-20\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "dependencies": [],
+  "devDependencies": []
+}

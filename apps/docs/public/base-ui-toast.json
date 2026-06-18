@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Base UI style-lane toast wrapper backed by the Foldkit Ui.Toast component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/toast"],
+  "files": [
+    {
+      "path": "registry/base-ui/ui/base-ui-toast/index.ts",
+      "target": "src/ui/base-ui-toast/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  Added,\n  DismissAfter,\n  Dismissed,\n  DismissedAll,\n  DismissedToast,\n  dismiss,\n  dismissAll,\n  ElapsedDuration,\n  Entry,\n  GotAnimationMessage,\n  HoveredEntry,\n  init,\n  LeftEntry,\n  Message,\n  Model,\n  Position,\n  show,\n  Toast,\n  ToastPayload,\n  update,\n  Variant,\n  view,\n} from \"../../../foldkit/ui/toast\";\nexport type {\n  EntryHandlers,\n  InitConfig,\n  OutMessage,\n  ShowInput,\n  UpdateReturn,\n} from \"../../../foldkit/ui/toast\";\n\nexport {\n  baseUiToastClassName,\n  baseUiToastCloseButtonClassName,\n  baseUiToastContainerClassName,\n  baseUiToastDescriptionClassName,\n  baseUiToastEntryClassName,\n  baseUiToastEntryView,\n  baseUiToastTitleClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/base-ui/ui/base-ui-toast/view.ts",
+      "target": "src/ui/base-ui-toast/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  closeButtonClassName as baseUiToastCloseButtonClassName,\n  containerClassName as baseUiToastContainerClassName,\n  descriptionClassName as baseUiToastDescriptionClassName,\n  entryClassName as baseUiToastEntryClassName,\n  titleClassName as baseUiToastTitleClassName,\n  toastClassName as baseUiToastClassName,\n  toastEntryView as baseUiToastEntryView,\n} from \"../../../foldkit/ui/toast/view\";\n"
+    },
+    {
+      "path": "registry/base-ui/ui/base-ui-toast/base-ui-toast.scene.test.ts",
+      "target": "src/ui/base-ui-toast/base-ui-toast.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Toast from \"./index\";\n\ndescribe(\"Base UI Toast registry view\", () => {\n  test(\"reuses the Foldkit Toast functional contract\", () => {\n    expect(Toast.init).toBeTypeOf(\"function\");\n    expect(Toast.update).toBeTypeOf(\"function\");\n    expect(Toast.show).toBeTypeOf(\"function\");\n    expect(Toast.baseUiToastEntryView).toBeTypeOf(\"function\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://base-ui.com/react/components/toast",
+      "artifact": "component",
+      "primitive": "Ui.Toast",
+      "stateful": true
+    }
+  }
+}

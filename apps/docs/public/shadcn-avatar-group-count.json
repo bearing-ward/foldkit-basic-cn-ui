@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-avatar-group-count",
+  "type": "registry:example",
+  "title": "shadcn Avatar Group Count",
+  "description": "A runnable Foldkit example showing AvatarGroupCount composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-avatar"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-avatar-group-count/main.ts",
+      "target": "src/examples/shadcn-avatar-group-count/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\n\nimport * as Avatar from \"../../ui/shadcn-avatar\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html =>\n    Avatar.groupView<Message>([\n      Avatar.view<Message>({ fallback: \"CN\" }),\n      Avatar.view<Message>({ fallback: \"LR\" }),\n      Avatar.view<Message>({ fallback: \"ER\" }),\n      Avatar.countView<Message>({ count: 3 }),\n    ])\n);\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-avatar-group-count/shadcn-avatar-group-count.scene.test.ts",
+      "target": "src/examples/shadcn-avatar-group-count/shadcn-avatar-group-count.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnAvatarGroupCountExample from \"./main\";\n\ndescribe(\"shadcn Avatar Group Count example\", () => {\n  test(\"renders a group count\", () => {\n    Scene.scene(\n      {\n        update: ShadcnAvatarGroupCountExample.update,\n        view: ShadcnAvatarGroupCountExample.view,\n      },\n      Scene.with(ShadcnAvatarGroupCountExample.init()[0]),\n      Scene.expect(Scene.text(\"CN\")).toExist(),\n      Scene.expect(Scene.text(\"+3\")).toExist(),\n      Scene.expect(Scene.role(\"img\", { name: \"3 more people\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"img\", { name: \"3 more people\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Avatar",
+      "example": "avatar-group-count",
+      "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+    }
+  }
+}

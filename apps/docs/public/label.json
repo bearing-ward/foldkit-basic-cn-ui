@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "A shadcn-style label component for associating text with form controls.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/label/index.ts",
+      "target": "src/ui/label/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { labelClassName } from \"./view\";\n\nexport { labelClassName } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  children: readonly Html[] | string;\n  forId?: string;\n  required?: boolean;\n  disabled?: boolean;\n  className?: string;\n}>;\n\nconst classNames = (...values: readonly (string | undefined)[]): string =>\n  values\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const view = <ParentMessage>({\n  children,\n  forId,\n  required = false,\n  disabled = false,\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.label(\n    [\n      ...(forId === undefined ? [] : [h.For(forId)]),\n      h.DataAttribute(\"slot\", \"label\"),\n      h.DataAttribute(\"required\", String(required)),\n      h.DataAttribute(\"disabled\", String(disabled)),\n      h.Class(classNames(labelClassName, className)),\n    ],\n    typeof children === \"string\" ? [children] : children\n  );\n};\n"
+    },
+    {
+      "path": "registry/shadcn/ui/label/view.ts",
+      "target": "src/ui/label/view.ts",
+      "type": "registry:ui",
+      "content": "export const labelClassName =\n  \"flex items-center gap-2 text-sm leading-none font-medium text-gray-950 select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[required=true]:after:text-red-600 data-[required=true]:after:content-['*']\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/label/label.scene.test.ts",
+      "target": "src/ui/label/label.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Label from \"./index\";\n\nconst view = (): Html => {\n  const h = html<never>();\n\n  return h.div(\n    [],\n    [\n      Label.view({ forId: \"email\", required: true, children: \"Email\" }),\n      h.input([h.Id(\"email\"), h.Type(\"email\")]),\n      Label.view({ disabled: true, children: \"Disabled label\" }),\n    ]\n  );\n};\n\ndescribe(\"Label registry view\", () => {\n  test(\"renders the documented native label surface\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Email\" })).toExist(),\n      Scene.expect(Scene.text(\"Email\")).toHaveAttr(\"data-required\", \"true\"),\n      Scene.expect(Scene.text(\"Disabled label\")).toHaveAttr(\n        \"data-disabled\",\n        \"true\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Label",
+      "stateful": false,
+      "origin": "https://ui.shadcn.com/docs/components/radix/label",
+      "artifact": "component"
+    }
+  }
+}

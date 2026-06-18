@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-alert-dialog",
+  "type": "registry:ui",
+  "title": "Alert Dialog",
+  "description": "shadcn style-lane alert-dialog wrapper backed by the existing alert-dialog component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-alert-dialog/index.ts",
+      "target": "src/ui/shadcn-alert-dialog/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as AlertDialog from \"../../../foldkit/ui/alert-dialog\";\nimport {\n  shadcnAlertDialogContentSmClassName,\n  shadcnAlertDialogFooterClassName,\n  shadcnAlertDialogHeaderClassName,\n  shadcnAlertDialogMediaClassName,\n} from \"./view\";\n\nexport {\n  actionsView,\n  backdropView,\n  closeView,\n  descriptionView,\n  popupView,\n  portalView,\n  rootView,\n  titleView,\n  triggerView,\n  viewportView,\n} from \"../../../foldkit/ui/alert-dialog\";\nexport type {\n  AlertDialogStyle,\n  CloseViewConfig,\n  PartViewConfig,\n  PortalViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../../../foldkit/ui/alert-dialog\";\n\nexport {\n  shadcnAlertDialogActionsClassName,\n  shadcnAlertDialogBackdropClassName,\n  shadcnAlertDialogCancelClassName,\n  shadcnAlertDialogConfirmClassName,\n  shadcnAlertDialogContentSmClassName,\n  shadcnAlertDialogDescriptionClassName,\n  shadcnAlertDialogFooterClassName,\n  shadcnAlertDialogHeaderClassName,\n  shadcnAlertDialogMediaClassName,\n  shadcnAlertDialogPopupClassName,\n  shadcnAlertDialogPortalClassName,\n  shadcnAlertDialogRootClassName,\n  shadcnAlertDialogTitleClassName,\n  shadcnAlertDialogTriggerClassName,\n  shadcnAlertDialogViewportClassName,\n} from \"./view\";\n\nexport type AlertDialogContentSize = \"default\" | \"sm\";\n\nexport type ContentViewConfig = Readonly<{\n  titleId: string;\n  descriptionId: string;\n  children: readonly Html[];\n  size?: AlertDialogContentSize | undefined;\n  className?: string | undefined;\n  style?: AlertDialog.AlertDialogStyle | undefined;\n}>;\n\nconst classNames = (...values: readonly (string | undefined)[]): string =>\n  values\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const contentView = <ParentMessage>({\n  titleId,\n  descriptionId,\n  children,\n  size = \"default\",\n  className,\n  style,\n}: ContentViewConfig): Html =>\n  AlertDialog.popupView<ParentMessage>({\n    titleId,\n    descriptionId,\n    children,\n    className: classNames(\n      size === \"sm\" ? shadcnAlertDialogContentSmClassName : undefined,\n      className\n    ),\n    style,\n  });\n\nconst divPartView = <ParentMessage>(\n  baseClassName: string,\n  { id, children, className, style }: AlertDialog.PartViewConfig\n): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      ...(id === undefined ? [] : [h.Id(id)]),\n      ...(style === undefined ? [] : [h.Style(style)]),\n      h.Class(classNames(baseClassName, className)),\n    ],\n    children\n  );\n};\n\nexport const headerView = <ParentMessage>(\n  config: AlertDialog.PartViewConfig\n): Html => divPartView<ParentMessage>(shadcnAlertDialogHeaderClassName, config);\n\nexport const footerView = <ParentMessage>(\n  config: AlertDialog.PartViewConfig\n): Html => divPartView<ParentMessage>(shadcnAlertDialogFooterClassName, config);\n\nexport const mediaView = <ParentMessage>(\n  config: AlertDialog.PartViewConfig\n): Html => divPartView<ParentMessage>(shadcnAlertDialogMediaClassName, config);\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-alert-dialog/view.ts",
+      "target": "src/ui/shadcn-alert-dialog/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  alertDialogActionsClassName as shadcnAlertDialogActionsClassName,\n  alertDialogBackdropClassName as shadcnAlertDialogBackdropClassName,\n  alertDialogCancelClassName as shadcnAlertDialogCancelClassName,\n  alertDialogConfirmClassName as shadcnAlertDialogConfirmClassName,\n  alertDialogDescriptionClassName as shadcnAlertDialogDescriptionClassName,\n  alertDialogPopupClassName as shadcnAlertDialogPopupClassName,\n  alertDialogPortalClassName as shadcnAlertDialogPortalClassName,\n  alertDialogRootClassName as shadcnAlertDialogRootClassName,\n  alertDialogTitleClassName as shadcnAlertDialogTitleClassName,\n  alertDialogTriggerClassName as shadcnAlertDialogTriggerClassName,\n  alertDialogViewportClassName as shadcnAlertDialogViewportClassName,\n} from \"../../../foldkit/ui/alert-dialog/view\";\n\nexport const shadcnAlertDialogContentSmClassName = \"max-w-xs\";\n\nexport const shadcnAlertDialogHeaderClassName =\n  \"grid gap-2 text-center sm:text-left\";\n\nexport const shadcnAlertDialogFooterClassName =\n  \"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end\";\n\nexport const shadcnAlertDialogMediaClassName =\n  \"mx-auto flex size-10 items-center justify-center rounded-full bg-gray-100 text-gray-950 sm:mx-0\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-alert-dialog/shadcn-alert-dialog.scene.test.ts",
+      "target": "src/ui/shadcn-alert-dialog/shadcn-alert-dialog.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as AlertDialog from \"./index\";\n\ndescribe(\"shadcn AlertDialog registry view\", () => {\n  test(\"reuses the Foldkit AlertDialog view contract\", () => {\n    expect(AlertDialog.rootView).toBeTypeOf(\"function\");\n    expect(AlertDialog.contentView).toBeTypeOf(\"function\");\n    expect(AlertDialog.headerView).toBeTypeOf(\"function\");\n    expect(AlertDialog.footerView).toBeTypeOf(\"function\");\n    expect(AlertDialog.mediaView).toBeTypeOf(\"function\");\n    expect(AlertDialog.closeView).toBeTypeOf(\"function\");\n    expect(AlertDialog.shadcnAlertDialogPopupClassName).toContain(\"rounded\");\n    expect(AlertDialog.shadcnAlertDialogContentSmClassName).toContain(\n      \"max-w-xs\"\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/alert-dialog",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

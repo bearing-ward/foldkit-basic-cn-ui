@@ -1,10 +1,10 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
-import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
-import * as AspectRatioRtlExample from "../registry/default/examples/aspect-ratio-rtl/main";
-import * as AspectRatioSquareExample from "../registry/default/examples/aspect-ratio-square/main";
+import * as AspectRatioBasicExample from "../registry/shadcn/examples/aspect-ratio-basic/main";
+import * as AspectRatioPortraitExample from "../registry/shadcn/examples/aspect-ratio-portrait/main";
+import * as AspectRatioRtlExample from "../registry/shadcn/examples/aspect-ratio-rtl/main";
+import * as AspectRatioSquareExample from "../registry/shadcn/examples/aspect-ratio-square/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

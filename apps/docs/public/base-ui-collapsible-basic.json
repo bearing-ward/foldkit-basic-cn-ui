@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-collapsible-basic",
+  "type": "registry:example",
+  "title": "Base UI Collapsible Basic",
+  "description": "A runnable Foldkit version of the Base UI Collapsible default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-collapsible"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/base-ui-collapsible-basic/main.ts",
+      "target": "src/examples/base-ui-collapsible-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Collapsible from \"../../ui/base-ui-collapsible\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedTrigger = m(\"ClickedTrigger\");\n\nexport const Message = S.Union([ClickedTrigger]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedTrigger: () => [evo(model, { open: (open) => !open }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const panelId = \"recovery-keys-panel\";\n\n  return Collapsible.rootView<Message>({\n    open: model.open,\n    children: [\n      Collapsible.triggerView<Message>({\n        open: model.open,\n        onOpenChange: ClickedTrigger(),\n        ariaLabel: \"Recovery keys\",\n        panelId,\n        children: [h.span([], [\"Recovery keys\"])],\n      }),\n      Collapsible.panelView<Message>({\n        open: model.open,\n        id: panelId,\n        children: [\n          Collapsible.contentView<Message>([\n            h.div([], [\"alien-bean-pasta\"]),\n            h.div([], [\"wild-irish-burrito\"]),\n            h.div([], [\"horse-battery-staple\"]),\n          ]),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/base-ui-collapsible-basic/base-ui-collapsible-basic.scene.test.ts",
+      "target": "src/examples/base-ui-collapsible-basic/base-ui-collapsible-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BaseUiCollapsibleBasicExample from \"./main\";\n\ndescribe(\"Base UI Collapsible Basic example\", () => {\n  test(\"matches the Base UI default Recovery keys example\", () => {\n    Scene.scene(\n      {\n        update: BaseUiCollapsibleBasicExample.update,\n        view: BaseUiCollapsibleBasicExample.view,\n      },\n      Scene.with(BaseUiCollapsibleBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"button\", { name: \"Recovery keys\" })).toHaveAttr(\n        \"aria-expanded\",\n        \"false\"\n      ),\n      Scene.expect(Scene.text(\"alien-bean-pasta\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Recovery keys\" })),\n      Scene.expect(Scene.role(\"button\", { name: \"Recovery keys\" })).toHaveAttr(\n        \"aria-expanded\",\n        \"true\"\n      ),\n      Scene.expect(Scene.text(\"alien-bean-pasta\")).toExist(),\n      Scene.expect(Scene.text(\"wild-irish-burrito\")).toExist(),\n      Scene.expect(Scene.text(\"horse-battery-staple\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Collapsible",
+      "example": "basic",
+      "originExample": "collapsible-default",
+      "origin": "https://base-ui.com/react/components/collapsible"
+    }
+  }
+}

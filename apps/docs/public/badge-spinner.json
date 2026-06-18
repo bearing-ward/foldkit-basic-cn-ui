@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-spinner",
+  "type": "registry:example",
+  "title": "Badge Spinner",
+  "description": "A runnable Foldkit version of the upstream shadcn badge spinner example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/badge", "@foldkit-cn/spinner"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/badge-spinner/main.ts",
+      "target": "src/examples/badge-spinner/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Badge from \"../../ui/badge\";\nimport * as Spinner from \"../../ui/spinner\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = m(\"Message\");\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-wrap gap-2\")],\n    [\n      Badge.contentView<Message>({\n        variant: \"Destructive\",\n        children: [\n          Spinner.view<Message>({ className: \"mr-1\" }),\n          h.span([], [\"Deleting\"]),\n        ],\n      }),\n      Badge.contentView<Message>({\n        variant: \"Secondary\",\n        children: [\n          h.span([], [\"Generating\"]),\n          Spinner.view<Message>({ className: \"ml-1\" }),\n        ],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/badge-spinner/badge-spinner.scene.test.ts",
+      "target": "src/examples/badge-spinner/badge-spinner.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BadgeSpinnerExample from \"./main\";\n\ndescribe(\"Badge Spinner example\", () => {\n  test(\"matches the upstream badge spinner example content\", () => {\n    Scene.scene(\n      { update: BadgeSpinnerExample.update, view: BadgeSpinnerExample.view },\n      Scene.with(BadgeSpinnerExample.init()[0]),\n      Scene.expect(Scene.text(\"Deleting\")).toExist(),\n      Scene.expect(Scene.text(\"Generating\")).toExist(),\n      Scene.expect(Scene.role(\"status\", { name: \"Loading\" })).toExist(),\n      Scene.expect(Scene.role(\"status\", { name: \"Loading\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Badge",
+      "example": "spinner",
+      "originExample": "badge-spinner",
+      "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "shadcn style-lane toast wrapper backed by the existing Toast component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/toast"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-toast/index.ts",
+      "target": "src/ui/shadcn-toast/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  Added,\n  dismiss,\n  dismissAll,\n  DismissAfter,\n  Dismissed,\n  DismissedAll,\n  DismissedToast,\n  ElapsedDuration,\n  Entry,\n  GotAnimationMessage,\n  HoveredEntry,\n  init,\n  LeftEntry,\n  Message,\n  Model,\n  Position,\n  show,\n  Toast,\n  ToastPayload,\n  update,\n  Variant,\n  view,\n} from \"../../../foldkit/ui/toast\";\nexport type {\n  Entry as ToastEntry,\n  EntryHandlers,\n  InitConfig,\n  Message as ToastMessage,\n  Model as ToastModel,\n  OutMessage,\n  Position as ToastPosition,\n  ShowInput,\n  ToastPayload as ToastPayloadType,\n  UpdateReturn,\n  Variant as ToastVariant,\n} from \"../../../foldkit/ui/toast\";\n\nexport {\n  shadcnToastClassName,\n  shadcnToastCloseButtonClassName,\n  shadcnToastContainerClassName,\n  shadcnToastDescriptionClassName,\n  shadcnToastEntryClassName,\n  shadcnToastEntryView,\n  shadcnToastTitleClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-toast/view.ts",
+      "target": "src/ui/shadcn-toast/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  closeButtonClassName as shadcnToastCloseButtonClassName,\n  containerClassName as shadcnToastContainerClassName,\n  descriptionClassName as shadcnToastDescriptionClassName,\n  entryClassName as shadcnToastEntryClassName,\n  titleClassName as shadcnToastTitleClassName,\n  toastClassName as shadcnToastClassName,\n  toastEntryView as shadcnToastEntryView,\n} from \"../../../foldkit/ui/toast/view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-toast/shadcn-toast.scene.test.ts",
+      "target": "src/ui/shadcn-toast/shadcn-toast.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Toast from \"./index\";\n\ndescribe(\"shadcn Toast registry view\", () => {\n  test(\"reuses the Foldkit Toast functional contract\", () => {\n    expect(Toast.init).toBeTypeOf(\"function\");\n    expect(Toast.show).toBeTypeOf(\"function\");\n    expect(Toast.shadcnToastEntryView).toBeTypeOf(\"function\");\n    expect(Toast.shadcnToastClassName).toContain(\"data-[closed]\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/radix/toast",
+      "artifact": "component",
+      "primitive": "Ui.Toast",
+      "stateful": true
+    }
+  }
+}

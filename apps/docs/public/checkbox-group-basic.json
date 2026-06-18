@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group-basic",
+  "type": "registry:example",
+  "title": "Checkbox Group Basic",
+  "description": "A runnable Foldkit version of the Base UI Checkbox Group hero and parent-checkbox behavior.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-checkbox-group"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/checkbox-group-basic/main.ts",
+      "target": "src/examples/checkbox-group-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as CheckboxGroup from \"../../../foldkit/ui/checkbox-group\";\n\n// MODEL\n\nexport const AppleValue = S.Union([\n  S.Literal(\"fuji-apple\"),\n  S.Literal(\"gala-apple\"),\n  S.Literal(\"granny-smith-apple\"),\n]);\nexport type AppleValue = typeof AppleValue.Type;\n\nexport const Model = S.Struct({\n  selectedApples: S.Array(AppleValue),\n});\n\nexport type Model = typeof Model.Type;\n\nconst appleValues: readonly AppleValue[] = [\n  \"fuji-apple\",\n  \"gala-apple\",\n  \"granny-smith-apple\",\n];\n\n// MESSAGE\n\nexport const ToggledApple = m(\"ToggledApple\", { value: AppleValue });\nexport const ToggledAllApples = m(\"ToggledAllApples\");\n\nexport const Message = S.Union([ToggledApple, ToggledAllApples]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ selectedApples: [\"fuji-apple\"] }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledApple: ({ value }) => [\n        evo(model, {\n          selectedApples: (selectedApples) =>\n            CheckboxGroup.toggleValue(selectedApples, value),\n        }),\n        [],\n      ],\n      ToggledAllApples: () => [\n        evo(model, {\n          selectedApples: (selectedApples) =>\n            CheckboxGroup.parentState(selectedApples, appleValues) === \"checked\"\n              ? []\n              : appleValues,\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>(\n  (model): Html =>\n    CheckboxGroup.groupView<Message>({\n      label: \"Apples\",\n      labelId: \"checkbox-group-apples-label\",\n      name: \"apple\",\n      children: [\n        CheckboxGroup.parentItemView<Message>({\n          selectedValues: model.selectedApples,\n          allValues: appleValues,\n          label: \"All apples\",\n          onValueChange: ToggledAllApples(),\n          className: \"mb-1\",\n        }),\n        CheckboxGroup.itemView<Message>({\n          value: \"fuji-apple\",\n          selectedValues: model.selectedApples,\n          label: \"Fuji\",\n          onValueChange: ToggledApple({ value: \"fuji-apple\" }),\n        }),\n        CheckboxGroup.itemView<Message>({\n          value: \"gala-apple\",\n          selectedValues: model.selectedApples,\n          label: \"Gala\",\n          onValueChange: ToggledApple({ value: \"gala-apple\" }),\n        }),\n        CheckboxGroup.itemView<Message>({\n          value: \"granny-smith-apple\",\n          selectedValues: model.selectedApples,\n          label: \"Granny Smith\",\n          onValueChange: ToggledApple({ value: \"granny-smith-apple\" }),\n        }),\n      ],\n    })\n);\n"
+    },
+    {
+      "path": "registry/base-ui/examples/checkbox-group-basic/entry.ts",
+      "target": "src/examples/checkbox-group-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Checkbox Group Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/base-ui/examples/checkbox-group-basic/index.html",
+      "target": "src/examples/checkbox-group-basic/index.html",
+      "type": "registry:example",
+      "content": "<html>\n  <head>\n    <title>Checkbox Group Basic</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/base-ui/examples/checkbox-group-basic/checkbox-group-basic.scene.test.ts",
+      "target": "src/examples/checkbox-group-basic/checkbox-group-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as CheckboxGroupBasicExample from \"./main\";\n\ndescribe(\"Checkbox Group Basic example\", () => {\n  test(\"matches the Base UI checkbox group hero behavior\", () => {\n    Scene.scene(\n      {\n        update: CheckboxGroupBasicExample.update,\n        view: CheckboxGroupBasicExample.view,\n      },\n      Scene.with(CheckboxGroupBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"group\", { name: \"Apples\" })).toExist(),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"Fuji\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      ),\n      Scene.click(Scene.text(\"Gala\")),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"Gala\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      ),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"All apples\" })).toHaveAttr(\n        \"aria-checked\",\n        \"mixed\"\n      ),\n      Scene.click(Scene.text(\"All apples\")),\n      Scene.expect(Scene.role(\"checkbox\", { name: \"Granny Smith\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "CheckboxGroup",
+      "example": "basic",
+      "originExample": "checkbox-group-hero"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "menu-basic",
+  "type": "registry:example",
+  "title": "Menu Basic",
+  "description": "A runnable Foldkit example showing a typed Menu trigger, anchored items, backdrop close, and mount resolution coverage.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/menu"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/menu-basic/main.ts",
+      "target": "src/examples/menu-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { childAttributes, html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Menu from \"../../ui/menu\";\n\ntype Action = \"Edit\" | \"Duplicate\" | \"Delete\";\n\nconst ActionMenu = Menu.create<Action>();\nconst actions: readonly Action[] = [\"Edit\", \"Duplicate\", \"Delete\"];\n\n// MODEL\n\nexport const Model = S.Struct({\n  menu: Menu.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotMenuMessage = m(\"GotMenuMessage\", {\n  message: Menu.Message,\n});\n\nexport const Message = S.Union([GotMenuMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [menu, menuCommands] = Menu.init({ id: \"menu-basic\" });\n\n  return [\n    { menu },\n    Command.mapMessages(menuCommands, (message) => GotMenuMessage({ message })),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotMenuMessage: ({ message }) => {\n        const [menu, menuCommands] = ActionMenu.update(model.menu, message);\n\n        return [\n          evo(model, { menu: () => menu }),\n          Command.mapMessages(menuCommands, (message) =>\n            GotMenuMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.submodel({\n    slotId: model.menu.id,\n    model: model.menu,\n    view: ActionMenu.view,\n    viewInputs: {\n      anchor: Menu.defaultAnchor,\n      items: actions,\n      itemToConfig: (item) => ({\n        className: Menu.itemClassName,\n        content: h.span([], [item]),\n      }),\n      buttonContent: h.span([], [\"Open menu\"]),\n      buttonAttributes: childAttributes([h.Class(Menu.triggerClassName)]),\n      itemsAttributes: childAttributes([h.Class(Menu.defaultItemsClassName)]),\n      backdropAttributes: childAttributes([\n        h.DataAttribute(\"testid\", \"menu-backdrop\"),\n        h.Class(Menu.backdropClassName),\n      ]),\n      attributes: childAttributes([h.Class(Menu.rootClassName)]),\n    },\n    toParentMessage: (message) => GotMenuMessage({ message }),\n  });\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/menu-basic/menu-basic.scene.test.ts",
+      "target": "src/examples/menu-basic/menu-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Menu from \"../../ui/menu\";\nimport { GotMenuMessage, init, update, view } from \"./main\";\n\nconst [initialModel] = init();\n\nconst AnchorMenu = Menu.AnchorMenu({\n  buttonId: \"menu-basic-button\",\n  anchor: Menu.defaultAnchor,\n});\nconst FocusItems = Menu.FocusItems({ id: \"menu-basic\" });\nconst FocusButton = Menu.FocusButton({ id: \"menu-basic\" });\n\nconst resolveMenuMounts = () =>\n  Scene.Mount.resolveAll(\n    [\n      Menu.PortalMenuBackdrop,\n      Menu.CompletedPortalMenuBackdrop(),\n      (message) => GotMenuMessage({ message }),\n    ],\n    [\n      AnchorMenu,\n      Menu.CompletedAnchorMenu(),\n      (message) => GotMenuMessage({ message }),\n    ]\n  );\n\ndescribe(\"menu-basic example\", () => {\n  test(\"opens items and closes through the backdrop\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"button\", { name: \"Open menu\" })).toExist(),\n      Scene.expect(Scene.text(\"Edit\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Open menu\" })),\n      Scene.Command.expectHas(FocusItems),\n      Scene.Command.resolve(FocusItems, Menu.CompletedFocusItems(), (message) =>\n        GotMenuMessage({ message })\n      ),\n      resolveMenuMounts(),\n      Scene.expect(Scene.text(\"Edit\")).toExist(),\n      Scene.expect(Scene.text(\"Duplicate\")).toExist(),\n      Scene.expect(Scene.text(\"Delete\")).toExist(),\n      Scene.click(Scene.testId(\"menu-backdrop\")),\n      Scene.Command.expectHas(FocusButton),\n      Scene.Command.resolve(\n        FocusButton,\n        Menu.CompletedFocusButton(),\n        (message) => GotMenuMessage({ message })\n      ),\n      Scene.Mount.expectEnded(Menu.PortalMenuBackdrop, AnchorMenu),\n      Scene.expect(Scene.text(\"Edit\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Menu",
+      "example": "basic"
+    }
+  }
+}

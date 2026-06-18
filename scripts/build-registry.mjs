@@ -1,8 +1,14 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import {
+  createRegistryDependencyQualifier,
+  readJson,
+  readSourceRegistryItems,
+  sourceRegistryPath,
+} from "./registry-manifest.mjs";
+
 const rootDir = path.resolve(import.meta.dirname, "..");
-const itemsPath = path.join(rootDir, "registry/default/items.json");
 const configPath = path.join(rootDir, "registry/config.json");
 const componentsTemplatePath = path.join(
   rootDir,
@@ -12,14 +18,12 @@ const componentsOutputPath = path.join(
   rootDir,
   "apps/docs/public/components.json"
 );
-const outputDir = path.join(rootDir, "apps/docs/public/r");
+const publicDir = path.join(rootDir, "apps/docs/public");
+const legacyOutputDir = path.join(publicDir, "r");
 const itemSchemaUrl = "https://ui.shadcn.com/schema/registry-item.json";
 const registrySchemaUrl = "https://ui.shadcn.com/schema/registry.json";
 
 const isCheck = process.argv.includes("--check");
-
-const readJson = async (filePath) =>
-  JSON.parse(await readFile(filePath, "utf-8"));
 
 const jsonIndent = (depth) => " ".repeat(depth);
 
@@ -169,20 +173,27 @@ const writeOrCheck = async (filePath, content) => {
   await writeFile(filePath, content);
 };
 
-const sourceItems = await readJson(itemsPath);
-const sourceItemNames = new Set(sourceItems.map((item) => item.name));
-const qualifyRegistryDependency = (dependency) => {
-  if (
-    dependency.startsWith("@") ||
-    dependency.startsWith("http://") ||
-    dependency.startsWith("https://") ||
-    !sourceItemNames.has(dependency)
-  ) {
-    return dependency;
+const removeOrCheckMissing = async (filePath) => {
+  if (isCheck) {
+    const exists = await stat(filePath)
+      .then(() => true)
+      .catch(() => false);
+
+    if (exists) {
+      throw new Error(`${path.relative(rootDir, filePath)} should not exist`);
+    }
+
+    return;
   }
 
-  return `@foldkit-cn/${dependency}`;
+  await rm(filePath, { recursive: true, force: true });
 };
+
+const sourceItems = await readSourceRegistryItems({
+  rootDir,
+  registryPath: sourceRegistryPath,
+});
+const qualifyRegistryDependency = createRegistryDependencyQualifier(sourceItems);
 const registryConfig = await readJson(configPath);
 const items = await Promise.all(sourceItems.map(expandItem));
 const isPublicRegistryItem = (item) => item.meta?.foldkit?.public !== false;
@@ -203,7 +214,8 @@ const index = {
   })),
 };
 
-await writeOrCheck(path.join(outputDir, "index.json"), stableJson(index));
+await removeOrCheckMissing(legacyOutputDir);
+await writeOrCheck(path.join(publicDir, "registry.json"), stableJson(index));
 
 const componentsTemplate = await readFile(componentsTemplatePath, "utf-8");
 await writeOrCheck(
@@ -216,7 +228,7 @@ await writeOrCheck(
 
 for (const item of items) {
   await writeOrCheck(
-    path.join(outputDir, `${item.name}.json`),
+    path.join(publicDir, `${item.name}.json`),
     stableJson(item)
   );
 }
@@ -224,6 +236,6 @@ for (const item of items) {
 console.log(
   `${isCheck ? "Checked" : "Built"} ${items.length} registry items in ${path.relative(
     rootDir,
-    outputDir
+    publicDir
   )}`
 );

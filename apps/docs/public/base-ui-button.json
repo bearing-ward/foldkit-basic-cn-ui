@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-button",
+  "type": "registry:ui",
+  "title": "Base UI Button",
+  "description": "A Base UI style-lane Button wrapper that reuses the Foldkit Ui.Button behavior with simple styled class helpers.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/base-ui/ui/base-ui-button/index.ts",
+      "target": "src/ui/base-ui-button/index.ts",
+      "type": "registry:ui",
+      "content": "import { Ui } from \"foldkit\";\n\nexport const { view } = Ui.Button;\n\nexport type ButtonAttributes<ParentMessage> =\n  Ui.Button.ButtonAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Button.ViewConfig<ParentMessage>;\n\nexport {\n  baseUiButtonClassName,\n  baseUiDestructiveButtonClassName,\n  baseUiSecondaryButtonClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/base-ui/ui/base-ui-button/view.ts",
+      "target": "src/ui/base-ui-button/view.ts",
+      "type": "registry:ui",
+      "content": "export const baseUiButtonClassName =\n  \"inline-flex h-8 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-none border border-neutral-950 bg-white px-3 text-sm font-normal leading-none text-neutral-950 transition-colors hover:not-data-[disabled]:bg-neutral-100 active:not-data-[disabled]:bg-neutral-200 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-neutral-950 data-[disabled]:cursor-not-allowed data-[disabled]:border-neutral-500 data-[disabled]:text-neutral-500 disabled:cursor-not-allowed disabled:border-neutral-500 disabled:text-neutral-500\";\n\nexport const baseUiSecondaryButtonClassName =\n  \"inline-flex h-8 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-none px-3 text-sm font-normal leading-none text-neutral-950 transition-colors hover:not-data-[disabled]:bg-neutral-100 active:not-data-[disabled]:bg-neutral-200 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-neutral-950 data-[disabled]:cursor-not-allowed data-[disabled]:text-neutral-500 disabled:cursor-not-allowed disabled:text-neutral-500\";\n\nexport const baseUiDestructiveButtonClassName =\n  \"inline-flex h-8 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-none border border-red-700 bg-white px-3 text-sm font-normal leading-none text-red-700 transition-colors hover:not-data-[disabled]:bg-red-50 active:not-data-[disabled]:bg-red-100 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-red-700 data-[disabled]:cursor-not-allowed data-[disabled]:border-red-300 data-[disabled]:text-red-300 disabled:cursor-not-allowed disabled:border-red-300 disabled:text-red-300\";\n"
+    },
+    {
+      "path": "registry/base-ui/ui/base-ui-button/base-ui-button.scene.test.ts",
+      "target": "src/ui/base-ui-button/base-ui-button.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Schema as S } from \"effect\";\nimport { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { describe, test } from \"vitest\";\n\nimport * as Button from \"./index\";\n\nconst ClickedButton = m(\"ClickedButton\");\n\nconst Model = S.Struct({\n  count: S.Number,\n});\n\ntype Model = typeof Model.Type;\n\nconst Message = S.Union([ClickedButton]);\ntype Message = typeof Message.Type;\n\nconst initialModel: Model = { count: 0 };\n\nconst update = (model: Model): readonly [Model, []] => [\n  { count: model.count + 1 },\n  [],\n];\n\nconst view = (model: Model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-2\")],\n    [\n      Button.view<Message>({\n        onClick: ClickedButton(),\n        toView: (attributes) =>\n          h.button(\n            [...attributes.button, h.Class(Button.baseUiButtonClassName)],\n            [\"Save changes\"]\n          ),\n      }),\n      h.p([], [`Clicked ${model.count} times`]),\n    ]\n  );\n};\n\nconst disabledView = (): Html => {\n  const h = html<Message>();\n\n  return Button.view<Message>({\n    isDisabled: true,\n    toView: (attributes) =>\n      h.button(\n        [...attributes.button, h.Class(Button.baseUiButtonClassName)],\n        [\"Disabled\"]\n      ),\n  });\n};\n\ndescribe(\"Base UI Button registry view\", () => {\n  test(\"dispatches click messages through the Foldkit primitive\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"button\", { name: \"Save changes\" })).toExist(),\n      Scene.expect(Scene.text(\"Clicked 0 times\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Save changes\" })),\n      Scene.expect(Scene.text(\"Clicked 1 times\")).toExist()\n    );\n  });\n\n  test(\"supports disabled native button state\", () => {\n    Scene.scene(\n      { update, view: disabledView },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"button\", { name: \"Disabled\" })).toBeDisabled()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Button",
+      "primitive": "Ui.Button",
+      "stateful": false,
+      "origin": "https://base-ui.com/react/components/button",
+      "artifact": "component"
+    }
+  }
+}

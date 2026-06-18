@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-calendar-basic",
+  "type": "registry:example",
+  "title": "shadcn Calendar Basic",
+  "description": "A runnable Foldkit example showing the shadcn Calendar wrapper with selected date and viewed month feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-calendar"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-basic/main.ts",
+      "target": "src/examples/shadcn-calendar-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Calendar, Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as UiCalendar from \"../../ui/shadcn-calendar\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  calendar: UiCalendar.Model,\n  selectedDate: Calendar.CalendarDate,\n  viewedMonth: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotCalendarMessage = m(\"GotCalendarMessage\", {\n  message: UiCalendar.Message,\n});\n\nexport const Message = S.Union([GotCalendarMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nconst today = Calendar.make(2026, 4, 16);\n\nconst formatMonth = (date: Calendar.CalendarDate): string =>\n  `${date.year}-${String(date.month).padStart(2, \"0\")}`;\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [\n  {\n    calendar: UiCalendar.init({\n      id: \"shadcn-calendar-basic\",\n      today,\n      initialSelectedDate: today,\n    }),\n    selectedDate: today,\n    viewedMonth: formatMonth(today),\n  },\n  [],\n];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotCalendarMessage: ({ message }) => {\n        const [calendar, commands, maybeOutMessage] = UiCalendar.update(\n          model.calendar,\n          message\n        );\n\n        const nextModel = Option.match(maybeOutMessage, {\n          onNone: () => evo(model, { calendar: () => calendar }),\n          onSome: M.type<UiCalendar.OutMessage>().pipe(\n            M.tagsExhaustive({\n              ChangedViewMonth: ({ year, month }) =>\n                evo(model, {\n                  calendar: () => calendar,\n                  viewedMonth: () =>\n                    `${year}-${String(month).padStart(2, \"0\")}`,\n                }),\n              SelectedDate: ({ date }) =>\n                evo(model, {\n                  calendar: () => calendar,\n                  selectedDate: () => date,\n                }),\n            })\n          ),\n        });\n\n        return [\n          nextModel,\n          Command.mapMessages(commands, (message) =>\n            GotCalendarMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.calendar.id,\n        model: model.calendar,\n        view: UiCalendar.view,\n        viewInputs: {\n          toView: UiCalendar.shadcnCalendarView,\n        },\n        toParentMessage: (message) => GotCalendarMessage({ message }),\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-basic/shadcn-calendar-basic.scene.test.ts",
+      "target": "src/examples/shadcn-calendar-basic/shadcn-calendar-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnCalendarBasicExample from \"./main\";\n\ndescribe(\"shadcn Calendar Basic example\", () => {\n  test(\"renders a real single-date calendar without local feedback text\", () => {\n    Scene.scene(\n      {\n        update: ShadcnCalendarBasicExample.update,\n        view: ShadcnCalendarBasicExample.view,\n      },\n      Scene.with(ShadcnCalendarBasicExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Thursday, April 16, 2026\" })\n      ).toExist(),\n      Scene.expect(Scene.text(\"Selected date: 2026-04-16\")).not.toExist(),\n      Scene.expect(Scene.text(\"Viewed month: 2026-04\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Monday, April 20, 2026\" })),\n      Scene.click(Scene.role(\"button\", { name: \"Next month\" })),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Friday, May 1, 2026\" })\n      ).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Calendar",
+      "example": "shadcn-basic",
+      "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+    }
+  }
+}

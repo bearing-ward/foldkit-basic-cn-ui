@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group-basic",
+  "type": "registry:example",
+  "title": "Button Group Basic",
+  "description": "A runnable Foldkit example showing the shadcn Button Group Basic composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-button-group"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/button-group-basic/main.ts",
+      "target": "src/examples/button-group-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as ButtonGroup from \"../../ui/button-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\nconst buttonClassName =\n  \"inline-flex h-9 min-w-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600\";\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return ButtonGroup.view<Message>({\n    ariaLabel: \"Text formatting\",\n    children: [\n      ButtonGroup.itemView<Message>({\n        children: [h.button([h.Class(buttonClassName)], [\"Bold\"])],\n      }),\n      ButtonGroup.itemView<Message>({\n        children: [h.button([h.Class(buttonClassName)], [\"Italic\"])],\n      }),\n      ButtonGroup.itemView<Message>({\n        children: [h.button([h.Class(buttonClassName)], [\"Underline\"])],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/button-group-basic/button-group-basic.scene.test.ts",
+      "target": "src/examples/button-group-basic/button-group-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"button-group-basic example\", () => {\n  test(\"renders the shadcn Button Group Basic example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"group\", { name: \"Text formatting\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Bold\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Italic\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Underline\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"group\", { name: \"Text formatting\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "ButtonGroup",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/radix/button-group"
+    }
+  }
+}

@@ -52,7 +52,7 @@ describe("component registry CLI", () => {
 
       expect(output).toContain("Foldkit CN install dry run");
       expect(output).toContain(
-        "Registry URL: https://bearing-ward.github.io/foldkit-basic-cn-ui/r/button.json"
+        "Registry URL: https://bearing-ward.github.io/foldkit-basic-cn-ui/button.json"
       );
       expect(output).toContain("- button: src/ui/button/index.ts");
       expect(output).toContain("Dry run only. Re-run with --execute");

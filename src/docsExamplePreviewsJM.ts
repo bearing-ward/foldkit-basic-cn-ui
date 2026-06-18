@@ -1,18 +1,18 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
-import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
-import * as KbdRtlExample from "../registry/default/examples/kbd-rtl/main";
-import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
-import * as LabelFieldExample from "../registry/default/examples/label-field/main";
-import * as LabelRtlExample from "../registry/default/examples/label-rtl/main";
-import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
-import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
-import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
-import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
-import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
-import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
+import * as KbdBasicExample from "../registry/shadcn/examples/kbd-basic/main";
+import * as KbdInputGroupExample from "../registry/shadcn/examples/kbd-input-group/main";
+import * as KbdRtlExample from "../registry/shadcn/examples/kbd-rtl/main";
+import * as LabelBasicExample from "../registry/shadcn/examples/label-basic/main";
+import * as LabelFieldExample from "../registry/shadcn/examples/label-field/main";
+import * as LabelRtlExample from "../registry/shadcn/examples/label-rtl/main";
+import * as ListboxAnimatedExample from "../registry/foldkit/examples/listbox-animated/main";
+import * as ListboxBasicExample from "../registry/foldkit/examples/listbox-basic/main";
+import * as MenuAnimatedExample from "../registry/foldkit/examples/menu-animated/main";
+import * as MenuBasicExample from "../registry/foldkit/examples/menu-basic/main";
+import * as MenubarBasicExample from "../registry/base-ui/examples/menubar-basic/main";
+import * as MeterBasicExample from "../registry/base-ui/examples/meter-basic/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

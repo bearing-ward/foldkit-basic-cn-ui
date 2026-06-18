@@ -20,17 +20,17 @@ const createPublicRegistry = async (): Promise<string> => {
   const rootDir = await tempRoot();
   const publicDir = path.join(rootDir, "public");
 
-  await mkdir(path.join(publicDir, "r"), { recursive: true });
+  await mkdir(publicDir, { recursive: true });
   await writeJson(path.join(publicDir, "components.json"), {
     registries: {
-      "@foldkit-cn": "http://127.0.0.1:4174/r/{name}.json",
+      "@foldkit-cn": "http://127.0.0.1:4174/{name}.json",
     },
   });
-  await writeJson(path.join(publicDir, "r/index.json"), {
+  await writeJson(path.join(publicDir, "registry.json"), {
     name: "foldkit-cn",
     items: [{ name: "button" }],
   });
-  await writeJson(path.join(publicDir, "r/button.json"), {
+  await writeJson(path.join(publicDir, "button.json"), {
     name: "button",
     type: "registry:ui",
   });
@@ -59,7 +59,7 @@ describe("serve registry CLI", () => {
   test("normalizes safe registry paths and rejects traversal", () => {
     const publicDir = "/tmp/public";
     const components = resolveRegistryRequestPath(publicDir, "/components.json");
-    const item = resolveRegistryRequestPath(publicDir, "/r/button.json");
+    const item = resolveRegistryRequestPath(publicDir, "/button.json");
     const traversal = resolveRegistryRequestPath(publicDir, "/../package.json");
 
     expect(components).toMatchObject({
@@ -68,7 +68,7 @@ describe("serve registry CLI", () => {
     });
     expect(item).toMatchObject({
       _tag: "File",
-      relativePath: "r/button.json",
+      relativePath: "button.json",
     });
     expect(traversal).toEqual({ _tag: "NotFound" });
   });
@@ -88,12 +88,12 @@ describe("serve registry CLI", () => {
         registries: Record<string, string>;
       }>(server.componentsJsonUrl);
       const button = await parseJsonResponse<{ name: string }>(
-        `${server.localBaseUrl}/r/button.json`
+        `${server.localBaseUrl}/button.json`
       );
       const missing = await fetch(`${server.localBaseUrl}/missing.json`);
 
       expect(components.registries["@foldkit-cn"]).toBe(
-        "http://127.0.0.1:4174/r/{name}.json"
+        "http://127.0.0.1:4174/{name}.json"
       );
       expect(button.name).toBe("button");
       expect(missing.status).toBe(404);

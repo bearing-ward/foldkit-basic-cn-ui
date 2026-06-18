@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "listbox-basic",
+  "type": "registry:example",
+  "title": "Listbox Basic",
+  "description": "A runnable Foldkit example showing a typed single-select Listbox trigger, selected label, anchored items, backdrop close, and mount resolution coverage.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/listbox"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/listbox-basic/main.ts",
+      "target": "src/examples/listbox-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { childAttributes, html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Listbox from \"../../ui/listbox\";\n\ntype Person = \"Michael Bluth\" | \"Lindsay Funke\" | \"Gob Bluth\";\n\nconst PersonListbox = Listbox.create<Person>();\nconst people: readonly Person[] = [\n  \"Michael Bluth\",\n  \"Lindsay Funke\",\n  \"Gob Bluth\",\n];\n\n// MODEL\n\nexport const Model = S.Struct({\n  listbox: Listbox.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotListboxMessage = m(\"GotListboxMessage\", {\n  message: Listbox.Message,\n});\n\nexport const Message = S.Union([GotListboxMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [listbox, listboxCommands] = Listbox.init({\n    id: \"listbox-basic\",\n  });\n\n  return [\n    { listbox },\n    Command.mapMessages(listboxCommands, (message) =>\n      GotListboxMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotListboxMessage: ({ message }) => {\n        const [listbox, listboxCommands] = PersonListbox.update(\n          model.listbox,\n          message\n        );\n\n        return [\n          evo(model, { listbox: () => listbox }),\n          Command.mapMessages(listboxCommands, (message) =>\n            GotListboxMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  const selectedLabel = Option.getOrElse(\n    model.listbox.maybeSelectedItem,\n    () => \"Choose person\"\n  );\n\n  return h.submodel({\n    slotId: model.listbox.id,\n    model: model.listbox,\n    view: PersonListbox.view,\n    viewInputs: {\n      anchor: Listbox.defaultAnchor,\n      items: people,\n      itemToConfig: (item) => ({\n        className: Listbox.itemClassName,\n        content: h.span([], [item]),\n      }),\n      buttonContent: h.span([], [selectedLabel]),\n      buttonAttributes: childAttributes([h.Class(Listbox.triggerClassName)]),\n      itemsAttributes: childAttributes([\n        h.Class(Listbox.defaultItemsClassName),\n      ]),\n      backdropAttributes: childAttributes([\n        h.DataAttribute(\"testid\", \"listbox-backdrop\"),\n        h.Class(Listbox.backdropClassName),\n      ]),\n      attributes: childAttributes([h.Class(Listbox.rootClassName)]),\n    },\n    toParentMessage: (message) => GotListboxMessage({ message }),\n  });\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/listbox-basic/listbox-basic.scene.test.ts",
+      "target": "src/examples/listbox-basic/listbox-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Listbox from \"../../ui/listbox\";\nimport { GotListboxMessage, init, update, view } from \"./main\";\n\nconst [initialModel] = init();\n\nconst AnchorListbox = Listbox.AnchorListbox({\n  buttonId: \"listbox-basic-button\",\n  anchor: Listbox.defaultAnchor,\n});\nconst FocusItems = Listbox.FocusItems({ id: \"listbox-basic\" });\n\nconst resolveListboxMounts = () =>\n  Scene.Mount.resolveAll(\n    [\n      Listbox.PortalListboxBackdrop,\n      Listbox.CompletedPortalListboxBackdrop(),\n      (message) => GotListboxMessage({ message }),\n    ],\n    [\n      AnchorListbox,\n      Listbox.CompletedAnchorListbox(),\n      (message) => GotListboxMessage({ message }),\n    ]\n  );\n\ndescribe(\"listbox-basic example\", () => {\n  test(\"opens the listbox choices\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"button\", { name: \"Choose person\" })).toExist(),\n      Scene.expect(Scene.text(\"Michael Bluth\")).not.toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Choose person\" })),\n      Scene.Command.expectHas(FocusItems),\n      Scene.Command.resolve(\n        FocusItems,\n        Listbox.CompletedFocusItems(),\n        (message) => GotListboxMessage({ message })\n      ),\n      resolveListboxMounts(),\n      Scene.expect(Scene.text(\"Michael Bluth\")).toExist(),\n      Scene.expect(Scene.text(\"Lindsay Funke\")).toExist(),\n      Scene.expect(Scene.text(\"Gob Bluth\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Listbox",
+      "example": "basic"
+    }
+  }
+}

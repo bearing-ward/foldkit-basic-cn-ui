@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "shadcn style-lane calendar wrapper backed by the existing calendar component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/calendar"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-calendar/index.ts",
+      "target": "src/ui/shadcn-calendar/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  BlurredGrid,\n  ChangedViewMonth,\n  ClickedDay,\n  ClickedHeading,\n  ClickedNextMonthButton,\n  ClickedPreviousMonthButton,\n  CompletedFocusGrid,\n  dropToDays,\n  FocusedGrid,\n  FocusGrid,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  PagedYears,\n  PressedKeyOnGrid,\n  reflectDisabledDates,\n  reflectDisabledDaysOfWeek,\n  reflectMaxDate,\n  reflectMinDate,\n  reflectSelectedDate,\n  RefreshedToday,\n  selectDate,\n  SelectedDate,\n  SelectedMonth,\n  SelectedYear,\n  update,\n  view,\n  ViewMode,\n} from \"../../../foldkit/ui/calendar\";\nexport type {\n  CalendarAttributes,\n  ColumnHeader,\n  DayCell,\n  DaysModeAttributes,\n  InitConfig,\n  MonthCell,\n  MonthsModeAttributes,\n  ViewInputs,\n  Week,\n  YearCell,\n  YearsModeAttributes,\n} from \"../../../foldkit/ui/calendar\";\n\nexport {\n  shadcnCalendarCellClassName,\n  shadcnCalendarColumnHeaderClassName,\n  shadcnCalendarContainerClassName,\n  shadcnCalendarDayButtonClassName,\n  shadcnCalendarGridClassName,\n  shadcnCalendarHeaderClassName,\n  shadcnCalendarHeadingButtonClassName,\n  shadcnCalendarHeadingTextClassName,\n  shadcnCalendarHeaderRowClassName,\n  shadcnCalendarMonthYearButtonClassName,\n  shadcnCalendarMonthYearCellClassName,\n  shadcnCalendarMonthYearGridClassName,\n  shadcnCalendarNavButtonClassName,\n  shadcnCalendarView,\n  shadcnCalendarWeekRowClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-calendar/view.ts",
+      "target": "src/ui/shadcn-calendar/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  calendarView as shadcnCalendarView,\n  cellClassName as shadcnCalendarCellClassName,\n  columnHeaderClassName as shadcnCalendarColumnHeaderClassName,\n  containerClassName as shadcnCalendarContainerClassName,\n  dayButtonClassName as shadcnCalendarDayButtonClassName,\n  gridClassName as shadcnCalendarGridClassName,\n  headerClassName as shadcnCalendarHeaderClassName,\n  headerRowClassName as shadcnCalendarHeaderRowClassName,\n  headingButtonClassName as shadcnCalendarHeadingButtonClassName,\n  headingTextClassName as shadcnCalendarHeadingTextClassName,\n  monthYearButtonClassName as shadcnCalendarMonthYearButtonClassName,\n  monthYearCellClassName as shadcnCalendarMonthYearCellClassName,\n  monthYearGridClassName as shadcnCalendarMonthYearGridClassName,\n  navButtonClassName as shadcnCalendarNavButtonClassName,\n  weekRowClassName as shadcnCalendarWeekRowClassName,\n} from \"../../../foldkit/ui/calendar/view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-calendar/shadcn-calendar.scene.test.ts",
+      "target": "src/ui/shadcn-calendar/shadcn-calendar.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Calendar from \"./index\";\n\ndescribe(\"shadcn Calendar registry view\", () => {\n  test(\"reuses the Foldkit Calendar functional contract\", () => {\n    expect(Calendar.init).toBeTypeOf(\"function\");\n    expect(Calendar.update).toBeTypeOf(\"function\");\n    expect(Calendar.view).toBeTypeOf(\"function\");\n    expect(Calendar.shadcnCalendarView).toBeTypeOf(\"function\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/radix/calendar",
+      "artifact": "component",
+      "primitive": "Ui.Calendar",
+      "stateful": true
+    }
+  }
+}

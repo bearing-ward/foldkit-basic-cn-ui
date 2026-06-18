@@ -7,7 +7,9 @@ import { defineConfig } from "vite"
 import { optimizedSourceAliases } from "./vite.aliases"
 
 const registryExampleChunkName = (id: string): string | undefined => {
-  const match = id.match(/registry\/default\/examples\/([^/]+)\//u)
+  const match = id.match(
+    /registry\/(?:foldkit|base-ui|shadcn|ai-elements)\/examples\/([^/]+)\//u
+  )
 
   if (match?.[1] === undefined) {
     return undefined
@@ -175,7 +177,7 @@ export default defineConfig({
             },
             {
               name: "registry-ui",
-              test: "registry/default/ui/",
+              test: /registry\/(?:foldkit|base-ui|shadcn|ai-elements)\/ui\//u,
               priority: 10,
             },
           ],

@@ -107,34 +107,35 @@ const skeletonFiles = (
   const componentName = pascalCase(name);
   const helperName = flatName(name);
   const basicExample = plan.manifest.examples[0] ?? `${name}-basic`;
+  const lane = plan.manifest.origin;
 
   return [
     {
-      path: `registry/default/ui/${name}/index.ts`,
+      path: `registry/${lane}/ui/${name}/index.ts`,
       content: `export * from "./view";\n`,
     },
     {
-      path: `registry/default/ui/${name}/view.ts`,
+      path: `registry/${lane}/ui/${name}/view.ts`,
       content: `import type { Html } from "foldkit/html";\nimport { html } from "foldkit/html";\n\nexport const ${helperName}RootClassName = "rounded-md border border-dashed border-gray-300 p-4 text-sm text-gray-700";\n\nexport const view = <Message>(): Html => {\n  const h = html<Message>();\n\n  return h.div([h.Class(${helperName}RootClassName)], ["TODO: Replace ${componentName} scaffold content."]);\n};\n`,
     },
     {
-      path: `registry/default/ui/${name}/${name}.scene.test.ts`,
+      path: `registry/${lane}/ui/${name}/${name}.scene.test.ts`,
       content: `import { Scene } from "foldkit";\nimport { describe, test } from "vitest";\n\nimport { view } from "./view";\n\ndescribe("${componentName}", () => {\n  test("renders the TODO scaffold", () => {\n    Scene.scene(view(), Scene.expect(Scene.text("TODO: Replace ${componentName} scaffold content.")).toExist());\n  });\n});\n`,
     },
     {
-      path: `registry/default/examples/${basicExample}/main.ts`,
+      path: `registry/${lane}/examples/${basicExample}/main.ts`,
       content: `import { Match as M, Schema as S } from "effect";\nimport type { Command } from "foldkit";\nimport { Submodel } from "foldkit";\nimport type { Html } from "foldkit/html";\nimport { html } from "foldkit/html";\n\nimport * as ${componentName} from "../../ui/${name}";\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\nexport const init = (): readonly [Model, readonly Command.Command<Message>[]] => [{}, []];\n\nexport const update = (model: Model, message: Message): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(M.exhaustive);\n\nexport const view = Submodel.defineView<Model, Message>((_model): Html => {\n  const h = html<Message>();\n\n  return h.div([h.Class("p-6")], [${componentName}.view<Message>()]);\n});\n`,
     },
     {
-      path: `registry/default/examples/${basicExample}/entry.ts`,
+      path: `registry/${lane}/examples/${basicExample}/entry.ts`,
       content: `import { Effect } from "effect";\nimport { Runtime } from "foldkit";\n\nimport * as Main from "./main";\n\nconst program = Runtime.makeProgram({ init: Main.init, update: Main.update, view: Main.view });\n\nRuntime.run(program, {\n  flags: Effect.succeed({}),\n  rootId: "app",\n});\n`,
     },
     {
-      path: `registry/default/examples/${basicExample}/index.html`,
+      path: `registry/${lane}/examples/${basicExample}/index.html`,
       content: `<div id="app"></div>\n<script type="module" src="./entry.ts"></script>\n`,
     },
     {
-      path: `registry/default/examples/${basicExample}/${basicExample}.scene.test.ts`,
+      path: `registry/${lane}/examples/${basicExample}/${basicExample}.scene.test.ts`,
       content: `import { Scene } from "foldkit";\nimport { describe, test } from "vitest";\n\nimport * as Main from "./main";\n\ndescribe("${componentName} basic example", () => {\n  test("renders the TODO scaffold", () => {\n    Scene.scene(Main.view({}), Scene.expect(Scene.text("TODO: Replace ${componentName} scaffold content.")).toExist());\n  });\n});\n`,
     },
   ];

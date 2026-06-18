@@ -1,17 +1,30 @@
 import { spawnSync } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import {
+  chmod,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
 const rootDir = path.resolve(import.meta.dirname, "..");
 const registryBaseUrl =
   process.env.PUBLIC_REGISTRY_BASE_URL ??
-  "https://bearing-ward.github.io/foldkit-basic-cn-ui/r";
+  "https://bearing-ward.github.io/foldkit-basic-cn-ui";
 const tempDir = await mkdtemp(path.join(tmpdir(), "foldkit-cn-install-"));
+const binDir = path.join(tempDir, "bin");
+const npmShimPath = path.join(binDir, "npm");
 
 const run = (command, args) => {
   const result = spawnSync(command, args, {
     cwd: rootDir,
+    env: {
+      ...process.env,
+      PATH: `${binDir}${path.delimiter}${process.env.PATH ?? ""}`,
+    },
     encoding: "utf-8",
     stdio: ["ignore", "pipe", "pipe"],
   });
@@ -26,9 +39,38 @@ const run = (command, args) => {
 };
 
 try {
+  await mkdir(binDir);
+  await writeFile(
+    npmShimPath,
+    `#!/bin/sh
+if [ "$1" = "install" ]; then
+  shift
+  exec "${process.execPath}" add "$@"
+fi
+
+echo "Unsupported npm shim command: $*" >&2
+exit 1
+`
+  );
+  await chmod(npmShimPath, 0o755);
+
+  const componentsConfig = JSON.parse(
+    await readFile(path.join(rootDir, "apps/docs/public/components.json"))
+  );
+
   await writeFile(
     path.join(tempDir, "components.json"),
-    await readFile(path.join(rootDir, "apps/docs/public/components.json"))
+    `${JSON.stringify(
+      {
+        ...componentsConfig,
+        registries: {
+          ...componentsConfig.registries,
+          "@foldkit-cn": `${registryBaseUrl}/{name}.json`,
+        },
+      },
+      null,
+      2
+    )}\n`
   );
   await mkdir(path.join(tempDir, "src"));
   await writeFile(path.join(tempDir, "package.json"), "{}\n");

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-fieldset",
+  "type": "registry:ui",
+  "title": "Base UI Fieldset",
+  "description": "A Base UI style-lane Fieldset wrapper that reuses the Foldkit Ui.Fieldset behavior with simple class helper aliases.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/fieldset"],
+  "files": [
+    {
+      "path": "registry/base-ui/ui/base-ui-fieldset/index.ts",
+      "target": "src/ui/base-ui-fieldset/index.ts",
+      "type": "registry:ui",
+      "content": "export { descriptionId, legendId, view } from \"../../../foldkit/ui/fieldset\";\nexport type { FieldsetAttributes, ViewConfig } from \"../../../foldkit/ui/fieldset\";\n\nexport {\n  fieldsetClassName as baseUiFieldsetRootClassName,\n  legendClassName as baseUiFieldsetLegendClassName,\n  descriptionClassName as baseUiFieldsetDescriptionClassName,\n  baseUiFieldsetFieldsClassName,\n  baseUiFieldsetFieldClassName,\n  baseUiFieldsetLabelClassName,\n  baseUiFieldsetInputClassName,\n  baseUiFieldsetTextareaClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/base-ui/ui/base-ui-fieldset/view.ts",
+      "target": "src/ui/base-ui-fieldset/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  fieldsetClassName,\n  legendClassName,\n  descriptionClassName,\n  fieldsClassName as baseUiFieldsetFieldsClassName,\n  fieldClassName as baseUiFieldsetFieldClassName,\n  labelClassName as baseUiFieldsetLabelClassName,\n  inputClassName as baseUiFieldsetInputClassName,\n  textareaClassName as baseUiFieldsetTextareaClassName,\n} from \"../../../foldkit/ui/fieldset/view\";\n"
+    },
+    {
+      "path": "registry/base-ui/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",
+      "target": "src/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Fieldset from \"./index\";\n\ndescribe(\"Base UI Fieldset registry view\", () => {\n  test(\"reuses the Foldkit Fieldset functional contract\", () => {\n    expect(Fieldset.view).toBeTypeOf(\"function\");\n    expect(Fieldset.legendId).toBeTypeOf(\"function\");\n    expect(Fieldset.baseUiFieldsetRootClassName).toContain(\"rounded-lg\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Fieldset",
+      "primitive": "Ui.Fieldset",
+      "stateful": false,
+      "origin": "https://base-ui.com/react/components/fieldset",
+      "artifact": "component"
+    }
+  }
+}

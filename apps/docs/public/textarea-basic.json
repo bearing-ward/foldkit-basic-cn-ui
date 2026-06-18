@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea-basic",
+  "type": "registry:example",
+  "title": "Textarea Basic",
+  "description": "A runnable Foldkit example showing typed Textarea messages with parent-owned character count feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/textarea"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/textarea-basic/main.ts",
+      "target": "src/examples/textarea-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Textarea from \"../../ui/textarea\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  value: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedBio = m(\"UpdatedBio\", { value: S.String });\n\nexport const Message = S.Union([UpdatedBio]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ value: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedBio: ({ value }) => [evo(model, { value: () => value }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"max-w-sm space-y-3\")],\n    [\n      Textarea.view<Message>({\n        id: \"bio-textarea\",\n        value: model.value,\n        rows: 4,\n        placeholder: \"Tell us about yourself...\",\n        onInput: (value) => UpdatedBio({ value }),\n        toView: (attributes) =>\n          h.div(\n            [h.Class(Textarea.fieldClassName)],\n            [\n              h.label(\n                [...attributes.label, h.Class(Textarea.labelClassName)],\n                [\"Bio\"]\n              ),\n              h.textarea(\n                [...attributes.textarea, h.Class(Textarea.textareaClassName)],\n                []\n              ),\n              h.p(\n                [\n                  ...attributes.description,\n                  h.Class(Textarea.descriptionClassName),\n                ],\n                [\"A brief introduction about yourself.\"]\n              ),\n            ]\n          ),\n      }),\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [`Characters: ${model.value.length.toString()}`]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/textarea-basic/textarea-basic.scene.test.ts",
+      "target": "src/examples/textarea-basic/textarea-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as TextareaBasicExample from \"./main\";\n\ndescribe(\"Textarea Basic example\", () => {\n  test(\"updates typed feedback\", () => {\n    Scene.scene(\n      {\n        update: TextareaBasicExample.update,\n        view: TextareaBasicExample.view,\n      },\n      Scene.with(TextareaBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Bio\" })).toExist(),\n      Scene.expect(Scene.text(\"Characters: 0\")).toExist(),\n      Scene.type(Scene.role(\"textbox\", { name: \"Bio\" }), \"Ada\"),\n      Scene.expect(Scene.text(\"Characters: 3\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Textarea",
+      "example": "basic"
+    }
+  }
+}

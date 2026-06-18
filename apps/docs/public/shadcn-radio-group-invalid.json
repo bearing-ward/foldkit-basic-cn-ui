@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-radio-group-invalid",
+  "type": "registry:example",
+  "title": "shadcn Radio Group Invalid",
+  "description": "A runnable Foldkit example showing invalid shadcn Radio Group items.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-radio-group"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-radio-group-invalid/main.ts",
+      "target": "src/examples/shadcn-radio-group-invalid/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as RadioGroup from \"../../ui/shadcn-radio-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst optionView = (value: string, selected: boolean): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.DataAttribute(\"invalid\", \"\"), h.Class(\"flex items-center gap-3\")],\n    [\n      h.button(\n        [\n          h.Type(\"button\"),\n          h.Role(\"radio\"),\n          h.AriaChecked(selected),\n          h.AriaInvalid(true),\n          h.AriaLabel(value),\n        ],\n        [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]\n      ),\n      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),\n    ]\n  );\n};\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-4\")],\n    [\n      h.div(\n        [h.Class(RadioGroup.shadcnRadioGroupMetaClassName)],\n        [\n          h.h3([h.Class(\"text-sm font-medium text-gray-950\")], [\n            \"Notification Preferences\",\n          ]),\n          h.p(\n            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClassName)],\n            [\"Choose how you want to receive notifications.\"]\n          ),\n        ]\n      ),\n      h.div(\n        [\n          h.Role(\"radiogroup\"),\n          h.AriaLabel(\"Notification Preferences\"),\n          h.Class(RadioGroup.shadcnRadioGroupVerticalClassName),\n        ],\n        [\n          optionView(\"Email only\", false),\n          optionView(\"SMS only\", false),\n          optionView(\"Both Email & SMS\", false),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-radio-group-invalid/shadcn-radio-group-invalid.scene.test.ts",
+      "target": "src/examples/shadcn-radio-group-invalid/shadcn-radio-group-invalid.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Radio Group Invalid example\", () => {\n  test(\"renders the origin invalid radio group demo\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Notification Preferences\")).toExist(),\n      Scene.expect(\n        Scene.text(\"Choose how you want to receive notifications.\")\n      ).toExist(),\n      Scene.expect(Scene.role(\"radio\", { name: \"Email only\" })).toHaveAttr(\n        \"aria-invalid\",\n        \"true\"\n      ),\n      Scene.expect(Scene.role(\"radio\", { name: \"Email only\" })).not.toHaveHandler(\n        \"click\"\n      ),\n      Scene.expect(Scene.role(\"radio\", { name: \"Both Email & SMS\" })).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "RadioGroup",
+      "example": "shadcn-invalid",
+      "origin": "https://ui.shadcn.com/docs/components/radix/radio-group"
+    }
+  }
+}

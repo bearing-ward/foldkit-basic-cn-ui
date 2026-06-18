@@ -75,6 +75,12 @@ const titleize = (value: string): string =>
     .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
     .join(" ");
 
+const uiPath = (origin: SliceOrigin, name: string): string =>
+  `registry/${origin}/ui/${name}`;
+
+const examplePath = (origin: SliceOrigin, name: string): string =>
+  `registry/${origin}/examples/${name}`;
+
 export const createSliceManifest = (
   input: SliceManifestInput
 ): SliceManifest => {
@@ -94,13 +100,13 @@ export const createSliceManifest = (
     primitiveName,
     examples: [`${name}-basic`],
     checklistItems: [
-      `Create registry/default/ui/${name}/index.ts`,
-      `Create registry/default/ui/${name}/view.ts`,
+      `Create ${uiPath(input.origin, name)}/index.ts`,
+      `Create ${uiPath(input.origin, name)}/view.ts`,
       `Create focused scene tests for ${name}`,
-      `Create at least one example under registry/default/examples/${name}-basic`,
-      "Add registry/default/items.json metadata",
-      "Run registry generation for apps/docs/public/components.json and apps/docs/public/r/*.json",
-      "Add docs metadata and a docs page route",
+      `Create at least one example under ${examplePath(input.origin, `${name}-basic`)}`,
+      `Add registry/${input.origin}/registry.json metadata`,
+      "Run registry generation for apps/docs/public/components.json and apps/docs/public/{name}.json",
+      "Run OpenStory generation and add documentation reference coverage",
       "Run install smoke compatibility before review",
     ],
   };
@@ -111,57 +117,59 @@ export const createScaffoldPlan = (
 ): ScaffoldPlan => {
   const manifest = createSliceManifest(input);
   const basicExample = manifest.examples[0] ?? `${manifest.name}-basic`;
+  const componentDir = uiPath(manifest.origin, manifest.name);
+  const basicExampleDir = examplePath(manifest.origin, basicExample);
 
   return {
     manifest,
     files: [
       {
-        path: `registry/default/ui/${manifest.name}/index.ts`,
+        path: `${componentDir}/index.ts`,
         purpose: "public component exports",
         mode: "create",
       },
       {
-        path: `registry/default/ui/${manifest.name}/view.ts`,
+        path: `${componentDir}/view.ts`,
         purpose: "minimal TODO-marked view helpers",
         mode: "create",
       },
       {
-        path: `registry/default/ui/${manifest.name}/${manifest.name}.scene.test.ts`,
+        path: `${componentDir}/${manifest.name}.scene.test.ts`,
         purpose: "focused component scene coverage",
         mode: "create",
       },
       {
-        path: `registry/default/examples/${basicExample}/main.ts`,
+        path: `${basicExampleDir}/main.ts`,
         purpose: "basic example program",
         mode: "create",
       },
       {
-        path: `registry/default/examples/${basicExample}/entry.ts`,
+        path: `${basicExampleDir}/entry.ts`,
         purpose: "standalone example runtime entry",
         mode: "create",
       },
       {
-        path: `registry/default/examples/${basicExample}/index.html`,
+        path: `${basicExampleDir}/index.html`,
         purpose: "standalone example HTML shell",
         mode: "create",
       },
       {
-        path: `registry/default/examples/${basicExample}/${basicExample}.scene.test.ts`,
+        path: `${basicExampleDir}/${basicExample}.scene.test.ts`,
         purpose: "basic example scene coverage",
         mode: "create",
       },
       {
-        path: "registry/default/items.json",
+        path: `registry/${manifest.origin}/registry.json`,
         purpose: "registry metadata entry",
         mode: "update",
       },
       {
-        path: `apps/docs/public/r/${manifest.name}.json`,
+        path: `apps/docs/public/${manifest.name}.json`,
         purpose: "generated registry item after bun run build:registry",
         mode: "generated",
       },
     ],
     validationCommands,
-    sceneTestGuidance: `Add scene coverage for registry/default/ui/${manifest.name} and registry/default/examples/${basicExample} before review.`,
+    sceneTestGuidance: `Add scene coverage for ${componentDir} and ${basicExampleDir} before review.`,
   };
 };

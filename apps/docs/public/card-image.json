@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-image",
+  "type": "registry:example",
+  "title": "Card Image",
+  "description": "A runnable Foldkit example showing the shadcn Card Image composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-card"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/card-image/main.ts",
+      "target": "src/examples/card-image/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Card from \"../../ui/card\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return Card.view<Message>(\n    [\n      h.img([\n        h.Src(\"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80\"),\n        h.Alt(\"Event cover\"),\n        h.Class(\"h-48 w-full object-cover\"),\n      ]),\n      Card.headerView<Message>(\n        [\n          h.span(\n            [\n              h.Class(\n                \"inline-flex w-fit rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700\"\n              ),\n            ],\n            [\"Featured\"]\n          ),\n          Card.titleView<Message>(\"Design systems meetup\"),\n          Card.descriptionView<Message>(\n            \"A practical talk on component APIs, accessibility, and shipping faster.\"\n          ),\n        ],\n        \"gap-3\"\n      ),\n      Card.footerView<Message>(\n        [\n          h.button(\n            [\n              h.Type(\"button\"),\n              h.Class(\n                \"inline-flex h-9 items-center justify-center rounded-md bg-black px-4 text-sm font-medium text-white\"\n              ),\n            ],\n            [\"View Event\"]\n          ),\n        ]\n      ),\n    ],\n    \"w-full max-w-sm\"\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/card-image/card-image.scene.test.ts",
+      "target": "src/examples/card-image/card-image.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Card Image example\", () => {\n  test(\"renders the origin image card content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Featured\")).toExist(),\n      Scene.expect(Scene.text(\"Design systems meetup\")).toExist(),\n      Scene.expect(Scene.role(\"img\", { name: \"Event cover\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"View Event\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"View Event\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Card",
+      "example": "image",
+      "origin": "https://ui.shadcn.com/docs/components/radix/card"
+    }
+  }
+}

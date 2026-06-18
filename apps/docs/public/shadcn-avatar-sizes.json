@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-avatar-sizes",
+  "type": "registry:example",
+  "title": "shadcn Avatar Sizes",
+  "description": "A runnable Foldkit example showing shadcn Avatar sizes.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-avatar"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-avatar-sizes/main.ts",
+      "target": "src/examples/shadcn-avatar-sizes/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport { html } from \"foldkit/html\";\n\nimport * as Avatar from \"../../ui/shadcn-avatar\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>(() => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex items-center gap-4\")],\n    [\n      Avatar.view<Message>({ fallback: \"CN\", size: \"Small\" }),\n      Avatar.view<Message>({ fallback: \"CN\" }),\n      Avatar.view<Message>({ fallback: \"CN\", size: \"Large\" }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-avatar-sizes/shadcn-avatar-sizes.scene.test.ts",
+      "target": "src/examples/shadcn-avatar-sizes/shadcn-avatar-sizes.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnAvatarSizesExample from \"./main\";\n\ndescribe(\"shadcn Avatar Sizes example\", () => {\n  test(\"renders small, default, and large avatars\", () => {\n    Scene.scene(\n      {\n        update: ShadcnAvatarSizesExample.update,\n        view: ShadcnAvatarSizesExample.view,\n      },\n      Scene.with(ShadcnAvatarSizesExample.init()[0]),\n      Scene.expect(Scene.text(\"CN\")).toExist(),\n      Scene.expect(Scene.text(\"CN\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Avatar",
+      "example": "sizes",
+      "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+    }
+  }
+}

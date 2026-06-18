@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Toggle from "../../../registry/default/ui/toggle";
+import * as Toggle from "../../../registry/foldkit/ui/toggle";
 import { ClickedToggleFavoriteDemo } from "../message";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";

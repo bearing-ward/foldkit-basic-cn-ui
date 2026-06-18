@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-input-input-group",
+  "type": "registry:example",
+  "title": "shadcn Input Input Group",
+  "description": "A runnable Foldkit example matching the shadcn Input Input Group origin pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [
+    "@foldkit-cn/shadcn-input",
+    "@foldkit-cn/input-group"
+  ],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-input-input-group/main.ts",
+      "target": "src/examples/shadcn-input-input-group/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as InputGroup from \"../../ui/input-group\";\nimport * as Input from \"../../ui/shadcn-input\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  websiteUrl: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedWebsiteUrl = m(\"UpdatedWebsiteUrl\", { value: S.String });\n\nexport const Message = S.Union([UpdatedWebsiteUrl]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [\n  {\n    websiteUrl: \"\",\n  },\n  [],\n];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedWebsiteUrl: ({ value }) => [\n        evo(model, { websiteUrl: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst primaryButtonClassName =\n  \"inline-flex h-9 items-center justify-center rounded-md bg-gray-950 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950\";\n\nconst secondaryButtonClassName =\n  \"inline-flex h-9 items-center justify-center rounded-md border border-gray-200 bg-white px-4 text-sm font-medium text-gray-950 shadow-sm hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400\";\n\nconst field = (\n  h: ReturnType<typeof html<Message>>,\n  config: Readonly<{\n    id: string;\n    label: string;\n    value: string;\n    onInput: (value: string) => Message;\n    description?: string | undefined;\n    type?: string | undefined;\n    required?: boolean | undefined;\n    labelAddon?: Html | undefined;\n  }>\n): Html =>\n  h.div(\n    [h.Class(Input.shadcnInputFieldClassName)],\n    [\n      h.label(\n        [\n          h.Attribute(\"for\", config.id),\n          h.Class(`${Input.shadcnInputLabelClassName} flex items-center gap-2`),\n        ],\n        [\n          config.label,\n          ...(config.labelAddon === undefined ? [] : [config.labelAddon]),\n        ]\n      ),\n      h.input([\n        h.Id(config.id),\n        h.Type(config.type ?? \"text\"),\n        h.Value(config.value),\n        h.OnInput(config.onInput),\n        h.AriaLabel(config.label),\n        ...(config.required === true ? [h.Required(true)] : []),\n        ...(config.description === undefined\n          ? []\n          : [h.Attribute(\"aria-describedby\", `${config.id}-description`)]),\n        h.Class(Input.shadcnInputClassName),\n      ]),\n      ...(config.description === undefined\n        ? []\n        : [\n            h.p(\n              [\n                h.Id(`${config.id}-description`),\n                h.Class(Input.shadcnInputDescriptionClassName),\n              ],\n              [config.description]\n            ),\n          ]),\n    ]\n  );\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"grid w-full max-w-sm gap-2\")],\n    [\n      h.label(\n        [\n          h.Attribute(\"for\", \"website-url\"),\n          h.Class(Input.shadcnInputLabelClassName),\n        ],\n        [\"Website URL\"]\n      ),\n      InputGroup.view<Message>({\n        children: [\n          InputGroup.addonView<Message>({\n            children: [InputGroup.textView<Message>([\"https://\"])],\n          }),\n          h.input([\n            h.Id(\"website-url\"),\n            h.AriaLabel(\"Website URL\"),\n            h.Placeholder(\"example.com\"),\n            h.Value(model.websiteUrl),\n            h.OnInput((value) => UpdatedWebsiteUrl({ value })),\n            h.Class(`${InputGroup.inputGroupControlClassName} pl-1`),\n          ]),\n        ],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-input-input-group/shadcn-input-input-group.scene.test.ts",
+      "target": "src/examples/shadcn-input-input-group/shadcn-input-input-group.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Shadcn Input Input Group example\", () => {\n  test(\"renders the current origin Input Group content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Website URL\" })).toHaveAttr(\n        \"placeholder\",\n        \"example.com\"\n      ),\n      Scene.expect(Scene.text(\"https://\")).toExist(),\n      Scene.type(Scene.role(\"textbox\", { name: \"Website URL\" }), \"example.com\"),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Website URL\" })).toHaveAttr(\n        \"value\",\n        \"example.com\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Input",
+      "example": "input-group",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input#input-group"
+    }
+  }
+}

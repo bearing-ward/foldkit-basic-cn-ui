@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 
-const registryItems = JSON.parse(
-  readFileSync("registry/default/items.json", "utf-8")
-);
+import { readSourceRegistryItems } from "./registry-manifest.mjs";
+
+const registryItems = await readSourceRegistryItems();
 const docsViewSource = readFileSync("src/docsView.ts", "utf-8");
 
 const originPrefixes = {

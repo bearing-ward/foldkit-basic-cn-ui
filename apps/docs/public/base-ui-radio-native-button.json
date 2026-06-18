@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-radio-native-button",
+  "type": "registry:example",
+  "title": "Base UI Radio Native Button",
+  "description": "A runnable Foldkit version of the Base UI Radio native button rendering example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-radio"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/base-ui-radio-native-button/main.ts",
+      "target": "src/examples/base-ui-radio-native-button/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as RadioGroup from \"../../ui/base-ui-radio\";\n\ntype StorageType = \"SSD\" | \"HDD\";\n\nconst StorageRadioGroup = RadioGroup.create<StorageType>();\nconst storageTypes: readonly StorageType[] = [\"SSD\", \"HDD\"];\n\n// MODEL\n\nexport const Model = S.Struct({\n  radioGroup: RadioGroup.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotRadioGroupMessage = m(\"GotRadioGroupMessage\", {\n  message: RadioGroup.Message,\n});\n\nexport const Message = S.Union([GotRadioGroupMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [radioGroup, radioGroupCommands] = RadioGroup.init({\n    id: \"radio-native-button\",\n    selectedValue: \"SSD\",\n  });\n\n  return [\n    { radioGroup },\n    Command.mapMessages(radioGroupCommands, (message) =>\n      GotRadioGroupMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotRadioGroupMessage: ({ message }) => {\n        const [radioGroup, radioGroupCommands] = StorageRadioGroup.update(\n          model.radioGroup,\n          message\n        );\n\n        return [\n          evo(model, { radioGroup: () => radioGroup }),\n          Command.mapMessages(radioGroupCommands, (message) =>\n            GotRadioGroupMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.submodel({\n    slotId: model.radioGroup.id,\n    model: model.radioGroup,\n    view: StorageRadioGroup.view,\n    viewInputs: {\n      options: storageTypes,\n      ariaLabel: \"Storage type\",\n      name: \"storageType\",\n      toView: ({ group, hiddenInput, options }) =>\n        h.div(\n          [...group, h.Class(RadioGroup.baseUiRadioVerticalClassName)],\n          [\n            h.input(hiddenInput),\n            h.div(\n              [h.Class(RadioGroup.baseUiRadioLabelClassName)],\n              [\"Storage type\"]\n            ),\n            ...options.map((option) => {\n              const controlId = `storage-type-${option.value.toLowerCase()}`;\n\n              return h.div(\n                [h.Class(\"flex items-center gap-3\")],\n                [\n                  h.label(\n                    [\n                      h.For(controlId),\n                      h.Class(\n                        `${RadioGroup.baseUiRadioLabelClassName} cursor-pointer`\n                      ),\n                    ],\n                    [option.value]\n                  ),\n                  h.button(\n                    [\n                      ...option.option,\n                      h.Id(controlId),\n                      h.Type(\"button\"),\n                      h.Class(RadioGroup.baseUiRadioVerticalOptionClassName),\n                    ],\n                    [\n                      option.isSelected\n                        ? RadioGroup.baseUiRadioCheckIcon()\n                        : RadioGroup.baseUiRadioCheckPlaceholder(),\n                    ]\n                  ),\n                ]\n              );\n            }),\n          ]\n        ),\n    },\n    toParentMessage: (message) => GotRadioGroupMessage({ message }),\n  });\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/base-ui-radio-native-button/base-ui-radio-native-button.scene.test.ts",
+      "target": "src/examples/base-ui-radio-native-button/base-ui-radio-native-button.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Radio from \"../../ui/base-ui-radio\";\nimport * as BaseUiRadioNativeButtonExample from \"./main\";\n\ndescribe(\"Base UI radio Native Button example\", () => {\n  test(\"renders sibling labels with native button radio controls\", () => {\n    Scene.scene(\n      {\n        update: BaseUiRadioNativeButtonExample.update,\n        view: BaseUiRadioNativeButtonExample.view,\n      },\n      Scene.with(BaseUiRadioNativeButtonExample.init()[0]),\n      Scene.expect(Scene.text(\"Storage type\")).toExist(),\n      Scene.expect(Scene.role(\"radio\", { name: \"SSD\" })).toBeChecked(),\n      Scene.expect(Scene.role(\"radio\", { name: \"HDD\" })).not.toBeChecked(),\n      Scene.expect(Scene.text(\"Best apple\")).not.toExist(),\n      Scene.click(Scene.role(\"radio\", { name: \"HDD\" })),\n      Scene.Command.expectHas(\n        Radio.FocusOption({ id: \"radio-native-button\", index: 1 })\n      ),\n      Scene.Command.resolve(\n        Radio.FocusOption({ id: \"radio-native-button\", index: 1 }),\n        Radio.CompletedFocusOption(),\n        (message) =>\n          BaseUiRadioNativeButtonExample.GotRadioGroupMessage({ message })\n      ),\n      Scene.expect(Scene.role(\"radio\", { name: \"HDD\" })).toBeChecked()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Radio",
+      "example": "native-button",
+      "originExample": "rendering-as-a-native-button",
+      "origin": "https://base-ui.com/react/components/radio"
+    }
+  }
+}

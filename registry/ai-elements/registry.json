@@ -1,0 +1,183 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "ai-elements-attachments",
+      "type": "registry:ui",
+      "title": "Attachments",
+      "description": "Foldkit-native AI Elements attachments component for files, media, and source documents.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/ai-elements/ui/ai-elements-attachments/index.ts",
+          "target": "src/ui/ai-elements-attachments/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ai-elements/ui/ai-elements-attachments/view.ts",
+          "target": "src/ui/ai-elements-attachments/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ai-elements/ui/ai-elements-attachments/ai-elements-attachments.scene.test.ts",
+          "target": "src/ui/ai-elements-attachments/ai-elements-attachments.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Attachments",
+          "origin": "https://elements.ai-sdk.dev/components/attachments",
+          "artifact": "component",
+          "stateful": true,
+          "primitive": "AI Elements attachments view helpers"
+        }
+      }
+    },
+    {
+      "name": "ai-elements-attachments-grid",
+      "type": "registry:example",
+      "title": "AI Elements Attachments Grid",
+      "description": "A runnable Foldkit example showing the AI Elements Attachments grid variant.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "ai-elements-attachments"
+      ],
+      "files": [
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-grid/main.ts",
+          "target": "src/examples/ai-elements-attachments-grid/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-grid/entry.ts",
+          "target": "src/examples/ai-elements-attachments-grid/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-grid/index.html",
+          "target": "src/examples/ai-elements-attachments-grid/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-grid/ai-elements-attachments-grid.scene.test.ts",
+          "target": "src/examples/ai-elements-attachments-grid/ai-elements-attachments-grid.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Attachments",
+          "example": "grid",
+          "origin": "https://elements.ai-sdk.dev/components/attachments",
+          "originExample": "Grid Variant"
+        }
+      }
+    },
+    {
+      "name": "ai-elements-attachments-inline",
+      "type": "registry:example",
+      "title": "AI Elements Attachments Inline",
+      "description": "A runnable Foldkit example showing the AI Elements Attachments inline variant.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "ai-elements-attachments"
+      ],
+      "files": [
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-inline/main.ts",
+          "target": "src/examples/ai-elements-attachments-inline/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-inline/entry.ts",
+          "target": "src/examples/ai-elements-attachments-inline/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-inline/index.html",
+          "target": "src/examples/ai-elements-attachments-inline/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-inline/ai-elements-attachments-inline.scene.test.ts",
+          "target": "src/examples/ai-elements-attachments-inline/ai-elements-attachments-inline.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Attachments",
+          "example": "inline",
+          "origin": "https://elements.ai-sdk.dev/components/attachments",
+          "originExample": "Inline Variant"
+        }
+      }
+    },
+    {
+      "name": "ai-elements-attachments-list",
+      "type": "registry:example",
+      "title": "AI Elements Attachments List",
+      "description": "A runnable Foldkit example showing the AI Elements Attachments list variant.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "ai-elements-attachments"
+      ],
+      "files": [
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-list/main.ts",
+          "target": "src/examples/ai-elements-attachments-list/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-list/entry.ts",
+          "target": "src/examples/ai-elements-attachments-list/entry.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-list/index.html",
+          "target": "src/examples/ai-elements-attachments-list/index.html",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/ai-elements/examples/ai-elements-attachments-list/ai-elements-attachments-list.scene.test.ts",
+          "target": "src/examples/ai-elements-attachments-list/ai-elements-attachments-list.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Attachments",
+          "example": "list",
+          "origin": "https://elements.ai-sdk.dev/components/attachments",
+          "originExample": "List Variant"
+        }
+      }
+    }
+  ]
+}

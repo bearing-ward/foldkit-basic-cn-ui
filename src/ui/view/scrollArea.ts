@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as ScrollArea from "../../../registry/default/ui/scroll-area";
+import * as ScrollArea from "../../../registry/base-ui/ui/scroll-area";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 

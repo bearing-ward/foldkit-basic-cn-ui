@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-basic",
+  "type": "registry:example",
+  "title": "Table Basic",
+  "description": "A runnable Foldkit example showing the shadcn recent invoices Table composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/table"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/table-basic/main.ts",
+      "target": "src/examples/table-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\n\nimport * as Table from \"../../ui/table\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html => Table.invoicesTableView<Message>()\n);\n"
+    },
+    {
+      "path": "registry/shadcn/examples/table-basic/table-basic.scene.test.ts",
+      "target": "src/examples/table-basic/table-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as TableBasicExample from \"./main\";\n\ndescribe(\"Table Basic example\", () => {\n  test(\"matches the shadcn invoice table example\", () => {\n    Scene.scene(\n      {\n        update: TableBasicExample.update,\n        view: TableBasicExample.view,\n      },\n      Scene.with(TableBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"A list of your recent invoices.\")).toExist(),\n      Scene.expect(Scene.text(\"INV001\")).toExist(),\n      Scene.expect(Scene.text(\"Credit Card\")).toExist(),\n      Scene.expect(Scene.text(\"$2,500.00\")).toExist(),\n      Scene.expect(Scene.text(\"INV001\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Table",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/radix/table"
+    }
+  }
+}

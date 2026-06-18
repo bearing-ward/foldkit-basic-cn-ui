@@ -1,16 +1,16 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
-import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
-import * as BaseUiAccordionBasicExample from "../registry/default/examples/base-ui-accordion-basic/main";
-import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
-import * as ShadcnAccordionBasicExample from "../registry/default/examples/shadcn-accordion-basic/main";
-import * as ShadcnAccordionBordersExample from "../registry/default/examples/shadcn-accordion-borders/main";
-import * as ShadcnAccordionCardExample from "../registry/default/examples/shadcn-accordion-card/main";
-import * as ShadcnAccordionDisabledExample from "../registry/default/examples/shadcn-accordion-disabled/main";
-import * as ShadcnAccordionMultipleExample from "../registry/default/examples/shadcn-accordion-multiple/main";
-import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-accordion-rtl/main";
+import * as AccordionBasicExample from "../registry/base-ui/examples/accordion-basic/main";
+import * as AccordionMultipleExample from "../registry/base-ui/examples/accordion-multiple/main";
+import * as BaseUiAccordionBasicExample from "../registry/base-ui/examples/base-ui-accordion-basic/main";
+import * as BaseUiAccordionMultipleExample from "../registry/base-ui/examples/base-ui-accordion-multiple/main";
+import * as ShadcnAccordionBasicExample from "../registry/shadcn/examples/shadcn-accordion-basic/main";
+import * as ShadcnAccordionBordersExample from "../registry/shadcn/examples/shadcn-accordion-borders/main";
+import * as ShadcnAccordionCardExample from "../registry/shadcn/examples/shadcn-accordion-card/main";
+import * as ShadcnAccordionDisabledExample from "../registry/shadcn/examples/shadcn-accordion-disabled/main";
+import * as ShadcnAccordionMultipleExample from "../registry/shadcn/examples/shadcn-accordion-multiple/main";
+import * as ShadcnAccordionRtlExample from "../registry/shadcn/examples/shadcn-accordion-rtl/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

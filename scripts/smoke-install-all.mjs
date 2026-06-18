@@ -13,11 +13,11 @@ import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
+import { readSourceRegistryItems } from "./registry-manifest.mjs";
+
 const rootDir = path.resolve(import.meta.dirname, "..");
 const publicDir = path.join(rootDir, "apps/docs/public");
-const registryItems = JSON.parse(
-  await readFile(path.join(rootDir, "registry/default/items.json"), "utf-8")
-);
+const registryItems = await readSourceRegistryItems({ rootDir });
 const rootPackageJson = JSON.parse(
   await readFile(path.join(rootDir, "package.json"), "utf-8")
 );
@@ -157,7 +157,7 @@ if (serverAddress === null || typeof serverAddress === "string") {
   throw new Error("Unable to start local registry server");
 }
 
-const registryBaseUrl = `http://127.0.0.1:${serverAddress.port}/r`;
+const registryBaseUrl = `http://127.0.0.1:${serverAddress.port}`;
 const componentsJson = JSON.parse(
   await readFile(
     path.join(rootDir, "registry/templates/components.json"),
@@ -266,7 +266,7 @@ try {
 
   const expectedFiles = installedItems.flatMap((item) =>
     (item.files ?? []).map((file) =>
-      (file.target ?? file.path).replace(/^registry\/default\//u, "src/")
+      file.target ?? file.path
     )
   );
   const missingFiles = [];

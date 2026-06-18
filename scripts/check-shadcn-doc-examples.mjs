@@ -1,10 +1,10 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
+import { readSourceRegistryItems } from "./registry-manifest.mjs";
+
 const rootDir = path.resolve(import.meta.dirname, "..");
-const registryItems = JSON.parse(
-  readFileSync(path.join(rootDir, "registry/default/items.json"), "utf-8")
-);
+const registryItems = await readSourceRegistryItems({ rootDir });
 const docsViewSource = readFileSync(
   path.join(rootDir, "src/docsView.ts"),
   "utf-8"

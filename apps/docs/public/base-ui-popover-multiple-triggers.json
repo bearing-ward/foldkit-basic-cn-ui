@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-popover-multiple-triggers",
+  "type": "registry:example",
+  "title": "Base UI Popover Multiple Triggers",
+  "description": "A runnable Foldkit version of the Base UI Popover multiple triggers example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-popover"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/base-ui-popover-multiple-triggers/main.ts",
+      "target": "src/examples/base-ui-popover-multiple-triggers/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Popover from \"../../ui/base-ui-popover\";\n\nconst TriggerName = S.Union([S.Literal(\"Trigger 1\"), S.Literal(\"Trigger 2\")]);\ntype TriggerName = typeof TriggerName.Type;\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  activeTrigger: TriggerName,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedTrigger = m(\"ClickedTrigger\", {\n  value: TriggerName,\n});\nexport const ClickedClose = m(\"ClickedClose\");\n\nexport const Message = S.Union([ClickedTrigger, ClickedClose]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false, activeTrigger: \"Trigger 1\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedTrigger: ({ value }) => [\n        evo(model, { open: () => true, activeTrigger: () => value }),\n        [],\n      ],\n      ClickedClose: () => [evo(model, { open: () => false }), []],\n    })\n  );\n\n// VIEW\n\nconst triggerView = (label: TriggerName): Html => {\n  const h = html<Message>();\n\n  return h.button(\n    [\n      h.Type(\"button\"),\n      h.OnClick(ClickedTrigger({ value: label })),\n      h.Class(Popover.baseUiPopoverTriggerClassName),\n    ],\n    [label]\n  );\n};\n\nconst panelView = (model: Model): Html => {\n  const h = html<Message>();\n\n  if (!model.open) {\n    return h.empty;\n  }\n\n  return h.div(\n    [h.Class(\"absolute left-0 top-full z-50 mt-2\")],\n    [\n      h.div(\n        [h.Class(Popover.baseUiPopoverPanelClassName)],\n        [\n          h.div(\n            [h.Class(\"flex items-start justify-between gap-4\")],\n            [\n              h.div(\n                [h.Class(\"space-y-1\")],\n                [\n                  h.p(\n                    [h.Class(\"text-sm font-semibold text-gray-900\")],\n                    [model.activeTrigger]\n                  ),\n                  h.p(\n                    [h.Class(\"text-sm text-gray-600\")],\n                    [`Content for ${model.activeTrigger}`]\n                  ),\n                ]\n              ),\n              h.button(\n                [\n                  h.Type(\"button\"),\n                  h.AriaLabel(\"Close\"),\n                  h.OnClick(ClickedClose()),\n                  h.Class(\"text-gray-500 hover:text-gray-900\"),\n                ],\n                [\"x\"]\n              ),\n            ]\n          ),\n        ]\n      ),\n    ]\n  );\n};\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(Popover.baseUiPopoverRootClassName)],\n    [\n      h.div(\n        [h.Class(\"flex gap-2\")],\n        [triggerView(\"Trigger 1\"), triggerView(\"Trigger 2\")]\n      ),\n      panelView(model),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/base-ui-popover-multiple-triggers/base-ui-popover-multiple-triggers.scene.test.ts",
+      "target": "src/examples/base-ui-popover-multiple-triggers/base-ui-popover-multiple-triggers.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as PopoverMultipleTriggersExample from \"./main\";\n\ndescribe(\"Base UI Popover Multiple Triggers example\", () => {\n  test(\"opens trigger-specific popover content\", () => {\n    Scene.scene(\n      {\n        update: PopoverMultipleTriggersExample.update,\n        view: PopoverMultipleTriggersExample.view,\n      },\n      Scene.with(PopoverMultipleTriggersExample.init()[0]),\n      Scene.click(Scene.role(\"button\", { name: \"Trigger 1\" })),\n      Scene.expect(Scene.text(\"Content for Trigger 1\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Trigger 2\" })),\n      Scene.expect(Scene.text(\"Content for Trigger 2\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Close\" })),\n      Scene.expect(Scene.text(\"Content for Trigger 2\")).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Popover",
+      "example": "multiple-triggers",
+      "originExample": "multiple-triggers",
+      "origin": "https://base-ui.com/react/components/popover"
+    }
+  },
+  "origin": "https://base-ui.com/react/components/popover"
+}

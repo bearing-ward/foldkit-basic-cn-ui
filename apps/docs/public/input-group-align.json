@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-align",
+  "type": "registry:example",
+  "title": "Input Group Align",
+  "description": "A runnable Foldkit version of the upstream shadcn Input Group align example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/input-group"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/input-group-align/main.ts",
+      "target": "src/examples/input-group-align/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as InputGroup from \"../../ui/input-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html =>\n  InputGroup.view<Message>({\n    className: \"w-full max-w-sm flex-wrap\",\n    children: [\n      InputGroup.addonView<Message>({\n        align: \"BlockStart\",\n        children: [\"https://\"],\n      }),\n      InputGroup.addonView<Message>({\n        align: \"InlineStart\",\n        children: [\"www.\"],\n      }),\n      InputGroup.inputView<Message>({\n        ariaLabel: \"Website\",\n        placeholder: \"example.com\",\n      }),\n      InputGroup.addonView<Message>({\n        align: \"InlineEnd\",\n        children: [\".com\"],\n      }),\n      InputGroup.addonView<Message>({\n        align: \"BlockEnd\",\n        children: [\"Enter your website URL\"],\n      }),\n    ],\n  })\n);\n"
+    },
+    {
+      "path": "registry/shadcn/examples/input-group-align/input-group-align.scene.test.ts",
+      "target": "src/examples/input-group-align/input-group-align.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as InputGroupAlignExample from \"./main\";\n\ndescribe(\"Input Group Align example\", () => {\n  test(\"renders all addon alignments\", () => {\n    Scene.scene(\n      { update: InputGroupAlignExample.update, view: InputGroupAlignExample.view },\n      Scene.with(InputGroupAlignExample.init()[0]),\n      Scene.expect(Scene.text(\"https://\")).toExist(),\n      Scene.expect(Scene.text(\"www.\")).toExist(),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Website\" })).toExist(),\n      Scene.expect(Scene.text(\".com\")).toExist(),\n      Scene.expect(Scene.text(\"Enter your website URL\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "InputGroup",
+      "example": "align",
+      "originExample": "input-group-align",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+    }
+  }
+}

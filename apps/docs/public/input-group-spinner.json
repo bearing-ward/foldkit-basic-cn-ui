@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-spinner",
+  "type": "registry:example",
+  "title": "Input Group Spinner",
+  "description": "A runnable Foldkit version of the upstream shadcn Input Group spinner example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/input-group"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/input-group-spinner/main.ts",
+      "target": "src/examples/input-group-spinner/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as InputGroup from \"../../ui/input-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return InputGroup.view<Message>({\n    className: \"w-full max-w-sm\",\n    children: [\n      InputGroup.inputView<Message>({\n        ariaLabel: \"Search\",\n        placeholder: \"Search...\",\n      }),\n      InputGroup.addonView<Message>({\n        align: \"InlineEnd\",\n        children: [\n          h.span(\n            [\n              h.Attribute(\"role\", \"status\"),\n              h.AriaLabel(\"Loading\"),\n              h.Class(\"inline-block h-4 w-4 rounded-full border-2 border-gray-300 border-t-gray-900\"),\n            ],\n            []\n          ),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/input-group-spinner/input-group-spinner.scene.test.ts",
+      "target": "src/examples/input-group-spinner/input-group-spinner.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as InputGroupSpinnerExample from \"./main\";\n\ndescribe(\"Input Group Spinner example\", () => {\n  test(\"renders loading status addon\", () => {\n    Scene.scene(\n      { update: InputGroupSpinnerExample.update, view: InputGroupSpinnerExample.view },\n      Scene.with(InputGroupSpinnerExample.init()[0]),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Search\" })).toExist(),\n      Scene.expect(Scene.role(\"status\", { name: \"Loading\" })).toExist(),\n      Scene.expect(Scene.role(\"status\", { name: \"Loading\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "InputGroup",
+      "example": "spinner",
+      "originExample": "input-group-spinner",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+    }
+  }
+}

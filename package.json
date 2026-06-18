@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "bun scripts/build-openstory-site.mjs",
+    "build:legacy-docs": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
     "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-openstory-stories.mjs && bun scripts/check-primitive-coverage.mjs && bun scripts/check-shadcn-doc-examples.mjs && bun scripts/check-origin-content-parity-agenda.mjs",
     "custom-clone": "bun scripts/custom-clone-spinout.ts",
@@ -14,7 +15,7 @@
     "smoke:install-all": "bun scripts/smoke-install-all.mjs",
     "smoke:public-install": "bun scripts/smoke-public-install.mjs",
     "smoke:public-site": "bun scripts/smoke-public-site.mjs",
-    "preview": "vite preview",
+    "preview": "openstory preview --out dist",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "format": "ultracite fix",
@@ -23,6 +24,7 @@
     "check": "ultracite check",
     "fix": "ultracite fix",
     "openstory": "openstory dev --framework foldkit",
+    "openstory:build": "openstory build --framework foldkit --out dist",
     "openstory:generate": "bun scripts/generate-openstory-stories.mjs",
     "openstory:check": "bun scripts/check-openstory-stories.mjs"
   },

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-basic",
+  "type": "registry:example",
+  "title": "Tooltip Basic",
+  "description": "A runnable Foldkit example showing delayed Tooltip hover opening and parent-visible visibility feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/tooltip"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/tooltip-basic/main.ts",
+      "target": "src/examples/tooltip-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Tooltip from \"../../ui/tooltip\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  tooltip: Tooltip.Model,\n  status: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotTooltipMessage = m(\"GotTooltipMessage\", {\n  message: Tooltip.Message,\n});\n\nexport const Message = S.Union([GotTooltipMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [tooltip, commands] = Tooltip.init({ id: \"tooltip-basic\" });\n\n  return [\n    { tooltip, status: \"Tooltip hidden.\" },\n    Command.mapMessages(commands, (message) => GotTooltipMessage({ message })),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotTooltipMessage: ({ message }) => {\n        const [tooltip, commands, maybeOutMessage] = Tooltip.update(\n          model.tooltip,\n          message\n        );\n        const status = Option.match(maybeOutMessage, {\n          onNone: () => model.status,\n          onSome: M.type<Tooltip.OutMessage>().pipe(\n            M.tagsExhaustive({\n              Hidden: () => \"Tooltip hidden.\",\n              Shown: () => \"Tooltip shown.\",\n            })\n          ),\n        });\n\n        return [\n          evo(model, { tooltip: () => tooltip, status: () => status }),\n          Command.mapMessages(commands, (message) =>\n            GotTooltipMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.tooltip.id,\n        model: model.tooltip,\n        view: Tooltip.view,\n        viewInputs: {\n          anchor: Tooltip.tooltipAnchor,\n          toView: (render) =>\n            Tooltip.tooltipView({\n              render,\n              triggerLabel: \"Hover or focus me\",\n              panelText: \"This is a tooltip\",\n            }),\n        },\n        toParentMessage: (message) => GotTooltipMessage({ message }),\n      }),\n      h.p([h.Class(\"text-sm text-gray-700\")], [model.status]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/tooltip-basic/tooltip-basic.scene.test.ts",
+      "target": "src/examples/tooltip-basic/tooltip-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Tooltip from \"../../ui/tooltip\";\nimport * as TooltipBasicExample from \"./main\";\n\nconst toParentMessage = (message: Tooltip.Message) =>\n  TooltipBasicExample.GotTooltipMessage({ message });\n\nconst AnchorTooltip = Tooltip.AnchorTooltip({\n  buttonId: \"tooltip-basic-trigger\",\n  anchor: Tooltip.tooltipAnchor,\n});\n\nconst resolveTooltipMount = () =>\n  Scene.Mount.resolve(\n    AnchorTooltip,\n    Tooltip.CompletedAnchorTooltip(),\n    toParentMessage\n  );\n\ndescribe(\"Tooltip Basic example\", () => {\n  test(\"shows tooltip content after hover delay\", () => {\n    const [initialModel] = TooltipBasicExample.init();\n\n    Scene.scene(\n      {\n        update: TooltipBasicExample.update,\n        view: TooltipBasicExample.view,\n      },\n      Scene.with(initialModel),\n      Scene.expect(Scene.text(\"This is a tooltip\")).not.toExist(),\n      Scene.hover(Scene.role(\"button\", { name: \"Hover or focus me\" })),\n      Scene.Command.resolve(\n        Tooltip.ShowAfterDelay({\n          delay: initialModel.tooltip.showDelay,\n          version: 1,\n        }),\n        Tooltip.ElapsedShowDelay({ version: 1 }),\n        toParentMessage\n      ),\n      resolveTooltipMount(),\n      Scene.expect(Scene.role(\"tooltip\")).toExist(),\n      Scene.expect(Scene.text(\"This is a tooltip\")).toExist(),\n      Scene.expect(Scene.text(\"Tooltip shown.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Tooltip",
+      "example": "basic"
+    }
+  }
+}

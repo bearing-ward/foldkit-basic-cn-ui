@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "item-group",
+  "type": "registry:example",
+  "title": "Item Group",
+  "description": "A runnable Foldkit example showing the shadcn Item Group composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/item"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/item-group/main.ts",
+      "target": "src/examples/item-group/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Item from \"../../ui/item\";\n\n// MODEL\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\nexport const Message = m(\"Message\");\nexport type Message = typeof Message.Type;\n\n// INIT\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({ Message: () => [model, []] })\n  );\n\n// VIEW\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n  return h.div(\n    [h.Class(\"w-full\")],\n    [\n      Item.groupView<Message>({\n        children: [\n          Item.view<Message>({\n            children: [\n              Item.mediaView<Message>({ variant: \"avatar\", children: [\"s\"] }),\n              Item.contentView<Message>({\n                children: [\n                  Item.titleView<Message>({ children: [\"shadcn\"] }),\n                  Item.descriptionView<Message>({\n                    children: [\"shadcn@vercel.com\"],\n                  }),\n                ],\n              }),\n            ],\n          }),\n          Item.separatorView<Message>(),\n          Item.view<Message>({\n            children: [\n              Item.mediaView<Message>({ variant: \"avatar\", children: [\"m\"] }),\n              Item.contentView<Message>({\n                children: [\n                  Item.titleView<Message>({ children: [\"maxleiter\"] }),\n                  Item.descriptionView<Message>({\n                    children: [\"maxleiter@vercel.com\"],\n                  }),\n                ],\n              }),\n            ],\n          }),\n          Item.separatorView<Message>(),\n          Item.view<Message>({\n            children: [\n              Item.mediaView<Message>({ variant: \"avatar\", children: [\"e\"] }),\n              Item.contentView<Message>({\n                children: [\n                  Item.titleView<Message>({ children: [\"evilrabbit\"] }),\n                  Item.descriptionView<Message>({\n                    children: [\"evilrabbit@vercel.com\"],\n                  }),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/item-group/item-group.scene.test.ts",
+      "target": "src/examples/item-group/item-group.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"item-group example\", () => {\n  test(\"renders the shadcn Item Group example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"shadcn\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Item",
+      "example": "group",
+      "origin": "https://ui.shadcn.com/docs/components/radix/item"
+    }
+  }
+}

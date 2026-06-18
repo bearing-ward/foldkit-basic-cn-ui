@@ -19,6 +19,7 @@ starting, honor its STOP conditions, and update your row when done.
 | 009  | Add every registry example to Openstory          | P1       | M      | -                            | DONE   |
 | 010  | Build the Foldkit-native LiveTrace component kit | P1       | L      | 009                          | DONE   |
 | 011  | Build the AI Elements attachments registry slice | P1       | L      | 009                          | DONE   |
+| 012  | Refactor registry lanes and ship OpenStory site  | P1       | L      | 009                          | DONE   |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -39,15 +40,20 @@ REJECTED (with one-line rationale).
 - 008 follows 002 through 007 because it documents those shipped workflow
   surfaces and retires stale backlog wording after implementation.
 - 009 is independent of the registry workflow plans. It should preserve the
-  existing Openstory adapter/setup work and generate coverage from
-  `registry/default/examples/*/main.ts` so the story browser tracks the runnable
-  example inventory.
+  existing Openstory adapter/setup work and generate coverage from registry
+  example `main.ts` files so the story browser tracks the runnable example
+  inventory.
 - 010 depends on 009 because the LiveTrace component kit should be exposed
   through the generated OpenStory example inventory rather than hand-authored
   story files.
 - 011 depends on 009 because the AI Elements attachments examples should appear
   through the generated OpenStory registry catalog. It is otherwise independent
   of 010 and should not modify LiveTrace files.
+- 012 depends on 009 because it changes the registry source layout and public
+  site build around the generated OpenStory catalog. It should preserve every
+  runnable registry example in OpenStory while replacing the old GitHub Pages
+  docs display with a static OpenStory build and a flat shadcn-compatible
+  registry output.
 
 ## Findings considered and rejected
 

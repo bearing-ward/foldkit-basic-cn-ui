@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-button",
+  "type": "registry:ui",
+  "title": "Button",
+  "description": "shadcn style-lane button wrapper backed by the Foldkit Ui.Button component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/button"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-button/index.ts",
+      "target": "src/ui/shadcn-button/index.ts",
+      "type": "registry:ui",
+      "content": "export { view } from \"../../../foldkit/ui/button\";\nexport type { ButtonAttributes, ViewConfig } from \"../../../foldkit/ui/button\";\n\nexport {\n  shadcnButtonBaseClassName,\n  shadcnButtonClassName,\n  shadcnButtonDefaultSizeClassName,\n  shadcnButtonExtraSmallSizeClassName,\n  shadcnButtonIconSizeClassName,\n  shadcnButtonLargeSizeClassName,\n  shadcnButtonSmallSizeClassName,\n  shadcnButtonVariantClassName,\n  shadcnDestructiveButtonClassName,\n  shadcnDestructiveButtonVariantClassName,\n  shadcnGhostButtonClassName,\n  shadcnGhostButtonVariantClassName,\n  shadcnIconButtonClassName,\n  shadcnLinkButtonClassName,\n  shadcnLinkButtonVariantClassName,\n  shadcnOutlineButtonClassName,\n  shadcnOutlineButtonVariantClassName,\n  shadcnSecondaryButtonClassName,\n  shadcnSecondaryButtonVariantClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-button/view.ts",
+      "target": "src/ui/shadcn-button/view.ts",
+      "type": "registry:ui",
+      "content": "export const shadcnButtonBaseClassName =\n  \"inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4\";\n\nexport const shadcnButtonDefaultSizeClassName = \"h-9 px-4 py-2 has-[>svg]:px-3\";\n\nexport const shadcnButtonExtraSmallSizeClassName =\n  \"h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5\";\n\nexport const shadcnButtonSmallSizeClassName =\n  \"h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5\";\n\nexport const shadcnButtonLargeSizeClassName =\n  \"h-10 rounded-md px-6 has-[>svg]:px-4\";\n\nexport const shadcnButtonIconSizeClassName = \"size-9\";\n\nexport const shadcnButtonVariantClassName =\n  \"bg-primary text-primary-foreground shadow-xs hover:bg-primary/90\";\n\nexport const shadcnDestructiveButtonVariantClassName =\n  \"bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60\";\n\nexport const shadcnOutlineButtonVariantClassName =\n  \"border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50\";\n\nexport const shadcnSecondaryButtonVariantClassName =\n  \"bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80\";\n\nexport const shadcnGhostButtonVariantClassName =\n  \"hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50\";\n\nexport const shadcnLinkButtonVariantClassName =\n  \"text-primary underline-offset-4 hover:underline\";\n\nexport const shadcnButtonClassName = `${shadcnButtonBaseClassName} ${shadcnButtonVariantClassName} ${shadcnButtonDefaultSizeClassName}`;\n\nexport const shadcnDestructiveButtonClassName = `${shadcnButtonBaseClassName} ${shadcnDestructiveButtonVariantClassName} ${shadcnButtonDefaultSizeClassName}`;\n\nexport const shadcnOutlineButtonClassName = `${shadcnButtonBaseClassName} ${shadcnOutlineButtonVariantClassName} ${shadcnButtonDefaultSizeClassName}`;\n\nexport const shadcnSecondaryButtonClassName = `${shadcnButtonBaseClassName} ${shadcnSecondaryButtonVariantClassName} ${shadcnButtonDefaultSizeClassName}`;\n\nexport const shadcnGhostButtonClassName = `${shadcnButtonBaseClassName} ${shadcnGhostButtonVariantClassName} ${shadcnButtonDefaultSizeClassName}`;\n\nexport const shadcnLinkButtonClassName = `${shadcnButtonBaseClassName} ${shadcnLinkButtonVariantClassName} h-auto p-0`;\n\nexport const shadcnIconButtonClassName = `${shadcnButtonBaseClassName} ${shadcnButtonVariantClassName} ${shadcnButtonIconSizeClassName}`;\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-button/shadcn-button.scene.test.ts",
+      "target": "src/ui/shadcn-button/shadcn-button.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Button from \"./index\";\n\ndescribe(\"shadcn Button registry view\", () => {\n  test(\"reuses the Foldkit Button functional contract\", () => {\n    expect(Button.view).toBeTypeOf(\"function\");\n    expect(Button.shadcnButtonClassName).toContain(\"rounded\");\n    expect(Button.shadcnDestructiveButtonClassName).toContain(\n      \"bg-destructive\"\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/radix/button",
+      "artifact": "component",
+      "primitive": "Ui.Button",
+      "stateful": false
+    }
+  }
+}

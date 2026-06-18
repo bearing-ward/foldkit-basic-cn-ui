@@ -1,5 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 
+import { readSourceRegistryItems } from "./registry-manifest.mjs";
+
 const primitiveSlugs = new Map([
   ["Animation", "animation"],
   ["Button", "button"],
@@ -33,14 +35,17 @@ const foldkitUiExports = [
     primitiveExportPattern
   ),
 ].map((match) => match[1]);
-const registryItems = JSON.parse(
-  readFileSync("registry/default/items.json", "utf-8")
-);
+const registryItems = await readSourceRegistryItems();
 const registryItemNames = new Set(registryItems.map((item) => item.name));
 const generatedRegistryNames = new Set(
-  readdirSync("apps/docs/public/r")
+  readdirSync("apps/docs/public")
     .filter((fileName) => fileName.endsWith(".json"))
+    .filter((fileName) => fileName !== "components.json")
+    .filter((fileName) => fileName !== "registry.json")
     .map((fileName) => fileName.replace(/\.json$/u, ""))
+);
+const registryItemsByName = new Map(
+  registryItems.map((item) => [item.name, item])
 );
 const mainSource = readFileSync("src/main.ts", "utf-8");
 
@@ -61,9 +66,11 @@ const gaps = foldkitUiExports.flatMap((primitiveName) => {
     mainSource.includes(`${primitiveName}DocsRoute`)
       ? undefined
       : `${primitiveName}: missing docs route`,
-    existsSync(`registry/default/ui/${slug}`)
+    (registryItemsByName.get(slug)?.files ?? []).some((file) =>
+      existsSync(file.path)
+    )
       ? undefined
-      : `${primitiveName}: missing registry/default/ui/${slug}`,
+      : `${primitiveName}: missing registry source for ${slug}`,
     existsSync(`docs/product/${slug}-v1-coverage-matrix.md`)
       ? undefined
       : `${primitiveName}: missing coverage matrix`,

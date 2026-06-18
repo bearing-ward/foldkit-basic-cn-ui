@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-basic",
+  "type": "registry:example",
+  "title": "Native Select Basic",
+  "description": "A runnable Foldkit example showing the shadcn Native Select Basic pattern.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/native-select"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/native-select-basic/main.ts",
+      "target": "src/examples/native-select-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as NativeSelect from \"../../ui/native-select\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  status: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ChangedStatus = m(\"ChangedStatus\", { value: S.String });\nexport const Message = S.Union([ChangedStatus]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ status: \"todo\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ChangedStatus: ({ value }) => [evo(model, { status: () => value }), []],\n    })\n  );\n\n// VIEW\n\nconst statusOptions: readonly NativeSelect.OptionConfig[] = [\n  { value: \"todo\", label: \"Todo\" },\n  { value: \"in-progress\", label: \"In Progress\" },\n  { value: \"done\", label: \"Done\" },\n  { value: \"cancelled\", label: \"Cancelled\" },\n];\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return NativeSelect.rootView<Message>({\n    children: [\n      NativeSelect.labelView<Message>({\n        forId: \"status\",\n        children: [h.span([], [\"Select status\"])],\n      }),\n      NativeSelect.triggerView<Message>({\n        id: \"status\",\n        value: model.status,\n        onChange: (value) => ChangedStatus({ value }),\n        options: statusOptions,\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/native-select-basic/native-select-basic.scene.test.ts",
+      "target": "src/examples/native-select-basic/native-select-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as NativeSelectBasicExample from \"./main\";\n\ndescribe(\"Native Select Basic example\", () => {\n  test(\"changes the selected option\", () => {\n    Scene.scene(\n      {\n        update: NativeSelectBasicExample.update,\n        view: NativeSelectBasicExample.view,\n      },\n      Scene.with(NativeSelectBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Select status\" })).toHaveValue(\n        \"todo\"\n      ),\n      Scene.change(\n        Scene.role(\"combobox\", { name: \"Select status\" }),\n        \"in-progress\"\n      ),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Select status\" })).toHaveValue(\n        \"in-progress\"\n      ),\n      Scene.change(Scene.role(\"combobox\", { name: \"Select status\" }), \"done\"),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Select status\" })).toHaveValue(\n        \"done\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "NativeSelect",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
+    }
+  }
+}

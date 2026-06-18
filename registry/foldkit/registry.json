@@ -1,0 +1,3009 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "animation",
+      "type": "registry:ui",
+      "title": "Animation",
+      "description": "A Foldkit Animation wrapper with enter and leave lifecycle messages, frame advancement, settled-transition commands, size animation, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/animation/index.ts",
+          "target": "src/ui/animation/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/animation/view.ts",
+          "target": "src/ui/animation/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/animation/animation.scene.test.ts",
+          "target": "src/ui/animation/animation.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Animation",
+          "primitive": "Ui.Animation",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/animation",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A Foldkit Button wrapper for native button controls with typed click messages, disabled state, type/autofocus support, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/button/index.ts",
+          "target": "src/ui/button/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/button/view.ts",
+          "target": "src/ui/button/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/button/button.scene.test.ts",
+          "target": "src/ui/button/button.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Button",
+          "primitive": "Ui.Button",
+          "stateful": false,
+          "origin": "https://foldkit.dev/ui/button",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A Foldkit Calendar wrapper with selectable dates, view-month OutMessages, disabled date attributes, and reusable day/month/year view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/calendar/index.ts",
+          "target": "src/ui/calendar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/calendar/view.ts",
+          "target": "src/ui/calendar/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/calendar/calendar.scene.test.ts",
+          "target": "src/ui/calendar/calendar.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Calendar",
+          "primitive": "Ui.Calendar",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/calendar",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A Foldkit Checkbox wrapper for checked, unchecked, disabled, and indeterminate states with accessible label and description helpers, hidden input attributes, typed messages, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/checkbox/index.ts",
+          "target": "src/ui/checkbox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/checkbox/view.ts",
+          "target": "src/ui/checkbox/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/checkbox/checkbox.scene.test.ts",
+          "target": "src/ui/checkbox/checkbox.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox",
+          "primitive": "Ui.Checkbox",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/checkbox",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A Foldkit combobox component with typed selection out-messages, input filtering, commands, mount-aware positioning, multi-select support, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/combobox/index.ts",
+          "target": "src/ui/combobox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/combobox/view.ts",
+          "target": "src/ui/combobox/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/combobox/combobox.story.test.ts",
+          "target": "src/ui/combobox/combobox.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/combobox/combobox.scene.test.ts",
+          "target": "src/ui/combobox/combobox.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Combobox",
+          "primitive": "Ui.Combobox",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/combobox",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "A Foldkit DatePicker wrapper combining trigger, popover, embedded Calendar, selected-date OutMessages, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/date-picker/index.ts",
+          "target": "src/ui/date-picker/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/date-picker/view.ts",
+          "target": "src/ui/date-picker/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/date-picker/date-picker.scene.test.ts",
+          "target": "src/ui/date-picker/date-picker.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DatePicker",
+          "primitive": "Ui.DatePicker",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/date-picker",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A Foldkit dialog component with typed state, messages, commands, accessible title and description helpers, and styled view helpers.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/dialog/index.ts",
+          "target": "src/ui/dialog/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/dialog/view.ts",
+          "target": "src/ui/dialog/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/dialog/dialog.story.test.ts",
+          "target": "src/ui/dialog/dialog.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/dialog/dialog.scene.test.ts",
+          "target": "src/ui/dialog/dialog.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "primitive": "Ui.Dialog",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/dialog",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "title": "Disclosure",
+      "description": "A Foldkit Disclosure wrapper with typed open state, toggle/close messages, ToggledOpenState OutMessages, focus restoration, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/disclosure/index.ts",
+          "target": "src/ui/disclosure/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/disclosure/view.ts",
+          "target": "src/ui/disclosure/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/disclosure/disclosure.scene.test.ts",
+          "target": "src/ui/disclosure/disclosure.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Disclosure",
+          "primitive": "Ui.Disclosure",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/disclosure",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "drag-and-drop",
+      "type": "registry:ui",
+      "title": "Drag and Drop",
+      "description": "A Foldkit DragAndDrop wrapper with typed drag state, keyboard reorder messages, parent-visible Reordered OutMessages, and reusable sortable list classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/drag-and-drop/index.ts",
+          "target": "src/ui/drag-and-drop/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/drag-and-drop/view.ts",
+          "target": "src/ui/drag-and-drop/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/drag-and-drop/drag-and-drop.scene.test.ts",
+          "target": "src/ui/drag-and-drop/drag-and-drop.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DragAndDrop",
+          "primitive": "Ui.DragAndDrop",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/drag-and-drop",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "fieldset",
+      "type": "registry:ui",
+      "title": "Fieldset",
+      "description": "A Foldkit Fieldset wrapper for accessible grouped form controls with legend, description, disabled state, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/fieldset/index.ts",
+          "target": "src/ui/fieldset/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/fieldset/view.ts",
+          "target": "src/ui/fieldset/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/fieldset/fieldset.scene.test.ts",
+          "target": "src/ui/fieldset/fieldset.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Fieldset",
+          "primitive": "Ui.Fieldset",
+          "stateful": false,
+          "origin": "https://foldkit.dev/ui/fieldset",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "file-drop",
+      "type": "registry:ui",
+      "title": "File Drop",
+      "description": "A Foldkit FileDrop wrapper for drag-and-drop and file-input uploads with drag-over state, received/rejected OutMessages, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/file-drop/index.ts",
+          "target": "src/ui/file-drop/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/file-drop/view.ts",
+          "target": "src/ui/file-drop/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/file-drop/file-drop.scene.test.ts",
+          "target": "src/ui/file-drop/file-drop.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "FileDrop",
+          "primitive": "Ui.FileDrop",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/file-drop",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace",
+      "type": "registry:ui",
+      "title": "Foldkit LiveTrace",
+      "description": "A Foldkit-native LiveTrace component kit for trace cards, log rows, progress indicators, activity panels, code panels, and agent workflow views.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/foldkit-livetrace/index.ts",
+          "target": "src/ui/foldkit-livetrace/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/foldkit-livetrace/view.ts",
+          "target": "src/ui/foldkit-livetrace/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/foldkit-livetrace/sample-data.ts",
+          "target": "src/ui/foldkit-livetrace/sample-data.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/foldkit-livetrace/foldkit-livetrace.scene.test.ts",
+          "target": "src/ui/foldkit-livetrace/foldkit-livetrace.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "origin": "https://foldkit.dev/ui/livetrace",
+          "artifact": "component",
+          "stateful": false
+        }
+      }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A Foldkit Input wrapper for native text inputs with accessible label and description helpers, typed input messages, disabled/invalid state, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/input/index.ts",
+          "target": "src/ui/input/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/input/view.ts",
+          "target": "src/ui/input/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/input/input.scene.test.ts",
+          "target": "src/ui/input/input.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Input",
+          "primitive": "Ui.Input",
+          "stateful": false,
+          "origin": "https://foldkit.dev/ui/input",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "listbox",
+      "type": "registry:ui",
+      "title": "Listbox",
+      "description": "A Foldkit listbox component with single-select state, typed selection out-messages, commands, mount-aware positioning, typeahead, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/listbox/index.ts",
+          "target": "src/ui/listbox/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/listbox/view.ts",
+          "target": "src/ui/listbox/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/listbox/listbox.story.test.ts",
+          "target": "src/ui/listbox/listbox.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/listbox/listbox.scene.test.ts",
+          "target": "src/ui/listbox/listbox.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Listbox",
+          "primitive": "Ui.Listbox",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/listbox",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "menu",
+      "type": "registry:ui",
+      "title": "Menu",
+      "description": "A Foldkit menu component with typed item unions, messages, commands, mount-aware positioning, typeahead, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/menu/index.ts",
+          "target": "src/ui/menu/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/menu/view.ts",
+          "target": "src/ui/menu/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/menu/menu.story.test.ts",
+          "target": "src/ui/menu/menu.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/menu/menu.scene.test.ts",
+          "target": "src/ui/menu/menu.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "primitive": "Ui.Menu",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/menu",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A Foldkit popover component with typed state, messages, commands, mount-aware positioning, and styled view helpers.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/popover/index.ts",
+          "target": "src/ui/popover/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/popover/view.ts",
+          "target": "src/ui/popover/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/popover/popover.story.test.ts",
+          "target": "src/ui/popover/popover.story.test.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/popover/popover.scene.test.ts",
+          "target": "src/ui/popover/popover.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "primitive": "Ui.Popover",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/popover",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A Foldkit RadioGroup wrapper for typed grouped selection with vertical/horizontal orientation, disabled options, hidden input attributes, selected OutMessages, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/radio-group/index.ts",
+          "target": "src/ui/radio-group/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/radio-group/view.ts",
+          "target": "src/ui/radio-group/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/radio-group/radio-group.scene.test.ts",
+          "target": "src/ui/radio-group/radio-group.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "RadioGroup",
+          "primitive": "Ui.RadioGroup",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/radio-group",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A Foldkit Select wrapper for native select controls with accessible label and description helpers, typed onChange messages, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/select/index.ts",
+          "target": "src/ui/select/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/select/view.ts",
+          "target": "src/ui/select/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/select/select.scene.test.ts",
+          "target": "src/ui/select/select.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "primitive": "Ui.Select",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/select",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "A Foldkit Slider wrapper with typed value state, ChangedValue OutMessages, keyboard and pointer messages, disabled state, hidden input support, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/slider/index.ts",
+          "target": "src/ui/slider/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/slider/view.ts",
+          "target": "src/ui/slider/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/slider/slider.scene.test.ts",
+          "target": "src/ui/slider/slider.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Slider",
+          "primitive": "Ui.Slider",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/slider",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A Foldkit Switch wrapper for checked, unchecked, and disabled states with accessible label and description helpers, typed messages, OutMessage state changes, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/switch/index.ts",
+          "target": "src/ui/switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/switch/view.ts",
+          "target": "src/ui/switch/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/switch/switch.scene.test.ts",
+          "target": "src/ui/switch/switch.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "primitive": "Ui.Switch",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/switch",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A Foldkit Tabs wrapper with typed tab values, automatic and manual activation, disabled tabs, Selected OutMessages, focus commands, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/tabs/index.ts",
+          "target": "src/ui/tabs/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/tabs/view.ts",
+          "target": "src/ui/tabs/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/tabs/tabs.scene.test.ts",
+          "target": "src/ui/tabs/tabs.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tabs",
+          "primitive": "Ui.Tabs",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/tabs",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A Foldkit Textarea wrapper for multi-line native text input with accessible label and description helpers, typed input messages, disabled/invalid state, rows, placeholders, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/textarea/index.ts",
+          "target": "src/ui/textarea/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/textarea/view.ts",
+          "target": "src/ui/textarea/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/textarea/textarea.scene.test.ts",
+          "target": "src/ui/textarea/textarea.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Textarea",
+          "primitive": "Ui.Textarea",
+          "stateful": false,
+          "origin": "https://foldkit.dev/ui/textarea",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A Foldkit Toast wrapper for typed notification stacks with payload rendering, variants, sticky entries, dismiss controls, animation lifecycle commands, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/toast/index.ts",
+          "target": "src/ui/toast/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/toast/view.ts",
+          "target": "src/ui/toast/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/toast/toast.scene.test.ts",
+          "target": "src/ui/toast/toast.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toast",
+          "primitive": "Ui.Toast",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/toast",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A Foldkit Tooltip wrapper with delayed hover opening, focus opening, Shown and Hidden OutMessages, anchor positioning mounts, disabled state, and reusable view classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/tooltip/index.ts",
+          "target": "src/ui/tooltip/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/tooltip/view.ts",
+          "target": "src/ui/tooltip/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/tooltip/tooltip.scene.test.ts",
+          "target": "src/ui/tooltip/tooltip.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tooltip",
+          "primitive": "Ui.Tooltip",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/tooltip",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "virtual-list",
+      "type": "registry:ui",
+      "title": "VirtualList",
+      "description": "A Foldkit VirtualList wrapper with subscription-driven measurement, scroll tracking, fixed and variable visible-window helpers, programmatic scroll commands, and reusable activity feed view helpers.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/foldkit/ui/virtual-list/index.ts",
+          "target": "src/ui/virtual-list/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/virtual-list/view.ts",
+          "target": "src/ui/virtual-list/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/foldkit/ui/virtual-list/virtual-list.scene.test.ts",
+          "target": "src/ui/virtual-list/virtual-list.scene.test.ts",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "VirtualList",
+          "primitive": "Ui.VirtualList",
+          "stateful": true,
+          "origin": "https://foldkit.dev/ui/virtual-list",
+          "artifact": "primitive-backed-component"
+        }
+      }
+    },
+    {
+      "name": "animation-basic",
+      "type": "registry:example",
+      "title": "Animation Basic",
+      "description": "A runnable Foldkit example showing toggle-driven Animation enter and leave lifecycle command resolution.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "animation"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/animation-basic/main.ts",
+          "target": "src/examples/animation-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/animation-basic/animation-basic.scene.test.ts",
+          "target": "src/examples/animation-basic/animation-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Animation",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "button-basic",
+      "type": "registry:example",
+      "title": "Button Basic",
+      "description": "A runnable Foldkit example showing a typed Button click message with parent-owned feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/button-basic/main.ts",
+          "target": "src/examples/button-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/button-basic/button-basic.scene.test.ts",
+          "target": "src/examples/button-basic/button-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Button",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "button-disabled",
+      "type": "registry:example",
+      "title": "Button Disabled",
+      "description": "A runnable Foldkit example showing disabled Button styling and native disabled semantics.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/button-disabled/main.ts",
+          "target": "src/examples/button-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/button-disabled/button-disabled.scene.test.ts",
+          "target": "src/examples/button-disabled/button-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Button",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "calendar-basic",
+      "type": "registry:example",
+      "title": "Calendar Basic",
+      "description": "A runnable Foldkit example showing date selection and viewed-month feedback from Calendar OutMessages.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/calendar-basic/main.ts",
+          "target": "src/examples/calendar-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/calendar-basic/calendar-basic.scene.test.ts",
+          "target": "src/examples/calendar-basic/calendar-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Calendar",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "calendar-bounds",
+      "type": "registry:example",
+      "title": "Calendar Bounds",
+      "description": "A runnable Foldkit example showing bounded Calendar selection and disabled date feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "calendar"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/calendar-bounds/main.ts",
+          "target": "src/examples/calendar-bounds/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/calendar-bounds/calendar-bounds.scene.test.ts",
+          "target": "src/examples/calendar-bounds/calendar-bounds.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Calendar",
+          "example": "bounds"
+        }
+      }
+    },
+    {
+      "name": "checkbox-basic",
+      "type": "registry:example",
+      "title": "Checkbox Basic",
+      "description": "A runnable Foldkit example showing a typed Checkbox message with parent-visible checked feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/checkbox-basic/main.ts",
+          "target": "src/examples/checkbox-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/checkbox-basic/checkbox-basic.scene.test.ts",
+          "target": "src/examples/checkbox-basic/checkbox-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "checkbox-indeterminate",
+      "type": "registry:example",
+      "title": "Checkbox Indeterminate",
+      "description": "A runnable Foldkit example showing grouped Checkbox state and an indeterminate parent control.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "checkbox"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/checkbox-indeterminate/main.ts",
+          "target": "src/examples/checkbox-indeterminate/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/checkbox-indeterminate/checkbox-indeterminate.scene.test.ts",
+          "target": "src/examples/checkbox-indeterminate/checkbox-indeterminate.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Checkbox",
+          "example": "indeterminate"
+        }
+      }
+    },
+    {
+      "name": "combobox-basic",
+      "type": "registry:example",
+      "title": "Combobox Basic",
+      "description": "A runnable Foldkit example showing single-select Combobox filtering, typed parent message routing, and selected-value feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "combobox"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/combobox-basic/main.ts",
+          "target": "src/examples/combobox-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/combobox-basic/combobox-basic.scene.test.ts",
+          "target": "src/examples/combobox-basic/combobox-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Combobox",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "combobox-multi",
+      "type": "registry:example",
+      "title": "Combobox Multi",
+      "description": "A runnable Foldkit example showing multi-select Combobox filtering with selected item tags.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "combobox"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/combobox-multi/main.ts",
+          "target": "src/examples/combobox-multi/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/combobox-multi/combobox-multi.scene.test.ts",
+          "target": "src/examples/combobox-multi/combobox-multi.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Combobox",
+          "example": "multi"
+        }
+      }
+    },
+    {
+      "name": "date-picker-basic",
+      "type": "registry:example",
+      "title": "Date Picker Basic",
+      "description": "A runnable Foldkit example showing DatePicker open, selected-date feedback, and hidden input naming.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "date-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/date-picker-basic/main.ts",
+          "target": "src/examples/date-picker-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/date-picker-basic/date-picker-basic.scene.test.ts",
+          "target": "src/examples/date-picker-basic/date-picker-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DatePicker",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "date-picker-bounds",
+      "type": "registry:example",
+      "title": "Date Picker Bounds",
+      "description": "A runnable Foldkit example showing bounded DatePicker selection and disabled date feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "date-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/date-picker-bounds/main.ts",
+          "target": "src/examples/date-picker-bounds/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/date-picker-bounds/date-picker-bounds.scene.test.ts",
+          "target": "src/examples/date-picker-bounds/date-picker-bounds.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DatePicker",
+          "example": "bounds"
+        }
+      }
+    },
+    {
+      "name": "dialog-animated",
+      "type": "registry:example",
+      "title": "Dialog Animated",
+      "description": "A runnable Foldkit example showing Dialog with isAnimated enabled and styled enter/leave transition classes.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/dialog-animated/main.ts",
+          "target": "src/examples/dialog-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/dialog-animated/dialog-animated.scene.test.ts",
+          "target": "src/examples/dialog-animated/dialog-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "animated"
+        }
+      }
+    },
+    {
+      "name": "dialog-basic",
+      "type": "registry:example",
+      "title": "Dialog Basic",
+      "description": "A runnable Foldkit example showing a parent-owned trigger, dialog submodel, accessible title and description, cancel, and confirm actions.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/dialog-basic/main.ts",
+          "target": "src/examples/dialog-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/dialog-basic/dialog-basic.scene.test.ts",
+          "target": "src/examples/dialog-basic/dialog-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "dialog-destructive",
+      "type": "registry:example",
+      "title": "Dialog Destructive",
+      "description": "A runnable Foldkit example showing destructive confirmation styling with the standard Dialog message flow.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/dialog-destructive/main.ts",
+          "target": "src/examples/dialog-destructive/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/dialog-destructive/dialog-destructive.scene.test.ts",
+          "target": "src/examples/dialog-destructive/dialog-destructive.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "destructive"
+        }
+      }
+    },
+    {
+      "name": "dialog-focus",
+      "type": "registry:example",
+      "title": "Dialog Focus",
+      "description": "A runnable Foldkit example showing Dialog focusSelector and trigger-time OnClickFocus for input-first flows.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/dialog-focus/main.ts",
+          "target": "src/examples/dialog-focus/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/dialog-focus/dialog-focus.scene.test.ts",
+          "target": "src/examples/dialog-focus/dialog-focus.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "focus"
+        }
+      }
+    },
+    {
+      "name": "dialog-scrollable",
+      "type": "registry:example",
+      "title": "Dialog Scrollable",
+      "description": "A runnable Foldkit example showing long Dialog content with a constrained scroll body and persistent footer actions.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/dialog-scrollable/main.ts",
+          "target": "src/examples/dialog-scrollable/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/dialog-scrollable/dialog-scrollable.scene.test.ts",
+          "target": "src/examples/dialog-scrollable/dialog-scrollable.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Dialog",
+          "example": "scrollable"
+        }
+      }
+    },
+    {
+      "name": "disclosure-basic",
+      "type": "registry:example",
+      "title": "Disclosure Basic",
+      "description": "A runnable Foldkit example showing Disclosure toggle state, panel content, and parent-visible open-state feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "disclosure"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/disclosure-basic/main.ts",
+          "target": "src/examples/disclosure-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/disclosure-basic/disclosure-basic.scene.test.ts",
+          "target": "src/examples/disclosure-basic/disclosure-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Disclosure",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "disclosure-disabled",
+      "type": "registry:example",
+      "title": "Disclosure Disabled",
+      "description": "A runnable Foldkit example showing disabled Disclosure trigger semantics.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "disclosure"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/disclosure-disabled/main.ts",
+          "target": "src/examples/disclosure-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/disclosure-disabled/disclosure-disabled.scene.test.ts",
+          "target": "src/examples/disclosure-disabled/disclosure-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Disclosure",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "drag-and-drop-basic",
+      "type": "registry:example",
+      "title": "Drag and Drop Basic",
+      "description": "A runnable Foldkit example showing DragAndDrop keyboard reorder messages and parent-visible task order feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "drag-and-drop"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/drag-and-drop-basic/main.ts",
+          "target": "src/examples/drag-and-drop-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/drag-and-drop-basic/drag-and-drop-basic.scene.test.ts",
+          "target": "src/examples/drag-and-drop-basic/drag-and-drop-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DragAndDrop",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "drag-and-drop-disabled",
+      "type": "registry:example",
+      "title": "Drag and Drop Disabled",
+      "description": "A runnable Foldkit example showing a locked DragAndDrop list presentation without binding drag messages.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "drag-and-drop"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/drag-and-drop-disabled/main.ts",
+          "target": "src/examples/drag-and-drop-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/drag-and-drop-disabled/drag-and-drop-disabled.scene.test.ts",
+          "target": "src/examples/drag-and-drop-disabled/drag-and-drop-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "DragAndDrop",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "fieldset-basic",
+      "type": "registry:example",
+      "title": "Fieldset Basic",
+      "description": "A runnable Foldkit example showing grouped profile fields with parent-visible input feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "fieldset"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/fieldset-basic/main.ts",
+          "target": "src/examples/fieldset-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/fieldset-basic/fieldset-basic.scene.test.ts",
+          "target": "src/examples/fieldset-basic/fieldset-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Fieldset",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "fieldset-disabled",
+      "type": "registry:example",
+      "title": "Fieldset Disabled",
+      "description": "A runnable Foldkit example showing disabled grouped fields.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "fieldset"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/fieldset-disabled/main.ts",
+          "target": "src/examples/fieldset-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/fieldset-disabled/fieldset-disabled.scene.test.ts",
+          "target": "src/examples/fieldset-disabled/fieldset-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Fieldset",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "file-drop-basic",
+      "type": "registry:example",
+      "title": "File Drop Basic",
+      "description": "A runnable Foldkit example showing file input/drop handling with parent-visible file list feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "file-drop"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/file-drop-basic/main.ts",
+          "target": "src/examples/file-drop-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/file-drop-basic/file-drop-basic.scene.test.ts",
+          "target": "src/examples/file-drop-basic/file-drop-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "FileDrop",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "file-drop-disabled",
+      "type": "registry:example",
+      "title": "File Drop Disabled",
+      "description": "A runnable Foldkit example showing disabled file drop and input state.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "file-drop"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/file-drop-disabled/main.ts",
+          "target": "src/examples/file-drop-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/file-drop-disabled/file-drop-disabled.scene.test.ts",
+          "target": "src/examples/file-drop-disabled/file-drop-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "FileDrop",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-activity-panel",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Activity Panel",
+      "description": "LiveTrace activity panel example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-activity-panel/main.ts",
+          "target": "src/examples/foldkit-livetrace-activity-panel/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-activity-panel/foldkit-livetrace-activity-panel.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-activity-panel/foldkit-livetrace-activity-panel.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Activity Panel"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-agent-demo",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Agent Demo",
+      "description": "LiveTrace agent demo example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-agent-demo/main.ts",
+          "target": "src/examples/foldkit-livetrace-agent-demo/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-agent-demo/foldkit-livetrace-agent-demo.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-agent-demo/foldkit-livetrace-agent-demo.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Agent Demo"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-code-panel",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Code Panel",
+      "description": "LiveTrace code panel example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-code-panel/main.ts",
+          "target": "src/examples/foldkit-livetrace-code-panel/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-code-panel/foldkit-livetrace-code-panel.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-code-panel/foldkit-livetrace-code-panel.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Code Panel"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-execution-panel",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Execution Panel",
+      "description": "LiveTrace execution panel example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-execution-panel/main.ts",
+          "target": "src/examples/foldkit-livetrace-execution-panel/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-execution-panel/foldkit-livetrace-execution-panel.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-execution-panel/foldkit-livetrace-execution-panel.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Execution Panel"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-log-line",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Log Line",
+      "description": "LiveTrace log line example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-log-line/main.ts",
+          "target": "src/examples/foldkit-livetrace-log-line/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-log-line/foldkit-livetrace-log-line.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-log-line/foldkit-livetrace-log-line.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Log Line"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-overview",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Overview",
+      "description": "LiveTrace overview example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-overview/main.ts",
+          "target": "src/examples/foldkit-livetrace-overview/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-overview/foldkit-livetrace-overview.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-overview/foldkit-livetrace-overview.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Overview"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-progress-indicators",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Progress Indicators",
+      "description": "LiveTrace progress indicators example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-progress-indicators/main.ts",
+          "target": "src/examples/foldkit-livetrace-progress-indicators/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-progress-indicators/foldkit-livetrace-progress-indicators.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-progress-indicators/foldkit-livetrace-progress-indicators.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Progress Indicators"
+        }
+      }
+    },
+    {
+      "name": "foldkit-livetrace-trace-card",
+      "type": "registry:example",
+      "title": "Foldkit LiveTrace Trace Card",
+      "description": "LiveTrace trace card example built from Foldkit-native registry primitives.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "foldkit-livetrace"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-trace-card/main.ts",
+          "target": "src/examples/foldkit-livetrace-trace-card/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/foldkit-livetrace-trace-card/foldkit-livetrace-trace-card.scene.test.ts",
+          "target": "src/examples/foldkit-livetrace-trace-card/foldkit-livetrace-trace-card.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "LiveTrace",
+          "example": "Trace Card"
+        }
+      }
+    },
+    {
+      "name": "input-basic",
+      "type": "registry:example",
+      "title": "Input Basic",
+      "description": "A runnable Foldkit example showing typed Input messages with parent-owned value feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/input-basic/main.ts",
+          "target": "src/examples/input-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/input-basic/input-basic.scene.test.ts",
+          "target": "src/examples/input-basic/input-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Input",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "input-disabled",
+      "type": "registry:example",
+      "title": "Input Disabled",
+      "description": "A runnable Foldkit example showing disabled Input styling and native disabled semantics.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/input-disabled/main.ts",
+          "target": "src/examples/input-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/input-disabled/input-disabled.scene.test.ts",
+          "target": "src/examples/input-disabled/input-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Input",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "listbox-animated",
+      "type": "registry:example",
+      "title": "Listbox Animated",
+      "description": "A runnable Foldkit example showing Listbox with isAnimated enabled and animation lifecycle coverage.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "listbox"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/listbox-animated/main.ts",
+          "target": "src/examples/listbox-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/listbox-animated/listbox-animated.scene.test.ts",
+          "target": "src/examples/listbox-animated/listbox-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Listbox",
+          "example": "animated"
+        }
+      }
+    },
+    {
+      "name": "listbox-basic",
+      "type": "registry:example",
+      "title": "Listbox Basic",
+      "description": "A runnable Foldkit example showing a typed single-select Listbox trigger, selected label, anchored items, backdrop close, and mount resolution coverage.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "listbox"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/listbox-basic/main.ts",
+          "target": "src/examples/listbox-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/listbox-basic/listbox-basic.scene.test.ts",
+          "target": "src/examples/listbox-basic/listbox-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Listbox",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "menu-animated",
+      "type": "registry:example",
+      "title": "Menu Animated",
+      "description": "A runnable Foldkit example showing Menu with isAnimated enabled and animation lifecycle coverage.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "menu"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/menu-animated/main.ts",
+          "target": "src/examples/menu-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/menu-animated/menu-animated.scene.test.ts",
+          "target": "src/examples/menu-animated/menu-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "example": "animated"
+        }
+      }
+    },
+    {
+      "name": "menu-basic",
+      "type": "registry:example",
+      "title": "Menu Basic",
+      "description": "A runnable Foldkit example showing a typed Menu trigger, anchored items, backdrop close, and mount resolution coverage.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "menu"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/menu-basic/main.ts",
+          "target": "src/examples/menu-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/menu-basic/menu-basic.scene.test.ts",
+          "target": "src/examples/menu-basic/menu-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Menu",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "popover-animated",
+      "type": "registry:example",
+      "title": "Popover Animated",
+      "description": "A runnable Foldkit example showing Popover with isAnimated enabled and animation lifecycle coverage.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/popover-animated/main.ts",
+          "target": "src/examples/popover-animated/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/popover-animated/popover-animated.scene.test.ts",
+          "target": "src/examples/popover-animated/popover-animated.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "example": "animated"
+        }
+      }
+    },
+    {
+      "name": "popover-basic",
+      "type": "registry:example",
+      "title": "Popover Basic",
+      "description": "A runnable Foldkit example showing a Popover trigger, anchored panel, backdrop close, and mount resolution coverage.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "popover"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/popover-basic/main.ts",
+          "target": "src/examples/popover-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/popover-basic/popover-basic.scene.test.ts",
+          "target": "src/examples/popover-basic/popover-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Popover",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "radio-group-basic",
+      "type": "registry:example",
+      "title": "Radio Group Basic",
+      "description": "A runnable Foldkit example showing vertical RadioGroup selection with typed parent-visible feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/radio-group-basic/main.ts",
+          "target": "src/examples/radio-group-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/radio-group-basic/radio-group-basic.scene.test.ts",
+          "target": "src/examples/radio-group-basic/radio-group-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "RadioGroup",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "radio-group-horizontal",
+      "type": "registry:example",
+      "title": "Radio Group Horizontal",
+      "description": "A runnable Foldkit example showing horizontal RadioGroup layout and disabled option state.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "radio-group"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/radio-group-horizontal/main.ts",
+          "target": "src/examples/radio-group-horizontal/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/radio-group-horizontal/radio-group-horizontal.scene.test.ts",
+          "target": "src/examples/radio-group-horizontal/radio-group-horizontal.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "RadioGroup",
+          "example": "horizontal"
+        }
+      }
+    },
+    {
+      "name": "select-basic",
+      "type": "registry:example",
+      "title": "Select Basic",
+      "description": "A runnable Foldkit example showing a native Select with parent-owned value, typed onChange message, label, description, and selected-value feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/select-basic/main.ts",
+          "target": "src/examples/select-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/select-basic/select-basic.scene.test.ts",
+          "target": "src/examples/select-basic/select-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "select-disabled",
+      "type": "registry:example",
+      "title": "Select Disabled",
+      "description": "A runnable Foldkit example showing disabled Select styling and accessible explanatory text.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "select"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/select-disabled/main.ts",
+          "target": "src/examples/select-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/select-disabled/select-disabled.scene.test.ts",
+          "target": "src/examples/select-disabled/select-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Select",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "slider-basic",
+      "type": "registry:example",
+      "title": "Slider Basic",
+      "description": "A runnable Foldkit example showing Slider keyboard value changes and parent-visible rating feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/slider-basic/main.ts",
+          "target": "src/examples/slider-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/slider-basic/slider-basic.scene.test.ts",
+          "target": "src/examples/slider-basic/slider-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Slider",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "slider-disabled",
+      "type": "registry:example",
+      "title": "Slider Disabled",
+      "description": "A runnable Foldkit example showing disabled Slider semantics and locked value feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "slider"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/slider-disabled/main.ts",
+          "target": "src/examples/slider-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/slider-disabled/slider-disabled.scene.test.ts",
+          "target": "src/examples/slider-disabled/slider-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Slider",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "switch-basic",
+      "type": "registry:example",
+      "title": "Switch Basic",
+      "description": "A runnable Foldkit example showing typed Switch messages with parent-visible checked feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/switch-basic/main.ts",
+          "target": "src/examples/switch-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/switch-basic/switch-basic.scene.test.ts",
+          "target": "src/examples/switch-basic/switch-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "switch-disabled",
+      "type": "registry:example",
+      "title": "Switch Disabled",
+      "description": "A runnable Foldkit example showing disabled Switch styling and native disabled semantics.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "switch"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/switch-disabled/main.ts",
+          "target": "src/examples/switch-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/switch-disabled/switch-disabled.scene.test.ts",
+          "target": "src/examples/switch-disabled/switch-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Switch",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "tabs-basic",
+      "type": "registry:example",
+      "title": "Tabs Basic",
+      "description": "A runnable Foldkit example showing automatic Tabs selection and parent-visible selected-tab feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/tabs-basic/main.ts",
+          "target": "src/examples/tabs-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/tabs-basic/tabs-basic.scene.test.ts",
+          "target": "src/examples/tabs-basic/tabs-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tabs",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "tabs-manual",
+      "type": "registry:example",
+      "title": "Tabs Manual",
+      "description": "A runnable Foldkit example showing manual Tabs activation with a disabled tab.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "tabs"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/tabs-manual/main.ts",
+          "target": "src/examples/tabs-manual/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/tabs-manual/tabs-manual.scene.test.ts",
+          "target": "src/examples/tabs-manual/tabs-manual.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tabs",
+          "example": "manual"
+        }
+      }
+    },
+    {
+      "name": "textarea-basic",
+      "type": "registry:example",
+      "title": "Textarea Basic",
+      "description": "A runnable Foldkit example showing typed Textarea messages with parent-owned character count feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/textarea-basic/main.ts",
+          "target": "src/examples/textarea-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/textarea-basic/textarea-basic.scene.test.ts",
+          "target": "src/examples/textarea-basic/textarea-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Textarea",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "textarea-disabled",
+      "type": "registry:example",
+      "title": "Textarea Disabled",
+      "description": "A runnable Foldkit example showing disabled Textarea styling and native disabled semantics.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "textarea"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/textarea-disabled/main.ts",
+          "target": "src/examples/textarea-disabled/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/textarea-disabled/textarea-disabled.scene.test.ts",
+          "target": "src/examples/textarea-disabled/textarea-disabled.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Textarea",
+          "example": "disabled"
+        }
+      }
+    },
+    {
+      "name": "toast-basic",
+      "type": "registry:example",
+      "title": "Toast Basic",
+      "description": "A runnable Foldkit example showing a sticky success toast with typed payload rendering and manual dismissal.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/toast-basic/main.ts",
+          "target": "src/examples/toast-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/toast-basic/toast-basic.scene.test.ts",
+          "target": "src/examples/toast-basic/toast-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toast",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "toast-variants",
+      "type": "registry:example",
+      "title": "Toast Variants",
+      "description": "A runnable Foldkit example showing Info, Success, Warning, and Error toast variants with status and alert semantics.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "toast"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/toast-variants/main.ts",
+          "target": "src/examples/toast-variants/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/toast-variants/toast-variants.scene.test.ts",
+          "target": "src/examples/toast-variants/toast-variants.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Toast",
+          "example": "variants"
+        }
+      }
+    },
+    {
+      "name": "tooltip-basic",
+      "type": "registry:example",
+      "title": "Tooltip Basic",
+      "description": "A runnable Foldkit example showing delayed Tooltip hover opening and parent-visible visibility feedback.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/tooltip-basic/main.ts",
+          "target": "src/examples/tooltip-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/tooltip-basic/tooltip-basic.scene.test.ts",
+          "target": "src/examples/tooltip-basic/tooltip-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tooltip",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "tooltip-no-delay",
+      "type": "registry:example",
+      "title": "Tooltip No Delay",
+      "description": "A runnable Foldkit example showing immediate Tooltip focus opening with zero hover delay configuration.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "tooltip"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/tooltip-no-delay/main.ts",
+          "target": "src/examples/tooltip-no-delay/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/tooltip-no-delay/tooltip-no-delay.scene.test.ts",
+          "target": "src/examples/tooltip-no-delay/tooltip-no-delay.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "Tooltip",
+          "example": "no-delay"
+        }
+      }
+    },
+    {
+      "name": "virtual-list-basic",
+      "type": "registry:example",
+      "title": "VirtualList Basic",
+      "description": "A runnable Foldkit example showing fixed-height VirtualList rendering and command-backed scroll-to-index behavior.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "virtual-list"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/virtual-list-basic/main.ts",
+          "target": "src/examples/virtual-list-basic/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/virtual-list-basic/virtual-list-basic.scene.test.ts",
+          "target": "src/examples/virtual-list-basic/virtual-list-basic.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "VirtualList",
+          "example": "basic"
+        }
+      }
+    },
+    {
+      "name": "virtual-list-variable",
+      "type": "registry:example",
+      "title": "VirtualList Variable",
+      "description": "A runnable Foldkit example showing variable-height VirtualList rendering and variable scroll-to-index behavior.",
+      "dependencies": [
+        "effect",
+        "foldkit"
+      ],
+      "devDependencies": [
+        "vitest"
+      ],
+      "registryDependencies": [
+        "virtual-list"
+      ],
+      "files": [
+        {
+          "path": "registry/foldkit/examples/virtual-list-variable/main.ts",
+          "target": "src/examples/virtual-list-variable/main.ts",
+          "type": "registry:example"
+        },
+        {
+          "path": "registry/foldkit/examples/virtual-list-variable/virtual-list-variable.scene.test.ts",
+          "target": "src/examples/virtual-list-variable/virtual-list-variable.scene.test.ts",
+          "type": "registry:example"
+        }
+      ],
+      "meta": {
+        "foldkit": {
+          "component": "VirtualList",
+          "example": "variable"
+        }
+      }
+    }
+  ]
+}

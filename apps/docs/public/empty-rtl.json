@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-rtl",
+  "type": "registry:example",
+  "title": "Empty RTL",
+  "description": "A runnable Foldkit version of the upstream shadcn empty RTL example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/empty"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/empty-rtl/main.ts",
+      "target": "src/examples/empty-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Empty from \"../../ui/empty\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst buttonClassName =\n  \"inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600\";\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Dir(\"rtl\"), h.Class(\"text-right\")],\n    [\n      Empty.view<Message>({\n        title: \"لا توجد مشاريع بعد\",\n        description:\n          \"لم تقم بإنشاء أي مشاريع بعد. ابدأ بإنشاء مشروعك الأول.\",\n        icon: \"□\",\n        action: h.div(\n          [h.Class(\"flex flex-col items-center gap-2\")],\n          [\n            h.div(\n              [h.Class(\"flex flex-wrap justify-center gap-2\")],\n              [\n                h.button(\n                  [h.Type(\"button\"), h.Class(buttonClassName)],\n                  [\"إنشاء مشروع\"]\n                ),\n                h.button(\n                  [h.Type(\"button\"), h.Class(buttonClassName)],\n                  [\"استيراد مشروع\"]\n                ),\n              ]\n            ),\n            h.button(\n              [\n                h.Type(\"button\"),\n                h.Class(\n                  \"text-sm font-medium text-gray-600 hover:text-gray-950\"\n                ),\n              ],\n              [\"تعرف على المزيد\"]\n            ),\n          ]\n        ),\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/empty-rtl/empty-rtl.scene.test.ts",
+      "target": "src/examples/empty-rtl/empty-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as EmptyRtlExample from \"./main\";\n\ndescribe(\"Empty RTL example\", () => {\n  test(\"matches the upstream empty rtl example content\", () => {\n    Scene.scene(\n      { update: EmptyRtlExample.update, view: EmptyRtlExample.view },\n      Scene.with(EmptyRtlExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"heading\", { name: \"لا توجد مشاريع بعد\" })\n      ).toExist(),\n      Scene.expect(\n        Scene.text(\"لم تقم بإنشاء أي مشاريع بعد. ابدأ بإنشاء مشروعك الأول.\")\n      ).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"إنشاء مشروع\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"استيراد مشروع\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"تعرف على المزيد\" })\n      ).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"إنشاء مشروع\" })\n      ).not.toHaveHandler(\"click\"),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"استيراد مشروع\" })\n      ).not.toHaveHandler(\"click\"),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"تعرف على المزيد\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Empty",
+      "example": "rtl",
+      "originExample": "empty-rtl",
+      "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+    }
+  }
+}

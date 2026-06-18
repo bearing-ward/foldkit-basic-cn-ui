@@ -27,7 +27,7 @@ describe("component slice manifest", () => {
       examples: ["alert-dialog-basic"],
     });
     expect(manifest.checklistItems).toContain(
-      "Create registry/default/ui/alert-dialog/index.ts"
+      "Create registry/base-ui/ui/alert-dialog/index.ts"
     );
     expect(manifest.checklistItems).toContain(
       "Run install smoke compatibility before review"
@@ -41,20 +41,19 @@ describe("component slice manifest", () => {
     });
 
     expect(plan.files.map((file) => file.path)).toEqual([
-      "registry/default/ui/command-menu/index.ts",
-      "registry/default/ui/command-menu/view.ts",
-      "registry/default/ui/command-menu/command-menu.scene.test.ts",
-      "registry/default/examples/command-menu-basic/main.ts",
-      "registry/default/examples/command-menu-basic/entry.ts",
-      "registry/default/examples/command-menu-basic/index.html",
-      "registry/default/examples/command-menu-basic/command-menu-basic.scene.test.ts",
-      "registry/default/items.json",
-      "apps/docs/public/r/command-menu.json",
+      "registry/shadcn/ui/command-menu/index.ts",
+      "registry/shadcn/ui/command-menu/view.ts",
+      "registry/shadcn/ui/command-menu/command-menu.scene.test.ts",
+      "registry/shadcn/examples/command-menu-basic/main.ts",
+      "registry/shadcn/examples/command-menu-basic/entry.ts",
+      "registry/shadcn/examples/command-menu-basic/index.html",
+      "registry/shadcn/examples/command-menu-basic/command-menu-basic.scene.test.ts",
+      "registry/shadcn/registry.json",
+      "apps/docs/public/command-menu.json",
     ]);
     expect(plan.validationCommands).toEqual(validationCommandList);
     expect(plan.sceneTestGuidance).toContain(
-      "registry/default/examples/command-menu-basic"
+      "registry/shadcn/examples/command-menu-basic"
     );
   });
-
 });

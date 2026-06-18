@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "foldkit-livetrace-trace-card",
+  "type": "registry:example",
+  "title": "Foldkit LiveTrace Trace Card",
+  "description": "LiveTrace trace card example built from Foldkit-native registry primitives.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/foldkit-livetrace"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/foldkit-livetrace-trace-card/main.ts",
+      "target": "src/examples/foldkit-livetrace-trace-card/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport type {\n  TraceStatus,\n  TraceStepViewConfig,\n} from \"../../ui/foldkit-livetrace\";\nimport * as LiveTrace from \"../../ui/foldkit-livetrace\";\nimport {\n  completedTraceSteps,\n  failedTraceSteps,\n  runningTraceSteps,\n  sampleLogLines,\n} from \"../../ui/foldkit-livetrace/sample-data\";\n\n// MODEL\n\nconst TraceMode = S.Union([\n  S.Literal(\"Completed\"),\n  S.Literal(\"Running\"),\n  S.Literal(\"Failed\"),\n]);\n\nexport const Model = S.Struct({\n  mode: TraceMode,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedShowCompleted = m(\"ClickedShowCompleted\");\nexport const ClickedShowRunning = m(\"ClickedShowRunning\");\nexport const ClickedShowFailed = m(\"ClickedShowFailed\");\nexport const Message = S.Union([\n  ClickedShowCompleted,\n  ClickedShowRunning,\n  ClickedShowFailed,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ mode: \"Completed\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedShowCompleted: () => [evo(model, { mode: () => \"Completed\" }), []],\n      ClickedShowRunning: () => [evo(model, { mode: () => \"Running\" }), []],\n      ClickedShowFailed: () => [evo(model, { mode: () => \"Failed\" }), []],\n    })\n  );\n\n// VIEW\n\nconst stepsForMode = (mode: TraceStatus): readonly TraceStepViewConfig[] =>\n  M.value(mode).pipe(\n    M.withReturnType<readonly TraceStepViewConfig[]>(),\n    M.when(\"Completed\", () => completedTraceSteps),\n    M.when(\"Running\", () => runningTraceSteps),\n    M.when(\"Failed\", () => failedTraceSteps),\n    M.when(\"Concurrent\", () => completedTraceSteps),\n    M.exhaustive\n  );\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return LiveTrace.themeView<Message>({\n    className: \"min-h-0\",\n    children: [\n      h.div(\n        [h.Class(\"grid max-w-4xl gap-4\")],\n        [\n          h.div(\n            [h.Class(\"flex flex-wrap gap-2\")],\n            [\n              LiveTrace.controlButtonView<Message>({\n                label: \"Completed\",\n                active: model.mode === \"Completed\",\n                onClick: ClickedShowCompleted(),\n              }),\n              LiveTrace.controlButtonView<Message>({\n                label: \"Running\",\n                active: model.mode === \"Running\",\n                onClick: ClickedShowRunning(),\n              }),\n              LiveTrace.controlButtonView<Message>({\n                label: \"Failed\",\n                active: model.mode === \"Failed\",\n                onClick: ClickedShowFailed(),\n              }),\n            ]\n          ),\n          LiveTrace.traceCardView<Message>({\n            title: `Processing report-q3.pdf`,\n            traceId: \"doc:report-q3.pdf:1781731499937-324\",\n            elapsed: model.mode === \"Running\" ? \"2410ms\" : \"9350ms\",\n            status: model.mode,\n            steps: stepsForMode(model.mode),\n            logLines: sampleLogLines,\n          }),\n        ]\n      ),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/foldkit-livetrace-trace-card/foldkit-livetrace-trace-card.scene.test.ts",
+      "target": "src/examples/foldkit-livetrace-trace-card/foldkit-livetrace-trace-card.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"foldkit livetrace trace card example\", () => {\n  test(\"switches trace card status modes\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.expect(Scene.text(\"completed\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Running\" })),\n      Scene.expect(Scene.text(\"running\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Failed\" })),\n      Scene.expect(Scene.text(\"failed\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "LiveTrace",
+      "example": "Trace Card"
+    }
+  }
+}

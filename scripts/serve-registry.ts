@@ -134,7 +134,7 @@ const serveRequest = async (
 
 const ensurePublicRegistryArtifacts = async (publicDir: string): Promise<void> => {
   const componentsPath = path.join(publicDir, "components.json");
-  const registryIndexPath = path.join(publicDir, "r/index.json");
+  const registryIndexPath = path.join(publicDir, "registry.json");
 
   await Promise.all([
     readFile(componentsPath, "utf-8").then(JSON.parse),
@@ -178,7 +178,7 @@ export const startRegistryServer = async (config: {
         host: config.host,
         port,
         localBaseUrl,
-        registryItemUrl: `${localBaseUrl}/r/{name}.json`,
+        registryItemUrl: `${localBaseUrl}/{name}.json`,
         componentsJsonUrl: `${localBaseUrl}/components.json`,
         close: () =>
           new Promise<void>((closeResolve, closeReject) => {

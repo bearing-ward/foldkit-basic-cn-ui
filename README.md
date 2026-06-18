@@ -27,7 +27,7 @@ styling, examples, or a source snapshot to adapt.
   dependency.
 - Scene tests and docs examples for the registry items.
 - A hosted registry suitable for `shadcn add` experiments.
-- Docs-app tools for planning new component slices and previewing theme choices.
+- OpenStory stories for browsing component and example coverage.
 
 ## Current Status
 
@@ -41,7 +41,7 @@ installed files like project code, because they become part of your app.
 
 ## Public Registry
 
-Docs and registry JSON are served from GitHub Pages:
+The OpenStory component browser and registry JSON are served from GitHub Pages:
 
 ```text
 https://bearing-ward.github.io/foldkit-basic-cn-ui/
@@ -50,7 +50,7 @@ https://bearing-ward.github.io/foldkit-basic-cn-ui/
 Registry item URL format:
 
 ```text
-https://bearing-ward.github.io/foldkit-basic-cn-ui/r/{name}.json
+https://bearing-ward.github.io/foldkit-basic-cn-ui/{name}.json
 ```
 
 Published registry config:
@@ -65,14 +65,15 @@ The self-hosted server exposes the same static registry contract as GitHub
 Pages:
 
 - `/components.json` for shadcn registry alias configuration.
-- `/r/{name}.json` for each generated registry item.
+- `/registry.json` for the generated flat registry manifest.
+- `/{name}.json` for each generated registry item.
 - Any additional generated public assets under `apps/docs/public/`, including
   source viewer assets when docs output includes them.
 
 The registry base URL is owned by `registry/config.json` and is written into
 `apps/docs/public/components.json` by `bun run build:registry`. For local
 self-hosting, set that base URL to the URL that clients can reach, such as
-`http://127.0.0.1:4174/r`, then rebuild the registry.
+`http://127.0.0.1:4174`, then rebuild the registry.
 
 Serve the generated registry locally:
 
@@ -85,7 +86,8 @@ Smoke-test the local registry from another terminal:
 
 ```bash
 curl -fsS http://127.0.0.1:4174/components.json
-curl -fsS http://127.0.0.1:4174/r/button.json
+curl -fsS http://127.0.0.1:4174/registry.json
+curl -fsS http://127.0.0.1:4174/button.json
 ```
 
 Container self-hosting builds the same generated registry artifacts into the
@@ -95,7 +97,7 @@ image and serves them without secrets:
 docker build -t foldkit-cn-registry .
 docker run --rm -p 4174:4174 foldkit-cn-registry
 curl -fsS http://127.0.0.1:4174/components.json
-curl -fsS http://127.0.0.1:4174/r/button.json
+curl -fsS http://127.0.0.1:4174/button.json
 ```
 
 Use compose when you want the same local port mapping:
@@ -113,7 +115,7 @@ instead of publishing from this repository:
 bun run generate-registry-project -- /tmp/acme-foldkit-cn \
   --name acme-foldkit-cn \
   --homepage https://example.com/acme-foldkit-cn \
-  --registry-base-url https://example.com/acme-foldkit-cn/r
+  --registry-base-url https://example.com/acme-foldkit-cn
 ```
 
 The generated custom registry project contains the minimum Foldkit CN registry
@@ -123,13 +125,15 @@ contract:
   typecheck, test, and build scripts.
 - `registry/config.json` for the registry name, homepage, and registry base
   URL.
-- `registry/default/items.json` for the source registry item manifest.
+- `registry/registry.json` for the root source registry manifest.
+- `registry/foldkit/registry.json` for the initial lane registry manifest.
 - `registry/templates/components.json` for the generated `components.json`
   template.
-- `registry/default/ui/example-card/` as the example component slice.
-- `registry/default/examples/example-card-basic/` as the example component
+- `registry/foldkit/ui/example-card/` as the example component slice.
+- `registry/foldkit/examples/example-card-basic/` as the example component
   installation target.
-- `apps/docs/public/components.json` and `apps/docs/public/r/*.json` as
+- `apps/docs/public/components.json`, `apps/docs/public/registry.json`, and
+  `apps/docs/public/*.json` as
   generated public registry output.
 - `scripts/build-registry.mjs` and `scripts/check-registry.mjs` as validation
   scripts.
@@ -188,13 +192,13 @@ operator choice before applying, merging, or overwriting files.
 Install one registry item directly by URL:
 
 ```bash
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/dialog.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/dialog.json
 ```
 
 Install an example directly by URL:
 
 ```bash
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar-basic.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/sidebar-basic.json
 ```
 
 To use aliases such as `@foldkit-cn/dialog`, copy or merge the published
@@ -236,7 +240,7 @@ The import policy is intentionally conservative:
   as reference material.
 - Candidate scaffold output is written under
   `registry/candidates/custom-clone/*/candidate-slice`, outside
-  `registry/default/items.json`.
+  the included source registry manifests.
 - Never execute imported code during import or likeness review.
 - Advisory likeness scores compare deterministic snapshots such as example
   names, accessible text, roles, state coverage, and target file names. They
@@ -288,17 +292,17 @@ safety boundaries, see
 ## Useful Items To Try
 
 ```bash
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/button.json
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar.json
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sonner.json
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/data-table.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/button.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/sidebar.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/sonner.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/data-table.json
 ```
 
 Example installs:
 
 ```bash
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar-basic.json
-bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sonner-basic.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/sidebar-basic.json
+bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/sonner-basic.json
 ```
 
 ## Local Development
@@ -308,8 +312,14 @@ bun install
 bun run dev
 ```
 
-The dev server hosts the docs app and generated registry previews. Regenerate
-registry JSON after editing registry source files:
+Use the OpenStory dev server for component browsing while editing stories:
+
+```bash
+bun run openstory
+```
+
+The Vite dev server still hosts the legacy docs app while it remains in the
+repository. Regenerate registry JSON after editing registry source files:
 
 ```bash
 bun run build:registry
@@ -339,7 +349,8 @@ bun run smoke:public-install
 ## Deployment
 
 The `Deploy docs and registry` GitHub Actions workflow builds the registry,
-builds the docs app with the GitHub Pages asset base, and publishes `dist`.
+builds the OpenStory site with the GitHub Pages asset base, copies the generated
+registry JSON into `dist`, and publishes `dist`.
 
 After deployment it smoke-tests the public docs, registry JSON, source viewer
 assets, and a real `shadcn add` install from the public registry.

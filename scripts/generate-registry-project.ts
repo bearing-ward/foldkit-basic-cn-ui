@@ -66,6 +66,23 @@ const stableJson = (value: unknown): string =>
 const readJson = async <A>(filePath: string): Promise<A> =>
   JSON.parse(await readFile(filePath, "utf-8")) as A;
 
+const readSourceRegistryItems = async (
+  targetPath: string,
+  registryPath = "registry/registry.json"
+): Promise<ReadonlyArray<RegistryItem>> => {
+  const registry = await readJson<{
+    include?: ReadonlyArray<string>;
+    items?: ReadonlyArray<RegistryItem>;
+  }>(path.join(targetPath, registryPath));
+  const includeItems = await Promise.all(
+    (registry.include ?? []).map((includePath) =>
+      readSourceRegistryItems(targetPath, includePath)
+    )
+  );
+
+  return [...(registry.items ?? []), ...includeItems.flat()];
+};
+
 const validateRequired = (label: string, value: string): string => {
   const trimmed = value.trim();
 
@@ -217,9 +234,7 @@ const buildGeneratedRegistry = async (targetPath: string): Promise<void> => {
   const config = await readJson<RegistryConfig>(
     path.join(targetPath, "registry/config.json")
   );
-  const sourceItems = await readJson<ReadonlyArray<RegistryItem>>(
-    path.join(targetPath, "registry/default/items.json")
-  );
+  const sourceItems = await readSourceRegistryItems(targetPath);
   const sourceItemNames = new Set(sourceItems.map((item) => item.name));
   const items = await Promise.all(
     sourceItems.map((item) =>
@@ -230,16 +245,15 @@ const buildGeneratedRegistry = async (targetPath: string): Promise<void> => {
     path.join(targetPath, "registry/templates/components.json"),
     "utf-8"
   );
-  const outputDir = path.join(targetPath, "apps/docs/public/r");
+  const publicDir = path.join(targetPath, "apps/docs/public");
 
-  await mkdir(outputDir, { recursive: true });
-  await mkdir(path.join(targetPath, "apps/docs/public"), { recursive: true });
+  await mkdir(publicDir, { recursive: true });
   await writeFile(
     path.join(targetPath, "apps/docs/public/components.json"),
     componentsTemplate.replaceAll("{{registryBaseUrl}}", config.registryBaseUrl)
   );
   await writeFile(
-    path.join(outputDir, "index.json"),
+    path.join(publicDir, "registry.json"),
     stableJson({
       $schema: "https://ui.shadcn.com/schema/registry.json",
       name: config.name,
@@ -260,7 +274,7 @@ const buildGeneratedRegistry = async (targetPath: string): Promise<void> => {
 
   await Promise.all(
     items.map((item) =>
-      writeFile(path.join(outputDir, `${item.name}.json`), stableJson(item))
+      writeFile(path.join(publicDir, `${item.name}.json`), stableJson(item))
     )
   );
 };
@@ -317,7 +331,7 @@ export const generateRegistryProjectCommand = Command.make(
   Command.withExamples([
     {
       command:
-        "generate-registry-project /tmp/acme-registry --name acme-foldkit-cn --homepage https://example.com/acme --registry-base-url https://example.com/acme/r",
+        "generate-registry-project /tmp/acme-registry --name acme-foldkit-cn --homepage https://example.com/acme --registry-base-url https://example.com/acme",
       description: "Generate a custom registry project in a temp directory.",
     },
   ])

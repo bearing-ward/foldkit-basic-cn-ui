@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input-group-icon",
+  "type": "registry:example",
+  "title": "Input Group Icon",
+  "description": "A runnable Foldkit version of the upstream shadcn Input Group icon example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/input-group"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/input-group-icon/main.ts",
+      "target": "src/examples/input-group-icon/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as InputGroup from \"../../ui/input-group\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return InputGroup.view<Message>({\n    className: \"w-full max-w-sm\",\n    children: [\n      InputGroup.addonView<Message>({\n        children: [h.span([h.AriaHidden(true)], [\"⌕\"])],\n      }),\n      InputGroup.inputView<Message>({\n        ariaLabel: \"Search\",\n        placeholder: \"Search...\",\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/input-group-icon/input-group-icon.scene.test.ts",
+      "target": "src/examples/input-group-icon/input-group-icon.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as InputGroupIconExample from \"./main\";\n\ndescribe(\"Input Group Icon example\", () => {\n  test(\"renders search icon and input\", () => {\n    Scene.scene(\n      { update: InputGroupIconExample.update, view: InputGroupIconExample.view },\n      Scene.with(InputGroupIconExample.init()[0]),\n      Scene.expect(Scene.text(\"⌕\")).toExist(),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Search\" })).toHaveAttr(\n        \"placeholder\",\n        \"Search...\"\n      ),\n      Scene.expect(Scene.text(\"⌕\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "InputGroup",
+      "example": "icon",
+      "originExample": "input-group-icon",
+      "origin": "https://ui.shadcn.com/docs/components/radix/input-group"
+    }
+  }
+}

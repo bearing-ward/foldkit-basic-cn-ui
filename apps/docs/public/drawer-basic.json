@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer-basic",
+  "type": "registry:example",
+  "title": "Drawer Basic",
+  "description": "A runnable Foldkit version of the Base UI Drawer default side panel example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-drawer"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/drawer-basic/main.ts",
+      "target": "src/examples/drawer-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Drawer from \"../../../foldkit/ui/drawer\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedOpenDrawer = m(\"ClickedOpenDrawer\");\nexport const ClickedCloseDrawer = m(\"ClickedCloseDrawer\");\n\nexport const Message = S.Union([ClickedOpenDrawer, ClickedCloseDrawer]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedOpenDrawer: () => [evo(model, { open: () => true }), []],\n      ClickedCloseDrawer: () => [evo(model, { open: () => false }), []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const titleId = \"drawer-title\";\n  const descriptionId = \"drawer-description\";\n\n  return Drawer.rootView<Message>({\n    children: [\n      Drawer.triggerView<Message>({\n        onClick: ClickedOpenDrawer(),\n        children: [h.span([], [\"Open drawer\"])],\n      }),\n      Drawer.portalView<Message>({\n        open: model.open,\n        children: [\n          Drawer.backdropView<Message>({ children: [] }),\n          Drawer.viewportView<Message>({\n            children: [\n              Drawer.popupView<Message>({\n                titleId,\n                descriptionId,\n                children: [\n                  Drawer.contentView<Message>({\n                    children: [\n                      Drawer.titleView<Message>({\n                        id: titleId,\n                        children: [h.span([], [\"Drawer\"])],\n                      }),\n                      Drawer.descriptionView<Message>({\n                        id: descriptionId,\n                        children: [\n                          h.span(\n                            [],\n                            [\n                              \"This is a drawer that slides in from the side. You can swipe to dismiss it.\",\n                            ]\n                          ),\n                        ],\n                      }),\n                    ],\n                  }),\n                  Drawer.closeView<Message>({\n                    onClick: ClickedCloseDrawer(),\n                    children: [h.span([], [\"Close\"])],\n                  }),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/drawer-basic/entry.ts",
+      "target": "src/examples/drawer-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Drawer Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/base-ui/examples/drawer-basic/index.html",
+      "target": "src/examples/drawer-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Drawer Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/base-ui/examples/drawer-basic/drawer-basic.scene.test.ts",
+      "target": "src/examples/drawer-basic/drawer-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as DrawerBasicExample from \"./main\";\n\ndescribe(\"Drawer Basic example\", () => {\n  test(\"matches the Base UI default side drawer example\", () => {\n    Scene.scene(\n      {\n        update: DrawerBasicExample.update,\n        view: DrawerBasicExample.view,\n      },\n      Scene.with(DrawerBasicExample.init()[0]),\n      Scene.click(Scene.role(\"button\", { name: \"Open drawer\" })),\n      Scene.expect(Scene.role(\"dialog\", { name: \"Drawer\" })).toExist(),\n      Scene.expect(\n        Scene.text(\n          \"This is a drawer that slides in from the side. You can swipe to dismiss it.\"\n        )\n      ).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Close\" })),\n      Scene.expect(Scene.role(\"dialog\", { name: \"Drawer\" })).not.toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Drawer",
+      "example": "basic",
+      "originExample": "drawer-default-side"
+    }
+  }
+}

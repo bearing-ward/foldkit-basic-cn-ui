@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "A shadcn-style layout component for reserving a fixed width-to-height ratio around caller-owned media or content.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/aspect-ratio/index.ts",
+      "target": "src/ui/aspect-ratio/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport {\n  aspectRatioCaptionClassName,\n  aspectRatioClassName,\n  aspectRatioContentClassName,\n  aspectRatioImageClassName,\n} from \"./view\";\n\nexport {\n  aspectRatioCaptionClassName,\n  aspectRatioClassName,\n  aspectRatioContentClassName,\n  aspectRatioImageClassName,\n};\n\n/** Inline style object accepted by Foldkit h.Style. */\nexport type AspectRatioStyle = Readonly<Record<string, string>>;\n\n/** Public data attributes emitted by the root view. */\nexport type AspectRatioDataAttributes = Readonly<{\n  /** Decimal string form of the numeric ratio, for example \"1.7777777777777777\". */\n  \"data-ratio\": string;\n}>;\n\n/** Configuration for the AspectRatio root. */\nexport type RootViewConfig = Readonly<{\n  /** Width divided by height. Use 16 / 9 for widescreen, 1 for square, or 9 / 16 for portrait. */\n  ratio: number;\n  /** Consumer-owned content rendered inside the fixed-ratio box. */\n  children: readonly Html[];\n  /** Additional class names appended after the default root classes. */\n  className?: string | undefined;\n  /** Additional inline styles merged after the computed aspect-ratio style. */\n  style?: AspectRatioStyle | undefined;\n}>;\n\n/** Configuration for the common image helper. */\nexport type ImageViewConfig = Readonly<{\n  /** Image source URL. */\n  src: string;\n  /** Accessible image alternative text. */\n  alt: string;\n  /** Additional class names appended after the default image classes. */\n  className?: string | undefined;\n  /** Optional image inline styles. */\n  style?: AspectRatioStyle | undefined;\n}>;\n\n/** Configuration for the optional caption overlay helper. */\nexport type CaptionViewConfig = Readonly<{\n  /** Caption text or inline content. */\n  children: readonly (Html | string)[];\n  /** Additional class names appended after the default caption classes. */\n  className?: string | undefined;\n  /** Optional caption inline styles. */\n  style?: AspectRatioStyle | undefined;\n}>;\n\nconst classNames = (...values: readonly (string | undefined)[]): string =>\n  values\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nconst aspectRatioValue = (ratio: number): string => `${ratio}`;\n\n/** Render a fixed-ratio content box with caller-owned children. */\nexport const rootView = <ParentMessage>({\n  ratio,\n  children,\n  className,\n  style,\n}: RootViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.DataAttribute(\"ratio\", aspectRatioValue(ratio)),\n      h.Class(classNames(aspectRatioClassName, className)),\n      h.Style({\n        aspectRatio: aspectRatioValue(ratio),\n        ...style,\n      }),\n    ],\n    children\n  );\n};\n\n/** Render an image sized to the AspectRatio box. */\nexport const imageView = <ParentMessage>({\n  src,\n  alt,\n  className,\n  style,\n}: ImageViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.img([\n    h.Src(src),\n    h.Alt(alt),\n    h.Class(classNames(aspectRatioImageClassName, className)),\n    ...(style === undefined ? [] : [h.Style(style)]),\n  ]);\n};\n\n/** Render an optional caption overlay inside an AspectRatio root. */\nexport const captionView = <ParentMessage>({\n  children,\n  className,\n  style,\n}: CaptionViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.div(\n    [\n      h.Class(classNames(aspectRatioCaptionClassName, className)),\n      ...(style === undefined ? [] : [h.Style(style)]),\n    ],\n    children\n  );\n};\n\n/** Common image-focused AspectRatio helper. */\nexport const view = <ParentMessage>({\n  ratio,\n  src,\n  alt,\n  caption,\n  className,\n}: Readonly<{\n  /** Width divided by height. */\n  ratio: number;\n  /** Image source URL. */\n  src: string;\n  /** Accessible image alternative text. */\n  alt: string;\n  /** Optional visible caption overlay. */\n  caption?: string | undefined;\n  /** Additional class names appended after the default root classes. */\n  className?: string | undefined;\n}>): Html =>\n  rootView<ParentMessage>({\n    ratio,\n    className,\n    children: [\n      imageView<ParentMessage>({ src, alt }),\n      ...(caption === undefined\n        ? []\n        : [captionView<ParentMessage>({ children: [caption] })]),\n    ],\n  });\n"
+    },
+    {
+      "path": "registry/shadcn/ui/aspect-ratio/view.ts",
+      "target": "src/ui/aspect-ratio/view.ts",
+      "type": "registry:ui",
+      "content": "export const aspectRatioClassName =\n  \"relative w-full overflow-hidden rounded-lg bg-gray-100\";\n\nexport const aspectRatioContentClassName = \"size-full\";\n\nexport const aspectRatioImageClassName = \"size-full object-cover\";\n\nexport const aspectRatioCaptionClassName =\n  \"absolute inset-x-0 bottom-0 bg-black/55 px-3 py-2 text-sm font-medium text-white\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/aspect-ratio/aspect-ratio.scene.test.ts",
+      "target": "src/ui/aspect-ratio/aspect-ratio.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as AspectRatio from \"./index\";\n\ndescribe(\"AspectRatio registry view\", () => {\n  test(\"renders fixed-ratio image content and data attributes\", () => {\n    const view = (): Html =>\n      AspectRatio.view<never>({\n        ratio: 16 / 9,\n        src: \"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E\",\n        alt: \"Photo\",\n        caption: \"Beautiful landscape\",\n      });\n\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.role(\"img\", { name: \"Photo\" })).toExist(),\n      Scene.expect(Scene.text(\"Beautiful landscape\")).toExist(),\n      Scene.expect(Scene.role(\"img\", { name: \"Photo\" })).toHaveClass(\n        \"object-cover\"\n      ),\n      Scene.expect(Scene.text(\"Beautiful landscape\")).not.toHaveHandler(\"click\")\n    );\n  });\n\n  test(\"composes caller-owned content with custom ratio style\", () => {\n    const view = (): Html =>\n      AspectRatio.rootView<never>({\n        ratio: 1,\n        children: [\n          AspectRatio.captionView<never>({ children: [\"Square image\"] }),\n        ],\n      });\n\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.text(\"Square image\")).toExist(),\n      Scene.expect(Scene.text(\"Square image\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "AspectRatio",
+      "origin": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

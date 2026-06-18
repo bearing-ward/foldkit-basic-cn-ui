@@ -6,11 +6,11 @@ Custom Foldkit CN registry project generated from `foldkit-basic-cn-ui`.
 
 - `package.json` wires docs, registry generation, registry validation, tests, and typecheck scripts.
 - `registry/config.json` owns the registry name, docs homepage, and registry base URL.
-- `registry/default/items.json` is the source registry item manifest.
+- `registry/foldkit/items.json` is the source registry item manifest.
 - `registry/templates/components.json` is the source `components.json` template.
-- `registry/default/ui/example-card/` contains one example component slice.
-- `registry/default/examples/example-card-basic/` contains one installable example.
-- `apps/docs/public/components.json` and `apps/docs/public/r/*.json` are generated public registry output.
+- `registry/foldkit/ui/example-card/` contains one example component slice.
+- `registry/foldkit/examples/example-card-basic/` contains one installable example.
+- `apps/docs/public/components.json` and `apps/docs/public/*.json` are generated public registry output.
 - `scripts/build-registry.mjs` builds the public registry JSON.
 - `scripts/check-registry.mjs` validates the generated output.
 - `scripts/serve-registry.ts`, `Dockerfile`, and `compose.yaml` serve the same generated registry locally or in a container.
@@ -23,7 +23,7 @@ bun install
 bun run dev
 ```
 
-After editing files under `registry/default`, regenerate and check the registry:
+After editing files under `registry/foldkit`, regenerate and check the registry:
 
 ```bash
 bun run build:registry
@@ -37,7 +37,7 @@ bun run build
 The generated registry server exposes:
 
 - `/components.json` for shadcn registry alias configuration.
-- `/r/{name}.json` for each generated registry item.
+- `/{name}.json` for each generated registry item.
 - Any additional generated public assets under `apps/docs/public/`.
 
 The registry base URL is owned by `registry/config.json` and written into
@@ -54,7 +54,7 @@ Smoke-test the registry from another terminal:
 
 ```bash
 curl -fsS http://127.0.0.1:4174/components.json
-curl -fsS http://127.0.0.1:4174/r/example-card.json
+curl -fsS http://127.0.0.1:4174/example-card.json
 ```
 
 Container self-hosting builds the same generated artifacts into the image:
@@ -63,7 +63,7 @@ Container self-hosting builds the same generated artifacts into the image:
 docker build -t {{projectName}}-registry .
 docker run --rm -p 4174:4174 {{projectName}}-registry
 curl -fsS http://127.0.0.1:4174/components.json
-curl -fsS http://127.0.0.1:4174/r/example-card.json
+curl -fsS http://127.0.0.1:4174/example-card.json
 ```
 
 Compose uses the same port mapping:

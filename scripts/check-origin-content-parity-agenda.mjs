@@ -1,8 +1,8 @@
 import fs from "node:fs";
 
-const registryItems = JSON.parse(
-  fs.readFileSync("registry/default/items.json", "utf-8")
-);
+import { readSourceRegistryItems } from "./registry-manifest.mjs";
+
+const registryItems = await readSourceRegistryItems();
 const agenda = fs.readFileSync(
   "docs/product/origin-content-parity-review.md",
   "utf-8"

@@ -22,6 +22,6 @@
   "menuColor": "default",
   "menuAccent": "subtle",
   "registries": {
-    "@foldkit-cn": "https://bearing-ward.github.io/foldkit-basic-cn-ui/r/{name}.json"
+    "@foldkit-cn": "https://bearing-ward.github.io/foldkit-basic-cn-ui/{name}.json"
   }
 }

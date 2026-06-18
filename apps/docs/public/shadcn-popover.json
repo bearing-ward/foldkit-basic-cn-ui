@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "shadcn style-lane popover wrapper backed by the existing Popover component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/popover"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-popover/index.ts",
+      "target": "src/ui/shadcn-popover/index.ts",
+      "type": "registry:ui",
+      "content": "export {\n  AnchorPopover,\n  backdrop,\n  close,\n  Closed,\n  CompletedAnchorPopover,\n  CompletedFocusButton,\n  CompletedFocusPanel,\n  CompletedInertOthers,\n  CompletedLockScroll,\n  CompletedPortalPopoverBackdrop,\n  CompletedRestoreInert,\n  CompletedUnlockScroll,\n  DetectMovementOrAnimationEnd,\n  FocusButton,\n  FocusPanel,\n  GotAnimationMessage,\n  InertOthers,\n  init,\n  LockScroll,\n  Message,\n  Model,\n  open,\n  Opened,\n  OutMessage,\n  panel,\n  PortalPopoverBackdrop,\n  RequestedClose,\n  RequestedOpen,\n  RestoreInert,\n  root,\n  trigger,\n  UnlockScroll,\n  update,\n  view,\n} from \"../../../foldkit/ui/popover\";\nexport type {\n  BackdropInputs,\n  Commands,\n  InitConfig,\n  InitReturn,\n  PanelInputs,\n  PopoverChild,\n  RenderInfo,\n  RootInputs,\n  TriggerInputs,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/popover\";\n\nexport {\n  shadcnPopoverBackdropClassName,\n  shadcnPopoverPanelClassName,\n  shadcnPopoverRootClassName,\n  shadcnPopoverTriggerClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-popover/view.ts",
+      "target": "src/ui/shadcn-popover/view.ts",
+      "type": "registry:ui",
+      "content": "export const shadcnPopoverTriggerClassName =\n  \"inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-base font-normal text-gray-900 transition hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 disabled:cursor-not-allowed disabled:opacity-50\";\n\nexport const shadcnPopoverRootClassName = \"relative inline-block\";\n\nexport const shadcnPopoverPanelClassName =\n  \"z-10 w-64 rounded-lg border border-gray-200 bg-white p-4 shadow-lg outline-none transition duration-150 ease-out data-[closed]:scale-95 data-[closed]:opacity-0\";\n\nexport const shadcnPopoverBackdropClassName = \"fixed inset-0 z-0\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-popover/shadcn-popover.scene.test.ts",
+      "target": "src/ui/shadcn-popover/shadcn-popover.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Popover from \"./index\";\n\ndescribe(\"shadcn Popover registry view\", () => {\n  test(\"reuses the Foldkit Popover functional contract\", () => {\n    expect(Popover.init).toBeTypeOf(\"function\");\n    expect(Popover.update).toBeTypeOf(\"function\");\n    expect(Popover.trigger).toBeTypeOf(\"function\");\n    expect(Popover.shadcnPopoverPanelClassName).toContain(\"shadow\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/radix/popover",
+      "artifact": "component",
+      "primitive": "Ui.Popover",
+      "stateful": true
+    }
+  }
+}

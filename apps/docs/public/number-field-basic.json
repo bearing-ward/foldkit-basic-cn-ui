@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field-basic",
+  "type": "registry:example",
+  "title": "Number Field Basic",
+  "description": "A runnable Foldkit version of the Base UI Number Field default Amount example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-number-field"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/number-field-basic/main.ts",
+      "target": "src/examples/number-field-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as NumberField from \"../../../foldkit/ui/number-field\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  amount: S.Number,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedAmount = m(\"UpdatedAmount\", { value: S.String });\nexport const ClickedDecrementAmount = m(\"ClickedDecrementAmount\");\nexport const ClickedIncrementAmount = m(\"ClickedIncrementAmount\");\n\nexport const Message = S.Union([\n  UpdatedAmount,\n  ClickedDecrementAmount,\n  ClickedIncrementAmount,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ amount: 100 }, []];\n\n// UPDATE\n\nconst parseAmount = (value: string, fallback: number): number => {\n  const parsed = Number(value);\n\n  if (Number.isFinite(parsed)) {\n    return parsed;\n  }\n\n  return fallback;\n};\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedAmount: ({ value }) => [\n        evo(model, { amount: () => parseAmount(value, model.amount) }),\n        [],\n      ],\n      ClickedDecrementAmount: () => [\n        evo(model, { amount: (amount) => amount - 1 }),\n        [],\n      ],\n      ClickedIncrementAmount: () => [\n        evo(model, { amount: (amount) => amount + 1 }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const labelId = \"amount-label\";\n\n  return NumberField.rootView<Message>({\n    children: [\n      NumberField.scrubAreaView<Message>({\n        id: labelId,\n        children: [h.span([], [\"Amount\"])],\n      }),\n      NumberField.groupView<Message>({\n        children: [\n          NumberField.decrementView<Message>({\n            ariaLabel: \"Decrease\",\n            onClick: ClickedDecrementAmount(),\n            children: [h.span([], [\"-\"])],\n          }),\n          NumberField.inputView<Message>({\n            id: \"amount\",\n            value: String(model.amount),\n            onInput: (value) => UpdatedAmount({ value }),\n            ariaLabel: \"Amount\",\n            labelledById: labelId,\n            step: 1,\n          }),\n          NumberField.incrementView<Message>({\n            ariaLabel: \"Increase\",\n            onClick: ClickedIncrementAmount(),\n            children: [h.span([], [\"+\"])],\n          }),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/number-field-basic/entry.ts",
+      "target": "src/examples/number-field-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Number Field Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/base-ui/examples/number-field-basic/index.html",
+      "target": "src/examples/number-field-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Number Field Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/base-ui/examples/number-field-basic/number-field-basic.scene.test.ts",
+      "target": "src/examples/number-field-basic/number-field-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as NumberFieldBasicExample from \"./main\";\n\ndescribe(\"Number Field Basic example\", () => {\n  test(\"matches the Base UI default Amount number field example\", () => {\n    Scene.scene(\n      {\n        update: NumberFieldBasicExample.update,\n        view: NumberFieldBasicExample.view,\n      },\n      Scene.with(NumberFieldBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"Amount\")).toExist(),\n      Scene.expect(Scene.role(\"spinbutton\", { name: \"Amount\" })).toHaveValue(\n        \"100\"\n      ),\n      Scene.click(Scene.role(\"button\", { name: \"Increase\" })),\n      Scene.expect(Scene.role(\"spinbutton\", { name: \"Amount\" })).toHaveValue(\n        \"101\"\n      ),\n      Scene.click(Scene.role(\"button\", { name: \"Decrease\" })),\n      Scene.expect(Scene.role(\"spinbutton\", { name: \"Amount\" })).toHaveValue(\n        \"100\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "NumberField",
+      "example": "basic",
+      "originExample": "number-field-default-amount"
+    }
+  }
+}

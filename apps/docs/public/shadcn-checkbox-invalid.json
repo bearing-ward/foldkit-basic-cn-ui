@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-checkbox-invalid",
+  "type": "registry:example",
+  "title": "shadcn Checkbox Invalid",
+  "description": "A runnable Foldkit example matching the shadcn Checkbox Invalid State example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-checkbox"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-checkbox-invalid/main.ts",
+      "target": "src/examples/shadcn-checkbox-invalid/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Checkbox from \"../../ui/shadcn-checkbox\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"mx-auto w-56\")],\n    [\n      h.div(\n        [\n          h.DataAttribute(\"invalid\", \"\"),\n          h.Class(Checkbox.shadcnCheckboxRowClassName),\n        ],\n        [\n          h.button(\n            [\n              h.Type(\"button\"),\n              h.Id(\"terms-checkbox-invalid\"),\n              h.Name(\"terms-checkbox-invalid\"),\n              h.Role(\"checkbox\"),\n              h.AriaChecked(false),\n              h.AriaInvalid(true),\n              h.Class(Checkbox.shadcnCheckboxControlClassName),\n            ],\n            []\n          ),\n          h.label(\n            [\n              h.For(\"terms-checkbox-invalid\"),\n              h.Class(Checkbox.shadcnCheckboxLabelClassName),\n            ],\n            [\"Accept terms and conditions\"]\n          ),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-checkbox-invalid/shadcn-checkbox-invalid.scene.test.ts",
+      "target": "src/examples/shadcn-checkbox-invalid/shadcn-checkbox-invalid.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Shadcn Checkbox Invalid example\", () => {\n  test(\"renders the origin invalid checkbox demo\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(\n        Scene.role(\"checkbox\", { name: \"Accept terms and conditions\" })\n      ).toHaveAttr(\"aria-invalid\", \"true\"),\n      Scene.expect(\n        Scene.role(\"checkbox\", { name: \"Accept terms and conditions\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Checkbox",
+      "example": "invalid",
+      "origin": "https://ui.shadcn.com/docs/components/radix/checkbox#invalid-state"
+    }
+  }
+}

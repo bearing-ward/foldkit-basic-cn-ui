@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Avatar from "../../../registry/default/ui/avatar";
+import * as Avatar from "../../../registry/base-ui/ui/avatar";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 

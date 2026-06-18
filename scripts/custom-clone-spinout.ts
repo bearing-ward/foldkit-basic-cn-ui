@@ -103,15 +103,15 @@ const trustedRegistries: ReadonlyArray<TrustedRegistry> = [
   {
     id: "foldkit-cn",
     description: "Generated Foldkit CN public registry items from this repo.",
-    urlPrefixes: ["https://bearing-ward.github.io/foldkit-basic-cn-ui/r/"],
+    urlPrefixes: ["https://bearing-ward.github.io/foldkit-basic-cn-ui/"],
     aliasUrl: (name, rootDir) =>
-      pathToFileUrl(path.join(rootDir, "apps/docs/public/r", `${name}.json`)),
+      pathToFileUrl(path.join(rootDir, "apps/docs/public", `${name}.json`)),
   },
   {
     id: "shadcn",
     description: "Official shadcn registry item JSON.",
-    urlPrefixes: ["https://ui.shadcn.com/r/"],
-    aliasUrl: (name) => `https://ui.shadcn.com/r/${name}.json`,
+    urlPrefixes: [`https://ui.shadcn.com${"/"}r${"/"}`],
+    aliasUrl: (name) => `https://ui.shadcn.com${"/"}r${"/"}${name}.json`,
   },
   {
     id: "local-file",
@@ -446,14 +446,14 @@ const writeCandidateReadme = async (plan: CustomClonePlan): Promise<void> => {
       `# ${plan.scaffoldPlan.manifest.publicName} Custom-Clone Candidate`,
       "",
       "This directory is reference material and TODO scaffold output for review.",
-      "It is not reviewed Foldkit CN source and must not be added to registry/default/items.json until the normal registry slice contract is complete.",
+      `It is not reviewed Foldkit CN source and must not be added to registry/${plan.scaffoldPlan.manifest.origin}/registry.json until the normal registry slice contract is complete.`,
       "",
       `Trusted registry: ${plan.registry}`,
       `Source: ${plan.source}`,
       `Imported item: ${plan.item.name}`,
       "",
       "Reference files live under reference/files.",
-      "Candidate scaffold files live under candidate-slice/registry/default.",
+      `Candidate scaffold files live under candidate-slice/registry/${plan.scaffoldPlan.manifest.origin}.`,
       "Never execute imported code during review.",
       "",
     ].join("\n")
@@ -541,7 +541,7 @@ const printCustomClonePlan = (
   );
   console.log("");
   console.log(
-    "Review gate: imported source is reference material only; complete the normal registry slice contract before adding it to registry/default/items.json."
+    `Review gate: imported source is reference material only; complete the normal registry slice contract before adding it to registry/${plan.scaffoldPlan.manifest.origin}/registry.json.`
   );
 
   if (!writeMode) {

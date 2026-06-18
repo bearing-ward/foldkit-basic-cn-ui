@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Empty from "../../../registry/default/ui/empty";
+import * as Empty from "../../../registry/shadcn/ui/empty";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 

@@ -1,9 +1,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
-const registryItems = JSON.parse(
-  readFileSync("registry/default/items.json", "utf-8")
-);
+import { readSourceRegistryItems } from "./registry-manifest.mjs";
+
+const registryItems = await readSourceRegistryItems();
 
 const interactionPatterns = [
   /Scene\.click\(/u,

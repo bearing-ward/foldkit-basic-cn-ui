@@ -2,354 +2,354 @@ import { Option } from "effect";
 import { Calendar, Scene } from "foldkit";
 import { describe, test } from "vitest";
 
-import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
-import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
-import * as AiElementsAttachmentsGridExample from "../registry/default/examples/ai-elements-attachments-grid/main";
-import * as AiElementsAttachmentsInlineExample from "../registry/default/examples/ai-elements-attachments-inline/main";
-import * as AiElementsAttachmentsListExample from "../registry/default/examples/ai-elements-attachments-list/main";
-import * as AlertActionExample from "../registry/default/examples/alert-action/main";
-import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
-import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
-import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
-import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
-import * as AlertRtlExample from "../registry/default/examples/alert-rtl/main";
-import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
-import * as AspectRatioBasicExample from "../registry/default/examples/aspect-ratio-basic/main";
-import * as AspectRatioPortraitExample from "../registry/default/examples/aspect-ratio-portrait/main";
-import * as AspectRatioRtlExample from "../registry/default/examples/aspect-ratio-rtl/main";
-import * as AspectRatioSquareExample from "../registry/default/examples/aspect-ratio-square/main";
-import * as AutocompleteBasicExample from "../registry/default/examples/autocomplete-basic/main";
-import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
-import * as BadgeBasicExample from "../registry/default/examples/badge-basic/main";
-import * as BadgeSpinnerExample from "../registry/default/examples/badge-spinner/main";
-import * as BaseUiAccordionBasicExample from "../registry/default/examples/base-ui-accordion-basic/main";
-import * as BaseUiAccordionMultipleExample from "../registry/default/examples/base-ui-accordion-multiple/main";
-import * as BaseUiAlertDialogBasicExample from "../registry/default/examples/base-ui-alert-dialog-basic/main";
-import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/default/examples/base-ui-alert-dialog-close-confirmation/main";
-import * as BaseUiAlertDialogControlledMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-controlled-multiple-triggers/main";
-import * as BaseUiAlertDialogDetachedTriggersExample from "../registry/default/examples/base-ui-alert-dialog-detached-triggers/main";
-import * as BaseUiAlertDialogMultipleTriggersExample from "../registry/default/examples/base-ui-alert-dialog-multiple-triggers/main";
-import * as BaseUiAlertDialogOpenFromMenuExample from "../registry/default/examples/base-ui-alert-dialog-open-from-menu/main";
-import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
-import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
-import * as BaseUiButtonBasicExample from "../registry/default/examples/base-ui-button-basic/main";
-import * as BaseUiCheckboxBasicExample from "../registry/default/examples/base-ui-checkbox-basic/main";
-import * as BaseUiCheckboxFormExample from "../registry/default/examples/base-ui-checkbox-form/main";
-import * as BaseUiCheckboxGroupBasicExample from "../registry/default/examples/base-ui-checkbox-group-basic/main";
-import * as BaseUiCheckboxGroupFormExample from "../registry/default/examples/base-ui-checkbox-group-form/main";
-import * as BaseUiCheckboxGroupLabelingExample from "../registry/default/examples/base-ui-checkbox-group-labeling/main";
-import * as BaseUiCheckboxGroupNativeButtonExample from "../registry/default/examples/base-ui-checkbox-group-native-button/main";
-import * as BaseUiCheckboxGroupNestedParentExample from "../registry/default/examples/base-ui-checkbox-group-nested-parent/main";
-import * as BaseUiCheckboxGroupParentExample from "../registry/default/examples/base-ui-checkbox-group-parent/main";
-import * as BaseUiCheckboxLabelingExample from "../registry/default/examples/base-ui-checkbox-labeling/main";
-import * as BaseUiCheckboxNativeButtonExample from "../registry/default/examples/base-ui-checkbox-native-button/main";
-import * as BaseUiCollapsibleBasicExample from "../registry/default/examples/base-ui-collapsible-basic/main";
-import * as BaseUiComboboxBasicExample from "../registry/default/examples/base-ui-combobox-basic/main";
-import * as BaseUiContextMenuBasicExample from "../registry/default/examples/base-ui-context-menu-basic/main";
-import * as BaseUiContextMenuNestedExample from "../registry/default/examples/base-ui-context-menu-nested/main";
-import * as BaseUiDialogBasicExample from "../registry/default/examples/base-ui-dialog-basic/main";
-import * as BaseUiDialogCloseConfirmationExample from "../registry/default/examples/base-ui-dialog-close-confirmation/main";
-import * as BaseUiDialogNestedExample from "../registry/default/examples/base-ui-dialog-nested/main";
-import * as BaseUiDrawerBasicExample from "../registry/default/examples/base-ui-drawer-basic/main";
-import * as BaseUiDrawerNonModalExample from "../registry/default/examples/base-ui-drawer-non-modal/main";
-import * as BaseUiDrawerPositionExample from "../registry/default/examples/base-ui-drawer-position/main";
-import * as BaseUiFieldBasicExample from "../registry/default/examples/base-ui-field-basic/main";
-import * as BaseUiFieldsetBasicExample from "../registry/default/examples/base-ui-fieldset-basic/main";
-import * as BaseUiFormBasicExample from "../registry/default/examples/base-ui-form-basic/main";
-import * as BaseUiFormSchemaValidationExample from "../registry/default/examples/base-ui-form-schema-validation/main";
-import * as BaseUiFormServerFunctionExample from "../registry/default/examples/base-ui-form-server-function/main";
-import * as BaseUiInputBasicExample from "../registry/default/examples/base-ui-input-basic/main";
-import * as BaseUiMenuBasicExample from "../registry/default/examples/base-ui-menu-basic/main";
-import * as BaseUiMenuNestedExample from "../registry/default/examples/base-ui-menu-nested/main";
-import * as BaseUiMenubarBasicExample from "../registry/default/examples/base-ui-menubar-basic/main";
-import * as BaseUiMeterBasicExample from "../registry/default/examples/base-ui-meter-basic/main";
-import * as BaseUiNavigationMenuBasicExample from "../registry/default/examples/base-ui-navigation-menu-basic/main";
-import * as BaseUiNumberFieldBasicExample from "../registry/default/examples/base-ui-number-field-basic/main";
-import * as BaseUiOtpFieldBasicExample from "../registry/default/examples/base-ui-otp-field-basic/main";
-import * as BaseUiPopoverAnimatedExample from "../registry/default/examples/base-ui-popover-animated/main";
-import * as BaseUiPopoverBasicExample from "../registry/default/examples/base-ui-popover-basic/main";
-import * as BaseUiPopoverDetachedTriggerExample from "../registry/default/examples/base-ui-popover-detached-trigger/main";
-import * as BaseUiPopoverMultipleTriggersExample from "../registry/default/examples/base-ui-popover-multiple-triggers/main";
-import * as BaseUiPopoverOpenOnHoverExample from "../registry/default/examples/base-ui-popover-open-on-hover/main";
-import * as BaseUiPreviewCardBasicExample from "../registry/default/examples/base-ui-preview-card-basic/main";
-import * as BaseUiProgressBasicExample from "../registry/default/examples/base-ui-progress-basic/main";
-import * as BaseUiRadioBasicExample from "../registry/default/examples/base-ui-radio-basic/main";
-import * as BaseUiRadioFormExample from "../registry/default/examples/base-ui-radio-form/main";
-import * as BaseUiRadioLabelingExample from "../registry/default/examples/base-ui-radio-labeling/main";
-import * as BaseUiRadioNativeButtonExample from "../registry/default/examples/base-ui-radio-native-button/main";
-import * as ScrollAreaBasicExample from "../registry/default/examples/base-ui-scroll-area-basic/main";
-import * as ScrollAreaBothScrollbarsExample from "../registry/default/examples/base-ui-scroll-area-both-scrollbars/main";
-import * as ScrollAreaGradientExample from "../registry/default/examples/base-ui-scroll-area-gradient/main";
-import * as ScrollAreaTabsExample from "../registry/default/examples/base-ui-scroll-area-tabs/main";
-import * as BaseUiSelectBasicExample from "../registry/default/examples/base-ui-select-basic/main";
-import * as BaseUiSeparatorBasicExample from "../registry/default/examples/base-ui-separator-basic/main";
-import * as BaseUiSliderBasicExample from "../registry/default/examples/base-ui-slider-basic/main";
-import * as BaseUiSwitchBasicExample from "../registry/default/examples/base-ui-switch-basic/main";
-import * as BaseUiTabsBasicExample from "../registry/default/examples/base-ui-tabs-basic/main";
-import * as BaseUiToastBasicExample from "../registry/default/examples/base-ui-toast-basic/main";
-import * as BaseUiToggleBasicExample from "../registry/default/examples/base-ui-toggle-basic/main";
-import * as BaseUiToggleGroupBasicExample from "../registry/default/examples/base-ui-toggle-group-basic/main";
-import * as BaseUiToolbarBasicExample from "../registry/default/examples/base-ui-toolbar-basic/main";
-import * as BaseUiTooltipBasicExample from "../registry/default/examples/base-ui-tooltip-basic/main";
-import * as BreadcrumbBasicExample from "../registry/default/examples/breadcrumb-basic/main";
-import * as BreadcrumbCollapsedExample from "../registry/default/examples/breadcrumb-collapsed/main";
-import * as BreadcrumbDropdownExample from "../registry/default/examples/breadcrumb-dropdown/main";
-import * as BreadcrumbLinkExample from "../registry/default/examples/breadcrumb-link/main";
-import * as BreadcrumbRtlExample from "../registry/default/examples/breadcrumb-rtl/main";
-import * as BreadcrumbSeparatorExample from "../registry/default/examples/breadcrumb-separator/main";
-import * as ButtonBasicExample from "../registry/default/examples/button-basic/main";
-import * as ButtonDisabledExample from "../registry/default/examples/button-disabled/main";
-import * as ButtonGroupBasicExample from "../registry/default/examples/button-group-basic/main";
-import * as ButtonGroupInputGroupExample from "../registry/default/examples/button-group-input-group/main";
-import * as ButtonGroupInputExample from "../registry/default/examples/button-group-input/main";
-import * as ButtonGroupNestedExample from "../registry/default/examples/button-group-nested/main";
-import * as ButtonGroupOrientationExample from "../registry/default/examples/button-group-orientation/main";
-import * as ButtonGroupPopoverExample from "../registry/default/examples/button-group-popover/main";
-import * as ButtonGroupRtlExample from "../registry/default/examples/button-group-rtl/main";
-import * as ButtonGroupSelectExample from "../registry/default/examples/button-group-select/main";
-import * as ButtonGroupSeparatorExample from "../registry/default/examples/button-group-separator/main";
-import * as ButtonGroupSizeExample from "../registry/default/examples/button-group-size/main";
-import * as ButtonGroupSplitExample from "../registry/default/examples/button-group-split/main";
-import * as CalendarBasicExample from "../registry/default/examples/calendar-basic/main";
-import * as CalendarBoundsExample from "../registry/default/examples/calendar-bounds/main";
-import * as CardBasicExample from "../registry/default/examples/card-basic/main";
-import * as CardImageExample from "../registry/default/examples/card-image/main";
-import * as CardRtlExample from "../registry/default/examples/card-rtl/main";
-import * as CardSizeExample from "../registry/default/examples/card-size/main";
-import * as CardSpacingExample from "../registry/default/examples/card-spacing/main";
-import * as CarouselApiExample from "../registry/default/examples/carousel-api/main";
-import * as CarouselAutoplayExample from "../registry/default/examples/carousel-autoplay/main";
-import * as CarouselBasicExample from "../registry/default/examples/carousel-basic/main";
-import * as CarouselOrientationExample from "../registry/default/examples/carousel-orientation/main";
-import * as CarouselRtlExample from "../registry/default/examples/carousel-rtl/main";
-import * as CarouselSizesExample from "../registry/default/examples/carousel-sizes/main";
-import * as CarouselSpacingExample from "../registry/default/examples/carousel-spacing/main";
-import * as ChartAxisExample from "../registry/default/examples/chart-axis/main";
-import * as ChartBasicExample from "../registry/default/examples/chart-basic/main";
-import * as ChartGridExample from "../registry/default/examples/chart-grid/main";
-import * as ChartLegendExample from "../registry/default/examples/chart-legend/main";
-import * as ChartRtlExample from "../registry/default/examples/chart-rtl/main";
-import * as ChartTooltipExample from "../registry/default/examples/chart-tooltip/main";
-import * as CheckboxBasicExample from "../registry/default/examples/checkbox-basic/main";
-import * as CheckboxGroupBasicExample from "../registry/default/examples/checkbox-group-basic/main";
-import * as CheckboxIndeterminateExample from "../registry/default/examples/checkbox-indeterminate/main";
-import * as CollapsibleBasicExample from "../registry/default/examples/collapsible-basic/main";
-import * as ComboboxBasicExample from "../registry/default/examples/combobox-basic/main";
-import * as ComboboxMultiExample from "../registry/default/examples/combobox-multi/main";
-import * as CommandBasicExample from "../registry/default/examples/command-basic/main";
-import * as CommandGroupsExample from "../registry/default/examples/command-groups/main";
-import * as CommandRtlExample from "../registry/default/examples/command-rtl/main";
-import * as CommandScrollableExample from "../registry/default/examples/command-scrollable/main";
-import * as CommandShortcutsExample from "../registry/default/examples/command-shortcuts/main";
-import * as ContextMenuBasicExample from "../registry/default/examples/context-menu-basic/main";
-import * as DataTableBasicExample from "../registry/default/examples/data-table-basic/main";
-import * as DataTableFilteringExample from "../registry/default/examples/data-table-filtering/main";
-import * as DataTablePaginationExample from "../registry/default/examples/data-table-pagination/main";
-import * as DataTableRowActionsExample from "../registry/default/examples/data-table-row-actions/main";
-import * as DataTableRowSelectionExample from "../registry/default/examples/data-table-row-selection/main";
-import * as DataTableSortingExample from "../registry/default/examples/data-table-sorting/main";
-import * as DataTableVisibilityExample from "../registry/default/examples/data-table-visibility/main";
-import * as DatePickerBasicExample from "../registry/default/examples/date-picker-basic/main";
-import * as DatePickerBoundsExample from "../registry/default/examples/date-picker-bounds/main";
-import * as DialogAnimatedExample from "../registry/default/examples/dialog-animated/main";
-import * as DialogBasicExample from "../registry/default/examples/dialog-basic/main";
-import * as DialogDestructiveExample from "../registry/default/examples/dialog-destructive/main";
-import * as DialogFocusExample from "../registry/default/examples/dialog-focus/main";
-import * as DialogScrollableExample from "../registry/default/examples/dialog-scrollable/main";
-import * as DirectionBasicExample from "../registry/default/examples/direction-basic/main";
-import * as DisclosureBasicExample from "../registry/default/examples/disclosure-basic/main";
-import * as DisclosureDisabledExample from "../registry/default/examples/disclosure-disabled/main";
-import * as DragAndDropBasicExample from "../registry/default/examples/drag-and-drop-basic/main";
-import * as DragAndDropDisabledExample from "../registry/default/examples/drag-and-drop-disabled/main";
-import * as DrawerBasicExample from "../registry/default/examples/drawer-basic/main";
-import * as DropdownMenuBasicExample from "../registry/default/examples/dropdown-menu-basic/main";
-import * as DropdownMenuCheckboxesExample from "../registry/default/examples/dropdown-menu-checkboxes/main";
-import * as DropdownMenuComplexExample from "../registry/default/examples/dropdown-menu-complex/main";
-import * as DropdownMenuDestructiveExample from "../registry/default/examples/dropdown-menu-destructive/main";
-import * as DropdownMenuIconsExample from "../registry/default/examples/dropdown-menu-icons/main";
-import * as DropdownMenuRadioGroupExample from "../registry/default/examples/dropdown-menu-radio-group/main";
-import * as DropdownMenuRtlExample from "../registry/default/examples/dropdown-menu-rtl/main";
-import * as DropdownMenuShortcutsExample from "../registry/default/examples/dropdown-menu-shortcuts/main";
-import * as DropdownMenuSubmenuExample from "../registry/default/examples/dropdown-menu-submenu/main";
-import * as EmptyAvatarGroupExample from "../registry/default/examples/empty-avatar-group/main";
-import * as EmptyAvatarExample from "../registry/default/examples/empty-avatar/main";
-import * as EmptyBackgroundExample from "../registry/default/examples/empty-background/main";
-import * as EmptyBasicExample from "../registry/default/examples/empty-basic/main";
-import * as EmptyInputGroupExample from "../registry/default/examples/empty-input-group/main";
-import * as EmptyOutlineExample from "../registry/default/examples/empty-outline/main";
-import * as EmptyRtlExample from "../registry/default/examples/empty-rtl/main";
-import * as FieldBasicExample from "../registry/default/examples/field-basic/main";
-import * as FieldsetBasicExample from "../registry/default/examples/fieldset-basic/main";
-import * as FieldsetDisabledExample from "../registry/default/examples/fieldset-disabled/main";
-import * as FileDropBasicExample from "../registry/default/examples/file-drop-basic/main";
-import * as FileDropDisabledExample from "../registry/default/examples/file-drop-disabled/main";
-import * as FormBasicExample from "../registry/default/examples/form-basic/main";
-import * as HoverCardBasicExample from "../registry/default/examples/hover-card-basic/main";
-import * as HoverCardRtlExample from "../registry/default/examples/hover-card-rtl/main";
-import * as HoverCardSidesExample from "../registry/default/examples/hover-card-sides/main";
-import * as InputBasicExample from "../registry/default/examples/input-basic/main";
-import * as InputDisabledExample from "../registry/default/examples/input-disabled/main";
-import * as InputOtpAlphanumericExample from "../registry/default/examples/input-otp-alphanumeric/main";
-import * as InputOtpBasicExample from "../registry/default/examples/input-otp-basic/main";
-import * as InputOtpControlledExample from "../registry/default/examples/input-otp-controlled/main";
-import * as InputOtpDisabledExample from "../registry/default/examples/input-otp-disabled/main";
-import * as InputOtpFormExample from "../registry/default/examples/input-otp-form/main";
-import * as InputOtpFourDigitsExample from "../registry/default/examples/input-otp-four-digits/main";
-import * as InputOtpInvalidExample from "../registry/default/examples/input-otp-invalid/main";
-import * as InputOtpPatternExample from "../registry/default/examples/input-otp-pattern/main";
-import * as InputOtpRtlExample from "../registry/default/examples/input-otp-rtl/main";
-import * as InputOtpSeparatorExample from "../registry/default/examples/input-otp-separator/main";
-import * as ItemAvatarExample from "../registry/default/examples/item-avatar/main";
-import * as ItemBasicExample from "../registry/default/examples/item-basic/main";
-import * as ItemDropdownExample from "../registry/default/examples/item-dropdown/main";
-import * as ItemGroupExample from "../registry/default/examples/item-group/main";
-import * as ItemHeaderExample from "../registry/default/examples/item-header/main";
-import * as ItemIconExample from "../registry/default/examples/item-icon/main";
-import * as ItemImageExample from "../registry/default/examples/item-image/main";
-import * as ItemLinkExample from "../registry/default/examples/item-link/main";
-import * as ItemRtlExample from "../registry/default/examples/item-rtl/main";
-import * as ItemSizeExample from "../registry/default/examples/item-size/main";
-import * as ItemVariantExample from "../registry/default/examples/item-variant/main";
-import * as KbdBasicExample from "../registry/default/examples/kbd-basic/main";
-import * as KbdInputGroupExample from "../registry/default/examples/kbd-input-group/main";
-import * as KbdRtlExample from "../registry/default/examples/kbd-rtl/main";
-import * as LabelBasicExample from "../registry/default/examples/label-basic/main";
-import * as LabelFieldExample from "../registry/default/examples/label-field/main";
-import * as LabelRtlExample from "../registry/default/examples/label-rtl/main";
-import * as ListboxAnimatedExample from "../registry/default/examples/listbox-animated/main";
-import * as ListboxBasicExample from "../registry/default/examples/listbox-basic/main";
-import * as MenuAnimatedExample from "../registry/default/examples/menu-animated/main";
-import * as MenuBasicExample from "../registry/default/examples/menu-basic/main";
-import * as MenubarBasicExample from "../registry/default/examples/menubar-basic/main";
-import * as MeterBasicExample from "../registry/default/examples/meter-basic/main";
-import * as NativeSelectBasicExample from "../registry/default/examples/native-select-basic/main";
-import * as NativeSelectDisabledExample from "../registry/default/examples/native-select-disabled/main";
-import * as NativeSelectGroupsExample from "../registry/default/examples/native-select-groups/main";
-import * as NativeSelectInvalidExample from "../registry/default/examples/native-select-invalid/main";
-import * as NativeSelectRtlExample from "../registry/default/examples/native-select-rtl/main";
-import * as NavigationMenuBasicExample from "../registry/default/examples/navigation-menu-basic/main";
-import * as NumberFieldBasicExample from "../registry/default/examples/number-field-basic/main";
-import * as OtpFieldBasicExample from "../registry/default/examples/otp-field-basic/main";
-import * as PaginationBasicExample from "../registry/default/examples/pagination-basic/main";
-import * as PaginationIconsOnlyExample from "../registry/default/examples/pagination-icons-only/main";
-import * as PaginationRtlExample from "../registry/default/examples/pagination-rtl/main";
-import * as PaginationSimpleExample from "../registry/default/examples/pagination-simple/main";
-import * as PopoverAnimatedExample from "../registry/default/examples/popover-animated/main";
-import * as PopoverBasicExample from "../registry/default/examples/popover-basic/main";
-import * as PreviewCardBasicExample from "../registry/default/examples/preview-card-basic/main";
-import * as ProgressBasicExample from "../registry/default/examples/progress-basic/main";
-import * as RadioBasicExample from "../registry/default/examples/radio-basic/main";
-import * as RadioGroupBasicExample from "../registry/default/examples/radio-group-basic/main";
-import * as RadioGroupHorizontalExample from "../registry/default/examples/radio-group-horizontal/main";
-import * as ResizableBasicExample from "../registry/default/examples/resizable-basic/main";
-import * as ResizableHandleExample from "../registry/default/examples/resizable-handle/main";
-import * as ResizableRtlExample from "../registry/default/examples/resizable-rtl/main";
-import * as ResizableVerticalExample from "../registry/default/examples/resizable-vertical/main";
-import * as SelectBasicExample from "../registry/default/examples/select-basic/main";
-import * as SelectDisabledExample from "../registry/default/examples/select-disabled/main";
-import * as SeparatorBasicExample from "../registry/default/examples/separator-basic/main";
-import * as ShadcnAccordionBasicExample from "../registry/default/examples/shadcn-accordion-basic/main";
-import * as ShadcnAccordionBordersExample from "../registry/default/examples/shadcn-accordion-borders/main";
-import * as ShadcnAccordionCardExample from "../registry/default/examples/shadcn-accordion-card/main";
-import * as ShadcnAccordionDisabledExample from "../registry/default/examples/shadcn-accordion-disabled/main";
-import * as ShadcnAccordionMultipleExample from "../registry/default/examples/shadcn-accordion-multiple/main";
-import * as ShadcnAccordionRtlExample from "../registry/default/examples/shadcn-accordion-rtl/main";
-import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
-import * as ShadcnAlertDialogDestructiveExample from "../registry/default/examples/shadcn-alert-dialog-destructive/main";
-import * as ShadcnAlertDialogMediaExample from "../registry/default/examples/shadcn-alert-dialog-media/main";
-import * as ShadcnAlertDialogRtlExample from "../registry/default/examples/shadcn-alert-dialog-rtl/main";
-import * as ShadcnAlertDialogSmallMediaExample from "../registry/default/examples/shadcn-alert-dialog-small-media/main";
-import * as ShadcnAlertDialogSmallExample from "../registry/default/examples/shadcn-alert-dialog-small/main";
-import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
-import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
-import * as ShadcnBaseAccordionBasicExample from "../registry/default/examples/shadcn-base-accordion-basic/main";
-import * as ShadcnButtonBasicExample from "../registry/default/examples/shadcn-button-basic/main";
-import * as ShadcnCalendarBasicExample from "../registry/default/examples/shadcn-calendar-basic/main";
-import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadcn-calendar-booked/main";
-import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
-import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
-import * as ShadcnCalendarDateTimePickerExample from "../registry/default/examples/shadcn-calendar-date-time-picker/main";
-import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
-import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
-import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
-import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
-import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
-import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
-import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
-import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
-import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
-import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
-import * as ShadcnDatePickerBasicExample from "../registry/default/examples/shadcn-date-picker-basic/main";
-import * as ShadcnDialogBasicExample from "../registry/default/examples/shadcn-dialog-basic/main";
-import * as ShadcnDialogCustomCloseButtonExample from "../registry/default/examples/shadcn-dialog-custom-close-button/main";
-import * as ShadcnDialogNoCloseButtonExample from "../registry/default/examples/shadcn-dialog-no-close-button/main";
-import * as ShadcnDialogRtlExample from "../registry/default/examples/shadcn-dialog-rtl/main";
-import * as ShadcnDialogScrollableContentExample from "../registry/default/examples/shadcn-dialog-scrollable-content/main";
-import * as ShadcnDialogStickyFooterExample from "../registry/default/examples/shadcn-dialog-sticky-footer/main";
-import * as ShadcnDrawerBasicExample from "../registry/default/examples/shadcn-drawer-basic/main";
-import * as ShadcnDrawerResponsiveDialogExample from "../registry/default/examples/shadcn-drawer-responsive-dialog/main";
-import * as ShadcnDrawerRtlExample from "../registry/default/examples/shadcn-drawer-rtl/main";
-import * as ShadcnDrawerScrollableContentExample from "../registry/default/examples/shadcn-drawer-scrollable-content/main";
-import * as ShadcnDrawerSidesExample from "../registry/default/examples/shadcn-drawer-sides/main";
-import * as ShadcnFieldBasicExample from "../registry/default/examples/shadcn-field-basic/main";
-import * as ShadcnInputBadgeExample from "../registry/default/examples/shadcn-input-badge/main";
-import * as ShadcnInputBasicExample from "../registry/default/examples/shadcn-input-basic/main";
-import * as ShadcnInputButtonGroupExample from "../registry/default/examples/shadcn-input-button-group/main";
-import * as ShadcnInputDemoExample from "../registry/default/examples/shadcn-input-demo/main";
-import * as ShadcnInputDisabledExample from "../registry/default/examples/shadcn-input-disabled/main";
-import * as ShadcnInputFieldGroupExample from "../registry/default/examples/shadcn-input-field-group/main";
-import * as ShadcnInputFieldExample from "../registry/default/examples/shadcn-input-field/main";
-import * as ShadcnInputFileExample from "../registry/default/examples/shadcn-input-file/main";
-import * as ShadcnInputFormExample from "../registry/default/examples/shadcn-input-form/main";
-import * as ShadcnInputGridExample from "../registry/default/examples/shadcn-input-grid/main";
-import * as ShadcnInputInlineExample from "../registry/default/examples/shadcn-input-inline/main";
-import * as ShadcnInputInputGroupExample from "../registry/default/examples/shadcn-input-input-group/main";
-import * as ShadcnInputInvalidExample from "../registry/default/examples/shadcn-input-invalid/main";
-import * as ShadcnInputRequiredExample from "../registry/default/examples/shadcn-input-required/main";
-import * as ShadcnInputRtlExample from "../registry/default/examples/shadcn-input-rtl/main";
-import * as ShadcnMenubarBasicExample from "../registry/default/examples/shadcn-menubar-basic/main";
-import * as ShadcnPopoverBasicExample from "../registry/default/examples/shadcn-popover-basic/main";
-import * as ShadcnRadioGroupBasicExample from "../registry/default/examples/shadcn-radio-group-basic/main";
-import * as ShadcnSelectBasicExample from "../registry/default/examples/shadcn-select-basic/main";
-import * as ShadcnSliderBasicExample from "../registry/default/examples/shadcn-slider-basic/main";
-import * as ShadcnSwitchBasicExample from "../registry/default/examples/shadcn-switch-basic/main";
-import * as ShadcnTabsBasicExample from "../registry/default/examples/shadcn-tabs-basic/main";
-import * as ShadcnTextareaBasicExample from "../registry/default/examples/shadcn-textarea-basic/main";
-import * as ShadcnToastBasicExample from "../registry/default/examples/shadcn-toast-basic/main";
-import * as ShadcnToggleBasicExample from "../registry/default/examples/shadcn-toggle-basic/main";
-import * as ShadcnToggleGroupBasicExample from "../registry/default/examples/shadcn-toggle-group-basic/main";
-import * as ShadcnTooltipBasicExample from "../registry/default/examples/shadcn-tooltip-basic/main";
-import * as SheetBasicExample from "../registry/default/examples/sheet-basic/main";
-import * as SidebarBasicExample from "../registry/default/examples/sidebar-basic/main";
-import * as SidebarCompositionExample from "../registry/default/examples/sidebar-composition/main";
-import * as SidebarControlledExample from "../registry/default/examples/sidebar-controlled/main";
-import * as SidebarRtlExample from "../registry/default/examples/sidebar-rtl/main";
-import * as SidebarVariantsExample from "../registry/default/examples/sidebar-variants/main";
-import * as SkeletonBasicExample from "../registry/default/examples/skeleton-basic/main";
-import * as SliderBasicExample from "../registry/default/examples/slider-basic/main";
-import * as SliderDisabledExample from "../registry/default/examples/slider-disabled/main";
-import * as SonnerBasicExample from "../registry/default/examples/sonner-basic/main";
-import * as SpinnerBasicExample from "../registry/default/examples/spinner-basic/main";
-import * as SwitchBasicExample from "../registry/default/examples/switch-basic/main";
-import * as SwitchDisabledExample from "../registry/default/examples/switch-disabled/main";
-import * as TableBasicExample from "../registry/default/examples/table-basic/main";
-import * as TabsBasicExample from "../registry/default/examples/tabs-basic/main";
-import * as TabsManualExample from "../registry/default/examples/tabs-manual/main";
-import * as TextareaBasicExample from "../registry/default/examples/textarea-basic/main";
-import * as TextareaDisabledExample from "../registry/default/examples/textarea-disabled/main";
-import * as ToastBasicExample from "../registry/default/examples/toast-basic/main";
-import * as ToastVariantsExample from "../registry/default/examples/toast-variants/main";
-import * as ToggleBasicExample from "../registry/default/examples/toggle-basic/main";
-import * as ToggleGroupBasicExample from "../registry/default/examples/toggle-group-basic/main";
-import * as ToolbarBasicExample from "../registry/default/examples/toolbar-basic/main";
-import * as TooltipBasicExample from "../registry/default/examples/tooltip-basic/main";
-import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-delay/main";
-import * as TypographyBasicExample from "../registry/default/examples/typography-basic/main";
-import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
-import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
-import * as BaseUiTabs from "../registry/default/ui/base-ui-tabs";
-import * as Combobox from "../registry/default/ui/combobox";
-import * as Dialog from "../registry/default/ui/dialog";
+import * as AccordionBasicExample from "../registry/base-ui/examples/accordion-basic/main";
+import * as AccordionMultipleExample from "../registry/base-ui/examples/accordion-multiple/main";
+import * as AiElementsAttachmentsGridExample from "../registry/ai-elements/examples/ai-elements-attachments-grid/main";
+import * as AiElementsAttachmentsInlineExample from "../registry/ai-elements/examples/ai-elements-attachments-inline/main";
+import * as AiElementsAttachmentsListExample from "../registry/ai-elements/examples/ai-elements-attachments-list/main";
+import * as AlertActionExample from "../registry/shadcn/examples/alert-action/main";
+import * as AlertBasicExample from "../registry/shadcn/examples/alert-basic/main";
+import * as AlertCustomColorsExample from "../registry/shadcn/examples/alert-custom-colors/main";
+import * as AlertDestructiveExample from "../registry/shadcn/examples/alert-destructive/main";
+import * as AlertDialogBasicExample from "../registry/base-ui/examples/alert-dialog-basic/main";
+import * as AlertRtlExample from "../registry/shadcn/examples/alert-rtl/main";
+import * as AnimationBasicExample from "../registry/foldkit/examples/animation-basic/main";
+import * as AspectRatioBasicExample from "../registry/shadcn/examples/aspect-ratio-basic/main";
+import * as AspectRatioPortraitExample from "../registry/shadcn/examples/aspect-ratio-portrait/main";
+import * as AspectRatioRtlExample from "../registry/shadcn/examples/aspect-ratio-rtl/main";
+import * as AspectRatioSquareExample from "../registry/shadcn/examples/aspect-ratio-square/main";
+import * as AutocompleteBasicExample from "../registry/base-ui/examples/autocomplete-basic/main";
+import * as AvatarBasicExample from "../registry/base-ui/examples/avatar-basic/main";
+import * as BadgeBasicExample from "../registry/shadcn/examples/badge-basic/main";
+import * as BadgeSpinnerExample from "../registry/shadcn/examples/badge-spinner/main";
+import * as BaseUiAccordionBasicExample from "../registry/base-ui/examples/base-ui-accordion-basic/main";
+import * as BaseUiAccordionMultipleExample from "../registry/base-ui/examples/base-ui-accordion-multiple/main";
+import * as BaseUiAlertDialogBasicExample from "../registry/base-ui/examples/base-ui-alert-dialog-basic/main";
+import * as BaseUiAlertDialogCloseConfirmationExample from "../registry/base-ui/examples/base-ui-alert-dialog-close-confirmation/main";
+import * as BaseUiAlertDialogControlledMultipleTriggersExample from "../registry/base-ui/examples/base-ui-alert-dialog-controlled-multiple-triggers/main";
+import * as BaseUiAlertDialogDetachedTriggersExample from "../registry/base-ui/examples/base-ui-alert-dialog-detached-triggers/main";
+import * as BaseUiAlertDialogMultipleTriggersExample from "../registry/base-ui/examples/base-ui-alert-dialog-multiple-triggers/main";
+import * as BaseUiAlertDialogOpenFromMenuExample from "../registry/base-ui/examples/base-ui-alert-dialog-open-from-menu/main";
+import * as BaseUiAutocompleteBasicExample from "../registry/base-ui/examples/base-ui-autocomplete-basic/main";
+import * as BaseUiAvatarBasicExample from "../registry/base-ui/examples/base-ui-avatar-basic/main";
+import * as BaseUiButtonBasicExample from "../registry/base-ui/examples/base-ui-button-basic/main";
+import * as BaseUiCheckboxBasicExample from "../registry/base-ui/examples/base-ui-checkbox-basic/main";
+import * as BaseUiCheckboxFormExample from "../registry/base-ui/examples/base-ui-checkbox-form/main";
+import * as BaseUiCheckboxGroupBasicExample from "../registry/base-ui/examples/base-ui-checkbox-group-basic/main";
+import * as BaseUiCheckboxGroupFormExample from "../registry/base-ui/examples/base-ui-checkbox-group-form/main";
+import * as BaseUiCheckboxGroupLabelingExample from "../registry/base-ui/examples/base-ui-checkbox-group-labeling/main";
+import * as BaseUiCheckboxGroupNativeButtonExample from "../registry/base-ui/examples/base-ui-checkbox-group-native-button/main";
+import * as BaseUiCheckboxGroupNestedParentExample from "../registry/base-ui/examples/base-ui-checkbox-group-nested-parent/main";
+import * as BaseUiCheckboxGroupParentExample from "../registry/base-ui/examples/base-ui-checkbox-group-parent/main";
+import * as BaseUiCheckboxLabelingExample from "../registry/base-ui/examples/base-ui-checkbox-labeling/main";
+import * as BaseUiCheckboxNativeButtonExample from "../registry/base-ui/examples/base-ui-checkbox-native-button/main";
+import * as BaseUiCollapsibleBasicExample from "../registry/base-ui/examples/base-ui-collapsible-basic/main";
+import * as BaseUiComboboxBasicExample from "../registry/base-ui/examples/base-ui-combobox-basic/main";
+import * as BaseUiContextMenuBasicExample from "../registry/base-ui/examples/base-ui-context-menu-basic/main";
+import * as BaseUiContextMenuNestedExample from "../registry/base-ui/examples/base-ui-context-menu-nested/main";
+import * as BaseUiDialogBasicExample from "../registry/base-ui/examples/base-ui-dialog-basic/main";
+import * as BaseUiDialogCloseConfirmationExample from "../registry/base-ui/examples/base-ui-dialog-close-confirmation/main";
+import * as BaseUiDialogNestedExample from "../registry/base-ui/examples/base-ui-dialog-nested/main";
+import * as BaseUiDrawerBasicExample from "../registry/base-ui/examples/base-ui-drawer-basic/main";
+import * as BaseUiDrawerNonModalExample from "../registry/base-ui/examples/base-ui-drawer-non-modal/main";
+import * as BaseUiDrawerPositionExample from "../registry/base-ui/examples/base-ui-drawer-position/main";
+import * as BaseUiFieldBasicExample from "../registry/base-ui/examples/base-ui-field-basic/main";
+import * as BaseUiFieldsetBasicExample from "../registry/base-ui/examples/base-ui-fieldset-basic/main";
+import * as BaseUiFormBasicExample from "../registry/base-ui/examples/base-ui-form-basic/main";
+import * as BaseUiFormSchemaValidationExample from "../registry/base-ui/examples/base-ui-form-schema-validation/main";
+import * as BaseUiFormServerFunctionExample from "../registry/base-ui/examples/base-ui-form-server-function/main";
+import * as BaseUiInputBasicExample from "../registry/base-ui/examples/base-ui-input-basic/main";
+import * as BaseUiMenuBasicExample from "../registry/base-ui/examples/base-ui-menu-basic/main";
+import * as BaseUiMenuNestedExample from "../registry/base-ui/examples/base-ui-menu-nested/main";
+import * as BaseUiMenubarBasicExample from "../registry/base-ui/examples/base-ui-menubar-basic/main";
+import * as BaseUiMeterBasicExample from "../registry/base-ui/examples/base-ui-meter-basic/main";
+import * as BaseUiNavigationMenuBasicExample from "../registry/base-ui/examples/base-ui-navigation-menu-basic/main";
+import * as BaseUiNumberFieldBasicExample from "../registry/base-ui/examples/base-ui-number-field-basic/main";
+import * as BaseUiOtpFieldBasicExample from "../registry/base-ui/examples/base-ui-otp-field-basic/main";
+import * as BaseUiPopoverAnimatedExample from "../registry/base-ui/examples/base-ui-popover-animated/main";
+import * as BaseUiPopoverBasicExample from "../registry/base-ui/examples/base-ui-popover-basic/main";
+import * as BaseUiPopoverDetachedTriggerExample from "../registry/base-ui/examples/base-ui-popover-detached-trigger/main";
+import * as BaseUiPopoverMultipleTriggersExample from "../registry/base-ui/examples/base-ui-popover-multiple-triggers/main";
+import * as BaseUiPopoverOpenOnHoverExample from "../registry/base-ui/examples/base-ui-popover-open-on-hover/main";
+import * as BaseUiPreviewCardBasicExample from "../registry/base-ui/examples/base-ui-preview-card-basic/main";
+import * as BaseUiProgressBasicExample from "../registry/base-ui/examples/base-ui-progress-basic/main";
+import * as BaseUiRadioBasicExample from "../registry/base-ui/examples/base-ui-radio-basic/main";
+import * as BaseUiRadioFormExample from "../registry/base-ui/examples/base-ui-radio-form/main";
+import * as BaseUiRadioLabelingExample from "../registry/base-ui/examples/base-ui-radio-labeling/main";
+import * as BaseUiRadioNativeButtonExample from "../registry/base-ui/examples/base-ui-radio-native-button/main";
+import * as ScrollAreaBasicExample from "../registry/base-ui/examples/base-ui-scroll-area-basic/main";
+import * as ScrollAreaBothScrollbarsExample from "../registry/base-ui/examples/base-ui-scroll-area-both-scrollbars/main";
+import * as ScrollAreaGradientExample from "../registry/base-ui/examples/base-ui-scroll-area-gradient/main";
+import * as ScrollAreaTabsExample from "../registry/base-ui/examples/base-ui-scroll-area-tabs/main";
+import * as BaseUiSelectBasicExample from "../registry/base-ui/examples/base-ui-select-basic/main";
+import * as BaseUiSeparatorBasicExample from "../registry/base-ui/examples/base-ui-separator-basic/main";
+import * as BaseUiSliderBasicExample from "../registry/base-ui/examples/base-ui-slider-basic/main";
+import * as BaseUiSwitchBasicExample from "../registry/base-ui/examples/base-ui-switch-basic/main";
+import * as BaseUiTabsBasicExample from "../registry/base-ui/examples/base-ui-tabs-basic/main";
+import * as BaseUiToastBasicExample from "../registry/base-ui/examples/base-ui-toast-basic/main";
+import * as BaseUiToggleBasicExample from "../registry/base-ui/examples/base-ui-toggle-basic/main";
+import * as BaseUiToggleGroupBasicExample from "../registry/base-ui/examples/base-ui-toggle-group-basic/main";
+import * as BaseUiToolbarBasicExample from "../registry/base-ui/examples/base-ui-toolbar-basic/main";
+import * as BaseUiTooltipBasicExample from "../registry/base-ui/examples/base-ui-tooltip-basic/main";
+import * as BreadcrumbBasicExample from "../registry/shadcn/examples/breadcrumb-basic/main";
+import * as BreadcrumbCollapsedExample from "../registry/shadcn/examples/breadcrumb-collapsed/main";
+import * as BreadcrumbDropdownExample from "../registry/shadcn/examples/breadcrumb-dropdown/main";
+import * as BreadcrumbLinkExample from "../registry/shadcn/examples/breadcrumb-link/main";
+import * as BreadcrumbRtlExample from "../registry/shadcn/examples/breadcrumb-rtl/main";
+import * as BreadcrumbSeparatorExample from "../registry/shadcn/examples/breadcrumb-separator/main";
+import * as ButtonBasicExample from "../registry/foldkit/examples/button-basic/main";
+import * as ButtonDisabledExample from "../registry/foldkit/examples/button-disabled/main";
+import * as ButtonGroupBasicExample from "../registry/shadcn/examples/button-group-basic/main";
+import * as ButtonGroupInputGroupExample from "../registry/shadcn/examples/button-group-input-group/main";
+import * as ButtonGroupInputExample from "../registry/shadcn/examples/button-group-input/main";
+import * as ButtonGroupNestedExample from "../registry/shadcn/examples/button-group-nested/main";
+import * as ButtonGroupOrientationExample from "../registry/shadcn/examples/button-group-orientation/main";
+import * as ButtonGroupPopoverExample from "../registry/shadcn/examples/button-group-popover/main";
+import * as ButtonGroupRtlExample from "../registry/shadcn/examples/button-group-rtl/main";
+import * as ButtonGroupSelectExample from "../registry/shadcn/examples/button-group-select/main";
+import * as ButtonGroupSeparatorExample from "../registry/shadcn/examples/button-group-separator/main";
+import * as ButtonGroupSizeExample from "../registry/shadcn/examples/button-group-size/main";
+import * as ButtonGroupSplitExample from "../registry/shadcn/examples/button-group-split/main";
+import * as CalendarBasicExample from "../registry/foldkit/examples/calendar-basic/main";
+import * as CalendarBoundsExample from "../registry/foldkit/examples/calendar-bounds/main";
+import * as CardBasicExample from "../registry/shadcn/examples/card-basic/main";
+import * as CardImageExample from "../registry/shadcn/examples/card-image/main";
+import * as CardRtlExample from "../registry/shadcn/examples/card-rtl/main";
+import * as CardSizeExample from "../registry/shadcn/examples/card-size/main";
+import * as CardSpacingExample from "../registry/shadcn/examples/card-spacing/main";
+import * as CarouselApiExample from "../registry/shadcn/examples/carousel-api/main";
+import * as CarouselAutoplayExample from "../registry/shadcn/examples/carousel-autoplay/main";
+import * as CarouselBasicExample from "../registry/shadcn/examples/carousel-basic/main";
+import * as CarouselOrientationExample from "../registry/shadcn/examples/carousel-orientation/main";
+import * as CarouselRtlExample from "../registry/shadcn/examples/carousel-rtl/main";
+import * as CarouselSizesExample from "../registry/shadcn/examples/carousel-sizes/main";
+import * as CarouselSpacingExample from "../registry/shadcn/examples/carousel-spacing/main";
+import * as ChartAxisExample from "../registry/shadcn/examples/chart-axis/main";
+import * as ChartBasicExample from "../registry/shadcn/examples/chart-basic/main";
+import * as ChartGridExample from "../registry/shadcn/examples/chart-grid/main";
+import * as ChartLegendExample from "../registry/shadcn/examples/chart-legend/main";
+import * as ChartRtlExample from "../registry/shadcn/examples/chart-rtl/main";
+import * as ChartTooltipExample from "../registry/shadcn/examples/chart-tooltip/main";
+import * as CheckboxBasicExample from "../registry/foldkit/examples/checkbox-basic/main";
+import * as CheckboxGroupBasicExample from "../registry/base-ui/examples/checkbox-group-basic/main";
+import * as CheckboxIndeterminateExample from "../registry/foldkit/examples/checkbox-indeterminate/main";
+import * as CollapsibleBasicExample from "../registry/base-ui/examples/collapsible-basic/main";
+import * as ComboboxBasicExample from "../registry/foldkit/examples/combobox-basic/main";
+import * as ComboboxMultiExample from "../registry/foldkit/examples/combobox-multi/main";
+import * as CommandBasicExample from "../registry/shadcn/examples/command-basic/main";
+import * as CommandGroupsExample from "../registry/shadcn/examples/command-groups/main";
+import * as CommandRtlExample from "../registry/shadcn/examples/command-rtl/main";
+import * as CommandScrollableExample from "../registry/shadcn/examples/command-scrollable/main";
+import * as CommandShortcutsExample from "../registry/shadcn/examples/command-shortcuts/main";
+import * as ContextMenuBasicExample from "../registry/base-ui/examples/context-menu-basic/main";
+import * as DataTableBasicExample from "../registry/shadcn/examples/data-table-basic/main";
+import * as DataTableFilteringExample from "../registry/shadcn/examples/data-table-filtering/main";
+import * as DataTablePaginationExample from "../registry/shadcn/examples/data-table-pagination/main";
+import * as DataTableRowActionsExample from "../registry/shadcn/examples/data-table-row-actions/main";
+import * as DataTableRowSelectionExample from "../registry/shadcn/examples/data-table-row-selection/main";
+import * as DataTableSortingExample from "../registry/shadcn/examples/data-table-sorting/main";
+import * as DataTableVisibilityExample from "../registry/shadcn/examples/data-table-visibility/main";
+import * as DatePickerBasicExample from "../registry/foldkit/examples/date-picker-basic/main";
+import * as DatePickerBoundsExample from "../registry/foldkit/examples/date-picker-bounds/main";
+import * as DialogAnimatedExample from "../registry/foldkit/examples/dialog-animated/main";
+import * as DialogBasicExample from "../registry/foldkit/examples/dialog-basic/main";
+import * as DialogDestructiveExample from "../registry/foldkit/examples/dialog-destructive/main";
+import * as DialogFocusExample from "../registry/foldkit/examples/dialog-focus/main";
+import * as DialogScrollableExample from "../registry/foldkit/examples/dialog-scrollable/main";
+import * as DirectionBasicExample from "../registry/shadcn/examples/direction-basic/main";
+import * as DisclosureBasicExample from "../registry/foldkit/examples/disclosure-basic/main";
+import * as DisclosureDisabledExample from "../registry/foldkit/examples/disclosure-disabled/main";
+import * as DragAndDropBasicExample from "../registry/foldkit/examples/drag-and-drop-basic/main";
+import * as DragAndDropDisabledExample from "../registry/foldkit/examples/drag-and-drop-disabled/main";
+import * as DrawerBasicExample from "../registry/base-ui/examples/drawer-basic/main";
+import * as DropdownMenuBasicExample from "../registry/shadcn/examples/dropdown-menu-basic/main";
+import * as DropdownMenuCheckboxesExample from "../registry/shadcn/examples/dropdown-menu-checkboxes/main";
+import * as DropdownMenuComplexExample from "../registry/shadcn/examples/dropdown-menu-complex/main";
+import * as DropdownMenuDestructiveExample from "../registry/shadcn/examples/dropdown-menu-destructive/main";
+import * as DropdownMenuIconsExample from "../registry/shadcn/examples/dropdown-menu-icons/main";
+import * as DropdownMenuRadioGroupExample from "../registry/shadcn/examples/dropdown-menu-radio-group/main";
+import * as DropdownMenuRtlExample from "../registry/shadcn/examples/dropdown-menu-rtl/main";
+import * as DropdownMenuShortcutsExample from "../registry/shadcn/examples/dropdown-menu-shortcuts/main";
+import * as DropdownMenuSubmenuExample from "../registry/shadcn/examples/dropdown-menu-submenu/main";
+import * as EmptyAvatarGroupExample from "../registry/shadcn/examples/empty-avatar-group/main";
+import * as EmptyAvatarExample from "../registry/shadcn/examples/empty-avatar/main";
+import * as EmptyBackgroundExample from "../registry/shadcn/examples/empty-background/main";
+import * as EmptyBasicExample from "../registry/shadcn/examples/empty-basic/main";
+import * as EmptyInputGroupExample from "../registry/shadcn/examples/empty-input-group/main";
+import * as EmptyOutlineExample from "../registry/shadcn/examples/empty-outline/main";
+import * as EmptyRtlExample from "../registry/shadcn/examples/empty-rtl/main";
+import * as FieldBasicExample from "../registry/base-ui/examples/field-basic/main";
+import * as FieldsetBasicExample from "../registry/foldkit/examples/fieldset-basic/main";
+import * as FieldsetDisabledExample from "../registry/foldkit/examples/fieldset-disabled/main";
+import * as FileDropBasicExample from "../registry/foldkit/examples/file-drop-basic/main";
+import * as FileDropDisabledExample from "../registry/foldkit/examples/file-drop-disabled/main";
+import * as FormBasicExample from "../registry/base-ui/examples/form-basic/main";
+import * as HoverCardBasicExample from "../registry/shadcn/examples/hover-card-basic/main";
+import * as HoverCardRtlExample from "../registry/shadcn/examples/hover-card-rtl/main";
+import * as HoverCardSidesExample from "../registry/shadcn/examples/hover-card-sides/main";
+import * as InputBasicExample from "../registry/foldkit/examples/input-basic/main";
+import * as InputDisabledExample from "../registry/foldkit/examples/input-disabled/main";
+import * as InputOtpAlphanumericExample from "../registry/shadcn/examples/input-otp-alphanumeric/main";
+import * as InputOtpBasicExample from "../registry/shadcn/examples/input-otp-basic/main";
+import * as InputOtpControlledExample from "../registry/shadcn/examples/input-otp-controlled/main";
+import * as InputOtpDisabledExample from "../registry/shadcn/examples/input-otp-disabled/main";
+import * as InputOtpFormExample from "../registry/shadcn/examples/input-otp-form/main";
+import * as InputOtpFourDigitsExample from "../registry/shadcn/examples/input-otp-four-digits/main";
+import * as InputOtpInvalidExample from "../registry/shadcn/examples/input-otp-invalid/main";
+import * as InputOtpPatternExample from "../registry/shadcn/examples/input-otp-pattern/main";
+import * as InputOtpRtlExample from "../registry/shadcn/examples/input-otp-rtl/main";
+import * as InputOtpSeparatorExample from "../registry/shadcn/examples/input-otp-separator/main";
+import * as ItemAvatarExample from "../registry/shadcn/examples/item-avatar/main";
+import * as ItemBasicExample from "../registry/shadcn/examples/item-basic/main";
+import * as ItemDropdownExample from "../registry/shadcn/examples/item-dropdown/main";
+import * as ItemGroupExample from "../registry/shadcn/examples/item-group/main";
+import * as ItemHeaderExample from "../registry/shadcn/examples/item-header/main";
+import * as ItemIconExample from "../registry/shadcn/examples/item-icon/main";
+import * as ItemImageExample from "../registry/shadcn/examples/item-image/main";
+import * as ItemLinkExample from "../registry/shadcn/examples/item-link/main";
+import * as ItemRtlExample from "../registry/shadcn/examples/item-rtl/main";
+import * as ItemSizeExample from "../registry/shadcn/examples/item-size/main";
+import * as ItemVariantExample from "../registry/shadcn/examples/item-variant/main";
+import * as KbdBasicExample from "../registry/shadcn/examples/kbd-basic/main";
+import * as KbdInputGroupExample from "../registry/shadcn/examples/kbd-input-group/main";
+import * as KbdRtlExample from "../registry/shadcn/examples/kbd-rtl/main";
+import * as LabelBasicExample from "../registry/shadcn/examples/label-basic/main";
+import * as LabelFieldExample from "../registry/shadcn/examples/label-field/main";
+import * as LabelRtlExample from "../registry/shadcn/examples/label-rtl/main";
+import * as ListboxAnimatedExample from "../registry/foldkit/examples/listbox-animated/main";
+import * as ListboxBasicExample from "../registry/foldkit/examples/listbox-basic/main";
+import * as MenuAnimatedExample from "../registry/foldkit/examples/menu-animated/main";
+import * as MenuBasicExample from "../registry/foldkit/examples/menu-basic/main";
+import * as MenubarBasicExample from "../registry/base-ui/examples/menubar-basic/main";
+import * as MeterBasicExample from "../registry/base-ui/examples/meter-basic/main";
+import * as NativeSelectBasicExample from "../registry/shadcn/examples/native-select-basic/main";
+import * as NativeSelectDisabledExample from "../registry/shadcn/examples/native-select-disabled/main";
+import * as NativeSelectGroupsExample from "../registry/shadcn/examples/native-select-groups/main";
+import * as NativeSelectInvalidExample from "../registry/shadcn/examples/native-select-invalid/main";
+import * as NativeSelectRtlExample from "../registry/shadcn/examples/native-select-rtl/main";
+import * as NavigationMenuBasicExample from "../registry/base-ui/examples/navigation-menu-basic/main";
+import * as NumberFieldBasicExample from "../registry/base-ui/examples/number-field-basic/main";
+import * as OtpFieldBasicExample from "../registry/base-ui/examples/otp-field-basic/main";
+import * as PaginationBasicExample from "../registry/shadcn/examples/pagination-basic/main";
+import * as PaginationIconsOnlyExample from "../registry/shadcn/examples/pagination-icons-only/main";
+import * as PaginationRtlExample from "../registry/shadcn/examples/pagination-rtl/main";
+import * as PaginationSimpleExample from "../registry/shadcn/examples/pagination-simple/main";
+import * as PopoverAnimatedExample from "../registry/foldkit/examples/popover-animated/main";
+import * as PopoverBasicExample from "../registry/foldkit/examples/popover-basic/main";
+import * as PreviewCardBasicExample from "../registry/base-ui/examples/preview-card-basic/main";
+import * as ProgressBasicExample from "../registry/base-ui/examples/progress-basic/main";
+import * as RadioBasicExample from "../registry/base-ui/examples/radio-basic/main";
+import * as RadioGroupBasicExample from "../registry/foldkit/examples/radio-group-basic/main";
+import * as RadioGroupHorizontalExample from "../registry/foldkit/examples/radio-group-horizontal/main";
+import * as ResizableBasicExample from "../registry/shadcn/examples/resizable-basic/main";
+import * as ResizableHandleExample from "../registry/shadcn/examples/resizable-handle/main";
+import * as ResizableRtlExample from "../registry/shadcn/examples/resizable-rtl/main";
+import * as ResizableVerticalExample from "../registry/shadcn/examples/resizable-vertical/main";
+import * as SelectBasicExample from "../registry/foldkit/examples/select-basic/main";
+import * as SelectDisabledExample from "../registry/foldkit/examples/select-disabled/main";
+import * as SeparatorBasicExample from "../registry/base-ui/examples/separator-basic/main";
+import * as ShadcnAccordionBasicExample from "../registry/shadcn/examples/shadcn-accordion-basic/main";
+import * as ShadcnAccordionBordersExample from "../registry/shadcn/examples/shadcn-accordion-borders/main";
+import * as ShadcnAccordionCardExample from "../registry/shadcn/examples/shadcn-accordion-card/main";
+import * as ShadcnAccordionDisabledExample from "../registry/shadcn/examples/shadcn-accordion-disabled/main";
+import * as ShadcnAccordionMultipleExample from "../registry/shadcn/examples/shadcn-accordion-multiple/main";
+import * as ShadcnAccordionRtlExample from "../registry/shadcn/examples/shadcn-accordion-rtl/main";
+import * as ShadcnAlertDialogBasicExample from "../registry/shadcn/examples/shadcn-alert-dialog-basic/main";
+import * as ShadcnAlertDialogDestructiveExample from "../registry/shadcn/examples/shadcn-alert-dialog-destructive/main";
+import * as ShadcnAlertDialogMediaExample from "../registry/shadcn/examples/shadcn-alert-dialog-media/main";
+import * as ShadcnAlertDialogRtlExample from "../registry/shadcn/examples/shadcn-alert-dialog-rtl/main";
+import * as ShadcnAlertDialogSmallMediaExample from "../registry/shadcn/examples/shadcn-alert-dialog-small-media/main";
+import * as ShadcnAlertDialogSmallExample from "../registry/shadcn/examples/shadcn-alert-dialog-small/main";
+import * as ShadcnAvatarBasicExample from "../registry/shadcn/examples/shadcn-avatar-basic/main";
+import * as ShadcnAvatarDropdownExample from "../registry/shadcn/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnBaseAccordionBasicExample from "../registry/shadcn/examples/shadcn-base-accordion-basic/main";
+import * as ShadcnButtonBasicExample from "../registry/shadcn/examples/shadcn-button-basic/main";
+import * as ShadcnCalendarBasicExample from "../registry/shadcn/examples/shadcn-calendar-basic/main";
+import * as ShadcnCalendarBookedExample from "../registry/shadcn/examples/shadcn-calendar-booked/main";
+import * as ShadcnCalendarCustomCellSizeExample from "../registry/shadcn/examples/shadcn-calendar-custom-cell-size/main";
+import * as ShadcnCalendarDateOfBirthExample from "../registry/shadcn/examples/shadcn-calendar-date-of-birth/main";
+import * as ShadcnCalendarDateTimePickerExample from "../registry/shadcn/examples/shadcn-calendar-date-time-picker/main";
+import * as ShadcnCalendarMonthYearSelectorExample from "../registry/shadcn/examples/shadcn-calendar-month-year-selector/main";
+import * as ShadcnCalendarPresetsExample from "../registry/shadcn/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRangeExample from "../registry/shadcn/examples/shadcn-calendar-range/main";
+import * as ShadcnCalendarRtlExample from "../registry/shadcn/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCalendarWeekNumbersExample from "../registry/shadcn/examples/shadcn-calendar-week-numbers/main";
+import * as ShadcnCheckboxBasicExample from "../registry/shadcn/examples/shadcn-checkbox-basic/main";
+import * as ShadcnCheckboxCheckedStateExample from "../registry/shadcn/examples/shadcn-checkbox-checked-state/main";
+import * as ShadcnCollapsibleBasicExample from "../registry/shadcn/examples/shadcn-collapsible-basic/main";
+import * as ShadcnComboboxBasicExample from "../registry/shadcn/examples/shadcn-combobox-basic/main";
+import * as ShadcnContextMenuBasicExample from "../registry/shadcn/examples/shadcn-context-menu-basic/main";
+import * as ShadcnDatePickerBasicExample from "../registry/shadcn/examples/shadcn-date-picker-basic/main";
+import * as ShadcnDialogBasicExample from "../registry/shadcn/examples/shadcn-dialog-basic/main";
+import * as ShadcnDialogCustomCloseButtonExample from "../registry/shadcn/examples/shadcn-dialog-custom-close-button/main";
+import * as ShadcnDialogNoCloseButtonExample from "../registry/shadcn/examples/shadcn-dialog-no-close-button/main";
+import * as ShadcnDialogRtlExample from "../registry/shadcn/examples/shadcn-dialog-rtl/main";
+import * as ShadcnDialogScrollableContentExample from "../registry/shadcn/examples/shadcn-dialog-scrollable-content/main";
+import * as ShadcnDialogStickyFooterExample from "../registry/shadcn/examples/shadcn-dialog-sticky-footer/main";
+import * as ShadcnDrawerBasicExample from "../registry/shadcn/examples/shadcn-drawer-basic/main";
+import * as ShadcnDrawerResponsiveDialogExample from "../registry/shadcn/examples/shadcn-drawer-responsive-dialog/main";
+import * as ShadcnDrawerRtlExample from "../registry/shadcn/examples/shadcn-drawer-rtl/main";
+import * as ShadcnDrawerScrollableContentExample from "../registry/shadcn/examples/shadcn-drawer-scrollable-content/main";
+import * as ShadcnDrawerSidesExample from "../registry/shadcn/examples/shadcn-drawer-sides/main";
+import * as ShadcnFieldBasicExample from "../registry/shadcn/examples/shadcn-field-basic/main";
+import * as ShadcnInputBadgeExample from "../registry/shadcn/examples/shadcn-input-badge/main";
+import * as ShadcnInputBasicExample from "../registry/shadcn/examples/shadcn-input-basic/main";
+import * as ShadcnInputButtonGroupExample from "../registry/shadcn/examples/shadcn-input-button-group/main";
+import * as ShadcnInputDemoExample from "../registry/shadcn/examples/shadcn-input-demo/main";
+import * as ShadcnInputDisabledExample from "../registry/shadcn/examples/shadcn-input-disabled/main";
+import * as ShadcnInputFieldGroupExample from "../registry/shadcn/examples/shadcn-input-field-group/main";
+import * as ShadcnInputFieldExample from "../registry/shadcn/examples/shadcn-input-field/main";
+import * as ShadcnInputFileExample from "../registry/shadcn/examples/shadcn-input-file/main";
+import * as ShadcnInputFormExample from "../registry/shadcn/examples/shadcn-input-form/main";
+import * as ShadcnInputGridExample from "../registry/shadcn/examples/shadcn-input-grid/main";
+import * as ShadcnInputInlineExample from "../registry/shadcn/examples/shadcn-input-inline/main";
+import * as ShadcnInputInputGroupExample from "../registry/shadcn/examples/shadcn-input-input-group/main";
+import * as ShadcnInputInvalidExample from "../registry/shadcn/examples/shadcn-input-invalid/main";
+import * as ShadcnInputRequiredExample from "../registry/shadcn/examples/shadcn-input-required/main";
+import * as ShadcnInputRtlExample from "../registry/shadcn/examples/shadcn-input-rtl/main";
+import * as ShadcnMenubarBasicExample from "../registry/shadcn/examples/shadcn-menubar-basic/main";
+import * as ShadcnPopoverBasicExample from "../registry/shadcn/examples/shadcn-popover-basic/main";
+import * as ShadcnRadioGroupBasicExample from "../registry/shadcn/examples/shadcn-radio-group-basic/main";
+import * as ShadcnSelectBasicExample from "../registry/shadcn/examples/shadcn-select-basic/main";
+import * as ShadcnSliderBasicExample from "../registry/shadcn/examples/shadcn-slider-basic/main";
+import * as ShadcnSwitchBasicExample from "../registry/shadcn/examples/shadcn-switch-basic/main";
+import * as ShadcnTabsBasicExample from "../registry/shadcn/examples/shadcn-tabs-basic/main";
+import * as ShadcnTextareaBasicExample from "../registry/shadcn/examples/shadcn-textarea-basic/main";
+import * as ShadcnToastBasicExample from "../registry/shadcn/examples/shadcn-toast-basic/main";
+import * as ShadcnToggleBasicExample from "../registry/shadcn/examples/shadcn-toggle-basic/main";
+import * as ShadcnToggleGroupBasicExample from "../registry/shadcn/examples/shadcn-toggle-group-basic/main";
+import * as ShadcnTooltipBasicExample from "../registry/shadcn/examples/shadcn-tooltip-basic/main";
+import * as SheetBasicExample from "../registry/shadcn/examples/sheet-basic/main";
+import * as SidebarBasicExample from "../registry/shadcn/examples/sidebar-basic/main";
+import * as SidebarCompositionExample from "../registry/shadcn/examples/sidebar-composition/main";
+import * as SidebarControlledExample from "../registry/shadcn/examples/sidebar-controlled/main";
+import * as SidebarRtlExample from "../registry/shadcn/examples/sidebar-rtl/main";
+import * as SidebarVariantsExample from "../registry/shadcn/examples/sidebar-variants/main";
+import * as SkeletonBasicExample from "../registry/shadcn/examples/skeleton-basic/main";
+import * as SliderBasicExample from "../registry/foldkit/examples/slider-basic/main";
+import * as SliderDisabledExample from "../registry/foldkit/examples/slider-disabled/main";
+import * as SonnerBasicExample from "../registry/shadcn/examples/sonner-basic/main";
+import * as SpinnerBasicExample from "../registry/shadcn/examples/spinner-basic/main";
+import * as SwitchBasicExample from "../registry/foldkit/examples/switch-basic/main";
+import * as SwitchDisabledExample from "../registry/foldkit/examples/switch-disabled/main";
+import * as TableBasicExample from "../registry/shadcn/examples/table-basic/main";
+import * as TabsBasicExample from "../registry/foldkit/examples/tabs-basic/main";
+import * as TabsManualExample from "../registry/foldkit/examples/tabs-manual/main";
+import * as TextareaBasicExample from "../registry/foldkit/examples/textarea-basic/main";
+import * as TextareaDisabledExample from "../registry/foldkit/examples/textarea-disabled/main";
+import * as ToastBasicExample from "../registry/foldkit/examples/toast-basic/main";
+import * as ToastVariantsExample from "../registry/foldkit/examples/toast-variants/main";
+import * as ToggleBasicExample from "../registry/base-ui/examples/toggle-basic/main";
+import * as ToggleGroupBasicExample from "../registry/base-ui/examples/toggle-group-basic/main";
+import * as ToolbarBasicExample from "../registry/base-ui/examples/toolbar-basic/main";
+import * as TooltipBasicExample from "../registry/foldkit/examples/tooltip-basic/main";
+import * as TooltipNoDelayExample from "../registry/foldkit/examples/tooltip-no-delay/main";
+import * as TypographyBasicExample from "../registry/shadcn/examples/typography-basic/main";
+import * as VirtualListBasicExample from "../registry/foldkit/examples/virtual-list-basic/main";
+import * as VirtualListVariableExample from "../registry/foldkit/examples/virtual-list-variable/main";
+import * as BaseUiTabs from "../registry/base-ui/ui/base-ui-tabs";
+import * as Combobox from "../registry/foldkit/ui/combobox";
+import * as Dialog from "../registry/foldkit/ui/dialog";
 import { view } from "./docsView";
 import {
   AnimationRoute,
@@ -1591,7 +1591,7 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Attachments" })).toExist(),
       Scene.expect(Scene.text("AI Elements component")).toExist(),
       Scene.expect(
-        Scene.text("registry/default/ui/ai-elements-attachments")
+        Scene.text("registry/ai-elements/ui/ai-elements-attachments")
       ).toExist(),
       Scene.expect(
         Scene.text("https://elements.ai-sdk.dev/components/attachments")
@@ -3411,7 +3411,7 @@ describe("scene", () => {
       Scene.with(modelForRoute(BaseUiButtonDocsRoute())),
       Scene.expect(Scene.role("heading", { name: "Button" })).toExist(),
       Scene.expect(Scene.text("Base UI")).toExist(),
-      Scene.expect(Scene.text("registry/default/ui/base-ui-button")).toExist(),
+      Scene.expect(Scene.text("registry/base-ui/ui/base-ui-button")).toExist(),
       Scene.expect(Scene.role("button", { name: "Submit" })).toExist(),
       Scene.expect(Scene.role("button", { name: "Disabled" })).toBeDisabled(),
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
@@ -3610,7 +3610,7 @@ describe("scene", () => {
       Scene.expect(Scene.role("heading", { name: "Checkbox" })).toExist(),
       Scene.expect(Scene.text("Base UI")).toExist(),
       Scene.expect(
-        Scene.text("registry/default/ui/base-ui-checkbox")
+        Scene.text("registry/base-ui/ui/base-ui-checkbox")
       ).toExist(),
       Scene.expect(
         Scene.role("checkbox", { name: "Enable notifications" })
@@ -3632,178 +3632,178 @@ describe("scene", () => {
       {
         route: BaseUiAccordionDocsRoute(),
         heading: "Accordion",
-        source: "registry/default/ui/base-ui-accordion",
+        source: "registry/base-ui/ui/base-ui-accordion",
       },
       {
         route: BaseUiAlertDialogDocsRoute(),
         heading: "Alert Dialog",
-        source: "registry/default/ui/base-ui-alert-dialog",
+        source: "registry/base-ui/ui/base-ui-alert-dialog",
       },
       {
         route: BaseUiAutocompleteDocsRoute(),
         heading: "Autocomplete",
-        source: "registry/default/ui/base-ui-autocomplete",
+        source: "registry/base-ui/ui/base-ui-autocomplete",
       },
       {
         route: BaseUiAvatarDocsRoute(),
         heading: "Avatar",
-        source: "registry/default/ui/base-ui-avatar",
+        source: "registry/base-ui/ui/base-ui-avatar",
       },
       {
         route: BaseUiComboboxDocsRoute(),
         heading: "Combobox",
-        source: "registry/default/ui/base-ui-combobox",
+        source: "registry/base-ui/ui/base-ui-combobox",
         resolveMounts: [resolveBaseUiComboboxBasicPreventBlurMount()],
       },
       {
         route: BaseUiCheckboxGroupDocsRoute(),
         heading: "Checkbox Group",
-        source: "registry/default/ui/base-ui-checkbox-group",
+        source: "registry/base-ui/ui/base-ui-checkbox-group",
       },
       {
         route: BaseUiCollapsibleDocsRoute(),
         heading: "Collapsible",
-        source: "registry/default/ui/base-ui-collapsible",
+        source: "registry/base-ui/ui/base-ui-collapsible",
       },
       {
         route: BaseUiContextMenuDocsRoute(),
         heading: "Context Menu",
-        source: "registry/default/ui/base-ui-context-menu",
+        source: "registry/base-ui/ui/base-ui-context-menu",
       },
       {
         route: BaseUiDialogDocsRoute(),
         heading: "Dialog",
-        source: "registry/default/ui/base-ui-dialog",
+        source: "registry/base-ui/ui/base-ui-dialog",
       },
       {
         route: BaseUiDrawerDocsRoute(),
         heading: "Drawer",
-        source: "registry/default/ui/base-ui-drawer",
+        source: "registry/base-ui/ui/base-ui-drawer",
       },
       {
         route: BaseUiFieldDocsRoute(),
         heading: "Field",
-        source: "registry/default/ui/base-ui-field",
+        source: "registry/base-ui/ui/base-ui-field",
       },
       {
         route: BaseUiFieldsetDocsRoute(),
         heading: "Fieldset",
-        source: "registry/default/ui/base-ui-fieldset",
+        source: "registry/base-ui/ui/base-ui-fieldset",
       },
       {
         route: BaseUiFormDocsRoute(),
         heading: "Form",
-        source: "registry/default/ui/base-ui-form",
+        source: "registry/base-ui/ui/base-ui-form",
       },
       {
         route: BaseUiInputDocsRoute(),
         heading: "Input",
-        source: "registry/default/ui/base-ui-input",
+        source: "registry/base-ui/ui/base-ui-input",
       },
       {
         route: BaseUiMenubarDocsRoute(),
         heading: "Menubar",
-        source: "registry/default/ui/base-ui-menubar",
+        source: "registry/base-ui/ui/base-ui-menubar",
       },
       {
         route: BaseUiMeterDocsRoute(),
         heading: "Meter",
-        source: "registry/default/ui/base-ui-meter",
+        source: "registry/base-ui/ui/base-ui-meter",
       },
       {
         route: BaseUiMenuDocsRoute(),
         heading: "Menu",
-        source: "registry/default/ui/base-ui-menu",
+        source: "registry/base-ui/ui/base-ui-menu",
       },
       {
         route: BaseUiNavigationMenuDocsRoute(),
         heading: "Navigation Menu",
-        source: "registry/default/ui/base-ui-navigation-menu",
+        source: "registry/base-ui/ui/base-ui-navigation-menu",
       },
       {
         route: BaseUiNumberFieldDocsRoute(),
         heading: "Number Field",
-        source: "registry/default/ui/base-ui-number-field",
+        source: "registry/base-ui/ui/base-ui-number-field",
       },
       {
         route: BaseUiOtpFieldDocsRoute(),
         heading: "OTP Field",
-        source: "registry/default/ui/base-ui-otp-field",
+        source: "registry/base-ui/ui/base-ui-otp-field",
       },
       {
         route: BaseUiPopoverDocsRoute(),
         heading: "Popover",
-        source: "registry/default/ui/base-ui-popover",
+        source: "registry/base-ui/ui/base-ui-popover",
       },
       {
         route: BaseUiPreviewCardDocsRoute(),
         heading: "Preview Card",
-        source: "registry/default/ui/base-ui-preview-card",
+        source: "registry/base-ui/ui/base-ui-preview-card",
       },
       {
         route: BaseUiProgressDocsRoute(),
         heading: "Progress",
-        source: "registry/default/ui/base-ui-progress",
+        source: "registry/base-ui/ui/base-ui-progress",
       },
       {
         route: BaseUiRadioDocsRoute(),
         heading: "Radio",
-        source: "registry/default/ui/base-ui-radio",
+        source: "registry/base-ui/ui/base-ui-radio",
       },
       {
         route: BaseUiScrollAreaDocsRoute(),
         heading: "Scroll Area",
-        source: "registry/default/ui/base-ui-scroll-area",
+        source: "registry/base-ui/ui/base-ui-scroll-area",
       },
       {
         route: BaseUiSeparatorDocsRoute(),
         heading: "Separator",
-        source: "registry/default/ui/base-ui-separator",
+        source: "registry/base-ui/ui/base-ui-separator",
       },
       {
         route: BaseUiSelectDocsRoute(),
         heading: "Select",
-        source: "registry/default/ui/base-ui-select",
+        source: "registry/base-ui/ui/base-ui-select",
       },
       {
         route: BaseUiSliderDocsRoute(),
         heading: "Slider",
-        source: "registry/default/ui/base-ui-slider",
+        source: "registry/base-ui/ui/base-ui-slider",
       },
       {
         route: BaseUiSwitchDocsRoute(),
         heading: "Switch",
-        source: "registry/default/ui/base-ui-switch",
+        source: "registry/base-ui/ui/base-ui-switch",
       },
       {
         route: BaseUiTabsDocsRoute(),
         heading: "Tabs",
-        source: "registry/default/ui/base-ui-tabs",
+        source: "registry/base-ui/ui/base-ui-tabs",
       },
       {
         route: BaseUiToggleDocsRoute(),
         heading: "Toggle",
-        source: "registry/default/ui/base-ui-toggle",
+        source: "registry/base-ui/ui/base-ui-toggle",
       },
       {
         route: BaseUiToggleGroupDocsRoute(),
         heading: "Toggle Group",
-        source: "registry/default/ui/base-ui-toggle-group",
+        source: "registry/base-ui/ui/base-ui-toggle-group",
       },
       {
         route: BaseUiToolbarDocsRoute(),
         heading: "Toolbar",
-        source: "registry/default/ui/base-ui-toolbar",
+        source: "registry/base-ui/ui/base-ui-toolbar",
       },
       {
         route: BaseUiToastDocsRoute(),
         heading: "Toast",
-        source: "registry/default/ui/base-ui-toast",
+        source: "registry/base-ui/ui/base-ui-toast",
       },
       {
         route: BaseUiTooltipDocsRoute(),
         heading: "Tooltip",
-        source: "registry/default/ui/base-ui-tooltip",
+        source: "registry/base-ui/ui/base-ui-tooltip",
       },
     ];
 
@@ -3838,155 +3838,154 @@ describe("scene", () => {
       {
         route: ShadcnButtonDocsRoute(),
         heading: "Button",
-        source: "registry/default/ui/shadcn-button",
+        source: "registry/shadcn/ui/shadcn-button",
         example: "Basic",
       },
       {
         route: ShadcnCheckboxDocsRoute(),
         heading: "Checkbox",
-        source: "registry/default/ui/shadcn-checkbox",
+        source: "registry/shadcn/ui/shadcn-checkbox",
       },
       {
         route: ShadcnInputDocsRoute(),
         heading: "Input",
-        source: "registry/default/ui/shadcn-input",
+        source: "registry/shadcn/ui/shadcn-input",
       },
       {
         route: ShadcnAccordionDocsRoute(),
         heading: "Accordion",
-        source: "registry/default/ui/shadcn-accordion",
+        source: "registry/shadcn/ui/shadcn-accordion",
         example: "Basic",
       },
       {
         route: ShadcnAlertDialogDocsRoute(),
         heading: "Alert Dialog",
-        source: "registry/default/ui/shadcn-alert-dialog",
+        source: "registry/shadcn/ui/shadcn-alert-dialog",
         example: "Basic",
       },
       {
         route: ShadcnAvatarDocsRoute(),
         heading: "Avatar",
-        source: "registry/default/ui/shadcn-avatar",
-        origin: "https://ui.shadcn.com/docs/components/radix/avatar",
+        source: "registry/shadcn/ui/shadcn-avatar",
         example: "Basic",
       },
       {
         route: ShadcnCalendarDocsRoute(),
         heading: "Calendar",
-        source: "registry/default/ui/shadcn-calendar",
+        source: "registry/shadcn/ui/shadcn-calendar",
         example: "Basic",
       },
       {
         route: ShadcnCollapsibleDocsRoute(),
         heading: "Collapsible",
-        source: "registry/default/ui/shadcn-collapsible",
+        source: "registry/shadcn/ui/shadcn-collapsible",
       },
       {
         route: ShadcnComboboxDocsRoute(),
         heading: "Combobox",
-        source: "registry/default/ui/shadcn-combobox",
+        source: "registry/shadcn/ui/shadcn-combobox",
         resolveMounts: [resolveShadcnComboboxBasicPreventBlurMount()],
       },
       {
         route: ShadcnContextMenuDocsRoute(),
         heading: "Context Menu",
-        source: "registry/default/ui/shadcn-context-menu",
+        source: "registry/shadcn/ui/shadcn-context-menu",
       },
       {
         route: ShadcnDatePickerDocsRoute(),
         heading: "Date Picker",
-        source: "registry/default/ui/shadcn-date-picker",
+        source: "registry/shadcn/ui/shadcn-date-picker",
       },
       {
         route: ShadcnDialogDocsRoute(),
         heading: "Dialog",
-        source: "registry/default/ui/shadcn-dialog",
+        source: "registry/shadcn/ui/shadcn-dialog",
       },
       {
         route: ShadcnDrawerDocsRoute(),
         heading: "Drawer",
-        source: "registry/default/ui/shadcn-drawer",
+        source: "registry/shadcn/ui/shadcn-drawer",
       },
       {
         route: ShadcnFieldDocsRoute(),
         heading: "Field",
-        source: "registry/default/ui/shadcn-field",
+        source: "registry/shadcn/ui/shadcn-field",
       },
       {
         route: ShadcnMenubarDocsRoute(),
         heading: "Menubar",
-        source: "registry/default/ui/shadcn-menubar",
+        source: "registry/shadcn/ui/shadcn-menubar",
       },
       {
         route: ShadcnNavigationMenuDocsRoute(),
         heading: "Navigation Menu",
-        source: "registry/default/ui/shadcn-navigation-menu",
+        source: "registry/shadcn/ui/shadcn-navigation-menu",
       },
       {
         route: ShadcnPopoverDocsRoute(),
         heading: "Popover",
-        source: "registry/default/ui/shadcn-popover",
+        source: "registry/shadcn/ui/shadcn-popover",
       },
       {
         route: ShadcnProgressDocsRoute(),
         heading: "Progress",
-        source: "registry/default/ui/shadcn-progress",
+        source: "registry/shadcn/ui/shadcn-progress",
       },
       {
         route: ShadcnSwitchDocsRoute(),
         heading: "Switch",
-        source: "registry/default/ui/shadcn-switch",
+        source: "registry/shadcn/ui/shadcn-switch",
         example: "Basic",
       },
       {
         route: ShadcnTabsDocsRoute(),
         heading: "Tabs",
-        source: "registry/default/ui/shadcn-tabs",
+        source: "registry/shadcn/ui/shadcn-tabs",
         example: "Basic",
       },
       {
         route: ShadcnTextareaDocsRoute(),
         heading: "Textarea",
-        source: "registry/default/ui/shadcn-textarea",
+        source: "registry/shadcn/ui/shadcn-textarea",
       },
       {
         route: ShadcnToastDocsRoute(),
         heading: "Toast",
-        source: "registry/default/ui/shadcn-toast",
+        source: "registry/shadcn/ui/shadcn-toast",
         example: "Basic",
       },
       {
         route: ShadcnRadioGroupDocsRoute(),
         heading: "Radio Group",
-        source: "registry/default/ui/shadcn-radio-group",
+        source: "registry/shadcn/ui/shadcn-radio-group",
         example: "Basic",
       },
       {
         route: ShadcnScrollAreaDocsRoute(),
         heading: "Scroll Area",
-        source: "registry/default/ui/shadcn-scroll-area",
+        source: "registry/shadcn/ui/shadcn-scroll-area",
       },
       {
         route: ShadcnSelectDocsRoute(),
         heading: "Select",
-        source: "registry/default/ui/shadcn-select",
+        source: "registry/shadcn/ui/shadcn-select",
         example: "Basic",
       },
       {
         route: ShadcnSeparatorDocsRoute(),
         heading: "Separator",
-        source: "registry/default/ui/shadcn-separator",
+        source: "registry/shadcn/ui/shadcn-separator",
       },
       {
         route: ShadcnSliderDocsRoute(),
         heading: "Slider",
-        source: "registry/default/ui/shadcn-slider",
+        source: "registry/shadcn/ui/shadcn-slider",
         example: "Basic",
       },
     ];
 
     shadcnDocsRoutes.forEach(
-      ({ route, heading, source, origin, example, resolveMounts = [] }) => {
+      ({ route, heading, source, example, resolveMounts = [] }) => {
         Scene.scene(
           { update, view },
           Scene.with(modelForRoute(route)),
@@ -4005,14 +4004,6 @@ describe("scene", () => {
           Scene.expect(
             Scene.role("heading", { name: "API reference" })
           ).toExist(),
-          ...(origin === undefined
-            ? []
-            : [
-                Scene.expect(Scene.role("link", { name: origin })).toHaveAttr(
-                  "href",
-                  origin
-                ),
-              ]),
           ...(example === undefined
             ? []
             : [
@@ -6220,14 +6211,14 @@ describe("scene", () => {
         Scene.role("heading", { name: "New component interface" })
       ).toExist(),
       Scene.expect(
-        Scene.text("registry/default/ui/example-panel/index.ts")
+        Scene.text("registry/foldkit/ui/example-panel/index.ts")
       ).toExist(),
       Scene.change(
         Scene.role("textbox", { name: "Component name" }),
         "Command Menu"
       ),
       Scene.expect(
-        Scene.text("registry/default/ui/command-menu/index.ts")
+        Scene.text("registry/foldkit/ui/command-menu/index.ts")
       ).toExist(),
       Scene.change(Scene.role("combobox", { name: "Origin" }), "shadcn"),
       Scene.expect(Scene.role("combobox", { name: "Origin" })).toHaveValue(

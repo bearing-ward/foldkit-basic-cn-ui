@@ -124,7 +124,7 @@ const serveRequest = async (
 const ensurePublicRegistryArtifacts = async (publicDir: string): Promise<void> => {
   await Promise.all([
     readFile(path.join(publicDir, "components.json"), "utf-8").then(JSON.parse),
-    readFile(path.join(publicDir, "r/index.json"), "utf-8").then(JSON.parse),
+    readFile(path.join(publicDir, "registry.json"), "utf-8").then(JSON.parse),
   ]);
 };
 
@@ -161,7 +161,7 @@ const startRegistryServer = async (config: {
       const localBaseUrl = `http://${displayHost(config.host)}:${port}`;
 
       console.log("Serving Foldkit CN registry");
-      console.log(`Local registry base URL: ${localBaseUrl}/r/{name}.json`);
+      console.log(`Local registry base URL: ${localBaseUrl}/{name}.json`);
       console.log(`components.json: ${localBaseUrl}/components.json`);
       console.log("Press Ctrl+C to stop.");
 

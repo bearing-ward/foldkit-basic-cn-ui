@@ -1,0 +1,43 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-dialog-basic",
+  "type": "registry:example",
+  "title": "Alert Dialog Basic",
+  "description": "A runnable Foldkit version of the Base UI Alert Dialog default Discard draft example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-alert-dialog"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/alert-dialog-basic/main.ts",
+      "target": "src/examples/alert-dialog-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as AlertDialog from \"../../../foldkit/ui/alert-dialog\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  discarded: S.Boolean,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedDiscardDraft = m(\"ClickedDiscardDraft\");\nexport const ClickedCancelDiscard = m(\"ClickedCancelDiscard\");\nexport const ClickedConfirmDiscard = m(\"ClickedConfirmDiscard\");\n\nexport const Message = S.Union([\n  ClickedDiscardDraft,\n  ClickedCancelDiscard,\n  ClickedConfirmDiscard,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false, discarded: false }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedDiscardDraft: () => [evo(model, { open: () => true }), []],\n      ClickedCancelDiscard: () => [evo(model, { open: () => false }), []],\n      ClickedConfirmDiscard: () => [\n        evo(model, { open: () => false, discarded: () => true }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const titleId = \"discard-draft-title\";\n  const descriptionId = \"discard-draft-description\";\n\n  return AlertDialog.rootView<Message>({\n    children: [\n      AlertDialog.triggerView<Message>({\n        onClick: ClickedDiscardDraft(),\n        children: [h.span([], [\"Discard draft\"])],\n      }),\n      ...(model.discarded\n        ? [h.p([h.Class(\"text-sm text-gray-600\")], [\"Draft discarded.\"])]\n        : []),\n      AlertDialog.portalView<Message>({\n        open: model.open,\n        children: [\n          AlertDialog.backdropView<Message>({ children: [] }),\n          AlertDialog.viewportView<Message>({\n            children: [\n              AlertDialog.popupView<Message>({\n                titleId,\n                descriptionId,\n                children: [\n                  AlertDialog.titleView<Message>({\n                    id: titleId,\n                    children: [h.span([], [\"Discard draft?\"])],\n                  }),\n                  AlertDialog.descriptionView<Message>({\n                    id: descriptionId,\n                    children: [h.span([], [\"You can't undo this action.\"])],\n                  }),\n                  AlertDialog.actionsView<Message>({\n                    children: [\n                      AlertDialog.closeView<Message>({\n                        onClick: ClickedCancelDiscard(),\n                        children: [h.span([], [\"Cancel\"])],\n                      }),\n                      AlertDialog.closeView<Message>({\n                        variant: \"Confirm\",\n                        onClick: ClickedConfirmDiscard(),\n                        children: [h.span([], [\"Discard\"])],\n                      }),\n                    ],\n                  }),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/alert-dialog-basic/entry.ts",
+      "target": "src/examples/alert-dialog-basic/entry.ts",
+      "type": "registry:example",
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Alert Dialog Basic\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+    },
+    {
+      "path": "registry/base-ui/examples/alert-dialog-basic/index.html",
+      "target": "src/examples/alert-dialog-basic/index.html",
+      "type": "registry:example",
+      "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Alert Dialog Basic</title>\n    <script type=\"module\" src=\"./entry.ts\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    {
+      "path": "registry/base-ui/examples/alert-dialog-basic/alert-dialog-basic.scene.test.ts",
+      "target": "src/examples/alert-dialog-basic/alert-dialog-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as AlertDialogBasicExample from \"./main\";\n\ndescribe(\"Alert Dialog Basic example\", () => {\n  test(\"matches the Base UI default Discard draft example\", () => {\n    Scene.scene(\n      {\n        update: AlertDialogBasicExample.update,\n        view: AlertDialogBasicExample.view,\n      },\n      Scene.with(AlertDialogBasicExample.init()[0]),\n      Scene.click(Scene.role(\"button\", { name: \"Discard draft\" })),\n      Scene.expect(\n        Scene.role(\"alertdialog\", { name: \"Discard draft?\" })\n      ).toExist(),\n      Scene.expect(Scene.text(\"You can't undo this action.\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Discard\" })),\n      Scene.expect(Scene.text(\"Draft discarded.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "AlertDialog",
+      "example": "basic",
+      "originExample": "alert-dialog-default-discard-draft"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset-disabled",
+  "type": "registry:example",
+  "title": "Fieldset Disabled",
+  "description": "A runnable Foldkit example showing disabled grouped fields.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/fieldset"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/fieldset-disabled/main.ts",
+      "target": "src/examples/fieldset-disabled/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Fieldset from \"../../ui/fieldset\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const LoadedDisabledFieldset = m(\"LoadedDisabledFieldset\");\n\nexport const Message = S.Union([LoadedDisabledFieldset]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return Fieldset.view<Message>({\n    id: \"locked-profile-fieldset\",\n    isDisabled: true,\n    toView: (attributes) =>\n      h.fieldset(\n        [...attributes.fieldset, h.Class(Fieldset.fieldsetClassName)],\n        [\n          h.legend(\n            [...attributes.legend, h.Class(Fieldset.legendClassName)],\n            [\"Locked profile\"]\n          ),\n          h.p(\n            [...attributes.description, h.Class(Fieldset.descriptionClassName)],\n            [\"Profile fields are disabled while the account is archived.\"]\n          ),\n          h.div(\n            [h.Class(Fieldset.fieldsClassName)],\n            [\n              h.label(\n                [h.Class(Fieldset.fieldClassName)],\n                [\n                  h.span([h.Class(Fieldset.labelClassName)], [\"Name\"]),\n                  h.input([\n                    h.AriaLabel(\"Locked name\"),\n                    h.Disabled(true),\n                    h.Value(\"Ada Lovelace\"),\n                    h.Class(Fieldset.inputClassName),\n                  ]),\n                ]\n              ),\n              h.label(\n                [h.Class(Fieldset.fieldClassName)],\n                [\n                  h.span([h.Class(Fieldset.labelClassName)], [\"Bio\"]),\n                  h.textarea(\n                    [\n                      h.AriaLabel(\"Locked bio\"),\n                      h.Disabled(true),\n                      h.Value(\"Mathematician and writer.\"),\n                      h.Class(Fieldset.textareaClassName),\n                    ],\n                    []\n                  ),\n                ]\n              ),\n            ]\n          ),\n        ]\n      ),\n  });\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/fieldset-disabled/fieldset-disabled.scene.test.ts",
+      "target": "src/examples/fieldset-disabled/fieldset-disabled.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as FieldsetDisabledExample from \"./main\";\n\ndescribe(\"Fieldset Disabled example\", () => {\n  test(\"renders disabled grouped fields\", () => {\n    Scene.scene(\n      {\n        update: FieldsetDisabledExample.update,\n        view: FieldsetDisabledExample.view,\n      },\n      Scene.with(FieldsetDisabledExample.init()[0]),\n      Scene.expect(Scene.role(\"group\", { name: \"Locked profile\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"textbox\", { name: \"Locked name\" })\n      ).toBeDisabled(),\n      Scene.expect(Scene.role(\"textbox\", { name: \"Locked bio\" })).toBeDisabled()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Fieldset",
+      "example": "disabled"
+    }
+  }
+}

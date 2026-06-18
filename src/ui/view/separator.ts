@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Separator from "../../../registry/default/ui/separator";
+import * as Separator from "../../../registry/base-ui/ui/separator";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 

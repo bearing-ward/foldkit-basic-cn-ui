@@ -1,8 +1,8 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AutocompleteBasicExample from "../registry/default/examples/autocomplete-basic/main";
-import * as BaseUiAutocompleteBasicExample from "../registry/default/examples/base-ui-autocomplete-basic/main";
+import * as AutocompleteBasicExample from "../registry/base-ui/examples/autocomplete-basic/main";
+import * as BaseUiAutocompleteBasicExample from "../registry/base-ui/examples/base-ui-autocomplete-basic/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

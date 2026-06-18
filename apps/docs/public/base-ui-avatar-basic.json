@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-avatar-basic",
+  "type": "registry:example",
+  "title": "Base UI Avatar Basic",
+  "description": "A runnable Foldkit version of the Base UI Avatar default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-avatar"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/base-ui-avatar-basic/main.ts",
+      "target": "src/examples/base-ui-avatar-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\n\nimport * as Avatar from \"../../ui/base-ui-avatar\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst avatarImageSrc =\n  \"https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=128&h=128&dpr=2&q=80\";\n\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html =>\n    Avatar.groupView<Message>(\n      [\n        Avatar.view<Message>({\n          alt: \"Lena Taylor\",\n          fallback: \"LT\",\n          src: avatarImageSrc,\n        }),\n        Avatar.view<Message>({ fallback: \"LT\" }),\n      ],\n      \"gap-4\"\n    )\n);\n"
+    },
+    {
+      "path": "registry/base-ui/examples/base-ui-avatar-basic/base-ui-avatar-basic.scene.test.ts",
+      "target": "src/examples/base-ui-avatar-basic/base-ui-avatar-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BaseUiAvatarBasicExample from \"./main\";\n\ndescribe(\"Base UI Avatar Basic example\", () => {\n  test(\"matches the Base UI default two avatar example\", () => {\n    Scene.scene(\n      {\n        update: BaseUiAvatarBasicExample.update,\n        view: BaseUiAvatarBasicExample.view,\n      },\n      Scene.with(BaseUiAvatarBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"img\", { name: \"Lena Taylor\" })).toExist(),\n      Scene.expect(Scene.text(\"LT\")).toExist(),\n      Scene.expect(Scene.text(\"LT\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Avatar",
+      "example": "basic",
+      "originExample": "avatar-default",
+      "origin": "https://base-ui.com/react/components/avatar"
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AiElementsAttachmentsGridExample from "../registry/default/examples/ai-elements-attachments-grid/main";
-import * as AiElementsAttachmentsInlineExample from "../registry/default/examples/ai-elements-attachments-inline/main";
-import * as AiElementsAttachmentsListExample from "../registry/default/examples/ai-elements-attachments-list/main";
+import * as AiElementsAttachmentsGridExample from "../registry/ai-elements/examples/ai-elements-attachments-grid/main";
+import * as AiElementsAttachmentsInlineExample from "../registry/ai-elements/examples/ai-elements-attachments-inline/main";
+import * as AiElementsAttachmentsListExample from "../registry/ai-elements/examples/ai-elements-attachments-list/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

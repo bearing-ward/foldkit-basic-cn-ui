@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-avatar-dropdown",
+  "type": "registry:example",
+  "title": "shadcn Avatar Dropdown",
+  "description": "A runnable Foldkit example showing a shadcn Avatar used as a dropdown trigger.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [
+    "@foldkit-cn/shadcn-avatar",
+    "@foldkit-cn/dropdown-menu"
+  ],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-avatar-dropdown/main.ts",
+      "target": "src/examples/shadcn-avatar-dropdown/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as DropdownMenu from \"../../ui/dropdown-menu\";\nimport * as Avatar from \"../../ui/shadcn-avatar\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  selected: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ToggledDropdownMenu = m(\"ToggledDropdownMenu\");\nexport const ClosedDropdownMenu = m(\"ClosedDropdownMenu\");\nexport const SelectedDropdownMenuItem = m(\"SelectedDropdownMenuItem\", {\n  value: S.String,\n});\nexport const Message = S.Union([\n  ToggledDropdownMenu,\n  ClosedDropdownMenu,\n  SelectedDropdownMenuItem,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: false, selected: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledDropdownMenu: () => [evo(model, { open: (open) => !open }), []],\n      ClosedDropdownMenu: () => [evo(model, { open: () => false }), []],\n      SelectedDropdownMenuItem: ({ value }) => [\n        evo(model, {\n          open: () => false,\n          selected: () => value,\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst menuItem = (label: string): Html => {\n  const h = html<Message>();\n\n  return DropdownMenu.itemView<Message>({\n    onSelect: SelectedDropdownMenuItem({ value: label }),\n    children: [h.span([], [label])],\n  });\n};\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return DropdownMenu.rootView<Message>({\n    children: [\n      DropdownMenu.triggerView<Message>({\n        open: model.open,\n        onToggle: ToggledDropdownMenu(),\n        className: \"rounded-full border-0 bg-transparent p-0\",\n        children: [Avatar.view<Message>({ fallback: \"CN\" })],\n      }),\n      DropdownMenu.portalView<Message>({\n        open: model.open,\n        children: [\n          DropdownMenu.backdropView<Message>({\n            onClose: ClosedDropdownMenu(),\n          }),\n          DropdownMenu.positionerView<Message>({\n            children: [\n              DropdownMenu.popupView<Message>({\n                children: [\n                  menuItem(\"Profile\"),\n                  menuItem(\"Billing\"),\n                  menuItem(\"Settings\"),\n                  DropdownMenu.separatorView<Message>({}),\n                  menuItem(\"Log out\"),\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n      model.selected === \"\"\n        ? h.empty\n        : h.p(\n            [h.Class(\"mt-3 text-sm text-gray-600\")],\n            [`Selected: ${model.selected}`]\n          ),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-avatar-dropdown/shadcn-avatar-dropdown.scene.test.ts",
+      "target": "src/examples/shadcn-avatar-dropdown/shadcn-avatar-dropdown.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as ShadcnAvatarDropdownExample from \"./main\";\n\ndescribe(\"shadcn Avatar Dropdown example\", () => {\n  test(\"uses the avatar as a dropdown trigger\", () => {\n    Scene.scene(\n      {\n        update: ShadcnAvatarDropdownExample.update,\n        view: ShadcnAvatarDropdownExample.view,\n      },\n      Scene.with(ShadcnAvatarDropdownExample.init()[0]),\n      Scene.expect(Scene.role(\"button\", { name: \"CN\" })).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"CN\" })),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Profile\" })).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Billing\" })).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Settings\" })).toExist(),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Log out\" })).toExist(),\n      Scene.click(Scene.role(\"menuitem\", { name: \"Profile\" })),\n      Scene.expect(Scene.role(\"menuitem\", { name: \"Profile\" })).not.toExist(),\n      Scene.expect(Scene.text(\"Selected: Profile\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Avatar",
+      "example": "dropdown",
+      "origin": "https://ui.shadcn.com/docs/components/radix/avatar"
+    }
+  }
+}

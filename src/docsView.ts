@@ -3749,7 +3749,7 @@ const docsStylingBlock = (): Html => {
     h.p(
       [h.Class("max-w-2xl text-sm text-gray-600")],
       [
-        "Styled registry slices keep presentation in registry/default/ui/{component}/view.ts. Foldkit UI publishes semantic attribute bundles for each part; the registry view spreads those attributes first, then applies local class tokens so consumers can replace the markup without losing ARIA, ids, or event wiring.",
+        "Styled registry slices keep presentation in registry/foldkit/ui/{component}/view.ts. Foldkit UI publishes semantic attribute bundles for each part; the registry view spreads those attributes first, then applies local class tokens so consumers can replace the markup without losing ARIA, ids, or event wiring.",
       ]
     ),
     h.ul(
@@ -4177,7 +4177,7 @@ const otpFieldDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/otp-field" },
+        { label: "Source", value: "registry/base-ui/ui/otp-field" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -4286,7 +4286,7 @@ const previewCardDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/preview-card" },
+        { label: "Source", value: "registry/foldkit/ui/preview-card" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -4402,7 +4402,7 @@ const checkboxDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/checkbox" },
+        { label: "Source", value: "registry/foldkit/ui/checkbox" },
         {
           label: "Examples",
           value: "basic, labeling, native button, form",
@@ -4551,7 +4551,7 @@ const baseUiCheckboxDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/base-ui-checkbox" },
+        { label: "Source", value: "registry/base-ui/ui/base-ui-checkbox" },
         { label: "Examples", value: "basic, labeling, native button, form" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -4726,7 +4726,7 @@ const checkboxGroupDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/checkbox-group" },
+        { label: "Source", value: "registry/foldkit/ui/checkbox-group" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -4924,7 +4924,7 @@ const accordionDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/accordion" },
+        { label: "Source", value: "registry/foldkit/ui/accordion" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -5112,7 +5112,7 @@ const breadcrumbDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/breadcrumb" },
+        { label: "Source", value: "registry/shadcn/ui/breadcrumb" },
         {
           label: "Examples",
           value: "basic, separator, dropdown, collapsed, link, RTL",
@@ -5307,7 +5307,7 @@ const buttonGroupDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/button-group" },
+        { label: "Source", value: "registry/shadcn/ui/button-group" },
         {
           label: "Examples",
           value:
@@ -5514,7 +5514,7 @@ const alertDialogDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/alert-dialog" },
+        { label: "Source", value: "registry/foldkit/ui/alert-dialog" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -5628,7 +5628,7 @@ const alertDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/alert" },
+        { label: "Source", value: "registry/shadcn/ui/alert" },
         { label: "Examples", value: "default, action, destructive" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -5814,7 +5814,7 @@ const aspectRatioDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/aspect-ratio" },
+        { label: "Source", value: "registry/shadcn/ui/aspect-ratio" },
         { label: "Examples", value: "default, square, portrait, RTL" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -5980,7 +5980,7 @@ const drawerDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/drawer" },
+        { label: "Source", value: "registry/foldkit/ui/drawer" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -6097,7 +6097,7 @@ const contextMenuDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/context-menu" },
+        { label: "Source", value: "registry/foldkit/ui/context-menu" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -6220,7 +6220,7 @@ const menubarDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/menubar" },
+        { label: "Source", value: "registry/foldkit/ui/menubar" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -6339,7 +6339,7 @@ const navigationMenuDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/navigation-menu" },
+        { label: "Source", value: "registry/foldkit/ui/navigation-menu" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -6462,7 +6462,7 @@ const collapsibleDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/collapsible" },
+        { label: "Source", value: "registry/foldkit/ui/collapsible" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -6672,7 +6672,7 @@ const fieldDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/field" },
+        { label: "Source", value: "registry/foldkit/ui/field" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -6858,7 +6858,7 @@ const numberFieldDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/number-field" },
+        { label: "Source", value: "registry/foldkit/ui/number-field" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -7032,7 +7032,7 @@ const autocompleteDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/autocomplete" },
+        { label: "Source", value: "registry/foldkit/ui/autocomplete" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -7167,7 +7167,7 @@ const formDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/form" },
+        { label: "Source", value: "registry/foldkit/ui/form" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -7304,7 +7304,7 @@ const sliderDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/slider" },
+        { label: "Source", value: "registry/foldkit/ui/slider" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -7447,7 +7447,7 @@ const switchDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/switch" },
+        { label: "Source", value: "registry/foldkit/ui/switch" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -7584,7 +7584,7 @@ const animationDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/animation" },
+        { label: "Source", value: "registry/foldkit/ui/animation" },
         {
           label: "Examples",
           value:
@@ -7712,7 +7712,7 @@ const virtualListDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/virtual-list" },
+        { label: "Source", value: "registry/foldkit/ui/virtual-list" },
         { label: "Examples", value: "basic, variable" },
         { label: "Proof", value: "scene tests, registry JSON, browser scroll" },
       ]),
@@ -7873,7 +7873,7 @@ const badgeDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/badge" },
+        { label: "Source", value: "registry/shadcn/ui/badge" },
         {
           label: "Examples",
           value: "basic, icon, spinner, link, custom-colors, rtl",
@@ -8050,7 +8050,7 @@ const aiElementsAttachmentsDocsView = (model: Model): Html => {
       docsMetaGrid([
         {
           label: "Source",
-          value: "registry/default/ui/ai-elements-attachments",
+          value: "registry/ai-elements/ui/ai-elements-attachments",
         },
         { label: "Examples", value: "grid, inline, list" },
         {
@@ -8189,7 +8189,7 @@ const avatarDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/avatar" },
+        { label: "Source", value: "registry/base-ui/ui/avatar" },
         { label: "Examples", value: "default" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -8368,7 +8368,7 @@ const carouselDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/carousel" },
+        { label: "Source", value: "registry/shadcn/ui/carousel" },
         {
           label: "Examples",
           value: "basic, sizes, spacing, orientation, API, autoplay, RTL",
@@ -8571,7 +8571,7 @@ const chartDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/chart" },
+        { label: "Source", value: "registry/shadcn/ui/chart" },
         { label: "Examples", value: "basic, grid, axis, tooltip, legend, RTL" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -8706,7 +8706,7 @@ const commandDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/command" },
+        { label: "Source", value: "registry/shadcn/ui/command" },
         {
           label: "Examples",
           value: "basic, groups, rtl, scrollable, shortcuts",
@@ -8903,7 +8903,7 @@ const dropdownMenuDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/dropdown-menu" },
+        { label: "Source", value: "registry/shadcn/ui/dropdown-menu" },
         {
           label: "Examples",
           value:
@@ -9142,7 +9142,7 @@ const hoverCardDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/hover-card" },
+        { label: "Source", value: "registry/shadcn/ui/hover-card" },
         { label: "Examples", value: "basic, disabled, groups, invalid, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -9285,7 +9285,7 @@ const inputOtpDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/input-otp" },
+        { label: "Source", value: "registry/shadcn/ui/input-otp" },
         { label: "Examples", value: "basic, disabled, invalid" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -9489,7 +9489,7 @@ const nativeSelectDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/native-select" },
+        { label: "Source", value: "registry/shadcn/ui/native-select" },
         { label: "Examples", value: "basic, handle, rtl, vertical" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -9651,7 +9651,7 @@ const sheetDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/sheet" },
+        { label: "Source", value: "registry/shadcn/ui/sheet" },
         { label: "Examples", value: "basic, field, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -9745,7 +9745,7 @@ const sonnerDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/sonner" },
+        { label: "Source", value: "registry/shadcn/ui/sonner" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -9847,7 +9847,7 @@ const dataTableDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/data-table" },
+        { label: "Source", value: "registry/shadcn/ui/data-table" },
         {
           label: "Examples",
           value:
@@ -9994,7 +9994,7 @@ const directionDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/direction" },
+        { label: "Source", value: "registry/shadcn/ui/direction" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10082,7 +10082,7 @@ const itemDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/item" },
+        { label: "Source", value: "registry/shadcn/ui/item" },
         {
           label: "Examples",
           value:
@@ -10272,7 +10272,7 @@ const labelDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/label" },
+        { label: "Source", value: "registry/shadcn/ui/label" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10381,7 +10381,7 @@ const paginationDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/pagination" },
+        { label: "Source", value: "registry/shadcn/ui/pagination" },
         { label: "Examples", value: "basic, simple, icons-only, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10503,7 +10503,7 @@ const resizableDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/resizable" },
+        { label: "Source", value: "registry/shadcn/ui/resizable" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10622,7 +10622,7 @@ const sidebarDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/sidebar" },
+        { label: "Source", value: "registry/shadcn/ui/sidebar" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10757,7 +10757,7 @@ const tableDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/table" },
+        { label: "Source", value: "registry/shadcn/ui/table" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10849,7 +10849,7 @@ const cardDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/card" },
+        { label: "Source", value: "registry/shadcn/ui/card" },
         { label: "Examples", value: "basic, size, spacing, image, RTL" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -10981,7 +10981,7 @@ const separatorDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/separator" },
+        { label: "Source", value: "registry/base-ui/ui/separator" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -11168,7 +11168,7 @@ const skeletonDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/skeleton" },
+        { label: "Source", value: "registry/shadcn/ui/skeleton" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -11257,7 +11257,7 @@ const spinnerDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/spinner" },
+        { label: "Source", value: "registry/shadcn/ui/spinner" },
         {
           label: "Examples",
           value: "basic, badge-spinner, shadcn-button-spinner",
@@ -11374,7 +11374,7 @@ const kbdDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/kbd" },
+        { label: "Source", value: "registry/shadcn/ui/kbd" },
         { label: "Examples", value: "basic, input-group, rtl" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -11484,7 +11484,7 @@ const typographyDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/typography" },
+        { label: "Source", value: "registry/shadcn/ui/typography" },
         { label: "Examples", value: "basic" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -11590,7 +11590,7 @@ const emptyDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/empty" },
+        { label: "Source", value: "registry/shadcn/ui/empty" },
         {
           label: "Examples",
           value:
@@ -11743,7 +11743,7 @@ const inputGroupDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/input-group" },
+        { label: "Source", value: "registry/shadcn/ui/input-group" },
         {
           label: "Examples",
           value:
@@ -12100,7 +12100,7 @@ const meterDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/meter" },
+        { label: "Source", value: "registry/base-ui/ui/meter" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -12215,7 +12215,7 @@ const scrollAreaDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/scroll-area" },
+        { label: "Source", value: "registry/base-ui/ui/scroll-area" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -12401,7 +12401,7 @@ const toggleDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/toggle" },
+        { label: "Source", value: "registry/foldkit/ui/toggle" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -12569,7 +12569,7 @@ const toggleGroupDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/toggle-group" },
+        { label: "Source", value: "registry/foldkit/ui/toggle-group" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -12739,7 +12739,7 @@ const radioDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/radio" },
+        { label: "Source", value: "registry/foldkit/ui/radio" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -12915,7 +12915,7 @@ const toolbarDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/toolbar" },
+        { label: "Source", value: "registry/foldkit/ui/toolbar" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -13497,7 +13497,7 @@ const progressDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/progress" },
+        { label: "Source", value: "registry/base-ui/ui/progress" },
         { label: "Examples", value: "hero" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -13630,7 +13630,7 @@ const buttonDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/button" },
+        { label: "Source", value: "registry/foldkit/ui/button" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -13745,7 +13745,7 @@ const baseUiButtonDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/base-ui-button" },
+        { label: "Source", value: "registry/base-ui/ui/base-ui-button" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -14914,15 +14914,12 @@ const baseUiLaneDocsView = (
             ),
           ]),
       ...docsStandardComponentSections({
-        installCommands: `bunx shadcn@latest add <registry-url>/${config.source.replace(
-          "registry/default/ui/",
-          ""
-        )}.json`,
+        installCommands: `bunx shadcn@latest add <registry-url>/${config.source.split("/").at(-1) ?? config.source}.json`,
         usageBody: config.usage,
         usageCode: `import * as ${config.label.replaceAll(
           " ",
           ""
-        )} from "./ui/${config.source.replace("registry/default/ui/", "")}";`,
+        )} from "./ui/${config.source.split("/").at(-1) ?? config.source}";`,
         integrationCode: `// Parent model and messages stay the same as the Foldkit ${config.primitive} slice.\n// Use this Base UI lane package when you want the same behavior with Base UI naming and styling hooks.`,
         anatomySection: docsAnatomyBlock(config.anatomyCode),
         stylingItems: config.classHelpers,
@@ -17173,15 +17170,12 @@ const shadcnLaneDocsView = (
             ),
           ]),
       ...docsStandardComponentSections({
-        installCommands: `bunx shadcn@latest add <registry-url>/${config.source.replace(
-          "registry/default/ui/",
-          ""
-        )}.json`,
+        installCommands: `bunx shadcn@latest add <registry-url>/${config.source.split("/").at(-1) ?? config.source}.json`,
         usageBody: config.usage,
         usageCode: `import * as ${config.label.replaceAll(
           " ",
           ""
-        )} from "./ui/${config.source.replace("registry/default/ui/", "")}";`,
+        )} from "./ui/${config.source.split("/").at(-1) ?? config.source}";`,
         integrationCode: `// Parent model and messages stay the same as the Foldkit ${config.primitive} slice.\n// Use this shadcn lane package when you want the same behavior with opinionated shadcn styling hooks.`,
         anatomySection: docsAnatomyBlock(config.anatomyCode),
         stylingItems: config.classHelpers,
@@ -17240,7 +17234,7 @@ const calendarDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/calendar" },
+        { label: "Source", value: "registry/foldkit/ui/calendar" },
         { label: "Examples", value: "basic, bounds" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -17370,7 +17364,7 @@ const datePickerDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/date-picker" },
+        { label: "Source", value: "registry/foldkit/ui/date-picker" },
         { label: "Examples", value: "basic, bounds" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -17503,7 +17497,7 @@ const disclosureDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/disclosure" },
+        { label: "Source", value: "registry/foldkit/ui/disclosure" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -17649,7 +17643,7 @@ const dragAndDropDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/drag-and-drop" },
+        { label: "Source", value: "registry/foldkit/ui/drag-and-drop" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -17781,7 +17775,7 @@ const fieldsetDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/fieldset" },
+        { label: "Source", value: "registry/foldkit/ui/fieldset" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -17912,7 +17906,7 @@ const fileDropDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/file-drop" },
+        { label: "Source", value: "registry/foldkit/ui/file-drop" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18044,7 +18038,7 @@ const inputDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/input" },
+        { label: "Source", value: "registry/foldkit/ui/input" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18167,7 +18161,7 @@ const tabsDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/tabs" },
+        { label: "Source", value: "registry/foldkit/ui/tabs" },
         { label: "Examples", value: "basic, vertical" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18305,7 +18299,7 @@ const textareaDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/textarea" },
+        { label: "Source", value: "registry/foldkit/ui/textarea" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18434,7 +18428,7 @@ const toastDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/toast" },
+        { label: "Source", value: "registry/foldkit/ui/toast" },
         { label: "Examples", value: "basic, variants" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18574,7 +18568,7 @@ const tooltipDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/tooltip" },
+        { label: "Source", value: "registry/foldkit/ui/tooltip" },
         { label: "Examples", value: "basic, no-delay" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18724,7 +18718,7 @@ const comboboxDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/combobox" },
+        { label: "Source", value: "registry/foldkit/ui/combobox" },
         { label: "Examples", value: "basic, multi" },
         { label: "Proof", value: "story tests, scene tests, registry JSON" },
       ]),
@@ -18843,7 +18837,7 @@ const radioGroupDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/radio-group" },
+        { label: "Source", value: "registry/foldkit/ui/radio-group" },
         { label: "Examples", value: "basic, horizontal" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -18979,7 +18973,7 @@ const selectDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/select" },
+        { label: "Source", value: "registry/foldkit/ui/select" },
         { label: "Examples", value: "basic, disabled" },
         { label: "Proof", value: "scene tests, registry JSON" },
       ]),
@@ -19101,7 +19095,7 @@ const listboxDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/listbox" },
+        { label: "Source", value: "registry/foldkit/ui/listbox" },
         { label: "Examples", value: "basic, animated" },
         { label: "Proof", value: "story tests, scene tests, registry JSON" },
       ]),
@@ -19239,7 +19233,7 @@ const menuDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/menu" },
+        { label: "Source", value: "registry/foldkit/ui/menu" },
         { label: "Examples", value: "basic, animated" },
         { label: "Proof", value: "story tests, scene tests, registry JSON" },
       ]),
@@ -19375,7 +19369,7 @@ const popoverDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/popover" },
+        { label: "Source", value: "registry/foldkit/ui/popover" },
         { label: "Examples", value: "basic, animated" },
         { label: "Proof", value: "story tests, scene tests, registry JSON" },
       ]),
@@ -19515,7 +19509,7 @@ const dialogDocsView = (model: Model): Html => {
         ]
       ),
       docsMetaGrid([
-        { label: "Source", value: "registry/default/ui/dialog" },
+        { label: "Source", value: "registry/foldkit/ui/dialog" },
         {
           label: "Examples",
           value: "basic, animated, destructive, focus, scrollable",
@@ -20252,7 +20246,7 @@ const contentView = (model: Model): Html => {
       BaseUiAccordionDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Accordion",
-          source: "registry/default/ui/base-ui-accordion",
+          source: "registry/base-ui/ui/base-ui-accordion",
           primitive: "Accordion view helpers",
           description:
             "A Base UI style-lane Accordion slice that reuses the existing controlled open-values behavior with root, item, trigger, icon, and panel helpers. The installable examples now cover the Base UI FAQ copy and the Open multiple panels behavior.",
@@ -20277,7 +20271,7 @@ Accordion.rootView<Message>({
       ShadcnAccordionDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Accordion",
-          source: "registry/default/ui/shadcn-accordion",
+          source: "registry/shadcn/ui/shadcn-accordion",
           primitive: "Accordion view helpers",
           description:
             "A shadcn style-lane Accordion slice that reuses existing controlled open-values behavior with root, item, trigger, icon, and panel helpers.",
@@ -20317,7 +20311,7 @@ Accordion.rootView<Message>({
       ShadcnBaseAccordionDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Base Accordion",
-          source: "registry/default/ui/shadcn-base-accordion",
+          source: "registry/shadcn/ui/shadcn-base-accordion",
           primitive: "Accordion view helpers",
           description:
             "A shadcn Base UI Accordion slice that mirrors the origin Base UI Accordion structure while using the same controlled open-values behavior as the Foldkit accordion primitive.",
@@ -20426,7 +20420,7 @@ Accordion.rootView<Message>({
       BaseUiAlertDialogDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Alert Dialog",
-          source: "registry/default/ui/base-ui-alert-dialog",
+          source: "registry/base-ui/ui/base-ui-alert-dialog",
           primitive: "Alert Dialog view helpers",
           description:
             "A Base UI style-lane Alert Dialog slice that reuses the existing alert-dialog anatomy for trigger, portal, backdrop, popup, title, description, and action buttons. The installable examples now cover the default Discard draft flow, menu-triggered flow, detached-trigger flow, multiple-trigger flow, controlled multiple-trigger flow, and Close confirmation nested-dialog flow.",
@@ -20461,7 +20455,7 @@ AlertDialog.rootView<Message>({
       ShadcnAlertDialogDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Alert Dialog",
-          source: "registry/default/ui/shadcn-alert-dialog",
+          source: "registry/shadcn/ui/shadcn-alert-dialog",
           primitive: "AlertDialog view helpers",
           description:
             "A shadcn style-lane Alert Dialog slice that reuses the existing alert-dialog anatomy for trigger, portal, backdrop, popup, title, description, and action buttons.",
@@ -20499,7 +20493,7 @@ AlertDialog.rootView<Message>({
       BaseUiDrawerDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Drawer",
-          source: "registry/default/ui/base-ui-drawer",
+          source: "registry/base-ui/ui/base-ui-drawer",
           primitive: "Drawer view helpers",
           description:
             "A Base UI style-lane Drawer slice that reuses the existing trigger, portal, backdrop, viewport, popup, content, title, description, and close helpers.",
@@ -20536,7 +20530,7 @@ Drawer.rootView<Message>({
       ShadcnDrawerDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Drawer",
-          source: "registry/default/ui/shadcn-drawer",
+          source: "registry/shadcn/ui/shadcn-drawer",
           primitive: "Drawer view helpers",
           description:
             "A shadcn style-lane Drawer slice that reuses the existing trigger, portal, backdrop, viewport, popup, content, title, description, and close helpers.",
@@ -20581,7 +20575,7 @@ Drawer.rootView<Message>({
       BaseUiContextMenuDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Context Menu",
-          source: "registry/default/ui/base-ui-context-menu",
+          source: "registry/base-ui/ui/base-ui-context-menu",
           primitive: "Context Menu view helpers",
           description:
             "A Base UI style-lane Context Menu slice that reuses the existing root, trigger, portal, backdrop, positioner, popup, item, and separator helpers.",
@@ -20611,7 +20605,7 @@ ContextMenu.rootView<Message>({
       ShadcnContextMenuDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Context Menu",
-          source: "registry/default/ui/shadcn-context-menu",
+          source: "registry/shadcn/ui/shadcn-context-menu",
           primitive: "Context Menu view helpers",
           description:
             "A shadcn style-lane Context Menu slice that reuses the existing root, trigger, portal, backdrop, positioner, popup, item, and separator helpers.",
@@ -20645,7 +20639,7 @@ ContextMenu.rootView<Message>({
       BaseUiMenubarDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Menubar",
-          source: "registry/default/ui/base-ui-menubar",
+          source: "registry/base-ui/ui/base-ui-menubar",
           primitive: "Menubar view helpers",
           description:
             "A Base UI style-lane Menubar slice that reuses the existing root, menu, trigger, popup, item, and separator helpers.",
@@ -20678,7 +20672,7 @@ Menubar.rootView<Message>({
       ShadcnMenubarDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Menubar",
-          source: "registry/default/ui/shadcn-menubar",
+          source: "registry/shadcn/ui/shadcn-menubar",
           primitive: "Menubar view helpers",
           description:
             "A shadcn style-lane Menubar slice that reuses the existing root, menu, trigger, popup, item, and separator helpers.",
@@ -20711,7 +20705,7 @@ Menubar.rootView<Message>({
       BaseUiNavigationMenuDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Navigation Menu",
-          source: "registry/default/ui/base-ui-navigation-menu",
+          source: "registry/base-ui/ui/base-ui-navigation-menu",
           primitive: "Navigation Menu view helpers",
           description:
             "A Base UI style-lane Navigation Menu slice that reuses the existing root, list, item, trigger, link, portal, positioner, popup, viewport, content, and arrow helpers.",
@@ -20744,7 +20738,7 @@ NavigationMenu.rootView<Message>({
       ShadcnNavigationMenuDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Navigation Menu",
-          source: "registry/default/ui/shadcn-navigation-menu",
+          source: "registry/shadcn/ui/shadcn-navigation-menu",
           primitive: "Navigation Menu view helpers",
           description:
             "A shadcn style-lane Navigation Menu slice that reuses the existing root, list, item, trigger, link, portal, positioner, popup, viewport, content, and arrow helpers.",
@@ -20778,7 +20772,7 @@ NavigationMenu.rootView<Message>({
       BaseUiOtpFieldDocs: () =>
         baseUiLaneDocsView(model, {
           label: "OTP Field",
-          source: "registry/default/ui/base-ui-otp-field",
+          source: "registry/base-ui/ui/base-ui-otp-field",
           primitive: "OTP Field view helpers",
           description:
             "A Base UI style-lane OTP Field slice that reuses the existing root, input group, input, and separator helpers.",
@@ -20808,7 +20802,7 @@ OtpField.rootView<Message>({
       BaseUiPreviewCardDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Preview Card",
-          source: "registry/default/ui/base-ui-preview-card",
+          source: "registry/base-ui/ui/base-ui-preview-card",
           primitive: "Preview Card view helpers",
           description:
             "A Base UI style-lane Preview Card slice that reuses the existing root, trigger, portal, backdrop, positioner, popup, viewport, and arrow helpers.",
@@ -20842,7 +20836,7 @@ PreviewCard.rootView<Message>({
       BaseUiCollapsibleDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Collapsible",
-          source: "registry/default/ui/base-ui-collapsible",
+          source: "registry/base-ui/ui/base-ui-collapsible",
           primitive: "Collapsible view helpers",
           description:
             "A Base UI style-lane Collapsible slice with a Basic example matching the origin Recovery keys trigger and key list.",
@@ -20866,7 +20860,7 @@ Collapsible.rootView<Message>({
       ShadcnCollapsibleDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Collapsible",
-          source: "registry/default/ui/shadcn-collapsible",
+          source: "registry/shadcn/ui/shadcn-collapsible",
           primitive: "Collapsible view helpers",
           description:
             "A shadcn style-lane Collapsible slice that reuses the existing controlled open-state root, trigger, panel, and content helpers.",
@@ -20896,7 +20890,7 @@ Collapsible.rootView<Message>({
       BaseUiFieldDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Field",
-          source: "registry/default/ui/base-ui-field",
+          source: "registry/base-ui/ui/base-ui-field",
           primitive: "Field view helpers",
           description:
             "A Base UI style-lane Field slice that reuses the existing root, label, control, description, error, item, and validity helpers.",
@@ -20926,7 +20920,7 @@ Field.rootView<Message>({
       ShadcnFieldDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Field",
-          source: "registry/default/ui/shadcn-field",
+          source: "registry/shadcn/ui/shadcn-field",
           primitive: "Field view helpers",
           description:
             "A shadcn style-lane Field slice that reuses the existing root, label, control, description, error, item, and validity helpers.",
@@ -20956,7 +20950,7 @@ Field.rootView<Message>({
       BaseUiNumberFieldDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Number Field",
-          source: "registry/default/ui/base-ui-number-field",
+          source: "registry/base-ui/ui/base-ui-number-field",
           primitive: "Number Field view helpers",
           description:
             "A Base UI style-lane Number Field slice that reuses the existing root, scrub area, group, button, and input helpers.",
@@ -20987,7 +20981,7 @@ NumberField.rootView<Message>({
       BaseUiFormDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Form",
-          source: "registry/default/ui/base-ui-form",
+          source: "registry/base-ui/ui/base-ui-form",
           primitive: "Form view helpers",
           description:
             "A Base UI style-lane Form slice that reuses the existing root, field, label, control, error, and submit helpers.",
@@ -21027,7 +21021,7 @@ Form.rootView<Message>({
       BaseUiAutocompleteDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Autocomplete",
-          source: "registry/default/ui/base-ui-autocomplete",
+          source: "registry/base-ui/ui/base-ui-autocomplete",
           primitive: "Autocomplete view helpers",
           description:
             "A Base UI style-lane Autocomplete slice that reuses the existing input, listbox, option, empty-state, and label helpers. The installable Basic example matches the origin Search tags demo, including the e.g. feature placeholder and No tags found empty state. The current origin page documents Clear as an API part but does not publish a separate clear-button example section.",
@@ -21060,7 +21054,7 @@ Autocomplete.rootView<Message>({
       BaseUiAvatarDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Avatar",
-          source: "registry/default/ui/base-ui-avatar",
+          source: "registry/base-ui/ui/base-ui-avatar",
           primitive: "Avatar view helpers",
           description:
             "A Base UI style-lane Avatar slice that reuses the existing root, image, fallback, badge, group, and count helpers. The installable Basic example matches the origin two-avatar demo with the Unsplash image plus LT fallback and the fallback-only LT avatar.",
@@ -21088,7 +21082,7 @@ Avatar.view<Message>({
       ShadcnAvatarDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Avatar",
-          source: "registry/default/ui/shadcn-avatar",
+          source: "registry/shadcn/ui/shadcn-avatar",
           primitive: "Avatar view helpers",
           description:
             "A shadcn style-lane Avatar slice that reuses existing image, fallback, root, group, and count helpers.",
@@ -21322,7 +21316,7 @@ Avatar.view<Message>({
       BaseUiSeparatorDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Separator",
-          source: "registry/default/ui/base-ui-separator",
+          source: "registry/base-ui/ui/base-ui-separator",
           primitive: "Separator view helpers",
           description:
             "A Base UI style-lane Separator slice that reuses the existing accessible orientation-aware separator helper.",
@@ -21342,7 +21336,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
       ShadcnSeparatorDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Separator",
-          source: "registry/default/ui/shadcn-separator",
+          source: "registry/shadcn/ui/shadcn-separator",
           primitive: "Separator view helpers",
           description:
             "A shadcn style-lane Separator slice that reuses the existing accessible orientation-aware separator helper.",
@@ -21415,7 +21409,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
       ShadcnButtonDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Button",
-          source: "registry/default/ui/shadcn-button",
+          source: "registry/shadcn/ui/shadcn-button",
           primitive: "Ui.Button",
           description:
             "A shadcn style-lane Button slice that reuses the official Foldkit Ui.Button primitive for native button behavior while exposing opinionated shadcn class helpers.",
@@ -21469,7 +21463,7 @@ Button.view<Message>({
       ShadcnCalendarDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Calendar",
-          source: "registry/default/ui/shadcn-calendar",
+          source: "registry/shadcn/ui/shadcn-calendar",
           primitive: "Ui.Calendar",
           description:
             "A shadcn style-lane Calendar slice that reuses the official Foldkit Ui.Calendar primitive for date selection, month/year navigation, locale labels, keyboard focus, and disabled date reflection.",
@@ -21542,7 +21536,7 @@ h.submodel({
       ShadcnCheckboxDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Checkbox",
-          source: "registry/default/ui/shadcn-checkbox",
+          source: "registry/shadcn/ui/shadcn-checkbox",
           primitive: "Ui.Checkbox",
           description:
             "A shadcn style-lane Checkbox slice that reuses the official Foldkit Ui.Checkbox primitive for checked, disabled, indeterminate, label, description, and hidden input behavior.",
@@ -21586,7 +21580,7 @@ h.submodel({
       BaseUiCheckboxGroupDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Checkbox Group",
-          source: "registry/default/ui/base-ui-checkbox-group",
+          source: "registry/base-ui/ui/base-ui-checkbox-group",
           primitive: "Checkbox Group view helpers",
           description:
             "A Base UI style-lane Checkbox Group slice that reuses the existing grouped checkbox, parent checkbox, checked, unchecked, and indeterminate helpers.",
@@ -21637,7 +21631,7 @@ CheckboxGroup.groupView<Message>({
       BaseUiComboboxDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Combobox",
-          source: "registry/default/ui/base-ui-combobox",
+          source: "registry/base-ui/ui/base-ui-combobox",
           primitive: "Ui.Combobox",
           description:
             "A Base UI style-lane Combobox slice with a Basic example matching the origin fruit picker label, placeholder, and fruit list.",
@@ -21664,7 +21658,7 @@ Combobox.view<Message>({
       ShadcnComboboxDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Combobox",
-          source: "registry/default/ui/shadcn-combobox",
+          source: "registry/shadcn/ui/shadcn-combobox",
           primitive: "Ui.Combobox",
           description:
             "A shadcn style-lane Combobox slice that reuses the official Foldkit Ui.Combobox primitive for controlled input, popup, item selection, and multi-select behavior.",
@@ -21695,7 +21689,7 @@ Combobox.view<Message>({
       ShadcnDatePickerDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Date Picker",
-          source: "registry/default/ui/shadcn-date-picker",
+          source: "registry/shadcn/ui/shadcn-date-picker",
           primitive: "Ui.DatePicker",
           description:
             "A shadcn style-lane Date Picker slice that reuses the official Foldkit Ui.DatePicker primitive for popover state, calendar selection, disabled date reflection, and formatted trigger content.",
@@ -21727,7 +21721,7 @@ h.submodel({
       BaseUiDialogDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Dialog",
-          source: "registry/default/ui/base-ui-dialog",
+          source: "registry/base-ui/ui/base-ui-dialog",
           primitive: "Ui.Dialog",
           description:
             "A Base UI style-lane Dialog slice with Basic, Close confirmation, and Nested dialogs examples matching the origin notifications dialog patterns.",
@@ -21761,7 +21755,7 @@ Dialog.view<Message>({
       ShadcnDialogDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Dialog",
-          source: "registry/default/ui/shadcn-dialog",
+          source: "registry/shadcn/ui/shadcn-dialog",
           primitive: "Ui.Dialog",
           description:
             "A shadcn style-lane Dialog slice that reuses the official Foldkit Ui.Dialog primitive for open state, modal semantics, labelled content, dismissal, and focus commands.",
@@ -21826,7 +21820,7 @@ Dialog.view<Message>({
       BaseUiFieldsetDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Fieldset",
-          source: "registry/default/ui/base-ui-fieldset",
+          source: "registry/base-ui/ui/base-ui-fieldset",
           primitive: "Ui.Fieldset",
           description:
             "A Base UI style-lane Fieldset slice that reuses the official Foldkit Ui.Fieldset helpers for grouped form semantics, legend, description, and disabled propagation.",
@@ -21863,7 +21857,7 @@ Fieldset.view<Message>({
       BaseUiInputDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Input",
-          source: "registry/default/ui/base-ui-input",
+          source: "registry/base-ui/ui/base-ui-input",
           primitive: "Ui.Input",
           description:
             "A Base UI style-lane Input slice that reuses the official Foldkit Ui.Input behavior for native value updates, disabled state, labels, descriptions, and field layout.",
@@ -21889,7 +21883,7 @@ Input.view<Message>({
       ShadcnInputDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Input",
-          source: "registry/default/ui/shadcn-input",
+          source: "registry/shadcn/ui/shadcn-input",
           primitive: "Ui.Input",
           description:
             "A shadcn style-lane Input slice that reuses the official Foldkit Ui.Input behavior for native value updates, disabled state, labels, descriptions, and field layout.",
@@ -21964,7 +21958,7 @@ Input.view<Message>({
       BaseUiMeterDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Meter",
-          source: "registry/default/ui/base-ui-meter",
+          source: "registry/base-ui/ui/base-ui-meter",
           primitive: "Meter view helpers",
           description:
             "A Base UI style-lane Meter slice that reuses the existing root, label, value, track, and indicator helpers.",
@@ -21995,7 +21989,7 @@ Meter.view<Message>({
       BaseUiScrollAreaDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Scroll Area",
-          source: "registry/default/ui/base-ui-scroll-area",
+          source: "registry/base-ui/ui/base-ui-scroll-area",
           primitive: "Scroll Area view helpers",
           description:
             "A Base UI style-lane Scroll Area slice that reuses the existing root, viewport, content, scrollbar, thumb, corner, and fade helpers.",
@@ -22023,7 +22017,7 @@ ScrollArea.view<Message>({
       ShadcnScrollAreaDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Scroll Area",
-          source: "registry/default/ui/shadcn-scroll-area",
+          source: "registry/shadcn/ui/shadcn-scroll-area",
           primitive: "Scroll Area view helpers",
           description:
             "A shadcn style-lane Scroll Area slice that reuses the existing root, viewport, content, scrollbar, thumb, corner, and fade helpers.",
@@ -22056,7 +22050,7 @@ ScrollArea.view<Message>({
       BaseUiToggleDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Toggle",
-          source: "registry/default/ui/base-ui-toggle",
+          source: "registry/base-ui/ui/base-ui-toggle",
           primitive: "Toggle view helpers",
           description:
             "A Base UI style-lane Toggle slice that reuses the existing pressed-state root and icon helpers.",
@@ -22079,7 +22073,7 @@ Toggle.view<Message>({
       BaseUiToggleGroupDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Toggle Group",
-          source: "registry/default/ui/base-ui-toggle-group",
+          source: "registry/base-ui/ui/base-ui-toggle-group",
           primitive: "Toggle Group view helpers",
           description:
             "A Base UI style-lane Toggle Group slice that reuses the existing group root, item, and icon helpers.",
@@ -22109,7 +22103,7 @@ ToggleGroup.rootView<Message>({
       BaseUiToolbarDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Toolbar",
-          source: "registry/default/ui/base-ui-toolbar",
+          source: "registry/base-ui/ui/base-ui-toolbar",
           primitive: "Toolbar view helpers",
           description:
             "A Base UI style-lane Toolbar slice that reuses the existing root, group, button, link, input, and separator helpers.",
@@ -22141,7 +22135,7 @@ Toolbar.rootView<Message>({
       BaseUiProgressDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Progress",
-          source: "registry/default/ui/base-ui-progress",
+          source: "registry/base-ui/ui/base-ui-progress",
           primitive: "Progress view helpers",
           description:
             "A Base UI style-lane Progress slice that reuses the existing accessible root, label, value, track, and indicator helpers.",
@@ -22167,7 +22161,7 @@ Progress.view<Message>({
       ShadcnProgressDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Progress",
-          source: "registry/default/ui/shadcn-progress",
+          source: "registry/shadcn/ui/shadcn-progress",
           primitive: "Progress view helpers",
           description:
             "A shadcn style-lane Progress slice that reuses the existing accessible root, label, value, track, and indicator helpers.",
@@ -22200,7 +22194,7 @@ Progress.view<Message>({
       BaseUiMenuDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Menu",
-          source: "registry/default/ui/base-ui-menu",
+          source: "registry/base-ui/ui/base-ui-menu",
           primitive: "Ui.Menu",
           description:
             "A Base UI style-lane Menu slice that reuses the official Foldkit Ui.Menu primitive for trigger state, popup rendering, item selection, backdrop dismissal, and animated variants.",
@@ -22234,7 +22228,7 @@ Menu.view<Message>({
       BaseUiPopoverDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Popover",
-          source: "registry/default/ui/base-ui-popover",
+          source: "registry/base-ui/ui/base-ui-popover",
           primitive: "Ui.Popover",
           description:
             "A Base UI style-lane Popover slice with a Basic example matching the origin notifications popup.",
@@ -22275,7 +22269,7 @@ Popover.view<Message>({
       ShadcnPopoverDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Popover",
-          source: "registry/default/ui/shadcn-popover",
+          source: "registry/shadcn/ui/shadcn-popover",
           primitive: "Ui.Popover",
           description:
             "A shadcn style-lane Popover slice that reuses the official Foldkit Ui.Popover primitive for open state, anchored panels, dismissal, scroll lock, focus, and backdrop commands.",
@@ -22307,7 +22301,7 @@ Popover.view<Message>({
       BaseUiRadioDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Radio",
-          source: "registry/default/ui/base-ui-radio",
+          source: "registry/base-ui/ui/base-ui-radio",
           primitive: "Ui.RadioGroup",
           description:
             "A Base UI style-lane Radio slice that reuses the official Foldkit Ui.RadioGroup primitive for controlled selection, orientation, option focus, and labelled choices.",
@@ -22342,7 +22336,7 @@ h.submodel({
       ShadcnRadioGroupDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Radio Group",
-          source: "registry/default/ui/shadcn-radio-group",
+          source: "registry/shadcn/ui/shadcn-radio-group",
           primitive: "Ui.RadioGroup",
           description:
             "A shadcn style-lane Radio Group slice that reuses the official Foldkit Ui.RadioGroup primitive for controlled selection, orientation, option focus, and labelled choices.",
@@ -22394,7 +22388,7 @@ h.submodel({
       BaseUiSelectDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Select",
-          source: "registry/default/ui/base-ui-select",
+          source: "registry/base-ui/ui/base-ui-select",
           primitive: "Ui.Select",
           description:
             "A Base UI style-lane Select slice that reuses the official Foldkit Ui.Select native select helper for labels, descriptions, disabled state, and value changes.",
@@ -22420,7 +22414,7 @@ Select.view<Message>({
       ShadcnSelectDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Select",
-          source: "registry/default/ui/shadcn-select",
+          source: "registry/shadcn/ui/shadcn-select",
           primitive: "Ui.Select",
           description:
             "A shadcn style-lane Select slice with composed Root, Trigger, Value, Content, Group, Label, Item, Separator, and ScrollButton parts.",
@@ -22477,7 +22471,7 @@ Select.rootView<Message>({
       BaseUiSliderDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Slider",
-          source: "registry/default/ui/base-ui-slider",
+          source: "registry/base-ui/ui/base-ui-slider",
           primitive: "Ui.Slider",
           description:
             "A Base UI style-lane Slider slice that reuses the official Foldkit Ui.Slider primitive for value reflection, drag state, keyboard movement, and root subscriptions.",
@@ -22504,7 +22498,7 @@ h.submodel({
       ShadcnSliderDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Slider",
-          source: "registry/default/ui/shadcn-slider",
+          source: "registry/shadcn/ui/shadcn-slider",
           primitive: "Ui.Slider",
           description:
             "A shadcn style-lane Slider slice that reuses the official Foldkit Ui.Slider primitive for value reflection, drag state, keyboard movement, and root subscriptions.",
@@ -22540,7 +22534,7 @@ h.submodel({
       BaseUiSwitchDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Switch",
-          source: "registry/default/ui/base-ui-switch",
+          source: "registry/base-ui/ui/base-ui-switch",
           primitive: "Ui.Switch",
           description:
             "A Base UI style-lane Switch slice that reuses the official Foldkit Ui.Switch primitive for controlled checked state, labels, descriptions, hidden input behavior, and disabled state.",
@@ -22567,7 +22561,7 @@ h.submodel({
       ShadcnSwitchDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Switch",
-          source: "registry/default/ui/shadcn-switch",
+          source: "registry/shadcn/ui/shadcn-switch",
           primitive: "Ui.Switch",
           description:
             "A shadcn style-lane Switch slice that reuses the official Foldkit Ui.Switch primitive for controlled checked state, labels, descriptions, hidden input behavior, and disabled state.",
@@ -22601,7 +22595,7 @@ h.submodel({
       BaseUiTabsDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Tabs",
-          source: "registry/default/ui/base-ui-tabs",
+          source: "registry/base-ui/ui/base-ui-tabs",
           primitive: "Ui.Tabs",
           description:
             "A Base UI style-lane Tabs slice that reuses the official Foldkit Ui.Tabs primitive for controlled selection, focus movement, orientation, and activation mode.",
@@ -22631,7 +22625,7 @@ h.submodel({
       ShadcnTabsDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Tabs",
-          source: "registry/default/ui/shadcn-tabs",
+          source: "registry/shadcn/ui/shadcn-tabs",
           primitive: "Ui.Tabs",
           description:
             "A shadcn style-lane Tabs slice that reuses the official Foldkit Ui.Tabs primitive for controlled selection, focus movement, orientation, and activation mode.",
@@ -22667,7 +22661,7 @@ h.submodel({
       ShadcnTextareaDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Textarea",
-          source: "registry/default/ui/shadcn-textarea",
+          source: "registry/shadcn/ui/shadcn-textarea",
           primitive: "Ui.Textarea",
           description:
             "A shadcn style-lane Textarea slice that reuses the official Foldkit Ui.Textarea helper for labels, descriptions, disabled state, value updates, and native textarea behavior.",
@@ -22705,7 +22699,7 @@ Textarea.view<Message>({
       BaseUiToastDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Toast",
-          source: "registry/default/ui/base-ui-toast",
+          source: "registry/base-ui/ui/base-ui-toast",
           primitive: "Ui.Toast",
           description:
             "A Base UI style-lane Toast slice that reuses the Foldkit Ui.Toast stack for typed payloads, dismissal, hover pause, duration, variants, and positioning.",
@@ -22732,7 +22726,7 @@ Toast.view<Message>({
       ShadcnToastDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Toast",
-          source: "registry/default/ui/shadcn-toast",
+          source: "registry/shadcn/ui/shadcn-toast",
           primitive: "Ui.Toast",
           description:
             "A legacy shadcn Toast style-lane slice. The current upstream shadcn Toast page is deprecated in favor of Sonner, so this wrapper remains for compatibility while Sonner is the preferred shadcn toast surface.",
@@ -22766,7 +22760,7 @@ Toast.view<Message>({
       BaseUiTooltipDocs: () =>
         baseUiLaneDocsView(model, {
           label: "Tooltip",
-          source: "registry/default/ui/base-ui-tooltip",
+          source: "registry/base-ui/ui/base-ui-tooltip",
           primitive: "Ui.Tooltip",
           description:
             "A Base UI style-lane Tooltip slice that reuses the official Foldkit Ui.Tooltip primitive for hover, focus, delay, Escape dismissal, anchoring, and described trigger behavior.",

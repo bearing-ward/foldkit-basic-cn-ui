@@ -1,36 +1,20 @@
-import { readFileSync } from "node:fs";
-
 const baseUrl =
   process.env.PUBLIC_BASE_URL ??
   "https://bearing-ward.github.io/foldkit-basic-cn-ui";
-const registryItems = JSON.parse(
-  readFileSync("registry/default/items.json", "utf-8")
-);
-const components = registryItems
-  .filter((item) => item.type === "registry:ui")
-  .map((item) => item.name);
-const requiredSections = [
-  "Overview",
-  "Examples",
-  "Installation",
-  "Usage",
-  "Foldkit integration",
-  "Styling",
-  "Keyboard interaction",
-  "API reference",
-  "Accessibility",
-  "Coverage",
-];
+const knownStoryId = "base-ui-accordion--basic";
 
-const assertResponse = async (path, expectedContentType) => {
+const assertResponse = async (path, expectedContentTypes) => {
   const response = await fetch(`${baseUrl}/${path}`);
   const contentType = response.headers.get("content-type") ?? "";
+  const expectedTypes = Array.isArray(expectedContentTypes)
+    ? expectedContentTypes
+    : [expectedContentTypes];
 
   if (!response.ok) {
     throw new Error(`${path} returned ${response.status}`);
   }
 
-  if (!contentType.includes(expectedContentType)) {
+  if (!expectedTypes.some((expectedType) => contentType.includes(expectedType))) {
     throw new Error(`${path} returned ${contentType}`);
   }
 
@@ -38,25 +22,36 @@ const assertResponse = async (path, expectedContentType) => {
 };
 
 await assertResponse("", "text/html");
-await assertResponse("components.json", "application/json");
-await assertResponse("r/index.json", "application/json");
+const manifest = await (
+  await assertResponse("__openstory/manifest.json", "application/json")
+).json();
+const storyIds = new Set(
+  Array.isArray(manifest.stories)
+    ? manifest.stories.map((story) => story.id)
+    : Object.keys(manifest.stories ?? {})
+);
 
-for (const item of registryItems) {
-  await assertResponse(`r/${item.name}.json`, "application/json");
+if (storyIds.size === 0) {
+  throw new Error("__openstory/manifest.json did not contain stories");
 }
 
-for (const source of [
-  "animation-basic.txt",
-  "radio-group-basic.txt",
-  "slider-basic.txt",
-  "tabs-manual.txt",
-]) {
-  const response = await assertResponse(`sources/${source}`, "text/plain");
-  const text = await response.text();
+if (!storyIds.has(knownStoryId)) {
+  throw new Error(`__openstory/manifest.json is missing ${knownStoryId}`);
+}
 
-  if (text.trim().length < 100) {
-    throw new Error(`sources/${source} did not contain enough source text`);
-  }
+await assertResponse(`__story/${knownStoryId}/index.html`, "text/html");
+await assertResponse("components.json", "application/json");
+await assertResponse("registry.json", "application/json");
+await assertResponse("button.json", "application/json");
+
+const sourceResponse = await assertResponse("sources/slider-basic.txt", [
+  "text/plain",
+  "application/octet-stream",
+]);
+const sourceText = await sourceResponse.text();
+
+if (sourceText.trim().length < 100) {
+  throw new Error("sources/slider-basic.txt did not contain enough source text");
 }
 
 const { chromium } = await import("playwright");
@@ -69,83 +64,28 @@ for (const viewport of [
 ]) {
   const page = await browser.newPage({ viewport });
 
-  for (const component of components) {
-    await page.goto(`${baseUrl}/docs/components/${component}`, {
-      waitUntil: "networkidle",
-    });
+  await page.goto(baseUrl, {
+    waitUntil: "networkidle",
+  });
 
-    for (const heading of requiredSections) {
-      const isVisible = await page
-        .getByRole("heading", { name: heading })
-        .isVisible()
-        .catch(() => false);
+  const overflow = await page.evaluate(
+    () =>
+      document.documentElement.scrollWidth -
+      document.documentElement.clientWidth
+  );
 
-      if (!isVisible) {
-        failures.push(`${viewport.name}/${component}: missing ${heading}`);
-      }
-    }
+  if (overflow > 1) {
+    failures.push(`${viewport.name}: horizontal overflow`);
+  }
 
-    const overflow = await page.evaluate(
-      () =>
-        document.documentElement.scrollWidth -
-        document.documentElement.clientWidth
-    );
+  const hasShellTitle = await page
+    .getByText("foldkit-basic-cn-ui")
+    .first()
+    .isVisible()
+    .catch(() => false);
 
-    if (overflow > 1) {
-      failures.push(`${viewport.name}/${component}: horizontal overflow`);
-    }
-
-    const codeToggle = page.getByText("View code").first();
-
-    if (!(await codeToggle.isVisible().catch(() => false))) {
-      failures.push(`${viewport.name}/${component}: missing View code`);
-      continue;
-    }
-
-    await codeToggle.click();
-
-    const sourceViewer = await page
-      .locator(
-        '[data-testid^="docs-example-block-"][data-testid$="-actions"] iframe'
-      )
-      .first()
-      .evaluate((iframe) => {
-        const frame = iframe;
-        const body = frame.contentDocument?.body;
-
-        return {
-          frameBackground: getComputedStyle(frame).backgroundColor,
-          sourcePath: frame.getAttribute("src") ?? "",
-          textColor: body === undefined ? "" : getComputedStyle(body).color,
-          textLength: body?.textContent?.trim().length ?? 0,
-        };
-      })
-      .catch((error) => ({
-        error: String(error),
-        frameBackground: "",
-        sourcePath: "",
-        textColor: "",
-        textLength: 0,
-      }));
-
-    if ("error" in sourceViewer) {
-      failures.push(`${viewport.name}/${component}: ${sourceViewer.error}`);
-    }
-
-    if (!sourceViewer.sourcePath.endsWith(".txt")) {
-      failures.push(`${viewport.name}/${component}: source is not .txt`);
-    }
-
-    if (sourceViewer.textLength < 100) {
-      failures.push(`${viewport.name}/${component}: source text too short`);
-    }
-
-    if (
-      sourceViewer.frameBackground !== "rgb(255, 255, 255)" ||
-      sourceViewer.textColor !== "rgb(0, 0, 0)"
-    ) {
-      failures.push(`${viewport.name}/${component}: source is unreadable`);
-    }
+  if (!hasShellTitle) {
+    failures.push(`${viewport.name}: missing OpenStory shell title`);
   }
 
   await page.close();
@@ -157,6 +97,4 @@ if (failures.length > 0) {
   throw new Error(failures.join("\n"));
 }
 
-console.log(
-  `Public site smoke passed for ${components.length} components at ${baseUrl}`
-);
+console.log(`Public OpenStory site smoke passed at ${baseUrl}`);

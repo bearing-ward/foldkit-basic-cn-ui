@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-basic",
+  "type": "registry:example",
+  "title": "Kbd Basic",
+  "description": "A runnable Foldkit example showing the Kbd component with parent-owned example state.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/kbd"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/kbd-basic/main.ts",
+      "target": "src/examples/kbd-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as Kbd from \"../../ui/kbd\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedAccept = m(\"ClickedAccept\");\nexport const Message = S.Union([ClickedAccept]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedAccept: () => [model, []],\n    })\n  );\n\n// VIEW\n\nconst demoRowClassName = \"flex flex-wrap items-center gap-2\";\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-col items-start gap-5\")],\n    [\n      h.div(\n        [h.Class(demoRowClassName)],\n        [\n          Kbd.view<Message>({ label: \"⌘\" }),\n          Kbd.view<Message>({ label: \"⇧\" }),\n          Kbd.view<Message>({ label: \"⌥\" }),\n          Kbd.view<Message>({ label: \"⌃\" }),\n          Kbd.view<Message>({ label: \"`\" }),\n          Kbd.groupView<Message>([\n            Kbd.view<Message>({ label: \"Ctrl\" }),\n            h.span([h.Class(\"text-sm text-gray-500\")], [\"+\"]),\n            Kbd.view<Message>({ label: \"B\" }),\n          ]),\n        ]\n      ),\n      h.div(\n        [h.Class(demoRowClassName)],\n        [\n          h.span([h.Class(\"text-sm text-gray-700\")], [\"Use\"]),\n          Kbd.groupView<Message>([\n            Kbd.view<Message>({ label: \"Ctrl\" }),\n            h.span([h.Class(\"text-sm text-gray-500\")], [\"+\"]),\n            Kbd.view<Message>({ label: \"B\" }),\n          ]),\n          Kbd.groupView<Message>([\n            Kbd.view<Message>({ label: \"Ctrl\" }),\n            h.span([h.Class(\"text-sm text-gray-500\")], [\"+\"]),\n            Kbd.view<Message>({ label: \"K\" }),\n          ]),\n          h.span([h.Class(\"text-sm text-gray-700\")], [\n            \"to open the command palette\",\n          ]),\n        ]\n      ),\n      h.button(\n        [\n          h.Type(\"button\"),\n          h.OnClick(ClickedAccept()),\n          h.Class(\n            \"inline-flex h-9 items-center gap-2 rounded-md bg-gray-950 px-4 text-sm font-medium text-white shadow-sm transition hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2\"\n          ),\n        ],\n        [\"Accept\", Kbd.view<Message>({ label: \"⏎\", size: \"Small\" })]\n      ),\n      h.div(\n        [h.Class(demoRowClassName)],\n        [\n          h.button(\n            [\n              h.Type(\"button\"),\n              h.Class(\n                \"inline-flex h-9 items-center rounded-l-md border border-gray-300 bg-white px-3 text-sm font-medium text-gray-950 shadow-sm\"\n              ),\n            ],\n            [\"Save\"]\n          ),\n          h.button(\n            [\n              h.Type(\"button\"),\n              h.Class(\n                \"-ml-px inline-flex h-9 items-center gap-2 rounded-r-md border border-gray-300 bg-white px-3 text-sm font-medium text-gray-950 shadow-sm\"\n              ),\n            ],\n            [\"Print\", Kbd.view<Message>({ label: \"⌘\", size: \"Small\" })]\n          ),\n        ]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/kbd-basic/kbd-basic.scene.test.ts",
+      "target": "src/examples/kbd-basic/kbd-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as KbdBasicExample from \"./main\";\n\ndescribe(\"Kbd Basic example\", () => {\n  test(\"matches the current shadcn Kbd examples\", () => {\n    Scene.scene(\n      { update: KbdBasicExample.update, view: KbdBasicExample.view },\n      Scene.with(KbdBasicExample.init()[0]),\n      Scene.expect(Scene.text(\"⌘\")).toExist(),\n      Scene.expect(Scene.text(\"⇧\")).toExist(),\n      Scene.expect(Scene.text(\"⌥\")).toExist(),\n      Scene.expect(Scene.text(\"⌃\")).toExist(),\n      Scene.expect(Scene.text(\"`\")).toExist(),\n      Scene.expect(Scene.text(\"Ctrl\")).toExist(),\n      Scene.expect(Scene.text(\"B\")).toExist(),\n      Scene.expect(Scene.text(\"K\")).toExist(),\n      Scene.expect(Scene.text(\"to open the command palette\")).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Accept⏎\" })).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Accept⏎\" })),\n      Scene.expect(Scene.role(\"button\", { name: \"Save\" })).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Print⌘\" })).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Kbd",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/radix/kbd"
+    }
+  }
+}

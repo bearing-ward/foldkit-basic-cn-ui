@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-table-basic",
+  "type": "registry:example",
+  "title": "Data Table Basic",
+  "description": "A runnable Foldkit example showing the shadcn Data Table Basic guide topic.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/data-table"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/data-table-basic/main.ts",
+      "target": "src/examples/data-table-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as DataTable from \"../../ui/data-table\";\n\n// MODEL\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n// MESSAGE\nexport const Message = m(\"Message\");\nexport type Message = typeof Message.Type;\n// INIT\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n// UPDATE\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      Message: () => [model, []],\n    })\n  );\n\n// VIEW\nexport const view = Submodel.defineView<Model, Message>(\n  (): Html =>\n    DataTable.paymentsTableView<Message>({\n      payments: DataTable.payments.slice(0, 5),\n    })\n);\n"
+    },
+    {
+      "path": "registry/shadcn/examples/data-table-basic/data-table-basic.scene.test.ts",
+      "target": "src/examples/data-table-basic/data-table-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"data-table-basic example\", () => {\n  test(\"renders the shadcn Data Table Basic example\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"m@example.com\")).not.toHaveHandler(\"click\"),\n      Scene.expect(Scene.text(\"pending\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "DataTable",
+      "example": "basic",
+      "origin": "https://ui.shadcn.com/docs/components/radix/data-table"
+    }
+  }
+}

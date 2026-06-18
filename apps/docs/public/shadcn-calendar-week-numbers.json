@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-calendar-week-numbers",
+  "type": "registry:example",
+  "title": "shadcn Calendar Week Numbers",
+  "description": "A runnable Foldkit example matching the shadcn Calendar Week Numbers example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-calendar"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-week-numbers/main.ts",
+      "target": "src/examples/shadcn-calendar-week-numbers/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  selectedDay: S.Number,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedDay = m(\"ClickedDay\", { day: S.Number });\n\nexport const Message = S.Union([ClickedDay]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ selectedDay: 16 }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedDay: ({ day }) => [evo(model, { selectedDay: () => day }), []],\n    })\n  );\n\n// VIEW\n\nconst weekRows: ReadonlyArray<readonly [string, ReadonlyArray<string>]> = [\n  [\"06\", [\"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\"]],\n  [\"07\", [\"8\", \"9\", \"10\", \"11\", \"12\", \"13\", \"14\"]],\n  [\"08\", [\"15\", \"16\", \"17\", \"18\", \"19\", \"20\", \"21\"]],\n  [\"09\", [\"22\", \"23\", \"24\", \"25\", \"26\", \"27\", \"28\"]],\n];\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [\n      h.Class(\n        \"inline-flex select-none flex-col gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm\"\n      ),\n    ],\n    [\n      h.div(\n        [h.Class(\"flex items-center justify-between\")],\n        [\n          h.button([h.Type(\"button\"), h.Class(\"h-8 w-8 rounded-md\")], [\"<\"]),\n          h.div([h.Class(\"text-sm font-semibold tabular-nums\")], [\n            \"February 2026\",\n          ]),\n          h.button([h.Type(\"button\"), h.Class(\"h-8 w-8 rounded-md\")], [\">\"]),\n        ]\n      ),\n      h.div(\n        [h.Class(\"grid gap-1 text-center\")],\n        [\n          h.div(\n            [h.Class(\"grid grid-cols-8 gap-1\")],\n            [\n              h.div([h.Class(\"h-8\")], [\"\"]),\n              ...[\"Su\", \"Mo\", \"Tu\", \"We\", \"Th\", \"Fr\", \"Sa\"].map((day) =>\n                h.div([h.Class(\"h-8 text-sm text-gray-500\")], [day])\n              ),\n            ]\n          ),\n          ...weekRows.map(([weekNumber, days]) =>\n            h.div(\n              [h.Class(\"grid grid-cols-8 gap-1\")],\n              [\n                h.div(\n                  [\n                    h.Class(\n                      \"flex h-9 w-9 items-center justify-center text-sm tabular-nums text-gray-500\"\n                    ),\n                  ],\n                  [weekNumber]\n                ),\n                ...days.map((label) => {\n                  const day = Number(label);\n                  const selected = day === model.selectedDay;\n\n                  return h.button(\n                    [\n                      h.Type(\"button\"),\n                      h.Attribute(\"aria-pressed\", selected ? \"true\" : \"false\"),\n                      h.OnClick(ClickedDay({ day })),\n                      h.Class(\n                        [\n                          \"flex h-9 w-9 items-center justify-center rounded-full text-sm tabular-nums\",\n                          selected\n                            ? \"bg-accent-600 text-white\"\n                            : \"text-gray-900 hover:bg-gray-100\",\n                        ].join(\" \")\n                      ),\n                    ],\n                    [label]\n                  );\n                }),\n              ]\n            )\n          ),\n        ]\n      ),\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [`Selected date: 2026-02-${String(model.selectedDay).padStart(2, \"0\")}`]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-week-numbers/shadcn-calendar-week-numbers.scene.test.ts",
+      "target": "src/examples/shadcn-calendar-week-numbers/shadcn-calendar-week-numbers.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Calendar Week Numbers example\", () => {\n  test(\"renders week numbers around a stateful calendar grid\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"February 2026\")).toExist(),\n      Scene.expect(Scene.text(\"06\")).toExist(),\n      Scene.expect(Scene.text(\"09\")).toExist(),\n      Scene.expect(Scene.text(\"Selected date: 2026-02-16\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"20\" })),\n      Scene.expect(Scene.text(\"Selected date: 2026-02-20\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Calendar",
+      "example": "week-numbers",
+      "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+    }
+  }
+}

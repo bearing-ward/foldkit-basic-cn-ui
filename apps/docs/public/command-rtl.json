@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-rtl",
+  "type": "registry:example",
+  "title": "Command RTL",
+  "description": "A runnable Foldkit version of the upstream shadcn Command RTL example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/command"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/command-rtl/main.ts",
+      "target": "src/examples/command-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Array, Match as M, Schema as S } from \"effect\";\nimport type { Command as FoldkitCommand } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Command from \"../../ui/command\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  query: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const UpdatedCommandQuery = m(\"UpdatedCommandQuery\", {\n  value: S.String,\n});\n\nexport const Message = S.Union([UpdatedCommandQuery]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly FoldkitCommand.Command<Message>[],\n] => [{ query: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly FoldkitCommand.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly FoldkitCommand.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      UpdatedCommandQuery: ({ value }) => [\n        evo(model, { query: () => value }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst items: readonly Command.CommandItem[] = [\n  { group: \"اقتراحات\", label: \"التقويم\" },\n  { group: \"اقتراحات\", label: \"البحث عن الرموز التعبيرية\" },\n  { group: \"اقتراحات\", label: \"الآلة الحاسبة\" },\n  { group: \"الإعدادات\", label: \"الملف الشخصي\", shortcut: \"⌘P\" },\n  { group: \"الإعدادات\", label: \"الفوترة\", shortcut: \"⌘B\" },\n  { group: \"الإعدادات\", label: \"الإعدادات\", shortcut: \"⌘S\" },\n];\n\nconst groupedItems = (\n  commandItems: readonly Command.CommandItem[]\n): readonly [string, readonly Command.CommandItem[]][] =>\n  Array.dedupe(commandItems.map((item) => item.group)).map((group) => [\n    group,\n    commandItems.filter((item) => item.group === group),\n  ]);\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n  const filteredItems = Command.filterItems(items, model.query);\n\n  return h.div(\n    [h.Attribute(\"dir\", \"rtl\"), h.Class(\"max-w-md\")],\n    [\n      Command.rootView<Message>({\n        children: [\n          Command.inputView<Message>({\n            value: model.query,\n            placeholder: \"اكتب أمرا أو ابحث...\",\n            ariaLabel: \"بحث الأوامر\",\n            onInput: (value) => UpdatedCommandQuery({ value }),\n          }),\n          Command.listView<Message>({\n            children:\n              filteredItems.length === 0\n                ? [Command.emptyView<Message>({ children: [\"لا توجد نتائج.\"] })]\n                : groupedItems(filteredItems).flatMap(\n                    ([group, groupItems], index) => [\n                      ...(index === 0\n                        ? []\n                        : [Command.separatorView<Message>()]),\n                      Command.groupView<Message>({\n                        heading: group,\n                        children: groupItems.map((item) =>\n                          Command.itemView<Message>({ item })\n                        ),\n                      }),\n                    ]\n                  ),\n          }),\n        ],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/command-rtl/command-rtl.scene.test.ts",
+      "target": "src/examples/command-rtl/command-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Command RTL example\", () => {\n  test(\"renders Arabic RTL command content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"combobox\", { name: \"بحث الأوامر\" })).toHaveAttr(\n        \"placeholder\",\n        \"اكتب أمرا أو ابحث...\"\n      ),\n      Scene.expect(Scene.text(\"اقتراحات\")).toExist(),\n      Scene.expect(Scene.text(\"الإعدادات\")).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"التقويم\" })).toExist(),\n      Scene.expect(Scene.text(\"الفوترة\")).toExist(),\n      Scene.expect(Scene.text(\"⌘B\")).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"التقويم\" })).not.toHaveHandler(\n        \"click\"\n      )\n    );\n  });\n\n  test(\"filters Arabic command items\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.type(Scene.role(\"combobox\", { name: \"بحث الأوامر\" }), \"الفوترة\"),\n      Scene.expect(Scene.text(\"الفوترة\")).toExist(),\n      Scene.expect(Scene.role(\"option\", { name: \"التقويم\" })).not.toExist()\n    );\n  });\n\n  test(\"renders empty state when no Arabic commands match\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.type(Scene.role(\"combobox\", { name: \"بحث الأوامر\" }), \"zzz\"),\n      Scene.expect(Scene.text(\"لا توجد نتائج.\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Command",
+      "example": "rtl",
+      "originExample": "command-rtl",
+      "origin": "https://ui.shadcn.com/docs/components/radix/command"
+    }
+  }
+}

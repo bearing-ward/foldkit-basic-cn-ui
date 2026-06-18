@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu-submenu",
+  "type": "registry:example",
+  "title": "Dropdown Menu Submenu",
+  "description": "A runnable Foldkit example showing dropdown menu submenu trigger and nested content composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/dropdown-menu"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/dropdown-menu-submenu/main.ts",
+      "target": "src/examples/dropdown-menu-submenu/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as DropdownMenu from \"../../ui/dropdown-menu\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  open: S.Boolean,\n  subOpen: S.Boolean,\n  selected: S.String,\n});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ToggledDropdownMenu = m(\"ToggledDropdownMenu\");\nexport const ClosedDropdownMenu = m(\"ClosedDropdownMenu\");\nexport const OpenedSubmenu = m(\"OpenedSubmenu\");\nexport const SelectedDropdownMenuItem = m(\"SelectedDropdownMenuItem\", {\n  value: S.String,\n});\nexport const Message = S.Union([\n  ToggledDropdownMenu,\n  ClosedDropdownMenu,\n  OpenedSubmenu,\n  SelectedDropdownMenuItem,\n]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{ open: true, subOpen: true, selected: \"\" }, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ToggledDropdownMenu: () => [evo(model, { open: (open) => !open }), []],\n      ClosedDropdownMenu: () => [\n        evo(model, { open: () => false, subOpen: () => false }),\n        [],\n      ],\n      OpenedSubmenu: () => [evo(model, { subOpen: () => true }), []],\n      SelectedDropdownMenuItem: ({ value }) => [\n        evo(model, {\n          open: () => false,\n          subOpen: () => false,\n          selected: () => value,\n        }),\n        [],\n      ],\n    })\n  );\n\n// VIEW\n\nconst itemView = (label: string): Html =>\n  DropdownMenu.itemView<Message>({\n    onSelect: SelectedDropdownMenuItem({ value: label }),\n    children: [html<Message>().span([], [label])],\n  });\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return DropdownMenu.rootView<Message>({\n    children: [\n      DropdownMenu.triggerView<Message>({\n        open: model.open,\n        onToggle: ToggledDropdownMenu(),\n        children: [h.span([], [\"Open submenu\"])],\n      }),\n      DropdownMenu.portalView<Message>({\n        open: model.open,\n        children: [\n          DropdownMenu.backdropView<Message>({ onClose: ClosedDropdownMenu() }),\n          DropdownMenu.positionerView<Message>({\n            children: [\n              DropdownMenu.popupView<Message>({\n                children: [\n                  itemView(\"New Tab\"),\n                  DropdownMenu.subTriggerView<Message>({\n                    open: model.subOpen,\n                    onOpen: OpenedSubmenu(),\n                    children: [\n                      h.span([], [\"More Tools\"]),\n                      DropdownMenu.shortcutView<Message>(\"›\"),\n                    ],\n                  }),\n                  model.subOpen\n                    ? DropdownMenu.subContentView<Message>({\n                        children: [\n                          itemView(\"Save Page As...\"),\n                          itemView(\"Create Shortcut...\"),\n                          itemView(\"Developer Tools\"),\n                        ],\n                      })\n                    : h.empty,\n                ],\n              }),\n            ],\n          }),\n        ],\n      }),\n      model.selected === \"\"\n        ? h.empty\n        : h.p([h.Class(\"mt-3 text-sm text-gray-600\")], [\n            `Selected: ${model.selected}`,\n          ]),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/dropdown-menu-submenu/dropdown-menu-submenu.scene.test.ts",
+      "target": "src/examples/dropdown-menu-submenu/dropdown-menu-submenu.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as DropdownMenuSubmenuExample from \"./main\";\n\ndescribe(\"Dropdown Menu Submenu example\", () => {\n  test(\"selects an item from visible submenu content\", () => {\n    Scene.scene(\n      {\n        update: DropdownMenuSubmenuExample.update,\n        view: DropdownMenuSubmenuExample.view,\n      },\n      Scene.with(DropdownMenuSubmenuExample.init()[0]),\n      Scene.expect(Scene.text(\"More Tools\")).toExist(),\n      Scene.expect(Scene.text(\"Save Page As...\")).toExist(),\n      Scene.click(Scene.text(\"Developer Tools\")),\n      Scene.expect(Scene.role(\"menu\")).toBeAbsent(),\n      Scene.expect(Scene.text(\"Selected: Developer Tools\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "DropdownMenu",
+      "example": "submenu",
+      "origin": "https://ui.shadcn.com/docs/components/radix/dropdown-menu"
+    }
+  }
+}

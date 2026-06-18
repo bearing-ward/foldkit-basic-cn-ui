@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge-icon",
+  "type": "registry:example",
+  "title": "Badge With Icon",
+  "description": "A runnable Foldkit version of the upstream shadcn badge icon example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/badge"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/badge-icon/main.ts",
+      "target": "src/examples/badge-icon/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Badge from \"../../ui/badge\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"flex flex-wrap justify-center gap-2\")],\n    [\n      Badge.contentView<Message>({\n        children: [\n          h.span([h.AriaHidden(true), h.Class(\"mr-1\")], [\"[+]\"]),\n          h.span([], [\"Verified\"]),\n        ],\n      }),\n      Badge.contentView<Message>({\n        variant: \"Secondary\",\n        children: [\n          h.span([], [\"Bookmark\"]),\n          h.span([h.AriaHidden(true), h.Class(\"ml-1\")], [\"[*]\"]),\n        ],\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/badge-icon/badge-icon.scene.test.ts",
+      "target": "src/examples/badge-icon/badge-icon.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Badge Icon example\", () => {\n  test(\"matches the upstream badge icon example content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Verified\")).toExist(),\n      Scene.expect(Scene.text(\"Bookmark\")).toExist(),\n      Scene.expect(Scene.text(\"Verified\")).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Badge",
+      "example": "icon",
+      "originExample": "badge-with-icon",
+      "origin": "https://ui.shadcn.com/docs/components/radix/badge"
+    }
+  }
+}

@@ -1,16 +1,16 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AvatarBasicExample from "../registry/default/examples/avatar-basic/main";
-import * as BaseUiAvatarBasicExample from "../registry/default/examples/base-ui-avatar-basic/main";
-import * as ShadcnAvatarBadgeIconExample from "../registry/default/examples/shadcn-avatar-badge-icon/main";
-import * as ShadcnAvatarBadgeExample from "../registry/default/examples/shadcn-avatar-badge/main";
-import * as ShadcnAvatarBasicExample from "../registry/default/examples/shadcn-avatar-basic/main";
-import * as ShadcnAvatarDropdownExample from "../registry/default/examples/shadcn-avatar-dropdown/main";
-import * as ShadcnAvatarGroupCountExample from "../registry/default/examples/shadcn-avatar-group-count/main";
-import * as ShadcnAvatarGroupIconExample from "../registry/default/examples/shadcn-avatar-group-icon/main";
-import * as ShadcnAvatarGroupExample from "../registry/default/examples/shadcn-avatar-group/main";
-import * as ShadcnAvatarSizesExample from "../registry/default/examples/shadcn-avatar-sizes/main";
+import * as AvatarBasicExample from "../registry/base-ui/examples/avatar-basic/main";
+import * as BaseUiAvatarBasicExample from "../registry/base-ui/examples/base-ui-avatar-basic/main";
+import * as ShadcnAvatarBadgeIconExample from "../registry/shadcn/examples/shadcn-avatar-badge-icon/main";
+import * as ShadcnAvatarBadgeExample from "../registry/shadcn/examples/shadcn-avatar-badge/main";
+import * as ShadcnAvatarBasicExample from "../registry/shadcn/examples/shadcn-avatar-basic/main";
+import * as ShadcnAvatarDropdownExample from "../registry/shadcn/examples/shadcn-avatar-dropdown/main";
+import * as ShadcnAvatarGroupCountExample from "../registry/shadcn/examples/shadcn-avatar-group-count/main";
+import * as ShadcnAvatarGroupIconExample from "../registry/shadcn/examples/shadcn-avatar-group-icon/main";
+import * as ShadcnAvatarGroupExample from "../registry/shadcn/examples/shadcn-avatar-group/main";
+import * as ShadcnAvatarSizesExample from "../registry/shadcn/examples/shadcn-avatar-sizes/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

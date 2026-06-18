@@ -1,0 +1,6 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "{{projectName}}",
+  "homepage": "{{homepage}}",
+  "include": ["registry/foldkit/registry.json"]
+}

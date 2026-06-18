@@ -6,9 +6,11 @@ import { NodeServices } from "@effect/platform-node";
 import { Array, Effect } from "effect";
 import { Argument, Command, Flag } from "effect/unstable/cli";
 
+import { readSourceRegistryItems, sourceRegistryPath } from "./registry-manifest.mjs";
+
 const cliVersion = "0.1.0";
 const defaultRootDir = path.resolve(import.meta.dirname, "..");
-const registryBaseUrl = "https://bearing-ward.github.io/foldkit-basic-cn-ui/r";
+const registryBaseUrl = "https://bearing-ward.github.io/foldkit-basic-cn-ui";
 const metadataPath = ".foldkit-cn/registry.json";
 
 type RegistryFile = Readonly<{
@@ -76,10 +78,10 @@ const readJson = async <A>(filePath: string): Promise<A> =>
   JSON.parse(await readFile(filePath, "utf-8")) as A;
 
 const sourceItemsPath = (rootDir: string): string =>
-  path.join(rootDir, "registry/default/items.json");
+  path.join(rootDir, sourceRegistryPath);
 
 const publicItemPath = (rootDir: string, name: string): string =>
-  path.join(rootDir, "apps/docs/public/r", `${name}.json`);
+  path.join(rootDir, "apps/docs/public", `${name}.json`);
 
 const publicRegistryUrl = (name: string): string =>
   `${registryBaseUrl}/${name}.json`;
@@ -117,7 +119,8 @@ const itemSummary = (item: RegistryItem): string => {
 
 export const loadSourceItems = (
   rootDir = defaultRootDir
-): Promise<ReadonlyArray<RegistryItem>> => readJson(sourceItemsPath(rootDir));
+): Promise<ReadonlyArray<RegistryItem>> =>
+  readSourceRegistryItems({ rootDir }) as Promise<ReadonlyArray<RegistryItem>>;
 
 const resolveItem = async (
   rootDir: string,

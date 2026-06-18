@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-calendar-month-year-selector",
+  "type": "registry:example",
+  "title": "shadcn Calendar Month and Year Selector",
+  "description": "A Foldkit shadcn Calendar month and year selector example.",
+  "registryDependencies": ["@foldkit-cn/shadcn-calendar"],
+  "meta": {
+    "foldkit": {
+      "component": "shadcn-calendar",
+      "example": "Month and Year Selector",
+      "origin": "https://ui.shadcn.com/docs/components/radix/calendar"
+    }
+  },
+  "files": [
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-month-year-selector/main.ts",
+      "target": "src/examples/shadcn-calendar-month-year-selector/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Calendar, Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as UiCalendar from \"../../ui/shadcn-calendar\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  calendar: UiCalendar.Model,\n  selectedDate: Calendar.CalendarDate,\n  viewedMonth: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotCalendarMessage = m(\"GotCalendarMessage\", {\n  message: UiCalendar.Message,\n});\n\nexport const Message = S.Union([GotCalendarMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nconst birthday = Calendar.make(1990, 7, 15);\n\nconst formatDate = (date: Calendar.CalendarDate): string =>\n  `${date.year}-${String(date.month).padStart(2, \"0\")}-${String(date.day).padStart(2, \"0\")}`;\n\nconst formatMonth = (date: Calendar.CalendarDate): string =>\n  `${date.year}-${String(date.month).padStart(2, \"0\")}`;\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [\n  {\n    calendar: UiCalendar.init({\n      id: \"shadcn-calendar-month-year-selector\",\n      today: Calendar.make(2026, 4, 16),\n      initialSelectedDate: birthday,\n      minDate: Calendar.make(1900, 1, 1),\n      maxDate: Calendar.make(2026, 12, 31),\n    }),\n    selectedDate: birthday,\n    viewedMonth: formatMonth(birthday),\n  },\n  [],\n];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotCalendarMessage: ({ message }) => {\n        const [calendar, commands, maybeOutMessage] = UiCalendar.update(\n          model.calendar,\n          message\n        );\n\n        const nextModel = Option.match(maybeOutMessage, {\n          onNone: () => evo(model, { calendar: () => calendar }),\n          onSome: M.type<UiCalendar.OutMessage>().pipe(\n            M.tagsExhaustive({\n              ChangedViewMonth: ({ year, month }) =>\n                evo(model, {\n                  calendar: () => calendar,\n                  viewedMonth: () =>\n                    `${year}-${String(month).padStart(2, \"0\")}`,\n                }),\n              SelectedDate: ({ date }) =>\n                evo(model, {\n                  calendar: () => calendar,\n                  selectedDate: () => date,\n                  viewedMonth: () => formatMonth(date),\n                }),\n            })\n          ),\n        });\n\n        return [\n          nextModel,\n          Command.mapMessages(commands, (message) =>\n            GotCalendarMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.calendar.id,\n        model: model.calendar,\n        view: UiCalendar.view,\n        viewInputs: {\n          toView: UiCalendar.shadcnCalendarView,\n          daysHeadingButtonLabel: \"Open month selector\",\n          monthsHeadingButtonLabel: \"Open year selector\",\n        },\n        toParentMessage: (message) => GotCalendarMessage({ message }),\n      }),\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [`Selected date: ${formatDate(model.selectedDate)}`]\n      ),\n      h.p(\n        [h.Class(\"text-sm text-gray-700\")],\n        [`Viewed month: ${model.viewedMonth}`]\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/shadcn-calendar-month-year-selector/shadcn-calendar-month-year-selector.scene.test.ts",
+      "target": "src/examples/shadcn-calendar-month-year-selector/shadcn-calendar-month-year-selector.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as UiCalendar from \"../../ui/shadcn-calendar\";\nimport * as Example from \"./main\";\n\ndescribe(\"shadcn Calendar Month and Year Selector example\", () => {\n  test(\"opens month and year selector modes\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"Selected date: 1990-07-15\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Open month selector\" })),\n      Scene.Command.resolve(\n        UiCalendar.FocusGrid,\n        UiCalendar.CompletedFocusGrid(),\n        (message) => Example.GotCalendarMessage({ message })\n      ),\n      Scene.expect(Scene.text(\"Jul\")).toExist(),\n      Scene.click(Scene.role(\"button\", { name: \"Open year selector\" })),\n      Scene.Command.resolve(\n        UiCalendar.FocusGrid,\n        UiCalendar.CompletedFocusGrid(),\n        (message) => Example.GotCalendarMessage({ message })\n      ),\n      Scene.expect(Scene.text(\"1990\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "dependencies": [],
+  "devDependencies": []
+}

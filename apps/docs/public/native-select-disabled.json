@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select-disabled",
+  "type": "registry:example",
+  "title": "Native Select Disabled",
+  "description": "A runnable Foldkit example showing the shadcn Native Select disabled state.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/native-select"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/native-select-disabled/main.ts",
+      "target": "src/examples/native-select-disabled/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as NativeSelect from \"../../ui/native-select\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst statusOptions: readonly NativeSelect.OptionConfig[] = [\n  { value: \"todo\", label: \"Todo\" },\n  { value: \"in-progress\", label: \"In Progress\" },\n  { value: \"done\", label: \"Done\" },\n  { value: \"cancelled\", label: \"Cancelled\" },\n];\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return NativeSelect.rootView<Message>({\n    children: [\n      NativeSelect.labelView<Message>({\n        forId: \"status-disabled\",\n        children: [h.span([], [\"Select status\"])],\n      }),\n      NativeSelect.triggerView<Message>({\n        id: \"status-disabled\",\n        value: \"todo\",\n        disabled: true,\n        onChange: () => {\n          throw new Error(\"Disabled select cannot change\");\n        },\n        options: statusOptions,\n      }),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/native-select-disabled/native-select-disabled.scene.test.ts",
+      "target": "src/examples/native-select-disabled/native-select-disabled.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Native Select Disabled example\", () => {\n  test(\"renders disabled native select semantics\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.role(\"combobox\", { name: \"Select status\" })).toBeDisabled(),\n      Scene.expect(Scene.text(\"In Progress\")).toExist(),\n      Scene.expect(Scene.text(\"Cancelled\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "NativeSelect",
+      "example": "disabled",
+      "origin": "https://ui.shadcn.com/docs/components/radix/native-select"
+    }
+  }
+}

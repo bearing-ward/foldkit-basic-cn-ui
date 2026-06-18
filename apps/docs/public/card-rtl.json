@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-rtl",
+  "type": "registry:example",
+  "title": "Card RTL",
+  "description": "A runnable Foldkit example showing the shadcn Card RTL composition.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/shadcn-card"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/card-rtl/main.ts",
+      "target": "src/examples/card-rtl/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Card from \"../../ui/card\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Dir(\"rtl\"), h.Class(\"w-full max-w-sm\")],\n    [\n      Card.view<Message>(\n        [\n          Card.headerView<Message>(\n            [\n              h.div(\n                [h.Class(\"space-y-1\")],\n                [\n                  Card.titleView<Message>(\"تسجيل الدخول إلى حسابك\"),\n                  Card.descriptionView<Message>(\n                    \"أدخل بريدك الإلكتروني أدناه لتسجيل الدخول إلى حسابك\"\n                  ),\n                ]\n              ),\n              Card.actionView<Message>([\n                h.a(\n                  [\n                    h.Href(\"#\"),\n                    h.Class(\n                      \"text-sm font-medium text-gray-950 underline-offset-4 hover:underline\"\n                    ),\n                  ],\n                  [\"إنشاء حساب\"]\n                ),\n              ]),\n            ],\n            \"border-b border-gray-200\"\n          ),\n          Card.contentView<Message>(\n            [\n              h.div(\n                [h.Class(\"grid gap-4\")],\n                [\n                  h.div(\n                    [h.Class(\"grid gap-2\")],\n                    [\n                      h.label([h.For(\"rtl-email\")], [\"البريد الإلكتروني\"]),\n                      h.input([\n                        h.Id(\"rtl-email\"),\n                        h.Type(\"email\"),\n                        h.Class(\"h-9 rounded-md border border-gray-300 px-3\"),\n                      ]),\n                    ]\n                  ),\n                  h.div(\n                    [h.Class(\"grid gap-2\")],\n                    [\n                      h.div(\n                        [h.Class(\"flex items-center justify-between gap-4\")],\n                        [\n                          h.label([h.For(\"rtl-password\")], [\"كلمة المرور\"]),\n                          h.a([h.Href(\"#\")], [\"نسيت كلمة المرور؟\"]),\n                        ]\n                      ),\n                      h.input([\n                        h.Id(\"rtl-password\"),\n                        h.Type(\"password\"),\n                        h.Class(\"h-9 rounded-md border border-gray-300 px-3\"),\n                      ]),\n                    ]\n                  ),\n                ]\n              ),\n            ]\n          ),\n          Card.footerView<Message>(\n            [\n              h.div(\n                [h.Class(\"grid w-full gap-2\")],\n                [\n                  h.button([h.Type(\"button\")], [\"تسجيل الدخول\"]),\n                  h.button([h.Type(\"button\")], [\"تسجيل الدخول باستخدام Google\"]),\n                ]\n              ),\n            ]\n          ),\n        ],\n        \"w-full\"\n      ),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/card-rtl/card-rtl.scene.test.ts",
+      "target": "src/examples/card-rtl/card-rtl.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as Example from \"./main\";\n\ndescribe(\"Card RTL example\", () => {\n  test(\"renders the origin Arabic login card content\", () => {\n    Scene.scene(\n      { update: Example.update, view: Example.view },\n      Scene.with(Example.init()[0]),\n      Scene.expect(Scene.text(\"تسجيل الدخول إلى حسابك\")).toExist(),\n      Scene.expect(Scene.label(\"البريد الإلكتروني\")).toExist(),\n      Scene.expect(Scene.label(\"كلمة المرور\")).toExist(),\n      Scene.expect(Scene.role(\"link\", { name: \"إنشاء حساب\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"تسجيل الدخول\" })\n      ).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"تسجيل الدخول\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Card",
+      "example": "rtl",
+      "origin": "https://ui.shadcn.com/docs/components/radix/card"
+    }
+  }
+}

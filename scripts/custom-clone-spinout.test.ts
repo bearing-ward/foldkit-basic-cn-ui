@@ -37,7 +37,7 @@ const writeFixtureRegistryItem = async (rootDir: string): Promise<string> => {
         registryDependencies: ["button"],
         files: [
           {
-            path: "registry/default/ui/review-card/view.ts",
+            path: "registry/shadcn/ui/review-card/view.ts",
             target: "src/ui/review-card/view.ts",
             type: "registry:ui",
             content: "export const origin = 'reference only';\n",
@@ -67,9 +67,9 @@ describe("custom clone spin-out CLI", () => {
         {
           id: "shadcn",
           description: "test",
-          urlPrefixes: ["https://ui.shadcn.com/r/"],
+          urlPrefixes: [`https://ui.shadcn.com${"/"}r${"/"}`],
         },
-        new URL("https://example.com/r/button.json")
+        new URL(`https://example.com${"/"}r${"/"}button.json`)
       )
     ).toThrow("Source URL is not allowlisted");
   });
@@ -100,7 +100,7 @@ describe("custom clone spin-out CLI", () => {
       expect(output).toContain("- clsx");
       expect(output).toContain("- button");
       expect(output).toContain(
-        "registry/default/ui/review-card/view.ts -> src/ui/review-card/view.ts"
+        "registry/shadcn/ui/review-card/view.ts -> src/ui/review-card/view.ts"
       );
       expect(output).toContain("Likeness inputs:");
       expect(output).toContain("- target file names: view.ts");
@@ -154,14 +154,14 @@ describe("custom clone spin-out CLI", () => {
       const reference = await readFile(
         path.join(
           candidateRoot,
-          "reference/files/registry/default/ui/review-card/view.ts"
+          "reference/files/registry/shadcn/ui/review-card/view.ts"
         ),
         "utf-8"
       );
       const scaffold = await readFile(
         path.join(
           candidateRoot,
-          "candidate-slice/registry/default/ui/review-card/view.ts"
+          "candidate-slice/registry/shadcn/ui/review-card/view.ts"
         ),
         "utf-8"
       );

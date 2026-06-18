@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Progress from "../../../registry/default/ui/progress";
+import * as Progress from "../../../registry/base-ui/ui/progress";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 

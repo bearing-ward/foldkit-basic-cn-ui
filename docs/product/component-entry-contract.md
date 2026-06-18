@@ -31,8 +31,9 @@ Use this vocabulary consistently in source, docs, metadata, and planning.
 | Term      | Meaning in this repository                                                                  |
 | --------- | ------------------------------------------------------------------------------------------- |
 | Primitive | Headless behavior and accessibility, usually from `foldkit/dist/ui` or Base UI reference.   |
-| Component | Styled, reusable registry UI under `registry/default/ui/{name}`.                            |
-| Example   | Runnable installable demo under `registry/default/examples/{example-name}`.                 |
+| Lane      | A source registry folder for one component library, such as `foldkit`, `base-ui`, `shadcn`, or `ai-elements`. |
+| Component | Styled, reusable registry UI under `registry/{lane}/ui/{name}`.                             |
+| Example   | Runnable installable demo under `registry/{lane}/examples/{example-name}`.                  |
 | Pattern   | Reusable behavior or UX solution documented through examples and tests.                     |
 | Block     | Future higher-level composition that imports components instead of hiding domain behavior.  |
 | Anatomy   | Named component parts such as Root, Label, Track, Indicator, Trigger, Content, or Item.     |
@@ -66,26 +67,23 @@ example-parity target.
 
 Use clean public names only for Foldkit functional components:
 
-- `registry/default/ui/{name}`
-- `registry/default/examples/{name}-basic`
-- `/docs/components/{name}`
-- `/r/{name}.json`
+- `registry/foldkit/ui/{name}`
+- `registry/foldkit/examples/{name}-basic`
+- `/{name}.json`
 
 Base UI and shadcn style-lane components must always use an explicit origin
 prefix, even when there is no overlap today:
 
-- `registry/default/ui/base-ui-{name}`
-- `registry/default/ui/shadcn-{name}`
-- `registry/default/examples/base-ui-{name}-{example}`
-- `registry/default/examples/shadcn-{name}-{example}`
-- `/docs/components/base-ui-{name}`
-- `/docs/components/shadcn-{name}`
-- `/r/base-ui-{name}.json`
-- `/r/shadcn-{name}.json`
+- `registry/base-ui/ui/base-ui-{name}`
+- `registry/shadcn/ui/shadcn-{name}`
+- `registry/base-ui/examples/base-ui-{name}-{example}`
+- `registry/shadcn/examples/shadcn-{name}-{example}`
+- `/base-ui-{name}.json`
+- `/shadcn-{name}.json`
 
 The prefix is product language, not just a collision workaround. It keeps the
-style lane visible in install names, docs routes, search, and generated
-registry output. Existing non-Foldkit items should migrate to prefixed names;
+style lane visible in install names, OpenStory search, and generated registry
+output. Existing non-Foldkit items should migrate to prefixed names;
 compatibility aliases are not required.
 
 Base UI and shadcn component identity is origin-page based. For every upstream
@@ -131,7 +129,7 @@ Examples should use upstream example names when matching Base UI or shadcn:
 - Every Base UI or shadcn component pass must reconcile the origin examples
   against our implementation before it is considered complete. Inventory the
   current origin URL from `meta.foldkit.origin`, compare its examples to
-  `registry/default/examples/{origin-lane}-{name}-*`, docs example blocks, source
+  `registry/{lane}/examples/{origin-lane}-{name}-*`, OpenStory stories, source
   snapshots, generated registry JSON, and scene tests, then either add the
   missing matching example or document the deliberate deferral with the reason.
 - Reconciliation must compare more than names and text. Match the origin
@@ -157,24 +155,23 @@ Examples should use upstream example names when matching Base UI or shadcn:
 ## Required Files
 
 Every component entry has a component source slice, at least one example slice,
-docs route wiring, generated public artifacts, and tests.
+source registry metadata, generated OpenStory coverage, generated public
+artifacts, and tests.
 
 | File Or Area                                      | Required For        | Expectation                                                                 |
 | ------------------------------------------------- | ------------------- | --------------------------------------------------------------------------- |
-| `registry/default/ui/{name}/index.ts`             | every `registry:ui` | Public component API, exported types, JSDoc, Foldkit view helpers.          |
-| `registry/default/ui/{name}/view.ts`              | every styled item   | Class constants, visual helper functions, style-only exports.               |
-| `registry/default/ui/{name}/{name}.scene.test.ts` | every `registry:ui` | Behavior, accessibility, state, style hook, and inert/disabled proof.       |
-| `registry/default/examples/{example}/main.ts`     | every example       | Runnable Foldkit example imported by docs and installed by registry.        |
-| `registry/default/examples/{example}/entry.ts`    | every standalone    | Runtime boot only; never put pure component logic here.                     |
-| `registry/default/examples/{example}/index.html`  | every standalone    | Minimal example shell pointing at `entry.ts`.                               |
-| `registry/default/examples/{example}/*.test.ts`   | every example       | Scene test proving interaction, command/mount resolution, or inert state.   |
-| `registry/default/items.json`                     | every registry item | shadcn-compatible registry metadata plus `meta.foldkit` metadata.           |
-| `src/main.ts`                                     | every docs item     | Route, nav, origin grouping, docs page, live preview, source viewer wiring. |
-| `src/main.scene.test.ts`                          | every docs item     | Docs route section, example block, and visible behavior proof.              |
-| `src/main.story.test.ts`                          | stateful docs item  | Parent model/update/route behavior where relevant.                          |
-| `src/ui/view/{name}.ts`                           | docs shell preview  | Embed view for `/docs/components/{name}` when applicable.                   |
-| `apps/docs/public/sources/{example}.txt`          | every example       | Generated source snapshot used by the View code widget.                     |
-| `apps/docs/public/r/{name}.json`                  | every item          | Generated public registry JSON.                                             |
+| `registry/{lane}/ui/{name}/index.ts`              | every `registry:ui` | Public component API, exported types, JSDoc, Foldkit view helpers.          |
+| `registry/{lane}/ui/{name}/view.ts`               | every styled item   | Class constants, visual helper functions, style-only exports.               |
+| `registry/{lane}/ui/{name}/{name}.scene.test.ts`  | every `registry:ui` | Behavior, accessibility, state, style hook, and inert/disabled proof.       |
+| `registry/{lane}/examples/{example}/main.ts`      | every example       | Runnable Foldkit example imported by stories and installed by registry.     |
+| `registry/{lane}/examples/{example}/entry.ts`     | every standalone    | Runtime boot only; never put pure component logic here.                     |
+| `registry/{lane}/examples/{example}/index.html`   | every standalone    | Minimal example shell pointing at `entry.ts`.                               |
+| `registry/{lane}/examples/{example}/*.test.ts`    | every example       | Scene test proving interaction, command/mount resolution, or inert state.   |
+| `registry/{lane}/registry.json`                   | every registry item | shadcn-compatible registry metadata plus `meta.foldkit` metadata.           |
+| `registry/registry.json`                          | every lane          | Root source manifest that includes child lane registries in public order.   |
+| `src/openstory/generated/{name}.stories.ts`       | every docs item     | Generated OpenStory coverage for the component and installable examples.    |
+| `apps/docs/public/sources/{example}.txt`          | every example       | Generated source snapshot used by the source viewer.                        |
+| `apps/docs/public/{name}.json`                    | every item          | Generated public registry JSON.                                             |
 | `docs/product/*-coverage-matrix.md`               | complex components  | Optional detail matrix; useful but subordinate to this contract.            |
 
 ## Installed component updates
@@ -210,11 +207,12 @@ that implementation detail without weakening the default local-edit protection.
 
 ## Component Source Contract
 
-## Docs Navigation And Origin Contract
+## OpenStory Navigation And Origin Contract
 
-The docs sidebar/dock grouping is part of the component contract, not a
-presentation detail. A component's docs nav group must match
-`registry/default/items.json`:
+OpenStory grouping is part of the component contract, not a presentation
+detail. A component's story group and generated registry output must match the
+included source registry metadata from `registry/registry.json` and its child
+lane registries:
 
 - `meta.foldkit.origin` under `https://base-ui.com/` appears under the `Base UI`
   docs group.
@@ -230,14 +228,13 @@ presentation detail. A component's docs nav group must match
 
 When adding or changing a `registry:ui` item:
 
-- Add the docs route to `NAV_ITEMS`.
-- Ensure `docsNavItemLibrary` classifies the `{Component}Docs` route according
-  to the lane derived from `meta.foldkit.origin`; never rely on the fallback for
-  Base UI or shadcn components.
-- Add source metadata to `COMPONENT_DOCS_METADATA_BY_SLUG` for every non-Foldkit
-  origin so the docs meta grid shows the same origin as the registry metadata.
-- Run `bun run check:registry`; the metadata guardrail must fail if a Base UI or
-  shadcn docs route falls back into the Foldkit group.
+- Add the item to the correct child lane registry.
+- Keep the item name prefixed for non-Foldkit lanes so OpenStory search,
+  install URLs, and registry aliases expose the library origin.
+- Ensure `meta.foldkit.origin` is present for every `registry:ui` item.
+- Run `bun run openstory:generate` and `bun run check:registry`; the metadata
+  guardrail must fail if a Base UI, shadcn, or AI Elements item is missing or
+  misclassified.
 
 ### `index.ts`
 
@@ -358,45 +355,45 @@ For older Foldkit-origin components, a bullet API list is acceptable until that
 page is upgraded, but new work should use the table when the surface has more
 than a few exports.
 
-## Documentation Page Contract
+## OpenStory Documentation Reference Contract
 
-Every component docs page is a product surface and a testable contract.
+Every component should have a first OpenStory entry that acts as its
+documentation reference before the interactive example stories.
 
 Required sections:
 
-| Section              | Required When                                  | Expectation                                                           |
-| -------------------- | ---------------------------------------------- | --------------------------------------------------------------------- |
-| Header               | always                                         | Component name, origin label, concise description.                    |
-| Metadata             | always                                         | Source, Origin, Artifact, Primitive when applicable, Examples, Proof. |
-| Overview             | always                                         | v1 scope, behavior boundary, and upstream reference alignment.        |
-| Examples             | always                                         | Installable examples via `docsExampleBlock`.                          |
-| Installation         | always                                         | Component install first, then example installs in registry order.     |
-| Usage                | always                                         | Minimal consumer import and direct use.                               |
-| Foldkit integration  | stateful or parent-integrated components       | Model, Message, init, update, submodel, command mapping as needed.    |
-| Anatomy              | always                                         | Foldkit-native part composition after Foldkit integration.            |
-| Keyboard interaction | only when interactive keyboard behavior exists | Key map and focus behavior from Base UI/Foldkit contract.             |
-| API reference        | always                                         | Table or detailed list as defined above.                              |
-| Accessibility        | always                                         | Roles, names, ARIA, focus, disabled/read-only behavior.               |
-| Coverage             | always                                         | Claims mapped to tests, registry checks, and browser checks.          |
+| Section              | Required When                                  | Expectation                                                                 |
+| -------------------- | ---------------------------------------------- | --------------------------------------------------------------------------- |
+| Header               | always                                         | Component name, origin label, concise description.                          |
+| Metadata             | always                                         | Source, Origin, Artifact, Primitive when applicable, Examples, Proof.       |
+| Description/Overview | always                                         | v1 scope, behavior boundary, and upstream reference alignment.              |
+| Installation         | always                                         | Component install first, then example installs in registry item order.      |
+| Usage                | always                                         | Minimal consumer import and direct use.                                     |
+| Foldkit integration  | stateful or parent-integrated components       | Model, Message, init, update, submodel, command mapping as needed.          |
+| Anatomy              | always                                         | X-ray style rendered HTML map with part names, classes, styles, attributes. |
+| Styling              | always                                         | Class hooks, style hooks, data attributes, state attributes, and variants.  |
+| Keyboard interaction | only when interactive keyboard behavior exists | Key map and focus behavior from Base UI/Foldkit contract.                   |
+| API reference        | always                                         | Props, callbacks, slots/render hooks, types, and deliberate omissions.      |
+| Accessibility        | always                                         | Roles, names, ARIA, focus, disabled/read-only behavior.                     |
+| Existing coverage    | always                                         | Claims mapped to scene tests, story tests, registry checks, and smokes.     |
 
-Do not include a standalone `Styling` section for new Base UI-informed pages.
-Document styling through the API reference table by listing class hooks, style
-hooks, data attributes, state attributes, and anatomy parts.
-
-For older pages that still use a standalone Styling section, treat that as
-legacy documentation. Upgrade them opportunistically toward the API-table model.
+The Anatomy section should be interactive when the component has meaningful
+markup: hovering a code element highlights the corresponding preview element
+and displays the relevant part name, classes, data attributes, ARIA attributes,
+and style hooks. Static anatomy text is acceptable only for tiny single-element
+components.
 
 Documentation must not:
 
-- Link users to standalone example pages from the example block.
 - Render route/install copy inline with interactive preview controls.
 - Include keyboard sections for read-only, static, or inert components.
 - Claim Base UI or shadcn parity that is not backed by source, tests, or an
   explicit documented deferral.
 
-## Example Block Contract
+## Legacy Docs App Example Block Contract
 
-Use `docsExampleBlock` for component docs examples.
+Use this section only for the legacy Vite docs app while it remains in the
+repository. New public component browsing should use OpenStory stories.
 
 Required structure:
 
@@ -418,7 +415,7 @@ Example blocks must:
 
 ## Example Source Contract
 
-Every example under `registry/default/examples/{example}` must be a real Foldkit
+Every example under `registry/{lane}/examples/{example}` must be a real Foldkit
 example, not a decorative mock.
 
 Required:
@@ -454,7 +451,7 @@ Required tests/checks:
 | --------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | Component scene | Prove roles, names, ARIA, data attributes, disabled/read-only states, styling hooks, and key interactions where relevant. |
 | Example scene   | Prove the installable example's behavior or inert/static state.                                                           |
-| Docs scene      | Prove docs route sections, visible example previews, source viewer, and important API text.                               |
+| OpenStory check | Prove generated stories exist for component documentation and installable examples.                                      |
 | Story tests     | Prove update/model/message behavior for stateful components.                                                              |
 | Registry checks | Prove generated JSON, metadata, source snapshots, and example test coverage.                                              |
 | Browser e2e     | Prove docs layout and source viewer across desktop and mobile.                                                            |
@@ -498,7 +495,7 @@ section.
 
 ## Metadata Contract
 
-Every `registry:ui` item in `registry/default/items.json` must include
+Every `registry:ui` item in each included child registry must include
 Foldkit-specific metadata under `meta.foldkit`.
 
 Required fields:
@@ -528,9 +525,9 @@ Generated files are part of the public registry contract.
 
 Required:
 
-- `apps/docs/public/r/{name}.json` exists and is current.
-- `apps/docs/public/r/{example}.json` exists and is current for every example.
-- `apps/docs/public/r/index.json` includes the item.
+- `apps/docs/public/{name}.json` exists and is current.
+- `apps/docs/public/{example}.json` exists and is current for every example.
+- `apps/docs/public/registry.json` includes the item.
 - `apps/docs/public/sources/{example}.txt` exists and matches the example source
   used by the View code widget.
 - `bun run check:registry` passes.
@@ -538,17 +535,19 @@ Required:
 Do not manually edit generated registry JSON or source snapshots. Update source
 and run `bun run build:registry`.
 
-## Docs Shell Contract
+## OpenStory Shell Contract
 
-The docs app is a SPA-style component browser.
+The public site is an OpenStory component browser backed by the generated
+registry JSON.
 
 Required:
 
-- Left sidebar title: `Foldkit-basic-cn-ui`.
-- Main heading/home copy: `Foldkit component registry`.
-- Sidebar groups are labeled by library: Foldkit, Base UI, shadcn.
-- Component selection persists in the sidebar while only the detail pane changes.
-- Sidebar and detail pane have independent scroll areas.
+- The OpenStory manifest is present at `/__openstory/manifest.json`.
+- Component story titles expose library grouping: Foldkit, Base UI, shadcn, and
+  AI Elements.
+- Registry files are available from the same site root:
+  `/components.json`, `/registry.json`, and `/{name}.json`.
+- Source snapshots are available under `/sources/{example}.txt`.
 - Component labels should indicate library origin through grouped navigation and
   concise badges where useful.
 
@@ -564,8 +563,8 @@ A component entry is complete only when all applicable items are true:
 - Examples match upstream Base UI or shadcn demos when parity is the goal.
 - Every example has a scene test.
 - Component scene tests prove behavior and accessibility.
-- Docs route renders required and conditional sections only.
-- Docs scene tests and browser e2e guard the page contract.
+- OpenStory docs reference entry renders required and conditional sections only.
+- OpenStory checks and browser smokes guard the public site contract.
 - Registry metadata includes origin/artifact/primitive where applicable.
 - Generated registry JSON and source snapshots are current.
 - Verification commands pass.

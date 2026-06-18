@@ -1,8 +1,8 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const rootDir = path.resolve(import.meta.dirname, "..");
-const itemsPath = path.join(rootDir, "registry/default/items.json");
+const registryPath = "registry/registry.json";
 const configPath = path.join(rootDir, "registry/config.json");
 const componentsTemplatePath = path.join(
   rootDir,
@@ -12,7 +12,8 @@ const componentsOutputPath = path.join(
   rootDir,
   "apps/docs/public/components.json"
 );
-const outputDir = path.join(rootDir, "apps/docs/public/r");
+const publicDir = path.join(rootDir, "apps/docs/public");
+const legacyOutputDir = path.join(publicDir, "r");
 const itemSchemaUrl = "https://ui.shadcn.com/schema/registry-item.json";
 const registrySchemaUrl = "https://ui.shadcn.com/schema/registry.json";
 
@@ -20,6 +21,15 @@ const isCheck = process.argv.includes("--check");
 
 const readJson = async (filePath) =>
   JSON.parse(await readFile(filePath, "utf-8"));
+
+const readRegistryFile = async (relativePath) => {
+  const registry = await readJson(path.join(rootDir, relativePath));
+  const includeItems = await Promise.all(
+    (registry.include ?? []).map((includePath) => readRegistryFile(includePath))
+  );
+
+  return [...(registry.items ?? []), ...includeItems.flat()];
+};
 
 const stableJson = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -103,7 +113,23 @@ const writeOrCheck = async (filePath, content) => {
   await writeFile(filePath, content);
 };
 
-const sourceItems = await readJson(itemsPath);
+const removeOrCheckMissing = async (filePath) => {
+  if (isCheck) {
+    const exists = await stat(filePath)
+      .then(() => true)
+      .catch(() => false);
+
+    if (exists) {
+      throw new Error(`${path.relative(rootDir, filePath)} should not exist`);
+    }
+
+    return;
+  }
+
+  await rm(filePath, { recursive: true, force: true });
+};
+
+const sourceItems = await readRegistryFile(registryPath);
 const sourceItemNames = new Set(sourceItems.map((item) => item.name));
 const qualifyRegistryDependency = (dependency) => {
   if (
@@ -137,7 +163,8 @@ const index = {
   })),
 };
 
-await writeOrCheck(path.join(outputDir, "index.json"), stableJson(index));
+await removeOrCheckMissing(legacyOutputDir);
+await writeOrCheck(path.join(publicDir, "registry.json"), stableJson(index));
 
 const componentsTemplate = await readFile(componentsTemplatePath, "utf-8");
 await writeOrCheck(
@@ -150,7 +177,7 @@ await writeOrCheck(
 
 for (const item of items) {
   await writeOrCheck(
-    path.join(outputDir, `${item.name}.json`),
+    path.join(publicDir, `${item.name}.json`),
     stableJson(item)
   );
 }
@@ -158,6 +185,6 @@ for (const item of items) {
 console.log(
   `${isCheck ? "Checked" : "Built"} ${items.length} registry items in ${path.relative(
     rootDir,
-    outputDir
+    publicDir
   )}`
 );

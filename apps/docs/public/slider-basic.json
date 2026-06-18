@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-basic",
+  "type": "registry:example",
+  "title": "Slider Basic",
+  "description": "A runnable Foldkit example showing Slider keyboard value changes and parent-visible rating feedback.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/slider"],
+  "files": [
+    {
+      "path": "registry/foldkit/examples/slider-basic/main.ts",
+      "target": "src/examples/slider-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Slider from \"../../ui/slider\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  slider: Slider.Model,\n  status: S.String,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotSliderMessage = m(\"GotSliderMessage\", {\n  message: Slider.Message,\n});\n\nexport const Message = S.Union([GotSliderMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nconst statusForValue = (value: number): string => `Rating: ${value} of 10`;\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [slider, commands] = Slider.init({\n    id: \"slider-basic\",\n    min: 0,\n    max: 10,\n    step: 1,\n    initialValue: 4,\n  });\n\n  return [\n    {\n      slider,\n      status: statusForValue(slider.value),\n    },\n    Command.mapMessages(commands, (message) => GotSliderMessage({ message })),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotSliderMessage: ({ message }) => {\n        const [slider, commands, maybeOutMessage] = Slider.update(\n          model.slider,\n          message\n        );\n        const status = Option.match(maybeOutMessage, {\n          onNone: () => model.status,\n          onSome: M.type<Slider.OutMessage>().pipe(\n            M.tagsExhaustive({\n              ChangedValue: ({ value }) => statusForValue(value),\n            })\n          ),\n        });\n\n        return [\n          evo(model, {\n            slider: () => slider,\n            status: () => status,\n          }),\n          Command.mapMessages(commands, (message) =>\n            GotSliderMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.slider.id,\n        model: model.slider,\n        view: Slider.view,\n        viewInputs: {\n          name: \"rating\",\n          formatValue: (value) => `${value} of 10`,\n          toView: (attributes) =>\n            Slider.sliderFieldView({\n              attributes,\n              label: \"Rating\",\n              valueText: `${model.slider.value} of 10`,\n            }),\n        },\n        toParentMessage: (message) => GotSliderMessage({ message }),\n      }),\n      h.p([h.Class(\"text-sm text-gray-700\")], [model.status]),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/foldkit/examples/slider-basic/slider-basic.scene.test.ts",
+      "target": "src/examples/slider-basic/slider-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as SliderBasicExample from \"./main\";\n\ndescribe(\"Slider Basic example\", () => {\n  test(\"updates rating feedback from keyboard navigation\", () => {\n    const [initialModel] = SliderBasicExample.init();\n\n    Scene.scene(\n      {\n        update: SliderBasicExample.update,\n        view: SliderBasicExample.view,\n      },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"slider\", { name: \"Rating\" })).toHaveAttr(\n        \"aria-valuenow\",\n        \"4\"\n      ),\n      Scene.expect(Scene.text(\"Rating: 4 of 10\")).toExist(),\n      Scene.keydown(Scene.role(\"slider\", { name: \"Rating\" }), \"ArrowRight\"),\n      Scene.expect(Scene.role(\"slider\", { name: \"Rating\" })).toHaveAttr(\n        \"aria-valuenow\",\n        \"5\"\n      ),\n      Scene.expect(Scene.text(\"Rating: 5 of 10\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Slider",
+      "example": "basic"
+    }
+  }
+}

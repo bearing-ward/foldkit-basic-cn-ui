@@ -1,7 +1,7 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AnimationBasicExample from "../registry/default/examples/animation-basic/main";
+import * as AnimationBasicExample from "../registry/foldkit/examples/animation-basic/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

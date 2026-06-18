@@ -1,18 +1,18 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as AlertActionExample from "../registry/default/examples/alert-action/main";
-import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
-import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
-import * as AlertDestructiveExample from "../registry/default/examples/alert-destructive/main";
-import * as AlertDialogBasicExample from "../registry/default/examples/alert-dialog-basic/main";
-import * as AlertRtlExample from "../registry/default/examples/alert-rtl/main";
-import * as ShadcnAlertDialogBasicExample from "../registry/default/examples/shadcn-alert-dialog-basic/main";
-import * as ShadcnAlertDialogDestructiveExample from "../registry/default/examples/shadcn-alert-dialog-destructive/main";
-import * as ShadcnAlertDialogMediaExample from "../registry/default/examples/shadcn-alert-dialog-media/main";
-import * as ShadcnAlertDialogRtlExample from "../registry/default/examples/shadcn-alert-dialog-rtl/main";
-import * as ShadcnAlertDialogSmallMediaExample from "../registry/default/examples/shadcn-alert-dialog-small-media/main";
-import * as ShadcnAlertDialogSmallExample from "../registry/default/examples/shadcn-alert-dialog-small/main";
+import * as AlertActionExample from "../registry/shadcn/examples/alert-action/main";
+import * as AlertBasicExample from "../registry/shadcn/examples/alert-basic/main";
+import * as AlertCustomColorsExample from "../registry/shadcn/examples/alert-custom-colors/main";
+import * as AlertDestructiveExample from "../registry/shadcn/examples/alert-destructive/main";
+import * as AlertDialogBasicExample from "../registry/base-ui/examples/alert-dialog-basic/main";
+import * as AlertRtlExample from "../registry/shadcn/examples/alert-rtl/main";
+import * as ShadcnAlertDialogBasicExample from "../registry/shadcn/examples/shadcn-alert-dialog-basic/main";
+import * as ShadcnAlertDialogDestructiveExample from "../registry/shadcn/examples/shadcn-alert-dialog-destructive/main";
+import * as ShadcnAlertDialogMediaExample from "../registry/shadcn/examples/shadcn-alert-dialog-media/main";
+import * as ShadcnAlertDialogRtlExample from "../registry/shadcn/examples/shadcn-alert-dialog-rtl/main";
+import * as ShadcnAlertDialogSmallMediaExample from "../registry/shadcn/examples/shadcn-alert-dialog-small-media/main";
+import * as ShadcnAlertDialogSmallExample from "../registry/shadcn/examples/shadcn-alert-dialog-small/main";
 import * as Main from "./main";
 
 type Message = Main.Message;

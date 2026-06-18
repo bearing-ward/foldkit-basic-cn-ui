@@ -7,10 +7,8 @@ import {
   storyId,
 } from "./generate-openstory-stories.mjs";
 
-const examplesDir = "registry/default/examples";
-
 const importPattern =
-  /from "\.\.\/\.\.\/\.\.\/registry\/default\/examples\/([^/]+)\/main"/gu;
+  /from "\.\.\/\.\.\/\.\.\/registry\/(foldkit|base-ui|shadcn|ai-elements)\/examples\/([^/]+)\/main"/gu;
 
 const generated = generateOpenstoryStories();
 const failures = checkGeneratedFiles(generated);
@@ -45,10 +43,11 @@ for (const [relativeFilePath] of generated.files) {
   const source = readFileSync(absoluteFilePath, "utf-8");
 
   for (const match of source.matchAll(importPattern)) {
-    const slug = match[1];
+    const sourceLane = match[1];
+    const slug = match[2];
     importsBySlug.set(slug, (importsBySlug.get(slug) ?? 0) + 1);
 
-    if (!existsSync(path.join(examplesDir, slug, "main.ts"))) {
+    if (!existsSync(path.join("registry", sourceLane, "examples", slug, "main.ts"))) {
       failures.push(`${relativeFilePath}: imports missing example ${slug}`);
     }
   }

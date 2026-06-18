@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "foldkit-cn",
+  "homepage": "https://bearing-ward.github.io/foldkit-basic-cn-ui",
+  "include": [
+    "registry/foldkit/registry.json",
+    "registry/base-ui/registry.json",
+    "registry/shadcn/registry.json",
+    "registry/ai-elements/registry.json"
+  ]
+}

@@ -40,7 +40,7 @@ describe("generate registry project CLI", () => {
           "--homepage",
           "https://example.com/acme",
           "--registry-base-url",
-          "https://example.com/acme/r",
+          "https://example.com/acme",
         ])
       ).rejects.toThrow("Project name is required.");
     } finally {
@@ -60,7 +60,7 @@ describe("generate registry project CLI", () => {
         "--homepage",
         "https://example.com/acme",
         "--registry-base-url",
-        "https://example.com/acme/r",
+        "https://example.com/acme",
       ]);
 
       const packageJson = await parseJsonFile<{
@@ -71,9 +71,12 @@ describe("generate registry project CLI", () => {
         homepage: string;
         registryBaseUrl: string;
       }>(path.join(rootDir, "registry/config.json"));
-      const items = await parseJsonFile<ReadonlyArray<{ name: string }>>(
-        path.join(rootDir, "registry/default/items.json")
-      );
+      const registry = await parseJsonFile<{
+        include: ReadonlyArray<string>;
+      }>(path.join(rootDir, "registry/registry.json"));
+      const laneRegistry = await parseJsonFile<{
+        items: ReadonlyArray<{ name: string }>;
+      }>(path.join(rootDir, "registry/foldkit/registry.json"));
       const components = await parseJsonFile<{
         registries: Record<string, string>;
       }>(path.join(rootDir, "registry/templates/components.json"));
@@ -81,10 +84,10 @@ describe("generate registry project CLI", () => {
         registries: Record<string, string>;
       }>(path.join(rootDir, "apps/docs/public/components.json"));
       const publicItem = await parseJsonFile<{ name: string }>(
-        path.join(rootDir, "apps/docs/public/r/example-card.json")
+        path.join(rootDir, "apps/docs/public/example-card.json")
       );
       const view = await readFile(
-        path.join(rootDir, "registry/default/ui/example-card/view.ts"),
+        path.join(rootDir, "registry/foldkit/ui/example-card/view.ts"),
         "utf-8"
       );
       const readme = await readFile(path.join(rootDir, "README.md"), "utf-8");
@@ -114,14 +117,17 @@ describe("generate registry project CLI", () => {
       expect(registryConfig).toEqual({
         name: "acme-foldkit-cn",
         homepage: "https://example.com/acme",
-        registryBaseUrl: "https://example.com/acme/r",
+        registryBaseUrl: "https://example.com/acme",
       });
-      expect(items.map((item) => item.name)).toEqual(["example-card"]);
+      expect(registry.include).toEqual(["registry/foldkit/registry.json"]);
+      expect(laneRegistry.items.map((item) => item.name)).toEqual([
+        "example-card",
+      ]);
       expect(components.registries["@custom"]).toBe(
         "{{registryBaseUrl}}/{name}.json"
       );
       expect(publicComponents.registries["@custom"]).toBe(
-        "https://example.com/acme/r/{name}.json"
+        "https://example.com/acme/{name}.json"
       );
       expect(publicItem.name).toBe("example-card");
       expect(view).toContain("exampleCardRootClassName");
@@ -152,7 +158,7 @@ describe("generate registry project CLI", () => {
           "--homepage",
           "https://example.com/acme",
           "--registry-base-url",
-          "https://example.com/acme/r",
+          "https://example.com/acme",
         ])
       ).rejects.toThrow("Target directory is not empty");
     } finally {

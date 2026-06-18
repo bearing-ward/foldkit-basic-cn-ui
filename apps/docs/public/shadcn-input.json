@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shadcn-input",
+  "type": "registry:ui",
+  "title": "Input",
+  "description": "shadcn style-lane input wrapper backed by the Foldkit Ui.Input component.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/input"],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/shadcn-input/index.ts",
+      "target": "src/ui/shadcn-input/index.ts",
+      "type": "registry:ui",
+      "content": "export { descriptionId, view } from \"../../../foldkit/ui/input\";\nexport type { InputAttributes, ViewConfig } from \"../../../foldkit/ui/input\";\n\nexport {\n  shadcnInputClassName,\n  shadcnInputDescriptionClassName,\n  shadcnInputFieldClassName,\n  shadcnInputLabelClassName,\n} from \"./view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-input/view.ts",
+      "target": "src/ui/shadcn-input/view.ts",
+      "type": "registry:ui",
+      "content": "export {\n  descriptionClassName as shadcnInputDescriptionClassName,\n  fieldClassName as shadcnInputFieldClassName,\n  inputClassName as shadcnInputClassName,\n  labelClassName as shadcnInputLabelClassName,\n} from \"../../../foldkit/ui/input/view\";\n"
+    },
+    {
+      "path": "registry/shadcn/ui/shadcn-input/shadcn-input.scene.test.ts",
+      "target": "src/ui/shadcn-input/shadcn-input.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Input from \"./index\";\n\ndescribe(\"shadcn Input registry view\", () => {\n  test(\"reuses the Foldkit Input functional contract\", () => {\n    expect(Input.view).toBeTypeOf(\"function\");\n    expect(Input.descriptionId).toBeTypeOf(\"function\");\n    expect(Input.shadcnInputClassName).toContain(\"rounded\");\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "origin": "https://ui.shadcn.com/docs/components/radix/input",
+      "artifact": "component",
+      "primitive": "Ui.Input",
+      "stateful": false
+    }
+  }
+}

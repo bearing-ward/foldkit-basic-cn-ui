@@ -58,7 +58,7 @@ describe("scaffold component slice CLI", () => {
       ]);
 
       const view = await readFile(
-        path.join(rootDir, "registry/default/ui/review-fixture/view.ts"),
+        path.join(rootDir, "registry/base-ui/ui/review-fixture/view.ts"),
         "utf-8"
       );
       const output = log.mock.calls.map((call) => call.join(" ")).join("\n");

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-background",
+  "type": "registry:example",
+  "title": "Empty Background",
+  "description": "A runnable Foldkit version of the upstream shadcn empty background example.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/empty"],
+  "files": [
+    {
+      "path": "registry/shadcn/examples/empty-background/main.ts",
+      "target": "src/examples/empty-background/main.ts",
+      "type": "registry:example",
+      "content": "import { Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport * as Empty from \"../../ui/empty\";\n\n// MODEL\n\nexport const Model = S.Struct({});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const Message = S.Never;\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  _message: Message\n): readonly [Model, readonly Command.Command<Message>[]] => [model, []];\n\n// VIEW\n\nconst buttonClassName =\n  \"inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600\";\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return Empty.view<Message>({\n    title: \"No Notifications\",\n    description: \"You're all caught up. New notifications will appear here.\",\n    icon: \"○\",\n    className:\n      \"rounded-lg bg-gradient-to-b from-gray-50 to-white p-8 ring-1 ring-gray-200\",\n    action: h.button([h.Type(\"button\"), h.Class(buttonClassName)], [\"Refresh\"]),\n  });\n});\n"
+    },
+    {
+      "path": "registry/shadcn/examples/empty-background/empty-background.scene.test.ts",
+      "target": "src/examples/empty-background/empty-background.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as EmptyBackgroundExample from \"./main\";\n\ndescribe(\"Empty Background example\", () => {\n  test(\"matches the upstream empty background example content\", () => {\n    Scene.scene(\n      {\n        update: EmptyBackgroundExample.update,\n        view: EmptyBackgroundExample.view,\n      },\n      Scene.with(EmptyBackgroundExample.init()[0]),\n      Scene.expect(\n        Scene.role(\"heading\", { name: \"No Notifications\" })\n      ).toExist(),\n      Scene.expect(\n        Scene.text(\"You're all caught up. New notifications will appear here.\")\n      ).toExist(),\n      Scene.expect(Scene.role(\"button\", { name: \"Refresh\" })).toExist(),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Refresh\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Empty",
+      "example": "background",
+      "originExample": "empty-background",
+      "origin": "https://ui.shadcn.com/docs/components/radix/empty"
+    }
+  }
+}

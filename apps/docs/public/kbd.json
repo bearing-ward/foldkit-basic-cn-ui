@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "title": "Kbd",
+  "description": "A shadcn-style keyboard key token for documenting shortcuts and key combinations.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/shadcn/ui/kbd/index.ts",
+      "target": "src/ui/kbd/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { kbdClassNameBySize, kbdGroupClassName } from \"./view\";\nimport type { KbdSize } from \"./view\";\n\nexport type { KbdSize };\n\nexport {\n  kbdBaseClassName,\n  kbdClassNameBySize,\n  kbdGroupClassName,\n} from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  label: string;\n  size?: KbdSize;\n  className?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  label,\n  size = \"Default\",\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [kbdClassNameBySize(size), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.kbd([h.Class(classNames)], [label]);\n};\n\nexport const groupView = <ParentMessage>(\n  children: readonly Html[],\n  className?: string\n): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [kbdGroupClassName, className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(classNames)], children);\n};\n"
+    },
+    {
+      "path": "registry/shadcn/ui/kbd/view.ts",
+      "target": "src/ui/kbd/view.ts",
+      "type": "registry:ui",
+      "content": "export type KbdSize = \"Small\" | \"Default\";\n\nexport const kbdBaseClassName =\n  \"inline-flex min-w-6 items-center justify-center rounded-md border border-gray-300 bg-gray-50 px-1.5 font-mono font-medium text-gray-900 shadow-sm\";\n\nexport const kbdGroupClassName = \"inline-flex items-center gap-1\";\n\nexport const kbdClassNameBySize = (size: KbdSize = \"Default\"): string =>\n  size === \"Small\"\n    ? `${kbdBaseClassName} h-6 text-xs`\n    : `${kbdBaseClassName} h-7 text-sm`;\n"
+    },
+    {
+      "path": "registry/shadcn/ui/kbd/kbd.scene.test.ts",
+      "target": "src/ui/kbd/kbd.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Scene } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { describe, test } from \"vitest\";\n\nimport * as Kbd from \"./index\";\n\nconst view = (): Html => {\n  const h = html<never>();\n\n  return Kbd.groupView([\n    Kbd.view({ label: \"Cmd\" }),\n    h.span([], [\"+\"]),\n    Kbd.view({ label: \"K\" }),\n  ]);\n};\n\ndescribe(\"Kbd registry view\", () => {\n  test(\"renders the documented static surface\", () => {\n    Scene.scene(\n      {\n        update: (model: undefined): readonly [undefined, []] => [model, []],\n        view,\n      },\n      Scene.with(undefined),\n      Scene.expect(Scene.text(\"Cmd\")).toExist(),\n      Scene.expect(Scene.text(\"K\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Kbd",
+      "origin": "https://ui.shadcn.com/docs/components/radix/kbd",
+      "artifact": "component",
+      "stateful": false
+    }
+  }
+}

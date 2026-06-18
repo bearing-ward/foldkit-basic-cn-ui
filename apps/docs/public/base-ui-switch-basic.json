@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "base-ui-switch-basic",
+  "type": "registry:example",
+  "title": "Base UI Switch Basic",
+  "description": "A runnable Foldkit version of the Base UI Switch default example using the Base UI style-lane wrapper.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/base-ui-switch"],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/base-ui-switch-basic/main.ts",
+      "target": "src/examples/base-ui-switch-basic/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport { Command, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\n\nimport * as Switch from \"../../ui/base-ui-switch\";\n\n// MODEL\n\nexport const Model = S.Struct({\n  switchModel: Switch.Model,\n});\n\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const GotSwitchMessage = m(\"GotSwitchMessage\", {\n  message: Switch.Message,\n});\n\nexport const Message = S.Union([GotSwitchMessage]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => {\n  const [switchModel, switchCommands] = Switch.init({\n    id: \"switch-basic\",\n    isChecked: true,\n  });\n\n  return [\n    { switchModel },\n    Command.mapMessages(switchCommands, (message) =>\n      GotSwitchMessage({ message })\n    ),\n  ];\n};\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotSwitchMessage: ({ message }) => {\n        const [switchModel, switchCommands] = Switch.update(\n          model.switchModel,\n          message\n        );\n\n        return [\n          evo(model, { switchModel: () => switchModel }),\n          Command.mapMessages(switchCommands, (message) =>\n            GotSwitchMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [h.Class(\"space-y-3\")],\n    [\n      h.submodel({\n        slotId: model.switchModel.id,\n        model: model.switchModel,\n        view: Switch.view,\n        viewInputs: {\n          toView: (attributes) =>\n            h.label(\n              [h.Class(Switch.baseUiSwitchRowClassName)],\n              [\n                h.button(\n                  [\n                    ...attributes.button,\n                    h.Class(Switch.baseUiSwitchButtonClassName),\n                  ],\n                  [Switch.baseUiSwitchKnob(model.switchModel.isChecked)]\n                ),\n                h.span(\n                  [\n                    ...attributes.label,\n                    h.Class(Switch.baseUiSwitchLabelClassName),\n                  ],\n                  [\"Notifications\"]\n                ),\n              ]\n            ),\n        },\n        toParentMessage: (message) => GotSwitchMessage({ message }),\n      }),\n    ]\n  );\n});\n"
+    },
+    {
+      "path": "registry/base-ui/examples/base-ui-switch-basic/base-ui-switch-basic.scene.test.ts",
+      "target": "src/examples/base-ui-switch-basic/base-ui-switch-basic.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport * as BaseUiSwitchBasicExample from \"./main\";\n\ndescribe(\"Base UI switch Basic example\", () => {\n  test(\"toggles notification feedback\", () => {\n    Scene.scene(\n      {\n        update: BaseUiSwitchBasicExample.update,\n        view: BaseUiSwitchBasicExample.view,\n      },\n      Scene.with(BaseUiSwitchBasicExample.init()[0]),\n      Scene.expect(Scene.role(\"switch\", { name: \"Notifications\" })).toHaveAttr(\n        \"aria-checked\",\n        \"true\"\n      ),\n      Scene.click(Scene.role(\"switch\", { name: \"Notifications\" })),\n      Scene.expect(Scene.role(\"switch\", { name: \"Notifications\" })).toHaveAttr(\n        \"aria-checked\",\n        \"false\"\n      )\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Switch",
+      "example": "basic",
+      "originExample": "switch-default",
+      "origin": "https://base-ui.com/react/components/switch"
+    }
+  }
+}

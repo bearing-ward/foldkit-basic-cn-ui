@@ -4,11 +4,12 @@ import path from "node:path";
 const rootDir = path.resolve(import.meta.dirname, "..");
 const requiredJsonFiles = [
   "registry/config.json",
-  "registry/default/items.json",
+  "registry/registry.json",
+  "registry/foldkit/registry.json",
   "registry/templates/components.json",
   "apps/docs/public/components.json",
-  "apps/docs/public/r/index.json",
-  "apps/docs/public/r/example-card.json",
+  "apps/docs/public/registry.json",
+  "apps/docs/public/example-card.json",
 ];
 
 const readJson = async (relativePath) =>
@@ -18,11 +19,11 @@ for (const relativePath of requiredJsonFiles) {
   await readJson(relativePath);
 }
 
-const items = await readJson("registry/default/items.json");
-const publicItem = await readJson("apps/docs/public/r/example-card.json");
+const registry = await readJson("registry/foldkit/registry.json");
+const publicItem = await readJson("apps/docs/public/example-card.json");
 
-if (!Array.isArray(items) || items.length !== 1) {
-  throw new Error("registry/default/items.json must contain one example item");
+if (!Array.isArray(registry.items) || registry.items.length !== 1) {
+  throw new Error("registry/foldkit/registry.json must contain one example item");
 }
 
 if (publicItem.name !== "example-card") {

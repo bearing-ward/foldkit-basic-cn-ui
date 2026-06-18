@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Kbd from "../../../registry/default/ui/kbd";
+import * as Kbd from "../../../registry/shadcn/ui/kbd";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "A Foldkit Tabs wrapper with typed tab values, automatic and manual activation, disabled tabs, Selected OutMessages, focus commands, and reusable view classes.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/foldkit/ui/tabs/index.ts",
+      "target": "src/ui/tabs/index.ts",
+      "type": "registry:ui",
+      "content": "import type { Option } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Ui } from \"foldkit\";\n\nexport const { Model } = Ui.Tabs;\nexport type Model = Ui.Tabs.Model;\n\nexport const {\n  CompletedFocusTab,\n  FocusTab,\n  FocusedTab,\n  Message,\n  OutMessage,\n  Selected,\n  SelectedTab,\n  create,\n  init,\n} = Ui.Tabs;\nexport type ActivationMode = Ui.Tabs.ActivationMode;\nexport type FocusedTab = Ui.Tabs.FocusedTab;\nexport type InitConfig = Ui.Tabs.InitConfig;\nexport type Message = Ui.Tabs.Message;\nexport type Orientation = Ui.Tabs.Orientation;\nexport type OutMessage<Value extends string = string> =\n  Ui.Tabs.OutMessage<Value>;\nexport type RenderInfo<Value extends string = string> =\n  Ui.Tabs.RenderInfo<Value>;\nexport type Selected<Value extends string = string> = Ui.Tabs.Selected<Value>;\nexport type SelectedTab = Ui.Tabs.SelectedTab;\nexport type TabInfo<Value extends string = string> = Ui.Tabs.TabInfo<Value>;\nexport type ViewInputs<Value extends string = string> =\n  Ui.Tabs.ViewInputs<Value>;\nexport type InitReturn = readonly [Model, readonly Command.Command<Message>[]];\nexport type UpdateReturn<Value extends string = string> = readonly [\n  Model,\n  readonly Command.Command<Message>[],\n  Option.Option<OutMessage<Value>>,\n];\n\nexport const initialize = (config: InitConfig): InitReturn => [\n  init(config),\n  [],\n];\n\nexport {\n  panelClassName,\n  tabClassName,\n  tabListClassName,\n  tabsRootClassName,\n  tabsView,\n  verticalTabListClassName,\n  verticalTabsRootClassName,\n} from \"./view\";\nexport type { TabsViewInput } from \"./view\";\n"
+    },
+    {
+      "path": "registry/foldkit/ui/tabs/view.ts",
+      "target": "src/ui/tabs/view.ts",
+      "type": "registry:ui",
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport type { RenderInfo } from \"./index\";\n\nexport const tabsRootClassName = \"max-w-md space-y-3\";\n\nexport const tabListClassName =\n  \"inline-flex rounded-lg border border-gray-200 bg-gray-100 p-1\";\n\nexport const verticalTabsRootClassName =\n  \"grid max-w-lg gap-3 sm:grid-cols-[11rem_1fr]\";\n\nexport const verticalTabListClassName =\n  \"flex flex-col rounded-lg border border-gray-200 bg-gray-100 p-1\";\n\nexport const tabClassName =\n  \"rounded-md px-3 py-1.5 text-sm font-medium text-gray-600 transition hover:text-gray-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 data-[selected]:bg-white data-[selected]:text-gray-950 data-[selected]:shadow-sm disabled:cursor-not-allowed disabled:opacity-50\";\n\nexport const panelClassName =\n  \"rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-700\";\n\nexport type TabsViewInput<Value extends string = string> = Readonly<{\n  render: RenderInfo<Value>;\n  panelContent: Record<Value, string>;\n  orientation?: \"Horizontal\" | \"Vertical\";\n}>;\n\nexport const tabsView = <Value extends string>({\n  render,\n  panelContent,\n  orientation = \"Horizontal\",\n}: TabsViewInput<Value>): Html => {\n  const h = html();\n  const activeTab = render.tabs[render.activeIndex];\n  const isVertical = orientation === \"Vertical\";\n\n  return h.div(\n    [h.Class(isVertical ? verticalTabsRootClassName : tabsRootClassName)],\n    [\n      h.div(\n        [\n          ...render.tablist,\n          h.Class(isVertical ? verticalTabListClassName : tabListClassName),\n        ],\n        render.tabs.map((tab) =>\n          h.button([...tab.tab, h.Class(tabClassName)], [tab.value])\n        )\n      ),\n      activeTab === undefined\n        ? h.empty\n        : h.div(\n            [...activeTab.panel, h.Class(panelClassName)],\n            [panelContent[activeTab.value]]\n          ),\n    ]\n  );\n};\n"
+    },
+    {
+      "path": "registry/foldkit/ui/tabs/tabs.scene.test.ts",
+      "target": "src/ui/tabs/tabs.scene.test.ts",
+      "type": "registry:ui",
+      "content": "import { Match as M, Option, Schema as S } from \"effect\";\nimport { Command, Scene, Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\nimport { evo } from \"foldkit/struct\";\nimport { describe, test } from \"vitest\";\n\nimport * as Tabs from \"./index\";\n\ntype Tab = \"One\" | \"Two\";\nconst DemoTabs = Tabs.create<Tab>();\nconst tabValues: readonly Tab[] = [\"One\", \"Two\"];\n\nconst GotTabsMessage = m(\"GotTabsMessage\", { message: Tabs.Message });\nconst Model = S.Struct({ tabs: Tabs.Model, status: S.String });\ntype Model = typeof Model.Type;\nconst Message = S.Union([GotTabsMessage]);\ntype Message = typeof Message.Type;\n\nconst initialModel: Model = {\n  tabs: Tabs.initialize({ id: \"registry-tabs\" })[0],\n  status: \"Selected: One\",\n};\n\nconst update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      GotTabsMessage: ({ message }) => {\n        const [tabs, commands, maybeOutMessage] = DemoTabs.update(\n          model.tabs,\n          message\n        );\n        const status = Option.match(maybeOutMessage, {\n          onNone: () => model.status,\n          onSome: M.type<Tabs.OutMessage<Tab>>().pipe(\n            M.tagsExhaustive({\n              Selected: ({ value }) => `Selected: ${value}`,\n            })\n          ),\n        });\n\n        return [\n          evo(model, { tabs: () => tabs, status: () => status }),\n          Command.mapMessages(commands, (message) =>\n            GotTabsMessage({ message })\n          ),\n        ];\n      },\n    })\n  );\n\nconst view = Submodel.defineView<Model, Message>((model): Html => {\n  const h = html<Message>();\n\n  return h.div(\n    [],\n    [\n      h.submodel({\n        slotId: model.tabs.id,\n        model: model.tabs,\n        view: DemoTabs.view,\n        viewInputs: {\n          tabs: tabValues,\n          ariaLabel: \"Registry tabs\",\n          toView: (render) =>\n            Tabs.tabsView({\n              render,\n              panelContent: {\n                One: \"Panel one\",\n                Two: \"Panel two\",\n              },\n            }),\n        },\n        toParentMessage: (message) => GotTabsMessage({ message }),\n      }),\n      h.p([], [model.status]),\n    ]\n  );\n});\n\ndescribe(\"Tabs registry view\", () => {\n  test(\"selects tabs and resolves focus command\", () => {\n    Scene.scene(\n      { update, view },\n      Scene.with(initialModel),\n      Scene.expect(Scene.role(\"tab\", { name: \"One\" })).toHaveAttr(\n        \"aria-selected\",\n        \"true\"\n      ),\n      Scene.click(Scene.role(\"tab\", { name: \"Two\" })),\n      Scene.Command.resolve(\n        Tabs.FocusTab({ id: \"registry-tabs\", index: 1 }),\n        Tabs.CompletedFocusTab(),\n        (message) => GotTabsMessage({ message })\n      ),\n      Scene.expect(Scene.text(\"Selected: Two\")).toExist()\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "Tabs",
+      "primitive": "Ui.Tabs",
+      "stateful": true,
+      "origin": "https://foldkit.dev/ui/tabs",
+      "artifact": "primitive-backed-component"
+    }
+  }
+}

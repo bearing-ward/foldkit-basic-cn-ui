@@ -2,7 +2,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import * as Skeleton from "../../../registry/default/ui/skeleton";
+import * as Skeleton from "../../../registry/shadcn/ui/skeleton";
 import type { UiMessage } from "../message";
 import type { UiModel } from "../model";
 
