@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "foldkit-livetrace-code-panel",
+  "type": "registry:example",
+  "title": "Foldkit LiveTrace Code Panel",
+  "description": "LiveTrace code panel example built from Foldkit-native registry primitives.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/foldkit-livetrace"],
+  "files": [
+    {
+      "path": "registry/default/examples/foldkit-livetrace-code-panel/main.ts",
+      "target": "src/examples/foldkit-livetrace-code-panel/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as LiveTrace from \"../../ui/foldkit-livetrace\";\nimport { sampleCodeLines } from \"../../ui/foldkit-livetrace/sample-data\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedInspectCode = m(\"ClickedInspectCode\");\nexport const Message = S.Union([ClickedInspectCode]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedInspectCode: () => [model, []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return LiveTrace.themeView<Message>({\n    className: \"min-h-0\",\n    children: [\n      h.div(\n        [h.Class(\"max-w-3xl space-y-4\")],\n        [\n          LiveTrace.codePanelView<Message>({\n            path: \"src/process.ts\",\n            lineLabel: \"line 51\",\n            lines: sampleCodeLines,\n          }),\n          LiveTrace.controlButtonView<Message>({\n            label: \"Inspect code\",\n          }),\n        ]\n      ),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/foldkit-livetrace-code-panel/foldkit-livetrace-code-panel.scene.test.ts",
+      "target": "src/examples/foldkit-livetrace-code-panel/foldkit-livetrace-code-panel.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"foldkit livetrace code panel example\", () => {\n  test(\"renders the active code panel and inert inspect control\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.expect(Scene.text(\"src/process.ts\")).toExist(),\n      Scene.expect(Scene.text(\"line 51\")).toExist(),\n      Scene.expect(Scene.text('    yield* step(\"Parse\")(')).toHaveAttr(\n        \"data-active\",\n        \"true\"\n      ),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Inspect code\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "LiveTrace",
+      "example": "Code Panel"
+    }
+  }
+}
