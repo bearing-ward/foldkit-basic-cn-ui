@@ -7,10 +7,11 @@ import { literal, r, slash } from "foldkit/route";
 import { evo } from "foldkit/struct";
 import { Url, toString as urlToString } from "foldkit/url";
 
-import * as NewComponentAuthoring from "./newComponentAuthoring";
-import * as ThemePlayground from "./themePlayground";
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AiElementsAttachmentsGridExample from "../registry/default/examples/ai-elements-attachments-grid/main";
+import * as AiElementsAttachmentsInlineExample from "../registry/default/examples/ai-elements-attachments-inline/main";
+import * as AiElementsAttachmentsListExample from "../registry/default/examples/ai-elements-attachments-list/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
 import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
@@ -280,8 +281,6 @@ import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-c
 import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
 import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
-import * as ShadcnCheckboxGroupExample from "../registry/default/examples/shadcn-checkbox-group/main";
-import * as ShadcnCheckboxTableExample from "../registry/default/examples/shadcn-checkbox-table/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
 import * as ShadcnComboboxBasicExample from "../registry/default/examples/shadcn-combobox-basic/main";
 import * as ShadcnContextMenuBasicExample from "../registry/default/examples/shadcn-context-menu-basic/main";
@@ -353,6 +352,8 @@ import * as TooltipNoDelayExample from "../registry/default/examples/tooltip-no-
 import * as TypographyBasicExample from "../registry/default/examples/typography-basic/main";
 import * as VirtualListBasicExample from "../registry/default/examples/virtual-list-basic/main";
 import * as VirtualListVariableExample from "../registry/default/examples/virtual-list-variable/main";
+import * as NewComponentAuthoring from "./newComponentAuthoring";
+import * as ThemePlayground from "./themePlayground";
 import { uiInit } from "./ui/init";
 import { GotMobileMenuDialogMessage, UiMessage } from "./ui/message";
 import { UiModel } from "./ui/model";
@@ -364,6 +365,16 @@ import { uiUpdate } from "./ui/update";
 export const HomeRoute = r("Home");
 export const NewComponentAuthoringRoute = r("NewComponentAuthoring");
 export const ThemePlaygroundRoute = r("ThemePlayground");
+export const AiElementsAttachmentsDocsRoute = r("AiElementsAttachmentsDocs");
+export const AiElementsAttachmentsGridExampleRoute = r(
+  "AiElementsAttachmentsGridExample"
+);
+export const AiElementsAttachmentsInlineExampleRoute = r(
+  "AiElementsAttachmentsInlineExample"
+);
+export const AiElementsAttachmentsListExampleRoute = r(
+  "AiElementsAttachmentsListExample"
+);
 export const AccordionDocsRoute = r("AccordionDocs");
 export const ShadcnAccordionDocsRoute = r("ShadcnAccordionDocs");
 export const ShadcnBaseAccordionDocsRoute = r("ShadcnBaseAccordionDocs");
@@ -638,9 +649,7 @@ export const LabelRtlExampleRoute = r("LabelRtlExample");
 export const PaginationDocsRoute = r("PaginationDocs");
 export const PaginationBasicExampleRoute = r("PaginationBasicExample");
 export const PaginationSimpleExampleRoute = r("PaginationSimpleExample");
-export const PaginationIconsOnlyExampleRoute = r(
-  "PaginationIconsOnlyExample"
-);
+export const PaginationIconsOnlyExampleRoute = r("PaginationIconsOnlyExample");
 export const PaginationRtlExampleRoute = r("PaginationRtlExample");
 export const ResizableDocsRoute = r("ResizableDocs");
 export const ResizableBasicExampleRoute = r("ResizableBasicExample");
@@ -755,15 +764,11 @@ export const ProgressBasicExampleRoute = r("ProgressBasicExample");
 export const CalendarRoute = r("Calendar");
 export const CalendarDocsRoute = r("CalendarDocs");
 export const ShadcnCalendarDocsRoute = r("ShadcnCalendarDocs");
-export const ShadcnCalendarBasicExampleRoute = r(
-  "ShadcnCalendarBasicExample"
-);
+export const ShadcnCalendarBasicExampleRoute = r("ShadcnCalendarBasicExample");
 export const ShadcnCalendarMonthYearSelectorExampleRoute = r(
   "ShadcnCalendarMonthYearSelectorExample"
 );
-export const ShadcnCalendarRangeExampleRoute = r(
-  "ShadcnCalendarRangeExample"
-);
+export const ShadcnCalendarRangeExampleRoute = r("ShadcnCalendarRangeExample");
 export const ShadcnCalendarDateOfBirthExampleRoute = r(
   "ShadcnCalendarDateOfBirthExample"
 );
@@ -1017,6 +1022,10 @@ const AppRoute = S.Union([
   HomeRoute,
   NewComponentAuthoringRoute,
   ThemePlaygroundRoute,
+  AiElementsAttachmentsDocsRoute,
+  AiElementsAttachmentsGridExampleRoute,
+  AiElementsAttachmentsInlineExampleRoute,
+  AiElementsAttachmentsListExampleRoute,
   AccordionDocsRoute,
   ShadcnAccordionDocsRoute,
   ShadcnBaseAccordionDocsRoute,
@@ -2822,6 +2831,51 @@ export const baseUiAvatarBasicStandaloneExampleRouter = pipe(
   literal("examples"),
   slash(literal("base-ui-avatar-basic")),
   Route.mapTo(BaseUiAvatarBasicExampleRoute)
+);
+export const aiElementsAttachmentsDocsRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("ai-elements-attachments")),
+  Route.mapTo(AiElementsAttachmentsDocsRoute)
+);
+export const aiElementsAttachmentsGridExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("ai-elements-attachments")),
+  slash(literal("examples")),
+  slash(literal("grid")),
+  Route.mapTo(AiElementsAttachmentsGridExampleRoute)
+);
+export const aiElementsAttachmentsGridStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("ai-elements-attachments-grid")),
+  Route.mapTo(AiElementsAttachmentsGridExampleRoute)
+);
+export const aiElementsAttachmentsInlineExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("ai-elements-attachments")),
+  slash(literal("examples")),
+  slash(literal("inline")),
+  Route.mapTo(AiElementsAttachmentsInlineExampleRoute)
+);
+export const aiElementsAttachmentsInlineStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("ai-elements-attachments-inline")),
+  Route.mapTo(AiElementsAttachmentsInlineExampleRoute)
+);
+export const aiElementsAttachmentsListExampleRouter = pipe(
+  literal("docs"),
+  slash(literal("components")),
+  slash(literal("ai-elements-attachments")),
+  slash(literal("examples")),
+  slash(literal("list")),
+  Route.mapTo(AiElementsAttachmentsListExampleRoute)
+);
+export const aiElementsAttachmentsListStandaloneExampleRouter = pipe(
+  literal("examples"),
+  slash(literal("ai-elements-attachments-list")),
+  Route.mapTo(AiElementsAttachmentsListExampleRoute)
 );
 export const badgeRouter = pipe(literal("badge"), Route.mapTo(BadgeRoute));
 export const badgeDocsRouter = pipe(
@@ -6925,6 +6979,13 @@ const routeParser = Route.oneOf(
   avatarDocsRouter,
   shadcnAvatarDocsRouter,
   baseUiAvatarDocsRouter,
+  aiElementsAttachmentsDocsRouter,
+  aiElementsAttachmentsGridExampleRouter,
+  aiElementsAttachmentsGridStandaloneExampleRouter,
+  aiElementsAttachmentsInlineExampleRouter,
+  aiElementsAttachmentsInlineStandaloneExampleRouter,
+  aiElementsAttachmentsListExampleRouter,
+  aiElementsAttachmentsListStandaloneExampleRouter,
   badgeRouter,
   badgeBasicExampleRouter,
   badgeBasicStandaloneExampleRouter,
@@ -7816,6 +7877,9 @@ export const Model = S.Struct({
   route: AppRoute,
   newComponentAuthoring: NewComponentAuthoring.Model,
   themePlayground: ThemePlayground.Model,
+  aiElementsAttachmentsGridExample: AiElementsAttachmentsGridExample.Model,
+  aiElementsAttachmentsInlineExample: AiElementsAttachmentsInlineExample.Model,
+  aiElementsAttachmentsListExample: AiElementsAttachmentsListExample.Model,
   accordionBasicExample: AccordionBasicExample.Model,
   baseUiAccordionBasicExample: BaseUiAccordionBasicExample.Model,
   baseUiAccordionMultipleExample: BaseUiAccordionMultipleExample.Model,
@@ -8018,9 +8082,11 @@ export const Model = S.Struct({
   calendarBasicExample: CalendarBasicExample.Model,
   shadcnCalendarBasicExample: ShadcnCalendarBasicExample.Model,
   shadcnCalendarBookedExample: ShadcnCalendarBookedExample.Model,
-  shadcnCalendarCustomCellSizeExample: ShadcnCalendarCustomCellSizeExample.Model,
+  shadcnCalendarCustomCellSizeExample:
+    ShadcnCalendarCustomCellSizeExample.Model,
   shadcnCalendarDateOfBirthExample: ShadcnCalendarDateOfBirthExample.Model,
-  shadcnCalendarDateTimePickerExample: ShadcnCalendarDateTimePickerExample.Model,
+  shadcnCalendarDateTimePickerExample:
+    ShadcnCalendarDateTimePickerExample.Model,
   shadcnCalendarMonthYearSelectorExample:
     ShadcnCalendarMonthYearSelectorExample.Model,
   shadcnCalendarPresetsExample: ShadcnCalendarPresetsExample.Model,
@@ -8115,7 +8181,8 @@ export const Model = S.Struct({
   menuAnimatedExample: MenuAnimatedExample.Model,
   baseUiPopoverBasicExample: BaseUiPopoverBasicExample.Model,
   baseUiPopoverAnimatedExample: BaseUiPopoverAnimatedExample.Model,
-  baseUiPopoverDetachedTriggerExample: BaseUiPopoverDetachedTriggerExample.Model,
+  baseUiPopoverDetachedTriggerExample:
+    BaseUiPopoverDetachedTriggerExample.Model,
   baseUiPopoverMultipleTriggersExample:
     BaseUiPopoverMultipleTriggersExample.Model,
   baseUiPopoverOpenOnHoverExample: BaseUiPopoverOpenOnHoverExample.Model,
@@ -8198,6 +8265,24 @@ export const GotNewComponentAuthoringMessage = m(
 export const GotThemePlaygroundMessage = m("GotThemePlaygroundMessage", {
   message: ThemePlayground.Message,
 });
+export const GotAiElementsAttachmentsGridExampleMessage = m(
+  "GotAiElementsAttachmentsGridExampleMessage",
+  {
+    message: AiElementsAttachmentsGridExample.Message,
+  }
+);
+export const GotAiElementsAttachmentsInlineExampleMessage = m(
+  "GotAiElementsAttachmentsInlineExampleMessage",
+  {
+    message: AiElementsAttachmentsInlineExample.Message,
+  }
+);
+export const GotAiElementsAttachmentsListExampleMessage = m(
+  "GotAiElementsAttachmentsListExampleMessage",
+  {
+    message: AiElementsAttachmentsListExample.Message,
+  }
+);
 export const GotAccordionBasicExampleMessage = m(
   "GotAccordionBasicExampleMessage",
   {
@@ -9963,6 +10048,9 @@ export const Message = S.Union([
   GotUiMessage,
   GotNewComponentAuthoringMessage,
   GotThemePlaygroundMessage,
+  GotAiElementsAttachmentsGridExampleMessage,
+  GotAiElementsAttachmentsInlineExampleMessage,
+  GotAiElementsAttachmentsListExampleMessage,
   GotAccordionBasicExampleMessage,
   GotBaseUiAccordionBasicExampleMessage,
   GotBaseUiAccordionMultipleExampleMessage,
@@ -10343,6 +10431,18 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   const [newComponentAuthoring, newComponentAuthoringCommands] =
     NewComponentAuthoring.init();
   const [themePlayground, themePlaygroundCommands] = ThemePlayground.init();
+  const [
+    aiElementsAttachmentsGridExample,
+    aiElementsAttachmentsGridExampleCommands,
+  ] = AiElementsAttachmentsGridExample.init();
+  const [
+    aiElementsAttachmentsInlineExample,
+    aiElementsAttachmentsInlineExampleCommands,
+  ] = AiElementsAttachmentsInlineExample.init();
+  const [
+    aiElementsAttachmentsListExample,
+    aiElementsAttachmentsListExampleCommands,
+  ] = AiElementsAttachmentsListExample.init();
   const [accordionBasicExample, accordionBasicExampleCommands] =
     AccordionBasicExample.init();
   const [baseUiAccordionBasicExample, baseUiAccordionBasicExampleCommands] =
@@ -10588,10 +10688,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
   ] = DropdownMenuDestructiveExample.init();
   const [dropdownMenuIconsExample, dropdownMenuIconsExampleCommands] =
     DropdownMenuIconsExample.init();
-  const [
-    dropdownMenuRadioGroupExample,
-    dropdownMenuRadioGroupExampleCommands,
-  ] = DropdownMenuRadioGroupExample.init();
+  const [dropdownMenuRadioGroupExample, dropdownMenuRadioGroupExampleCommands] =
+    DropdownMenuRadioGroupExample.init();
   const [dropdownMenuRtlExample, dropdownMenuRtlExampleCommands] =
     DropdownMenuRtlExample.init();
   const [dropdownMenuShortcutsExample, dropdownMenuShortcutsExampleCommands] =
@@ -10989,26 +11087,16 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
     TabsManualExample.init();
   const [shadcnInputBasicExample, shadcnInputBasicExampleCommands] =
     ShadcnInputBasicExample.init();
-  const [shadcnInputDemoExample, shadcnInputDemoCommands] =
-    ShadcnInputDemoExample.init();
-  const [shadcnInputFieldExample, shadcnInputFieldCommands] =
-    ShadcnInputFieldExample.init();
-  const [shadcnInputFieldGroupExample, shadcnInputFieldGroupCommands] =
-    ShadcnInputFieldGroupExample.init();
-  const [shadcnInputInlineExample, shadcnInputInlineCommands] =
-    ShadcnInputInlineExample.init();
-  const [shadcnInputGridExample, shadcnInputGridCommands] =
-    ShadcnInputGridExample.init();
-  const [shadcnInputRequiredExample, shadcnInputRequiredCommands] =
-    ShadcnInputRequiredExample.init();
-  const [shadcnInputBadgeExample, shadcnInputBadgeCommands] =
-    ShadcnInputBadgeExample.init();
-  const [shadcnInputInputGroupExample, shadcnInputInputGroupCommands] =
-    ShadcnInputInputGroupExample.init();
-  const [shadcnInputButtonGroupExample, shadcnInputButtonGroupCommands] =
-    ShadcnInputButtonGroupExample.init();
-  const [shadcnInputFormExample, shadcnInputFormCommands] =
-    ShadcnInputFormExample.init();
+  const [shadcnInputDemoExample] = ShadcnInputDemoExample.init();
+  const [shadcnInputFieldExample] = ShadcnInputFieldExample.init();
+  const [shadcnInputFieldGroupExample] = ShadcnInputFieldGroupExample.init();
+  const [shadcnInputInlineExample] = ShadcnInputInlineExample.init();
+  const [shadcnInputGridExample] = ShadcnInputGridExample.init();
+  const [shadcnInputRequiredExample] = ShadcnInputRequiredExample.init();
+  const [shadcnInputBadgeExample] = ShadcnInputBadgeExample.init();
+  const [shadcnInputInputGroupExample] = ShadcnInputInputGroupExample.init();
+  const [shadcnInputButtonGroupExample] = ShadcnInputButtonGroupExample.init();
+  const [shadcnInputFormExample] = ShadcnInputFormExample.init();
   const [shadcnInputDisabledExample, shadcnInputDisabledExampleCommands] =
     ShadcnInputDisabledExample.init();
   const [shadcnInputInvalidExample, shadcnInputInvalidExampleCommands] =
@@ -11098,6 +11186,9 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       uiModel: initialUiModel,
       newComponentAuthoring,
       themePlayground,
+      aiElementsAttachmentsGridExample,
+      aiElementsAttachmentsInlineExample,
+      aiElementsAttachmentsListExample,
       accordionBasicExample,
       baseUiAccordionBasicExample,
       baseUiAccordionMultipleExample,
@@ -11451,6 +11542,18 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(themePlaygroundCommands, (message) =>
         GotThemePlaygroundMessage({ message })
       ),
+      ...Command.mapMessages(
+        aiElementsAttachmentsGridExampleCommands,
+        (message) => GotAiElementsAttachmentsGridExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        aiElementsAttachmentsInlineExampleCommands,
+        (message) => GotAiElementsAttachmentsInlineExampleMessage({ message })
+      ),
+      ...Command.mapMessages(
+        aiElementsAttachmentsListExampleCommands,
+        (message) => GotAiElementsAttachmentsListExampleMessage({ message })
+      ),
       ...Command.mapMessages(accordionBasicExampleCommands, (message) =>
         GotAccordionBasicExampleMessage({ message })
       ),
@@ -11798,9 +11901,8 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ...Command.mapMessages(dropdownMenuIconsExampleCommands, (message) =>
         GotDropdownMenuIconsExampleMessage({ message })
       ),
-      ...Command.mapMessages(
-        dropdownMenuRadioGroupExampleCommands,
-        (message) => GotDropdownMenuRadioGroupExampleMessage({ message })
+      ...Command.mapMessages(dropdownMenuRadioGroupExampleCommands, (message) =>
+        GotDropdownMenuRadioGroupExampleMessage({ message })
       ),
       ...Command.mapMessages(dropdownMenuRtlExampleCommands, (message) =>
         GotDropdownMenuRtlExampleMessage({ message })
@@ -12062,8 +12164,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(
         shadcnCalendarCustomCellSizeExampleCommands,
-        (message) =>
-          GotShadcnCalendarCustomCellSizeExampleMessage({ message })
+        (message) => GotShadcnCalendarCustomCellSizeExampleMessage({ message })
       ),
       ...Command.mapMessages(
         shadcnCalendarDateOfBirthExampleCommands,
@@ -12071,8 +12172,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(
         shadcnCalendarDateTimePickerExampleCommands,
-        (message) =>
-          GotShadcnCalendarDateTimePickerExampleMessage({ message })
+        (message) => GotShadcnCalendarDateTimePickerExampleMessage({ message })
       ),
       ...Command.mapMessages(
         shadcnCalendarMonthYearSelectorExampleCommands,
@@ -12301,8 +12401,7 @@ export const init: Runtime.RoutingProgramInit<Model, Message, Flags> = (
       ),
       ...Command.mapMessages(
         baseUiPopoverDetachedTriggerExampleCommands,
-        (message) =>
-          GotBaseUiPopoverDetachedTriggerExampleMessage({ message })
+        (message) => GotBaseUiPopoverDetachedTriggerExampleMessage({ message })
       ),
       ...Command.mapMessages(
         baseUiPopoverMultipleTriggersExampleCommands,
@@ -12598,6 +12697,70 @@ export const update = (
           }),
           Command.mapMessages(themePlaygroundCommands, (message) =>
             GotThemePlaygroundMessage({ message })
+          ),
+        ];
+      },
+
+      GotAiElementsAttachmentsGridExampleMessage: ({ message }) => {
+        const [
+          aiElementsAttachmentsGridExample,
+          aiElementsAttachmentsGridExampleCommands,
+        ] = AiElementsAttachmentsGridExample.update(
+          model.aiElementsAttachmentsGridExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            aiElementsAttachmentsGridExample: () =>
+              aiElementsAttachmentsGridExample,
+          }),
+          Command.mapMessages(
+            aiElementsAttachmentsGridExampleCommands,
+            (message) => GotAiElementsAttachmentsGridExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAiElementsAttachmentsInlineExampleMessage: ({ message }) => {
+        const [
+          aiElementsAttachmentsInlineExample,
+          aiElementsAttachmentsInlineExampleCommands,
+        ] = AiElementsAttachmentsInlineExample.update(
+          model.aiElementsAttachmentsInlineExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            aiElementsAttachmentsInlineExample: () =>
+              aiElementsAttachmentsInlineExample,
+          }),
+          Command.mapMessages(
+            aiElementsAttachmentsInlineExampleCommands,
+            (message) =>
+              GotAiElementsAttachmentsInlineExampleMessage({ message })
+          ),
+        ];
+      },
+
+      GotAiElementsAttachmentsListExampleMessage: ({ message }) => {
+        const [
+          aiElementsAttachmentsListExample,
+          aiElementsAttachmentsListExampleCommands,
+        ] = AiElementsAttachmentsListExample.update(
+          model.aiElementsAttachmentsListExample,
+          message
+        );
+
+        return [
+          evo(model, {
+            aiElementsAttachmentsListExample: () =>
+              aiElementsAttachmentsListExample,
+          }),
+          Command.mapMessages(
+            aiElementsAttachmentsListExampleCommands,
+            (message) => GotAiElementsAttachmentsListExampleMessage({ message })
           ),
         ];
       },
@@ -14203,7 +14366,10 @@ export const update = (
       },
       GotCommandShortcutsExampleMessage: ({ message }) => {
         const [commandShortcutsExample, commandShortcutsExampleCommands] =
-          CommandShortcutsExample.update(model.commandShortcutsExample, message);
+          CommandShortcutsExample.update(
+            model.commandShortcutsExample,
+            message
+          );
 
         return [
           evo(model, {
@@ -14287,10 +14453,15 @@ export const update = (
       },
       GotDropdownMenuIconsExampleMessage: ({ message }) => {
         const [dropdownMenuIconsExample, dropdownMenuIconsExampleCommands] =
-          DropdownMenuIconsExample.update(model.dropdownMenuIconsExample, message);
+          DropdownMenuIconsExample.update(
+            model.dropdownMenuIconsExample,
+            message
+          );
 
         return [
-          evo(model, { dropdownMenuIconsExample: () => dropdownMenuIconsExample }),
+          evo(model, {
+            dropdownMenuIconsExample: () => dropdownMenuIconsExample,
+          }),
           Command.mapMessages(dropdownMenuIconsExampleCommands, (message) =>
             GotDropdownMenuIconsExampleMessage({ message })
           ),
@@ -14339,9 +14510,8 @@ export const update = (
           evo(model, {
             dropdownMenuShortcutsExample: () => dropdownMenuShortcutsExample,
           }),
-          Command.mapMessages(
-            dropdownMenuShortcutsExampleCommands,
-            (message) => GotDropdownMenuShortcutsExampleMessage({ message })
+          Command.mapMessages(dropdownMenuShortcutsExampleCommands, (message) =>
+            GotDropdownMenuShortcutsExampleMessage({ message })
           ),
         ];
       },
@@ -14928,20 +15098,20 @@ export const update = (
           );
 
         return [
-          evo(model, { paginationSimpleExample: () => paginationSimpleExample }),
+          evo(model, {
+            paginationSimpleExample: () => paginationSimpleExample,
+          }),
           Command.mapMessages(paginationSimpleExampleCommands, (message) =>
             GotPaginationSimpleExampleMessage({ message })
           ),
         ];
       },
       GotPaginationIconsOnlyExampleMessage: ({ message }) => {
-        const [
-          paginationIconsOnlyExample,
-          paginationIconsOnlyExampleCommands,
-        ] = PaginationIconsOnlyExample.update(
-          model.paginationIconsOnlyExample,
-          message
-        );
+        const [paginationIconsOnlyExample, paginationIconsOnlyExampleCommands] =
+          PaginationIconsOnlyExample.update(
+            model.paginationIconsOnlyExample,
+            message
+          );
 
         return [
           evo(model, {
@@ -15191,7 +15361,7 @@ export const update = (
         ];
       },
 
-      GotSpinnerBasicExampleMessage: ({ message }) => {
+      GotSpinnerBasicExampleMessage: () => {
         const [spinnerBasicExample, spinnerBasicExampleCommands] =
           SpinnerBasicExample.update(model.spinnerBasicExample);
 
@@ -15280,7 +15450,10 @@ export const update = (
 
       GotEmptyAvatarGroupExampleMessage: ({ message }) => {
         const [emptyAvatarGroupExample, emptyAvatarGroupExampleCommands] =
-          EmptyAvatarGroupExample.update(model.emptyAvatarGroupExample, message);
+          EmptyAvatarGroupExample.update(
+            model.emptyAvatarGroupExample,
+            message
+          );
 
         return [
           evo(model, {

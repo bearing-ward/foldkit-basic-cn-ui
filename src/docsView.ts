@@ -1,10 +1,4 @@
 import clsx from "clsx";
-import { Match as M } from "effect";
-import { Ui } from "foldkit";
-import type { Submodel } from "foldkit";
-import type { Document, Html } from "foldkit/html";
-import { html } from "foldkit/html";
-
 import * as DocsPreviewsAccordion from "docs-example-previews-accordion";
 import * as DocsPreviewsAlert from "docs-example-previews-alert";
 import * as DocsPreviewsAnimation from "docs-example-previews-animation";
@@ -18,13 +12,20 @@ import * as DocsPreviewsJM from "docs-example-previews-jm";
 import * as DocsPreviewsNZ from "docs-example-previews-nz";
 import * as DocsPreviewsShadcnMissing from "docs-example-previews-shadcn-missing";
 import * as DocsRoutes from "docs-example-routes";
+import { Match as M } from "effect";
+import { Ui } from "foldkit";
+import type { Submodel } from "foldkit";
+import type { Document, Html } from "foldkit/html";
+import { html } from "foldkit/html";
+import * as View from "legacy-ui-views";
+
+import * as DocsPreviewsAIElements from "./docsExamplePreviewsAIElements";
 import * as Icon from "./icon";
 import * as Main from "./main";
 import * as NewComponentAuthoring from "./newComponentAuthoring";
 import * as ThemePlayground from "./themePlayground";
 import type { UiMessage } from "./ui/message";
 import type { UiModel } from "./ui/model";
-import * as View from "legacy-ui-views";
 
 type Model = Main.Model;
 type Message = Main.Message;
@@ -37,7 +38,7 @@ type NavItem = Readonly<{
   href: string;
 }>;
 
-type ComponentLibrary = "Foldkit" | "Base UI" | "shadcn";
+type ComponentLibrary = "Foldkit" | "Base UI" | "shadcn" | "AI Elements";
 
 type DocsNavItem = NavItem &
   Readonly<{
@@ -62,6 +63,26 @@ const NAV_ITEMS: readonly NavItem[] = [
     label: "Theme Playground",
     routeTag: "ThemePlayground",
     href: "/docs/theme-playground",
+  },
+  {
+    label: "Attachments Docs",
+    routeTag: "AiElementsAttachmentsDocs",
+    href: "/docs/components/ai-elements-attachments",
+  },
+  {
+    label: "Attachments Grid Example",
+    routeTag: "AiElementsAttachmentsGridExample",
+    href: "/docs/components/ai-elements-attachments/examples/grid",
+  },
+  {
+    label: "Attachments Inline Example",
+    routeTag: "AiElementsAttachmentsInlineExample",
+    href: "/docs/components/ai-elements-attachments/examples/inline",
+  },
+  {
+    label: "Attachments List Example",
+    routeTag: "AiElementsAttachmentsListExample",
+    href: "/docs/components/ai-elements-attachments/examples/list",
   },
   {
     label: "Accordion Docs",
@@ -1677,6 +1698,12 @@ const publicPath = (path: string): string =>
   `${import.meta.env.BASE_URL}${path}`;
 
 const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
+  "/docs/components/ai-elements-attachments/examples/grid":
+    "sources/ai-elements-attachments-grid.txt",
+  "/docs/components/ai-elements-attachments/examples/inline":
+    "sources/ai-elements-attachments-inline.txt",
+  "/docs/components/ai-elements-attachments/examples/list":
+    "sources/ai-elements-attachments-list.txt",
   "/docs/components/accordion/examples/basic": "sources/accordion-basic.txt",
   "/docs/components/shadcn-accordion/examples/basic":
     "sources/shadcn-accordion-basic.txt",
@@ -1796,7 +1823,8 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
     "sources/native-select-groups.txt",
   "/docs/components/native-select/examples/invalid":
     "sources/native-select-invalid.txt",
-  "/docs/components/native-select/examples/rtl": "sources/native-select-rtl.txt",
+  "/docs/components/native-select/examples/rtl":
+    "sources/native-select-rtl.txt",
   "/docs/components/sheet/examples/basic": "sources/sheet-basic.txt",
   "/docs/components/sonner/examples/basic": "sources/sonner-basic.txt",
   "/docs/components/data-table/examples/basic": "sources/data-table-basic.txt",
@@ -2218,133 +2246,135 @@ const exampleSourceHrefByExampleHref = (): Record<string, string> => ({
 });
 
 const docsNavItemLibrary = (navItem: NavItem): ComponentLibrary =>
-  [
-    "ShadcnButtonGroupDocs",
-    "ShadcnCarouselDocs",
-    "ChartDocs",
-    "CommandDocs",
-    "DropdownMenuDocs",
-    "HoverCardDocs",
-    "InputOtpDocs",
-    "NativeSelectDocs",
-    "SheetDocs",
-    "SonnerDocs",
-    "DataTableDocs",
-    "DirectionDocs",
-    "ItemDocs",
-    "LabelDocs",
-    "PaginationDocs",
-    "ResizableDocs",
-    "SidebarDocs",
-    "TableDocs",
-    "BadgeDocs",
-    "ShadcnCardDocs",
-    "SkeletonDocs",
-    "SpinnerDocs",
-    "KbdDocs",
-    "TypographyDocs",
-    "EmptyDocs",
-    "InputGroupDocs",
-    "ShadcnBaseAccordionDocs",
-    "ShadcnButtonDocs",
-    "ShadcnCheckboxDocs",
-    "ShadcnInputDocs",
-    "ShadcnAccordionDocs",
-    "ShadcnAlertDocs",
-    "ShadcnAlertDialogDocs",
-    "ShadcnAspectRatioDocs",
-    "ShadcnAvatarDocs",
-    "ShadcnBreadcrumbDocs",
-    "ShadcnCalendarDocs",
-    "ShadcnCollapsibleDocs",
-    "ShadcnComboboxDocs",
-    "ShadcnContextMenuDocs",
-    "ShadcnDatePickerDocs",
-    "ShadcnDialogDocs",
-    "ShadcnDrawerDocs",
-    "ShadcnFieldDocs",
-    "ShadcnMenubarDocs",
-    "ShadcnNavigationMenuDocs",
-    "ShadcnPopoverDocs",
-    "ShadcnProgressDocs",
-    "ShadcnRadioGroupDocs",
-    "ShadcnScrollAreaDocs",
-    "ShadcnSelectDocs",
-    "ShadcnSeparatorDocs",
-    "ShadcnSliderDocs",
-    "ShadcnSwitchDocs",
-    "ShadcnTabsDocs",
-    "ShadcnTextareaDocs",
-    "ShadcnToggleDocs",
-    "ShadcnToggleGroupDocs",
-    "ShadcnTooltipDocs",
-    "ShadcnToastDocs",
-  ].includes(navItem.routeTag)
-    ? "shadcn"
+  ["AiElementsAttachmentsDocs"].includes(navItem.routeTag)
+    ? "AI Elements"
     : [
-          "AccordionDocs",
-          "AlertDialogDocs",
-          "DrawerDocs",
-          "ContextMenuDocs",
-          "MenubarDocs",
-          "NavigationMenuDocs",
-          "OtpFieldDocs",
-          "PreviewCardDocs",
-          "CollapsibleDocs",
-          "FieldDocs",
-          "NumberFieldDocs",
-          "FormDocs",
-          "AutocompleteDocs",
-          "AvatarDocs",
-          "MeterDocs",
-          "ProgressDocs",
-          "ScrollAreaDocs",
-          "SeparatorDocs",
-          "ToggleDocs",
-          "ToggleGroupDocs",
-          "RadioDocs",
-          "ToolbarDocs",
-          "CheckboxGroupDocs",
-          "BaseUiAccordionDocs",
-          "BaseUiAlertDialogDocs",
-          "BaseUiAutocompleteDocs",
-          "BaseUiAvatarDocs",
-          "BaseUiButtonDocs",
-          "BaseUiCheckboxDocs",
-          "BaseUiCheckboxGroupDocs",
-          "BaseUiCollapsibleDocs",
-          "BaseUiComboboxDocs",
-          "BaseUiContextMenuDocs",
-          "BaseUiDialogDocs",
-          "BaseUiDrawerDocs",
-          "BaseUiFieldDocs",
-          "BaseUiFieldsetDocs",
-          "BaseUiFormDocs",
-          "BaseUiInputDocs",
-          "BaseUiMenubarDocs",
-          "BaseUiMeterDocs",
-          "BaseUiMenuDocs",
-          "BaseUiNavigationMenuDocs",
-          "BaseUiNumberFieldDocs",
-          "BaseUiOtpFieldDocs",
-          "BaseUiPopoverDocs",
-          "BaseUiPreviewCardDocs",
-          "BaseUiProgressDocs",
-          "BaseUiRadioDocs",
-          "BaseUiScrollAreaDocs",
-          "BaseUiSeparatorDocs",
-          "BaseUiSelectDocs",
-          "BaseUiSliderDocs",
-          "BaseUiSwitchDocs",
-          "BaseUiTabsDocs",
-          "BaseUiToggleDocs",
-          "BaseUiToggleGroupDocs",
-          "BaseUiToastDocs",
-          "BaseUiTooltipDocs",
-          "BaseUiToolbarDocs",
+          "ShadcnButtonGroupDocs",
+          "ShadcnCarouselDocs",
+          "ChartDocs",
+          "CommandDocs",
+          "DropdownMenuDocs",
+          "HoverCardDocs",
+          "InputOtpDocs",
+          "NativeSelectDocs",
+          "SheetDocs",
+          "SonnerDocs",
+          "DataTableDocs",
+          "DirectionDocs",
+          "ItemDocs",
+          "LabelDocs",
+          "PaginationDocs",
+          "ResizableDocs",
+          "SidebarDocs",
+          "TableDocs",
+          "BadgeDocs",
+          "ShadcnCardDocs",
+          "SkeletonDocs",
+          "SpinnerDocs",
+          "KbdDocs",
+          "TypographyDocs",
+          "EmptyDocs",
+          "InputGroupDocs",
+          "ShadcnBaseAccordionDocs",
+          "ShadcnButtonDocs",
+          "ShadcnCheckboxDocs",
+          "ShadcnInputDocs",
+          "ShadcnAccordionDocs",
+          "ShadcnAlertDocs",
+          "ShadcnAlertDialogDocs",
+          "ShadcnAspectRatioDocs",
+          "ShadcnAvatarDocs",
+          "ShadcnBreadcrumbDocs",
+          "ShadcnCalendarDocs",
+          "ShadcnCollapsibleDocs",
+          "ShadcnComboboxDocs",
+          "ShadcnContextMenuDocs",
+          "ShadcnDatePickerDocs",
+          "ShadcnDialogDocs",
+          "ShadcnDrawerDocs",
+          "ShadcnFieldDocs",
+          "ShadcnMenubarDocs",
+          "ShadcnNavigationMenuDocs",
+          "ShadcnPopoverDocs",
+          "ShadcnProgressDocs",
+          "ShadcnRadioGroupDocs",
+          "ShadcnScrollAreaDocs",
+          "ShadcnSelectDocs",
+          "ShadcnSeparatorDocs",
+          "ShadcnSliderDocs",
+          "ShadcnSwitchDocs",
+          "ShadcnTabsDocs",
+          "ShadcnTextareaDocs",
+          "ShadcnToggleDocs",
+          "ShadcnToggleGroupDocs",
+          "ShadcnTooltipDocs",
+          "ShadcnToastDocs",
         ].includes(navItem.routeTag)
-      ? "Base UI"
-      : "Foldkit";
+      ? "shadcn"
+      : [
+            "AccordionDocs",
+            "AlertDialogDocs",
+            "DrawerDocs",
+            "ContextMenuDocs",
+            "MenubarDocs",
+            "NavigationMenuDocs",
+            "OtpFieldDocs",
+            "PreviewCardDocs",
+            "CollapsibleDocs",
+            "FieldDocs",
+            "NumberFieldDocs",
+            "FormDocs",
+            "AutocompleteDocs",
+            "AvatarDocs",
+            "MeterDocs",
+            "ProgressDocs",
+            "ScrollAreaDocs",
+            "SeparatorDocs",
+            "ToggleDocs",
+            "ToggleGroupDocs",
+            "RadioDocs",
+            "ToolbarDocs",
+            "CheckboxGroupDocs",
+            "BaseUiAccordionDocs",
+            "BaseUiAlertDialogDocs",
+            "BaseUiAutocompleteDocs",
+            "BaseUiAvatarDocs",
+            "BaseUiButtonDocs",
+            "BaseUiCheckboxDocs",
+            "BaseUiCheckboxGroupDocs",
+            "BaseUiCollapsibleDocs",
+            "BaseUiComboboxDocs",
+            "BaseUiContextMenuDocs",
+            "BaseUiDialogDocs",
+            "BaseUiDrawerDocs",
+            "BaseUiFieldDocs",
+            "BaseUiFieldsetDocs",
+            "BaseUiFormDocs",
+            "BaseUiInputDocs",
+            "BaseUiMenubarDocs",
+            "BaseUiMeterDocs",
+            "BaseUiMenuDocs",
+            "BaseUiNavigationMenuDocs",
+            "BaseUiNumberFieldDocs",
+            "BaseUiOtpFieldDocs",
+            "BaseUiPopoverDocs",
+            "BaseUiPreviewCardDocs",
+            "BaseUiProgressDocs",
+            "BaseUiRadioDocs",
+            "BaseUiScrollAreaDocs",
+            "BaseUiSeparatorDocs",
+            "BaseUiSelectDocs",
+            "BaseUiSliderDocs",
+            "BaseUiSwitchDocs",
+            "BaseUiTabsDocs",
+            "BaseUiToggleDocs",
+            "BaseUiToggleGroupDocs",
+            "BaseUiToastDocs",
+            "BaseUiTooltipDocs",
+            "BaseUiToolbarDocs",
+          ].includes(navItem.routeTag)
+        ? "Base UI"
+        : "Foldkit";
 
 const docsNavItemActiveRouteTags = (navItem: NavItem): readonly string[] => {
   const docsHref = navItem.href.replace(/\/$/u, "");
@@ -2458,6 +2488,12 @@ const DOCS_NAV_GROUPS: readonly DocsNavGroup[] = [
       )
     ),
   },
+  {
+    library: "AI Elements",
+    items: sortedDocsNavItems(
+      DOCS_NAV_ITEMS.filter((navItem) => navItem.library === "AI Elements")
+    ),
+  },
 ];
 
 const isDocsNavItemActive = (
@@ -2470,7 +2506,8 @@ const libraryBadgeClassName = (library: ComponentLibrary): string =>
     "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none",
     library === "Foldkit" && "bg-accent-100 text-accent-700",
     library === "Base UI" && "bg-emerald-100 text-emerald-700",
-    library === "shadcn" && "bg-gray-200 text-gray-700"
+    library === "shadcn" && "bg-gray-200 text-gray-700",
+    library === "AI Elements" && "bg-sky-100 text-sky-700"
   );
 
 const comingSoonBadgeClassName =
@@ -2739,6 +2776,19 @@ const mobileMenuView = (model: Model): Html => {
   });
 };
 
+const codeBlock = (code: string): Html => {
+  const h = html<Message>();
+
+  return h.pre(
+    [
+      h.Class(
+        "overflow-x-auto rounded-lg border border-gray-200 bg-gray-950 px-4 py-3 text-sm text-gray-50"
+      ),
+    ],
+    [h.code([], [code])]
+  );
+};
+
 const homeView = (): Html => {
   const h = html<Message>();
 
@@ -2775,27 +2825,42 @@ const homeView = (): Html => {
             [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
             [
               h.h2([h.Class("font-semibold text-gray-950")], ["Installable"]),
-              h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
-                "Registry items install as project-owned source files through the shadcn CLI.",
-              ]),
+              h.p(
+                [h.Class("mt-2 text-sm leading-6 text-gray-600")],
+                [
+                  "Registry items install as project-owned source files through the shadcn CLI.",
+                ]
+              ),
             ]
           ),
           h.div(
             [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
             [
-              h.h2([h.Class("font-semibold text-gray-950")], ["Foldkit-native"]),
-              h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
-                "Foldkit-origin items are initial registry references; default to native Foldkit UI components in app code.",
-              ]),
+              h.h2(
+                [h.Class("font-semibold text-gray-950")],
+                ["Foldkit-native"]
+              ),
+              h.p(
+                [h.Class("mt-2 text-sm leading-6 text-gray-600")],
+                [
+                  "Foldkit-origin items are initial registry references; default to native Foldkit UI components in app code.",
+                ]
+              ),
             ]
           ),
           h.div(
             [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
             [
-              h.h2([h.Class("font-semibold text-gray-950")], ["Still maturing"]),
-              h.p([h.Class("mt-2 text-sm leading-6 text-gray-600")], [
-                "Visual parity, mobile behavior, keyboard details, and example coverage are actively improving.",
-              ]),
+              h.h2(
+                [h.Class("font-semibold text-gray-950")],
+                ["Still maturing"]
+              ),
+              h.p(
+                [h.Class("mt-2 text-sm leading-6 text-gray-600")],
+                [
+                  "Visual parity, mobile behavior, keyboard details, and example coverage are actively improving.",
+                ]
+              ),
             ]
           ),
         ]
@@ -2803,12 +2868,16 @@ const homeView = (): Html => {
       h.section(
         [h.Class("space-y-3")],
         [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], [
-            "Install from the public registry",
-          ]),
-          h.p([h.Class("max-w-3xl text-sm leading-6 text-gray-600")], [
-            "Use the hosted registry URL directly, or copy the published components config into your Foldkit app to enable the @foldkit-cn alias.",
-          ]),
+          h.h2(
+            [h.Class("text-xl font-semibold text-gray-950")],
+            ["Install from the public registry"]
+          ),
+          h.p(
+            [h.Class("max-w-3xl text-sm leading-6 text-gray-600")],
+            [
+              "Use the hosted registry URL directly, or copy the published components config into your Foldkit app to enable the @foldkit-cn alias.",
+            ]
+          ),
           codeBlock(
             "bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar.json\nbunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/r/sidebar-basic.json"
           ),
@@ -2820,30 +2889,53 @@ const homeView = (): Html => {
       h.section(
         [h.Class("space-y-3")],
         [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], [
-            "Release expectations",
-          ]),
+          h.h2(
+            [h.Class("text-xl font-semibold text-gray-950")],
+            ["Release expectations"]
+          ),
           h.ul(
-            [h.Class("list-disc space-y-2 pl-5 text-sm leading-6 text-gray-600")],
             [
-              h.li([], [
-                "This is not the official Foldkit UI documentation; it is a styled registry on top of Foldkit.",
-              ]),
-              h.li([], [
-                "Foldkit-origin items are included as initial references for packaging, documenting, and testing native Foldkit UI through the registry workflow.",
-              ]),
-              h.li([], [
-                "Default to native Foldkit UI components first; install registry items when you want project-owned styling, examples, or an adaptable source snapshot.",
-              ]),
-              h.li([], [
-                "Installed files are intended to be reviewed and owned by the consuming app.",
-              ]),
-              h.li([], [
-                "Component APIs and example fidelity may change during the sneak peek period.",
-              ]),
-              h.li([], [
-                "The current priority is closer origin parity with shadcn and Base UI examples.",
-              ]),
+              h.Class(
+                "list-disc space-y-2 pl-5 text-sm leading-6 text-gray-600"
+              ),
+            ],
+            [
+              h.li(
+                [],
+                [
+                  "This is not the official Foldkit UI documentation; it is a styled registry on top of Foldkit.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Foldkit-origin items are included as initial references for packaging, documenting, and testing native Foldkit UI through the registry workflow.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Default to native Foldkit UI components first; install registry items when you want project-owned styling, examples, or an adaptable source snapshot.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Installed files are intended to be reviewed and owned by the consuming app.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "Component APIs and example fidelity may change during the sneak peek period.",
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  "The current priority is closer origin parity with shadcn and Base UI examples.",
+                ]
+              ),
             ]
           ),
         ]
@@ -2851,51 +2943,73 @@ const homeView = (): Html => {
       h.section(
         [h.Class("space-y-3")],
         [
-          h.h2([h.Class("text-xl font-semibold text-gray-950")], [
-            "Acknowledgements",
-          ]),
-          h.p([h.Class("max-w-3xl text-sm leading-6 text-gray-600")], [
-            "Foldkit CN builds on ideas, APIs, examples, and design language from Foldkit, shadcn/ui, and Base UI. Thank you to the maintainers and contributors behind those projects.",
-          ]),
+          h.h2(
+            [h.Class("text-xl font-semibold text-gray-950")],
+            ["Acknowledgements"]
+          ),
+          h.p(
+            [h.Class("max-w-3xl text-sm leading-6 text-gray-600")],
+            [
+              "Foldkit CN builds on ideas, APIs, examples, and design language from Foldkit, shadcn/ui, and Base UI. Thank you to the maintainers and contributors behind those projects.",
+            ]
+          ),
           h.ul(
             [h.Class("space-y-2 text-sm leading-6")],
             [
-              h.li([], [
-                h.a(
-                  [
-                    h.Href("https://github.com/foldkit/foldkit"),
-                    h.Class("font-medium text-accent-700 hover:underline"),
-                  ],
-                  ["Foldkit"]
-                ),
-                h.span([h.Class("text-gray-600")], [
-                  " — Elm-style application architecture, Effect-based runtime, and accessibility-focused primitives.",
-                ]),
-              ]),
-              h.li([], [
-                h.a(
-                  [
-                    h.Href("https://github.com/shadcn-ui/ui"),
-                    h.Class("font-medium text-accent-700 hover:underline"),
-                  ],
-                  ["shadcn/ui"]
-                ),
-                h.span([h.Class("text-gray-600")], [
-                  " — source-owned registry workflow, component naming, and visual reference points.",
-                ]),
-              ]),
-              h.li([], [
-                h.a(
-                  [
-                    h.Href("https://github.com/mui/base-ui"),
-                    h.Class("font-medium text-accent-700 hover:underline"),
-                  ],
-                  ["Base UI"]
-                ),
-                h.span([h.Class("text-gray-600")], [
-                  " — accessible unstyled component patterns and origin examples for parity work.",
-                ]),
-              ]),
+              h.li(
+                [],
+                [
+                  h.a(
+                    [
+                      h.Href("https://github.com/foldkit/foldkit"),
+                      h.Class("font-medium text-accent-700 hover:underline"),
+                    ],
+                    ["Foldkit"]
+                  ),
+                  h.span(
+                    [h.Class("text-gray-600")],
+                    [
+                      " — Elm-style application architecture, Effect-based runtime, and accessibility-focused primitives.",
+                    ]
+                  ),
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  h.a(
+                    [
+                      h.Href("https://github.com/shadcn-ui/ui"),
+                      h.Class("font-medium text-accent-700 hover:underline"),
+                    ],
+                    ["shadcn/ui"]
+                  ),
+                  h.span(
+                    [h.Class("text-gray-600")],
+                    [
+                      " — source-owned registry workflow, component naming, and visual reference points.",
+                    ]
+                  ),
+                ]
+              ),
+              h.li(
+                [],
+                [
+                  h.a(
+                    [
+                      h.Href("https://github.com/mui/base-ui"),
+                      h.Class("font-medium text-accent-700 hover:underline"),
+                    ],
+                    ["Base UI"]
+                  ),
+                  h.span(
+                    [h.Class("text-gray-600")],
+                    [
+                      " — accessible unstyled component patterns and origin examples for parity work.",
+                    ]
+                  ),
+                ]
+              ),
             ]
           ),
         ]
@@ -2926,19 +3040,6 @@ const notFoundView = (path: string): Html => {
   );
 };
 
-const codeBlock = (code: string): Html => {
-  const h = html<Message>();
-
-  return h.pre(
-    [
-      h.Class(
-        "overflow-x-auto rounded-lg border border-gray-200 bg-gray-950 px-4 py-3 text-sm text-gray-50"
-      ),
-    ],
-    [h.code([], [code])]
-  );
-};
-
 type DocsMetaItem = Readonly<{
   label: string;
   value: string;
@@ -2957,6 +3058,11 @@ const componentNameFromSlug = (slug: string): string =>
     .join("");
 
 const COMPONENT_DOCS_METADATA_BY_SLUG: Record<string, ComponentDocsMetadata> = {
+  "ai-elements-attachments": {
+    artifact: "component",
+    origin: "AI Elements",
+    primitive: "AI Elements attachments view helpers",
+  },
   animation: {
     artifact: "primitive-backed-component",
     origin: "Foldkit",
@@ -3517,6 +3623,13 @@ const originUrlForSource = (source: string, origin: string): string => {
     return componentSlug === "avatar"
       ? "https://ui.shadcn.com/docs/components/radix/avatar"
       : `https://ui.shadcn.com/docs/components/${componentSlug}`;
+  }
+
+  if (origin === "AI Elements") {
+    return `https://elements.ai-sdk.dev/components/${componentSlug.replace(
+      /^ai-elements-/u,
+      ""
+    )}`;
   }
 
   return `https://foldkit.dev/ui/${componentSlug}`;
@@ -7880,6 +7993,175 @@ ClickedToggleStatus: () => [
   );
 };
 
+const aiElementsAttachmentsExampleRouteView = (
+  title: string,
+  slug: string,
+  preview: Html
+): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-4xl space-y-6")],
+    [
+      h.header(
+        [h.Class("space-y-2")],
+        [
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], [title]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [`Standalone route for the installable ${slug} registry example.`]
+          ),
+        ]
+      ),
+      h.div(
+        [h.Class("rounded-lg border border-gray-200 bg-white p-4")],
+        [preview]
+      ),
+    ]
+  );
+};
+
+const aiElementsAttachmentsDocsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("max-w-5xl space-y-10")],
+    [
+      h.header(
+        [h.Class("space-y-4")],
+        [
+          h.p(
+            [
+              h.Class(
+                "text-sm font-medium uppercase tracking-wide text-sky-700"
+              ),
+            ],
+            ["AI Elements component"]
+          ),
+          h.h1([h.Class("text-3xl font-bold text-gray-950")], ["Attachments"]),
+          h.p(
+            [h.Class("max-w-2xl text-base text-gray-600")],
+            [
+              "A Foldkit-native translation of the AI Elements attachments surface for file, media, and source-document chips. It preserves the upstream grid, inline, and list variants without wrapping React components.",
+            ]
+          ),
+        ]
+      ),
+      docsMetaGrid([
+        {
+          label: "Source",
+          value: "registry/default/ui/ai-elements-attachments",
+        },
+        { label: "Examples", value: "grid, inline, list" },
+        {
+          label: "Origin",
+          value: "https://elements.ai-sdk.dev/components/attachments",
+        },
+      ]),
+      docsOverviewBlock(
+        "Attachments v1 covers Grid, Inline, and List layouts; file and source document data; automatic media category utilities; parent-owned remove facts; and inline hover-card preview markup."
+      ),
+      h.section(
+        [h.Class("space-y-4")],
+        [
+          h.h2([h.Class("text-xl font-semibold text-gray-950")], ["Examples"]),
+          h.div(
+            [h.Class("grid gap-4 lg:grid-cols-2")],
+            [
+              docsExampleBlock({
+                title: "Grid",
+                testId: "docs-example-block-ai-elements-attachments-grid",
+                preview:
+                  DocsPreviewsAIElements.aiElementsAttachmentsGridExamplePreview(
+                    model.aiElementsAttachmentsGridExample,
+                    "ai-elements-attachments-docs-grid-preview"
+                  ),
+                href: "/docs/components/ai-elements-attachments/examples/grid",
+                linkText: "Open standalone Attachments Grid example",
+              }),
+              docsExampleBlock({
+                title: "Inline",
+                testId: "docs-example-block-ai-elements-attachments-inline",
+                preview:
+                  DocsPreviewsAIElements.aiElementsAttachmentsInlineExamplePreview(
+                    model.aiElementsAttachmentsInlineExample,
+                    "ai-elements-attachments-docs-inline-preview"
+                  ),
+                href: "/docs/components/ai-elements-attachments/examples/inline",
+                linkText: "Open standalone Attachments Inline example",
+              }),
+              docsExampleBlock({
+                title: "List",
+                testId: "docs-example-block-ai-elements-attachments-list",
+                preview:
+                  DocsPreviewsAIElements.aiElementsAttachmentsListExamplePreview(
+                    model.aiElementsAttachmentsListExample,
+                    "ai-elements-attachments-docs-list-preview"
+                  ),
+                href: "/docs/components/ai-elements-attachments/examples/list",
+                linkText: "Open standalone Attachments List example",
+              }),
+            ]
+          ),
+        ]
+      ),
+      ...docsStandardComponentSections({
+        installCommands:
+          "bunx shadcn@latest add <registry-url>/ai-elements-attachments.json\nbunx shadcn@latest add <registry-url>/ai-elements-attachments-grid.json\nbunx shadcn@latest add <registry-url>/ai-elements-attachments-inline.json\nbunx shadcn@latest add <registry-url>/ai-elements-attachments-list.json",
+        usageBody:
+          "Render Attachments.view with parent-owned attachment data. Remove controls emit facts such as ClickedRemoveAttachment, and update owns the array change.",
+        usageCode: `import * as Attachments from "./ui/ai-elements-attachments";
+
+Attachments.view<Message>({
+  attachments: model.attachments,
+  variant: "Inline",
+  onRemove: (attachment) => ClickedRemoveAttachment({ id: attachment.id }),
+});`,
+        integrationCode: `// Message
+ClickedRemoveAttachment({ id: S.String });
+
+// Update
+ClickedRemoveAttachment: ({ id }) => [
+  evo(model, {
+    attachments: (attachments) =>
+      Array.filter(attachments, (attachment) => attachment.id !== id),
+  }),
+  [],
+];`,
+        anatomySection: docsAnatomyBlock(
+          `Attachments.attachmentsView<Message>({
+  variant: "Grid",
+  children: model.attachments.map((attachment) =>
+    Attachments.attachmentView<Message>({
+      data: attachment,
+      variant: "Grid",
+      onRemove: ClickedRemoveAttachment({ id: attachment.id }),
+    })
+  ),
+});`
+        ),
+        apiItems: [
+          "view(config): renders a composed attachments list for Grid, Inline, or List variants.",
+          "attachmentsView, attachmentView, attachmentPreviewView, attachmentInfoView, attachmentRemoveView, and attachmentEmptyView expose the composable parts.",
+          "attachmentHoverCardView, attachmentHoverCardTriggerView, and attachmentHoverCardContentView expose inline preview markup.",
+          "getMediaCategory(data) returns Image, Video, Audio, Document, Source, or Unknown.",
+          "getAttachmentLabel(data) returns filenames, source titles, or sensible fallbacks.",
+        ],
+        accessibilityItems: [
+          "Image previews keep meaningful alt text from the attachment label.",
+          "Remove buttons include attachment-specific accessible labels.",
+          "Inline hover-card preview content renders dialog semantics for screen-reader discovery.",
+        ],
+        coverageItems: [
+          "Component scene tests verify utilities, variants, labels, hover-card markup, and remove messages.",
+          "Example scene tests verify Grid, Inline, and List rendering plus parent-owned removal.",
+          "Docs scene tests verify the AI Elements category, docs page, source metadata, and standalone example routes.",
+        ],
+      }),
+    ]
+  );
+};
+
 const avatarDocsView = (model: Model): Html => {
   const h = html<Message>();
 
@@ -11482,28 +11764,32 @@ const inputGroupDocsView = (model: Model): Html => {
               docsExampleBlock({
                 title: "Align",
                 testId: "docs-example-block-input-group-align",
-                preview: DocsPreviewsShadcnMissing.inputGroupAlignExamplePreview(),
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupAlignExamplePreview(),
                 href: "/docs/components/input-group/examples/align",
                 linkText: "Open standalone Input Group Align example",
               }),
               docsExampleBlock({
                 title: "Icon",
                 testId: "docs-example-block-input-group-icon",
-                preview: DocsPreviewsShadcnMissing.inputGroupIconExamplePreview(),
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupIconExamplePreview(),
                 href: "/docs/components/input-group/examples/icon",
                 linkText: "Open standalone Input Group Icon example",
               }),
               docsExampleBlock({
                 title: "Text",
                 testId: "docs-example-block-input-group-text",
-                preview: DocsPreviewsShadcnMissing.inputGroupTextExamplePreview(),
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupTextExamplePreview(),
                 href: "/docs/components/input-group/examples/text",
                 linkText: "Open standalone Input Group Text example",
               }),
               docsExampleBlock({
                 title: "Button",
                 testId: "docs-example-block-input-group-button",
-                preview: DocsPreviewsShadcnMissing.inputGroupButtonExamplePreview(),
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupButtonExamplePreview(),
                 href: "/docs/components/input-group/examples/button",
                 linkText: "Open standalone Input Group Button example",
               }),
@@ -11536,7 +11822,8 @@ const inputGroupDocsView = (model: Model): Html => {
               docsExampleBlock({
                 title: "Spinner",
                 testId: "docs-example-block-input-group-spinner",
-                preview: DocsPreviewsShadcnMissing.inputGroupSpinnerExamplePreview(),
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupSpinnerExamplePreview(),
                 href: "/docs/components/input-group/examples/spinner",
                 linkText: "Open standalone Input Group Spinner example",
               }),
@@ -11553,7 +11840,8 @@ const inputGroupDocsView = (model: Model): Html => {
               docsExampleBlock({
                 title: "RTL",
                 testId: "docs-example-block-input-group-rtl",
-                preview: DocsPreviewsShadcnMissing.inputGroupRtlExamplePreview(),
+                preview:
+                  DocsPreviewsShadcnMissing.inputGroupRtlExamplePreview(),
                 href: "/docs/components/input-group/examples/rtl",
                 linkText: "Open standalone Input Group RTL example",
               }),
@@ -14369,11 +14657,10 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
           docsExampleBlock({
             title: "Detached Trigger",
             testId: "docs-example-block-base-ui-popover-detached-trigger",
-            preview:
-              DocsPreviewsNZ.baseUiPopoverDetachedTriggerExamplePreview(
-                model.baseUiPopoverDetachedTriggerExample,
-                "base-ui-popover-docs-detached-trigger-preview"
-              ),
+            preview: DocsPreviewsNZ.baseUiPopoverDetachedTriggerExamplePreview(
+              model.baseUiPopoverDetachedTriggerExample,
+              "base-ui-popover-docs-detached-trigger-preview"
+            ),
             href: "/docs/components/base-ui-popover/examples/detached-trigger",
             linkText:
               "Open standalone Base UI Popover Detached Trigger example",
@@ -14405,8 +14692,7 @@ const baseUiGeneratedExampleBlock = (model: Model, example: string): Html =>
               "base-ui-popover-docs-open-on-hover-preview"
             ),
             href: "/docs/components/base-ui-popover/examples/open-on-hover",
-            linkText:
-              "Open standalone Base UI Popover Open on Hover example",
+            linkText: "Open standalone Base UI Popover Open on Hover example",
           }),
       ],
       [
@@ -16350,11 +16636,10 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
             description:
               "Represents the origin date-time composition with static time fields.",
             testId: "docs-example-block-shadcn-calendar-date-time-picker",
-            preview:
-              DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(
-                model.shadcnCalendarDateTimePickerExample,
-                "shadcn-calendar-docs-date-time-picker-preview"
-              ),
+            preview: DocsPreviewsCD.shadcnCalendarDateTimePickerExamplePreview(
+              model.shadcnCalendarDateTimePickerExample,
+              "shadcn-calendar-docs-date-time-picker-preview"
+            ),
             href: "/docs/components/shadcn-calendar/examples/date-time-picker",
             linkText:
               "Open standalone shadcn Calendar Date and Time Picker example",
@@ -16400,11 +16685,10 @@ const shadcnCalendarExampleBlock = (model: Model, example: string): Html =>
             description:
               "Represents the origin larger day cells with secondary price text.",
             testId: "docs-example-block-shadcn-calendar-custom-cell-size",
-            preview:
-              DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(
-                model.shadcnCalendarCustomCellSizeExample,
-                "shadcn-calendar-docs-custom-cell-size-preview"
-              ),
+            preview: DocsPreviewsCD.shadcnCalendarCustomCellSizeExamplePreview(
+              model.shadcnCalendarCustomCellSizeExample,
+              "shadcn-calendar-docs-custom-cell-size-preview"
+            ),
             href: "/docs/components/shadcn-calendar/examples/custom-cell-size",
             linkText:
               "Open standalone shadcn Calendar Custom Cell Size example",
@@ -20837,6 +21121,34 @@ Avatar.view<Message>({
 });`,
         }),
       AvatarBasicExample: () => DocsRoutes.avatarBasicExampleRouteView(model),
+      AiElementsAttachmentsDocs: () => aiElementsAttachmentsDocsView(model),
+      AiElementsAttachmentsGridExample: () =>
+        aiElementsAttachmentsExampleRouteView(
+          "AI Elements Attachments Grid",
+          "ai-elements-attachments-grid",
+          DocsPreviewsAIElements.aiElementsAttachmentsGridExamplePreview(
+            model.aiElementsAttachmentsGridExample,
+            "ai-elements-attachments-grid-standalone"
+          )
+        ),
+      AiElementsAttachmentsInlineExample: () =>
+        aiElementsAttachmentsExampleRouteView(
+          "AI Elements Attachments Inline",
+          "ai-elements-attachments-inline",
+          DocsPreviewsAIElements.aiElementsAttachmentsInlineExamplePreview(
+            model.aiElementsAttachmentsInlineExample,
+            "ai-elements-attachments-inline-standalone"
+          )
+        ),
+      AiElementsAttachmentsListExample: () =>
+        aiElementsAttachmentsExampleRouteView(
+          "AI Elements Attachments List",
+          "ai-elements-attachments-list",
+          DocsPreviewsAIElements.aiElementsAttachmentsListExamplePreview(
+            model.aiElementsAttachmentsListExample,
+            "ai-elements-attachments-list-standalone"
+          )
+        ),
       Badge: () => embedUi("ui-badge", View.badge),
       BadgeDocs: () => badgeDocsView(model),
       BadgeBasicExample: () => DocsRoutes.badgeBasicExampleRouteView(model),
@@ -20915,8 +21227,7 @@ Avatar.view<Message>({
         DocsRoutes.resizableBasicExampleRouteView(model),
       ResizableHandleExample: () =>
         DocsRoutes.resizableHandleExampleRouteView(model),
-      ResizableRtlExample: () =>
-        DocsRoutes.resizableRtlExampleRouteView(model),
+      ResizableRtlExample: () => DocsRoutes.resizableRtlExampleRouteView(model),
       ResizableVerticalExample: () =>
         DocsRoutes.resizableVerticalExampleRouteView(model),
       SidebarDocs: () => sidebarDocsView(model),
@@ -20963,8 +21274,7 @@ Avatar.view<Message>({
         DocsRoutes.hoverCardBasicExampleRouteView(model),
       HoverCardSidesExample: () =>
         DocsRoutes.hoverCardSidesExampleRouteView(model),
-      HoverCardRtlExample: () =>
-        DocsRoutes.hoverCardRtlExampleRouteView(model),
+      HoverCardRtlExample: () => DocsRoutes.hoverCardRtlExampleRouteView(model),
       InputOtpDocs: () => inputOtpDocsView(model),
       InputOtpBasicExample: () =>
         DocsRoutes.inputOtpBasicExampleRouteView(model),
@@ -21072,8 +21382,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
         DocsRoutes.typographyBasicExampleRouteView(model),
       Empty: () => embedUi("ui-empty", View.empty),
       EmptyDocs: () => emptyDocsView(model),
-      EmptyAvatarExample: () =>
-        DocsRoutes.emptyAvatarExampleRouteView(model),
+      EmptyAvatarExample: () => DocsRoutes.emptyAvatarExampleRouteView(model),
       EmptyAvatarGroupExample: () =>
         DocsRoutes.emptyAvatarGroupExampleRouteView(model),
       EmptyBackgroundExample: () =>
@@ -21081,8 +21390,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
       EmptyBasicExample: () => DocsRoutes.emptyBasicExampleRouteView(model),
       EmptyInputGroupExample: () =>
         DocsRoutes.emptyInputGroupExampleRouteView(model),
-      EmptyOutlineExample: () =>
-        DocsRoutes.emptyOutlineExampleRouteView(model),
+      EmptyOutlineExample: () => DocsRoutes.emptyOutlineExampleRouteView(model),
       EmptyRtlExample: () => DocsRoutes.emptyRtlExampleRouteView(model),
       InputGroup: () => embedUi("ui-input-group", View.inputGroup),
       InputGroupDocs: () => inputGroupDocsView(model),
@@ -21094,8 +21402,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
         DocsRoutes.inputGroupCustomInputExampleRouteView(),
       InputGroupDropdownExample: () =>
         DocsRoutes.inputGroupDropdownExampleRouteView(),
-      InputGroupIconExample: () =>
-        DocsRoutes.inputGroupIconExampleRouteView(),
+      InputGroupIconExample: () => DocsRoutes.inputGroupIconExampleRouteView(),
       InputGroupRtlExample: () => DocsRoutes.inputGroupRtlExampleRouteView(),
       InputGroupSpinnerExample: () =>
         DocsRoutes.inputGroupSpinnerExampleRouteView(),

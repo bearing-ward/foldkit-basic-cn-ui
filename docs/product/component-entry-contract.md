@@ -220,8 +220,13 @@ presentation detail. A component's docs nav group must match
   docs group.
 - `meta.foldkit.origin` under `https://ui.shadcn.com/` appears under the
   `shadcn` docs group.
+- `meta.foldkit.origin` under `https://elements.ai-sdk.dev/` appears under the
+  `AI Elements` docs group.
 - `meta.foldkit.origin` under `https://foldkit.dev/` appears under the `Foldkit`
   docs group.
+- AI Elements entries must be Foldkit-native translations of the upstream
+  registry behavior surface. Do not wrap or import the upstream React
+  implementation.
 
 When adding or changing a `registry:ui` item:
 

@@ -6,6 +6,7 @@ const registryItems = JSON.parse(
 const docsViewSource = readFileSync("src/docsView.ts", "utf-8");
 
 const originPrefixes = {
+  "ai-elements": "ai-elements",
   "base-ui": "base-ui",
   foldkit: "foldkit",
   shadcn: "shadcn",
@@ -32,6 +33,10 @@ const originLaneFromUrl = (origin) => {
 
     if (url.hostname === "foldkit.dev") {
       return "foldkit";
+    }
+
+    if (url.hostname === "elements.ai-sdk.dev") {
+      return "ai-elements";
     }
 
     return undefined;
@@ -111,7 +116,9 @@ const extractDocsNavRouteTags = (library) => {
   const libraryPattern =
     library === "shadcn"
       ? /\]\.includes\(navItem\.routeTag\)\s*\?\s*"shadcn"/u
-      : /\]\.includes\(navItem\.routeTag\)\s*\?\s*"Base UI"/u;
+      : library === "AI Elements"
+        ? /\]\.includes\(navItem\.routeTag\)\s*\?\s*"AI Elements"/u
+        : /\]\.includes\(navItem\.routeTag\)\s*\?\s*"Base UI"/u;
   const libraryMatch = libraryPattern.exec(docsViewSource);
 
   if (libraryMatch === null) {
@@ -135,6 +142,7 @@ const extractDocsNavRouteTags = (library) => {
 
 const shadcnDocsRouteTags = extractDocsNavRouteTags("shadcn");
 const baseUiDocsRouteTags = extractDocsNavRouteTags("Base UI");
+const aiElementsDocsRouteTags = extractDocsNavRouteTags("AI Elements");
 
 for (const item of uiItems) {
   const foldkitMeta = item.meta?.foldkit;
@@ -161,7 +169,7 @@ for (const item of uiItems) {
 
   if (origin !== undefined && originLane === undefined) {
     failures.push(
-      `${item.name}: meta.foldkit.origin must be an https URL under foldkit.dev, base-ui.com, or ui.shadcn.com`
+      `${item.name}: meta.foldkit.origin must be an https URL under foldkit.dev, base-ui.com, ui.shadcn.com, or elements.ai-sdk.dev`
     );
   }
 
@@ -221,9 +229,17 @@ for (const item of publicUiItems) {
     );
   }
 
+  if (originLane === "ai-elements" && !aiElementsDocsRouteTags.has(routeTag)) {
+    failures.push(
+      `${item.name}: ${routeTag} must be listed in docsNavItemLibrary AI Elements routes`
+    );
+  }
+
   if (
     originLane === "foldkit" &&
-    (baseUiDocsRouteTags.has(routeTag) || shadcnDocsRouteTags.has(routeTag))
+    (baseUiDocsRouteTags.has(routeTag) ||
+      shadcnDocsRouteTags.has(routeTag) ||
+      aiElementsDocsRouteTags.has(routeTag))
   ) {
     failures.push(
       `${item.name}: ${routeTag} is foldkit origin but is listed in a non-Foldkit docs group`

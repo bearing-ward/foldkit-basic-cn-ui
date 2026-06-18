@@ -5,6 +5,9 @@ import { describe, expect, test } from "vitest";
 
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AiElementsAttachmentsGridExample from "../registry/default/examples/ai-elements-attachments-grid/main";
+import * as AiElementsAttachmentsInlineExample from "../registry/default/examples/ai-elements-attachments-inline/main";
+import * as AiElementsAttachmentsListExample from "../registry/default/examples/ai-elements-attachments-list/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
 import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
@@ -356,6 +359,12 @@ const today = Calendar.make(2026, 4, 16);
 const [initialUiModel] = uiInit(today);
 const [newComponentAuthoring] = NewComponentAuthoring.init();
 const [themePlayground] = ThemePlayground.init();
+const [aiElementsAttachmentsGridExample] =
+  AiElementsAttachmentsGridExample.init();
+const [aiElementsAttachmentsInlineExample] =
+  AiElementsAttachmentsInlineExample.init();
+const [aiElementsAttachmentsListExample] =
+  AiElementsAttachmentsListExample.init();
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
 const [shadcnBaseAccordionBasicExample] =
@@ -738,6 +747,9 @@ const initialModel: Model = {
   uiModel: initialUiModel,
   newComponentAuthoring,
   themePlayground,
+  aiElementsAttachmentsGridExample,
+  aiElementsAttachmentsInlineExample,
+  aiElementsAttachmentsListExample,
   accordionBasicExample,
   shadcnAccordionBasicExample,
   shadcnBaseAccordionBasicExample,

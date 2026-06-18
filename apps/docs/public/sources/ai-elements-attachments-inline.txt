@@ -1,0 +1,77 @@
+import { Array, Schema as S } from "effect";
+import type { Command } from "foldkit";
+import { Submodel } from "foldkit";
+import type { Html } from "foldkit/html";
+import { m } from "foldkit/message";
+import { evo } from "foldkit/struct";
+
+import * as Attachments from "../../ui/ai-elements-attachments";
+
+// MODEL
+
+export const Model = S.Struct({
+  attachments: S.Array(Attachments.AttachmentData),
+});
+export type Model = typeof Model.Type;
+
+// MESSAGE
+
+const ClickedRemoveAttachment = m("ClickedRemoveAttachment", { id: S.String });
+
+export const Message = S.Union([ClickedRemoveAttachment]);
+export type Message = typeof Message.Type;
+
+// INIT
+
+const quarterlyReport: Attachments.AttachmentData = {
+  id: "quarterly-report",
+  type: "file",
+  filename: "quarterly-report-2024.pdf",
+  mediaType: "application/pdf",
+  sizeLabel: "2.4 MB",
+};
+
+const reactDocumentation: Attachments.AttachmentData = {
+  id: "react-documentation",
+  type: "source",
+  title: "React Documentation",
+  url: "https://react.dev",
+  description: "Framework documentation source.",
+};
+
+const meetingRecording: Attachments.AttachmentData = {
+  id: "meeting-recording",
+  type: "file",
+  filename: "meeting-recording.mp3",
+  mediaType: "audio/mpeg",
+};
+
+export const init = (): readonly [
+  Model,
+  readonly Command.Command<Message>[],
+] => [
+  { attachments: [quarterlyReport, reactDocumentation, meetingRecording] },
+  [],
+];
+
+// UPDATE
+
+export const update = (
+  model: Model,
+  message: Message
+): readonly [Model, readonly Command.Command<Message>[]] =>
+  [evo(model, {
+    attachments: (attachments) =>
+      Array.filter(attachments, (attachment) => attachment.id !== message.id),
+  }), []];
+
+// VIEW
+
+export const view = Submodel.defineView<Model, Message>(
+  (model): Html =>
+    Attachments.view<Message>({
+      attachments: model.attachments,
+      variant: "Inline",
+      onRemove: (attachment) => ClickedRemoveAttachment({ id: attachment.id }),
+    })
+);

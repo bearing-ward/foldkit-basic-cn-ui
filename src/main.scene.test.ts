@@ -4,6 +4,9 @@ import { describe, test } from "vitest";
 
 import * as AccordionBasicExample from "../registry/default/examples/accordion-basic/main";
 import * as AccordionMultipleExample from "../registry/default/examples/accordion-multiple/main";
+import * as AiElementsAttachmentsGridExample from "../registry/default/examples/ai-elements-attachments-grid/main";
+import * as AiElementsAttachmentsInlineExample from "../registry/default/examples/ai-elements-attachments-inline/main";
+import * as AiElementsAttachmentsListExample from "../registry/default/examples/ai-elements-attachments-list/main";
 import * as AlertActionExample from "../registry/default/examples/alert-action/main";
 import * as AlertBasicExample from "../registry/default/examples/alert-basic/main";
 import * as AlertCustomColorsExample from "../registry/default/examples/alert-custom-colors/main";
@@ -266,11 +269,11 @@ import * as ShadcnCalendarBookedExample from "../registry/default/examples/shadc
 import * as ShadcnCalendarCustomCellSizeExample from "../registry/default/examples/shadcn-calendar-custom-cell-size/main";
 import * as ShadcnCalendarDateOfBirthExample from "../registry/default/examples/shadcn-calendar-date-of-birth/main";
 import * as ShadcnCalendarDateTimePickerExample from "../registry/default/examples/shadcn-calendar-date-time-picker/main";
-import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
-import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as ShadcnCalendarMonthYearSelectorExample from "../registry/default/examples/shadcn-calendar-month-year-selector/main";
 import * as ShadcnCalendarPresetsExample from "../registry/default/examples/shadcn-calendar-presets/main";
+import * as ShadcnCalendarRangeExample from "../registry/default/examples/shadcn-calendar-range/main";
 import * as ShadcnCalendarRtlExample from "../registry/default/examples/shadcn-calendar-rtl/main";
+import * as ShadcnCalendarWeekNumbersExample from "../registry/default/examples/shadcn-calendar-week-numbers/main";
 import * as ShadcnCheckboxBasicExample from "../registry/default/examples/shadcn-checkbox-basic/main";
 import * as ShadcnCheckboxCheckedStateExample from "../registry/default/examples/shadcn-checkbox-checked-state/main";
 import * as ShadcnCollapsibleBasicExample from "../registry/default/examples/shadcn-collapsible-basic/main";
@@ -580,6 +583,10 @@ import {
   FileDropBasicExampleRoute,
   FileDropDisabledExampleRoute,
   FileDropDocsRoute,
+  AiElementsAttachmentsDocsRoute,
+  AiElementsAttachmentsGridExampleRoute,
+  AiElementsAttachmentsInlineExampleRoute,
+  AiElementsAttachmentsListExampleRoute,
   GotBaseUiComboboxBasicExampleMessage,
   GotComboboxBasicExampleMessage,
   GotComboboxMultiExampleMessage,
@@ -701,6 +708,12 @@ const BaseUiDialogCloseConfirmationTweetShowDialog = Dialog.ShowDialog({
 const [initialUiModel] = uiInit(today);
 const [newComponentAuthoring] = NewComponentAuthoring.init();
 const [themePlayground] = ThemePlayground.init();
+const [aiElementsAttachmentsGridExample] =
+  AiElementsAttachmentsGridExample.init();
+const [aiElementsAttachmentsInlineExample] =
+  AiElementsAttachmentsInlineExample.init();
+const [aiElementsAttachmentsListExample] =
+  AiElementsAttachmentsListExample.init();
 const [accordionBasicExample] = AccordionBasicExample.init();
 const [shadcnAccordionBasicExample] = ShadcnAccordionBasicExample.init();
 const [shadcnBaseAccordionBasicExample] =
@@ -1083,6 +1096,9 @@ const modelForRoute = (route: Model["route"]): Model => ({
   uiModel: initialUiModel,
   newComponentAuthoring,
   themePlayground,
+  aiElementsAttachmentsGridExample,
+  aiElementsAttachmentsInlineExample,
+  aiElementsAttachmentsListExample,
   accordionBasicExample,
   shadcnAccordionBasicExample,
   shadcnBaseAccordionBasicExample,
@@ -1558,7 +1574,74 @@ describe("scene", () => {
       ),
       Scene.expect(Scene.testId("docs-nav-section-base-ui")).toContainText(
         "Tooltip"
+      ),
+      Scene.expect(Scene.testId("docs-nav-section-ai-elements")).toContainText(
+        "Attachments"
       )
+    );
+  });
+
+  test("the AI Elements Attachments docs route renders docs, metadata, and examples", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AiElementsAttachmentsDocsRoute())),
+      Scene.expect(Scene.testId("docs-nav-section-ai-elements")).toContainText(
+        "Attachments"
+      ),
+      Scene.expect(Scene.role("heading", { name: "Attachments" })).toExist(),
+      Scene.expect(Scene.text("AI Elements component")).toExist(),
+      Scene.expect(
+        Scene.text("registry/default/ui/ai-elements-attachments")
+      ).toExist(),
+      Scene.expect(
+        Scene.text("https://elements.ai-sdk.dev/components/attachments")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-ai-elements-attachments-grid")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-ai-elements-attachments-inline")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-ai-elements-attachments-list")
+      ).toExist(),
+      Scene.expect(
+        Scene.role("img", { name: "mountain-landscape.jpg" })
+      ).toExist(),
+      Scene.expect(Scene.text("quarterly-report-2024.pdf")).toExist(),
+      Scene.expect(Scene.text("product-demo.mp4")).toExist()
+    );
+  });
+
+  test("the AI Elements Attachments example routes render standalone examples", () => {
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AiElementsAttachmentsGridExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "AI Elements Attachments Grid" })
+      ).toExist(),
+      Scene.expect(
+        Scene.role("img", { name: "mountain-landscape.jpg" })
+      ).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AiElementsAttachmentsInlineExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "AI Elements Attachments Inline" })
+      ).toExist(),
+      Scene.expect(Scene.text("React Documentation")).toExist()
+    );
+
+    Scene.scene(
+      { update, view },
+      Scene.with(modelForRoute(AiElementsAttachmentsListExampleRoute())),
+      Scene.expect(
+        Scene.role("heading", { name: "AI Elements Attachments List" })
+      ).toExist(),
+      Scene.expect(Scene.text("product-demo.mp4")).toExist(),
+      Scene.expect(Scene.text("video/mp4")).toExist()
     );
   });
 
@@ -2060,9 +2143,7 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(ResizableRtlExampleRoute())),
-      Scene.expect(
-        Scene.role("heading", { name: "Resizable RTL" })
-      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Resizable RTL" })).toExist(),
       Scene.expect(Scene.text("واحد")).toHaveAttr("data-size", "50")
     );
   });
@@ -2430,8 +2511,12 @@ describe("scene", () => {
       Scene.expect(
         Scene.testId("docs-example-block-native-select-basic")
       ).toExist(),
-      Scene.expect(Scene.testId("docs-example-block-native-select-groups")).toExist(),
-      Scene.expect(Scene.testId("docs-example-block-native-select-rtl")).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-native-select-groups")
+      ).toExist(),
+      Scene.expect(
+        Scene.testId("docs-example-block-native-select-rtl")
+      ).toExist(),
       Scene.expect(Scene.text("Select status")).toExist()
     );
   });
@@ -3901,14 +3986,7 @@ describe("scene", () => {
     ];
 
     shadcnDocsRoutes.forEach(
-      ({
-        route,
-        heading,
-        source,
-        origin,
-        example,
-        resolveMounts = [],
-      }) => {
+      ({ route, heading, source, origin, example, resolveMounts = [] }) => {
         Scene.scene(
           { update, view },
           Scene.with(modelForRoute(route)),
@@ -3963,10 +4041,9 @@ describe("scene", () => {
           "Yes. It comes with default styles that matches the other components' aesthetic."
         )
       ).toExist(),
-      Scene.expect(Scene.role("button", { name: "Is it accessible?" })).toHaveAttr(
-        "aria-expanded",
-        "false"
-      ),
+      Scene.expect(
+        Scene.role("button", { name: "Is it accessible?" })
+      ).toHaveAttr("aria-expanded", "false"),
       Scene.expect(Scene.role("button", { name: "Is it styled?" })).toHaveAttr(
         "aria-expanded",
         "true"
@@ -4005,9 +4082,7 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(ShadcnTextareaDocsRoute())),
-      Scene.expect(
-        Scene.placeholder("Type your message here.")
-      ).toHaveValue("")
+      Scene.expect(Scene.placeholder("Type your message here.")).toHaveValue("")
     );
   });
 
@@ -4034,8 +4109,9 @@ describe("scene", () => {
       Scene.expect(Scene.text("Field Group")).toExist(),
       Scene.expect(Scene.text("Responsive")).toExist(),
       Scene.expect(Scene.text("Enter a valid email address.")).toExist(),
-      Scene.expect(Scene.role("textbox", { name: "البريد الإلكتروني" }))
-        .toHaveAttr("value", "user@example.com")
+      Scene.expect(
+        Scene.role("textbox", { name: "البريد الإلكتروني" })
+      ).toHaveAttr("value", "user@example.com")
     );
   });
 
@@ -4792,8 +4868,9 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Input Group Custom Input" })
       ).toExist(),
-      Scene.expect(Scene.role("textbox", { name: "Custom message" }))
-        .toHaveAttr("data-slot", "input-group-control")
+      Scene.expect(
+        Scene.role("textbox", { name: "Custom message" })
+      ).toHaveAttr("data-slot", "input-group-control")
     );
   });
 
@@ -5233,9 +5310,7 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(EmptyOutlineExampleRoute())),
-      Scene.expect(
-        Scene.role("heading", { name: "Empty Outline" })
-      ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "Empty Outline" })).toExist(),
       Scene.expect(
         Scene.role("heading", { name: "Cloud Storage Empty" })
       ).toExist(),
@@ -5275,24 +5350,18 @@ describe("scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(modelForRoute(EmptyDocsRoute())),
-      Scene.expect(
-        Scene.testId("docs-example-block-empty-avatar")
-      ).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-empty-avatar")).toExist(),
       Scene.expect(
         Scene.testId("docs-example-block-empty-avatar-group")
       ).toExist(),
-      Scene.expect(
-        Scene.testId("docs-example-block-empty-outline")
-      ).toExist(),
+      Scene.expect(Scene.testId("docs-example-block-empty-outline")).toExist(),
       Scene.expect(
         Scene.testId("docs-example-block-empty-background")
       ).toExist(),
       Scene.expect(
         Scene.testId("docs-example-block-empty-input-group")
       ).toExist(),
-      Scene.expect(
-        Scene.testId("docs-example-block-empty-rtl")
-      ).toExist()
+      Scene.expect(Scene.testId("docs-example-block-empty-rtl")).toExist()
     );
   });
 
@@ -6157,8 +6226,9 @@ describe("scene", () => {
         Scene.role("textbox", { name: "Component name" }),
         "Command Menu"
       ),
-      Scene.expect(Scene.text("registry/default/ui/command-menu/index.ts"))
-        .toExist(),
+      Scene.expect(
+        Scene.text("registry/default/ui/command-menu/index.ts")
+      ).toExist(),
       Scene.change(Scene.role("combobox", { name: "Origin" }), "shadcn"),
       Scene.expect(Scene.role("combobox", { name: "Origin" })).toHaveValue(
         "shadcn"
