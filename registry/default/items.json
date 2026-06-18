@@ -1953,6 +1953,45 @@
     }
   },
   {
+    "name": "foldkit-livetrace",
+    "type": "registry:ui",
+    "title": "Foldkit LiveTrace",
+    "description": "A Foldkit-native LiveTrace component kit for trace cards, log rows, progress indicators, activity panels, code panels, and agent workflow views.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "registry/default/ui/foldkit-livetrace/index.ts",
+        "target": "src/ui/foldkit-livetrace/index.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/foldkit-livetrace/view.ts",
+        "target": "src/ui/foldkit-livetrace/view.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/foldkit-livetrace/sample-data.ts",
+        "target": "src/ui/foldkit-livetrace/sample-data.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "registry/default/ui/foldkit-livetrace/foldkit-livetrace.scene.test.ts",
+        "target": "src/ui/foldkit-livetrace/foldkit-livetrace.scene.test.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "origin": "https://foldkit.dev/ui/livetrace",
+        "artifact": "component",
+        "stateful": false
+      }
+    }
+  },
+  {
     "name": "hover-card",
     "type": "registry:ui",
     "title": "Hover Card",
@@ -9750,6 +9789,222 @@
       "foldkit": {
         "component": "FileDrop",
         "example": "disabled"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-activity-panel",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Activity Panel",
+    "description": "LiveTrace activity panel example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-activity-panel/main.ts",
+        "target": "src/examples/foldkit-livetrace-activity-panel/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-activity-panel/foldkit-livetrace-activity-panel.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-activity-panel/foldkit-livetrace-activity-panel.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Activity Panel"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-agent-demo",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Agent Demo",
+    "description": "LiveTrace agent demo example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-agent-demo/main.ts",
+        "target": "src/examples/foldkit-livetrace-agent-demo/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-agent-demo/foldkit-livetrace-agent-demo.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-agent-demo/foldkit-livetrace-agent-demo.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Agent Demo"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-code-panel",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Code Panel",
+    "description": "LiveTrace code panel example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-code-panel/main.ts",
+        "target": "src/examples/foldkit-livetrace-code-panel/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-code-panel/foldkit-livetrace-code-panel.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-code-panel/foldkit-livetrace-code-panel.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Code Panel"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-execution-panel",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Execution Panel",
+    "description": "LiveTrace execution panel example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-execution-panel/main.ts",
+        "target": "src/examples/foldkit-livetrace-execution-panel/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-execution-panel/foldkit-livetrace-execution-panel.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-execution-panel/foldkit-livetrace-execution-panel.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Execution Panel"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-log-line",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Log Line",
+    "description": "LiveTrace log line example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-log-line/main.ts",
+        "target": "src/examples/foldkit-livetrace-log-line/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-log-line/foldkit-livetrace-log-line.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-log-line/foldkit-livetrace-log-line.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Log Line"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-overview",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Overview",
+    "description": "LiveTrace overview example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-overview/main.ts",
+        "target": "src/examples/foldkit-livetrace-overview/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-overview/foldkit-livetrace-overview.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-overview/foldkit-livetrace-overview.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Overview"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-progress-indicators",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Progress Indicators",
+    "description": "LiveTrace progress indicators example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-progress-indicators/main.ts",
+        "target": "src/examples/foldkit-livetrace-progress-indicators/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-progress-indicators/foldkit-livetrace-progress-indicators.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-progress-indicators/foldkit-livetrace-progress-indicators.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Progress Indicators"
+      }
+    }
+  },
+  {
+    "name": "foldkit-livetrace-trace-card",
+    "type": "registry:example",
+    "title": "Foldkit LiveTrace Trace Card",
+    "description": "LiveTrace trace card example built from Foldkit-native registry primitives.",
+    "dependencies": ["effect", "foldkit"],
+    "devDependencies": ["vitest"],
+    "registryDependencies": ["foldkit-livetrace"],
+    "files": [
+      {
+        "path": "registry/default/examples/foldkit-livetrace-trace-card/main.ts",
+        "target": "src/examples/foldkit-livetrace-trace-card/main.ts",
+        "type": "registry:example"
+      },
+      {
+        "path": "registry/default/examples/foldkit-livetrace-trace-card/foldkit-livetrace-trace-card.scene.test.ts",
+        "target": "src/examples/foldkit-livetrace-trace-card/foldkit-livetrace-trace-card.scene.test.ts",
+        "type": "registry:example"
+      }
+    ],
+    "meta": {
+      "foldkit": {
+        "component": "LiveTrace",
+        "example": "Trace Card"
       }
     }
   },

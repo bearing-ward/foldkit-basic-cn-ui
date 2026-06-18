@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "foldkit-livetrace-progress-indicators",
+  "type": "registry:example",
+  "title": "Foldkit LiveTrace Progress Indicators",
+  "description": "LiveTrace progress indicators example built from Foldkit-native registry primitives.",
+  "dependencies": ["effect", "foldkit"],
+  "devDependencies": ["vitest"],
+  "registryDependencies": ["@foldkit-cn/foldkit-livetrace"],
+  "files": [
+    {
+      "path": "registry/default/examples/foldkit-livetrace-progress-indicators/main.ts",
+      "target": "src/examples/foldkit-livetrace-progress-indicators/main.ts",
+      "type": "registry:example",
+      "content": "import { Match as M, Schema as S } from \"effect\";\nimport type { Command } from \"foldkit\";\nimport { Submodel } from \"foldkit\";\nimport type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\nimport { m } from \"foldkit/message\";\n\nimport * as LiveTrace from \"../../ui/foldkit-livetrace\";\n\n// MODEL\n\nexport const Model = S.Struct({});\nexport type Model = typeof Model.Type;\n\n// MESSAGE\n\nexport const ClickedInspectProgress = m(\"ClickedInspectProgress\");\nexport const Message = S.Union([ClickedInspectProgress]);\nexport type Message = typeof Message.Type;\n\n// INIT\n\nexport const init = (): readonly [\n  Model,\n  readonly Command.Command<Message>[],\n] => [{}, []];\n\n// UPDATE\n\nexport const update = (\n  model: Model,\n  message: Message\n): readonly [Model, readonly Command.Command<Message>[]] =>\n  M.value(message).pipe(\n    M.withReturnType<readonly [Model, readonly Command.Command<Message>[]]>(),\n    M.tagsExhaustive({\n      ClickedInspectProgress: () => [model, []],\n    })\n  );\n\n// VIEW\n\nexport const view = Submodel.defineView<Model, Message>((): Html => {\n  const h = html<Message>();\n\n  return LiveTrace.themeView<Message>({\n    className: \"min-h-0\",\n    children: [\n      h.div(\n        [h.Class(\"grid max-w-3xl gap-5\")],\n        [\n          h.div(\n            [h.Class(\"flex flex-wrap gap-2\")],\n            [\n              LiveTrace.statusBadgeView<Message>({ status: \"Completed\" }),\n              LiveTrace.statusBadgeView<Message>({ status: \"Running\" }),\n              LiveTrace.statusBadgeView<Message>({ status: \"Failed\" }),\n              LiveTrace.statusBadgeView<Message>({ status: \"Concurrent\" }),\n            ]\n          ),\n          h.div(\n            [h.Class(\"grid grid-cols-4 gap-4\")],\n            [\n              LiveTrace.stepMarkerView<Message>({ state: \"Complete\" }),\n              LiveTrace.stepMarkerView<Message>({ state: \"Running\" }),\n              LiveTrace.stepMarkerView<Message>({\n                state: \"Pending\",\n                label: \"2\",\n              }),\n              LiveTrace.stepMarkerView<Message>({ state: \"Failed\" }),\n            ]\n          ),\n          h.div(\n            [h.Class(\"space-y-3\")],\n            [\n              LiveTrace.progressTrackView<Message>({\n                value: 0,\n                tone: \"Default\",\n              }),\n              LiveTrace.progressTrackView<Message>({\n                value: 42,\n                tone: \"Accent\",\n              }),\n              LiveTrace.progressTrackView<Message>({ value: 100, tone: \"Ok\" }),\n              LiveTrace.progressTrackView<Message>({\n                value: 24,\n                tone: \"Error\",\n              }),\n            ]\n          ),\n          LiveTrace.controlButtonView<Message>({\n            label: \"Inspect progress\",\n          }),\n        ]\n      ),\n    ],\n  });\n});\n"
+    },
+    {
+      "path": "registry/default/examples/foldkit-livetrace-progress-indicators/foldkit-livetrace-progress-indicators.scene.test.ts",
+      "target": "src/examples/foldkit-livetrace-progress-indicators/foldkit-livetrace-progress-indicators.scene.test.ts",
+      "type": "registry:example",
+      "content": "import { Scene } from \"foldkit\";\nimport { describe, test } from \"vitest\";\n\nimport { init, update, view } from \"./main\";\n\ndescribe(\"foldkit livetrace progress indicators example\", () => {\n  test(\"renders progress primitives and keeps the inspect control inert\", () => {\n    const [model] = init();\n\n    Scene.scene(\n      { update, view },\n      Scene.with(model),\n      Scene.expect(Scene.text(\"completed\")).toExist(),\n      Scene.expect(Scene.role(\"progressbar\", { name: \"42%\" })).toHaveAttr(\n        \"data-progress\",\n        \"42\"\n      ),\n      Scene.expect(\n        Scene.role(\"button\", { name: \"Inspect progress\" })\n      ).not.toHaveHandler(\"click\")\n    );\n  });\n});\n"
+    }
+  ],
+  "meta": {
+    "foldkit": {
+      "component": "LiveTrace",
+      "example": "Progress Indicators"
+    }
+  }
+}
