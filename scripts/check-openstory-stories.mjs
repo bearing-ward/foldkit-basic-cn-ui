@@ -13,7 +13,11 @@ const importPattern =
 const generated = generateOpenstoryStories();
 const failures = checkGeneratedFiles(generated);
 const expectedSlugs = new Set(
-  generated.catalog.flatMap((group) => group.stories.map((story) => story.slug))
+  generated.catalog.flatMap((group) =>
+    group.stories
+      .filter((story) => story.kind === "example")
+      .map((story) => story.slug)
+  )
 );
 const importsBySlug = new Map();
 const storyIds = new Map();
@@ -21,15 +25,17 @@ const storyIds = new Map();
 for (const group of generated.catalog) {
   for (const story of group.stories) {
     const id = storyId({ title: group.title, name: story.name });
-    const previousSlug = storyIds.get(id);
+    const storyLabel =
+      story.kind === "documentation" ? story.registryItemName : story.slug;
+    const previousStoryLabel = storyIds.get(id);
 
-    if (previousSlug !== undefined) {
+    if (previousStoryLabel !== undefined) {
       failures.push(
-        `${story.slug}: duplicate generated Openstory story id ${id} also used by ${previousSlug}`
+        `${storyLabel}: duplicate generated Openstory story id ${id} also used by ${previousStoryLabel}`
       );
     }
 
-    storyIds.set(id, story.slug);
+    storyIds.set(id, storyLabel);
   }
 }
 

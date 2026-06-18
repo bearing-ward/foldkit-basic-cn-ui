@@ -2,6 +2,7 @@ const baseUrl =
   process.env.PUBLIC_BASE_URL ??
   "https://bearing-ward.github.io/foldkit-basic-cn-ui";
 const knownStoryId = "base-ui-accordion--basic";
+const knownDocumentationStoryId = "base-ui-avatar--documentation";
 
 const assertResponse = async (path, expectedContentTypes) => {
   const response = await fetch(`${baseUrl}/${path}`);
@@ -39,7 +40,17 @@ if (!storyIds.has(knownStoryId)) {
   throw new Error(`__openstory/manifest.json is missing ${knownStoryId}`);
 }
 
+if (!storyIds.has(knownDocumentationStoryId)) {
+  throw new Error(
+    `__openstory/manifest.json is missing ${knownDocumentationStoryId}`
+  );
+}
+
 await assertResponse(`__story/${knownStoryId}/index.html`, "text/html");
+await assertResponse(
+  `__story/${knownDocumentationStoryId}/index.html`,
+  "text/html"
+);
 await assertResponse("components.json", "application/json");
 await assertResponse("registry.json", "application/json");
 await assertResponse("button.json", "application/json");

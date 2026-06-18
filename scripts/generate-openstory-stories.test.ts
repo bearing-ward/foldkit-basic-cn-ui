@@ -16,15 +16,18 @@ const item = ({
   title,
   component,
   example,
+  registryDependencies = [],
 }: {
   name: string;
   title: string;
   component: string;
   example: string;
+  registryDependencies?: ReadonlyArray<string>;
 }) => ({
   name,
   title,
   type: "registry:example",
+  registryDependencies,
   meta: {
     foldkit: {
       component,
@@ -34,7 +37,14 @@ const item = ({
 });
 
 const catalogFor = (
-  exampleSlugs: ReadonlyArray<string>,
+  exampleSlugs: ReadonlyArray<
+    | string
+    | Readonly<{
+        modulePath: string;
+        slug: string;
+        sourceLane: string;
+      }>
+  >,
   registryItems: ReadonlyArray<ReturnType<typeof item>> = []
 ) => createCatalog({ exampleSlugs, registryItems });
 
@@ -144,6 +154,101 @@ describe("generate Openstory stories", () => {
     expect(source).toContain(
       "../../../registry/shadcn/examples/shadcn-button-basic/main"
     );
+  });
+
+  test("prepends a documented component reference story", () => {
+    const [group] = catalogFor(
+      [
+        {
+          modulePath: "../../../registry/base-ui/examples/avatar-basic/main",
+          slug: "avatar-basic",
+          sourceLane: "base-ui",
+        },
+        "base-ui-avatar-basic",
+      ],
+      [
+        item({
+          name: "avatar-basic",
+          title: "Base UI Avatar Basic",
+          component: "Avatar",
+          example: "basic",
+        }),
+        item({
+          name: "base-ui-avatar-basic",
+          title: "Base UI Avatar Basic",
+          component: "Avatar",
+          example: "basic",
+          registryDependencies: ["base-ui-avatar"],
+        }),
+      ]
+    );
+
+    expect(group?.title).toBe("base-ui/Avatar");
+    expect(group?.stories.map((story) => story.name)).toEqual([
+      "Documentation",
+      "Basic",
+      "Basic 2",
+    ]);
+    expect(
+      group?.stories.map((story) =>
+        storyId({ title: group.title, name: story.name })
+      )
+    ).toEqual([
+      "base-ui-avatar--documentation",
+      "base-ui-avatar--basic",
+      "base-ui-avatar--basic-2",
+    ]);
+  });
+
+  test("generates documentation imports only for documented groups", () => {
+    const catalog = catalogFor(
+      [
+        "base-ui-avatar-basic",
+        {
+          modulePath: "../../../registry/base-ui/examples/base-ui-menu-basic/main",
+          slug: "base-ui-menu-basic",
+          sourceLane: "base-ui",
+        },
+      ],
+      [
+        item({
+          name: "base-ui-avatar-basic",
+          title: "Base UI Avatar Basic",
+          component: "Avatar",
+          example: "basic",
+          registryDependencies: ["base-ui-avatar"],
+        }),
+        item({
+          name: "base-ui-menu-basic",
+          title: "Base UI Menu Basic",
+          component: "Menu",
+          example: "basic",
+        }),
+      ]
+    );
+    const files = renderGeneratedFiles(catalog);
+    const avatarSource =
+      files.get("src/openstory/generated/base-ui-avatar.stories.ts") ?? "";
+    const menuSource =
+      files.get("src/openstory/generated/base-ui-menu.stories.ts") ?? "";
+
+    expect(storyId({ title: "base-ui/Avatar", name: "Documentation" })).toBe(
+      "base-ui-avatar--documentation"
+    );
+    expect(avatarSource).toContain(
+      'import { createDocumentationReferenceProgram } from "../documentation/referenceProgram"'
+    );
+    expect(avatarSource).toContain(
+      'import { baseUiAvatarDocumentation } from "../documentation/referenceData"'
+    );
+    expect(avatarSource.indexOf("export const Documentation")).toBeLessThan(
+      avatarSource.indexOf("export const Basic")
+    );
+    expect(avatarSource).toContain(
+      "render: () => createDocumentationReferenceProgram(baseUiAvatarDocumentation)"
+    );
+    expect(menuSource).not.toContain("createDocumentationReferenceProgram");
+    expect(menuSource).not.toContain("referenceData");
   });
 
   test("uses filesystem examples as the inventory during metadata drift", () => {

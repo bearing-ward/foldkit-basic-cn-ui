@@ -16,6 +16,8 @@ export const generatedHeader =
 
 const generatedDir = "src/openstory/generated";
 const exampleLanes = ["foldkit", "base-ui", "shadcn", "ai-elements"];
+// Keep this script browser-free; importing referenceData pulls app modules.
+const documentationItemNames = new Set(["base-ui-avatar"]);
 
 const variantSuffixes = [
   "controlled-multiple-triggers",
@@ -138,6 +140,16 @@ export const pascalCase = (value) => {
   return identifier || "Story";
 };
 
+const documentationImportName = (value) => {
+  const identifier = value
+    .split(/[/_-]+/u)
+    .filter(Boolean)
+    .map((word) => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`)
+    .join("");
+
+  return `${identifier.slice(0, 1).toLowerCase()}${identifier.slice(1)}Documentation`;
+};
+
 const line = (value = "") => `${value}\n`;
 
 const removeLanePrefix = (slug) => {
@@ -257,6 +269,30 @@ const storyNameForSlug = ({ slug, item, lane, componentName }) =>
   storyNameFromItemExample(item) ??
   humanize(splitSlug(slug).variantSlug);
 
+const documentationItemNameForItem = (item) => {
+  if (documentationItemNames.has(item?.name)) {
+    return item.name;
+  }
+
+  const registryDependencies = item?.registryDependencies;
+
+  if (!Array.isArray(registryDependencies)) {
+    return undefined;
+  }
+
+  return registryDependencies.find((dependency) =>
+    documentationItemNames.has(dependency)
+  );
+};
+
+const documentationStoryForItemName = (registryItemName) => ({
+  dataImportName: documentationImportName(registryItemName),
+  exportName: "Documentation",
+  kind: "documentation",
+  name: "Documentation",
+  registryItemName,
+});
+
 export const discoverExamples = (rootDir = process.cwd()) => {
   const examples = exampleLanes.flatMap((sourceLane) => {
     const examplesDir = `registry/${sourceLane}/examples`;
@@ -308,16 +344,20 @@ export const createCatalog = ({ exampleSlugs, registryItems }) => {
     const componentName = componentNameFromItem(item, slug);
     const title = `${lane}/${componentName}`;
     const storyName = storyNameForSlug({ slug, item, lane, componentName });
+    const documentationRegistryItemName = documentationItemNameForItem(item);
     const group =
       groupsByTitle.get(title) ??
       {
+        documentationRegistryItemName,
         title,
         stories: [],
       };
 
+    group.documentationRegistryItemName ??= documentationRegistryItemName;
     group.stories.push({
       exportName: pascalCase(storyName),
       importName: `${pascalCase(slug)}Example`,
+      kind: "example",
       modulePath: example.modulePath,
       name: storyName,
       slug,
@@ -326,6 +366,16 @@ export const createCatalog = ({ exampleSlugs, registryItems }) => {
   }
 
   return [...groupsByTitle.values()]
+    .map((group) => ({
+      ...group,
+      stories:
+        group.documentationRegistryItemName === undefined
+          ? group.stories
+          : [
+              documentationStoryForItemName(group.documentationRegistryItemName),
+              ...group.stories,
+            ],
+    }))
     .map((group) => disambiguateGroupStories(group))
     .sort((left, right) => left.title.localeCompare(right.title));
 };
@@ -363,20 +413,41 @@ const disambiguateGroupStories = (group) => {
 
 const storyFileName = (title) => `${slugify(title)}.stories.ts`;
 
-const renderStory = (story) =>
-  [
+const renderStory = (story) => {
+  const renderTarget =
+    story.kind === "documentation"
+      ? `createDocumentationReferenceProgram(${story.dataImportName})`
+      : story.importName;
+
+  return [
     line(`export const ${story.exportName}: Story = {`),
     line(`  name: ${JSON.stringify(story.name)},`),
-    line(`  render: () => ${story.importName},`),
+    line(`  render: () => ${renderTarget},`),
     line("}"),
   ].join("");
+};
+
+const documentationStories = (group) =>
+  group.stories.filter((story) => story.kind === "documentation");
+
+const exampleStories = (group) =>
+  group.stories.filter((story) => story.kind === "example");
 
 const renderGroup = (group) =>
   [
     line(generatedHeader),
     line('import type { Meta, StoryObj } from "openstory/foldkit"'),
     line(),
-    ...group.stories.map((story) =>
+    ...documentationStories(group).flatMap((story) => [
+      line(
+        'import { createDocumentationReferenceProgram } from "../documentation/referenceProgram"'
+      ),
+      line(
+        `import { ${story.dataImportName} } from "../documentation/referenceData"`
+      ),
+    ]),
+    documentationStories(group).length > 0 ? line() : "",
+    ...exampleStories(group).map((story) =>
       line(`import * as ${story.importName} from "${story.modulePath}"`)
     ),
     line(),
