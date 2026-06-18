@@ -37,12 +37,17 @@ describe("Documentation reference program", () => {
         Scene.role("button", { name: "Inspect Avatar root span" })
       ).toExist(),
       Scene.expect(Scene.text("rounded-full", { exact: false })).toExist(),
+      Scene.expect(Scene.text("Avatar API reference")).toExist(),
+      Scene.expect(Scene.role("button", { name: "View helpers 7" })).toExist(),
       Scene.expect(Scene.text("rootView")).toExist(),
       Scene.expect(Scene.text("imageView")).toExist(),
       Scene.expect(Scene.text("fallbackView")).toExist(),
       Scene.expect(Scene.text("badgeView")).toExist(),
       Scene.expect(Scene.text("groupView")).toExist(),
       Scene.expect(Scene.text("countView")).toExist(),
+      Scene.click(Scene.role("button", { name: "Class hooks 7" })),
+      Scene.expect(Scene.text("avatarBadgeClassName")).toExist(),
+      Scene.click(Scene.role("button", { name: "Coverage 4" })),
       Scene.expect(
         Scene.text("base-ui-avatar.scene.test.ts", { exact: false })
       ).toExist(),

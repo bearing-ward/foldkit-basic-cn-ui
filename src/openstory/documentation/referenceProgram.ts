@@ -6,8 +6,8 @@ import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
 
 import * as AnatomyXray from "./anatomyXray";
+import * as ApiReference from "./apiReference";
 import type {
-  DocumentationApiRow,
   DocumentationCoverageRow,
   DocumentationReference,
 } from "./referenceData";
@@ -16,6 +16,7 @@ import type {
 
 export const Model = S.Struct({
   anatomyXray: AnatomyXray.Model,
+  apiReference: ApiReference.Model,
 });
 export type Model = typeof Model.Type;
 
@@ -24,8 +25,11 @@ export type Model = typeof Model.Type;
 export const GotAnatomyXrayMessage = m("GotAnatomyXrayMessage", {
   message: AnatomyXray.Message,
 });
+export const GotApiReferenceMessage = m("GotApiReferenceMessage", {
+  message: ApiReference.Message,
+});
 
-export const Message = S.Union([GotAnatomyXrayMessage]);
+export const Message = S.Union([GotAnatomyXrayMessage, GotApiReferenceMessage]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -34,14 +38,20 @@ type UpdateReturn = readonly [Model, readonly Command.Command<Message>[]];
 
 const withUpdateReturn = M.withReturnType<UpdateReturn>();
 
-export const init = (): UpdateReturn => {
-  const [anatomyXray, commands] = AnatomyXray.init();
+const initForReference = (reference: DocumentationReference): UpdateReturn => {
+  const [anatomyXray, anatomyCommands] = AnatomyXray.init();
+  const [apiReference, apiCommands] = ApiReference.init(reference.apiReference);
 
   return [
-    { anatomyXray },
-    Command.mapMessages(commands, (message) =>
-      GotAnatomyXrayMessage({ message })
-    ),
+    { anatomyXray, apiReference },
+    [
+      ...Command.mapMessages(anatomyCommands, (message) =>
+        GotAnatomyXrayMessage({ message })
+      ),
+      ...Command.mapMessages(apiCommands, (message) =>
+        GotApiReferenceMessage({ message })
+      ),
+    ],
   ];
 };
 
@@ -61,6 +71,19 @@ export const update = (model: Model, message: Message): UpdateReturn =>
           evo(model, { anatomyXray: () => anatomyXray }),
           Command.mapMessages(commands, (message) =>
             GotAnatomyXrayMessage({ message })
+          ),
+        ];
+      },
+      GotApiReferenceMessage: ({ message }) => {
+        const [apiReference, commands] = ApiReference.update(
+          model.apiReference,
+          message
+        );
+
+        return [
+          evo(model, { apiReference: () => apiReference }),
+          Command.mapMessages(commands, (message) =>
+            GotApiReferenceMessage({ message })
           ),
         ];
       },
@@ -154,49 +177,6 @@ const renderInstallCommands = (commands: readonly string[]): Html => {
   );
 };
 
-const renderApiTable = (rows: readonly DocumentationApiRow[]): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("overflow-x-auto")],
-    [
-      h.table(
-        [h.Class("w-full border-collapse text-left text-sm")],
-        [
-          h.thead([], [
-            h.tr(
-              [h.Class("border-b border-slate-200 text-slate-500")],
-              [
-                h.th([h.Class("py-2 pr-4 font-semibold")], ["Name"]),
-                h.th([h.Class("py-2 pr-4 font-semibold")], ["Signature"]),
-                h.th([h.Class("py-2 font-semibold")], ["Description"]),
-              ]
-            ),
-          ]),
-          h.tbody(
-            [],
-            rows.map((row) =>
-              h.tr([h.Class("border-b border-slate-100 align-top")], [
-                h.td([h.Class("py-3 pr-4")], [
-                  h.code([h.Class("font-mono text-xs text-slate-950")], [
-                    row.name,
-                  ]),
-                ]),
-                h.td([h.Class("py-3 pr-4")], [
-                  h.code([h.Class("font-mono text-xs text-slate-700")], [
-                    row.signature,
-                  ]),
-                ]),
-                h.td([h.Class("py-3 text-slate-600")], [row.description]),
-              ])
-            )
-          ),
-        ]
-      ),
-    ]
-  );
-};
-
 const renderCoverageTable = (
   rows: readonly DocumentationCoverageRow[]
 ): Html => {
@@ -253,8 +233,14 @@ const anatomyXraySubmodelView = (reference: DocumentationReference) =>
     AnatomyXray.view(reference.anatomyXray)(model)
   );
 
+const apiReferenceSubmodelView = (reference: DocumentationReference) =>
+  Submodel.defineView<ApiReference.Model, ApiReference.Message>((model): Html =>
+    ApiReference.view(reference.apiReference)(model)
+  );
+
 const referenceView = (reference: DocumentationReference) => {
   const anatomyView = anatomyXraySubmodelView(reference);
+  const apiReferenceView = apiReferenceSubmodelView(reference);
 
   return (model: Model): Html => {
     const h = html<Message>();
@@ -309,7 +295,15 @@ const referenceView = (reference: DocumentationReference) => {
             ]),
             renderSection("Styling", [renderList(reference.stylingNotes)]),
             renderKeyboardSection(reference.keyboardInteractionNotes),
-            renderSection("API", [renderApiTable(reference.apiRows)]),
+            renderSection("API", [
+              h.submodel({
+                slotId: `${reference.registryItemName}-api-reference`,
+                model: model.apiReference,
+                view: apiReferenceView,
+                toParentMessage: (message) =>
+                  GotApiReferenceMessage({ message }),
+              }),
+            ]),
             renderSection("Accessibility", [
               renderList(reference.accessibilityNotes),
             ]),
@@ -328,7 +322,7 @@ export const createDocumentationReferenceProgram = (
 ) => ({
   Model,
   Message,
-  init,
+  init: () => initForReference(reference),
   update,
   view: referenceView(reference),
 });
