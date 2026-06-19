@@ -20,6 +20,9 @@ starting, honor its STOP conditions, and update your row when done.
 | 010  | Build the Foldkit-native LiveTrace component kit | P1       | L      | 009                          | DONE   |
 | 011  | Build the AI Elements attachments registry slice | P1       | L      | 009                          | DONE   |
 | 012  | Refactor registry lanes and ship OpenStory site  | P1       | L      | 009                          | DONE   |
+| 013  | Build the interactive OpenStory anatomy x-ray view | P1     | M      | -                            | DONE   |
+| 014  | Add OpenStory documentation reference stories    | P1       | L      | 013                          | DONE   |
+| 015  | Build the Quasar-like API reference widget       | P1       | M      | 014                          | DONE   |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -54,6 +57,14 @@ REJECTED (with one-line rationale).
   runnable registry example in OpenStory while replacing the old GitHub Pages
   docs display with a static OpenStory build and a flat shadcn-compatible
   registry output.
+- 013 comes before documentation reference stories because the Anatomy section
+  needs a reusable Foldkit-native x-ray view instead of one-off static markup.
+- 014 depends on 013 because it uses the x-ray view inside the first OpenStory
+  documentation reference story, then extends the generated story pipeline and
+  public smoke tests around that pilot.
+- 015 depends on 014 because it replaces the first documentation reference
+  story's plain API table with a reusable Quasar-like API widget for the Base UI
+  Avatar pilot.
 
 ## Findings considered and rejected
 
