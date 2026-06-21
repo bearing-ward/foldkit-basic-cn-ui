@@ -131,15 +131,27 @@ if (
 
 if (exists("src/preview.ts")) {
   const previewSource = readText("src/preview.ts");
+  const shadcnThemeContract = exists("registry/upstream/derived/shadcn-theme.json")
+    ? readJson("registry/upstream/derived/shadcn-theme.json")
+    : { themes: [] };
+  const expectedThemeValues = (shadcnThemeContract.themes ?? [])
+    .map((theme) => theme.name)
+    .sort();
+  const previewThemeValues = [
+    ...previewSource.matchAll(/value:\s*["']([^"']+)["']/gu),
+  ]
+    .map((match) => match[1])
+    .filter((value) => value.includes("-"))
+    .sort();
 
-  if (
-    previewSource.includes("rhea") ||
-    previewSource.includes("neutral") ||
-    previewSource.includes("--primary")
-  ) {
+  if (JSON.stringify(previewThemeValues) !== JSON.stringify(expectedThemeValues)) {
     failures.push(
-      "src/preview.ts must not hard-code shadcn theme names or token names"
+      "src/preview.ts shadcn toolbar values must match the derived shadcn theme contract"
     );
+  }
+
+  if (previewSource.includes("--primary")) {
+    failures.push("src/preview.ts must not hard-code shadcn token names");
   }
 }
 
