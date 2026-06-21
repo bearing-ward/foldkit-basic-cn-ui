@@ -1,0 +1,11 @@
+{
+  "name": "shadcn-utils",
+  "upstreamSnapshotDigest": "7f7082a8e4a8137a17d45372a67c6272dbc8eca95451cc2f4645fe866249e3f9",
+  "exports": [
+    "cn"
+  ],
+  "imports": [
+    "clsx",
+    "tailwind-merge"
+  ]
+}

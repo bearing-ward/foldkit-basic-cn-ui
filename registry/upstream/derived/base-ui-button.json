@@ -1,0 +1,21 @@
+{
+  "name": "base-ui-button",
+  "upstreamSnapshotDigest": "651a1ef84ce9831f9035e0016bf8008cae2ae9304f9d89647cbe1a649a347afb",
+  "sourceDigests": {
+    "package": "20cecb1f4eb5dd608eb62955486adc0bae6e219394ea0e04ff2b7c349e99eed0",
+    "buttonTypes": "e38a172f8912eebc79671e07b81687a304a9d366a47933fde9f97ad79f8ac08a"
+  },
+  "packageName": "@base-ui/react",
+  "packageVersion": "1.6.0",
+  "docsUrl": "https://base-ui.com/react/components/button",
+  "packageExportsButton": true,
+  "packageExports": [
+    "./accordion",
+    "./avatar",
+    "./button",
+    "./dialog",
+    "./select",
+    "./tabs"
+  ],
+  "typeSurfaceMentionsButton": true
+}
