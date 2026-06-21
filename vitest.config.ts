@@ -19,6 +19,7 @@ export default defineConfig({
             "src/**/*.{test,spec}.{ts,tsx,js,mjs}",
             "scripts/**/*.{test,spec}.{ts,tsx,js,mjs}",
             "registry/default/**/*.{test,spec}.{ts,tsx,js,mjs}",
+            "registry/shadcn/**/*.{test,spec}.{ts,tsx,js,mjs}",
           ],
           setupFiles: ["./src/vitest-setup.ts"],
           server: {

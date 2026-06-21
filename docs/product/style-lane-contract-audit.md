@@ -197,3 +197,22 @@ Next recommended slice:
   and `shadcn-direction`.
 - Continue side-by-side origin visual signoff from
   `docs/product/origin-content-parity-review.md`.
+
+## Compatibility Foundation Follow-Up Queue
+
+Plan 017 completed the `shadcn-button` pilot for the shared compatibility
+foundation: `src/lib/utils.ts`, source-derived shadcn Button variant contracts,
+and OpenStory shadcn theme globals. The next interface-parity candidates are:
+
+- `shadcn-alert`
+- `shadcn-dialog`
+- `shadcn-select`
+- `shadcn-tabs`
+- `base-ui-avatar`
+- `base-ui-dialog`
+- `base-ui-select`
+- `base-ui-tabs`
+
+Each follow-up should migrate one component at a time to `cn` and shadcn
+variant helpers or documented Base UI part names, with focused Scene tests and
+install smoke coverage.

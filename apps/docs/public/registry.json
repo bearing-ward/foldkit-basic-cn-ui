@@ -6579,7 +6579,7 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "A small Foldkit presentation helper for shadcn-style status labels with reusable variants and parent-owned behavior.",
-      "dependencies": ["effect", "foldkit"],
+      "dependencies": ["clsx", "effect", "foldkit", "tailwind-merge"],
       "devDependencies": ["vitest"],
       "registryDependencies": [],
       "files": [
@@ -7371,6 +7371,11 @@
           "path": "registry/shadcn/ui/shadcn-button/view.ts",
           "target": "src/ui/shadcn-button/view.ts",
           "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "target": "src/lib/utils.ts",
+          "type": "registry:lib"
         },
         {
           "path": "registry/shadcn/ui/shadcn-button/shadcn-button.scene.test.ts",

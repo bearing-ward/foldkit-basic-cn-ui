@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Badge",
   "description": "A small Foldkit presentation helper for shadcn-style status labels with reusable variants and parent-owned behavior.",
-  "dependencies": ["effect", "foldkit"],
+  "dependencies": ["clsx", "effect", "foldkit", "tailwind-merge"],
   "devDependencies": ["vitest"],
   "registryDependencies": [],
   "files": [

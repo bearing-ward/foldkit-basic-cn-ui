@@ -111,6 +111,29 @@ to the repository root so the same path resolves locally and after install.
 Use `cn` for shadcn class composition whenever a consumer `className` should be
 able to override default Tailwind classes.
 
+Base UI and shadcn-origin component content should be derived from checked-in
+upstream snapshots or reproducible upstream command output where practical:
+examples, visible copy, class contracts, variant names, theme tokens, and API
+or anatomy vocabulary. `registry/upstream/source-manifest.json` records the
+current source of truth and refresh commands. A component should not claim
+source parity unless its derived contract is current.
+
+shadcn-origin components should prefer upstream shadcn variant vocabulary such
+as `variant`, `size`, `default`, `destructive`, `outline`, `secondary`,
+`ghost`, and `link`. Export shadcn-shaped helpers such as `buttonVariants`
+when the upstream component exposes them. Use `cn` for shadcn class composition
+when consumer `className` should override defaults. The OpenStory shadcn
+theme/style selector is implemented through preview globals, decorators, and
+generated theme contracts; do not change OpenStory shell internals to support a
+shadcn theme.
+
+Base UI-origin behavior docs and APIs should prefer Base UI part names and
+state/data-attribute vocabulary. Direct upstream packages and repository
+snapshots are development references and guardrail inputs only. Installable
+Foldkit source must not import React components, `@base-ui/react`, shadcn
+repository paths, `repos/`, or `apps/docs/`; there is no React runtime wrapper
+inside installable Base UI or shadcn Foldkit source.
+
 Origin examples are content contracts. Do not replace upstream demo content with
 local product copy, generic placeholder copy, or a different scenario just
 because the local component API is easier to demonstrate that way. Example names,
