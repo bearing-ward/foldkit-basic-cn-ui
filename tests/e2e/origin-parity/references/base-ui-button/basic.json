@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "capturedAt": "2026-06-21T21:19:42.554Z",
+    "gitSha": "24a06119ce551a59487fa5cd1327678ceacf3140",
+    "originUrl": "https://base-ui.com/react/components/button",
+    "selector": "main .DemoPlaygroundInner button",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/148.0.7778.96 Safari/537.36",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "dom": {
+    "tagName": "button",
+    "text": "Submit",
+    "attributes": {
+      "type": "button"
+    }
+  },
+  "classTokens": [
+    "css-modules_Button__HyUGV"
+  ],
+  "computedStyle": {
+    "display": "flex",
+    "align-items": "center",
+    "justify-content": "center",
+    "box-sizing": "border-box",
+    "width": "71.9688px",
+    "height": "32px",
+    "padding-left": "12px",
+    "padding-right": "12px",
+    "font-size": "14px",
+    "font-weight": "400",
+    "line-height": "14px",
+    "color": "oklch(0.145 0 0)",
+    "background-color": "rgb(255, 255, 255)",
+    "border-top-width": "1px",
+    "border-top-style": "solid",
+    "border-top-color": "oklch(0.145 0 0)",
+    "border-radius": "0px",
+    "gap": "8px",
+    "white-space": "nowrap"
+  },
+  "geometry": {
+    "width": 71.96875,
+    "height": 32
+  }
+}

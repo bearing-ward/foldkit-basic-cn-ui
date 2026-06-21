@@ -2,26 +2,32 @@ import { readFileSync } from "node:fs";
 
 import { expect, test } from "@playwright/test";
 
-const registryItems = JSON.parse(
-  readFileSync("registry/default/items.json", "utf-8")
-) as readonly {
+const publicRegistry = JSON.parse(
+  readFileSync("apps/docs/public/registry.json", "utf-8")
+) as {
+  items: readonly {
   name: string;
   type: string;
   meta?: { foldkit?: { origin?: string } };
-}[];
+  }[];
+};
 const registryConfig = JSON.parse(
   readFileSync("registry/config.json", "utf-8")
 ) as { registryBaseUrl: string };
 
-const componentNames = registryItems
-  .filter((item) => item.type === "registry:ui")
+const componentNames = publicRegistry.items
+  .filter(
+    (item) =>
+      item.type === "registry:ui" && item.name !== "foldkit-livetrace"
+  )
   .map((item) => item.name);
 
 const baseUiComponentNames = new Set(
-  registryItems
+  publicRegistry.items
     .filter(
       (item) =>
-        item.type === "registry:ui" && item.meta?.foldkit?.origin === "base-ui"
+        item.type === "registry:ui" &&
+        item.meta?.foldkit?.origin?.startsWith("https://base-ui.com/") === true
     )
     .map((item) => item.name)
 );
@@ -91,7 +97,7 @@ for (const viewport of viewports) {
         await expect(page.getByText("<registry-url>")).toHaveCount(0);
         await expect(
           page.getByText(
-            `${registryConfig.registryBaseUrl}/${componentName}.json`
+            `${registryConfig.registryBaseUrl}/r/${componentName}.json`
           )
         ).toBeVisible();
         await expect(page.getByText(/Open standalone/u)).toHaveCount(0);

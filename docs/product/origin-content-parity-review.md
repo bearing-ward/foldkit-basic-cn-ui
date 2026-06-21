@@ -13,6 +13,23 @@ This is the working checklist for applying origin-content parity across every Ba
 - Match origin visual proportions as closely as Foldkit allows. Any local constraint must be documented in the row before the row can be marked complete.
 - Tests must assert origin content or explicitly assert the documented inert/disabled behavior. Generic smoke tests are insufficient.
 
+## Automated Visual Parity Workflow
+
+`bun run origin:parity:capture -- --item <name>` refreshes the stored reference
+for an enabled fixture from the canonical `meta.foldkit.origin` URL. These
+reference JSON/PNG files are source evidence and must be reviewed like any
+other source change.
+
+`bun run origin:parity:test` does not contact upstream sites. It compares local
+docs examples against stored references by DOM/ARIA shape, class tokens where
+enabled, computed CSS, geometry, and screenshots according to each fixture's
+tolerances. Inventory-only fixtures keep uncovered rows visible in coverage but
+do not run browser assertions.
+
+Final signoff for a row needs a passing parity check for enabled examples or a
+documented row exception explaining why automated visual comparison is not
+appropriate yet.
+
 ## Summary
 
 - Public Base UI origin-backed UI entries: 37

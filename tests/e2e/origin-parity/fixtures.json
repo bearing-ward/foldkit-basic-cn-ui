@@ -1,0 +1,2166 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "itemName": "badge",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/badge",
+      "localPath": "/docs/components/badge",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-badge-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-accordion",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/accordion",
+      "localPath": "/docs/components/base-ui-accordion",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-accordion-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-alert-dialog",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/alert-dialog",
+      "localPath": "/docs/components/base-ui-alert-dialog",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-alert-dialog-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-autocomplete",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/autocomplete",
+      "localPath": "/docs/components/base-ui-autocomplete",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-autocomplete-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-avatar",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/avatar",
+      "localPath": "/docs/components/base-ui-avatar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-avatar-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-button",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/button",
+      "localPath": "/docs/components/base-ui-button",
+      "examples": [
+        {
+          "exampleName": "basic",
+          "localTestId": "docs-example-block-base-ui-button-basic",
+          "originSelector": "main .DemoPlaygroundInner button",
+          "localSelector": "button",
+          "compare": {
+            "dom": true,
+            "classTokens": false,
+            "computedStyle": [
+              "display",
+              "align-items",
+              "justify-content",
+              "box-sizing",
+              "width",
+              "height",
+              "padding-left",
+              "padding-right",
+              "font-size",
+              "font-weight",
+              "line-height",
+              "color",
+              "background-color",
+              "border-top-width",
+              "border-top-style",
+              "border-top-color",
+              "border-radius",
+              "gap",
+              "white-space"
+            ],
+            "geometry": true,
+            "screenshot": true
+          },
+          "tolerances": {
+            "computedPx": 1,
+            "heightPx": 1,
+            "maxDiffPixelRatio": 0.2,
+            "pixelChannelDelta": 18,
+            "widthPx": 1
+          },
+          "notes": "Pilot comparison skips class-token equality because Base UI uses upstream CSS module hashes while local Foldkit uses portable utility classes."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-checkbox",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/checkbox",
+      "localPath": "/docs/components/base-ui-checkbox",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-checkbox-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-checkbox-group",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/checkbox-group",
+      "localPath": "/docs/components/base-ui-checkbox-group",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-checkbox-group-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-collapsible",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/collapsible",
+      "localPath": "/docs/components/base-ui-collapsible",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-collapsible-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-combobox",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/combobox",
+      "localPath": "/docs/components/base-ui-combobox",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-combobox-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-context-menu",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/context-menu",
+      "localPath": "/docs/components/base-ui-context-menu",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-context-menu-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-dialog",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/dialog",
+      "localPath": "/docs/components/base-ui-dialog",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-dialog-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-drawer",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/drawer",
+      "localPath": "/docs/components/base-ui-drawer",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-drawer-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-field",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/field",
+      "localPath": "/docs/components/base-ui-field",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-field-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-fieldset",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/fieldset",
+      "localPath": "/docs/components/base-ui-fieldset",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-fieldset-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-form",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/form",
+      "localPath": "/docs/components/base-ui-form",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-form-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-input",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/input",
+      "localPath": "/docs/components/base-ui-input",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-input-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-menu",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/menu",
+      "localPath": "/docs/components/base-ui-menu",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-menu-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-menubar",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/menubar",
+      "localPath": "/docs/components/base-ui-menubar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-menubar-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-meter",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/meter",
+      "localPath": "/docs/components/base-ui-meter",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-meter-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-navigation-menu",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/navigation-menu",
+      "localPath": "/docs/components/base-ui-navigation-menu",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-navigation-menu-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-number-field",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/number-field",
+      "localPath": "/docs/components/base-ui-number-field",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-number-field-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-otp-field",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/otp-field",
+      "localPath": "/docs/components/base-ui-otp-field",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-otp-field-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-popover",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/popover",
+      "localPath": "/docs/components/base-ui-popover",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-popover-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-preview-card",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/preview-card",
+      "localPath": "/docs/components/base-ui-preview-card",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-preview-card-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-progress",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/progress",
+      "localPath": "/docs/components/base-ui-progress",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-progress-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-radio",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/radio",
+      "localPath": "/docs/components/base-ui-radio",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-radio-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-scroll-area",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/scroll-area",
+      "localPath": "/docs/components/base-ui-scroll-area",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-scroll-area-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-select",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/select",
+      "localPath": "/docs/components/base-ui-select",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-select-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-separator",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/separator",
+      "localPath": "/docs/components/base-ui-separator",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-separator-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-slider",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/slider",
+      "localPath": "/docs/components/base-ui-slider",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-slider-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-switch",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/switch",
+      "localPath": "/docs/components/base-ui-switch",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-switch-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-tabs",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/tabs",
+      "localPath": "/docs/components/base-ui-tabs",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-tabs-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-toast",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/toast",
+      "localPath": "/docs/components/base-ui-toast",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-toast-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-toggle",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/toggle",
+      "localPath": "/docs/components/base-ui-toggle",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-toggle-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-toggle-group",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/toggle-group",
+      "localPath": "/docs/components/base-ui-toggle-group",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-toggle-group-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-toolbar",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/toolbar",
+      "localPath": "/docs/components/base-ui-toolbar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-toolbar-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "base-ui-tooltip",
+      "lane": "base-ui",
+      "originUrl": "https://base-ui.com/react/components/tooltip",
+      "localPath": "/docs/components/base-ui-tooltip",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-base-ui-tooltip-basic",
+          "originSelector": "main .DemoPlaygroundInner *",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "chart",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/chart",
+      "localPath": "/docs/components/chart",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-chart-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "command",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/command",
+      "localPath": "/docs/components/command",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-command-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "data-table",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/data-table",
+      "localPath": "/docs/components/data-table",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-data-table-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "direction",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/direction",
+      "localPath": "/docs/components/direction",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-direction-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "dropdown-menu",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/dropdown-menu",
+      "localPath": "/docs/components/dropdown-menu",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-dropdown-menu-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "empty",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/empty",
+      "localPath": "/docs/components/empty",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-empty-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "hover-card",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/hover-card",
+      "localPath": "/docs/components/hover-card",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-hover-card-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "input-group",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/input-group",
+      "localPath": "/docs/components/input-group",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-input-group-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "input-otp",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/input-otp",
+      "localPath": "/docs/components/input-otp",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-input-otp-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "item",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/item",
+      "localPath": "/docs/components/item",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-item-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "kbd",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/kbd",
+      "localPath": "/docs/components/kbd",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-kbd-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "label",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/label",
+      "localPath": "/docs/components/label",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-label-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "native-select",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/native-select",
+      "localPath": "/docs/components/native-select",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-native-select-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "pagination",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/pagination",
+      "localPath": "/docs/components/pagination",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-pagination-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "resizable",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/resizable",
+      "localPath": "/docs/components/resizable",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-resizable-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-accordion",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/accordion",
+      "localPath": "/docs/components/shadcn-accordion",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-accordion-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-alert",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/alert",
+      "localPath": "/docs/components/shadcn-alert",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-alert-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-alert-dialog",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/alert-dialog",
+      "localPath": "/docs/components/shadcn-alert-dialog",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-alert-dialog-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-aspect-ratio",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
+      "localPath": "/docs/components/shadcn-aspect-ratio",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-aspect-ratio-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-avatar",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/avatar",
+      "localPath": "/docs/components/shadcn-avatar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-avatar-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-base-accordion",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/base/accordion",
+      "localPath": "/docs/components/shadcn-base-accordion",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-base-accordion-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-breadcrumb",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
+      "localPath": "/docs/components/shadcn-breadcrumb",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-breadcrumb-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-button",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/button",
+      "localPath": "/docs/components/shadcn-button",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-button-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-button-group",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/button-group",
+      "localPath": "/docs/components/shadcn-button-group",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-button-group-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-calendar",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/calendar",
+      "localPath": "/docs/components/shadcn-calendar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-calendar-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-card",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/card",
+      "localPath": "/docs/components/shadcn-card",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-card-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-carousel",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/carousel",
+      "localPath": "/docs/components/shadcn-carousel",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-carousel-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-checkbox",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/checkbox",
+      "localPath": "/docs/components/shadcn-checkbox",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-checkbox-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-collapsible",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/collapsible",
+      "localPath": "/docs/components/shadcn-collapsible",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-collapsible-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-combobox",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/combobox",
+      "localPath": "/docs/components/shadcn-combobox",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-combobox-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-context-menu",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/context-menu",
+      "localPath": "/docs/components/shadcn-context-menu",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-context-menu-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-date-picker",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/date-picker",
+      "localPath": "/docs/components/shadcn-date-picker",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-date-picker-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-dialog",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/dialog",
+      "localPath": "/docs/components/shadcn-dialog",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-dialog-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-drawer",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/drawer",
+      "localPath": "/docs/components/shadcn-drawer",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-drawer-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-field",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/field",
+      "localPath": "/docs/components/shadcn-field",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-field-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-input",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/input",
+      "localPath": "/docs/components/shadcn-input",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-input-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-menubar",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/menubar",
+      "localPath": "/docs/components/shadcn-menubar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-menubar-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-navigation-menu",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/navigation-menu",
+      "localPath": "/docs/components/shadcn-navigation-menu",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-navigation-menu-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-popover",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/popover",
+      "localPath": "/docs/components/shadcn-popover",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-popover-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-progress",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/progress",
+      "localPath": "/docs/components/shadcn-progress",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-progress-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-radio-group",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/radio-group",
+      "localPath": "/docs/components/shadcn-radio-group",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-radio-group-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-scroll-area",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/scroll-area",
+      "localPath": "/docs/components/shadcn-scroll-area",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-scroll-area-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-select",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/select",
+      "localPath": "/docs/components/shadcn-select",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-select-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-separator",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/separator",
+      "localPath": "/docs/components/shadcn-separator",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-separator-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-slider",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/slider",
+      "localPath": "/docs/components/shadcn-slider",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-slider-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-switch",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/switch",
+      "localPath": "/docs/components/shadcn-switch",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-switch-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-tabs",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/tabs",
+      "localPath": "/docs/components/shadcn-tabs",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-tabs-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-textarea",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/textarea",
+      "localPath": "/docs/components/shadcn-textarea",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-textarea-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-toast",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/toast",
+      "localPath": "/docs/components/shadcn-toast",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-toast-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-toggle",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/toggle",
+      "localPath": "/docs/components/shadcn-toggle",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-toggle-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-toggle-group",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/toggle-group",
+      "localPath": "/docs/components/shadcn-toggle-group",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-toggle-group-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "shadcn-tooltip",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/tooltip",
+      "localPath": "/docs/components/shadcn-tooltip",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-shadcn-tooltip-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "sheet",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/sheet",
+      "localPath": "/docs/components/sheet",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-sheet-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "sidebar",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/sidebar",
+      "localPath": "/docs/components/sidebar",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-sidebar-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "skeleton",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/skeleton",
+      "localPath": "/docs/components/skeleton",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-skeleton-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "sonner",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/sonner",
+      "localPath": "/docs/components/sonner",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-sonner-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "spinner",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/spinner",
+      "localPath": "/docs/components/spinner",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-spinner-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "table",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/table",
+      "localPath": "/docs/components/table",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-table-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    },
+    {
+      "itemName": "typography",
+      "lane": "shadcn",
+      "originUrl": "https://ui.shadcn.com/docs/components/radix/typography",
+      "localPath": "/docs/components/typography",
+      "examples": [
+        {
+          "exampleName": "inventory",
+          "localTestId": "docs-example-block-typography-basic",
+          "originSelector": "main [data-slot]",
+          "compare": {
+            "dom": false,
+            "classTokens": false,
+            "computedStyle": [],
+            "geometry": false,
+            "screenshot": false
+          },
+          "tolerances": {},
+          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+        }
+      ]
+    }
+  ]
+}
