@@ -38,6 +38,17 @@ const run = (command, args) => {
   );
 };
 
+const readInstalledFile = (filePath) =>
+  readFile(path.join(tempDir, filePath), "utf-8");
+
+const expectIncludes = (content, expected, filePath) => {
+  if (content.includes(expected)) {
+    return;
+  }
+
+  throw new Error(`${filePath} did not include ${expected}`);
+};
+
 try {
   await mkdir(binDir);
   await writeFile(
@@ -90,6 +101,7 @@ exit 1
   for (const component of [
     `${registryBaseUrl}/button.json`,
     "@foldkit-cn/slider",
+    "@foldkit-cn/shadcn-button",
   ]) {
     run("bunx", [
       "shadcn@latest",
@@ -110,8 +122,37 @@ exit 1
     "src/ui/slider/index.ts",
     "src/ui/slider/view.ts",
     "src/ui/slider/slider.scene.test.ts",
+    "src/ui/shadcn-button/index.ts",
+    "src/ui/shadcn-button/view.ts",
+    "src/lib/utils.ts",
   ]) {
-    await readFile(path.join(tempDir, filePath), "utf-8");
+    await readInstalledFile(filePath);
+  }
+
+  const shadcnButtonView = await readInstalledFile(
+    "src/ui/shadcn-button/view.ts"
+  );
+  expectIncludes(
+    shadcnButtonView,
+    'import { cn } from "@/src/lib/utils";',
+    "src/ui/shadcn-button/view.ts"
+  );
+
+  const utils = await readInstalledFile("src/lib/utils.ts");
+  expectIncludes(utils, 'from "clsx";', "src/lib/utils.ts");
+  expectIncludes(utils, 'from "tailwind-merge";', "src/lib/utils.ts");
+
+  const packageJson = JSON.parse(
+    await readFile(path.join(tempDir, "package.json"), "utf-8")
+  );
+  const installedDependencies = new Set(
+    Object.keys(packageJson.dependencies ?? {})
+  );
+
+  for (const dependency of ["clsx", "tailwind-merge"]) {
+    if (!installedDependencies.has(dependency)) {
+      throw new Error(`${dependency} was not installed as a dependency`);
+    }
   }
 } finally {
   await rm(tempDir, { force: true, recursive: true });

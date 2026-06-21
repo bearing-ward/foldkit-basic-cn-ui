@@ -6579,7 +6579,7 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "A small Foldkit presentation helper for shadcn-style status labels with reusable variants and parent-owned behavior.",
-      "dependencies": ["clsx", "effect", "foldkit", "tailwind-merge"],
+      "dependencies": ["effect", "foldkit"],
       "devDependencies": ["vitest"],
       "registryDependencies": [],
       "files": [
@@ -7358,7 +7358,7 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "shadcn style-lane button wrapper backed by the Foldkit Ui.Button component.",
-      "dependencies": ["effect", "foldkit"],
+      "dependencies": ["clsx", "effect", "foldkit", "tailwind-merge"],
       "devDependencies": ["vitest"],
       "registryDependencies": ["@foldkit-cn/button"],
       "files": [

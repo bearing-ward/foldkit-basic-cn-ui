@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "title": "Button",
   "description": "shadcn style-lane button wrapper backed by the Foldkit Ui.Button component.",
-  "dependencies": ["effect", "foldkit"],
+  "dependencies": ["clsx", "effect", "foldkit", "tailwind-merge"],
   "devDependencies": ["vitest"],
   "registryDependencies": ["@foldkit-cn/button"],
   "files": [
