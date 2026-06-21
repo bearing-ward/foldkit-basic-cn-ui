@@ -104,6 +104,13 @@ visual output should match the origin as closely as Foldkit allows. Any
 unavoidable Foldkit-specific difference must be documented as a parity gap, not
 silently shipped as an approximation.
 
+For shadcn-origin source, `src/lib/utils.ts` is the canonical local
+shadcn-style utility module. Registry source may import it as
+`@/src/lib/utils`; the project and generated consumer template both map `@/*`
+to the repository root so the same path resolves locally and after install.
+Use `cn` for shadcn class composition whenever a consumer `className` should be
+able to override default Tailwind classes.
+
 Origin examples are content contracts. Do not replace upstream demo content with
 local product copy, generic placeholder copy, or a different scenario just
 because the local component API is easier to demonstrate that way. Example names,

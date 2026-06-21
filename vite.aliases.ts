@@ -6,6 +6,7 @@ const sourceEntry = (path: string): string =>
 const legacyUiViewsEntry = sourceEntry("./src/ui/view/index.ts");
 
 export const optimizedSourceAliases = {
+  "@": sourceEntry("."),
   "app-main": sourceEntry("./src/main.ts"),
   "docs-example-routes": sourceEntry("./src/docsExampleRoutes.ts"),
   "docs-example-previews-accordion": sourceEntry(

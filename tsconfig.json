@@ -5,6 +5,7 @@
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
+      "@/*": ["*"],
       "app-main": ["src/main.ts"],
       "docs-example-routes": ["src/docsExampleRoutes.ts"],
       "docs-example-previews-accordion": [
