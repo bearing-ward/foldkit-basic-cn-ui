@@ -31,7 +31,7 @@ starting, honor its STOP conditions, and update your row when done.
 | 021  | Pilot component-owned hierarchy with OpenStory-only examples | P1 | L | 020 | DONE |
 | 022  | Codify component-local configuration and prove it with Button | P1 | M | 020, 021 | DONE |
 | 023  | Add OpenStory shadcn theme and mode selectors | P1 | M | 022 | DONE |
-| 024  | Expand OpenStory shadcn theme catalog and background theming | P1 | M | 023 | TODO |
+| 024  | Expand OpenStory shadcn theme catalog and background theming | P1 | M | 023 | DONE |
 | 025  | Add a toggleable OpenStory UI dev HUD | P1 | L | 024 | TODO |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
