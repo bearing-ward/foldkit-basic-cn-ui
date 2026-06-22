@@ -16,10 +16,10 @@ export type {
 } from "../../../foldkit/ui/menubar";
 
 export {
-  shadcnMenubarItemClassName,
-  shadcnMenubarMenuClassName,
-  shadcnMenubarPopupClassName,
-  shadcnMenubarRootClassName,
-  shadcnMenubarSeparatorClassName,
-  shadcnMenubarTriggerClassName,
+  shadcnMenubarItemClasses,
+  shadcnMenubarMenuClasses,
+  shadcnMenubarPopupClasses,
+  shadcnMenubarRootClasses,
+  shadcnMenubarSeparatorClasses,
+  shadcnMenubarTriggerClasses,
 } from "./view";

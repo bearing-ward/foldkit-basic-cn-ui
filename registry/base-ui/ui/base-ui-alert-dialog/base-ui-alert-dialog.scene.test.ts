@@ -60,7 +60,7 @@ describe("AlertDialog registry component", () => {
   });
 
   test("exports Base UI alert dialog class hooks", () => {
-    expect(AlertDialog.alertDialogPopupClassName).toContain("shadow");
-    expect(AlertDialog.alertDialogConfirmClassName).toContain("red");
+    expect(AlertDialog.alertDialogPopupClasses).toContain("shadow");
+    expect(AlertDialog.alertDialogConfirmClasses).toContain("red");
   });
 });

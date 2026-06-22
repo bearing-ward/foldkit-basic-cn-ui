@@ -7,6 +7,6 @@ describe("Base UI Dialog registry view", () => {
     expect(Dialog.init).toBeTypeOf("function");
     expect(Dialog.update).toBeTypeOf("function");
     expect(Dialog.root).toBeTypeOf("function");
-    expect(Dialog.baseUiDialogPanelClassName).toContain("rounded");
+    expect(Dialog.baseUiDialogPanelClasses).toContain("rounded");
   });
 });

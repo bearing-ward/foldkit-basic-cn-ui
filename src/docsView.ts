@@ -2501,7 +2501,7 @@ const isDocsNavItemActive = (
   navItem: DocsNavItem
 ): boolean => navItem.activeRouteTags.includes(currentRoute._tag);
 
-const libraryBadgeClassName = (library: ComponentLibrary): string =>
+const libraryBadgeClasses = (library: ComponentLibrary): string =>
   clsx(
     "rounded px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none",
     library === "Foldkit" && "bg-accent-100 text-accent-700",
@@ -2510,10 +2510,10 @@ const libraryBadgeClassName = (library: ComponentLibrary): string =>
     library === "AI Elements" && "bg-sky-100 text-sky-700"
   );
 
-const comingSoonBadgeClassName =
+const comingSoonBadgeClasses =
   "rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium uppercase leading-none text-gray-500";
 
-const navLinkClassName = (isActive: boolean): string =>
+const navLinkClasses = (isActive: boolean): string =>
   clsx(
     "block min-w-0 flex-1 rounded-md px-3 py-1.5 text-sm transition-colors",
     isActive
@@ -2521,10 +2521,10 @@ const navLinkClassName = (isActive: boolean): string =>
       : "text-gray-700 hover:bg-gray-200"
   );
 
-const comingSoonNavItemClassName =
+const comingSoonNavItemClasses =
   "block min-w-0 flex-1 rounded-md px-3 py-1.5 text-sm text-gray-400";
 
-const mobileNavLinkClassName = (isActive: boolean): string =>
+const mobileNavLinkClasses = (isActive: boolean): string =>
   clsx(
     "block min-w-0 flex-1 rounded-md px-4 py-2.5 text-base transition-colors",
     isActive
@@ -2535,7 +2535,7 @@ const mobileNavLinkClassName = (isActive: boolean): string =>
 const docsNavGroupView = (
   currentRoute: Main.AppRoute,
   group: DocsNavGroup,
-  linkClassName: (isActive: boolean) => string
+  linkClasses: (isActive: boolean) => string
 ): Html => {
   const h = html<Message>();
   const testId = `docs-nav-section-${group.library
@@ -2566,7 +2566,7 @@ const docsNavGroupView = (
                   navItem.availability === "coming-soon"
                     ? h.span(
                         [
-                          h.Class(comingSoonNavItemClassName),
+                          h.Class(comingSoonNavItemClasses),
                           h.AriaDisabled(true),
                         ],
                         [navItem.label]
@@ -2574,7 +2574,7 @@ const docsNavGroupView = (
                     : h.a(
                         [
                           h.Href(Main.appPath(navItem.href)),
-                          h.Class(linkClassName(isActive)),
+                          h.Class(linkClasses(isActive)),
                           ...(isActive ? [h.AriaCurrent("page")] : []),
                         ],
                         [navItem.label]
@@ -2582,14 +2582,14 @@ const docsNavGroupView = (
                   h.span(
                     [
                       h.AriaHidden(true),
-                      h.Class(libraryBadgeClassName(navItem.library)),
+                      h.Class(libraryBadgeClasses(navItem.library)),
                     ],
                     [navItem.library]
                   ),
                   ...(navItem.availability === "coming-soon"
                     ? [
                         h.span(
-                          [h.Class(comingSoonBadgeClassName)],
+                          [h.Class(comingSoonBadgeClasses)],
                           ["Coming soon"]
                         ),
                       ]
@@ -2633,7 +2633,7 @@ const sidebarView = (currentRoute: Main.AppRoute): Html => {
       h.div(
         [h.Class("min-h-0 flex-1 space-y-5 overflow-y-auto pr-1")],
         DOCS_NAV_GROUPS.map((group) =>
-          docsNavGroupView(currentRoute, group, navLinkClassName)
+          docsNavGroupView(currentRoute, group, navLinkClasses)
         )
       ),
     ]
@@ -2695,7 +2695,7 @@ const mobileMenuContent = (currentRoute: Main.AppRoute): Html => {
           h.div(
             [h.Class("space-y-5")],
             DOCS_NAV_GROUPS.map((group) =>
-              docsNavGroupView(currentRoute, group, mobileNavLinkClassName)
+              docsNavGroupView(currentRoute, group, mobileNavLinkClasses)
             )
           ),
         ]
@@ -4488,7 +4488,7 @@ GotCheckboxMessage: ({ message }) => {
     value: "accepted",
     toView: (attributes) =>
       h.div(
-        [h.Class(Checkbox.checkboxRowClassName)],
+        [h.Class(Checkbox.checkboxRowClasses)],
         [
           h.button(attributes.checkbox, ["✓"]),
           h.input(attributes.hiddenInput),
@@ -4627,7 +4627,7 @@ h.submodel({
       h.button(
         [
           ...attributes.checkbox,
-          h.Class(Checkbox.baseUiCheckboxControlClassName),
+          h.Class(Checkbox.baseUiCheckboxControlClasses),
         ],
         model.checkbox.isChecked ? ["✓"] : []
       ),
@@ -4659,7 +4659,7 @@ GotCheckboxMessage: ({ message }) => {
     value: "accepted",
     toView: (attributes) =>
       h.div(
-        [h.Class(Checkbox.baseUiCheckboxRowClassName)],
+        [h.Class(Checkbox.baseUiCheckboxRowClasses)],
         [
           h.button(attributes.checkbox, ["✓"]),
           h.input(attributes.hiddenInput),
@@ -4678,7 +4678,7 @@ GotCheckboxMessage: ({ message }) => {
           "setChecked(model, isChecked): programmatically assigns checked state and emits the same OutMessage as user toggles.",
           "reflectChecked(model, isChecked): mirrors external checked state without emitting OutMessage.",
           "view: h.submodel view that exposes checkbox, label, description, and hiddenInput attribute groups.",
-          "Class helpers: baseUiCheckboxRowClassName, baseUiCheckboxControlClassName, baseUiCheckboxLabelClassName, baseUiCheckboxDescriptionClassName, and baseUiCheckboxTextClassName.",
+          "Class helpers: baseUiCheckboxRowClasses, baseUiCheckboxControlClasses, baseUiCheckboxLabelClasses, baseUiCheckboxDescriptionClasses, and baseUiCheckboxTextClasses.",
         ],
         accessibilityItems: [
           "The visible control receives the Foldkit checkbox role, checked, disabled, and indeterminate attributes.",
@@ -4873,7 +4873,7 @@ CheckboxGroup.groupView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -5062,7 +5062,7 @@ Accordion.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -5466,7 +5466,7 @@ ButtonGroup.view<Message>({
   ],
 });`),
         apiItems: [
-          "view(config): renders a horizontal or vertical group with optional aria-label and className override.",
+          "view(config): renders a horizontal or vertical group with optional aria-label and classes override.",
           "itemView(config): wraps native controls without changing their message or accessibility contract.",
           "separatorView(config): renders an inert visual separator for split controls.",
           "textView(config): renders non-interactive inline text inside the group.",
@@ -6613,7 +6613,7 @@ Collapsible.rootView<Message>({
           },
           {
             part: "Content",
-            prop: "contentView(children, className)",
+            prop: "contentView(children, classes)",
             type: "function",
             defaultValue: "-",
             description:
@@ -6621,7 +6621,7 @@ Collapsible.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -6807,7 +6807,7 @@ Field.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -6981,7 +6981,7 @@ NumberField.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -7117,7 +7117,7 @@ const autocompleteDocsView = (model: Model): Html => {
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -7253,7 +7253,7 @@ const formDocsView = (model: Model): Html => {
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -7643,7 +7643,7 @@ h.submodel({
   view: Animation.view,
   viewInputs: {
     animateSize: true,
-    className: Animation.animationContentClassName,
+    classes: Animation.animationContentClasses,
     content,
   },
   toParentMessage: (message) => Main.GotAnimationMessage({ message }),
@@ -7655,7 +7655,7 @@ h.submodel({
   view: Animation.view,
   viewInputs: {
     animateSize: true,
-    className: Animation.animationContentClassName,
+    classes: Animation.animationContentClasses,
     content,
   },
   toParentMessage: (message) => Main.GotAnimationMessage({ message }),
@@ -7667,7 +7667,7 @@ h.submodel({
           "update(model, message): returns model, commands, and an optional StartedLeaveAnimating or TransitionedOut OutMessage.",
           "RequestFrame: command emitted to advance enter or leave from start to animating state after paint.",
           "WaitForAnimationSettled and defaultLeaveCommand: detect CSS transition or keyframe completion for leave cleanup.",
-          "ViewInputs: content, className, attributes, element, and animateSize options for custom composition.",
+          "ViewInputs: content, classes, attributes, element, and animateSize options for custom composition.",
         ],
         accessibilityItems: [
           "Animation is headless and does not assign roles; semantics belong to the animated content.",
@@ -7774,7 +7774,7 @@ h.submodel({
     items,
     itemToKey: (activity) => activity.id,
     itemToView: (activity) => activityRow(activity),
-    containerClassName: VirtualList.activityListContainerClassName,
+    containerClasses: VirtualList.activityListContainerClasses,
   },
   toParentMessage: (message) => Main.GotVirtualListMessage({ message }),
 });`,
@@ -7814,7 +7814,7 @@ Subscription.lift({
         activity,
         VirtualList.activitySummaryFor(index)
       ),
-    containerClassName: VirtualList.activityListContainerClassName,
+    containerClasses: VirtualList.activityListContainerClasses,
   },
   toParentMessage: (message) => GotVirtualListMessage({ message }),
 });`),
@@ -7827,7 +7827,7 @@ Subscription.lift({
           "visibleWindow and visibleWindowVariable: compute mounted range and spacer heights for fixed or variable rows.",
           "subscriptions.containerEvents: attaches scroll and ResizeObserver streams to the list container by id.",
           "activityRows, activityRow, activityVariableRow, activitySummaryFor, and activityVariableRowHeightPx provide the installable demo row data and renderers.",
-          "activityListContainerClassName, activityListHeaderClassName, and virtualListActionClassName expose the example styling hooks.",
+          "activityListContainerClasses, activityListHeaderClasses, and virtualListActionClasses expose the example styling hooks.",
         ],
         accessibilityItems: [
           "The primitive preserves caller-owned row markup, so list semantics belong to the row renderer.",
@@ -7970,14 +7970,14 @@ ClickedToggleStatus: () => [
           `Badge.view<Message>({
   label: model.status,
   variant: model.status === "Published" ? "Default" : "Secondary",
-  className: Badge.badgeClassNameByVariant.Default,
+  classes: Badge.badgeClassesByVariant.Default,
 });`
         ),
         apiItems: [
           "view(config): renders a span badge with a label and optional variant.",
-          "ViewConfig: label, variant, and className.",
+          "ViewConfig: label, variant, and classes.",
           'BadgeVariant: "Default", "Secondary", "Destructive", or "Outline".',
-          "Class helpers: default, secondary, destructive, outline, and badgeClassNameByVariant.",
+          "Class helpers: default, secondary, destructive, outline, and badgeClassesByVariant.",
         ],
         accessibilityItems: [
           "Badges are presentational text, so the visible label must carry the useful status.",
@@ -8255,7 +8255,7 @@ Avatar.groupView<Message>([avatarA, avatarB, Avatar.countView<Message>({ count }
             type: "function",
             defaultValue: "-",
             description:
-              "Renders the avatar container with size, className, and style hooks.",
+              "Renders the avatar container with size, classes, and style hooks.",
           },
           {
             part: "Image",
@@ -8283,7 +8283,7 @@ Avatar.groupView<Message>([avatarA, avatarB, Avatar.countView<Message>({ count }
           },
           {
             part: "Group",
-            prop: "groupView(children, className)",
+            prop: "groupView(children, classes)",
             type: "function",
             defaultValue: "-",
             description: "Renders a compact avatar group for related people.",
@@ -8305,7 +8305,7 @@ Avatar.groupView<Message>([avatarA, avatarB, Avatar.countView<Message>({ count }
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -9605,7 +9605,7 @@ NativeSelect.rootView<Message>({
         apiItems: [
           "rootView(config): renders the native select field wrapper.",
           "labelView(config): renders a label connected by forId.",
-          "triggerView(config): renders a controlled select with id, value, onChange, flat or grouped options, ariaLabel, describedById, disabled, and className.",
+          "triggerView(config): renders a controlled select with id, value, onChange, flat or grouped options, ariaLabel, describedById, disabled, and classes.",
           "descriptionView(config): renders helper text that can be referenced by describedById.",
           "Class hooks include root, label, trigger, and description.",
         ],
@@ -10220,13 +10220,13 @@ const itemDocsView = (model: Model): Html => {
         ),
         apiItems: [
           "view(config): renders a data-slot=item wrapper as a div, or an anchor when href is provided.",
-          "groupView(children, className): groups related items with data-slot=item-group.",
-          "separatorView(className): renders a visual separator with role=separator.",
-          "headerView(children, className): renders a compact group header.",
+          "groupView(children, classes): groups related items with data-slot=item-group.",
+          "separatorView(classes): renders a visual separator with role=separator.",
+          "headerView(children, classes): renders a compact group header.",
           "mediaView(config): renders leading media with default, icon, avatar, or image variants.",
-          "contentView(children, className): renders the flexible title and description column.",
-          "titleView(children, className) and descriptionView(children, className): render item text anatomy.",
-          "actionsView(children, className) and footerView(children, className): render trailing or supporting content regions.",
+          "contentView(children, classes): renders the flexible title and description column.",
+          "titleView(children, classes) and descriptionView(children, classes): render item text anatomy.",
+          "actionsView(children, classes) and footerView(children, classes): render trailing or supporting content regions.",
           "ItemVariant, ItemSize, ItemMediaVariant, ItemViewConfig, ItemPartViewConfig, and ItemMediaViewConfig describe the public helper props.",
         ],
         accessibilityItems: [
@@ -10337,7 +10337,7 @@ const labelDocsView = (model: Model): Html => {
           "forId: optional control id forwarded to the native for attribute.",
           "required and disabled: optional booleans exposed as data-required and data-disabled styling hooks.",
           "children: visible label content as text or Html children.",
-          "labelClassName and ViewConfig document the public styling and prop surface.",
+          "labelClasses and ViewConfig document the public styling and prop surface.",
         ],
         accessibilityItems: [
           "Use forId whenever the label names a separate form control.",
@@ -10458,7 +10458,7 @@ const paginationDocsView = (model: Model): Html => {
           "linkView(config): renders a page anchor with active, disabled, aria-label, and aria-current support.",
           "previousView(config) and nextView(config): render labelled navigation anchors.",
           "ellipsisView(config): renders an inert ellipsis with an accessible label.",
-          "view(pages, className): convenience helper for simple page arrays.",
+          "view(pages, classes): convenience helper for simple page arrays.",
         ],
         accessibilityItems: [
           "Root pagination is a native nav landmark labelled pagination by default.",
@@ -10934,12 +10934,12 @@ const cardDocsView = (model: Model): Html => {
         "Any interactive controls rendered inside it keep their own native or primitive-backed keyboard contract.",
       ]),
       docsApiList([
-        "view(children, className): renders the card shell.",
-        "headerView(children, className): renders the card header region.",
-        "titleView(label, className): renders the card title.",
-        "descriptionView(label, className): renders supporting copy.",
-        "contentView(children, className): renders primary card content.",
-        "footerView(children, className): renders card actions or metadata.",
+        "view(children, classes): renders the card shell.",
+        "headerView(children, classes): renders the card header region.",
+        "titleView(label, classes): renders the card title.",
+        "descriptionView(label, classes): renders supporting copy.",
+        "contentView(children, classes): renders primary card content.",
+        "footerView(children, classes): renders card actions or metadata.",
       ]),
       docsTextListSection("Accessibility", [
         "Cards do not add roles by default; use meaningful headings and links or buttons inside the card content.",
@@ -11052,7 +11052,7 @@ Separator.view<Message>({
           },
           {
             part: "Root",
-            prop: "className",
+            prop: "classes",
             type: "string",
             defaultValue: "-",
             description:
@@ -11088,28 +11088,28 @@ Separator.view<Message>({
           },
           {
             part: "Classes",
-            prop: "separatorBaseClassName",
+            prop: "separatorBaseClasses",
             type: "string",
             defaultValue: "-",
             description: "Default class export shared by both orientations.",
           },
           {
             part: "Classes",
-            prop: "horizontalSeparatorClassName",
+            prop: "horizontalSeparatorClasses",
             type: "string",
             defaultValue: "-",
             description: "Default class export for horizontal separators.",
           },
           {
             part: "Classes",
-            prop: "verticalSeparatorClassName",
+            prop: "verticalSeparatorClasses",
             type: "string",
             defaultValue: "-",
             description: "Default class export for vertical separators.",
           },
           {
             part: "Utility",
-            prop: "separatorClassNameByOrientation(orientation)",
+            prop: "separatorClassesByOrientation(orientation)",
             type: "function",
             defaultValue: "-",
             description:
@@ -11311,13 +11311,13 @@ const spinnerDocsView = (model: Model): Html => {
       ]),
       docsAnatomyBlock(
         `Spinner.view<Message>({
-  className: "mr-1",
+  classes: "mr-1",
 });
 
 Badge.contentView<Message>({
   variant: "Destructive",
   children: [
-    Spinner.view<Message>({ className: "mr-1" }),
+    Spinner.view<Message>({ classes: "mr-1" }),
     h.span([], ["Deleting"]),
   ],
 });`
@@ -11329,8 +11329,8 @@ Badge.contentView<Message>({
       ]),
       docsApiList([
         "view(config): renders an SVG loading status icon.",
-        "ViewConfig: optional className.",
-        "spinnerClassName: default size and spin animation classes.",
+        "ViewConfig: optional classes.",
+        "spinnerClasses: default size and spin animation classes.",
       ]),
       docsTextListSection("Accessibility", [
         "Spinner.view renders role=status and aria-label=Loading, matching the upstream shadcn semantics.",
@@ -11440,7 +11440,7 @@ const kbdDocsView = (model: Model): Html => {
       ]),
       docsApiList([
         "view(config): renders one semantic kbd token.",
-        "groupView(children, className): renders a compact shortcut group.",
+        "groupView(children, classes): renders a compact shortcut group.",
         "KbdSize: Small or Default.",
         "Class helpers: base, size, and group classes.",
       ]),
@@ -11700,7 +11700,7 @@ const emptyDocsView = (model: Model): Html => {
       ]),
       docsApiList([
         "view(config): renders an empty state with title, description, optional icon, and optional action.",
-        "ViewConfig: title, description, maybeIcon, maybeAction, and className.",
+        "ViewConfig: title, description, maybeIcon, maybeAction, and classes.",
         "Class helpers: shell, icon, title, description, and action wrapper classes.",
       ]),
       docsTextListSection("Accessibility", [
@@ -11879,7 +11879,7 @@ const inputGroupDocsView = (model: Model): Html => {
         "textareaView(config): renders a native textarea with placeholder, ariaLabel, value, onInput, disabled, name, rows, and classes.",
         "addonView(config): renders an addon region aligned InlineStart, InlineEnd, BlockStart, or BlockEnd.",
         "buttonView(config): renders a button or icon button for addon actions.",
-        "textView(children, className): renders static addon text.",
+        "textView(children, classes): renders static addon text.",
       ]),
       docsTextListSection("Accessibility", [
         "Provide ariaLabel when the input does not have a visible label.",
@@ -12027,7 +12027,7 @@ const meterApiReferenceTable = (): Html =>
     },
     {
       part: "Classes",
-      prop: "className, labelClassName, valueClassName, trackClassName, indicatorClassName",
+      prop: "classes, labelClasses, valueClasses, trackClasses, indicatorClasses",
       type: "string",
       defaultValue: "-",
       description: "Part-level class hooks append to default Meter classes.",
@@ -12138,12 +12138,12 @@ const meterDocsView = (model: Model): Html => {
 Meter.view<Message>({
   value: 24,
   label: "Storage Used",
-  className: "gap-3",
+  classes: "gap-3",
   style: { inlineSize: "18rem" },
-  labelClassName: "text-gray-950",
-  valueClassName: "tabular-nums",
-  trackClassName: "bg-gray-200",
-  indicatorClassName: "bg-gray-950",
+  labelClasses: "text-gray-950",
+  valueClasses: "tabular-nums",
+  trackClasses: "bg-gray-200",
+  indicatorClasses: "bg-gray-950",
 });`,
         integrationCode: `// Model
 value: S.Number;
@@ -12344,7 +12344,7 @@ ScrollArea.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -12518,7 +12518,7 @@ Toggle.view<Message>({
           },
           {
             part: "Classes",
-            prop: "toggleRootClassName, toggleIconClassName",
+            prop: "toggleRootClasses, toggleIconClasses",
             type: "string",
             defaultValue: "-",
             description:
@@ -12690,7 +12690,7 @@ ToggleGroup.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -12864,7 +12864,7 @@ Radio.groupView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -13069,7 +13069,7 @@ Toolbar.rootView<Message>({
           },
           {
             part: "Classes",
-            prop: "*ClassName exports",
+            prop: "*Classes exports",
             type: "string",
             defaultValue: "-",
             description:
@@ -13258,7 +13258,7 @@ const progressApiReferenceTable = (): Html =>
     },
     {
       part: "Root",
-      prop: "className",
+      prop: "classes",
       type: "string",
       defaultValue: "-",
       description:
@@ -13273,7 +13273,7 @@ const progressApiReferenceTable = (): Html =>
     },
     {
       part: "Label",
-      prop: "labelClassName",
+      prop: "labelClasses",
       type: "string",
       defaultValue: "-",
       description:
@@ -13296,7 +13296,7 @@ const progressApiReferenceTable = (): Html =>
     },
     {
       part: "Value",
-      prop: "valueClassName",
+      prop: "valueClasses",
       type: "string",
       defaultValue: "-",
       description:
@@ -13311,7 +13311,7 @@ const progressApiReferenceTable = (): Html =>
     },
     {
       part: "Track",
-      prop: "trackClassName",
+      prop: "trackClasses",
       type: "string",
       defaultValue: "-",
       description: "Additional class applied to the Track rail.",
@@ -13325,7 +13325,7 @@ const progressApiReferenceTable = (): Html =>
     },
     {
       part: "Indicator",
-      prop: "indicatorClassName",
+      prop: "indicatorClasses",
       type: "string",
       defaultValue: "-",
       description:
@@ -13388,35 +13388,35 @@ const progressApiReferenceTable = (): Html =>
     },
     {
       part: "Classes",
-      prop: "progressRootClassName",
+      prop: "progressRootClasses",
       type: "string",
       defaultValue: "-",
       description: "Default class export for the Root element.",
     },
     {
       part: "Classes",
-      prop: "progressLabelClassName",
+      prop: "progressLabelClasses",
       type: "string",
       defaultValue: "-",
       description: "Default class export for the Label element.",
     },
     {
       part: "Classes",
-      prop: "progressValueClassName",
+      prop: "progressValueClasses",
       type: "string",
       defaultValue: "-",
       description: "Default class export for the Value element.",
     },
     {
       part: "Classes",
-      prop: "progressTrackClassName",
+      prop: "progressTrackClasses",
       type: "string",
       defaultValue: "-",
       description: "Default class export for the Track element.",
     },
     {
       part: "Classes",
-      prop: "progressIndicatorClassName",
+      prop: "progressIndicatorClasses",
       type: "string",
       defaultValue: "-",
       description: "Default class export for the Indicator element.",
@@ -13535,15 +13535,15 @@ const progressDocsView = (model: Model): Html => {
 Progress.view<Message>({
   value: 20,
   label: "Export data",
-  className: "gap-3",
+  classes: "gap-3",
   style: { inlineSize: "18rem" },
-  labelClassName: "text-gray-950",
+  labelClasses: "text-gray-950",
   labelStyle: { letterSpacing: "0" },
-  valueClassName: "tabular-nums",
+  valueClasses: "tabular-nums",
   valueStyle: { fontVariantNumeric: "tabular-nums" },
-  trackClassName: "bg-gray-200",
+  trackClasses: "bg-gray-200",
   trackStyle: { blockSize: "0.5rem" },
-  indicatorClassName: "bg-gray-950",
+  indicatorClasses: "bg-gray-950",
   indicatorStyle: { borderRadius: "9999px" },
 });`,
         integrationCode: `// Model
@@ -13582,7 +13582,7 @@ Progress.rootView<Message>({
           "formatValue(value): Foldkit-native equivalent for Base UI format/locale formatting when the default percent text is not enough.",
           "getAriaValueText(context): Foldkit-native equivalent for Base UI getAriaValueText.",
           "renderValue(context): Foldkit-native equivalent for Base UI Value render-function children.",
-          "View class overrides: className, labelClassName, valueClassName, trackClassName, and indicatorClassName.",
+          "View class overrides: classes, labelClasses, valueClasses, trackClasses, and indicatorClasses.",
           'ProgressStatus: "Indeterminate", "Progressing", or "Complete".',
         ],
         accessibilityItems: [
@@ -13794,7 +13794,7 @@ Button.view<Message>({
   onClick: ClickedSave(),
   toView: (attributes) =>
     h.button(
-      [...attributes.button, h.Class(Button.baseUiButtonClassName)],
+      [...attributes.button, h.Class(Button.baseUiButtonClasses)],
       ["Save changes"]
     ),
 });`,
@@ -13818,7 +13818,7 @@ ClickedSave: () => [
           "ButtonAttributes: grouped button attributes that include click, disabled, type, and autofocus behavior.",
           "ViewConfig: onClick, isDisabled, type, isAutofocus, and toView.",
           "toView can render another focusable element when a consumer needs Base UI's render-as-another-tag pattern.",
-          "Class helpers: baseUiButtonClassName, baseUiSecondaryButtonClassName, and baseUiDestructiveButtonClassName.",
+          "Class helpers: baseUiButtonClasses, baseUiSecondaryButtonClasses, and baseUiDestructiveButtonClasses.",
         ],
         accessibilityItems: [
           "The primitive applies native disabled state so disabled buttons do not dispatch clicks.",
@@ -18367,14 +18367,14 @@ UpdatedBio: ({ value }) => [
   value: model.bio,
   onInput: (value) => UpdatedBio({ value }),
   toView: (attributes) =>
-    h.div([h.Class(Textarea.fieldClassName)], [
-      h.label([...attributes.label, h.Class(Textarea.labelClassName)], ["Bio"]),
+    h.div([h.Class(Textarea.fieldClasses)], [
+      h.label([...attributes.label, h.Class(Textarea.labelClasses)], ["Bio"]),
       h.textarea(
-        [...attributes.textarea, h.Class(Textarea.textareaClassName)],
+        [...attributes.textarea, h.Class(Textarea.textareaClasses)],
         []
       ),
       h.p(
-        [...attributes.description, h.Class(Textarea.descriptionClassName)],
+        [...attributes.description, h.Class(Textarea.descriptionClasses)],
         ["A brief introduction about yourself."]
       ),
     ]),
@@ -18384,7 +18384,7 @@ UpdatedBio: ({ value }) => [
           "descriptionId(id): returns the generated description id for custom composition.",
           "TextareaAttributes: grouped textarea, label, and description attributes.",
           "ViewConfig: id, value, onInput, isDisabled, isInvalid, isAutofocus, name, rows, and placeholder.",
-          "fieldClassName, labelClassName, textareaClassName, and descriptionClassName expose the shadcn-style styling hooks.",
+          "fieldClasses, labelClasses, textareaClasses, and descriptionClasses expose the shadcn-style styling hooks.",
         ],
         accessibilityItems: [
           "The label attributes bind the textarea to a visible label.",
@@ -18510,8 +18510,8 @@ h.submodel({
   viewInputs: {
     position: "BottomRight",
     entryToView: Toast.toastEntryView,
-    entryClassName: Toast.entryClassName,
-    containerClassName: Toast.containerClassName,
+    entryClasses: Toast.entryClasses,
+    containerClasses: Toast.containerClasses,
   },
   toParentMessage: (message) => GotToastMessage({ message }),
 });`),
@@ -18523,7 +18523,7 @@ h.submodel({
           "update(model, message): returns model, commands, and an optional DismissedToast OutMessage.",
           "Message, Entry, Model, OutMessage, Position, Variant, and EntryHandlers expose the Foldkit Toast contract.",
           "toastEntryView: reusable styled entry renderer that spreads EntryHandlers.dismiss onto the close button.",
-          "containerClassName, toastClassName, entryClassName, titleClassName, descriptionClassName, and closeButtonClassName expose shadcn-style styling hooks.",
+          "containerClasses, toastClasses, entryClasses, titleClasses, descriptionClasses, and closeButtonClasses expose shadcn-style styling hooks.",
         ],
         accessibilityItems: [
           "The primitive renders a persistent aria-live region labelled Notifications.",
@@ -18673,7 +18673,7 @@ h.submodel({
           "AnchorTooltip: mount emitted by the panel to position it relative to the trigger.",
           "reflectShowDelay: mirrors externally controlled delay configuration without emitting OutMessage.",
           "ViewInputs and RenderInfo: trigger attributes, panel attributes, visibility, disabled state, and anchor configuration for custom composition.",
-          "tooltipView, tooltipAnchor, tooltipRootClassName, tooltipTriggerClassName, and panelClassName expose the shadcn-style composition and styling hooks.",
+          "tooltipView, tooltipAnchor, tooltipRootClasses, tooltipTriggerClasses, and panelClasses expose the shadcn-style composition and styling hooks.",
         ],
         accessibilityItems: [
           "The trigger receives aria-describedby pointing to the tooltip panel id.",
@@ -20253,12 +20253,12 @@ const contentView = (model: Model): Html => {
           usage:
             "Install the Base UI lane wrapper when you want Accordion composition with Base UI naming and class hooks.",
           classHelpers: [
-            "accordionRootClassName",
-            "accordionItemClassName",
-            "accordionHeaderClassName",
-            "accordionTriggerClassName",
-            "accordionIconClassName",
-            "accordionPanelClassName",
+            "accordionRootClasses",
+            "accordionItemClasses",
+            "accordionHeaderClasses",
+            "accordionTriggerClasses",
+            "accordionIconClasses",
+            "accordionPanelClasses",
           ],
           anatomyCode: `import * as Accordion from "./ui/base-ui-accordion";
 
@@ -20278,12 +20278,12 @@ Accordion.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Accordion composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnAccordionRootClassName",
-            "shadcnAccordionItemClassName",
-            "shadcnAccordionHeaderClassName",
-            "shadcnAccordionTriggerClassName",
-            "shadcnAccordionIconClassName",
-            "shadcnAccordionPanelClassName",
+            "shadcnAccordionRootClasses",
+            "shadcnAccordionItemClasses",
+            "shadcnAccordionHeaderClasses",
+            "shadcnAccordionTriggerClasses",
+            "shadcnAccordionIconClasses",
+            "shadcnAccordionPanelClasses",
           ],
           examples: [
             "shadcn-accordion-basic",
@@ -20318,12 +20318,12 @@ Accordion.rootView<Message>({
           usage:
             "Install the shadcn Base Accordion wrapper when you want Base UI accordion composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnBaseAccordionRootClassName",
-            "shadcnBaseAccordionItemClassName",
-            "shadcnBaseAccordionHeaderClassName",
-            "shadcnBaseAccordionTriggerClassName",
-            "shadcnBaseAccordionIconClassName",
-            "shadcnBaseAccordionPanelClassName",
+            "shadcnBaseAccordionRootClasses",
+            "shadcnBaseAccordionItemClasses",
+            "shadcnBaseAccordionHeaderClasses",
+            "shadcnBaseAccordionTriggerClasses",
+            "shadcnBaseAccordionIconClasses",
+            "shadcnBaseAccordionPanelClasses",
           ],
           examples: ["shadcn-base-accordion-basic"],
           anatomyCode: `import * as Accordion from "./ui/shadcn-base-accordion";
@@ -20427,13 +20427,13 @@ Accordion.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Alert Dialog composition with Base UI naming and class hooks.",
           classHelpers: [
-            "alertDialogTriggerClassName",
-            "alertDialogPortalClassName",
-            "alertDialogBackdropClassName",
-            "alertDialogPopupClassName",
-            "alertDialogTitleClassName",
-            "alertDialogDescriptionClassName",
-            "alertDialogActionsClassName",
+            "alertDialogTriggerClasses",
+            "alertDialogPortalClasses",
+            "alertDialogBackdropClasses",
+            "alertDialogPopupClasses",
+            "alertDialogTitleClasses",
+            "alertDialogDescriptionClasses",
+            "alertDialogActionsClasses",
           ],
           anatomyCode: `import * as AlertDialog from "./ui/base-ui-alert-dialog";
 
@@ -20462,13 +20462,13 @@ AlertDialog.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want the existing Alert Dialog behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnAlertDialogTriggerClassName",
-            "shadcnAlertDialogPortalClassName",
-            "shadcnAlertDialogBackdropClassName",
-            "shadcnAlertDialogPopupClassName",
-            "shadcnAlertDialogTitleClassName",
-            "shadcnAlertDialogDescriptionClassName",
-            "shadcnAlertDialogActionsClassName",
+            "shadcnAlertDialogTriggerClasses",
+            "shadcnAlertDialogPortalClasses",
+            "shadcnAlertDialogBackdropClasses",
+            "shadcnAlertDialogPopupClasses",
+            "shadcnAlertDialogTitleClasses",
+            "shadcnAlertDialogDescriptionClasses",
+            "shadcnAlertDialogActionsClasses",
           ],
           examples: [
             "shadcn-alert-dialog-basic",
@@ -20500,12 +20500,12 @@ AlertDialog.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Drawer composition with Base UI naming and class hooks.",
           classHelpers: [
-            "drawerTriggerClassName",
-            "drawerPortalClassName",
-            "drawerBackdropClassName",
-            "drawerViewportClassName",
-            "drawerPopupClassName",
-            "drawerCloseClassName",
+            "drawerTriggerClasses",
+            "drawerPortalClasses",
+            "drawerBackdropClasses",
+            "drawerViewportClasses",
+            "drawerPopupClasses",
+            "drawerCloseClasses",
           ],
           examples: [
             "base-ui-drawer-basic",
@@ -20537,12 +20537,12 @@ Drawer.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Drawer composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnDrawerTriggerClassName",
-            "shadcnDrawerPortalClassName",
-            "shadcnDrawerBackdropClassName",
-            "shadcnDrawerViewportClassName",
-            "shadcnDrawerPopupClassName",
-            "shadcnDrawerCloseClassName",
+            "shadcnDrawerTriggerClasses",
+            "shadcnDrawerPortalClasses",
+            "shadcnDrawerBackdropClasses",
+            "shadcnDrawerViewportClasses",
+            "shadcnDrawerPopupClasses",
+            "shadcnDrawerCloseClasses",
           ],
           examples: [
             "shadcn-drawer-basic",
@@ -20582,12 +20582,12 @@ Drawer.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Context Menu composition with Base UI naming and class hooks.",
           classHelpers: [
-            "contextMenuTriggerClassName",
-            "contextMenuPortalClassName",
-            "contextMenuBackdropClassName",
-            "contextMenuPositionerClassName",
-            "contextMenuPopupClassName",
-            "contextMenuItemClassName",
+            "contextMenuTriggerClasses",
+            "contextMenuPortalClasses",
+            "contextMenuBackdropClasses",
+            "contextMenuPositionerClasses",
+            "contextMenuPopupClasses",
+            "contextMenuItemClasses",
           ],
           anatomyCode: `import * as ContextMenu from "./ui/base-ui-context-menu";
 
@@ -20612,12 +20612,12 @@ ContextMenu.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Context Menu composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnContextMenuTriggerClassName",
-            "shadcnContextMenuPortalClassName",
-            "shadcnContextMenuBackdropClassName",
-            "shadcnContextMenuPositionerClassName",
-            "shadcnContextMenuPopupClassName",
-            "shadcnContextMenuItemClassName",
+            "shadcnContextMenuTriggerClasses",
+            "shadcnContextMenuPortalClasses",
+            "shadcnContextMenuBackdropClasses",
+            "shadcnContextMenuPositionerClasses",
+            "shadcnContextMenuPopupClasses",
+            "shadcnContextMenuItemClasses",
           ],
           examples: ["shadcn-context-menu-basic"],
           anatomyCode: `import * as ContextMenu from "./ui/shadcn-context-menu";
@@ -20646,12 +20646,12 @@ ContextMenu.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Menubar composition with Base UI naming and class hooks.",
           classHelpers: [
-            "menubarRootClassName",
-            "menubarMenuClassName",
-            "menubarTriggerClassName",
-            "menubarPopupClassName",
-            "menubarItemClassName",
-            "menubarSeparatorClassName",
+            "menubarRootClasses",
+            "menubarMenuClasses",
+            "menubarTriggerClasses",
+            "menubarPopupClasses",
+            "menubarItemClasses",
+            "menubarSeparatorClasses",
           ],
           examples: ["base-ui-menubar-basic"],
           anatomyCode: `import * as Menubar from "./ui/base-ui-menubar";
@@ -20679,12 +20679,12 @@ Menubar.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Menubar composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnMenubarRootClassName",
-            "shadcnMenubarMenuClassName",
-            "shadcnMenubarTriggerClassName",
-            "shadcnMenubarPopupClassName",
-            "shadcnMenubarItemClassName",
-            "shadcnMenubarSeparatorClassName",
+            "shadcnMenubarRootClasses",
+            "shadcnMenubarMenuClasses",
+            "shadcnMenubarTriggerClasses",
+            "shadcnMenubarPopupClasses",
+            "shadcnMenubarItemClasses",
+            "shadcnMenubarSeparatorClasses",
           ],
           examples: ["shadcn-menubar-basic"],
           anatomyCode: `import * as Menubar from "./ui/shadcn-menubar";
@@ -20712,12 +20712,12 @@ Menubar.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Navigation Menu composition with Base UI naming and class hooks.",
           classHelpers: [
-            "navigationMenuRootClassName",
-            "navigationMenuListClassName",
-            "navigationMenuTriggerClassName",
-            "navigationMenuLinkClassName",
-            "navigationMenuPopupClassName",
-            "navigationMenuViewportClassName",
+            "navigationMenuRootClasses",
+            "navigationMenuListClasses",
+            "navigationMenuTriggerClasses",
+            "navigationMenuLinkClasses",
+            "navigationMenuPopupClasses",
+            "navigationMenuViewportClasses",
           ],
           examples: ["base-ui-navigation-menu-basic"],
           anatomyCode: `import * as NavigationMenu from "./ui/base-ui-navigation-menu";
@@ -20745,12 +20745,12 @@ NavigationMenu.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Navigation Menu composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnNavigationMenuRootClassName",
-            "shadcnNavigationMenuListClassName",
-            "shadcnNavigationMenuTriggerClassName",
-            "shadcnNavigationMenuLinkClassName",
-            "shadcnNavigationMenuPopupClassName",
-            "shadcnNavigationMenuViewportClassName",
+            "shadcnNavigationMenuRootClasses",
+            "shadcnNavigationMenuListClasses",
+            "shadcnNavigationMenuTriggerClasses",
+            "shadcnNavigationMenuLinkClasses",
+            "shadcnNavigationMenuPopupClasses",
+            "shadcnNavigationMenuViewportClasses",
           ],
           examples: ["shadcn-navigation-menu-basic"],
           anatomyCode: `import * as NavigationMenu from "./ui/shadcn-navigation-menu";
@@ -20779,10 +20779,10 @@ NavigationMenu.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want OTP Field composition with Base UI naming and class hooks.",
           classHelpers: [
-            "otpFieldRootClassName",
-            "otpFieldInputGroupClassName",
-            "otpFieldInputClassName",
-            "otpFieldSeparatorClassName",
+            "otpFieldRootClasses",
+            "otpFieldInputGroupClasses",
+            "otpFieldInputClasses",
+            "otpFieldSeparatorClasses",
           ],
           examples: ["base-ui-otp-field-basic"],
           anatomyCode: `import * as OtpField from "./ui/base-ui-otp-field";
@@ -20809,12 +20809,12 @@ OtpField.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Preview Card composition with Base UI naming and class hooks.",
           classHelpers: [
-            "previewCardRootClassName",
-            "previewCardTriggerClassName",
-            "previewCardPortalClassName",
-            "previewCardPositionerClassName",
-            "previewCardPopupClassName",
-            "previewCardViewportClassName",
+            "previewCardRootClasses",
+            "previewCardTriggerClasses",
+            "previewCardPortalClasses",
+            "previewCardPositionerClasses",
+            "previewCardPopupClasses",
+            "previewCardViewportClasses",
           ],
           examples: ["base-ui-preview-card-basic"],
           anatomyCode: `import * as PreviewCard from "./ui/base-ui-preview-card";
@@ -20843,11 +20843,11 @@ PreviewCard.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want controlled Collapsible behavior with Base UI naming, class hooks, and origin-matched example content.",
           classHelpers: [
-            "collapsibleRootClassName",
-            "collapsibleTriggerClassName",
-            "collapsibleIconClassName",
-            "collapsiblePanelClassName",
-            "collapsibleContentClassName",
+            "collapsibleRootClasses",
+            "collapsibleTriggerClasses",
+            "collapsibleIconClasses",
+            "collapsiblePanelClasses",
+            "collapsibleContentClasses",
           ],
           examples: ["base-ui-collapsible-basic"],
           anatomyCode: `import * as Collapsible from "./ui/base-ui-collapsible";
@@ -20867,11 +20867,11 @@ Collapsible.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want controlled Collapsible behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnCollapsibleRootClassName",
-            "shadcnCollapsibleTriggerClassName",
-            "shadcnCollapsibleIconClassName",
-            "shadcnCollapsiblePanelClassName",
-            "shadcnCollapsibleContentClassName",
+            "shadcnCollapsibleRootClasses",
+            "shadcnCollapsibleTriggerClasses",
+            "shadcnCollapsibleIconClasses",
+            "shadcnCollapsiblePanelClasses",
+            "shadcnCollapsibleContentClasses",
           ],
           examples: ["shadcn-collapsible-basic"],
           anatomyCode: `import * as Collapsible from "./ui/shadcn-collapsible";
@@ -20897,12 +20897,12 @@ Collapsible.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Field composition with Base UI naming and class hooks.",
           classHelpers: [
-            "fieldRootClassName",
-            "fieldLabelClassName",
-            "fieldControlClassName",
-            "fieldDescriptionClassName",
-            "fieldErrorClassName",
-            "fieldValidityClassName",
+            "fieldRootClasses",
+            "fieldLabelClasses",
+            "fieldControlClasses",
+            "fieldDescriptionClasses",
+            "fieldErrorClasses",
+            "fieldValidityClasses",
           ],
           examples: ["base-ui-field-basic"],
           anatomyCode: `import * as Field from "./ui/base-ui-field";
@@ -20927,12 +20927,12 @@ Field.rootView<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Field composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnFieldRootClassName",
-            "shadcnFieldLabelClassName",
-            "shadcnFieldControlClassName",
-            "shadcnFieldDescriptionClassName",
-            "shadcnFieldErrorClassName",
-            "shadcnFieldValidityClassName",
+            "shadcnFieldRootClasses",
+            "shadcnFieldLabelClasses",
+            "shadcnFieldControlClasses",
+            "shadcnFieldDescriptionClasses",
+            "shadcnFieldErrorClasses",
+            "shadcnFieldValidityClasses",
           ],
           examples: ["shadcn-field-basic"],
           anatomyCode: `import * as Field from "./ui/shadcn-field";
@@ -20957,11 +20957,11 @@ Field.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Number Field composition with Base UI naming and class hooks.",
           classHelpers: [
-            "numberFieldRootClassName",
-            "numberFieldScrubAreaClassName",
-            "numberFieldGroupClassName",
-            "numberFieldButtonClassName",
-            "numberFieldInputClassName",
+            "numberFieldRootClasses",
+            "numberFieldScrubAreaClasses",
+            "numberFieldGroupClasses",
+            "numberFieldButtonClasses",
+            "numberFieldInputClasses",
           ],
           examples: ["base-ui-number-field-basic"],
           anatomyCode: `import * as NumberField from "./ui/base-ui-number-field";
@@ -20988,12 +20988,12 @@ NumberField.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Form composition with Base UI naming and class hooks.",
           classHelpers: [
-            "formRootClassName",
-            "formFieldClassName",
-            "formLabelClassName",
-            "formControlClassName",
-            "formErrorClassName",
-            "formSubmitClassName",
+            "formRootClasses",
+            "formFieldClasses",
+            "formLabelClasses",
+            "formControlClasses",
+            "formErrorClasses",
+            "formSubmitClasses",
           ],
           examples: [
             "base-ui-form-basic",
@@ -21028,12 +21028,12 @@ Form.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Autocomplete composition with Base UI naming and class hooks.",
           classHelpers: [
-            "autocompleteRootClassName",
-            "autocompleteLabelClassName",
-            "autocompleteInputClassName",
-            "autocompleteListClassName",
-            "autocompleteItemClassName",
-            "autocompleteEmptyClassName",
+            "autocompleteRootClasses",
+            "autocompleteLabelClasses",
+            "autocompleteInputClasses",
+            "autocompleteListClasses",
+            "autocompleteItemClasses",
+            "autocompleteEmptyClasses",
           ],
           anatomyCode: `import * as Autocomplete from "./ui/base-ui-autocomplete";
 
@@ -21061,12 +21061,12 @@ Autocomplete.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Avatar composition with Base UI naming and class hooks.",
           classHelpers: [
-            "avatarBaseClassName",
-            "avatarImageClassName",
-            "avatarFallbackClassName",
-            "avatarBadgeClassName",
-            "avatarGroupClassName",
-            "avatarGroupCountClassName",
+            "avatarBaseClasses",
+            "avatarImageClasses",
+            "avatarFallbackClasses",
+            "avatarBadgeClasses",
+            "avatarGroupClasses",
+            "avatarGroupCountClasses",
           ],
           anatomyCode: `import * as Avatar from "./ui/base-ui-avatar";
 
@@ -21089,12 +21089,12 @@ Avatar.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Avatar composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnAvatarBaseClassName",
-            "shadcnAvatarBadgeClassName",
-            "shadcnAvatarImageClassName",
-            "shadcnAvatarFallbackClassName",
-            "shadcnAvatarGroupClassName",
-            "shadcnAvatarGroupCountClassName",
+            "shadcnAvatarBaseClasses",
+            "shadcnAvatarBadgeClasses",
+            "shadcnAvatarImageClasses",
+            "shadcnAvatarFallbackClasses",
+            "shadcnAvatarGroupClasses",
+            "shadcnAvatarGroupCountClasses",
           ],
           examples: [
             "shadcn-avatar-basic",
@@ -21323,10 +21323,10 @@ Avatar.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Separator composition with Base UI naming and class hooks.",
           classHelpers: [
-            "separatorBaseClassName",
-            "horizontalSeparatorClassName",
-            "verticalSeparatorClassName",
-            "separatorClassNameByOrientation",
+            "separatorBaseClasses",
+            "horizontalSeparatorClasses",
+            "verticalSeparatorClasses",
+            "separatorClassesByOrientation",
           ],
           examples: ["base-ui-separator-basic"],
           anatomyCode: `import * as Separator from "./ui/base-ui-separator";
@@ -21343,10 +21343,10 @@ Separator.view<Message>({ orientation: "horizontal" });`,
           usage:
             "Install the shadcn lane wrapper when you want Separator composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnSeparatorBaseClassName",
-            "shadcnHorizontalSeparatorClassName",
-            "shadcnVerticalSeparatorClassName",
-            "shadcnSeparatorClassNameByOrientation",
+            "shadcnSeparatorBaseClasses",
+            "shadcnHorizontalSeparatorClasses",
+            "shadcnVerticalSeparatorClasses",
+            "shadcnSeparatorClassesByOrientation",
           ],
           examples: ["shadcn-separator-basic"],
           anatomyCode: `import * as Separator from "./ui/shadcn-separator";
@@ -21416,14 +21416,14 @@ Separator.view<Message>({ orientation: "horizontal" });`,
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Button behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnButtonBaseClassName",
-            "shadcnButtonClassName",
-            "shadcnOutlineButtonClassName",
-            "shadcnSecondaryButtonClassName",
-            "shadcnDestructiveButtonClassName",
-            "shadcnGhostButtonClassName",
-            "shadcnLinkButtonClassName",
-            "shadcnIconButtonClassName",
+            "shadcnButtonBaseClasses",
+            "shadcnButtonClasses",
+            "shadcnOutlineButtonClasses",
+            "shadcnSecondaryButtonClasses",
+            "shadcnDestructiveButtonClasses",
+            "shadcnGhostButtonClasses",
+            "shadcnLinkButtonClasses",
+            "shadcnIconButtonClasses",
           ],
           examples: [
             "shadcn-button-basic",
@@ -21448,7 +21448,7 @@ Button.view<Message>({
   onClick: ClickedSave(),
   toView: (attributes) =>
     h.button(
-      [...attributes.button, h.Class(Button.shadcnButtonClassName)],
+      [...attributes.button, h.Class(Button.shadcnButtonClasses)],
       ["Save changes"]
     ),
 });`,
@@ -21470,12 +21470,12 @@ Button.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Calendar behavior with shadcn naming and style hooks. Reconcile against the origin docs before adding new variants; range selection, date-time picking, natural-language parsing, and week numbers remain deferred until Ui.Calendar exposes those APIs.",
           classHelpers: [
-            "shadcnCalendarContainerClassName",
-            "shadcnCalendarHeaderClassName",
-            "shadcnCalendarNavButtonClassName",
-            "shadcnCalendarGridClassName",
-            "shadcnCalendarDayButtonClassName",
-            "shadcnCalendarMonthYearButtonClassName",
+            "shadcnCalendarContainerClasses",
+            "shadcnCalendarHeaderClasses",
+            "shadcnCalendarNavButtonClasses",
+            "shadcnCalendarGridClasses",
+            "shadcnCalendarDayButtonClasses",
+            "shadcnCalendarMonthYearButtonClasses",
           ],
           examples: [
             "shadcn-calendar-basic",
@@ -21543,11 +21543,11 @@ h.submodel({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Checkbox behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnCheckboxRowClassName",
-            "shadcnCheckboxControlClassName",
-            "shadcnCheckboxLabelClassName",
-            "shadcnCheckboxDescriptionClassName",
-            "shadcnCheckboxTextClassName",
+            "shadcnCheckboxRowClasses",
+            "shadcnCheckboxControlClasses",
+            "shadcnCheckboxLabelClasses",
+            "shadcnCheckboxDescriptionClasses",
+            "shadcnCheckboxTextClasses",
           ],
           examples: [
             "shadcn-checkbox-basic",
@@ -21587,12 +21587,12 @@ h.submodel({
           usage:
             "Install the Base UI lane wrapper when you want Checkbox Group composition with Base UI naming and class hooks.",
           classHelpers: [
-            "checkboxGroupRootClassName",
-            "checkboxGroupCaptionClassName",
-            "checkboxGroupItemsClassName",
-            "checkboxGroupItemClassName",
-            "checkboxGroupControlClassName",
-            "checkboxGroupIndicatorClassName",
+            "checkboxGroupRootClasses",
+            "checkboxGroupCaptionClasses",
+            "checkboxGroupItemsClasses",
+            "checkboxGroupItemClasses",
+            "checkboxGroupControlClasses",
+            "checkboxGroupIndicatorClasses",
           ],
           anatomyCode: `import * as CheckboxGroup from "./ui/base-ui-checkbox-group";
 
@@ -21638,11 +21638,11 @@ CheckboxGroup.groupView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Combobox behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
-            "baseUiComboboxInputClassName",
-            "baseUiComboboxButtonClassName",
-            "baseUiComboboxItemsClassName",
-            "baseUiComboboxItemClassName",
-            "baseUiComboboxBackdropClassName",
+            "baseUiComboboxInputClasses",
+            "baseUiComboboxButtonClasses",
+            "baseUiComboboxItemsClasses",
+            "baseUiComboboxItemClasses",
+            "baseUiComboboxBackdropClasses",
           ],
           examples: ["base-ui-combobox-basic"],
           anatomyCode: `import * as Combobox from "./ui/base-ui-combobox";
@@ -21665,11 +21665,11 @@ Combobox.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Combobox behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnComboboxInputClassName",
-            "shadcnComboboxButtonClassName",
-            "shadcnComboboxItemsClassName",
-            "shadcnComboboxItemClassName",
-            "shadcnComboboxBackdropClassName",
+            "shadcnComboboxInputClasses",
+            "shadcnComboboxButtonClasses",
+            "shadcnComboboxItemsClasses",
+            "shadcnComboboxItemClasses",
+            "shadcnComboboxBackdropClasses",
           ],
           examples: ["shadcn-combobox-basic"],
           anatomyCode: `import * as Combobox from "./ui/shadcn-combobox";
@@ -21696,11 +21696,11 @@ Combobox.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Date Picker behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnDatePickerWrapperClassName",
-            "shadcnDatePickerTriggerClassName",
-            "shadcnDatePickerTriggerContentClassName",
-            "shadcnDatePickerPanelClassName",
-            "shadcnDatePickerBackdropClassName",
+            "shadcnDatePickerWrapperClasses",
+            "shadcnDatePickerTriggerClasses",
+            "shadcnDatePickerTriggerContentClasses",
+            "shadcnDatePickerPanelClasses",
+            "shadcnDatePickerBackdropClasses",
           ],
           examples: ["shadcn-date-picker-basic"],
           anatomyCode: `import * as DatePicker from "./ui/shadcn-date-picker";
@@ -21728,10 +21728,10 @@ h.submodel({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Dialog behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
-            "baseUiDialogBackdropClassName",
-            "baseUiDialogPanelClassName",
-            "baseUiDialogTitleClassName",
-            "baseUiDialogDescriptionClassName",
+            "baseUiDialogBackdropClasses",
+            "baseUiDialogPanelClasses",
+            "baseUiDialogTitleClasses",
+            "baseUiDialogDescriptionClasses",
           ],
           examples: [
             "base-ui-dialog-basic",
@@ -21762,10 +21762,10 @@ Dialog.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Dialog behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnDialogBackdropClassName",
-            "shadcnDialogPanelClassName",
-            "shadcnDialogTitleClassName",
-            "shadcnDialogDescriptionClassName",
+            "shadcnDialogBackdropClasses",
+            "shadcnDialogPanelClasses",
+            "shadcnDialogTitleClasses",
+            "shadcnDialogDescriptionClasses",
           ],
           examples: [
             "shadcn-dialog-basic",
@@ -21827,9 +21827,9 @@ Dialog.view<Message>({
           usage:
             "Install the Base UI lane wrapper when the form group should keep Foldkit semantics and expose Base UI class helper names.",
           classHelpers: [
-            "baseUiFieldsetRootClassName",
-            "baseUiFieldsetLegendClassName",
-            "baseUiFieldsetDescriptionClassName",
+            "baseUiFieldsetRootClasses",
+            "baseUiFieldsetLegendClasses",
+            "baseUiFieldsetDescriptionClasses",
           ],
           examples: ["base-ui-fieldset-basic"],
           anatomyCode: `import * as Fieldset from "./ui/base-ui-fieldset";
@@ -21864,10 +21864,10 @@ Fieldset.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you need the native Foldkit Input contract with simple Base UI class hook names.",
           classHelpers: [
-            "baseUiInputRootClassName",
-            "baseUiInputLabelClassName",
-            "baseUiInputControlClassName",
-            "baseUiInputDescriptionClassName",
+            "baseUiInputRootClasses",
+            "baseUiInputLabelClasses",
+            "baseUiInputControlClasses",
+            "baseUiInputDescriptionClasses",
           ],
           examples: ["base-ui-input-basic"],
           anatomyCode: `import * as Input from "./ui/base-ui-input";
@@ -21890,10 +21890,10 @@ Input.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want the native Foldkit Input contract with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnInputFieldClassName",
-            "shadcnInputLabelClassName",
-            "shadcnInputClassName",
-            "shadcnInputDescriptionClassName",
+            "shadcnInputFieldClasses",
+            "shadcnInputLabelClasses",
+            "shadcnInputClasses",
+            "shadcnInputDescriptionClasses",
           ],
           examples: [
             "shadcn-input-basic",
@@ -21965,11 +21965,11 @@ Input.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Meter composition with Base UI naming and class hooks.",
           classHelpers: [
-            "meterRootClassName",
-            "meterLabelClassName",
-            "meterValueClassName",
-            "meterTrackClassName",
-            "meterIndicatorClassName",
+            "meterRootClasses",
+            "meterLabelClasses",
+            "meterValueClasses",
+            "meterTrackClasses",
+            "meterIndicatorClasses",
           ],
           examples: ["base-ui-meter-basic"],
           anatomyCode: `import * as Meter from "./ui/base-ui-meter";
@@ -21996,11 +21996,11 @@ Meter.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Scroll Area composition with Base UI naming and class hooks.",
           classHelpers: [
-            "scrollAreaRootClassName",
-            "scrollAreaViewportClassName",
-            "scrollAreaContentClassName",
-            "scrollAreaScrollbarClassName",
-            "scrollAreaThumbClassName",
+            "scrollAreaRootClasses",
+            "scrollAreaViewportClasses",
+            "scrollAreaContentClasses",
+            "scrollAreaScrollbarClasses",
+            "scrollAreaThumbClasses",
           ],
           examples: [
             "base-ui-scroll-area-basic",
@@ -22024,11 +22024,11 @@ ScrollArea.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Scroll Area composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnScrollAreaRootClassName",
-            "shadcnScrollAreaViewportClassName",
-            "shadcnScrollAreaContentClassName",
-            "shadcnScrollAreaScrollbarClassName",
-            "shadcnScrollAreaThumbClassName",
+            "shadcnScrollAreaRootClasses",
+            "shadcnScrollAreaViewportClasses",
+            "shadcnScrollAreaContentClasses",
+            "shadcnScrollAreaScrollbarClasses",
+            "shadcnScrollAreaThumbClasses",
           ],
           examples: ["shadcn-scroll-area-basic"],
           anatomyCode: `import * as ScrollArea from "./ui/shadcn-scroll-area";
@@ -22056,7 +22056,7 @@ ScrollArea.view<Message>({
             "A Base UI style-lane Toggle slice that reuses the existing pressed-state root and icon helpers.",
           usage:
             "Install the Base UI lane wrapper when you want Toggle composition with Base UI naming and class hooks.",
-          classHelpers: ["toggleRootClassName", "toggleIconClassName"],
+          classHelpers: ["toggleRootClasses", "toggleIconClasses"],
           examples: ["base-ui-toggle-basic"],
           anatomyCode: `import * as Toggle from "./ui/base-ui-toggle";
 
@@ -22080,9 +22080,9 @@ Toggle.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Toggle Group composition with Base UI naming and class hooks.",
           classHelpers: [
-            "toggleGroupRootClassName",
-            "toggleGroupItemClassName",
-            "toggleGroupIconClassName",
+            "toggleGroupRootClasses",
+            "toggleGroupItemClasses",
+            "toggleGroupIconClasses",
           ],
           examples: ["base-ui-toggle-group-basic"],
           anatomyCode: `import * as ToggleGroup from "./ui/base-ui-toggle-group";
@@ -22110,12 +22110,12 @@ ToggleGroup.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Toolbar composition with Base UI naming and class hooks.",
           classHelpers: [
-            "toolbarRootClassName",
-            "toolbarGroupClassName",
-            "toolbarButtonClassName",
-            "toolbarLinkClassName",
-            "toolbarInputClassName",
-            "toolbarSeparatorClassName",
+            "toolbarRootClasses",
+            "toolbarGroupClasses",
+            "toolbarButtonClasses",
+            "toolbarLinkClasses",
+            "toolbarInputClasses",
+            "toolbarSeparatorClasses",
           ],
           examples: ["base-ui-toolbar-basic"],
           anatomyCode: `import * as Toolbar from "./ui/base-ui-toolbar";
@@ -22142,11 +22142,11 @@ Toolbar.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Progress composition with Base UI naming and class hooks.",
           classHelpers: [
-            "progressRootClassName",
-            "progressLabelClassName",
-            "progressValueClassName",
-            "progressTrackClassName",
-            "progressIndicatorClassName",
+            "progressRootClasses",
+            "progressLabelClasses",
+            "progressValueClasses",
+            "progressTrackClasses",
+            "progressIndicatorClasses",
           ],
           examples: ["base-ui-progress-basic"],
           anatomyCode: `import * as Progress from "./ui/base-ui-progress";
@@ -22168,11 +22168,11 @@ Progress.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Progress composition with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnProgressRootClassName",
-            "shadcnProgressLabelClassName",
-            "shadcnProgressValueClassName",
-            "shadcnProgressTrackClassName",
-            "shadcnProgressIndicatorClassName",
+            "shadcnProgressRootClasses",
+            "shadcnProgressLabelClasses",
+            "shadcnProgressValueClasses",
+            "shadcnProgressTrackClasses",
+            "shadcnProgressIndicatorClasses",
           ],
           examples: ["shadcn-progress-basic"],
           anatomyCode: `import * as Progress from "./ui/shadcn-progress";
@@ -22201,12 +22201,12 @@ Progress.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want the existing Foldkit Menu behavior with Base UI package naming and styling hooks.",
           classHelpers: [
-            "baseUiMenuTriggerClassName",
-            "baseUiMenuRootClassName",
-            "baseUiMenuPopupClassName",
-            "baseUiMenuAnimatedPopupClassName",
-            "baseUiMenuItemClassName",
-            "baseUiMenuBackdropClassName",
+            "baseUiMenuTriggerClasses",
+            "baseUiMenuRootClasses",
+            "baseUiMenuPopupClasses",
+            "baseUiMenuAnimatedPopupClasses",
+            "baseUiMenuItemClasses",
+            "baseUiMenuBackdropClasses",
           ],
           examples: ["base-ui-menu-basic", "base-ui-menu-nested"],
           anatomyCode: `import * as Menu from "./ui/base-ui-menu";
@@ -22235,10 +22235,10 @@ Menu.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Popover behavior with Base UI naming, class helpers, and origin-matched example content.",
           classHelpers: [
-            "baseUiPopoverTriggerClassName",
-            "baseUiPopoverRootClassName",
-            "baseUiPopoverPanelClassName",
-            "baseUiPopoverBackdropClassName",
+            "baseUiPopoverTriggerClasses",
+            "baseUiPopoverRootClasses",
+            "baseUiPopoverPanelClasses",
+            "baseUiPopoverBackdropClasses",
           ],
           examples: [
             "base-ui-popover-basic",
@@ -22276,10 +22276,10 @@ Popover.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Popover behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnPopoverTriggerClassName",
-            "shadcnPopoverRootClassName",
-            "shadcnPopoverPanelClassName",
-            "shadcnPopoverBackdropClassName",
+            "shadcnPopoverTriggerClasses",
+            "shadcnPopoverRootClasses",
+            "shadcnPopoverPanelClasses",
+            "shadcnPopoverBackdropClasses",
           ],
           examples: ["shadcn-popover-basic"],
           anatomyCode: `import * as Popover from "./ui/shadcn-popover";
@@ -22308,12 +22308,12 @@ Popover.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit RadioGroup behavior with Base UI class helper names.",
           classHelpers: [
-            "baseUiRadioVerticalClassName",
-            "baseUiRadioHorizontalClassName",
-            "baseUiRadioVerticalOptionClassName",
-            "baseUiRadioHorizontalOptionClassName",
-            "baseUiRadioLabelClassName",
-            "baseUiRadioDescriptionClassName",
+            "baseUiRadioVerticalClasses",
+            "baseUiRadioHorizontalClasses",
+            "baseUiRadioVerticalOptionClasses",
+            "baseUiRadioHorizontalOptionClasses",
+            "baseUiRadioLabelClasses",
+            "baseUiRadioDescriptionClasses",
           ],
           examples: [
             "base-ui-radio-basic",
@@ -22343,12 +22343,12 @@ h.submodel({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Radio Group behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnRadioGroupVerticalClassName",
-            "shadcnRadioGroupHorizontalClassName",
-            "shadcnRadioGroupVerticalOptionClassName",
-            "shadcnRadioGroupHorizontalOptionClassName",
-            "shadcnRadioGroupLabelClassName",
-            "shadcnRadioGroupDescriptionClassName",
+            "shadcnRadioGroupVerticalClasses",
+            "shadcnRadioGroupHorizontalClasses",
+            "shadcnRadioGroupVerticalOptionClasses",
+            "shadcnRadioGroupHorizontalOptionClasses",
+            "shadcnRadioGroupLabelClasses",
+            "shadcnRadioGroupDescriptionClasses",
           ],
           examples: [
             "shadcn-radio-group-basic",
@@ -22395,11 +22395,11 @@ h.submodel({
           usage:
             "Install the Base UI lane wrapper when you need the native Foldkit Select contract with simple Base UI class hooks.",
           classHelpers: [
-            "baseUiSelectWrapperClassName",
-            "baseUiSelectControlClassName",
-            "baseUiSelectChevronClassName",
-            "baseUiSelectLabelClassName",
-            "baseUiSelectDescriptionClassName",
+            "baseUiSelectWrapperClasses",
+            "baseUiSelectControlClasses",
+            "baseUiSelectChevronClasses",
+            "baseUiSelectLabelClasses",
+            "baseUiSelectDescriptionClasses",
           ],
           examples: ["base-ui-select-basic"],
           anatomyCode: `import * as Select from "./ui/base-ui-select";
@@ -22421,13 +22421,13 @@ Select.view<Message>({
           usage:
             "Install the shadcn lane wrapper when you want the shadcn Select anatomy with parent-owned open and selected state in Foldkit.",
           classHelpers: [
-            "shadcnSelectRootClassName",
-            "shadcnSelectTriggerClassName",
-            "shadcnSelectValueClassName",
-            "shadcnSelectContentClassName",
-            "shadcnSelectItemClassName",
-            "shadcnSelectLabelClassName",
-            "shadcnSelectSeparatorClassName",
+            "shadcnSelectRootClasses",
+            "shadcnSelectTriggerClasses",
+            "shadcnSelectValueClasses",
+            "shadcnSelectContentClasses",
+            "shadcnSelectItemClasses",
+            "shadcnSelectLabelClasses",
+            "shadcnSelectSeparatorClasses",
           ],
           examples: ["shadcn-select-basic"],
           anatomyCode: `import * as Select from "./ui/shadcn-select";
@@ -22478,12 +22478,12 @@ Select.rootView<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Slider behavior with Base UI class helper names.",
           classHelpers: [
-            "baseUiSliderRootClassName",
-            "baseUiSliderTrackClassName",
-            "baseUiSliderFilledTrackClassName",
-            "baseUiSliderThumbClassName",
-            "baseUiSliderLabelClassName",
-            "baseUiSliderValueClassName",
+            "baseUiSliderRootClasses",
+            "baseUiSliderTrackClasses",
+            "baseUiSliderFilledTrackClasses",
+            "baseUiSliderThumbClasses",
+            "baseUiSliderLabelClasses",
+            "baseUiSliderValueClasses",
           ],
           examples: ["base-ui-slider-basic"],
           anatomyCode: `import * as Slider from "./ui/base-ui-slider";
@@ -22505,12 +22505,12 @@ h.submodel({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Slider behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnSliderRootClassName",
-            "shadcnSliderTrackClassName",
-            "shadcnSliderFilledTrackClassName",
-            "shadcnSliderThumbClassName",
-            "shadcnSliderLabelClassName",
-            "shadcnSliderValueClassName",
+            "shadcnSliderRootClasses",
+            "shadcnSliderTrackClasses",
+            "shadcnSliderFilledTrackClasses",
+            "shadcnSliderThumbClasses",
+            "shadcnSliderLabelClasses",
+            "shadcnSliderValueClasses",
           ],
           examples: ["shadcn-slider-basic"],
           anatomyCode: `import * as Slider from "./ui/shadcn-slider";
@@ -22541,12 +22541,12 @@ h.submodel({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Switch behavior with Base UI class helper names.",
           classHelpers: [
-            "baseUiSwitchRowClassName",
-            "baseUiSwitchButtonClassName",
+            "baseUiSwitchRowClasses",
+            "baseUiSwitchButtonClasses",
             "baseUiSwitchKnob",
-            "baseUiSwitchLabelClassName",
-            "baseUiSwitchDescriptionClassName",
-            "baseUiSwitchTextClassName",
+            "baseUiSwitchLabelClasses",
+            "baseUiSwitchDescriptionClasses",
+            "baseUiSwitchTextClasses",
           ],
           examples: ["base-ui-switch-basic"],
           anatomyCode: `import * as Switch from "./ui/base-ui-switch";
@@ -22568,12 +22568,12 @@ h.submodel({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Switch behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnSwitchRowClassName",
-            "shadcnSwitchButtonClassName",
+            "shadcnSwitchRowClasses",
+            "shadcnSwitchButtonClasses",
             "shadcnSwitchKnob",
-            "shadcnSwitchLabelClassName",
-            "shadcnSwitchDescriptionClassName",
-            "shadcnSwitchTextClassName",
+            "shadcnSwitchLabelClasses",
+            "shadcnSwitchDescriptionClasses",
+            "shadcnSwitchTextClasses",
           ],
           examples: ["shadcn-switch-basic"],
           anatomyCode: `import * as Switch from "./ui/shadcn-switch";
@@ -22602,12 +22602,12 @@ h.submodel({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Tabs behavior with Base UI class helper names.",
           classHelpers: [
-            "baseUiTabsRootClassName",
-            "baseUiTabsListClassName",
-            "baseUiTabsTabClassName",
-            "baseUiTabsPanelClassName",
-            "baseUiTabsVerticalRootClassName",
-            "baseUiTabsVerticalListClassName",
+            "baseUiTabsRootClasses",
+            "baseUiTabsListClasses",
+            "baseUiTabsTabClasses",
+            "baseUiTabsPanelClasses",
+            "baseUiTabsVerticalRootClasses",
+            "baseUiTabsVerticalListClasses",
           ],
           examples: ["base-ui-tabs-basic"],
           anatomyCode: `import * as Tabs from "./ui/base-ui-tabs";
@@ -22632,12 +22632,12 @@ h.submodel({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Tabs behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnTabsRootClassName",
-            "shadcnTabsTabListClassName",
-            "shadcnTabsTabClassName",
-            "shadcnTabsPanelClassName",
-            "shadcnTabsVerticalRootClassName",
-            "shadcnTabsVerticalTabListClassName",
+            "shadcnTabsRootClasses",
+            "shadcnTabsTabListClasses",
+            "shadcnTabsTabClasses",
+            "shadcnTabsPanelClasses",
+            "shadcnTabsVerticalRootClasses",
+            "shadcnTabsVerticalTabListClasses",
           ],
           examples: ["shadcn-tabs-basic"],
           anatomyCode: `import * as Tabs from "./ui/shadcn-tabs";
@@ -22668,10 +22668,10 @@ h.submodel({
           usage:
             "Install the shadcn lane wrapper when you want Foldkit Textarea behavior with shadcn naming and style hooks.",
           classHelpers: [
-            "shadcnTextareaFieldClassName",
-            "shadcnTextareaLabelClassName",
-            "shadcnTextareaClassName",
-            "shadcnTextareaDescriptionClassName",
+            "shadcnTextareaFieldClasses",
+            "shadcnTextareaLabelClasses",
+            "shadcnTextareaClasses",
+            "shadcnTextareaDescriptionClasses",
           ],
           examples: [
             "shadcn-textarea-basic",
@@ -22706,12 +22706,12 @@ Textarea.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want the typed Foldkit Toast model with Base UI class helper names.",
           classHelpers: [
-            "baseUiToastContainerClassName",
-            "baseUiToastEntryClassName",
-            "baseUiToastClassName",
-            "baseUiToastTitleClassName",
-            "baseUiToastDescriptionClassName",
-            "baseUiToastCloseButtonClassName",
+            "baseUiToastContainerClasses",
+            "baseUiToastEntryClasses",
+            "baseUiToastClasses",
+            "baseUiToastTitleClasses",
+            "baseUiToastDescriptionClasses",
+            "baseUiToastCloseButtonClasses",
           ],
           examples: ["base-ui-toast-basic"],
           anatomyCode: `import * as Toast from "./ui/base-ui-toast";
@@ -22733,12 +22733,12 @@ Toast.view<Message>({
           usage:
             "Install the shadcn lane wrapper only when you need the typed Foldkit Toast model with legacy shadcn naming and style hooks. Use Sonner for new shadcn-compatible toast rendering.",
           classHelpers: [
-            "shadcnToastContainerClassName",
-            "shadcnToastEntryClassName",
-            "shadcnToastClassName",
-            "shadcnToastTitleClassName",
-            "shadcnToastDescriptionClassName",
-            "shadcnToastCloseButtonClassName",
+            "shadcnToastContainerClasses",
+            "shadcnToastEntryClasses",
+            "shadcnToastClasses",
+            "shadcnToastTitleClasses",
+            "shadcnToastDescriptionClasses",
+            "shadcnToastCloseButtonClasses",
           ],
           examples: ["shadcn-toast-basic"],
           anatomyCode: `import * as Toast from "./ui/shadcn-toast";
@@ -22767,9 +22767,9 @@ Toast.view<Message>({
           usage:
             "Install the Base UI lane wrapper when you want Foldkit Tooltip behavior with Base UI class helper names.",
           classHelpers: [
-            "baseUiTooltipRootClassName",
-            "baseUiTooltipTriggerClassName",
-            "baseUiTooltipPanelClassName",
+            "baseUiTooltipRootClasses",
+            "baseUiTooltipTriggerClasses",
+            "baseUiTooltipPanelClasses",
             "baseUiTooltipAnchor",
             "baseUiTooltipView",
           ],

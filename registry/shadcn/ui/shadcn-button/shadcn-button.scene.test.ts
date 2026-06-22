@@ -34,7 +34,7 @@ const view = (model: Model): Html => {
         onClick: ClickedButton(),
         toView: (attributes) =>
           h.button(
-            [...attributes.button, h.Class(Button.shadcnButtonClassName)],
+            [...attributes.button, h.Class(Button.shadcnButtonClasses)],
             ["Save changes"],
           ),
       }),
@@ -45,47 +45,47 @@ const view = (model: Model): Html => {
 
 describe("shadcn Button registry view", () => {
   test("exports the default shadcn variant helper output", () => {
-    const className = Button.buttonVariants();
+    const classes = Button.buttonVariants();
 
-    expect(className).toContain("bg-primary");
-    expect(className).toContain("text-primary-foreground");
-    expect(className).toContain("h-9");
-    expect(className).toContain("px-4");
+    expect(classes).toContain("bg-primary");
+    expect(classes).toContain("text-primary-foreground");
+    expect(classes).toContain("h-9");
+    expect(classes).toContain("px-4");
   });
 
   test("exports destructive and large variant helper output", () => {
-    const className = Button.buttonVariants({
+    const classes = Button.buttonVariants({
       variant: "destructive",
       size: "lg",
     });
 
-    expect(className).toContain("bg-destructive");
-    expect(className).toContain("text-white");
-    expect(className).toContain("h-10");
-    expect(className).toContain("px-6");
+    expect(classes).toContain("bg-destructive");
+    expect(classes).toContain("text-white");
+    expect(classes).toContain("h-10");
+    expect(classes).toContain("px-6");
   });
 
   test("merges custom Tailwind class conflicts with cn", () => {
-    const className = Button.buttonVariants({ className: "h-12" });
+    const classes = Button.buttonVariants({ classes: "h-12" });
 
-    expect(className).toContain("h-12");
-    expect(className.split(" ")).not.toContain("h-9");
+    expect(classes).toContain("h-12");
+    expect(classes.split(" ")).not.toContain("h-9");
   });
 
   test("keeps legacy constants derived from buttonVariants", () => {
-    expect(Button.shadcnButtonClassName).toBe(Button.buttonVariants());
-    expect(Button.shadcnDestructiveButtonClassName).toBe(
+    expect(Button.shadcnButtonClasses).toBe(Button.buttonVariants());
+    expect(Button.shadcnDestructiveButtonClasses).toBe(
       Button.buttonVariants({ variant: "destructive" }),
     );
-    expect(Button.shadcnIconButtonClassName).toBe(
+    expect(Button.shadcnIconButtonClasses).toBe(
       Button.buttonVariants({ size: "icon" }),
     );
   });
 
   test("reuses the Foldkit Button functional contract", () => {
     expect(Button.view).toBeTypeOf("function");
-    expect(Button.shadcnButtonClassName).toContain("rounded");
-    expect(Button.shadcnDestructiveButtonClassName).toContain(
+    expect(Button.shadcnButtonClasses).toContain("rounded");
+    expect(Button.shadcnDestructiveButtonClasses).toContain(
       "bg-destructive",
     );
   });

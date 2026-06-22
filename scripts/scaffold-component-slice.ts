@@ -116,7 +116,7 @@ const skeletonFiles = (
     },
     {
       path: `registry/${lane}/ui/${name}/view.ts`,
-      content: `import type { Html } from "foldkit/html";\nimport { html } from "foldkit/html";\n\nexport const ${helperName}RootClassName = "rounded-md border border-dashed border-gray-300 p-4 text-sm text-gray-700";\n\nexport const view = <Message>(): Html => {\n  const h = html<Message>();\n\n  return h.div([h.Class(${helperName}RootClassName)], ["TODO: Replace ${componentName} scaffold content."]);\n};\n`,
+      content: `import type { Html } from "foldkit/html";\nimport { html } from "foldkit/html";\n\nexport const ${helperName}RootClasses = "rounded-md border border-dashed border-gray-300 p-4 text-sm text-gray-700";\n\nexport const view = <Message>(): Html => {\n  const h = html<Message>();\n\n  return h.div([h.Class(${helperName}RootClasses)], ["TODO: Replace ${componentName} scaffold content."]);\n};\n`,
     },
     {
       path: `registry/${lane}/ui/${name}/${name}.scene.test.ts`,

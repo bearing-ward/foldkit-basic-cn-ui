@@ -85,12 +85,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           value: "yes",
           toView: (attributes) =>
             h.label(
-              [h.Class(Checkbox.baseUiCheckboxRowClassName)],
+              [h.Class(Checkbox.baseUiCheckboxRowClasses)],
               [
                 h.button(
                   [
                     ...attributes.checkbox,
-                    h.Class(Checkbox.baseUiCheckboxControlClassName),
+                    h.Class(Checkbox.baseUiCheckboxControlClasses),
                     h.AriaLabel("Stay logged in for 7 days"),
                   ],
                   model.checkbox.isChecked ? ["✓"] : []
@@ -99,7 +99,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 h.span(
                   [
                     ...attributes.label,
-                    h.Class(Checkbox.baseUiCheckboxLabelClassName),
+                    h.Class(Checkbox.baseUiCheckboxLabelClasses),
                   ],
                   ["Stay logged in for 7 days"]
                 ),

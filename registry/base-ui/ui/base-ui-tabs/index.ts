@@ -23,12 +23,12 @@ export type {
 } from "../../../foldkit/ui/tabs";
 
 export {
-  baseUiTabsListClassName,
-  baseUiTabsPanelClassName,
-  baseUiTabsRootClassName,
-  baseUiTabsTabClassName,
-  baseUiTabsVerticalListClassName,
-  baseUiTabsVerticalRootClassName,
+  baseUiTabsListClasses,
+  baseUiTabsPanelClasses,
+  baseUiTabsRootClasses,
+  baseUiTabsTabClasses,
+  baseUiTabsVerticalListClasses,
+  baseUiTabsVerticalRootClasses,
   baseUiTabsView,
 } from "./view";
 export type { BaseUiTabsViewInput } from "./view";

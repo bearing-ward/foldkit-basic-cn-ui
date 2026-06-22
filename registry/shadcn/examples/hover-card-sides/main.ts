@@ -46,10 +46,10 @@ export const update = (
 // VIEW
 
 const sideConfig = [
-  { side: "top", label: "Top", className: "bottom-full left-1/2 mb-2 -translate-x-1/2" },
-  { side: "right", label: "Right", className: "left-full top-1/2 ml-2 -translate-y-1/2" },
-  { side: "bottom", label: "Bottom", className: "left-1/2 top-full mt-2 -translate-x-1/2" },
-  { side: "left", label: "Left", className: "right-full top-1/2 mr-2 -translate-y-1/2" },
+  { side: "top", label: "Top", classes: "bottom-full left-1/2 mb-2 -translate-x-1/2" },
+  { side: "right", label: "Right", classes: "left-full top-1/2 ml-2 -translate-y-1/2" },
+  { side: "bottom", label: "Bottom", classes: "left-1/2 top-full mt-2 -translate-x-1/2" },
+  { side: "left", label: "Left", classes: "right-full top-1/2 mr-2 -translate-y-1/2" },
 ] as const;
 
 const sideCard = (
@@ -58,7 +58,7 @@ const sideCard = (
   side: (typeof sideConfig)[number]
 ): Html =>
   HoverCard.rootView<Message>({
-    className: "relative",
+    classes: "relative",
     children: [
       HoverCard.triggerView<Message>({
         open: model.openSide === side.side,
@@ -67,18 +67,18 @@ const sideCard = (
       }),
       HoverCard.portalView<Message>({
         open: model.openSide === side.side,
-        className: "absolute inset-0 z-20",
+        classes: "absolute inset-0 z-20",
         children: [
           HoverCard.backdropView<Message>({ onClose: ClosedHoverCard() }),
           HoverCard.positionerView<Message>({
-            className: `absolute ${side.className}`,
+            classes: `absolute ${side.classes}`,
             children: [
               HoverCard.popupView<Message>({
                 children: [
-                  h.h3([h.Class(HoverCard.hoverCardTitleClassName)], [
+                  h.h3([h.Class(HoverCard.hoverCardTitleClasses)], [
                     `${side.label} side`,
                   ]),
-                  h.p([h.Class(HoverCard.hoverCardDescriptionClassName)], [
+                  h.p([h.Class(HoverCard.hoverCardDescriptionClasses)], [
                     "Place the hover card on this side of the trigger.",
                   ]),
                 ],

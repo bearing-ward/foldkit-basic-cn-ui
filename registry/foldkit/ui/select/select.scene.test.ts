@@ -35,12 +35,12 @@ const view = (model: Model): Html => {
         [
           h.label(attributes.label, ["Plan"]),
           h.div(
-            [h.Class(Select.selectWrapperClassName)],
+            [h.Class(Select.selectWrapperClasses)],
             [
               h.select(
                 [
                   ...attributes.select,
-                  h.Class(Select.selectClassName),
+                  h.Class(Select.selectClasses),
                   h.AriaLabel("Plan"),
                 ],
                 [
@@ -48,7 +48,7 @@ const view = (model: Model): Html => {
                   h.option([h.Value("enterprise")], ["Enterprise"]),
                 ]
               ),
-              h.span([h.Class(Select.chevronClassName)], ["v"]),
+              h.span([h.Class(Select.chevronClasses)], ["v"]),
             ]
           ),
           h.p(attributes.description, ["Choose an account plan."]),
@@ -72,7 +72,7 @@ const disabledView = (): Html => {
           h.select(
             [
               ...attributes.select,
-              h.Class(Select.selectClassName),
+              h.Class(Select.selectClasses),
               h.AriaLabel("Disabled plan"),
             ],
             [h.option([h.Value("team")], ["Team"])]

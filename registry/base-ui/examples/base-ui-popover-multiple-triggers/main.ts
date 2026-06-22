@@ -63,7 +63,7 @@ const triggerView = (label: TriggerName): Html => {
     [
       h.Type("button"),
       h.OnClick(ClickedTrigger({ value: label })),
-      h.Class(Popover.baseUiPopoverTriggerClassName),
+      h.Class(Popover.baseUiPopoverTriggerClasses),
     ],
     [label]
   );
@@ -80,7 +80,7 @@ const panelView = (model: Model): Html => {
     [h.Class("absolute left-0 top-full z-50 mt-2")],
     [
       h.div(
-        [h.Class(Popover.baseUiPopoverPanelClassName)],
+        [h.Class(Popover.baseUiPopoverPanelClasses)],
         [
           h.div(
             [h.Class("flex items-start justify-between gap-4")],
@@ -119,7 +119,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class(Popover.baseUiPopoverRootClassName)],
+    [h.Class(Popover.baseUiPopoverRootClasses)],
     [
       h.div(
         [h.Class("flex gap-2")],

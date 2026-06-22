@@ -2,19 +2,19 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  emptyActionClassName,
-  emptyClassName,
-  emptyDescriptionClassName,
-  emptyIconClassName,
-  emptyTitleClassName,
+  emptyActionClasses,
+  emptyClasses,
+  emptyDescriptionClasses,
+  emptyIconClasses,
+  emptyTitleClasses,
 } from "./view";
 
 export {
-  emptyActionClassName,
-  emptyClassName,
-  emptyDescriptionClassName,
-  emptyIconClassName,
-  emptyTitleClassName,
+  emptyActionClasses,
+  emptyClasses,
+  emptyDescriptionClasses,
+  emptyIconClasses,
+  emptyTitleClasses,
 } from "./view";
 
 export type ViewConfig = Readonly<{
@@ -23,12 +23,12 @@ export type ViewConfig = Readonly<{
   icon?: string;
   media?: Html;
   action?: Html;
-  className?: string;
-  mediaClassName?: string;
+  classes?: string;
+  mediaClasses?: string;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -38,22 +38,22 @@ export const view = <ParentMessage>({
   icon = "–",
   media,
   action,
-  className,
-  mediaClassName,
+  classes,
+  mediaClasses,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(classNames(emptyClassName, className))],
+    [h.Class(cn(emptyClasses, classes))],
     [
       media === undefined
-        ? h.div([h.Class(classNames(emptyIconClassName, mediaClassName)), h.AriaHidden(true)], [icon])
-        : h.div([h.Class(classNames(emptyIconClassName, mediaClassName))], [media]),
-      h.h3([h.Class(emptyTitleClassName)], [title]),
-      h.p([h.Class(emptyDescriptionClassName)], [description]),
+        ? h.div([h.Class(cn(emptyIconClasses, mediaClasses)), h.AriaHidden(true)], [icon])
+        : h.div([h.Class(cn(emptyIconClasses, mediaClasses))], [media]),
+      h.h3([h.Class(emptyTitleClasses)], [title]),
+      h.p([h.Class(emptyDescriptionClasses)], [description]),
       action === undefined
         ? h.empty
-        : h.div([h.Class(emptyActionClassName)], [action]),
+        : h.div([h.Class(emptyActionClasses)], [action]),
     ]
   );
 };

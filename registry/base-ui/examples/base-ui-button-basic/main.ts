@@ -38,7 +38,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   return Button.view<Message>({
     toView: (attributes) =>
       h.button(
-        [...attributes.button, h.Class(Button.baseUiButtonClassName)],
+        [...attributes.button, h.Class(Button.baseUiButtonClasses)],
         ["Submit"]
       ),
   });

@@ -18,13 +18,13 @@ export type {
 } from "../../../base-ui/ui/avatar";
 
 export {
-  shadcnAvatarBaseClassName,
-  shadcnAvatarBadgeClassName,
-  shadcnAvatarClassNameBySize,
-  shadcnAvatarFallbackClassName,
-  shadcnAvatarGroupClassName,
-  shadcnAvatarGroupCountClassName,
-  shadcnAvatarImageClassName,
-  shadcnAvatarSizeClassNameBySize,
+  shadcnAvatarBaseClasses,
+  shadcnAvatarBadgeClasses,
+  shadcnAvatarClassesBySize,
+  shadcnAvatarFallbackClasses,
+  shadcnAvatarGroupClasses,
+  shadcnAvatarGroupCountClasses,
+  shadcnAvatarImageClasses,
+  shadcnAvatarSizeClassesBySize,
 } from "./view";
 export type { ShadcnAvatarSize } from "./view";

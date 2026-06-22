@@ -87,14 +87,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 h.button(
                   [
                     ...attributes.button,
-                    h.Class(Switch.shadcnSwitchButtonClassName),
+                    h.Class(Switch.shadcnSwitchButtonClasses),
                   ],
                   [Switch.shadcnSwitchKnob(model.switchModel.isChecked)]
                 ),
                 h.label(
                   [
                     ...attributes.label,
-                    h.Class(Switch.shadcnSwitchLabelClassName),
+                    h.Class(Switch.shadcnSwitchLabelClasses),
                   ],
                   ["Airplane Mode"]
                 ),

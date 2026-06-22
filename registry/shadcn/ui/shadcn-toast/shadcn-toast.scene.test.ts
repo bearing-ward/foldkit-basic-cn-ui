@@ -7,6 +7,6 @@ describe("shadcn Toast registry view", () => {
     expect(Toast.init).toBeTypeOf("function");
     expect(Toast.show).toBeTypeOf("function");
     expect(Toast.shadcnToastEntryView).toBeTypeOf("function");
-    expect(Toast.shadcnToastClassName).toContain("data-[closed]");
+    expect(Toast.shadcnToastClasses).toContain("data-[closed]");
   });
 });

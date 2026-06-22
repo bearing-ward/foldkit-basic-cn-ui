@@ -39,7 +39,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("mx-auto w-72")],
     [
       h.div(
-        [h.Class(Checkbox.shadcnCheckboxRowClassName)],
+        [h.Class(Checkbox.shadcnCheckboxRowClasses)],
         [
           h.button(
             [
@@ -48,22 +48,22 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.Name("terms-checkbox-desc"),
               h.Role("checkbox"),
               h.AriaChecked(true),
-              h.Class(Checkbox.shadcnCheckboxControlClassName),
+              h.Class(Checkbox.shadcnCheckboxControlClasses),
             ],
             ["✓"]
           ),
           h.div(
-            [h.Class(Checkbox.shadcnCheckboxTextClassName)],
+            [h.Class(Checkbox.shadcnCheckboxTextClasses)],
             [
               h.label(
                 [
                   h.For("terms-checkbox-desc"),
-                  h.Class(Checkbox.shadcnCheckboxLabelClassName),
+                  h.Class(Checkbox.shadcnCheckboxLabelClasses),
                 ],
                 ["Accept terms and conditions"]
               ),
               h.p(
-                [h.Class(Checkbox.shadcnCheckboxDescriptionClassName)],
+                [h.Class(Checkbox.shadcnCheckboxDescriptionClasses)],
                 [
                   "By clicking this checkbox, you agree to the terms and conditions.",
                 ]

@@ -7,12 +7,12 @@ export type FieldsetAttributes<ParentMessage> =
 export type ViewConfig<ParentMessage> = Ui.Fieldset.ViewConfig<ParentMessage>;
 
 export {
-  descriptionClassName,
-  fieldClassName,
-  fieldsClassName,
-  fieldsetClassName,
-  inputClassName,
-  labelClassName,
-  legendClassName,
-  textareaClassName,
+  descriptionClasses,
+  fieldClasses,
+  fieldsClasses,
+  fieldsetClasses,
+  inputClasses,
+  labelClasses,
+  legendClasses,
+  textareaClasses,
 } from "./view";

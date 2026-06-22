@@ -75,7 +75,7 @@ describe("Base UI Form registry component", () => {
   });
 
   test("exports Base UI form class hooks", () => {
-    expect(Form.formRootClassName).toContain("grid");
-    expect(Form.formControlClassName).toContain("aria-[invalid=true]");
+    expect(Form.formRootClasses).toContain("grid");
+    expect(Form.formControlClasses).toContain("aria-[invalid=true]");
   });
 });

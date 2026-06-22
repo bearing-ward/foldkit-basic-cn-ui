@@ -55,16 +55,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     onInput: (value) => UpdatedName({ value }),
     toView: (attributes) =>
       h.label(
-        [h.Class(Input.baseUiInputRootClassName)],
+        [h.Class(Input.baseUiInputRootClasses)],
         [
           h.span(
-            [...attributes.label, h.Class(Input.baseUiInputLabelClassName)],
+            [...attributes.label, h.Class(Input.baseUiInputLabelClasses)],
             ["Name"]
           ),
           h.input([
             ...attributes.input,
             h.AriaLabel("Name"),
-            h.Class(Input.baseUiInputControlClassName),
+            h.Class(Input.baseUiInputControlClasses),
           ]),
         ]
       ),

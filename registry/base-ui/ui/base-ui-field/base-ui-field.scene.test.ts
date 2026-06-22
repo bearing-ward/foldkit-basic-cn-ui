@@ -82,7 +82,7 @@ describe("Base UI Field registry component", () => {
   });
 
   test("exports Base UI state class hooks", () => {
-    expect(Field.fieldControlClassName).toContain("aria-[invalid=true]");
-    expect(Field.fieldErrorClassName).toContain("text-red");
+    expect(Field.fieldControlClasses).toContain("aria-[invalid=true]");
+    expect(Field.fieldErrorClasses).toContain("text-red");
   });
 });

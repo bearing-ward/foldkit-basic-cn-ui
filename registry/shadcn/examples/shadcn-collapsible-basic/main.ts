@@ -51,7 +51,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
 
   return Collapsible.rootView<Message>({
     open: model.open,
-    className:
+    classes:
       "flex w-[350px] max-w-full flex-col gap-2 border-0 p-0 shadow-none",
     children: [
       h.div(
@@ -93,7 +93,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       Collapsible.panelView<Message>({
         open: model.open,
         id: panelId,
-        className: "mt-0 border-0 bg-transparent",
+        classes: "mt-0 border-0 bg-transparent",
         children: [
           Collapsible.contentView<Message>(
             [

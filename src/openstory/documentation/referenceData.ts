@@ -1,11 +1,11 @@
 import {
-  avatarBadgeClassName,
-  avatarBaseClassName,
-  avatarFallbackClassName,
-  avatarGroupClassName,
-  avatarGroupCountClassName,
-  avatarImageClassName,
-  avatarSizeClassNameBySize,
+  avatarBadgeClasses,
+  avatarBaseClasses,
+  avatarFallbackClasses,
+  avatarGroupClasses,
+  avatarGroupCountClasses,
+  avatarImageClasses,
+  avatarSizeClassesBySize,
 } from "../../../registry/base-ui/ui/base-ui-avatar/view";
 import type { ApiReferenceConfig } from "./apiReference";
 import type { XrayConfig } from "./anatomyXray";
@@ -48,7 +48,7 @@ export type DocumentationReference = Readonly<{
   coverageRows: readonly DocumentationCoverageRow[];
 }>;
 
-const classes = (className: string): readonly string[] => className.split(" ");
+const classes = (classes: string): readonly string[] => classes.split(" ");
 
 export const baseUiAvatarDocumentation: DocumentationReference = {
   title: "Avatar",
@@ -110,7 +110,7 @@ const group = Avatar.groupView<Message>([
         tag: "div",
         description:
           "The group container arranges avatar roots and the overflow count in a compact horizontal row.",
-        classes: classes(avatarGroupClassName),
+        classes: classes(avatarGroupClasses),
         attributes: [],
         styles: [],
         children: [
@@ -121,7 +121,7 @@ const group = Avatar.groupView<Message>([
             description:
               "The root span establishes the circular frame, size, background, text scale, and white ring used by each avatar.",
             classes: classes(
-              `${avatarBaseClassName} ${avatarSizeClassNameBySize("Default")}`
+              `${avatarBaseClasses} ${avatarSizeClassesBySize("Default")}`
             ),
             attributes: [],
             styles: [{ name: "--avatar-size", value: "h-10 w-10" }],
@@ -132,7 +132,7 @@ const group = Avatar.groupView<Message>([
                 tag: "img",
                 description:
                   "The image fills the root circle and receives the source and alternate text supplied by the caller.",
-                classes: classes(avatarImageClassName),
+                classes: classes(avatarImageClasses),
                 attributes: [
                   {
                     name: "src",
@@ -150,7 +150,7 @@ const group = Avatar.groupView<Message>([
                 tag: "span",
                 description:
                   "The fallback span centers initials inside the same circular frame when no image source is available.",
-                classes: classes(avatarFallbackClassName),
+                classes: classes(avatarFallbackClasses),
                 attributes: [],
                 styles: [],
                 children: [],
@@ -161,7 +161,7 @@ const group = Avatar.groupView<Message>([
                 tag: "span",
                 description:
                   "The badge is absolutely positioned against the root and can expose a status label to assistive technology.",
-                classes: classes(avatarBadgeClassName),
+                classes: classes(avatarBadgeClasses),
                 attributes: [{ name: "aria-label", value: "Online" }],
                 styles: [{ name: "anchor", value: "right-0 bottom-0" }],
                 children: [],
@@ -174,7 +174,7 @@ const group = Avatar.groupView<Message>([
             tag: "span",
             description:
               "The count part represents hidden group members with an image role and a descriptive accessible label.",
-            classes: classes(avatarGroupCountClassName),
+            classes: classes(avatarGroupCountClasses),
             attributes: [
               { name: "role", value: "img" },
               { name: "aria-label", value: "3 more people" },
@@ -187,13 +187,13 @@ const group = Avatar.groupView<Message>([
     ],
   },
   stylingNotes: [
-    "`avatarBaseClassName` defines the circular root frame, alignment, background, text color, and white ring.",
-    "`avatarImageClassName` makes the image fill the root and stay clipped to the circle.",
-    "`avatarFallbackClassName` centers fallback text inside the same circular geometry.",
-    "`avatarBadgeClassName` positions a small status indicator at the bottom-right edge.",
-    "`avatarGroupClassName` arranges multiple avatars in an overlapping row.",
-    "`avatarGroupCountClassName` styles the overflow count as an avatar-shaped image affordance.",
-    "`avatarSizeClassNameBySize` maps Small, Default, and Large sizes to height, width, and text-scale classes.",
+    "`avatarBaseClasses` defines the circular root frame, alignment, background, text color, and white ring.",
+    "`avatarImageClasses` makes the image fill the root and stay clipped to the circle.",
+    "`avatarFallbackClasses` centers fallback text inside the same circular geometry.",
+    "`avatarBadgeClasses` positions a small status indicator at the bottom-right edge.",
+    "`avatarGroupClasses` arranges multiple avatars in an overlapping row.",
+    "`avatarGroupCountClasses` styles the overflow count as an avatar-shaped image affordance.",
+    "`avatarSizeClassesBySize` maps Small, Default, and Large sizes to height, width, and text-scale classes.",
   ],
   keyboardInteractionNotes: [],
   apiReference: {
@@ -214,7 +214,7 @@ const group = Avatar.groupView<Message>([
             typeLabel: "helper",
             signature: "rootView<ParentMessage>(config: RootViewConfig): Html",
             description:
-              "Renders the root span with size, className, style, and caller-provided children.",
+              "Renders the root span with size, classes, style, and caller-provided children.",
             badges: [
               { label: "Html", tone: "neutral" },
               { label: "source-owned", tone: "source" },
@@ -222,7 +222,7 @@ const group = Avatar.groupView<Message>([
             defaultValue: "size: Default",
             source: "registry/base-ui/ui/base-ui-avatar/index.ts",
             details: [
-              "Composes avatarClassNameBySize(size) with any caller className.",
+              "Composes avatarClassesBySize(size) with any caller classes.",
               "Children are parent-owned Html nodes, so the helper has no child update loop.",
             ],
           },
@@ -233,7 +233,7 @@ const group = Avatar.groupView<Message>([
             typeLabel: "helper",
             signature: "imageView<ParentMessage>(config: ImageViewConfig): Html",
             description:
-              "Renders the image slot with required src and alt text plus optional className and style.",
+              "Renders the image slot with required src and alt text plus optional classes and style.",
             badges: [
               { label: "required alt", tone: "required" },
               { label: "source-owned", tone: "source" },
@@ -241,7 +241,7 @@ const group = Avatar.groupView<Message>([
             source: "registry/base-ui/ui/base-ui-avatar/index.ts",
             details: [
               "Writes src and alt directly to the img element.",
-              "Uses avatarImageClassName so the image fills the circular frame.",
+              "Uses avatarImageClasses so the image fills the circular frame.",
             ],
           },
           {
@@ -308,7 +308,7 @@ const group = Avatar.groupView<Message>([
             category: "Composition",
             typeLabel: "helper",
             signature:
-              "groupView<ParentMessage>(children: readonly Html[], className?: string): Html",
+              "groupView<ParentMessage>(children: readonly Html[], classes?: string): Html",
             description:
               "Renders a grouped avatar row from caller-owned child nodes.",
             badges: [
@@ -318,7 +318,7 @@ const group = Avatar.groupView<Message>([
             source: "registry/base-ui/ui/base-ui-avatar/index.ts",
             details: [
               "Accepts avatar, fallback, badge, or count Html children from the parent view.",
-              "Adds avatarGroupClassName and optional caller className to the wrapper.",
+              "Adds avatarGroupClasses and optional caller classes to the wrapper.",
             ],
           },
           {
@@ -355,7 +355,7 @@ const group = Avatar.groupView<Message>([
             category: "Rendering",
             typeLabel: "type",
             signature:
-              "Readonly<{ children: readonly Html[]; size?: AvatarSize; className?: string; style?: AvatarStyle }>",
+              "Readonly<{ children: readonly Html[]; size?: AvatarSize; classes?: string; style?: AvatarStyle }>",
             description:
               "Configures the avatar root wrapper and the Html children rendered inside it.",
             badges: [
@@ -374,7 +374,7 @@ const group = Avatar.groupView<Message>([
             category: "Rendering",
             typeLabel: "type",
             signature:
-              "Readonly<{ src: string; alt: string; className?: string; style?: AvatarStyle }>",
+              "Readonly<{ src: string; alt: string; classes?: string; style?: AvatarStyle }>",
             description:
               "Configures the image slot with required source and alternate text.",
             badges: [
@@ -393,7 +393,7 @@ const group = Avatar.groupView<Message>([
             category: "ARIA",
             typeLabel: "type",
             signature:
-              "Readonly<{ children: readonly Html[]; ariaLabel?: string; className?: string; style?: AvatarStyle }>",
+              "Readonly<{ children: readonly Html[]; ariaLabel?: string; classes?: string; style?: AvatarStyle }>",
             description:
               "Configures the fallback slot and its optional accessible label.",
             badges: [
@@ -412,7 +412,7 @@ const group = Avatar.groupView<Message>([
             category: "Composition",
             typeLabel: "type",
             signature:
-              "Readonly<{ fallback: string; src?: string; alt?: string; size?: AvatarSize; className?: string; style?: AvatarStyle }>",
+              "Readonly<{ fallback: string; src?: string; alt?: string; size?: AvatarSize; classes?: string; style?: AvatarStyle }>",
             description:
               "Configures the convenience helper that chooses image or fallback rendering.",
             badges: [
@@ -432,7 +432,7 @@ const group = Avatar.groupView<Message>([
             category: "ARIA",
             typeLabel: "type",
             signature:
-              "Readonly<{ children?: readonly Html[]; label?: string; className?: string; style?: AvatarStyle }>",
+              "Readonly<{ children?: readonly Html[]; label?: string; classes?: string; style?: AvatarStyle }>",
             description:
               "Configures the status badge content, label, class hook, and inline style.",
             badges: [
@@ -452,7 +452,7 @@ const group = Avatar.groupView<Message>([
             category: "ARIA",
             typeLabel: "type",
             signature:
-              "Readonly<{ count: number; label?: string; className?: string; style?: AvatarStyle }>",
+              "Readonly<{ count: number; label?: string; classes?: string; style?: AvatarStyle }>",
             description:
               "Configures the overflow count marker and its accessible name.",
             badges: [
@@ -513,82 +513,82 @@ const group = Avatar.groupView<Message>([
         rows: [
           {
             id: "avatar-base-class-name",
-            name: "avatarBaseClassName",
+            name: "avatarBaseClasses",
             category: "Styling",
             typeLabel: "class",
-            signature: "const avatarBaseClassName: string",
+            signature: "const avatarBaseClasses: string",
             description:
               "Base classes for the circular avatar root frame, alignment, background, text color, and white ring.",
             badges: [{ label: "source-owned", tone: "source" }],
             source: "registry/base-ui/ui/base-ui-avatar/view.ts",
-            details: classes(avatarBaseClassName),
+            details: classes(avatarBaseClasses),
           },
           {
             id: "avatar-image-class-name",
-            name: "avatarImageClassName",
+            name: "avatarImageClasses",
             category: "Styling",
             typeLabel: "class",
-            signature: "const avatarImageClassName: string",
+            signature: "const avatarImageClasses: string",
             description:
               "Classes that make the image fill the avatar root and stay clipped to the circle.",
             badges: [{ label: "source-owned", tone: "source" }],
             source: "registry/base-ui/ui/base-ui-avatar/view.ts",
-            details: classes(avatarImageClassName),
+            details: classes(avatarImageClasses),
           },
           {
             id: "avatar-fallback-class-name",
-            name: "avatarFallbackClassName",
+            name: "avatarFallbackClasses",
             category: "Styling",
             typeLabel: "class",
-            signature: "const avatarFallbackClassName: string",
+            signature: "const avatarFallbackClasses: string",
             description:
               "Classes that center fallback content inside the same circular geometry.",
             badges: [{ label: "source-owned", tone: "source" }],
             source: "registry/base-ui/ui/base-ui-avatar/view.ts",
-            details: classes(avatarFallbackClassName),
+            details: classes(avatarFallbackClasses),
           },
           {
             id: "avatar-badge-class-name",
-            name: "avatarBadgeClassName",
+            name: "avatarBadgeClasses",
             category: "Styling",
             typeLabel: "class",
-            signature: "const avatarBadgeClassName: string",
+            signature: "const avatarBadgeClasses: string",
             description:
               "Classes that position and style the small status indicator on the avatar edge.",
             badges: [{ label: "source-owned", tone: "source" }],
             source: "registry/base-ui/ui/base-ui-avatar/view.ts",
-            details: classes(avatarBadgeClassName),
+            details: classes(avatarBadgeClasses),
           },
           {
             id: "avatar-group-class-name",
-            name: "avatarGroupClassName",
+            name: "avatarGroupClasses",
             category: "Composition",
             typeLabel: "class",
-            signature: "const avatarGroupClassName: string",
+            signature: "const avatarGroupClasses: string",
             description:
               "Classes that arrange multiple avatars in a compact overlapping row.",
             badges: [{ label: "source-owned", tone: "source" }],
             source: "registry/base-ui/ui/base-ui-avatar/view.ts",
-            details: classes(avatarGroupClassName),
+            details: classes(avatarGroupClasses),
           },
           {
             id: "avatar-group-count-class-name",
-            name: "avatarGroupCountClassName",
+            name: "avatarGroupCountClasses",
             category: "Styling",
             typeLabel: "class",
-            signature: "const avatarGroupCountClassName: string",
+            signature: "const avatarGroupCountClasses: string",
             description:
               "Classes that make the overflow count marker match the avatar silhouette.",
             badges: [{ label: "source-owned", tone: "source" }],
             source: "registry/base-ui/ui/base-ui-avatar/view.ts",
-            details: classes(avatarGroupCountClassName),
+            details: classes(avatarGroupCountClasses),
           },
           {
             id: "avatar-size-class-name-by-size",
-            name: "avatarSizeClassNameBySize",
+            name: "avatarSizeClassesBySize",
             category: "Styling",
             typeLabel: "mapper",
-            signature: "avatarSizeClassNameBySize(size?: AvatarSize): string",
+            signature: "avatarSizeClassesBySize(size?: AvatarSize): string",
             description:
               "Maps the named size scale to height, width, and text-size classes.",
             badges: [

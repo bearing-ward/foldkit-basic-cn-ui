@@ -120,11 +120,11 @@ const planForModel = (model: Model) =>
     primitiveName: model.primitiveName,
   });
 
-const labelClassName = "block text-sm font-medium text-gray-800";
-const fieldClassName = "grid gap-1.5";
-const inputClassName =
+const labelClasses = "block text-sm font-medium text-gray-800";
+const fieldClasses = "grid gap-1.5";
+const inputClasses =
   "h-10 rounded-md border border-gray-300 bg-white px-3 text-sm text-gray-950 shadow-sm focus:border-accent-500 focus:outline-none focus:ring-1 focus:ring-accent-500";
-const panelClassName =
+const panelClasses =
   "rounded-md border border-gray-200 bg-white p-4 shadow-sm";
 
 const originLabel = (origin: SliceOrigin): string =>
@@ -135,7 +135,7 @@ const originLabel = (origin: SliceOrigin): string =>
     M.exhaustive
   );
 
-const fileModeClassName = (mode: ScaffoldFile["mode"]): string =>
+const fileModeClasses = (mode: ScaffoldFile["mode"]): string =>
   clsx(
     "rounded px-1.5 py-0.5 text-xs font-medium",
     mode === "create" && "bg-accent-100 text-accent-700",
@@ -177,13 +177,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ],
         [
           h.div(
-            [h.Class(`${panelClassName} space-y-4`)],
+            [h.Class(`${panelClasses} space-y-4`)],
             [
               h.div(
-                [h.Class(fieldClassName)],
+                [h.Class(fieldClasses)],
                 [
                   h.label(
-                    [h.For("new-component-origin"), h.Class(labelClassName)],
+                    [h.For("new-component-origin"), h.Class(labelClasses)],
                     ["Origin"]
                   ),
                   Ui.Select.view<Message>({
@@ -192,7 +192,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     onChange: (value) => SelectedNewComponentOrigin({ value }),
                     toView: (attributes) =>
                       h.select(
-                        [...attributes.select, h.Class(inputClassName)],
+                        [...attributes.select, h.Class(inputClasses)],
                         sliceOrigins.map((origin) =>
                           h.option([h.Value(origin)], [originLabel(origin)])
                         )
@@ -201,10 +201,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 ]
               ),
               h.div(
-                [h.Class(fieldClassName)],
+                [h.Class(fieldClasses)],
                 [
                   h.label(
-                    [h.For("new-component-name"), h.Class(labelClassName)],
+                    [h.For("new-component-name"), h.Class(labelClasses)],
                     ["Component name"]
                   ),
                   h.input([
@@ -214,15 +214,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     h.Placeholder("example-panel"),
                     h.OnInput((value) => UpdatedNewComponentName({ value })),
                     h.OnChange((value) => UpdatedNewComponentName({ value })),
-                    h.Class(inputClassName),
+                    h.Class(inputClasses),
                   ]),
                 ]
               ),
               h.div(
-                [h.Class(fieldClassName)],
+                [h.Class(fieldClasses)],
                 [
                   h.label(
-                    [h.For("new-component-primitive"), h.Class(labelClassName)],
+                    [h.For("new-component-primitive"), h.Class(labelClasses)],
                     ["Primitive name"]
                   ),
                   h.input([
@@ -236,14 +236,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     h.OnChange((value) =>
                       UpdatedNewComponentPrimitiveName({ value })
                     ),
-                    h.Class(inputClassName),
+                    h.Class(inputClasses),
                   ]),
                 ]
               ),
             ]
           ),
           h.div(
-            [h.Class(`${panelClassName} space-y-4`)],
+            [h.Class(`${panelClasses} space-y-4`)],
             [
               h.div(
                 [h.Class("grid gap-1")],
@@ -272,7 +272,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                           ),
                         ],
                         [
-                          h.span([h.Class(fileModeClassName(file.mode))], [
+                          h.span([h.Class(fileModeClasses(file.mode))], [
                             file.mode,
                           ]),
                           h.span([h.Class("min-w-0 break-words")], [
@@ -289,7 +289,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ]
       ),
       h.section(
-        [h.Class(`${panelClassName} grid gap-4 md:grid-cols-2`)],
+        [h.Class(`${panelClasses} grid gap-4 md:grid-cols-2`)],
         [
           h.div(
             [h.Class("space-y-2")],

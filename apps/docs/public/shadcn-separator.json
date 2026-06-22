@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-separator/index.ts",
       "target": "src/ui/shadcn-separator/index.ts",
       "type": "registry:ui",
-      "content": "export { view } from \"../../../base-ui/ui/separator\";\nexport type {\n  SeparatorOrientation,\n  SeparatorStyle,\n  ViewConfig,\n} from \"../../../base-ui/ui/separator\";\n\nexport {\n  shadcnHorizontalSeparatorClassName,\n  shadcnSeparatorBaseClassName,\n  shadcnSeparatorClassNameByOrientation,\n  shadcnVerticalSeparatorClassName,\n} from \"./view\";\n"
+      "content": "export { view } from \"../../../base-ui/ui/separator\";\nexport type {\n  SeparatorOrientation,\n  SeparatorStyle,\n  ViewConfig,\n} from \"../../../base-ui/ui/separator\";\n\nexport {\n  shadcnHorizontalSeparatorClasses,\n  shadcnSeparatorBaseClasses,\n  shadcnSeparatorClassesByOrientation,\n  shadcnVerticalSeparatorClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-separator/view.ts",
       "target": "src/ui/shadcn-separator/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  horizontalSeparatorClassName as shadcnHorizontalSeparatorClassName,\n  separatorBaseClassName as shadcnSeparatorBaseClassName,\n  separatorClassNameByOrientation as shadcnSeparatorClassNameByOrientation,\n  verticalSeparatorClassName as shadcnVerticalSeparatorClassName,\n} from \"../../../base-ui/ui/separator/view\";\n"
+      "content": "export {\n  horizontalSeparatorClasses as shadcnHorizontalSeparatorClasses,\n  separatorBaseClasses as shadcnSeparatorBaseClasses,\n  separatorClassesByOrientation as shadcnSeparatorClassesByOrientation,\n  verticalSeparatorClasses as shadcnVerticalSeparatorClasses,\n} from \"../../../base-ui/ui/separator/view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-separator/shadcn-separator.scene.test.ts",
       "target": "src/ui/shadcn-separator/shadcn-separator.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Separator from \"./index\";\n\ndescribe(\"shadcn Separator registry view\", () => {\n  test(\"reuses the Foldkit Separator view contract\", () => {\n    expect(Separator.view).toBeTypeOf(\"function\");\n    expect(\n      Separator.shadcnSeparatorClassNameByOrientation(\"vertical\")\n    ).toContain(\"w-px\");\n    expect(Separator.shadcnSeparatorBaseClassName).toContain(\"shrink-0\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Separator from \"./index\";\n\ndescribe(\"shadcn Separator registry view\", () => {\n  test(\"reuses the Foldkit Separator view contract\", () => {\n    expect(Separator.view).toBeTypeOf(\"function\");\n    expect(\n      Separator.shadcnSeparatorClassesByOrientation(\"vertical\")\n    ).toContain(\"w-px\");\n    expect(Separator.shadcnSeparatorBaseClasses).toContain(\"shrink-0\");\n  });\n});\n"
     }
   ],
   "meta": {

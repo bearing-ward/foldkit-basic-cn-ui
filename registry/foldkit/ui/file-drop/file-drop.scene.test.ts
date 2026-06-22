@@ -90,22 +90,22 @@ const fileDropView = (
             h.label(
               [
                 ...attributes.root,
-                h.Class(FileDrop.dropZoneClassName),
+                h.Class(FileDrop.dropZoneClasses),
                 h.DataAttribute("testid", "file-drop-zone"),
               ],
               [
                 h.span(
-                  [h.Class(FileDrop.primaryTextClassName)],
+                  [h.Class(FileDrop.primaryTextClasses)],
                   ["Drop files or click to browse"]
                 ),
                 h.span(
-                  [h.Class(FileDrop.secondaryTextClassName)],
+                  [h.Class(FileDrop.secondaryTextClasses)],
                   ["Documents, images, or other local files."]
                 ),
                 h.input([
                   ...attributes.input,
                   h.AriaLabel("Upload files"),
-                  h.Class(FileDrop.fileInputClassName),
+                  h.Class(FileDrop.fileInputClasses),
                 ]),
               ]
             ),
@@ -114,14 +114,14 @@ const fileDropView = (
       }),
       h.p([], [model.status]),
       h.ul(
-        [h.Class(FileDrop.fileListClassName)],
+        [h.Class(FileDrop.fileListClasses)],
         model.files.map((file) =>
           h.li(
-            [h.Class(FileDrop.fileRowClassName)],
+            [h.Class(FileDrop.fileRowClasses)],
             [
-              h.span([h.Class(FileDrop.fileNameClassName)], [File.name(file)]),
+              h.span([h.Class(FileDrop.fileNameClasses)], [File.name(file)]),
               h.span(
-                [h.Class(FileDrop.fileSizeClassName)],
+                [h.Class(FileDrop.fileSizeClasses)],
                 [FileDrop.formatFileSize(File.size(file))]
               ),
             ]

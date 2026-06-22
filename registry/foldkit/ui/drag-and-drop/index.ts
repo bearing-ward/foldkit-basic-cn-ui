@@ -55,13 +55,13 @@ export const {
 } = Ui.DragAndDrop;
 
 export {
-  dragHandleClassName,
-  dragItemClassName,
-  dragListClassName,
-  dragGhostClassName,
-  dragPlaceholderClassName,
-  dragRootClassName,
-  dragStatusClassName,
+  dragHandleClasses,
+  dragItemClasses,
+  dragListClasses,
+  dragGhostClasses,
+  dragPlaceholderClasses,
+  dragRootClasses,
+  dragStatusClasses,
   sortableListView,
 } from "./view";
 export type { SortableItem, SortableListViewInput } from "./view";

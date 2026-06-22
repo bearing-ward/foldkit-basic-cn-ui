@@ -2,80 +2,80 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  h1ClassName,
-  h2ClassName,
-  h3ClassName,
-  h4ClassName,
-  blockquoteClassName,
-  inlineCodeClassName,
-  largeClassName,
-  leadClassName,
-  listClassName,
-  mutedClassName,
-  paragraphClassName,
-  smallClassName,
-  tableCellClassName,
-  tableClassName,
-  tableHeaderCellClassName,
-  tableWrapperClassName,
+  h1Classes,
+  h2Classes,
+  h3Classes,
+  h4Classes,
+  blockquoteClasses,
+  inlineCodeClasses,
+  largeClasses,
+  leadClasses,
+  listClasses,
+  mutedClasses,
+  paragraphClasses,
+  smallClasses,
+  tableCellClasses,
+  tableClasses,
+  tableHeaderCellClasses,
+  tableWrapperClasses,
 } from "./view";
 
 export {
-  h1ClassName,
-  h2ClassName,
-  h3ClassName,
-  h4ClassName,
-  blockquoteClassName,
-  inlineCodeClassName,
-  largeClassName,
-  leadClassName,
-  listClassName,
-  mutedClassName,
-  paragraphClassName,
-  smallClassName,
-  tableCellClassName,
-  tableClassName,
-  tableHeaderCellClassName,
-  tableWrapperClassName,
+  h1Classes,
+  h2Classes,
+  h3Classes,
+  h4Classes,
+  blockquoteClasses,
+  inlineCodeClasses,
+  largeClasses,
+  leadClasses,
+  listClasses,
+  mutedClasses,
+  paragraphClasses,
+  smallClasses,
+  tableCellClasses,
+  tableClasses,
+  tableHeaderCellClasses,
+  tableWrapperClasses,
 } from "./view";
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
-export const h1 = <ParentMessage>(label: string, className?: string): Html => {
+export const h1 = <ParentMessage>(label: string, classes?: string): Html => {
   const h = html<ParentMessage>();
-  return h.h1([h.Class(classNames(h1ClassName, className))], [label]);
+  return h.h1([h.Class(cn(h1Classes, classes))], [label]);
 };
 
-export const h2 = <ParentMessage>(label: string, className?: string): Html => {
+export const h2 = <ParentMessage>(label: string, classes?: string): Html => {
   const h = html<ParentMessage>();
-  return h.h2([h.Class(classNames(h2ClassName, className))], [label]);
+  return h.h2([h.Class(cn(h2Classes, classes))], [label]);
 };
 
-export const h3 = <ParentMessage>(label: string, className?: string): Html => {
+export const h3 = <ParentMessage>(label: string, classes?: string): Html => {
   const h = html<ParentMessage>();
-  return h.h3([h.Class(classNames(h3ClassName, className))], [label]);
+  return h.h3([h.Class(cn(h3Classes, classes))], [label]);
 };
 
-export const h4 = <ParentMessage>(label: string, className?: string): Html => {
+export const h4 = <ParentMessage>(label: string, classes?: string): Html => {
   const h = html<ParentMessage>();
-  return h.h4([h.Class(classNames(h4ClassName, className))], [label]);
+  return h.h4([h.Class(cn(h4Classes, classes))], [label]);
 };
 
-export const p = <ParentMessage>(label: string, className?: string): Html => {
+export const p = <ParentMessage>(label: string, classes?: string): Html => {
   const h = html<ParentMessage>();
-  return h.p([h.Class(classNames(paragraphClassName, className))], [label]);
+  return h.p([h.Class(cn(paragraphClasses, classes))], [label]);
 };
 
 export const blockquote = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.blockquote(
-    [h.Class(classNames(blockquoteClassName, className))],
+    [h.Class(cn(blockquoteClasses, classes))],
     [label]
   );
 };
@@ -83,15 +83,15 @@ export const blockquote = <ParentMessage>(
 export const table = <ParentMessage>(
   headers: readonly string[],
   rows: readonly (readonly string[])[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(classNames(tableWrapperClassName, className))],
+    [h.Class(cn(tableWrapperClasses, classes))],
     [
       h.table(
-        [h.Class(tableClassName)],
+        [h.Class(tableClasses)],
         [
           h.thead(
             [],
@@ -99,7 +99,7 @@ export const table = <ParentMessage>(
               h.tr(
                 [],
                 headers.map((header) =>
-                  h.th([h.Class(tableHeaderCellClassName)], [header])
+                  h.th([h.Class(tableHeaderCellClasses)], [header])
                 )
               ),
             ]
@@ -109,7 +109,7 @@ export const table = <ParentMessage>(
             rows.map((row) =>
               h.tr(
                 [],
-                row.map((cell) => h.td([h.Class(tableCellClassName)], [cell]))
+                row.map((cell) => h.td([h.Class(tableCellClasses)], [cell]))
               )
             )
           ),
@@ -121,51 +121,51 @@ export const table = <ParentMessage>(
 
 export const lead = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
-  return h.p([h.Class(classNames(leadClassName, className))], [label]);
+  return h.p([h.Class(cn(leadClasses, classes))], [label]);
 };
 
 export const large = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
-  return h.div([h.Class(classNames(largeClassName, className))], [label]);
+  return h.div([h.Class(cn(largeClasses, classes))], [label]);
 };
 
 export const small = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
-  return h.small([h.Class(classNames(smallClassName, className))], [label]);
+  return h.small([h.Class(cn(smallClasses, classes))], [label]);
 };
 
 export const muted = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
-  return h.p([h.Class(classNames(mutedClassName, className))], [label]);
+  return h.p([h.Class(cn(mutedClasses, classes))], [label]);
 };
 
 export const inlineCode = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
-  return h.code([h.Class(classNames(inlineCodeClassName, className))], [label]);
+  return h.code([h.Class(cn(inlineCodeClasses, classes))], [label]);
 };
 
 export const ul = <ParentMessage>(
   items: readonly string[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.ul(
-    [h.Class(classNames(listClassName, className))],
+    [h.Class(cn(listClasses, classes))],
     items.map((item) => h.li([], [item]))
   );
 };

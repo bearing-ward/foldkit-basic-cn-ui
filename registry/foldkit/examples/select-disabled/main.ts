@@ -61,16 +61,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             [
               h.label(attributes.label, ["Plan"]),
               h.div(
-                [h.Class(Select.selectWrapperClassName)],
+                [h.Class(Select.selectWrapperClasses)],
                 [
                   h.select(
-                    [...attributes.select, h.Class(Select.selectClassName)],
+                    [...attributes.select, h.Class(Select.selectClasses)],
                     [
                       h.option([h.Value("team")], ["Team"]),
                       h.option([h.Value("enterprise")], ["Enterprise"]),
                     ]
                   ),
-                  h.span([h.Class(Select.chevronClassName)], ["v"]),
+                  h.span([h.Class(Select.chevronClasses)], ["v"]),
                 ]
               ),
               h.p(attributes.description, ["Plan changes are locked."]),

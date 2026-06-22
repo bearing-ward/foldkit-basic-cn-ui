@@ -1,20 +1,20 @@
-export const tableContainerClassName = "relative w-full overflow-x-auto";
+export const tableContainerClasses = "relative w-full overflow-x-auto";
 
-export const tableClassName = "w-full caption-bottom text-sm";
+export const tableClasses = "w-full caption-bottom text-sm";
 
-export const tableHeaderClassName = "[&_tr]:border-b";
+export const tableHeaderClasses = "[&_tr]:border-b";
 
-export const tableBodyClassName = "[&_tr:last-child]:border-0";
+export const tableBodyClasses = "[&_tr:last-child]:border-0";
 
-export const tableFooterClassName =
+export const tableFooterClasses =
   "border-t bg-gray-50/50 font-medium [&>tr]:last:border-b-0";
 
-export const tableRowClassName =
+export const tableRowClasses =
   "border-b border-gray-200 transition-colors hover:bg-gray-50 data-[state=selected]:bg-gray-50";
 
-export const tableHeadClassName =
+export const tableHeadClasses =
   "h-10 px-2 text-left align-middle font-medium whitespace-nowrap text-gray-500";
 
-export const tableCellClassName = "p-2 align-middle whitespace-nowrap";
+export const tableCellClasses = "p-2 align-middle whitespace-nowrap";
 
-export const tableCaptionClassName = "mt-4 text-sm text-gray-500";
+export const tableCaptionClasses = "mt-4 text-sm text-gray-500";

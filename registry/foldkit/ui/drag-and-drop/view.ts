@@ -3,23 +3,23 @@ import { Ui } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-export const dragRootClassName = "max-w-md space-y-3";
+export const dragRootClasses = "max-w-md space-y-3";
 
-export const dragListClassName =
+export const dragListClasses =
   "space-y-2 rounded-lg border border-gray-200 bg-white p-3";
 
-export const dragItemClassName =
+export const dragItemClasses =
   "flex items-center justify-between gap-3 rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 shadow-sm transition focus:outline-none focus:ring-2 focus:ring-indigo-500 data-[keyboard-dragging]:border-indigo-400 data-[keyboard-dragging]:bg-indigo-50 data-[keyboard-dragging]:ring-2 data-[keyboard-dragging]:ring-indigo-500";
 
-export const dragHandleClassName =
+export const dragHandleClasses =
   "rounded border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-500";
 
-export const dragStatusClassName = "text-sm text-gray-700";
+export const dragStatusClasses = "text-sm text-gray-700";
 
-export const dragPlaceholderClassName =
+export const dragPlaceholderClasses =
   "min-h-10 rounded-md border-2 border-dashed border-indigo-300 bg-indigo-50/50";
 
-export const dragGhostClassName =
+export const dragGhostClasses =
   "pointer-events-none rounded-md border border-indigo-400 bg-white px-3 py-2 text-sm text-gray-900 shadow-lg";
 
 export type SortableItem = Readonly<{
@@ -66,14 +66,14 @@ export const sortableListView = <ParentMessage>({
           containerId,
           index,
         }),
-        h.Class(dragItemClassName),
+        h.Class(dragItemClasses),
         ...(isKeyboardDragged
           ? [h.DataAttribute("keyboard-dragging", "")]
           : []),
       ],
       [
         h.span([], [item.label]),
-        h.span([h.AriaHidden(true), h.Class(dragHandleClassName)], ["::"]),
+        h.span([h.AriaHidden(true), h.Class(dragHandleClasses)], ["::"]),
       ]
     );
   };
@@ -101,7 +101,7 @@ export const sortableListView = <ParentMessage>({
     [
       h.AriaHidden(true),
       h.DataAttribute("drop-placeholder", ""),
-      h.Class(dragPlaceholderClassName),
+      h.Class(dragPlaceholderClasses),
     ],
     []
   );
@@ -134,22 +134,22 @@ export const sortableListView = <ParentMessage>({
     Option.match({
       onNone: () => h.empty,
       onSome: ({ item, style }) =>
-        h.div([h.Style(style), h.Class(dragGhostClassName)], [item.label]),
+        h.div([h.Style(style), h.Class(dragGhostClasses)], [item.label]),
     })
   );
 
   return h.div(
-    [h.Class(dragRootClassName)],
+    [h.Class(dragRootClasses)],
     [
       h.div(
         [
           ...Ui.DragAndDrop.droppable<ParentMessage>(containerId, label),
-          h.Class(dragListClassName),
+          h.Class(dragListClasses),
         ],
         renderedItems
       ),
       ghost,
-      h.p([h.Class(dragStatusClassName)], [status]),
+      h.p([h.Class(dragStatusClasses)], [status]),
     ]
   );
 };

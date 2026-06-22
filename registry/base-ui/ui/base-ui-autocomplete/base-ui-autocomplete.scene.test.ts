@@ -55,7 +55,7 @@ describe("Autocomplete registry component", () => {
   });
 
   test("exports Base UI autocomplete class hooks", () => {
-    expect(Autocomplete.autocompleteRootClassName).toContain("grid");
-    expect(Autocomplete.autocompleteItemClassName).toContain("data-[selected]");
+    expect(Autocomplete.autocompleteRootClasses).toContain("grid");
+    expect(Autocomplete.autocompleteItemClasses).toContain("data-[selected]");
   });
 });

@@ -7,6 +7,6 @@ describe("shadcn Checkbox registry view", () => {
     expect(Checkbox.init).toBeTypeOf("function");
     expect(Checkbox.update).toBeTypeOf("function");
     expect(Checkbox.view).toBeTypeOf("function");
-    expect(Checkbox.shadcnCheckboxControlClassName).toContain("rounded");
+    expect(Checkbox.shadcnCheckboxControlClasses).toContain("rounded");
   });
 });

@@ -43,7 +43,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           h.button(
             [
               ...attributes.button,
-              h.Class(`${Button.shadcnButtonClassName} rounded-full`),
+              h.Class(`${Button.shadcnButtonClasses} rounded-full`),
             ],
             ["↑"]
           ),

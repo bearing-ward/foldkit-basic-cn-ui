@@ -28,10 +28,10 @@ export {
 export type { InitConfig, ViewInputs } from "../../../foldkit/ui/date-picker";
 
 export {
-  shadcnDatePickerBackdropClassName,
-  shadcnDatePickerPanelClassName,
-  shadcnDatePickerPlaceholderClassName,
-  shadcnDatePickerTriggerClassName,
-  shadcnDatePickerTriggerContentClassName,
-  shadcnDatePickerWrapperClassName,
+  shadcnDatePickerBackdropClasses,
+  shadcnDatePickerPanelClasses,
+  shadcnDatePickerPlaceholderClasses,
+  shadcnDatePickerTriggerClasses,
+  shadcnDatePickerTriggerContentClasses,
+  shadcnDatePickerWrapperClasses,
 } from "./view";

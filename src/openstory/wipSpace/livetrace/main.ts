@@ -244,18 +244,18 @@ type AgentDemo = Readonly<{
   logs: readonly AgentLogLine[];
 }>;
 
-const shellClassName =
+const shellClasses =
   "dark min-h-screen bg-background text-foreground [--background:220_12%_5%] [--foreground:220_7%_91%] [--card:216_13%_8%] [--card-foreground:220_16%_96%] [--muted:220_12%_10%] [--muted-foreground:220_5%_57%] [--primary:190_100%_50%] [--primary-foreground:220_12%_5%] [--destructive:0_100%_71%] [--destructive-foreground:0_100%_71%] [--border:216_13%_15%] [--ring:190_100%_50%] [--radius:6px] [--color-background:hsl(220_12%_5%)] [--color-foreground:hsl(220_7%_91%)] [--color-card:hsl(216_13%_8%)] [--color-card-foreground:hsl(220_16%_96%)] [--color-muted:hsl(220_12%_10%)] [--color-muted-foreground:hsl(220_5%_57%)] [--color-primary:hsl(190_100%_50%)] [--color-primary-foreground:hsl(220_12%_5%)] [--color-destructive:hsl(0_100%_71%)] [--color-destructive-foreground:hsl(0_100%_71%)] [--color-border:hsl(216_13%_15%)] [--color-ring:hsl(190_100%_50%)]";
-const containerClassName = "mx-auto w-full max-w-6xl px-6";
-const panelClassName =
+const containerClasses = "mx-auto w-full max-w-6xl px-6";
+const panelClasses =
   "rounded-[10px] border border-border bg-card text-card-foreground";
-const subtlePanelClassName =
+const subtlePanelClasses =
   "rounded-[6px] border border-border bg-muted/35 text-card-foreground";
-const pillClassName =
+const pillClasses =
   "inline-flex h-7 items-center gap-2 rounded-[4px] border border-border bg-muted px-3 font-mono text-[11px] text-muted-foreground";
-const controlButtonClassName =
+const controlButtonClasses =
   "inline-flex h-[27px] items-center justify-center rounded-[4px] border border-border bg-transparent px-[10px] font-mono text-[11.5px] tracking-[0.3px] text-muted-foreground transition-colors hover:border-border/80 hover:bg-muted hover:text-card-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40";
-const primaryControlButtonClassName =
+const primaryControlButtonClasses =
   "border-primary/25 bg-primary/10 text-primary hover:border-primary hover:bg-primary/20";
 
 const completedTrace: Trace = {
@@ -459,7 +459,7 @@ const logsForMode = (mode: Mode): readonly LogLine[] =>
 const statusLabel = (status: Mode): string =>
   status === "failing" ? "failed" : status;
 
-const statusChipClassName = (status: Mode): string =>
+const statusChipClasses = (status: Mode): string =>
   clsx(
     "rounded-[3px] border px-2 py-[3px] font-mono text-[10px] font-medium uppercase tracking-[0.8px]",
     status === "completed" &&
@@ -470,7 +470,7 @@ const statusChipClassName = (status: Mode): string =>
       "border-destructive/30 bg-destructive/10 text-destructive-foreground"
   );
 
-const stepStateClassName = (state: StepState): string =>
+const stepStateClasses = (state: StepState): string =>
   clsx(
     "grid grid-cols-[16px_minmax(0,1fr)_minmax(8rem,200px)_56px] items-center gap-[14px] border-b border-white/[0.04] py-2 text-[13px] last:border-b-0",
     state === "ok" && "text-emerald-300",
@@ -478,7 +478,7 @@ const stepStateClassName = (state: StepState): string =>
     state === "failed" && "text-destructive"
   );
 
-const logLineClassName = (level: LogLine["level"]): string =>
+const logLineClasses = (level: LogLine["level"]): string =>
   clsx(
     "grid grid-cols-[6.2rem_3rem_4.8rem_minmax(0,1fr)] gap-2 px-3 py-0.5 text-[11.5px] leading-[1.55]",
     level === "info" && "text-muted-foreground",
@@ -1097,7 +1097,7 @@ const navView = (h: ReturnType<typeof html<Message>>): Html =>
       h.div(
         [
           h.Class(
-            `${containerClassName} flex h-16 items-center justify-between`
+            `${containerClasses} flex h-16 items-center justify-between`
           ),
         ],
         [
@@ -1178,8 +1178,8 @@ const modeControlsView = (
           h.DataAttribute("active", activeMode === mode ? "true" : "false"),
           h.Class(
             clsx(
-              controlButtonClassName,
-              mode === "running" && primaryControlButtonClassName,
+              controlButtonClasses,
+              mode === "running" && primaryControlButtonClasses,
               "data-[active=true]:border-primary/25 data-[active=true]:bg-primary/10 data-[active=true]:text-primary"
             )
           ),
@@ -1191,7 +1191,7 @@ const modeControlsView = (
 
 const stepView = (h: ReturnType<typeof html<Message>>, step: TraceStep): Html =>
   h.div(
-    [h.Class(stepStateClassName(step.state))],
+    [h.Class(stepStateClasses(step.state))],
     [
       h.span(
         [
@@ -1271,7 +1271,7 @@ const logRowsView = (
 ): readonly Html[] =>
   logsForMode(mode).map((log) =>
     h.div(
-      [h.Class(logLineClassName(log.level))],
+      [h.Class(logLineClasses(log.level))],
       [
         h.span([], [log.timestamp]),
         h.span([h.Class("font-semibold uppercase text-primary")], [log.level]),
@@ -1359,7 +1359,7 @@ const traceCardView = (
                 [trace.elapsed]
               ),
               h.span(
-                [h.Class(statusChipClassName(trace.status))],
+                [h.Class(statusChipClasses(trace.status))],
                 [statusLabel(trace.status)]
               ),
             ]
@@ -1382,7 +1382,7 @@ const logConsoleView = (
   mode: Mode
 ): Html =>
   h.div(
-    [h.Class(clsx(panelClassName, "overflow-hidden"))],
+    [h.Class(clsx(panelClasses, "overflow-hidden"))],
     [
       h.div(
         [
@@ -2041,7 +2041,7 @@ const agentDemoCaptureView = (
   );
 };
 
-const sourceToneClassName = (tone: SourceLine["tone"]): string =>
+const sourceToneClasses = (tone: SourceLine["tone"]): string =>
   clsx(
     tone === "keyword" && "text-violet-300",
     tone === "call" && "text-primary",
@@ -2060,7 +2060,7 @@ const sourceLineView = (
       h.Class(
         clsx(
           "whitespace-pre pr-4 leading-[1.45] data-[active=true]:bg-primary/10 data-[active=true]:text-primary",
-          sourceToneClassName(line.tone ?? "plain")
+          sourceToneClasses(line.tone ?? "plain")
         )
       ),
     ],
@@ -2488,7 +2488,7 @@ const literateCaptureView = (h: ReturnType<typeof html<Message>>): Html =>
 
 const literateSectionView = (h: ReturnType<typeof html<Message>>): Html =>
   h.section(
-    [h.Class(`${containerClassName} py-16`)],
+    [h.Class(`${containerClasses} py-16`)],
     [
       h.div(
         [h.Class("mb-6 max-w-2xl")],
@@ -2536,13 +2536,13 @@ const stageView = (h: ReturnType<typeof html<Message>>, model: Model): Html =>
     [
       constellationView(h),
       h.div(
-        [h.Class(`${containerClassName} relative py-16 md:py-20`)],
+        [h.Class(`${containerClasses} relative py-16 md:py-20`)],
         [
           h.div(
             [h.Class("mb-4")],
             [
               h.span(
-                [h.Class(pillClassName)],
+                [h.Class(pillClasses)],
                 [
                   h.span([h.Class("h-2 w-2 rounded-full bg-primary")], []),
                   "live · effect spans → react · zero-overhead",
@@ -2577,7 +2577,7 @@ const stageView = (h: ReturnType<typeof html<Message>>, model: Model): Html =>
 
 const howItFitsView = (h: ReturnType<typeof html<Message>>): Html =>
   h.section(
-    [h.Class(`${containerClassName} py-16`)],
+    [h.Class(`${containerClasses} py-16`)],
     [
       h.div(
         [
@@ -2604,7 +2604,7 @@ const howItFitsView = (h: ReturnType<typeof html<Message>>): Html =>
         [h.Class("grid gap-4 md:grid-cols-3")],
         fitCards.map(({ title, body }) =>
           h.article(
-            [h.Class(clsx(subtlePanelClassName, "p-5"))],
+            [h.Class(clsx(subtlePanelClasses, "p-5"))],
             [
               h.h3([h.Class("font-semibold")], [title]),
               h.p([h.Class("mt-2 text-sm text-muted-foreground")], [body]),
@@ -2617,7 +2617,7 @@ const howItFitsView = (h: ReturnType<typeof html<Message>>): Html =>
 
 const transportCardsView = (h: ReturnType<typeof html<Message>>): Html =>
   h.section(
-    [h.Class(`${containerClassName} py-16`)],
+    [h.Class(`${containerClasses} py-16`)],
     [
       h.div(
         [h.Class("mb-8")],
@@ -2638,7 +2638,7 @@ const transportCardsView = (h: ReturnType<typeof html<Message>>): Html =>
         [h.Class("grid gap-4 md:grid-cols-3")],
         transportCards.map(({ title, path, body }) =>
           h.article(
-            [h.Class(clsx(panelClassName, "p-5"))],
+            [h.Class(clsx(panelClasses, "p-5"))],
             [
               h.div([h.Class("text-sm font-semibold")], [title]),
               h.code(
@@ -2655,7 +2655,7 @@ const transportCardsView = (h: ReturnType<typeof html<Message>>): Html =>
 
 const ctaView = (h: ReturnType<typeof html<Message>>): Html =>
   h.section(
-    [h.Class(`${containerClassName} py-16`)],
+    [h.Class(`${containerClasses} py-16`)],
     [
       h.div(
         [
@@ -2717,7 +2717,7 @@ const footerView = (h: ReturnType<typeof html<Message>>): Html =>
       h.div(
         [
           h.Class(
-            `${containerClassName} flex flex-col gap-3 py-8 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between`
+            `${containerClasses} flex flex-col gap-3 py-8 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between`
           ),
         ],
         [
@@ -2746,7 +2746,7 @@ const surfaceView = (h: ReturnType<typeof html<Message>>, model: Model): Html =>
     M.withReturnType<Html>(),
     M.when("full-page", () =>
       h.div(
-        [h.Class(shellClassName)],
+        [h.Class(shellClasses)],
         [
           navView(h),
           stageView(h, model),
@@ -2759,37 +2759,37 @@ const surfaceView = (h: ReturnType<typeof html<Message>>, model: Model): Html =>
       )
     ),
     M.when("stage-grid", () =>
-      h.div([h.Class(`${shellClassName} p-6`)], [stageGridView(h, model)])
+      h.div([h.Class(`${shellClasses} p-6`)], [stageGridView(h, model)])
     ),
     M.when("literate", () =>
-      h.div([h.Class(`${shellClassName} p-6`)], [literateCaptureView(h)])
+      h.div([h.Class(`${shellClasses} p-6`)], [literateCaptureView(h)])
     ),
     M.when("how-step", () =>
-      h.div([h.Class(`${shellClassName} p-6`)], [howStepCaptureView(h, model)])
+      h.div([h.Class(`${shellClasses} p-6`)], [howStepCaptureView(h, model)])
     ),
     M.when("agent-demo", () =>
       h.div(
-        [h.Class(`${shellClassName} p-6`)],
+        [h.Class(`${shellClasses} p-6`)],
         [agentDemoCaptureView(h, model)]
       )
     ),
     M.when("quickstart", () =>
-      h.div([h.Class(`${shellClassName} p-6`)], [quickstartCaptureView(h)])
+      h.div([h.Class(`${shellClasses} p-6`)], [quickstartCaptureView(h)])
     ),
     M.when("stream", () =>
-      h.div([h.Class(`${shellClassName} p-6`)], [streamView(h, model)])
+      h.div([h.Class(`${shellClasses} p-6`)], [streamView(h, model)])
     ),
     M.when("logs", () =>
-      h.div([h.Class(`${shellClassName} p-6`)], [logConsoleView(h, model.mode)])
+      h.div([h.Class(`${shellClasses} p-6`)], [logConsoleView(h, model.mode)])
     ),
     M.when("activity", () =>
-      h.div([h.Class(`${shellClassName} max-w-md p-6`)], [activityPanelView(h)])
+      h.div([h.Class(`${shellClasses} max-w-md p-6`)], [activityPanelView(h)])
     ),
     M.when("code", () =>
-      h.div([h.Class(`${shellClassName} max-w-2xl p-6`)], [codePanelView(h)])
+      h.div([h.Class(`${shellClasses} max-w-2xl p-6`)], [codePanelView(h)])
     ),
     M.when("transports", () =>
-      h.div([h.Class(shellClassName)], [transportCardsView(h)])
+      h.div([h.Class(shellClasses)], [transportCardsView(h)])
     ),
     M.exhaustive
   );

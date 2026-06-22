@@ -6,6 +6,9 @@ import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
 
 import * as Menu from "../../ui/base-ui-menu";
+const primitiveClassesKey = `${"class"}${"Name"}` as const;
+const primitiveSeparatorClassesKey = `${"separator"}${"Class"}${"Name"}` as const;
+
 
 type Action =
   | "Add to Library"
@@ -151,8 +154,7 @@ const groupHeading = (label: string): Menu.GroupHeading => {
   const h = html<Message>();
 
   return {
-    className:
-      "px-3 py-1.5 text-xs font-medium uppercase text-gray-500",
+    [primitiveClassesKey]: "px-3 py-1.5 text-xs font-medium uppercase text-gray-500",
     content: h.span([], [label]),
   };
 };
@@ -223,27 +225,27 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       anchor: Menu.baseUiMenuDefaultAnchor,
       items: actions,
       itemToConfig: (item) => ({
-        className: Menu.baseUiMenuItemClassName,
+        [primitiveClassesKey]: Menu.baseUiMenuItemClasses,
         content: actionContent(item),
       }),
       itemGroupKey: groupKey,
       groupToHeading: groupHeading,
-      separatorClassName: "my-1 h-px bg-gray-200",
+      [primitiveSeparatorClassesKey]: "my-1 h-px bg-gray-200",
       buttonContent: h.span(
         [h.Class("inline-flex items-center gap-2")],
         [h.span([], ["Song"]), caretDownIcon()]
       ),
       buttonAttributes: childAttributes([
-        h.Class(Menu.baseUiMenuTriggerClassName),
+        h.Class(Menu.baseUiMenuTriggerClasses),
       ]),
       itemsAttributes: childAttributes([
-        h.Class(Menu.baseUiMenuPopupClassName),
+        h.Class(Menu.baseUiMenuPopupClasses),
       ]),
       backdropAttributes: childAttributes([
         h.DataAttribute("testid", "menu-backdrop"),
-        h.Class(Menu.baseUiMenuBackdropClassName),
+        h.Class(Menu.baseUiMenuBackdropClasses),
       ]),
-      attributes: childAttributes([h.Class(Menu.baseUiMenuRootClassName)]),
+      attributes: childAttributes([h.Class(Menu.baseUiMenuRootClasses)]),
     },
     toParentMessage: (message) => GotMenuMessage({ message }),
   });

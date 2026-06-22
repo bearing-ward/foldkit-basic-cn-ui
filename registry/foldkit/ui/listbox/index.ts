@@ -82,12 +82,12 @@ export const { create } = Ui.Listbox;
 export const { Multi } = Ui.Listbox;
 
 export {
-  animatedItemsClassName,
-  backdropClassName,
+  animatedItemsClasses,
+  backdropClasses,
   defaultAnchor,
-  defaultItemsClassName,
-  itemClassName,
-  rootClassName,
-  selectedIconClassName,
-  triggerClassName,
+  defaultItemsClasses,
+  itemClasses,
+  rootClasses,
+  selectedIconClasses,
+  triggerClasses,
 } from "./view";

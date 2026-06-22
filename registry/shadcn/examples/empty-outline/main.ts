@@ -33,7 +33,7 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex cursor-pointer items-center rounded-lg bg-gray-950 px-3 py-2 text-sm font-medium text-white transition hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600";
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
@@ -43,9 +43,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     title: "Cloud Storage Empty",
     description: "Upload files to your cloud storage to access them anywhere.",
     icon: "☁",
-    className: "rounded-lg border border-dashed border-gray-300 p-8",
+    classes: "rounded-lg border border-dashed border-gray-300 p-8",
     action: h.button(
-      [h.Type("button"), h.Class(buttonClassName)],
+      [h.Type("button"), h.Class(buttonClasses)],
       ["Upload Files"]
     ),
   });

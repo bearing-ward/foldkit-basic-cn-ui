@@ -55,7 +55,7 @@ const optionView = (
         ],
         [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]
       ),
-      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),
+      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClasses)], [value]),
     ]
   );
 };
@@ -67,7 +67,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [
       h.Role("radiogroup"),
       h.AriaLabel("Disabled options"),
-      h.Class(RadioGroup.shadcnRadioGroupVerticalClassName),
+      h.Class(RadioGroup.shadcnRadioGroupVerticalClasses),
     ],
     [
       optionView("Disabled", true, true),

@@ -2,17 +2,17 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  otpFieldInputClassName,
-  otpFieldInputGroupClassName,
-  otpFieldRootClassName,
-  otpFieldSeparatorClassName,
+  otpFieldInputClasses,
+  otpFieldInputGroupClasses,
+  otpFieldRootClasses,
+  otpFieldSeparatorClasses,
 } from "./view";
 
 export {
-  otpFieldInputClassName,
-  otpFieldInputGroupClassName,
-  otpFieldRootClassName,
-  otpFieldSeparatorClassName,
+  otpFieldInputClasses,
+  otpFieldInputGroupClasses,
+  otpFieldRootClasses,
+  otpFieldSeparatorClasses,
 } from "./view";
 
 export type OtpFieldStyle = Readonly<Record<string, string>>;
@@ -25,7 +25,7 @@ export type OtpFieldState = Readonly<{
 export type RootViewConfig = OtpFieldState &
   Readonly<{
     children: readonly Html[];
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: OtpFieldStyle | undefined;
   }>;
 
@@ -33,7 +33,7 @@ export type InputGroupViewConfig = OtpFieldState &
   Readonly<{
     children: readonly Html[];
     ariaLabel: string;
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: OtpFieldStyle | undefined;
   }>;
 
@@ -45,18 +45,18 @@ export type InputViewConfig<ParentMessage> = OtpFieldState &
     onInput: (value: string, index: number) => ParentMessage;
     ariaLabel: string;
     name?: string | undefined;
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: OtpFieldStyle | undefined;
   }>;
 
 export type SeparatorViewConfig = Readonly<{
   label?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: OtpFieldStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -70,7 +70,7 @@ const stateAttributes = <ParentMessage>(
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   ...state
 }: RootViewConfig): Html => {
@@ -79,7 +79,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       ...stateAttributes(h, state),
-      h.Class(classNames(otpFieldRootClassName, className)),
+      h.Class(cn(otpFieldRootClasses, classes)),
       h.Style(style ?? {}),
     ],
     children
@@ -89,7 +89,7 @@ export const rootView = <ParentMessage>({
 export const inputGroupView = <ParentMessage>({
   children,
   ariaLabel,
-  className,
+  classes,
   style,
   ...state
 }: InputGroupViewConfig): Html => {
@@ -100,7 +100,7 @@ export const inputGroupView = <ParentMessage>({
       ...stateAttributes(h, state),
       h.Role("group"),
       h.AriaLabel(ariaLabel),
-      h.Class(classNames(otpFieldInputGroupClassName, className)),
+      h.Class(cn(otpFieldInputGroupClasses, classes)),
       h.Style(style ?? {}),
     ],
     children
@@ -114,7 +114,7 @@ export const inputView = <ParentMessage>({
   onInput,
   ariaLabel,
   name,
-  className,
+  classes,
   style,
   ...state
 }: InputViewConfig<ParentMessage>): Html => {
@@ -134,14 +134,14 @@ export const inputView = <ParentMessage>({
     ...(state.invalid === true ? [h.Attribute("aria-invalid", "true")] : []),
     ...(value === "" ? [] : [h.DataAttribute("filled", "")]),
     ...stateAttributes(h, state),
-    h.Class(classNames(otpFieldInputClassName, className)),
+    h.Class(cn(otpFieldInputClasses, classes)),
     h.Style(style ?? {}),
   ]);
 };
 
 export const separatorView = <ParentMessage>({
   label = "-",
-  className,
+  classes,
   style,
 }: SeparatorViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -149,7 +149,7 @@ export const separatorView = <ParentMessage>({
   return h.span(
     [
       h.Attribute("aria-hidden", "true"),
-      h.Class(classNames(otpFieldSeparatorClassName, className)),
+      h.Class(cn(otpFieldSeparatorClasses, classes)),
       h.Style(style ?? {}),
     ],
     [label]

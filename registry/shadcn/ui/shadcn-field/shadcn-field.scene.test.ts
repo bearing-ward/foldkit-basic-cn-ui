@@ -7,6 +7,6 @@ describe("shadcn Field registry view", () => {
     expect(Field.rootView).toBeTypeOf("function");
     expect(Field.labelView).toBeTypeOf("function");
     expect(Field.controlView).toBeTypeOf("function");
-    expect(Field.shadcnFieldControlClassName).toContain("aria-[invalid=true]");
+    expect(Field.shadcnFieldControlClasses).toContain("aria-[invalid=true]");
   });
 });

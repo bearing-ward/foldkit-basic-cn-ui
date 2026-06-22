@@ -1,11 +1,11 @@
 export {
   checkIcon as baseUiRadioCheckIcon,
   checkPlaceholder as baseUiRadioCheckPlaceholder,
-  descriptionClassName as baseUiRadioDescriptionClassName,
-  horizontalGroupClassName as baseUiRadioHorizontalClassName,
-  horizontalOptionClassName as baseUiRadioHorizontalOptionClassName,
-  labelClassName as baseUiRadioLabelClassName,
-  metaClassName as baseUiRadioMetaClassName,
-  verticalGroupClassName as baseUiRadioVerticalClassName,
-  verticalOptionClassName as baseUiRadioVerticalOptionClassName,
+  descriptionClasses as baseUiRadioDescriptionClasses,
+  horizontalGroupClasses as baseUiRadioHorizontalClasses,
+  horizontalOptionClasses as baseUiRadioHorizontalOptionClasses,
+  labelClasses as baseUiRadioLabelClasses,
+  metaClasses as baseUiRadioMetaClasses,
+  verticalGroupClasses as baseUiRadioVerticalClasses,
+  verticalOptionClasses as baseUiRadioVerticalOptionClasses,
 } from "../../../foldkit/ui/radio-group/view";

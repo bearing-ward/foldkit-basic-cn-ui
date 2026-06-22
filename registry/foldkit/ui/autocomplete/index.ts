@@ -2,35 +2,35 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  autocompleteEmptyClassName,
-  autocompleteInputClassName,
-  autocompleteItemClassName,
-  autocompleteLabelClassName,
-  autocompleteListClassName,
-  autocompleteRootClassName,
+  autocompleteEmptyClasses,
+  autocompleteInputClasses,
+  autocompleteItemClasses,
+  autocompleteLabelClasses,
+  autocompleteListClasses,
+  autocompleteRootClasses,
 } from "./view";
 
 export {
-  autocompleteEmptyClassName,
-  autocompleteInputClassName,
-  autocompleteItemClassName,
-  autocompleteLabelClassName,
-  autocompleteListClassName,
-  autocompleteRootClassName,
+  autocompleteEmptyClasses,
+  autocompleteInputClasses,
+  autocompleteItemClasses,
+  autocompleteLabelClasses,
+  autocompleteListClasses,
+  autocompleteRootClasses,
 } from "./view";
 
 export type AutocompleteStyle = Readonly<Record<string, string>>;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
 export type LabelViewConfig = Readonly<{
   forId: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
@@ -41,14 +41,14 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   ariaLabel: string;
   listId?: string | undefined;
   placeholder?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
 export type ListViewConfig = Readonly<{
   id: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
@@ -57,24 +57,24 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   selected?: boolean | undefined;
   onClick: ParentMessage;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
 export type EmptyViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -82,7 +82,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(autocompleteRootClassName, className)),
+      h.Class(cn(autocompleteRootClasses, classes)),
     ],
     children
   );
@@ -91,7 +91,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   forId,
   children,
-  className,
+  classes,
   style,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -100,7 +100,7 @@ export const labelView = <ParentMessage>({
     [
       h.Attribute("for", forId),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(autocompleteLabelClassName, className)),
+      h.Class(cn(autocompleteLabelClasses, classes)),
     ],
     children
   );
@@ -113,7 +113,7 @@ export const inputView = <ParentMessage>({
   ariaLabel,
   listId,
   placeholder,
-  className,
+  classes,
   style,
 }: InputViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -133,14 +133,14 @@ export const inputView = <ParentMessage>({
         ]),
     ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(classNames(autocompleteInputClassName, className)),
+    h.Class(cn(autocompleteInputClasses, classes)),
   ]);
 };
 
 export const listView = <ParentMessage>({
   id,
   children,
-  className,
+  classes,
   style,
 }: ListViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -150,7 +150,7 @@ export const listView = <ParentMessage>({
       h.Id(id),
       h.Attribute("role", "listbox"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(autocompleteListClassName, className)),
+      h.Class(cn(autocompleteListClasses, classes)),
     ],
     children
   );
@@ -161,7 +161,7 @@ export const itemView = <ParentMessage>({
   selected,
   onClick,
   children,
-  className,
+  classes,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -175,7 +175,7 @@ export const itemView = <ParentMessage>({
       ...(selected === true ? [h.DataAttribute("selected", "")] : []),
       h.OnClick(onClick),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(autocompleteItemClassName, className)),
+      h.Class(cn(autocompleteItemClasses, classes)),
     ],
     children
   );
@@ -183,7 +183,7 @@ export const itemView = <ParentMessage>({
 
 export const emptyView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: EmptyViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -191,7 +191,7 @@ export const emptyView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(autocompleteEmptyClassName, className)),
+      h.Class(cn(autocompleteEmptyClasses, classes)),
     ],
     children
   );

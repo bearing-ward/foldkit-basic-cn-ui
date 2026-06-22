@@ -57,11 +57,11 @@ const cardView = (
         [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]
       ),
       h.div(
-        [h.Class(RadioGroup.shadcnRadioGroupMetaClassName)],
+        [h.Class(RadioGroup.shadcnRadioGroupMetaClasses)],
         [
-          h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),
+          h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClasses)], [value]),
           h.p(
-            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClassName)],
+            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClasses)],
             [description]
           ),
         ]

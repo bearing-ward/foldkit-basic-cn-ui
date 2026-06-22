@@ -33,7 +33,7 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600";
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
@@ -54,11 +54,11 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               [h.Class("flex flex-wrap justify-center gap-2")],
               [
                 h.button(
-                  [h.Type("button"), h.Class(buttonClassName)],
+                  [h.Type("button"), h.Class(buttonClasses)],
                   ["إنشاء مشروع"]
                 ),
                 h.button(
-                  [h.Type("button"), h.Class(buttonClassName)],
+                  [h.Type("button"), h.Class(buttonClasses)],
                   ["استيراد مشروع"]
                 ),
               ]

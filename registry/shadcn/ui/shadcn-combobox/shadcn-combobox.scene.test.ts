@@ -7,6 +7,6 @@ describe("shadcn Combobox registry view", () => {
     expect(Combobox.init).toBeTypeOf("function");
     expect(Combobox.create).toBeTypeOf("function");
     expect(Combobox.Multi.create).toBeTypeOf("function");
-    expect(Combobox.shadcnComboboxWrapperClassName).toContain("relative");
+    expect(Combobox.shadcnComboboxWrapperClasses).toContain("relative");
   });
 });

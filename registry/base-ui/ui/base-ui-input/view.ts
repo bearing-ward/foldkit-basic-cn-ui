@@ -1,6 +1,6 @@
 export {
-  fieldClassName,
-  labelClassName,
-  inputClassName,
-  descriptionClassName,
+  fieldClasses,
+  labelClasses,
+  inputClasses,
+  descriptionClasses,
 } from "../../../foldkit/ui/input/view";

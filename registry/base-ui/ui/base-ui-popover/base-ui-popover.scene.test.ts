@@ -7,6 +7,6 @@ describe("Base UI Popover registry view", () => {
     expect(Popover.init).toBeTypeOf("function");
     expect(Popover.update).toBeTypeOf("function");
     expect(Popover.view).toBeTypeOf("function");
-    expect(Popover.baseUiPopoverPanelClassName).toContain("rounded-lg");
+    expect(Popover.baseUiPopoverPanelClasses).toContain("rounded-lg");
   });
 });

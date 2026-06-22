@@ -127,13 +127,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             const activeTab = render.tabs[render.activeIndex];
 
             return h.div(
-              [h.Class(Tabs.baseUiTabsRootClassName)],
+              [h.Class(Tabs.baseUiTabsRootClasses)],
               [
                 h.div(
-                  [...render.tablist, h.Class(Tabs.baseUiTabsListClassName)],
+                  [...render.tablist, h.Class(Tabs.baseUiTabsListClasses)],
                   render.tabs.map((tab) =>
                     h.button(
-                      [...tab.tab, h.Class(Tabs.baseUiTabsTabClassName)],
+                      [...tab.tab, h.Class(Tabs.baseUiTabsTabClasses)],
                       [tab.value]
                     )
                   )
@@ -143,12 +143,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   : h.div(
                       [
                         ...activeTab.panel,
-                        h.Class(Tabs.baseUiTabsPanelClassName),
+                        h.Class(Tabs.baseUiTabsPanelClasses),
                       ],
                       [
                         ScrollArea.view<Message>({
                           ariaLabel: `${activeTab.value} settings`,
-                          className: "h-40",
+                          classes: "h-40",
                           children: panelContent(activeTab.value),
                         }),
                       ]

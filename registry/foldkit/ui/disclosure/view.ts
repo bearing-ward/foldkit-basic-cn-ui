@@ -2,18 +2,18 @@ import type { Ui } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-export const rootClassName = "max-w-md";
+export const rootClasses = "max-w-md";
 
-export const buttonClassName =
+export const buttonClasses =
   "flex w-full cursor-pointer select-none items-center justify-between rounded-lg border border-gray-300 px-4 py-3 text-left text-base font-normal text-gray-900 transition hover:bg-gray-100 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[open]:rounded-b-none";
 
-export const panelClassName =
+export const panelClasses =
   "rounded-b-lg border-x border-b border-gray-300 px-4 py-3 text-sm text-gray-700";
 
-export const buttonContentClassName =
+export const buttonContentClasses =
   "flex w-full items-center justify-between gap-4";
 
-export const chevronClassName =
+export const chevronClasses =
   "text-sm text-gray-600 transition-transform group-data-[open]:rotate-180";
 
 export type DisclosureViewInput = Readonly<{
@@ -32,26 +32,26 @@ export const disclosureView = ({
   const h = html<Ui.Disclosure.Message>();
 
   return h.div(
-    [h.Class(rootClassName)],
+    [h.Class(rootClasses)],
     [
       h.button(
         [
           ...attributes.button,
           h.AriaLabel(title),
-          h.Class(`group ${buttonClassName}`),
+          h.Class(`group ${buttonClasses}`),
         ],
         [
           h.span(
-            [h.Class(buttonContentClassName)],
+            [h.Class(buttonContentClasses)],
             [
               h.span([], [title]),
-              h.span([h.AriaHidden(true), h.Class(chevronClassName)], ["v"]),
+              h.span([h.AriaHidden(true), h.Class(chevronClasses)], ["v"]),
             ]
           ),
         ]
       ),
       isOpen
-        ? h.div([...attributes.panel, h.Class(panelClassName)], [body])
+        ? h.div([...attributes.panel, h.Class(panelClasses)], [body])
         : h.empty,
     ]
   );

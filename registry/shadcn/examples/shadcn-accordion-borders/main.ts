@@ -74,7 +74,7 @@ export const view = Submodel.defineView<Model, Message>(
           openValues: model.openValues,
           title: "Is it accessible?",
           onValueChange: ToggledPanel({ value: "accessible" }),
-          className: "last:border-b-0",
+          classes: "last:border-b-0",
           children: panel("Yes. It adheres to the WAI-ARIA design pattern."),
         }),
         Accordion.itemView<Message>({
@@ -82,7 +82,7 @@ export const view = Submodel.defineView<Model, Message>(
           openValues: model.openValues,
           title: "Is it styled?",
           onValueChange: ToggledPanel({ value: "styled" }),
-          className: "last:border-b-0",
+          classes: "last:border-b-0",
           children: panel(
             "Yes. It comes with default styles that matches the other components' aesthetic."
           ),
@@ -92,14 +92,14 @@ export const view = Submodel.defineView<Model, Message>(
           openValues: model.openValues,
           title: "Is it animated?",
           onValueChange: ToggledPanel({ value: "animated" }),
-          className: "last:border-b-0",
+          classes: "last:border-b-0",
           children: panel(
             "Yes. It's animated by default, but you can disable it if you prefer."
           ),
         }),
       ],
-      className: `${
-        Accordion.shadcnAccordionRootClassName
+      classes: `${
+        Accordion.shadcnAccordionRootClasses
       } rounded-md border border-gray-200 bg-white`,
     })
 );

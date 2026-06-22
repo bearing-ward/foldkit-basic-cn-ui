@@ -77,7 +77,7 @@ export const resolveShadcnThemeName = (
   globals: Record<string, unknown> | undefined,
 ): string => findTheme(globals?.[shadcnThemeGlobalKey]).name;
 
-export const shadcnThemeClassNameForGlobals = (
+export const shadcnThemeClassesForGlobals = (
   globals: Record<string, unknown> | undefined,
 ): string => {
   const theme = findTheme(globals?.[shadcnThemeGlobalKey]);
@@ -113,7 +113,7 @@ const wrapProgramConfig = (
     const storyView = config.view(model, viewInputs) as HtmlChild;
     return h.div(
       [
-        h.Class(shadcnThemeClassNameForGlobals(globals)),
+        h.Class(shadcnThemeClassesForGlobals(globals)),
         h.DataAttribute("shadcn-theme", themeName),
         h.DataAttribute("testid", "shadcn-theme-wrapper"),
         h.Style(shadcnThemeStyleProperties(globals)),

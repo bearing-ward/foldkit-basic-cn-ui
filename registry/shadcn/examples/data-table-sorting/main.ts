@@ -54,20 +54,20 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       DataTable.containerView<Message>({
         children: [
           h.table(
-            [h.Class(DataTable.dataTableTableClassName)],
+            [h.Class(DataTable.dataTableTableClasses)],
             [
               h.thead(
-                [h.Class(DataTable.dataTableHeaderClassName)],
+                [h.Class(DataTable.dataTableHeaderClasses)],
                 [
                   h.tr(
                     [],
                     [
                       h.th(
-                        [h.Class(DataTable.dataTableHeadClassName)],
+                        [h.Class(DataTable.dataTableHeadClasses)],
                         ["Status"]
                       ),
                       h.th(
-                        [h.Class(DataTable.dataTableHeadClassName)],
+                        [h.Class(DataTable.dataTableHeadClasses)],
                         [
                           DataTable.sortHeaderView<Message>({
                             label: "Email",
@@ -78,7 +78,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         ]
                       ),
                       h.th(
-                        [h.Class(DataTable.dataTableHeadClassName)],
+                        [h.Class(DataTable.dataTableHeadClasses)],
                         ["Amount"]
                       ),
                     ]
@@ -91,21 +91,21 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   .slice(0, 5)
                   .map((payment) =>
                     h.tr(
-                      [h.Class(DataTable.dataTableRowClassName)],
+                      [h.Class(DataTable.dataTableRowClasses)],
                       [
                         h.td(
-                          [h.Class(DataTable.dataTableCellClassName)],
+                          [h.Class(DataTable.dataTableCellClasses)],
                           [payment.status]
                         ),
                         h.td(
-                          [h.Class(DataTable.dataTableCellClassName)],
+                          [h.Class(DataTable.dataTableCellClasses)],
                           [payment.email]
                         ),
                         h.td(
                           [
                             h.Class(
                               `${
-                                DataTable.dataTableCellClassName
+                                DataTable.dataTableCellClasses
                               } text-right font-medium`
                             ),
                           ],

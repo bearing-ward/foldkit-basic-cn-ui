@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-field/index.ts",
       "target": "src/ui/shadcn-field/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  controlView,\n  descriptionView,\n  errorView,\n  itemView,\n  labelView,\n  rootView,\n  validityView,\n} from \"../../../foldkit/ui/field\";\nexport type {\n  ControlViewConfig,\n  DescriptionViewConfig,\n  ErrorViewConfig,\n  FieldState,\n  FieldStyle,\n  ItemViewConfig,\n  LabelViewConfig,\n  RootViewConfig,\n} from \"../../../foldkit/ui/field\";\n\nexport {\n  shadcnFieldControlClassName,\n  shadcnFieldDescriptionClassName,\n  shadcnFieldErrorClassName,\n  shadcnFieldItemClassName,\n  shadcnFieldLabelClassName,\n  shadcnFieldRootClassName,\n  shadcnFieldValidityClassName,\n} from \"./view\";\n"
+      "content": "export {\n  controlView,\n  descriptionView,\n  errorView,\n  itemView,\n  labelView,\n  rootView,\n  validityView,\n} from \"../../../foldkit/ui/field\";\nexport type {\n  ControlViewConfig,\n  DescriptionViewConfig,\n  ErrorViewConfig,\n  FieldState,\n  FieldStyle,\n  ItemViewConfig,\n  LabelViewConfig,\n  RootViewConfig,\n} from \"../../../foldkit/ui/field\";\n\nexport {\n  shadcnFieldControlClasses,\n  shadcnFieldDescriptionClasses,\n  shadcnFieldErrorClasses,\n  shadcnFieldItemClasses,\n  shadcnFieldLabelClasses,\n  shadcnFieldRootClasses,\n  shadcnFieldValidityClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-field/view.ts",
       "target": "src/ui/shadcn-field/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  fieldControlClassName as shadcnFieldControlClassName,\n  fieldDescriptionClassName as shadcnFieldDescriptionClassName,\n  fieldErrorClassName as shadcnFieldErrorClassName,\n  fieldItemClassName as shadcnFieldItemClassName,\n  fieldLabelClassName as shadcnFieldLabelClassName,\n  fieldRootClassName as shadcnFieldRootClassName,\n  fieldValidityClassName as shadcnFieldValidityClassName,\n} from \"../../../foldkit/ui/field/view\";\n"
+      "content": "export {\n  fieldControlClasses as shadcnFieldControlClasses,\n  fieldDescriptionClasses as shadcnFieldDescriptionClasses,\n  fieldErrorClasses as shadcnFieldErrorClasses,\n  fieldItemClasses as shadcnFieldItemClasses,\n  fieldLabelClasses as shadcnFieldLabelClasses,\n  fieldRootClasses as shadcnFieldRootClasses,\n  fieldValidityClasses as shadcnFieldValidityClasses,\n} from \"../../../foldkit/ui/field/view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-field/shadcn-field.scene.test.ts",
       "target": "src/ui/shadcn-field/shadcn-field.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Field from \"./index\";\n\ndescribe(\"shadcn Field registry view\", () => {\n  test(\"reuses the Foldkit Field view contract\", () => {\n    expect(Field.rootView).toBeTypeOf(\"function\");\n    expect(Field.labelView).toBeTypeOf(\"function\");\n    expect(Field.controlView).toBeTypeOf(\"function\");\n    expect(Field.shadcnFieldControlClassName).toContain(\"aria-[invalid=true]\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Field from \"./index\";\n\ndescribe(\"shadcn Field registry view\", () => {\n  test(\"reuses the Foldkit Field view contract\", () => {\n    expect(Field.rootView).toBeTypeOf(\"function\");\n    expect(Field.labelView).toBeTypeOf(\"function\");\n    expect(Field.controlView).toBeTypeOf(\"function\");\n    expect(Field.shadcnFieldControlClasses).toContain(\"aria-[invalid=true]\");\n  });\n});\n"
     }
   ],
   "meta": {

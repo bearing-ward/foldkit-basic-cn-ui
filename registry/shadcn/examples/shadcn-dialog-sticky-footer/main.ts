@@ -105,7 +105,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       ],
                       [
                         Dialog.headerView<Message>({
-                          className: "px-0 pb-4",
+                          classes: "px-0 pb-4",
                           children: [
                             Dialog.title<Message>({
                               model: model.dialog,
@@ -128,7 +128,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                           content.map((paragraph) => h.p([], [paragraph]))
                         ),
                         Dialog.footerView<Message>({
-                          className: "px-0 pt-4",
+                          classes: "px-0 pt-4",
                           children: [
                             Dialog.cancelButton<Message>({
                               label: "Cancel",

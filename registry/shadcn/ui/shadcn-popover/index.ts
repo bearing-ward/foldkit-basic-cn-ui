@@ -49,8 +49,8 @@ export type {
 } from "../../../foldkit/ui/popover";
 
 export {
-  shadcnPopoverBackdropClassName,
-  shadcnPopoverPanelClassName,
-  shadcnPopoverRootClassName,
-  shadcnPopoverTriggerClassName,
+  shadcnPopoverBackdropClasses,
+  shadcnPopoverPanelClasses,
+  shadcnPopoverRootClasses,
+  shadcnPopoverTriggerClasses,
 } from "./view";

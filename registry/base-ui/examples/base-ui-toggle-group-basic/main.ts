@@ -114,7 +114,7 @@ const alignIcon = (path: string): Html => {
       h.Attribute("fill", "none"),
       h.Attribute("stroke", "currentColor"),
       h.AriaHidden(true),
-      h.Class(ToggleGroup.toggleGroupIconClassName),
+      h.Class(ToggleGroup.toggleGroupIconClasses),
     ],
     [
       h.path(

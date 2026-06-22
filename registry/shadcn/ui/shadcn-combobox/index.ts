@@ -57,14 +57,14 @@ export type {
 } from "../../../foldkit/ui/combobox";
 
 export {
-  shadcnComboboxBackdropClassName,
-  shadcnComboboxButtonClassName,
-  shadcnComboboxEmptyTagClassName,
-  shadcnComboboxInputClassName,
-  shadcnComboboxInputWrapperClassName,
-  shadcnComboboxItemClassName,
-  shadcnComboboxItemsClassName,
-  shadcnComboboxSelectedIconClassName,
-  shadcnComboboxTagClassName,
-  shadcnComboboxWrapperClassName,
+  shadcnComboboxBackdropClasses,
+  shadcnComboboxButtonClasses,
+  shadcnComboboxEmptyTagClasses,
+  shadcnComboboxInputClasses,
+  shadcnComboboxInputWrapperClasses,
+  shadcnComboboxItemClasses,
+  shadcnComboboxItemsClasses,
+  shadcnComboboxSelectedIconClasses,
+  shadcnComboboxTagClasses,
+  shadcnComboboxWrapperClasses,
 } from "./view";

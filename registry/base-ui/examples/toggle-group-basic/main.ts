@@ -57,7 +57,7 @@ export const update = (
 const alignIcon = (label: string): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(ToggleGroup.toggleGroupIconClassName)], [label]);
+  return h.span([h.Class(ToggleGroup.toggleGroupIconClasses)], [label]);
 };
 
 export const view = Submodel.defineView<Model, Message>(

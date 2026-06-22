@@ -1,8 +1,8 @@
-export const baseUiButtonClassName =
+export const baseUiButtonClasses =
   "inline-flex h-8 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-none border border-neutral-950 bg-white px-3 text-sm font-normal leading-none text-neutral-950 transition-colors hover:not-data-[disabled]:bg-neutral-100 active:not-data-[disabled]:bg-neutral-200 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-neutral-950 data-[disabled]:cursor-not-allowed data-[disabled]:border-neutral-500 data-[disabled]:text-neutral-500 disabled:cursor-not-allowed disabled:border-neutral-500 disabled:text-neutral-500";
 
-export const baseUiSecondaryButtonClassName =
+export const baseUiSecondaryButtonClasses =
   "inline-flex h-8 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-none px-3 text-sm font-normal leading-none text-neutral-950 transition-colors hover:not-data-[disabled]:bg-neutral-100 active:not-data-[disabled]:bg-neutral-200 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-neutral-950 data-[disabled]:cursor-not-allowed data-[disabled]:text-neutral-500 disabled:cursor-not-allowed disabled:text-neutral-500";
 
-export const baseUiDestructiveButtonClassName =
+export const baseUiDestructiveButtonClasses =
   "inline-flex h-8 cursor-pointer select-none items-center justify-center gap-2 whitespace-nowrap rounded-none border border-red-700 bg-white px-3 text-sm font-normal leading-none text-red-700 transition-colors hover:not-data-[disabled]:bg-red-50 active:not-data-[disabled]:bg-red-100 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-red-700 data-[disabled]:cursor-not-allowed data-[disabled]:border-red-300 data-[disabled]:text-red-300 disabled:cursor-not-allowed disabled:border-red-300 disabled:text-red-300";

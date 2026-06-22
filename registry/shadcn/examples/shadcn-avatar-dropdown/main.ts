@@ -78,7 +78,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       DropdownMenu.triggerView<Message>({
         open: model.open,
         onToggle: ToggledDropdownMenu(),
-        className: "rounded-full border-0 bg-transparent p-0",
+        classes: "rounded-full border-0 bg-transparent p-0",
         children: [Avatar.view<Message>({ fallback: "CN" })],
       }),
       DropdownMenu.portalView<Message>({

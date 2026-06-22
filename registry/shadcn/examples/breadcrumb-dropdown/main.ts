@@ -43,9 +43,9 @@ export const update = (
 
 // VIEW
 
-const menuClassName =
+const menuClasses =
   "absolute z-10 mt-2 min-w-36 rounded-md border border-gray-200 bg-white p-1 text-sm shadow-lg";
-const itemClassName =
+const itemClasses =
   "block w-full rounded px-2 py-1.5 text-left text-gray-700 hover:bg-gray-100";
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
@@ -91,14 +91,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   ...(model.open
                     ? [
                         h.div(
-                          [h.Attribute("role", "menu"), h.Class(menuClassName)],
+                          [h.Attribute("role", "menu"), h.Class(menuClasses)],
                           [
                             h.button(
                               [
                                 h.Type("button"),
                                 h.Attribute("role", "menuitem"),
                                 h.OnClick(ClickedDropdownItem()),
-                                h.Class(itemClassName),
+                                h.Class(itemClasses),
                               ],
                               ["Documentation"]
                             ),
@@ -107,7 +107,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                                 h.Type("button"),
                                 h.Attribute("role", "menuitem"),
                                 h.OnClick(ClickedDropdownItem()),
-                                h.Class(itemClassName),
+                                h.Class(itemClasses),
                               ],
                               ["Themes"]
                             ),
@@ -116,7 +116,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                                 h.Type("button"),
                                 h.Attribute("role", "menuitem"),
                                 h.OnClick(ClickedDropdownItem()),
-                                h.Class(itemClassName),
+                                h.Class(itemClasses),
                               ],
                               ["GitHub"]
                             ),

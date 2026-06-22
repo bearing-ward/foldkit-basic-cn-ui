@@ -2,21 +2,21 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  formControlClassName,
-  formErrorClassName,
-  formFieldClassName,
-  formLabelClassName,
-  formRootClassName,
-  formSubmitClassName,
+  formControlClasses,
+  formErrorClasses,
+  formFieldClasses,
+  formLabelClasses,
+  formRootClasses,
+  formSubmitClasses,
 } from "./view";
 
 export {
-  formControlClassName,
-  formErrorClassName,
-  formFieldClassName,
-  formLabelClassName,
-  formRootClassName,
-  formSubmitClassName,
+  formControlClasses,
+  formErrorClasses,
+  formFieldClasses,
+  formLabelClasses,
+  formRootClasses,
+  formSubmitClasses,
 } from "./view";
 
 export type FormStyle = Readonly<Record<string, string>>;
@@ -31,21 +31,21 @@ export type RootViewConfig<ParentMessage> = FormState &
   Readonly<{
     onSubmit: ParentMessage;
     children: readonly Html[];
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: FormStyle | undefined;
   }>;
 
 export type FieldViewConfig = FormState &
   Readonly<{
     children: readonly Html[];
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: FormStyle | undefined;
   }>;
 
 export type LabelViewConfig = Readonly<{
   forId: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: FormStyle | undefined;
 }>;
 
@@ -61,7 +61,7 @@ export type ControlViewConfig<ParentMessage> = FormState &
     required?: boolean | undefined;
     pattern?: string | undefined;
     describedById?: string | undefined;
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: FormStyle | undefined;
   }>;
 
@@ -69,19 +69,19 @@ export type ErrorViewConfig = Readonly<{
   id?: string | undefined;
   show: boolean;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: FormStyle | undefined;
 }>;
 
 export type SubmitViewConfig = FormState &
   Readonly<{
     children: readonly Html[];
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: FormStyle | undefined;
   }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -98,7 +98,7 @@ const stateAttributes = <ParentMessage>(
 export const rootView = <ParentMessage>({
   onSubmit,
   children,
-  className,
+  classes,
   style,
   ...state
 }: RootViewConfig<ParentMessage>): Html => {
@@ -109,7 +109,7 @@ export const rootView = <ParentMessage>({
       h.OnSubmit(onSubmit),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(formRootClassName, className)),
+      h.Class(cn(formRootClasses, classes)),
     ],
     children
   );
@@ -117,7 +117,7 @@ export const rootView = <ParentMessage>({
 
 export const fieldView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   ...state
 }: FieldViewConfig): Html => {
@@ -127,7 +127,7 @@ export const fieldView = <ParentMessage>({
     [
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(formFieldClassName, className)),
+      h.Class(cn(formFieldClasses, classes)),
     ],
     children
   );
@@ -136,7 +136,7 @@ export const fieldView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   forId,
   children,
-  className,
+  classes,
   style,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -145,7 +145,7 @@ export const labelView = <ParentMessage>({
     [
       h.Attribute("for", forId),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(formLabelClassName, className)),
+      h.Class(cn(formLabelClasses, classes)),
     ],
     children
   );
@@ -162,7 +162,7 @@ export const controlView = <ParentMessage>({
   required,
   pattern,
   describedById,
-  className,
+  classes,
   style,
   ...state
 }: ControlViewConfig<ParentMessage>): Html => {
@@ -187,7 +187,7 @@ export const controlView = <ParentMessage>({
     ...(state.disabled === true ? [h.Disabled(true)] : []),
     ...stateAttributes(h, state),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(classNames(formControlClassName, className)),
+    h.Class(cn(formControlClasses, classes)),
   ]);
 };
 
@@ -195,7 +195,7 @@ export const errorView = <ParentMessage>({
   id,
   show,
   children,
-  className,
+  classes,
   style,
 }: ErrorViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -206,7 +206,7 @@ export const errorView = <ParentMessage>({
       h.Attribute("role", "alert"),
       h.AriaHidden(!show),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(formErrorClassName, className)),
+      h.Class(cn(formErrorClasses, classes)),
     ],
     show ? children : []
   );
@@ -214,7 +214,7 @@ export const errorView = <ParentMessage>({
 
 export const submitView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   ...state
 }: SubmitViewConfig): Html => {
@@ -228,7 +228,7 @@ export const submitView = <ParentMessage>({
         : []),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(formSubmitClassName, className)),
+      h.Class(cn(formSubmitClasses, classes)),
     ],
     children
   );

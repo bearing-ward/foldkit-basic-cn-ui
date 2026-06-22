@@ -2,23 +2,23 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  scrollAreaContentClassName,
-  scrollAreaCornerClassName,
-  scrollAreaFadeClassName,
-  scrollAreaRootClassName,
-  scrollAreaScrollbarClassName,
-  scrollAreaThumbClassName,
-  scrollAreaViewportClassName,
+  scrollAreaContentClasses,
+  scrollAreaCornerClasses,
+  scrollAreaFadeClasses,
+  scrollAreaRootClasses,
+  scrollAreaScrollbarClasses,
+  scrollAreaThumbClasses,
+  scrollAreaViewportClasses,
 } from "./view";
 
 export {
-  scrollAreaContentClassName,
-  scrollAreaCornerClassName,
-  scrollAreaFadeClassName,
-  scrollAreaRootClassName,
-  scrollAreaScrollbarClassName,
-  scrollAreaThumbClassName,
-  scrollAreaViewportClassName,
+  scrollAreaContentClasses,
+  scrollAreaCornerClasses,
+  scrollAreaFadeClasses,
+  scrollAreaRootClasses,
+  scrollAreaScrollbarClasses,
+  scrollAreaThumbClasses,
+  scrollAreaViewportClasses,
 } from "./view";
 
 /** Inline style object accepted by Foldkit h.Style. */
@@ -29,7 +29,7 @@ export type RootViewConfig = Readonly<{
   /** Child anatomy parts rendered inside the root. */
   children: readonly Html[];
   /** Additional class appended to the default Root classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Root element. */
   style?: ScrollAreaStyle | undefined;
   /** Marks horizontal overflow state for CSS and tests when known by the caller. */
@@ -45,7 +45,7 @@ export type ViewportViewConfig = Readonly<{
   /** Scrollable content rendered inside the viewport. */
   children: readonly Html[];
   /** Additional class appended to the default Viewport classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Viewport element. */
   style?: ScrollAreaStyle | undefined;
   /** Accessible label for the scrollable region when surrounding text is not enough. */
@@ -57,7 +57,7 @@ export type ContentViewConfig = Readonly<{
   /** Consumer-owned content rendered inside the scrollable viewport. */
   children: readonly Html[];
   /** Additional class appended to the default Content classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Content element. */
   style?: ScrollAreaStyle | undefined;
 }>;
@@ -67,7 +67,7 @@ export type ScrollbarViewConfig = Readonly<{
   /** Thumb rendered inside the visual scrollbar rail. */
   children: readonly Html[];
   /** Additional class appended to the default Scrollbar classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Scrollbar element. */
   style?: ScrollAreaStyle | undefined;
 }>;
@@ -75,7 +75,7 @@ export type ScrollbarViewConfig = Readonly<{
 /** Props for the Scroll Area Thumb anatomy part. */
 export type ThumbViewConfig = Readonly<{
   /** Additional class appended to the default Thumb classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Thumb element. */
   style?: ScrollAreaStyle | undefined;
 }>;
@@ -83,7 +83,7 @@ export type ThumbViewConfig = Readonly<{
 /** Props for the Scroll Area Corner anatomy part. */
 export type CornerViewConfig = Readonly<{
   /** Additional class appended to the default Corner classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Corner element. */
   style?: ScrollAreaStyle | undefined;
 }>;
@@ -97,21 +97,21 @@ export type ViewConfig = Readonly<{
   /** Adds the Base UI gradient fade mask class to the viewport. */
   hasFade?: boolean | undefined;
   /** Additional class appended to the default Root classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Root element. */
   style?: ScrollAreaStyle | undefined;
   /** Additional class appended to the default Viewport classes. */
-  viewportClassName?: string | undefined;
+  viewportClasses?: string | undefined;
   /** Inline styles applied to the Viewport element. */
   viewportStyle?: ScrollAreaStyle | undefined;
   /** Additional class appended to the default Content classes. */
-  contentClassName?: string | undefined;
+  contentClasses?: string | undefined;
   /** Inline styles applied to the Content element. */
   contentStyle?: ScrollAreaStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -131,7 +131,7 @@ const stateAttributes = <ParentMessage>(
 /** Renders the Scroll Area Root anatomy part. */
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   hasOverflowX,
   hasOverflowY,
@@ -143,7 +143,7 @@ export const rootView = <ParentMessage>({
     [
       ...stateAttributes(h, { hasOverflowX, hasOverflowY, isScrolling }),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(scrollAreaRootClassName, className)),
+      h.Class(cn(scrollAreaRootClasses, classes)),
     ],
     children
   );
@@ -152,7 +152,7 @@ export const rootView = <ParentMessage>({
 /** Renders the native scrollable Viewport anatomy part. */
 export const viewportView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   ariaLabel,
 }: ViewportViewConfig): Html => {
@@ -165,7 +165,7 @@ export const viewportView = <ParentMessage>({
         ? []
         : [h.Attribute("role", "region"), h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(scrollAreaViewportClassName, className)),
+      h.Class(cn(scrollAreaViewportClasses, classes)),
     ],
     children
   );
@@ -174,7 +174,7 @@ export const viewportView = <ParentMessage>({
 /** Renders the Scroll Area Content anatomy part. */
 export const contentView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -182,7 +182,7 @@ export const contentView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(scrollAreaContentClassName, className)),
+      h.Class(cn(scrollAreaContentClasses, classes)),
     ],
     children
   );
@@ -191,7 +191,7 @@ export const contentView = <ParentMessage>({
 /** Renders a visual Scrollbar rail. Native scrolling remains on the Viewport. */
 export const scrollbarView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: ScrollbarViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -200,7 +200,7 @@ export const scrollbarView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(scrollAreaScrollbarClassName, className)),
+      h.Class(cn(scrollAreaScrollbarClasses, classes)),
     ],
     children
   );
@@ -208,7 +208,7 @@ export const scrollbarView = <ParentMessage>({
 
 /** Renders a visual Thumb inside the Scrollbar rail. */
 export const thumbView = <ParentMessage>({
-  className,
+  classes,
   style,
 }: ThumbViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -216,7 +216,7 @@ export const thumbView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(scrollAreaThumbClassName, className)),
+      h.Class(cn(scrollAreaThumbClasses, classes)),
     ],
     []
   );
@@ -224,7 +224,7 @@ export const thumbView = <ParentMessage>({
 
 /** Renders the visual Corner anatomy part for two-axis layouts. */
 export const cornerView = <ParentMessage>({
-  className,
+  classes,
   style,
 }: CornerViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -233,7 +233,7 @@ export const cornerView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(scrollAreaCornerClassName, className)),
+      h.Class(cn(scrollAreaCornerClasses, classes)),
     ],
     []
   );
@@ -244,27 +244,27 @@ export const view = <ParentMessage>({
   children,
   ariaLabel,
   hasFade = false,
-  className,
+  classes,
   style,
-  viewportClassName,
+  viewportClasses,
   viewportStyle,
-  contentClassName,
+  contentClasses,
   contentStyle,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
-    className,
+    classes,
     style,
     hasOverflowY: true,
     children: [
       viewportView<ParentMessage>({
         ariaLabel,
-        className: hasFade
-          ? classNames(scrollAreaFadeClassName, viewportClassName)
-          : viewportClassName,
+        classes: hasFade
+          ? cn(scrollAreaFadeClasses, viewportClasses)
+          : viewportClasses,
         style: viewportStyle,
         children: [
           contentView<ParentMessage>({
-            className: contentClassName,
+            classes: contentClasses,
             style: contentStyle,
             children,
           }),

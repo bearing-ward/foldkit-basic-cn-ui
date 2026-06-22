@@ -115,9 +115,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [
       ScrollArea.view<Message>({
         ariaLabel: "Tags",
-        className: "h-72 w-48 rounded-md border border-gray-200",
-        viewportClassName: "p-4",
-        contentClassName: "space-y-0",
+        classes: "h-72 w-48 rounded-md border border-gray-200",
+        viewportClasses: "p-4",
+        contentClasses: "space-y-0",
         children: [
           h.h4([h.Class("mb-4 text-sm font-medium leading-none")], ["Tags"]),
           ...tagRows(),
@@ -125,18 +125,18 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       }),
       ScrollArea.view<Message>({
         ariaLabel: "Horizontal photo gallery",
-        className: "w-96 whitespace-nowrap rounded-md border border-gray-200",
-        viewportClassName: "p-4",
-        contentClassName: "flex w-max gap-4",
+        classes: "w-96 whitespace-nowrap rounded-md border border-gray-200",
+        viewportClasses: "p-4",
+        contentClasses: "flex w-max gap-4",
         hasHorizontalScrollbar: true,
         children: horizontalPhotos(),
       }),
       h.div([h.Dir("rtl")], [
         ScrollArea.view<Message>({
           ariaLabel: "العلامات",
-          className: "h-72 w-48 rounded-md border border-gray-200",
-          viewportClassName: "p-4",
-          contentClassName: "space-y-0",
+          classes: "h-72 w-48 rounded-md border border-gray-200",
+          viewportClasses: "p-4",
+          contentClasses: "space-y-0",
           children: [
             h.h4([h.Class("mb-4 text-sm font-medium leading-none")], [
               "العلامات",

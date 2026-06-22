@@ -3,27 +3,27 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  chartAxisClassName,
-  chartBarClassName,
-  chartContainerClassName,
-  chartGridClassName,
-  chartLegendClassName,
-  chartLegendItemClassName,
-  chartLegendSwatchClassName,
-  chartSvgClassName,
-  chartTooltipClassName,
+  chartAxisClasses,
+  chartBarClasses,
+  chartContainerClasses,
+  chartGridClasses,
+  chartLegendClasses,
+  chartLegendItemClasses,
+  chartLegendSwatchClasses,
+  chartSvgClasses,
+  chartTooltipClasses,
 } from "./view";
 
 export {
-  chartAxisClassName,
-  chartBarClassName,
-  chartContainerClassName,
-  chartGridClassName,
-  chartLegendClassName,
-  chartLegendItemClassName,
-  chartLegendSwatchClassName,
-  chartSvgClassName,
-  chartTooltipClassName,
+  chartAxisClasses,
+  chartBarClasses,
+  chartContainerClasses,
+  chartGridClasses,
+  chartLegendClasses,
+  chartLegendItemClasses,
+  chartLegendSwatchClasses,
+  chartSvgClasses,
+  chartTooltipClasses,
 } from "./view";
 
 /** Named chart series rendered by bars, legends, and tooltip rows. */
@@ -49,7 +49,7 @@ export type ChartDimensions = Readonly<{
 /** Root container props for chart composition. */
 export type ContainerViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
   ariaLabel?: string;
 }>;
 
@@ -62,7 +62,7 @@ export type BarChartViewConfig<ParentMessage> = ChartDimensions &
     showAxis?: boolean;
     axisLabelFormatter?: (label: string) => string;
     rtl?: boolean;
-    className?: string;
+    classes?: string;
     activeDatumLabel?: string;
     onHoveredDatum?: (label: string) => ParentMessage;
     onLeftChart?: ParentMessage;
@@ -72,17 +72,17 @@ export type BarChartViewConfig<ParentMessage> = ChartDimensions &
 export type TooltipViewConfig = Readonly<{
   label: string;
   rows: readonly Readonly<{ label: string; value: string; color: string }>[];
-  className?: string;
+  classes?: string;
 }>;
 
 /** Legend props for visible series labels. */
 export type LegendViewConfig = Readonly<{
   series: readonly ChartSeries[];
-  className?: string;
+  classes?: string;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -100,7 +100,7 @@ const maxValue = (
 /** Wraps chart content with the shadcn-style chart region and label. */
 export const containerView = <ParentMessage>({
   children,
-  className,
+  classes,
   ariaLabel = "Chart",
 }: ContainerViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -110,7 +110,7 @@ export const containerView = <ParentMessage>({
       h.Attribute("role", "region"),
       h.AriaLabel(ariaLabel),
       h.DataAttribute("slot", "chart"),
-      h.Class(classNames(chartContainerClassName, className)),
+      h.Class(cn(chartContainerClasses, classes)),
     ],
     children
   );
@@ -127,7 +127,7 @@ export const barChartView = <ParentMessage>({
   showAxis = true,
   axisLabelFormatter = (label) => label,
   rtl = false,
-  className,
+  classes,
   activeDatumLabel,
   onHoveredDatum,
   onLeftChart,
@@ -153,7 +153,7 @@ export const barChartView = <ParentMessage>({
       h.Attribute("role", "img"),
       h.AriaLabel("Bar chart"),
       h.DataAttribute("slot", "chart-svg"),
-      h.Class(classNames(chartSvgClassName, className)),
+      h.Class(cn(chartSvgClasses, classes)),
     ],
     [
       ...(showGrid
@@ -166,7 +166,7 @@ export const barChartView = <ParentMessage>({
                 h.Attribute("x2", String(width - padding)),
                 h.Attribute("y1", String(y)),
                 h.Attribute("y2", String(y)),
-                h.Class(chartGridClassName),
+                h.Class(chartGridClasses),
               ],
               []
             );
@@ -196,7 +196,7 @@ export const barChartView = <ParentMessage>({
               h.Attribute("data-value", String(value)),
               h.Class(
                 [
-                  chartBarClassName,
+                  chartBarClasses,
                   isActive ? "opacity-100" : "opacity-85",
                 ].join(" ")
               ),
@@ -235,7 +235,7 @@ export const barChartView = <ParentMessage>({
                 ),
                 h.Attribute("y", String(height - 8)),
                 h.Attribute("text-anchor", "middle"),
-                h.Class(chartAxisClassName),
+                h.Class(chartAxisClasses),
               ],
               [axisLabelFormatter(datum.label)]
             )
@@ -249,14 +249,14 @@ export const barChartView = <ParentMessage>({
 export const tooltipView = <ParentMessage>({
   label,
   rows,
-  className,
+  classes,
 }: TooltipViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "chart-tooltip"),
-      h.Class(classNames(chartTooltipClassName, className)),
+      h.Class(cn(chartTooltipClasses, classes)),
     ],
     [
       h.p([h.Class("mb-2 font-medium text-gray-950")], [label]),
@@ -271,7 +271,7 @@ export const tooltipView = <ParentMessage>({
                   [
                     h.Attribute("aria-hidden", "true"),
                     h.Style({ backgroundColor: row.color }),
-                    h.Class(chartLegendSwatchClassName),
+                    h.Class(chartLegendSwatchClasses),
                   ],
                   []
                 ),
@@ -289,24 +289,24 @@ export const tooltipView = <ParentMessage>({
 /** Renders a visible legend for chart series. */
 export const legendView = <ParentMessage>({
   series,
-  className,
+  classes,
 }: LegendViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "chart-legend"),
-      h.Class(classNames(chartLegendClassName, className)),
+      h.Class(cn(chartLegendClasses, classes)),
     ],
     series.map((item) =>
       h.span(
-        [h.Class(chartLegendItemClassName)],
+        [h.Class(chartLegendItemClasses)],
         [
           h.span(
             [
               h.Attribute("aria-hidden", "true"),
               h.Style({ backgroundColor: item.color }),
-              h.Class(chartLegendSwatchClassName),
+              h.Class(chartLegendSwatchClasses),
             ],
             []
           ),

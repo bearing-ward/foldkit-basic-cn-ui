@@ -1,7 +1,7 @@
 export {
-  collapsibleContentClassName as shadcnCollapsibleContentClassName,
-  collapsibleIconClassName as shadcnCollapsibleIconClassName,
-  collapsiblePanelClassName as shadcnCollapsiblePanelClassName,
-  collapsibleRootClassName as shadcnCollapsibleRootClassName,
-  collapsibleTriggerClassName as shadcnCollapsibleTriggerClassName,
+  collapsibleContentClasses as shadcnCollapsibleContentClasses,
+  collapsibleIconClasses as shadcnCollapsibleIconClasses,
+  collapsiblePanelClasses as shadcnCollapsiblePanelClasses,
+  collapsibleRootClasses as shadcnCollapsibleRootClasses,
+  collapsibleTriggerClasses as shadcnCollapsibleTriggerClasses,
 } from "../../../foldkit/ui/collapsible/view";

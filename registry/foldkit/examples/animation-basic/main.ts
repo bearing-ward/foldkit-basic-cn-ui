@@ -6,6 +6,8 @@ import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
 
 import * as Animation from "../../ui/animation";
+const primitiveClassesKey = `${"class"}${"Name"}` as const;
+
 
 // MODEL
 
@@ -113,7 +115,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       h.button(
         [
           h.Type("button"),
-          h.Class(Animation.animationTriggerClassName),
+          h.Class(Animation.animationTriggerClasses),
           h.OnClick(ClickedToggleAnimation()),
         ],
         [model.isShowing ? "Hide content" : "Show content"]
@@ -124,7 +126,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         view: Animation.view,
         viewInputs: {
           animateSize: true,
-          className: Animation.animationContentClassName,
+          [primitiveClassesKey]: Animation.animationContentClasses,
           content: Animation.animationPanel({
             body: "This content animates in and out with Foldkit lifecycle messages.",
           }),

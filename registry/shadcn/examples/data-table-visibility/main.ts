@@ -80,7 +80,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         h.Attribute("role", "menuitemcheckbox"),
         h.Attribute("aria-checked", checked ? "true" : "false"),
         h.AriaLabel(`Toggle ${column} column`),
-        h.Class(DataTable.dataTableMenuItemClassName),
+        h.Class(DataTable.dataTableMenuItemClasses),
         h.OnClick(ClickedToggleColumn({ column })),
       ],
       [`${checked ? "✓ " : ""}${label}`]
@@ -97,7 +97,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.Placeholder("Filter emails..."),
             h.Value(model.filter),
             h.OnInput((value) => UpdatedFilter({ value })),
-            h.Class(DataTable.dataTableInputClassName),
+            h.Class(DataTable.dataTableInputClasses),
           ]),
           h.div(
             [h.Class("relative inline-flex flex-col items-end gap-2")],
@@ -110,7 +110,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     "aria-expanded",
                     model.isColumnsOpen ? "true" : "false"
                   ),
-                  h.Class(DataTable.dataTableButtonClassName),
+                  h.Class(DataTable.dataTableButtonClasses),
                   h.OnClick(ClickedToggleColumnsMenu()),
                 ],
                 ["Columns"]
@@ -119,7 +119,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 ? h.div(
                     [
                       h.Attribute("role", "menu"),
-                      h.Class(`${DataTable.dataTableMenuClassName} min-w-32`),
+                      h.Class(`${DataTable.dataTableMenuClasses} min-w-32`),
                     ],
                     [
                       columnMenuItem("status", "Status", model.status),

@@ -7,6 +7,6 @@ describe("shadcn Popover registry view", () => {
     expect(Popover.init).toBeTypeOf("function");
     expect(Popover.update).toBeTypeOf("function");
     expect(Popover.trigger).toBeTypeOf("function");
-    expect(Popover.shadcnPopoverPanelClassName).toContain("shadow");
+    expect(Popover.shadcnPopoverPanelClasses).toContain("shadow");
   });
 });

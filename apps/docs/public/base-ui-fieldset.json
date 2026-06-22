@@ -12,19 +12,19 @@
       "path": "registry/base-ui/ui/base-ui-fieldset/index.ts",
       "target": "src/ui/base-ui-fieldset/index.ts",
       "type": "registry:ui",
-      "content": "export { descriptionId, legendId, view } from \"../../../foldkit/ui/fieldset\";\nexport type { FieldsetAttributes, ViewConfig } from \"../../../foldkit/ui/fieldset\";\n\nexport {\n  fieldsetClassName as baseUiFieldsetRootClassName,\n  legendClassName as baseUiFieldsetLegendClassName,\n  descriptionClassName as baseUiFieldsetDescriptionClassName,\n  baseUiFieldsetFieldsClassName,\n  baseUiFieldsetFieldClassName,\n  baseUiFieldsetLabelClassName,\n  baseUiFieldsetInputClassName,\n  baseUiFieldsetTextareaClassName,\n} from \"./view\";\n"
+      "content": "export { descriptionId, legendId, view } from \"../../../foldkit/ui/fieldset\";\nexport type { FieldsetAttributes, ViewConfig } from \"../../../foldkit/ui/fieldset\";\n\nexport {\n  fieldsetClasses as baseUiFieldsetRootClasses,\n  legendClasses as baseUiFieldsetLegendClasses,\n  descriptionClasses as baseUiFieldsetDescriptionClasses,\n  baseUiFieldsetFieldsClasses,\n  baseUiFieldsetFieldClasses,\n  baseUiFieldsetLabelClasses,\n  baseUiFieldsetInputClasses,\n  baseUiFieldsetTextareaClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-fieldset/view.ts",
       "target": "src/ui/base-ui-fieldset/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  fieldsetClassName,\n  legendClassName,\n  descriptionClassName,\n  fieldsClassName as baseUiFieldsetFieldsClassName,\n  fieldClassName as baseUiFieldsetFieldClassName,\n  labelClassName as baseUiFieldsetLabelClassName,\n  inputClassName as baseUiFieldsetInputClassName,\n  textareaClassName as baseUiFieldsetTextareaClassName,\n} from \"../../../foldkit/ui/fieldset/view\";\n"
+      "content": "export {\n  fieldsetClasses,\n  legendClasses,\n  descriptionClasses,\n  fieldsClasses as baseUiFieldsetFieldsClasses,\n  fieldClasses as baseUiFieldsetFieldClasses,\n  labelClasses as baseUiFieldsetLabelClasses,\n  inputClasses as baseUiFieldsetInputClasses,\n  textareaClasses as baseUiFieldsetTextareaClasses,\n} from \"../../../foldkit/ui/fieldset/view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",
       "target": "src/ui/base-ui-fieldset/base-ui-fieldset.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Fieldset from \"./index\";\n\ndescribe(\"Base UI Fieldset registry view\", () => {\n  test(\"reuses the Foldkit Fieldset functional contract\", () => {\n    expect(Fieldset.view).toBeTypeOf(\"function\");\n    expect(Fieldset.legendId).toBeTypeOf(\"function\");\n    expect(Fieldset.baseUiFieldsetRootClassName).toContain(\"rounded-lg\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Fieldset from \"./index\";\n\ndescribe(\"Base UI Fieldset registry view\", () => {\n  test(\"reuses the Foldkit Fieldset functional contract\", () => {\n    expect(Fieldset.view).toBeTypeOf(\"function\");\n    expect(Fieldset.legendId).toBeTypeOf(\"function\");\n    expect(Fieldset.baseUiFieldsetRootClasses).toContain(\"rounded-lg\");\n  });\n});\n"
     }
   ],
   "meta": {

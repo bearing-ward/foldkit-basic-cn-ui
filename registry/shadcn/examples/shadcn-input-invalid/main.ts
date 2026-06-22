@@ -40,7 +40,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("grid w-full max-w-sm gap-2")],
     [
       h.label(
-        [h.Attribute("for", "email"), h.Class(Input.shadcnInputLabelClassName)],
+        [h.Attribute("for", "email"), h.Class(Input.shadcnInputLabelClasses)],
         ["Email"]
       ),
       h.input([
@@ -49,7 +49,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         h.Value("invalid-email"),
         h.AriaLabel("Email"),
         h.Attribute("aria-invalid", "true"),
-        h.Class(Input.shadcnInputClassName),
+        h.Class(Input.shadcnInputClasses),
       ]),
       h.p(
         [h.Class("text-sm font-medium text-red-700")],

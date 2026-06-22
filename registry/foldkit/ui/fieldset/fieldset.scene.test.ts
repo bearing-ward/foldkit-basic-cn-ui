@@ -22,27 +22,27 @@ const view = (): Html => {
     id: "account-fieldset",
     toView: (attributes) =>
       h.fieldset(
-        [...attributes.fieldset, h.Class(Fieldset.fieldsetClassName)],
+        [...attributes.fieldset, h.Class(Fieldset.fieldsetClasses)],
         [
           h.legend(
-            [...attributes.legend, h.Class(Fieldset.legendClassName)],
+            [...attributes.legend, h.Class(Fieldset.legendClasses)],
             ["Account"]
           ),
           h.p(
-            [...attributes.description, h.Class(Fieldset.descriptionClassName)],
+            [...attributes.description, h.Class(Fieldset.descriptionClasses)],
             ["Configure the public account details."]
           ),
           h.div(
-            [h.Class(Fieldset.fieldsClassName)],
+            [h.Class(Fieldset.fieldsClasses)],
             [
               h.label(
-                [h.Class(Fieldset.fieldClassName)],
+                [h.Class(Fieldset.fieldClasses)],
                 [
-                  h.span([h.Class(Fieldset.labelClassName)], ["Display name"]),
+                  h.span([h.Class(Fieldset.labelClasses)], ["Display name"]),
                   h.input([
                     h.AriaLabel("Display name"),
                     h.Placeholder("Ada Lovelace"),
-                    h.Class(Fieldset.inputClassName),
+                    h.Class(Fieldset.inputClasses),
                   ]),
                 ]
               ),
@@ -61,21 +61,21 @@ const disabledView = (): Html => {
     isDisabled: true,
     toView: (attributes) =>
       h.fieldset(
-        [...attributes.fieldset, h.Class(Fieldset.fieldsetClassName)],
+        [...attributes.fieldset, h.Class(Fieldset.fieldsetClasses)],
         [
           h.legend(
-            [...attributes.legend, h.Class(Fieldset.legendClassName)],
+            [...attributes.legend, h.Class(Fieldset.legendClasses)],
             ["Locked account"]
           ),
           h.p(
-            [...attributes.description, h.Class(Fieldset.descriptionClassName)],
+            [...attributes.description, h.Class(Fieldset.descriptionClasses)],
             ["This group cannot be edited."]
           ),
           h.input([
             h.AriaLabel("Locked display name"),
             h.Disabled(true),
             h.Value("Ada Lovelace"),
-            h.Class(Fieldset.inputClassName),
+            h.Class(Fieldset.inputClasses),
           ]),
         ]
       ),

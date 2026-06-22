@@ -79,12 +79,12 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-8 items-center justify-center gap-2 border border-neutral-950 bg-white px-3 text-sm leading-none font-normal text-neutral-950 hover:bg-neutral-100";
 
-const dangerButtonClassName = `${buttonClassName} text-red-700`;
+const dangerButtonClasses = `${buttonClasses} text-red-700`;
 
-const popupClassName =
+const popupClasses =
   "grid w-full max-w-sm gap-4 rounded-none border border-neutral-950 bg-white p-4 text-neutral-950 shadow-[0.25rem_0.25rem_0_rgba(0,0,0,0.12)]";
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
@@ -100,7 +100,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       AlertDialog.triggerView<Message>({
         onClick: ClickedTweet(),
         children: [h.span([], ["Tweet"])],
-        className: buttonClassName,
+        classes: buttonClasses,
       }),
       ...(model.discarded
         ? [h.p([h.Class("text-sm text-neutral-600")], ["Tweet discarded."])]
@@ -114,16 +114,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               AlertDialog.popupView<Message>({
                 titleId: tweetTitleId,
                 descriptionId: tweetDescriptionId,
-                className: popupClassName,
+                classes: popupClasses,
                 children: [
                   AlertDialog.titleView<Message>({
                     id: tweetTitleId,
-                    className: "text-base font-bold",
+                    classes: "text-base font-bold",
                     children: [h.span([], ["New tweet"])],
                   }),
                   AlertDialog.descriptionView<Message>({
                     id: tweetDescriptionId,
-                    className: "sr-only",
+                    classes: "sr-only",
                     children: [h.span([], ["Write and post a tweet."])],
                   }),
                   h.textarea(
@@ -143,10 +143,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       AlertDialog.closeView<Message>({
                         onClick: RequestedCloseTweet(),
                         children: [h.span([], ["Cancel"])],
-                        className: buttonClassName,
+                        classes: buttonClasses,
                       }),
                       h.button(
-                        [h.Type("button"), h.Class(buttonClassName)],
+                        [h.Type("button"), h.Class(buttonClasses)],
                         ["Tweet"]
                       ),
                     ]
@@ -165,16 +165,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               AlertDialog.popupView<Message>({
                 titleId: confirmationTitleId,
                 descriptionId: confirmationDescriptionId,
-                className: popupClassName,
+                classes: popupClasses,
                 children: [
                   AlertDialog.titleView<Message>({
                     id: confirmationTitleId,
-                    className: "text-base font-bold",
+                    classes: "text-base font-bold",
                     children: [h.span([], ["Discard tweet?"])],
                   }),
                   AlertDialog.descriptionView<Message>({
                     id: confirmationDescriptionId,
-                    className: "text-sm text-neutral-600",
+                    classes: "text-sm text-neutral-600",
                     children: [h.span([], ["Your tweet will be lost."])],
                   }),
                   AlertDialog.actionsView<Message>({
@@ -182,16 +182,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       AlertDialog.closeView<Message>({
                         onClick: ClickedGoBack(),
                         children: [h.span([], ["Go back"])],
-                        className: buttonClassName,
+                        classes: buttonClasses,
                       }),
                       AlertDialog.closeView<Message>({
                         onClick: ClickedDiscardTweet(),
                         variant: "Confirm",
                         children: [h.span([], ["Discard"])],
-                        className: dangerButtonClassName,
+                        classes: dangerButtonClasses,
                       }),
                     ],
-                    className: "flex justify-end gap-3",
+                    classes: "flex justify-end gap-3",
                   }),
                 ],
               }),

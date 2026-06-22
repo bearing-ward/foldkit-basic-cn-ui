@@ -26,11 +26,11 @@ export const view = Submodel.defineView<UiModel, UiMessage>((): Html => {
                 [
                   Skeleton.view<UiMessage>({
                     shape: "Text",
-                    className: "w-32",
+                    classes: "w-32",
                   }),
                   Skeleton.view<UiMessage>({
                     shape: "Text",
-                    className: "w-48",
+                    classes: "w-48",
                   }),
                 ]
               ),

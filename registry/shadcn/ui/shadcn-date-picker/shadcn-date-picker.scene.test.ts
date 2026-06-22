@@ -10,6 +10,6 @@ describe("shadcn Date Picker registry view", () => {
     expect(DatePicker.formatDate(Calendar.make(2026, 4, 16))).toBe(
       "2026-04-16"
     );
-    expect(DatePicker.shadcnDatePickerTriggerClassName).toContain("rounded");
+    expect(DatePicker.shadcnDatePickerTriggerClasses).toContain("rounded");
   });
 });

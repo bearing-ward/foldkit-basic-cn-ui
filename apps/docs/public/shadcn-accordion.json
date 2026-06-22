@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-accordion/index.ts",
       "target": "src/ui/shadcn-accordion/index.ts",
       "type": "registry:ui",
-      "content": "export { includesValue, itemView, rootView, toggleValue } from \"../../../foldkit/ui/accordion\";\nexport type {\n  AccordionStyle,\n  ItemViewConfig,\n  RootViewConfig,\n} from \"../../../foldkit/ui/accordion\";\n\nexport {\n  shadcnAccordionHeaderClassName,\n  shadcnAccordionIconClassName,\n  shadcnAccordionItemClassName,\n  shadcnAccordionPanelClassName,\n  shadcnAccordionRootClassName,\n  shadcnAccordionTriggerClassName,\n} from \"./view\";\n"
+      "content": "export { includesValue, itemView, rootView, toggleValue } from \"../../../foldkit/ui/accordion\";\nexport type {\n  AccordionStyle,\n  ItemViewConfig,\n  RootViewConfig,\n} from \"../../../foldkit/ui/accordion\";\n\nexport {\n  shadcnAccordionHeaderClasses,\n  shadcnAccordionIconClasses,\n  shadcnAccordionItemClasses,\n  shadcnAccordionPanelClasses,\n  shadcnAccordionRootClasses,\n  shadcnAccordionTriggerClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-accordion/view.ts",
       "target": "src/ui/shadcn-accordion/view.ts",
       "type": "registry:ui",
-      "content": "export const shadcnAccordionRootClassName = \"w-full max-w-2xl bg-white\";\n\nexport const shadcnAccordionItemClassName =\n  \"border-b border-gray-200 data-[disabled]:opacity-50 data-[open]:bg-gray-50\";\n\nexport const shadcnAccordionHeaderClassName = \"m-0\";\n\nexport const shadcnAccordionTriggerClassName =\n  \"group flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-3 text-left text-sm font-medium text-gray-950 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600 data-[disabled]:cursor-not-allowed\";\n\nexport const shadcnAccordionIconClassName =\n  \"text-gray-500 transition-transform group-data-[open]:rotate-45\";\n\nexport const shadcnAccordionPanelClassName =\n  \"px-4 pb-4 text-sm leading-6 text-gray-600\";\n"
+      "content": "export const shadcnAccordionRootClasses = \"w-full max-w-2xl bg-white\";\n\nexport const shadcnAccordionItemClasses =\n  \"border-b border-gray-200 data-[disabled]:opacity-50 data-[open]:bg-gray-50\";\n\nexport const shadcnAccordionHeaderClasses = \"m-0\";\n\nexport const shadcnAccordionTriggerClasses =\n  \"group flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-3 text-left text-sm font-medium text-gray-950 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600 data-[disabled]:cursor-not-allowed\";\n\nexport const shadcnAccordionIconClasses =\n  \"text-gray-500 transition-transform group-data-[open]:rotate-45\";\n\nexport const shadcnAccordionPanelClasses =\n  \"px-4 pb-4 text-sm leading-6 text-gray-600\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-accordion/shadcn-accordion.scene.test.ts",
       "target": "src/ui/shadcn-accordion/shadcn-accordion.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Accordion from \"./index\";\n\ndescribe(\"shadcn Accordion registry view\", () => {\n  test(\"reuses the Foldkit Accordion view contract\", () => {\n    expect(Accordion.rootView).toBeTypeOf(\"function\");\n    expect(Accordion.itemView).toBeTypeOf(\"function\");\n    expect(Accordion.toggleValue([\"one\"], \"one\")).toEqual([]);\n    expect(Accordion.shadcnAccordionRootClassName).not.toContain(\"border\");\n    expect(Accordion.shadcnAccordionItemClassName).toContain(\"border-b\");\n    expect(Accordion.shadcnAccordionTriggerClassName).toContain(\"font-medium\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Accordion from \"./index\";\n\ndescribe(\"shadcn Accordion registry view\", () => {\n  test(\"reuses the Foldkit Accordion view contract\", () => {\n    expect(Accordion.rootView).toBeTypeOf(\"function\");\n    expect(Accordion.itemView).toBeTypeOf(\"function\");\n    expect(Accordion.toggleValue([\"one\"], \"one\")).toEqual([]);\n    expect(Accordion.shadcnAccordionRootClasses).not.toContain(\"border\");\n    expect(Accordion.shadcnAccordionItemClasses).toContain(\"border-b\");\n    expect(Accordion.shadcnAccordionTriggerClasses).toContain(\"font-medium\");\n  });\n});\n"
     }
   ],
   "meta": {

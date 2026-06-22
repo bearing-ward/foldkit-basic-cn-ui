@@ -33,12 +33,12 @@ export const update = (
 
 // VIEW
 
-const shadcnButton = (label: string, className: string): Html => {
+const shadcnButton = (label: string, classes: string): Html => {
   const h = html<Message>();
 
   return Button.view<Message>({
     toView: (attributes) =>
-      h.button([...attributes.button, h.Class(className)], [label]),
+      h.button([...attributes.button, h.Class(classes)], [label]),
   });
 };
 
@@ -49,12 +49,12 @@ export const view = Submodel.defineView<Model, Message>(
       children: [
         ButtonGroup.itemView<Message>({
           children: [
-            shadcnButton("Archive Report", Button.shadcnButtonClassName),
+            shadcnButton("Archive Report", Button.shadcnButtonClasses),
           ],
         }),
         ButtonGroup.itemView<Message>({
           children: [
-            shadcnButton("Snooze", Button.shadcnSecondaryButtonClassName),
+            shadcnButton("Snooze", Button.shadcnSecondaryButtonClasses),
           ],
         }),
       ],

@@ -19,12 +19,12 @@ export type {
 } from "../../../foldkit/ui/context-menu";
 
 export {
-  shadcnContextMenuBackdropClassName,
-  shadcnContextMenuItemClassName,
-  shadcnContextMenuPopupClassName,
-  shadcnContextMenuPortalClassName,
-  shadcnContextMenuPositionerClassName,
-  shadcnContextMenuRootClassName,
-  shadcnContextMenuSeparatorClassName,
-  shadcnContextMenuTriggerClassName,
+  shadcnContextMenuBackdropClasses,
+  shadcnContextMenuItemClasses,
+  shadcnContextMenuPopupClasses,
+  shadcnContextMenuPortalClasses,
+  shadcnContextMenuPositionerClasses,
+  shadcnContextMenuRootClasses,
+  shadcnContextMenuSeparatorClasses,
+  shadcnContextMenuTriggerClasses,
 } from "./view";

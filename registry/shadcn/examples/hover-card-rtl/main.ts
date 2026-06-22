@@ -66,16 +66,16 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 children: [
                   HoverCard.popupView<Message>({
                     children: [
-                      h.div([h.Class(HoverCard.hoverCardAvatarClassName)], [
+                      h.div([h.Class(HoverCard.hoverCardAvatarClasses)], [
                         "ف",
                       ]),
-                      h.h3([h.Class(HoverCard.hoverCardTitleClassName)], [
+                      h.h3([h.Class(HoverCard.hoverCardTitleClasses)], [
                         "@vercel",
                       ]),
-                      h.p([h.Class(HoverCard.hoverCardDescriptionClassName)], [
+                      h.p([h.Class(HoverCard.hoverCardDescriptionClasses)], [
                         "إطار عمل React - تم إنشاؤه وصيانته بواسطة @vercel.",
                       ]),
-                      h.div([h.Class(HoverCard.hoverCardMetaClassName)], [
+                      h.div([h.Class(HoverCard.hoverCardMetaClasses)], [
                         "انضم في ديسمبر 2021",
                       ]),
                     ],

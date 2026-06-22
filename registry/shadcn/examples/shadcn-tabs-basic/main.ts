@@ -105,21 +105,21 @@ export const update = (
 
 // VIEW
 
-const cardClassName =
+const cardClasses =
   "rounded-xl border border-gray-200 bg-white text-gray-950 shadow-sm";
-const cardHeaderClassName = "flex flex-col space-y-1.5 p-6";
-const cardTitleClassName = "font-semibold leading-none tracking-normal";
-const cardDescriptionClassName = "text-sm text-gray-500";
-const cardContentClassName = "space-y-2 p-6 pt-0";
-const cardFooterClassName = "flex items-center p-6 pt-0";
-const fieldClassName = "space-y-1";
-const labelClassName = "text-sm font-medium leading-none text-gray-950";
-const inputClassName =
+const cardHeaderClasses = "flex flex-col space-y-1.5 p-6";
+const cardTitleClasses = "font-semibold leading-none tracking-normal";
+const cardDescriptionClasses = "text-sm text-gray-500";
+const cardContentClasses = "space-y-2 p-6 pt-0";
+const cardFooterClasses = "flex items-center p-6 pt-0";
+const fieldClasses = "space-y-1";
+const labelClasses = "text-sm font-medium leading-none text-gray-950";
+const inputClasses =
   "flex h-9 w-full rounded-md border border-gray-200 bg-transparent px-3 py-1 text-base text-gray-950 shadow-xs transition-colors placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-600 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm";
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-9 items-center justify-center rounded-md bg-gray-950 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-600 disabled:pointer-events-none disabled:opacity-50";
 
-const tabClassName =
+const tabClasses =
   "inline-flex h-9 items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium text-gray-600 transition-all hover:text-gray-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 disabled:pointer-events-none disabled:opacity-50 data-[selected]:bg-white data-[selected]:text-gray-950 data-[selected]:shadow";
 
 const input = (
@@ -132,15 +132,15 @@ const input = (
   const id = `shadcn-tabs-${label.toLowerCase().replaceAll(" ", "-")}`;
 
   return h.div(
-    [h.Class(fieldClassName)],
+    [h.Class(fieldClasses)],
     [
-      h.label([h.For(id), h.Class(labelClassName)], [label]),
+      h.label([h.For(id), h.Class(labelClasses)], [label]),
       h.input([
         h.Id(id),
         h.Type(type),
         h.Value(value),
         h.OnInput((value) => message(value)),
-        h.Class(inputClassName),
+        h.Class(inputClasses),
       ]),
     ]
   );
@@ -148,14 +148,14 @@ const input = (
 
 const accountPanel = (h: ReturnType<typeof html<Message>>, model: Model): Html =>
   h.div(
-    [h.Class(cardClassName)],
+    [h.Class(cardClasses)],
     [
       h.div(
-        [h.Class(cardHeaderClassName)],
+        [h.Class(cardHeaderClasses)],
         [
-          h.div([h.Class(cardTitleClassName)], ["Account"]),
+          h.div([h.Class(cardTitleClasses)], ["Account"]),
           h.p(
-            [h.Class(cardDescriptionClassName)],
+            [h.Class(cardDescriptionClasses)],
             [
               "Make changes to your account here. Click save when you're done.",
             ]
@@ -163,7 +163,7 @@ const accountPanel = (h: ReturnType<typeof html<Message>>, model: Model): Html =
         ]
       ),
       h.div(
-        [h.Class(cardContentClassName)],
+        [h.Class(cardContentClasses)],
         [
           input(h, "Name", model.name, (value) => UpdatedName({ value })),
           input(h, "Username", model.username, (value) =>
@@ -171,8 +171,8 @@ const accountPanel = (h: ReturnType<typeof html<Message>>, model: Model): Html =
           ),
         ]
       ),
-      h.div([h.Class(cardFooterClassName)], [
-        h.button([h.Class(buttonClassName)], ["Save changes"]),
+      h.div([h.Class(cardFooterClasses)], [
+        h.button([h.Class(buttonClasses)], ["Save changes"]),
       ]),
     ]
   );
@@ -182,14 +182,14 @@ const passwordPanel = (
   model: Model
 ): Html =>
   h.div(
-    [h.Class(cardClassName)],
+    [h.Class(cardClasses)],
     [
       h.div(
-        [h.Class(cardHeaderClassName)],
+        [h.Class(cardHeaderClasses)],
         [
-          h.div([h.Class(cardTitleClassName)], ["Password"]),
+          h.div([h.Class(cardTitleClasses)], ["Password"]),
           h.p(
-            [h.Class(cardDescriptionClassName)],
+            [h.Class(cardDescriptionClasses)],
             [
               "Change your password here. After saving, you'll be logged out.",
             ]
@@ -197,7 +197,7 @@ const passwordPanel = (
         ]
       ),
       h.div(
-        [h.Class(cardContentClassName)],
+        [h.Class(cardContentClasses)],
         [
           input(
             h,
@@ -215,8 +215,8 @@ const passwordPanel = (
           ),
         ]
       ),
-      h.div([h.Class(cardFooterClassName)], [
-        h.button([h.Class(buttonClassName)], ["Save password"]),
+      h.div([h.Class(cardFooterClasses)], [
+        h.button([h.Class(buttonClasses)], ["Save password"]),
       ]),
     ]
   );
@@ -263,7 +263,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     ),
                   ],
                   render.tabs.map((tab) =>
-                    h.button([...tab.tab, h.Class(tabClassName)], [tab.value])
+                    h.button([...tab.tab, h.Class(tabClasses)], [tab.value])
                   )
                 ),
                 panel(h, model, render.tabs[render.activeIndex]?.value),

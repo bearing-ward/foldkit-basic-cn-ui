@@ -84,30 +84,30 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           value: "accepted",
           toView: (attributes) =>
             h.div(
-              [h.Class(Checkbox.checkboxRowClassName)],
+              [h.Class(Checkbox.checkboxRowClasses)],
               [
                 h.button(
                   [
                     ...attributes.checkbox,
-                    h.Class(Checkbox.checkboxControlClassName),
+                    h.Class(Checkbox.checkboxControlClasses),
                   ],
                   model.checkbox.isChecked ? ["✓"] : []
                 ),
                 h.input(attributes.hiddenInput),
                 h.div(
-                  [h.Class(Checkbox.checkboxTextClassName)],
+                  [h.Class(Checkbox.checkboxTextClasses)],
                   [
                     h.label(
                       [
                         ...attributes.label,
-                        h.Class(Checkbox.checkboxLabelClassName),
+                        h.Class(Checkbox.checkboxLabelClasses),
                       ],
                       ["Accept terms and conditions"]
                     ),
                     h.p(
                       [
                         ...attributes.description,
-                        h.Class(Checkbox.checkboxDescriptionClassName),
+                        h.Class(Checkbox.checkboxDescriptionClasses),
                       ],
                       ["You agree to the Terms of Service and Privacy Policy."]
                     ),

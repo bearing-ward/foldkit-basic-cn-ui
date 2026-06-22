@@ -29,9 +29,9 @@ export type {
 
 export {
   baseUiTooltipAnchor,
-  baseUiTooltipPanelClassName,
-  baseUiTooltipRootClassName,
-  baseUiTooltipTriggerClassName,
+  baseUiTooltipPanelClasses,
+  baseUiTooltipRootClasses,
+  baseUiTooltipTriggerClasses,
   baseUiTooltipView,
 } from "./view";
 export type { BaseUiTooltipViewInput } from "./view";

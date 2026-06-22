@@ -53,8 +53,8 @@ export type {
 } from "../../../foldkit/ui/popover";
 
 export {
-  baseUiPopoverBackdropClassName,
-  baseUiPopoverPanelClassName,
-  baseUiPopoverRootClassName,
-  baseUiPopoverTriggerClassName,
+  baseUiPopoverBackdropClasses,
+  baseUiPopoverPanelClasses,
+  baseUiPopoverRootClasses,
+  baseUiPopoverTriggerClasses,
 } from "./view";

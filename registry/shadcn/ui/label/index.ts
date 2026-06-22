@@ -1,19 +1,19 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import { labelClassName } from "./view";
+import { labelClasses } from "./view";
 
-export { labelClassName } from "./view";
+export { labelClasses } from "./view";
 
 export type ViewConfig = Readonly<{
   children: readonly Html[] | string;
   forId?: string;
   required?: boolean;
   disabled?: boolean;
-  className?: string;
+  classes?: string;
 }>;
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
@@ -23,7 +23,7 @@ export const view = <ParentMessage>({
   forId,
   required = false,
   disabled = false,
-  className,
+  classes,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -33,7 +33,7 @@ export const view = <ParentMessage>({
       h.DataAttribute("slot", "label"),
       h.DataAttribute("required", String(required)),
       h.DataAttribute("disabled", String(disabled)),
-      h.Class(classNames(labelClassName, className)),
+      h.Class(cn(labelClasses, classes)),
     ],
     typeof children === "string" ? [children] : children
   );

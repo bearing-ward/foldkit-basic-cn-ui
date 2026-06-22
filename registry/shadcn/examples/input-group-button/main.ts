@@ -31,14 +31,14 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-7 items-center rounded-md bg-gray-950 px-2 text-xs font-medium text-white";
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return InputGroup.view<Message>({
-    className: "w-full max-w-sm",
+    classes: "w-full max-w-sm",
     children: [
       InputGroup.inputView<Message>({
         ariaLabel: "Email",
@@ -47,7 +47,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       InputGroup.addonView<Message>({
         align: "InlineEnd",
         children: [
-          h.button([h.Type("button"), h.Class(buttonClassName)], ["Send"]),
+          h.button([h.Type("button"), h.Class(buttonClasses)], ["Send"]),
         ],
       }),
     ],

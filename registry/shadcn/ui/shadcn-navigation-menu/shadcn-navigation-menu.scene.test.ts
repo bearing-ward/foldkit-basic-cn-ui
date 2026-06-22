@@ -7,7 +7,7 @@ describe("shadcn Navigation Menu registry view", () => {
     expect(NavigationMenu.rootView).toBeTypeOf("function");
     expect(NavigationMenu.triggerView).toBeTypeOf("function");
     expect(NavigationMenu.linkView).toBeTypeOf("function");
-    expect(NavigationMenu.shadcnNavigationMenuPopupClassName).toContain(
+    expect(NavigationMenu.shadcnNavigationMenuPopupClasses).toContain(
       "shadow"
     );
   });

@@ -110,7 +110,7 @@ const menuItemView = (value: string): Html => {
       h.Attribute("role", "menuitem"),
       h.OnPointerDown(() => Option.some(selected)),
       h.OnClick(selected),
-      h.Class(`block w-full text-left ${Menu.baseUiMenuItemClassName}`),
+      h.Class(`block w-full text-left ${Menu.baseUiMenuItemClasses}`),
     ],
     [h.span([], [value])]
   );
@@ -141,7 +141,7 @@ const submenuTriggerView = (open: boolean): Html => {
       ...(open ? [h.DataAttribute("popup-open", "")] : []),
       h.OnClick(ClickedAddToPlaylist()),
       h.Class(
-        `flex w-full items-center justify-between gap-4 ${Menu.baseUiMenuItemClassName} data-[popup-open]:bg-gray-100`
+        `flex w-full items-center justify-between gap-4 ${Menu.baseUiMenuItemClasses} data-[popup-open]:bg-gray-100`
       ),
     ],
     [h.span([], ["Add to Playlist"]), caretRightIcon()]
@@ -159,7 +159,7 @@ const submenuView = (open: boolean): Html => {
     [
       h.Attribute("role", "menu"),
       h.DataAttribute("testid", "playlist-submenu"),
-      h.Class(`${Menu.baseUiMenuPopupClassName} left-48 top-8 -ml-1 mt-0`),
+      h.Class(`${Menu.baseUiMenuPopupClasses} left-48 top-8 -ml-1 mt-0`),
     ],
     [
       menuItemView("Get Up!"),
@@ -181,7 +181,7 @@ const popupView = (model: Model): Html => {
     [h.Class("relative")],
     [
       h.div(
-        [h.Attribute("role", "menu"), h.Class(Menu.baseUiMenuPopupClassName)],
+        [h.Attribute("role", "menu"), h.Class(Menu.baseUiMenuPopupClasses)],
         [
           menuItemView("Add to Library"),
           submenuTriggerView(model.submenuOpen),
@@ -202,13 +202,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class(Menu.baseUiMenuRootClassName)],
+    [h.Class(Menu.baseUiMenuRootClasses)],
     [
       h.button(
         [
           h.Type("button"),
           h.OnClick(ClickedFormat()),
-          h.Class(Menu.baseUiMenuTriggerClassName),
+          h.Class(Menu.baseUiMenuTriggerClasses),
         ],
         [
           h.span(
@@ -223,7 +223,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.Type("button"),
               h.AriaLabel("Close menu"),
               h.OnClick(ClickedBackdrop()),
-              h.Class(Menu.baseUiMenuBackdropClassName),
+              h.Class(Menu.baseUiMenuBackdropClasses),
             ],
             []
           )

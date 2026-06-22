@@ -80,15 +80,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       formatValue: (value) => `${value}%`,
       toView: (attributes) =>
         h.div(
-          [...attributes.root, h.Class(Slider.baseUiSliderRootClassName)],
+          [...attributes.root, h.Class(Slider.baseUiSliderRootClasses)],
           [
             h.div(
-              [...attributes.track, h.Class(Slider.baseUiSliderTrackClassName)],
+              [...attributes.track, h.Class(Slider.baseUiSliderTrackClasses)],
               [
                 h.div(
                   [
                     ...attributes.filledTrack,
-                    h.Class(Slider.baseUiSliderFilledTrackClassName),
+                    h.Class(Slider.baseUiSliderFilledTrackClasses),
                   ],
                   []
                 ),
@@ -98,7 +98,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               [
                 ...attributes.thumb,
                 h.AriaLabel("Volume"),
-                h.Class(Slider.baseUiSliderThumbClassName),
+                h.Class(Slider.baseUiSliderThumbClasses),
               ],
               []
             ),

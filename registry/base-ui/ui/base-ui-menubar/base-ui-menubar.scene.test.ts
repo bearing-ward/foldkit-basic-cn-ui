@@ -84,8 +84,8 @@ describe("Base UI Menubar registry component", () => {
   });
 
   test("exports Base UI menubar class hooks", () => {
-    expect(Menubar.menubarRootClassName).toContain("inline-flex");
-    expect(Menubar.menubarTriggerClassName).toContain("data-[open]");
-    expect(Menubar.menubarPopupClassName).toContain("shadow");
+    expect(Menubar.menubarRootClasses).toContain("inline-flex");
+    expect(Menubar.menubarTriggerClasses).toContain("data-[open]");
+    expect(Menubar.menubarPopupClasses).toContain("shadow");
   });
 });

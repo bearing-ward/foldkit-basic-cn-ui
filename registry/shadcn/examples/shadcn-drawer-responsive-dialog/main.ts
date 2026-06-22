@@ -103,7 +103,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         children: [
           Drawer.triggerView<Message>({
             onClick: ClickedEditProfile(),
-            className:
+            classes:
               "border border-gray-200 bg-white text-gray-950 hover:bg-gray-50",
             children: [h.span([], ["Edit Profile"])],
           }),
@@ -159,7 +159,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                             [
                               h.Type("button"),
                               h.OnClick(ClickedSaveChanges()),
-                              h.Class(Drawer.shadcnDrawerTriggerClassName),
+                              h.Class(Drawer.shadcnDrawerTriggerClasses),
                             ],
                             ["Save changes"]
                           ),

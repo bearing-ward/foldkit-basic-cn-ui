@@ -33,13 +33,13 @@ const view = (model: Model): Html => {
     onInput: (value) => UpdatedBio({ value }),
     toView: (attributes) =>
       h.div(
-        [h.Class(Textarea.fieldClassName)],
+        [h.Class(Textarea.fieldClasses)],
         [
           h.label(attributes.label, ["Bio"]),
           h.textarea(
             [
               ...attributes.textarea,
-              h.Class(Textarea.textareaClassName),
+              h.Class(Textarea.textareaClasses),
               h.AriaLabel("Bio"),
             ],
             []
@@ -66,7 +66,7 @@ const disabledView = (): Html => {
           h.textarea(
             [
               ...attributes.textarea,
-              h.Class(Textarea.textareaClassName),
+              h.Class(Textarea.textareaClasses),
               h.AriaLabel("Disabled bio"),
             ],
             []

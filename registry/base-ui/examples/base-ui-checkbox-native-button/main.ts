@@ -87,7 +87,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.label(
               [
                 h.For("notifications-checkbox"),
-                h.Class(Checkbox.baseUiCheckboxLabelClassName),
+                h.Class(Checkbox.baseUiCheckboxLabelClasses),
               ],
               ["Enable notifications"]
             ),
@@ -95,7 +95,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               [
                 ...attributes.checkbox,
                 h.Id("notifications-checkbox"),
-                h.Class(Checkbox.baseUiCheckboxControlClassName),
+                h.Class(Checkbox.baseUiCheckboxControlClasses),
                 h.AriaLabel("Enable notifications"),
               ],
               model.checkbox.isChecked ? ["✓"] : []

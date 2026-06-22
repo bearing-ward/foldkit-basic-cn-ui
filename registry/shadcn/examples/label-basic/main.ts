@@ -86,7 +86,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.button(
               [
                 ...attributes.checkbox,
-                h.Class(Checkbox.shadcnCheckboxControlClassName),
+                h.Class(Checkbox.shadcnCheckboxControlClasses),
                 h.AriaLabel("Accept terms and conditions"),
               ],
               model.checkbox.isChecked ? ["✓"] : []
@@ -94,7 +94,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.input(attributes.hiddenInput),
             Label.view<Message>({
               forId: model.checkbox.id,
-              className: Checkbox.shadcnCheckboxLabelClassName,
+              classes: Checkbox.shadcnCheckboxLabelClasses,
               children: "Accept terms and conditions",
             }),
           ]

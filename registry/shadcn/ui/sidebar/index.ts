@@ -2,69 +2,69 @@ import type { Attribute, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  sidebarClassName,
-  sidebarContainerClassName,
-  sidebarContentClassName,
-  sidebarFooterClassName,
-  sidebarGapClassName,
-  sidebarGroupActionClassName,
-  sidebarGroupContentClassName,
-  sidebarGroupClassName,
-  sidebarGroupLabelClassName,
-  sidebarHeaderClassName,
-  sidebarIconClassName,
-  sidebarInnerClassName,
-  sidebarInputClassName,
-  sidebarInsetClassName,
-  sidebarLabelClassName,
-  sidebarMenuActionClassName,
-  sidebarMenuBadgeClassName,
-  sidebarMenuButtonClassName,
-  sidebarMenuClassName,
-  sidebarMenuItemClassName,
-  sidebarMenuSkeletonClassName,
-  sidebarMenuSkeletonIconClassName,
-  sidebarMenuSkeletonTextClassName,
-  sidebarMenuSubButtonClassName,
-  sidebarMenuSubClassName,
-  sidebarMenuSubItemClassName,
-  sidebarProviderClassName,
-  sidebarRailClassName,
-  sidebarSeparatorClassName,
-  sidebarTriggerClassName,
+  sidebarClasses,
+  sidebarContainerClasses,
+  sidebarContentClasses,
+  sidebarFooterClasses,
+  sidebarGapClasses,
+  sidebarGroupActionClasses,
+  sidebarGroupContentClasses,
+  sidebarGroupClasses,
+  sidebarGroupLabelClasses,
+  sidebarHeaderClasses,
+  sidebarIconClasses,
+  sidebarInnerClasses,
+  sidebarInputClasses,
+  sidebarInsetClasses,
+  sidebarLabelClasses,
+  sidebarMenuActionClasses,
+  sidebarMenuBadgeClasses,
+  sidebarMenuButtonClasses,
+  sidebarMenuClasses,
+  sidebarMenuItemClasses,
+  sidebarMenuSkeletonClasses,
+  sidebarMenuSkeletonIconClasses,
+  sidebarMenuSkeletonTextClasses,
+  sidebarMenuSubButtonClasses,
+  sidebarMenuSubClasses,
+  sidebarMenuSubItemClasses,
+  sidebarProviderClasses,
+  sidebarRailClasses,
+  sidebarSeparatorClasses,
+  sidebarTriggerClasses,
 } from "./view";
 
 export {
-  sidebarClassName,
-  sidebarContainerClassName,
-  sidebarContentClassName,
-  sidebarFooterClassName,
-  sidebarGapClassName,
-  sidebarGroupActionClassName,
-  sidebarGroupContentClassName,
-  sidebarGroupClassName,
-  sidebarGroupLabelClassName,
-  sidebarHeaderClassName,
-  sidebarIconClassName,
-  sidebarInnerClassName,
-  sidebarInputClassName,
-  sidebarInsetClassName,
-  sidebarLabelClassName,
-  sidebarMenuActionClassName,
-  sidebarMenuBadgeClassName,
-  sidebarMenuButtonClassName,
-  sidebarMenuClassName,
-  sidebarMenuItemClassName,
-  sidebarMenuSkeletonClassName,
-  sidebarMenuSkeletonIconClassName,
-  sidebarMenuSkeletonTextClassName,
-  sidebarMenuSubButtonClassName,
-  sidebarMenuSubClassName,
-  sidebarMenuSubItemClassName,
-  sidebarProviderClassName,
-  sidebarRailClassName,
-  sidebarSeparatorClassName,
-  sidebarTriggerClassName,
+  sidebarClasses,
+  sidebarContainerClasses,
+  sidebarContentClasses,
+  sidebarFooterClasses,
+  sidebarGapClasses,
+  sidebarGroupActionClasses,
+  sidebarGroupContentClasses,
+  sidebarGroupClasses,
+  sidebarGroupLabelClasses,
+  sidebarHeaderClasses,
+  sidebarIconClasses,
+  sidebarInnerClasses,
+  sidebarInputClasses,
+  sidebarInsetClasses,
+  sidebarLabelClasses,
+  sidebarMenuActionClasses,
+  sidebarMenuBadgeClasses,
+  sidebarMenuButtonClasses,
+  sidebarMenuClasses,
+  sidebarMenuItemClasses,
+  sidebarMenuSkeletonClasses,
+  sidebarMenuSkeletonIconClasses,
+  sidebarMenuSkeletonTextClasses,
+  sidebarMenuSubButtonClasses,
+  sidebarMenuSubClasses,
+  sidebarMenuSubItemClasses,
+  sidebarProviderClasses,
+  sidebarRailClasses,
+  sidebarSeparatorClasses,
+  sidebarTriggerClasses,
 } from "./view";
 
 export type SidebarState = "expanded" | "collapsed";
@@ -82,13 +82,13 @@ export type SidebarMenuItem<ParentMessage> = Readonly<{
 
 type ViewConfig<ParentMessage> = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
 type OptionalChildrenViewConfig<ParentMessage> = Readonly<{
   children?: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -96,7 +96,7 @@ type ActionViewConfig<ParentMessage> = Readonly<{
   label: string;
   onClick?: ParentMessage;
   children?: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -113,7 +113,7 @@ export type SidebarMenuButtonViewConfig<ParentMessage> = Readonly<{
   state?: SidebarState;
   size?: "sm" | "default" | "lg";
   variant?: "default" | "outline";
-  className?: string;
+  classes?: string;
   children?: readonly (Html | string)[];
 }>;
 
@@ -122,14 +122,14 @@ export type SidebarInputViewConfig<ParentMessage> = Readonly<{
   value?: string;
   placeholder?: string;
   onInput?: (value: string) => ParentMessage;
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
 export type SidebarMenuBadgeViewConfig<ParentMessage> = Readonly<{
   label: string;
   state?: SidebarState;
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -138,7 +138,7 @@ export type SidebarMenuSubButtonViewConfig<ParentMessage> = Readonly<{
   href?: string;
   onClick?: ParentMessage;
   active?: boolean;
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -146,17 +146,17 @@ export type SidebarMenuSkeletonViewConfig = Readonly<{
   state?: SidebarState;
   showIcon?: boolean;
   width?: string;
-  className?: string;
+  classes?: string;
 }>;
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const providerView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -164,7 +164,7 @@ export const providerView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "sidebar-provider"),
-      h.Class(classNames(sidebarProviderClassName, className)),
+      h.Class(cn(sidebarProviderClasses, classes)),
       ...attributes,
     ],
     children
@@ -175,7 +175,7 @@ export const triggerView = <ParentMessage>({
   label,
   onClick,
   children = ["Toggle Sidebar"],
-  className,
+  classes,
   attributes = [],
 }: ActionViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -185,7 +185,7 @@ export const triggerView = <ParentMessage>({
       h.Type("button"),
       h.DataAttribute("slot", "sidebar-trigger"),
       h.AriaLabel(label),
-      h.Class(classNames(sidebarTriggerClassName, className)),
+      h.Class(cn(sidebarTriggerClasses, classes)),
       ...(onClick === undefined ? [] : [h.OnClick(onClick)]),
       ...attributes,
     ],
@@ -199,7 +199,7 @@ export const sidebarView = <ParentMessage>({
   side = "left",
   variant = "sidebar",
   collapsible = "offcanvas",
-  className,
+  classes,
   attributes = [],
 }: SidebarViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -213,7 +213,7 @@ export const sidebarView = <ParentMessage>({
     h.DataAttribute("variant", variant),
     h.DataAttribute("collapsible", stateCollapsible),
     h.AriaLabel("Application sidebar"),
-    h.Class(classNames(sidebarClassName, className)),
+    h.Class(cn(sidebarClasses, classes)),
     ...attributes,
   ];
 
@@ -223,7 +223,7 @@ export const sidebarView = <ParentMessage>({
         [
           h.DataAttribute("slot", "sidebar-inner"),
           h.DataAttribute("sidebar", "sidebar"),
-          h.Class(classNames(sidebarContainerClassName, sidebarInnerClassName)),
+          h.Class(cn(sidebarContainerClasses, sidebarInnerClasses)),
         ],
         children
       ),
@@ -239,7 +239,7 @@ export const sidebarView = <ParentMessage>({
         h.DataAttribute("side", side),
         h.DataAttribute("variant", variant),
         h.DataAttribute("collapsible", stateCollapsible),
-        h.Class(sidebarGapClassName),
+        h.Class(sidebarGapClasses),
       ],
       []
     ),
@@ -250,14 +250,14 @@ export const sidebarView = <ParentMessage>({
         h.DataAttribute("side", side),
         h.DataAttribute("variant", variant),
         h.DataAttribute("collapsible", stateCollapsible),
-        h.Class(sidebarContainerClassName),
+        h.Class(sidebarContainerClasses),
       ],
       [
         h.div(
           [
             h.DataAttribute("slot", "sidebar-inner"),
             h.DataAttribute("sidebar", "sidebar"),
-            h.Class(sidebarInnerClassName),
+            h.Class(sidebarInnerClasses),
           ],
           children
         ),
@@ -271,7 +271,7 @@ export const inputView = <ParentMessage>({
   value,
   placeholder,
   onInput,
-  className,
+  classes,
   attributes = [],
 }: SidebarInputViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -280,7 +280,7 @@ export const inputView = <ParentMessage>({
       h.DataAttribute("slot", "sidebar-input"),
       h.DataAttribute("sidebar", "input"),
     h.AriaLabel(label),
-    h.Class(classNames(sidebarInputClassName, className)),
+    h.Class(cn(sidebarInputClasses, classes)),
     ...(value === undefined ? [] : [h.Value(value)]),
     ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
     ...(onInput === undefined ? [] : [h.OnInput(onInput)]),
@@ -289,7 +289,7 @@ export const inputView = <ParentMessage>({
 };
 
 export const separatorView = <ParentMessage>({
-  className,
+  classes,
   attributes = [],
 }: OptionalChildrenViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
@@ -298,7 +298,7 @@ export const separatorView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-separator"),
       h.DataAttribute("sidebar", "separator"),
-      h.Class(classNames(sidebarSeparatorClassName, className)),
+      h.Class(cn(sidebarSeparatorClasses, classes)),
       ...attributes,
     ],
     []
@@ -307,7 +307,7 @@ export const separatorView = <ParentMessage>({
 
 export const headerView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -316,7 +316,7 @@ export const headerView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-header"),
       h.DataAttribute("sidebar", "header"),
-      h.Class(classNames(sidebarHeaderClassName, className)),
+      h.Class(cn(sidebarHeaderClasses, classes)),
       ...attributes,
     ],
     children
@@ -325,7 +325,7 @@ export const headerView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -334,7 +334,7 @@ export const contentView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-content"),
       h.DataAttribute("sidebar", "content"),
-      h.Class(classNames(sidebarContentClassName, className)),
+      h.Class(cn(sidebarContentClasses, classes)),
       ...attributes,
     ],
     children
@@ -343,7 +343,7 @@ export const contentView = <ParentMessage>({
 
 export const footerView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -352,7 +352,7 @@ export const footerView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-footer"),
       h.DataAttribute("sidebar", "footer"),
-      h.Class(classNames(sidebarFooterClassName, className)),
+      h.Class(cn(sidebarFooterClasses, classes)),
       ...attributes,
     ],
     children
@@ -361,7 +361,7 @@ export const footerView = <ParentMessage>({
 
 export const groupView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -370,7 +370,7 @@ export const groupView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-group"),
       h.DataAttribute("sidebar", "group"),
-      h.Class(classNames(sidebarGroupClassName, className)),
+      h.Class(cn(sidebarGroupClasses, classes)),
       ...attributes,
     ],
     children
@@ -388,7 +388,7 @@ export const groupLabelView = <ParentMessage>(
       h.DataAttribute("slot", "sidebar-group-label"),
       h.DataAttribute("sidebar", "group-label"),
       h.DataAttribute("state", state),
-      h.Class(sidebarGroupLabelClassName),
+      h.Class(sidebarGroupLabelClasses),
     ],
     [label]
   );
@@ -398,7 +398,7 @@ export const groupActionView = <ParentMessage>({
   label,
   onClick,
   children = ["+"],
-  className,
+  classes,
   attributes = [],
 }: ActionViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -409,7 +409,7 @@ export const groupActionView = <ParentMessage>({
       h.DataAttribute("slot", "sidebar-group-action"),
       h.DataAttribute("sidebar", "group-action"),
       h.AriaLabel(label),
-      h.Class(classNames(sidebarGroupActionClassName, className)),
+      h.Class(cn(sidebarGroupActionClasses, classes)),
       ...(onClick === undefined ? [] : [h.OnClick(onClick)]),
       ...attributes,
     ],
@@ -419,7 +419,7 @@ export const groupActionView = <ParentMessage>({
 
 export const groupContentView = <ParentMessage>({
   children = [],
-  className,
+  classes,
   attributes = [],
 }: OptionalChildrenViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -428,7 +428,7 @@ export const groupContentView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-group-content"),
       h.DataAttribute("sidebar", "group-content"),
-      h.Class(classNames(sidebarGroupContentClassName, className)),
+      h.Class(cn(sidebarGroupContentClasses, classes)),
       ...attributes,
     ],
     children
@@ -437,7 +437,7 @@ export const groupContentView = <ParentMessage>({
 
 export const menuView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -446,7 +446,7 @@ export const menuView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-menu"),
       h.DataAttribute("sidebar", "menu"),
-      h.Class(classNames(sidebarMenuClassName, className)),
+      h.Class(cn(sidebarMenuClasses, classes)),
       ...attributes,
     ],
     children
@@ -455,7 +455,7 @@ export const menuView = <ParentMessage>({
 
 export const menuItemView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -464,7 +464,7 @@ export const menuItemView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-menu-item"),
       h.DataAttribute("sidebar", "menu-item"),
-      h.Class(classNames(sidebarMenuItemClassName, className)),
+      h.Class(cn(sidebarMenuItemClasses, classes)),
       ...attributes,
     ],
     children
@@ -476,7 +476,7 @@ export const menuButtonView = <ParentMessage>({
   state = "expanded",
   size = "default",
   variant = "default",
-  className,
+  classes,
   children: customChildren,
 }: SidebarMenuButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -489,7 +489,7 @@ export const menuButtonView = <ParentMessage>({
     h.DataAttribute("state", state),
     h.AriaCurrent(item.active === true ? "page" : "false"),
     h.AriaLabel(item.label),
-    h.Class(classNames(sidebarMenuButtonClassName, className)),
+    h.Class(cn(sidebarMenuButtonClasses, classes)),
     ...(item.onClick === undefined ? [] : [h.OnClick(item.onClick)]),
   ];
   const children = customChildren ?? [
@@ -497,7 +497,7 @@ export const menuButtonView = <ParentMessage>({
       [
       h.DataAttribute("slot", "sidebar-menu-icon"),
         h.DataAttribute("brand", size === "lg" ? "true" : "false"),
-        h.Class(sidebarIconClassName),
+        h.Class(sidebarIconClasses),
       ],
       [item.icon]
     ),
@@ -505,7 +505,7 @@ export const menuButtonView = <ParentMessage>({
       [
       h.DataAttribute("slot", "sidebar-menu-label"),
         h.DataAttribute("state", state),
-        h.Class(sidebarLabelClassName),
+        h.Class(sidebarLabelClasses),
       ],
       [item.label]
     ),
@@ -520,7 +520,7 @@ export const menuActionView = <ParentMessage>({
   label,
   onClick,
   children = ["..."],
-  className,
+  classes,
   attributes = [],
 }: ActionViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -532,7 +532,7 @@ export const menuActionView = <ParentMessage>({
       h.DataAttribute("sidebar", "menu-action"),
       h.DataAttribute("show-on-hover", "false"),
       h.AriaLabel(label),
-      h.Class(classNames(sidebarMenuActionClassName, className)),
+      h.Class(cn(sidebarMenuActionClasses, classes)),
       ...(onClick === undefined ? [] : [h.OnClick(onClick)]),
       ...attributes,
     ],
@@ -543,7 +543,7 @@ export const menuActionView = <ParentMessage>({
 export const menuBadgeView = <ParentMessage>({
   label,
   state = "expanded",
-  className,
+  classes,
   attributes = [],
 }: SidebarMenuBadgeViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -553,7 +553,7 @@ export const menuBadgeView = <ParentMessage>({
       h.DataAttribute("slot", "sidebar-menu-badge"),
       h.DataAttribute("sidebar", "menu-badge"),
       h.DataAttribute("state", state),
-      h.Class(classNames(sidebarMenuBadgeClassName, className)),
+      h.Class(cn(sidebarMenuBadgeClasses, classes)),
       ...attributes,
     ],
     [label]
@@ -562,7 +562,7 @@ export const menuBadgeView = <ParentMessage>({
 
 export const menuSubView = <ParentMessage>({
   children = [],
-  className,
+  classes,
   attributes = [],
 }: OptionalChildrenViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -571,7 +571,7 @@ export const menuSubView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-menu-sub"),
       h.DataAttribute("sidebar", "menu-sub"),
-      h.Class(classNames(sidebarMenuSubClassName, className)),
+      h.Class(cn(sidebarMenuSubClasses, classes)),
       ...attributes,
     ],
     children
@@ -580,7 +580,7 @@ export const menuSubView = <ParentMessage>({
 
 export const menuSubItemView = <ParentMessage>({
   children = [],
-  className,
+  classes,
   attributes = [],
 }: OptionalChildrenViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -589,7 +589,7 @@ export const menuSubItemView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-menu-sub-item"),
       h.DataAttribute("sidebar", "menu-sub-item"),
-      h.Class(classNames(sidebarMenuSubItemClassName, className)),
+      h.Class(cn(sidebarMenuSubItemClasses, classes)),
       ...attributes,
     ],
     children
@@ -601,7 +601,7 @@ export const menuSubButtonView = <ParentMessage>({
   href,
   onClick,
   active = false,
-  className,
+  classes,
   attributes = [],
 }: SidebarMenuSubButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -610,7 +610,7 @@ export const menuSubButtonView = <ParentMessage>({
     h.DataAttribute("sidebar", "menu-sub-button"),
     h.DataAttribute("active", active === true ? "true" : "false"),
     h.AriaCurrent(active === true ? "page" : "false"),
-    h.Class(classNames(sidebarMenuSubButtonClassName, className)),
+    h.Class(cn(sidebarMenuSubButtonClasses, classes)),
     ...(onClick === undefined ? [] : [h.OnClick(onClick)]),
     ...attributes,
   ];
@@ -624,7 +624,7 @@ export const menuSkeletonView = <ParentMessage>({
   state = "expanded",
   showIcon = true,
   width = "70%",
-  className,
+  classes,
 }: SidebarMenuSkeletonViewConfig = {}): Html => {
   const h = html<ParentMessage>();
 
@@ -632,7 +632,7 @@ export const menuSkeletonView = <ParentMessage>({
     [
       h.DataAttribute("slot", "sidebar-menu-skeleton"),
       h.DataAttribute("sidebar", "menu-skeleton"),
-      h.Class(classNames(sidebarMenuSkeletonClassName, className)),
+      h.Class(cn(sidebarMenuSkeletonClasses, classes)),
     ],
     [
       ...(showIcon === true
@@ -642,7 +642,7 @@ export const menuSkeletonView = <ParentMessage>({
                 h.AriaHidden(true),
                 h.DataAttribute("slot", "sidebar-menu-skeleton-icon"),
                 h.DataAttribute("sidebar", "menu-skeleton-icon"),
-                h.Class(sidebarMenuSkeletonIconClassName),
+                h.Class(sidebarMenuSkeletonIconClasses),
               ],
               []
             ),
@@ -655,7 +655,7 @@ export const menuSkeletonView = <ParentMessage>({
           h.DataAttribute("sidebar", "menu-skeleton-text"),
           h.DataAttribute("state", state),
           h.Style({ width }),
-          h.Class(sidebarMenuSkeletonTextClassName),
+          h.Class(sidebarMenuSkeletonTextClasses),
         ],
         []
       ),
@@ -677,7 +677,7 @@ export const railView = <ParentMessage>(
       h.DataAttribute("slot", "sidebar-rail"),
       h.DataAttribute("sidebar", "rail"),
       h.DataAttribute("side", side),
-      h.Class(sidebarRailClassName),
+      h.Class(sidebarRailClasses),
       ...(onClick === undefined ? [] : [h.OnClick(onClick)]),
     ],
     []
@@ -686,7 +686,7 @@ export const railView = <ParentMessage>(
 
 export const insetView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -694,7 +694,7 @@ export const insetView = <ParentMessage>({
   return h.main(
     [
       h.DataAttribute("slot", "sidebar-inset"),
-      h.Class(classNames(sidebarInsetClassName, className)),
+      h.Class(cn(sidebarInsetClasses, classes)),
       ...attributes,
     ],
     children
@@ -711,7 +711,7 @@ const hBrand = <ParentMessage>(
   return h.div(
     [h.Class("flex min-w-0 items-center gap-3")],
     [
-      h.span([h.Class(sidebarIconClassName)], [icon]),
+      h.span([h.Class(sidebarIconClasses)], [icon]),
       h.span(
         [
           h.DataAttribute("slot", "sidebar-brand-label"),

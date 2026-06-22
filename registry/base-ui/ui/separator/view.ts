@@ -1,14 +1,14 @@
 export type SeparatorOrientation = "horizontal" | "vertical";
 
-export const separatorBaseClassName = "shrink-0 bg-gray-200";
+export const separatorBaseClasses = "shrink-0 bg-gray-200";
 
-export const horizontalSeparatorClassName = "h-px w-full";
+export const horizontalSeparatorClasses = "h-px w-full";
 
-export const verticalSeparatorClassName = "h-6 w-px";
+export const verticalSeparatorClasses = "h-6 w-px";
 
-export const separatorClassNameByOrientation = (
+export const separatorClassesByOrientation = (
   orientation: SeparatorOrientation = "horizontal"
 ): string =>
   orientation === "vertical"
-    ? `${separatorBaseClassName} ${verticalSeparatorClassName}`
-    : `${separatorBaseClassName} ${horizontalSeparatorClassName}`;
+    ? `${separatorBaseClasses} ${verticalSeparatorClasses}`
+    : `${separatorBaseClasses} ${horizontalSeparatorClasses}`;

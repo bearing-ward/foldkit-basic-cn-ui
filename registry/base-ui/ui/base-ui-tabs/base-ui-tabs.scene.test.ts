@@ -7,6 +7,6 @@ describe("Base UI Tabs registry view", () => {
     expect(Tabs.init).toBeTypeOf("function");
     expect(Tabs.create).toBeTypeOf("function");
     expect(Tabs.baseUiTabsView).toBeTypeOf("function");
-    expect(Tabs.baseUiTabsTabClassName).toContain("data-[selected]");
+    expect(Tabs.baseUiTabsTabClasses).toContain("data-[selected]");
   });
 });

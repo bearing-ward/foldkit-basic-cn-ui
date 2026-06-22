@@ -6,46 +6,46 @@ export type BadgeVariant =
   | "Ghost"
   | "Link";
 
-export const badgeClassName =
+export const badgeClasses =
   "inline-flex items-center rounded-md bg-accent-600 px-2 py-1 text-xs font-medium text-white";
 
-export const secondaryBadgeClassName =
+export const secondaryBadgeClasses =
   "inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700";
 
-export const destructiveBadgeClassName =
+export const destructiveBadgeClasses =
   "inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-xs font-medium text-white";
 
-export const outlineBadgeClassName =
+export const outlineBadgeClasses =
   "inline-flex items-center rounded-md border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700";
 
-export const ghostBadgeClassName =
+export const ghostBadgeClasses =
   "inline-flex items-center rounded-md bg-transparent px-2 py-1 text-xs font-medium text-gray-700";
 
-export const linkBadgeClassName =
+export const linkBadgeClasses =
   "inline-flex items-center rounded-md bg-transparent px-0 py-1 text-xs font-medium text-accent-700 underline-offset-4 hover:underline";
 
-export const badgeClassNameByVariant = (
+export const badgeClassesByVariant = (
   variant: BadgeVariant = "Default"
 ): string => {
   if (variant === "Secondary") {
-    return secondaryBadgeClassName;
+    return secondaryBadgeClasses;
   }
 
   if (variant === "Destructive") {
-    return destructiveBadgeClassName;
+    return destructiveBadgeClasses;
   }
 
   if (variant === "Outline") {
-    return outlineBadgeClassName;
+    return outlineBadgeClasses;
   }
 
   if (variant === "Ghost") {
-    return ghostBadgeClassName;
+    return ghostBadgeClasses;
   }
 
   if (variant === "Link") {
-    return linkBadgeClassName;
+    return linkBadgeClasses;
   }
 
-  return badgeClassName;
+  return badgeClasses;
 };

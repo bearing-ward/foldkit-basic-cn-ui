@@ -7,6 +7,6 @@ describe("Base UI Combobox registry view", () => {
     expect(Combobox.init).toBeTypeOf("function");
     expect(Combobox.create).toBeTypeOf("function");
     expect(Combobox.Multi.create).toBeTypeOf("function");
-    expect(Combobox.baseUiComboboxWrapperClassName).toContain("relative");
+    expect(Combobox.baseUiComboboxWrapperClasses).toContain("relative");
   });
 });

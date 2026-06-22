@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-drawer/index.ts",
       "target": "src/ui/shadcn-drawer/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  backdropView,\n  closeView,\n  contentView,\n  descriptionView,\n  popupView,\n  portalView,\n  rootView,\n  titleView,\n  triggerView,\n  viewportView,\n} from \"../../../foldkit/ui/drawer\";\nexport type {\n  CloseViewConfig,\n  DrawerStyle,\n  PartViewConfig,\n  PopupViewConfig,\n  PortalViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../../../foldkit/ui/drawer\";\n\nexport {\n  shadcnDrawerBackdropClassName,\n  shadcnDrawerCloseClassName,\n  shadcnDrawerContentClassName,\n  shadcnDrawerDescriptionClassName,\n  shadcnDrawerPopupClassName,\n  shadcnDrawerPortalClassName,\n  shadcnDrawerRootClassName,\n  shadcnDrawerTitleClassName,\n  shadcnDrawerTriggerClassName,\n  shadcnDrawerViewportClassName,\n} from \"./view\";\n"
+      "content": "export {\n  backdropView,\n  closeView,\n  contentView,\n  descriptionView,\n  popupView,\n  portalView,\n  rootView,\n  titleView,\n  triggerView,\n  viewportView,\n} from \"../../../foldkit/ui/drawer\";\nexport type {\n  CloseViewConfig,\n  DrawerStyle,\n  PartViewConfig,\n  PopupViewConfig,\n  PortalViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../../../foldkit/ui/drawer\";\n\nexport {\n  shadcnDrawerBackdropClasses,\n  shadcnDrawerCloseClasses,\n  shadcnDrawerContentClasses,\n  shadcnDrawerDescriptionClasses,\n  shadcnDrawerPopupClasses,\n  shadcnDrawerPortalClasses,\n  shadcnDrawerRootClasses,\n  shadcnDrawerTitleClasses,\n  shadcnDrawerTriggerClasses,\n  shadcnDrawerViewportClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-drawer/view.ts",
       "target": "src/ui/shadcn-drawer/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  drawerBackdropClassName as shadcnDrawerBackdropClassName,\n  drawerCloseClassName as shadcnDrawerCloseClassName,\n  drawerContentClassName as shadcnDrawerContentClassName,\n  drawerDescriptionClassName as shadcnDrawerDescriptionClassName,\n  drawerPopupClassName as shadcnDrawerPopupClassName,\n  drawerPortalClassName as shadcnDrawerPortalClassName,\n  drawerRootClassName as shadcnDrawerRootClassName,\n  drawerTitleClassName as shadcnDrawerTitleClassName,\n  drawerTriggerClassName as shadcnDrawerTriggerClassName,\n  drawerViewportClassName as shadcnDrawerViewportClassName,\n} from \"../../../foldkit/ui/drawer/view\";\n"
+      "content": "export {\n  drawerBackdropClasses as shadcnDrawerBackdropClasses,\n  drawerCloseClasses as shadcnDrawerCloseClasses,\n  drawerContentClasses as shadcnDrawerContentClasses,\n  drawerDescriptionClasses as shadcnDrawerDescriptionClasses,\n  drawerPopupClasses as shadcnDrawerPopupClasses,\n  drawerPortalClasses as shadcnDrawerPortalClasses,\n  drawerRootClasses as shadcnDrawerRootClasses,\n  drawerTitleClasses as shadcnDrawerTitleClasses,\n  drawerTriggerClasses as shadcnDrawerTriggerClasses,\n  drawerViewportClasses as shadcnDrawerViewportClasses,\n} from \"../../../foldkit/ui/drawer/view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-drawer/shadcn-drawer.scene.test.ts",
       "target": "src/ui/shadcn-drawer/shadcn-drawer.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Drawer from \"./index\";\n\ndescribe(\"shadcn Drawer registry view\", () => {\n  test(\"reuses the Foldkit Drawer view contract\", () => {\n    expect(Drawer.rootView).toBeTypeOf(\"function\");\n    expect(Drawer.triggerView).toBeTypeOf(\"function\");\n    expect(Drawer.popupView).toBeTypeOf(\"function\");\n    expect(Drawer.shadcnDrawerPopupClassName).toContain(\"shadow\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Drawer from \"./index\";\n\ndescribe(\"shadcn Drawer registry view\", () => {\n  test(\"reuses the Foldkit Drawer view contract\", () => {\n    expect(Drawer.rootView).toBeTypeOf(\"function\");\n    expect(Drawer.triggerView).toBeTypeOf(\"function\");\n    expect(Drawer.popupView).toBeTypeOf(\"function\");\n    expect(Drawer.shadcnDrawerPopupClasses).toContain(\"shadow\");\n  });\n});\n"
     }
   ],
   "meta": {

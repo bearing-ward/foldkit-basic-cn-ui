@@ -48,27 +48,27 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
   return {
     items: filterCities(inputValue),
     itemToConfig: (city) => ({
-      className: Combobox.itemClassName,
+      classes: Combobox.itemClasses,
       content: h.span([], [city]),
     }),
     itemToValue: (city) => city,
     itemToDisplayText: (city) => city,
     inputAttributes: childAttributes([
-      h.Class(Combobox.inputClassName),
+      h.Class(Combobox.inputClasses),
       h.Placeholder("Search cities..."),
       h.AriaLabel("City"),
     ]),
     inputWrapperAttributes: childAttributes([
-      h.Class(Combobox.inputWrapperClassName),
+      h.Class(Combobox.inputWrapperClasses),
     ]),
-    itemsAttributes: childAttributes([h.Class(Combobox.itemsClassName)]),
+    itemsAttributes: childAttributes([h.Class(Combobox.itemsClasses)]),
     backdropAttributes: childAttributes([
       h.DataAttribute("testid", "combobox-backdrop"),
-      h.Class(Combobox.backdropClassName),
+      h.Class(Combobox.backdropClasses),
     ]),
-    attributes: childAttributes([h.Class(Combobox.wrapperClassName)]),
+    attributes: childAttributes([h.Class(Combobox.wrapperClasses)]),
     buttonContent: h.span([], ["v"]),
-    buttonAttributes: childAttributes([h.Class(Combobox.buttonClassName)]),
+    buttonAttributes: childAttributes([h.Class(Combobox.buttonClasses)]),
     anchor,
   };
 };

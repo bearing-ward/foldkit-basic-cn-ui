@@ -71,10 +71,10 @@ describe("Base UI Navigation Menu registry component", () => {
   });
 
   test("exports Base UI navigation menu class hooks", () => {
-    expect(NavigationMenu.navigationMenuRootClassName).toContain("relative");
-    expect(NavigationMenu.navigationMenuTriggerClassName).toContain(
+    expect(NavigationMenu.navigationMenuRootClasses).toContain("relative");
+    expect(NavigationMenu.navigationMenuTriggerClasses).toContain(
       "data-[open]"
     );
-    expect(NavigationMenu.navigationMenuPopupClassName).toContain("shadow");
+    expect(NavigationMenu.navigationMenuPopupClasses).toContain("shadow");
   });
 });

@@ -77,10 +77,10 @@ describe("Collapsible registry component", () => {
   });
 
   test("exports Base UI state class hooks", () => {
-    expect(Collapsible.collapsibleRootClassName).toContain("rounded-lg");
-    expect(Collapsible.collapsibleTriggerClassName).toContain(
+    expect(Collapsible.collapsibleRootClasses).toContain("rounded-lg");
+    expect(Collapsible.collapsibleTriggerClasses).toContain(
       "data-[panel-open]"
     );
-    expect(Collapsible.collapsiblePanelClassName).toContain("data-[closed]");
+    expect(Collapsible.collapsiblePanelClasses).toContain("data-[closed]");
   });
 });

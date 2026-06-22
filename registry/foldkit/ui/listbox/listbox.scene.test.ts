@@ -47,19 +47,19 @@ const view = (model: Listbox.Model): Html => {
       anchor,
       items: people,
       itemToConfig: (item) => ({
-        className: Listbox.itemClassName,
+        classes: Listbox.itemClasses,
         content: h.span([], [item]),
       }),
       buttonContent: h.span([], ["Choose person"]),
-      buttonAttributes: childAttributes([h.Class(Listbox.triggerClassName)]),
+      buttonAttributes: childAttributes([h.Class(Listbox.triggerClasses)]),
       itemsAttributes: childAttributes([
-        h.Class(Listbox.defaultItemsClassName),
+        h.Class(Listbox.defaultItemsClasses),
       ]),
       backdropAttributes: childAttributes([
         h.DataAttribute("testid", "listbox-backdrop"),
-        h.Class(Listbox.backdropClassName),
+        h.Class(Listbox.backdropClasses),
       ]),
-      attributes: childAttributes([h.Class(Listbox.rootClassName)]),
+      attributes: childAttributes([h.Class(Listbox.rootClasses)]),
     },
     toParentMessage: (message) => message,
   });
@@ -76,19 +76,19 @@ const animatedView = (model: Listbox.Model): Html => {
       anchor,
       items: people,
       itemToConfig: (item) => ({
-        className: Listbox.itemClassName,
+        classes: Listbox.itemClasses,
         content: h.span([], [item]),
       }),
       buttonContent: h.span([], ["Choose animated person"]),
-      buttonAttributes: childAttributes([h.Class(Listbox.triggerClassName)]),
+      buttonAttributes: childAttributes([h.Class(Listbox.triggerClasses)]),
       itemsAttributes: childAttributes([
-        h.Class(Listbox.animatedItemsClassName),
+        h.Class(Listbox.animatedItemsClasses),
       ]),
       backdropAttributes: childAttributes([
         h.DataAttribute("testid", "listbox-backdrop"),
-        h.Class(Listbox.backdropClassName),
+        h.Class(Listbox.backdropClasses),
       ]),
-      attributes: childAttributes([h.Class(Listbox.rootClassName)]),
+      attributes: childAttributes([h.Class(Listbox.rootClasses)]),
     },
     toParentMessage: (message) => message,
   });

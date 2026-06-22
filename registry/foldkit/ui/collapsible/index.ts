@@ -2,19 +2,19 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  collapsibleContentClassName,
-  collapsibleIconClassName,
-  collapsiblePanelClassName,
-  collapsibleRootClassName,
-  collapsibleTriggerClassName,
+  collapsibleContentClasses,
+  collapsibleIconClasses,
+  collapsiblePanelClasses,
+  collapsibleRootClasses,
+  collapsibleTriggerClasses,
 } from "./view";
 
 export {
-  collapsibleContentClassName,
-  collapsibleIconClassName,
-  collapsiblePanelClassName,
-  collapsibleRootClassName,
-  collapsibleTriggerClassName,
+  collapsibleContentClasses,
+  collapsibleIconClasses,
+  collapsiblePanelClasses,
+  collapsibleRootClasses,
+  collapsibleTriggerClasses,
 } from "./view";
 
 export type CollapsibleStyle = Readonly<Record<string, string>>;
@@ -27,7 +27,7 @@ export type RootViewConfig = Readonly<{
   /** Whether the component should ignore trigger interaction. */
   disabled?: boolean | undefined;
   /** Additional class names appended to the default root classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the root element. */
   style?: CollapsibleStyle | undefined;
 }>;
@@ -46,7 +46,7 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   /** Whether the component should ignore trigger interaction. */
   disabled?: boolean | undefined;
   /** Additional class names appended to the default trigger classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the trigger element. */
   style?: CollapsibleStyle | undefined;
 }>;
@@ -63,13 +63,13 @@ export type PanelViewConfig = Readonly<{
   /** Preserve find-in-page behavior with hidden=until-found while closed. */
   hiddenUntilFound?: boolean | undefined;
   /** Additional class names appended to the default panel classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the panel element. */
   style?: CollapsibleStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -87,7 +87,7 @@ export const rootView = <ParentMessage>({
   open,
   children,
   disabled = false,
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -97,7 +97,7 @@ export const rootView = <ParentMessage>({
       ...openAttributes(h, open),
       ...disabledAttributes(h, disabled),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(collapsibleRootClassName, className)),
+      h.Class(cn(collapsibleRootClasses, classes)),
     ],
     children
   );
@@ -110,7 +110,7 @@ export const triggerView = <ParentMessage>({
   ariaLabel,
   panelId,
   disabled = false,
-  className,
+  classes,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -125,11 +125,11 @@ export const triggerView = <ParentMessage>({
       ...disabledAttributes(h, disabled),
       ...(disabled ? [h.Disabled(true)] : [h.OnClick(onOpenChange)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(collapsibleTriggerClassName, className)),
+      h.Class(cn(collapsibleTriggerClasses, classes)),
     ],
     [
       ...children,
-      h.span([h.AriaHidden(true), h.Class(collapsibleIconClassName)], [">"]),
+      h.span([h.AriaHidden(true), h.Class(collapsibleIconClasses)], [">"]),
     ]
   );
 };
@@ -140,7 +140,7 @@ export const panelView = <ParentMessage>({
   id,
   keepMounted = false,
   hiddenUntilFound = false,
-  className,
+  classes,
   style,
 }: PanelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -160,7 +160,7 @@ export const panelView = <ParentMessage>({
         "--collapsible-panel-width": "auto",
         ...style,
       }),
-      h.Class(classNames(collapsiblePanelClassName, className)),
+      h.Class(cn(collapsiblePanelClasses, classes)),
     ],
     open || keepMounted || hiddenUntilFound ? children : []
   );
@@ -168,12 +168,12 @@ export const panelView = <ParentMessage>({
 
 export const contentView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(classNames(collapsibleContentClassName, className))],
+    [h.Class(cn(collapsibleContentClasses, classes))],
     [...children]
   );
 };

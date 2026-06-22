@@ -43,12 +43,12 @@ export const initialize = (config: InitConfig): InitReturn => [
 ];
 
 export {
-  panelClassName,
-  tabClassName,
-  tabListClassName,
-  tabsRootClassName,
+  panelClasses,
+  tabClasses,
+  tabListClasses,
+  tabsRootClasses,
   tabsView,
-  verticalTabListClassName,
-  verticalTabsRootClassName,
+  verticalTabListClasses,
+  verticalTabsRootClasses,
 } from "./view";
 export type { TabsViewInput } from "./view";

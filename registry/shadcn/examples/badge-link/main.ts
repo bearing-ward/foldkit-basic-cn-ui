@@ -41,7 +41,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       h.a(
         [
           h.Href("https://github.com/shadcn-ui/ui"),
-          h.Class(Badge.badgeClassNameByVariant("Link")),
+          h.Class(Badge.badgeClassesByVariant("Link")),
         ],
         [
           h.span([], ["Open Link"]),

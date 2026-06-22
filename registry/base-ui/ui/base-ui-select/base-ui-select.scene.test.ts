@@ -6,6 +6,6 @@ describe("Base UI Select registry view", () => {
   test("reuses the Foldkit Select functional contract", () => {
     expect(Select.view).toBeTypeOf("function");
     expect(Select.descriptionId).toBeTypeOf("function");
-    expect(Select.baseUiSelectControlClassName).toContain("rounded");
+    expect(Select.baseUiSelectControlClasses).toContain("rounded");
   });
 });

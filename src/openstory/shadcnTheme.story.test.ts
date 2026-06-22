@@ -7,7 +7,7 @@ import {
   isShadcnStoryContext,
   resolveShadcnThemeName,
   shadcnThemeCatalog,
-  shadcnThemeClassNameForGlobals,
+  shadcnThemeClassesForGlobals,
   shadcnThemeGlobalKey,
   shadcnThemeGlobalTypes,
   shadcnThemeStyleProperties,
@@ -52,8 +52,8 @@ describe("shadcn OpenStory theme support", () => {
   test("builds wrapper class names and CSS variables from globals", () => {
     const globals = { [shadcnThemeGlobalKey]: "rhea-neutral-dark" };
 
-    expect(shadcnThemeClassNameForGlobals(globals)).toContain("shadcn-theme-rhea");
-    expect(shadcnThemeClassNameForGlobals(globals)).toContain("dark");
+    expect(shadcnThemeClassesForGlobals(globals)).toContain("shadcn-theme-rhea");
+    expect(shadcnThemeClassesForGlobals(globals)).toContain("dark");
     expect(shadcnThemeStyleProperties(globals)["--primary"]).toBe("210 40% 98%");
   });
 

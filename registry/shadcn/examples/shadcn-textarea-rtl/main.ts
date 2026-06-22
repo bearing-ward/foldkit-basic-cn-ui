@@ -48,7 +48,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [
               ...attributes.label,
               h.Dir("rtl"),
-              h.Class(Textarea.shadcnTextareaLabelClassName),
+              h.Class(Textarea.shadcnTextareaLabelClasses),
             ],
             ["التعليقات"]
           ),
@@ -56,7 +56,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [
               ...attributes.textarea,
               h.Dir("rtl"),
-              h.Class(Textarea.shadcnTextareaClassName),
+              h.Class(Textarea.shadcnTextareaClasses),
             ],
             []
           ),
@@ -64,7 +64,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [
               ...attributes.description,
               h.Dir("rtl"),
-              h.Class(Textarea.shadcnTextareaDescriptionClassName),
+              h.Class(Textarea.shadcnTextareaDescriptionClasses),
             ],
             ["شاركنا أفكارك حول خدمتنا."]
           ),

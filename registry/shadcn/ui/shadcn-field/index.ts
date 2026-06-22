@@ -19,11 +19,11 @@ export type {
 } from "../../../foldkit/ui/field";
 
 export {
-  shadcnFieldControlClassName,
-  shadcnFieldDescriptionClassName,
-  shadcnFieldErrorClassName,
-  shadcnFieldItemClassName,
-  shadcnFieldLabelClassName,
-  shadcnFieldRootClassName,
-  shadcnFieldValidityClassName,
+  shadcnFieldControlClasses,
+  shadcnFieldDescriptionClasses,
+  shadcnFieldErrorClasses,
+  shadcnFieldItemClasses,
+  shadcnFieldLabelClasses,
+  shadcnFieldRootClasses,
+  shadcnFieldValidityClasses,
 } from "./view";

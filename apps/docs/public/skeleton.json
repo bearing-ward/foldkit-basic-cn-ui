@@ -12,13 +12,13 @@
       "path": "registry/shadcn/ui/skeleton/index.ts",
       "target": "src/ui/skeleton/index.ts",
       "type": "registry:ui",
-      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { skeletonClassNameByShape } from \"./view\";\nimport type { SkeletonShape } from \"./view\";\n\nexport type { SkeletonShape };\n\nexport { skeletonBaseClassName, skeletonClassNameByShape } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  shape?: SkeletonShape;\n  className?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  shape = \"Block\",\n  className,\n}: ViewConfig = {}): Html => {\n  const h = html<ParentMessage>();\n  const classNames = [skeletonClassNameByShape(shape), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(classNames), h.AriaHidden(true)], []);\n};\n"
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { skeletonClassesByShape } from \"./view\";\nimport type { SkeletonShape } from \"./view\";\n\nexport type { SkeletonShape };\n\nexport { skeletonBaseClasses, skeletonClassesByShape } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  shape?: SkeletonShape;\n  classes?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  shape = \"Block\",\n  classes,\n}: ViewConfig = {}): Html => {\n  const h = html<ParentMessage>();\n  const cn = [skeletonClassesByShape(shape), classes]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(cn), h.AriaHidden(true)], []);\n};\n"
     },
     {
       "path": "registry/shadcn/ui/skeleton/view.ts",
       "target": "src/ui/skeleton/view.ts",
       "type": "registry:ui",
-      "content": "export type SkeletonShape = \"Text\" | \"Avatar\" | \"Button\" | \"Block\";\n\nexport const skeletonBaseClassName = \"animate-pulse rounded-md bg-gray-200\";\n\nexport const skeletonClassNameByShape = (\n  shape: SkeletonShape = \"Block\"\n): string => {\n  if (shape === \"Text\") {\n    return `${skeletonBaseClassName} h-4 w-40`;\n  }\n\n  if (shape === \"Avatar\") {\n    return `${skeletonBaseClassName} h-10 w-10 rounded-full`;\n  }\n\n  if (shape === \"Button\") {\n    return `${skeletonBaseClassName} h-9 w-24`;\n  }\n\n  return `${skeletonBaseClassName} h-28 w-full`;\n};\n"
+      "content": "export type SkeletonShape = \"Text\" | \"Avatar\" | \"Button\" | \"Block\";\n\nexport const skeletonBaseClasses = \"animate-pulse rounded-md bg-gray-200\";\n\nexport const skeletonClassesByShape = (\n  shape: SkeletonShape = \"Block\"\n): string => {\n  if (shape === \"Text\") {\n    return `${skeletonBaseClasses} h-4 w-40`;\n  }\n\n  if (shape === \"Avatar\") {\n    return `${skeletonBaseClasses} h-10 w-10 rounded-full`;\n  }\n\n  if (shape === \"Button\") {\n    return `${skeletonBaseClasses} h-9 w-24`;\n  }\n\n  return `${skeletonBaseClasses} h-28 w-full`;\n};\n"
     },
     {
       "path": "registry/shadcn/ui/skeleton/skeleton.scene.test.ts",

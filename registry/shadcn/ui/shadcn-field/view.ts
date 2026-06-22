@@ -1,9 +1,9 @@
 export {
-  fieldControlClassName as shadcnFieldControlClassName,
-  fieldDescriptionClassName as shadcnFieldDescriptionClassName,
-  fieldErrorClassName as shadcnFieldErrorClassName,
-  fieldItemClassName as shadcnFieldItemClassName,
-  fieldLabelClassName as shadcnFieldLabelClassName,
-  fieldRootClassName as shadcnFieldRootClassName,
-  fieldValidityClassName as shadcnFieldValidityClassName,
+  fieldControlClasses as shadcnFieldControlClasses,
+  fieldDescriptionClasses as shadcnFieldDescriptionClasses,
+  fieldErrorClasses as shadcnFieldErrorClasses,
+  fieldItemClasses as shadcnFieldItemClasses,
+  fieldLabelClasses as shadcnFieldLabelClasses,
+  fieldRootClasses as shadcnFieldRootClasses,
+  fieldValidityClasses as shadcnFieldValidityClasses,
 } from "../../../foldkit/ui/field/view";

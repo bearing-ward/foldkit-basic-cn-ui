@@ -7,7 +7,7 @@ export type ButtonAttributes<ParentMessage> =
 export type ViewConfig<ParentMessage> = Ui.Button.ViewConfig<ParentMessage>;
 
 export {
-  buttonClassName,
-  destructiveButtonClassName,
-  secondaryButtonClassName,
+  buttonClasses,
+  destructiveButtonClasses,
+  secondaryButtonClasses,
 } from "./view";

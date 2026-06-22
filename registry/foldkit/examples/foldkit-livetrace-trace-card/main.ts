@@ -81,7 +81,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return LiveTrace.themeView<Message>({
-    className: "min-h-0",
+    classes: "min-h-0",
     children: [
       h.div(
         [h.Class("grid max-w-4xl gap-4")],

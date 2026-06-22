@@ -81,17 +81,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       anchor: Menu.defaultAnchor,
       items: actions,
       itemToConfig: (item) => ({
-        className: Menu.itemClassName,
+        classes: Menu.itemClasses,
         content: h.span([], [item]),
       }),
       buttonContent: h.span([], ["Open animated menu"]),
-      buttonAttributes: childAttributes([h.Class(Menu.triggerClassName)]),
-      itemsAttributes: childAttributes([h.Class(Menu.animatedItemsClassName)]),
+      buttonAttributes: childAttributes([h.Class(Menu.triggerClasses)]),
+      itemsAttributes: childAttributes([h.Class(Menu.animatedItemsClasses)]),
       backdropAttributes: childAttributes([
         h.DataAttribute("testid", "menu-backdrop"),
-        h.Class(Menu.backdropClassName),
+        h.Class(Menu.backdropClasses),
       ]),
-      attributes: childAttributes([h.Class(Menu.rootClassName)]),
+      attributes: childAttributes([h.Class(Menu.rootClasses)]),
     },
     toParentMessage: (message) => GotMenuMessage({ message }),
   });

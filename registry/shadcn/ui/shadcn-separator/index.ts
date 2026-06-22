@@ -6,8 +6,8 @@ export type {
 } from "../../../base-ui/ui/separator";
 
 export {
-  shadcnHorizontalSeparatorClassName,
-  shadcnSeparatorBaseClassName,
-  shadcnSeparatorClassNameByOrientation,
-  shadcnVerticalSeparatorClassName,
+  shadcnHorizontalSeparatorClasses,
+  shadcnSeparatorBaseClasses,
+  shadcnSeparatorClassesByOrientation,
+  shadcnVerticalSeparatorClasses,
 } from "./view";

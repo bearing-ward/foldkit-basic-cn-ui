@@ -2,37 +2,37 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  inputGroupAddonClassNameByAlign,
-  inputGroupButtonClassName,
-  inputGroupClassName,
-  inputGroupControlClassName,
-  inputGroupIconButtonClassName,
-  inputGroupTextareaClassName,
-  inputGroupTextClassName,
+  inputGroupAddonClassesByAlign,
+  inputGroupButtonClasses,
+  inputGroupClasses,
+  inputGroupControlClasses,
+  inputGroupIconButtonClasses,
+  inputGroupTextareaClasses,
+  inputGroupTextClasses,
 } from "./view";
 import type { InputGroupAddonAlign } from "./view";
 
 export type { InputGroupAddonAlign };
 
 export {
-  inputGroupAddonClassNameByAlign,
-  inputGroupButtonClassName,
-  inputGroupClassName,
-  inputGroupControlClassName,
-  inputGroupIconButtonClassName,
-  inputGroupTextareaClassName,
-  inputGroupTextClassName,
+  inputGroupAddonClassesByAlign,
+  inputGroupButtonClasses,
+  inputGroupClasses,
+  inputGroupControlClasses,
+  inputGroupIconButtonClasses,
+  inputGroupTextareaClasses,
+  inputGroupTextClasses,
 } from "./view";
 
 export type ViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
 }>;
 
 export type AddonViewConfig = Readonly<{
   children: readonly (Html | string)[];
   align?: InputGroupAddonAlign;
-  className?: string;
+  classes?: string;
 }>;
 
 export type InputViewConfig<ParentMessage> = Readonly<{
@@ -42,7 +42,7 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   onInput?: ((value: string) => ParentMessage) | undefined;
   disabled?: boolean;
   name?: string;
-  className?: string;
+  classes?: string;
 }>;
 
 export type TextareaViewConfig<ParentMessage> = Readonly<{
@@ -53,7 +53,7 @@ export type TextareaViewConfig<ParentMessage> = Readonly<{
   disabled?: boolean;
   name?: string;
   rows?: number;
-  className?: string;
+  classes?: string;
 }>;
 
 export type ButtonViewConfig<ParentMessage> = Readonly<{
@@ -62,17 +62,17 @@ export type ButtonViewConfig<ParentMessage> = Readonly<{
   onClick?: ParentMessage;
   disabled?: boolean;
   icon?: boolean;
-  className?: string;
+  classes?: string;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const view = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -80,7 +80,7 @@ export const view = <ParentMessage>({
     [
       h.Attribute("role", "group"),
       h.DataAttribute("slot", "input-group"),
-      h.Class(classNames(inputGroupClassName, className)),
+      h.Class(cn(inputGroupClasses, classes)),
     ],
     children
   );
@@ -89,7 +89,7 @@ export const view = <ParentMessage>({
 export const addonView = <ParentMessage>({
   children,
   align = "InlineStart",
-  className,
+  classes,
 }: AddonViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -98,7 +98,7 @@ export const addonView = <ParentMessage>({
       h.Attribute("role", "group"),
       h.DataAttribute("slot", "input-group-addon"),
       h.DataAttribute("align", align),
-      h.Class(classNames(inputGroupAddonClassNameByAlign(align), className)),
+      h.Class(cn(inputGroupAddonClassesByAlign(align), classes)),
     ],
     children
   );
@@ -111,13 +111,13 @@ export const inputView = <ParentMessage>({
   onInput,
   disabled = false,
   name,
-  className,
+  classes,
 }: InputViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
 
   return h.input([
     h.DataAttribute("slot", "input-group-control"),
-    h.Class(classNames(inputGroupControlClassName, className)),
+    h.Class(cn(inputGroupControlClasses, classes)),
     ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
     ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
     ...(value === undefined ? [] : [h.Value(value)]),
@@ -135,14 +135,14 @@ export const textareaView = <ParentMessage>({
   disabled = false,
   name,
   rows,
-  className,
+  classes,
 }: TextareaViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
 
   return h.textarea(
     [
       h.DataAttribute("slot", "input-group-control"),
-      h.Class(classNames(inputGroupTextareaClassName, className)),
+      h.Class(cn(inputGroupTextareaClasses, classes)),
       ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(value === undefined ? [] : [h.Value(value)]),
@@ -161,7 +161,7 @@ export const buttonView = <ParentMessage>({
   onClick,
   disabled = false,
   icon = false,
-  className,
+  classes,
 }: ButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -172,9 +172,9 @@ export const buttonView = <ParentMessage>({
       ...(onClick === undefined ? [] : [h.OnClick(onClick)]),
       ...(disabled ? [h.Disabled(true)] : []),
       h.Class(
-        classNames(
-          icon ? inputGroupIconButtonClassName : inputGroupButtonClassName,
-          className
+        cn(
+          icon ? inputGroupIconButtonClasses : inputGroupButtonClasses,
+          classes
         )
       ),
     ],
@@ -184,12 +184,12 @@ export const buttonView = <ParentMessage>({
 
 export const textView = <ParentMessage>(
   children: readonly (Html | string)[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.span(
-    [h.Class(classNames(inputGroupTextClassName, className))],
+    [h.Class(cn(inputGroupTextClasses, classes))],
     children
   );
 };

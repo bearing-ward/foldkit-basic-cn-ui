@@ -78,7 +78,7 @@ const desktopItemView = (
   const isChecked = selectedItems.includes(value);
 
   return h.div(
-    [h.Class(Checkbox.shadcnCheckboxRowClassName)],
+    [h.Class(Checkbox.shadcnCheckboxRowClasses)],
     [
       h.button(
         [
@@ -89,12 +89,12 @@ const desktopItemView = (
           h.Role("checkbox"),
           h.AriaChecked(isChecked),
           h.OnClick(ToggledDesktopItem({ value })),
-          h.Class(Checkbox.shadcnCheckboxControlClassName),
+          h.Class(Checkbox.shadcnCheckboxControlClasses),
         ],
         isChecked ? ["✓"] : []
       ),
       h.label(
-        [h.For(id), h.Class(Checkbox.shadcnCheckboxLabelClassName)],
+        [h.For(id), h.Class(Checkbox.shadcnCheckboxLabelClasses)],
         [label]
       ),
     ]
@@ -113,7 +113,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.p([h.Class("text-sm font-medium")], [
             "Show these items on the desktop:",
           ]),
-          h.p([h.Class(Checkbox.shadcnCheckboxDescriptionClassName)], [
+          h.p([h.Class(Checkbox.shadcnCheckboxDescriptionClasses)], [
             "Select the items you want to show on the desktop.",
           ]),
         ]

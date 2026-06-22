@@ -1,11 +1,11 @@
 export {
-  avatarBaseClassName as shadcnAvatarBaseClassName,
-  avatarBadgeClassName as shadcnAvatarBadgeClassName,
-  avatarClassNameBySize as shadcnAvatarClassNameBySize,
-  avatarFallbackClassName as shadcnAvatarFallbackClassName,
-  avatarGroupClassName as shadcnAvatarGroupClassName,
-  avatarGroupCountClassName as shadcnAvatarGroupCountClassName,
-  avatarImageClassName as shadcnAvatarImageClassName,
-  avatarSizeClassNameBySize as shadcnAvatarSizeClassNameBySize,
+  avatarBaseClasses as shadcnAvatarBaseClasses,
+  avatarBadgeClasses as shadcnAvatarBadgeClasses,
+  avatarClassesBySize as shadcnAvatarClassesBySize,
+  avatarFallbackClasses as shadcnAvatarFallbackClasses,
+  avatarGroupClasses as shadcnAvatarGroupClasses,
+  avatarGroupCountClasses as shadcnAvatarGroupCountClasses,
+  avatarImageClasses as shadcnAvatarImageClasses,
+  avatarSizeClassesBySize as shadcnAvatarSizeClassesBySize,
 } from "../../../base-ui/ui/avatar/view";
 export type { AvatarSize as ShadcnAvatarSize } from "../../../base-ui/ui/avatar/view";

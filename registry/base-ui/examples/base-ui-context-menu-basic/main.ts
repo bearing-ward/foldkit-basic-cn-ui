@@ -103,7 +103,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             onClose: ClosedContextMenu(),
           }),
           ContextMenu.positionerView<Message>({
-            className: "base-ui-context-menu-positioner",
+            classes: "base-ui-context-menu-positioner",
             testId: "base-ui-context-menu-positioner",
             style: {
               left: `${String(model.positionX)}px`,

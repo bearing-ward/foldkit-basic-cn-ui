@@ -22,13 +22,13 @@ export type ViewInputs = Ui.FileDrop.ViewInputs;
 export type FileDropAttributes = Ui.FileDrop.FileDropAttributes;
 
 export {
-  dropZoneClassName,
-  fileInputClassName,
-  fileListClassName,
-  fileNameClassName,
-  fileRowClassName,
-  fileSizeClassName,
+  dropZoneClasses,
+  fileInputClasses,
+  fileListClasses,
+  fileNameClasses,
+  fileRowClasses,
+  fileSizeClasses,
   formatFileSize,
-  primaryTextClassName,
-  secondaryTextClassName,
+  primaryTextClasses,
+  secondaryTextClasses,
 } from "./view";

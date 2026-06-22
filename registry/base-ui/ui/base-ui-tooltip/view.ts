@@ -1,8 +1,8 @@
 export {
-  panelClassName as baseUiTooltipPanelClassName,
+  panelClasses as baseUiTooltipPanelClasses,
   tooltipAnchor as baseUiTooltipAnchor,
-  tooltipRootClassName as baseUiTooltipRootClassName,
-  tooltipTriggerClassName as baseUiTooltipTriggerClassName,
+  tooltipRootClasses as baseUiTooltipRootClasses,
+  tooltipTriggerClasses as baseUiTooltipTriggerClasses,
   tooltipView as baseUiTooltipView,
 } from "../../../foldkit/ui/tooltip/view";
 export type { TooltipViewInput as BaseUiTooltipViewInput } from "../../../foldkit/ui/tooltip/view";

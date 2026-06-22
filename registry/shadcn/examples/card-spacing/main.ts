@@ -32,7 +32,7 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-9 items-center justify-center rounded-md px-4 text-sm font-medium";
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
@@ -111,14 +111,14 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
                   h.button(
                     [
                       h.Type("button"),
-                      h.Class(`${buttonClassName} border border-gray-300`),
+                      h.Class(`${buttonClasses} border border-gray-300`),
                     ],
                     ["Decline"]
                   ),
                   h.button(
                     [
                       h.Type("button"),
-                      h.Class(`${buttonClassName} bg-black text-white`),
+                      h.Class(`${buttonClasses} bg-black text-white`),
                     ],
                     ["Accept"]
                   ),

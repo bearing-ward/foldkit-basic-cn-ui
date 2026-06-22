@@ -82,13 +82,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ariaLabel: "Align left",
             onClick: ClickedAlign({ value: "left" }),
             children: [h.span([], ["Align Left"])],
-            className: model.alignment === "left" ? "bg-accent-50" : undefined,
+            classes: model.alignment === "left" ? "bg-accent-50" : undefined,
           }),
           Toolbar.buttonView<Message>({
             ariaLabel: "Align right",
             onClick: ClickedAlign({ value: "right" }),
             children: [h.span([], ["Align Right"])],
-            className: model.alignment === "right" ? "bg-accent-50" : undefined,
+            classes: model.alignment === "right" ? "bg-accent-50" : undefined,
           }),
         ],
       }),
@@ -100,14 +100,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ariaLabel: "Format as currency",
             onClick: ClickedNumericFormat({ value: "currency" }),
             children: [h.span([], ["$"])],
-            className:
+            classes:
               model.numericFormat === "currency" ? "bg-accent-50" : undefined,
           }),
           Toolbar.buttonView<Message>({
             ariaLabel: "Format as percent",
             onClick: ClickedNumericFormat({ value: "percent" }),
             children: [h.span([], ["%"])],
-            className:
+            classes:
               model.numericFormat === "percent" ? "bg-accent-50" : undefined,
           }),
         ],

@@ -147,7 +147,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Fruit> => {
   return {
     items: filterFruits(inputValue),
     itemToConfig: (fruit, context) => ({
-      className: Combobox.baseUiComboboxItemClassName,
+      classes: Combobox.baseUiComboboxItemClasses,
       content: h.div(
         [h.Class("flex items-center gap-2")],
         [
@@ -159,21 +159,21 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Fruit> => {
     itemToValue: (fruit) => fruit,
     itemToDisplayText: (fruit) => fruit,
     inputAttributes: childAttributes([
-      h.Class(Combobox.baseUiComboboxInputClassName),
+      h.Class(Combobox.baseUiComboboxInputClasses),
       h.Placeholder("e.g. Apple"),
       h.AriaLabel("Choose a fruit"),
     ]),
     inputWrapperAttributes: childAttributes([
-      h.Class(Combobox.baseUiComboboxWrapperClassName),
+      h.Class(Combobox.baseUiComboboxWrapperClasses),
     ]),
     itemsAttributes: childAttributes([
-      h.Class(Combobox.baseUiComboboxItemsClassName),
+      h.Class(Combobox.baseUiComboboxItemsClasses),
     ]),
     backdropAttributes: childAttributes([
-      h.Class(Combobox.baseUiComboboxBackdropClassName),
+      h.Class(Combobox.baseUiComboboxBackdropClasses),
     ]),
     attributes: childAttributes([
-      h.Class(Combobox.baseUiComboboxWrapperClassName),
+      h.Class(Combobox.baseUiComboboxWrapperClasses),
     ]),
     buttonContent: h.svg(
       [
@@ -190,7 +190,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Fruit> => {
       [h.path([h.D("m6 9 6 6 6-6")], [])]
     ),
     buttonAttributes: childAttributes([
-      h.Class(Combobox.baseUiComboboxButtonClassName),
+      h.Class(Combobox.baseUiComboboxButtonClasses),
       h.AriaLabel("Open popup"),
     ]),
     anchor: Combobox.baseUiComboboxDefaultAnchor,

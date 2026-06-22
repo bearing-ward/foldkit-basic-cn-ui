@@ -108,7 +108,7 @@ For shadcn-origin source, `src/lib/utils.ts` is the canonical local
 shadcn-style utility module. Registry source may import it as
 `@/src/lib/utils`; the project and generated consumer template both map `@/*`
 to the repository root so the same path resolves locally and after install.
-Use `cn` for shadcn class composition whenever a consumer `className` should be
+Use `cn` for shadcn class composition whenever a consumer `classes` should be
 able to override default Tailwind classes.
 
 Base UI and shadcn-origin component content should be derived from checked-in
@@ -122,7 +122,7 @@ shadcn-origin components should prefer upstream shadcn variant vocabulary such
 as `variant`, `size`, `default`, `destructive`, `outline`, `secondary`,
 `ghost`, and `link`. Export shadcn-shaped helpers such as `buttonVariants`
 when the upstream component exposes them. Use `cn` for shadcn class composition
-when consumer `className` should override defaults. The OpenStory shadcn
+when consumer `classes` should override defaults. The OpenStory shadcn
 theme/style selector is implemented through preview globals, decorators, and
 generated theme contracts; do not change OpenStory shell internals to support a
 shadcn theme.

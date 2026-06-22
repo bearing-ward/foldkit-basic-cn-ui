@@ -7,9 +7,9 @@ export type {
 } from "../../../foldkit/ui/collapsible";
 
 export {
-  shadcnCollapsibleContentClassName,
-  shadcnCollapsibleIconClassName,
-  shadcnCollapsiblePanelClassName,
-  shadcnCollapsibleRootClassName,
-  shadcnCollapsibleTriggerClassName,
+  shadcnCollapsibleContentClasses,
+  shadcnCollapsibleIconClasses,
+  shadcnCollapsiblePanelClasses,
+  shadcnCollapsibleRootClasses,
+  shadcnCollapsibleTriggerClasses,
 } from "./view";

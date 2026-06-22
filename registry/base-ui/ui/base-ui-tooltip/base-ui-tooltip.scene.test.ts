@@ -7,6 +7,6 @@ describe("Base UI Tooltip registry view", () => {
     expect(Tooltip.init).toBeTypeOf("function");
     expect(Tooltip.update).toBeTypeOf("function");
     expect(Tooltip.baseUiTooltipView).toBeTypeOf("function");
-    expect(Tooltip.baseUiTooltipTriggerClassName).toContain("rounded-lg");
+    expect(Tooltip.baseUiTooltipTriggerClasses).toContain("rounded-lg");
   });
 });

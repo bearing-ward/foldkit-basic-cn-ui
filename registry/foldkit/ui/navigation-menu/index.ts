@@ -2,38 +2,38 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  navigationMenuArrowClassName,
-  navigationMenuContentClassName,
-  navigationMenuItemClassName,
-  navigationMenuLinkClassName,
-  navigationMenuListClassName,
-  navigationMenuPopupClassName,
-  navigationMenuPortalClassName,
-  navigationMenuPositionerClassName,
-  navigationMenuRootClassName,
-  navigationMenuTriggerClassName,
-  navigationMenuViewportClassName,
+  navigationMenuArrowClasses,
+  navigationMenuContentClasses,
+  navigationMenuItemClasses,
+  navigationMenuLinkClasses,
+  navigationMenuListClasses,
+  navigationMenuPopupClasses,
+  navigationMenuPortalClasses,
+  navigationMenuPositionerClasses,
+  navigationMenuRootClasses,
+  navigationMenuTriggerClasses,
+  navigationMenuViewportClasses,
 } from "./view";
 
 export {
-  navigationMenuArrowClassName,
-  navigationMenuContentClassName,
-  navigationMenuItemClassName,
-  navigationMenuLinkClassName,
-  navigationMenuListClassName,
-  navigationMenuPopupClassName,
-  navigationMenuPortalClassName,
-  navigationMenuPositionerClassName,
-  navigationMenuRootClassName,
-  navigationMenuTriggerClassName,
-  navigationMenuViewportClassName,
+  navigationMenuArrowClasses,
+  navigationMenuContentClasses,
+  navigationMenuItemClasses,
+  navigationMenuLinkClasses,
+  navigationMenuListClasses,
+  navigationMenuPopupClasses,
+  navigationMenuPortalClasses,
+  navigationMenuPositionerClasses,
+  navigationMenuRootClasses,
+  navigationMenuTriggerClasses,
+  navigationMenuViewportClasses,
 } from "./view";
 
 export type NavigationMenuStyle = Readonly<Record<string, string>>;
 
 export type PartViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
@@ -41,46 +41,46 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   open: boolean;
   onToggle: ParentMessage;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
 export type LinkViewConfig = Readonly<{
   href: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 const divPartView = <ParentMessage>(
-  baseClassName: string,
-  { children, className, style }: PartViewConfig
+  baseClasses: string,
+  { children, classes, style }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(baseClassName, className)),
+      h.Class(cn(baseClasses, classes)),
     ],
     children
   );
 };
 
 export const rootView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(navigationMenuRootClassName, config);
+  divPartView<ParentMessage>(navigationMenuRootClasses, config);
 
 export const listView = <ParentMessage>(config: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -88,7 +88,7 @@ export const listView = <ParentMessage>(config: PartViewConfig): Html => {
   return h.nav(
     [
       h.Attribute("aria-label", "Main navigation"),
-      h.Class(classNames(navigationMenuListClassName, config.className)),
+      h.Class(cn(navigationMenuListClasses, config.classes)),
       ...(config.style === undefined ? [] : [h.Style(config.style)]),
     ],
     config.children
@@ -96,13 +96,13 @@ export const listView = <ParentMessage>(config: PartViewConfig): Html => {
 };
 
 export const itemView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(navigationMenuItemClassName, config);
+  divPartView<ParentMessage>(navigationMenuItemClasses, config);
 
 export const triggerView = <ParentMessage>({
   open,
   onToggle,
   children,
-  className,
+  classes,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -115,7 +115,7 @@ export const triggerView = <ParentMessage>({
       ...(open ? [h.Attribute("data-open", "")] : []),
       h.OnClick(onToggle),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(navigationMenuTriggerClassName, className)),
+      h.Class(cn(navigationMenuTriggerClasses, classes)),
     ],
     children
   );
@@ -124,7 +124,7 @@ export const triggerView = <ParentMessage>({
 export const linkView = <ParentMessage>({
   href,
   children,
-  className,
+  classes,
   style,
 }: LinkViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -133,7 +133,7 @@ export const linkView = <ParentMessage>({
     [
       h.Href(href),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(navigationMenuLinkClassName, className)),
+      h.Class(cn(navigationMenuLinkClasses, classes)),
     ],
     children
   );
@@ -142,7 +142,7 @@ export const linkView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  className,
+  classes,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -154,14 +154,14 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(navigationMenuPortalClassName, className)),
+      h.Class(cn(navigationMenuPortalClasses, classes)),
     ],
     children
   );
 };
 
 export const positionerView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(navigationMenuPositionerClassName, config);
+  divPartView<ParentMessage>(navigationMenuPositionerClasses, config);
 
 export const popupView = <ParentMessage>(config: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -170,20 +170,20 @@ export const popupView = <ParentMessage>(config: PartViewConfig): Html => {
     [
       h.Attribute("role", "menu"),
       ...(config.style === undefined ? [] : [h.Style(config.style)]),
-      h.Class(classNames(navigationMenuPopupClassName, config.className)),
+      h.Class(cn(navigationMenuPopupClasses, config.classes)),
     ],
     config.children
   );
 };
 
 export const viewportView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(navigationMenuViewportClassName, config);
+  divPartView<ParentMessage>(navigationMenuViewportClasses, config);
 
 export const contentView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(navigationMenuContentClassName, config);
+  divPartView<ParentMessage>(navigationMenuContentClasses, config);
 
 export const arrowView = <ParentMessage>({
-  className,
+  classes,
   style,
 }: Omit<PartViewConfig, "children">): Html => {
   const h = html<ParentMessage>();
@@ -192,7 +192,7 @@ export const arrowView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(navigationMenuArrowClassName, className)),
+      h.Class(cn(navigationMenuArrowClasses, classes)),
     ],
     []
   );

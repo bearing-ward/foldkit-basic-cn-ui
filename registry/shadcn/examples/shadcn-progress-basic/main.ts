@@ -49,7 +49,7 @@ export const update = (
 
 // VIEW
 
-const sectionTitleClassName = "text-sm font-medium text-gray-950";
+const sectionTitleClasses = "text-sm font-medium text-gray-950";
 
 const progressBar = (value: number): Html => {
   const h = html<Message>();
@@ -75,7 +75,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("flex w-[60%] flex-col gap-8")],
     [
       h.section([h.Class("space-y-2")], [
-        h.h3([h.Class(sectionTitleClassName)], ["Basic"]),
+        h.h3([h.Class(sectionTitleClasses)], ["Basic"]),
         progressBar(33),
       ]),
       h.section([h.Class("space-y-2")], [
@@ -94,7 +94,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         h.div(
           [h.Class("flex items-center justify-between text-sm")],
           [
-            h.h3([h.Class(sectionTitleClassName)], ["Controlled"]),
+            h.h3([h.Class(sectionTitleClasses)], ["Controlled"]),
             h.span([h.Class("tabular-nums text-gray-600")], [
               `${model.value}%`,
             ]),
@@ -113,7 +113,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ),
       ]),
       h.section([h.Class("space-y-2 text-right"), h.Dir("rtl")], [
-        h.h3([h.Class(sectionTitleClassName)], ["تقدم الرفع"]),
+        h.h3([h.Class(sectionTitleClasses)], ["تقدم الرفع"]),
         h.span([h.Class("text-sm tabular-nums text-gray-600")], ["٦٦%"]),
         progressBar(66),
       ]),

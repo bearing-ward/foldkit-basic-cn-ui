@@ -12,13 +12,13 @@
       "path": "registry/shadcn/ui/label/index.ts",
       "target": "src/ui/label/index.ts",
       "type": "registry:ui",
-      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { labelClassName } from \"./view\";\n\nexport { labelClassName } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  children: readonly Html[] | string;\n  forId?: string;\n  required?: boolean;\n  disabled?: boolean;\n  className?: string;\n}>;\n\nconst classNames = (...values: readonly (string | undefined)[]): string =>\n  values\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const view = <ParentMessage>({\n  children,\n  forId,\n  required = false,\n  disabled = false,\n  className,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.label(\n    [\n      ...(forId === undefined ? [] : [h.For(forId)]),\n      h.DataAttribute(\"slot\", \"label\"),\n      h.DataAttribute(\"required\", String(required)),\n      h.DataAttribute(\"disabled\", String(disabled)),\n      h.Class(classNames(labelClassName, className)),\n    ],\n    typeof children === \"string\" ? [children] : children\n  );\n};\n"
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { labelClasses } from \"./view\";\n\nexport { labelClasses } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  children: readonly Html[] | string;\n  forId?: string;\n  required?: boolean;\n  disabled?: boolean;\n  classes?: string;\n}>;\n\nconst cn = (...values: readonly (string | undefined)[]): string =>\n  values\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\nexport const view = <ParentMessage>({\n  children,\n  forId,\n  required = false,\n  disabled = false,\n  classes,\n}: ViewConfig): Html => {\n  const h = html<ParentMessage>();\n\n  return h.label(\n    [\n      ...(forId === undefined ? [] : [h.For(forId)]),\n      h.DataAttribute(\"slot\", \"label\"),\n      h.DataAttribute(\"required\", String(required)),\n      h.DataAttribute(\"disabled\", String(disabled)),\n      h.Class(cn(labelClasses, classes)),\n    ],\n    typeof children === \"string\" ? [children] : children\n  );\n};\n"
     },
     {
       "path": "registry/shadcn/ui/label/view.ts",
       "target": "src/ui/label/view.ts",
       "type": "registry:ui",
-      "content": "export const labelClassName =\n  \"flex items-center gap-2 text-sm leading-none font-medium text-gray-950 select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[required=true]:after:text-red-600 data-[required=true]:after:content-['*']\";\n"
+      "content": "export const labelClasses =\n  \"flex items-center gap-2 text-sm leading-none font-medium text-gray-950 select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-[required=true]:after:text-red-600 data-[required=true]:after:content-['*']\";\n"
     },
     {
       "path": "registry/shadcn/ui/label/label.scene.test.ts",

@@ -2,59 +2,59 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  alertDialogActionsClassName,
-  alertDialogBackdropClassName,
-  alertDialogCancelClassName,
-  alertDialogConfirmClassName,
-  alertDialogDescriptionClassName,
-  alertDialogPopupClassName,
-  alertDialogPortalClassName,
-  alertDialogRootClassName,
-  alertDialogTitleClassName,
-  alertDialogTriggerClassName,
-  alertDialogViewportClassName,
+  alertDialogActionsClasses,
+  alertDialogBackdropClasses,
+  alertDialogCancelClasses,
+  alertDialogConfirmClasses,
+  alertDialogDescriptionClasses,
+  alertDialogPopupClasses,
+  alertDialogPortalClasses,
+  alertDialogRootClasses,
+  alertDialogTitleClasses,
+  alertDialogTriggerClasses,
+  alertDialogViewportClasses,
 } from "./view";
 
 export {
-  alertDialogActionsClassName,
-  alertDialogBackdropClassName,
-  alertDialogCancelClassName,
-  alertDialogConfirmClassName,
-  alertDialogDescriptionClassName,
-  alertDialogPopupClassName,
-  alertDialogPortalClassName,
-  alertDialogRootClassName,
-  alertDialogTitleClassName,
-  alertDialogTriggerClassName,
-  alertDialogViewportClassName,
+  alertDialogActionsClasses,
+  alertDialogBackdropClasses,
+  alertDialogCancelClasses,
+  alertDialogConfirmClasses,
+  alertDialogDescriptionClasses,
+  alertDialogPopupClasses,
+  alertDialogPortalClasses,
+  alertDialogRootClasses,
+  alertDialogTitleClasses,
+  alertDialogTriggerClasses,
+  alertDialogViewportClasses,
 } from "./view";
 
 export type AlertDialogStyle = Readonly<Record<string, string>>;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialogStyle | undefined;
 }>;
 
 export type TriggerViewConfig<ParentMessage> = Readonly<{
   onClick: ParentMessage;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialogStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialogStyle | undefined;
 }>;
 
 export type PartViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialogStyle | undefined;
 }>;
 
@@ -62,7 +62,7 @@ export type PopupViewConfig = Readonly<{
   titleId: string;
   descriptionId: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialogStyle | undefined;
 }>;
 
@@ -70,25 +70,25 @@ export type CloseViewConfig<ParentMessage> = Readonly<{
   onClick: ParentMessage;
   children: readonly Html[];
   variant?: "Cancel" | "Confirm" | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialogStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 const partView = <ParentMessage>(
   tagName: "div" | "h2" | "p",
-  baseClassName: string,
-  { id, children, className, style }: PartViewConfig
+  baseClasses: string,
+  { id, children, classes, style }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
   const attributes = [
     ...(id === undefined ? [] : [h.Id(id)]),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(classNames(baseClassName, className)),
+    h.Class(cn(baseClasses, classes)),
   ];
 
   if (tagName === "h2") {
@@ -104,19 +104,19 @@ const partView = <ParentMessage>(
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: RootViewConfig): Html =>
-  partView<ParentMessage>("div", alertDialogRootClassName, {
+  partView<ParentMessage>("div", alertDialogRootClasses, {
     children,
-    className,
+    classes,
     style,
   });
 
 export const triggerView = <ParentMessage>({
   onClick,
   children,
-  className,
+  classes,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -126,7 +126,7 @@ export const triggerView = <ParentMessage>({
       h.Type("button"),
       h.OnClick(onClick),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(alertDialogTriggerClassName, className)),
+      h.Class(cn(alertDialogTriggerClasses, classes)),
     ],
     children
   );
@@ -135,7 +135,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  className,
+  classes,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -147,23 +147,23 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(alertDialogPortalClassName, className)),
+      h.Class(cn(alertDialogPortalClasses, classes)),
     ],
     children
   );
 };
 
 export const backdropView = <ParentMessage>(config: PartViewConfig): Html =>
-  partView<ParentMessage>("div", alertDialogBackdropClassName, config);
+  partView<ParentMessage>("div", alertDialogBackdropClasses, config);
 
 export const viewportView = <ParentMessage>(config: PartViewConfig): Html =>
-  partView<ParentMessage>("div", alertDialogViewportClassName, config);
+  partView<ParentMessage>("div", alertDialogViewportClasses, config);
 
 export const popupView = <ParentMessage>({
   titleId,
   descriptionId,
   children,
-  className,
+  classes,
   style,
 }: PopupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -175,40 +175,40 @@ export const popupView = <ParentMessage>({
       h.Attribute("aria-labelledby", titleId),
       h.Attribute("aria-describedby", descriptionId),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(alertDialogPopupClassName, className)),
+      h.Class(cn(alertDialogPopupClasses, classes)),
     ],
     children
   );
 };
 
 export const titleView = <ParentMessage>(config: PartViewConfig): Html =>
-  partView<ParentMessage>("h2", alertDialogTitleClassName, config);
+  partView<ParentMessage>("h2", alertDialogTitleClasses, config);
 
 export const descriptionView = <ParentMessage>(config: PartViewConfig): Html =>
-  partView<ParentMessage>("p", alertDialogDescriptionClassName, config);
+  partView<ParentMessage>("p", alertDialogDescriptionClasses, config);
 
 export const actionsView = <ParentMessage>(config: PartViewConfig): Html =>
-  partView<ParentMessage>("div", alertDialogActionsClassName, config);
+  partView<ParentMessage>("div", alertDialogActionsClasses, config);
 
 export const closeView = <ParentMessage>({
   onClick,
   children,
   variant = "Cancel",
-  className,
+  classes,
   style,
 }: CloseViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
-  const baseClassName =
+  const baseClasses =
     variant === "Confirm"
-      ? alertDialogConfirmClassName
-      : alertDialogCancelClassName;
+      ? alertDialogConfirmClasses
+      : alertDialogCancelClasses;
 
   return h.button(
     [
       h.Type("button"),
       h.OnClick(onClick),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(baseClassName, className)),
+      h.Class(cn(baseClasses, classes)),
     ],
     children
   );

@@ -27,11 +27,11 @@ export type {
 } from "../../../foldkit/ui/radio-group";
 
 export {
-  shadcnRadioGroupDescriptionClassName,
-  shadcnRadioGroupHorizontalClassName,
-  shadcnRadioGroupHorizontalOptionClassName,
-  shadcnRadioGroupLabelClassName,
-  shadcnRadioGroupMetaClassName,
-  shadcnRadioGroupVerticalClassName,
-  shadcnRadioGroupVerticalOptionClassName,
+  shadcnRadioGroupDescriptionClasses,
+  shadcnRadioGroupHorizontalClasses,
+  shadcnRadioGroupHorizontalOptionClasses,
+  shadcnRadioGroupLabelClasses,
+  shadcnRadioGroupMetaClasses,
+  shadcnRadioGroupVerticalClasses,
+  shadcnRadioGroupVerticalOptionClasses,
 } from "./view";

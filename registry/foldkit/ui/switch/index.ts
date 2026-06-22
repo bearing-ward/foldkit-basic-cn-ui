@@ -34,10 +34,10 @@ export const { reflectChecked } = Ui.Switch;
 export const { view } = Ui.Switch;
 
 export {
-  switchButtonClassName,
-  switchDescriptionClassName,
+  switchButtonClasses,
+  switchDescriptionClasses,
   switchKnob,
-  switchLabelClassName,
-  switchRowClassName,
-  switchTextClassName,
+  switchLabelClasses,
+  switchRowClasses,
+  switchTextClasses,
 } from "./view";

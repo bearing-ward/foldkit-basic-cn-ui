@@ -83,19 +83,19 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         viewInputs: {
           toView: (attributes) =>
             h.label(
-              [h.Class(Switch.baseUiSwitchRowClassName)],
+              [h.Class(Switch.baseUiSwitchRowClasses)],
               [
                 h.button(
                   [
                     ...attributes.button,
-                    h.Class(Switch.baseUiSwitchButtonClassName),
+                    h.Class(Switch.baseUiSwitchButtonClasses),
                   ],
                   [Switch.baseUiSwitchKnob(model.switchModel.isChecked)]
                 ),
                 h.span(
                   [
                     ...attributes.label,
-                    h.Class(Switch.baseUiSwitchLabelClassName),
+                    h.Class(Switch.baseUiSwitchLabelClasses),
                   ],
                   ["Notifications"]
                 ),

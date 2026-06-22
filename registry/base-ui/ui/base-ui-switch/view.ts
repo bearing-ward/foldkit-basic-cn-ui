@@ -1,8 +1,8 @@
 export {
-  switchButtonClassName as baseUiSwitchButtonClassName,
-  switchDescriptionClassName as baseUiSwitchDescriptionClassName,
+  switchButtonClasses as baseUiSwitchButtonClasses,
+  switchDescriptionClasses as baseUiSwitchDescriptionClasses,
   switchKnob as baseUiSwitchKnob,
-  switchLabelClassName as baseUiSwitchLabelClassName,
-  switchRowClassName as baseUiSwitchRowClassName,
-  switchTextClassName as baseUiSwitchTextClassName,
+  switchLabelClasses as baseUiSwitchLabelClasses,
+  switchRowClasses as baseUiSwitchRowClasses,
+  switchTextClasses as baseUiSwitchTextClasses,
 } from "../../../foldkit/ui/switch/view";

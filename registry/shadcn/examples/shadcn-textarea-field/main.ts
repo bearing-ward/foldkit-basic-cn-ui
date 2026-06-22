@@ -42,24 +42,24 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     placeholder: "Type your message here.",
     toView: (attributes) =>
       h.div(
-        [h.Class(Textarea.shadcnTextareaFieldClassName)],
+        [h.Class(Textarea.shadcnTextareaFieldClasses)],
         [
           h.label(
             [
               ...attributes.label,
-              h.Class(Textarea.shadcnTextareaLabelClassName),
+              h.Class(Textarea.shadcnTextareaLabelClasses),
             ],
             ["Message"]
           ),
           h.p(
             [
               ...attributes.description,
-              h.Class(Textarea.shadcnTextareaDescriptionClassName),
+              h.Class(Textarea.shadcnTextareaDescriptionClasses),
             ],
             ["Enter your message below."]
           ),
           h.textarea(
-            [...attributes.textarea, h.Class(Textarea.shadcnTextareaClassName)],
+            [...attributes.textarea, h.Class(Textarea.shadcnTextareaClasses)],
             []
           ),
         ]

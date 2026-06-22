@@ -47,8 +47,8 @@ export type {
 } from "../../../foldkit/ui/dialog";
 
 export {
-  baseUiDialogBackdropClassName,
-  baseUiDialogPanelClassName,
-  baseUiDialogTitleClassName,
-  baseUiDialogDescriptionClassName,
+  baseUiDialogBackdropClasses,
+  baseUiDialogPanelClasses,
+  baseUiDialogTitleClasses,
+  baseUiDialogDescriptionClasses,
 } from "./view";

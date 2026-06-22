@@ -79,7 +79,7 @@ const itemDropdownMenuView = (menu: Menu.Model): Html => {
       anchor: Menu.baseUiMenuDefaultAnchor,
       items: actions,
       itemToConfig: (item) => ({
-        className: Menu.baseUiMenuItemClassName,
+        classes: Menu.baseUiMenuItemClasses,
         content: h.span([], [item]),
       }),
       buttonContent: h.span([h.Attribute("aria-hidden", "true")], ["..."]),
@@ -90,13 +90,13 @@ const itemDropdownMenuView = (menu: Menu.Model): Html => {
         ),
       ]),
       itemsAttributes: childAttributes([
-        h.Class(Menu.baseUiMenuPopupClassName),
+        h.Class(Menu.baseUiMenuPopupClasses),
       ]),
       backdropAttributes: childAttributes([
         h.DataAttribute("testid", "item-dropdown-backdrop"),
-        h.Class(Menu.baseUiMenuBackdropClassName),
+        h.Class(Menu.baseUiMenuBackdropClasses),
       ]),
-      attributes: childAttributes([h.Class(Menu.baseUiMenuRootClassName)]),
+      attributes: childAttributes([h.Class(Menu.baseUiMenuRootClasses)]),
     },
     toParentMessage: (message) => GotMenuMessage({ message }),
   });

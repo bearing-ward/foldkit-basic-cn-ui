@@ -69,7 +69,7 @@ const protocolRow = (
     [h.Class("flex items-center gap-3")],
     [
       h.label(
-        [h.For(controlId), h.Class(CheckboxGroup.checkboxGroupItemClassName)],
+        [h.For(controlId), h.Class(CheckboxGroup.checkboxGroupItemClasses)],
         [label]
       ),
       h.button(
@@ -83,13 +83,13 @@ const protocolRow = (
             ? [h.DataAttribute("checked", "")]
             : [h.DataAttribute("unchecked", "")]),
           h.OnClick(ToggledProtocol({ value })),
-          h.Class(CheckboxGroup.checkboxGroupControlClassName),
+          h.Class(CheckboxGroup.checkboxGroupControlClasses),
         ],
         [
           h.span(
             [
               ...(checked ? [h.DataAttribute("checked", "")] : []),
-              h.Class(CheckboxGroup.checkboxGroupIndicatorClassName),
+              h.Class(CheckboxGroup.checkboxGroupIndicatorClasses),
             ],
             [checked ? "✓" : ""]
           ),
@@ -108,18 +108,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [
       h.Attribute("role", "group"),
       h.Attribute("aria-labelledby", "protocols-label"),
-      h.Class(CheckboxGroup.checkboxGroupRootClassName),
+      h.Class(CheckboxGroup.checkboxGroupRootClasses),
     ],
     [
       h.div(
         [
           h.Id("protocols-label"),
-          h.Class(CheckboxGroup.checkboxGroupCaptionClassName),
+          h.Class(CheckboxGroup.checkboxGroupCaptionClasses),
         ],
         ["Allowed network protocols"]
       ),
       h.div(
-        [h.Class(CheckboxGroup.checkboxGroupItemsClassName)],
+        [h.Class(CheckboxGroup.checkboxGroupItemsClasses)],
         [
           protocolRow("http", "HTTP", model.selectedProtocols),
           protocolRow("https", "HTTPS", model.selectedProtocols),

@@ -56,20 +56,20 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       isDisabled: true,
       toView: (attributes) =>
         h.label(
-          [...attributes.root, h.Class(FileDrop.dropZoneClassName)],
+          [...attributes.root, h.Class(FileDrop.dropZoneClasses)],
           [
             h.span(
-              [h.Class(FileDrop.primaryTextClassName)],
+              [h.Class(FileDrop.primaryTextClasses)],
               ["File uploads disabled"]
             ),
             h.span(
-              [h.Class(FileDrop.secondaryTextClassName)],
+              [h.Class(FileDrop.secondaryTextClasses)],
               ["Uploads are unavailable while the project is archived."]
             ),
             h.input([
               ...attributes.input,
               h.AriaLabel("Upload files"),
-              h.Class(FileDrop.fileInputClassName),
+              h.Class(FileDrop.fileInputClasses),
             ]),
           ]
         ),

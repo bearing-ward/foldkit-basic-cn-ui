@@ -2,23 +2,23 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  fieldControlClassName,
-  fieldDescriptionClassName,
-  fieldErrorClassName,
-  fieldItemClassName,
-  fieldLabelClassName,
-  fieldRootClassName,
-  fieldValidityClassName,
+  fieldControlClasses,
+  fieldDescriptionClasses,
+  fieldErrorClasses,
+  fieldItemClasses,
+  fieldLabelClasses,
+  fieldRootClasses,
+  fieldValidityClasses,
 } from "./view";
 
 export {
-  fieldControlClassName,
-  fieldDescriptionClassName,
-  fieldErrorClassName,
-  fieldItemClassName,
-  fieldLabelClassName,
-  fieldRootClassName,
-  fieldValidityClassName,
+  fieldControlClasses,
+  fieldDescriptionClasses,
+  fieldErrorClasses,
+  fieldItemClasses,
+  fieldLabelClasses,
+  fieldRootClasses,
+  fieldValidityClasses,
 } from "./view";
 
 export type FieldStyle = Readonly<Record<string, string>>;
@@ -37,14 +37,14 @@ export type RootViewConfig = FieldState &
   Readonly<{
     children: readonly Html[];
     name?: string | undefined;
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: FieldStyle | undefined;
   }>;
 
 export type LabelViewConfig = Readonly<{
   children: readonly Html[];
   forId?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
@@ -58,14 +58,14 @@ export type ControlViewConfig<ParentMessage> = FieldState &
     name?: string | undefined;
     placeholder?: string | undefined;
     type?: string | undefined;
-    className?: string | undefined;
+    classes?: string | undefined;
     style?: FieldStyle | undefined;
   }>;
 
 export type DescriptionViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
@@ -73,18 +73,18 @@ export type ErrorViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
   show: boolean;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
 export type ItemViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -105,7 +105,7 @@ const stateAttributes = <ParentMessage>(
 export const rootView = <ParentMessage>({
   children,
   name,
-  className,
+  classes,
   style,
   ...state
 }: RootViewConfig): Html => {
@@ -116,7 +116,7 @@ export const rootView = <ParentMessage>({
       ...(name === undefined ? [] : [h.DataAttribute("name", name)]),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(fieldRootClassName, className)),
+      h.Class(cn(fieldRootClasses, classes)),
     ],
     children
   );
@@ -125,7 +125,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   children,
   forId,
-  className,
+  classes,
   style,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -134,7 +134,7 @@ export const labelView = <ParentMessage>({
     [
       ...(forId === undefined ? [] : [h.Attribute("for", forId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(fieldLabelClassName, className)),
+      h.Class(cn(fieldLabelClasses, classes)),
     ],
     children
   );
@@ -149,7 +149,7 @@ export const controlView = <ParentMessage>({
   name,
   placeholder,
   type = "text",
-  className,
+  classes,
   style,
   ...state
 }: ControlViewConfig<ParentMessage>): Html => {
@@ -174,14 +174,14 @@ export const controlView = <ParentMessage>({
     ...(state.disabled === true ? [h.Disabled(true)] : []),
     ...stateAttributes(h, state),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(classNames(fieldControlClassName, className)),
+    h.Class(cn(fieldControlClasses, classes)),
   ]);
 };
 
 export const descriptionView = <ParentMessage>({
   id,
   children,
-  className,
+  classes,
   style,
 }: DescriptionViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -190,7 +190,7 @@ export const descriptionView = <ParentMessage>({
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(fieldDescriptionClassName, className)),
+      h.Class(cn(fieldDescriptionClasses, classes)),
     ],
     children
   );
@@ -200,7 +200,7 @@ export const errorView = <ParentMessage>({
   id,
   children,
   show,
-  className,
+  classes,
   style,
 }: ErrorViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -211,7 +211,7 @@ export const errorView = <ParentMessage>({
       h.Attribute("role", "alert"),
       h.AriaHidden(!show),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(fieldErrorClassName, className)),
+      h.Class(cn(fieldErrorClasses, classes)),
     ],
     show ? children : []
   );
@@ -219,7 +219,7 @@ export const errorView = <ParentMessage>({
 
 export const itemView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: ItemViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -227,7 +227,7 @@ export const itemView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(fieldItemClassName, className)),
+      h.Class(cn(fieldItemClasses, classes)),
     ],
     children
   );
@@ -235,12 +235,12 @@ export const itemView = <ParentMessage>({
 
 export const validityView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.p(
-    [h.Class(classNames(fieldValidityClassName, className))],
+    [h.Class(cn(fieldValidityClasses, classes))],
     children
   );
 };

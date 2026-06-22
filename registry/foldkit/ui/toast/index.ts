@@ -46,11 +46,11 @@ export type Position = Ui.Toast.Position;
 export type Variant = Ui.Toast.Variant;
 
 export {
-  closeButtonClassName,
-  containerClassName,
-  descriptionClassName,
-  entryClassName,
-  titleClassName,
-  toastClassName,
+  closeButtonClasses,
+  containerClasses,
+  descriptionClasses,
+  entryClasses,
+  titleClasses,
+  toastClasses,
   toastEntryView,
 } from "./view";

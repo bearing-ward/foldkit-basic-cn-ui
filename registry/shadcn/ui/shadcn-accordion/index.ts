@@ -6,10 +6,10 @@ export type {
 } from "../../../foldkit/ui/accordion";
 
 export {
-  shadcnAccordionHeaderClassName,
-  shadcnAccordionIconClassName,
-  shadcnAccordionItemClassName,
-  shadcnAccordionPanelClassName,
-  shadcnAccordionRootClassName,
-  shadcnAccordionTriggerClassName,
+  shadcnAccordionHeaderClasses,
+  shadcnAccordionIconClasses,
+  shadcnAccordionItemClasses,
+  shadcnAccordionPanelClasses,
+  shadcnAccordionRootClasses,
+  shadcnAccordionTriggerClasses,
 } from "./view";

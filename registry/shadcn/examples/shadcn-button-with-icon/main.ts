@@ -44,7 +44,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [
               ...attributes.button,
               h.AriaLabel("New Branch"),
-              h.Class(Button.shadcnButtonClassName),
+              h.Class(Button.shadcnButtonClasses),
             ],
             [
               h.span(

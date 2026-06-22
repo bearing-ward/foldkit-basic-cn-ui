@@ -44,13 +44,13 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       h.div(
         [
           h.DataAttribute("invalid", ""),
-          h.Class(Textarea.shadcnTextareaFieldClassName),
+          h.Class(Textarea.shadcnTextareaFieldClasses),
         ],
         [
           h.label(
             [
               ...attributes.label,
-              h.Class(Textarea.shadcnTextareaLabelClassName),
+              h.Class(Textarea.shadcnTextareaLabelClasses),
             ],
             ["Message"]
           ),
@@ -58,14 +58,14 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [
               ...attributes.textarea,
               h.AriaInvalid(true),
-              h.Class(Textarea.shadcnTextareaClassName),
+              h.Class(Textarea.shadcnTextareaClasses),
             ],
             []
           ),
           h.p(
             [
               ...attributes.description,
-              h.Class(Textarea.shadcnTextareaDescriptionClassName),
+              h.Class(Textarea.shadcnTextareaDescriptionClasses),
             ],
             ["Please enter a valid message."]
           ),

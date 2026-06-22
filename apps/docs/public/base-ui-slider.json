@@ -12,19 +12,19 @@
       "path": "registry/base-ui/ui/base-ui-slider/index.ts",
       "target": "src/ui/base-ui-slider/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  fractionOfValue,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectRange,\n  reflectValue,\n  subscriptions,\n  subscriptionsForRoot,\n  update,\n  view,\n} from \"../../../foldkit/ui/slider\";\nexport type {\n  CancelledDrag,\n  InitConfig,\n  InitReturn,\n  MovedDragPointer,\n  PressedKeyboardNavigation,\n  PressedPointer,\n  PressedThumb,\n  ReleasedDragPointer,\n  SliderAttributes,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/slider\";\n\nexport {\n  baseUiSliderFieldView,\n  baseUiSliderFilledTrackClassName,\n  baseUiSliderHeaderClassName,\n  baseUiSliderLabelClassName,\n  baseUiSliderRootClassName,\n  baseUiSliderThumbClassName,\n  baseUiSliderTrackClassName,\n  baseUiSliderValueClassName,\n} from \"./view\";\nexport type { BaseUiSliderFieldViewInput } from \"./view\";\n"
+      "content": "export {\n  fractionOfValue,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectRange,\n  reflectValue,\n  subscriptions,\n  subscriptionsForRoot,\n  update,\n  view,\n} from \"../../../foldkit/ui/slider\";\nexport type {\n  CancelledDrag,\n  InitConfig,\n  InitReturn,\n  MovedDragPointer,\n  PressedKeyboardNavigation,\n  PressedPointer,\n  PressedThumb,\n  ReleasedDragPointer,\n  SliderAttributes,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/slider\";\n\nexport {\n  baseUiSliderFieldView,\n  baseUiSliderFilledTrackClasses,\n  baseUiSliderHeaderClasses,\n  baseUiSliderLabelClasses,\n  baseUiSliderRootClasses,\n  baseUiSliderThumbClasses,\n  baseUiSliderTrackClasses,\n  baseUiSliderValueClasses,\n} from \"./view\";\nexport type { BaseUiSliderFieldViewInput } from \"./view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-slider/view.ts",
       "target": "src/ui/base-ui-slider/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  filledTrackClassName as baseUiSliderFilledTrackClassName,\n  headerClassName as baseUiSliderHeaderClassName,\n  labelClassName as baseUiSliderLabelClassName,\n  rootClassName as baseUiSliderRootClassName,\n  sliderFieldView as baseUiSliderFieldView,\n  thumbClassName as baseUiSliderThumbClassName,\n  trackClassName as baseUiSliderTrackClassName,\n  valueClassName as baseUiSliderValueClassName,\n} from \"../../../foldkit/ui/slider/view\";\nexport type { SliderFieldViewInput as BaseUiSliderFieldViewInput } from \"../../../foldkit/ui/slider/view\";\n"
+      "content": "export {\n  filledTrackClasses as baseUiSliderFilledTrackClasses,\n  headerClasses as baseUiSliderHeaderClasses,\n  labelClasses as baseUiSliderLabelClasses,\n  rootClasses as baseUiSliderRootClasses,\n  sliderFieldView as baseUiSliderFieldView,\n  thumbClasses as baseUiSliderThumbClasses,\n  trackClasses as baseUiSliderTrackClasses,\n  valueClasses as baseUiSliderValueClasses,\n} from \"../../../foldkit/ui/slider/view\";\nexport type { SliderFieldViewInput as BaseUiSliderFieldViewInput } from \"../../../foldkit/ui/slider/view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-slider/base-ui-slider.scene.test.ts",
       "target": "src/ui/base-ui-slider/base-ui-slider.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Slider from \"./index\";\n\ndescribe(\"Base UI Slider registry view\", () => {\n  test(\"reuses the Foldkit Slider functional contract\", () => {\n    expect(Slider.init).toBeTypeOf(\"function\");\n    expect(Slider.update).toBeTypeOf(\"function\");\n    expect(Slider.view).toBeTypeOf(\"function\");\n    expect(Slider.baseUiSliderRootClassName).toContain(\"relative\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Slider from \"./index\";\n\ndescribe(\"Base UI Slider registry view\", () => {\n  test(\"reuses the Foldkit Slider functional contract\", () => {\n    expect(Slider.init).toBeTypeOf(\"function\");\n    expect(Slider.update).toBeTypeOf(\"function\");\n    expect(Slider.view).toBeTypeOf(\"function\");\n    expect(Slider.baseUiSliderRootClasses).toContain(\"relative\");\n  });\n});\n"
     }
   ],
   "meta": {

@@ -39,7 +39,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Dir("rtl"), h.Class("max-w-sm space-y-3")],
     [
       h.div(
-        [h.Class(Checkbox.shadcnCheckboxRowClassName)],
+        [h.Class(Checkbox.shadcnCheckboxRowClasses)],
         [
           h.button(
             [
@@ -48,21 +48,21 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.Name("terms-checkbox"),
               h.Role("checkbox"),
               h.AriaChecked(false),
-              h.Class(Checkbox.shadcnCheckboxControlClassName),
+              h.Class(Checkbox.shadcnCheckboxControlClasses),
             ],
             []
           ),
           h.label(
             [
               h.For("terms-checkbox-rtl"),
-              h.Class(Checkbox.shadcnCheckboxLabelClassName),
+              h.Class(Checkbox.shadcnCheckboxLabelClasses),
             ],
             ["قبول الشروط والأحكام"]
           ),
         ]
       ),
       h.div(
-        [h.Class(Checkbox.shadcnCheckboxRowClassName)],
+        [h.Class(Checkbox.shadcnCheckboxRowClasses)],
         [
           h.button(
             [
@@ -71,22 +71,22 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.Name("terms-checkbox-2"),
               h.Role("checkbox"),
               h.AriaChecked(true),
-              h.Class(Checkbox.shadcnCheckboxControlClassName),
+              h.Class(Checkbox.shadcnCheckboxControlClasses),
             ],
             ["✓"]
           ),
           h.div(
-            [h.Class(Checkbox.shadcnCheckboxTextClassName)],
+            [h.Class(Checkbox.shadcnCheckboxTextClasses)],
             [
               h.label(
                 [
                   h.For("terms-checkbox-2-rtl"),
-                  h.Class(Checkbox.shadcnCheckboxLabelClassName),
+                  h.Class(Checkbox.shadcnCheckboxLabelClasses),
                 ],
                 ["قبول الشروط والأحكام"]
               ),
               h.p(
-                [h.Class(Checkbox.shadcnCheckboxDescriptionClassName)],
+                [h.Class(Checkbox.shadcnCheckboxDescriptionClasses)],
                 ["بالنقر على هذا المربع، فإنك توافق على الشروط."]
               ),
             ]
@@ -96,7 +96,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       h.div(
         [
           h.DataAttribute("disabled", ""),
-          h.Class(Checkbox.shadcnCheckboxRowClassName),
+          h.Class(Checkbox.shadcnCheckboxRowClasses),
         ],
         [
           h.button(
@@ -107,14 +107,14 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.Role("checkbox"),
               h.AriaChecked(false),
               h.Disabled(true),
-              h.Class(Checkbox.shadcnCheckboxControlClassName),
+              h.Class(Checkbox.shadcnCheckboxControlClasses),
             ],
             []
           ),
           h.label(
             [
               h.For("toggle-checkbox-rtl"),
-              h.Class(Checkbox.shadcnCheckboxLabelClassName),
+              h.Class(Checkbox.shadcnCheckboxLabelClasses),
             ],
             ["تفعيل الإشعارات"]
           ),

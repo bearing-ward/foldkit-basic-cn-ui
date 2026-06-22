@@ -101,20 +101,20 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           multiple: true,
           toView: (attributes) =>
             h.label(
-              [...attributes.root, h.Class(FileDrop.dropZoneClassName)],
+              [...attributes.root, h.Class(FileDrop.dropZoneClasses)],
               [
                 h.span(
-                  [h.Class(FileDrop.primaryTextClassName)],
+                  [h.Class(FileDrop.primaryTextClasses)],
                   ["Drop files or click to browse"]
                 ),
                 h.span(
-                  [h.Class(FileDrop.secondaryTextClassName)],
+                  [h.Class(FileDrop.secondaryTextClasses)],
                   ["Any file type. This example lists selected files."]
                 ),
                 h.input([
                   ...attributes.input,
                   h.AriaLabel("Upload files"),
-                  h.Class(FileDrop.fileInputClassName),
+                  h.Class(FileDrop.fileInputClasses),
                 ]),
               ]
             ),
@@ -126,17 +126,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [`Selected files: ${model.files.length}`]
       ),
       h.ul(
-        [h.Class(FileDrop.fileListClassName)],
+        [h.Class(FileDrop.fileListClasses)],
         model.files.map((file, fileIndex) =>
           h.li(
-            [h.Class(FileDrop.fileRowClassName)],
+            [h.Class(FileDrop.fileRowClasses)],
             [
               h.div(
                 [h.Class("min-w-0")],
                 [
-                  h.p([h.Class(FileDrop.fileNameClassName)], [File.name(file)]),
+                  h.p([h.Class(FileDrop.fileNameClasses)], [File.name(file)]),
                   h.p(
-                    [h.Class(FileDrop.fileSizeClassName)],
+                    [h.Class(FileDrop.fileSizeClasses)],
                     [FileDrop.formatFileSize(File.size(file))]
                   ),
                 ]

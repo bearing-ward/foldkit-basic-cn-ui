@@ -1,15 +1,15 @@
 export type ProgressStatus = "Indeterminate" | "Progressing" | "Complete";
 
-export const progressRootClassName = "grid max-w-full w-60 grid-cols-2 gap-y-2";
+export const progressRootClasses = "grid max-w-full w-60 grid-cols-2 gap-y-2";
 
-export const progressLabelClassName = "text-sm font-normal text-gray-950";
+export const progressLabelClasses = "text-sm font-normal text-gray-950";
 
-export const progressValueClassName = "text-right text-sm text-gray-950";
+export const progressValueClasses = "text-right text-sm text-gray-950";
 
-export const progressTrackClassName =
+export const progressTrackClasses =
   "col-span-2 h-1 overflow-hidden bg-gray-200";
 
-export const progressIndicatorClassName =
+export const progressIndicatorClasses =
   "h-inherit bg-gray-950 transition-[width] duration-500";
 
 export const progressStatus = (

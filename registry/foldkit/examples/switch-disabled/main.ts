@@ -68,23 +68,23 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       isDisabled: true,
       toView: (attributes) =>
         h.div(
-          [h.Class(Switch.switchRowClassName)],
+          [h.Class(Switch.switchRowClasses)],
           [
             h.button(
-              [...attributes.button, h.Class(Switch.switchButtonClassName)],
+              [...attributes.button, h.Class(Switch.switchButtonClasses)],
               [Switch.switchKnob(model.switchModel.isChecked)]
             ),
             h.div(
-              [h.Class(Switch.switchTextClassName)],
+              [h.Class(Switch.switchTextClasses)],
               [
                 h.label(
-                  [...attributes.label, h.Class(Switch.switchLabelClassName)],
+                  [...attributes.label, h.Class(Switch.switchLabelClasses)],
                   ["Locked notifications"]
                 ),
                 h.p(
                   [
                     ...attributes.description,
-                    h.Class(Switch.switchDescriptionClassName),
+                    h.Class(Switch.switchDescriptionClasses),
                   ],
                   ["Notification changes are locked."]
                 ),

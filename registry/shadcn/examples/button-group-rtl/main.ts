@@ -30,7 +30,7 @@ export const update = (
   _message: Message
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-9 min-w-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
@@ -45,13 +45,13 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         ariaLabel: "تنسيق النص",
         children: [
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["غامق"])],
+            children: [h.button([h.Class(buttonClasses)], ["غامق"])],
           }),
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["مائل"])],
+            children: [h.button([h.Class(buttonClasses)], ["مائل"])],
           }),
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["تحته خط"])],
+            children: [h.button([h.Class(buttonClasses)], ["تحته خط"])],
           }),
         ],
       }),

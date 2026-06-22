@@ -94,7 +94,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Framework> => {
   return {
     items: filterFrameworks(inputValue),
     itemToConfig: (framework, context) => ({
-      className: Combobox.shadcnComboboxItemClassName,
+      classes: Combobox.shadcnComboboxItemClasses,
       content: h.div(
         [h.Class("flex items-center gap-2")],
         [selectedIcon(context.isSelected), h.span([], [framework])]
@@ -103,25 +103,25 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Framework> => {
     itemToValue: (framework) => framework,
     itemToDisplayText: (framework) => framework,
     inputAttributes: childAttributes([
-      h.Class(Combobox.shadcnComboboxInputClassName),
+      h.Class(Combobox.shadcnComboboxInputClasses),
       h.Placeholder("Select framework..."),
       h.AriaLabel("Framework"),
     ]),
     inputWrapperAttributes: childAttributes([
-      h.Class(Combobox.shadcnComboboxInputWrapperClassName),
+      h.Class(Combobox.shadcnComboboxInputWrapperClasses),
     ]),
     itemsAttributes: childAttributes([
-      h.Class(Combobox.shadcnComboboxItemsClassName),
+      h.Class(Combobox.shadcnComboboxItemsClasses),
     ]),
     backdropAttributes: childAttributes([
-      h.Class(Combobox.shadcnComboboxBackdropClassName),
+      h.Class(Combobox.shadcnComboboxBackdropClasses),
     ]),
     attributes: childAttributes([
-      h.Class(Combobox.shadcnComboboxWrapperClassName),
+      h.Class(Combobox.shadcnComboboxWrapperClasses),
     ]),
     buttonContent: h.span([], ["v"]),
     buttonAttributes: childAttributes([
-      h.Class(Combobox.shadcnComboboxButtonClassName),
+      h.Class(Combobox.shadcnComboboxButtonClasses),
     ]),
     anchor: defaultAnchor,
   };
@@ -155,10 +155,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.div(
             [h.Class("flex flex-wrap gap-2")],
             [
-              h.span([h.Class(Combobox.shadcnComboboxTagClassName)], [
+              h.span([h.Class(Combobox.shadcnComboboxTagClasses)], [
                 "Next.js",
               ]),
-              h.span([h.Class(Combobox.shadcnComboboxTagClassName)], ["Remix"]),
+              h.span([h.Class(Combobox.shadcnComboboxTagClasses)], ["Remix"]),
             ]
           ),
           h.div(
@@ -197,21 +197,21 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [
           h.h3([h.Class("text-base font-semibold text-gray-950")], ["Groups"]),
           h.div(
-            [h.Class(Combobox.shadcnComboboxItemsClassName)],
+            [h.Class(Combobox.shadcnComboboxItemsClasses)],
             [
               h.div([h.Class("px-3 py-1 text-xs font-medium text-gray-500")], [
                 "Frontend",
               ]),
-              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+              h.div([h.Class(Combobox.shadcnComboboxItemClasses)], [
                 "Next.js",
               ]),
-              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+              h.div([h.Class(Combobox.shadcnComboboxItemClasses)], [
                 "SvelteKit",
               ]),
               h.div([h.Class("px-3 py-1 text-xs font-medium text-gray-500")], [
                 "Full-stack",
               ]),
-              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], ["Remix"]),
+              h.div([h.Class(Combobox.shadcnComboboxItemClasses)], ["Remix"]),
             ]
           ),
         ]
@@ -223,15 +223,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             "Custom Items",
           ]),
           h.div(
-            [h.Class(Combobox.shadcnComboboxItemsClassName)],
+            [h.Class(Combobox.shadcnComboboxItemsClasses)],
             [
-              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+              h.div([h.Class(Combobox.shadcnComboboxItemClasses)], [
                 h.div([h.Class("font-medium")], ["Next.js"]),
                 h.div([h.Class("text-xs text-gray-500")], [
                   "The React framework for production",
                 ]),
               ]),
-              h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+              h.div([h.Class(Combobox.shadcnComboboxItemClasses)], [
                 h.div([h.Class("font-medium")], ["Astro"]),
                 h.div([h.Class("text-xs text-gray-500")], [
                   "Content-driven websites",
@@ -255,7 +255,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 h.Value("Unknown framework"),
                 h.Attribute("aria-invalid", "true"),
                 h.Class(
-                  `${Combobox.shadcnComboboxInputClassName} rounded-md border border-red-500`
+                  `${Combobox.shadcnComboboxInputClasses} rounded-md border border-red-500`
                 ),
               ]),
             ]
@@ -270,7 +270,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 h.AriaLabel("Disabled framework"),
                 h.Placeholder("Select framework..."),
                 h.Disabled(true),
-                h.Class(Combobox.shadcnComboboxInputClassName),
+                h.Class(Combobox.shadcnComboboxInputClasses),
               ]),
             ]
           ),
@@ -282,15 +282,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.h3([h.Class("text-base font-semibold text-gray-950")], [
             "Auto Highlight",
           ]),
-          h.div([h.Class(Combobox.shadcnComboboxItemsClassName)], [
+          h.div([h.Class(Combobox.shadcnComboboxItemsClasses)], [
             h.div(
               [
-                h.Class(Combobox.shadcnComboboxItemClassName),
+                h.Class(Combobox.shadcnComboboxItemClasses),
                 h.DataAttribute("active", "true"),
               ],
               ["Next.js"]
             ),
-            h.div([h.Class(Combobox.shadcnComboboxItemClassName)], [
+            h.div([h.Class(Combobox.shadcnComboboxItemClasses)], [
               "SvelteKit",
             ]),
           ]),
@@ -303,7 +303,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.button(
             [
               h.Type("button"),
-              h.Class(Combobox.shadcnComboboxButtonClassName),
+              h.Class(Combobox.shadcnComboboxButtonClasses),
             ],
             ["Open popup"]
           ),
@@ -326,7 +326,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.input([
                 h.AriaLabel("Framework input group"),
                 h.Placeholder("Select framework..."),
-                h.Class(Combobox.shadcnComboboxInputClassName),
+                h.Class(Combobox.shadcnComboboxInputClasses),
               ]),
             ]
           ),
@@ -339,7 +339,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.input([
             h.AriaLabel("إطار العمل"),
             h.Placeholder("اختر إطار العمل..."),
-            h.Class(Combobox.shadcnComboboxInputClassName),
+            h.Class(Combobox.shadcnComboboxInputClasses),
           ]),
         ]
       ),

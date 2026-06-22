@@ -104,28 +104,28 @@ export const update = (
 
 // VIEW
 
-const formClassName =
+const formClasses =
   "w-full max-w-md rounded-xl border border-gray-200 bg-white p-6 shadow-sm";
 
-const fieldSetClassName = "space-y-6";
+const fieldSetClasses = "space-y-6";
 
-const fieldLegendClassName = "text-lg font-semibold text-gray-950";
+const fieldLegendClasses = "text-lg font-semibold text-gray-950";
 
-const fieldGroupClassName = "grid gap-4";
+const fieldGroupClasses = "grid gap-4";
 
-const rowClassName = "grid grid-cols-3 gap-3";
+const rowClasses = "grid grid-cols-3 gap-3";
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-9 items-center justify-center rounded-md px-4 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2";
 
-const primaryButtonClassName = `${buttonClassName} bg-gray-950 text-white hover:bg-gray-800 focus-visible:outline-gray-950`;
+const primaryButtonClasses = `${buttonClasses} bg-gray-950 text-white hover:bg-gray-800 focus-visible:outline-gray-950`;
 
-const secondaryButtonClassName = `${buttonClassName} border border-gray-200 bg-white text-gray-950 hover:bg-gray-50 focus-visible:outline-gray-400`;
+const secondaryButtonClasses = `${buttonClasses} border border-gray-200 bg-white text-gray-950 hover:bg-gray-50 focus-visible:outline-gray-400`;
 
-const textAreaClassName =
+const textAreaClasses =
   "min-h-20 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-950 shadow-sm outline-none transition-colors placeholder:text-gray-400 focus:border-accent-600 focus:ring-2 focus:ring-accent-100";
 
-const checkboxClassName =
+const checkboxClasses =
   "mt-0.5 size-4 rounded border border-gray-300 accent-gray-950";
 
 const inputField = (
@@ -138,12 +138,12 @@ const inputField = (
     placeholder?: string | undefined;
     description?: string | undefined;
     type?: string | undefined;
-    className?: string | undefined;
+    classes?: string | undefined;
   }>
 ): Html =>
   Field.rootView<Message>({
     name: config.id,
-    className: config.className,
+    classes: config.classes,
     filled: config.value !== "",
     children: [
       Field.labelView<Message>({
@@ -180,15 +180,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-8")],
     [
       h.form(
-        [h.Class(formClassName)],
+        [h.Class(formClasses)],
         [
           h.fieldset(
-            [h.Class(fieldSetClassName)],
+            [h.Class(fieldSetClasses)],
             [
               h.div(
                 [h.Class("space-y-1")],
                 [
-                  h.legend([h.Class(fieldLegendClassName)], ["Payment Method"]),
+                  h.legend([h.Class(fieldLegendClasses)], ["Payment Method"]),
                   Field.descriptionView<Message>({
                     children: [
                       h.span([], ["All transactions are secure and encrypted"]),
@@ -197,7 +197,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 ]
               ),
               h.div(
-                [h.Class(fieldGroupClassName)],
+                [h.Class(fieldGroupClasses)],
                 [
                   inputField(h, {
                     id: "name-on-card",
@@ -214,7 +214,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     type: "text",
                   }),
                   h.div(
-                    [h.Class(rowClassName)],
+                    [h.Class(rowClasses)],
                     [
                       inputField(h, {
                         id: "month",
@@ -248,7 +248,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   }),
                   Field.rootView<Message>({
                     name: "same-as-shipping",
-                    className: "flex max-w-none flex-row items-start gap-3",
+                    classes: "flex max-w-none flex-row items-start gap-3",
                     filled: model.sameAsShipping,
                     children: [
                       h.input([
@@ -256,7 +256,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         h.Type("checkbox"),
                         h.Checked(model.sameAsShipping),
                         h.OnClick(ToggledSameAsShipping()),
-                        h.Class(checkboxClassName),
+                        h.Class(checkboxClasses),
                       ]),
                       h.label(
                         [
@@ -272,7 +272,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   }),
                   Field.rootView<Message>({
                     name: "comments",
-                    className: "max-w-none",
+                    classes: "max-w-none",
                     filled: model.comments !== "",
                     children: [
                       Field.labelView<Message>({
@@ -286,7 +286,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                           h.AriaLabel("Comments"),
                           h.Value(model.comments),
                           h.OnInput((value) => UpdatedComments({ value })),
-                          h.Class(textAreaClassName),
+                          h.Class(textAreaClasses),
                         ],
                         []
                       ),
@@ -298,11 +298,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 [h.Class("flex justify-end gap-2")],
                 [
                   h.button(
-                    [h.Type("submit"), h.Class(primaryButtonClassName)],
+                    [h.Type("submit"), h.Class(primaryButtonClasses)],
                     ["Submit"]
                   ),
                   h.button(
-                    [h.Type("button"), h.Class(secondaryButtonClassName)],
+                    [h.Type("button"), h.Class(secondaryButtonClasses)],
                     ["Cancel"]
                   ),
                 ]
@@ -340,7 +340,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       h.Id("textarea-field"),
                       h.AriaLabel("Textarea"),
                       h.Value("Tell us about your project."),
-                      h.Class(textAreaClassName),
+                      h.Class(textAreaClasses),
                     ],
                     []
                   ),
@@ -359,7 +359,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       h.Id("select-field"),
                       h.Attribute("role", "combobox"),
                       h.AriaLabel("Select"),
-                      h.Class(Field.shadcnFieldControlClassName),
+                      h.Class(Field.shadcnFieldControlClasses),
                     ],
                     ["Select a verified email"]
                   ),
@@ -435,12 +435,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   h.input([
                     h.AriaLabel("First name"),
                     h.Value("Ada"),
-                    h.Class(Field.shadcnFieldControlClassName),
+                    h.Class(Field.shadcnFieldControlClasses),
                   ]),
                   h.input([
                     h.AriaLabel("Last name"),
                     h.Value("Lovelace"),
-                    h.Class(Field.shadcnFieldControlClassName),
+                    h.Class(Field.shadcnFieldControlClasses),
                   ]),
                 ]),
               ]),
@@ -452,12 +452,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   h.input([
                     h.AriaLabel("Responsive city"),
                     h.Value("London"),
-                    h.Class(Field.shadcnFieldControlClassName),
+                    h.Class(Field.shadcnFieldControlClasses),
                   ]),
                   h.input([
                     h.AriaLabel("Responsive postal code"),
                     h.Value("SW1A"),
-                    h.Class(Field.shadcnFieldControlClassName),
+                    h.Class(Field.shadcnFieldControlClasses),
                   ]),
                 ]),
               ]),
@@ -489,7 +489,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 h.input([
                   h.AriaLabel("البريد الإلكتروني"),
                   h.Value("user@example.com"),
-                  h.Class(Field.shadcnFieldControlClassName),
+                  h.Class(Field.shadcnFieldControlClasses),
                 ]),
               ]),
             ]

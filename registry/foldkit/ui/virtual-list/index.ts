@@ -35,13 +35,13 @@ export type UpdateReturn = readonly [
 export type VisibleWindowReturn = Option.Option<VisibleWindow>;
 
 export {
-  activityListContainerClassName,
-  activityListHeaderClassName,
+  activityListContainerClasses,
+  activityListHeaderClasses,
   activityRow,
   activityRows,
   activitySummaryFor,
   activityVariableRow,
   activityVariableRowHeightPx,
-  virtualListActionClassName,
+  virtualListActionClasses,
 } from "./view";
 export type { Activity, ActivitySummary } from "./view";

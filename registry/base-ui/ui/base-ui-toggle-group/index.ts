@@ -3,12 +3,12 @@ import type { Option } from "effect";
 import { html } from "foldkit/html";
 
 import * as Toggle from "../../../foldkit/ui/toggle";
-import { toggleGroupItemClassName, toggleGroupRootClassName } from "./view";
+import { toggleGroupItemClasses, toggleGroupRootClasses } from "./view";
 
 export {
-  toggleGroupIconClassName,
-  toggleGroupItemClassName,
-  toggleGroupRootClassName,
+  toggleGroupIconClasses,
+  toggleGroupItemClasses,
+  toggleGroupRootClasses,
 } from "./view";
 
 export type ToggleGroupStyle = Readonly<Record<string, string>>;
@@ -16,7 +16,7 @@ export type ToggleGroupStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   ariaLabel?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToggleGroupStyle | undefined;
 }>;
 
@@ -30,12 +30,12 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   tabIndex?: number | undefined;
   onKeyDown?: ((key: string) => Option.Option<ParentMessage>) | undefined;
   disabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToggleGroupStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -45,7 +45,7 @@ const isPressed = (pressedValues: readonly string[], value: string): boolean =>
 export const rootView = <ParentMessage>({
   children,
   ariaLabel,
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -55,7 +55,7 @@ export const rootView = <ParentMessage>({
       h.Attribute("role", "group"),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toggleGroupRootClassName, className)),
+      h.Class(cn(toggleGroupRootClasses, classes)),
     ],
     children
   );
@@ -71,7 +71,7 @@ export const itemView = <ParentMessage>({
   tabIndex,
   onKeyDown,
   disabled = false,
-  className,
+  classes,
   style,
 }: ItemViewConfig<ParentMessage>): Html =>
   Toggle.view<ParentMessage>({
@@ -83,7 +83,7 @@ export const itemView = <ParentMessage>({
     tabIndex,
     onKeyDown,
     disabled,
-    className: classNames(toggleGroupItemClassName, className),
+    classes: cn(toggleGroupItemClasses, classes),
     style,
     children,
   });

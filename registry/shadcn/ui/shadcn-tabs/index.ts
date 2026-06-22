@@ -29,11 +29,11 @@ export type {
 } from "../../../foldkit/ui/tabs";
 
 export {
-  shadcnTabsPanelClassName,
-  shadcnTabsRootClassName,
-  shadcnTabsTabClassName,
-  shadcnTabsTabListClassName,
-  shadcnTabsVerticalRootClassName,
-  shadcnTabsVerticalTabListClassName,
+  shadcnTabsPanelClasses,
+  shadcnTabsRootClasses,
+  shadcnTabsTabClasses,
+  shadcnTabsTabListClasses,
+  shadcnTabsVerticalRootClasses,
+  shadcnTabsVerticalTabListClasses,
   shadcnTabsView,
 } from "./view";

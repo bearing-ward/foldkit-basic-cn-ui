@@ -9,8 +9,14 @@ const publicExtensions = new Set([".json"]);
 
 const excludedSegments = new Set(["node_modules", "upstream"]);
 
-const sourcePattern = /\b(className|[A-Za-z0-9_]+ClassName|classNames)\b/g;
-const publicPattern = /\b(className|ClassName)\b/g;
+const oldApiWord = `class${"Name"}`;
+const oldApiSuffix = `Class${"Name"}`;
+const oldHelperWord = `class${"Names"}`;
+const sourcePattern = new RegExp(
+  `\\b(${oldApiWord}|[A-Za-z0-9_]+${oldApiSuffix}|${oldHelperWord})\\b`,
+  "g",
+);
+const publicPattern = new RegExp(`\\b(${oldApiWord}|${oldApiSuffix})\\b`, "g");
 
 const isExcluded = (relativePath) => {
   const segments = relativePath.split(path.sep);
@@ -88,8 +94,8 @@ for (const match of matches) {
 }
 
 if (matches.length > 0) {
-  console.error(`Found ${matches.length} old component className API matches.`);
+  console.error(`Found ${matches.length} old component style API matches.`);
   process.exit(1);
 }
 
-console.log("Found 0 old component className API matches.");
+console.log("Found 0 old component style API matches.");

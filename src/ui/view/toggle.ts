@@ -10,7 +10,7 @@ import type { UiModel } from "../model";
 const heartIcon = (pressed: boolean): Html => {
   const h = html<UiMessage>();
 
-  return h.span([h.Class(Toggle.toggleIconClassName)], [pressed ? "♥" : "♡"]);
+  return h.span([h.Class(Toggle.toggleIconClasses)], [pressed ? "♥" : "♡"]);
 };
 
 export const view = Submodel.defineView<UiModel, UiMessage>((model): Html => {

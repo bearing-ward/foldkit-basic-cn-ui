@@ -35,7 +35,7 @@ const view = (model: Model): Html => {
         onClick: ClickedButton(),
         toView: (attributes) =>
           h.button(
-            [...attributes.button, h.Class(Button.baseUiButtonClassName)],
+            [...attributes.button, h.Class(Button.baseUiButtonClasses)],
             ["Save changes"]
           ),
       }),
@@ -51,7 +51,7 @@ const disabledView = (): Html => {
     isDisabled: true,
     toView: (attributes) =>
       h.button(
-        [...attributes.button, h.Class(Button.baseUiButtonClassName)],
+        [...attributes.button, h.Class(Button.baseUiButtonClasses)],
         ["Disabled"]
       ),
   });

@@ -33,7 +33,7 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex cursor-pointer items-center rounded-lg bg-gray-950 px-3 py-2 text-sm font-medium text-white transition hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600";
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
@@ -44,9 +44,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     description:
       "This user is currently offline. You can leave a message to notify them or try again later.",
     media: Avatar.view<Message>({ fallback: "LR" }),
-    mediaClassName: "bg-transparent p-0",
+    mediaClasses: "bg-transparent p-0",
     action: h.button(
-      [h.Type("button"), h.Class(buttonClassName)],
+      [h.Type("button"), h.Class(buttonClasses)],
       ["Leave Message"]
     ),
   });

@@ -91,11 +91,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           name: "storageType",
           toView: ({ group, hiddenInput, options }) =>
             h.fieldset(
-              [...group, h.Class(RadioGroup.baseUiRadioVerticalClassName)],
+              [...group, h.Class(RadioGroup.baseUiRadioVerticalClasses)],
               [
                 h.input(hiddenInput),
                 h.legend(
-                  [h.Class(RadioGroup.baseUiRadioLabelClassName)],
+                  [h.Class(RadioGroup.baseUiRadioLabelClasses)],
                   ["Storage type"]
                 ),
                 ...options.map((option) =>
@@ -109,7 +109,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         [
                           ...option.option,
                           h.Class(
-                            RadioGroup.baseUiRadioVerticalOptionClassName
+                            RadioGroup.baseUiRadioVerticalOptionClasses
                           ),
                         ],
                         [
@@ -119,7 +119,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         ]
                       ),
                       h.span(
-                        [h.Class(RadioGroup.baseUiRadioLabelClassName)],
+                        [h.Class(RadioGroup.baseUiRadioLabelClasses)],
                         [option.value]
                       ),
                     ]

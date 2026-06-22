@@ -21,14 +21,14 @@ export type {
 } from "../../../foldkit/ui/drawer";
 
 export {
-  shadcnDrawerBackdropClassName,
-  shadcnDrawerCloseClassName,
-  shadcnDrawerContentClassName,
-  shadcnDrawerDescriptionClassName,
-  shadcnDrawerPopupClassName,
-  shadcnDrawerPortalClassName,
-  shadcnDrawerRootClassName,
-  shadcnDrawerTitleClassName,
-  shadcnDrawerTriggerClassName,
-  shadcnDrawerViewportClassName,
+  shadcnDrawerBackdropClasses,
+  shadcnDrawerCloseClasses,
+  shadcnDrawerContentClasses,
+  shadcnDrawerDescriptionClasses,
+  shadcnDrawerPopupClasses,
+  shadcnDrawerPortalClasses,
+  shadcnDrawerRootClasses,
+  shadcnDrawerTitleClasses,
+  shadcnDrawerTriggerClasses,
+  shadcnDrawerViewportClasses,
 } from "./view";

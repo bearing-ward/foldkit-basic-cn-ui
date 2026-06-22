@@ -61,7 +61,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ...attributes.input,
             h.Type("email"),
             h.AriaLabel("البريد الإلكتروني"),
-            h.Class(Input.shadcnInputClassName),
+            h.Class(Input.shadcnInputClasses),
           ]),
       }),
     ]

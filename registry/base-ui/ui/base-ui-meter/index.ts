@@ -2,28 +2,28 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  meterIndicatorClassName,
-  meterLabelClassName,
+  meterIndicatorClasses,
+  meterLabelClasses,
   meterPercent,
-  meterRootClassName,
+  meterRootClasses,
   meterStatus,
   meterStatusDataAttribute,
-  meterTrackClassName,
-  meterValueClassName,
+  meterTrackClasses,
+  meterValueClasses,
 } from "./view";
 import type { MeterStatus } from "./view";
 
 export type { MeterStatus };
 
 export {
-  meterIndicatorClassName,
-  meterLabelClassName,
+  meterIndicatorClasses,
+  meterLabelClasses,
   meterPercent,
-  meterRootClassName,
+  meterRootClasses,
   meterStatus,
   meterStatusDataAttribute,
-  meterTrackClassName,
-  meterValueClassName,
+  meterTrackClasses,
+  meterValueClasses,
 } from "./view";
 
 /** Props for the Meter Root anatomy part. */
@@ -47,7 +47,7 @@ export type RootViewConfig = Readonly<{
   /** Returns custom aria-valuetext from the current meter context. */
   getAriaValueText?: GetAriaValueText | undefined;
   /** Additional class appended to the default Root classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Root element. */
   style?: MeterStyle | undefined;
 }>;
@@ -59,7 +59,7 @@ export type LabelViewConfig = Readonly<{
   /** Stable id used by Root aria-labelledby. */
   id?: string;
   /** Additional class appended to the default Label classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Label element. */
   style?: MeterStyle | undefined;
 }>;
@@ -81,7 +81,7 @@ export type ValueViewConfig = Readonly<{
   /** Renders custom visible value text from the current meter context. */
   renderValue?: RenderValue | undefined;
   /** Additional class appended to the default Value classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Value element. */
   style?: MeterStyle | undefined;
 }>;
@@ -91,7 +91,7 @@ export type TrackViewConfig = Readonly<{
   /** Indicator or custom children rendered inside the track. */
   children: readonly Html[];
   /** Additional class appended to the default Track classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Track element. */
   style?: MeterStyle | undefined;
 }>;
@@ -105,7 +105,7 @@ export type IndicatorViewConfig = Readonly<{
   /** Maximum value used for percent width calculation. */
   max?: number;
   /** Additional class appended to the default Indicator classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied after the computed width style. */
   style?: MeterStyle | undefined;
 }>;
@@ -133,23 +133,23 @@ export type ViewConfig = Readonly<{
   /** Renders custom visible value text from the current meter context. */
   renderValue?: RenderValue | undefined;
   /** Additional class appended to the default Root classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Inline styles applied to the Root element. */
   style?: MeterStyle | undefined;
   /** Additional class appended to the default Label classes. */
-  labelClassName?: string | undefined;
+  labelClasses?: string | undefined;
   /** Inline styles applied to the Label element. */
   labelStyle?: MeterStyle | undefined;
   /** Additional class appended to the default Value classes. */
-  valueClassName?: string | undefined;
+  valueClasses?: string | undefined;
   /** Inline styles applied to the Value element. */
   valueStyle?: MeterStyle | undefined;
   /** Additional class appended to the default Track classes. */
-  trackClassName?: string | undefined;
+  trackClasses?: string | undefined;
   /** Inline styles applied to the Track element. */
   trackStyle?: MeterStyle | undefined;
   /** Additional class appended to the default Indicator classes. */
-  indicatorClassName?: string | undefined;
+  indicatorClasses?: string | undefined;
   /** Inline styles applied after the Indicator computed width style. */
   indicatorStyle?: MeterStyle | undefined;
 }>;
@@ -176,8 +176,8 @@ export type GetAriaValueText = (context: MeterValueContext) => string;
 /** Renders custom visible value text from the current meter context. */
 export type RenderValue = (context: MeterValueContext) => string;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -266,7 +266,7 @@ export const rootView = <ParentMessage>({
   format,
   formatValue,
   getAriaValueText,
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -297,7 +297,7 @@ export const rootView = <ParentMessage>({
         : [h.Attribute("aria-labelledby", labelId)]),
       ...stateAttributes(h, status),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(meterRootClassName, className)),
+      h.Class(cn(meterRootClasses, classes)),
     ],
     children
   );
@@ -307,7 +307,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   label,
   id,
-  className,
+  classes,
   style,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -316,7 +316,7 @@ export const labelView = <ParentMessage>({
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(meterLabelClassName, className)),
+      h.Class(cn(meterLabelClasses, classes)),
     ],
     [label]
   );
@@ -331,7 +331,7 @@ export const valueView = <ParentMessage>({
   format,
   formatValue,
   renderValue,
-  className,
+  classes,
   style,
 }: ValueViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -350,7 +350,7 @@ export const valueView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(meterValueClassName, className)),
+      h.Class(cn(meterValueClasses, classes)),
     ],
     [valueText]
   );
@@ -359,7 +359,7 @@ export const valueView = <ParentMessage>({
 /** Renders the Meter Track anatomy part. */
 export const trackView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: TrackViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -367,7 +367,7 @@ export const trackView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(meterTrackClassName, className)),
+      h.Class(cn(meterTrackClasses, classes)),
     ],
     children
   );
@@ -378,7 +378,7 @@ export const indicatorView = <ParentMessage>({
   value,
   min = 0,
   max = 100,
-  className,
+  classes,
   style,
 }: IndicatorViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -394,7 +394,7 @@ export const indicatorView = <ParentMessage>({
     [
       ...stateAttributes(h, status),
       ...(computedStyle === undefined ? [] : [h.Style(computedStyle)]),
-      h.Class(classNames(meterIndicatorClassName, className)),
+      h.Class(cn(meterIndicatorClasses, classes)),
     ],
     []
   );
@@ -412,15 +412,15 @@ export const view = <ParentMessage>({
   formatValue,
   getAriaValueText,
   renderValue,
-  className,
+  classes,
   style,
-  labelClassName,
+  labelClasses,
   labelStyle,
-  valueClassName,
+  valueClasses,
   valueStyle,
-  trackClassName,
+  trackClasses,
   trackStyle,
-  indicatorClassName,
+  indicatorClasses,
   indicatorStyle,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
@@ -435,13 +435,13 @@ export const view = <ParentMessage>({
       getAriaValueText === undefined
         ? undefined
         : (context) => getAriaValueText(context),
-    className,
+    classes,
     style,
     children: [
       labelView<ParentMessage>({
         label,
         id,
-        className: labelClassName,
+        classes: labelClasses,
         style: labelStyle,
       }),
       valueView<ParentMessage>({
@@ -452,18 +452,18 @@ export const view = <ParentMessage>({
         format,
         formatValue,
         renderValue,
-        className: valueClassName,
+        classes: valueClasses,
         style: valueStyle,
       }),
       trackView<ParentMessage>({
-        className: trackClassName,
+        classes: trackClasses,
         style: trackStyle,
         children: [
           indicatorView<ParentMessage>({
             value,
             min,
             max,
-            className: indicatorClassName,
+            classes: indicatorClasses,
             style: indicatorStyle,
           }),
         ],

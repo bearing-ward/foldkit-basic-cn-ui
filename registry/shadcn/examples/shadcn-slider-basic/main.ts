@@ -363,8 +363,8 @@ const sliderView = (
   name: string,
   toParentMessage: (message: Slider.Message) => Message,
   options: Readonly<{
-    className?: string | undefined;
-    thumbClassName?: string | undefined;
+    classes?: string | undefined;
+    thumbClasses?: string | undefined;
     isDisabled?: boolean | undefined;
     dir?: string | undefined;
   }> = {}
@@ -387,7 +387,7 @@ const sliderView = (
             ...attributes.root,
             ...(options.dir === undefined ? [] : [h.Dir(options.dir)]),
             h.Class(
-              [Slider.shadcnSliderRootClassName, options.className]
+              [Slider.shadcnSliderRootClasses, options.classes]
                 .filter((value): value is string => value !== undefined)
                 .join(" ")
             ),
@@ -396,13 +396,13 @@ const sliderView = (
             h.div(
               [
                 ...attributes.track,
-                h.Class(Slider.shadcnSliderTrackClassName),
+                h.Class(Slider.shadcnSliderTrackClasses),
               ],
               [
                 h.div(
                   [
                     ...attributes.filledTrack,
-                    h.Class(Slider.shadcnSliderFilledTrackClassName),
+                    h.Class(Slider.shadcnSliderFilledTrackClasses),
                   ],
                   []
                 ),
@@ -413,7 +413,7 @@ const sliderView = (
                 ...attributes.thumb,
                 h.AriaLabel(name),
                 h.Class(
-                  [Slider.shadcnSliderThumbClassName, options.thumbClassName]
+                  [Slider.shadcnSliderThumbClasses, options.thumbClasses]
                     .filter((value): value is string => value !== undefined)
                     .join(" ")
                 ),
@@ -476,19 +476,19 @@ const thumbOnlySliderView = (
               top: "0",
               width: "100%",
             }),
-            h.Class(`${Slider.shadcnSliderRootClassName} pointer-events-none inset-0`),
+            h.Class(`${Slider.shadcnSliderRootClasses} pointer-events-none inset-0`),
           ],
           [
             h.div(
               [
                 ...attributes.track,
-                h.Class(`${Slider.shadcnSliderTrackClassName} opacity-0`),
+                h.Class(`${Slider.shadcnSliderTrackClasses} opacity-0`),
               ],
               [
                 h.div(
                   [
                     ...attributes.filledTrack,
-                    h.Class(`${Slider.shadcnSliderFilledTrackClassName} opacity-0`),
+                    h.Class(`${Slider.shadcnSliderFilledTrackClasses} opacity-0`),
                   ],
                   []
                 ),
@@ -500,7 +500,7 @@ const thumbOnlySliderView = (
                 h.AriaLabel(name),
                 h.Style({ left: `${percent}%` }),
                 h.Class(
-                  `${Slider.shadcnSliderThumbClassName} pointer-events-auto absolute top-1/2 -translate-x-1/2 -translate-y-1/2`
+                  `${Slider.shadcnSliderThumbClasses} pointer-events-auto absolute top-1/2 -translate-x-1/2 -translate-y-1/2`
                 ),
               ],
               []
@@ -531,7 +531,7 @@ const compositeSliderView = (
   return h.div(
     [
       h.Style({ width: "100%" }),
-      h.Class(`${Slider.shadcnSliderRootClassName} relative`),
+      h.Class(`${Slider.shadcnSliderRootClasses} relative`),
     ],
     [
       h.div(
@@ -544,13 +544,13 @@ const compositeSliderView = (
             transform: "translateY(-50%)",
             width: "100%",
           }),
-          h.Class(`${Slider.shadcnSliderTrackClassName} relative overflow-hidden`),
+          h.Class(`${Slider.shadcnSliderTrackClasses} relative overflow-hidden`),
         ],
         [
           h.div(
             [
               h.Style({ left: `${start}%`, width: `${end - start}%` }),
-              h.Class(`${Slider.shadcnSliderFilledTrackClassName} absolute`),
+              h.Class(`${Slider.shadcnSliderFilledTrackClasses} absolute`),
             ],
             []
           ),
@@ -606,7 +606,7 @@ const verticalSliderView = (model: Slider.Model): Html => {
           h.Attribute("tabindex", "0"),
           h.Style({ bottom: `${percent}%` }),
           h.Class(
-            `${Slider.shadcnSliderThumbClassName} absolute left-1/2 -translate-x-1/2 translate-y-1/2`
+            `${Slider.shadcnSliderThumbClasses} absolute left-1/2 -translate-x-1/2 translate-y-1/2`
           ),
           h.OnPointerDown((_pointerType, _button, _screenX, screenY) =>
             Option.some(PressedVerticalSliderPointer({ screenY }))

@@ -12,19 +12,19 @@
       "path": "registry/base-ui/ui/base-ui-select/index.ts",
       "target": "src/ui/base-ui-select/index.ts",
       "type": "registry:ui",
-      "content": "export { descriptionId, view } from \"../../../foldkit/ui/select\";\nexport type { SelectAttributes, ViewConfig } from \"../../../foldkit/ui/select\";\n\nexport {\n  baseUiSelectChevronClassName,\n  baseUiSelectControlClassName,\n  baseUiSelectDescriptionClassName,\n  baseUiSelectLabelClassName,\n  baseUiSelectWrapperClassName,\n} from \"./view\";\n"
+      "content": "export { descriptionId, view } from \"../../../foldkit/ui/select\";\nexport type { SelectAttributes, ViewConfig } from \"../../../foldkit/ui/select\";\n\nexport {\n  baseUiSelectChevronClasses,\n  baseUiSelectControlClasses,\n  baseUiSelectDescriptionClasses,\n  baseUiSelectLabelClasses,\n  baseUiSelectWrapperClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-select/view.ts",
       "target": "src/ui/base-ui-select/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  chevronClassName as baseUiSelectChevronClassName,\n  descriptionClassName as baseUiSelectDescriptionClassName,\n  labelClassName as baseUiSelectLabelClassName,\n  selectClassName as baseUiSelectControlClassName,\n  selectWrapperClassName as baseUiSelectWrapperClassName,\n} from \"../../../foldkit/ui/select/view\";\n"
+      "content": "export {\n  chevronClasses as baseUiSelectChevronClasses,\n  descriptionClasses as baseUiSelectDescriptionClasses,\n  labelClasses as baseUiSelectLabelClasses,\n  selectClasses as baseUiSelectControlClasses,\n  selectWrapperClasses as baseUiSelectWrapperClasses,\n} from \"../../../foldkit/ui/select/view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-select/base-ui-select.scene.test.ts",
       "target": "src/ui/base-ui-select/base-ui-select.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Select from \"./index\";\n\ndescribe(\"Base UI Select registry view\", () => {\n  test(\"reuses the Foldkit Select functional contract\", () => {\n    expect(Select.view).toBeTypeOf(\"function\");\n    expect(Select.descriptionId).toBeTypeOf(\"function\");\n    expect(Select.baseUiSelectControlClassName).toContain(\"rounded\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Select from \"./index\";\n\ndescribe(\"Base UI Select registry view\", () => {\n  test(\"reuses the Foldkit Select functional contract\", () => {\n    expect(Select.view).toBeTypeOf(\"function\");\n    expect(Select.descriptionId).toBeTypeOf(\"function\");\n    expect(Select.baseUiSelectControlClasses).toContain(\"rounded\");\n  });\n});\n"
     }
   ],
   "meta": {

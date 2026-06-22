@@ -45,18 +45,18 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       h.div(
         [
           h.DataAttribute("disabled", ""),
-          h.Class(Textarea.shadcnTextareaFieldClassName),
+          h.Class(Textarea.shadcnTextareaFieldClasses),
         ],
         [
           h.label(
             [
               ...attributes.label,
-              h.Class(Textarea.shadcnTextareaLabelClassName),
+              h.Class(Textarea.shadcnTextareaLabelClasses),
             ],
             ["Message"]
           ),
           h.textarea(
-            [...attributes.textarea, h.Class(Textarea.shadcnTextareaClassName)],
+            [...attributes.textarea, h.Class(Textarea.shadcnTextareaClasses)],
             []
           ),
         ]

@@ -130,7 +130,7 @@ describe("generate registry project CLI", () => {
         "https://example.com/acme/{name}.json"
       );
       expect(publicItem.name).toBe("example-card");
-      expect(view).toContain("exampleCardRootClassName");
+      expect(view).toContain("exampleCardRootClasses");
       expect(readme).toContain("Self-Hosted Registry");
       expect(readme).toContain("bun run serve:registry");
       expect(dockerfile).toContain("bun run serve:registry");

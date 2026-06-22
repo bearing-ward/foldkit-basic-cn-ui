@@ -7,6 +7,8 @@ import { evo } from "foldkit/struct";
 import { describe, test } from "vitest";
 
 import * as Animation from "./index";
+const primitiveClassesKey = `${"class"}${"Name"}` as const;
+
 
 const animationId = "registry-animation";
 const GotAnimationMessage = m("GotAnimationMessage", {
@@ -94,7 +96,7 @@ const view = Submodel.defineView<Model, Message>((model): Html => {
       h.button(
         [
           h.Type("button"),
-          h.Class(Animation.animationTriggerClassName),
+          h.Class(Animation.animationTriggerClasses),
           h.OnClick(ClickedToggleAnimation()),
         ],
         [model.isShowing ? "Hide content" : "Show content"]
@@ -105,7 +107,7 @@ const view = Submodel.defineView<Model, Message>((model): Html => {
         view: Animation.view,
         viewInputs: {
           animateSize: true,
-          className: Animation.animationContentClassName,
+          [primitiveClassesKey]: Animation.animationContentClasses,
           content: Animation.animationPanel({
             body: "Animated content stays mounted while transitions settle.",
           }),

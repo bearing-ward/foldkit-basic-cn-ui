@@ -42,6 +42,6 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     h.AriaLabel("Email"),
     h.Disabled(true),
     h.DataAttribute("disabled", ""),
-    h.Class(Input.shadcnInputClassName),
+    h.Class(Input.shadcnInputClasses),
   ]);
 });

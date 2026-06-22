@@ -2,23 +2,23 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  breadcrumbClassName,
-  breadcrumbEllipsisClassName,
-  breadcrumbItemClassName,
-  breadcrumbLinkClassName,
-  breadcrumbListClassName,
-  breadcrumbPageClassName,
-  breadcrumbSeparatorClassName,
+  breadcrumbClasses,
+  breadcrumbEllipsisClasses,
+  breadcrumbItemClasses,
+  breadcrumbLinkClasses,
+  breadcrumbListClasses,
+  breadcrumbPageClasses,
+  breadcrumbSeparatorClasses,
 } from "./view";
 
 export {
-  breadcrumbClassName,
-  breadcrumbEllipsisClassName,
-  breadcrumbItemClassName,
-  breadcrumbLinkClassName,
-  breadcrumbListClassName,
-  breadcrumbPageClassName,
-  breadcrumbSeparatorClassName,
+  breadcrumbClasses,
+  breadcrumbEllipsisClasses,
+  breadcrumbItemClasses,
+  breadcrumbLinkClasses,
+  breadcrumbListClasses,
+  breadcrumbPageClasses,
+  breadcrumbSeparatorClasses,
 };
 
 /** Inline style object accepted by Foldkit h.Style. */
@@ -31,7 +31,7 @@ export type RootViewConfig = Readonly<{
   /** Accessible label for the navigation landmark. */
   label?: string | undefined;
   /** Additional class names appended after default root classes. */
-  className?: string | undefined;
+  classes?: string | undefined;
   /** Optional inline styles. */
   style?: BreadcrumbStyle | undefined;
 }>;
@@ -40,7 +40,7 @@ export type RootViewConfig = Readonly<{
 export type ListViewConfig = Readonly<{
   /** Breadcrumb item and separator children. */
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: BreadcrumbStyle | undefined;
 }>;
 
@@ -48,7 +48,7 @@ export type ListViewConfig = Readonly<{
 export type ItemViewConfig = Readonly<{
   /** Link, page, ellipsis, or custom content. */
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: BreadcrumbStyle | undefined;
 }>;
 
@@ -56,32 +56,32 @@ export type ItemViewConfig = Readonly<{
 export type LinkViewConfig = Readonly<{
   href: string;
   children: readonly (Html | string)[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: BreadcrumbStyle | undefined;
 }>;
 
 /** Current-page config for the final breadcrumb item. */
 export type PageViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: BreadcrumbStyle | undefined;
 }>;
 
 /** Separator config. */
 export type SeparatorViewConfig = Readonly<{
   children?: readonly (Html | string)[] | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: BreadcrumbStyle | undefined;
 }>;
 
 /** Ellipsis config for collapsed breadcrumb ranges. */
 export type EllipsisViewConfig = Readonly<{
   label?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: BreadcrumbStyle | undefined;
 }>;
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
@@ -89,14 +89,14 @@ const classNames = (...values: readonly (string | undefined)[]): string =>
 export const rootView = <ParentMessage>({
   children,
   label = "breadcrumb",
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.nav(
     [
       h.Attribute("aria-label", label),
-      h.Class(classNames(breadcrumbClassName, className)),
+      h.Class(cn(breadcrumbClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -105,13 +105,13 @@ export const rootView = <ParentMessage>({
 
 export const listView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: ListViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.ol(
     [
-      h.Class(classNames(breadcrumbListClassName, className)),
+      h.Class(cn(breadcrumbListClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -120,13 +120,13 @@ export const listView = <ParentMessage>({
 
 export const itemView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: ItemViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.li(
     [
-      h.Class(classNames(breadcrumbItemClassName, className)),
+      h.Class(cn(breadcrumbItemClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -136,14 +136,14 @@ export const itemView = <ParentMessage>({
 export const linkView = <ParentMessage>({
   href,
   children,
-  className,
+  classes,
   style,
 }: LinkViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.a(
     [
       h.Href(href),
-      h.Class(classNames(breadcrumbLinkClassName, className)),
+      h.Class(cn(breadcrumbLinkClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -152,14 +152,14 @@ export const linkView = <ParentMessage>({
 
 export const pageView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PageViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.span(
     [
       h.Attribute("aria-current", "page"),
-      h.Class(classNames(breadcrumbPageClassName, className)),
+      h.Class(cn(breadcrumbPageClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -168,14 +168,14 @@ export const pageView = <ParentMessage>({
 
 export const separatorView = <ParentMessage>({
   children = ["›"],
-  className,
+  classes,
   style,
 }: SeparatorViewConfig = {}): Html => {
   const h = html<ParentMessage>();
   return h.li(
     [
       h.Attribute("aria-hidden", "true"),
-      h.Class(classNames(breadcrumbSeparatorClassName, className)),
+      h.Class(cn(breadcrumbSeparatorClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -184,7 +184,7 @@ export const separatorView = <ParentMessage>({
 
 export const ellipsisView = <ParentMessage>({
   label = "More",
-  className,
+  classes,
   style,
 }: EllipsisViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -192,7 +192,7 @@ export const ellipsisView = <ParentMessage>({
     [
       h.Attribute("aria-label", label),
       h.Attribute("role", "img"),
-      h.Class(classNames(breadcrumbEllipsisClassName, className)),
+      h.Class(cn(breadcrumbEllipsisClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     ["..."]

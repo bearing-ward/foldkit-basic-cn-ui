@@ -79,13 +79,13 @@ export const view = Submodel.defineView<Model, Message>(
       label: "Apples",
       labelId: "checkbox-group-apples-parent-label",
       name: "apple",
-      className: "ml-4",
+      classes: "ml-4",
       children: [
         CheckboxGroup.parentItemView<Message>({
           selectedValues: model.selectedApples,
           allValues: appleValues,
           label: "Apples",
-          className: "-ml-4",
+          classes: "-ml-4",
           onValueChange: ToggledAllApples(),
         }),
         CheckboxGroup.itemView<Message>({

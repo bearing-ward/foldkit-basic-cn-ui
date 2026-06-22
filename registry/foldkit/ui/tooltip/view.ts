@@ -4,13 +4,13 @@ import type { AnchorConfig } from "foldkit/ui/tooltip";
 
 import type { RenderInfo } from "./index";
 
-export const tooltipTriggerClassName =
+export const tooltipTriggerClasses =
   "inline-flex cursor-pointer select-none items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50";
 
-export const panelClassName =
+export const panelClasses =
   "rounded-md bg-gray-900 px-3 py-1.5 text-sm text-white shadow-lg";
 
-export const tooltipRootClassName = "relative inline-block";
+export const tooltipRootClasses = "relative inline-block";
 
 export const tooltipAnchor: AnchorConfig = {
   placement: "top",
@@ -32,15 +32,15 @@ export const tooltipView = ({
   const h = html();
 
   return h.div(
-    [h.Class(tooltipRootClassName)],
+    [h.Class(tooltipRootClasses)],
     [
       h.button(
-        [...render.trigger, h.Class(tooltipTriggerClassName)],
+        [...render.trigger, h.Class(tooltipTriggerClasses)],
         [h.span([], [triggerLabel])]
       ),
       render.isVisible
         ? h.div(
-            [...render.panel, h.Class(panelClassName)],
+            [...render.panel, h.Class(panelClasses)],
             [h.span([], [panelText])]
           )
         : h.empty,

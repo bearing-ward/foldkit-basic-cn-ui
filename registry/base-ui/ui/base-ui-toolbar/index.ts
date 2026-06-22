@@ -2,21 +2,21 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  toolbarButtonClassName,
-  toolbarGroupClassName,
-  toolbarInputClassName,
-  toolbarLinkClassName,
-  toolbarRootClassName,
-  toolbarSeparatorClassName,
+  toolbarButtonClasses,
+  toolbarGroupClasses,
+  toolbarInputClasses,
+  toolbarLinkClasses,
+  toolbarRootClasses,
+  toolbarSeparatorClasses,
 } from "./view";
 
 export {
-  toolbarButtonClassName,
-  toolbarGroupClassName,
-  toolbarInputClassName,
-  toolbarLinkClassName,
-  toolbarRootClassName,
-  toolbarSeparatorClassName,
+  toolbarButtonClasses,
+  toolbarGroupClasses,
+  toolbarInputClasses,
+  toolbarLinkClasses,
+  toolbarRootClasses,
+  toolbarSeparatorClasses,
 } from "./view";
 
 export type ToolbarOrientation = "horizontal" | "vertical";
@@ -27,7 +27,7 @@ export type RootViewConfig = Readonly<{
   ariaLabel?: string | undefined;
   orientation?: ToolbarOrientation | undefined;
   disabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -35,7 +35,7 @@ export type GroupViewConfig = Readonly<{
   children: readonly Html[];
   ariaLabel?: string | undefined;
   orientation?: ToolbarOrientation | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -46,7 +46,7 @@ export type ButtonViewConfig<ParentMessage> = Readonly<{
   orientation?: ToolbarOrientation | undefined;
   disabled?: boolean | undefined;
   focusableWhenDisabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -54,7 +54,7 @@ export type LinkViewConfig = Readonly<{
   href: string;
   children: readonly Html[];
   orientation?: ToolbarOrientation | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -64,18 +64,18 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   ariaLabel: string;
   orientation?: ToolbarOrientation | undefined;
   disabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
 export type SeparatorViewConfig = Readonly<{
   orientation?: ToolbarOrientation | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -97,7 +97,7 @@ export const rootView = <ParentMessage>({
   ariaLabel,
   orientation = "horizontal",
   disabled = false,
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -108,7 +108,7 @@ export const rootView = <ParentMessage>({
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...stateAttributes(h, orientation, disabled),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toolbarRootClassName, className)),
+      h.Class(cn(toolbarRootClasses, classes)),
     ],
     children
   );
@@ -118,7 +118,7 @@ export const groupView = <ParentMessage>({
   children,
   ariaLabel,
   orientation = "horizontal",
-  className,
+  classes,
   style,
 }: GroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -129,7 +129,7 @@ export const groupView = <ParentMessage>({
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toolbarGroupClassName, className)),
+      h.Class(cn(toolbarGroupClasses, classes)),
     ],
     children
   );
@@ -142,7 +142,7 @@ export const buttonView = <ParentMessage>({
   orientation = "horizontal",
   disabled = false,
   focusableWhenDisabled = true,
-  className,
+  classes,
   style,
 }: ButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -155,7 +155,7 @@ export const buttonView = <ParentMessage>({
       ...(disabled ? [h.Disabled(true)] : []),
       ...(disabled || onClick === undefined ? [] : [h.OnClick(onClick)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toolbarButtonClassName, className)),
+      h.Class(cn(toolbarButtonClasses, classes)),
     ],
     children
   );
@@ -165,7 +165,7 @@ export const linkView = <ParentMessage>({
   href,
   children,
   orientation = "horizontal",
-  className,
+  classes,
   style,
 }: LinkViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -175,7 +175,7 @@ export const linkView = <ParentMessage>({
       h.Href(href),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toolbarLinkClassName, className)),
+      h.Class(cn(toolbarLinkClasses, classes)),
     ],
     children
   );
@@ -187,7 +187,7 @@ export const inputView = <ParentMessage>({
   ariaLabel,
   orientation = "horizontal",
   disabled = false,
-  className,
+  classes,
   style,
 }: InputViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -201,13 +201,13 @@ export const inputView = <ParentMessage>({
     ...stateAttributes(h, orientation, disabled),
     ...(disabled ? [h.Disabled(true)] : []),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(classNames(toolbarInputClassName, className)),
+    h.Class(cn(toolbarInputClasses, classes)),
   ]);
 };
 
 export const separatorView = <ParentMessage>({
   orientation = "vertical",
-  className,
+  classes,
   style,
 }: SeparatorViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -218,7 +218,7 @@ export const separatorView = <ParentMessage>({
       h.Attribute("aria-orientation", orientation),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toolbarSeparatorClassName, className)),
+      h.Class(cn(toolbarSeparatorClasses, classes)),
     ],
     []
   );

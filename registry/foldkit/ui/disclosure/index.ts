@@ -30,11 +30,11 @@ export const init = (config: InitConfig): InitReturn => [
 export const { close, reflectOpenState, toggle, update, view } = Ui.Disclosure;
 
 export {
-  buttonClassName,
-  buttonContentClassName,
-  chevronClassName,
+  buttonClasses,
+  buttonContentClasses,
+  chevronClasses,
   disclosureView,
-  panelClassName,
-  rootClassName,
+  panelClasses,
+  rootClasses,
 } from "./view";
 export type { DisclosureViewInput } from "./view";

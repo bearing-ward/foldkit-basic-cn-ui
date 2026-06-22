@@ -39,37 +39,37 @@ export type ActionInputs<Message> = Readonly<{
   variant?: DialogVariant;
 }>;
 
-const triggerClassName =
+const triggerClasses =
   "inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-base font-normal text-gray-900 transition hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600";
 
-const rootClassName =
+const rootClasses =
   "backdrop:bg-transparent bg-transparent p-0 open:flex items-center justify-center";
 
-const backdropClassName =
+const backdropClasses =
   "fixed inset-0 bg-black/50 transition duration-150 ease-out data-[closed]:opacity-0";
 
-const panelClassName =
+const panelClasses =
   "bg-white rounded-lg p-6 max-w-md mx-auto relative shadow-xl transition duration-150 ease-out data-[closed]:opacity-0 data-[closed]:scale-95";
 
-const titleClassName = "text-lg font-semibold text-gray-900";
+const titleClasses = "text-lg font-semibold text-gray-900";
 
-const descriptionClassName = "mt-2 text-base text-gray-600";
+const descriptionClasses = "mt-2 text-base text-gray-600";
 
-const footerClassName = "mt-6 flex justify-end gap-2";
+const footerClasses = "mt-6 flex justify-end gap-2";
 
-const closeButtonClassName =
+const closeButtonClasses =
   "rounded-lg border border-gray-300 px-4 py-2 text-base font-normal text-gray-700 transition hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500";
 
-const defaultButtonClassName =
+const defaultButtonClasses =
   "rounded-lg bg-accent-600 px-4 py-2 text-base font-normal text-white transition hover:bg-accent-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600";
 
-const destructiveButtonClassName =
+const destructiveButtonClasses =
   "rounded-lg bg-red-600 px-4 py-2 text-base font-normal text-white transition hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600";
 
-const actionClassName = (variant: DialogVariant): string =>
+const actionClasses = (variant: DialogVariant): string =>
   variant === "destructive"
-    ? destructiveButtonClassName
-    : defaultButtonClassName;
+    ? destructiveButtonClasses
+    : defaultButtonClasses;
 
 export const { view } = Ui.Dialog;
 
@@ -83,7 +83,7 @@ export const trigger = <Message>({
   return h.button(
     [
       h.Type("button"),
-      h.Class(triggerClassName),
+      h.Class(triggerClasses),
       focusSelector === undefined
         ? h.OnClick(onClick)
         : h.OnClickFocus(focusSelector, onClick),
@@ -96,7 +96,7 @@ export const root = <Message>({ render, children }: RootInputs): Html => {
   const h = html<Message>();
 
   return h.dialog(
-    [...render.dialog, h.Class(rootClassName)],
+    [...render.dialog, h.Class(rootClasses)],
     render.isVisible ? children : []
   );
 };
@@ -104,20 +104,20 @@ export const root = <Message>({ render, children }: RootInputs): Html => {
 export const backdrop = <Message>(render: RenderInfo): Html => {
   const h = html<Message>();
 
-  return h.div([...render.backdrop, h.Class(backdropClassName)], []);
+  return h.div([...render.backdrop, h.Class(backdropClasses)], []);
 };
 
 export const panel = <Message>({ render, children }: PanelInputs): Html => {
   const h = html<Message>();
 
-  return h.div([...render.panel, h.Class(panelClassName)], children);
+  return h.div([...render.panel, h.Class(panelClasses)], children);
 };
 
 export const title = <Message>({ model, children }: TextInputs): Html => {
   const h = html<Message>();
 
   return h.h2(
-    [h.Id(Ui.Dialog.titleId(model)), h.Class(titleClassName)],
+    [h.Id(Ui.Dialog.titleId(model)), h.Class(titleClasses)],
     children
   );
 };
@@ -126,7 +126,7 @@ export const description = <Message>({ model, children }: TextInputs): Html => {
   const h = html<Message>();
 
   return h.p(
-    [h.Id(Ui.Dialog.descriptionId(model)), h.Class(descriptionClassName)],
+    [h.Id(Ui.Dialog.descriptionId(model)), h.Class(descriptionClasses)],
     children
   );
 };
@@ -134,7 +134,7 @@ export const description = <Message>({ model, children }: TextInputs): Html => {
 export const footer = <Message>({ children }: ContainerInputs): Html => {
   const h = html<Message>();
 
-  return h.div([h.Class(footerClassName)], children);
+  return h.div([h.Class(footerClasses)], children);
 };
 
 export const closeButton = <Message>({
@@ -144,7 +144,7 @@ export const closeButton = <Message>({
   const h = html<Message>();
 
   return h.button(
-    [h.Type("button"), h.Class(closeButtonClassName), h.OnClick(onClick)],
+    [h.Type("button"), h.Class(closeButtonClasses), h.OnClick(onClick)],
     [label]
   );
 };
@@ -159,7 +159,7 @@ export const confirmButton = <Message>({
   const h = html<Message>();
 
   return h.button(
-    [h.Type("button"), h.Class(actionClassName(variant)), h.OnClick(onClick)],
+    [h.Type("button"), h.Class(actionClasses(variant)), h.OnClick(onClick)],
     [label]
   );
 };

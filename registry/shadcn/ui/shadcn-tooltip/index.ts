@@ -51,10 +51,10 @@ export const init = (config: InitConfig): InitReturn => [
 ];
 
 export {
-  panelClassName,
+  panelClasses,
   tooltipAnchor,
-  tooltipRootClassName,
-  tooltipTriggerClassName,
+  tooltipRootClasses,
+  tooltipTriggerClasses,
   tooltipView,
 } from "./view";
 export type { TooltipViewInput } from "./view";

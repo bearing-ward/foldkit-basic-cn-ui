@@ -60,30 +60,30 @@ const view = (model: Model): Html => {
       value: "accepted",
       toView: (attributes) =>
         h.div(
-          [h.Class(Checkbox.baseUiCheckboxRowClassName)],
+          [h.Class(Checkbox.baseUiCheckboxRowClasses)],
           [
             h.button(
               [
                 ...attributes.checkbox,
-                h.Class(Checkbox.baseUiCheckboxControlClassName),
+                h.Class(Checkbox.baseUiCheckboxControlClasses),
               ],
               model.checkbox.isChecked ? ["✓"] : []
             ),
             h.input(attributes.hiddenInput),
             h.div(
-              [h.Class(Checkbox.baseUiCheckboxTextClassName)],
+              [h.Class(Checkbox.baseUiCheckboxTextClasses)],
               [
                 h.label(
                   [
                     ...attributes.label,
-                    h.Class(Checkbox.baseUiCheckboxLabelClassName),
+                    h.Class(Checkbox.baseUiCheckboxLabelClasses),
                   ],
                   ["Accept terms"]
                 ),
                 h.p(
                   [
                     ...attributes.description,
-                    h.Class(Checkbox.baseUiCheckboxDescriptionClassName),
+                    h.Class(Checkbox.baseUiCheckboxDescriptionClasses),
                   ],
                   ["You agree to receive product updates."]
                 ),
@@ -109,7 +109,7 @@ const disabledView = (model: Model): Html => {
         h.button(
           [
             ...attributes.checkbox,
-            h.Class(Checkbox.baseUiCheckboxControlClassName),
+            h.Class(Checkbox.baseUiCheckboxControlClasses),
           ],
           ["Disabled"]
         ),

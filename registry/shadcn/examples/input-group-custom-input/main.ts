@@ -56,13 +56,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-3")],
     [
       InputGroup.view<Message>({
-        className: "w-full max-w-md flex-wrap items-stretch h-auto",
+        classes: "w-full max-w-md flex-wrap items-stretch h-auto",
         children: [
           h.textarea(
             [
               h.AriaLabel("Custom message"),
               h.DataAttribute("slot", "input-group-control"),
-              h.Class(InputGroup.inputGroupTextareaClassName),
+              h.Class(InputGroup.inputGroupTextareaClasses),
               h.Value(model.message),
               h.OnChange((value) => UpdatedMessage({ value })),
               h.Attribute("rows", "4"),

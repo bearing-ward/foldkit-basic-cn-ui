@@ -37,12 +37,12 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class(Input.shadcnInputFieldClassName)],
+    [h.Class(Input.shadcnInputFieldClasses)],
     [
       h.label(
         [
           h.Attribute("for", "picture"),
-          h.Class(Input.shadcnInputLabelClassName),
+          h.Class(Input.shadcnInputLabelClasses),
         ],
         ["Picture"]
       ),
@@ -50,7 +50,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         h.Id("picture"),
         h.Type("file"),
         h.AriaLabel("Picture"),
-        h.Class(Input.shadcnInputClassName),
+        h.Class(Input.shadcnInputClasses),
       ]),
     ]
   );

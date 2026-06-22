@@ -22,11 +22,11 @@ export type {
 export {
   baseUiRadioCheckIcon,
   baseUiRadioCheckPlaceholder,
-  baseUiRadioDescriptionClassName,
-  baseUiRadioHorizontalClassName,
-  baseUiRadioHorizontalOptionClassName,
-  baseUiRadioLabelClassName,
-  baseUiRadioMetaClassName,
-  baseUiRadioVerticalClassName,
-  baseUiRadioVerticalOptionClassName,
+  baseUiRadioDescriptionClasses,
+  baseUiRadioHorizontalClasses,
+  baseUiRadioHorizontalOptionClasses,
+  baseUiRadioLabelClasses,
+  baseUiRadioMetaClasses,
+  baseUiRadioVerticalClasses,
+  baseUiRadioVerticalOptionClasses,
 } from "./view";

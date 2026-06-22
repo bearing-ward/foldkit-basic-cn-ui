@@ -8,9 +8,9 @@ export type SelectAttributes<ParentMessage> =
 export type ViewConfig<ParentMessage> = Ui.Select.ViewConfig<ParentMessage>;
 
 export {
-  chevronClassName,
-  descriptionClassName,
-  labelClassName,
-  selectClassName,
-  selectWrapperClassName,
+  chevronClasses,
+  descriptionClasses,
+  labelClasses,
+  selectClasses,
+  selectWrapperClasses,
 } from "./view";

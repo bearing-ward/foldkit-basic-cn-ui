@@ -6,6 +6,6 @@ describe("shadcn Input registry view", () => {
   test("reuses the Foldkit Input functional contract", () => {
     expect(Input.view).toBeTypeOf("function");
     expect(Input.descriptionId).toBeTypeOf("function");
-    expect(Input.shadcnInputClassName).toContain("rounded");
+    expect(Input.shadcnInputClasses).toContain("rounded");
   });
 });

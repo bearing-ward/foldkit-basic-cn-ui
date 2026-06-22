@@ -70,7 +70,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return InputGroup.view<Message>({
-    className: "w-full max-w-md",
+    classes: "w-full max-w-md",
     children: [
       InputGroup.inputView<Message>({
         ariaLabel: "Search",

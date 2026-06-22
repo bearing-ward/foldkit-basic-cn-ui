@@ -148,52 +148,52 @@ export const activitySummaryFor = (index: number): ActivitySummary =>
 export const activityVariableRowHeightPx = (activity: Activity): number =>
   activity.hasSummary ? 112 : 56;
 
-export const activityListContainerClassName =
+export const activityListContainerClasses =
   "h-80 w-full rounded-lg bg-white ring-1 ring-gray-200 overscroll-none";
 
-export const activityListHeaderClassName =
+export const activityListHeaderClasses =
   "flex items-end justify-between gap-4 text-sm text-gray-600";
 
-export const virtualListActionClassName =
+export const virtualListActionClasses =
   "rounded bg-accent-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition hover:bg-accent-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 focus-visible:ring-offset-2";
 
-const rowClassName =
+const rowClasses =
   "grid grid-cols-[2rem_1fr_5rem] items-center gap-3 border-b border-gray-100 px-4";
 
-const tallRowClassName =
+const tallRowClasses =
   "grid grid-cols-[2rem_1fr_5rem] items-center gap-3 border-b border-gray-100 px-4 py-3";
 
-const avatarClassName = (colorClass: string): string =>
+const avatarClasses = (colorClass: string): string =>
   `${colorClass} flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold text-white`;
 
-const activityTextClassName = "truncate text-sm text-gray-700";
-const actorClassName = "font-semibold text-gray-900";
-const targetClassName = "font-mono text-gray-900";
-const timeAgoClassName = "text-right text-xs text-gray-500 tabular-nums";
-const summaryTitleClassName = "mt-0.5 text-xs font-semibold text-gray-700";
-const summaryBodyClassName =
+const activityTextClasses = "truncate text-sm text-gray-700";
+const actorClasses = "font-semibold text-gray-900";
+const targetClasses = "font-mono text-gray-900";
+const timeAgoClasses = "text-right text-xs text-gray-500 tabular-nums";
+const summaryTitleClasses = "mt-0.5 text-xs font-semibold text-gray-700";
+const summaryBodyClasses =
   "mt-0.5 truncate text-xs leading-tight text-gray-500";
-const artifactClassName =
+const artifactClasses =
   "mt-1 inline-flex w-fit rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[10px] text-gray-600";
 
 export const activityRow = (row: Activity): Html => {
   const h = html();
 
   return h.div(
-    [h.Class(rowClassName)],
+    [h.Class(rowClasses)],
     [
-      h.div([h.Class(avatarClassName(row.colorClass))], [row.initial]),
+      h.div([h.Class(avatarClasses(row.colorClass))], [row.initial]),
       h.div(
-        [h.Class(activityTextClassName)],
+        [h.Class(activityTextClasses)],
         [
-          h.span([h.Class(actorClassName)], [row.actor]),
+          h.span([h.Class(actorClasses)], [row.actor]),
           " ",
           row.verb,
           " ",
-          h.span([h.Class(targetClassName)], [row.target]),
+          h.span([h.Class(targetClasses)], [row.target]),
         ]
       ),
-      h.div([h.Class(timeAgoClassName)], [row.timeAgo]),
+      h.div([h.Class(timeAgoClasses)], [row.timeAgo]),
     ]
   );
 };
@@ -209,28 +209,28 @@ export const activityVariableRow = (
   }
 
   return h.div(
-    [h.Class(tallRowClassName)],
+    [h.Class(tallRowClasses)],
     [
-      h.div([h.Class(avatarClassName(row.colorClass))], [row.initial]),
+      h.div([h.Class(avatarClasses(row.colorClass))], [row.initial]),
       h.div(
         [h.Class("min-w-0")],
         [
           h.div(
-            [h.Class(activityTextClassName)],
+            [h.Class(activityTextClasses)],
             [
-              h.span([h.Class(actorClassName)], [row.actor]),
+              h.span([h.Class(actorClasses)], [row.actor]),
               " ",
               row.verb,
               " ",
-              h.span([h.Class(targetClassName)], [row.target]),
+              h.span([h.Class(targetClasses)], [row.target]),
             ]
           ),
-          h.div([h.Class(summaryTitleClassName)], [summary.title]),
-          h.div([h.Class(summaryBodyClassName)], [summary.body]),
-          h.div([h.Class(artifactClassName)], [summary.artifact]),
+          h.div([h.Class(summaryTitleClasses)], [summary.title]),
+          h.div([h.Class(summaryBodyClasses)], [summary.body]),
+          h.div([h.Class(artifactClasses)], [summary.artifact]),
         ]
       ),
-      h.div([h.Class(timeAgoClassName)], [row.timeAgo]),
+      h.div([h.Class(timeAgoClasses)], [row.timeAgo]),
     ]
   );
 };

@@ -25,10 +25,10 @@ export type {
 } from "../../../foldkit/ui/switch";
 
 export {
-  shadcnSwitchButtonClassName,
-  shadcnSwitchDescriptionClassName,
+  shadcnSwitchButtonClasses,
+  shadcnSwitchDescriptionClasses,
   shadcnSwitchKnob,
-  shadcnSwitchLabelClassName,
-  shadcnSwitchRowClassName,
-  shadcnSwitchTextClassName,
+  shadcnSwitchLabelClasses,
+  shadcnSwitchRowClasses,
+  shadcnSwitchTextClasses,
 } from "./view";

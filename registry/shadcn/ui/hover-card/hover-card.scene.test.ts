@@ -23,13 +23,13 @@ const view = (open: boolean): Html => {
             children: [
               HoverCard.popupView<string>({
                 children: [
-                  h.div([h.Class(HoverCard.hoverCardAvatarClassName)], ["FK"]),
+                  h.div([h.Class(HoverCard.hoverCardAvatarClasses)], ["FK"]),
                   h.h3(
-                    [h.Class(HoverCard.hoverCardTitleClassName)],
+                    [h.Class(HoverCard.hoverCardTitleClasses)],
                     ["@foldkit"]
                   ),
                   h.p(
-                    [h.Class(HoverCard.hoverCardDescriptionClassName)],
+                    [h.Class(HoverCard.hoverCardDescriptionClasses)],
                     ["A toolkit for Elm-style Effect applications."]
                   ),
                 ],

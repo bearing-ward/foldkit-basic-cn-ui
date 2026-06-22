@@ -27,12 +27,12 @@ export type {
 
 export {
   baseUiSliderFieldView,
-  baseUiSliderFilledTrackClassName,
-  baseUiSliderHeaderClassName,
-  baseUiSliderLabelClassName,
-  baseUiSliderRootClassName,
-  baseUiSliderThumbClassName,
-  baseUiSliderTrackClassName,
-  baseUiSliderValueClassName,
+  baseUiSliderFilledTrackClasses,
+  baseUiSliderHeaderClasses,
+  baseUiSliderLabelClasses,
+  baseUiSliderRootClasses,
+  baseUiSliderThumbClasses,
+  baseUiSliderTrackClasses,
+  baseUiSliderValueClasses,
 } from "./view";
 export type { BaseUiSliderFieldViewInput } from "./view";

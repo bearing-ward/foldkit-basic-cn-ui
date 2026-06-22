@@ -61,17 +61,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             [
               h.label(attributes.label, ["Region"]),
               h.div(
-                [h.Class(Select.selectWrapperClassName)],
+                [h.Class(Select.selectWrapperClasses)],
                 [
                   h.select(
-                    [...attributes.select, h.Class(Select.selectClassName)],
+                    [...attributes.select, h.Class(Select.selectClasses)],
                     [
                       h.option([h.Value("na")], ["North America"]),
                       h.option([h.Value("emea")], ["EMEA"]),
                       h.option([h.Value("apac")], ["APAC"]),
                     ]
                   ),
-                  h.span([h.Class(Select.chevronClassName)], ["v"]),
+                  h.span([h.Class(Select.chevronClasses)], ["v"]),
                 ]
               ),
               h.p(attributes.description, ["Choose the operating region."]),

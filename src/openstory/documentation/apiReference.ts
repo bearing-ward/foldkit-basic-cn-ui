@@ -119,19 +119,19 @@ type CategoryCount = Readonly<{
   count: number;
 }>;
 
-const shellClassName =
+const shellClasses =
   "rounded-[8px] border border-slate-200 bg-white text-slate-950 shadow-sm";
-const headerClassName =
+const headerClasses =
   "grid gap-4 border-b border-slate-200 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:items-end";
-const eyebrowClassName =
+const eyebrowClasses =
   "font-mono text-xs font-medium uppercase text-slate-500";
-const searchInputClassName =
+const searchInputClasses =
   "h-10 w-full rounded-[6px] border border-slate-300 bg-white px-3 font-mono text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-100";
-const groupButtonBaseClassName =
+const groupButtonBaseClasses =
   "inline-flex h-9 items-center gap-2 rounded-[6px] border px-3 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500";
-const categoryButtonBaseClassName =
+const categoryButtonBaseClasses =
   "grid h-9 w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-[6px] border px-3 text-left text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500";
-const rowClassName =
+const rowClasses =
   "grid gap-3 border-b border-slate-200 p-4 last:border-b-0";
 
 const selectedGroup = (
@@ -210,7 +210,7 @@ const isSelectedCategory = (
     })
   );
 
-const badgeClassName = (tone: ApiReferenceBadge["tone"]): string =>
+const badgeClasses = (tone: ApiReferenceBadge["tone"]): string =>
   M.value(tone).pipe(
     M.when("required", () => "border-rose-200 bg-rose-50 text-rose-700"),
     M.when("optional", () => "border-sky-200 bg-sky-50 text-sky-700"),
@@ -255,7 +255,7 @@ const renderGroupButtons = (
           h.AriaPressed(active ? "true" : "false"),
           h.OnClick(SelectedApiReferenceGroup({ groupId: group.id })),
           h.Class(
-            `${groupButtonBaseClassName} ${
+            `${groupButtonBaseClasses} ${
               active
                 ? "border-amber-300 bg-amber-50 text-slate-950"
                 : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
@@ -296,7 +296,7 @@ const renderCategoryRail = (
               h.AriaPressed(allActive ? "true" : "false"),
               h.OnClick(ClearedApiReferenceCategory()),
               h.Class(
-                `${categoryButtonBaseClassName} ${
+                `${categoryButtonBaseClasses} ${
                   allActive
                     ? "border-amber-300 bg-amber-50 text-slate-950"
                     : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
@@ -321,7 +321,7 @@ const renderCategoryRail = (
                   })
                 ),
                 h.Class(
-                  `${categoryButtonBaseClassName} ${
+                  `${categoryButtonBaseClasses} ${
                     active
                       ? "border-amber-300 bg-amber-50 text-slate-950"
                       : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
@@ -349,7 +349,7 @@ const renderBadges = (badges: readonly ApiReferenceBadge[]): Html => {
       h.span(
         [
           h.Class(
-            `rounded-[4px] border px-1.5 py-0.5 text-[11px] font-medium ${badgeClassName(
+            `rounded-[4px] border px-1.5 py-0.5 text-[11px] font-medium ${badgeClasses(
               badge.tone
             )}`
           ),
@@ -385,7 +385,7 @@ const renderOptionalMetadata = (
 const renderRow = (row: ApiReferenceRow): Html => {
   const h = html<Message>();
 
-  return h.article([h.Class(rowClassName)], [
+  return h.article([h.Class(rowClasses)], [
     h.div(
       [h.Class("grid gap-2 md:grid-cols-[minmax(0,1fr)_auto] md:items-start")],
       [
@@ -463,17 +463,17 @@ export const view =
     return selectedGroup(config, model).pipe(
       Option.match({
         onNone: () =>
-          h.section([h.Class(`${shellClassName} p-4`)], [
+          h.section([h.Class(`${shellClasses} p-4`)], [
             h.h2([h.Class("text-lg font-semibold")], [config.title]),
             h.p([h.Class("mt-2 text-sm text-slate-500")], [
               "No API groups are available.",
             ]),
           ]),
         onSome: (group) =>
-          h.section([h.Class(shellClassName)], [
-            h.header([h.Class(headerClassName)], [
+          h.section([h.Class(shellClasses)], [
+            h.header([h.Class(headerClasses)], [
               h.div([h.Class("space-y-2")], [
-                h.p([h.Class(eyebrowClassName)], ["API reference"]),
+                h.p([h.Class(eyebrowClasses)], ["API reference"]),
                 h.h2([h.Class("text-2xl font-semibold text-slate-950")], [
                   config.title,
                 ]),
@@ -496,7 +496,7 @@ export const view =
                   h.Placeholder("Search names, categories, signatures"),
                   h.OnInput((value) => UpdatedApiReferenceQuery({ value })),
                   h.OnChange((value) => UpdatedApiReferenceQuery({ value })),
-                  h.Class(searchInputClassName),
+                  h.Class(searchInputClasses),
                 ]),
               ]),
             ]),

@@ -44,41 +44,41 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     isDisabled: true,
     toView: (attributes) =>
       h.fieldset(
-        [...attributes.fieldset, h.Class(Fieldset.fieldsetClassName)],
+        [...attributes.fieldset, h.Class(Fieldset.fieldsetClasses)],
         [
           h.legend(
-            [...attributes.legend, h.Class(Fieldset.legendClassName)],
+            [...attributes.legend, h.Class(Fieldset.legendClasses)],
             ["Locked profile"]
           ),
           h.p(
-            [...attributes.description, h.Class(Fieldset.descriptionClassName)],
+            [...attributes.description, h.Class(Fieldset.descriptionClasses)],
             ["Profile fields are disabled while the account is archived."]
           ),
           h.div(
-            [h.Class(Fieldset.fieldsClassName)],
+            [h.Class(Fieldset.fieldsClasses)],
             [
               h.label(
-                [h.Class(Fieldset.fieldClassName)],
+                [h.Class(Fieldset.fieldClasses)],
                 [
-                  h.span([h.Class(Fieldset.labelClassName)], ["Name"]),
+                  h.span([h.Class(Fieldset.labelClasses)], ["Name"]),
                   h.input([
                     h.AriaLabel("Locked name"),
                     h.Disabled(true),
                     h.Value("Ada Lovelace"),
-                    h.Class(Fieldset.inputClassName),
+                    h.Class(Fieldset.inputClasses),
                   ]),
                 ]
               ),
               h.label(
-                [h.Class(Fieldset.fieldClassName)],
+                [h.Class(Fieldset.fieldClasses)],
                 [
-                  h.span([h.Class(Fieldset.labelClassName)], ["Bio"]),
+                  h.span([h.Class(Fieldset.labelClasses)], ["Bio"]),
                   h.textarea(
                     [
                       h.AriaLabel("Locked bio"),
                       h.Disabled(true),
                       h.Value("Mathematician and writer."),
-                      h.Class(Fieldset.textareaClassName),
+                      h.Class(Fieldset.textareaClasses),
                     ],
                     []
                   ),

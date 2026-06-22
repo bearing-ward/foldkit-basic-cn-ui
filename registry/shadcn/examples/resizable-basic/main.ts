@@ -129,7 +129,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     ],
     [
       Resizable.panelGroupView<Message>({
-        className: "min-h-48 w-full",
+        classes: "min-h-48 w-full",
         children: [
           Resizable.panelView<Message>({
             size: model.leftSize,

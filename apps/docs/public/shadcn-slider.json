@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-slider/index.ts",
       "target": "src/ui/shadcn-slider/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  fractionOfValue,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectRange,\n  reflectValue,\n  sliderFieldView,\n  subscriptions,\n  subscriptionsForRoot,\n  update,\n  view,\n} from \"../../../foldkit/ui/slider\";\nexport type {\n  InitConfig,\n  InitReturn,\n  SliderAttributes,\n  SliderFieldViewInput,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/slider\";\n\nexport {\n  shadcnSliderFieldClassName,\n  shadcnSliderFilledTrackClassName,\n  shadcnSliderHeaderClassName,\n  shadcnSliderLabelClassName,\n  shadcnSliderRootClassName,\n  shadcnSliderThumbClassName,\n  shadcnSliderTrackClassName,\n  shadcnSliderValueClassName,\n} from \"./view\";\n"
+      "content": "export {\n  fractionOfValue,\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectRange,\n  reflectValue,\n  sliderFieldView,\n  subscriptions,\n  subscriptionsForRoot,\n  update,\n  view,\n} from \"../../../foldkit/ui/slider\";\nexport type {\n  InitConfig,\n  InitReturn,\n  SliderAttributes,\n  SliderFieldViewInput,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/slider\";\n\nexport {\n  shadcnSliderFieldClasses,\n  shadcnSliderFilledTrackClasses,\n  shadcnSliderHeaderClasses,\n  shadcnSliderLabelClasses,\n  shadcnSliderRootClasses,\n  shadcnSliderThumbClasses,\n  shadcnSliderTrackClasses,\n  shadcnSliderValueClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-slider/view.ts",
       "target": "src/ui/shadcn-slider/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  fieldClassName as shadcnSliderFieldClassName,\n  filledTrackClassName as shadcnSliderFilledTrackClassName,\n  headerClassName as shadcnSliderHeaderClassName,\n  labelClassName as shadcnSliderLabelClassName,\n  rootClassName as shadcnSliderRootClassName,\n  thumbClassName as shadcnSliderThumbClassName,\n  trackClassName as shadcnSliderTrackClassName,\n  valueClassName as shadcnSliderValueClassName,\n} from \"../../../foldkit/ui/slider/view\";\n"
+      "content": "export {\n  fieldClasses as shadcnSliderFieldClasses,\n  filledTrackClasses as shadcnSliderFilledTrackClasses,\n  headerClasses as shadcnSliderHeaderClasses,\n  labelClasses as shadcnSliderLabelClasses,\n  rootClasses as shadcnSliderRootClasses,\n  thumbClasses as shadcnSliderThumbClasses,\n  trackClasses as shadcnSliderTrackClasses,\n  valueClasses as shadcnSliderValueClasses,\n} from \"../../../foldkit/ui/slider/view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-slider/shadcn-slider.scene.test.ts",
       "target": "src/ui/shadcn-slider/shadcn-slider.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Slider from \"./index\";\n\ndescribe(\"shadcn Slider registry view\", () => {\n  test(\"reuses the Foldkit Slider functional contract\", () => {\n    expect(Slider.init).toBeTypeOf(\"function\");\n    expect(Slider.update).toBeTypeOf(\"function\");\n    expect(Slider.sliderFieldView).toBeTypeOf(\"function\");\n    expect(Slider.shadcnSliderThumbClassName).toContain(\"rounded-full\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Slider from \"./index\";\n\ndescribe(\"shadcn Slider registry view\", () => {\n  test(\"reuses the Foldkit Slider functional contract\", () => {\n    expect(Slider.init).toBeTypeOf(\"function\");\n    expect(Slider.update).toBeTypeOf(\"function\");\n    expect(Slider.sliderFieldView).toBeTypeOf(\"function\");\n    expect(Slider.shadcnSliderThumbClasses).toContain(\"rounded-full\");\n  });\n});\n"
     }
   ],
   "meta": {

@@ -1,1 +1,1 @@
-export const spinnerClassName = "size-4 animate-spin";
+export const spinnerClasses = "size-4 animate-spin";

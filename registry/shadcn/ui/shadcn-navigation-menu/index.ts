@@ -20,15 +20,15 @@ export type {
 } from "../../../foldkit/ui/navigation-menu";
 
 export {
-  shadcnNavigationMenuArrowClassName,
-  shadcnNavigationMenuContentClassName,
-  shadcnNavigationMenuItemClassName,
-  shadcnNavigationMenuLinkClassName,
-  shadcnNavigationMenuListClassName,
-  shadcnNavigationMenuPopupClassName,
-  shadcnNavigationMenuPortalClassName,
-  shadcnNavigationMenuPositionerClassName,
-  shadcnNavigationMenuRootClassName,
-  shadcnNavigationMenuTriggerClassName,
-  shadcnNavigationMenuViewportClassName,
+  shadcnNavigationMenuArrowClasses,
+  shadcnNavigationMenuContentClasses,
+  shadcnNavigationMenuItemClasses,
+  shadcnNavigationMenuLinkClasses,
+  shadcnNavigationMenuListClasses,
+  shadcnNavigationMenuPopupClasses,
+  shadcnNavigationMenuPortalClasses,
+  shadcnNavigationMenuPositionerClasses,
+  shadcnNavigationMenuRootClasses,
+  shadcnNavigationMenuTriggerClasses,
+  shadcnNavigationMenuViewportClasses,
 } from "./view";

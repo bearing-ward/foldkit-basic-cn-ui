@@ -106,7 +106,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           name: "plan",
           toView: ({ group, hiddenInput, options }) =>
             h.div(
-              [...group, h.Class(RadioGroup.verticalGroupClassName)],
+              [...group, h.Class(RadioGroup.verticalGroupClasses)],
               [
                 h.input(hiddenInput),
                 ...options.map((option) => {
@@ -115,7 +115,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   return h.div(
                     [
                       ...option.option,
-                      h.Class(RadioGroup.verticalOptionClassName),
+                      h.Class(RadioGroup.verticalOptionClasses),
                     ],
                     [
                       h.div(
@@ -127,14 +127,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                               h.span(
                                 [
                                   ...option.label,
-                                  h.Class(RadioGroup.labelClassName),
+                                  h.Class(RadioGroup.labelClasses),
                                 ],
                                 [plan]
                               ),
                               h.p(
                                 [
                                   ...option.description,
-                                  h.Class(RadioGroup.descriptionClassName),
+                                  h.Class(RadioGroup.descriptionClasses),
                                 ],
                                 [planDescriptions[plan]]
                               ),
@@ -144,7 +144,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                             [h.Class("flex items-center gap-3")],
                             [
                               h.span(
-                                [h.Class(RadioGroup.metaClassName)],
+                                [h.Class(RadioGroup.metaClasses)],
                                 [planPrices[plan]]
                               ),
                               option.isSelected

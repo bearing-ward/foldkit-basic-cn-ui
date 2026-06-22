@@ -2,17 +2,17 @@ import type { Attribute, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  resizableHandleClassName,
-  resizablePanelClassName,
-  resizablePanelGroupClassName,
-  resizablePanelGroupDirectionClassName,
+  resizableHandleClasses,
+  resizablePanelClasses,
+  resizablePanelGroupClasses,
+  resizablePanelGroupDirectionClasses,
 } from "./view";
 
 export {
-  resizableHandleClassName,
-  resizablePanelClassName,
-  resizablePanelGroupClassName,
-  resizablePanelGroupDirectionClassName,
+  resizableHandleClasses,
+  resizablePanelClasses,
+  resizablePanelGroupClasses,
+  resizablePanelGroupDirectionClasses,
 } from "./view";
 
 export type ResizableDirection = "horizontal" | "vertical";
@@ -21,14 +21,14 @@ export type ResizableStyle = Readonly<Record<string, string>>;
 export type PanelGroupViewConfig = Readonly<{
   children: readonly Html[];
   direction?: ResizableDirection;
-  className?: string;
+  classes?: string;
   style?: ResizableStyle;
 }>;
 
 export type PanelViewConfig = Readonly<{
   children: readonly (Html | string)[];
   size?: number;
-  className?: string;
+  classes?: string;
   style?: ResizableStyle;
 }>;
 
@@ -36,7 +36,7 @@ export type HandleViewConfig<ParentMessage> = Readonly<{
   direction?: ResizableDirection;
   label?: string;
   children?: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
   style?: ResizableStyle;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
@@ -46,7 +46,7 @@ export type PanelItem = Readonly<{
   size?: number;
 }>;
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
@@ -54,7 +54,7 @@ const classNames = (...values: readonly (string | undefined)[]): string =>
 export const panelGroupView = <ParentMessage>({
   children,
   direction = "horizontal",
-  className,
+  classes,
   style,
 }: PanelGroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -64,10 +64,10 @@ export const panelGroupView = <ParentMessage>({
       h.DataAttribute("slot", "resizable-panel-group"),
       h.DataAttribute("direction", direction),
       h.Class(
-        classNames(
-          resizablePanelGroupClassName,
-          resizablePanelGroupDirectionClassName(direction),
-          className
+        cn(
+          resizablePanelGroupClasses,
+          resizablePanelGroupDirectionClasses(direction),
+          classes
         )
       ),
       ...(style === undefined ? [] : [h.Style(style)]),
@@ -79,7 +79,7 @@ export const panelGroupView = <ParentMessage>({
 export const panelView = <ParentMessage>({
   children,
   size,
-  className,
+  classes,
   style,
 }: PanelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -94,7 +94,7 @@ export const panelView = <ParentMessage>({
     [
       h.DataAttribute("slot", "resizable-panel"),
       ...(size === undefined ? [] : [h.DataAttribute("size", String(size))]),
-      h.Class(classNames(resizablePanelClassName, className)),
+      h.Class(cn(resizablePanelClasses, classes)),
       h.Style({ ...sizeStyle, ...style }),
     ],
     children
@@ -105,7 +105,7 @@ export const handleView = <ParentMessage>({
   direction = "horizontal",
   label = "Resize panels",
   children = [],
-  className,
+  classes,
   style,
   attributes = [],
 }: HandleViewConfig<ParentMessage> = {}): Html => {
@@ -118,7 +118,7 @@ export const handleView = <ParentMessage>({
       h.AriaOrientation(direction),
       h.DataAttribute("slot", "resizable-handle"),
       h.DataAttribute("direction", direction),
-      h.Class(classNames(resizableHandleClassName, className)),
+      h.Class(cn(resizableHandleClasses, classes)),
       ...(style === undefined ? [] : [h.Style(style)]),
       ...attributes,
     ],
@@ -129,15 +129,15 @@ export const handleView = <ParentMessage>({
 export const view = <ParentMessage>({
   panels,
   direction = "horizontal",
-  className,
+  classes,
 }: Readonly<{
   panels: readonly PanelItem[];
   direction?: ResizableDirection;
-  className?: string;
+  classes?: string;
 }>): Html =>
   panelGroupView<ParentMessage>({
     direction,
-    ...(className === undefined ? {} : { className }),
+    ...(classes === undefined ? {} : { classes }),
     children: panels.flatMap((panel, index) => [
       ...(index === 0 ? [] : [handleView<ParentMessage>({ direction })]),
       panelView<ParentMessage>({

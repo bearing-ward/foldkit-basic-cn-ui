@@ -2,8 +2,8 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  shadcnDialogFooterClassName,
-  shadcnDialogHeaderClassName,
+  shadcnDialogFooterClasses,
+  shadcnDialogHeaderClasses,
 } from "./view";
 
 export {
@@ -56,29 +56,29 @@ export type {
 } from "../../../foldkit/ui/dialog";
 
 export {
-  shadcnDialogBackdropClassName,
-  shadcnDialogDescriptionClassName,
-  shadcnDialogFooterClassName,
-  shadcnDialogHeaderClassName,
-  shadcnDialogPanelClassName,
-  shadcnDialogTitleClassName,
+  shadcnDialogBackdropClasses,
+  shadcnDialogDescriptionClasses,
+  shadcnDialogFooterClasses,
+  shadcnDialogHeaderClasses,
+  shadcnDialogPanelClasses,
+  shadcnDialogTitleClasses,
 } from "./view";
 
 export type PartViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: Readonly<Record<string, string>> | undefined;
 }>;
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 const divPartView = <ParentMessage>(
-  baseClassName: string,
-  { id, children, className, style }: PartViewConfig
+  baseClasses: string,
+  { id, children, classes, style }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
 
@@ -86,14 +86,14 @@ const divPartView = <ParentMessage>(
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(baseClassName, className)),
+      h.Class(cn(baseClasses, classes)),
     ],
     children
   );
 };
 
 export const headerView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(shadcnDialogHeaderClassName, config);
+  divPartView<ParentMessage>(shadcnDialogHeaderClasses, config);
 
 export const footerView = <ParentMessage>(config: PartViewConfig): Html =>
-  divPartView<ParentMessage>(shadcnDialogFooterClassName, config);
+  divPartView<ParentMessage>(shadcnDialogFooterClasses, config);

@@ -144,7 +144,7 @@ export const update = (
 
 // VIEW
 
-const tweetButtonClassName =
+const tweetButtonClasses =
   "inline-flex h-8 items-center justify-center gap-2 border border-neutral-950 bg-white px-3 text-sm leading-none font-normal text-neutral-950 hover:bg-neutral-100";
 
 const confirmationDialogView = (model: Model): Html => {
@@ -248,7 +248,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                           onClick: RequestedCloseTweet(),
                         }),
                         h.button(
-                          [h.Type("button"), h.Class(tweetButtonClassName)],
+                          [h.Type("button"), h.Class(tweetButtonClasses)],
                           ["Tweet"]
                         ),
                       ]

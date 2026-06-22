@@ -14,7 +14,7 @@ type Message = typeof Message.Type;
 const icon = (label: string): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(ToggleGroup.toggleGroupIconClassName)], [label]);
+  return h.span([h.Class(ToggleGroup.toggleGroupIconClasses)], [label]);
 };
 
 const view = (pressedValues: readonly string[]): Html =>

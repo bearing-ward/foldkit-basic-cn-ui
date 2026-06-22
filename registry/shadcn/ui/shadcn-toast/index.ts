@@ -37,11 +37,11 @@ export type {
 } from "../../../foldkit/ui/toast";
 
 export {
-  shadcnToastClassName,
-  shadcnToastCloseButtonClassName,
-  shadcnToastContainerClassName,
-  shadcnToastDescriptionClassName,
-  shadcnToastEntryClassName,
+  shadcnToastClasses,
+  shadcnToastCloseButtonClasses,
+  shadcnToastContainerClasses,
+  shadcnToastDescriptionClasses,
+  shadcnToastEntryClasses,
   shadcnToastEntryView,
-  shadcnToastTitleClassName,
+  shadcnToastTitleClasses,
 } from "./view";

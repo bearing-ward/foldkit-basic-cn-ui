@@ -2,27 +2,27 @@ import type { Attribute, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  commandEmptyClassName,
-  commandGroupClassName,
-  commandInputClassName,
-  commandInputWrapperClassName,
-  commandItemClassName,
-  commandListClassName,
-  commandRootClassName,
-  commandSeparatorClassName,
-  commandShortcutClassName,
+  commandEmptyClasses,
+  commandGroupClasses,
+  commandInputClasses,
+  commandInputWrapperClasses,
+  commandItemClasses,
+  commandListClasses,
+  commandRootClasses,
+  commandSeparatorClasses,
+  commandShortcutClasses,
 } from "./view";
 
 export {
-  commandEmptyClassName,
-  commandGroupClassName,
-  commandInputClassName,
-  commandInputWrapperClassName,
-  commandItemClassName,
-  commandListClassName,
-  commandRootClassName,
-  commandSeparatorClassName,
-  commandShortcutClassName,
+  commandEmptyClasses,
+  commandGroupClasses,
+  commandInputClasses,
+  commandInputWrapperClasses,
+  commandItemClasses,
+  commandListClasses,
+  commandRootClasses,
+  commandSeparatorClasses,
+  commandShortcutClasses,
 } from "./view";
 
 export type CommandItem = Readonly<{
@@ -34,7 +34,7 @@ export type CommandItem = Readonly<{
 
 type ViewConfig<ParentMessage> = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -44,7 +44,7 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   placeholder?: string;
   ariaLabel?: string;
   listId?: string;
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -52,7 +52,7 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   item: CommandItem;
   onSelect?: ParentMessage;
   selected?: boolean;
-  className?: string;
+  classes?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -65,7 +65,7 @@ export const defaultItems: readonly CommandItem[] = [
   { group: "Settings", label: "Settings", shortcut: "⌘S" },
 ];
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
@@ -89,7 +89,7 @@ export const filterItems = (
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -97,7 +97,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "command"),
-      h.Class(classNames(commandRootClassName, className)),
+      h.Class(cn(commandRootClasses, classes)),
       ...attributes,
     ],
     children
@@ -110,7 +110,7 @@ export const inputView = <ParentMessage>({
   placeholder = "Type a command or search...",
   ariaLabel = "Command search",
   listId,
-  className,
+  classes,
   attributes = [],
 }: InputViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -118,7 +118,7 @@ export const inputView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "command-input-wrapper"),
-      h.Class(commandInputWrapperClassName),
+      h.Class(commandInputWrapperClasses),
     ],
     [
       h.input([
@@ -135,7 +135,7 @@ export const inputView = <ParentMessage>({
               h.Attribute("aria-expanded", "true"),
             ]),
         h.Placeholder(placeholder),
-        h.Class(classNames(commandInputClassName, className)),
+        h.Class(cn(commandInputClasses, classes)),
         ...attributes,
       ]),
     ]
@@ -144,7 +144,7 @@ export const inputView = <ParentMessage>({
 
 export const listView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -153,7 +153,7 @@ export const listView = <ParentMessage>({
     [
       h.DataAttribute("slot", "command-list"),
       h.Attribute("role", "listbox"),
-      h.Class(classNames(commandListClassName, className)),
+      h.Class(cn(commandListClasses, classes)),
       ...attributes,
     ],
     children
@@ -162,7 +162,7 @@ export const listView = <ParentMessage>({
 
 export const emptyView = <ParentMessage>({
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -170,7 +170,7 @@ export const emptyView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "command-empty"),
-      h.Class(classNames(commandEmptyClassName, className)),
+      h.Class(cn(commandEmptyClasses, classes)),
       ...attributes,
     ],
     children
@@ -180,7 +180,7 @@ export const emptyView = <ParentMessage>({
 export const groupView = <ParentMessage>({
   heading,
   children,
-  className,
+  classes,
   attributes = [],
 }: ViewConfig<ParentMessage> & Readonly<{ heading: string }>): Html => {
   const h = html<ParentMessage>();
@@ -188,7 +188,7 @@ export const groupView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "command-group"),
-      h.Class(classNames(commandGroupClassName, className)),
+      h.Class(cn(commandGroupClasses, classes)),
       ...attributes,
     ],
     [
@@ -204,7 +204,7 @@ export const shortcutView = <ParentMessage>(shortcut: string): Html => {
   return h.span(
     [
       h.DataAttribute("slot", "command-shortcut"),
-      h.Class(commandShortcutClassName),
+      h.Class(commandShortcutClasses),
     ],
     [shortcut]
   );
@@ -214,7 +214,7 @@ export const itemView = <ParentMessage>({
   item,
   onSelect,
   selected,
-  className,
+  classes,
   attributes = [],
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -232,7 +232,7 @@ export const itemView = <ParentMessage>({
         : onSelect === undefined
           ? []
           : [h.OnClick(onSelect)]),
-      h.Class(classNames(commandItemClassName, className)),
+      h.Class(cn(commandItemClasses, classes)),
       ...attributes,
     ],
     [
@@ -251,7 +251,7 @@ export const separatorView = <ParentMessage>(): Html => {
     [
       h.AriaHidden(true),
       h.DataAttribute("slot", "command-separator"),
-      h.Class(commandSeparatorClassName),
+      h.Class(commandSeparatorClasses),
     ],
     []
   );

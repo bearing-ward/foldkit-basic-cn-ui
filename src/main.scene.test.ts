@@ -5220,7 +5220,7 @@ describe("scene", () => {
       Scene.expect(
         Scene.role("heading", { name: "Keyboard interaction" })
       ).not.toExist(),
-      Scene.expect(Scene.text("labelClassName")).toExist(),
+      Scene.expect(Scene.text("labelClasses")).toExist(),
       Scene.expect(Scene.text("labelStyle")).toExist(),
       Scene.expect(Scene.text("indicatorStyle")).toExist(),
       Scene.expect(Scene.text("data-progressing")).toExist(),

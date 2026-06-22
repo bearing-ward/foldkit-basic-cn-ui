@@ -46,7 +46,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.Placeholder("Filter emails..."),
             h.Value(model.filter),
             h.OnInput((value) => UpdatedFilter({ value })),
-            h.Class(DataTable.dataTableInputClassName),
+            h.Class(DataTable.dataTableInputClasses),
           ]),
           h.p(
             [h.Class("text-sm text-gray-600")],

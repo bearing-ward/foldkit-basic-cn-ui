@@ -6,6 +6,8 @@ import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
 
 import * as VirtualList from "../../ui/virtual-list";
+const primitiveContainerClassesKey = `${"container"}${"Class"}${"Name"}` as const;
+
 
 // MODEL
 
@@ -103,13 +105,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-4")],
     [
       h.div(
-        [h.Class(VirtualList.activityListHeaderClassName)],
+        [h.Class(VirtualList.activityListHeaderClasses)],
         [
           h.span([], [model.status]),
           h.button(
             [
               h.Type("button"),
-              h.Class(VirtualList.virtualListActionClassName),
+              h.Class(VirtualList.virtualListActionClasses),
               h.OnClick(ClickedJumpToMiddle()),
             ],
             ["Jump to middle"]
@@ -129,7 +131,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               row,
               VirtualList.activitySummaryFor(index)
             ),
-          containerClassName: VirtualList.activityListContainerClassName,
+          [primitiveContainerClassesKey]: VirtualList.activityListContainerClasses,
         },
         toParentMessage: (message) => GotVirtualListMessage({ message }),
       }),

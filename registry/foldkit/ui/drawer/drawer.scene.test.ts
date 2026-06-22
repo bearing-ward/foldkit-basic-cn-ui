@@ -59,7 +59,7 @@ describe("Drawer registry component", () => {
   });
 
   test("exports Base UI drawer class hooks", () => {
-    expect(Drawer.drawerPopupClassName).toContain("shadow");
-    expect(Drawer.drawerViewportClassName).toContain("justify-end");
+    expect(Drawer.drawerPopupClasses).toContain("shadow");
+    expect(Drawer.drawerViewportClasses).toContain("justify-end");
   });
 });

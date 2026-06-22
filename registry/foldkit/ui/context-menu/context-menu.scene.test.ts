@@ -57,9 +57,9 @@ describe("Context Menu registry component", () => {
   });
 
   test("exports Base UI context menu class hooks", () => {
-    expect(ContextMenu.contextMenuTriggerClassName).toContain("border-dashed");
-    expect(ContextMenu.contextMenuBackdropClassName).toContain("fixed");
-    expect(ContextMenu.contextMenuPopupClassName).toContain("shadow");
-    expect(ContextMenu.contextMenuSeparatorClassName).toContain("bg-gray-200");
+    expect(ContextMenu.contextMenuTriggerClasses).toContain("border-dashed");
+    expect(ContextMenu.contextMenuBackdropClasses).toContain("fixed");
+    expect(ContextMenu.contextMenuPopupClasses).toContain("shadow");
+    expect(ContextMenu.contextMenuSeparatorClasses).toContain("bg-gray-200");
   });
 });

@@ -44,7 +44,7 @@ const variantCard = (
     [
       h.p([h.Class("text-sm font-medium text-gray-700")], [label]),
       Sidebar.providerView<Message>({
-        className: "min-h-48",
+        classes: "min-h-48",
         children: [
           Sidebar.sidebarView<Message>({
             state,
@@ -53,7 +53,7 @@ const variantCard = (
             collapsible,
             children: [
               Sidebar.headerView<Message>({
-                children: [h.span([h.Class(Sidebar.sidebarIconClassName)], ["S"])],
+                children: [h.span([h.Class(Sidebar.sidebarIconClasses)], ["S"])],
               }),
               Sidebar.contentView<Message>({
                 children: [
@@ -87,7 +87,7 @@ const variantCard = (
             ],
           }),
           Sidebar.insetView<Message>({
-            className: "p-4",
+            classes: "p-4",
             children: [
               h.p([h.Class("text-sm text-gray-600")], [
                 `${side} ${variant} ${collapsible}`,

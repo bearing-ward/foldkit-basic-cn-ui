@@ -1,10 +1,10 @@
 export {
-  panelClassName as baseUiTabsPanelClassName,
-  tabClassName as baseUiTabsTabClassName,
-  tabListClassName as baseUiTabsListClassName,
-  tabsRootClassName as baseUiTabsRootClassName,
+  panelClasses as baseUiTabsPanelClasses,
+  tabClasses as baseUiTabsTabClasses,
+  tabListClasses as baseUiTabsListClasses,
+  tabsRootClasses as baseUiTabsRootClasses,
   tabsView as baseUiTabsView,
-  verticalTabListClassName as baseUiTabsVerticalListClassName,
-  verticalTabsRootClassName as baseUiTabsVerticalRootClassName,
+  verticalTabListClasses as baseUiTabsVerticalListClasses,
+  verticalTabsRootClasses as baseUiTabsVerticalRootClasses,
 } from "../../../foldkit/ui/tabs/view";
 export type { TabsViewInput as BaseUiTabsViewInput } from "../../../foldkit/ui/tabs/view";

@@ -34,9 +34,9 @@ export const { reflectChecked } = Ui.Checkbox;
 export const { view } = Ui.Checkbox;
 
 export {
-  checkboxControlClassName,
-  checkboxDescriptionClassName,
-  checkboxLabelClassName,
-  checkboxRowClassName,
-  checkboxTextClassName,
+  checkboxControlClasses,
+  checkboxDescriptionClasses,
+  checkboxLabelClasses,
+  checkboxRowClasses,
+  checkboxTextClasses,
 } from "./view";

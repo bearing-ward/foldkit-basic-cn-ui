@@ -7,7 +7,7 @@ describe("shadcn Radio Group registry view", () => {
     expect(RadioGroup.init).toBeTypeOf("function");
     expect(RadioGroup.create).toBeTypeOf("function");
     expect(RadioGroup.checkIcon).toBeTypeOf("function");
-    expect(RadioGroup.shadcnRadioGroupVerticalOptionClassName).toContain(
+    expect(RadioGroup.shadcnRadioGroupVerticalOptionClasses).toContain(
       "data-[checked]"
     );
   });

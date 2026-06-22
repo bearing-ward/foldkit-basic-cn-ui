@@ -7,6 +7,6 @@ describe("shadcn Progress registry view", () => {
     expect(Progress.rootView).toBeTypeOf("function");
     expect(Progress.indicatorView).toBeTypeOf("function");
     expect(Progress.progressPercent(50, 0, 100)).toBe(50);
-    expect(Progress.shadcnProgressIndicatorClassName).toContain("transition");
+    expect(Progress.shadcnProgressIndicatorClasses).toContain("transition");
   });
 });

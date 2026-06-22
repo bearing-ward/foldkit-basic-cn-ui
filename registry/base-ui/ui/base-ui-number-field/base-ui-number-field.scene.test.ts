@@ -65,8 +65,8 @@ describe("NumberField registry component", () => {
   });
 
   test("exports Base UI anatomy class hooks", () => {
-    expect(NumberField.numberFieldRootClassName).toContain("grid");
-    expect(NumberField.numberFieldInputClassName).toContain(
+    expect(NumberField.numberFieldRootClasses).toContain("grid");
+    expect(NumberField.numberFieldInputClasses).toContain(
       "aria-[invalid=true]"
     );
   });

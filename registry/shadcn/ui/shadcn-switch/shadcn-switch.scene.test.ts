@@ -7,6 +7,6 @@ describe("shadcn Switch registry view", () => {
     expect(Switch.init).toBeTypeOf("function");
     expect(Switch.update).toBeTypeOf("function");
     expect(Switch.view).toBeTypeOf("function");
-    expect(Switch.shadcnSwitchButtonClassName).toContain("data-[checked]");
+    expect(Switch.shadcnSwitchButtonClasses).toContain("data-[checked]");
   });
 });

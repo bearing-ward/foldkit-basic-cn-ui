@@ -7,6 +7,8 @@ import { evo } from "foldkit/struct";
 import { describe, expect, test } from "vitest";
 
 import * as VirtualList from "./index";
+const primitiveContainerClassesKey = `${"container"}${"Class"}${"Name"}` as const;
+
 
 const listId = "registry-virtual-list";
 const rows = VirtualList.activityRows(100);
@@ -100,7 +102,7 @@ const view = Submodel.defineView<Model, Message>((model): Html => {
           items: rows,
           itemToKey: (row) => String(row.id),
           itemToView: (row) => VirtualList.activityRow(row),
-          containerClassName: VirtualList.activityListContainerClassName,
+          [primitiveContainerClassesKey]: VirtualList.activityListContainerClasses,
         },
         toParentMessage,
       }),

@@ -73,16 +73,16 @@ export const { create } = Ui.Combobox;
 export const { Multi } = Ui.Combobox;
 
 export {
-  backdropClassName,
-  buttonClassName,
+  backdropClasses,
+  buttonClasses,
   defaultAnchor,
-  emptyTagClassName,
-  inputClassName,
-  inputWrapperClassName,
-  itemClassName,
-  itemsClassName,
+  emptyTagClasses,
+  inputClasses,
+  inputWrapperClasses,
+  itemClasses,
+  itemsClasses,
   selectedIcon,
-  selectedIconClassName,
-  tagClassName,
-  wrapperClassName,
+  selectedIconClasses,
+  tagClasses,
+  wrapperClasses,
 } from "./view";

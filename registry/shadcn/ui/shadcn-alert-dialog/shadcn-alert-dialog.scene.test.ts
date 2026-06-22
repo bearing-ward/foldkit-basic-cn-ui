@@ -10,8 +10,8 @@ describe("shadcn AlertDialog registry view", () => {
     expect(AlertDialog.footerView).toBeTypeOf("function");
     expect(AlertDialog.mediaView).toBeTypeOf("function");
     expect(AlertDialog.closeView).toBeTypeOf("function");
-    expect(AlertDialog.shadcnAlertDialogPopupClassName).toContain("rounded");
-    expect(AlertDialog.shadcnAlertDialogContentSmClassName).toContain(
+    expect(AlertDialog.shadcnAlertDialogPopupClasses).toContain("rounded");
+    expect(AlertDialog.shadcnAlertDialogContentSmClasses).toContain(
       "max-w-xs"
     );
   });

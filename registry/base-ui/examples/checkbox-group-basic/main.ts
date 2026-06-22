@@ -85,7 +85,7 @@ export const view = Submodel.defineView<Model, Message>(
           allValues: appleValues,
           label: "All apples",
           onValueChange: ToggledAllApples(),
-          className: "mb-1",
+          classes: "mb-1",
         }),
         CheckboxGroup.itemView<Message>({
           value: "fuji-apple",

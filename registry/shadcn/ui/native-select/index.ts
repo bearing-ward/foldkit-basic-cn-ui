@@ -2,17 +2,17 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  nativeSelectDescriptionClassName,
-  nativeSelectLabelClassName,
-  nativeSelectRootClassName,
-  nativeSelectTriggerClassName,
+  nativeSelectDescriptionClasses,
+  nativeSelectLabelClasses,
+  nativeSelectRootClasses,
+  nativeSelectTriggerClasses,
 } from "./view";
 
 export {
-  nativeSelectDescriptionClassName,
-  nativeSelectLabelClassName,
-  nativeSelectRootClassName,
-  nativeSelectTriggerClassName,
+  nativeSelectDescriptionClasses,
+  nativeSelectLabelClasses,
+  nativeSelectRootClasses,
+  nativeSelectTriggerClasses,
 } from "./view";
 
 export type OptionConfig = Readonly<{
@@ -31,13 +31,13 @@ export type OptionItemConfig = OptionConfig | OptionGroupConfig;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
 }>;
 
 export type LabelViewConfig = Readonly<{
   forId: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
 }>;
 
 export type TriggerViewConfig<ParentMessage> = Readonly<{
@@ -48,17 +48,17 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   ariaLabel?: string | undefined;
   describedById?: string | undefined;
   disabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
 }>;
 
 export type DescriptionViewConfig = Readonly<{
   id: string;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -68,14 +68,14 @@ const isOptionGroupConfig = (
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "native-select"),
-      h.Class(classNames(nativeSelectRootClassName, className)),
+      h.Class(cn(nativeSelectRootClasses, classes)),
     ],
     children
   );
@@ -84,7 +84,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   forId,
   children,
-  className,
+  classes,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -92,7 +92,7 @@ export const labelView = <ParentMessage>({
     [
       h.For(forId),
       h.DataAttribute("slot", "native-select-label"),
-      h.Class(classNames(nativeSelectLabelClassName, className)),
+      h.Class(cn(nativeSelectLabelClasses, classes)),
     ],
     children
   );
@@ -106,7 +106,7 @@ export const triggerView = <ParentMessage>({
   ariaLabel,
   describedById,
   disabled = false,
-  className,
+  classes,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -121,7 +121,7 @@ export const triggerView = <ParentMessage>({
         ? []
         : [h.AriaDescribedBy(describedById)]),
       h.DataAttribute("slot", "native-select-trigger"),
-      h.Class(classNames(nativeSelectTriggerClassName, className)),
+      h.Class(cn(nativeSelectTriggerClasses, classes)),
     ],
     options.map((option) =>
       isOptionGroupConfig(option)
@@ -154,7 +154,7 @@ export const triggerView = <ParentMessage>({
 export const descriptionView = <ParentMessage>({
   id,
   children,
-  className,
+  classes,
 }: DescriptionViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -162,7 +162,7 @@ export const descriptionView = <ParentMessage>({
     [
       h.Id(id),
       h.DataAttribute("slot", "native-select-description"),
-      h.Class(classNames(nativeSelectDescriptionClassName, className)),
+      h.Class(cn(nativeSelectDescriptionClasses, classes)),
     ],
     children
   );

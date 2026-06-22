@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-context-menu/index.ts",
       "target": "src/ui/shadcn-context-menu/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  backdropView,\n  itemView,\n  popupView,\n  portalView,\n  positionerView,\n  rootView,\n  separatorView,\n  triggerView,\n} from \"../../../foldkit/ui/context-menu\";\nexport type {\n  BackdropViewConfig,\n  ContextMenuStyle,\n  ItemViewConfig,\n  PartViewConfig,\n  PortalViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../../../foldkit/ui/context-menu\";\n\nexport {\n  shadcnContextMenuBackdropClassName,\n  shadcnContextMenuItemClassName,\n  shadcnContextMenuPopupClassName,\n  shadcnContextMenuPortalClassName,\n  shadcnContextMenuPositionerClassName,\n  shadcnContextMenuRootClassName,\n  shadcnContextMenuSeparatorClassName,\n  shadcnContextMenuTriggerClassName,\n} from \"./view\";\n"
+      "content": "export {\n  backdropView,\n  itemView,\n  popupView,\n  portalView,\n  positionerView,\n  rootView,\n  separatorView,\n  triggerView,\n} from \"../../../foldkit/ui/context-menu\";\nexport type {\n  BackdropViewConfig,\n  ContextMenuStyle,\n  ItemViewConfig,\n  PartViewConfig,\n  PortalViewConfig,\n  RootViewConfig,\n  TriggerViewConfig,\n} from \"../../../foldkit/ui/context-menu\";\n\nexport {\n  shadcnContextMenuBackdropClasses,\n  shadcnContextMenuItemClasses,\n  shadcnContextMenuPopupClasses,\n  shadcnContextMenuPortalClasses,\n  shadcnContextMenuPositionerClasses,\n  shadcnContextMenuRootClasses,\n  shadcnContextMenuSeparatorClasses,\n  shadcnContextMenuTriggerClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-context-menu/view.ts",
       "target": "src/ui/shadcn-context-menu/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  contextMenuBackdropClassName as shadcnContextMenuBackdropClassName,\n  contextMenuItemClassName as shadcnContextMenuItemClassName,\n  contextMenuPopupClassName as shadcnContextMenuPopupClassName,\n  contextMenuPortalClassName as shadcnContextMenuPortalClassName,\n  contextMenuPositionerClassName as shadcnContextMenuPositionerClassName,\n  contextMenuRootClassName as shadcnContextMenuRootClassName,\n  contextMenuSeparatorClassName as shadcnContextMenuSeparatorClassName,\n  contextMenuTriggerClassName as shadcnContextMenuTriggerClassName,\n} from \"../../../foldkit/ui/context-menu/view\";\n"
+      "content": "export {\n  contextMenuBackdropClasses as shadcnContextMenuBackdropClasses,\n  contextMenuItemClasses as shadcnContextMenuItemClasses,\n  contextMenuPopupClasses as shadcnContextMenuPopupClasses,\n  contextMenuPortalClasses as shadcnContextMenuPortalClasses,\n  contextMenuPositionerClasses as shadcnContextMenuPositionerClasses,\n  contextMenuRootClasses as shadcnContextMenuRootClasses,\n  contextMenuSeparatorClasses as shadcnContextMenuSeparatorClasses,\n  contextMenuTriggerClasses as shadcnContextMenuTriggerClasses,\n} from \"../../../foldkit/ui/context-menu/view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-context-menu/shadcn-context-menu.scene.test.ts",
       "target": "src/ui/shadcn-context-menu/shadcn-context-menu.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as ContextMenu from \"./index\";\n\ndescribe(\"shadcn Context Menu registry view\", () => {\n  test(\"reuses the Foldkit Context Menu view contract\", () => {\n    expect(ContextMenu.rootView).toBeTypeOf(\"function\");\n    expect(ContextMenu.triggerView).toBeTypeOf(\"function\");\n    expect(ContextMenu.itemView).toBeTypeOf(\"function\");\n    expect(ContextMenu.shadcnContextMenuPopupClassName).toContain(\"rounded\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as ContextMenu from \"./index\";\n\ndescribe(\"shadcn Context Menu registry view\", () => {\n  test(\"reuses the Foldkit Context Menu view contract\", () => {\n    expect(ContextMenu.rootView).toBeTypeOf(\"function\");\n    expect(ContextMenu.triggerView).toBeTypeOf(\"function\");\n    expect(ContextMenu.itemView).toBeTypeOf(\"function\");\n    expect(ContextMenu.shadcnContextMenuPopupClasses).toContain(\"rounded\");\n  });\n});\n"
     }
   ],
   "meta": {

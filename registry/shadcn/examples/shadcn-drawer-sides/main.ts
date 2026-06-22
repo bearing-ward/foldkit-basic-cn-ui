@@ -96,7 +96,7 @@ const messageForSide = (side: DrawerSide): Message =>
     M.exhaustive
   );
 
-const viewportClassName = (side: DrawerSide): string =>
+const viewportClasses = (side: DrawerSide): string =>
   M.value(side).pipe(
     M.withReturnType<string>(),
     M.when("top", () => "items-start justify-stretch"),
@@ -106,7 +106,7 @@ const viewportClassName = (side: DrawerSide): string =>
     M.exhaustive
   );
 
-const popupClassName = (side: DrawerSide): string =>
+const popupClasses = (side: DrawerSide): string =>
   M.value(side).pipe(
     M.withReturnType<string>(),
     M.when("top", () => "h-auto max-h-[50vh] max-w-none p-0"),
@@ -128,7 +128,7 @@ const drawerForSide = (model: Model, side: DrawerSide): Html => {
     children: [
       Drawer.triggerView<Message>({
         onClick: messageForSide(side),
-        className:
+        classes:
           "border border-gray-200 bg-white capitalize text-gray-950 hover:bg-gray-50",
         children: [h.span([], [side])],
       }),
@@ -137,15 +137,15 @@ const drawerForSide = (model: Model, side: DrawerSide): Html => {
         children: [
           Drawer.backdropView<Message>({ children: [] }),
           Drawer.viewportView<Message>({
-            className: viewportClassName(side),
+            classes: viewportClasses(side),
             children: [
               Drawer.popupView<Message>({
                 titleId,
                 descriptionId,
-                className: popupClassName(side),
+                classes: popupClasses(side),
                 children: [
                   Drawer.contentView<Message>({
-                    className: "gap-0",
+                    classes: "gap-0",
                     children: [
                       h.div(
                         [h.Class("grid gap-1.5 p-4 text-center sm:text-left")],
@@ -182,7 +182,7 @@ const drawerForSide = (model: Model, side: DrawerSide): Html => {
                             [
                               h.Type("button"),
                               h.OnClick(ClickedSubmit()),
-                              h.Class(Drawer.shadcnDrawerTriggerClassName),
+                              h.Class(Drawer.shadcnDrawerTriggerClasses),
                             ],
                             ["Submit"]
                           ),

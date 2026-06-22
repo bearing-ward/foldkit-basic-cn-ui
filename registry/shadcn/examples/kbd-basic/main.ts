@@ -40,7 +40,7 @@ export const update = (
 
 // VIEW
 
-const demoRowClassName = "flex flex-wrap items-center gap-2";
+const demoRowClasses = "flex flex-wrap items-center gap-2";
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
@@ -49,7 +49,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex flex-col items-start gap-5")],
     [
       h.div(
-        [h.Class(demoRowClassName)],
+        [h.Class(demoRowClasses)],
         [
           Kbd.view<Message>({ label: "⌘" }),
           Kbd.view<Message>({ label: "⇧" }),
@@ -64,7 +64,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         ]
       ),
       h.div(
-        [h.Class(demoRowClassName)],
+        [h.Class(demoRowClasses)],
         [
           h.span([h.Class("text-sm text-gray-700")], ["Use"]),
           Kbd.groupView<Message>([
@@ -93,7 +93,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         ["Accept", Kbd.view<Message>({ label: "⏎", size: "Small" })]
       ),
       h.div(
-        [h.Class(demoRowClassName)],
+        [h.Class(demoRowClasses)],
         [
           h.button(
             [

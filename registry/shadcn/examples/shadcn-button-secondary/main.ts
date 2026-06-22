@@ -43,7 +43,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           h.button(
             [
               ...attributes.button,
-              h.Class(Button.shadcnSecondaryButtonClassName),
+              h.Class(Button.shadcnSecondaryButtonClasses),
             ],
             ["Secondary"]
           ),

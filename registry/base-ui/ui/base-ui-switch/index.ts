@@ -21,10 +21,10 @@ export type {
 } from "../../../foldkit/ui/switch";
 
 export {
-  baseUiSwitchButtonClassName,
-  baseUiSwitchDescriptionClassName,
+  baseUiSwitchButtonClasses,
+  baseUiSwitchDescriptionClasses,
   baseUiSwitchKnob,
-  baseUiSwitchLabelClassName,
-  baseUiSwitchRowClassName,
-  baseUiSwitchTextClassName,
+  baseUiSwitchLabelClasses,
+  baseUiSwitchRowClasses,
+  baseUiSwitchTextClasses,
 } from "./view";

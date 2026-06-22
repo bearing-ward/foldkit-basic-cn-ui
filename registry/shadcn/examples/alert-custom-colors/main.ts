@@ -39,6 +39,6 @@ export const view = Submodel.defineView<Model, Message>(
         "Renew now to avoid service interruption or upgrade to a paid plan to continue using the service.",
       icon: "!",
       variant: "Default",
-      className: Alert.alertCustomColorClassName,
+      classes: Alert.alertCustomColorClasses,
     })
 );

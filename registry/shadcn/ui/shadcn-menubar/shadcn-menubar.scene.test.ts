@@ -7,6 +7,6 @@ describe("shadcn Menubar registry view", () => {
     expect(Menubar.rootView).toBeTypeOf("function");
     expect(Menubar.triggerView).toBeTypeOf("function");
     expect(Menubar.popupView).toBeTypeOf("function");
-    expect(Menubar.shadcnMenubarRootClassName).toContain("border");
+    expect(Menubar.shadcnMenubarRootClasses).toContain("border");
   });
 });

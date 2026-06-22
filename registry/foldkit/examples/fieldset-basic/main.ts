@@ -58,46 +58,46 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         id: "profile-fieldset",
         toView: (attributes) =>
           h.fieldset(
-            [...attributes.fieldset, h.Class(Fieldset.fieldsetClassName)],
+            [...attributes.fieldset, h.Class(Fieldset.fieldsetClasses)],
             [
               h.legend(
-                [...attributes.legend, h.Class(Fieldset.legendClassName)],
+                [...attributes.legend, h.Class(Fieldset.legendClasses)],
                 ["Profile"]
               ),
               h.p(
                 [
                   ...attributes.description,
-                  h.Class(Fieldset.descriptionClassName),
+                  h.Class(Fieldset.descriptionClasses),
                 ],
                 ["Keep public profile details grouped for form review."]
               ),
               h.div(
-                [h.Class(Fieldset.fieldsClassName)],
+                [h.Class(Fieldset.fieldsClasses)],
                 [
                   h.label(
-                    [h.Class(Fieldset.fieldClassName)],
+                    [h.Class(Fieldset.fieldClasses)],
                     [
-                      h.span([h.Class(Fieldset.labelClassName)], ["Name"]),
+                      h.span([h.Class(Fieldset.labelClasses)], ["Name"]),
                       h.input([
                         h.AriaLabel("Name"),
                         h.Value(model.name),
                         h.Placeholder("Ada Lovelace"),
                         h.OnInput((value) => UpdatedName({ value })),
-                        h.Class(Fieldset.inputClassName),
+                        h.Class(Fieldset.inputClasses),
                       ]),
                     ]
                   ),
                   h.label(
-                    [h.Class(Fieldset.fieldClassName)],
+                    [h.Class(Fieldset.fieldClasses)],
                     [
-                      h.span([h.Class(Fieldset.labelClassName)], ["Bio"]),
+                      h.span([h.Class(Fieldset.labelClasses)], ["Bio"]),
                       h.textarea(
                         [
                           h.AriaLabel("Bio"),
                           h.Value(model.bio),
                           h.Placeholder("Short introduction"),
                           h.OnInput((value) => UpdatedBio({ value })),
-                          h.Class(Fieldset.textareaClassName),
+                          h.Class(Fieldset.textareaClasses),
                         ],
                         []
                       ),

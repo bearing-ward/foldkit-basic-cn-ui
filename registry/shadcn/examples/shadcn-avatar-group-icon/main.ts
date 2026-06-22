@@ -41,7 +41,7 @@ export const view = Submodel.defineView<Model, Message>(() => {
       [
         h.Attribute("role", "img"),
         h.AriaLabel("Add three more people"),
-        h.Class(`${Avatar.shadcnAvatarGroupCountClassName} text-base`),
+        h.Class(`${Avatar.shadcnAvatarGroupCountClasses} text-base`),
       ],
       ["+"]
     ),

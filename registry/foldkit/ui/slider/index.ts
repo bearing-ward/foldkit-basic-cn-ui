@@ -41,13 +41,13 @@ export const {
 } = Ui.Slider;
 
 export {
-  filledTrackClassName,
-  headerClassName,
-  labelClassName,
-  rootClassName,
+  filledTrackClasses,
+  headerClasses,
+  labelClasses,
+  rootClasses,
   sliderFieldView,
-  thumbClassName,
-  trackClassName,
-  valueClassName,
+  thumbClasses,
+  trackClasses,
+  valueClasses,
 } from "./view";
 export type { SliderFieldViewInput } from "./view";

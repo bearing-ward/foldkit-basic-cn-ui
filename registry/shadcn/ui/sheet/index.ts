@@ -2,34 +2,34 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  sheetCloseClassName,
-  sheetContentClassName,
-  sheetDescriptionClassName,
-  sheetFooterClassName,
-  sheetHeaderClassName,
-  sheetOverlayClassName,
-  sheetPortalClassName,
-  sheetRootClassName,
-  sheetTitleClassName,
-  sheetTriggerClassName,
+  sheetCloseClasses,
+  sheetContentClasses,
+  sheetDescriptionClasses,
+  sheetFooterClasses,
+  sheetHeaderClasses,
+  sheetOverlayClasses,
+  sheetPortalClasses,
+  sheetRootClasses,
+  sheetTitleClasses,
+  sheetTriggerClasses,
 } from "./view";
 
 export {
-  sheetCloseClassName,
-  sheetContentClassName,
-  sheetDescriptionClassName,
-  sheetFooterClassName,
-  sheetHeaderClassName,
-  sheetOverlayClassName,
-  sheetPortalClassName,
-  sheetRootClassName,
-  sheetTitleClassName,
-  sheetTriggerClassName,
+  sheetCloseClasses,
+  sheetContentClasses,
+  sheetDescriptionClasses,
+  sheetFooterClasses,
+  sheetHeaderClasses,
+  sheetOverlayClasses,
+  sheetPortalClasses,
+  sheetRootClasses,
+  sheetTitleClasses,
+  sheetTriggerClasses,
 } from "./view";
 
 export type ViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
 }>;
 
 export type TriggerViewConfig<ParentMessage> = ViewConfig &
@@ -51,21 +51,21 @@ export type LabelViewConfig = Readonly<{
 export type CloseViewConfig<ParentMessage> = ViewConfig &
   Readonly<{ onClose: ParentMessage; ariaLabel?: string | undefined }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet"),
-      h.Class(classNames(sheetRootClassName, className)),
+      h.Class(cn(sheetRootClasses, classes)),
     ],
     children
   );
@@ -74,7 +74,7 @@ export const rootView = <ParentMessage>({
 export const triggerView = <ParentMessage>({
   children,
   onOpen,
-  className,
+  classes,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -83,7 +83,7 @@ export const triggerView = <ParentMessage>({
       h.Type("button"),
       h.OnClick(onOpen),
       h.DataAttribute("slot", "sheet-trigger"),
-      h.Class(classNames(sheetTriggerClassName, className)),
+      h.Class(cn(sheetTriggerClasses, classes)),
     ],
     children
   );
@@ -92,7 +92,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  className,
+  classes,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -103,7 +103,7 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "sheet-portal"),
-      h.Class(classNames(sheetPortalClassName, className)),
+      h.Class(cn(sheetPortalClasses, classes)),
     ],
     children
   );
@@ -111,14 +111,14 @@ export const portalView = <ParentMessage>({
 
 export const overlayView = <ParentMessage>({
   children = [],
-  className,
+  classes,
 }: Partial<ViewConfig>): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet-overlay"),
-      h.Class(classNames(sheetOverlayClassName, className)),
+      h.Class(cn(sheetOverlayClasses, classes)),
     ],
     children
   );
@@ -126,7 +126,7 @@ export const overlayView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  className,
+  classes,
   ariaDescribedBy,
   ariaLabelledBy,
 }: ContentViewConfig): Html => {
@@ -143,7 +143,7 @@ export const contentView = <ParentMessage>({
         ? []
         : [h.AriaDescribedBy(ariaDescribedBy)]),
       h.DataAttribute("slot", "sheet-content"),
-      h.Class(classNames(sheetContentClassName, className)),
+      h.Class(cn(sheetContentClasses, classes)),
     ],
     children
   );
@@ -151,14 +151,14 @@ export const contentView = <ParentMessage>({
 
 export const headerView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet-header"),
-      h.Class(classNames(sheetHeaderClassName, className)),
+      h.Class(cn(sheetHeaderClasses, classes)),
     ],
     children
   );
@@ -174,7 +174,7 @@ export const titleView = <ParentMessage>({
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       h.DataAttribute("slot", "sheet-title"),
-      h.Class(sheetTitleClassName),
+      h.Class(sheetTitleClasses),
     ],
     [label]
   );
@@ -190,7 +190,7 @@ export const descriptionView = <ParentMessage>({
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       h.DataAttribute("slot", "sheet-description"),
-      h.Class(sheetDescriptionClassName),
+      h.Class(sheetDescriptionClasses),
     ],
     [label]
   );
@@ -200,7 +200,7 @@ export const closeView = <ParentMessage>({
   children,
   onClose,
   ariaLabel = "Close sheet",
-  className,
+  classes,
 }: CloseViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -210,7 +210,7 @@ export const closeView = <ParentMessage>({
       h.AriaLabel(ariaLabel),
       h.OnClick(onClose),
       h.DataAttribute("slot", "sheet-close"),
-      h.Class(classNames(sheetCloseClassName, className)),
+      h.Class(cn(sheetCloseClasses, classes)),
     ],
     children
   );
@@ -218,14 +218,14 @@ export const closeView = <ParentMessage>({
 
 export const footerView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet-footer"),
-      h.Class(classNames(sheetFooterClassName, className)),
+      h.Class(cn(sheetFooterClasses, classes)),
     ],
     children
   );

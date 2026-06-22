@@ -96,12 +96,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           isOptionDisabled: (value) => value === "Spacious",
           toView: ({ group, options }) =>
             h.div(
-              [...group, h.Class(RadioGroup.horizontalGroupClassName)],
+              [...group, h.Class(RadioGroup.horizontalGroupClasses)],
               options.map((option) =>
                 h.div(
                   [
                     ...option.option,
-                    h.Class(RadioGroup.horizontalOptionClassName),
+                    h.Class(RadioGroup.horizontalOptionClasses),
                   ],
                   [
                     h.div(
@@ -113,14 +113,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                             h.span(
                               [
                                 ...option.label,
-                                h.Class(RadioGroup.labelClassName),
+                                h.Class(RadioGroup.labelClasses),
                               ],
                               [option.value]
                             ),
                             h.p(
                               [
                                 ...option.description,
-                                h.Class(RadioGroup.descriptionClassName),
+                                h.Class(RadioGroup.descriptionClasses),
                               ],
                               [`${option.value} spacing`]
                             ),

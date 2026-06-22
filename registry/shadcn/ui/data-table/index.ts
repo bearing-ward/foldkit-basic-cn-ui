@@ -2,34 +2,34 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  dataTableButtonClassName,
-  dataTableCellClassName,
-  dataTableCheckboxCellClassName,
-  dataTableContainerClassName,
-  dataTableEmptyCellClassName,
-  dataTableFooterClassName,
-  dataTableHeadClassName,
-  dataTableHeaderClassName,
-  dataTableRowClassName,
-  dataTableTableClassName,
-  dataTableToolbarClassName,
+  dataTableButtonClasses,
+  dataTableCellClasses,
+  dataTableCheckboxCellClasses,
+  dataTableContainerClasses,
+  dataTableEmptyCellClasses,
+  dataTableFooterClasses,
+  dataTableHeadClasses,
+  dataTableHeaderClasses,
+  dataTableRowClasses,
+  dataTableTableClasses,
+  dataTableToolbarClasses,
 } from "./view";
 
 export {
-  dataTableButtonClassName,
-  dataTableCellClassName,
-  dataTableCheckboxCellClassName,
-  dataTableContainerClassName,
-  dataTableEmptyCellClassName,
-  dataTableFooterClassName,
-  dataTableHeadClassName,
-  dataTableHeaderClassName,
-  dataTableInputClassName,
-  dataTableMenuClassName,
-  dataTableMenuItemClassName,
-  dataTableRowClassName,
-  dataTableTableClassName,
-  dataTableToolbarClassName,
+  dataTableButtonClasses,
+  dataTableCellClasses,
+  dataTableCheckboxCellClasses,
+  dataTableContainerClasses,
+  dataTableEmptyCellClasses,
+  dataTableFooterClasses,
+  dataTableHeadClasses,
+  dataTableHeaderClasses,
+  dataTableInputClasses,
+  dataTableMenuClasses,
+  dataTableMenuItemClasses,
+  dataTableRowClasses,
+  dataTableTableClasses,
+  dataTableToolbarClasses,
 } from "./view";
 
 /** Payment status values used by the shadcn data-table guide examples. */
@@ -71,13 +71,13 @@ export type PaginationState = Readonly<{
 /** Config for the root overflow container. */
 export type ContainerViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
 }>;
 
 /** Config for toolbar layout around filters and column controls. */
 export type ToolbarViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
 }>;
 
 /** Config for rendering the payment table. */
@@ -113,8 +113,8 @@ const defaultVisibility: VisibilityState = {
   amount: true,
 };
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -266,14 +266,14 @@ export const selectedCount = (selection: RowSelectionState): number =>
 /** Renders the rounded data-table container. */
 export const containerView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ContainerViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "data-table"),
-      h.Class(classNames(dataTableContainerClassName, className)),
+      h.Class(cn(dataTableContainerClasses, classes)),
     ],
     children
   );
@@ -282,12 +282,12 @@ export const containerView = <ParentMessage>({
 /** Renders the shadcn-style toolbar row. */
 export const toolbarView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ToolbarViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(classNames(dataTableToolbarClassName, className))],
+    [h.Class(cn(dataTableToolbarClasses, classes))],
     children
   );
 };
@@ -339,10 +339,10 @@ export const paymentsTableView = <ParentMessage>({
   return containerView<ParentMessage>({
     children: [
       h.table(
-        [h.Class(dataTableTableClassName)],
+        [h.Class(dataTableTableClasses)],
         [
           h.thead(
-            [h.Class(dataTableHeaderClassName)],
+            [h.Class(dataTableHeaderClasses)],
             [
               h.tr(
                 [],
@@ -350,7 +350,7 @@ export const paymentsTableView = <ParentMessage>({
                   ...(hasSelection
                     ? [
                         h.th(
-                          [h.Class(dataTableCheckboxCellClassName)],
+                          [h.Class(dataTableCheckboxCellClasses)],
                           [
                             h.input([
                               h.Type("checkbox"),
@@ -367,16 +367,16 @@ export const paymentsTableView = <ParentMessage>({
                       ]
                     : []),
                   ...(visibleColumns.status
-                    ? [h.th([h.Class(dataTableHeadClassName)], ["Status"])]
+                    ? [h.th([h.Class(dataTableHeadClasses)], ["Status"])]
                     : []),
                   ...(visibleColumns.email
-                    ? [h.th([h.Class(dataTableHeadClassName)], ["Email"])]
+                    ? [h.th([h.Class(dataTableHeadClasses)], ["Email"])]
                     : []),
                   ...(visibleColumns.amount
-                    ? [h.th([h.Class(dataTableHeadClassName)], ["Amount"])]
+                    ? [h.th([h.Class(dataTableHeadClasses)], ["Amount"])]
                     : []),
                   ...(hasActions
-                    ? [h.th([h.Class(dataTableHeadClassName)], [""])]
+                    ? [h.th([h.Class(dataTableHeadClasses)], [""])]
                     : []),
                 ]
               ),
@@ -392,7 +392,7 @@ export const paymentsTableView = <ParentMessage>({
                       h.td(
                         [
                           h.Attribute("colspan", String(columnCount)),
-                          h.Class(dataTableEmptyCellClassName),
+                          h.Class(dataTableEmptyCellClasses),
                         ],
                         [emptyMessage]
                       ),
@@ -406,13 +406,13 @@ export const paymentsTableView = <ParentMessage>({
                         "selected",
                         selectedRows[payment.id] === true ? "true" : "false"
                       ),
-                      h.Class(dataTableRowClassName),
+                      h.Class(dataTableRowClasses),
                     ],
                     [
                       ...(hasSelection
                         ? [
                             h.td(
-                              [h.Class(dataTableCheckboxCellClassName)],
+                              [h.Class(dataTableCheckboxCellClasses)],
                               [
                                 h.input([
                                   h.Type("checkbox"),
@@ -431,7 +431,7 @@ export const paymentsTableView = <ParentMessage>({
                       ...(visibleColumns.status
                         ? [
                             h.td(
-                              [h.Class(dataTableCellClassName)],
+                              [h.Class(dataTableCellClasses)],
                               [payment.status]
                             ),
                           ]
@@ -439,7 +439,7 @@ export const paymentsTableView = <ParentMessage>({
                       ...(visibleColumns.email
                         ? [
                             h.td(
-                              [h.Class(dataTableCellClassName)],
+                              [h.Class(dataTableCellClasses)],
                               [payment.email]
                             ),
                           ]
@@ -450,7 +450,7 @@ export const paymentsTableView = <ParentMessage>({
                               [
                                 h.Class(
                                   `${
-                                    dataTableCellClassName
+                                    dataTableCellClasses
                                   } text-right font-medium`
                                 ),
                               ],
@@ -462,7 +462,7 @@ export const paymentsTableView = <ParentMessage>({
                         ? []
                         : [
                             h.td(
-                              [h.Class(`${dataTableCellClassName} text-right`)],
+                              [h.Class(`${dataTableCellClasses} text-right`)],
                               [actionView(payment)]
                             ),
                           ]),
@@ -487,7 +487,7 @@ export const paginationView = <ParentMessage>({
   const pages = pageCount(totalRows, pagination);
 
   return h.div(
-    [h.Class(dataTableFooterClassName)],
+    [h.Class(dataTableFooterClasses)],
     [
       h.p([], [`Page ${String(pagination.pageIndex + 1)} of ${String(pages)}`]),
       h.div(
@@ -496,7 +496,7 @@ export const paginationView = <ParentMessage>({
           h.button(
             [
               h.Type("button"),
-              h.Class(dataTableButtonClassName),
+              h.Class(dataTableButtonClasses),
               ...(pagination.pageIndex === 0
                 ? [h.Attribute("disabled", "")]
                 : [h.OnClick(onPrevious)]),
@@ -506,7 +506,7 @@ export const paginationView = <ParentMessage>({
           h.button(
             [
               h.Type("button"),
-              h.Class(dataTableButtonClassName),
+              h.Class(dataTableButtonClasses),
               ...(pagination.pageIndex >= pages - 1
                 ? [h.Attribute("disabled", "")]
                 : [h.OnClick(onNext)]),

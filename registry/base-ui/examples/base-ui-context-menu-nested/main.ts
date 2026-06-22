@@ -133,7 +133,7 @@ const submenuTriggerView = (open: boolean): Html => {
       ...(open ? [h.DataAttribute("popup-open", "")] : []),
       h.OnClick(OpenedPlaylistSubmenu()),
       h.Class(
-        `${ContextMenu.contextMenuItemClassName} flex w-full items-center justify-between gap-4 data-[popup-open]:bg-gray-100`
+        `${ContextMenu.contextMenuItemClasses} flex w-full items-center justify-between gap-4 data-[popup-open]:bg-gray-100`
       ),
     ],
     [h.span([], ["Add to Playlist"]), caretRightIcon()]
@@ -151,7 +151,7 @@ const submenuView = (open: boolean): Html => {
     [h.Class("absolute left-full top-8 -ml-1")],
     [
       ContextMenu.popupView<Message>({
-        className: ContextMenu.contextMenuSubmenuPopupClassName,
+        classes: ContextMenu.contextMenuSubmenuPopupClasses,
         children: [
           itemView("Get Up!"),
           itemView("Inside Out"),
@@ -182,7 +182,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             onClose: ClosedContextMenu(),
           }),
           ContextMenu.positionerView<Message>({
-            className: "base-ui-context-menu-positioner relative",
+            classes: "base-ui-context-menu-positioner relative",
             testId: "base-ui-context-menu-positioner",
             style: {
               left: `${String(model.positionX)}px`,

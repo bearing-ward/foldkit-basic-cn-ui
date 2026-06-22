@@ -1,9 +1,9 @@
 export {
-  descriptionClassName as shadcnRadioGroupDescriptionClassName,
-  horizontalGroupClassName as shadcnRadioGroupHorizontalClassName,
-  horizontalOptionClassName as shadcnRadioGroupHorizontalOptionClassName,
-  labelClassName as shadcnRadioGroupLabelClassName,
-  metaClassName as shadcnRadioGroupMetaClassName,
-  verticalGroupClassName as shadcnRadioGroupVerticalClassName,
-  verticalOptionClassName as shadcnRadioGroupVerticalOptionClassName,
+  descriptionClasses as shadcnRadioGroupDescriptionClasses,
+  horizontalGroupClasses as shadcnRadioGroupHorizontalClasses,
+  horizontalOptionClasses as shadcnRadioGroupHorizontalOptionClasses,
+  labelClasses as shadcnRadioGroupLabelClasses,
+  metaClasses as shadcnRadioGroupMetaClasses,
+  verticalGroupClasses as shadcnRadioGroupVerticalClasses,
+  verticalOptionClasses as shadcnRadioGroupVerticalOptionClasses,
 } from "../../../foldkit/ui/radio-group/view";

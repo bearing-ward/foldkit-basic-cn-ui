@@ -92,15 +92,15 @@ export const update = (model: Model, message: Message): UpdateReturn =>
 
 // VIEW
 
-const shellClassName = "min-h-screen bg-white px-4 py-6 text-slate-950 sm:px-6";
-const containerClassName = "mx-auto flex w-full max-w-6xl flex-col gap-6";
-const panelClassName =
+const shellClasses = "min-h-screen bg-white px-4 py-6 text-slate-950 sm:px-6";
+const containerClasses = "mx-auto flex w-full max-w-6xl flex-col gap-6";
+const panelClasses =
   "rounded-[8px] border border-slate-200 bg-white p-4 shadow-sm";
-const eyebrowClassName =
+const eyebrowClasses =
   "font-mono text-xs font-medium uppercase text-slate-500";
-const sectionHeadingClassName = "text-xl font-semibold text-slate-950";
-const proseClassName = "text-sm leading-6 text-slate-600";
-const codeClassName =
+const sectionHeadingClasses = "text-xl font-semibold text-slate-950";
+const proseClasses = "text-sm leading-6 text-slate-600";
+const codeClasses =
   "overflow-x-auto rounded-[6px] border border-slate-200 bg-slate-950 p-4 font-mono text-xs leading-5 text-slate-50";
 
 const renderMetadata = (
@@ -135,8 +135,8 @@ const renderSection = (heading: string, children: readonly Html[]): Html => {
   const h = html<Message>();
 
   return h.section(
-    [h.Class(`${panelClassName} space-y-4`)],
-    [h.h2([h.Class(sectionHeadingClassName)], [heading]), ...children]
+    [h.Class(`${panelClasses} space-y-4`)],
+    [h.h2([h.Class(sectionHeadingClasses)], [heading]), ...children]
   );
 };
 
@@ -144,7 +144,7 @@ const renderParagraphs = (paragraphs: readonly string[]): readonly Html[] => {
   const h = html<Message>();
 
   return paragraphs.map((paragraph) =>
-    h.p([h.Class(proseClassName)], [paragraph])
+    h.p([h.Class(proseClasses)], [paragraph])
   );
 };
 
@@ -160,7 +160,7 @@ const renderList = (items: readonly string[]): Html => {
 const renderCode = (source: string): Html => {
   const h = html<Message>();
 
-  return h.pre([h.Class(codeClassName)], [h.code([], [source])]);
+  return h.pre([h.Class(codeClasses)], [h.code([], [source])]);
 };
 
 const renderInstallCommands = (commands: readonly string[]): Html => {
@@ -246,14 +246,14 @@ const referenceView = (reference: DocumentationReference) => {
     const h = html<Message>();
 
     return h.main(
-      [h.Class(shellClassName)],
+      [h.Class(shellClasses)],
       [
         h.div(
-          [h.Class(containerClassName)],
+          [h.Class(containerClasses)],
           [
-            h.header([h.Class(`${panelClassName} space-y-4`)], [
+            h.header([h.Class(`${panelClasses} space-y-4`)], [
               h.div([h.Class("space-y-2")], [
-                h.p([h.Class(eyebrowClassName)], [reference.laneLabel]),
+                h.p([h.Class(eyebrowClasses)], [reference.laneLabel]),
                 h.h1([h.Class("text-4xl font-semibold text-slate-950")], [
                   reference.title,
                 ]),

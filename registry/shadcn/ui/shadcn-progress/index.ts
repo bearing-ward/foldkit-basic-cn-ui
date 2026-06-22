@@ -27,9 +27,9 @@ export type {
 } from "../../../base-ui/ui/progress";
 
 export {
-  shadcnProgressIndicatorClassName,
-  shadcnProgressLabelClassName,
-  shadcnProgressRootClassName,
-  shadcnProgressTrackClassName,
-  shadcnProgressValueClassName,
+  shadcnProgressIndicatorClasses,
+  shadcnProgressLabelClasses,
+  shadcnProgressRootClasses,
+  shadcnProgressTrackClasses,
+  shadcnProgressValueClasses,
 } from "./view";

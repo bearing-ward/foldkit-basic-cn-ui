@@ -55,7 +55,7 @@ export const update = (
 
 // VIEW
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex cursor-pointer items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-900 transition hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-600";
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
@@ -77,11 +77,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     [
                       Skeleton.view<Message>({
                         shape: "Text",
-                        className: "w-32",
+                        classes: "w-32",
                       }),
                       Skeleton.view<Message>({
                         shape: "Text",
-                        className: "w-48",
+                        classes: "w-48",
                       }),
                     ]
                   ),
@@ -92,35 +92,35 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 [
                   Skeleton.view<Message>({
                     shape: "Block",
-                    className: "h-32",
+                    classes: "h-32",
                   }),
                   Skeleton.view<Message>({
                     shape: "Text",
-                    className: "w-52",
+                    classes: "w-52",
                   }),
                   Skeleton.view<Message>({
                     shape: "Text",
-                    className: "w-36",
+                    classes: "w-36",
                   }),
                 ]
               ),
               h.div([h.Class("space-y-2"), h.AriaLabel("Text skeleton")], [
-                Skeleton.view<Message>({ shape: "Text", className: "w-72" }),
-                Skeleton.view<Message>({ shape: "Text", className: "w-64" }),
-                Skeleton.view<Message>({ shape: "Text", className: "w-56" }),
+                Skeleton.view<Message>({ shape: "Text", classes: "w-72" }),
+                Skeleton.view<Message>({ shape: "Text", classes: "w-64" }),
+                Skeleton.view<Message>({ shape: "Text", classes: "w-56" }),
               ]),
               h.div(
                 [h.Class("grid w-full gap-3"), h.AriaLabel("Form skeleton")],
                 [
-                  Skeleton.view<Message>({ shape: "Text", className: "w-24" }),
+                  Skeleton.view<Message>({ shape: "Text", classes: "w-24" }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    className: "h-9",
+                    classes: "h-9",
                   }),
-                  Skeleton.view<Message>({ shape: "Text", className: "w-24" }),
+                  Skeleton.view<Message>({ shape: "Text", classes: "w-24" }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    className: "h-9",
+                    classes: "h-9",
                   }),
                   Skeleton.view<Message>({ shape: "Button" }),
                 ]
@@ -128,25 +128,25 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.div(
                 [h.Class("grid w-full gap-3"), h.AriaLabel("Table skeleton")],
                 [
-                  Skeleton.view<Message>({ shape: "Text", className: "w-32" }),
+                  Skeleton.view<Message>({ shape: "Text", classes: "w-32" }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    className: "h-8",
+                    classes: "h-8",
                   }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    className: "h-8",
+                    classes: "h-8",
                   }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    className: "h-8",
+                    classes: "h-8",
                   }),
                 ]
               ),
               h.button(
                 [
                   h.OnClick(ClickedToggleSkeletonExample()),
-                  h.Class(buttonClassName),
+                  h.Class(buttonClasses),
                 ],
                 ["Show content"]
               ),
@@ -163,7 +163,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.button(
                 [
                   h.OnClick(ClickedToggleSkeletonExample()),
-                  h.Class(buttonClassName),
+                  h.Class(buttonClasses),
                 ],
                 ["Show loading"]
               ),

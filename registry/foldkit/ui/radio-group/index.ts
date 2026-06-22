@@ -42,11 +42,11 @@ export const { create } = Ui.RadioGroup;
 export {
   checkIcon,
   checkPlaceholder,
-  descriptionClassName,
-  horizontalGroupClassName,
-  horizontalOptionClassName,
-  labelClassName,
-  metaClassName,
-  verticalGroupClassName,
-  verticalOptionClassName,
+  descriptionClasses,
+  horizontalGroupClasses,
+  horizontalOptionClasses,
+  labelClasses,
+  metaClasses,
+  verticalGroupClasses,
+  verticalOptionClasses,
 } from "./view";

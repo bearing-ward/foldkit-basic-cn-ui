@@ -99,25 +99,25 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [h.Class("flex flex-wrap gap-2")],
         [
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["left"]
           ),
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["top"]
           ),
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["bottom"]
           ),
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["right"]
           ),
         ]
       ),
       h.button(
-        [h.Type("button"), h.Class(`${Tooltip.tooltipTriggerClassName} gap-2`)],
+        [h.Type("button"), h.Class(`${Tooltip.tooltipTriggerClasses} gap-2`)],
         [
           h.span([], ["Save"]),
           h.span(
@@ -138,19 +138,19 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [h.Dir("rtl"), h.Class("flex flex-wrap gap-2")],
         [
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["يسار"]
           ),
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["أعلى"]
           ),
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["أسفل"]
           ),
           h.button(
-            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClassName)],
+            [h.Type("button"), h.Class(Tooltip.tooltipTriggerClasses)],
             ["يمين"]
           ),
         ]

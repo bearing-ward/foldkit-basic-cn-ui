@@ -86,7 +86,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.button(
               [
                 ...attributes.checkbox,
-                h.Class(Checkbox.shadcnCheckboxControlClassName),
+                h.Class(Checkbox.shadcnCheckboxControlClasses),
               ],
               model.checkbox.isChecked ? ["✓"] : []
             ),
@@ -94,7 +94,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             h.label(
               [
                 ...attributes.label,
-                h.Class(Checkbox.shadcnCheckboxLabelClassName),
+                h.Class(Checkbox.shadcnCheckboxLabelClasses),
               ],
               [model.checkbox.isChecked ? "Checked" : "Unchecked"]
             ),

@@ -87,7 +87,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
   return {
     items: filterCities(inputValue),
     itemToConfig: (city, context) => ({
-      className: Combobox.itemClassName,
+      classes: Combobox.itemClasses,
       content: h.div(
         [h.Class("flex items-center gap-2")],
         [Combobox.selectedIcon(context.isSelected), h.span([], [city])]
@@ -96,18 +96,18 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
     itemToValue: (city) => city,
     itemToDisplayText: (city) => city,
     inputAttributes: childAttributes([
-      h.Class(Combobox.inputClassName),
+      h.Class(Combobox.inputClasses),
       h.Placeholder("Search cities..."),
       h.AriaLabel("City"),
     ]),
     inputWrapperAttributes: childAttributes([
-      h.Class(Combobox.inputWrapperClassName),
+      h.Class(Combobox.inputWrapperClasses),
     ]),
-    itemsAttributes: childAttributes([h.Class(Combobox.itemsClassName)]),
-    backdropAttributes: childAttributes([h.Class(Combobox.backdropClassName)]),
-    attributes: childAttributes([h.Class(Combobox.wrapperClassName)]),
+    itemsAttributes: childAttributes([h.Class(Combobox.itemsClasses)]),
+    backdropAttributes: childAttributes([h.Class(Combobox.backdropClasses)]),
+    attributes: childAttributes([h.Class(Combobox.wrapperClasses)]),
     buttonContent: h.span([], ["v"]),
-    buttonAttributes: childAttributes([h.Class(Combobox.buttonClassName)]),
+    buttonAttributes: childAttributes([h.Class(Combobox.buttonClasses)]),
     anchor: Combobox.defaultAnchor,
   };
 };

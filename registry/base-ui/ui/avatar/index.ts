@@ -2,26 +2,26 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  avatarBadgeClassName,
-  avatarClassNameBySize,
-  avatarFallbackClassName,
-  avatarGroupClassName,
-  avatarGroupCountClassName,
-  avatarImageClassName,
+  avatarBadgeClasses,
+  avatarClassesBySize,
+  avatarFallbackClasses,
+  avatarGroupClasses,
+  avatarGroupCountClasses,
+  avatarImageClasses,
 } from "./view";
 import type { AvatarSize } from "./view";
 
 export type { AvatarSize };
 
 export {
-  avatarBaseClassName,
-  avatarBadgeClassName,
-  avatarClassNameBySize,
-  avatarFallbackClassName,
-  avatarGroupClassName,
-  avatarGroupCountClassName,
-  avatarImageClassName,
-  avatarSizeClassNameBySize,
+  avatarBaseClasses,
+  avatarBadgeClasses,
+  avatarClassesBySize,
+  avatarFallbackClasses,
+  avatarGroupClasses,
+  avatarGroupCountClasses,
+  avatarImageClasses,
+  avatarSizeClassesBySize,
 } from "./view";
 
 export type AvatarStyle = Readonly<Record<string, string>>;
@@ -29,21 +29,21 @@ export type AvatarStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   size?: AvatarSize | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type ImageViewConfig = Readonly<{
   src: string;
   alt: string;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type FallbackViewConfig = Readonly<{
   children: readonly Html[];
   ariaLabel?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
@@ -52,33 +52,33 @@ export type ViewConfig = Readonly<{
   src?: string | undefined;
   alt?: string | undefined;
   size?: AvatarSize | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type CountConfig = Readonly<{
   count: number;
   label?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type BadgeViewConfig = Readonly<{
   children?: readonly Html[] | undefined;
   label?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
   size = "Default",
-  className,
+  classes,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -91,7 +91,7 @@ export const rootView = <ParentMessage>({
         size === "Small" ? "sm" : size === "Large" ? "lg" : "default"
       ),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(avatarClassNameBySize(size), className)),
+      h.Class(cn(avatarClassesBySize(size), classes)),
     ],
     children
   );
@@ -100,7 +100,7 @@ export const rootView = <ParentMessage>({
 export const imageView = <ParentMessage>({
   src,
   alt,
-  className,
+  classes,
   style,
 }: ImageViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -110,14 +110,14 @@ export const imageView = <ParentMessage>({
     h.Src(src),
     h.Alt(alt),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(classNames(avatarImageClassName, className)),
+    h.Class(cn(avatarImageClasses, classes)),
   ]);
 };
 
 export const fallbackView = <ParentMessage>({
   children,
   ariaLabel,
-  className,
+  classes,
   style,
 }: FallbackViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -127,7 +127,7 @@ export const fallbackView = <ParentMessage>({
       h.Attribute("data-slot", "avatar-fallback"),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(avatarFallbackClassName, className)),
+      h.Class(cn(avatarFallbackClasses, classes)),
     ],
     children
   );
@@ -138,12 +138,12 @@ export const view = <ParentMessage>({
   src,
   alt,
   size = "Default",
-  className,
+  classes,
   style,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
     size,
-    className,
+    classes,
     style,
     children:
       src === undefined
@@ -158,7 +158,7 @@ export const view = <ParentMessage>({
 export const badgeView = <ParentMessage>({
   children = [],
   label,
-  className,
+  classes,
   style,
 }: BadgeViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -168,7 +168,7 @@ export const badgeView = <ParentMessage>({
       h.Attribute("data-slot", "avatar-badge"),
       ...(label === undefined ? [h.AriaHidden(true)] : [h.AriaLabel(label)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(avatarBadgeClassName, className)),
+      h.Class(cn(avatarBadgeClasses, classes)),
     ],
     children
   );
@@ -176,14 +176,14 @@ export const badgeView = <ParentMessage>({
 
 export const groupView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.Attribute("data-slot", "avatar-group"),
-      h.Class(classNames(avatarGroupClassName, className)),
+      h.Class(cn(avatarGroupClasses, classes)),
     ],
     children
   );
@@ -192,7 +192,7 @@ export const groupView = <ParentMessage>(
 export const countView = <ParentMessage>({
   count,
   label,
-  className,
+  classes,
   style,
 }: CountConfig): Html => {
   const h = html<ParentMessage>();
@@ -200,7 +200,7 @@ export const countView = <ParentMessage>({
   return h.span(
     [
       h.Attribute("data-slot", "avatar-group-count"),
-      h.Class(classNames(avatarGroupCountClassName, className)),
+      h.Class(cn(avatarGroupCountClasses, classes)),
       h.AriaLabel(label ?? `${count} more people`),
       h.Attribute("role", "img"),
       ...(style === undefined ? [] : [h.Style(style)]),

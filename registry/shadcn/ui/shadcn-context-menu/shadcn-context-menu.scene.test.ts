@@ -7,6 +7,6 @@ describe("shadcn Context Menu registry view", () => {
     expect(ContextMenu.rootView).toBeTypeOf("function");
     expect(ContextMenu.triggerView).toBeTypeOf("function");
     expect(ContextMenu.itemView).toBeTypeOf("function");
-    expect(ContextMenu.shadcnContextMenuPopupClassName).toContain("rounded");
+    expect(ContextMenu.shadcnContextMenuPopupClasses).toContain("rounded");
   });
 });

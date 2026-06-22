@@ -34,13 +34,13 @@ export type ViewInputs = Ui.DatePicker.ViewInputs;
 
 export {
   anchorConfig,
-  backdropClassName,
+  backdropClasses,
   datePickerViewInputs,
   formatDate,
-  panelClassName,
-  placeholderClassName,
-  triggerClassName,
+  panelClasses,
+  placeholderClasses,
+  triggerClasses,
   triggerContent,
-  triggerContentClassName,
-  wrapperClassName,
+  triggerContentClasses,
+  wrapperClasses,
 } from "./view";

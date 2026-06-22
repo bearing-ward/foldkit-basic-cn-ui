@@ -1,6 +1,6 @@
 export {
-  descriptionClassName as shadcnInputDescriptionClassName,
-  fieldClassName as shadcnInputFieldClassName,
-  inputClassName as shadcnInputClassName,
-  labelClassName as shadcnInputLabelClassName,
+  descriptionClasses as shadcnInputDescriptionClasses,
+  fieldClasses as shadcnInputFieldClasses,
+  inputClasses as shadcnInputClasses,
+  labelClasses as shadcnInputLabelClasses,
 } from "../../../foldkit/ui/input/view";

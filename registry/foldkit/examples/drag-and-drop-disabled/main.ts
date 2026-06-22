@@ -53,13 +53,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class(DragAndDrop.dragRootClassName)],
+    [h.Class(DragAndDrop.dragRootClasses)],
     [
       h.div(
         [
           h.Role("list"),
           h.AriaLabel("Locked task order"),
-          h.Class(DragAndDrop.dragListClassName),
+          h.Class(DragAndDrop.dragListClasses),
         ],
         model.tasks.map((task) =>
           h.div(
@@ -67,13 +67,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.Role("listitem"),
               h.AriaDisabled(true),
               h.Class(
-                `${DragAndDrop.dragItemClassName} cursor-not-allowed opacity-60`
+                `${DragAndDrop.dragItemClasses} cursor-not-allowed opacity-60`
               ),
             ],
             [
               h.span([], [task.label]),
               h.span(
-                [h.AriaHidden(true), h.Class(DragAndDrop.dragHandleClassName)],
+                [h.AriaHidden(true), h.Class(DragAndDrop.dragHandleClasses)],
                 ["::"]
               ),
             ]
@@ -81,7 +81,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         )
       ),
       h.p(
-        [h.Class(DragAndDrop.dragStatusClassName)],
+        [h.Class(DragAndDrop.dragStatusClasses)],
         ["Task order is locked."]
       ),
     ]

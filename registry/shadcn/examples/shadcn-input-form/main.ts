@@ -71,10 +71,10 @@ export const update = (
 
 // VIEW
 
-const primaryButtonClassName =
+const primaryButtonClasses =
   "inline-flex h-9 items-center justify-center rounded-md bg-gray-950 px-4 text-sm font-medium text-white shadow-sm hover:bg-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-950";
 
-const secondaryButtonClassName =
+const secondaryButtonClasses =
   "inline-flex h-9 items-center justify-center rounded-md border border-gray-200 bg-white px-4 text-sm font-medium text-gray-950 shadow-sm hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400";
 
 const field = (
@@ -91,12 +91,12 @@ const field = (
   }>
 ): Html =>
   h.div(
-    [h.Class(Input.shadcnInputFieldClassName)],
+    [h.Class(Input.shadcnInputFieldClasses)],
     [
       h.label(
         [
           h.Attribute("for", config.id),
-          h.Class(`${Input.shadcnInputLabelClassName} flex items-center gap-2`),
+          h.Class(`${Input.shadcnInputLabelClasses} flex items-center gap-2`),
         ],
         [
           config.label,
@@ -113,7 +113,7 @@ const field = (
         ...(config.description === undefined
           ? []
           : [h.Attribute("aria-describedby", `${config.id}-description`)]),
-        h.Class(Input.shadcnInputClassName),
+        h.Class(Input.shadcnInputClasses),
       ]),
       ...(config.description === undefined
         ? []
@@ -121,7 +121,7 @@ const field = (
             h.p(
               [
                 h.Id(`${config.id}-description`),
-                h.Class(Input.shadcnInputDescriptionClassName),
+                h.Class(Input.shadcnInputDescriptionClasses),
               ],
               [config.description]
             ),
@@ -172,11 +172,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [h.Class("flex gap-2")],
         [
           h.button(
-            [h.Type("button"), h.Class(secondaryButtonClassName)],
+            [h.Type("button"), h.Class(secondaryButtonClasses)],
             ["Cancel"]
           ),
           h.button(
-            [h.Type("submit"), h.Class(primaryButtonClassName)],
+            [h.Type("submit"), h.Class(primaryButtonClasses)],
             ["Submit"]
           ),
         ]

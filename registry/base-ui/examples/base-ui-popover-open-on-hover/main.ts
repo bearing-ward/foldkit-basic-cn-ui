@@ -52,7 +52,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
 
   return h.div(
     [
-      h.Class(Popover.baseUiPopoverRootClassName),
+      h.Class(Popover.baseUiPopoverRootClasses),
       h.OnMouseLeave(LeftPopover()),
     ],
     [
@@ -61,7 +61,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.Type("button"),
           h.OnMouseEnter(HoveredTrigger()),
           h.AriaExpanded(model.open),
-          h.Class(Popover.baseUiPopoverTriggerClassName),
+          h.Class(Popover.baseUiPopoverTriggerClasses),
         ],
         ["Hover me"]
       ),
@@ -72,7 +72,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.div(
                 [
                   h.Role("dialog"),
-                  h.Class(Popover.baseUiPopoverPanelClassName),
+                  h.Class(Popover.baseUiPopoverPanelClasses),
                 ],
                 [
                   h.p(

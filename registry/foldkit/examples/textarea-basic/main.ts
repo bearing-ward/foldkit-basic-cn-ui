@@ -59,20 +59,20 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         onInput: (value) => UpdatedBio({ value }),
         toView: (attributes) =>
           h.div(
-            [h.Class(Textarea.fieldClassName)],
+            [h.Class(Textarea.fieldClasses)],
             [
               h.label(
-                [...attributes.label, h.Class(Textarea.labelClassName)],
+                [...attributes.label, h.Class(Textarea.labelClasses)],
                 ["Bio"]
               ),
               h.textarea(
-                [...attributes.textarea, h.Class(Textarea.textareaClassName)],
+                [...attributes.textarea, h.Class(Textarea.textareaClasses)],
                 []
               ),
               h.p(
                 [
                   ...attributes.description,
-                  h.Class(Textarea.descriptionClassName),
+                  h.Class(Textarea.descriptionClasses),
                 ],
                 ["A brief introduction about yourself."]
               ),

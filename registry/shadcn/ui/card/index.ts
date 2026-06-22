@@ -2,33 +2,33 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  cardClassName,
-  cardActionClassName,
-  cardContentClassName,
-  cardDescriptionClassName,
-  cardFooterClassName,
-  cardHeaderClassName,
-  cardTitleClassName,
+  cardClasses,
+  cardActionClasses,
+  cardContentClasses,
+  cardDescriptionClasses,
+  cardFooterClasses,
+  cardHeaderClasses,
+  cardTitleClasses,
 } from "./view";
 
 export {
-  cardActionClassName,
-  cardClassName,
-  cardContentClassName,
-  cardDescriptionClassName,
-  cardFooterClassName,
-  cardHeaderClassName,
-  cardTitleClassName,
+  cardActionClasses,
+  cardClasses,
+  cardContentClasses,
+  cardDescriptionClasses,
+  cardFooterClasses,
+  cardHeaderClasses,
+  cardTitleClasses,
 } from "./view";
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const view = <ParentMessage>(
   children: readonly Html[],
-  className?: string,
+  classes?: string,
   size: "Default" | "Small" = "Default"
 ): Html => {
   const h = html<ParentMessage>();
@@ -36,7 +36,7 @@ export const view = <ParentMessage>(
     [
       h.DataAttribute("slot", "card"),
       h.DataAttribute("size", size === "Small" ? "sm" : "default"),
-      h.Class(classNames(cardClassName, className)),
+      h.Class(cn(cardClasses, classes)),
     ],
     children
   );
@@ -44,13 +44,13 @@ export const view = <ParentMessage>(
 
 export const headerView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "card-header"),
-      h.Class(classNames(cardHeaderClassName, className)),
+      h.Class(cn(cardHeaderClasses, classes)),
     ],
     children
   );
@@ -58,13 +58,13 @@ export const headerView = <ParentMessage>(
 
 export const titleView = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.h3(
     [
       h.DataAttribute("slot", "card-title"),
-      h.Class(classNames(cardTitleClassName, className)),
+      h.Class(cn(cardTitleClasses, classes)),
     ],
     [label]
   );
@@ -72,13 +72,13 @@ export const titleView = <ParentMessage>(
 
 export const descriptionView = <ParentMessage>(
   label: string,
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.p(
     [
       h.DataAttribute("slot", "card-description"),
-      h.Class(classNames(cardDescriptionClassName, className)),
+      h.Class(cn(cardDescriptionClasses, classes)),
     ],
     [label]
   );
@@ -86,13 +86,13 @@ export const descriptionView = <ParentMessage>(
 
 export const actionView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "card-action"),
-      h.Class(classNames(cardActionClassName, className)),
+      h.Class(cn(cardActionClasses, classes)),
     ],
     children
   );
@@ -100,13 +100,13 @@ export const actionView = <ParentMessage>(
 
 export const contentView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "card-content"),
-      h.Class(classNames(cardContentClassName, className)),
+      h.Class(cn(cardContentClasses, classes)),
     ],
     children
   );
@@ -114,13 +114,13 @@ export const contentView = <ParentMessage>(
 
 export const footerView = <ParentMessage>(
   children: readonly Html[],
-  className?: string
+  classes?: string
 ): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "card-footer"),
-      h.Class(classNames(cardFooterClassName, className)),
+      h.Class(cn(cardFooterClasses, classes)),
     ],
     children
   );

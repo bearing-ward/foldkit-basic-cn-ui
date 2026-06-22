@@ -126,7 +126,7 @@ export const update = (
 const icon = (label: string): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(ToggleGroup.toggleGroupIconClassName)], [label]);
+  return h.span([h.Class(ToggleGroup.toggleGroupIconClasses)], [label]);
 };
 
 const section = (title: string, children: readonly Html[]): Html => {
@@ -142,19 +142,19 @@ const formatGroup = (
   ariaLabel: string,
   pressedValues: readonly string[],
   toMessage: (value: string) => Message,
-  className?: string,
-  itemClassName?: string
+  classes?: string,
+  itemClasses?: string
 ): Html =>
   ToggleGroup.rootView<Message>({
     ariaLabel,
-    className,
+    classes,
     children: [
       ToggleGroup.itemView<Message>({
         value: "bold",
         pressedValues,
         ariaLabel: `${ariaLabel} bold`,
         onPressedChange: toMessage("bold"),
-        className: itemClassName,
+        classes: itemClasses,
         children: [icon("B")],
       }),
       ToggleGroup.itemView<Message>({
@@ -162,7 +162,7 @@ const formatGroup = (
         pressedValues,
         ariaLabel: `${ariaLabel} italic`,
         onPressedChange: toMessage("italic"),
-        className: itemClassName,
+        classes: itemClasses,
         children: [icon("I")],
       }),
       ToggleGroup.itemView<Message>({
@@ -170,7 +170,7 @@ const formatGroup = (
         pressedValues,
         ariaLabel: `${ariaLabel} underline`,
         onPressedChange: toMessage("underline"),
-        className: itemClassName,
+        classes: itemClasses,
         children: [icon("U")],
       }),
     ],
@@ -180,19 +180,19 @@ const directionsGroup = (
   ariaLabel: string,
   pressedValues: readonly string[],
   toMessage: (value: string) => Message,
-  className?: string,
-  itemClassName?: string
+  classes?: string,
+  itemClasses?: string
 ): Html =>
   ToggleGroup.rootView<Message>({
     ariaLabel,
-    className,
+    classes,
     children: ["Top", "Bottom", "Left", "Right"].map((label) =>
       ToggleGroup.itemView<Message>({
         value: label.toLowerCase(),
         pressedValues,
         ariaLabel: `${ariaLabel} ${label}`,
         onPressedChange: toMessage(label.toLowerCase()),
-        className: itemClassName,
+        classes: itemClasses,
         children: [html<Message>().span([], [label])],
       })
     ),
@@ -295,14 +295,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.p([h.Class("text-sm text-gray-600")], ["Font Weight"]),
           ToggleGroup.rootView<Message>({
             ariaLabel: "Font weight",
-            className: "gap-2 border-0 bg-transparent p-0 shadow-none",
+            classes: "gap-2 border-0 bg-transparent p-0 shadow-none",
             children: fontWeights.map(([value, label]) =>
               ToggleGroup.itemView<Message>({
                 value,
                 pressedValues: model.custom,
                 ariaLabel: label,
                 onPressedChange: ClickedCustom({ value }),
-                className: "h-auto w-auto border border-gray-200 px-3 py-2",
+                classes: "h-auto w-auto border border-gray-200 px-3 py-2",
                 children: [h.span([], [label])],
               })
             ),

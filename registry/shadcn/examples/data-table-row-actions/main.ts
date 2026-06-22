@@ -80,7 +80,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     "aria-expanded",
                     model.openPaymentId === payment.id ? "true" : "false"
                   ),
-                  h.Class(DataTable.dataTableButtonClassName),
+                  h.Class(DataTable.dataTableButtonClasses),
                   h.OnClick(ClickedOpenActions({ paymentId: payment.id })),
                 ],
                 ["Open menu"]
@@ -89,14 +89,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 ? h.div(
                     [
                       h.Attribute("role", "menu"),
-                      h.Class(`${DataTable.dataTableMenuClassName} min-w-40`),
+                      h.Class(`${DataTable.dataTableMenuClasses} min-w-40`),
                     ],
                     [
                       h.button(
                         [
                           h.Type("button"),
                           h.Attribute("role", "menuitem"),
-                          h.Class(DataTable.dataTableMenuItemClassName),
+                          h.Class(DataTable.dataTableMenuItemClasses),
                           h.OnClick(
                             ClickedCopyPaymentId({ paymentId: payment.id })
                           ),
@@ -107,7 +107,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         [
                           h.Type("button"),
                           h.Attribute("role", "menuitem"),
-                          h.Class(DataTable.dataTableMenuItemClassName),
+                          h.Class(DataTable.dataTableMenuItemClasses),
                           h.OnClick(
                             ClickedViewCustomer({ paymentId: payment.id })
                           ),
@@ -118,7 +118,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                         [
                           h.Type("button"),
                           h.Attribute("role", "menuitem"),
-                          h.Class(DataTable.dataTableMenuItemClassName),
+                          h.Class(DataTable.dataTableMenuItemClasses),
                           h.OnClick(
                             ClickedViewPaymentDetails({
                               paymentId: payment.id,

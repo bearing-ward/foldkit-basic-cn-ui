@@ -65,7 +65,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-4")],
     [
       h.div(
-        [h.Class(Direction.directionControlsClassName)],
+        [h.Class(Direction.directionControlsClasses)],
         [
           h.label([h.Class("sr-only"), h.For("direction-language")], [
             "Language",
@@ -89,7 +89,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           h.button(
             [
               h.Type("button"),
-              h.Class(Direction.directionButtonClassName),
+              h.Class(Direction.directionButtonClasses),
               h.OnClick(SelectedDirection({ direction: oppositeDirection })),
             ],
             ["Toggle"]
@@ -98,10 +98,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       ),
       Direction.view<Message>({
         direction: model.direction,
-        className: Direction.directionPreviewClassName,
+        classes: Direction.directionPreviewClasses,
         children: [
           h.div(
-            [h.Class(Direction.directionCardClassName)],
+            [h.Class(Direction.directionCardClasses)],
             [
               h.h3(
                 [h.Class("text-lg font-semibold")],

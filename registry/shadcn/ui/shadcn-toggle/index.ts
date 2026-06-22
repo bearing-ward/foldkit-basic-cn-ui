@@ -1,9 +1,9 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import { toggleRootClassName } from "./view";
+import { toggleRootClasses } from "./view";
 
-export { toggleIconClassName, toggleRootClassName } from "./view";
+export { toggleIconClasses, toggleRootClasses } from "./view";
 
 export type ToggleStyle = Readonly<Record<string, string>>;
 
@@ -14,12 +14,12 @@ export type ViewConfig<ParentMessage> = Readonly<{
   children: readonly Html[];
   value?: string | undefined;
   disabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: ToggleStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -38,7 +38,7 @@ export const view = <ParentMessage>({
   children,
   value,
   disabled = false,
-  className,
+  classes,
   style,
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -51,7 +51,7 @@ export const view = <ParentMessage>({
       ...(value === undefined ? [] : [h.Value(value)]),
       ...(disabled ? [h.Disabled(true)] : [h.OnClick(onPressedChange)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(toggleRootClassName, className)),
+      h.Class(cn(toggleRootClasses, classes)),
     ],
     children
   );

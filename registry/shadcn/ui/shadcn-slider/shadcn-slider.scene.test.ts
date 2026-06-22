@@ -7,6 +7,6 @@ describe("shadcn Slider registry view", () => {
     expect(Slider.init).toBeTypeOf("function");
     expect(Slider.update).toBeTypeOf("function");
     expect(Slider.sliderFieldView).toBeTypeOf("function");
-    expect(Slider.shadcnSliderThumbClassName).toContain("rounded-full");
+    expect(Slider.shadcnSliderThumbClasses).toContain("rounded-full");
   });
 });

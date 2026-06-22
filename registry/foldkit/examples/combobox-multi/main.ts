@@ -82,7 +82,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
   return {
     items: filterCities(inputValue),
     itemToConfig: (city, context) => ({
-      className: Combobox.itemClassName,
+      classes: Combobox.itemClasses,
       content: h.div(
         [h.Class("flex items-center gap-2")],
         [Combobox.selectedIcon(context.isSelected), h.span([], [city])]
@@ -91,18 +91,18 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<City> => {
     itemToValue: (city) => city,
     itemToDisplayText: (city) => city,
     inputAttributes: childAttributes([
-      h.Class(Combobox.inputClassName),
+      h.Class(Combobox.inputClasses),
       h.Placeholder("Search cities..."),
       h.AriaLabel("Cities"),
     ]),
     inputWrapperAttributes: childAttributes([
-      h.Class(Combobox.inputWrapperClassName),
+      h.Class(Combobox.inputWrapperClasses),
     ]),
-    itemsAttributes: childAttributes([h.Class(Combobox.itemsClassName)]),
-    backdropAttributes: childAttributes([h.Class(Combobox.backdropClassName)]),
-    attributes: childAttributes([h.Class(Combobox.wrapperClassName)]),
+    itemsAttributes: childAttributes([h.Class(Combobox.itemsClasses)]),
+    backdropAttributes: childAttributes([h.Class(Combobox.backdropClasses)]),
+    attributes: childAttributes([h.Class(Combobox.wrapperClasses)]),
     buttonContent: h.span([], ["v"]),
-    buttonAttributes: childAttributes([h.Class(Combobox.buttonClassName)]),
+    buttonAttributes: childAttributes([h.Class(Combobox.buttonClasses)]),
     anchor: Combobox.defaultAnchor,
   };
 };
@@ -118,13 +118,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         Array.match(model.combobox.selectedItems, {
           onEmpty: () => [
             h.span(
-              [h.Class(Combobox.emptyTagClassName)],
+              [h.Class(Combobox.emptyTagClasses)],
               ["No cities selected"]
             ),
           ],
           onNonEmpty: (selectedItems) =>
             selectedItems.map((item) =>
-              h.span([h.Class(Combobox.tagClassName)], [item])
+              h.span([h.Class(Combobox.tagClasses)], [item])
             ),
         })
       ),

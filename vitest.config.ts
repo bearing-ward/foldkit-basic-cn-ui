@@ -18,7 +18,10 @@ export default defineConfig({
           include: [
             "src/**/*.{test,spec}.{ts,tsx,js,mjs}",
             "scripts/**/*.{test,spec}.{ts,tsx,js,mjs}",
+            "registry/ai-elements/**/*.{test,spec}.{ts,tsx,js,mjs}",
+            "registry/base-ui/**/*.{test,spec}.{ts,tsx,js,mjs}",
             "registry/default/**/*.{test,spec}.{ts,tsx,js,mjs}",
+            "registry/foldkit/**/*.{test,spec}.{ts,tsx,js,mjs}",
             "registry/shadcn/**/*.{test,spec}.{ts,tsx,js,mjs}",
           ],
           setupFiles: ["./src/vitest-setup.ts"],

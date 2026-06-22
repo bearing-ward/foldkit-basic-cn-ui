@@ -7,6 +7,6 @@ describe("Base UI RadioGroup registry view", () => {
     expect(RadioGroup.init).toBeTypeOf("function");
     expect(RadioGroup.create).toBeTypeOf("function");
     expect(RadioGroup.baseUiRadioCheckIcon).toBeTypeOf("function");
-    expect(RadioGroup.baseUiRadioVerticalClassName).toContain("flex-col");
+    expect(RadioGroup.baseUiRadioVerticalClasses).toContain("flex-col");
   });
 });

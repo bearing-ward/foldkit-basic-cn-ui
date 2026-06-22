@@ -137,7 +137,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   [
                     Chart.tooltipView<Message>({
                       label: datum.label,
-                      className: "shadow-lg",
+                      classes: "shadow-lg",
                       rows: [
                         {
                           label: "Desktop",

@@ -1,14 +1,14 @@
 export type MeterStatus = "Metering" | "Complete";
 
-export const meterRootClassName = "grid max-w-full w-60 grid-cols-2 gap-y-2";
+export const meterRootClasses = "grid max-w-full w-60 grid-cols-2 gap-y-2";
 
-export const meterLabelClassName = "text-sm font-normal text-gray-950";
+export const meterLabelClasses = "text-sm font-normal text-gray-950";
 
-export const meterValueClassName = "text-right text-sm text-gray-950";
+export const meterValueClasses = "text-right text-sm text-gray-950";
 
-export const meterTrackClassName = "col-span-2 h-1 overflow-hidden bg-gray-200";
+export const meterTrackClasses = "col-span-2 h-1 overflow-hidden bg-gray-200";
 
-export const meterIndicatorClassName =
+export const meterIndicatorClasses =
   "h-inherit bg-gray-950 transition-[width] duration-500";
 
 export const meterStatus = (value: number, max = 100): MeterStatus =>

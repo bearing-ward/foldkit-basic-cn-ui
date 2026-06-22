@@ -149,7 +149,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             [
               h.Type("button"),
               h.OnClick(ClickedOpenProgrammatically()),
-              h.Class(AlertDialog.alertDialogTriggerClassName),
+              h.Class(AlertDialog.alertDialogTriggerClasses),
             ],
             ["Open programmatically"]
           ),

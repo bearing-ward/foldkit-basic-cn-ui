@@ -12,13 +12,13 @@
       "path": "registry/base-ui/ui/base-ui-switch/index.ts",
       "target": "src/ui/base-ui-switch/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectChecked,\n  setChecked,\n  SetChecked,\n  ToggledChecked,\n  update,\n  view,\n} from \"../../../foldkit/ui/switch\";\nexport type {\n  Commands,\n  InitConfig,\n  InitReturn,\n  SwitchAttributes,\n  Toggled,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/switch\";\n\nexport {\n  baseUiSwitchButtonClassName,\n  baseUiSwitchDescriptionClassName,\n  baseUiSwitchKnob,\n  baseUiSwitchLabelClassName,\n  baseUiSwitchRowClassName,\n  baseUiSwitchTextClassName,\n} from \"./view\";\n"
+      "content": "export {\n  init,\n  Message,\n  Model,\n  OutMessage,\n  reflectChecked,\n  setChecked,\n  SetChecked,\n  ToggledChecked,\n  update,\n  view,\n} from \"../../../foldkit/ui/switch\";\nexport type {\n  Commands,\n  InitConfig,\n  InitReturn,\n  SwitchAttributes,\n  Toggled,\n  UpdateReturn,\n  ViewInputs,\n} from \"../../../foldkit/ui/switch\";\n\nexport {\n  baseUiSwitchButtonClasses,\n  baseUiSwitchDescriptionClasses,\n  baseUiSwitchKnob,\n  baseUiSwitchLabelClasses,\n  baseUiSwitchRowClasses,\n  baseUiSwitchTextClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-switch/view.ts",
       "target": "src/ui/base-ui-switch/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  switchButtonClassName as baseUiSwitchButtonClassName,\n  switchDescriptionClassName as baseUiSwitchDescriptionClassName,\n  switchKnob as baseUiSwitchKnob,\n  switchLabelClassName as baseUiSwitchLabelClassName,\n  switchRowClassName as baseUiSwitchRowClassName,\n  switchTextClassName as baseUiSwitchTextClassName,\n} from \"../../../foldkit/ui/switch/view\";\n"
+      "content": "export {\n  switchButtonClasses as baseUiSwitchButtonClasses,\n  switchDescriptionClasses as baseUiSwitchDescriptionClasses,\n  switchKnob as baseUiSwitchKnob,\n  switchLabelClasses as baseUiSwitchLabelClasses,\n  switchRowClasses as baseUiSwitchRowClasses,\n  switchTextClasses as baseUiSwitchTextClasses,\n} from \"../../../foldkit/ui/switch/view\";\n"
     },
     {
       "path": "registry/base-ui/ui/base-ui-switch/base-ui-switch.scene.test.ts",

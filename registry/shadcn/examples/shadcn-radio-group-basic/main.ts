@@ -91,7 +91,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           name: "density",
           toView: ({ group, hiddenInput, options }) =>
             h.div(
-              [...group, h.Class(RadioGroup.shadcnRadioGroupVerticalClassName)],
+              [...group, h.Class(RadioGroup.shadcnRadioGroupVerticalClasses)],
               [
                 h.input(hiddenInput),
                 ...options.map((option) =>
@@ -107,7 +107,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       h.span(
                         [
                           ...option.label,
-                          h.Class(RadioGroup.shadcnRadioGroupLabelClassName),
+                          h.Class(RadioGroup.shadcnRadioGroupLabelClasses),
                         ],
                         [option.value]
                       ),

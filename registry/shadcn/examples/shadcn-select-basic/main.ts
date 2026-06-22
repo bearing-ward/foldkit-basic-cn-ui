@@ -96,8 +96,8 @@ const valueLabel = (
     })
   );
 
-const classNames = (base: string, className: string): string =>
-  [base, className].filter((value) => value !== "").join(" ");
+const cn = (base: string, classes: string): string =>
+  [base, classes].filter((value) => value !== "").join(" ");
 
 const selectItemView = (
   option: Option,
@@ -164,14 +164,14 @@ const staticSelectView = (
   title: string,
   value: string,
   options: ReadonlyArray<Option>,
-  className: string
+  classes: string
 ): Html => {
   const h = html<Message>();
 
   return h.div([h.Class("space-y-2")], [
     h.h3([h.Class("text-base font-semibold text-gray-950")], [title]),
     Select.rootView<Message>({
-      className,
+      classes,
       children: [
         Select.triggerView<Message>({
           open: true,
@@ -324,7 +324,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         "Align Item With Trigger",
         "blueberry",
         fruits,
-        classNames("min-w-[220px]", "origin-top-left")
+        cn("min-w-[220px]", "origin-top-left")
       ),
     ]),
   ]);

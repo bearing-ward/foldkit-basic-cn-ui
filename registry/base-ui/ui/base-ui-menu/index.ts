@@ -56,11 +56,11 @@ export type {
 } from "../../../foldkit/ui/menu";
 
 export {
-  triggerClassName as baseUiMenuTriggerClassName,
-  rootClassName as baseUiMenuRootClassName,
-  defaultItemsClassName as baseUiMenuPopupClassName,
-  animatedItemsClassName as baseUiMenuAnimatedPopupClassName,
-  itemClassName as baseUiMenuItemClassName,
-  backdropClassName as baseUiMenuBackdropClassName,
+  triggerClasses as baseUiMenuTriggerClasses,
+  rootClasses as baseUiMenuRootClasses,
+  defaultItemsClasses as baseUiMenuPopupClasses,
+  animatedItemsClasses as baseUiMenuAnimatedPopupClasses,
+  itemClasses as baseUiMenuItemClasses,
+  backdropClasses as baseUiMenuBackdropClasses,
   baseUiMenuDefaultAnchor,
 } from "./view";

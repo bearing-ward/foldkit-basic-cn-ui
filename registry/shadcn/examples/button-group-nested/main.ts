@@ -30,7 +30,7 @@ export const update = (
   _message: Message
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
-const buttonClassName =
+const buttonClasses =
   "inline-flex h-9 min-w-9 items-center justify-center bg-white px-3 text-sm font-medium text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
@@ -47,7 +47,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(buttonClassName), h.AriaLabel("Align left")],
+                [h.Class(buttonClasses), h.AriaLabel("Align left")],
                 ["L"]
               ),
             ],
@@ -55,7 +55,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(buttonClassName), h.AriaLabel("Align center")],
+                [h.Class(buttonClasses), h.AriaLabel("Align center")],
                 ["C"]
               ),
             ],
@@ -63,7 +63,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(buttonClassName), h.AriaLabel("Align right")],
+                [h.Class(buttonClasses), h.AriaLabel("Align right")],
                 ["R"]
               ),
             ],
@@ -74,13 +74,13 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         ariaLabel: "Text formatting",
         children: [
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["B"])],
+            children: [h.button([h.Class(buttonClasses)], ["B"])],
           }),
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["I"])],
+            children: [h.button([h.Class(buttonClasses)], ["I"])],
           }),
           ButtonGroup.itemView<Message>({
-            children: [h.button([h.Class(buttonClassName)], ["U"])],
+            children: [h.button([h.Class(buttonClasses)], ["U"])],
           }),
         ],
       }),

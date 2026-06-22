@@ -62,7 +62,7 @@ export const update = (
 
 // VIEW
 
-const sideContentClassNames: Record<Model["side"], string> = {
+const sideContentClasses: Record<Model["side"], string> = {
   top: "left-0 right-0 top-0 h-auto max-w-none border-b border-l-0",
   right: "",
   bottom:
@@ -70,8 +70,8 @@ const sideContentClassNames: Record<Model["side"], string> = {
   left: "left-0 right-auto border-l-0 border-r",
 };
 
-const contentClassName = (side: Model["side"]): string =>
-  sideContentClassNames[side];
+const contentClasses = (side: Model["side"]): string =>
+  sideContentClasses[side];
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
@@ -126,7 +126,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           Sheet.contentView<Message>({
             ariaDescribedBy: sheetDescriptionId,
             ariaLabelledBy: sheetTitleId,
-            className: contentClassName(model.side),
+            classes: contentClasses(model.side),
             children: [
               Sheet.headerView<Message>({
                 children: [

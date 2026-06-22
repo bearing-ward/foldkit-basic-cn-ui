@@ -56,7 +56,7 @@ export const update = (
 const slideCard = <ParentMessage>(label: string): Html => {
   const h = html<ParentMessage>();
 
-  return h.div([h.Class(Carousel.carouselCardClassName)], [label]);
+  return h.div([h.Class(Carousel.carouselCardClasses)], [label]);
 };
 
 // VIEW
@@ -65,26 +65,26 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   const carouselBody = (
-    contentClassName: string,
-    itemClassName: string,
+    contentClasses: string,
+    itemClasses: string,
     orientation: Carousel.CarouselOrientation,
-    rootClassName: string,
+    rootClasses: string,
     ariaLabel = "Carousel",
     labels: readonly string[] = slides
   ): Html =>
     Carousel.rootView<Message>({
       ariaLabel,
-      className: rootClassName,
+      classes: rootClasses,
       children: [
         Carousel.viewportView<Message>({
           children: [
             Carousel.contentView<Message>({
               index: model.index,
               orientation,
-              className: contentClassName,
+              classes: contentClasses,
               children: labels.map((slide) =>
                 Carousel.itemView<Message>({
-                  className: itemClassName,
+                  classes: itemClasses,
                   children: [slideCard<Message>(slide)],
                 })
               ),

@@ -68,18 +68,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         [
           h.Attribute("role", "group"),
           h.Attribute("aria-labelledby", "allowed-network-protocols-label"),
-          h.Class(CheckboxGroup.checkboxGroupRootClassName),
+          h.Class(CheckboxGroup.checkboxGroupRootClasses),
         ],
         [
           h.legend(
             [
               h.Id("allowed-network-protocols-label"),
-              h.Class(CheckboxGroup.checkboxGroupCaptionClassName),
+              h.Class(CheckboxGroup.checkboxGroupCaptionClasses),
             ],
             ["Allowed network protocols"]
           ),
           h.div(
-            [h.Class(CheckboxGroup.checkboxGroupItemsClassName)],
+            [h.Class(CheckboxGroup.checkboxGroupItemsClasses)],
             [
               CheckboxGroup.itemView<Message>({
                 value: "http",

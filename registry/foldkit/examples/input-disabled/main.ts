@@ -54,15 +54,15 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     onInput: (value) => UpdatedDisabledName({ value }),
     toView: (attributes) =>
       h.div(
-        [h.Class(Input.fieldClassName)],
+        [h.Class(Input.fieldClasses)],
         [
           h.label(
-            [...attributes.label, h.Class(Input.labelClassName)],
+            [...attributes.label, h.Class(Input.labelClasses)],
             ["Disabled name"]
           ),
-          h.input([...attributes.input, h.Class(Input.inputClassName)]),
+          h.input([...attributes.input, h.Class(Input.inputClasses)]),
           h.p(
-            [...attributes.description, h.Class(Input.descriptionClassName)],
+            [...attributes.description, h.Class(Input.descriptionClasses)],
             ["This input is disabled."]
           ),
         ]

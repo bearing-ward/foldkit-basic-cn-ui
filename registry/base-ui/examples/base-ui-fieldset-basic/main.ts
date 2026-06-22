@@ -55,23 +55,23 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     id: "billing-fieldset",
     toView: (attributes) =>
       h.fieldset(
-        [...attributes.fieldset, h.Class(Fieldset.baseUiFieldsetRootClassName)],
+        [...attributes.fieldset, h.Class(Fieldset.baseUiFieldsetRootClasses)],
         [
           h.legend(
             [
               ...attributes.legend,
-              h.Class(Fieldset.baseUiFieldsetLegendClassName),
+              h.Class(Fieldset.baseUiFieldsetLegendClasses),
             ],
             ["Billing details"]
           ),
           h.div(
-            [h.Class(Fieldset.baseUiFieldsetFieldsClassName)],
+            [h.Class(Fieldset.baseUiFieldsetFieldsClasses)],
             [
               h.label(
-                [h.Class(Fieldset.baseUiFieldsetFieldClassName)],
+                [h.Class(Fieldset.baseUiFieldsetFieldClasses)],
                 [
                   h.span(
-                    [h.Class(Fieldset.baseUiFieldsetLabelClassName)],
+                    [h.Class(Fieldset.baseUiFieldsetLabelClasses)],
                     ["Company"]
                   ),
                   h.input([
@@ -79,15 +79,15 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     h.Value(model.company),
                     h.Placeholder("Enter company name"),
                     h.OnInput((value) => UpdatedCompany({ value })),
-                    h.Class(Fieldset.baseUiFieldsetInputClassName),
+                    h.Class(Fieldset.baseUiFieldsetInputClasses),
                   ]),
                 ]
               ),
               h.label(
-                [h.Class(Fieldset.baseUiFieldsetFieldClassName)],
+                [h.Class(Fieldset.baseUiFieldsetFieldClasses)],
                 [
                   h.span(
-                    [h.Class(Fieldset.baseUiFieldsetLabelClassName)],
+                    [h.Class(Fieldset.baseUiFieldsetLabelClasses)],
                     ["Tax ID"]
                   ),
                   h.input([
@@ -95,7 +95,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     h.Value(model.taxId),
                     h.Placeholder("Enter fiscal number"),
                     h.OnInput((value) => UpdatedTaxId({ value })),
-                    h.Class(Fieldset.baseUiFieldsetInputClassName),
+                    h.Class(Fieldset.baseUiFieldsetInputClasses),
                   ]),
                 ]
               ),

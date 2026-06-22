@@ -1,9 +1,9 @@
 export {
-  closeButtonClassName as baseUiToastCloseButtonClassName,
-  containerClassName as baseUiToastContainerClassName,
-  descriptionClassName as baseUiToastDescriptionClassName,
-  entryClassName as baseUiToastEntryClassName,
-  titleClassName as baseUiToastTitleClassName,
-  toastClassName as baseUiToastClassName,
+  closeButtonClasses as baseUiToastCloseButtonClasses,
+  containerClasses as baseUiToastContainerClasses,
+  descriptionClasses as baseUiToastDescriptionClasses,
+  entryClasses as baseUiToastEntryClasses,
+  titleClasses as baseUiToastTitleClasses,
+  toastClasses as baseUiToastClasses,
   toastEntryView as baseUiToastEntryView,
 } from "../../../foldkit/ui/toast/view";

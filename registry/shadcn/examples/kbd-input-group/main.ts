@@ -44,7 +44,7 @@ const searchIcon = (): Html => {
 export const view = Submodel.defineView<Model, Message>(
   (): Html =>
     InputGroup.view<Message>({
-      className: "w-full max-w-xs",
+      classes: "w-full max-w-xs",
       children: [
         InputGroup.inputView<Message>({
           ariaLabel: "Search",

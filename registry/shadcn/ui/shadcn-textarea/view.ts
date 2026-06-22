@@ -1,6 +1,6 @@
 export {
-  descriptionClassName as shadcnTextareaDescriptionClassName,
-  fieldClassName as shadcnTextareaFieldClassName,
-  labelClassName as shadcnTextareaLabelClassName,
-  textareaClassName as shadcnTextareaClassName,
+  descriptionClasses as shadcnTextareaDescriptionClasses,
+  fieldClasses as shadcnTextareaFieldClasses,
+  labelClasses as shadcnTextareaLabelClasses,
+  textareaClasses as shadcnTextareaClasses,
 } from "../../../foldkit/ui/textarea/view";

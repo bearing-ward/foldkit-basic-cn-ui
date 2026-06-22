@@ -26,11 +26,11 @@ const view = (): Html =>
   ScrollArea.view<never>({
     ariaLabel: "Article excerpt",
     hasFade: true,
-    className: "scroll-area-root-override",
+    classes: "scroll-area-root-override",
     style: { inlineSize: "22rem" },
-    viewportClassName: "scroll-area-viewport-override",
+    viewportClasses: "scroll-area-viewport-override",
     viewportStyle: { maxBlockSize: "12rem" },
-    contentClassName: "scroll-area-content-override",
+    contentClasses: "scroll-area-content-override",
     contentStyle: { paddingInlineEnd: "0.5rem" },
     children: paragraphs(),
   });
@@ -52,12 +52,12 @@ const customView = (): Html =>
       ScrollArea.scrollbarView<never>({
         children: [
           ScrollArea.thumbView<never>({
-            className: "scroll-area-thumb-override",
+            classes: "scroll-area-thumb-override",
           }),
         ],
       }),
       ScrollArea.cornerView<never>({
-        className: "scroll-area-corner-override",
+        classes: "scroll-area-corner-override",
       }),
     ],
   });

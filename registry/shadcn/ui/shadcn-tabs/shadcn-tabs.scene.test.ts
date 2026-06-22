@@ -7,6 +7,6 @@ describe("shadcn Tabs registry view", () => {
     expect(Tabs.initialize).toBeTypeOf("function");
     expect(Tabs.create).toBeTypeOf("function");
     expect(Tabs.shadcnTabsView).toBeTypeOf("function");
-    expect(Tabs.shadcnTabsTabClassName).toContain("data-[selected]");
+    expect(Tabs.shadcnTabsTabClasses).toContain("data-[selected]");
   });
 });

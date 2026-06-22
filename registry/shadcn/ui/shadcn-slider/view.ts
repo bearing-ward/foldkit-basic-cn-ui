@@ -1,10 +1,10 @@
 export {
-  fieldClassName as shadcnSliderFieldClassName,
-  filledTrackClassName as shadcnSliderFilledTrackClassName,
-  headerClassName as shadcnSliderHeaderClassName,
-  labelClassName as shadcnSliderLabelClassName,
-  rootClassName as shadcnSliderRootClassName,
-  thumbClassName as shadcnSliderThumbClassName,
-  trackClassName as shadcnSliderTrackClassName,
-  valueClassName as shadcnSliderValueClassName,
+  fieldClasses as shadcnSliderFieldClasses,
+  filledTrackClasses as shadcnSliderFilledTrackClasses,
+  headerClasses as shadcnSliderHeaderClasses,
+  labelClasses as shadcnSliderLabelClasses,
+  rootClasses as shadcnSliderRootClasses,
+  thumbClasses as shadcnSliderThumbClasses,
+  trackClasses as shadcnSliderTrackClasses,
+  valueClasses as shadcnSliderValueClasses,
 } from "../../../foldkit/ui/slider/view";

@@ -48,7 +48,7 @@ const optionView = (value: string, selected: boolean): Html => {
         ],
         [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]
       ),
-      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),
+      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClasses)], [value]),
     ]
   );
 };
@@ -60,13 +60,13 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("space-y-4")],
     [
       h.div(
-        [h.Class(RadioGroup.shadcnRadioGroupMetaClassName)],
+        [h.Class(RadioGroup.shadcnRadioGroupMetaClasses)],
         [
           h.h3([h.Class("text-sm font-medium text-gray-950")], [
             "Notification Preferences",
           ]),
           h.p(
-            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClassName)],
+            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClasses)],
             ["Choose how you want to receive notifications."]
           ),
         ]
@@ -75,7 +75,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         [
           h.Role("radiogroup"),
           h.AriaLabel("Notification Preferences"),
-          h.Class(RadioGroup.shadcnRadioGroupVerticalClassName),
+          h.Class(RadioGroup.shadcnRadioGroupVerticalClasses),
         ],
         [
           optionView("Email only", false),

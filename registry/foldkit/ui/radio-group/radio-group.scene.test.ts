@@ -75,14 +75,14 @@ const view = (model: Model): Html => {
           name: "plan",
           toView: ({ group, hiddenInput, options }) =>
             h.div(
-              [...group, h.Class(RadioGroup.verticalGroupClassName)],
+              [...group, h.Class(RadioGroup.verticalGroupClasses)],
               [
                 h.input(hiddenInput),
                 ...options.map((option) =>
                   h.div(
                     [
                       ...option.option,
-                      h.Class(RadioGroup.verticalOptionClassName),
+                      h.Class(RadioGroup.verticalOptionClasses),
                     ],
                     [
                       h.div(
@@ -94,14 +94,14 @@ const view = (model: Model): Html => {
                               h.span(
                                 [
                                   ...option.label,
-                                  h.Class(RadioGroup.labelClassName),
+                                  h.Class(RadioGroup.labelClasses),
                                 ],
                                 [option.value]
                               ),
                               h.p(
                                 [
                                   ...option.description,
-                                  h.Class(RadioGroup.descriptionClassName),
+                                  h.Class(RadioGroup.descriptionClasses),
                                 ],
                                 [`${option.value} plan`]
                               ),
@@ -138,13 +138,13 @@ const disabledView = (model: Model): Html => {
       isDisabled: true,
       toView: ({ group, options }) =>
         h.div(
-          [...group, h.Class(RadioGroup.verticalGroupClassName)],
+          [...group, h.Class(RadioGroup.verticalGroupClasses)],
           options.map((option) =>
             h.div(
-              [...option.option, h.Class(RadioGroup.verticalOptionClassName)],
+              [...option.option, h.Class(RadioGroup.verticalOptionClasses)],
               [
                 h.span(
-                  [...option.label, h.Class(RadioGroup.labelClassName)],
+                  [...option.label, h.Class(RadioGroup.labelClasses)],
                   [option.value]
                 ),
               ]

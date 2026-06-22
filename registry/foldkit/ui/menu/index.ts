@@ -74,11 +74,11 @@ export const init = (config: InitConfig): InitReturn => [
 export const { create } = Ui.Menu;
 
 export {
-  animatedItemsClassName,
-  backdropClassName,
+  animatedItemsClasses,
+  backdropClasses,
   defaultAnchor,
-  defaultItemsClassName,
-  itemClassName,
-  rootClassName,
-  triggerClassName,
+  defaultItemsClasses,
+  itemClasses,
+  rootClasses,
+  triggerClasses,
 } from "./view";

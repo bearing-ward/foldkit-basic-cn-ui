@@ -116,7 +116,7 @@ const submenuTriggerView = (label: string, open: boolean): Html => {
       ...(open ? [h.DataAttribute("popup-open", "")] : []),
       h.OnClick(ToggledMenubarSubmenu({ value: label })),
       h.Class(
-        `flex w-full items-center justify-between gap-4 ${Menubar.menubarItemClassName} data-[popup-open]:bg-gray-100`
+        `flex w-full items-center justify-between gap-4 ${Menubar.menubarItemClasses} data-[popup-open]:bg-gray-100`
       ),
     ],
     [h.span([], [label]), caretRightIcon()]
@@ -138,7 +138,7 @@ const submenuPopupView = (
     [
       h.Attribute("role", "menu"),
       h.DataAttribute("testid", testId),
-      h.Class(`${Menubar.menubarPopupClassName} left-44 top-8 -ml-1 mt-0`),
+      h.Class(`${Menubar.menubarPopupClasses} left-44 top-8 -ml-1 mt-0`),
     ],
     labels.map(itemView)
   );

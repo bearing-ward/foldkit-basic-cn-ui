@@ -1,26 +1,26 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import { skeletonClassNameByShape } from "./view";
+import { skeletonClassesByShape } from "./view";
 import type { SkeletonShape } from "./view";
 
 export type { SkeletonShape };
 
-export { skeletonBaseClassName, skeletonClassNameByShape } from "./view";
+export { skeletonBaseClasses, skeletonClassesByShape } from "./view";
 
 export type ViewConfig = Readonly<{
   shape?: SkeletonShape;
-  className?: string;
+  classes?: string;
 }>;
 
 export const view = <ParentMessage>({
   shape = "Block",
-  className,
+  classes,
 }: ViewConfig = {}): Html => {
   const h = html<ParentMessage>();
-  const classNames = [skeletonClassNameByShape(shape), className]
+  const cn = [skeletonClassesByShape(shape), classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
-  return h.span([h.Class(classNames), h.AriaHidden(true)], []);
+  return h.span([h.Class(cn), h.AriaHidden(true)], []);
 };

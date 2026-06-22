@@ -2,19 +2,19 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  radioCaptionClassName,
-  radioGroupClassName,
-  radioIndicatorClassName,
-  radioItemClassName,
-  radioRootClassName,
+  radioCaptionClasses,
+  radioGroupClasses,
+  radioIndicatorClasses,
+  radioItemClasses,
+  radioRootClasses,
 } from "./view";
 
 export {
-  radioCaptionClassName,
-  radioGroupClassName,
-  radioIndicatorClassName,
-  radioItemClassName,
-  radioRootClassName,
+  radioCaptionClasses,
+  radioGroupClasses,
+  radioIndicatorClasses,
+  radioItemClasses,
+  radioRootClasses,
 } from "./view";
 
 export type RadioStyle = Readonly<Record<string, string>>;
@@ -26,7 +26,7 @@ export type GroupViewConfig = Readonly<{
   name?: string | undefined;
   disabled?: boolean | undefined;
   required?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: RadioStyle | undefined;
 }>;
 
@@ -37,12 +37,12 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   label: string;
   disabled?: boolean | undefined;
   required?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: RadioStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -66,7 +66,7 @@ export const groupView = <ParentMessage>({
   name,
   disabled = false,
   required = false,
-  className,
+  classes,
   style,
 }: GroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -79,10 +79,10 @@ export const groupView = <ParentMessage>({
       ...(disabled ? [h.DataAttribute("disabled", "")] : []),
       ...(required ? [h.Attribute("aria-required", "true")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(radioGroupClassName, className)),
+      h.Class(cn(radioGroupClasses, classes)),
     ],
     [
-      h.div([h.Id(labelId), h.Class(radioCaptionClassName)], [label]),
+      h.div([h.Id(labelId), h.Class(radioCaptionClasses)], [label]),
       ...children,
     ]
   );
@@ -95,7 +95,7 @@ export const itemView = <ParentMessage>({
   label,
   disabled = false,
   required = false,
-  className,
+  classes,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -106,7 +106,7 @@ export const itemView = <ParentMessage>({
       ...stateAttributes(h, checked, disabled, required),
       ...(disabled ? [] : [h.OnClick(onValueChange)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(radioItemClassName, className)),
+      h.Class(cn(radioItemClasses, classes)),
     ],
     [
       h.span(
@@ -118,13 +118,13 @@ export const itemView = <ParentMessage>({
           ...(required ? [h.Attribute("aria-required", "true")] : []),
           ...stateAttributes(h, checked, disabled, required),
           ...(disabled ? [] : [h.OnClick(onValueChange)]),
-          h.Class(radioRootClassName),
+          h.Class(radioRootClasses),
         ],
         [
           h.span(
             [
               ...stateAttributes(h, checked, disabled, required),
-              h.Class(radioIndicatorClassName),
+              h.Class(radioIndicatorClasses),
             ],
             []
           ),

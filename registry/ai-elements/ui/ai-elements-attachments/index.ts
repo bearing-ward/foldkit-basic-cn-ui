@@ -4,46 +4,46 @@ import { html } from "foldkit/html";
 
 import type { AttachmentMediaCategory, AttachmentVariant } from "./view";
 import {
-  attachmentClassNameByVariant,
-  attachmentEmptyClassName,
-  attachmentHoverCardClassName,
-  attachmentHoverCardContentClassName,
-  attachmentHoverCardTriggerClassName,
+  attachmentClassesByVariant,
+  attachmentEmptyClasses,
+  attachmentHoverCardClasses,
+  attachmentHoverCardContentClasses,
+  attachmentHoverCardTriggerClasses,
   attachmentIconGlyphByCategory,
   attachmentIconLabelByCategory,
-  attachmentImageClassNameByVariant,
-  attachmentInfoClassNameByVariant,
-  attachmentLabelClassNameByVariant,
-  attachmentMediaTypeClassName,
-  attachmentPreviewClassNameByVariant,
-  attachmentRemoveClassNameByVariant,
-  attachmentsClassNameByVariant,
+  attachmentImageClassesByVariant,
+  attachmentInfoClassesByVariant,
+  attachmentLabelClassesByVariant,
+  attachmentMediaTypeClasses,
+  attachmentPreviewClassesByVariant,
+  attachmentRemoveClassesByVariant,
+  attachmentsClassesByVariant,
 } from "./view";
 
 export {
-  attachmentClassNameByVariant,
-  attachmentEmptyClassName,
-  attachmentHoverCardClassName,
-  attachmentHoverCardContentClassName,
-  attachmentHoverCardTriggerClassName,
+  attachmentClassesByVariant,
+  attachmentEmptyClasses,
+  attachmentHoverCardClasses,
+  attachmentHoverCardContentClasses,
+  attachmentHoverCardTriggerClasses,
   attachmentIconGlyphByCategory,
   attachmentIconLabelByCategory,
-  attachmentImageClassNameByVariant,
-  attachmentInfoClassNameByVariant,
-  attachmentLabelClassNameByVariant,
-  attachmentMediaTypeClassName,
-  attachmentPreviewClassNameByVariant,
-  attachmentRemoveClassNameByVariant,
-  attachmentsClassNameByVariant,
-  gridAttachmentClassName,
-  gridAttachmentRemoveClassName,
-  gridAttachmentsClassName,
-  inlineAttachmentClassName,
-  inlineAttachmentRemoveClassName,
-  inlineAttachmentsClassName,
-  listAttachmentClassName,
-  listAttachmentRemoveClassName,
-  listAttachmentsClassName,
+  attachmentImageClassesByVariant,
+  attachmentInfoClassesByVariant,
+  attachmentLabelClassesByVariant,
+  attachmentMediaTypeClasses,
+  attachmentPreviewClassesByVariant,
+  attachmentRemoveClassesByVariant,
+  attachmentsClassesByVariant,
+  gridAttachmentClasses,
+  gridAttachmentRemoveClasses,
+  gridAttachmentsClasses,
+  inlineAttachmentClasses,
+  inlineAttachmentRemoveClasses,
+  inlineAttachmentsClasses,
+  listAttachmentClasses,
+  listAttachmentRemoveClasses,
+  listAttachmentsClasses,
 } from "./view";
 export type { AttachmentMediaCategory, AttachmentVariant } from "./view";
 
@@ -76,7 +76,7 @@ export type AttachmentData = typeof AttachmentData.Type;
 export type AttachmentsViewConfig = Readonly<{
   variant?: AttachmentVariant;
   children: readonly Html[];
-  className?: string;
+  classes?: string;
 }>;
 
 export type AttachmentViewConfig<ParentMessage> = Readonly<{
@@ -84,38 +84,38 @@ export type AttachmentViewConfig<ParentMessage> = Readonly<{
   variant?: AttachmentVariant;
   children?: readonly Html[];
   onRemove?: ParentMessage;
-  className?: string;
+  classes?: string;
 }>;
 
 export type AttachmentPreviewViewConfig = Readonly<{
   data: AttachmentData;
   variant?: AttachmentVariant;
   fallback?: Html;
-  className?: string;
+  classes?: string;
 }>;
 
 export type AttachmentInfoViewConfig = Readonly<{
   data: AttachmentData;
   variant?: AttachmentVariant;
   showMediaType?: boolean;
-  className?: string;
+  classes?: string;
 }>;
 
 export type AttachmentRemoveViewConfig<ParentMessage> = Readonly<{
   label?: string;
   onRemove: ParentMessage;
   variant?: AttachmentVariant;
-  className?: string;
+  classes?: string;
 }>;
 
 export type AttachmentHoverCardViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string;
+  classes?: string;
 }>;
 
 export type AttachmentEmptyViewConfig = Readonly<{
   label?: string;
-  className?: string;
+  classes?: string;
 }>;
 
 export type ViewConfig<ParentMessage> = Readonly<{
@@ -123,10 +123,10 @@ export type ViewConfig<ParentMessage> = Readonly<{
   variant?: AttachmentVariant;
   onRemove?: (attachment: AttachmentData) => ParentMessage;
   showMediaType?: boolean;
-  className?: string;
+  classes?: string;
 }>;
 
-const classNames = (
+const cn = (
   ...values: readonly (string | false | undefined)[]
 ): string => values.filter(Boolean).join(" ");
 
@@ -179,7 +179,7 @@ export const getAttachmentLabel = (data: AttachmentData): string => {
 export const attachmentsView = <ParentMessage>({
   variant = "Grid",
   children,
-  className,
+  classes,
 }: AttachmentsViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -187,7 +187,7 @@ export const attachmentsView = <ParentMessage>({
     [
       h.DataAttribute("slot", "attachments"),
       h.DataAttribute("variant", variant.toLowerCase()),
-      h.Class(classNames(attachmentsClassNameByVariant(variant), className)),
+      h.Class(cn(attachmentsClassesByVariant(variant), classes)),
     ],
     children
   );
@@ -197,7 +197,7 @@ export const attachmentPreviewView = <ParentMessage>({
   data,
   variant = "Grid",
   fallback,
-  className,
+  classes,
 }: AttachmentPreviewViewConfig): Html => {
   const h = html<ParentMessage>();
   const category = getMediaCategory(data);
@@ -208,14 +208,14 @@ export const attachmentPreviewView = <ParentMessage>({
       [
         h.DataAttribute("slot", "attachment-preview"),
         h.Class(
-          classNames(attachmentPreviewClassNameByVariant(variant), className)
+          cn(attachmentPreviewClassesByVariant(variant), classes)
         ),
       ],
       [
         h.img([
           h.Src(data.url),
           h.Alt(label),
-          h.Class(attachmentImageClassNameByVariant(variant)),
+          h.Class(attachmentImageClassesByVariant(variant)),
         ]),
       ]
     );
@@ -226,7 +226,7 @@ export const attachmentPreviewView = <ParentMessage>({
       h.DataAttribute("slot", "attachment-preview"),
       h.Attribute("aria-label", attachmentIconLabelByCategory(category)),
       h.Class(
-        classNames(attachmentPreviewClassNameByVariant(variant), className)
+        cn(attachmentPreviewClassesByVariant(variant), classes)
       ),
     ],
     [
@@ -246,7 +246,7 @@ export const attachmentInfoView = <ParentMessage>({
   data,
   variant = "Grid",
   showMediaType = false,
-  className,
+  classes,
 }: AttachmentInfoViewConfig): Html => {
   const h = html<ParentMessage>();
   const maybeMediaTypeLabel = mediaTypeLabel(data);
@@ -258,15 +258,15 @@ export const attachmentInfoView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "attachment-info"),
-      h.Class(classNames(attachmentInfoClassNameByVariant(variant), className)),
+      h.Class(cn(attachmentInfoClassesByVariant(variant), classes)),
     ],
     [
       h.div(
-        [h.Class(attachmentLabelClassNameByVariant(variant))],
+        [h.Class(attachmentLabelClassesByVariant(variant))],
         [getAttachmentLabel(data)]
       ),
       showMediaType && maybeMediaTypeLabel !== undefined
-        ? h.div([h.Class(attachmentMediaTypeClassName)], [maybeMediaTypeLabel])
+        ? h.div([h.Class(attachmentMediaTypeClasses)], [maybeMediaTypeLabel])
         : h.empty,
     ]
   );
@@ -276,7 +276,7 @@ export const attachmentRemoveView = <ParentMessage>({
   label = "Remove",
   onRemove,
   variant = "Grid",
-  className,
+  classes,
 }: AttachmentRemoveViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -287,10 +287,10 @@ export const attachmentRemoveView = <ParentMessage>({
       h.DataAttribute("slot", "attachment-remove"),
       h.OnClick(onRemove),
       h.Class(
-        classNames(
+        cn(
           "inline-flex items-center justify-center bg-white text-gray-500 shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600",
-          attachmentRemoveClassNameByVariant(variant),
-          className
+          attachmentRemoveClassesByVariant(variant),
+          classes
         )
       ),
     ],
@@ -300,14 +300,14 @@ export const attachmentRemoveView = <ParentMessage>({
 
 export const attachmentHoverCardView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: AttachmentHoverCardViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "attachment-hover-card"),
-      h.Class(classNames(attachmentHoverCardClassName, className)),
+      h.Class(cn(attachmentHoverCardClasses, classes)),
     ],
     children
   );
@@ -315,14 +315,14 @@ export const attachmentHoverCardView = <ParentMessage>({
 
 export const attachmentHoverCardTriggerView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: AttachmentHoverCardViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "attachment-hover-card-trigger"),
-      h.Class(classNames(attachmentHoverCardTriggerClassName, className)),
+      h.Class(cn(attachmentHoverCardTriggerClasses, classes)),
     ],
     children
   );
@@ -330,7 +330,7 @@ export const attachmentHoverCardTriggerView = <ParentMessage>({
 
 export const attachmentHoverCardContentView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: AttachmentHoverCardViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -338,7 +338,7 @@ export const attachmentHoverCardContentView = <ParentMessage>({
     [
       h.Attribute("role", "dialog"),
       h.DataAttribute("slot", "attachment-hover-card-content"),
-      h.Class(classNames(attachmentHoverCardContentClassName, className)),
+      h.Class(cn(attachmentHoverCardContentClasses, classes)),
     ],
     children
   );
@@ -346,14 +346,14 @@ export const attachmentHoverCardContentView = <ParentMessage>({
 
 export const attachmentEmptyView = <ParentMessage>({
   label = "No attachments",
-  className,
+  classes,
 }: AttachmentEmptyViewConfig = {}): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "attachment-empty"),
-      h.Class(classNames(attachmentEmptyClassName, className)),
+      h.Class(cn(attachmentEmptyClasses, classes)),
     ],
     [label]
   );
@@ -364,7 +364,7 @@ export const attachmentView = <ParentMessage>({
   variant = "Grid",
   children,
   onRemove,
-  className,
+  classes,
 }: AttachmentViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
   const content = children ?? [
@@ -387,7 +387,7 @@ export const attachmentView = <ParentMessage>({
     [
       h.DataAttribute("slot", "attachment"),
       h.DataAttribute("media-category", getMediaCategory(data).toLowerCase()),
-      h.Class(classNames(attachmentClassNameByVariant(variant), className)),
+      h.Class(cn(attachmentClassesByVariant(variant), classes)),
     ],
     content
   );
@@ -398,7 +398,7 @@ export const view = <ParentMessage>({
   variant = "Grid",
   onRemove,
   showMediaType = variant === "List",
-  className,
+  classes,
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -407,7 +407,7 @@ export const view = <ParentMessage>({
     onNonEmpty: (nonEmptyAttachments) =>
       attachmentsView<ParentMessage>({
         variant,
-        ...(className === undefined ? {} : { className }),
+        ...(classes === undefined ? {} : { classes }),
         children: Array.map(nonEmptyAttachments, (attachment) =>
           attachmentView<ParentMessage>({
             data: attachment,

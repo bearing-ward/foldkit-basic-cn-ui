@@ -2,8 +2,8 @@ export { descriptionId, view } from "../../../foldkit/ui/input";
 export type { InputAttributes, ViewConfig } from "../../../foldkit/ui/input";
 
 export {
-  fieldClassName as baseUiInputRootClassName,
-  labelClassName as baseUiInputLabelClassName,
-  inputClassName as baseUiInputControlClassName,
-  descriptionClassName as baseUiInputDescriptionClassName,
+  fieldClasses as baseUiInputRootClasses,
+  labelClasses as baseUiInputLabelClasses,
+  inputClasses as baseUiInputControlClasses,
+  descriptionClasses as baseUiInputDescriptionClasses,
 } from "./view";

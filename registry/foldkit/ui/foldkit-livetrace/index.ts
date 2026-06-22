@@ -2,30 +2,30 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  chipClassName,
+  chipClasses,
   clampProgress,
-  classNames,
-  codeLineBaseClassName,
-  consoleHeaderClassName,
-  controlButtonClassName,
-  liveTraceThemeClassName,
-  logLineBaseClassName,
-  panelClassName,
-  progressIndicatorClassName,
-  progressTrackClassName,
-  statusBadgeBaseClassName,
-  stepMarkerClassName,
-  subtlePanelClassName,
+  cn,
+  codeLineBaseClasses,
+  consoleHeaderClasses,
+  controlButtonClasses,
+  liveTraceThemeClasses,
+  logLineBaseClasses,
+  panelClasses,
+  progressIndicatorClasses,
+  progressTrackClasses,
+  statusBadgeBaseClasses,
+  stepMarkerClasses,
+  subtlePanelClasses,
 } from "./view";
 
 export {
-  chipClassName,
-  classNames,
-  consoleHeaderClassName,
-  controlButtonClassName,
-  liveTraceThemeClassName,
-  panelClassName,
-  subtlePanelClassName,
+  chipClasses,
+  cn,
+  consoleHeaderClasses,
+  controlButtonClasses,
+  liveTraceThemeClasses,
+  panelClasses,
+  subtlePanelClasses,
 };
 
 export type LogLevel = "Info" | "Warning" | "Error";
@@ -36,32 +36,32 @@ export type MetricTone = "Default" | "Accent" | "Ok" | "Warning" | "Error";
 
 export type ThemeViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
 }>;
 
 export type ControlButtonViewConfig<ParentMessage> = Readonly<{
   label: string;
   active?: boolean;
   onClick?: ParentMessage;
-  className?: string;
+  classes?: string;
 }>;
 
 export type StatusBadgeViewConfig = Readonly<{
   status: TraceStatus;
   label?: string;
-  className?: string;
+  classes?: string;
 }>;
 
 export type ProgressTrackViewConfig = Readonly<{
   value: number;
   tone?: MetricTone;
-  className?: string;
+  classes?: string;
 }>;
 
 export type StepMarkerViewConfig = Readonly<{
   state: TraceStepState;
   label?: string;
-  className?: string;
+  classes?: string;
 }>;
 
 export type TraceStepViewConfig = Readonly<{
@@ -151,9 +151,9 @@ export type ExecutionPanelViewConfig = Readonly<{
   embeddings?: readonly string[];
 }>;
 
-const statusClassName = (status: TraceStatus): string =>
-  classNames(
-    statusBadgeBaseClassName,
+const statusClasses = (status: TraceStatus): string =>
+  cn(
+    statusBadgeBaseClasses,
     status === "Completed" &&
       "border-emerald-400/25 bg-emerald-400/10 text-emerald-300",
     status === "Running" && "border-primary/25 bg-primary/10 text-primary",
@@ -162,8 +162,8 @@ const statusClassName = (status: TraceStatus): string =>
       "border-destructive/30 bg-destructive/10 text-destructive-foreground"
   );
 
-const toneClassName = (tone: MetricTone): string =>
-  classNames(
+const toneClasses = (tone: MetricTone): string =>
+  cn(
     tone === "Default" && "text-card-foreground",
     tone === "Accent" && "text-primary",
     tone === "Ok" && "text-emerald-300",
@@ -171,8 +171,8 @@ const toneClassName = (tone: MetricTone): string =>
     tone === "Error" && "text-destructive-foreground"
   );
 
-const progressToneClassName = (tone: MetricTone): string =>
-  classNames(
+const progressToneClasses = (tone: MetricTone): string =>
+  cn(
     tone === "Default" && "bg-muted-foreground/40",
     tone === "Accent" && "bg-primary",
     tone === "Ok" && "bg-emerald-400",
@@ -180,9 +180,9 @@ const progressToneClassName = (tone: MetricTone): string =>
     tone === "Error" && "bg-destructive"
   );
 
-const markerClassName = (state: TraceStepState): string =>
-  classNames(
-    stepMarkerClassName,
+const markerClasses = (state: TraceStepState): string =>
+  cn(
+    stepMarkerClasses,
     state === "Complete" &&
       "border-emerald-400/30 bg-emerald-400 text-background",
     state === "Running" &&
@@ -192,16 +192,16 @@ const markerClassName = (state: TraceStepState): string =>
       "border-destructive/40 bg-destructive/10 text-destructive-foreground"
   );
 
-const logLevelClassName = (level: LogLevel): string =>
-  classNames(
-    logLineBaseClassName,
+const logLevelClasses = (level: LogLevel): string =>
+  cn(
+    logLineBaseClasses,
     level === "Info" && "text-muted-foreground",
     level === "Warning" && "bg-amber-500/10 text-amber-300",
     level === "Error" && "bg-destructive/10 text-destructive-foreground"
   );
 
-const codeToneClassName = (tone: CodeLineTone): string =>
-  classNames(
+const codeToneClasses = (tone: CodeLineTone): string =>
+  cn(
     tone === "Plain" && "text-card-foreground/80",
     tone === "Keyword" && "text-purple-300",
     tone === "Call" && "text-primary",
@@ -223,14 +223,14 @@ const markerLabel = (state: TraceStepState): string =>
 
 export const themeView = <ParentMessage>({
   children,
-  className,
+  classes,
 }: ThemeViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.Class(
-        classNames(liveTraceThemeClassName, "min-h-screen p-6", className)
+        cn(liveTraceThemeClasses, "min-h-screen p-6", classes)
       ),
     ],
     children
@@ -254,7 +254,7 @@ export const controlButtonView = <ParentMessage>({
   label,
   active = false,
   onClick,
-  className,
+  classes,
 }: ControlButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
   const clickAttrs = onClick === undefined ? [] : [h.OnClick(onClick)];
@@ -264,7 +264,7 @@ export const controlButtonView = <ParentMessage>({
       h.Type("button"),
       h.DataAttribute("active", active ? "true" : "false"),
       ...clickAttrs,
-      h.Class(classNames(controlButtonClassName, className)),
+      h.Class(cn(controlButtonClasses, classes)),
     ],
     [label]
   );
@@ -273,14 +273,14 @@ export const controlButtonView = <ParentMessage>({
 export const statusBadgeView = <ParentMessage>({
   status,
   label = shortStatusLabel(status),
-  className,
+  classes,
 }: StatusBadgeViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.span(
     [
       h.DataAttribute("status", status),
-      h.Class(classNames(statusClassName(status), className)),
+      h.Class(cn(statusClasses(status), classes)),
     ],
     [label]
   );
@@ -289,7 +289,7 @@ export const statusBadgeView = <ParentMessage>({
 export const progressTrackView = <ParentMessage>({
   value,
   tone = "Ok",
-  className,
+  classes,
 }: ProgressTrackViewConfig): Html => {
   const h = html<ParentMessage>();
   const progress = clampProgress(value);
@@ -303,14 +303,14 @@ export const progressTrackView = <ParentMessage>({
       h.AriaValuetext(`${progress}%`),
       h.AriaLabel(`${progress}%`),
       h.DataAttribute("progress", String(progress)),
-      h.Class(classNames(progressTrackClassName, className)),
+      h.Class(cn(progressTrackClasses, classes)),
     ],
     [
       h.div(
         [
           h.Style({ width: `${progress}%` }),
           h.Class(
-            classNames(progressIndicatorClassName, progressToneClassName(tone))
+            cn(progressIndicatorClasses, progressToneClasses(tone))
           ),
         ],
         []
@@ -322,14 +322,14 @@ export const progressTrackView = <ParentMessage>({
 export const stepMarkerView = <ParentMessage>({
   state,
   label = markerLabel(state),
-  className,
+  classes,
 }: StepMarkerViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.span(
     [
       h.DataAttribute("state", state),
-      h.Class(classNames(markerClassName(state), className)),
+      h.Class(cn(markerClasses(state), classes)),
     ],
     [label]
   );
@@ -384,13 +384,13 @@ export const logLineView = <ParentMessage>({
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.DataAttribute("level", level), h.Class(logLevelClassName(level))],
+    [h.DataAttribute("level", level), h.Class(logLevelClasses(level))],
     [
       h.span([h.Class("text-muted-foreground/55")], [timestamp]),
       h.span(
         [
           h.Class(
-            toneClassName(
+            toneClasses(
               level === "Info"
                 ? "Accent"
                 : level === "Warning"
@@ -415,10 +415,10 @@ export const logConsoleView = <ParentMessage>({
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(classNames(panelClassName, "flex h-[220px] flex-col"))],
+    [h.Class(cn(panelClasses, "flex h-[220px] flex-col"))],
     [
       h.div(
-        [h.Class(consoleHeaderClassName)],
+        [h.Class(consoleHeaderClasses)],
         [
           h.span([h.Class("text-primary")], [title]),
           h.span([h.Class("text-muted-foreground")], [status]),
@@ -445,8 +445,8 @@ export const traceCardView = <ParentMessage>({
   return h.article(
     [
       h.Class(
-        classNames(
-          subtlePanelClassName,
+        cn(
+          subtlePanelClasses,
           "flex min-h-[640px] flex-col overflow-hidden"
         )
       ),
@@ -523,7 +523,7 @@ export const activityRowView = <ParentMessage>({
       h.div(
         [
           h.Class(
-            classNames("h-1.5 w-1.5 rounded-full", progressToneClassName(tone))
+            cn("h-1.5 w-1.5 rounded-full", progressToneClasses(tone))
           ),
         ],
         []
@@ -550,10 +550,10 @@ export const activityPanelView = <ParentMessage>({
   const h = html<ParentMessage>();
 
   return h.aside(
-    [h.Class(panelClassName)],
+    [h.Class(panelClasses)],
     [
       h.div(
-        [h.Class(consoleHeaderClassName)],
+        [h.Class(consoleHeaderClasses)],
         [
           h.span([h.Class("text-muted-foreground")], ["active · traces"]),
           h.span(
@@ -606,7 +606,7 @@ export const metricView = <ParentMessage>({
         [label]
       ),
       h.div(
-        [h.Class(classNames("mt-2 font-mono text-sm", toneClassName(tone)))],
+        [h.Class(cn("mt-2 font-mono text-sm", toneClasses(tone)))],
         [value]
       ),
     ]
@@ -636,7 +636,7 @@ export const agentStepCardView = <ParentMessage>({
             [
               stepMarkerView<ParentMessage>({
                 state,
-                className: "h-[7px] w-[7px] border-0 p-0 text-[0px]",
+                classes: "h-[7px] w-[7px] border-0 p-0 text-[0px]",
               }),
               h.span([h.Class("truncate text-sm font-medium")], [name]),
             ]
@@ -649,7 +649,7 @@ export const agentStepCardView = <ParentMessage>({
       ),
       h.div(
         [h.Class("mb-3 flex flex-wrap gap-1.5")],
-        chips.map((chip) => h.span([h.Class(chipClassName)], [chip]))
+        chips.map((chip) => h.span([h.Class(chipClasses)], [chip]))
       ),
       h.div(
         [h.Class("space-y-1")],
@@ -675,7 +675,7 @@ export const codeLineView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("active", active ? "true" : "false"),
-      h.Class(classNames(codeLineBaseClassName, codeToneClassName(tone))),
+      h.Class(cn(codeLineBaseClasses, codeToneClasses(tone))),
     ],
     [`${" ".repeat(indent)}${text}`]
   );
@@ -757,15 +757,15 @@ export const executionStepView = <ParentMessage>({
                 [h.Class("text-sm font-medium text-card-foreground")],
                 [name]
               ),
-              h.code([h.Class(chipClassName)], [tag]),
+              h.code([h.Class(chipClasses)], [tag]),
             ]
           ),
           h.span(
             [
               h.Class(
-                classNames(
+                cn(
                   "font-mono text-xs",
-                  toneClassName(
+                  toneClasses(
                     state === "Failed"
                       ? "Error"
                       : state === "Running"
@@ -822,31 +822,31 @@ export const executionPanelView = <ParentMessage>({
         [
           controlButtonView<ParentMessage>({
             label: "Ⅱ",
-            className: "h-6 w-7 justify-center px-0",
+            classes: "h-6 w-7 justify-center px-0",
           }),
           controlButtonView<ParentMessage>({
             label: "↠",
-            className: "h-6 w-7 justify-center px-0",
+            classes: "h-6 w-7 justify-center px-0",
           }),
           controlButtonView<ParentMessage>({
             label: "↻",
-            className: "h-6 w-7 justify-center px-0",
+            classes: "h-6 w-7 justify-center px-0",
           }),
           h.div(
             [h.Class("ml-3 flex items-center")],
             [
               controlButtonView<ParentMessage>({
                 label: "0.5x",
-                className: "h-[22px] rounded-r-none border-r-0 px-2",
+                classes: "h-[22px] rounded-r-none border-r-0 px-2",
               }),
               controlButtonView<ParentMessage>({
                 label: "1x",
                 active: true,
-                className: "h-[22px] rounded-none px-2",
+                classes: "h-[22px] rounded-none px-2",
               }),
               controlButtonView<ParentMessage>({
                 label: "2x",
-                className: "h-[22px] rounded-l-none px-2",
+                classes: "h-[22px] rounded-l-none px-2",
               }),
             ]
           ),

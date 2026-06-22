@@ -3,10 +3,10 @@ import { html } from "foldkit/html";
 
 import * as AlertDialog from "../../../foldkit/ui/alert-dialog";
 import {
-  shadcnAlertDialogContentSmClassName,
-  shadcnAlertDialogFooterClassName,
-  shadcnAlertDialogHeaderClassName,
-  shadcnAlertDialogMediaClassName,
+  shadcnAlertDialogContentSmClasses,
+  shadcnAlertDialogFooterClasses,
+  shadcnAlertDialogHeaderClasses,
+  shadcnAlertDialogMediaClasses,
 } from "./view";
 
 export {
@@ -31,21 +31,21 @@ export type {
 } from "../../../foldkit/ui/alert-dialog";
 
 export {
-  shadcnAlertDialogActionsClassName,
-  shadcnAlertDialogBackdropClassName,
-  shadcnAlertDialogCancelClassName,
-  shadcnAlertDialogConfirmClassName,
-  shadcnAlertDialogContentSmClassName,
-  shadcnAlertDialogDescriptionClassName,
-  shadcnAlertDialogFooterClassName,
-  shadcnAlertDialogHeaderClassName,
-  shadcnAlertDialogMediaClassName,
-  shadcnAlertDialogPopupClassName,
-  shadcnAlertDialogPortalClassName,
-  shadcnAlertDialogRootClassName,
-  shadcnAlertDialogTitleClassName,
-  shadcnAlertDialogTriggerClassName,
-  shadcnAlertDialogViewportClassName,
+  shadcnAlertDialogActionsClasses,
+  shadcnAlertDialogBackdropClasses,
+  shadcnAlertDialogCancelClasses,
+  shadcnAlertDialogConfirmClasses,
+  shadcnAlertDialogContentSmClasses,
+  shadcnAlertDialogDescriptionClasses,
+  shadcnAlertDialogFooterClasses,
+  shadcnAlertDialogHeaderClasses,
+  shadcnAlertDialogMediaClasses,
+  shadcnAlertDialogPopupClasses,
+  shadcnAlertDialogPortalClasses,
+  shadcnAlertDialogRootClasses,
+  shadcnAlertDialogTitleClasses,
+  shadcnAlertDialogTriggerClasses,
+  shadcnAlertDialogViewportClasses,
 } from "./view";
 
 export type AlertDialogContentSize = "default" | "sm";
@@ -55,11 +55,11 @@ export type ContentViewConfig = Readonly<{
   descriptionId: string;
   children: readonly Html[];
   size?: AlertDialogContentSize | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: AlertDialog.AlertDialogStyle | undefined;
 }>;
 
-const classNames = (...values: readonly (string | undefined)[]): string =>
+const cn = (...values: readonly (string | undefined)[]): string =>
   values
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
@@ -69,23 +69,23 @@ export const contentView = <ParentMessage>({
   descriptionId,
   children,
   size = "default",
-  className,
+  classes,
   style,
 }: ContentViewConfig): Html =>
   AlertDialog.popupView<ParentMessage>({
     titleId,
     descriptionId,
     children,
-    className: classNames(
-      size === "sm" ? shadcnAlertDialogContentSmClassName : undefined,
-      className
+    classes: cn(
+      size === "sm" ? shadcnAlertDialogContentSmClasses : undefined,
+      classes
     ),
     style,
   });
 
 const divPartView = <ParentMessage>(
-  baseClassName: string,
-  { id, children, className, style }: AlertDialog.PartViewConfig
+  baseClasses: string,
+  { id, children, classes, style }: AlertDialog.PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
 
@@ -93,7 +93,7 @@ const divPartView = <ParentMessage>(
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(baseClassName, className)),
+      h.Class(cn(baseClasses, classes)),
     ],
     children
   );
@@ -101,12 +101,12 @@ const divPartView = <ParentMessage>(
 
 export const headerView = <ParentMessage>(
   config: AlertDialog.PartViewConfig
-): Html => divPartView<ParentMessage>(shadcnAlertDialogHeaderClassName, config);
+): Html => divPartView<ParentMessage>(shadcnAlertDialogHeaderClasses, config);
 
 export const footerView = <ParentMessage>(
   config: AlertDialog.PartViewConfig
-): Html => divPartView<ParentMessage>(shadcnAlertDialogFooterClassName, config);
+): Html => divPartView<ParentMessage>(shadcnAlertDialogFooterClasses, config);
 
 export const mediaView = <ParentMessage>(
   config: AlertDialog.PartViewConfig
-): Html => divPartView<ParentMessage>(shadcnAlertDialogMediaClassName, config);
+): Html => divPartView<ParentMessage>(shadcnAlertDialogMediaClasses, config);

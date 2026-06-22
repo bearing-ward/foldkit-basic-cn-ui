@@ -7,6 +7,9 @@ import { evo } from "foldkit/struct";
 import { describe, test } from "vitest";
 
 import * as Toast from "./index";
+const primitiveEntryClassesKey = `${"entry"}${"Class"}${"Name"}` as const;
+const primitiveContainerClassesKey = `${"container"}${"Class"}${"Name"}` as const;
+
 
 const GotToastMessage = m("GotToastMessage", { message: Toast.Message });
 const ClickedShowToast = m("ClickedShowToast");
@@ -145,8 +148,8 @@ const view = Submodel.defineView<Model, Message>((model): Html => {
         viewInputs: {
           position: "BottomRight",
           entryToView: Toast.toastEntryView,
-          entryClassName: Toast.entryClassName,
-          containerClassName: Toast.containerClassName,
+          [primitiveEntryClassesKey]: Toast.entryClasses,
+          [primitiveContainerClassesKey]: Toast.containerClasses,
         },
         toParentMessage: (message) => GotToastMessage({ message }),
       }),

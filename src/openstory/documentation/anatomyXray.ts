@@ -85,21 +85,21 @@ export const update = (model: Model, message: Message): UpdateReturn =>
 
 // VIEW
 
-const shellClassName =
+const shellClasses =
   "min-h-screen bg-white px-4 py-6 text-slate-950 [--xray-accent:37_99%_55%] [--xray-border:215_16%_82%] sm:px-6 lg:px-8";
-const containerClassName = "mx-auto flex w-full max-w-7xl flex-col gap-6";
-const eyebrowClassName =
+const containerClasses = "mx-auto flex w-full max-w-7xl flex-col gap-6";
+const eyebrowClasses =
   "font-mono text-xs font-medium uppercase tracking-[0.08em] text-slate-500";
-const panelClassName =
+const panelClasses =
   "rounded-[8px] border border-slate-200 bg-white shadow-sm";
-const panelHeaderClassName = "border-b border-slate-200 px-4 py-3";
-const panelTitleClassName = "text-sm font-semibold text-slate-950";
-const panelBodyClassName = "p-4";
-const codeButtonBaseClassName =
+const panelHeaderClasses = "border-b border-slate-200 px-4 py-3";
+const panelTitleClasses = "text-sm font-semibold text-slate-950";
+const panelBodyClasses = "p-4";
+const codeButtonBaseClasses =
   "group grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[6px] border px-3 py-2 text-left font-mono text-[12px] leading-5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500";
-const previewBoxBaseClassName =
+const previewBoxBaseClasses =
   "flex min-h-12 flex-col gap-2 rounded-[7px] border border-slate-200 bg-slate-50 p-3 transition";
-const activeClassName =
+const activeClasses =
   "border-amber-400 bg-amber-50 ring-2 ring-amber-300 ring-offset-2 ring-offset-white";
 
 const findPartById = (
@@ -175,7 +175,7 @@ const renderCodeRow = (model: Model, part: XrayPart, depth: number): Html => {
       h.OnBlur(ClearedPart()),
       h.OnClick(SelectedPart({ partId: part.id })),
       h.Class(
-        `${codeButtonBaseClassName} ${
+        `${codeButtonBaseClasses} ${
           active
             ? "border-amber-300 bg-amber-50 text-slate-950"
             : "border-transparent bg-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50"
@@ -217,7 +217,7 @@ const renderPreviewPart = (model: Model, part: XrayPart): Html => {
     [
       h.DataAttribute("xray-part", part.id),
       h.Class(
-        `${previewBoxBaseClassName} ${active ? activeClassName : "hover:border-slate-300"}`
+        `${previewBoxBaseClasses} ${active ? activeClasses : "hover:border-slate-300"}`
       ),
     ],
     [
@@ -235,14 +235,14 @@ const renderPreviewPart = (model: Model, part: XrayPart): Html => {
         [h.Class("flex flex-wrap gap-1.5")],
         part.classes
           .slice(0, 4)
-          .map((className) =>
+          .map((classes) =>
             h.span(
               [
                 h.Class(
                   "rounded-[4px] border border-slate-200 bg-white px-1.5 py-0.5 font-mono text-[11px] text-slate-600"
                 ),
               ],
-              [className]
+              [classes]
             )
           )
       ),
@@ -298,20 +298,20 @@ const renderDetails = (maybePart: Option.Option<XrayPart>): Html => {
     Option.match({
       onNone: () =>
         h.div(
-          [h.Class(`${panelClassName} p-4 text-sm text-slate-500`)],
+          [h.Class(`${panelClasses} p-4 text-sm text-slate-500`)],
           ["No anatomy parts are available."]
         ),
       onSome: (part) =>
         h.aside(
           [
-            h.Class(`${panelClassName} lg:sticky lg:top-6`),
+            h.Class(`${panelClasses} lg:sticky lg:top-6`),
             h.AriaLabel("Selected anatomy details"),
           ],
           [
             h.div(
-              [h.Class(panelHeaderClassName)],
+              [h.Class(panelHeaderClasses)],
               [
-                h.p([h.Class(eyebrowClassName)], ["Selected part"]),
+                h.p([h.Class(eyebrowClasses)], ["Selected part"]),
                 h.h2(
                   [h.Class("mt-1 text-lg font-semibold text-slate-950")],
                   [part.label]
@@ -319,7 +319,7 @@ const renderDetails = (maybePart: Option.Option<XrayPart>): Html => {
               ]
             ),
             h.div(
-              [h.Class(`${panelBodyClassName} space-y-4`)],
+              [h.Class(`${panelBodyClasses} space-y-4`)],
               [
                 h.p(
                   [h.Class("text-sm leading-6 text-slate-600")],
@@ -347,15 +347,15 @@ export const view =
     const maybeActivePart = activePart(config, model);
 
     return h.main(
-      [h.Class(shellClassName)],
+      [h.Class(shellClasses)],
       [
         h.div(
-          [h.Class(containerClassName)],
+          [h.Class(containerClasses)],
           [
             h.header(
               [h.Class("max-w-3xl space-y-2")],
               [
-                h.p([h.Class(eyebrowClassName)], ["Anatomy x-ray"]),
+                h.p([h.Class(eyebrowClasses)], ["Anatomy x-ray"]),
                 h.h1(
                   [h.Class("text-3xl font-semibold text-slate-950")],
                   [config.title]
@@ -377,37 +377,37 @@ export const view =
                   [h.Class("grid gap-4 xl:grid-cols-2")],
                   [
                     h.div(
-                      [h.Class(panelClassName)],
+                      [h.Class(panelClasses)],
                       [
                         h.div(
-                          [h.Class(panelHeaderClassName)],
+                          [h.Class(panelHeaderClasses)],
                           [
                             h.h2(
-                              [h.Class(panelTitleClassName)],
+                              [h.Class(panelTitleClasses)],
                               ["Rendered HTML map"]
                             ),
                           ]
                         ),
                         h.div(
-                          [h.Class(`${panelBodyClassName} space-y-1`)],
+                          [h.Class(`${panelBodyClasses} space-y-1`)],
                           renderCodeRows(model, config.parts)
                         ),
                       ]
                     ),
                     h.div(
-                      [h.Class(panelClassName)],
+                      [h.Class(panelClasses)],
                       [
                         h.div(
-                          [h.Class(panelHeaderClassName)],
+                          [h.Class(panelHeaderClasses)],
                           [
                             h.h2(
-                              [h.Class(panelTitleClassName)],
+                              [h.Class(panelTitleClasses)],
                               ["Preview map"]
                             ),
                           ]
                         ),
                         h.div(
-                          [h.Class(`${panelBodyClassName} space-y-3`)],
+                          [h.Class(`${panelBodyClasses} space-y-3`)],
                           config.parts.map((part) =>
                             renderPreviewPart(model, part)
                           )

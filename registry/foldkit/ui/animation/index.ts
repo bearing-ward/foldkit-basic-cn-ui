@@ -41,8 +41,8 @@ export const init = (config: InitConfig): InitReturn => [
 ];
 
 export {
-  animationContentClassName,
+  animationContentClasses,
   animationPanel,
-  animationTriggerClassName,
+  animationTriggerClasses,
 } from "./view";
 export type { AnimationPanelInput } from "./view";

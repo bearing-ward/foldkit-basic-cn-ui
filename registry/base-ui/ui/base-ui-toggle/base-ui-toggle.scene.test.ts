@@ -14,7 +14,7 @@ type Message = typeof Message.Type;
 const favoriteIcon = (): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(Toggle.toggleIconClassName)], ["♥"]);
+  return h.span([h.Class(Toggle.toggleIconClasses)], ["♥"]);
 };
 
 const view = (pressed: boolean, disabled = false): Html =>

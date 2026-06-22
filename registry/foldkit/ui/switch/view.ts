@@ -2,17 +2,17 @@ import clsx from "clsx";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-export const switchRowClassName = "flex items-center gap-3";
+export const switchRowClasses = "flex items-center gap-3";
 
-export const switchButtonClassName =
+export const switchButtonClasses =
   "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full bg-gray-300 transition-colors data-[checked]:bg-accent-600 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50";
 
-export const switchLabelClassName =
+export const switchLabelClasses =
   "text-sm font-medium leading-5 text-gray-900";
 
-export const switchDescriptionClassName = "text-sm leading-5 text-gray-500";
+export const switchDescriptionClasses = "text-sm leading-5 text-gray-500";
 
-export const switchTextClassName = "space-y-1";
+export const switchTextClasses = "space-y-1";
 
 export const switchKnob = (isChecked: boolean): Html => {
   const h = html();

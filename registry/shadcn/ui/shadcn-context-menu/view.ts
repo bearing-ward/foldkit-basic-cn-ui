@@ -1,10 +1,10 @@
 export {
-  contextMenuBackdropClassName as shadcnContextMenuBackdropClassName,
-  contextMenuItemClassName as shadcnContextMenuItemClassName,
-  contextMenuPopupClassName as shadcnContextMenuPopupClassName,
-  contextMenuPortalClassName as shadcnContextMenuPortalClassName,
-  contextMenuPositionerClassName as shadcnContextMenuPositionerClassName,
-  contextMenuRootClassName as shadcnContextMenuRootClassName,
-  contextMenuSeparatorClassName as shadcnContextMenuSeparatorClassName,
-  contextMenuTriggerClassName as shadcnContextMenuTriggerClassName,
+  contextMenuBackdropClasses as shadcnContextMenuBackdropClasses,
+  contextMenuItemClasses as shadcnContextMenuItemClasses,
+  contextMenuPopupClasses as shadcnContextMenuPopupClasses,
+  contextMenuPortalClasses as shadcnContextMenuPortalClasses,
+  contextMenuPositionerClasses as shadcnContextMenuPositionerClasses,
+  contextMenuRootClasses as shadcnContextMenuRootClasses,
+  contextMenuSeparatorClasses as shadcnContextMenuSeparatorClasses,
+  contextMenuTriggerClasses as shadcnContextMenuTriggerClasses,
 } from "../../../foldkit/ui/context-menu/view";

@@ -41,7 +41,7 @@ const iconLink = (
     href: "#",
     label,
     active,
-    className: "h-9 w-9 p-0",
+    classes: "h-9 w-9 p-0",
     children,
   });
 
@@ -57,7 +57,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               Pagination.linkView<Message>({
                 href: "#",
                 label: "Go to previous page",
-                className: "h-9 w-9 p-0",
+                classes: "h-9 w-9 p-0",
                 children: [h.span([h.AriaHidden(true)], ["<"])],
               }),
             ],

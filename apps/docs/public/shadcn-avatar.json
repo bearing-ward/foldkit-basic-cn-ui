@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-avatar/index.ts",
       "target": "src/ui/shadcn-avatar/index.ts",
       "type": "registry:ui",
-      "content": "export {\n  badgeView,\n  countView,\n  fallbackView,\n  groupView,\n  imageView,\n  rootView,\n  view,\n} from \"../../../base-ui/ui/avatar\";\nexport type {\n  AvatarStyle,\n  BadgeViewConfig,\n  CountConfig,\n  FallbackViewConfig,\n  ImageViewConfig,\n  RootViewConfig,\n  ViewConfig,\n} from \"../../../base-ui/ui/avatar\";\n\nexport {\n  shadcnAvatarBaseClassName,\n  shadcnAvatarBadgeClassName,\n  shadcnAvatarClassNameBySize,\n  shadcnAvatarFallbackClassName,\n  shadcnAvatarGroupClassName,\n  shadcnAvatarGroupCountClassName,\n  shadcnAvatarImageClassName,\n  shadcnAvatarSizeClassNameBySize,\n} from \"./view\";\nexport type { ShadcnAvatarSize } from \"./view\";\n"
+      "content": "export {\n  badgeView,\n  countView,\n  fallbackView,\n  groupView,\n  imageView,\n  rootView,\n  view,\n} from \"../../../base-ui/ui/avatar\";\nexport type {\n  AvatarStyle,\n  BadgeViewConfig,\n  CountConfig,\n  FallbackViewConfig,\n  ImageViewConfig,\n  RootViewConfig,\n  ViewConfig,\n} from \"../../../base-ui/ui/avatar\";\n\nexport {\n  shadcnAvatarBaseClasses,\n  shadcnAvatarBadgeClasses,\n  shadcnAvatarClassesBySize,\n  shadcnAvatarFallbackClasses,\n  shadcnAvatarGroupClasses,\n  shadcnAvatarGroupCountClasses,\n  shadcnAvatarImageClasses,\n  shadcnAvatarSizeClassesBySize,\n} from \"./view\";\nexport type { ShadcnAvatarSize } from \"./view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-avatar/view.ts",
       "target": "src/ui/shadcn-avatar/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  avatarBaseClassName as shadcnAvatarBaseClassName,\n  avatarBadgeClassName as shadcnAvatarBadgeClassName,\n  avatarClassNameBySize as shadcnAvatarClassNameBySize,\n  avatarFallbackClassName as shadcnAvatarFallbackClassName,\n  avatarGroupClassName as shadcnAvatarGroupClassName,\n  avatarGroupCountClassName as shadcnAvatarGroupCountClassName,\n  avatarImageClassName as shadcnAvatarImageClassName,\n  avatarSizeClassNameBySize as shadcnAvatarSizeClassNameBySize,\n} from \"../../../base-ui/ui/avatar/view\";\nexport type { AvatarSize as ShadcnAvatarSize } from \"../../../base-ui/ui/avatar/view\";\n"
+      "content": "export {\n  avatarBaseClasses as shadcnAvatarBaseClasses,\n  avatarBadgeClasses as shadcnAvatarBadgeClasses,\n  avatarClassesBySize as shadcnAvatarClassesBySize,\n  avatarFallbackClasses as shadcnAvatarFallbackClasses,\n  avatarGroupClasses as shadcnAvatarGroupClasses,\n  avatarGroupCountClasses as shadcnAvatarGroupCountClasses,\n  avatarImageClasses as shadcnAvatarImageClasses,\n  avatarSizeClassesBySize as shadcnAvatarSizeClassesBySize,\n} from \"../../../base-ui/ui/avatar/view\";\nexport type { AvatarSize as ShadcnAvatarSize } from \"../../../base-ui/ui/avatar/view\";\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-avatar/shadcn-avatar.scene.test.ts",
       "target": "src/ui/shadcn-avatar/shadcn-avatar.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Avatar from \"./index\";\n\ndescribe(\"shadcn Avatar registry view\", () => {\n  test(\"reuses the Foldkit Avatar view contract\", () => {\n    expect(Avatar.view).toBeTypeOf(\"function\");\n    expect(Avatar.rootView).toBeTypeOf(\"function\");\n    expect(Avatar.shadcnAvatarClassNameBySize()).toContain(\"rounded-full\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Avatar from \"./index\";\n\ndescribe(\"shadcn Avatar registry view\", () => {\n  test(\"reuses the Foldkit Avatar view contract\", () => {\n    expect(Avatar.view).toBeTypeOf(\"function\");\n    expect(Avatar.rootView).toBeTypeOf(\"function\");\n    expect(Avatar.shadcnAvatarClassesBySize()).toContain(\"rounded-full\");\n  });\n});\n"
     }
   ],
   "meta": {

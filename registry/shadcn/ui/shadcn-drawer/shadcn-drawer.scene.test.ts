@@ -7,6 +7,6 @@ describe("shadcn Drawer registry view", () => {
     expect(Drawer.rootView).toBeTypeOf("function");
     expect(Drawer.triggerView).toBeTypeOf("function");
     expect(Drawer.popupView).toBeTypeOf("function");
-    expect(Drawer.shadcnDrawerPopupClassName).toContain("shadow");
+    expect(Drawer.shadcnDrawerPopupClasses).toContain("shadow");
   });
 });

@@ -7,7 +7,7 @@ describe("shadcn Collapsible registry view", () => {
     expect(Collapsible.rootView).toBeTypeOf("function");
     expect(Collapsible.triggerView).toBeTypeOf("function");
     expect(Collapsible.panelView).toBeTypeOf("function");
-    expect(Collapsible.shadcnCollapsibleTriggerClassName).toContain(
+    expect(Collapsible.shadcnCollapsibleTriggerClasses).toContain(
       "font-medium"
     );
   });

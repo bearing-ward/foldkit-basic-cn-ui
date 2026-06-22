@@ -11,13 +11,13 @@ import type {
   ViewportViewConfig,
 } from "../../../base-ui/ui/scroll-area";
 import {
-  shadcnScrollAreaContentClassName,
-  shadcnScrollAreaCornerClassName,
-  shadcnScrollAreaFadeClassName,
-  shadcnScrollAreaRootClassName,
-  shadcnScrollAreaScrollbarClassName,
-  shadcnScrollAreaThumbClassName,
-  shadcnScrollAreaViewportClassName,
+  shadcnScrollAreaContentClasses,
+  shadcnScrollAreaCornerClasses,
+  shadcnScrollAreaFadeClasses,
+  shadcnScrollAreaRootClasses,
+  shadcnScrollAreaScrollbarClasses,
+  shadcnScrollAreaThumbClasses,
+  shadcnScrollAreaViewportClasses,
 } from "./view";
 
 export type {
@@ -32,17 +32,17 @@ export type {
 } from "../../../base-ui/ui/scroll-area";
 
 export {
-  shadcnScrollAreaContentClassName,
-  shadcnScrollAreaCornerClassName,
-  shadcnScrollAreaFadeClassName,
-  shadcnScrollAreaRootClassName,
-  shadcnScrollAreaScrollbarClassName,
-  shadcnScrollAreaThumbClassName,
-  shadcnScrollAreaViewportClassName,
+  shadcnScrollAreaContentClasses,
+  shadcnScrollAreaCornerClasses,
+  shadcnScrollAreaFadeClasses,
+  shadcnScrollAreaRootClasses,
+  shadcnScrollAreaScrollbarClasses,
+  shadcnScrollAreaThumbClasses,
+  shadcnScrollAreaViewportClasses,
 } from "./view";
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -61,7 +61,7 @@ const stateAttributes = <ParentMessage>(
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   hasOverflowX,
   hasOverflowY,
@@ -74,7 +74,7 @@ export const rootView = <ParentMessage>({
       ...stateAttributes(h, { hasOverflowX, hasOverflowY, isScrolling }),
       h.DataAttribute("slot", "scroll-area"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(shadcnScrollAreaRootClassName, className)),
+      h.Class(cn(shadcnScrollAreaRootClasses, classes)),
     ],
     children
   );
@@ -82,7 +82,7 @@ export const rootView = <ParentMessage>({
 
 export const viewportView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
   ariaLabel,
 }: ViewportViewConfig): Html => {
@@ -96,7 +96,7 @@ export const viewportView = <ParentMessage>({
         ? []
         : [h.Attribute("role", "region"), h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(shadcnScrollAreaViewportClassName, className)),
+      h.Class(cn(shadcnScrollAreaViewportClasses, classes)),
     ],
     children
   );
@@ -104,7 +104,7 @@ export const viewportView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -112,7 +112,7 @@ export const contentView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(shadcnScrollAreaContentClassName, className)),
+      h.Class(cn(shadcnScrollAreaContentClasses, classes)),
     ],
     children
   );
@@ -121,7 +121,7 @@ export const contentView = <ParentMessage>({
 export const scrollbarView = <ParentMessage>({
   children,
   orientation = "vertical",
-  className,
+  classes,
   style,
 }: ScrollbarViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -132,14 +132,14 @@ export const scrollbarView = <ParentMessage>({
       h.DataAttribute("slot", "scroll-area-scrollbar"),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(shadcnScrollAreaScrollbarClassName, className)),
+      h.Class(cn(shadcnScrollAreaScrollbarClasses, classes)),
     ],
     children
   );
 };
 
 export const thumbView = <ParentMessage>({
-  className,
+  classes,
   style,
 }: ThumbViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -148,14 +148,14 @@ export const thumbView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "scroll-area-thumb"),
-      h.Class(classNames(shadcnScrollAreaThumbClassName, className)),
+      h.Class(cn(shadcnScrollAreaThumbClasses, classes)),
     ],
     []
   );
 };
 
 export const cornerView = <ParentMessage>({
-  className,
+  classes,
   style,
 }: CornerViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -164,7 +164,7 @@ export const cornerView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(shadcnScrollAreaCornerClassName, className)),
+      h.Class(cn(shadcnScrollAreaCornerClasses, classes)),
     ],
     []
   );
@@ -174,29 +174,29 @@ export const view = <ParentMessage>({
   children,
   ariaLabel,
   hasFade = false,
-  className,
+  classes,
   style,
-  viewportClassName,
+  viewportClasses,
   viewportStyle,
-  contentClassName,
+  contentClasses,
   contentStyle,
   hasHorizontalScrollbar = false,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
-    className,
+    classes,
     style,
     hasOverflowY: true,
     hasOverflowX: hasHorizontalScrollbar,
     children: [
       viewportView<ParentMessage>({
         ariaLabel,
-        className: hasFade
-          ? classNames(shadcnScrollAreaFadeClassName, viewportClassName)
-          : viewportClassName,
+        classes: hasFade
+          ? cn(shadcnScrollAreaFadeClasses, viewportClasses)
+          : viewportClasses,
         style: viewportStyle,
         children: [
           contentView<ParentMessage>({
-            className: contentClassName,
+            classes: contentClasses,
             style: contentStyle,
             children,
           }),
@@ -209,7 +209,7 @@ export const view = <ParentMessage>({
         ? [
             scrollbarView<ParentMessage>({
               orientation: "horizontal",
-              className: "inset-x-0 bottom-0 h-2.5 w-full border-l-0 border-t border-t-transparent",
+              classes: "inset-x-0 bottom-0 h-2.5 w-full border-l-0 border-t border-t-transparent",
               children: [thumbView<ParentMessage>()],
             }),
           ]

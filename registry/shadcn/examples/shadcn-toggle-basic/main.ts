@@ -115,19 +115,19 @@ export const update = (
 const italicIcon = (): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(Toggle.toggleIconClassName)], ["I"]);
+  return h.span([h.Class(Toggle.toggleIconClasses)], ["I"]);
 };
 
 const boldIcon = (): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(Toggle.toggleIconClassName)], ["B"]);
+  return h.span([h.Class(Toggle.toggleIconClasses)], ["B"]);
 };
 
 const bookmarkIcon = (): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(Toggle.toggleIconClassName)], ["Bookmark"]);
+  return h.span([h.Class(Toggle.toggleIconClasses)], ["Bookmark"]);
 };
 
 const toggleButton = (
@@ -135,7 +135,7 @@ const toggleButton = (
   ariaLabel: string,
   onPressedChange: Message,
   children: readonly Html[],
-  className?: string,
+  classes?: string,
   disabled = false
 ): Html =>
   Toggle.view<Message>({
@@ -144,7 +144,7 @@ const toggleButton = (
     onPressedChange,
     value: ariaLabel,
     disabled,
-    className,
+    classes,
     children,
   });
 

@@ -8,8 +8,8 @@ export type InputAttributes<ParentMessage> =
 export type ViewConfig<ParentMessage> = Ui.Input.ViewConfig<ParentMessage>;
 
 export {
-  descriptionClassName,
-  fieldClassName,
-  inputClassName,
-  labelClassName,
+  descriptionClasses,
+  fieldClasses,
+  inputClasses,
+  labelClasses,
 } from "./view";

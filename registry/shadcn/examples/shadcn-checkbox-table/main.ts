@@ -127,7 +127,7 @@ const checkboxButton = (
       h.AriaLabel(label),
       h.AriaChecked(isChecked),
       h.OnClick(message),
-      h.Class(Checkbox.shadcnCheckboxControlClassName),
+      h.Class(Checkbox.shadcnCheckboxControlClasses),
     ],
     isChecked ? ["✓"] : []
   );

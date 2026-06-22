@@ -1,7 +1,7 @@
 export {
-  checkboxControlClassName as shadcnCheckboxControlClassName,
-  checkboxDescriptionClassName as shadcnCheckboxDescriptionClassName,
-  checkboxLabelClassName as shadcnCheckboxLabelClassName,
-  checkboxRowClassName as shadcnCheckboxRowClassName,
-  checkboxTextClassName as shadcnCheckboxTextClassName,
+  checkboxControlClasses as shadcnCheckboxControlClasses,
+  checkboxDescriptionClasses as shadcnCheckboxDescriptionClasses,
+  checkboxLabelClasses as shadcnCheckboxLabelClasses,
+  checkboxRowClasses as shadcnCheckboxRowClasses,
+  checkboxTextClasses as shadcnCheckboxTextClasses,
 } from "../../../foldkit/ui/checkbox/view";

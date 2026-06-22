@@ -173,7 +173,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   [
                     h.Type("button"),
                     h.OnClick(SelectedPopoverAlign({ value: "start" })),
-                    h.Class(Popover.shadcnPopoverTriggerClassName),
+                    h.Class(Popover.shadcnPopoverTriggerClasses),
                   ],
                   ["Start"]
                 ),
@@ -181,7 +181,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   [
                     h.Type("button"),
                     h.OnClick(SelectedPopoverAlign({ value: "center" })),
-                    h.Class(Popover.shadcnPopoverTriggerClassName),
+                    h.Class(Popover.shadcnPopoverTriggerClasses),
                   ],
                   ["Center"]
                 ),
@@ -189,7 +189,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   [
                     h.Type("button"),
                     h.OnClick(SelectedPopoverAlign({ value: "end" })),
-                    h.Class(Popover.shadcnPopoverTriggerClassName),
+                    h.Class(Popover.shadcnPopoverTriggerClasses),
                   ],
                   ["End"]
                 ),

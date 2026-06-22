@@ -4,25 +4,25 @@ export type InputGroupAddonAlign =
   | "BlockStart"
   | "BlockEnd";
 
-export const inputGroupClassName =
+export const inputGroupClasses =
   "relative flex h-9 min-w-0 items-center rounded-md border border-gray-300 bg-white text-gray-950 shadow-sm transition focus-within:border-accent-500 focus-within:ring-2 focus-within:ring-accent-100";
 
-export const inputGroupControlClassName =
+export const inputGroupControlClasses =
   "min-w-0 flex-1 rounded-none border-0 bg-transparent px-3 py-1 text-sm outline-none placeholder:text-gray-400 focus:ring-0";
 
-export const inputGroupTextClassName =
+export const inputGroupTextClasses =
   "flex items-center gap-2 text-sm text-gray-500";
 
-export const inputGroupButtonClassName =
+export const inputGroupButtonClasses =
   "inline-flex h-7 shrink-0 items-center justify-center gap-1 rounded-md px-2 text-xs font-medium text-gray-700 transition hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 disabled:pointer-events-none disabled:opacity-50";
 
-export const inputGroupIconButtonClassName =
+export const inputGroupIconButtonClasses =
   "inline-flex size-7 shrink-0 items-center justify-center rounded-md text-gray-600 transition hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 disabled:pointer-events-none disabled:opacity-50";
 
-export const inputGroupTextareaClassName =
+export const inputGroupTextareaClasses =
   "min-h-24 min-w-0 flex-1 resize-none rounded-none border-0 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-gray-400 focus:ring-0";
 
-export const inputGroupAddonClassNameByAlign = (
+export const inputGroupAddonClassesByAlign = (
   align: InputGroupAddonAlign = "InlineStart"
 ): string => {
   if (align === "InlineEnd") {

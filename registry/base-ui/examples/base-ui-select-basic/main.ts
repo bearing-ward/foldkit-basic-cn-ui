@@ -61,12 +61,12 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             [
               h.label(attributes.label, ["Apple"]),
               h.div(
-                [h.Class(Select.baseUiSelectWrapperClassName)],
+                [h.Class(Select.baseUiSelectWrapperClasses)],
                 [
                   h.select(
                     [
                       ...attributes.select,
-                      h.Class(Select.baseUiSelectControlClassName),
+                      h.Class(Select.baseUiSelectControlClasses),
                     ],
                     [
                       h.option([h.Value("")], ["Select apple"]),
@@ -77,7 +77,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       h.option([h.Value("pink-lady")], ["Pink Lady"]),
                     ]
                   ),
-                  h.span([h.Class(Select.baseUiSelectChevronClassName)], ["v"]),
+                  h.span([h.Class(Select.baseUiSelectChevronClasses)], ["v"]),
                 ]
               ),
             ]

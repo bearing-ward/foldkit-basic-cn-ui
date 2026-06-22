@@ -65,7 +65,7 @@ export const update = (
 const slideCard = <ParentMessage>(label: string): Html => {
   const h = html<ParentMessage>();
 
-  return h.div([h.Class(Carousel.carouselCardClassName)], [label]);
+  return h.div([h.Class(Carousel.carouselCardClasses)], [label]);
 };
 
 // VIEW
@@ -77,7 +77,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-3")],
     [
       Carousel.rootView<Message>({
-        className: "max-w-xs",
+        classes: "max-w-xs",
         children: [
           Carousel.viewportView<Message>({
             children: [

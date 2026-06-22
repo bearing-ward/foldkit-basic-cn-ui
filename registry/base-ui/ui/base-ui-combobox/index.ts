@@ -53,12 +53,12 @@ export type {
 } from "../../../foldkit/ui/combobox";
 
 export {
-  baseUiComboboxInputClassName,
-  baseUiComboboxButtonClassName,
-  baseUiComboboxItemsClassName,
-  baseUiComboboxItemClassName,
-  baseUiComboboxBackdropClassName,
-  baseUiComboboxWrapperClassName,
+  baseUiComboboxInputClasses,
+  baseUiComboboxButtonClasses,
+  baseUiComboboxItemsClasses,
+  baseUiComboboxItemClasses,
+  baseUiComboboxBackdropClasses,
+  baseUiComboboxWrapperClasses,
   baseUiComboboxDefaultAnchor,
   baseUiComboboxSelectedIcon,
 } from "./view";

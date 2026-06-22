@@ -143,17 +143,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       viewInputs: {
         toView: (attributes) =>
           h.div(
-            [h.Class(Checkbox.checkboxRowClassName)],
+            [h.Class(Checkbox.checkboxRowClasses)],
             [
               h.button(
                 [
                   ...attributes.checkbox,
-                  h.Class(Checkbox.checkboxControlClassName),
+                  h.Class(Checkbox.checkboxControlClasses),
                 ],
                 checkbox.isChecked ? ["✓"] : []
               ),
               h.label(
-                [...attributes.label, h.Class(Checkbox.checkboxLabelClassName)],
+                [...attributes.label, h.Class(Checkbox.checkboxLabelClasses)],
                 [label]
               ),
             ]
@@ -173,19 +173,19 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           isIndeterminate,
           toView: (attributes) =>
             h.div(
-              [h.Class(Checkbox.checkboxRowClassName)],
+              [h.Class(Checkbox.checkboxRowClasses)],
               [
                 h.button(
                   [
                     ...attributes.checkbox,
-                    h.Class(Checkbox.checkboxControlClassName),
+                    h.Class(Checkbox.checkboxControlClasses),
                   ],
                   allMark === "" ? [] : [allMark]
                 ),
                 h.label(
                   [
                     ...attributes.label,
-                    h.Class(Checkbox.checkboxLabelClassName),
+                    h.Class(Checkbox.checkboxLabelClasses),
                   ],
                   ["All notification channels"]
                 ),

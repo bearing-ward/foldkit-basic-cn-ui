@@ -150,7 +150,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 ]
               ),
               Command.rootView<Message>({
-                className: "border-0 shadow-none",
+                classes: "border-0 shadow-none",
                 children: [
                   Command.inputView<Message>({
                     value: model.query,

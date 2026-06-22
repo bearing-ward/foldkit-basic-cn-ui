@@ -47,7 +47,7 @@ const optionView = (value: string, selected: boolean): Html => {
         ],
         [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]
       ),
-      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),
+      h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClasses)], [value]),
     ]
   );
 };
@@ -63,14 +63,14 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         ["Subscription Plan"]
       ),
       h.p(
-        [h.Class(RadioGroup.shadcnRadioGroupDescriptionClassName)],
+        [h.Class(RadioGroup.shadcnRadioGroupDescriptionClasses)],
         ["Yearly and lifetime plans offer significant savings."]
       ),
       h.div(
         [
           h.Role("radiogroup"),
           h.AriaLabel("Subscription Plan"),
-          h.Class(RadioGroup.shadcnRadioGroupVerticalClassName),
+          h.Class(RadioGroup.shadcnRadioGroupVerticalClasses),
         ],
         [
           optionView("Monthly ($9.99/month)", true),

@@ -46,7 +46,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             children: [
               Sidebar.headerView<Message>({
                 children: [
-                  h.span([h.Class(Sidebar.sidebarIconClassName)], ["أ"]),
+                  h.span([h.Class(Sidebar.sidebarIconClasses)], ["أ"]),
                   h.span([h.Class("text-sm font-semibold text-gray-950")], [
                     "شركة أكمي",
                   ]),

@@ -1,9 +1,9 @@
 export {
-  panelClassName as shadcnTabsPanelClassName,
-  tabClassName as shadcnTabsTabClassName,
-  tabListClassName as shadcnTabsTabListClassName,
-  tabsRootClassName as shadcnTabsRootClassName,
+  panelClasses as shadcnTabsPanelClasses,
+  tabClasses as shadcnTabsTabClasses,
+  tabListClasses as shadcnTabsTabListClasses,
+  tabsRootClasses as shadcnTabsRootClasses,
   tabsView as shadcnTabsView,
-  verticalTabListClassName as shadcnTabsVerticalTabListClassName,
-  verticalTabsRootClassName as shadcnTabsVerticalRootClassName,
+  verticalTabListClasses as shadcnTabsVerticalTabListClasses,
+  verticalTabsRootClasses as shadcnTabsVerticalRootClasses,
 } from "../../../foldkit/ui/tabs/view";

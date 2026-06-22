@@ -96,7 +96,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                             [
                               h.Type("button"),
                               h.OnClick(ClickedSubmit()),
-                              h.Class(Drawer.shadcnDrawerTriggerClassName),
+                              h.Class(Drawer.shadcnDrawerTriggerClasses),
                             ],
                             ["إرسال"]
                           ),

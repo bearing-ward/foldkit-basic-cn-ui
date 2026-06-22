@@ -1,14 +1,14 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import { directionButtonClassName, directionRootClassName } from "./view";
+import { directionButtonClasses, directionRootClasses } from "./view";
 
 export {
-  directionButtonClassName,
-  directionCardClassName,
-  directionControlsClassName,
-  directionPreviewClassName,
-  directionRootClassName,
+  directionButtonClasses,
+  directionCardClasses,
+  directionControlsClasses,
+  directionPreviewClasses,
+  directionRootClasses,
 } from "./view";
 
 /** Text direction values supported by the direction provider helper. */
@@ -18,7 +18,7 @@ export type Direction = "ltr" | "rtl";
 export type DirectionViewConfig = Readonly<{
   direction: Direction;
   children: readonly (Html | string)[];
-  className?: string;
+  classes?: string;
 }>;
 
 /** Config for a direction toggle button. */
@@ -27,11 +27,11 @@ export type DirectionButtonViewConfig<ParentMessage> = Readonly<{
   currentDirection: Direction;
   label: string;
   onClick: ParentMessage;
-  className?: string;
+  classes?: string;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -39,7 +39,7 @@ const classNames = (base: string, className?: string): string =>
 export const view = <ParentMessage>({
   direction,
   children,
-  className,
+  classes,
 }: DirectionViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -48,7 +48,7 @@ export const view = <ParentMessage>({
       h.Dir(direction),
       h.DataAttribute("slot", "direction"),
       h.DataAttribute("direction", direction),
-      h.Class(classNames(directionRootClassName, className)),
+      h.Class(cn(directionRootClasses, classes)),
     ],
     children
   );
@@ -60,7 +60,7 @@ export const buttonView = <ParentMessage>({
   currentDirection,
   label,
   onClick,
-  className,
+  classes,
 }: DirectionButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -73,7 +73,7 @@ export const buttonView = <ParentMessage>({
         "active",
         currentDirection === direction ? "true" : "false"
       ),
-      h.Class(classNames(directionButtonClassName, className)),
+      h.Class(cn(directionButtonClasses, classes)),
     ],
     [direction.toUpperCase()]
   );

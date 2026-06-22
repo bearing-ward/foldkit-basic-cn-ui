@@ -22,12 +22,12 @@ export type {
 } from "../../../foldkit/ui/slider";
 
 export {
-  shadcnSliderFieldClassName,
-  shadcnSliderFilledTrackClassName,
-  shadcnSliderHeaderClassName,
-  shadcnSliderLabelClassName,
-  shadcnSliderRootClassName,
-  shadcnSliderThumbClassName,
-  shadcnSliderTrackClassName,
-  shadcnSliderValueClassName,
+  shadcnSliderFieldClasses,
+  shadcnSliderFilledTrackClasses,
+  shadcnSliderHeaderClasses,
+  shadcnSliderLabelClasses,
+  shadcnSliderRootClasses,
+  shadcnSliderThumbClasses,
+  shadcnSliderTrackClasses,
+  shadcnSliderValueClasses,
 } from "./view";

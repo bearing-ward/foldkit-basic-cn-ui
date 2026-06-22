@@ -55,7 +55,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         onClick: ClickedButton(),
         toView: (attributes) =>
           h.button(
-            [...attributes.button, h.Class(Button.buttonClassName)],
+            [...attributes.button, h.Class(Button.buttonClasses)],
             ["Click me"]
           ),
       }),

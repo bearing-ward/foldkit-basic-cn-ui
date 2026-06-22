@@ -30,7 +30,7 @@ export const update = (
   _message: Message
 ): readonly [Model, readonly Command.Command<Message>[]] => [model, []];
 
-const iconButtonClassName =
+const iconButtonClasses =
   "inline-flex h-9 w-9 items-center justify-center bg-white text-sm font-semibold text-gray-900 transition hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-accent-600";
 
 // VIEW
@@ -47,7 +47,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Bold")],
+                [h.Class(iconButtonClasses), h.AriaLabel("Bold")],
                 ["B"]
               ),
             ],
@@ -55,7 +55,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Italic")],
+                [h.Class(iconButtonClasses), h.AriaLabel("Italic")],
                 ["I"]
               ),
             ],
@@ -63,7 +63,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Underline")],
+                [h.Class(iconButtonClasses), h.AriaLabel("Underline")],
                 ["U"]
               ),
             ],
@@ -77,7 +77,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Align left")],
+                [h.Class(iconButtonClasses), h.AriaLabel("Align left")],
                 ["L"]
               ),
             ],
@@ -85,7 +85,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Align center")],
+                [h.Class(iconButtonClasses), h.AriaLabel("Align center")],
                 ["C"]
               ),
             ],
@@ -93,7 +93,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ButtonGroup.itemView<Message>({
             children: [
               h.button(
-                [h.Class(iconButtonClassName), h.AriaLabel("Align right")],
+                [h.Class(iconButtonClasses), h.AriaLabel("Align right")],
                 ["R"]
               ),
             ],

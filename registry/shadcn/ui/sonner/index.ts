@@ -2,22 +2,22 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  sonnerCloseClassName,
-  sonnerDescriptionClassName,
-  sonnerIconClassName,
-  sonnerTitleClassName,
-  sonnerToastClassName,
-  sonnerViewportClassName,
+  sonnerCloseClasses,
+  sonnerDescriptionClasses,
+  sonnerIconClasses,
+  sonnerTitleClasses,
+  sonnerToastClasses,
+  sonnerViewportClasses,
 } from "./view";
 
 export {
-  sonnerActionClassName,
-  sonnerCloseClassName,
-  sonnerDescriptionClassName,
-  sonnerIconClassName,
-  sonnerTitleClassName,
-  sonnerToastClassName,
-  sonnerViewportClassName,
+  sonnerActionClasses,
+  sonnerCloseClasses,
+  sonnerDescriptionClasses,
+  sonnerIconClasses,
+  sonnerTitleClasses,
+  sonnerToastClasses,
+  sonnerViewportClasses,
 } from "./view";
 
 export type ToastConfig<ParentMessage> = Readonly<{
@@ -25,13 +25,13 @@ export type ToastConfig<ParentMessage> = Readonly<{
   description?: string | undefined;
   action?: Html | undefined;
   onClose?: ParentMessage | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   variant?: "default" | "success" | "info" | "warning" | "error" | undefined;
 }>;
 
 export type ViewportConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   position?:
     | "top-left"
     | "top-center"
@@ -42,12 +42,12 @@ export type ViewportConfig = Readonly<{
     | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
-const viewportPositionClassName = (
+const viewportPositionClasses = (
   position: NonNullable<ViewportConfig["position"]>
 ): string =>
   ({
@@ -59,7 +59,7 @@ const viewportPositionClassName = (
     "bottom-right": "",
   })[position];
 
-const toastVariantClassName = (
+const toastVariantClasses = (
   variant: NonNullable<ToastConfig<unknown>["variant"]>
 ): string =>
   ({
@@ -70,7 +70,7 @@ const toastVariantClassName = (
     error: "border-red-200 bg-red-50 text-red-950",
   })[variant];
 
-const toastIconVariantClassName = (
+const toastIconVariantClasses = (
   variant: NonNullable<ToastConfig<unknown>["variant"]>
 ): string =>
   ({
@@ -117,7 +117,7 @@ const toastIconView = <ParentMessage>(
       h.DataAttribute("slot", "sonner-icon"),
       h.DataAttribute("variant", variant),
       h.Class(
-        classNames(sonnerIconClassName, toastIconVariantClassName(variant))
+        cn(sonnerIconClasses, toastIconVariantClasses(variant))
       ),
       h.Xmlns("http://www.w3.org/2000/svg"),
       h.ViewBox("0 0 24 24"),
@@ -133,7 +133,7 @@ const toastIconView = <ParentMessage>(
 
 export const viewportView = <ParentMessage>({
   children,
-  className,
+  classes,
   position = "bottom-right",
 }: ViewportConfig): Html => {
   const h = html<ParentMessage>();
@@ -144,9 +144,9 @@ export const viewportView = <ParentMessage>({
       h.Attribute("aria-atomic", "true"),
       h.DataAttribute("slot", "sonner-viewport"),
       h.Class(
-        classNames(
-          `${sonnerViewportClassName} ${viewportPositionClassName(position)}`,
-          className
+        cn(
+          `${sonnerViewportClasses} ${viewportPositionClasses(position)}`,
+          classes
         )
       ),
     ],
@@ -159,7 +159,7 @@ export const toastView = <ParentMessage>({
   description,
   action,
   onClose,
-  className,
+  classes,
   variant = "default",
 }: ToastConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -171,11 +171,11 @@ export const toastView = <ParentMessage>({
       h.DataAttribute("slot", "sonner-toast"),
       h.DataAttribute("variant", variant),
       h.Class(
-        classNames(
-          `${sonnerToastClassName} ${toastVariantClassName(variant)} relative ${
+        cn(
+          `${sonnerToastClasses} ${toastVariantClasses(variant)} relative ${
             maybeIconPath === undefined ? "" : "pl-10"
           }`,
-          className
+          classes
         )
       ),
     ],
@@ -186,7 +186,7 @@ export const toastView = <ParentMessage>({
       h.div(
         [
           h.DataAttribute("slot", "sonner-title"),
-          h.Class(sonnerTitleClassName),
+          h.Class(sonnerTitleClasses),
         ],
         [title]
       ),
@@ -195,7 +195,7 @@ export const toastView = <ParentMessage>({
         : h.div(
             [
               h.DataAttribute("slot", "sonner-description"),
-              h.Class(sonnerDescriptionClassName),
+              h.Class(sonnerDescriptionClasses),
             ],
             [description]
           ),
@@ -208,7 +208,7 @@ export const toastView = <ParentMessage>({
               h.AriaLabel("Dismiss toast"),
               h.OnClick(onClose),
               h.DataAttribute("slot", "sonner-close"),
-              h.Class(sonnerCloseClassName),
+              h.Class(sonnerCloseClasses),
             ],
             ["x"]
           ),

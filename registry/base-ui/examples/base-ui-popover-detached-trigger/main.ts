@@ -64,7 +64,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.Type("button"),
               h.OnClick(ClickedDetachedTrigger()),
               h.AriaExpanded(model.open),
-              h.Class(Popover.baseUiPopoverTriggerClassName),
+              h.Class(Popover.baseUiPopoverTriggerClasses),
             ],
             ["Trigger outside root"]
           ),
@@ -74,7 +74,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ]
       ),
       h.div(
-        [h.Class(Popover.baseUiPopoverRootClassName)],
+        [h.Class(Popover.baseUiPopoverRootClasses)],
         [
           model.open
             ? h.div(
@@ -83,7 +83,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   h.div(
                     [
                       h.Role("dialog"),
-                      h.Class(Popover.baseUiPopoverPanelClassName),
+                      h.Class(Popover.baseUiPopoverPanelClasses),
                     ],
                     [
                       h.div(

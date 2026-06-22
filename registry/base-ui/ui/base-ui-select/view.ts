@@ -1,7 +1,7 @@
 export {
-  chevronClassName as baseUiSelectChevronClassName,
-  descriptionClassName as baseUiSelectDescriptionClassName,
-  labelClassName as baseUiSelectLabelClassName,
-  selectClassName as baseUiSelectControlClassName,
-  selectWrapperClassName as baseUiSelectWrapperClassName,
+  chevronClasses as baseUiSelectChevronClasses,
+  descriptionClasses as baseUiSelectDescriptionClasses,
+  labelClasses as baseUiSelectLabelClasses,
+  selectClasses as baseUiSelectControlClasses,
+  selectWrapperClasses as baseUiSelectWrapperClasses,
 } from "../../../foldkit/ui/select/view";

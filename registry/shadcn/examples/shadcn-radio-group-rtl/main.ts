@@ -53,11 +53,11 @@ const optionView = (
         [selected ? RadioGroup.checkIcon() : RadioGroup.checkPlaceholder()]
       ),
       h.div(
-        [h.Class(RadioGroup.shadcnRadioGroupMetaClassName)],
+        [h.Class(RadioGroup.shadcnRadioGroupMetaClasses)],
         [
-          h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClassName)], [value]),
+          h.span([h.Class(RadioGroup.shadcnRadioGroupLabelClasses)], [value]),
           h.p(
-            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClassName)],
+            [h.Class(RadioGroup.shadcnRadioGroupDescriptionClasses)],
             [description]
           ),
         ]
@@ -83,7 +83,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         [
           h.Role("radiogroup"),
           h.AriaLabel("كثافة التخطيط"),
-          h.Class(RadioGroup.shadcnRadioGroupVerticalClassName),
+          h.Class(RadioGroup.shadcnRadioGroupVerticalClasses),
         ],
         [
           optionView("افتراضي", "تباعد قياسي لمعظم حالات الاستخدام.", true),

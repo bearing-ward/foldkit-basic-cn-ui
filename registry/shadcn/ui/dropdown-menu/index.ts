@@ -2,46 +2,46 @@ import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
 import {
-  dropdownMenuBackdropClassName,
-  dropdownMenuDestructiveItemClassName,
-  dropdownMenuIconClassName,
-  dropdownMenuIndicatorClassName,
-  dropdownMenuInsetItemClassName,
-  dropdownMenuItemClassName,
-  dropdownMenuLabelClassName,
-  dropdownMenuPopupClassName,
-  dropdownMenuPortalClassName,
-  dropdownMenuPositionerClassName,
-  dropdownMenuRootClassName,
-  dropdownMenuSeparatorClassName,
-  dropdownMenuShortcutClassName,
-  dropdownMenuSubContentClassName,
-  dropdownMenuTriggerClassName,
+  dropdownMenuBackdropClasses,
+  dropdownMenuDestructiveItemClasses,
+  dropdownMenuIconClasses,
+  dropdownMenuIndicatorClasses,
+  dropdownMenuInsetItemClasses,
+  dropdownMenuItemClasses,
+  dropdownMenuLabelClasses,
+  dropdownMenuPopupClasses,
+  dropdownMenuPortalClasses,
+  dropdownMenuPositionerClasses,
+  dropdownMenuRootClasses,
+  dropdownMenuSeparatorClasses,
+  dropdownMenuShortcutClasses,
+  dropdownMenuSubContentClasses,
+  dropdownMenuTriggerClasses,
 } from "./view";
 
 export {
-  dropdownMenuBackdropClassName,
-  dropdownMenuDestructiveItemClassName,
-  dropdownMenuIconClassName,
-  dropdownMenuIndicatorClassName,
-  dropdownMenuInsetItemClassName,
-  dropdownMenuItemClassName,
-  dropdownMenuLabelClassName,
-  dropdownMenuPopupClassName,
-  dropdownMenuPortalClassName,
-  dropdownMenuPositionerClassName,
-  dropdownMenuRootClassName,
-  dropdownMenuSeparatorClassName,
-  dropdownMenuShortcutClassName,
-  dropdownMenuSubContentClassName,
-  dropdownMenuTriggerClassName,
+  dropdownMenuBackdropClasses,
+  dropdownMenuDestructiveItemClasses,
+  dropdownMenuIconClasses,
+  dropdownMenuIndicatorClasses,
+  dropdownMenuInsetItemClasses,
+  dropdownMenuItemClasses,
+  dropdownMenuLabelClasses,
+  dropdownMenuPopupClasses,
+  dropdownMenuPortalClasses,
+  dropdownMenuPositionerClasses,
+  dropdownMenuRootClasses,
+  dropdownMenuSeparatorClasses,
+  dropdownMenuShortcutClasses,
+  dropdownMenuSubContentClasses,
+  dropdownMenuTriggerClasses,
 } from "./view";
 
 export type DropdownMenuStyle = Readonly<Record<string, string>>;
 
 export type PartViewConfig = Readonly<{
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -49,20 +49,20 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   children: readonly Html[];
   onToggle: ParentMessage;
   open?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
 export type BackdropViewConfig<ParentMessage> = Readonly<{
   onClose: ParentMessage;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -72,7 +72,7 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   disabled?: boolean | undefined;
   inset?: boolean | undefined;
   destructive?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -84,7 +84,7 @@ export type CheckedItemViewConfig<ParentMessage> = ItemViewConfig<ParentMessage>
 export type RadioGroupViewConfig = Readonly<{
   children: readonly Html[];
   label?: string | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -99,36 +99,36 @@ export type SubTriggerViewConfig<ParentMessage> = Readonly<{
   onOpen: ParentMessage;
   open?: boolean | undefined;
   disabled?: boolean | undefined;
-  className?: string | undefined;
+  classes?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
-const classNames = (base: string, className?: string): string =>
-  [base, className]
+const cn = (base: string, classes?: string): string =>
+  [base, classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
-const itemClassNames = ({
-  className,
+const itemClasses = ({
+  classes,
   inset = false,
   destructive = false,
 }: Readonly<{
-  className?: string | undefined;
+  classes?: string | undefined;
   inset?: boolean | undefined;
   destructive?: boolean | undefined;
 }>): string =>
   [
-    dropdownMenuItemClassName,
-    inset ? dropdownMenuInsetItemClassName : undefined,
-    destructive ? dropdownMenuDestructiveItemClassName : undefined,
-    className,
+    dropdownMenuItemClasses,
+    inset ? dropdownMenuInsetItemClasses : undefined,
+    destructive ? dropdownMenuDestructiveItemClasses : undefined,
+    classes,
   ]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -137,7 +137,7 @@ export const rootView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu"),
-      h.Class(classNames(dropdownMenuRootClassName, className)),
+      h.Class(cn(dropdownMenuRootClasses, classes)),
     ],
     children
   );
@@ -147,7 +147,7 @@ export const triggerView = <ParentMessage>({
   children,
   onToggle,
   open = false,
-  className,
+  classes,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -161,7 +161,7 @@ export const triggerView = <ParentMessage>({
       ...(open ? [h.DataAttribute("open", "true")] : []),
       h.OnClick(onToggle),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuTriggerClassName, className)),
+      h.Class(cn(dropdownMenuTriggerClasses, classes)),
     ],
     children
   );
@@ -170,7 +170,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  className,
+  classes,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -183,7 +183,7 @@ export const portalView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu-portal"),
-      h.Class(classNames(dropdownMenuPortalClassName, className)),
+      h.Class(cn(dropdownMenuPortalClasses, classes)),
     ],
     children
   );
@@ -191,7 +191,7 @@ export const portalView = <ParentMessage>({
 
 export const backdropView = <ParentMessage>({
   onClose,
-  className,
+  classes,
   style,
 }: BackdropViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -203,7 +203,7 @@ export const backdropView = <ParentMessage>({
       h.OnClick(onClose),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu-backdrop"),
-      h.Class(classNames(dropdownMenuBackdropClassName, className)),
+      h.Class(cn(dropdownMenuBackdropClasses, classes)),
     ],
     []
   );
@@ -211,7 +211,7 @@ export const backdropView = <ParentMessage>({
 
 export const positionerView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -220,7 +220,7 @@ export const positionerView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu-positioner"),
-      h.Class(classNames(dropdownMenuPositionerClassName, className)),
+      h.Class(cn(dropdownMenuPositionerClasses, classes)),
     ],
     children
   );
@@ -228,7 +228,7 @@ export const positionerView = <ParentMessage>({
 
 export const popupView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -238,7 +238,7 @@ export const popupView = <ParentMessage>({
       h.Attribute("role", "menu"),
       h.DataAttribute("slot", "dropdown-menu-popup"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuPopupClassName, className)),
+      h.Class(cn(dropdownMenuPopupClasses, classes)),
     ],
     children
   );
@@ -251,7 +251,7 @@ export const shortcutView = <ParentMessage>(shortcut: string): Html => {
     [
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-shortcut"),
-      h.Class(dropdownMenuShortcutClassName),
+      h.Class(dropdownMenuShortcutClasses),
     ],
     [shortcut]
   );
@@ -263,7 +263,7 @@ export const itemView = <ParentMessage>({
   disabled = false,
   inset = false,
   destructive = false,
-  className,
+  classes,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -280,7 +280,7 @@ export const itemView = <ParentMessage>({
       ...(inset ? [h.DataAttribute("inset", "true")] : []),
       ...(destructive ? [h.DataAttribute("variant", "destructive")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClassNames({ className, inset, destructive })),
+      h.Class(itemClasses({ classes, inset, destructive })),
     ],
     children
   );
@@ -292,7 +292,7 @@ export const checkboxItemView = <ParentMessage>({
   children,
   disabled = false,
   inset = false,
-  className,
+  classes,
   style,
 }: CheckedItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -310,7 +310,7 @@ export const checkboxItemView = <ParentMessage>({
         : [h.OnClick(onSelect)]),
       ...(inset ? [h.DataAttribute("inset", "true")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClassNames({ className, inset })),
+      h.Class(itemClasses({ classes, inset })),
     ],
     children
   );
@@ -319,7 +319,7 @@ export const checkboxItemView = <ParentMessage>({
 export const radioGroupView = <ParentMessage>({
   children,
   label,
-  className,
+  classes,
   style,
 }: RadioGroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -330,7 +330,7 @@ export const radioGroupView = <ParentMessage>({
       ...(label === undefined ? [] : [h.AriaLabel(label)]),
       h.DataAttribute("slot", "dropdown-menu-radio-group"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(className ?? ""),
+      h.Class(classes ?? ""),
     ],
     children
   );
@@ -342,7 +342,7 @@ export const radioItemView = <ParentMessage>({
   children,
   disabled = false,
   inset = false,
-  className,
+  classes,
   style,
 }: RadioItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -360,7 +360,7 @@ export const radioItemView = <ParentMessage>({
         : [h.OnClick(onSelect)]),
       ...(inset ? [h.DataAttribute("inset", "true")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClassNames({ className, inset })),
+      h.Class(itemClasses({ classes, inset })),
     ],
     children
   );
@@ -371,7 +371,7 @@ export const subTriggerView = <ParentMessage>({
   children,
   open = false,
   disabled = false,
-  className,
+  classes,
   style,
 }: SubTriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -389,7 +389,7 @@ export const subTriggerView = <ParentMessage>({
         ? [h.DataAttribute("disabled", "true")]
         : [h.OnClick(onOpen)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClassNames({ className })),
+      h.Class(itemClasses({ classes })),
     ],
     children
   );
@@ -397,7 +397,7 @@ export const subTriggerView = <ParentMessage>({
 
 export const subContentView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -407,7 +407,7 @@ export const subContentView = <ParentMessage>({
       h.Attribute("role", "menu"),
       h.DataAttribute("slot", "dropdown-menu-sub-content"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuSubContentClassName, className)),
+      h.Class(cn(dropdownMenuSubContentClasses, classes)),
     ],
     children
   );
@@ -415,7 +415,7 @@ export const subContentView = <ParentMessage>({
 
 export const itemIndicatorView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -425,7 +425,7 @@ export const itemIndicatorView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-item-indicator"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuIndicatorClassName, className)),
+      h.Class(cn(dropdownMenuIndicatorClasses, classes)),
     ],
     children
   );
@@ -433,7 +433,7 @@ export const itemIndicatorView = <ParentMessage>({
 
 export const iconView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -443,7 +443,7 @@ export const iconView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-icon"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuIconClassName, className)),
+      h.Class(cn(dropdownMenuIconClasses, classes)),
     ],
     children
   );
@@ -451,7 +451,7 @@ export const iconView = <ParentMessage>({
 
 export const labelView = <ParentMessage>({
   children,
-  className,
+  classes,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -460,14 +460,14 @@ export const labelView = <ParentMessage>({
     [
       h.DataAttribute("slot", "dropdown-menu-label"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuLabelClassName, className)),
+      h.Class(cn(dropdownMenuLabelClasses, classes)),
     ],
     children
   );
 };
 
 export const separatorView = <ParentMessage>({
-  className,
+  classes,
   style,
 }: Omit<PartViewConfig, "children">): Html => {
   const h = html<ParentMessage>();
@@ -478,7 +478,7 @@ export const separatorView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-separator"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classNames(dropdownMenuSeparatorClassName, className)),
+      h.Class(cn(dropdownMenuSeparatorClasses, classes)),
     ],
     []
   );

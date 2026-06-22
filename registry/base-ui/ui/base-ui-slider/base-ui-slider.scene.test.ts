@@ -7,6 +7,6 @@ describe("Base UI Slider registry view", () => {
     expect(Slider.init).toBeTypeOf("function");
     expect(Slider.update).toBeTypeOf("function");
     expect(Slider.view).toBeTypeOf("function");
-    expect(Slider.baseUiSliderRootClassName).toContain("relative");
+    expect(Slider.baseUiSliderRootClasses).toContain("relative");
   });
 });

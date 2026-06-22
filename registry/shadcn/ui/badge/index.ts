@@ -1,58 +1,58 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
-import { badgeClassNameByVariant } from "./view";
+import { badgeClassesByVariant } from "./view";
 import type { BadgeVariant } from "./view";
 
 export type { BadgeVariant };
 
 export {
-  badgeClassName,
-  badgeClassNameByVariant,
-  destructiveBadgeClassName,
-  ghostBadgeClassName,
-  linkBadgeClassName,
-  outlineBadgeClassName,
-  secondaryBadgeClassName,
+  badgeClasses,
+  badgeClassesByVariant,
+  destructiveBadgeClasses,
+  ghostBadgeClasses,
+  linkBadgeClasses,
+  outlineBadgeClasses,
+  secondaryBadgeClasses,
 } from "./view";
 
 export type ViewConfig = Readonly<{
   label: string;
   variant?: BadgeVariant;
-  className?: string;
+  classes?: string;
 }>;
 
 export type ContentViewConfig = Readonly<{
   children: readonly (Html | string)[];
   variant?: BadgeVariant;
-  className?: string;
+  classes?: string;
 }>;
 
-const classNamesForVariant = (
+const classesForVariant = (
   variant: BadgeVariant,
-  className?: string
+  classes?: string
 ): string =>
-  [badgeClassNameByVariant(variant), className]
+  [badgeClassesByVariant(variant), classes]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const contentView = <ParentMessage>({
   children,
   variant = "Default",
-  className,
+  classes,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
 
-  return h.span([h.Class(classNamesForVariant(variant, className))], children);
+  return h.span([h.Class(classesForVariant(variant, classes))], children);
 };
 
 export const view = <ParentMessage>({
   label,
   variant = "Default",
-  className,
+  classes,
 }: ViewConfig): Html =>
   contentView<ParentMessage>({
     children: [label],
     variant,
-    ...(className === undefined ? {} : { className }),
+    ...(classes === undefined ? {} : { classes }),
   });

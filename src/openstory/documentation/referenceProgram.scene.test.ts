@@ -46,7 +46,7 @@ describe("Documentation reference program", () => {
       Scene.expect(Scene.text("groupView")).toExist(),
       Scene.expect(Scene.text("countView")).toExist(),
       Scene.click(Scene.role("button", { name: "Class hooks 7" })),
-      Scene.expect(Scene.text("avatarBadgeClassName")).toExist(),
+      Scene.expect(Scene.text("avatarBadgeClasses")).toExist(),
       Scene.click(Scene.role("button", { name: "Coverage 4" })),
       Scene.expect(
         Scene.text("base-ui-avatar.scene.test.ts", { exact: false })

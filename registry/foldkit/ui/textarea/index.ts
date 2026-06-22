@@ -8,8 +8,8 @@ export type TextareaAttributes<ParentMessage> =
 export type ViewConfig<ParentMessage> = Ui.Textarea.ViewConfig<ParentMessage>;
 
 export {
-  descriptionClassName,
-  fieldClassName,
-  labelClassName,
-  textareaClassName,
+  descriptionClasses,
+  fieldClasses,
+  labelClasses,
+  textareaClasses,
 } from "./view";

@@ -41,7 +41,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       h.div(
         [
           h.DataAttribute("disabled", ""),
-          h.Class(Checkbox.shadcnCheckboxRowClassName),
+          h.Class(Checkbox.shadcnCheckboxRowClasses),
         ],
         [
           h.button(
@@ -52,14 +52,14 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               h.Role("checkbox"),
               h.AriaChecked(false),
               h.Disabled(true),
-              h.Class(Checkbox.shadcnCheckboxControlClassName),
+              h.Class(Checkbox.shadcnCheckboxControlClasses),
             ],
             []
           ),
           h.label(
             [
               h.For("toggle-checkbox-disabled"),
-              h.Class(Checkbox.shadcnCheckboxLabelClassName),
+              h.Class(Checkbox.shadcnCheckboxLabelClasses),
             ],
             ["Enable notifications"]
           ),

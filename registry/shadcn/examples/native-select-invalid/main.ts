@@ -66,7 +66,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         onChange: (value) => ChangedStatus({ value }),
         options: statusOptions,
         describedById: "status-error",
-        className: "border-red-500 focus-visible:ring-red-500",
+        classes: "border-red-500 focus-visible:ring-red-500",
       }),
       h.p(
         [

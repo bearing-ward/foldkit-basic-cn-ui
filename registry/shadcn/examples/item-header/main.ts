@@ -67,7 +67,7 @@ const headerImage = ({ name, image, credit }: ModelCard): Html => {
   const h = html<Message>();
 
   return Item.headerView<Message>({
-    className: "mb-0",
+    classes: "mb-0",
     children: [
       h.img([
         h.Src(image),
@@ -84,11 +84,11 @@ const headerImage = ({ name, image, credit }: ModelCard): Html => {
 const itemCard = (model: ModelCard): Html =>
   Item.view<Message>({
     variant: "outline",
-    className: "flex-col gap-0 p-0",
+    classes: "flex-col gap-0 p-0",
     children: [
       headerImage(model),
       Item.contentView<Message>({
-        className: "space-y-1.5 p-4",
+        classes: "space-y-1.5 p-4",
         children: [
           Item.titleView<Message>({ children: [model.name] }),
           Item.descriptionView<Message>({ children: [model.description] }),
@@ -104,7 +104,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex w-full max-w-xl flex-col gap-6")],
     [
       Item.groupView<Message>({
-        className: "grid grid-cols-3 gap-4",
+        classes: "grid grid-cols-3 gap-4",
         children: models.map(itemCard),
       }),
     ]

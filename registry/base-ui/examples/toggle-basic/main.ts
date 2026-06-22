@@ -58,7 +58,7 @@ export const update = (
 const heartIcon = (pressed: boolean): Html => {
   const h = html<Message>();
 
-  return h.span([h.Class(Toggle.toggleIconClassName)], [pressed ? "♥" : "♡"]);
+  return h.span([h.Class(Toggle.toggleIconClasses)], [pressed ? "♥" : "♡"]);
 };
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
