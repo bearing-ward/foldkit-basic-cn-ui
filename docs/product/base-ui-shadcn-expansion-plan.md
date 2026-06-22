@@ -3,7 +3,10 @@
 Canonical component-entry expectations now live in
 [`component-entry-contract.md`](./component-entry-contract.md). Use that
 contract for source, docs, examples, tests, metadata, generated artifacts, and
-completion criteria. This expansion plan tracks sequencing and backlog only.
+completion criteria. Project-level progress against those expectations is graded
+in [`project-invariants-scorecard.md`](./project-invariants-scorecard.md), which
+does not override the component-entry contract. This expansion plan tracks
+sequencing and backlog only.
 
 ## Goal
 

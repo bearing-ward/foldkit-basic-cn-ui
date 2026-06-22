@@ -28,6 +28,7 @@ If `foldkit-skills` is installed as a Claude Code plugin, the `generate-program`
 - Use `m()` for message schemas, `ts()` for tagged structs (model states, field validation), and `r()` for route schemas.
 - Push back on any direction that violates Elm Architecture principles: unidirectional data flow, messages as facts (not commands), model as single source of truth, side effects confined to commands. If a prompt suggests mutating state, imperative event handlers, or two-way bindings, flag the issue and propose the idiomatic Foldkit approach.
 - Never use `NoOp`. Every message must describe what happened. Fire-and-forget commands use `Completed*` messages mirroring the Command name verb-first: `LockScroll` → `CompletedLockScroll`.
+- Before broad planning or review work, consult `docs/product/project-invariants-scorecard.md`. Future plans should identify touched invariants, and a partial scorecard grade is never permission to weaken `docs/product/component-entry-contract.md`.
 
 ## Foldkit Patterns
 

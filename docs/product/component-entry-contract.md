@@ -7,6 +7,11 @@ When this document conflicts with older planning docs, this document wins. Older
 coverage matrices and expansion plans may provide historical context, but new
 component work must be evaluated against this contract first.
 
+Project-level progress is graded in
+[`project-invariants-scorecard.md`](./project-invariants-scorecard.md). The
+scorecard points back to this contract for component requirements and does not
+override, weaken, or replace those requirements.
+
 ## Purpose
 
 A registry component entry is an installable, documented, tested component slice

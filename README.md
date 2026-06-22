@@ -36,6 +36,11 @@ Base UI examples. Some components are closer than others. Expect occasional
 visual drift, missing edge-case behavior, and follow-up passes on icons,
 mobile/overlay behavior, keyboard details, and example fidelity.
 
+Project-level progress is tracked in the
+[`Project Invariants And Progress Scorecard`](./docs/product/project-invariants-scorecard.md).
+It grades evidence maturity against the component contracts without weakening
+the component-entry requirements.
+
 Use it today when you want a starting point for styled Foldkit components. Review
 installed files like project code, because they become part of your app.
 
