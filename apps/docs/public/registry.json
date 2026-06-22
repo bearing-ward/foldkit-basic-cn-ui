@@ -16140,6 +16140,462 @@
           "originExample": "List Variant"
         }
       }
+    },
+    {
+      "name": "foldkit-theme-rhea-neutral",
+      "type": "registry:theme",
+      "title": "Rhea Neutral Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Neutral.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "neutral"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-stone",
+      "type": "registry:theme",
+      "title": "Rhea Stone Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Stone.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "stone"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-zinc",
+      "type": "registry:theme",
+      "title": "Rhea Zinc Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Zinc.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "zinc"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-mauve",
+      "type": "registry:theme",
+      "title": "Rhea Mauve Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Mauve.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "mauve"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-olive",
+      "type": "registry:theme",
+      "title": "Rhea Olive Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Olive.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "olive"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-mist",
+      "type": "registry:theme",
+      "title": "Rhea Mist Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Mist.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "mist"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-taupe",
+      "type": "registry:theme",
+      "title": "Rhea Taupe Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Taupe.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "taupe"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-amber",
+      "type": "registry:theme",
+      "title": "Rhea Amber Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Amber.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "amber"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-blue",
+      "type": "registry:theme",
+      "title": "Rhea Blue Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Blue.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "blue"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-cyan",
+      "type": "registry:theme",
+      "title": "Rhea Cyan Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Cyan.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "cyan"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-emerald",
+      "type": "registry:theme",
+      "title": "Rhea Emerald Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Emerald.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "emerald"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-fuchsia",
+      "type": "registry:theme",
+      "title": "Rhea Fuchsia Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Fuchsia.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "fuchsia"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-green",
+      "type": "registry:theme",
+      "title": "Rhea Green Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Green.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "green"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-indigo",
+      "type": "registry:theme",
+      "title": "Rhea Indigo Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Indigo.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "indigo"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-lime",
+      "type": "registry:theme",
+      "title": "Rhea Lime Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Lime.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "lime"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-orange",
+      "type": "registry:theme",
+      "title": "Rhea Orange Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Orange.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "orange"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-pink",
+      "type": "registry:theme",
+      "title": "Rhea Pink Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Pink.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "pink"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-purple",
+      "type": "registry:theme",
+      "title": "Rhea Purple Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Purple.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "purple"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-red",
+      "type": "registry:theme",
+      "title": "Rhea Red Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Red.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "red"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-rose",
+      "type": "registry:theme",
+      "title": "Rhea Rose Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Rose.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "rose"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-sky",
+      "type": "registry:theme",
+      "title": "Rhea Sky Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Sky.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "sky"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-teal",
+      "type": "registry:theme",
+      "title": "Rhea Teal Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Teal.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "teal"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-violet",
+      "type": "registry:theme",
+      "title": "Rhea Violet Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Violet.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "violet"
+        }
+      }
+    },
+    {
+      "name": "foldkit-theme-rhea-yellow",
+      "type": "registry:theme",
+      "title": "Rhea Yellow Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Yellow.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "yellow"
+        }
+      }
     }
   ]
 }
