@@ -42,12 +42,12 @@ export type ItemViewConfig = Readonly<{
   children: readonly (Html | string)[];
   variant?: ItemVariant;
   size?: ItemSize;
-  classes?: string;
+  className?: string;
   href?: string;
 }>;
 export type ItemPartViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 export type ItemMediaViewConfig = ItemPartViewConfig &
   Readonly<{ variant?: ItemMediaVariant }>;
@@ -61,7 +61,7 @@ export const view = <ParentMessage>({
   children,
   variant = "default",
   size = "default",
-  classes,
+  className,
   href,
 }: ItemViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -72,7 +72,7 @@ export const view = <ParentMessage>({
         itemClasses,
         itemVariantClasses[variant],
         itemSizeClasses[size],
-        classes
+        className
       )
     ),
   ];
@@ -84,13 +84,13 @@ export const view = <ParentMessage>({
 
 export const groupView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "item-group"),
-      h.Class(cn(itemGroupClasses, classes)),
+      h.Class(cn(itemGroupClasses, className)),
     ],
     children
   );
@@ -106,13 +106,13 @@ export const separatorView = <ParentMessage>(): Html => {
 
 export const headerView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "item-header"),
-      h.Class(cn(itemHeaderClasses, classes)),
+      h.Class(cn(itemHeaderClasses, className)),
     ],
     children
   );
@@ -121,7 +121,7 @@ export const headerView = <ParentMessage>({
 export const mediaView = <ParentMessage>({
   children,
   variant = "default",
-  classes,
+  className,
 }: ItemMediaViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.div(
@@ -131,7 +131,7 @@ export const mediaView = <ParentMessage>({
         cn(
           itemMediaClasses,
           itemMediaVariantClasses[variant],
-          classes
+          className
         )
       ),
     ],
@@ -141,13 +141,13 @@ export const mediaView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "item-content"),
-      h.Class(cn(itemContentClasses, classes)),
+      h.Class(cn(itemContentClasses, className)),
     ],
     children
   );
@@ -155,13 +155,13 @@ export const contentView = <ParentMessage>({
 
 export const titleView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.h3(
     [
       h.DataAttribute("slot", "item-title"),
-      h.Class(cn(itemTitleClasses, classes)),
+      h.Class(cn(itemTitleClasses, className)),
     ],
     children
   );
@@ -169,13 +169,13 @@ export const titleView = <ParentMessage>({
 
 export const descriptionView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.p(
     [
       h.DataAttribute("slot", "item-description"),
-      h.Class(cn(itemDescriptionClasses, classes)),
+      h.Class(cn(itemDescriptionClasses, className)),
     ],
     children
   );
@@ -183,13 +183,13 @@ export const descriptionView = <ParentMessage>({
 
 export const actionsView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "item-actions"),
-      h.Class(cn(itemActionsClasses, classes)),
+      h.Class(cn(itemActionsClasses, className)),
     ],
     children
   );
@@ -197,13 +197,13 @@ export const actionsView = <ParentMessage>({
 
 export const footerView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemPartViewConfig): Html => {
   const h = html<ParentMessage>();
   return h.div(
     [
       h.DataAttribute("slot", "item-footer"),
-      h.Class(cn(itemFooterClasses, classes)),
+      h.Class(cn(itemFooterClasses, className)),
     ],
     children
   );

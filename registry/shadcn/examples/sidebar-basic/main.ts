@@ -110,13 +110,13 @@ const iconPath = (name: IconName): string =>
 const iconView = (
   h: ReturnType<typeof html<Message>>,
   icon: IconName,
-  classes = ""
+  className = ""
 ): Html =>
   h.svg(
     [
       h.AriaHidden(true),
       h.Class(
-        `size-6 shrink-0 text-black ${classes}`
+        `size-6 shrink-0 text-black ${className}`
       ),
       h.Xmlns("http://www.w3.org/2000/svg"),
       h.ViewBox("0 0 24 24"),
@@ -169,7 +169,7 @@ const accountHeader = (
             },
             size: "lg",
             state,
-            classes:
+            className:
               "h-16 rounded-none px-0 hover:bg-transparent data-[active=true]:bg-transparent",
             children: [
               h.span(
@@ -220,7 +220,7 @@ const navButtonView = (
           onClick: ClickedSelectSidebarItem({ label: item.label }),
         },
         state,
-        classes:
+        className:
           "h-11 rounded-none px-0 text-xl font-normal text-black hover:bg-transparent data-[active=true]:bg-transparent data-[active=true]:font-normal data-[active=true]:text-black",
         children: [
           iconView(h, item.icon, item.muted === true ? "text-neutral-500" : ""),
@@ -248,7 +248,7 @@ const navSectionView = (
   activeLabel: string
 ): Html =>
   Sidebar.menuView<Message>({
-    classes: "gap-3",
+    className: "gap-3",
     children: items.map((item) => navButtonView(h, state, item, activeLabel)),
   });
 
@@ -269,7 +269,7 @@ const userFooter = (
             },
             size: "lg",
             state,
-            classes:
+            className:
               "h-14 rounded-none px-0 hover:bg-transparent data-[active=true]:bg-transparent",
             children: [
               h.span(
@@ -310,7 +310,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
 
   return Sidebar.providerView<Message>({
-    classes:
+    className:
       "mx-auto h-[640px] min-h-0 max-w-[1024px] rounded-2xl border-neutral-200 bg-white [--sidebar-width:20rem] [--sidebar-width-icon:4.5rem]",
     children: [
       Sidebar.sidebarView<Message>({
@@ -318,17 +318,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         collapsible: "icon",
         children: [
           Sidebar.headerView<Message>({
-            classes: "gap-5 px-6 pb-3 pt-6",
+            className: "gap-5 px-6 pb-3 pt-6",
             children: [
               accountHeader(h, model.state),
               navSectionView(h, model.state, primaryItems, model.selectedLabel),
             ],
           }),
           Sidebar.contentView<Message>({
-            classes: "gap-4 px-6 py-1",
+            className: "gap-4 px-6 py-1",
             children: [
               Sidebar.groupView<Message>({
-                classes: "gap-3 p-0",
+                className: "gap-3 p-0",
                 children: [
                   Sidebar.groupLabelView<Message>("Projects", model.state),
                   Sidebar.groupContentView<Message>({
@@ -346,20 +346,20 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
           }),
           Sidebar.footerView<Message>({
-            classes: "mt-auto px-6 pb-6 pt-4",
+            className: "mt-auto px-6 pb-6 pt-4",
             children: [userFooter(h, model.state)],
           }),
           Sidebar.railView<Message>(ClickedToggleSidebar()),
         ],
       }),
       Sidebar.insetView<Message>({
-        classes: "bg-white p-6",
+        className: "bg-white p-6",
         children: [
           Sidebar.triggerView<Message>({
             label: "Toggle Sidebar",
             onClick: ClickedToggleSidebar(),
             children: [iconView(h, "panel")],
-            classes: "size-9 text-black hover:bg-transparent",
+            className: "size-9 text-black hover:bg-transparent",
           }),
         ],
       }),

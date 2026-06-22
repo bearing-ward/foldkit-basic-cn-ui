@@ -44,7 +44,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       Badge.contentView<Message>({
         variant: "Destructive",
         children: [
-          Spinner.view<Message>({ classes: "mr-1" }),
+          Spinner.view<Message>({ className: "mr-1" }),
           h.span([], ["Deleting"]),
         ],
       }),
@@ -52,7 +52,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         variant: "Secondary",
         children: [
           h.span([], ["Generating"]),
-          Spinner.view<Message>({ classes: "ml-1" }),
+          Spinner.view<Message>({ className: "ml-1" }),
         ],
       }),
     ]

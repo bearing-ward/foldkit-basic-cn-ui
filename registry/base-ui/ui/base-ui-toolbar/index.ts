@@ -27,7 +27,7 @@ export type RootViewConfig = Readonly<{
   ariaLabel?: string | undefined;
   orientation?: ToolbarOrientation | undefined;
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -35,7 +35,7 @@ export type GroupViewConfig = Readonly<{
   children: readonly Html[];
   ariaLabel?: string | undefined;
   orientation?: ToolbarOrientation | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -46,7 +46,7 @@ export type ButtonViewConfig<ParentMessage> = Readonly<{
   orientation?: ToolbarOrientation | undefined;
   disabled?: boolean | undefined;
   focusableWhenDisabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -54,7 +54,7 @@ export type LinkViewConfig = Readonly<{
   href: string;
   children: readonly Html[];
   orientation?: ToolbarOrientation | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
@@ -64,18 +64,18 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   ariaLabel: string;
   orientation?: ToolbarOrientation | undefined;
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
 export type SeparatorViewConfig = Readonly<{
   orientation?: ToolbarOrientation | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToolbarStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -97,7 +97,7 @@ export const rootView = <ParentMessage>({
   ariaLabel,
   orientation = "horizontal",
   disabled = false,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -108,7 +108,7 @@ export const rootView = <ParentMessage>({
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...stateAttributes(h, orientation, disabled),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(toolbarRootClasses, classes)),
+      h.Class(cn(toolbarRootClasses, className)),
     ],
     children
   );
@@ -118,7 +118,7 @@ export const groupView = <ParentMessage>({
   children,
   ariaLabel,
   orientation = "horizontal",
-  classes,
+  className,
   style,
 }: GroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -129,7 +129,7 @@ export const groupView = <ParentMessage>({
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(toolbarGroupClasses, classes)),
+      h.Class(cn(toolbarGroupClasses, className)),
     ],
     children
   );
@@ -142,7 +142,7 @@ export const buttonView = <ParentMessage>({
   orientation = "horizontal",
   disabled = false,
   focusableWhenDisabled = true,
-  classes,
+  className,
   style,
 }: ButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -155,7 +155,7 @@ export const buttonView = <ParentMessage>({
       ...(disabled ? [h.Disabled(true)] : []),
       ...(disabled || onClick === undefined ? [] : [h.OnClick(onClick)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(toolbarButtonClasses, classes)),
+      h.Class(cn(toolbarButtonClasses, className)),
     ],
     children
   );
@@ -165,7 +165,7 @@ export const linkView = <ParentMessage>({
   href,
   children,
   orientation = "horizontal",
-  classes,
+  className,
   style,
 }: LinkViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -175,7 +175,7 @@ export const linkView = <ParentMessage>({
       h.Href(href),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(toolbarLinkClasses, classes)),
+      h.Class(cn(toolbarLinkClasses, className)),
     ],
     children
   );
@@ -187,7 +187,7 @@ export const inputView = <ParentMessage>({
   ariaLabel,
   orientation = "horizontal",
   disabled = false,
-  classes,
+  className,
   style,
 }: InputViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -201,13 +201,13 @@ export const inputView = <ParentMessage>({
     ...stateAttributes(h, orientation, disabled),
     ...(disabled ? [h.Disabled(true)] : []),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(cn(toolbarInputClasses, classes)),
+    h.Class(cn(toolbarInputClasses, className)),
   ]);
 };
 
 export const separatorView = <ParentMessage>({
   orientation = "vertical",
-  classes,
+  className,
   style,
 }: SeparatorViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -218,7 +218,7 @@ export const separatorView = <ParentMessage>({
       h.Attribute("aria-orientation", orientation),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(toolbarSeparatorClasses, classes)),
+      h.Class(cn(toolbarSeparatorClasses, className)),
     ],
     []
   );

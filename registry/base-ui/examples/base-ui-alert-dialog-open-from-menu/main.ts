@@ -113,7 +113,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           anchor: Menu.baseUiMenuDefaultAnchor,
           items: actions,
           itemToConfig: (item) => ({
-            classes: Menu.baseUiMenuItemClasses,
+            className: Menu.baseUiMenuItemClasses,
             content: h.span([], [item]),
           }),
           buttonContent: h.span([], ["Actions"]),

@@ -26,13 +26,13 @@ export {
 
 export type ViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 
 export type AddonViewConfig = Readonly<{
   children: readonly (Html | string)[];
   align?: InputGroupAddonAlign;
-  classes?: string;
+  className?: string;
 }>;
 
 export type InputViewConfig<ParentMessage> = Readonly<{
@@ -42,7 +42,7 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   onInput?: ((value: string) => ParentMessage) | undefined;
   disabled?: boolean;
   name?: string;
-  classes?: string;
+  className?: string;
 }>;
 
 export type TextareaViewConfig<ParentMessage> = Readonly<{
@@ -53,7 +53,7 @@ export type TextareaViewConfig<ParentMessage> = Readonly<{
   disabled?: boolean;
   name?: string;
   rows?: number;
-  classes?: string;
+  className?: string;
 }>;
 
 export type ButtonViewConfig<ParentMessage> = Readonly<{
@@ -62,17 +62,17 @@ export type ButtonViewConfig<ParentMessage> = Readonly<{
   onClick?: ParentMessage;
   disabled?: boolean;
   icon?: boolean;
-  classes?: string;
+  className?: string;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const view = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -80,7 +80,7 @@ export const view = <ParentMessage>({
     [
       h.Attribute("role", "group"),
       h.DataAttribute("slot", "input-group"),
-      h.Class(cn(inputGroupClasses, classes)),
+      h.Class(cn(inputGroupClasses, className)),
     ],
     children
   );
@@ -89,7 +89,7 @@ export const view = <ParentMessage>({
 export const addonView = <ParentMessage>({
   children,
   align = "InlineStart",
-  classes,
+  className,
 }: AddonViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -98,7 +98,7 @@ export const addonView = <ParentMessage>({
       h.Attribute("role", "group"),
       h.DataAttribute("slot", "input-group-addon"),
       h.DataAttribute("align", align),
-      h.Class(cn(inputGroupAddonClassesByAlign(align), classes)),
+      h.Class(cn(inputGroupAddonClassesByAlign(align), className)),
     ],
     children
   );
@@ -111,13 +111,13 @@ export const inputView = <ParentMessage>({
   onInput,
   disabled = false,
   name,
-  classes,
+  className,
 }: InputViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
 
   return h.input([
     h.DataAttribute("slot", "input-group-control"),
-    h.Class(cn(inputGroupControlClasses, classes)),
+    h.Class(cn(inputGroupControlClasses, className)),
     ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
     ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
     ...(value === undefined ? [] : [h.Value(value)]),
@@ -135,14 +135,14 @@ export const textareaView = <ParentMessage>({
   disabled = false,
   name,
   rows,
-  classes,
+  className,
 }: TextareaViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
 
   return h.textarea(
     [
       h.DataAttribute("slot", "input-group-control"),
-      h.Class(cn(inputGroupTextareaClasses, classes)),
+      h.Class(cn(inputGroupTextareaClasses, className)),
       ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(value === undefined ? [] : [h.Value(value)]),
@@ -161,7 +161,7 @@ export const buttonView = <ParentMessage>({
   onClick,
   disabled = false,
   icon = false,
-  classes,
+  className,
 }: ButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -174,7 +174,7 @@ export const buttonView = <ParentMessage>({
       h.Class(
         cn(
           icon ? inputGroupIconButtonClasses : inputGroupButtonClasses,
-          classes
+          className
         )
       ),
     ],
@@ -184,12 +184,12 @@ export const buttonView = <ParentMessage>({
 
 export const textView = <ParentMessage>(
   children: readonly (Html | string)[],
-  classes?: string
+  className?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.span(
-    [h.Class(cn(inputGroupTextClasses, classes))],
+    [h.Class(cn(inputGroupTextClasses, className))],
     children
   );
 };

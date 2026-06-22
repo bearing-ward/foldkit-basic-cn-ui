@@ -75,14 +75,14 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   const filteredItems = Command.filterItems(items, model.query);
 
   return Command.rootView<Message>({
-    classes: "max-w-md",
+    className: "max-w-md",
     children: [
       Command.inputView<Message>({
         value: model.query,
         onInput: (value) => UpdatedCommandQuery({ value }),
       }),
       Command.listView<Message>({
-        classes: "max-h-48",
+        className: "max-h-48",
         children:
           filteredItems.length === 0
             ? [Command.emptyView<Message>({ children: ["No results found."] })]

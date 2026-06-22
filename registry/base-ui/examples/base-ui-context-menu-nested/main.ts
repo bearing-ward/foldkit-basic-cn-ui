@@ -151,7 +151,7 @@ const submenuView = (open: boolean): Html => {
     [h.Class("absolute left-full top-8 -ml-1")],
     [
       ContextMenu.popupView<Message>({
-        classes: ContextMenu.contextMenuSubmenuPopupClasses,
+        className: ContextMenu.contextMenuSubmenuPopupClasses,
         children: [
           itemView("Get Up!"),
           itemView("Inside Out"),
@@ -182,7 +182,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             onClose: ClosedContextMenu(),
           }),
           ContextMenu.positionerView<Message>({
-            classes: "base-ui-context-menu-positioner relative",
+            className: "base-ui-context-menu-positioner relative",
             testId: "base-ui-context-menu-positioner",
             style: {
               left: `${String(model.positionX)}px`,

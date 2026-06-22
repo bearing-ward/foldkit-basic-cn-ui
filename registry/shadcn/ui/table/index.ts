@@ -27,7 +27,7 @@ export {
 
 type ViewConfig<ParentMessage> = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
 
@@ -88,7 +88,7 @@ const textAlignClasses = (align: "left" | "right" | undefined): string =>
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -96,7 +96,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "table-container"),
-      h.Class(cn(tableContainerClasses, classes)),
+      h.Class(cn(tableContainerClasses, className)),
       ...attributes,
     ],
     [
@@ -110,7 +110,7 @@ export const rootView = <ParentMessage>({
 
 export const headerView = <ParentMessage>({
   children,
-  classes,
+  className,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -118,7 +118,7 @@ export const headerView = <ParentMessage>({
   return h.thead(
     [
       h.DataAttribute("slot", "table-header"),
-      h.Class(cn(tableHeaderClasses, classes)),
+      h.Class(cn(tableHeaderClasses, className)),
       ...attributes,
     ],
     children
@@ -127,7 +127,7 @@ export const headerView = <ParentMessage>({
 
 export const bodyView = <ParentMessage>({
   children,
-  classes,
+  className,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -135,7 +135,7 @@ export const bodyView = <ParentMessage>({
   return h.tbody(
     [
       h.DataAttribute("slot", "table-body"),
-      h.Class(cn(tableBodyClasses, classes)),
+      h.Class(cn(tableBodyClasses, className)),
       ...attributes,
     ],
     children
@@ -144,7 +144,7 @@ export const bodyView = <ParentMessage>({
 
 export const footerView = <ParentMessage>({
   children,
-  classes,
+  className,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -152,7 +152,7 @@ export const footerView = <ParentMessage>({
   return h.tfoot(
     [
       h.DataAttribute("slot", "table-footer"),
-      h.Class(cn(tableFooterClasses, classes)),
+      h.Class(cn(tableFooterClasses, className)),
       ...attributes,
     ],
     children
@@ -161,7 +161,7 @@ export const footerView = <ParentMessage>({
 
 export const rowView = <ParentMessage>({
   children,
-  classes,
+  className,
   attributes = [],
 }: ViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -169,7 +169,7 @@ export const rowView = <ParentMessage>({
   return h.tr(
     [
       h.DataAttribute("slot", "table-row"),
-      h.Class(cn(tableRowClasses, classes)),
+      h.Class(cn(tableRowClasses, className)),
       ...attributes,
     ],
     children
@@ -178,7 +178,7 @@ export const rowView = <ParentMessage>({
 
 export const headView = <ParentMessage>({
   children,
-  classes,
+  className,
   align,
   attributes = [],
 }: CellViewConfig<ParentMessage>): Html => {
@@ -188,7 +188,7 @@ export const headView = <ParentMessage>({
     [
       h.DataAttribute("slot", "table-head"),
       h.Class(
-        cn(tableHeadClasses, textAlignClasses(align), classes)
+        cn(tableHeadClasses, textAlignClasses(align), className)
       ),
       ...attributes,
     ],
@@ -198,7 +198,7 @@ export const headView = <ParentMessage>({
 
 export const cellView = <ParentMessage>({
   children,
-  classes,
+  className,
   align,
   attributes = [],
 }: CellViewConfig<ParentMessage>): Html => {
@@ -208,7 +208,7 @@ export const cellView = <ParentMessage>({
     [
       h.DataAttribute("slot", "table-cell"),
       h.Class(
-        cn(tableCellClasses, textAlignClasses(align), classes)
+        cn(tableCellClasses, textAlignClasses(align), className)
       ),
       ...attributes,
     ],
@@ -218,14 +218,14 @@ export const cellView = <ParentMessage>({
 
 export const captionView = <ParentMessage>(
   children: readonly (Html | string)[],
-  classes?: string
+  className?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.caption(
     [
       h.DataAttribute("slot", "table-caption"),
-      h.Class(cn(tableCaptionClasses, classes)),
+      h.Class(cn(tableCaptionClasses, className)),
     ],
     children
   );
@@ -243,7 +243,7 @@ export const invoicesTableView = <ParentMessage>(): Html =>
             rowView<ParentMessage>({
               children: [
                 headView<ParentMessage>({
-                  classes: "w-[100px]",
+                  className: "w-[100px]",
                   children: ["Invoice"],
                 }),
                 headView<ParentMessage>({ children: ["Status"] }),
@@ -261,7 +261,7 @@ export const invoicesTableView = <ParentMessage>(): Html =>
             rowView<ParentMessage>({
               children: [
                 cellView<ParentMessage>({
-                  classes: "font-medium",
+                  className: "font-medium",
                   children: [invoice.invoice],
                 }),
                 cellView<ParentMessage>({ children: [invoice.status] }),
@@ -279,7 +279,7 @@ export const invoicesTableView = <ParentMessage>(): Html =>
             rowView<ParentMessage>({
               children: [
                 cellView<ParentMessage>({
-                  classes: "font-medium",
+                  className: "font-medium",
                   children: ["Total"],
                 }),
                 cellView<ParentMessage>({

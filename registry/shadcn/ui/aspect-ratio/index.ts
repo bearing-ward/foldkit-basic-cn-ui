@@ -30,8 +30,8 @@ export type RootViewConfig = Readonly<{
   ratio: number;
   /** Consumer-owned content rendered inside the fixed-ratio box. */
   children: readonly Html[];
-  /** Additional class names appended after the default root classes. */
-  classes?: string | undefined;
+  /** Additional class names appended after the default root className. */
+  className?: string | undefined;
   /** Additional inline styles merged after the computed aspect-ratio style. */
   style?: AspectRatioStyle | undefined;
 }>;
@@ -42,8 +42,8 @@ export type ImageViewConfig = Readonly<{
   src: string;
   /** Accessible image alternative text. */
   alt: string;
-  /** Additional class names appended after the default image classes. */
-  classes?: string | undefined;
+  /** Additional class names appended after the default image className. */
+  className?: string | undefined;
   /** Optional image inline styles. */
   style?: AspectRatioStyle | undefined;
 }>;
@@ -52,8 +52,8 @@ export type ImageViewConfig = Readonly<{
 export type CaptionViewConfig = Readonly<{
   /** Caption text or inline content. */
   children: readonly (Html | string)[];
-  /** Additional class names appended after the default caption classes. */
-  classes?: string | undefined;
+  /** Additional class names appended after the default caption className. */
+  className?: string | undefined;
   /** Optional caption inline styles. */
   style?: AspectRatioStyle | undefined;
 }>;
@@ -69,7 +69,7 @@ const aspectRatioValue = (ratio: number): string => `${ratio}`;
 export const rootView = <ParentMessage>({
   ratio,
   children,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -77,7 +77,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("ratio", aspectRatioValue(ratio)),
-      h.Class(cn(aspectRatioClasses, classes)),
+      h.Class(cn(aspectRatioClasses, className)),
       h.Style({
         aspectRatio: aspectRatioValue(ratio),
         ...style,
@@ -91,7 +91,7 @@ export const rootView = <ParentMessage>({
 export const imageView = <ParentMessage>({
   src,
   alt,
-  classes,
+  className,
   style,
 }: ImageViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -99,7 +99,7 @@ export const imageView = <ParentMessage>({
   return h.img([
     h.Src(src),
     h.Alt(alt),
-    h.Class(cn(aspectRatioImageClasses, classes)),
+    h.Class(cn(aspectRatioImageClasses, className)),
     ...(style === undefined ? [] : [h.Style(style)]),
   ]);
 };
@@ -107,14 +107,14 @@ export const imageView = <ParentMessage>({
 /** Render an optional caption overlay inside an AspectRatio root. */
 export const captionView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: CaptionViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
-      h.Class(cn(aspectRatioCaptionClasses, classes)),
+      h.Class(cn(aspectRatioCaptionClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -127,7 +127,7 @@ export const view = <ParentMessage>({
   src,
   alt,
   caption,
-  classes,
+  className,
 }: Readonly<{
   /** Width divided by height. */
   ratio: number;
@@ -137,12 +137,12 @@ export const view = <ParentMessage>({
   alt: string;
   /** Optional visible caption overlay. */
   caption?: string | undefined;
-  /** Additional class names appended after the default root classes. */
-  classes?: string | undefined;
+  /** Additional class names appended after the default root className. */
+  className?: string | undefined;
 }>): Html =>
   rootView<ParentMessage>({
     ratio,
-    classes,
+    className,
     children: [
       imageView<ParentMessage>({ src, alt }),
       ...(caption === undefined

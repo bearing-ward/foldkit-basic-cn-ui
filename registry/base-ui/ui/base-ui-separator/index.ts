@@ -16,8 +16,8 @@ export {
 export type ViewConfig = Readonly<{
   /** The visual and accessibility orientation of the separator. */
   orientation?: SeparatorOrientation;
-  /** Additional class appended to the default orientation classes. */
-  classes?: string | undefined;
+  /** Additional class appended to the default orientation className. */
+  className?: string | undefined;
   /** Inline styles applied to the separator element. */
   style?: SeparatorStyle | undefined;
 }>;
@@ -28,11 +28,11 @@ export type SeparatorStyle = Readonly<Record<string, string>>;
 /** Renders an accessible Base UI-style separator. */
 export const view = <ParentMessage>({
   orientation = "horizontal",
-  classes,
+  className,
   style,
 }: ViewConfig = {}): Html => {
   const h = html<ParentMessage>();
-  const cn = [separatorClassesByOrientation(orientation), classes]
+  const cn = [separatorClassesByOrientation(orientation), className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 

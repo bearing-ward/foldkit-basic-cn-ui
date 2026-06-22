@@ -33,12 +33,12 @@ export const update = (
 
 // VIEW
 
-const shadcnButton = (label: string, classes: string): Html => {
+const shadcnButton = (label: string, className: string): Html => {
   const h = html<Message>();
 
   return Button.view<Message>({
     toView: (attributes) =>
-      h.button([...attributes.button, h.Class(classes)], [label]),
+      h.button([...attributes.button, h.Class(className)], [label]),
   });
 };
 

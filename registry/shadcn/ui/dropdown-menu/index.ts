@@ -41,7 +41,7 @@ export type DropdownMenuStyle = Readonly<Record<string, string>>;
 
 export type PartViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -49,20 +49,20 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   children: readonly Html[];
   onToggle: ParentMessage;
   open?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
 export type BackdropViewConfig<ParentMessage> = Readonly<{
   onClose: ParentMessage;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -72,7 +72,7 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   disabled?: boolean | undefined;
   inset?: boolean | undefined;
   destructive?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -84,7 +84,7 @@ export type CheckedItemViewConfig<ParentMessage> = ItemViewConfig<ParentMessage>
 export type RadioGroupViewConfig = Readonly<{
   children: readonly Html[];
   label?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
@@ -99,21 +99,21 @@ export type SubTriggerViewConfig<ParentMessage> = Readonly<{
   onOpen: ParentMessage;
   open?: boolean | undefined;
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DropdownMenuStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 const itemClasses = ({
-  classes,
+  className,
   inset = false,
   destructive = false,
 }: Readonly<{
-  classes?: string | undefined;
+  className?: string | undefined;
   inset?: boolean | undefined;
   destructive?: boolean | undefined;
 }>): string =>
@@ -121,14 +121,14 @@ const itemClasses = ({
     dropdownMenuItemClasses,
     inset ? dropdownMenuInsetItemClasses : undefined,
     destructive ? dropdownMenuDestructiveItemClasses : undefined,
-    classes,
+    className,
   ]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -137,7 +137,7 @@ export const rootView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu"),
-      h.Class(cn(dropdownMenuRootClasses, classes)),
+      h.Class(cn(dropdownMenuRootClasses, className)),
     ],
     children
   );
@@ -147,7 +147,7 @@ export const triggerView = <ParentMessage>({
   children,
   onToggle,
   open = false,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -161,7 +161,7 @@ export const triggerView = <ParentMessage>({
       ...(open ? [h.DataAttribute("open", "true")] : []),
       h.OnClick(onToggle),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuTriggerClasses, classes)),
+      h.Class(cn(dropdownMenuTriggerClasses, className)),
     ],
     children
   );
@@ -170,7 +170,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -183,7 +183,7 @@ export const portalView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu-portal"),
-      h.Class(cn(dropdownMenuPortalClasses, classes)),
+      h.Class(cn(dropdownMenuPortalClasses, className)),
     ],
     children
   );
@@ -191,7 +191,7 @@ export const portalView = <ParentMessage>({
 
 export const backdropView = <ParentMessage>({
   onClose,
-  classes,
+  className,
   style,
 }: BackdropViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -203,7 +203,7 @@ export const backdropView = <ParentMessage>({
       h.OnClick(onClose),
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu-backdrop"),
-      h.Class(cn(dropdownMenuBackdropClasses, classes)),
+      h.Class(cn(dropdownMenuBackdropClasses, className)),
     ],
     []
   );
@@ -211,7 +211,7 @@ export const backdropView = <ParentMessage>({
 
 export const positionerView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -220,7 +220,7 @@ export const positionerView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "dropdown-menu-positioner"),
-      h.Class(cn(dropdownMenuPositionerClasses, classes)),
+      h.Class(cn(dropdownMenuPositionerClasses, className)),
     ],
     children
   );
@@ -228,7 +228,7 @@ export const positionerView = <ParentMessage>({
 
 export const popupView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -238,7 +238,7 @@ export const popupView = <ParentMessage>({
       h.Attribute("role", "menu"),
       h.DataAttribute("slot", "dropdown-menu-popup"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuPopupClasses, classes)),
+      h.Class(cn(dropdownMenuPopupClasses, className)),
     ],
     children
   );
@@ -263,7 +263,7 @@ export const itemView = <ParentMessage>({
   disabled = false,
   inset = false,
   destructive = false,
-  classes,
+  className,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -280,7 +280,7 @@ export const itemView = <ParentMessage>({
       ...(inset ? [h.DataAttribute("inset", "true")] : []),
       ...(destructive ? [h.DataAttribute("variant", "destructive")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClasses({ classes, inset, destructive })),
+      h.Class(itemClasses({ className, inset, destructive })),
     ],
     children
   );
@@ -292,7 +292,7 @@ export const checkboxItemView = <ParentMessage>({
   children,
   disabled = false,
   inset = false,
-  classes,
+  className,
   style,
 }: CheckedItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -310,7 +310,7 @@ export const checkboxItemView = <ParentMessage>({
         : [h.OnClick(onSelect)]),
       ...(inset ? [h.DataAttribute("inset", "true")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClasses({ classes, inset })),
+      h.Class(itemClasses({ className, inset })),
     ],
     children
   );
@@ -319,7 +319,7 @@ export const checkboxItemView = <ParentMessage>({
 export const radioGroupView = <ParentMessage>({
   children,
   label,
-  classes,
+  className,
   style,
 }: RadioGroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -330,7 +330,7 @@ export const radioGroupView = <ParentMessage>({
       ...(label === undefined ? [] : [h.AriaLabel(label)]),
       h.DataAttribute("slot", "dropdown-menu-radio-group"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(classes ?? ""),
+      h.Class(className ?? ""),
     ],
     children
   );
@@ -342,7 +342,7 @@ export const radioItemView = <ParentMessage>({
   children,
   disabled = false,
   inset = false,
-  classes,
+  className,
   style,
 }: RadioItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -360,7 +360,7 @@ export const radioItemView = <ParentMessage>({
         : [h.OnClick(onSelect)]),
       ...(inset ? [h.DataAttribute("inset", "true")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClasses({ classes, inset })),
+      h.Class(itemClasses({ className, inset })),
     ],
     children
   );
@@ -371,7 +371,7 @@ export const subTriggerView = <ParentMessage>({
   children,
   open = false,
   disabled = false,
-  classes,
+  className,
   style,
 }: SubTriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -389,7 +389,7 @@ export const subTriggerView = <ParentMessage>({
         ? [h.DataAttribute("disabled", "true")]
         : [h.OnClick(onOpen)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(itemClasses({ classes })),
+      h.Class(itemClasses({ className })),
     ],
     children
   );
@@ -397,7 +397,7 @@ export const subTriggerView = <ParentMessage>({
 
 export const subContentView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -407,7 +407,7 @@ export const subContentView = <ParentMessage>({
       h.Attribute("role", "menu"),
       h.DataAttribute("slot", "dropdown-menu-sub-content"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuSubContentClasses, classes)),
+      h.Class(cn(dropdownMenuSubContentClasses, className)),
     ],
     children
   );
@@ -415,7 +415,7 @@ export const subContentView = <ParentMessage>({
 
 export const itemIndicatorView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -425,7 +425,7 @@ export const itemIndicatorView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-item-indicator"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuIndicatorClasses, classes)),
+      h.Class(cn(dropdownMenuIndicatorClasses, className)),
     ],
     children
   );
@@ -433,7 +433,7 @@ export const itemIndicatorView = <ParentMessage>({
 
 export const iconView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -443,7 +443,7 @@ export const iconView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-icon"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuIconClasses, classes)),
+      h.Class(cn(dropdownMenuIconClasses, className)),
     ],
     children
   );
@@ -451,7 +451,7 @@ export const iconView = <ParentMessage>({
 
 export const labelView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -460,14 +460,14 @@ export const labelView = <ParentMessage>({
     [
       h.DataAttribute("slot", "dropdown-menu-label"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuLabelClasses, classes)),
+      h.Class(cn(dropdownMenuLabelClasses, className)),
     ],
     children
   );
 };
 
 export const separatorView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: Omit<PartViewConfig, "children">): Html => {
   const h = html<ParentMessage>();
@@ -478,7 +478,7 @@ export const separatorView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "dropdown-menu-separator"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(dropdownMenuSeparatorClasses, classes)),
+      h.Class(cn(dropdownMenuSeparatorClasses, className)),
     ],
     []
   );

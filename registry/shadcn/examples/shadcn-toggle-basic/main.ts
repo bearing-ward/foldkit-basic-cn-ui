@@ -135,7 +135,7 @@ const toggleButton = (
   ariaLabel: string,
   onPressedChange: Message,
   children: readonly Html[],
-  classes?: string,
+  className?: string,
   disabled = false
 ): Html =>
   Toggle.view<Message>({
@@ -144,7 +144,7 @@ const toggleButton = (
     onPressedChange,
     value: ariaLabel,
     disabled,
-    classes,
+    className,
     children,
   });
 

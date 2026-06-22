@@ -6,16 +6,16 @@ import { spinnerClasses } from "./view";
 export { spinnerClasses } from "./view";
 
 export type ViewConfig<ParentMessage> = Readonly<{
-  classes?: string;
+  className?: string;
   attributes?: readonly Attribute<ParentMessage>[] | undefined;
 }>;
 
 export const view = <ParentMessage>({
   attributes = [],
-  classes,
+  className,
 }: ViewConfig<ParentMessage> = {}): Html => {
   const h = html<ParentMessage>();
-  const cn = [spinnerClasses, classes]
+  const cn = [spinnerClasses, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 

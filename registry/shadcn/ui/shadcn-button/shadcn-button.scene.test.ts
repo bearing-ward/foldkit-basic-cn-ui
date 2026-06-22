@@ -45,31 +45,31 @@ const view = (model: Model): Html => {
 
 describe("shadcn Button registry view", () => {
   test("exports the default shadcn variant helper output", () => {
-    const classes = Button.buttonVariants();
+    const className = Button.buttonVariants();
 
-    expect(classes).toContain("bg-primary");
-    expect(classes).toContain("text-primary-foreground");
-    expect(classes).toContain("h-9");
-    expect(classes).toContain("px-4");
+    expect(className).toContain("bg-primary");
+    expect(className).toContain("text-primary-foreground");
+    expect(className).toContain("h-9");
+    expect(className).toContain("px-4");
   });
 
   test("exports destructive and large variant helper output", () => {
-    const classes = Button.buttonVariants({
+    const className = Button.buttonVariants({
       variant: "destructive",
       size: "lg",
     });
 
-    expect(classes).toContain("bg-destructive");
-    expect(classes).toContain("text-white");
-    expect(classes).toContain("h-10");
-    expect(classes).toContain("px-6");
+    expect(className).toContain("bg-destructive");
+    expect(className).toContain("text-white");
+    expect(className).toContain("h-10");
+    expect(className).toContain("px-6");
   });
 
   test("merges custom Tailwind class conflicts with cn", () => {
-    const classes = Button.buttonVariants({ classes: "h-12" });
+    const className = Button.buttonVariants({ className: "h-12" });
 
-    expect(classes).toContain("h-12");
-    expect(classes.split(" ")).not.toContain("h-9");
+    expect(className).toContain("h-12");
+    expect(className.split(" ")).not.toContain("h-9");
   });
 
   test("keeps legacy constants derived from buttonVariants", () => {

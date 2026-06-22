@@ -41,13 +41,13 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
 
   return ButtonGroup.view<Message>({
     ariaLabel: "URL actions",
-    classes: "w-full max-w-md",
+    className: "w-full max-w-md",
     children: [
       ButtonGroup.itemView<Message>({
-        classes: "min-w-0 flex-1",
+        className: "min-w-0 flex-1",
         children: [
           InputGroup.view<Message>({
-            classes:
+            className:
               "h-9 flex-1 rounded-md border-0 bg-white shadow-none focus-within:ring-0",
             children: [
               InputGroup.textView<Message>(["https://"]),

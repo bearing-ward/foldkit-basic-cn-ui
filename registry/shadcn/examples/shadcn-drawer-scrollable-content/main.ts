@@ -68,7 +68,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         children: [
           Drawer.triggerView<Message>({
             onClick: ClickedScrollableContent(),
-            classes:
+            className:
               "border border-gray-200 bg-white text-gray-950 hover:bg-gray-50",
             children: [h.span([], ["Scrollable Content"])],
           }),
@@ -81,10 +81,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   Drawer.popupView<Message>({
                     titleId,
                     descriptionId,
-                    classes: "p-0",
+                    className: "p-0",
                     children: [
                       Drawer.contentView<Message>({
-                        classes: "gap-0",
+                        className: "gap-0",
                         children: [
                           h.div(
                             [

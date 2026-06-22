@@ -26,8 +26,8 @@ export type RootViewConfig = Readonly<{
   children: readonly Html[];
   /** Whether the component should ignore trigger interaction. */
   disabled?: boolean | undefined;
-  /** Additional class names appended to the default root classes. */
-  classes?: string | undefined;
+  /** Additional class names appended to the default root className. */
+  className?: string | undefined;
   /** Inline styles applied to the root element. */
   style?: CollapsibleStyle | undefined;
 }>;
@@ -45,8 +45,8 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   panelId?: string | undefined;
   /** Whether the component should ignore trigger interaction. */
   disabled?: boolean | undefined;
-  /** Additional class names appended to the default trigger classes. */
-  classes?: string | undefined;
+  /** Additional class names appended to the default trigger className. */
+  className?: string | undefined;
   /** Inline styles applied to the trigger element. */
   style?: CollapsibleStyle | undefined;
 }>;
@@ -62,14 +62,14 @@ export type PanelViewConfig = Readonly<{
   keepMounted?: boolean | undefined;
   /** Preserve find-in-page behavior with hidden=until-found while closed. */
   hiddenUntilFound?: boolean | undefined;
-  /** Additional class names appended to the default panel classes. */
-  classes?: string | undefined;
+  /** Additional class names appended to the default panel className. */
+  className?: string | undefined;
   /** Inline styles applied to the panel element. */
   style?: CollapsibleStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -87,7 +87,7 @@ export const rootView = <ParentMessage>({
   open,
   children,
   disabled = false,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -97,7 +97,7 @@ export const rootView = <ParentMessage>({
       ...openAttributes(h, open),
       ...disabledAttributes(h, disabled),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(collapsibleRootClasses, classes)),
+      h.Class(cn(collapsibleRootClasses, className)),
     ],
     children
   );
@@ -110,7 +110,7 @@ export const triggerView = <ParentMessage>({
   ariaLabel,
   panelId,
   disabled = false,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -125,7 +125,7 @@ export const triggerView = <ParentMessage>({
       ...disabledAttributes(h, disabled),
       ...(disabled ? [h.Disabled(true)] : [h.OnClick(onOpenChange)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(collapsibleTriggerClasses, classes)),
+      h.Class(cn(collapsibleTriggerClasses, className)),
     ],
     [
       ...children,
@@ -140,7 +140,7 @@ export const panelView = <ParentMessage>({
   id,
   keepMounted = false,
   hiddenUntilFound = false,
-  classes,
+  className,
   style,
 }: PanelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -160,7 +160,7 @@ export const panelView = <ParentMessage>({
         "--collapsible-panel-width": "auto",
         ...style,
       }),
-      h.Class(cn(collapsiblePanelClasses, classes)),
+      h.Class(cn(collapsiblePanelClasses, className)),
     ],
     open || keepMounted || hiddenUntilFound ? children : []
   );
@@ -168,12 +168,12 @@ export const panelView = <ParentMessage>({
 
 export const contentView = <ParentMessage>(
   children: readonly Html[],
-  classes?: string
+  className?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(cn(collapsibleContentClasses, classes))],
+    [h.Class(cn(collapsibleContentClasses, className))],
     [...children]
   );
 };

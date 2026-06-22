@@ -75,7 +75,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   );
 
   return Command.rootView<Message>({
-    classes: "max-w-md",
+    className: "max-w-md",
     children: [
       Command.inputView<Message>({
         value: model.query,

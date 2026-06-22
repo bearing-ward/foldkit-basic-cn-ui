@@ -77,11 +77,11 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     [
                       Skeleton.view<Message>({
                         shape: "Text",
-                        classes: "w-32",
+                        className: "w-32",
                       }),
                       Skeleton.view<Message>({
                         shape: "Text",
-                        classes: "w-48",
+                        className: "w-48",
                       }),
                     ]
                   ),
@@ -92,35 +92,35 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 [
                   Skeleton.view<Message>({
                     shape: "Block",
-                    classes: "h-32",
+                    className: "h-32",
                   }),
                   Skeleton.view<Message>({
                     shape: "Text",
-                    classes: "w-52",
+                    className: "w-52",
                   }),
                   Skeleton.view<Message>({
                     shape: "Text",
-                    classes: "w-36",
+                    className: "w-36",
                   }),
                 ]
               ),
               h.div([h.Class("space-y-2"), h.AriaLabel("Text skeleton")], [
-                Skeleton.view<Message>({ shape: "Text", classes: "w-72" }),
-                Skeleton.view<Message>({ shape: "Text", classes: "w-64" }),
-                Skeleton.view<Message>({ shape: "Text", classes: "w-56" }),
+                Skeleton.view<Message>({ shape: "Text", className: "w-72" }),
+                Skeleton.view<Message>({ shape: "Text", className: "w-64" }),
+                Skeleton.view<Message>({ shape: "Text", className: "w-56" }),
               ]),
               h.div(
                 [h.Class("grid w-full gap-3"), h.AriaLabel("Form skeleton")],
                 [
-                  Skeleton.view<Message>({ shape: "Text", classes: "w-24" }),
+                  Skeleton.view<Message>({ shape: "Text", className: "w-24" }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    classes: "h-9",
+                    className: "h-9",
                   }),
-                  Skeleton.view<Message>({ shape: "Text", classes: "w-24" }),
+                  Skeleton.view<Message>({ shape: "Text", className: "w-24" }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    classes: "h-9",
+                    className: "h-9",
                   }),
                   Skeleton.view<Message>({ shape: "Button" }),
                 ]
@@ -128,18 +128,18 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.div(
                 [h.Class("grid w-full gap-3"), h.AriaLabel("Table skeleton")],
                 [
-                  Skeleton.view<Message>({ shape: "Text", classes: "w-32" }),
+                  Skeleton.view<Message>({ shape: "Text", className: "w-32" }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    classes: "h-8",
+                    className: "h-8",
                   }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    classes: "h-8",
+                    className: "h-8",
                   }),
                   Skeleton.view<Message>({
                     shape: "Block",
-                    classes: "h-8",
+                    className: "h-8",
                   }),
                 ]
               ),

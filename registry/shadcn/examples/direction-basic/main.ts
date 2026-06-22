@@ -98,7 +98,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       ),
       Direction.view<Message>({
         direction: model.direction,
-        classes: Direction.directionPreviewClasses,
+        className: Direction.directionPreviewClasses,
         children: [
           h.div(
             [h.Class(Direction.directionCardClasses)],

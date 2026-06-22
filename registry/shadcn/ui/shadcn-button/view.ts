@@ -21,7 +21,7 @@ export type ShadcnButtonSize =
 export type ButtonVariantConfig = Readonly<{
   variant?: ShadcnButtonVariant | undefined;
   size?: ShadcnButtonSize | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
 }>;
 
 export const shadcnButtonBaseClasses =
@@ -81,13 +81,13 @@ const shadcnButtonClassesBySize: Record<ShadcnButtonSize, string> = {
 export const buttonVariants = ({
   variant = "default",
   size = "default",
-  classes,
+  className,
 }: ButtonVariantConfig = {}): string =>
   cn(
     shadcnButtonBaseClasses,
     shadcnButtonClassesByVariant[variant],
     shadcnButtonClassesBySize[size],
-    classes,
+    className,
   );
 
 export const shadcnButtonClasses = buttonVariants();

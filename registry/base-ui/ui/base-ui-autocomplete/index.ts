@@ -23,14 +23,14 @@ export type AutocompleteStyle = Readonly<Record<string, string>>;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
 export type LabelViewConfig = Readonly<{
   forId: string;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
@@ -41,14 +41,14 @@ export type InputViewConfig<ParentMessage> = Readonly<{
   ariaLabel: string;
   listId?: string | undefined;
   placeholder?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
 export type ListViewConfig = Readonly<{
   id: string;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
@@ -57,24 +57,24 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   selected?: boolean | undefined;
   onClick: ParentMessage;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
 export type EmptyViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AutocompleteStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -82,7 +82,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(autocompleteRootClasses, classes)),
+      h.Class(cn(autocompleteRootClasses, className)),
     ],
     children
   );
@@ -91,7 +91,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   forId,
   children,
-  classes,
+  className,
   style,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -100,7 +100,7 @@ export const labelView = <ParentMessage>({
     [
       h.Attribute("for", forId),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(autocompleteLabelClasses, classes)),
+      h.Class(cn(autocompleteLabelClasses, className)),
     ],
     children
   );
@@ -113,7 +113,7 @@ export const inputView = <ParentMessage>({
   ariaLabel,
   listId,
   placeholder,
-  classes,
+  className,
   style,
 }: InputViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -133,14 +133,14 @@ export const inputView = <ParentMessage>({
         ]),
     ...(placeholder === undefined ? [] : [h.Placeholder(placeholder)]),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(cn(autocompleteInputClasses, classes)),
+    h.Class(cn(autocompleteInputClasses, className)),
   ]);
 };
 
 export const listView = <ParentMessage>({
   id,
   children,
-  classes,
+  className,
   style,
 }: ListViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -150,7 +150,7 @@ export const listView = <ParentMessage>({
       h.Id(id),
       h.Attribute("role", "listbox"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(autocompleteListClasses, classes)),
+      h.Class(cn(autocompleteListClasses, className)),
     ],
     children
   );
@@ -161,7 +161,7 @@ export const itemView = <ParentMessage>({
   selected,
   onClick,
   children,
-  classes,
+  className,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -175,7 +175,7 @@ export const itemView = <ParentMessage>({
       ...(selected === true ? [h.DataAttribute("selected", "")] : []),
       h.OnClick(onClick),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(autocompleteItemClasses, classes)),
+      h.Class(cn(autocompleteItemClasses, className)),
     ],
     children
   );
@@ -183,7 +183,7 @@ export const itemView = <ParentMessage>({
 
 export const emptyView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: EmptyViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -191,7 +191,7 @@ export const emptyView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(autocompleteEmptyClasses, classes)),
+      h.Class(cn(autocompleteEmptyClasses, className)),
     ],
     children
   );

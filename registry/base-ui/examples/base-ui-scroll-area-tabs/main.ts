@@ -148,7 +148,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                       [
                         ScrollArea.view<Message>({
                           ariaLabel: `${activeTab.value} settings`,
-                          classes: "h-40",
+                          className: "h-40",
                           children: panelContent(activeTab.value),
                         }),
                       ]

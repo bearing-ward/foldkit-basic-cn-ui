@@ -66,7 +66,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
           ),
         ]
       ),
-      Separator.view<Message>({ classes: "my-4" }),
+      Separator.view<Message>({ className: "my-4" }),
       h.div(
         [h.Class("flex h-5 items-center space-x-4 text-sm")],
         [

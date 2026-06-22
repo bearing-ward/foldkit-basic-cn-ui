@@ -27,7 +27,7 @@ export type HoverCardStyle = Readonly<Record<string, string>>;
 
 export type PartViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: HoverCardStyle | undefined;
 }>;
 
@@ -35,31 +35,31 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   children: readonly Html[];
   onOpen: ParentMessage;
   open?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: HoverCardStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: HoverCardStyle | undefined;
 }>;
 
 export type BackdropViewConfig<ParentMessage> = Readonly<{
   onClose: ParentMessage;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: HoverCardStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -68,7 +68,7 @@ export const rootView = <ParentMessage>({
     [
       h.DataAttribute("slot", "hover-card"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(hoverCardRootClasses, classes)),
+      h.Class(cn(hoverCardRootClasses, className)),
     ],
     children
   );
@@ -78,7 +78,7 @@ export const triggerView = <ParentMessage>({
   children,
   onOpen,
   open = false,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -92,7 +92,7 @@ export const triggerView = <ParentMessage>({
       ...(open ? [h.DataAttribute("open", "true")] : []),
       h.OnClick(onOpen),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(hoverCardTriggerClasses, classes)),
+      h.Class(cn(hoverCardTriggerClasses, className)),
     ],
     children
   );
@@ -101,7 +101,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -114,7 +114,7 @@ export const portalView = <ParentMessage>({
     [
       h.DataAttribute("slot", "hover-card-portal"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(hoverCardPortalClasses, classes)),
+      h.Class(cn(hoverCardPortalClasses, className)),
     ],
     children
   );
@@ -122,7 +122,7 @@ export const portalView = <ParentMessage>({
 
 export const backdropView = <ParentMessage>({
   onClose,
-  classes,
+  className,
   style,
 }: BackdropViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -134,7 +134,7 @@ export const backdropView = <ParentMessage>({
       h.DataAttribute("slot", "hover-card-backdrop"),
       h.OnClick(onClose),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(hoverCardBackdropClasses, classes)),
+      h.Class(cn(hoverCardBackdropClasses, className)),
     ],
     []
   );
@@ -142,7 +142,7 @@ export const backdropView = <ParentMessage>({
 
 export const positionerView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -151,7 +151,7 @@ export const positionerView = <ParentMessage>({
     [
       h.DataAttribute("slot", "hover-card-positioner"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(hoverCardPositionerClasses, classes)),
+      h.Class(cn(hoverCardPositionerClasses, className)),
     ],
     children
   );
@@ -159,7 +159,7 @@ export const positionerView = <ParentMessage>({
 
 export const popupView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -169,7 +169,7 @@ export const popupView = <ParentMessage>({
       h.Attribute("role", "dialog"),
       h.DataAttribute("slot", "hover-card-popup"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(hoverCardPopupClasses, classes)),
+      h.Class(cn(hoverCardPopupClasses, className)),
     ],
     children
   );

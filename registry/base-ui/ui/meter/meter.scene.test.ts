@@ -23,7 +23,7 @@ const view = (): Html => {
         formatValue: (value) => `${value} units`,
         getAriaValueText: ({ value }) => `${value} of 100 units`,
         renderValue: ({ formattedValue }) => formattedValue,
-        classes: "meter-root-override",
+        className: "meter-root-override",
         style: { inlineSize: "18rem" },
         labelClasses: "meter-label-override",
         labelStyle: { color: "rgb(17, 24, 39)" },

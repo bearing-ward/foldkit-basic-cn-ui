@@ -18,7 +18,7 @@ const view = (): Html => {
           Typography.p("Reusable text helpers."),
           Typography.blockquote("A useful quotation."),
           Typography.table(["Name", "Value"], [["Status", "Ready"]]),
-          Typography.inlineCode("classes"),
+          Typography.inlineCode("className"),
           Typography.lead("Lead copy."),
           Typography.large("Large copy."),
           Typography.small("Small copy."),

@@ -29,7 +29,7 @@ export type InputOtpState = Readonly<{
 export type ViewConfig = InputOtpState &
   Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   dir?: "ltr" | "rtl" | undefined;
   style?: InputOtpStyle | undefined;
 }>;
@@ -46,7 +46,7 @@ export type SlotViewConfig<ParentMessage> = InputOtpState &
   inputMode?: string | undefined;
   pattern?: string | undefined;
   active?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: InputOtpStyle | undefined;
 }>;
 
@@ -56,8 +56,8 @@ export const REGEXP_ONLY_DIGITS = "[0-9]*";
 /** Alphanumeric pattern matching shadcn/input-otp examples. */
 export const REGEXP_ONLY_DIGITS_AND_CHARS = "[a-zA-Z0-9]*";
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -83,7 +83,7 @@ const patternCharacters = (value: string, pattern?: string): string =>
 /** Renders the Input OTP root wrapper. */
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   dir,
   style,
   ...state
@@ -95,7 +95,7 @@ export const rootView = <ParentMessage>({
       ...stateAttributes(h, state),
       ...(dir === undefined ? [] : [h.Attribute("dir", dir)]),
       h.DataAttribute("slot", "input-otp"),
-      h.Class(cn(inputOtpRootClasses, classes)),
+      h.Class(cn(inputOtpRootClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -105,7 +105,7 @@ export const rootView = <ParentMessage>({
 /** Renders a grouped set of adjacent OTP slots. */
 export const groupView = <ParentMessage>({
   children,
-  classes,
+  className,
   dir,
   style,
   ...state
@@ -117,7 +117,7 @@ export const groupView = <ParentMessage>({
       ...stateAttributes(h, state),
       ...(dir === undefined ? [] : [h.Attribute("dir", dir)]),
       h.DataAttribute("slot", "input-otp-group"),
-      h.Class(cn(inputOtpGroupClasses, classes)),
+      h.Class(cn(inputOtpGroupClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -135,7 +135,7 @@ export const slotView = <ParentMessage>({
   inputMode,
   pattern,
   active = false,
-  classes,
+  className,
   style,
   ...state
 }: SlotViewConfig<ParentMessage>): Html => {
@@ -160,7 +160,7 @@ export const slotView = <ParentMessage>({
     h.DataAttribute("slot", "input-otp-slot"),
     h.DataAttribute("active", active ? "true" : "false"),
     h.DataAttribute("filled", value === "" ? "false" : "true"),
-    h.Class(cn(inputOtpSlotClasses, classes)),
+    h.Class(cn(inputOtpSlotClasses, className)),
     h.Style(style ?? {}),
   ]);
 };

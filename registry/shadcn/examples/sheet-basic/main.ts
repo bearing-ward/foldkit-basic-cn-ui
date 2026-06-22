@@ -126,7 +126,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           Sheet.contentView<Message>({
             ariaDescribedBy: sheetDescriptionId,
             ariaLabelledBy: sheetTitleId,
-            classes: contentClasses(model.side),
+            className: contentClasses(model.side),
             children: [
               Sheet.headerView<Message>({
                 children: [

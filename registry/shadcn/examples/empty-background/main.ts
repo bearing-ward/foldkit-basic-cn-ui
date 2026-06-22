@@ -43,7 +43,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     title: "No Notifications",
     description: "You're all caught up. New notifications will appear here.",
     icon: "○",
-    classes:
+    className:
       "rounded-lg bg-gradient-to-b from-gray-50 to-white p-8 ring-1 ring-gray-200",
     action: h.button([h.Type("button"), h.Class(buttonClasses)], ["Refresh"]),
   });

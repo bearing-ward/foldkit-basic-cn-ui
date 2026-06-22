@@ -30,7 +30,7 @@ export type ContextMenuStyle = Readonly<Record<string, string>>;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ContextMenuStyle | undefined;
 }>;
 
@@ -38,27 +38,27 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   onOpen: ParentMessage;
   onPointerDown?: (clientX: number, clientY: number) => ParentMessage;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ContextMenuStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ContextMenuStyle | undefined;
 }>;
 
 export type PartViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ContextMenuStyle | undefined;
   testId?: string | undefined;
 }>;
 
 export type BackdropViewConfig<ParentMessage> = Readonly<{
   onClose: ParentMessage;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ContextMenuStyle | undefined;
 }>;
 
@@ -66,18 +66,18 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   onSelect: ParentMessage;
   children: readonly Html[];
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ContextMenuStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -85,7 +85,7 @@ export const rootView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuRootClasses, classes)),
+      h.Class(cn(contextMenuRootClasses, className)),
     ],
     children
   );
@@ -95,7 +95,7 @@ export const triggerView = <ParentMessage>({
   onOpen,
   onPointerDown,
   children,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -122,7 +122,7 @@ export const triggerView = <ParentMessage>({
             ),
           ]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuTriggerClasses, classes)),
+      h.Class(cn(contextMenuTriggerClasses, className)),
     ],
     children
   );
@@ -131,7 +131,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -143,7 +143,7 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuPortalClasses, classes)),
+      h.Class(cn(contextMenuPortalClasses, className)),
     ],
     children
   );
@@ -151,7 +151,7 @@ export const portalView = <ParentMessage>({
 
 export const positionerView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   testId,
 }: PartViewConfig): Html => {
@@ -161,7 +161,7 @@ export const positionerView = <ParentMessage>({
     [
       ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuPositionerClasses, classes)),
+      h.Class(cn(contextMenuPositionerClasses, className)),
     ],
     children
   );
@@ -169,7 +169,7 @@ export const positionerView = <ParentMessage>({
 
 export const backdropView = <ParentMessage>({
   onClose,
-  classes,
+  className,
   style,
 }: BackdropViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -180,7 +180,7 @@ export const backdropView = <ParentMessage>({
       h.Attribute("aria-label", "Close context menu"),
       h.OnClick(onClose),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuBackdropClasses, classes)),
+      h.Class(cn(contextMenuBackdropClasses, className)),
     ],
     []
   );
@@ -188,7 +188,7 @@ export const backdropView = <ParentMessage>({
 
 export const popupView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PartViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -197,7 +197,7 @@ export const popupView = <ParentMessage>({
     [
       h.Attribute("role", "menu"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuPopupClasses, classes)),
+      h.Class(cn(contextMenuPopupClasses, className)),
     ],
     children
   );
@@ -207,7 +207,7 @@ export const itemView = <ParentMessage>({
   onSelect,
   children,
   disabled = false,
-  classes,
+  className,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -220,14 +220,14 @@ export const itemView = <ParentMessage>({
       ...(disabled ? [h.Attribute("data-disabled", "")] : []),
       h.OnClick(onSelect),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuItemClasses, classes)),
+      h.Class(cn(contextMenuItemClasses, className)),
     ],
     children
   );
 };
 
 export const separatorView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: Omit<PartViewConfig, "children">): Html => {
   const h = html<ParentMessage>();
@@ -236,7 +236,7 @@ export const separatorView = <ParentMessage>({
     [
       h.Attribute("role", "separator"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(contextMenuSeparatorClasses, classes)),
+      h.Class(cn(contextMenuSeparatorClasses, className)),
     ],
     []
   );

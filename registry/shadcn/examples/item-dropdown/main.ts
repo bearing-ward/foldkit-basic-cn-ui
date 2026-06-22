@@ -79,7 +79,7 @@ const itemDropdownMenuView = (menu: Menu.Model): Html => {
       anchor: Menu.baseUiMenuDefaultAnchor,
       items: actions,
       itemToConfig: (item) => ({
-        classes: Menu.baseUiMenuItemClasses,
+        className: Menu.baseUiMenuItemClasses,
         content: h.span([], [item]),
       }),
       buttonContent: h.span([h.Attribute("aria-hidden", "true")], ["..."]),

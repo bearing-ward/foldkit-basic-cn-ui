@@ -24,26 +24,26 @@ export type ViewConfig = Readonly<{
   children: readonly (Html | string)[];
   orientation?: ButtonGroupOrientation;
   ariaLabel?: string;
-  classes?: string;
+  className?: string;
 }>;
 
 export type ItemViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 
 export type SeparatorViewConfig = Readonly<{
   orientation?: ButtonGroupOrientation;
-  classes?: string;
+  className?: string;
 }>;
 
 export type TextViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -51,7 +51,7 @@ export const view = <ParentMessage>({
   children,
   orientation = "horizontal",
   ariaLabel,
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -63,7 +63,7 @@ export const view = <ParentMessage>({
       h.Class(
         cn(
           `${buttonGroupClasses} ${buttonGroupClassesByOrientation(orientation)}`,
-          classes
+          className
         )
       ),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
@@ -74,14 +74,14 @@ export const view = <ParentMessage>({
 
 export const itemView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ItemViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "button-group-item"),
-      h.Class(cn(buttonGroupItemClasses, classes)),
+      h.Class(cn(buttonGroupItemClasses, className)),
     ],
     children
   );
@@ -89,7 +89,7 @@ export const itemView = <ParentMessage>({
 
 export const separatorView = <ParentMessage>({
   orientation = "horizontal",
-  classes,
+  className,
 }: SeparatorViewConfig = {}): Html => {
   const h = html<ParentMessage>();
 
@@ -99,7 +99,7 @@ export const separatorView = <ParentMessage>({
       h.AriaHidden(true),
       h.DataAttribute("slot", "button-group-separator"),
       h.DataAttribute("orientation", orientation),
-      h.Class(cn(buttonGroupSeparatorClasses, classes)),
+      h.Class(cn(buttonGroupSeparatorClasses, className)),
     ],
     []
   );
@@ -107,14 +107,14 @@ export const separatorView = <ParentMessage>({
 
 export const textView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: TextViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.span(
     [
       h.DataAttribute("slot", "button-group-text"),
-      h.Class(cn(buttonGroupTextClasses, classes)),
+      h.Class(cn(buttonGroupTextClasses, className)),
     ],
     children
   );

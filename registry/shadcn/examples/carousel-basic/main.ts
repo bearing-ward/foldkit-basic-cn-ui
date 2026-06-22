@@ -72,17 +72,17 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   ): Html =>
     Carousel.rootView<Message>({
       ariaLabel,
-      classes: rootClasses,
+      className: rootClasses,
       children: [
         Carousel.viewportView<Message>({
           children: [
             Carousel.contentView<Message>({
               index: model.index,
               orientation,
-              classes: contentClasses,
+              className: contentClasses,
               children: labels.map((slide) =>
                 Carousel.itemView<Message>({
-                  classes: itemClasses,
+                  className: itemClasses,
                   children: [slideCard<Message>(slide)],
                 })
               ),

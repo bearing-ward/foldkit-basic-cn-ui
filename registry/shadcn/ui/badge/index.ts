@@ -19,40 +19,40 @@ export {
 export type ViewConfig = Readonly<{
   label: string;
   variant?: BadgeVariant;
-  classes?: string;
+  className?: string;
 }>;
 
 export type ContentViewConfig = Readonly<{
   children: readonly (Html | string)[];
   variant?: BadgeVariant;
-  classes?: string;
+  className?: string;
 }>;
 
 const classesForVariant = (
   variant: BadgeVariant,
-  classes?: string
+  className?: string
 ): string =>
-  [badgeClassesByVariant(variant), classes]
+  [badgeClassesByVariant(variant), className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const contentView = <ParentMessage>({
   children,
   variant = "Default",
-  classes,
+  className,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
 
-  return h.span([h.Class(classesForVariant(variant, classes))], children);
+  return h.span([h.Class(classesForVariant(variant, className))], children);
 };
 
 export const view = <ParentMessage>({
   label,
   variant = "Default",
-  classes,
+  className,
 }: ViewConfig): Html =>
   contentView<ParentMessage>({
     children: [label],
     variant,
-    ...(classes === undefined ? {} : { classes }),
+    ...(className === undefined ? {} : { className }),
   });

@@ -94,14 +94,14 @@ const listItemView = (
   title: string,
   body: string,
   href: string,
-  classes?: string | undefined
+  className?: string | undefined
 ): Html => {
   const h = html<Message>();
 
-  return h.li(classes === undefined ? [] : [h.Class(classes)], [
+  return h.li(className === undefined ? [] : [h.Class(className)], [
     NavigationMenu.linkView<Message>({
       href,
-      classes: "flex-col items-start",
+      className: "flex-col items-start",
       children: [
         h.div([h.Class("text-sm font-medium leading-none")], [title]),
         h.p(
@@ -118,7 +118,7 @@ const iconListItemView = (label: string, icon: string): Html => {
 
   return NavigationMenu.linkView<Message>({
     href: "#",
-    classes: "flex-row items-center justify-start gap-2",
+    className: "flex-row items-center justify-start gap-2",
     children: [
       h.span([h.AriaHidden(true), h.Class("text-gray-500")], [icon]),
       h.span([], [label]),
@@ -150,7 +150,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   return NavigationMenu.rootView<Message>({
     children: [
       NavigationMenu.listView<Message>({
-        classes: "flex-wrap",
+        className: "flex-wrap",
         children: [
           NavigationMenu.itemView<Message>({
             children: [
@@ -187,7 +187,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
           }),
           NavigationMenu.itemView<Message>({
-            classes: "hidden md:block",
+            className: "hidden md:block",
             children: [
               NavigationMenu.triggerView<Message>({
                 open: isOpen("List"),
@@ -197,7 +197,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
           }),
           NavigationMenu.itemView<Message>({
-            classes: "hidden md:block",
+            className: "hidden md:block",
             children: [
               NavigationMenu.triggerView<Message>({
                 open: isOpen("Simple"),
@@ -207,7 +207,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
           }),
           NavigationMenu.itemView<Message>({
-            classes: "hidden md:block",
+            className: "hidden md:block",
             children: [
               NavigationMenu.triggerView<Message>({
                 open: isOpen("With Icon"),
@@ -217,7 +217,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ],
           }),
           NavigationMenu.itemView<Message>({
-            classes: "hidden md:block",
+            className: "hidden md:block",
             children: [
               NavigationMenu.linkView<Message>({
                 href: "#",
@@ -241,7 +241,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   [
                     NavigationMenu.linkView<Message>({
                       href: "/",
-                      classes:
+                      className:
                         "flex h-full w-full flex-col items-start justify-end rounded-md bg-linear-to-b from-gray-50 to-gray-100 p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6",
                       children: [
                         h.div(

@@ -30,38 +30,38 @@ export type AlertStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   variant?: AlertVariant | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AlertStyle | undefined;
 }>;
 
 export type IconViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AlertStyle | undefined;
 }>;
 
 export type TitleViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AlertStyle | undefined;
 }>;
 
 export type DescriptionViewConfig = Readonly<{
   children: readonly (Html | string)[];
   variant?: AlertVariant | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AlertStyle | undefined;
 }>;
 
 export type ContentViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AlertStyle | undefined;
 }>;
 
 export type ActionViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AlertStyle | undefined;
 }>;
 
@@ -73,7 +73,7 @@ const cn = (...values: readonly (string | undefined)[]): string =>
 export const rootView = <ParentMessage>({
   children,
   variant = "Default",
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -83,7 +83,7 @@ export const rootView = <ParentMessage>({
       h.Attribute("role", "alert"),
       h.DataAttribute("variant", variant),
       h.Class(
-        cn(alertClasses, alertVariantClasses(variant), classes)
+        cn(alertClasses, alertVariantClasses(variant), className)
       ),
       h.Style(style ?? {}),
     ],
@@ -93,7 +93,7 @@ export const rootView = <ParentMessage>({
 
 export const iconView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: IconViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -101,7 +101,7 @@ export const iconView = <ParentMessage>({
   return h.span(
     [
       h.Attribute("aria-hidden", "true"),
-      h.Class(cn(alertIconClasses, classes)),
+      h.Class(cn(alertIconClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -110,14 +110,14 @@ export const iconView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
-      h.Class(cn(alertContentClasses, classes)),
+      h.Class(cn(alertContentClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -126,13 +126,13 @@ export const contentView = <ParentMessage>({
 
 export const titleView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: TitleViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.h3(
-    [h.Class(cn(alertTitleClasses, classes)), h.Style(style ?? {})],
+    [h.Class(cn(alertTitleClasses, className)), h.Style(style ?? {})],
     children
   );
 };
@@ -140,7 +140,7 @@ export const titleView = <ParentMessage>({
 export const descriptionView = <ParentMessage>({
   children,
   variant = "Default",
-  classes,
+  className,
   style,
 }: DescriptionViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -148,7 +148,7 @@ export const descriptionView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("variant", variant),
-      h.Class(cn(alertDescriptionClasses, classes)),
+      h.Class(cn(alertDescriptionClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -157,14 +157,14 @@ export const descriptionView = <ParentMessage>({
 
 export const actionView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ActionViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
-      h.Class(cn(alertActionClasses, classes)),
+      h.Class(cn(alertActionClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -177,18 +177,18 @@ export const view = <ParentMessage>({
   icon,
   action,
   variant = "Default",
-  classes,
+  className,
 }: Readonly<{
   title: string;
   description: string;
   icon?: string | undefined;
   action?: Html | undefined;
   variant?: AlertVariant | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
 }>): Html =>
   rootView<ParentMessage>({
     variant,
-    classes,
+    className,
     children: [
       iconView<ParentMessage>({ children: [icon ?? "i"] }),
       contentView<ParentMessage>({

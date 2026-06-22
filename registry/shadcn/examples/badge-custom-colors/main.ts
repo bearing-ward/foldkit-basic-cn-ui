@@ -40,23 +40,23 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [
       Badge.view<Message>({
         label: "Blue",
-        classes: "bg-blue-50 text-blue-700 border border-blue-200",
+        className: "bg-blue-50 text-blue-700 border border-blue-200",
       }),
       Badge.view<Message>({
         label: "Green",
-        classes: "bg-green-50 text-green-700 border border-green-200",
+        className: "bg-green-50 text-green-700 border border-green-200",
       }),
       Badge.view<Message>({
         label: "Sky",
-        classes: "bg-sky-50 text-sky-700 border border-sky-200",
+        className: "bg-sky-50 text-sky-700 border border-sky-200",
       }),
       Badge.view<Message>({
         label: "Purple",
-        classes: "bg-purple-50 text-purple-700 border border-purple-200",
+        className: "bg-purple-50 text-purple-700 border border-purple-200",
       }),
       Badge.view<Message>({
         label: "Red",
-        classes: "bg-red-50 text-red-700 border border-red-200",
+        className: "bg-red-50 text-red-700 border border-red-200",
       }),
     ]
   );

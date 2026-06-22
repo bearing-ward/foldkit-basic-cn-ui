@@ -147,7 +147,7 @@ const viewInputs = (inputValue: string): Combobox.ViewInputs<Fruit> => {
   return {
     items: filterFruits(inputValue),
     itemToConfig: (fruit, context) => ({
-      classes: Combobox.baseUiComboboxItemClasses,
+      className: Combobox.baseUiComboboxItemClasses,
       content: h.div(
         [h.Class("flex items-center gap-2")],
         [

@@ -67,7 +67,7 @@ export {
 export type PartViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: Readonly<Record<string, string>> | undefined;
 }>;
 
@@ -78,7 +78,7 @@ const cn = (...values: readonly (string | undefined)[]): string =>
 
 const divPartView = <ParentMessage>(
   baseClasses: string,
-  { id, children, classes, style }: PartViewConfig
+  { id, children, className, style }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
 
@@ -86,7 +86,7 @@ const divPartView = <ParentMessage>(
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(baseClasses, classes)),
+      h.Class(cn(baseClasses, className)),
     ],
     children
   );

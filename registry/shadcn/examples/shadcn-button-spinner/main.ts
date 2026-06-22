@@ -45,7 +45,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [...attributes.button, h.Class(Button.shadcnButtonClasses)],
             [
               Spinner.view<Message>({
-                classes: "h-4 w-4",
+                className: "h-4 w-4",
                 attributes: [h.DataAttribute("icon", "inline-start")],
               }),
               "Generating",
@@ -58,7 +58,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             [...attributes.button, h.Class(Button.shadcnButtonClasses)],
             [
               Spinner.view<Message>({
-                classes: "h-4 w-4",
+                className: "h-4 w-4",
                 attributes: [h.DataAttribute("icon", "inline-start")],
               }),
               "Downloading",

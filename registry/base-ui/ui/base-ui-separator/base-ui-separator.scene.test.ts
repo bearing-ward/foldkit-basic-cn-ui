@@ -23,7 +23,7 @@ const verticalView = (): Html => {
           h.span([], ["Preview"]),
           Separator.view({
             orientation: "vertical",
-            classes: "separator-override",
+            className: "separator-override",
             style: { blockSize: "2rem" },
           }),
           h.span([], ["Code"]),

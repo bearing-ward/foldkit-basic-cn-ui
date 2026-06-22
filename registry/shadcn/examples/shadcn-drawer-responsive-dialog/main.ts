@@ -103,7 +103,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         children: [
           Drawer.triggerView<Message>({
             onClick: ClickedEditProfile(),
-            classes:
+            className:
               "border border-gray-200 bg-white text-gray-950 hover:bg-gray-50",
             children: [h.span([], ["Edit Profile"])],
           }),

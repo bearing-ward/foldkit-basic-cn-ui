@@ -363,7 +363,7 @@ const sliderView = (
   name: string,
   toParentMessage: (message: Slider.Message) => Message,
   options: Readonly<{
-    classes?: string | undefined;
+    className?: string | undefined;
     thumbClasses?: string | undefined;
     isDisabled?: boolean | undefined;
     dir?: string | undefined;
@@ -387,7 +387,7 @@ const sliderView = (
             ...attributes.root,
             ...(options.dir === undefined ? [] : [h.Dir(options.dir)]),
             h.Class(
-              [Slider.shadcnSliderRootClasses, options.classes]
+              [Slider.shadcnSliderRootClasses, options.className]
                 .filter((value): value is string => value !== undefined)
                 .join(" ")
             ),

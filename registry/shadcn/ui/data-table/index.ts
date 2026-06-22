@@ -71,13 +71,13 @@ export type PaginationState = Readonly<{
 /** Config for the root overflow container. */
 export type ContainerViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 
 /** Config for toolbar layout around filters and column controls. */
 export type ToolbarViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 
 /** Config for rendering the payment table. */
@@ -113,8 +113,8 @@ const defaultVisibility: VisibilityState = {
   amount: true,
 };
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -266,14 +266,14 @@ export const selectedCount = (selection: RowSelectionState): number =>
 /** Renders the rounded data-table container. */
 export const containerView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ContainerViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "data-table"),
-      h.Class(cn(dataTableContainerClasses, classes)),
+      h.Class(cn(dataTableContainerClasses, className)),
     ],
     children
   );
@@ -282,12 +282,12 @@ export const containerView = <ParentMessage>({
 /** Renders the shadcn-style toolbar row. */
 export const toolbarView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ToolbarViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(cn(dataTableToolbarClasses, classes))],
+    [h.Class(cn(dataTableToolbarClasses, className))],
     children
   );
 };

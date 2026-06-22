@@ -33,7 +33,7 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((): Html =>
   InputGroup.view<Message>({
-    classes: "w-full max-w-sm flex-wrap",
+    className: "w-full max-w-sm flex-wrap",
     children: [
       InputGroup.addonView<Message>({
         align: "BlockStart",

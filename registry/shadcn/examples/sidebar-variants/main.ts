@@ -44,7 +44,7 @@ const variantCard = (
     [
       h.p([h.Class("text-sm font-medium text-gray-700")], [label]),
       Sidebar.providerView<Message>({
-        classes: "min-h-48",
+        className: "min-h-48",
         children: [
           Sidebar.sidebarView<Message>({
             state,
@@ -87,7 +87,7 @@ const variantCard = (
             ],
           }),
           Sidebar.insetView<Message>({
-            classes: "p-4",
+            className: "p-4",
             children: [
               h.p([h.Class("text-sm text-gray-600")], [
                 `${side} ${variant} ${collapsible}`,

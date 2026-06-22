@@ -16,7 +16,7 @@ export type ToggleGroupStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   ariaLabel?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToggleGroupStyle | undefined;
 }>;
 
@@ -30,12 +30,12 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   tabIndex?: number | undefined;
   onKeyDown?: ((key: string) => Option.Option<ParentMessage>) | undefined;
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ToggleGroupStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -45,7 +45,7 @@ const isPressed = (pressedValues: readonly string[], value: string): boolean =>
 export const rootView = <ParentMessage>({
   children,
   ariaLabel,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -55,7 +55,7 @@ export const rootView = <ParentMessage>({
       h.Attribute("role", "group"),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(toggleGroupRootClasses, classes)),
+      h.Class(cn(toggleGroupRootClasses, className)),
     ],
     children
   );
@@ -71,7 +71,7 @@ export const itemView = <ParentMessage>({
   tabIndex,
   onKeyDown,
   disabled = false,
-  classes,
+  className,
   style,
 }: ItemViewConfig<ParentMessage>): Html =>
   Toggle.view<ParentMessage>({
@@ -83,7 +83,8 @@ export const itemView = <ParentMessage>({
     tabIndex,
     onKeyDown,
     disabled,
-    classes: cn(toggleGroupItemClasses, classes),
+    // NOTE: The public wrapper API is className; Foldkit Toggle still accepts classes.
+    classes: cn(toggleGroupItemClasses, className),
     style,
     children,
   });

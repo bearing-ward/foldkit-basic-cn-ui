@@ -59,9 +59,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       h.div(
         [h.Class("flex items-center gap-4")],
         [
-          Spinner.view<Message>({ classes: "size-4" }),
-          Spinner.view<Message>({ classes: "size-6" }),
-          Spinner.view<Message>({ classes: "size-8" }),
+          Spinner.view<Message>({ className: "size-4" }),
+          Spinner.view<Message>({ className: "size-6" }),
+          Spinner.view<Message>({ className: "size-8" }),
         ]
       ),
       h.div(
@@ -74,7 +74,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
               ),
               h.Disabled(true),
             ],
-            [Spinner.view<Message>({ classes: "size-4" }), "Loading..."]
+            [Spinner.view<Message>({ className: "size-4" }), "Loading..."]
           ),
           h.span(
             [
@@ -82,7 +82,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
                 "inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-900"
               ),
             ],
-            [Spinner.view<Message>({ classes: "size-3" }), "Syncing"]
+            [Spinner.view<Message>({ className: "size-3" }), "Syncing"]
           ),
         ]
       ),
@@ -98,7 +98,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
             h.Placeholder("Validating..."),
             h.AriaLabel("Message"),
           ]),
-          Spinner.view<Message>({ classes: "size-4 text-gray-500" }),
+          Spinner.view<Message>({ className: "size-4 text-gray-500" }),
           h.button(
             [
               h.Class(

@@ -33,7 +33,7 @@ export type NavigationMenuStyle = Readonly<Record<string, string>>;
 
 export type PartViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
@@ -41,39 +41,39 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   open: boolean;
   onToggle: ParentMessage;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
 export type LinkViewConfig = Readonly<{
   href: string;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: NavigationMenuStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 const divPartView = <ParentMessage>(
   baseClasses: string,
-  { children, classes, style }: PartViewConfig
+  { children, className, style }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(baseClasses, classes)),
+      h.Class(cn(baseClasses, className)),
     ],
     children
   );
@@ -88,7 +88,7 @@ export const listView = <ParentMessage>(config: PartViewConfig): Html => {
   return h.nav(
     [
       h.Attribute("aria-label", "Main navigation"),
-      h.Class(cn(navigationMenuListClasses, config.classes)),
+      h.Class(cn(navigationMenuListClasses, config.className)),
       ...(config.style === undefined ? [] : [h.Style(config.style)]),
     ],
     config.children
@@ -102,7 +102,7 @@ export const triggerView = <ParentMessage>({
   open,
   onToggle,
   children,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -115,7 +115,7 @@ export const triggerView = <ParentMessage>({
       ...(open ? [h.Attribute("data-open", "")] : []),
       h.OnClick(onToggle),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(navigationMenuTriggerClasses, classes)),
+      h.Class(cn(navigationMenuTriggerClasses, className)),
     ],
     children
   );
@@ -124,7 +124,7 @@ export const triggerView = <ParentMessage>({
 export const linkView = <ParentMessage>({
   href,
   children,
-  classes,
+  className,
   style,
 }: LinkViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -133,7 +133,7 @@ export const linkView = <ParentMessage>({
     [
       h.Href(href),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(navigationMenuLinkClasses, classes)),
+      h.Class(cn(navigationMenuLinkClasses, className)),
     ],
     children
   );
@@ -142,7 +142,7 @@ export const linkView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -154,7 +154,7 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(navigationMenuPortalClasses, classes)),
+      h.Class(cn(navigationMenuPortalClasses, className)),
     ],
     children
   );
@@ -170,7 +170,7 @@ export const popupView = <ParentMessage>(config: PartViewConfig): Html => {
     [
       h.Attribute("role", "menu"),
       ...(config.style === undefined ? [] : [h.Style(config.style)]),
-      h.Class(cn(navigationMenuPopupClasses, config.classes)),
+      h.Class(cn(navigationMenuPopupClasses, config.className)),
     ],
     config.children
   );
@@ -183,7 +183,7 @@ export const contentView = <ParentMessage>(config: PartViewConfig): Html =>
   divPartView<ParentMessage>(navigationMenuContentClasses, config);
 
 export const arrowView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: Omit<PartViewConfig, "children">): Html => {
   const h = html<ParentMessage>();
@@ -192,7 +192,7 @@ export const arrowView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(navigationMenuArrowClasses, classes)),
+      h.Class(cn(navigationMenuArrowClasses, className)),
     ],
     []
   );

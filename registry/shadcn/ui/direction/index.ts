@@ -18,7 +18,7 @@ export type Direction = "ltr" | "rtl";
 export type DirectionViewConfig = Readonly<{
   direction: Direction;
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
 }>;
 
 /** Config for a direction toggle button. */
@@ -27,11 +27,11 @@ export type DirectionButtonViewConfig<ParentMessage> = Readonly<{
   currentDirection: Direction;
   label: string;
   onClick: ParentMessage;
-  classes?: string;
+  className?: string;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -39,7 +39,7 @@ const cn = (base: string, classes?: string): string =>
 export const view = <ParentMessage>({
   direction,
   children,
-  classes,
+  className,
 }: DirectionViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -48,7 +48,7 @@ export const view = <ParentMessage>({
       h.Dir(direction),
       h.DataAttribute("slot", "direction"),
       h.DataAttribute("direction", direction),
-      h.Class(cn(directionRootClasses, classes)),
+      h.Class(cn(directionRootClasses, className)),
     ],
     children
   );
@@ -60,7 +60,7 @@ export const buttonView = <ParentMessage>({
   currentDirection,
   label,
   onClick,
-  classes,
+  className,
 }: DirectionButtonViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -73,7 +73,7 @@ export const buttonView = <ParentMessage>({
         "active",
         currentDirection === direction ? "true" : "false"
       ),
-      h.Class(cn(directionButtonClasses, classes)),
+      h.Class(cn(directionButtonClasses, className)),
     ],
     [direction.toUpperCase()]
   );

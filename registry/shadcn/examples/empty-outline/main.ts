@@ -43,7 +43,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     title: "Cloud Storage Empty",
     description: "Upload files to your cloud storage to access them anywhere.",
     icon: "☁",
-    classes: "rounded-lg border border-dashed border-gray-300 p-8",
+    className: "rounded-lg border border-dashed border-gray-300 p-8",
     action: h.button(
       [h.Type("button"), h.Class(buttonClasses)],
       ["Upload Files"]

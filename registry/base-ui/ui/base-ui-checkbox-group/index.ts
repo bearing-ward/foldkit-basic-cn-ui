@@ -30,7 +30,7 @@ export type GroupViewConfig = Readonly<{
   name?: string | undefined;
   disabled?: boolean | undefined;
   required?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: CheckboxGroupStyle | undefined;
 }>;
 
@@ -41,7 +41,7 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   label: string;
   disabled?: boolean | undefined;
   required?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: CheckboxGroupStyle | undefined;
 }>;
 
@@ -51,12 +51,12 @@ export type ParentItemViewConfig<ParentMessage> = Readonly<{
   onValueChange: ParentMessage;
   label: string;
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: CheckboxGroupStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -114,7 +114,7 @@ const itemMarkup = <ParentMessage>({
   onValueChange,
   disabled,
   required,
-  classes,
+  className,
   style,
 }: Readonly<{
   label: string;
@@ -123,7 +123,7 @@ const itemMarkup = <ParentMessage>({
   onValueChange: ParentMessage;
   disabled: boolean;
   required: boolean;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: CheckboxGroupStyle | undefined;
 }>): Html => {
   const h = html<ParentMessage>();
@@ -134,7 +134,7 @@ const itemMarkup = <ParentMessage>({
       ...state,
       ...(disabled ? [] : [h.OnClick(onValueChange)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(checkboxGroupItemClasses, classes)),
+      h.Class(cn(checkboxGroupItemClasses, className)),
     ],
     [
       h.span(
@@ -169,7 +169,7 @@ export const groupView = <ParentMessage>({
   name,
   disabled = false,
   required = false,
-  classes,
+  className,
   style,
 }: GroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -182,7 +182,7 @@ export const groupView = <ParentMessage>({
       ...(disabled ? [h.DataAttribute("disabled", "")] : []),
       ...(required ? [h.Attribute("aria-required", "true")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(checkboxGroupRootClasses, classes)),
+      h.Class(cn(checkboxGroupRootClasses, className)),
     ],
     [
       h.div([h.Id(labelId), h.Class(checkboxGroupCaptionClasses)], [label]),
@@ -198,7 +198,7 @@ export const itemView = <ParentMessage>({
   label,
   disabled = false,
   required = false,
-  classes,
+  className,
   style,
 }: ItemViewConfig<ParentMessage>): Html =>
   itemMarkup({
@@ -208,7 +208,7 @@ export const itemView = <ParentMessage>({
     onValueChange,
     disabled,
     required,
-    classes,
+    className,
     style,
   });
 
@@ -218,7 +218,7 @@ export const parentItemView = <ParentMessage>({
   onValueChange,
   label,
   disabled = false,
-  classes,
+  className,
   style,
 }: ParentItemViewConfig<ParentMessage>): Html => {
   const state = parentState(selectedValues, allValues);
@@ -230,7 +230,7 @@ export const parentItemView = <ParentMessage>({
     onValueChange,
     disabled,
     required: false,
-    classes,
+    className,
     style,
   });
 };

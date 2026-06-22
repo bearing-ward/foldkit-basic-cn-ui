@@ -31,7 +31,7 @@ export type NumberFieldState = Readonly<{
 export type RootViewConfig = NumberFieldState &
   Readonly<{
     children: readonly Html[];
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: NumberFieldStyle | undefined;
   }>;
 
@@ -43,21 +43,21 @@ export type ScrubAreaViewConfig<ParentMessage> = NumberFieldState &
     onPointerDown?: (screenX: number) => ParentMessage;
     onPointerMove?: (screenX: number) => ParentMessage;
     onPointerUp?: ParentMessage | undefined;
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: NumberFieldStyle | undefined;
   }>;
 
 export type ScrubAreaCursorViewConfig = NumberFieldState &
   Readonly<{
     children: readonly Html[];
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: NumberFieldStyle | undefined;
   }>;
 
 export type GroupViewConfig = NumberFieldState &
   Readonly<{
     children: readonly Html[];
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: NumberFieldStyle | undefined;
   }>;
 
@@ -66,7 +66,7 @@ export type ButtonViewConfig<ParentMessage> = NumberFieldState &
     ariaLabel: string;
     onClick: ParentMessage;
     children: readonly Html[];
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: NumberFieldStyle | undefined;
   }>;
 
@@ -80,12 +80,12 @@ export type InputViewConfig<ParentMessage> = NumberFieldState &
     min?: number | undefined;
     max?: number | undefined;
     step?: number | undefined;
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: NumberFieldStyle | undefined;
   }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -101,7 +101,7 @@ const stateAttributes = <ParentMessage>(
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   ...state
 }: RootViewConfig): Html => {
@@ -111,7 +111,7 @@ export const rootView = <ParentMessage>({
     [
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(numberFieldRootClasses, classes)),
+      h.Class(cn(numberFieldRootClasses, className)),
     ],
     children
   );
@@ -124,7 +124,7 @@ export const scrubAreaView = <ParentMessage>({
   onPointerDown,
   onPointerMove,
   onPointerUp,
-  classes,
+  className,
   style,
   ...state
 }: ScrubAreaViewConfig<ParentMessage>): Html => {
@@ -154,7 +154,7 @@ export const scrubAreaView = <ParentMessage>({
         : [h.OnPointerUp(() => Option.some(onPointerUp))]),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(numberFieldScrubAreaClasses, classes)),
+      h.Class(cn(numberFieldScrubAreaClasses, className)),
     ],
     children
   );
@@ -162,7 +162,7 @@ export const scrubAreaView = <ParentMessage>({
 
 export const scrubAreaCursorView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   ...state
 }: ScrubAreaCursorViewConfig): Html => {
@@ -172,7 +172,7 @@ export const scrubAreaCursorView = <ParentMessage>({
     [
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(numberFieldScrubAreaCursorClasses, classes)),
+      h.Class(cn(numberFieldScrubAreaCursorClasses, className)),
     ],
     children
   );
@@ -180,7 +180,7 @@ export const scrubAreaCursorView = <ParentMessage>({
 
 export const groupView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   ...state
 }: GroupViewConfig): Html => {
@@ -190,7 +190,7 @@ export const groupView = <ParentMessage>({
     [
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(numberFieldGroupClasses, classes)),
+      h.Class(cn(numberFieldGroupClasses, className)),
     ],
     children
   );
@@ -200,7 +200,7 @@ const buttonView = <ParentMessage>({
   ariaLabel,
   onClick,
   children,
-  classes,
+  className,
   style,
   ...state
 }: ButtonViewConfig<ParentMessage>): Html => {
@@ -214,7 +214,7 @@ const buttonView = <ParentMessage>({
       ...(state.disabled === true ? [h.Disabled(true)] : []),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(numberFieldButtonClasses, classes)),
+      h.Class(cn(numberFieldButtonClasses, className)),
     ],
     children
   );
@@ -237,7 +237,7 @@ export const inputView = <ParentMessage>({
   min,
   max,
   step,
-  classes,
+  className,
   style,
   ...state
 }: InputViewConfig<ParentMessage>): Html => {
@@ -261,6 +261,6 @@ export const inputView = <ParentMessage>({
     ...(state.disabled === true ? [h.Disabled(true)] : []),
     ...stateAttributes(h, state),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(cn(numberFieldInputClasses, classes)),
+    h.Class(cn(numberFieldInputClasses, className)),
   ]);
 };

@@ -41,10 +41,10 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
 
   return ButtonGroup.view<Message>({
     ariaLabel: "Search actions",
-    classes: "w-full max-w-sm",
+    className: "w-full max-w-sm",
     children: [
       ButtonGroup.itemView<Message>({
-        classes: "min-w-0 flex-1 shadow-xs",
+        className: "min-w-0 flex-1 shadow-xs",
         children: [
           Input.view<Message>({
             id: "button-group-search",

@@ -12,7 +12,7 @@
       "path": "registry/shadcn/ui/skeleton/index.ts",
       "target": "src/ui/skeleton/index.ts",
       "type": "registry:ui",
-      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { skeletonClassesByShape } from \"./view\";\nimport type { SkeletonShape } from \"./view\";\n\nexport type { SkeletonShape };\n\nexport { skeletonBaseClasses, skeletonClassesByShape } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  shape?: SkeletonShape;\n  classes?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  shape = \"Block\",\n  classes,\n}: ViewConfig = {}): Html => {\n  const h = html<ParentMessage>();\n  const cn = [skeletonClassesByShape(shape), classes]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(cn), h.AriaHidden(true)], []);\n};\n"
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { skeletonClassesByShape } from \"./view\";\nimport type { SkeletonShape } from \"./view\";\n\nexport type { SkeletonShape };\n\nexport { skeletonBaseClasses, skeletonClassesByShape } from \"./view\";\n\nexport type ViewConfig = Readonly<{\n  shape?: SkeletonShape;\n  className?: string;\n}>;\n\nexport const view = <ParentMessage>({\n  shape = \"Block\",\n  className,\n}: ViewConfig = {}): Html => {\n  const h = html<ParentMessage>();\n  const cn = [skeletonClassesByShape(shape), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.span([h.Class(cn), h.AriaHidden(true)], []);\n};\n"
     },
     {
       "path": "registry/shadcn/ui/skeleton/view.ts",

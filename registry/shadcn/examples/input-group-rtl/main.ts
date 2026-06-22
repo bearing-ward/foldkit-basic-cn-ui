@@ -38,7 +38,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Dir("rtl"), h.Class("w-full")],
     [
       InputGroup.view<Message>({
-        classes: "w-full max-w-sm",
+        className: "w-full max-w-sm",
         children: [
           InputGroup.addonView<Message>({
             children: [h.span([h.AriaHidden(true)], ["⌕"])],

@@ -15,16 +15,16 @@ export {
 export type ViewConfig = Readonly<{
   label: string;
   size?: KbdSize;
-  classes?: string;
+  className?: string;
 }>;
 
 export const view = <ParentMessage>({
   label,
   size = "Default",
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
-  const cn = [kbdClassesBySize(size), classes]
+  const cn = [kbdClassesBySize(size), className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -33,10 +33,10 @@ export const view = <ParentMessage>({
 
 export const groupView = <ParentMessage>(
   children: readonly Html[],
-  classes?: string
+  className?: string
 ): Html => {
   const h = html<ParentMessage>();
-  const cn = [kbdGroupClasses, classes]
+  const cn = [kbdGroupClasses, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 

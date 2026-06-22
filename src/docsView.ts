@@ -7970,12 +7970,12 @@ ClickedToggleStatus: () => [
           `Badge.view<Message>({
   label: model.status,
   variant: model.status === "Published" ? "Default" : "Secondary",
-  classes: Badge.badgeClassesByVariant.Default,
+  className: Badge.badgeClassesByVariant.Default,
 });`
         ),
         apiItems: [
           "view(config): renders a span badge with a label and optional variant.",
-          "ViewConfig: label, variant, and classes.",
+          "ViewConfig: label, variant, and className.",
           'BadgeVariant: "Default", "Secondary", "Destructive", or "Outline".',
           "Class helpers: default, secondary, destructive, outline, and badgeClassesByVariant.",
         ],
@@ -11311,13 +11311,13 @@ const spinnerDocsView = (model: Model): Html => {
       ]),
       docsAnatomyBlock(
         `Spinner.view<Message>({
-  classes: "mr-1",
+  className: "mr-1",
 });
 
 Badge.contentView<Message>({
   variant: "Destructive",
   children: [
-    Spinner.view<Message>({ classes: "mr-1" }),
+    Spinner.view<Message>({ className: "mr-1" }),
     h.span([], ["Deleting"]),
   ],
 });`
@@ -12027,7 +12027,7 @@ const meterApiReferenceTable = (): Html =>
     },
     {
       part: "Classes",
-      prop: "classes, labelClasses, valueClasses, trackClasses, indicatorClasses",
+      prop: "className, labelClasses, valueClasses, trackClasses, indicatorClasses",
       type: "string",
       defaultValue: "-",
       description: "Part-level class hooks append to default Meter classes.",
@@ -12138,7 +12138,7 @@ const meterDocsView = (model: Model): Html => {
 Meter.view<Message>({
   value: 24,
   label: "Storage Used",
-  classes: "gap-3",
+  className: "gap-3",
   style: { inlineSize: "18rem" },
   labelClasses: "text-gray-950",
   valueClasses: "tabular-nums",
@@ -13535,7 +13535,7 @@ const progressDocsView = (model: Model): Html => {
 Progress.view<Message>({
   value: 20,
   label: "Export data",
-  classes: "gap-3",
+  className: "gap-3",
   style: { inlineSize: "18rem" },
   labelClasses: "text-gray-950",
   labelStyle: { letterSpacing: "0" },
@@ -13582,7 +13582,7 @@ Progress.rootView<Message>({
           "formatValue(value): Foldkit-native equivalent for Base UI format/locale formatting when the default percent text is not enough.",
           "getAriaValueText(context): Foldkit-native equivalent for Base UI getAriaValueText.",
           "renderValue(context): Foldkit-native equivalent for Base UI Value render-function children.",
-          "View class overrides: classes, labelClasses, valueClasses, trackClasses, and indicatorClasses.",
+          "View class overrides: className, labelClasses, valueClasses, trackClasses, and indicatorClasses.",
           'ProgressStatus: "Indeterminate", "Progressing", or "Complete".',
         ],
         accessibilityItems: [

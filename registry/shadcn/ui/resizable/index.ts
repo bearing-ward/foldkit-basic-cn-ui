@@ -21,14 +21,14 @@ export type ResizableStyle = Readonly<Record<string, string>>;
 export type PanelGroupViewConfig = Readonly<{
   children: readonly Html[];
   direction?: ResizableDirection;
-  classes?: string;
+  className?: string;
   style?: ResizableStyle;
 }>;
 
 export type PanelViewConfig = Readonly<{
   children: readonly (Html | string)[];
   size?: number;
-  classes?: string;
+  className?: string;
   style?: ResizableStyle;
 }>;
 
@@ -36,7 +36,7 @@ export type HandleViewConfig<ParentMessage> = Readonly<{
   direction?: ResizableDirection;
   label?: string;
   children?: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
   style?: ResizableStyle;
   attributes?: readonly Attribute<ParentMessage>[];
 }>;
@@ -54,7 +54,7 @@ const cn = (...values: readonly (string | undefined)[]): string =>
 export const panelGroupView = <ParentMessage>({
   children,
   direction = "horizontal",
-  classes,
+  className,
   style,
 }: PanelGroupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -67,7 +67,7 @@ export const panelGroupView = <ParentMessage>({
         cn(
           resizablePanelGroupClasses,
           resizablePanelGroupDirectionClasses(direction),
-          classes
+          className
         )
       ),
       ...(style === undefined ? [] : [h.Style(style)]),
@@ -79,7 +79,7 @@ export const panelGroupView = <ParentMessage>({
 export const panelView = <ParentMessage>({
   children,
   size,
-  classes,
+  className,
   style,
 }: PanelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -94,7 +94,7 @@ export const panelView = <ParentMessage>({
     [
       h.DataAttribute("slot", "resizable-panel"),
       ...(size === undefined ? [] : [h.DataAttribute("size", String(size))]),
-      h.Class(cn(resizablePanelClasses, classes)),
+      h.Class(cn(resizablePanelClasses, className)),
       h.Style({ ...sizeStyle, ...style }),
     ],
     children
@@ -105,7 +105,7 @@ export const handleView = <ParentMessage>({
   direction = "horizontal",
   label = "Resize panels",
   children = [],
-  classes,
+  className,
   style,
   attributes = [],
 }: HandleViewConfig<ParentMessage> = {}): Html => {
@@ -118,7 +118,7 @@ export const handleView = <ParentMessage>({
       h.AriaOrientation(direction),
       h.DataAttribute("slot", "resizable-handle"),
       h.DataAttribute("direction", direction),
-      h.Class(cn(resizableHandleClasses, classes)),
+      h.Class(cn(resizableHandleClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
       ...attributes,
     ],
@@ -129,15 +129,15 @@ export const handleView = <ParentMessage>({
 export const view = <ParentMessage>({
   panels,
   direction = "horizontal",
-  classes,
+  className,
 }: Readonly<{
   panels: readonly PanelItem[];
   direction?: ResizableDirection;
-  classes?: string;
+  className?: string;
 }>): Html =>
   panelGroupView<ParentMessage>({
     direction,
-    ...(classes === undefined ? {} : { classes }),
+    ...(className === undefined ? {} : { className }),
     children: panels.flatMap((panel, index) => [
       ...(index === 0 ? [] : [handleView<ParentMessage>({ direction })]),
       panelView<ParentMessage>({

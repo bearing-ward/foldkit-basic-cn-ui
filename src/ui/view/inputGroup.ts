@@ -16,7 +16,7 @@ export const view = Submodel.defineView<UiModel, UiMessage>((): Html => {
       h.h2([h.Class("mb-6 text-2xl font-bold text-gray-900")], ["Input Group"]),
 
       InputGroup.view<UiMessage>({
-        classes: "max-w-xs",
+        className: "max-w-xs",
         children: [
           InputGroup.addonView<UiMessage>({
             align: "InlineStart",

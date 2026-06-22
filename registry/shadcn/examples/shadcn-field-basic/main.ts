@@ -138,12 +138,12 @@ const inputField = (
     placeholder?: string | undefined;
     description?: string | undefined;
     type?: string | undefined;
-    classes?: string | undefined;
+    className?: string | undefined;
   }>
 ): Html =>
   Field.rootView<Message>({
     name: config.id,
-    classes: config.classes,
+    className: config.className,
     filled: config.value !== "",
     children: [
       Field.labelView<Message>({
@@ -248,7 +248,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   }),
                   Field.rootView<Message>({
                     name: "same-as-shipping",
-                    classes: "flex max-w-none flex-row items-start gap-3",
+                    className: "flex max-w-none flex-row items-start gap-3",
                     filled: model.sameAsShipping,
                     children: [
                       h.input([
@@ -272,7 +272,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                   }),
                   Field.rootView<Message>({
                     name: "comments",
-                    classes: "max-w-none",
+                    className: "max-w-none",
                     filled: model.comments !== "",
                     children: [
                       Field.labelView<Message>({

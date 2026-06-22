@@ -31,13 +31,13 @@ export type OptionItemConfig = OptionConfig | OptionGroupConfig;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
 }>;
 
 export type LabelViewConfig = Readonly<{
   forId: string;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
 }>;
 
 export type TriggerViewConfig<ParentMessage> = Readonly<{
@@ -48,17 +48,17 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   ariaLabel?: string | undefined;
   describedById?: string | undefined;
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
 }>;
 
 export type DescriptionViewConfig = Readonly<{
   id: string;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -68,14 +68,14 @@ const isOptionGroupConfig = (
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "native-select"),
-      h.Class(cn(nativeSelectRootClasses, classes)),
+      h.Class(cn(nativeSelectRootClasses, className)),
     ],
     children
   );
@@ -84,7 +84,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   forId,
   children,
-  classes,
+  className,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -92,7 +92,7 @@ export const labelView = <ParentMessage>({
     [
       h.For(forId),
       h.DataAttribute("slot", "native-select-label"),
-      h.Class(cn(nativeSelectLabelClasses, classes)),
+      h.Class(cn(nativeSelectLabelClasses, className)),
     ],
     children
   );
@@ -106,7 +106,7 @@ export const triggerView = <ParentMessage>({
   ariaLabel,
   describedById,
   disabled = false,
-  classes,
+  className,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -121,7 +121,7 @@ export const triggerView = <ParentMessage>({
         ? []
         : [h.AriaDescribedBy(describedById)]),
       h.DataAttribute("slot", "native-select-trigger"),
-      h.Class(cn(nativeSelectTriggerClasses, classes)),
+      h.Class(cn(nativeSelectTriggerClasses, className)),
     ],
     options.map((option) =>
       isOptionGroupConfig(option)
@@ -154,7 +154,7 @@ export const triggerView = <ParentMessage>({
 export const descriptionView = <ParentMessage>({
   id,
   children,
-  classes,
+  className,
 }: DescriptionViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -162,7 +162,7 @@ export const descriptionView = <ParentMessage>({
     [
       h.Id(id),
       h.DataAttribute("slot", "native-select-description"),
-      h.Class(cn(nativeSelectDescriptionClasses, classes)),
+      h.Class(cn(nativeSelectDescriptionClasses, className)),
     ],
     children
   );

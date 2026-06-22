@@ -81,7 +81,7 @@ export const view = Submodel.defineView<Model, Message>(
           ariaLabel: "Two axis content",
           children: [
             ScrollArea.contentView<Message>({
-              classes: "space-y-0",
+              className: "space-y-0",
               children: wideRows(),
             }),
           ],
@@ -90,10 +90,10 @@ export const view = Submodel.defineView<Model, Message>(
           children: [ScrollArea.thumbView<Message>({})],
         }),
         ScrollArea.scrollbarView<Message>({
-          classes: "inset-x-1 bottom-1 top-auto h-1.5 w-auto",
+          className: "inset-x-1 bottom-1 top-auto h-1.5 w-auto",
           children: [
             ScrollArea.thumbView<Message>({
-              classes: "h-full min-h-0 w-16",
+              className: "h-full min-h-0 w-16",
             }),
           ],
         }),

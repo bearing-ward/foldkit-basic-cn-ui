@@ -170,7 +170,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
           }),
           Drawer.viewportView<Message>({
             state: { open: model.open },
-            classes: "items-end justify-stretch",
+            className: "items-end justify-stretch",
             testId: "base-ui-drawer-bottom-viewport",
             children: [
               Drawer.focusGuardView<Message>({
@@ -181,7 +181,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 titleId,
                 descriptionId,
                 state: { open: model.open },
-                classes: "h-auto max-h-[50vh] max-w-none rounded-t-2xl",
+                className: "h-auto max-h-[50vh] max-w-none rounded-t-2xl",
                 testId: "base-ui-drawer-bottom-popup",
                 onKeyDown: () => PressedDrawerTabKey(),
                 onPointerDown: (_screenX, screenY) =>

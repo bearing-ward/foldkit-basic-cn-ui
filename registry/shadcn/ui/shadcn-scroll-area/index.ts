@@ -41,8 +41,8 @@ export {
   shadcnScrollAreaViewportClasses,
 } from "./view";
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -61,7 +61,7 @@ const stateAttributes = <ParentMessage>(
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   hasOverflowX,
   hasOverflowY,
@@ -74,7 +74,7 @@ export const rootView = <ParentMessage>({
       ...stateAttributes(h, { hasOverflowX, hasOverflowY, isScrolling }),
       h.DataAttribute("slot", "scroll-area"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnScrollAreaRootClasses, classes)),
+      h.Class(cn(shadcnScrollAreaRootClasses, className)),
     ],
     children
   );
@@ -82,7 +82,7 @@ export const rootView = <ParentMessage>({
 
 export const viewportView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   ariaLabel,
 }: ViewportViewConfig): Html => {
@@ -96,7 +96,7 @@ export const viewportView = <ParentMessage>({
         ? []
         : [h.Attribute("role", "region"), h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnScrollAreaViewportClasses, classes)),
+      h.Class(cn(shadcnScrollAreaViewportClasses, className)),
     ],
     children
   );
@@ -104,7 +104,7 @@ export const viewportView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -112,7 +112,7 @@ export const contentView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnScrollAreaContentClasses, classes)),
+      h.Class(cn(shadcnScrollAreaContentClasses, className)),
     ],
     children
   );
@@ -121,7 +121,7 @@ export const contentView = <ParentMessage>({
 export const scrollbarView = <ParentMessage>({
   children,
   orientation = "vertical",
-  classes,
+  className,
   style,
 }: ScrollbarViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -132,14 +132,14 @@ export const scrollbarView = <ParentMessage>({
       h.DataAttribute("slot", "scroll-area-scrollbar"),
       h.DataAttribute("orientation", orientation),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnScrollAreaScrollbarClasses, classes)),
+      h.Class(cn(shadcnScrollAreaScrollbarClasses, className)),
     ],
     children
   );
 };
 
 export const thumbView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: ThumbViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -148,14 +148,14 @@ export const thumbView = <ParentMessage>({
     [
       ...(style === undefined ? [] : [h.Style(style)]),
       h.DataAttribute("slot", "scroll-area-thumb"),
-      h.Class(cn(shadcnScrollAreaThumbClasses, classes)),
+      h.Class(cn(shadcnScrollAreaThumbClasses, className)),
     ],
     []
   );
 };
 
 export const cornerView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: CornerViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -164,7 +164,7 @@ export const cornerView = <ParentMessage>({
     [
       h.AriaHidden(true),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnScrollAreaCornerClasses, classes)),
+      h.Class(cn(shadcnScrollAreaCornerClasses, className)),
     ],
     []
   );
@@ -174,7 +174,7 @@ export const view = <ParentMessage>({
   children,
   ariaLabel,
   hasFade = false,
-  classes,
+  className,
   style,
   viewportClasses,
   viewportStyle,
@@ -183,20 +183,20 @@ export const view = <ParentMessage>({
   hasHorizontalScrollbar = false,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
-    classes,
+    className,
     style,
     hasOverflowY: true,
     hasOverflowX: hasHorizontalScrollbar,
     children: [
       viewportView<ParentMessage>({
         ariaLabel,
-        classes: hasFade
+        className: hasFade
           ? cn(shadcnScrollAreaFadeClasses, viewportClasses)
           : viewportClasses,
         style: viewportStyle,
         children: [
           contentView<ParentMessage>({
-            classes: contentClasses,
+            className: contentClasses,
             style: contentStyle,
             children,
           }),
@@ -209,7 +209,7 @@ export const view = <ParentMessage>({
         ? [
             scrollbarView<ParentMessage>({
               orientation: "horizontal",
-              classes: "inset-x-0 bottom-0 h-2.5 w-full border-l-0 border-t border-t-transparent",
+              className: "inset-x-0 bottom-0 h-2.5 w-full border-l-0 border-t border-t-transparent",
               children: [thumbView<ParentMessage>()],
             }),
           ]

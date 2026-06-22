@@ -23,12 +23,12 @@ export type ViewConfig = Readonly<{
   icon?: string;
   media?: Html;
   action?: Html;
-  classes?: string;
+  className?: string;
   mediaClasses?: string;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -38,13 +38,13 @@ export const view = <ParentMessage>({
   icon = "–",
   media,
   action,
-  classes,
+  className,
   mediaClasses,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
-    [h.Class(cn(emptyClasses, classes))],
+    [h.Class(cn(emptyClasses, className))],
     [
       media === undefined
         ? h.div([h.Class(cn(emptyIconClasses, mediaClasses)), h.AriaHidden(true)], [icon])

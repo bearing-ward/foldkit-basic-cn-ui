@@ -37,7 +37,7 @@ export type ShadcnSelectChild = Html | string;
 
 export type PartViewConfig = Readonly<{
   children: readonly ShadcnSelectChild[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ShadcnSelectStyle | undefined;
   testId?: string | undefined;
 }>;
@@ -51,21 +51,21 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   ariaLabel?: string | undefined;
   disabled?: boolean | undefined;
   invalid?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ShadcnSelectStyle | undefined;
 }>;
 
 export type ValueViewConfig = Readonly<{
   children: readonly ShadcnSelectChild[];
   placeholder?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ShadcnSelectStyle | undefined;
 }>;
 
 export type ContentViewConfig = Readonly<{
   open: boolean;
   children: readonly ShadcnSelectChild[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ShadcnSelectStyle | undefined;
   testId?: string | undefined;
 }>;
@@ -75,36 +75,36 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   onSelect: ParentMessage;
   children: readonly ShadcnSelectChild[];
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ShadcnSelectStyle | undefined;
 }>;
 
 export type ScrollButtonViewConfig = Readonly<{
   direction: "up" | "down";
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: ShadcnSelectStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 const partAttributes = <ParentMessage>(
   h: ReturnType<typeof html<ParentMessage>>,
   baseClasses: string,
-  classes: string | undefined,
+  className: string | undefined,
   style: ShadcnSelectStyle | undefined,
   testId: string | undefined
 ) => [
   ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
   ...(style === undefined ? [] : [h.Style(style)]),
-  h.Class(cn(baseClasses, classes)),
+  h.Class(cn(baseClasses, className)),
 ];
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   testId,
 }: RootViewConfig): Html => {
@@ -114,7 +114,7 @@ export const rootView = <ParentMessage>({
     partAttributes(
       h,
       shadcnSelectRootClasses,
-      classes,
+      className,
       style,
       testId
     ),
@@ -129,7 +129,7 @@ export const triggerView = <ParentMessage>({
   ariaLabel,
   disabled = false,
   invalid = false,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -146,7 +146,7 @@ export const triggerView = <ParentMessage>({
       ...(invalid ? [h.Attribute("data-invalid", "")] : []),
       h.OnClick(onToggle),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnSelectTriggerClasses, classes)),
+      h.Class(cn(shadcnSelectTriggerClasses, className)),
     ],
     children
   );
@@ -155,7 +155,7 @@ export const triggerView = <ParentMessage>({
 export const valueView = <ParentMessage>({
   children,
   placeholder = false,
-  classes,
+  className,
   style,
 }: ValueViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -164,7 +164,7 @@ export const valueView = <ParentMessage>({
     [
       ...(placeholder ? [h.Attribute("data-placeholder", "")] : []),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnSelectValueClasses, classes)),
+      h.Class(cn(shadcnSelectValueClasses, className)),
     ],
     children
   );
@@ -188,7 +188,7 @@ export const iconView = <ParentMessage>({
 export const contentView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
   testId,
 }: ContentViewConfig): Html => {
@@ -205,7 +205,7 @@ export const contentView = <ParentMessage>({
       ...partAttributes(
         h,
         shadcnSelectContentClasses,
-        classes,
+        className,
         style,
         testId
       ),
@@ -216,7 +216,7 @@ export const contentView = <ParentMessage>({
 
 export const viewportView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   testId,
 }: PartViewConfig): Html => {
@@ -226,7 +226,7 @@ export const viewportView = <ParentMessage>({
     partAttributes(
       h,
       shadcnSelectViewportClasses,
-      classes,
+      className,
       style,
       testId
     ),
@@ -236,7 +236,7 @@ export const viewportView = <ParentMessage>({
 
 export const groupView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   testId,
 }: PartViewConfig): Html => {
@@ -248,7 +248,7 @@ export const groupView = <ParentMessage>({
       ...partAttributes(
         h,
         shadcnSelectGroupClasses,
-        classes,
+        className,
         style,
         testId
       ),
@@ -259,7 +259,7 @@ export const groupView = <ParentMessage>({
 
 export const labelView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
   testId,
 }: PartViewConfig): Html => {
@@ -269,7 +269,7 @@ export const labelView = <ParentMessage>({
     partAttributes(
       h,
       shadcnSelectLabelClasses,
-      classes,
+      className,
       style,
       testId
     ),
@@ -282,7 +282,7 @@ export const itemView = <ParentMessage>({
   onSelect,
   children,
   disabled = false,
-  classes,
+  className,
   style,
 }: ItemViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -297,14 +297,14 @@ export const itemView = <ParentMessage>({
       ...(disabled ? [h.Attribute("data-disabled", "")] : []),
       h.OnClick(onSelect),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnSelectItemClasses, classes)),
+      h.Class(cn(shadcnSelectItemClasses, className)),
     ],
     children
   );
 };
 
 export const separatorView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: Omit<PartViewConfig, "children">): Html => {
   const h = html<ParentMessage>();
@@ -313,7 +313,7 @@ export const separatorView = <ParentMessage>({
     [
       h.Attribute("role", "separator"),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnSelectSeparatorClasses, classes)),
+      h.Class(cn(shadcnSelectSeparatorClasses, className)),
     ],
     []
   );
@@ -321,7 +321,7 @@ export const separatorView = <ParentMessage>({
 
 export const scrollButtonView = <ParentMessage>({
   direction,
-  classes,
+  className,
   style,
 }: ScrollButtonViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -331,7 +331,7 @@ export const scrollButtonView = <ParentMessage>({
       h.Attribute("aria-hidden", "true"),
       h.Attribute("data-direction", direction),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(shadcnSelectScrollButtonClasses, classes)),
+      h.Class(cn(shadcnSelectScrollButtonClasses, className)),
     ],
     [direction === "up" ? "^" : "v"]
   );

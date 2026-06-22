@@ -77,7 +77,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-3")],
     [
       Carousel.rootView<Message>({
-        classes: "max-w-xs",
+        className: "max-w-xs",
         children: [
           Carousel.viewportView<Message>({
             children: [

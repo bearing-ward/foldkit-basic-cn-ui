@@ -27,7 +27,7 @@ export type PreviewCardStyle = Readonly<Record<string, string>>;
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
@@ -35,62 +35,62 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   children: readonly (Html | string)[];
   onOpen: ParentMessage;
   open: boolean;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
 export type BackdropViewConfig<ParentMessage> = Readonly<{
   onClose: ParentMessage;
   ariaLabel?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
 export type PositionerViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
 export type PopupViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
 export type ViewportViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
 export type ArrowViewConfig = Readonly<{
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: PreviewCardStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.span(
     [
-      h.Class(cn(previewCardRootClasses, classes)),
+      h.Class(cn(previewCardRootClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -101,7 +101,7 @@ export const triggerView = <ParentMessage>({
   children,
   onOpen,
   open,
-  classes,
+  className,
   style,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -113,7 +113,7 @@ export const triggerView = <ParentMessage>({
       h.Attribute("aria-expanded", open ? "true" : "false"),
       h.Attribute("aria-haspopup", "dialog"),
       h.DataAttribute("open", open ? "true" : "false"),
-      h.Class(cn(previewCardTriggerClasses, classes)),
+      h.Class(cn(previewCardTriggerClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -123,7 +123,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -134,7 +134,7 @@ export const portalView = <ParentMessage>({
 
   return h.div(
     [
-      h.Class(cn(previewCardPortalClasses, classes)),
+      h.Class(cn(previewCardPortalClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -144,7 +144,7 @@ export const portalView = <ParentMessage>({
 export const backdropView = <ParentMessage>({
   onClose,
   ariaLabel = "Close preview card",
-  classes,
+  className,
   style,
 }: BackdropViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -154,7 +154,7 @@ export const backdropView = <ParentMessage>({
       h.Type("button"),
       h.AriaLabel(ariaLabel),
       h.OnClick(onClose),
-      h.Class(cn(previewCardBackdropClasses, classes)),
+      h.Class(cn(previewCardBackdropClasses, className)),
       h.Style(style ?? {}),
     ],
     []
@@ -163,14 +163,14 @@ export const backdropView = <ParentMessage>({
 
 export const positionerView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PositionerViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
-      h.Class(cn(previewCardPositionerClasses, classes)),
+      h.Class(cn(previewCardPositionerClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -179,7 +179,7 @@ export const positionerView = <ParentMessage>({
 
 export const popupView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: PopupViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -187,7 +187,7 @@ export const popupView = <ParentMessage>({
   return h.div(
     [
       h.Role("dialog"),
-      h.Class(cn(previewCardPopupClasses, classes)),
+      h.Class(cn(previewCardPopupClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -196,14 +196,14 @@ export const popupView = <ParentMessage>({
 
 export const viewportView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ViewportViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
-      h.Class(cn(previewCardViewportClasses, classes)),
+      h.Class(cn(previewCardViewportClasses, className)),
       h.Style(style ?? {}),
     ],
     children
@@ -211,7 +211,7 @@ export const viewportView = <ParentMessage>({
 };
 
 export const arrowView = <ParentMessage>({
-  classes,
+  className,
   style,
 }: ArrowViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -219,7 +219,7 @@ export const arrowView = <ParentMessage>({
   return h.div(
     [
       h.Attribute("aria-hidden", "true"),
-      h.Class(cn(previewCardArrowClasses, classes)),
+      h.Class(cn(previewCardArrowClasses, className)),
       h.Style(style ?? {}),
     ],
     []

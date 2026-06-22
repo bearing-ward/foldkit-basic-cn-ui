@@ -54,7 +54,7 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
       [h.Class("flex w-full max-w-sm flex-col items-center gap-3")],
       [
         InputGroup.view<Message>({
-          classes: "w-full sm:w-3/4",
+          className: "w-full sm:w-3/4",
           children: [
             InputGroup.inputView<Message>({
               ariaLabel: "Search pages",

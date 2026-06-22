@@ -33,11 +33,11 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((): Html => {
   return Resizable.panelGroupView<Message>({
-    classes: "min-h-48",
+    className: "min-h-48",
     children: [
       Resizable.panelView<Message>({ size: 50, children: ["One"] }),
       Resizable.handleView<Message>({
-        classes: "w-4 rounded-sm border border-gray-200 bg-gray-50",
+        className: "w-4 rounded-sm border border-gray-200 bg-gray-50",
         children: ["||"],
       }),
       Resizable.panelView<Message>({ size: 50, children: ["Two"] }),

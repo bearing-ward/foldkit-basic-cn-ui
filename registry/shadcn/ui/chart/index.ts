@@ -49,7 +49,7 @@ export type ChartDimensions = Readonly<{
 /** Root container props for chart composition. */
 export type ContainerViewConfig = Readonly<{
   children: readonly (Html | string)[];
-  classes?: string;
+  className?: string;
   ariaLabel?: string;
 }>;
 
@@ -62,7 +62,7 @@ export type BarChartViewConfig<ParentMessage> = ChartDimensions &
     showAxis?: boolean;
     axisLabelFormatter?: (label: string) => string;
     rtl?: boolean;
-    classes?: string;
+    className?: string;
     activeDatumLabel?: string;
     onHoveredDatum?: (label: string) => ParentMessage;
     onLeftChart?: ParentMessage;
@@ -72,17 +72,17 @@ export type BarChartViewConfig<ParentMessage> = ChartDimensions &
 export type TooltipViewConfig = Readonly<{
   label: string;
   rows: readonly Readonly<{ label: string; value: string; color: string }>[];
-  classes?: string;
+  className?: string;
 }>;
 
 /** Legend props for visible series labels. */
 export type LegendViewConfig = Readonly<{
   series: readonly ChartSeries[];
-  classes?: string;
+  className?: string;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -100,7 +100,7 @@ const maxValue = (
 /** Wraps chart content with the shadcn-style chart region and label. */
 export const containerView = <ParentMessage>({
   children,
-  classes,
+  className,
   ariaLabel = "Chart",
 }: ContainerViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -110,7 +110,7 @@ export const containerView = <ParentMessage>({
       h.Attribute("role", "region"),
       h.AriaLabel(ariaLabel),
       h.DataAttribute("slot", "chart"),
-      h.Class(cn(chartContainerClasses, classes)),
+      h.Class(cn(chartContainerClasses, className)),
     ],
     children
   );
@@ -127,7 +127,7 @@ export const barChartView = <ParentMessage>({
   showAxis = true,
   axisLabelFormatter = (label) => label,
   rtl = false,
-  classes,
+  className,
   activeDatumLabel,
   onHoveredDatum,
   onLeftChart,
@@ -153,7 +153,7 @@ export const barChartView = <ParentMessage>({
       h.Attribute("role", "img"),
       h.AriaLabel("Bar chart"),
       h.DataAttribute("slot", "chart-svg"),
-      h.Class(cn(chartSvgClasses, classes)),
+      h.Class(cn(chartSvgClasses, className)),
     ],
     [
       ...(showGrid
@@ -249,14 +249,14 @@ export const barChartView = <ParentMessage>({
 export const tooltipView = <ParentMessage>({
   label,
   rows,
-  classes,
+  className,
 }: TooltipViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "chart-tooltip"),
-      h.Class(cn(chartTooltipClasses, classes)),
+      h.Class(cn(chartTooltipClasses, className)),
     ],
     [
       h.p([h.Class("mb-2 font-medium text-gray-950")], [label]),
@@ -289,14 +289,14 @@ export const tooltipView = <ParentMessage>({
 /** Renders a visible legend for chart series. */
 export const legendView = <ParentMessage>({
   series,
-  classes,
+  className,
 }: LegendViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "chart-legend"),
-      h.Class(cn(chartLegendClasses, classes)),
+      h.Class(cn(chartLegendClasses, className)),
     ],
     series.map((item) =>
       h.span(

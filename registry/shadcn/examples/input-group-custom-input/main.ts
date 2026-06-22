@@ -56,7 +56,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
     [h.Class("space-y-3")],
     [
       InputGroup.view<Message>({
-        classes: "w-full max-w-md flex-wrap items-stretch h-auto",
+        className: "w-full max-w-md flex-wrap items-stretch h-auto",
         children: [
           h.textarea(
             [

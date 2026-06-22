@@ -32,7 +32,7 @@ export const update = (
 
 export const view = Submodel.defineView<Model, Message>((): Html =>
   InputGroup.view<Message>({
-    classes: "w-full max-w-sm",
+    className: "w-full max-w-sm",
     children: [
       InputGroup.addonView<Message>({
         children: [InputGroup.textView<Message>(["https://"])],

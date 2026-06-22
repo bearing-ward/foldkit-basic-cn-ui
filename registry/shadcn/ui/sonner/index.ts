@@ -25,13 +25,13 @@ export type ToastConfig<ParentMessage> = Readonly<{
   description?: string | undefined;
   action?: Html | undefined;
   onClose?: ParentMessage | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   variant?: "default" | "success" | "info" | "warning" | "error" | undefined;
 }>;
 
 export type ViewportConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   position?:
     | "top-left"
     | "top-center"
@@ -42,8 +42,8 @@ export type ViewportConfig = Readonly<{
     | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -133,7 +133,7 @@ const toastIconView = <ParentMessage>(
 
 export const viewportView = <ParentMessage>({
   children,
-  classes,
+  className,
   position = "bottom-right",
 }: ViewportConfig): Html => {
   const h = html<ParentMessage>();
@@ -146,7 +146,7 @@ export const viewportView = <ParentMessage>({
       h.Class(
         cn(
           `${sonnerViewportClasses} ${viewportPositionClasses(position)}`,
-          classes
+          className
         )
       ),
     ],
@@ -159,7 +159,7 @@ export const toastView = <ParentMessage>({
   description,
   action,
   onClose,
-  classes,
+  className,
   variant = "default",
 }: ToastConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
@@ -175,7 +175,7 @@ export const toastView = <ParentMessage>({
           `${sonnerToastClasses} ${toastVariantClasses(variant)} relative ${
             maybeIconPath === undefined ? "" : "pl-10"
           }`,
-          classes
+          className
         )
       ),
     ],

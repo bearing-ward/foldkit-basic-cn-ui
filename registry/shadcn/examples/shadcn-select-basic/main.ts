@@ -96,8 +96,8 @@ const valueLabel = (
     })
   );
 
-const cn = (base: string, classes: string): string =>
-  [base, classes].filter((value) => value !== "").join(" ");
+const cn = (base: string, className: string): string =>
+  [base, className].filter((value) => value !== "").join(" ");
 
 const selectItemView = (
   option: Option,
@@ -164,14 +164,14 @@ const staticSelectView = (
   title: string,
   value: string,
   options: ReadonlyArray<Option>,
-  classes: string
+  className: string
 ): Html => {
   const h = html<Message>();
 
   return h.div([h.Class("space-y-2")], [
     h.h3([h.Class("text-base font-semibold text-gray-950")], [title]),
     Select.rootView<Message>({
-      classes,
+      className,
       children: [
         Select.triggerView<Message>({
           open: true,

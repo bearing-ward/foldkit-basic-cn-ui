@@ -24,19 +24,19 @@ export type PaginationStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   label?: string;
-  classes?: string;
+  className?: string;
   style?: PaginationStyle;
 }>;
 
 export type ContentViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string;
+  className?: string;
   style?: PaginationStyle;
 }>;
 
 export type ItemViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string;
+  className?: string;
   style?: PaginationStyle;
 }>;
 
@@ -46,7 +46,7 @@ export type LinkViewConfig = Readonly<{
   label?: string;
   active?: boolean;
   disabled?: boolean;
-  classes?: string;
+  className?: string;
   style?: PaginationStyle;
 }>;
 
@@ -54,13 +54,13 @@ export type PreviousNextViewConfig = Readonly<{
   href: string;
   label?: string;
   disabled?: boolean;
-  classes?: string;
+  className?: string;
   style?: PaginationStyle;
 }>;
 
 export type EllipsisViewConfig = Readonly<{
   label?: string;
-  classes?: string;
+  className?: string;
   style?: PaginationStyle;
 }>;
 
@@ -78,7 +78,7 @@ const cn = (...values: readonly (string | undefined)[]): string =>
 export const rootView = <ParentMessage>({
   children,
   label = "pagination",
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -87,7 +87,7 @@ export const rootView = <ParentMessage>({
     [
       h.Attribute("aria-label", label),
       h.DataAttribute("slot", "pagination"),
-      h.Class(cn(paginationRootClasses, classes)),
+      h.Class(cn(paginationRootClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -96,7 +96,7 @@ export const rootView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ContentViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -104,7 +104,7 @@ export const contentView = <ParentMessage>({
   return h.ul(
     [
       h.DataAttribute("slot", "pagination-content"),
-      h.Class(cn(paginationContentClasses, classes)),
+      h.Class(cn(paginationContentClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -113,7 +113,7 @@ export const contentView = <ParentMessage>({
 
 export const itemView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ItemViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -121,7 +121,7 @@ export const itemView = <ParentMessage>({
   return h.li(
     [
       h.DataAttribute("slot", "pagination-item"),
-      h.Class(cn(paginationItemClasses, classes)),
+      h.Class(cn(paginationItemClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -134,7 +134,7 @@ export const linkView = <ParentMessage>({
   label,
   active = false,
   disabled = false,
-  classes,
+  className,
   style,
 }: LinkViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -147,7 +147,7 @@ export const linkView = <ParentMessage>({
       h.DataAttribute("disabled", String(disabled)),
       ...(label === undefined ? [] : [h.AriaLabel(label)]),
       ...(active ? [h.AriaCurrent("page")] : []),
-      h.Class(cn(paginationLinkBaseClasses, classes)),
+      h.Class(cn(paginationLinkBaseClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     children
@@ -158,7 +158,7 @@ export const previousView = <ParentMessage>({
   href,
   label = "Previous",
   disabled = false,
-  classes,
+  className,
   style,
 }: PreviousNextViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -169,7 +169,7 @@ export const previousView = <ParentMessage>({
       h.AriaLabel(label),
       h.DataAttribute("slot", "pagination-previous"),
       h.DataAttribute("disabled", String(disabled)),
-      h.Class(cn(paginationPreviousNextClasses, classes)),
+      h.Class(cn(paginationPreviousNextClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     ["Previous"]
@@ -180,7 +180,7 @@ export const nextView = <ParentMessage>({
   href,
   label = "Next",
   disabled = false,
-  classes,
+  className,
   style,
 }: PreviousNextViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -191,7 +191,7 @@ export const nextView = <ParentMessage>({
       h.AriaLabel(label),
       h.DataAttribute("slot", "pagination-next"),
       h.DataAttribute("disabled", String(disabled)),
-      h.Class(cn(paginationPreviousNextClasses, classes)),
+      h.Class(cn(paginationPreviousNextClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     ["Next"]
@@ -200,7 +200,7 @@ export const nextView = <ParentMessage>({
 
 export const ellipsisView = <ParentMessage>({
   label = "More pages",
-  classes,
+  className,
   style,
 }: EllipsisViewConfig = {}): Html => {
   const h = html<ParentMessage>();
@@ -209,7 +209,7 @@ export const ellipsisView = <ParentMessage>({
     [
       h.AriaLabel(label),
       h.DataAttribute("slot", "pagination-ellipsis"),
-      h.Class(cn(paginationEllipsisClasses, classes)),
+      h.Class(cn(paginationEllipsisClasses, className)),
       ...(style === undefined ? [] : [h.Style(style)]),
     ],
     ["..."]
@@ -218,10 +218,10 @@ export const ellipsisView = <ParentMessage>({
 
 export const view = <ParentMessage>(
   pages: readonly PageItem[],
-  classes?: string
+  className?: string
 ): Html =>
   rootView<ParentMessage>({
-    ...(classes === undefined ? {} : { classes }),
+    ...(className === undefined ? {} : { className }),
     children: [
       contentView<ParentMessage>({
         children: [

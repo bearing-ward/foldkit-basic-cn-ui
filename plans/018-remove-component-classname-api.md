@@ -1,4 +1,4 @@
-# Plan 018: Remove component `className` APIs and migrate styling to `cn`
+# Plan 018: Remove invented component style APIs and migrate styling to `cn`
 
 > **Executor instructions**: Follow this plan step by step. Run every
 > verification command and confirm the expected result before moving to the next
@@ -28,16 +28,23 @@
   landed the guard/contract pilot on branch
   `codex/018-remove-component-classname-api`; continuation commit `529ee767`
   completed the migration and passed the verification gates.
+- **Correction**: Plan 019 narrows this policy. Upstream-compatible
+  `className` extension points are allowed for shadcn/Base UI origin-backed
+  components when the origin source or type surface exposes `className`.
+  Invented exported `*ClassName` constants, local `classNames` helpers, and
+  `classes` replacement props remain forbidden.
 
 ## Why this matters
 
 Plan 017 added the shared shadcn-compatible `cn` utility and source-derived
 style contracts. The component surface still exposes hundreds of old
-`*ClassName` constants, local `classNames` helpers, and public `className` props
-that invite every component to compose styles differently. This plan makes the
-new direction enforceable: component styling should flow through lane-appropriate
-`cn` helpers and typed variant/part APIs, not through exported `*ClassName`
-symbols or arbitrary consumer `className` overrides.
+`*ClassName` constants and local `classNames` helpers that invite every
+component to compose styles differently. Plan 019 corrected the overbroad part
+of this policy: public `className` props are allowed when the upstream shadcn or
+Base UI origin exposes the same extension point. The enforceable direction is
+that component styling should flow through lane-appropriate `cn` helpers and
+typed variant/part APIs, with origin-compatible `className` composed through
+`cn`, not through exported `*ClassName` symbols or ad hoc joiners.
 
 This is a breaking API cleanup across the registry. Do it as a single explicit
 migration so generated registry JSON, docs, examples, Scene tests, and smoke
@@ -51,7 +58,7 @@ Relevant files and roles:
 - `registry/**/ui/**` - installable component source. This is the primary
   migration target.
 - `registry/**/examples/**` - example programs that import/use component style
-  constants and pass `className` options.
+  constants and pass upstream-compatible `className` options.
 - `src/docsExamplePreviews*.ts` and `src/openstory/generated/**` - generated or
   preview-facing story surfaces that may reference old component exports.
 - `registry/**/registry.json` and `apps/docs/public/**` - source manifests and
@@ -337,7 +344,7 @@ Edit `docs/product/component-entry-contract.md` so it no longer requires:
 - exported default class constants named `{component}RootClassName`,
   `{component}LabelClassName`, etc.;
 - public `*ClassName` props;
-- public `className` props for component parts.
+- invented public style props that diverge from the upstream origin.
 
 Replace that policy with:
 
@@ -345,23 +352,25 @@ Replace that policy with:
   for example `buttonVariants({ variant, size })`, `avatarRoot({ size })`, or
   `{component}{Part}Classes(config)`;
 - those helpers compose defaults with `cn`;
-- public style extension should use typed variant/size/tone/part options, not
-  arbitrary string `className` overrides;
+- public style extension should use typed variant/size/tone/part options, plus
+  `className` where that spelling exists in the upstream shadcn/Base UI origin;
 - one-off consumer classes belong in caller-owned wrapper markup via `h.Class`,
   not in component config;
-- any replacement styling should use an explicit documented option such as
-  `unstyled`, not `className`;
+- any replacement styling that is not upstream-compatible should use an
+  explicit documented option such as `unstyled`, not a new ad hoc spelling;
 - `h.Class` remains the internal Foldkit view attribute for applying the helper
   output.
 
 Create `scripts/check-no-component-classname-api.mjs`. It must be read-only and
 fail on all of these in live component source:
 
-- `className` as an identifier or property name in `registry/*/ui/**/*.{ts,tsx}`;
-- any identifier ending in `ClassName` in `registry/*/ui/**/*.{ts,tsx}`;
+- any exported identifier ending in `ClassName` in
+  `registry/*/ui/**/*.{ts,tsx}`;
 - local helper names such as `classNames` in `registry/*/ui/**/*.{ts,tsx}`;
-- generated public registry item content containing `className` or `ClassName`
-  in `apps/docs/public/*.json`.
+- generated public registry item content that exports `*ClassName` constants in
+  `apps/docs/public/*.json`;
+- `classes?:` public config in shadcn/Base UI origin-backed components when the
+  origin spelling is `className`.
 
 Guard details:
 
@@ -410,7 +419,7 @@ export const buttonVariants = ({
 Rules:
 
 - Do not export identifiers ending in `ClassName`.
-- Do not include `className` in public config types.
+- Do not introduce public config names that diverge from the upstream origin.
 - Do not name local constants `*ClassName`; use names like `buttonBase`,
   `rootClasses`, `triggerClasses`, `panelClasses`, `classesByVariant`, or
   `partClasses`.
@@ -605,9 +614,10 @@ Stop the local static server after the smoke command.
 ALL must hold:
 
 - [ ] `docs/product/component-entry-contract.md` no longer requires `*ClassName`
-      exports or `className` component config props.
-- [ ] `registry/**/ui/**/*.{ts,tsx}` has no identifier named `className`, no
-      identifier ending in `ClassName`, and no `classNames` helper.
+      exports or non-origin component config props.
+- [ ] `registry/**/ui/**/*.{ts,tsx}` has no exported identifier ending in
+      `ClassName`, no local `classNames` helper, and no `classes?:` replacement
+      prop where the upstream origin uses `className`.
 - [ ] Generated `apps/docs/public/*.json` component content has no old
       component `className`/`*ClassName` API references.
 - [ ] Component source that composes Tailwind classes uses `cn` or a helper that

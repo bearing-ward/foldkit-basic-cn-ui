@@ -37,14 +37,14 @@ export type RootViewConfig = FieldState &
   Readonly<{
     children: readonly Html[];
     name?: string | undefined;
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: FieldStyle | undefined;
   }>;
 
 export type LabelViewConfig = Readonly<{
   children: readonly Html[];
   forId?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
@@ -58,14 +58,14 @@ export type ControlViewConfig<ParentMessage> = FieldState &
     name?: string | undefined;
     placeholder?: string | undefined;
     type?: string | undefined;
-    classes?: string | undefined;
+    className?: string | undefined;
     style?: FieldStyle | undefined;
   }>;
 
 export type DescriptionViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
@@ -73,18 +73,18 @@ export type ErrorViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
   show: boolean;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
 export type ItemViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: FieldStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -105,7 +105,7 @@ const stateAttributes = <ParentMessage>(
 export const rootView = <ParentMessage>({
   children,
   name,
-  classes,
+  className,
   style,
   ...state
 }: RootViewConfig): Html => {
@@ -116,7 +116,7 @@ export const rootView = <ParentMessage>({
       ...(name === undefined ? [] : [h.DataAttribute("name", name)]),
       ...stateAttributes(h, state),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(fieldRootClasses, classes)),
+      h.Class(cn(fieldRootClasses, className)),
     ],
     children
   );
@@ -125,7 +125,7 @@ export const rootView = <ParentMessage>({
 export const labelView = <ParentMessage>({
   children,
   forId,
-  classes,
+  className,
   style,
 }: LabelViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -134,7 +134,7 @@ export const labelView = <ParentMessage>({
     [
       ...(forId === undefined ? [] : [h.Attribute("for", forId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(fieldLabelClasses, classes)),
+      h.Class(cn(fieldLabelClasses, className)),
     ],
     children
   );
@@ -149,7 +149,7 @@ export const controlView = <ParentMessage>({
   name,
   placeholder,
   type = "text",
-  classes,
+  className,
   style,
   ...state
 }: ControlViewConfig<ParentMessage>): Html => {
@@ -174,14 +174,14 @@ export const controlView = <ParentMessage>({
     ...(state.disabled === true ? [h.Disabled(true)] : []),
     ...stateAttributes(h, state),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(cn(fieldControlClasses, classes)),
+    h.Class(cn(fieldControlClasses, className)),
   ]);
 };
 
 export const descriptionView = <ParentMessage>({
   id,
   children,
-  classes,
+  className,
   style,
 }: DescriptionViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -190,7 +190,7 @@ export const descriptionView = <ParentMessage>({
     [
       ...(id === undefined ? [] : [h.Id(id)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(fieldDescriptionClasses, classes)),
+      h.Class(cn(fieldDescriptionClasses, className)),
     ],
     children
   );
@@ -200,7 +200,7 @@ export const errorView = <ParentMessage>({
   id,
   children,
   show,
-  classes,
+  className,
   style,
 }: ErrorViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -211,7 +211,7 @@ export const errorView = <ParentMessage>({
       h.Attribute("role", "alert"),
       h.AriaHidden(!show),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(fieldErrorClasses, classes)),
+      h.Class(cn(fieldErrorClasses, className)),
     ],
     show ? children : []
   );
@@ -219,7 +219,7 @@ export const errorView = <ParentMessage>({
 
 export const itemView = <ParentMessage>({
   children,
-  classes,
+  className,
   style,
 }: ItemViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -227,7 +227,7 @@ export const itemView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(fieldItemClasses, classes)),
+      h.Class(cn(fieldItemClasses, className)),
     ],
     children
   );
@@ -235,12 +235,12 @@ export const itemView = <ParentMessage>({
 
 export const validityView = <ParentMessage>(
   children: readonly Html[],
-  classes?: string
+  className?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.p(
-    [h.Class(cn(fieldValidityClasses, classes))],
+    [h.Class(cn(fieldValidityClasses, className))],
     children
   );
 };

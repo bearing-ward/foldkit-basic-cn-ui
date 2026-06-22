@@ -99,7 +99,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
             ),
           }),
         ],
-        classes: Accordion.shadcnAccordionRootClasses,
+        className: Accordion.shadcnAccordionRootClasses,
       }),
     ]
   );

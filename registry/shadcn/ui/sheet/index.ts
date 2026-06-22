@@ -29,7 +29,7 @@ export {
 
 export type ViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
 }>;
 
 export type TriggerViewConfig<ParentMessage> = ViewConfig &
@@ -51,21 +51,21 @@ export type LabelViewConfig = Readonly<{
 export type CloseViewConfig<ParentMessage> = ViewConfig &
   Readonly<{ onClose: ParentMessage; ariaLabel?: string | undefined }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet"),
-      h.Class(cn(sheetRootClasses, classes)),
+      h.Class(cn(sheetRootClasses, className)),
     ],
     children
   );
@@ -74,7 +74,7 @@ export const rootView = <ParentMessage>({
 export const triggerView = <ParentMessage>({
   children,
   onOpen,
-  classes,
+  className,
 }: TriggerViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -83,7 +83,7 @@ export const triggerView = <ParentMessage>({
       h.Type("button"),
       h.OnClick(onOpen),
       h.DataAttribute("slot", "sheet-trigger"),
-      h.Class(cn(sheetTriggerClasses, classes)),
+      h.Class(cn(sheetTriggerClasses, className)),
     ],
     children
   );
@@ -92,7 +92,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -103,7 +103,7 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       h.DataAttribute("slot", "sheet-portal"),
-      h.Class(cn(sheetPortalClasses, classes)),
+      h.Class(cn(sheetPortalClasses, className)),
     ],
     children
   );
@@ -111,14 +111,14 @@ export const portalView = <ParentMessage>({
 
 export const overlayView = <ParentMessage>({
   children = [],
-  classes,
+  className,
 }: Partial<ViewConfig>): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet-overlay"),
-      h.Class(cn(sheetOverlayClasses, classes)),
+      h.Class(cn(sheetOverlayClasses, className)),
     ],
     children
   );
@@ -126,7 +126,7 @@ export const overlayView = <ParentMessage>({
 
 export const contentView = <ParentMessage>({
   children,
-  classes,
+  className,
   ariaDescribedBy,
   ariaLabelledBy,
 }: ContentViewConfig): Html => {
@@ -143,7 +143,7 @@ export const contentView = <ParentMessage>({
         ? []
         : [h.AriaDescribedBy(ariaDescribedBy)]),
       h.DataAttribute("slot", "sheet-content"),
-      h.Class(cn(sheetContentClasses, classes)),
+      h.Class(cn(sheetContentClasses, className)),
     ],
     children
   );
@@ -151,14 +151,14 @@ export const contentView = <ParentMessage>({
 
 export const headerView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet-header"),
-      h.Class(cn(sheetHeaderClasses, classes)),
+      h.Class(cn(sheetHeaderClasses, className)),
     ],
     children
   );
@@ -200,7 +200,7 @@ export const closeView = <ParentMessage>({
   children,
   onClose,
   ariaLabel = "Close sheet",
-  classes,
+  className,
 }: CloseViewConfig<ParentMessage>): Html => {
   const h = html<ParentMessage>();
 
@@ -210,7 +210,7 @@ export const closeView = <ParentMessage>({
       h.AriaLabel(ariaLabel),
       h.OnClick(onClose),
       h.DataAttribute("slot", "sheet-close"),
-      h.Class(cn(sheetCloseClasses, classes)),
+      h.Class(cn(sheetCloseClasses, className)),
     ],
     children
   );
@@ -218,14 +218,14 @@ export const closeView = <ParentMessage>({
 
 export const footerView = <ParentMessage>({
   children,
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.DataAttribute("slot", "sheet-footer"),
-      h.Class(cn(sheetFooterClasses, classes)),
+      h.Class(cn(sheetFooterClasses, className)),
     ],
     children
   );

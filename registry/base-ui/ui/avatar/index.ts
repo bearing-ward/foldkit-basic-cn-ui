@@ -29,21 +29,21 @@ export type AvatarStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   size?: AvatarSize | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type ImageViewConfig = Readonly<{
   src: string;
   alt: string;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type FallbackViewConfig = Readonly<{
   children: readonly Html[];
   ariaLabel?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
@@ -52,33 +52,33 @@ export type ViewConfig = Readonly<{
   src?: string | undefined;
   alt?: string | undefined;
   size?: AvatarSize | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type CountConfig = Readonly<{
   count: number;
   label?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
 export type BadgeViewConfig = Readonly<{
   children?: readonly Html[] | undefined;
   label?: string | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AvatarStyle | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
 export const rootView = <ParentMessage>({
   children,
   size = "Default",
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -91,7 +91,7 @@ export const rootView = <ParentMessage>({
         size === "Small" ? "sm" : size === "Large" ? "lg" : "default"
       ),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(avatarClassesBySize(size), classes)),
+      h.Class(cn(avatarClassesBySize(size), className)),
     ],
     children
   );
@@ -100,7 +100,7 @@ export const rootView = <ParentMessage>({
 export const imageView = <ParentMessage>({
   src,
   alt,
-  classes,
+  className,
   style,
 }: ImageViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -110,14 +110,14 @@ export const imageView = <ParentMessage>({
     h.Src(src),
     h.Alt(alt),
     ...(style === undefined ? [] : [h.Style(style)]),
-    h.Class(cn(avatarImageClasses, classes)),
+    h.Class(cn(avatarImageClasses, className)),
   ]);
 };
 
 export const fallbackView = <ParentMessage>({
   children,
   ariaLabel,
-  classes,
+  className,
   style,
 }: FallbackViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -127,7 +127,7 @@ export const fallbackView = <ParentMessage>({
       h.Attribute("data-slot", "avatar-fallback"),
       ...(ariaLabel === undefined ? [] : [h.AriaLabel(ariaLabel)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(avatarFallbackClasses, classes)),
+      h.Class(cn(avatarFallbackClasses, className)),
     ],
     children
   );
@@ -138,12 +138,12 @@ export const view = <ParentMessage>({
   src,
   alt,
   size = "Default",
-  classes,
+  className,
   style,
 }: ViewConfig): Html =>
   rootView<ParentMessage>({
     size,
-    classes,
+    className,
     style,
     children:
       src === undefined
@@ -158,7 +158,7 @@ export const view = <ParentMessage>({
 export const badgeView = <ParentMessage>({
   children = [],
   label,
-  classes,
+  className,
   style,
 }: BadgeViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -168,7 +168,7 @@ export const badgeView = <ParentMessage>({
       h.Attribute("data-slot", "avatar-badge"),
       ...(label === undefined ? [h.AriaHidden(true)] : [h.AriaLabel(label)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(avatarBadgeClasses, classes)),
+      h.Class(cn(avatarBadgeClasses, className)),
     ],
     children
   );
@@ -176,14 +176,14 @@ export const badgeView = <ParentMessage>({
 
 export const groupView = <ParentMessage>(
   children: readonly Html[],
-  classes?: string
+  className?: string
 ): Html => {
   const h = html<ParentMessage>();
 
   return h.div(
     [
       h.Attribute("data-slot", "avatar-group"),
-      h.Class(cn(avatarGroupClasses, classes)),
+      h.Class(cn(avatarGroupClasses, className)),
     ],
     children
   );
@@ -192,7 +192,7 @@ export const groupView = <ParentMessage>(
 export const countView = <ParentMessage>({
   count,
   label,
-  classes,
+  className,
   style,
 }: CountConfig): Html => {
   const h = html<ParentMessage>();
@@ -200,7 +200,7 @@ export const countView = <ParentMessage>({
   return h.span(
     [
       h.Attribute("data-slot", "avatar-group-count"),
-      h.Class(cn(avatarGroupCountClasses, classes)),
+      h.Class(cn(avatarGroupCountClasses, className)),
       h.AriaLabel(label ?? `${count} more people`),
       h.Attribute("role", "img"),
       ...(style === undefined ? [] : [h.Style(style)]),

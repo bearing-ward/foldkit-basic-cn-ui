@@ -24,7 +24,7 @@ export type AccordionStyle = Readonly<Record<string, string>>;
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
   openValues: readonly string[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AccordionStyle | undefined;
 }>;
 
@@ -35,14 +35,14 @@ export type ItemViewConfig<ParentMessage> = Readonly<{
   title: string;
   children: readonly Html[];
   disabled?: boolean | undefined;
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: AccordionStyle | undefined;
   triggerClasses?: string | undefined;
   panelClasses?: string | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -71,7 +71,7 @@ const stateAttributes = <ParentMessage>(
 export const rootView = <ParentMessage>({
   children,
   openValues,
-  classes,
+  className,
   style,
 }: RootViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -80,7 +80,7 @@ export const rootView = <ParentMessage>({
     [
       h.DataAttribute("values", openValues.join(" ")),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(accordionRootClasses, classes)),
+      h.Class(cn(accordionRootClasses, className)),
     ],
     children
   );
@@ -93,7 +93,7 @@ export const itemView = <ParentMessage>({
   title,
   children,
   disabled = false,
-  classes,
+  className,
   style,
   triggerClasses,
   panelClasses,
@@ -109,7 +109,7 @@ export const itemView = <ParentMessage>({
       h.DataAttribute("value", value),
       ...state,
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(accordionItemClasses, classes)),
+      h.Class(cn(accordionItemClasses, className)),
     ],
     [
       h.h3(

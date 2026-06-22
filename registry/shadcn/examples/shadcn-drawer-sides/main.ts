@@ -128,7 +128,7 @@ const drawerForSide = (model: Model, side: DrawerSide): Html => {
     children: [
       Drawer.triggerView<Message>({
         onClick: messageForSide(side),
-        classes:
+        className:
           "border border-gray-200 bg-white capitalize text-gray-950 hover:bg-gray-50",
         children: [h.span([], [side])],
       }),
@@ -137,15 +137,15 @@ const drawerForSide = (model: Model, side: DrawerSide): Html => {
         children: [
           Drawer.backdropView<Message>({ children: [] }),
           Drawer.viewportView<Message>({
-            classes: viewportClasses(side),
+            className: viewportClasses(side),
             children: [
               Drawer.popupView<Message>({
                 titleId,
                 descriptionId,
-                classes: popupClasses(side),
+                className: popupClasses(side),
                 children: [
                   Drawer.contentView<Message>({
-                    classes: "gap-0",
+                    className: "gap-0",
                     children: [
                       h.div(
                         [h.Class("grid gap-1.5 p-4 text-center sm:text-left")],

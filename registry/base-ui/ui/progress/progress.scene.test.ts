@@ -34,7 +34,7 @@ const view = (): Html => {
         formatValue: (value) => `${value} units`,
         getAriaValueText: ({ value }) => `${value ?? 0} of 100 units`,
         renderValue: ({ formattedValue }) => formattedValue ?? "Waiting",
-        classes: "progress-root-override",
+        className: "progress-root-override",
         style: { inlineSize: "18rem" },
         labelClasses: "progress-label-override",
         labelStyle: { color: "rgb(17, 24, 39)" },

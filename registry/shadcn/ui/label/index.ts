@@ -10,7 +10,7 @@ export type ViewConfig = Readonly<{
   forId?: string;
   required?: boolean;
   disabled?: boolean;
-  classes?: string;
+  className?: string;
 }>;
 
 const cn = (...values: readonly (string | undefined)[]): string =>
@@ -23,7 +23,7 @@ export const view = <ParentMessage>({
   forId,
   required = false,
   disabled = false,
-  classes,
+  className,
 }: ViewConfig): Html => {
   const h = html<ParentMessage>();
 
@@ -33,7 +33,7 @@ export const view = <ParentMessage>({
       h.DataAttribute("slot", "label"),
       h.DataAttribute("required", String(required)),
       h.DataAttribute("disabled", String(disabled)),
-      h.Class(cn(labelClasses, classes)),
+      h.Class(cn(labelClasses, className)),
     ],
     typeof children === "string" ? [children] : children
   );

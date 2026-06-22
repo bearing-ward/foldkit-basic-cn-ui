@@ -125,7 +125,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ariaLabel: "Search",
         children: [
           ButtonGroup.itemView<Message>({
-            classes: "min-w-0 flex-1",
+            className: "min-w-0 flex-1",
             children: [
               h.input([
                 h.Id("button-group-search"),

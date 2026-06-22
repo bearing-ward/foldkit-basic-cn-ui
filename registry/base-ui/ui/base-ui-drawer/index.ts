@@ -36,7 +36,7 @@ export type DrawerState = Readonly<{
 
 export type RootViewConfig = Readonly<{
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DrawerStyle | undefined;
 }>;
 
@@ -44,7 +44,7 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
   id?: string | undefined;
   onClick: ParentMessage;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DrawerStyle | undefined;
   testId?: string | undefined;
 }>;
@@ -52,14 +52,14 @@ export type TriggerViewConfig<ParentMessage> = Readonly<{
 export type PortalViewConfig = Readonly<{
   open: boolean;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DrawerStyle | undefined;
 }>;
 
 export type PartViewConfig = Readonly<{
   id?: string | undefined;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DrawerStyle | undefined;
   state?: DrawerState | undefined;
   testId?: string | undefined;
@@ -69,7 +69,7 @@ export type PopupViewConfig<ParentMessage> = Readonly<{
   titleId: string;
   descriptionId: string;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DrawerStyle | undefined;
   state?: DrawerState | undefined;
   modal?: boolean | undefined;
@@ -90,7 +90,7 @@ export type CloseViewConfig<ParentMessage> = Readonly<{
   id?: string | undefined;
   onClick: ParentMessage;
   children: readonly Html[];
-  classes?: string | undefined;
+  className?: string | undefined;
   style?: DrawerStyle | undefined;
   testId?: string | undefined;
 }>;
@@ -100,8 +100,8 @@ export type FocusGuardViewConfig<ParentMessage> = Readonly<{
   testId?: string | undefined;
 }>;
 
-const cn = (base: string, classes?: string): string =>
-  [base, classes]
+const cn = (base: string, className?: string): string =>
+  [base, className]
     .filter((value): value is string => value !== undefined && value !== "")
     .join(" ");
 
@@ -121,7 +121,7 @@ const stateAttributes = <ParentMessage>(
 const partView = <ParentMessage>(
   tagName: "div" | "h2" | "p",
   baseClasses: string,
-  { id, children, classes, style, state, testId }: PartViewConfig
+  { id, children, className, style, state, testId }: PartViewConfig
 ): Html => {
   const h = html<ParentMessage>();
   const attributes = [
@@ -129,7 +129,7 @@ const partView = <ParentMessage>(
     ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
     ...(style === undefined ? [] : [h.Style(style)]),
     ...stateAttributes(h, state),
-    h.Class(cn(baseClasses, classes)),
+    h.Class(cn(baseClasses, className)),
   ];
 
   if (tagName === "h2") {
@@ -150,7 +150,7 @@ export const triggerView = <ParentMessage>({
   id,
   onClick,
   children,
-  classes,
+  className,
   style,
   testId,
 }: TriggerViewConfig<ParentMessage>): Html => {
@@ -163,7 +163,7 @@ export const triggerView = <ParentMessage>({
       h.OnClick(onClick),
       ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(drawerTriggerClasses, classes)),
+      h.Class(cn(drawerTriggerClasses, className)),
     ],
     children
   );
@@ -172,7 +172,7 @@ export const triggerView = <ParentMessage>({
 export const portalView = <ParentMessage>({
   open,
   children,
-  classes,
+  className,
   style,
 }: PortalViewConfig): Html => {
   const h = html<ParentMessage>();
@@ -184,7 +184,7 @@ export const portalView = <ParentMessage>({
   return h.div(
     [
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(drawerPortalClasses, classes)),
+      h.Class(cn(drawerPortalClasses, className)),
     ],
     children
   );
@@ -200,7 +200,7 @@ export const popupView = <ParentMessage>({
   titleId,
   descriptionId,
   children,
-  classes,
+  className,
   style,
   state,
   modal = true,
@@ -252,7 +252,7 @@ export const popupView = <ParentMessage>({
           ]),
       ...(style === undefined ? [] : [h.Style(style)]),
       ...stateAttributes(h, state),
-      h.Class(cn(drawerPopupClasses, classes)),
+      h.Class(cn(drawerPopupClasses, className)),
     ],
     children
   );
@@ -289,7 +289,7 @@ export const closeView = <ParentMessage>({
   id,
   onClick,
   children,
-  classes,
+  className,
   style,
   testId,
 }: CloseViewConfig<ParentMessage>): Html => {
@@ -302,7 +302,7 @@ export const closeView = <ParentMessage>({
       h.OnClick(onClick),
       ...(testId === undefined ? [] : [h.DataAttribute("testid", testId)]),
       ...(style === undefined ? [] : [h.Style(style)]),
-      h.Class(cn(drawerCloseClasses, classes)),
+      h.Class(cn(drawerCloseClasses, className)),
     ],
     children
   );
