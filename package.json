@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "openstory dev --framework foldkit --port 6173",
+    "dev": "openstory dev --framework foldkit --host 127.0.0.1 --port 6173",
     "build": "bun scripts/build-openstory-site.mjs",
     "build:registry": "bun scripts/build-registry.mjs",
     "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-upstream-reference-contract.mjs && bun scripts/check-no-component-classname-api.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-openstory-stories.mjs && bun scripts/check-primitive-coverage.mjs && bun scripts/check-shadcn-doc-examples.mjs && bun scripts/check-origin-content-parity-agenda.mjs && bun scripts/check-origin-visual-parity-coverage.mjs && bun run check:invariants",
