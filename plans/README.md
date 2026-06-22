@@ -31,6 +31,8 @@ starting, honor its STOP conditions, and update your row when done.
 | 021  | Pilot component-owned hierarchy with OpenStory-only examples | P1 | L | 020 | DONE |
 | 022  | Codify component-local configuration and prove it with Button | P1 | M | 020, 021 | DONE |
 | 023  | Add OpenStory shadcn theme and mode selectors | P1 | M | 022 | DONE |
+| 024  | Expand OpenStory shadcn theme catalog and background theming | P1 | M | 023 | TODO |
+| 025  | Add a toggleable OpenStory UI dev HUD | P1 | L | 024 | TODO |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -171,6 +173,17 @@ REJECTED (with one-line rationale).
   light/dark/system selector, keep token theming global, and let components with
   local recipes opt into the selected style with component-owned fallback
   mapping.
+- 024 depends on 023 because it extends the shadcn OpenStory theme selector
+  added there. It should derive all locally checked-in shadcn theme options from
+  `registry/upstream/snapshots/shadcn/themes.ts`, keep neutral/light as the
+  default background selection, and preserve legacy `nova-zinc` compatibility
+  while making the wrapper background visibly use selected theme tokens.
+- 025 depends on 024 because both plans touch the OpenStory preview global and
+  decorator surface. It should add an off-by-default UI dev HUD for OpenStory
+  stories, with independent toolbar toggles for bounds, padding, margins, IDs,
+  data attributes, and browser events, while keeping DOM measurement isolated to
+  a dev-only OpenStory custom element and leaving installable registry source
+  untouched.
 
 ## Findings considered and rejected
 
