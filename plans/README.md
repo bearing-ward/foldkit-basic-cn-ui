@@ -26,7 +26,8 @@ starting, honor its STOP conditions, and update your row when done.
 | 016  | Add origin visual parity regression coverage     | P1       | L      | 009, 012                     | DONE   |
 | 017  | Add source-derived Base UI/shadcn compatibility  | P1       | L      | 016                          | DONE   |
 | 018  | Remove component className APIs and migrate styling to cn | P1 | L      | 017                          | DONE   |
-| 019  | Restore upstream-compatible className interfaces | P1       | L      | 018                          | TODO   |
+| 019  | Restore upstream-compatible className interfaces | P1       | L      | 018                          | DONE   |
+| 020  | Define project invariants and progress scorecard | P1       | M      | 019                          | DONE   |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -128,6 +129,12 @@ REJECTED (with one-line rationale).
   shadcn Button's `buttonVariants({ className })`, update generated registry
   output and examples, and replace the blanket word-ban guard with an
   origin-parity guard.
+- 020 depends on 019 because the invariant scorecard should grade the corrected
+  styling API policy, not the temporary overbroad `className` ban left by plan
+  018. It should turn the existing contracts, parity ledgers, and guard scripts
+  into a single progress rubric for maintainers and future plans, including a
+  required structural `check:invariants` guard and future-plan invariant-impact
+  requirements.
 
 ## Findings considered and rejected
 
