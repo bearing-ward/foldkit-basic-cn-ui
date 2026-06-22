@@ -302,26 +302,35 @@ Forbidden:
 
 ### `view.ts`
 
-`view.ts` owns presentation helpers and default styling constants.
+`view.ts` owns presentation helpers and default styling composition.
 
 Required:
 
-- Export default class constants per anatomy part:
-  `{component}RootClassName`, `{component}LabelClassName`, etc.
-- Keep behavior out of style constants.
-- Keep Tailwind defaults useful but replaceable.
+- Export typed style helpers or variant helpers with semantic names such as
+  `buttonVariants({ variant, size })`, `avatarRoot({ size })`, or
+  `{component}{Part}Classes(config)`.
+- Compose default classes through `cn` from `@/src/lib/utils` when joining
+  Tailwind strings.
+- Keep behavior out of style helpers.
+- Keep Tailwind defaults useful and tied to typed component options.
 - Export pure visual helper functions where useful:
-  `progressPercent`, `statusDataAttribute`, variant class helpers, size class
-  helpers, etc.
+  `progressPercent`, `statusDataAttribute`, variant helpers, size helpers,
+  part helpers, etc.
 - Use names that match documented anatomy parts.
+- Apply helper output with `h.Class(...)` inside Foldkit views.
 
 Default styling policy:
 
-- `*ClassName` props append to default registry classes.
-- `*Style` props apply inline styles to the same anatomy element.
+- Public style extension uses typed variant, size, tone, orientation, part, or
+  lane-specific options, not arbitrary string style overrides on component
+  config.
+- One-off consumer classes belong in caller-owned wrapper markup through
+  `h.Class(...)`.
 - If a component needs replacement styling instead of additive styling, add an
-  explicit documented option such as `unstyled`, not an ambiguous `className`
-  behavior change.
+  explicit documented option such as `unstyled`, not an ambiguous style escape
+  hatch.
+- `*Style` props may apply inline styles to the same anatomy element when the
+  component documents that inline styles are part of its public contract.
 - Document when inline style hooks are applied after computed component styles,
   because that means the consumer can override computed values.
 
