@@ -1,7 +1,6 @@
 import type { Preview } from "openstory/foldkit"
 
 import { withShadcnTheme } from "./openstory/shadcnTheme"
-import { withUiDevHud } from "./openstory/uiDevHud"
 import "./styles.css"
 
 // NOTE: Upstream contract checker anchors on this literal shadcn default shape: initialGlobals: { shadcnTheme: "rhea-neutral", shadcnMode: "light" }
@@ -59,117 +58,12 @@ const preview: Preview = {
                 ],
             },
         },
-        uiDevHud: {
-            name: "HUD",
-            description: "Toggle OpenStory UI development instrumentation.",
-            defaultValue: "off",
-            toolbar: {
-                title: "HUD",
-                icon: "eye",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
-        uiDevHudBounds: {
-            name: "Bounds",
-            description: "Show visible element bounds.",
-            defaultValue: "off",
-            toolbar: {
-                title: "Bounds",
-                icon: "square",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
-        uiDevHudPadding: {
-            name: "Padding",
-            description: "Show computed padding bands.",
-            defaultValue: "off",
-            toolbar: {
-                title: "Padding",
-                icon: "square",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
-        uiDevHudMargins: {
-            name: "Margins",
-            description: "Show computed margin area.",
-            defaultValue: "off",
-            toolbar: {
-                title: "Margins",
-                icon: "square",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
-        uiDevHudIds: {
-            name: "IDs",
-            description: "Show id and data-testid labels.",
-            defaultValue: "off",
-            toolbar: {
-                title: "IDs",
-                icon: "markup",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
-        uiDevHudData: {
-            name: "Data",
-            description: "Show data attributes.",
-            defaultValue: "off",
-            toolbar: {
-                title: "Data",
-                icon: "markup",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
-        uiDevHudEvents: {
-            name: "Events",
-            description: "Show recent browser DOM events.",
-            defaultValue: "off",
-            toolbar: {
-                title: "Events",
-                icon: "bolt",
-                dynamicTitle: true,
-                items: [
-                    { value: "off", title: "Off", icon: "circlehollow", color: "oklch(0.556 0 0)" },
-                    { value: "on", title: "On", icon: "circle", color: "oklch(0.723 0.219 149.579)" },
-                ],
-            },
-        },
     },
     initialGlobals: {
         shadcnTheme: "rhea-neutral",
         shadcnMode: "light",
-        uiDevHud: "off",
-        uiDevHudBounds: "off",
-        uiDevHudPadding: "off",
-        uiDevHudMargins: "off",
-        uiDevHudIds: "off",
-        uiDevHudData: "off",
-        uiDevHudEvents: "off",
     },
-    decorators: [withShadcnTheme, withUiDevHud],
+    decorators: [withShadcnTheme],
 }
 
 export default preview

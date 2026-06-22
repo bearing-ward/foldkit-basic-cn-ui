@@ -33,7 +33,8 @@ starting, honor its STOP conditions, and update your row when done.
 | 023  | Add OpenStory shadcn theme and mode selectors | P1 | M | 022 | DONE |
 | 024  | Expand OpenStory shadcn theme catalog and background theming | P1 | M | 023 | DONE |
 | 025  | Add a toggleable OpenStory UI dev HUD | P1 | L | 024 | TODO |
-| 026  | Activate exact origin visual parity across origin-backed components | P1 | L | 016, 025 | TODO |
+| 026  | Activate exact origin visual parity across origin-backed components | P1 | L | 016 | TODO |
+| 027  | Add OpenStory toolbar indicators | P1 | M | 023, 024 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -185,12 +186,24 @@ REJECTED (with one-line rationale).
   data attributes, and browser events, while keeping DOM measurement isolated to
   a dev-only OpenStory custom element and leaving installable registry source
   untouched.
-- 026 depends on 016 and 025 because it turns the existing origin visual parity
-  fixture machinery plus the OpenStory inspection HUD into an exactness ratchet:
-  start with the shadcn Button Rounded 32px-vs-36px drift, record the upstream
-  recipe and example source for class tokens/numeric values, then activate
-  DOM/class/computed-style/geometry/screenshot fixtures in small component
-  batches before marking additional origin-backed rows visually complete.
+- 026 depends on 016 because it turns the existing origin visual parity fixture
+  machinery into an exactness ratchet: start with the shadcn Button Rounded
+  32px-vs-36px drift, record the upstream recipe and example source for class
+  tokens/numeric values, then activate DOM/class/computed-style/geometry/
+  screenshot fixtures in small component batches before marking additional
+  origin-backed rows visually complete. Plan 025's UI dev HUD is deferred and
+  must not be treated as a prerequisite for parity verification.
+- 027 depends on 023 and 024 because it enriches the OpenStory toolbar globals
+  introduced by those plans: shadcn theme and shadcn mode.
+  The plan intentionally crosses into the local OpenStory file dependency
+  because the current shell type surface has partial item metadata while the top
+  bar renderer only shows text. It should add generic toolbar icon/color
+  rendering in OpenStory, then populate Foldkit CN's concrete theme and mode
+  metadata without touching installable registry component source. A first
+  2026-06-22 execute attempt stopped at OpenStory typecheck because `pnpm --dir`
+  was invoked from this repo's Bun root; the refreshed plan runs pnpm from the
+  OpenStory workspace root instead. HUD toolbar controls were removed from this
+  branch on 2026-06-22 and remain out of scope for plan 027.
 
 ## Findings considered and rejected
 
