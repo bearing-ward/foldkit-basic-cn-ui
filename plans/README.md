@@ -23,6 +23,10 @@ starting, honor its STOP conditions, and update your row when done.
 | 013  | Build the interactive OpenStory anatomy x-ray view | P1     | M      | -                            | DONE   |
 | 014  | Add OpenStory documentation reference stories    | P1       | L      | 013                          | DONE   |
 | 015  | Build the Quasar-like API reference widget       | P1       | M      | 014                          | DONE   |
+| 016  | Add origin visual parity regression coverage     | P1       | L      | 009, 012                     | DONE   |
+| 017  | Add source-derived Base UI/shadcn compatibility  | P1       | L      | 016                          | DONE   |
+| 018  | Remove component className APIs and migrate styling to cn | P1 | L      | 017                          | DONE   |
+| 019  | Restore upstream-compatible className interfaces | P1       | L      | 018                          | TODO   |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -65,6 +69,65 @@ REJECTED (with one-line rationale).
 - 015 depends on 014 because it replaces the first documentation reference
   story's plain API table with a reusable Quasar-like API widget for the Base UI
   Avatar pilot.
+- 016 depends on 009 and 012 because the parity suite should compare against the
+  generated OpenStory/docs component inventory and the refactored public registry
+  lane metadata. It adds automated DOM/class/computed-style/geometry/screenshot
+  guardrails for all public Base UI and shadcn origin-backed UI items without
+  making live upstream websites part of CI. A 2026-06-21 execution attempt in
+  `/Volumes/Sync/Development/Bearing-Ward/foldkit-basic-cn-ui-016` stopped at the
+  focused Base UI Button pilot because the first comparator treated upstream docs
+  typography and text-metric width drift as exact component drift. Later retry
+  work showed the parity-specific gates can pass while the broad Playwright
+  suite still has unrelated docs-shell, public-registry URL, and interactive
+  primitive baseline failures; those broad failures should not block 017 once
+  016's deterministic parity gates are green.
+- 017 depends on 016 because broad component interface, class-helper, and theme
+  refactors need an origin visual parity baseline first. It adds direct
+  Base UI/shadcn development-reference dependencies, source-derived upstream
+  snapshots/contracts, a shadcn-compatible `cn` utility, OpenStory-level shadcn
+  theme/style switching, guardrails that prevent React/upstream repo imports
+  from installable Foldkit source, and a shadcn Button pilot before the rest of
+  the registry moves toward upstream interface parity. A 2026-06-21 stacked
+  execution on `/Volumes/Sync/Development/Bearing-Ward/foldkit-basic-cn-ui-origin-parity-final`
+  initially reached green upstream/theme/Button/typecheck/registry/test gates,
+  but review found `shadcn-button.json` installed `src/lib/utils.ts` without
+  declaring `clsx` and `tailwind-merge`, while those dependencies were
+  accidentally added to `badge.json`; the smoke script also installed
+  `button`/`slider`, not the shadcn Button pilot. A focused follow-up commit
+  `65633137` fixed the dependency placement and updated the public install smoke
+  to install `shadcn-button` from branch-local registry output.
+- 018 depends on 017 because it removes the older `className`/`*ClassName`
+  styling surface only after the repo has a shared shadcn-compatible `cn`
+  utility, source-derived Base UI/shadcn reference contracts, OpenStory-level
+  theme switching, and a shadcn Button pilot with install/smoke coverage. It is
+  a registry-wide breaking cleanup that should update component contracts,
+  examples, generated registry output, and guard scripts together. A
+  2026-06-22 execute attempt on branch `codex/018-remove-component-classname-api`
+  reached commit `97d2c0a` for the guard/contract, then stopped with a dirty
+  broad migration because `bun run typecheck` failed twice after global
+  renames changed `src/ui/view/toast.ts` and `src/ui/view/virtualList.ts` to
+  call external Foldkit primitives with `entryClasses`/`containerClasses` while
+  `foldkit@0.104.0` still types those primitive inputs as
+  `entryClassName`/`containerClassName`. Retry from a clean checkout with the
+  refined plan boundary: remove the old style API from installable registry
+  components and generated registry output, but do not mass-rename unrelated
+  `src/**` callers of current external Foldkit primitive APIs.
+  A continuation commit `529ee767` salvaged the branch, reverted the broad
+  external primitive call-site rename fallout, removed the old
+  `className`/`*ClassName`/`classNames` component surface from registry UI
+  source and generated public registry JSON, and passed the full plan gates.
+  The approved implementation keeps `classes` as the new string extension hook
+  composed through `cn`; that is an intentional deviation from the stricter
+  "typed options only" wording in the original plan and matches this execution's
+  concrete user request to remove `*className` naming while moving composition
+  through `cn`.
+- 019 depends on 018 because it corrects the scope of that cleanup after review:
+  `className` should not be banned when it is part of the originating shadcn or
+  Base UI interface. Keep the `cn` migration and keep invented `*ClassName`
+  exports removed, but restore upstream-compatible `className` inputs such as
+  shadcn Button's `buttonVariants({ className })`, update generated registry
+  output and examples, and replace the blanket word-ban guard with an
+  origin-parity guard.
 
 ## Findings considered and rejected
 
