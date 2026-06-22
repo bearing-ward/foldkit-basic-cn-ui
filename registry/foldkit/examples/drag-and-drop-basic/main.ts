@@ -1,5 +1,5 @@
 import { Match as M, Option, Schema as S } from "effect";
-import { Command, Submodel } from "foldkit";
+import { Command, Submodel, Subscription } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
@@ -121,6 +121,14 @@ export const update = (
       },
     })
   );
+
+export const subscriptions = Subscription.lift(DragAndDrop.subscriptions)<
+  Model,
+  Message
+>({
+  toChildModel: (model) => model.dragAndDrop,
+  toParentMessage: (message) => GotDragAndDropMessage({ message }),
+});
 
 // VIEW
 
