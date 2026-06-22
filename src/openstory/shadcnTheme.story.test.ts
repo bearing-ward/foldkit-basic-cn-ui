@@ -12,6 +12,7 @@ import {
   resolveShadcnThemeName,
   shadcnThemeCatalog,
   shadcnThemeClassesForGlobals,
+  shadcnThemeColorVariableValue,
   shadcnModeGlobalKey,
   shadcnThemeGlobalKey,
   shadcnThemeGlobalTypes,
@@ -52,10 +53,20 @@ describe("shadcn OpenStory theme support", () => {
     );
     const items = shadcnThemeGlobalTypes[shadcnThemeGlobalKey].toolbar.items;
     const modes = shadcnThemeGlobalTypes[shadcnModeGlobalKey].toolbar.items;
+    const itemValues = items.map((item) => item.value);
 
     expect(items.length).toBe(themeKeys.size);
     for (const item of items) {
       expect(themeKeys.has(String(item.value))).toBe(true);
+    }
+    for (const value of [
+      "rhea-neutral",
+      "rhea-stone",
+      "rhea-amber",
+      "rhea-violet",
+      "rhea-yellow",
+    ]) {
+      expect(itemValues).toContain(value);
     }
     expect(modes.map((item) => item.value)).toEqual(["light", "dark", "system"]);
   });
@@ -63,12 +74,12 @@ describe("shadcn OpenStory theme support", () => {
   test("resolves selected theme and mode globals", () => {
     expect(
       resolveShadcnTheme({
-        [shadcnThemeGlobalKey]: "rhea-neutral",
+        [shadcnThemeGlobalKey]: "rhea-amber",
         [shadcnModeGlobalKey]: "dark",
       }),
     ).toMatchObject({
-      themeName: "rhea-neutral-dark",
-      themeKey: "rhea-neutral",
+      themeName: "rhea-amber-dark",
+      themeKey: "rhea-amber",
       requestedMode: "dark",
       resolvedMode: "dark",
     });
@@ -105,6 +116,13 @@ describe("shadcn OpenStory theme support", () => {
     expect(resolveShadcnThemeName({ [shadcnThemeGlobalKey]: "rhea-neutral-dark" })).toBe(
       "rhea-neutral-dark",
     );
+    expect(resolveShadcnTheme({ [shadcnThemeGlobalKey]: "nova-zinc-light" })).toMatchObject({
+      themeName: "nova-zinc-light",
+      themeKey: "nova-zinc",
+      style: "nova",
+      baseColor: "zinc",
+      resolvedMode: "light",
+    });
   });
 
   test("builds wrapper class names and CSS variables from globals", () => {
@@ -115,12 +133,18 @@ describe("shadcn OpenStory theme support", () => {
 
     expect(shadcnThemeClassesForGlobals(globals)).toContain("shadcn-theme-rhea");
     expect(shadcnThemeClassesForGlobals(globals)).toContain("dark");
-    expect(shadcnThemeStyleProperties(globals)["--primary"]).toBe("210 40% 98%");
+    expect(shadcnThemeClassesForGlobals(globals)).toContain("bg-background");
+    expect(shadcnThemeClassesForGlobals(globals)).toContain("text-foreground");
+    expect(shadcnThemeStyleProperties(globals)["--primary"]).toMatch(/^oklch\(/u);
     expect(shadcnThemeStyleProperties(globals)["--color-primary"]).toBe(
-      "hsl(210 40% 98%)",
+      shadcnThemeStyleProperties(globals)["--primary"],
+    );
+    expect(shadcnThemeColorVariableValue("210 40% 98%")).toBe("hsl(210 40% 98%)");
+    expect(shadcnThemeColorVariableValue("oklch(0.922 0 0)")).toBe(
+      "oklch(0.922 0 0)",
     );
     expect(shadcnThemeStyleProperties(globals)["--radius-md"]).toBe(
-      "calc(0.5rem - 2px)",
+      "calc(0.625rem - 2px)",
     );
   });
 
