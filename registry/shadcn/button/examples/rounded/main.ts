@@ -39,7 +39,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex flex-col items-start gap-2")],
     [
       Button.view<Message>({
-        className: "rounded-full",
+        variant: "outline",
+        size: "icon",
+        className: "size-8 rounded-full",
         children: ["↑"],
       }),
     ]

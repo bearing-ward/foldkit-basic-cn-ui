@@ -33,6 +33,7 @@ starting, honor its STOP conditions, and update your row when done.
 | 023  | Add OpenStory shadcn theme and mode selectors | P1 | M | 022 | DONE |
 | 024  | Expand OpenStory shadcn theme catalog and background theming | P1 | M | 023 | DONE |
 | 025  | Add a toggleable OpenStory UI dev HUD | P1 | L | 024 | TODO |
+| 026  | Activate exact origin visual parity across origin-backed components | P1 | L | 016, 025 | TODO |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -184,6 +185,12 @@ REJECTED (with one-line rationale).
   data attributes, and browser events, while keeping DOM measurement isolated to
   a dev-only OpenStory custom element and leaving installable registry source
   untouched.
+- 026 depends on 016 and 025 because it turns the existing origin visual parity
+  fixture machinery plus the OpenStory inspection HUD into an exactness ratchet:
+  start with the shadcn Button Rounded 32px-vs-36px drift, record the upstream
+  recipe and example source for class tokens/numeric values, then activate
+  DOM/class/computed-style/geometry/screenshot fixtures in small component
+  batches before marking additional origin-backed rows visually complete.
 
 ## Findings considered and rejected
 

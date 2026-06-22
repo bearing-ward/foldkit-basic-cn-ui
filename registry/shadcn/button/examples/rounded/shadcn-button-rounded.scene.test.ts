@@ -9,9 +9,21 @@ describe("shadcn button rounded example", () => {
       { update: Example.update, view: Example.view },
       Scene.with(Example.init()[0]),
       Scene.expect(Scene.role("button", { name: "↑" })).toExist(),
+      Scene.expect(Scene.role("button", { name: "↑" })).toHaveAttr(
+        "data-variant",
+        "outline",
+      ),
+      Scene.expect(Scene.role("button", { name: "↑" })).toHaveAttr(
+        "data-size",
+        "icon",
+      ),
+      Scene.expect(Scene.role("button", { name: "↑" })).toHaveClass(
+        "rounded-full",
+      ),
+      Scene.expect(Scene.role("button", { name: "↑" })).toHaveClass("size-8"),
       Scene.expect(Scene.role("button", { name: "↑" })).not.toHaveHandler(
-        "click"
-      )
+        "click",
+      ),
     );
   });
 });
