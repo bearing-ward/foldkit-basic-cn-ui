@@ -243,7 +243,21 @@ export const shadcnThemeStyleProperties = (
 ): Record<string, string> => {
   const theme = resolveShadcnTheme(globals, systemMode);
   return Object.fromEntries(
-    Object.entries(theme.tokens).map(([token, value]) => [`--${token}`, value]),
+    Object.entries(theme.tokens).flatMap(([token, value]) => {
+      if (token === "radius") {
+        return [
+          ["--radius", value],
+          ["--radius-sm", `calc(${value} - 4px)`],
+          ["--radius-md", `calc(${value} - 2px)`],
+          ["--radius-lg", value],
+          ["--radius-xl", `calc(${value} + 4px)`],
+        ];
+      }
+      return [
+        [`--${token}`, value],
+        [`--color-${token}`, `hsl(${value})`],
+      ];
+    }),
   );
 };
 
@@ -264,9 +278,6 @@ const wrapProgramConfig = (
   view: (model, viewInputs) => {
     const h = html<never>();
     const resolvedTheme = resolveShadcnTheme(globals);
-    const styleProperties = Object.fromEntries(
-      Object.entries(resolvedTheme.tokens).map(([token, value]) => [`--${token}`, value]),
-    );
     const storyView = config.view(
       model,
       isObject(viewInputs)
@@ -283,7 +294,7 @@ const wrapProgramConfig = (
         h.DataAttribute("shadcn-mode", resolvedTheme.requestedMode),
         h.DataAttribute("shadcn-resolved-mode", resolvedTheme.resolvedMode),
         h.DataAttribute("testid", "shadcn-theme-wrapper"),
-        h.Style(styleProperties),
+        h.Style(shadcnThemeStyleProperties(globals)),
       ],
       [storyView],
     );

@@ -56,6 +56,9 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
   const initialPrimary = await wrapper.evaluate((element) =>
     getComputedStyle(element).getPropertyValue("--primary").trim()
   );
+  const initialButtonBackground = await frame
+    .getByRole("button", { name: "Button" })
+    .evaluate((element) => getComputedStyle(element).backgroundColor);
 
   await page.getByLabel("mode").click();
   await page.getByRole("option", { name: "Dark" }).click();
@@ -67,6 +70,10 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
     getComputedStyle(element).getPropertyValue("--primary").trim()
   );
   expect(darkPrimary).not.toBe(initialPrimary);
+  const darkButtonBackground = await frame
+    .getByRole("button", { name: "Button" })
+    .evaluate((element) => getComputedStyle(element).backgroundColor);
+  expect(darkButtonBackground).not.toBe(initialButtonBackground);
 
   await page.getByLabel("shadcn").click();
   await page.getByRole("option", { name: "Nova Zinc" }).click();

@@ -116,6 +116,12 @@ describe("shadcn OpenStory theme support", () => {
     expect(shadcnThemeClassesForGlobals(globals)).toContain("shadcn-theme-rhea");
     expect(shadcnThemeClassesForGlobals(globals)).toContain("dark");
     expect(shadcnThemeStyleProperties(globals)["--primary"]).toBe("210 40% 98%");
+    expect(shadcnThemeStyleProperties(globals)["--color-primary"]).toBe(
+      "hsl(210 40% 98%)",
+    );
+    expect(shadcnThemeStyleProperties(globals)["--radius-md"]).toBe(
+      "calc(0.5rem - 2px)",
+    );
   });
 
   test("leaves non-shadcn stories unwrapped", () => {
