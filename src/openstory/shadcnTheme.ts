@@ -147,6 +147,25 @@ const selectedThemeKey = (themeKeyValue: unknown): string =>
     ? themeKeyValue
     : defaultShadcnThemeKey;
 
+const legacyNovaZincTheme = (
+  requestedMode: ShadcnColorMode,
+): ResolvedShadcnTheme => {
+  const zincTheme =
+    themeByKeyAndMode("rhea-zinc", "light") ??
+    themeByKeyAndMode(defaultShadcnThemeKey, "light") ??
+    defaultTheme();
+
+  return {
+    themeName: "nova-zinc-light",
+    themeKey: "nova-zinc",
+    requestedMode,
+    resolvedMode: "light",
+    style: "nova",
+    baseColor: "zinc",
+    tokens: zincTheme.tokens,
+  };
+};
+
 const resolveSystemMode = (
   systemMode: "light" | "dark" | undefined,
 ): "light" | "dark" => {
@@ -186,6 +205,7 @@ export const resolveShadcnTheme = (
   globals: Record<string, unknown> | undefined,
   systemMode?: "light" | "dark",
 ): ResolvedShadcnTheme => {
+  const requestedTheme = globals?.[shadcnThemeGlobalKey];
   const oldCombinedTheme = themeByName(globals?.[shadcnThemeGlobalKey]);
   if (oldCombinedTheme !== undefined) {
     return {
@@ -199,7 +219,16 @@ export const resolveShadcnTheme = (
     };
   }
 
+  if (requestedTheme === "nova-zinc-light") {
+    return legacyNovaZincTheme("light");
+  }
+
   const requestedMode = resolveShadcnMode(globals, systemMode);
+
+  if (requestedTheme === "nova-zinc") {
+    return legacyNovaZincTheme(requestedMode);
+  }
+
   const resolvedMode = resolvedModeFor(requestedMode, systemMode);
   const selectedKey = selectedThemeKey(globals?.[shadcnThemeGlobalKey]);
   const fallbackDefaultKey = `${themeContract.defaultStyle}-${themeContract.defaultBaseColor}`;
@@ -234,7 +263,14 @@ export const shadcnThemeClassesForGlobals = (
   systemMode?: "light" | "dark",
 ): string => {
   const theme = resolveShadcnTheme(globals, systemMode);
-  return `shadcn-theme shadcn-theme-${theme.style} shadcn-theme-${theme.baseColor} ${theme.resolvedMode}`;
+  return `shadcn-theme shadcn-theme-${theme.style} shadcn-theme-${theme.baseColor} ${theme.resolvedMode} bg-background text-foreground`;
+};
+
+export const shadcnThemeColorVariableValue = (value: string): string => {
+  if (/^(oklch|hsl|var)\(/u.test(value) || value.includes("/")) {
+    return value;
+  }
+  return `hsl(${value})`;
 };
 
 export const shadcnThemeStyleProperties = (
@@ -255,7 +291,7 @@ export const shadcnThemeStyleProperties = (
       }
       return [
         [`--${token}`, value],
-        [`--color-${token}`, `hsl(${value})`],
+        [`--color-${token}`, shadcnThemeColorVariableValue(value)],
       ];
     }),
   );
@@ -286,9 +322,7 @@ const wrapProgramConfig = (
     ) as HtmlChild;
     return h.div(
       [
-        h.Class(
-          `shadcn-theme shadcn-theme-${resolvedTheme.style} shadcn-theme-${resolvedTheme.baseColor} ${resolvedTheme.resolvedMode}`,
-        ),
+        h.Class(shadcnThemeClassesForGlobals(globals)),
         h.DataAttribute("shadcn-theme", resolvedTheme.themeName),
         h.DataAttribute("shadcn-theme-key", resolvedTheme.themeKey),
         h.DataAttribute("shadcn-mode", resolvedTheme.requestedMode),

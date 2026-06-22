@@ -97,77 +97,6 @@ const requiredThemeTokens = [
   "sidebar-ring",
 ];
 
-const defaultThemeTokens = {
-  light: {
-    background: "0 0% 100%",
-    foreground: "222.2 84% 4.9%",
-    card: "0 0% 100%",
-    "card-foreground": "222.2 84% 4.9%",
-    popover: "0 0% 100%",
-    "popover-foreground": "222.2 84% 4.9%",
-    primary: "222.2 47.4% 11.2%",
-    "primary-foreground": "210 40% 98%",
-    secondary: "210 40% 96.1%",
-    "secondary-foreground": "222.2 47.4% 11.2%",
-    muted: "210 40% 96.1%",
-    "muted-foreground": "215.4 16.3% 46.9%",
-    accent: "210 40% 96.1%",
-    "accent-foreground": "222.2 47.4% 11.2%",
-    destructive: "0 84.2% 60.2%",
-    border: "214.3 31.8% 91.4%",
-    input: "214.3 31.8% 91.4%",
-    ring: "222.2 84% 4.9%",
-    "chart-1": "12 76% 61%",
-    "chart-2": "173 58% 39%",
-    "chart-3": "197 37% 24%",
-    "chart-4": "43 74% 66%",
-    "chart-5": "27 87% 67%",
-    sidebar: "0 0% 98%",
-    "sidebar-foreground": "240 5.3% 26.1%",
-    "sidebar-primary": "240 5.9% 10%",
-    "sidebar-primary-foreground": "0 0% 98%",
-    "sidebar-accent": "240 4.8% 95.9%",
-    "sidebar-accent-foreground": "240 5.9% 10%",
-    "sidebar-border": "220 13% 91%",
-    "sidebar-ring": "217.2 91.2% 59.8%",
-    radius: "0.5rem",
-  },
-  dark: {
-    background: "222.2 84% 4.9%",
-    foreground: "210 40% 98%",
-    card: "222.2 84% 4.9%",
-    "card-foreground": "210 40% 98%",
-    popover: "222.2 84% 4.9%",
-    "popover-foreground": "210 40% 98%",
-    primary: "210 40% 98%",
-    "primary-foreground": "222.2 47.4% 11.2%",
-    secondary: "217.2 32.6% 17.5%",
-    "secondary-foreground": "210 40% 98%",
-    muted: "217.2 32.6% 17.5%",
-    "muted-foreground": "215 20.2% 65.1%",
-    accent: "217.2 32.6% 17.5%",
-    "accent-foreground": "210 40% 98%",
-    destructive: "0 62.8% 30.6%",
-    border: "217.2 32.6% 17.5%",
-    input: "217.2 32.6% 17.5%",
-    ring: "212.7 26.8% 83.9%",
-    "chart-1": "220 70% 50%",
-    "chart-2": "160 60% 45%",
-    "chart-3": "30 80% 55%",
-    "chart-4": "280 65% 60%",
-    "chart-5": "340 75% 55%",
-    sidebar: "240 5.9% 10%",
-    "sidebar-foreground": "240 4.8% 95.9%",
-    "sidebar-primary": "224.3 76.3% 48%",
-    "sidebar-primary-foreground": "0 0% 100%",
-    "sidebar-accent": "240 3.7% 15.9%",
-    "sidebar-accent-foreground": "240 4.8% 95.9%",
-    "sidebar-border": "240 3.7% 15.9%",
-    "sidebar-ring": "217.2 91.2% 59.8%",
-    radius: "0.5rem",
-  },
-};
-
 const usage = () => {
   throw new Error(
     "Usage: bun run sync:upstream-contracts -- --check | --write"
@@ -290,6 +219,200 @@ const extractObjectEntries = (source, objectName) => {
   return entries;
 };
 
+const findBalancedEnd = (source, start, openChar, closeChar) => {
+  let depth = 0;
+  let quote = undefined;
+  let escaped = false;
+
+  for (let index = start; index < source.length; index += 1) {
+    const char = source[index];
+
+    if (quote !== undefined) {
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (char === quote) {
+        quote = undefined;
+      }
+      continue;
+    }
+
+    if (char === "\"" || char === "'" || char === "`") {
+      quote = char;
+      continue;
+    }
+
+    if (char === openChar) {
+      depth += 1;
+    }
+
+    if (char === closeChar) {
+      depth -= 1;
+      if (depth === 0) {
+        return index;
+      }
+    }
+  }
+
+  throw new Error(`Could not parse balanced ${openChar}${closeChar} block`);
+};
+
+const extractBalancedBlock = (source, start, openChar, closeChar) => {
+  const blockStart = source.indexOf(openChar, start);
+
+  if (blockStart === -1) {
+    throw new Error(`Could not find ${openChar} while parsing shadcn themes`);
+  }
+
+  const blockEnd = findBalancedEnd(source, blockStart, openChar, closeChar);
+
+  return source.slice(blockStart + 1, blockEnd);
+};
+
+const stringProperty = (source, propertyName) => {
+  const match = new RegExp(`${propertyName}:\\s*"((?:\\\\.|[^"\\\\])*)"`, "u").exec(
+    source
+  );
+
+  return match?.[1];
+};
+
+const objectProperty = (source, propertyName) => {
+  const propertyStart = source.indexOf(`${propertyName}:`);
+
+  if (propertyStart === -1) {
+    return undefined;
+  }
+
+  return extractBalancedBlock(source, propertyStart, "{", "}");
+};
+
+const topLevelObjects = (source) => {
+  const objects = [];
+  let index = 0;
+
+  while (index < source.length) {
+    const objectStart = source.indexOf("{", index);
+
+    if (objectStart === -1) {
+      return objects;
+    }
+
+    const objectEnd = findBalancedEnd(source, objectStart, "{", "}");
+    objects.push(source.slice(objectStart, objectEnd + 1));
+    index = objectEnd + 1;
+  }
+
+  return objects;
+};
+
+const parseStringMap = (source) =>
+  Object.fromEntries(
+    [...source.matchAll(/(?:"([^"]+)"|([A-Za-z_$][\w$-]*)):\s*"((?:\\.|[^"\\])*)"/gu)].map(
+      (match) => [match[1] ?? match[2], match[3]]
+    )
+  );
+
+const titleCase = (value) =>
+  value
+    .split("-")
+    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+    .join(" ");
+
+const themeEntryFromSnapshotObject = (objectSource) => {
+  const cssVarsSource = objectProperty(objectSource, "cssVars");
+
+  if (cssVarsSource === undefined) {
+    throw new Error("Could not derive cssVars from shadcn theme entry");
+  }
+
+  const cssVars = Object.fromEntries(
+    ["light", "dark"].flatMap((mode) => {
+      const modeSource = objectProperty(cssVarsSource, mode);
+
+      return modeSource === undefined ? [] : [[mode, parseStringMap(modeSource)]];
+    })
+  );
+
+  return {
+    name: stringProperty(objectSource, "name"),
+    title: stringProperty(objectSource, "title"),
+    type: stringProperty(objectSource, "type"),
+    cssVars,
+  };
+};
+
+const deriveSnapshotThemeEntries = (themesSnapshot) => {
+  const themesDeclaration = themesSnapshot.indexOf("export const THEMES");
+
+  if (themesDeclaration === -1) {
+    throw new Error("Could not find THEMES registry array in shadcn theme snapshot");
+  }
+
+  const themesInitializer = themesSnapshot.indexOf("=", themesDeclaration);
+
+  if (themesInitializer === -1) {
+    throw new Error("Could not find THEMES registry array initializer");
+  }
+
+  const themesArray = extractBalancedBlock(
+    themesSnapshot,
+    themesInitializer,
+    "[",
+    "]"
+  );
+  const themes = topLevelObjects(themesArray)
+    .map(themeEntryFromSnapshotObject)
+    .filter((theme) => theme.type === "registry:theme");
+
+  const neutralTheme = themes.find((theme) => theme.name === "neutral");
+
+  if (neutralTheme === undefined) {
+    throw new Error("shadcn theme snapshot must include neutral");
+  }
+
+  return themes.flatMap((theme) => {
+    if (theme.name === undefined || theme.title === undefined) {
+      throw new Error("shadcn theme entry is missing name or title");
+    }
+
+    const fallbackRadius =
+      Object.values(theme.cssVars).find((tokens) => tokens.radius !== undefined)
+        ?.radius ??
+      Object.values(neutralTheme.cssVars).find((tokens) => tokens.radius !== undefined)
+        ?.radius;
+
+    return Object.entries(theme.cssVars).map(([mode, tokens]) => {
+      const neutralTokens = neutralTheme.cssVars[mode] ?? {};
+      const tokensWithDefaults = { ...neutralTokens, ...tokens };
+      const tokensWithRadius =
+        tokensWithDefaults.radius === undefined && fallbackRadius !== undefined
+          ? { ...tokensWithDefaults, radius: fallbackRadius }
+          : tokensWithDefaults;
+
+      for (const token of [...requiredThemeTokens, "radius"]) {
+        if (tokensWithRadius[token] === undefined) {
+          throw new Error(`${theme.name} ${mode} is missing ${token}`);
+        }
+      }
+
+      return {
+        name: `rhea-${theme.name}-${mode}`,
+        label: `Rhea ${titleCase(theme.name)} ${titleCase(mode)}`,
+        style: "rhea",
+        baseColor: theme.name,
+        mode,
+        tokens: tokensWithRadius,
+      };
+    });
+  });
+};
+
 const deriveButtonContract = ({ snapshot, snapshotDigest }) => {
   const variants = extractObjectEntries(snapshot, "variant");
   const sizes = extractObjectEntries(snapshot, "size");
@@ -316,6 +439,7 @@ const deriveUtilsContract = ({ snapshotDigest }) => ({
 
 const deriveThemeContract = ({
   themesDigest,
+  themesSnapshot,
   presetsDigest,
   presetsSnapshot,
 }) => {
@@ -338,37 +462,7 @@ const deriveThemeContract = ({
     themeNames,
     tokenNames: requiredThemeTokens,
     radiusScale: ["sm", "md", "lg", "xl"],
-    themes: [
-      {
-        name: "rhea-neutral-light",
-        label: "Rhea Neutral Light",
-        style: "rhea",
-        baseColor: "neutral",
-        mode: "light",
-        tokens: defaultThemeTokens.light,
-      },
-      {
-        name: "rhea-neutral-dark",
-        label: "Rhea Neutral Dark",
-        style: "rhea",
-        baseColor: "neutral",
-        mode: "dark",
-        tokens: defaultThemeTokens.dark,
-      },
-      {
-        name: "nova-zinc-light",
-        label: "Nova Zinc Light",
-        style: "nova",
-        baseColor: "zinc",
-        mode: "light",
-        tokens: {
-          ...defaultThemeTokens.light,
-          primary: "240 5.9% 10%",
-          "primary-foreground": "0 0% 98%",
-          ring: "240 5.9% 10%",
-        },
-      },
-    ],
+    themes: deriveSnapshotThemeEntries(themesSnapshot),
   };
 };
 
@@ -402,41 +496,31 @@ const deriveBaseUiButtonContract = ({
 };
 
 const buildWritePayload = async () => {
-  const shadcnSha = await fetchShadcnMainSha();
   const snapshots = new Map();
-  const sources = [];
+  const manifest = await readJson(manifestPath);
+  const sources = manifest.sources.map((source) => {
+    if (typeof source.snapshotPath !== "string") {
+      throw new Error(`${source.id ?? "<unknown>"} is missing snapshotPath`);
+    }
 
-  for (const source of githubSources) {
-    const url = `${shadcnRawBaseUrl}/${shadcnSha}/${source.path}`;
-    const text = await fetchText(url);
-    const digest = sha256(text);
-    snapshots.set(source.id, { text, digest, ...source, url, pinnedRef: shadcnSha });
-    sources.push({
-      id: source.id,
-      kind: "github-raw",
-      url,
-      pinnedRef: shadcnSha,
-      snapshotPath: source.snapshotPath,
-      derivedContractPath: source.derivedPath,
-      digest,
-    });
-  }
+    const matchingSource =
+      githubSources.find((candidate) => candidate.id === source.id) ??
+      localSources.find((candidate) => candidate.id === source.id);
 
-  for (const source of localSources) {
-    const packageJson = await readJson(path.join(rootDir, source.packageJsonPath));
-    const text = await readText(path.join(rootDir, source.sourcePath));
+    if (matchingSource === undefined) {
+      throw new Error(`Unknown upstream source ${source.id ?? "<unknown>"}`);
+    }
+
+    return {
+      ...source,
+      derivedContractPath: matchingSource.derivedPath,
+    };
+  });
+
+  for (const source of sources) {
+    const text = await readText(path.join(upstreamDir, source.snapshotPath));
     const digest = sha256(text);
-    snapshots.set(source.id, { text, digest, ...source, packageVersion: packageJson.version });
-    sources.push({
-      id: source.id,
-      kind: source.kind,
-      packageName: source.packageName,
-      packageVersion: packageJson.version,
-      localSourcePath: source.sourcePath,
-      snapshotPath: source.snapshotPath,
-      derivedContractPath: source.derivedPath,
-      digest,
-    });
+    snapshots.set(source.id, { text, digest, ...source });
   }
 
   const derived = {
@@ -449,6 +533,7 @@ const buildWritePayload = async () => {
     }),
     "derived/shadcn-theme.json": deriveThemeContract({
       themesDigest: snapshots.get("shadcn-themes").digest,
+      themesSnapshot: snapshots.get("shadcn-themes").text,
       presetsDigest: snapshots.get("shadcn-preset-package").digest,
       presetsSnapshot: snapshots.get("shadcn-preset-package").text,
     }),
@@ -462,8 +547,7 @@ const buildWritePayload = async () => {
 
   return {
     manifest: {
-      version: 1,
-      generatedAt: new Date().toISOString(),
+      ...manifest,
       sources,
     },
     snapshots,
@@ -617,6 +701,7 @@ const checkMode = async () => {
       "derived/shadcn-theme.json": stableJson(
         deriveThemeContract({
           themesDigest: sha256(snapshots.shadcnThemes),
+          themesSnapshot: snapshots.shadcnThemes,
           presetsDigest: sha256(snapshots.shadcnPreset),
           presetsSnapshot: snapshots.shadcnPreset,
         })
