@@ -62,6 +62,30 @@ const uniqueThemeEntriesByKey = themeContract.themes.filter(
 
 export const shadcnThemeNames = uniqueThemeEntriesByKey.map(themeKey);
 
+const themeIndicatorColor = (theme: ShadcnThemeEntry): string => {
+  const key = themeKey(theme);
+  const lightTheme = themeContract.themes.find(
+    (candidate) => themeKey(candidate) === key && candidate.mode === "light",
+  );
+  const firstMatchingTheme = themeContract.themes.find(
+    (candidate) => themeKey(candidate) === key,
+  );
+
+  return (
+    lightTheme?.tokens.primary ??
+    firstMatchingTheme?.tokens.primary ??
+    lightTheme?.tokens.background ??
+    firstMatchingTheme?.tokens.background ??
+    theme.tokens.background
+  );
+};
+
+const modeIndicators = {
+  light: { icon: "sun", color: "oklch(0.985 0 0)" },
+  dark: { icon: "moon", color: "oklch(0.145 0 0)" },
+  system: { icon: "monitor", color: "oklch(0.556 0 0)" },
+} satisfies Record<ShadcnColorMode, { icon: string; color: string }>;
+
 export const defaultShadcnThemeName =
   `${themeContract.defaultStyle}-${themeContract.defaultBaseColor}-${themeContract.defaultMode}`;
 
@@ -80,6 +104,8 @@ export const shadcnThemeGlobalTypes = {
       items: uniqueThemeEntriesByKey.map((theme) => ({
         value: themeKey(theme),
         title: `${toTitle(theme.style)} ${toTitle(theme.baseColor)}`,
+        icon: "circlehollow",
+        color: themeIndicatorColor(theme),
       })),
     },
   },
@@ -94,6 +120,8 @@ export const shadcnThemeGlobalTypes = {
       items: colorModes.map((mode) => ({
         value: mode,
         title: toTitle(mode),
+        icon: modeIndicators[mode].icon,
+        color: modeIndicators[mode].color,
       })),
     },
   },
