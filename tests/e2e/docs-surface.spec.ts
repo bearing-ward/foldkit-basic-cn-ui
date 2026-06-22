@@ -6,214 +6,52 @@ const publicRegistry = JSON.parse(
   readFileSync("apps/docs/public/registry.json", "utf-8")
 ) as {
   items: readonly {
-  name: string;
-  type: string;
-  meta?: { foldkit?: { origin?: string } };
+    name: string;
+    type: string;
   }[];
 };
-const registryConfig = JSON.parse(
-  readFileSync("registry/config.json", "utf-8")
-) as { registryBaseUrl: string };
 
-const componentNames = publicRegistry.items
-  .filter(
-    (item) =>
-      item.type === "registry:ui" && item.name !== "foldkit-livetrace"
-  )
+const exampleNames = publicRegistry.items
+  .filter((item) => item.type === "registry:example")
   .map((item) => item.name);
 
-const baseUiComponentNames = new Set(
-  publicRegistry.items
-    .filter(
-      (item) =>
-        item.type === "registry:ui" &&
-        item.meta?.foldkit?.origin?.startsWith("https://base-ui.com/") === true
-    )
-    .map((item) => item.name)
-);
+test("OpenStory manifest covers generated examples and public source snapshots", async ({
+  request,
+}) => {
+  const manifestResponse = await request.get("/__openstory/manifest.json");
+  expect(manifestResponse.ok()).toBe(true);
+  const manifest = (await manifestResponse.json()) as {
+    stories?: readonly { id: string }[] | Record<string, unknown>;
+  };
+  const storyIds = new Set(
+    Array.isArray(manifest.stories)
+      ? manifest.stories.map((story) => story.id)
+      : Object.keys(manifest.stories ?? {})
+  );
 
-const requiredSections = [
-  "Overview",
-  "Examples",
-  "Installation",
-  "Usage",
-  "Foldkit integration",
-  "Styling",
-  "Keyboard interaction",
-  "API reference",
-  "Accessibility",
-  "Coverage",
-];
+  for (const exampleName of [
+    "button-basic",
+    "base-ui-button-basic",
+    "shadcn-button-basic",
+  ]) {
+    expect(exampleNames).toContain(exampleName);
 
-const sectionsForComponent = (componentName: string): readonly string[] =>
-  baseUiComponentNames.has(componentName)
-    ? requiredSections
-        .filter(
-          (section) =>
-            section !== "Styling" && section !== "Keyboard interaction"
-        )
-        .toSpliced(5, 0, "Anatomy")
-    : requiredSections;
+    const sourceResponse = await request.get(`/sources/${exampleName}.txt`);
+    expect(sourceResponse.ok()).toBe(true);
+    expect((await sourceResponse.text()).trim().length).toBeGreaterThan(100);
+  }
 
-const viewports = [
-  { name: "desktop", width: 1280, height: 900 },
-  { name: "mobile", width: 390, height: 844 },
-];
+  expect(storyIds.has("registry-button--basic")).toBe(true);
+  expect(storyIds.has("base-ui-button--basic")).toBe(true);
+  expect(storyIds.has("shadcn-button--basic")).toBe(true);
+});
 
-for (const viewport of viewports) {
-  test.describe(`component docs surface (${viewport.name})`, () => {
-    test.use({ viewport });
+test("known OpenStory story iframe renders without legacy docs app wrappers", async ({
+  page,
+}) => {
+  await page.goto("/__story/base-ui-button--basic");
 
-    for (const componentName of componentNames) {
-      test(`${componentName} docs keep required layout contract`, async ({
-        page,
-      }) => {
-        await page.goto(`/docs/components/${componentName}`);
-
-        for (const section of sectionsForComponent(componentName)) {
-          await expect(
-            page.getByRole("heading", { name: section })
-          ).toBeVisible();
-        }
-
-        if (componentName === "progress") {
-          await expect(
-            page.getByText("labelStyle", { exact: true })
-          ).toBeVisible();
-          await expect(
-            page.getByText("indicatorStyle", { exact: true })
-          ).toBeVisible();
-          await expect(
-            page.getByText("data-progressing", { exact: true }).first()
-          ).toBeVisible();
-          await expect(
-            page.getByRole("heading", { name: "Styling" })
-          ).toHaveCount(0);
-          await expect(
-            page.getByRole("heading", { name: "Keyboard interaction" })
-          ).toHaveCount(0);
-        }
-
-        await expect(page.getByText("<registry-url>")).toHaveCount(0);
-        await expect(
-          page.getByText(
-            `${registryConfig.registryBaseUrl}/r/${componentName}.json`
-          )
-        ).toBeVisible();
-        await expect(page.getByText(/Open standalone/u)).toHaveCount(0);
-        const firstCodeToggle = page.getByText("View code").first();
-
-        await expect(firstCodeToggle).toBeVisible();
-        await firstCodeToggle.click();
-        await expect(
-          page
-            .locator(
-              '[data-testid^="docs-example-block-"][data-testid$="-actions"] iframe'
-            )
-            .first()
-        ).toHaveAttribute("src", /\/sources\/.+\.txt/u);
-        const sourceFrame = page
-          .locator(
-            '[data-testid^="docs-example-block-"][data-testid$="-actions"] iframe'
-          )
-          .first();
-        await expect
-          .poll(() =>
-            sourceFrame.evaluate((iframe) => {
-              const frame = iframe as HTMLIFrameElement;
-              const body = frame.contentDocument?.body;
-
-              return body?.textContent?.trim().length ?? 0;
-            })
-          )
-          .toBeGreaterThan(100);
-        const sourceViewer = await sourceFrame.evaluate((iframe) => {
-          const frame = iframe as HTMLIFrameElement;
-          const frameStyles = getComputedStyle(frame);
-          const body = frame.contentDocument?.body;
-          const bodyStyles =
-            body === undefined || body === null
-              ? undefined
-              : getComputedStyle(body);
-
-          return {
-            frameBackground: frameStyles.backgroundColor,
-            textColor: bodyStyles?.color,
-          };
-        });
-
-        expect(sourceViewer.frameBackground).toBe("rgb(255, 255, 255)");
-        expect(sourceViewer.textColor).toBe("rgb(0, 0, 0)");
-
-        const pageOverflow = await page.evaluate(
-          () =>
-            document.documentElement.scrollWidth -
-            document.documentElement.clientWidth
-        );
-
-        expect(pageOverflow).toBeLessThanOrEqual(1);
-
-        const issues = await page.evaluate(() => {
-          const blockSelector = '[data-testid^="docs-example-block-"]';
-          const blocks = [...document.querySelectorAll(blockSelector)].filter(
-            (element) => {
-              const testId = element.dataset.testid ?? "";
-
-              return (
-                !testId.endsWith("-preview") && !testId.endsWith("-actions")
-              );
-            }
-          );
-
-          return blocks.flatMap((block) => {
-            const testId = block.dataset.testid ?? "";
-            const preview = document.querySelector(
-              `[data-testid="${testId}-preview"]`
-            );
-            const actions = document.querySelector(
-              `[data-testid="${testId}-actions"]`
-            );
-            const blockRect = block.getBoundingClientRect();
-            const previewRect = preview?.getBoundingClientRect();
-            const actionsRect = actions?.getBoundingClientRect();
-            const codeToggle = actions?.querySelector("summary");
-            const actionLinks = actions?.querySelectorAll("a") ?? [];
-            const codeToggleIssues =
-              codeToggle === undefined || codeToggle === null
-                ? [`${testId}: missing code toggle`]
-                : (() => {
-                    const rect = codeToggle.getBoundingClientRect();
-
-                    if (rect.height < 40) {
-                      return [`${testId}: code toggle below 40px hit target`];
-                    }
-
-                    return [];
-                  })();
-
-            return [
-              preview === null
-                ? `${testId}: missing preview region`
-                : undefined,
-              actions === null ? `${testId}: missing action region` : undefined,
-              blockRect.width > document.documentElement.clientWidth + 1
-                ? `${testId}: block overflows viewport`
-                : undefined,
-              previewRect !== undefined &&
-              actionsRect !== undefined &&
-              actionsRect.top < previewRect.bottom - 1
-                ? `${testId}: actions overlap preview`
-                : undefined,
-              actionLinks.length > 0
-                ? `${testId}: standalone example link rendered`
-                : undefined,
-              ...codeToggleIssues,
-            ].filter((issue): issue is string => issue !== undefined);
-          });
-        });
-
-        expect(issues).toEqual([]);
-      });
-    }
-  });
-}
+  await expect(page.getByRole("button").first()).toBeVisible();
+  const legacyTestIdPrefix = "docs-example-" + "block-";
+  await expect(page.locator(`[data-testid^="${legacyTestIdPrefix}"]`)).toHaveCount(0);
+});

@@ -11,37 +11,37 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/foldkit/ui/example-card/index.ts",
+          "path": "registry/foldkit/example-card/ui/index.ts",
           "target": "src/ui/example-card/index.ts",
           "type": "registry:ui"
         },
         {
-          "path": "registry/foldkit/ui/example-card/view.ts",
+          "path": "registry/foldkit/example-card/ui/view.ts",
           "target": "src/ui/example-card/view.ts",
           "type": "registry:ui"
         },
         {
-          "path": "registry/foldkit/ui/example-card/example-card.scene.test.ts",
+          "path": "registry/foldkit/example-card/ui/example-card.scene.test.ts",
           "target": "src/ui/example-card/example-card.scene.test.ts",
           "type": "registry:ui"
         },
         {
-          "path": "registry/foldkit/examples/example-card-basic/main.ts",
+          "path": "registry/foldkit/example-card/examples/basic/main.ts",
           "target": "src/examples/example-card-basic/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/foldkit/examples/example-card-basic/entry.ts",
+          "path": "registry/foldkit/example-card/examples/basic/entry.ts",
           "target": "src/examples/example-card-basic/entry.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/foldkit/examples/example-card-basic/index.html",
+          "path": "registry/foldkit/example-card/examples/basic/index.html",
           "target": "src/examples/example-card-basic/index.html",
           "type": "registry:example"
         },
         {
-          "path": "registry/foldkit/examples/example-card-basic/example-card-basic.scene.test.ts",
+          "path": "registry/foldkit/example-card/examples/basic/example-card-basic.scene.test.ts",
           "target": "src/examples/example-card-basic/example-card-basic.scene.test.ts",
           "type": "registry:example"
         }

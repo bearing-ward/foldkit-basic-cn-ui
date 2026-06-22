@@ -5,30 +5,7 @@
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["*"],
-      "app-main": ["src/main.ts"],
-      "docs-example-routes": ["src/docsExampleRoutes.ts"],
-      "docs-example-previews-accordion": [
-        "src/docsExamplePreviewsAccordion.ts"
-      ],
-      "docs-example-previews-alert": ["src/docsExamplePreviewsAlert.ts"],
-      "docs-example-previews-animation": [
-        "src/docsExamplePreviewsAnimation.ts"
-      ],
-      "docs-example-previews-aspect": ["src/docsExamplePreviewsAspect.ts"],
-      "docs-example-previews-autocomplete": [
-        "src/docsExamplePreviewsAutocomplete.ts"
-      ],
-      "docs-example-previews-avatar": ["src/docsExamplePreviewsAvatar.ts"],
-      "docs-example-previews-b": ["src/docsExamplePreviewsB.ts"],
-      "docs-example-previews-cd": ["src/docsExamplePreviewsCD.ts"],
-      "docs-example-previews-ei": ["src/docsExamplePreviewsEI.ts"],
-      "docs-example-previews-jm": ["src/docsExamplePreviewsJM.ts"],
-      "docs-example-previews-nz": ["src/docsExamplePreviewsNZ.ts"],
-      "docs-example-previews-shadcn-missing": [
-        "src/docsExamplePreviewsShadcnMissing.ts"
-      ],
-      "legacy-ui-views": ["src/ui/view/index.ts"]
+      "@/*": ["*"]
     },
     "lib": ["ES2022", "DOM"],
     "moduleResolution": "bundler",
@@ -42,5 +19,8 @@
     "noEmit": true
   },
   "include": ["src/**/*", "registry/**/*"],
-  "exclude": ["registry/upstream/snapshots/**/*"]
+  "exclude": [
+    "registry/upstream/snapshots/**/*",
+    "src/docsView.ts"
+  ]
 }

@@ -21409,7 +21409,7 @@ Separator.view<Message>({ orientation: "horizontal" });`,
       ShadcnButtonDocs: () =>
         shadcnLaneDocsView(model, {
           label: "Button",
-          source: "registry/shadcn/ui/shadcn-button",
+          source: "registry/shadcn/button/ui",
           primitive: "Ui.Button",
           description:
             "A shadcn style-lane Button slice that reuses the official Foldkit Ui.Button primitive for native button behavior while exposing opinionated shadcn class helpers.",

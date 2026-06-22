@@ -1,0 +1,30 @@
+import { Match as M, Schema as S } from "effect";
+import type { Command } from "foldkit";
+import { Submodel } from "foldkit";
+import type { Html } from "foldkit/html";
+import { html } from "foldkit/html";
+
+import * as ExampleCard from "../../ui";
+
+export const Model = S.Struct({});
+export type Model = typeof Model.Type;
+
+export const Message = S.Never;
+export type Message = typeof Message.Type;
+
+type UpdateReturn = Readonly<[Model, ReadonlyArray<Command.Command<Message>>]>;
+
+export const init = (): UpdateReturn => [{}, []];
+
+export const update = (
+  model: Model,
+  message: Message
+): UpdateReturn => M.value(message).pipe(M.exhaustive);
+
+export const view = Submodel.defineView<Model, Message>((_model): Html => {
+  const h = html<Message>();
+
+  return h.main([h.Class("min-h-screen bg-slate-50 p-8")], [
+    ExampleCard.view<Message>(),
+  ]);
+});

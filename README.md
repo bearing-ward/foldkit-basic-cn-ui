@@ -276,9 +276,9 @@ Run deterministic advisory likeness scoring:
 bun run custom-clone -- score /tmp/origin-snapshot.json /tmp/candidate-snapshot.json
 ```
 
-## Docs App Tools
+## Deferred Docs App Tools
 
-The docs app includes local planning tools for maintainers:
+The retired Vite docs app included local planning tools for maintainers:
 
 - `/docs/new-component` opens the New Component interface. Choose an origin,
   component name, and optional primitive name to preview the same component-slice
@@ -290,7 +290,9 @@ The docs app includes local planning tools for maintainers:
   presets, and representative component surfaces before committing theme changes
   to registry components.
 
-For the shipped maintainer workflows, CLI commands, self-hosting surfaces, and
+These tools are deferred from public browsing while OpenStory becomes the only
+supported component docs/example surface. For the shipped maintainer workflows,
+CLI commands, self-hosting surfaces, and
 safety boundaries, see
 [`Workflow Feature Surfaces`](docs/product/workflow-feature-surfaces.md).
 
@@ -317,14 +319,8 @@ bun install
 bun run dev
 ```
 
-Use the OpenStory dev server for component browsing while editing stories:
-
-```bash
-bun run openstory
-```
-
-The Vite dev server still hosts the legacy docs app while it remains in the
-repository. Regenerate registry JSON after editing registry source files:
+`bun run dev` starts the OpenStory dev server for component browsing while
+editing stories. Regenerate registry JSON after editing registry source files:
 
 ```bash
 bun run build:registry

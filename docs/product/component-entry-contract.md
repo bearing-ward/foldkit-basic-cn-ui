@@ -191,7 +191,10 @@ Examples should use upstream example names when matching Base UI or shadcn:
 
 Every component entry has a component source slice, at least one example slice,
 source registry metadata, generated OpenStory coverage, generated public
-artifacts, and tests.
+artifacts, and tests. During the component-owned migration, both the legacy
+layout and component-owned layout are valid source layouts. Public registry
+metadata remains the source of truth for item names, install targets,
+dependencies, origins, and generated output.
 
 | File Or Area                                      | Required For        | Expectation                                                                 |
 | ------------------------------------------------- | ------------------- | --------------------------------------------------------------------------- |
@@ -199,6 +202,8 @@ artifacts, and tests.
 | `registry/{lane}/ui/{name}/view.ts`               | every styled item   | Class constants, visual helper functions, style-only exports.               |
 | `registry/{lane}/ui/{name}/{name}.scene.test.ts`  | every `registry:ui` | Behavior, accessibility, state, style hook, and inert/disabled proof.       |
 | `registry/{lane}/examples/{example}/main.ts`      | every example       | Runnable Foldkit example imported by stories and installed by registry.     |
+| `registry/{lane}/{component-key}/ui/index.ts`     | migrated `registry:ui` | Component-owned equivalent of the legacy component API file.             |
+| `registry/{lane}/{component-key}/examples/{example-key}/main.ts` | migrated example | Component-owned equivalent of the legacy example entry.        |
 | `registry/{lane}/examples/{example}/entry.ts`     | every standalone    | Runtime boot only; never put pure component logic here.                     |
 | `registry/{lane}/examples/{example}/index.html`   | every standalone    | Minimal example shell pointing at `entry.ts`.                               |
 | `registry/{lane}/examples/{example}/*.test.ts`    | every example       | Scene test proving interaction, command/mount resolution, or inert state.   |
@@ -208,6 +213,9 @@ artifacts, and tests.
 | `apps/docs/public/sources/{example}.txt`          | every example       | Generated source snapshot used by the source viewer.                        |
 | `apps/docs/public/{name}.json`                    | every item          | Generated public registry JSON.                                             |
 | `docs/product/*-coverage-matrix.md`               | complex components  | Optional detail matrix; useful but subordinate to this contract.            |
+
+Generated artifacts remain generated in `apps/docs/public/**` and
+`src/openstory/generated/**`; do not hand-edit them as component-local source.
 
 ## Installed component updates
 
@@ -582,11 +590,13 @@ and run `bun run build:registry`.
 ## OpenStory Shell Contract
 
 The public site is an OpenStory component browser backed by the generated
-registry JSON.
+registry JSON. OpenStory is the only supported component docs/example browsing
+surface.
 
 Required:
 
 - The OpenStory manifest is present at `/__openstory/manifest.json`.
+- Story iframes are available at `/__story/{story-id}/index.html`.
 - Component story titles expose library grouping: Foldkit, Base UI, shadcn, and
   AI Elements.
 - Registry files are available from the same site root:

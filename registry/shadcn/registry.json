@@ -922,23 +922,23 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/ui/shadcn-button/index.ts",
+          "path": "registry/shadcn/button/ui/index.ts",
           "target": "src/ui/shadcn-button/index.ts",
           "type": "registry:ui"
         },
-      {
-        "path": "registry/shadcn/ui/shadcn-button/view.ts",
-        "target": "src/ui/shadcn-button/view.ts",
-        "type": "registry:ui"
-      },
-      {
-        "path": "src/lib/utils.ts",
-        "target": "src/lib/utils.ts",
-        "type": "registry:lib"
-      },
-      {
-        "path": "registry/shadcn/ui/shadcn-button/shadcn-button.scene.test.ts",
-        "target": "src/ui/shadcn-button/shadcn-button.scene.test.ts",
+        {
+          "path": "registry/shadcn/button/ui/view.ts",
+          "target": "src/ui/shadcn-button/view.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "target": "src/lib/utils.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "registry/shadcn/button/ui/shadcn-button.scene.test.ts",
+          "target": "src/ui/shadcn-button/shadcn-button.scene.test.ts",
           "type": "registry:ui"
         }
       ],
@@ -7957,12 +7957,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-as-child/main.ts",
+          "path": "registry/shadcn/button/examples/as-child/main.ts",
           "target": "src/examples/shadcn-button-as-child/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-as-child/shadcn-button-as-child.scene.test.ts",
+          "path": "registry/shadcn/button/examples/as-child/shadcn-button-as-child.scene.test.ts",
           "target": "src/examples/shadcn-button-as-child/shadcn-button-as-child.scene.test.ts",
           "type": "registry:example"
         }
@@ -7992,12 +7992,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-basic/main.ts",
+          "path": "registry/shadcn/button/examples/basic/main.ts",
           "target": "src/examples/shadcn-button-basic/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-basic/shadcn-button-basic.scene.test.ts",
+          "path": "registry/shadcn/button/examples/basic/shadcn-button-basic.scene.test.ts",
           "target": "src/examples/shadcn-button-basic/shadcn-button-basic.scene.test.ts",
           "type": "registry:example"
         }
@@ -8028,12 +8028,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-group/main.ts",
+          "path": "registry/shadcn/button/examples/button-group/main.ts",
           "target": "src/examples/shadcn-button-group/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
+          "path": "registry/shadcn/button/examples/button-group/shadcn-button-group.scene.test.ts",
           "target": "src/examples/shadcn-button-group/shadcn-button-group.scene.test.ts",
           "type": "registry:example"
         }
@@ -8063,12 +8063,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-default/main.ts",
+          "path": "registry/shadcn/button/examples/default/main.ts",
           "target": "src/examples/shadcn-button-default/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-default/shadcn-button-default.scene.test.ts",
+          "path": "registry/shadcn/button/examples/default/shadcn-button-default.scene.test.ts",
           "target": "src/examples/shadcn-button-default/shadcn-button-default.scene.test.ts",
           "type": "registry:example"
         }
@@ -8098,12 +8098,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-destructive/main.ts",
+          "path": "registry/shadcn/button/examples/destructive/main.ts",
           "target": "src/examples/shadcn-button-destructive/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-destructive/shadcn-button-destructive.scene.test.ts",
+          "path": "registry/shadcn/button/examples/destructive/shadcn-button-destructive.scene.test.ts",
           "target": "src/examples/shadcn-button-destructive/shadcn-button-destructive.scene.test.ts",
           "type": "registry:example"
         }
@@ -8133,12 +8133,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-ghost/main.ts",
+          "path": "registry/shadcn/button/examples/ghost/main.ts",
           "target": "src/examples/shadcn-button-ghost/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-ghost/shadcn-button-ghost.scene.test.ts",
+          "path": "registry/shadcn/button/examples/ghost/shadcn-button-ghost.scene.test.ts",
           "target": "src/examples/shadcn-button-ghost/shadcn-button-ghost.scene.test.ts",
           "type": "registry:example"
         }
@@ -8168,12 +8168,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-icon/main.ts",
+          "path": "registry/shadcn/button/examples/icon/main.ts",
           "target": "src/examples/shadcn-button-icon/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-icon/shadcn-button-icon.scene.test.ts",
+          "path": "registry/shadcn/button/examples/icon/shadcn-button-icon.scene.test.ts",
           "target": "src/examples/shadcn-button-icon/shadcn-button-icon.scene.test.ts",
           "type": "registry:example"
         }
@@ -8203,12 +8203,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-link/main.ts",
+          "path": "registry/shadcn/button/examples/link/main.ts",
           "target": "src/examples/shadcn-button-link/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-link/shadcn-button-link.scene.test.ts",
+          "path": "registry/shadcn/button/examples/link/shadcn-button-link.scene.test.ts",
           "target": "src/examples/shadcn-button-link/shadcn-button-link.scene.test.ts",
           "type": "registry:example"
         }
@@ -8238,12 +8238,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-outline/main.ts",
+          "path": "registry/shadcn/button/examples/outline/main.ts",
           "target": "src/examples/shadcn-button-outline/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-outline/shadcn-button-outline.scene.test.ts",
+          "path": "registry/shadcn/button/examples/outline/shadcn-button-outline.scene.test.ts",
           "target": "src/examples/shadcn-button-outline/shadcn-button-outline.scene.test.ts",
           "type": "registry:example"
         }
@@ -8273,12 +8273,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-rounded/main.ts",
+          "path": "registry/shadcn/button/examples/rounded/main.ts",
           "target": "src/examples/shadcn-button-rounded/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-rounded/shadcn-button-rounded.scene.test.ts",
+          "path": "registry/shadcn/button/examples/rounded/shadcn-button-rounded.scene.test.ts",
           "target": "src/examples/shadcn-button-rounded/shadcn-button-rounded.scene.test.ts",
           "type": "registry:example"
         }
@@ -8308,12 +8308,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-rtl/main.ts",
+          "path": "registry/shadcn/button/examples/rtl/main.ts",
           "target": "src/examples/shadcn-button-rtl/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-rtl/shadcn-button-rtl.scene.test.ts",
+          "path": "registry/shadcn/button/examples/rtl/shadcn-button-rtl.scene.test.ts",
           "target": "src/examples/shadcn-button-rtl/shadcn-button-rtl.scene.test.ts",
           "type": "registry:example"
         }
@@ -8343,12 +8343,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-secondary/main.ts",
+          "path": "registry/shadcn/button/examples/secondary/main.ts",
           "target": "src/examples/shadcn-button-secondary/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-secondary/shadcn-button-secondary.scene.test.ts",
+          "path": "registry/shadcn/button/examples/secondary/shadcn-button-secondary.scene.test.ts",
           "target": "src/examples/shadcn-button-secondary/shadcn-button-secondary.scene.test.ts",
           "type": "registry:example"
         }
@@ -8378,12 +8378,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-size/main.ts",
+          "path": "registry/shadcn/button/examples/size/main.ts",
           "target": "src/examples/shadcn-button-size/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-size/shadcn-button-size.scene.test.ts",
+          "path": "registry/shadcn/button/examples/size/shadcn-button-size.scene.test.ts",
           "target": "src/examples/shadcn-button-size/shadcn-button-size.scene.test.ts",
           "type": "registry:example"
         }
@@ -8414,12 +8414,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-spinner/main.ts",
+          "path": "registry/shadcn/button/examples/spinner/main.ts",
           "target": "src/examples/shadcn-button-spinner/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-spinner/shadcn-button-spinner.scene.test.ts",
+          "path": "registry/shadcn/button/examples/spinner/shadcn-button-spinner.scene.test.ts",
           "target": "src/examples/shadcn-button-spinner/shadcn-button-spinner.scene.test.ts",
           "type": "registry:example"
         }
@@ -8449,12 +8449,12 @@
       ],
       "files": [
         {
-          "path": "registry/shadcn/examples/shadcn-button-with-icon/main.ts",
+          "path": "registry/shadcn/button/examples/with-icon/main.ts",
           "target": "src/examples/shadcn-button-with-icon/main.ts",
           "type": "registry:example"
         },
         {
-          "path": "registry/shadcn/examples/shadcn-button-with-icon/shadcn-button-with-icon.scene.test.ts",
+          "path": "registry/shadcn/button/examples/with-icon/shadcn-button-with-icon.scene.test.ts",
           "target": "src/examples/shadcn-button-with-icon/shadcn-button-with-icon.scene.test.ts",
           "type": "registry:example"
         }

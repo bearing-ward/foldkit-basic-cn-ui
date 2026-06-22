@@ -12,7 +12,6 @@ import * as ButtonGroupSelectExample from "../../../registry/shadcn/examples/but
 import * as ButtonGroupSeparatorExample from "../../../registry/shadcn/examples/button-group-separator/main"
 import * as ButtonGroupSizeExample from "../../../registry/shadcn/examples/button-group-size/main"
 import * as ButtonGroupSplitExample from "../../../registry/shadcn/examples/button-group-split/main"
-import * as ButtonGroupExample from "../../../registry/shadcn/examples/shadcn-button-group/main"
 
 const meta = {
   title: "shadcn/Button Group",
@@ -75,9 +74,4 @@ export const Size: Story = {
 export const Split: Story = {
   name: "Split",
   render: () => ButtonGroupSplitExample,
-}
-
-export const Group: Story = {
-  name: "Group",
-  render: () => ButtonGroupExample,
 }

@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import * as ButtonDefaultExample from "../../registry/shadcn/examples/shadcn-button-default/main";
+import * as ButtonDefaultExample from "../../registry/shadcn/button/examples/default/main";
 import {
   defaultShadcnThemeName,
   initialShadcnThemeGlobals,

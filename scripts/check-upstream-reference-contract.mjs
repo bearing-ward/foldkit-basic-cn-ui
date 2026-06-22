@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { readSourceRegistryItemsSync } from "./registry-manifest.mjs";
+
 const rootDir = path.resolve(import.meta.dirname, "..");
 
 const readJson = (relativePath) =>
@@ -157,22 +159,20 @@ if (exists("src/preview.ts")) {
 
 const forbiddenImportPattern =
   /from\s+["'](?:.*repos\/|.*apps\/docs\/|@base-ui\/react|react|react-dom|radix-ui|https?:\/\/github\.com\/shadcn-ui\/ui)/u;
-const installableFiles = [
-  ...fs
-    .readdirSync(path.join(rootDir, "registry/base-ui/ui"), {
-      recursive: true,
-      withFileTypes: true,
-    })
-    .filter((entry) => entry.isFile())
-    .map((entry) => path.join(entry.parentPath, entry.name)),
-  ...fs
-    .readdirSync(path.join(rootDir, "registry/shadcn/ui"), {
-      recursive: true,
-      withFileTypes: true,
-    })
-    .filter((entry) => entry.isFile())
-    .map((entry) => path.join(entry.parentPath, entry.name)),
-].filter((filePath) => /\.(ts|tsx)$/u.test(filePath));
+const installableFiles = readSourceRegistryItemsSync({ rootDir })
+  .filter((item) => {
+    const origin = item.meta?.foldkit?.origin;
+
+    return (
+      item.type === "registry:ui" &&
+      typeof origin === "string" &&
+      (origin.startsWith("https://base-ui.com/") ||
+        origin.startsWith("https://ui.shadcn.com/"))
+    );
+  })
+  .flatMap((item) => item.files ?? [])
+  .map((file) => path.join(rootDir, file.path))
+  .filter((filePath) => /\.(ts|tsx)$/u.test(filePath));
 
 for (const filePath of installableFiles) {
   const relativePath = path.relative(rootDir, filePath);

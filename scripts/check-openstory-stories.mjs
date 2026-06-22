@@ -6,12 +6,19 @@ import {
   generateOpenstoryStories,
   storyId,
 } from "./generate-openstory-stories.mjs";
+import { readRegistryExampleEntriesSync } from "./registry-source-layout.mjs";
 
 const importPattern =
-  /from "\.\.\/\.\.\/\.\.\/registry\/(foldkit|base-ui|shadcn|ai-elements)\/examples\/([^/]+)\/main"/gu;
+  /from "([^"]*registry\/(?:foldkit|base-ui|shadcn|ai-elements)\/[^"]*\/main)"/gu;
 
 const generated = generateOpenstoryStories();
 const failures = checkGeneratedFiles(generated);
+const expectedImportsBySlug = new Map(
+  readRegistryExampleEntriesSync().map((example) => [
+    example.slug,
+    example.modulePath,
+  ])
+);
 const expectedSlugs = new Set(
   generated.catalog.flatMap((group) =>
     group.stories
@@ -49,13 +56,17 @@ for (const [relativeFilePath] of generated.files) {
   const source = readFileSync(absoluteFilePath, "utf-8");
 
   for (const match of source.matchAll(importPattern)) {
-    const sourceLane = match[1];
-    const slug = match[2];
-    importsBySlug.set(slug, (importsBySlug.get(slug) ?? 0) + 1);
+    const modulePath = match[1];
+    const matchingSlug = [...expectedImportsBySlug].find(
+      ([, expectedModulePath]) => expectedModulePath === modulePath
+    )?.[0];
 
-    if (!existsSync(path.join("registry", sourceLane, "examples", slug, "main.ts"))) {
-      failures.push(`${relativeFilePath}: imports missing example ${slug}`);
+    if (matchingSlug === undefined) {
+      failures.push(`${relativeFilePath}: imports unexpected example ${modulePath}`);
+      continue;
     }
+
+    importsBySlug.set(matchingSlug, (importsBySlug.get(matchingSlug) ?? 0) + 1);
   }
 }
 
@@ -69,7 +80,7 @@ for (const slug of expectedSlugs) {
 
 for (const slug of importsBySlug.keys()) {
   if (!expectedSlugs.has(slug)) {
-    failures.push(`${slug}: imported but not discovered from filesystem`);
+    failures.push(`${slug}: imported but not discovered from registry metadata`);
   }
 }
 

@@ -2,14 +2,13 @@ import { readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
+import {
+  readRegistryUiSourceFilesSync,
+  registryUiSourceFiles,
+} from "./registry-source-layout.mjs";
+import { readSourceRegistryItemsSync } from "./registry-manifest.mjs";
+
 const root = process.cwd();
-const sourceRoots = [
-  "registry/base-ui/ui",
-  "registry/shadcn/ui",
-  "registry/foldkit/ui",
-  "registry/ai-elements/ui",
-];
-const originBackedSourceRoots = ["registry/base-ui/ui", "registry/shadcn/ui"];
 const publicRoot = "apps/docs/public";
 const sourceExtensions = new Set([".ts", ".tsx"]);
 const publicExtensions = new Set([".json"]);
@@ -74,6 +73,20 @@ const collectFiles = async (relativeDirectory, extensions) => {
 
   return nested.flat();
 };
+
+const registryItems = readSourceRegistryItemsSync({ rootDir: root });
+const sourceFiles = readRegistryUiSourceFilesSync(root);
+const originBackedSourceFiles = registryUiSourceFiles(
+  registryItems.filter((item) => {
+    const origin = item.meta?.foldkit?.origin;
+
+    return (
+      typeof origin === "string" &&
+      (origin.startsWith("https://base-ui.com/") ||
+        origin.startsWith("https://ui.shadcn.com/"))
+    );
+  })
+);
 
 const resolveSourceSpecifier = (relativePath, specifier) => {
   if (!specifier.includes("foldkit/ui/")) {
@@ -146,14 +159,6 @@ const findFoldkitClassApiReexports = async (relativePath) => {
   return matches;
 };
 
-const sourceFiles = (await Promise.all(
-  sourceRoots.map((sourceRoot) => collectFiles(sourceRoot, sourceExtensions)),
-)).flat();
-const originBackedSourceFiles = (await Promise.all(
-  originBackedSourceRoots.map((sourceRoot) =>
-    collectFiles(sourceRoot, sourceExtensions),
-  ),
-)).flat();
 const publicFiles = await collectFiles(publicRoot, publicExtensions);
 
 const matches = (

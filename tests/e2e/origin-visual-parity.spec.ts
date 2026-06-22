@@ -291,17 +291,11 @@ for (const { fixture, example } of enabledFixtures) {
       readFileSync(referencePath(fixture, example), "utf-8")
     ) as Reference;
 
-    await page.goto(fixture.localPath);
-
-    const preview = page.locator(
-      `[data-testid="${example.localTestId}-preview"]`
-    );
-    await expect(preview).toBeVisible();
-
+    await page.goto(`/__story/${fixture.itemName}--${example.exampleName}`);
     const localRoot =
       example.localSelector === undefined
-        ? preview
-        : preview.locator(example.localSelector).first();
+        ? page.locator("body")
+        : page.locator(example.localSelector).first();
     await expect(localRoot).toBeVisible();
 
     const actual = await localRoot.evaluate(

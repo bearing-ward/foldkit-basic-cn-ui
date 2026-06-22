@@ -99,12 +99,6 @@ const registryExampleChunkName = (id: string): string | undefined => {
   return "registry-examples-t-z"
 }
 
-const exactChunkGroup = (modulePath: string, name: string) => ({
-  name,
-  test: (id: string) => id.endsWith(modulePath),
-  priority: 50,
-})
-
 export default defineConfig({
   base: process.env.GITHUB_PAGES === "true" ? "/foldkit-basic-cn-ui/" : "/",
   resolve: {
@@ -124,52 +118,6 @@ export default defineConfig({
               test: /node_modules/u,
               priority: 100,
             },
-            exactChunkGroup("/src/docsView.ts", "docs-view"),
-            exactChunkGroup("/src/docsExampleRoutes.ts", "docs-example-routes"),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsAccordion.ts",
-              "docs-example-previews-accordion"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsAlert.ts",
-              "docs-example-previews-alert"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsAspect.ts",
-              "docs-example-previews-aspect"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsAnimation.ts",
-              "docs-example-previews-animation"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsAutocomplete.ts",
-              "docs-example-previews-autocomplete"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsAvatar.ts",
-              "docs-example-previews-avatar"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsB.ts",
-              "docs-example-previews-b"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsCD.ts",
-              "docs-example-previews-cd"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsEI.ts",
-              "docs-example-previews-ei"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsJM.ts",
-              "docs-example-previews-jm"
-            ),
-            exactChunkGroup(
-              "/src/docsExamplePreviewsNZ.ts",
-              "docs-example-previews-nz"
-            ),
             {
               name: (id) => registryExampleChunkName(id) ?? null,
               test: (id) => registryExampleChunkName(id) !== undefined,
@@ -177,7 +125,7 @@ export default defineConfig({
             },
             {
               name: "registry-ui",
-              test: /registry\/(?:foldkit|base-ui|shadcn|ai-elements)\/ui\//u,
+              test: /registry\/(?:foldkit|base-ui|shadcn|ai-elements)\/(?:[^/]+\/)?ui\//u,
               priority: 10,
             },
           ],
@@ -186,7 +134,6 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    entries: ["src/entry.ts"],
     include: Object.keys(optimizedSourceAliases),
   },
 })

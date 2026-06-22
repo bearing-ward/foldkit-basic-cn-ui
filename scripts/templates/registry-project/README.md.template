@@ -8,13 +8,13 @@ Custom Foldkit CN registry project generated from `foldkit-basic-cn-ui`.
 - `registry/config.json` owns the registry name, docs homepage, and registry base URL.
 - `registry/foldkit/items.json` is the source registry item manifest.
 - `registry/templates/components.json` is the source `components.json` template.
-- `registry/foldkit/ui/example-card/` contains one example component slice.
-- `registry/foldkit/examples/example-card-basic/` contains one installable example.
+- `registry/foldkit/example-card/ui/` contains one example component slice.
+- `registry/foldkit/example-card/examples/basic/` contains one installable example.
 - `apps/docs/public/components.json` and `apps/docs/public/*.json` are generated public registry output.
 - `scripts/build-registry.mjs` builds the public registry JSON.
 - `scripts/check-registry.mjs` validates the generated output.
 - `scripts/serve-registry.ts`, `Dockerfile`, and `compose.yaml` serve the same generated registry locally or in a container.
-- `src/` contains the docs app shell.
+- `src/` contains the generated project shell.
 
 ## Local Development
 

@@ -1,13 +1,18 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import path from "node:path";
 
+import { generateOpenstoryStories } from "./generate-openstory-stories.mjs";
 import { readSourceRegistryItems } from "./registry-manifest.mjs";
 
 const rootDir = path.resolve(import.meta.dirname, "..");
 const registryItems = await readSourceRegistryItems({ rootDir });
-const docsViewSource = readFileSync(
-  path.join(rootDir, "src/docsView.ts"),
-  "utf-8"
+const generated = generateOpenstoryStories(rootDir);
+const generatedExampleSlugs = new Set(
+  generated.catalog.flatMap((group) =>
+    group.stories
+      .filter((story) => story.kind === "example")
+      .map((story) => story.slug)
+  )
 );
 
 const failures = [];
@@ -36,34 +41,16 @@ const shadcnExamples = registryItems.filter(
 
 const sourceHrefForExample = (exampleName) => `sources/${exampleName}.txt`;
 
-const escapeRegExp = (value) =>
-  value.replaceAll(/[.*+?^${}()|[\]\\]/gu, "\\$&");
-
-const hasLiveExampleResolver = (exampleName) =>
-  docsViewSource.includes(`M.when("${exampleName}"`) ||
-  new RegExp(
-    `\\[\\s*"${escapeRegExp(exampleName)}"\\s*,\\s*\\(\\)\\s*=>`,
-    "u"
-  ).test(docsViewSource);
-
 for (const example of shadcnExamples) {
   const sourceHref = sourceHrefForExample(example.name);
   const sourcePath = path.join(rootDir, "apps/docs/public", sourceHref);
 
-  if (!docsViewSource.includes(`"${example.name}"`)) {
-    failures.push(`${example.name}: missing docs examples declaration`);
-  }
-
-  if (!hasLiveExampleResolver(example.name)) {
-    failures.push(`${example.name}: missing live shadcn example resolver`);
-  }
-
-  if (!docsViewSource.includes(`"${sourceHref}"`)) {
-    failures.push(`${example.name}: missing docs source href mapping`);
-  }
-
   if (!existsSync(sourcePath)) {
     failures.push(`${example.name}: missing ${sourceHref}`);
+  }
+
+  if (!generatedExampleSlugs.has(example.name)) {
+    failures.push(`${example.name}: missing generated OpenStory story`);
   }
 
   for (const file of example.files) {

@@ -76,10 +76,20 @@ const titleize = (value: string): string =>
     .join(" ");
 
 const uiPath = (origin: SliceOrigin, name: string): string =>
-  `registry/${origin}/ui/${name}`;
+  `registry/${origin}/${name}/ui`;
 
-const examplePath = (origin: SliceOrigin, name: string): string =>
-  `registry/${origin}/examples/${name}`;
+const examplePath = (
+  origin: SliceOrigin,
+  componentName: string,
+  exampleName: string
+): string => {
+  const prefix = `${componentName}-`;
+  const exampleKey = exampleName.startsWith(prefix)
+    ? exampleName.slice(prefix.length)
+    : exampleName;
+
+  return `registry/${origin}/${componentName}/examples/${exampleKey}`;
+};
 
 export const createSliceManifest = (
   input: SliceManifestInput
@@ -103,7 +113,7 @@ export const createSliceManifest = (
       `Create ${uiPath(input.origin, name)}/index.ts`,
       `Create ${uiPath(input.origin, name)}/view.ts`,
       `Create focused scene tests for ${name}`,
-      `Create at least one example under ${examplePath(input.origin, `${name}-basic`)}`,
+      `Create at least one example under ${examplePath(input.origin, name, `${name}-basic`)}`,
       `Add registry/${input.origin}/registry.json metadata`,
       "Run registry generation for apps/docs/public/components.json and apps/docs/public/{name}.json",
       "Run OpenStory generation and add documentation reference coverage",
@@ -118,7 +128,11 @@ export const createScaffoldPlan = (
   const manifest = createSliceManifest(input);
   const basicExample = manifest.examples[0] ?? `${manifest.name}-basic`;
   const componentDir = uiPath(manifest.origin, manifest.name);
-  const basicExampleDir = examplePath(manifest.origin, basicExample);
+  const basicExampleDir = examplePath(
+    manifest.origin,
+    manifest.name,
+    basicExample
+  );
 
   return {
     manifest,

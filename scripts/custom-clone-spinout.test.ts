@@ -161,7 +161,7 @@ describe("custom clone spin-out CLI", () => {
       const scaffold = await readFile(
         path.join(
           candidateRoot,
-          "candidate-slice/registry/shadcn/ui/review-card/view.ts"
+          "candidate-slice/registry/shadcn/review-card/ui/view.ts"
         ),
         "utf-8"
       );

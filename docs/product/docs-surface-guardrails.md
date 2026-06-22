@@ -2,13 +2,14 @@
 
 Canonical component-entry expectations now live in
 [`component-entry-contract.md`](./component-entry-contract.md). This file is an
-implementation guardrail companion for the public OpenStory site and legacy docs
-app surfaces; if it conflicts with the canonical contract, update this file to
+implementation guardrail companion for the public OpenStory site. The legacy
+docs app may remain only as disconnected reference material; if this file
+conflicts with the canonical contract, update this file to
 match the contract.
 
 ## Public OpenStory Site
 
-The public site is the primary component browser. It must expose the generated
+The public site is the only supported component browser. It must expose the generated
 OpenStory build and the shadcn-compatible registry artifacts from the same site
 root.
 
@@ -57,24 +58,10 @@ The Anatomy section should support hovering a code element to highlight the
 corresponding preview element and display relevant part metadata when the
 component has meaningful nested markup.
 
-## Legacy Docs App
+## Retired Legacy Docs App
 
-The Vite docs app remains useful as a local maintenance surface while it exists,
-but new public component browsing should be implemented in OpenStory.
-
-Legacy example blocks must keep this structure:
-
-| Region  | Expectation                                                          |
-| ------- | -------------------------------------------------------------------- |
-| Card    | Vertical flex layout with a stable minimum height.                   |
-| Heading | Short example name only.                                             |
-| Preview | Dedicated preview region below the heading.                          |
-| Actions | Dedicated action row below preview, separated by a light top border. |
-| Link    | Standalone-example links, when present, live in the action row.       |
-
-Legacy implementation guardrail:
-
-- Example blocks must keep preview controls separate from source/view controls.
-- Links and buttons must have at least a 40px hit target.
-- Browser checks should catch mobile overflow, preview/action overlap, missing
-  required sections, and unreadable source-viewer contrast.
+The old `/docs/components/**`, `/examples/**`, and `docs-example-block-*`
+contracts are retired. Do not add new runtime, navigation, Vite, TypeScript,
+test, or guard-script dependencies on the hand-rolled docs app. Any remaining
+`src/docsView.ts` content is reference-only until it is migrated into OpenStory
+documentation references or explicitly discarded.

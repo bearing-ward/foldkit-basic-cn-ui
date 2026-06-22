@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "openstory dev --framework foldkit --port 6173",
     "build": "bun scripts/build-openstory-site.mjs",
-    "build:legacy-docs": "vite build",
     "build:registry": "bun scripts/build-registry.mjs",
     "check:registry": "bun scripts/build-registry.mjs --check && bun scripts/check-registry-order.mjs && bun scripts/check-registry-metadata.mjs && bun scripts/check-upstream-reference-contract.mjs && bun scripts/check-no-component-classname-api.mjs && bun scripts/check-example-tests.mjs && bun scripts/check-openstory-stories.mjs && bun scripts/check-primitive-coverage.mjs && bun scripts/check-shadcn-doc-examples.mjs && bun scripts/check-origin-content-parity-agenda.mjs && bun scripts/check-origin-visual-parity-coverage.mjs && bun run check:invariants",
     "check:invariants": "bun scripts/check-project-invariants-scorecard.mjs",
@@ -30,7 +29,6 @@
     "lint": "ultracite check",
     "check": "ultracite check",
     "fix": "ultracite fix",
-    "openstory": "openstory dev --framework foldkit",
     "openstory:build": "openstory build --framework foldkit --out dist",
     "openstory:generate": "bun scripts/generate-openstory-stories.mjs",
     "openstory:check": "bun scripts/check-openstory-stories.mjs"

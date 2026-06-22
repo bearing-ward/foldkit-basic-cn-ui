@@ -92,7 +92,7 @@ const validateFixturesAgainstRegistry = ({ fixtures, registryItems }) => {
 
     const expectedOriginUrl = registryItem.meta.foldkit.origin;
     const expectedLane = originLane(expectedOriginUrl);
-    const expectedLocalPath = `/docs/components/${registryItem.name}`;
+    const expectedLocalPathPrefix = `/__story/${registryItem.name}--`;
 
     if (fixture.originUrl !== expectedOriginUrl) {
       failures.push(
@@ -106,9 +106,12 @@ const validateFixturesAgainstRegistry = ({ fixtures, registryItems }) => {
       );
     }
 
-    if (fixture.localPath !== expectedLocalPath) {
+    if (
+      typeof fixture.localPath !== "string" ||
+      !fixture.localPath.startsWith(expectedLocalPathPrefix)
+    ) {
       failures.push(
-        `${fixture.itemName} localPath mismatch: expected ${expectedLocalPath}, got ${fixture.localPath}`
+        `${fixture.itemName} localPath mismatch: expected OpenStory path starting ${expectedLocalPathPrefix}, got ${fixture.localPath}`
       );
     }
   }

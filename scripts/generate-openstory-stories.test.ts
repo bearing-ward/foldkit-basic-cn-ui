@@ -16,17 +16,20 @@ const item = ({
   title,
   component,
   example,
+  files = [],
   registryDependencies = [],
 }: {
   name: string;
   title: string;
   component: string;
   example: string;
+  files?: ReadonlyArray<Readonly<{ path: string; target: string }>>;
   registryDependencies?: ReadonlyArray<string>;
 }) => ({
   name,
   title,
   type: "registry:example",
+  files,
   registryDependencies,
   meta: {
     foldkit: {
@@ -49,15 +52,72 @@ const catalogFor = (
 ) => createCatalog({ exampleSlugs, registryItems });
 
 describe("generate Openstory stories", () => {
-  test("discovers examples from all lane folders", async () => {
+  test("discovers examples from registry metadata across both source layouts", async () => {
     const rootDir = await mkdtemp(path.join(os.tmpdir(), "foldkit-cn-stories-"));
 
     try {
+      await mkdir(path.join(rootDir, "registry"), { recursive: true });
+      await writeFile(
+        path.join(rootDir, "registry/registry.json"),
+        JSON.stringify({
+          items: [
+            item({
+              name: "button-basic",
+              title: "Button Basic",
+              component: "Button",
+              example: "basic",
+              files: [
+                {
+                  path: "registry/foldkit/examples/button-basic/main.ts",
+                  target: "src/examples/button-basic.ts",
+                },
+              ],
+            }),
+            item({
+              name: "base-ui-button-basic",
+              title: "Base UI Button Basic",
+              component: "Button",
+              example: "basic",
+              files: [
+                {
+                  path: "registry/base-ui/examples/base-ui-button-basic/main.ts",
+                  target: "src/examples/base-ui-button-basic.ts",
+                },
+              ],
+            }),
+            item({
+              name: "shadcn-button-basic",
+              title: "shadcn Button Basic",
+              component: "Button",
+              example: "basic",
+              files: [
+                {
+                  path: "registry/shadcn/button/examples/basic/main.ts",
+                  target: "src/examples/shadcn-button-basic.ts",
+                },
+              ],
+            }),
+            item({
+              name: "ai-elements-attachments-list",
+              title: "AI Elements Attachments List",
+              component: "Attachments",
+              example: "list",
+              files: [
+                {
+                  path: "registry/ai-elements/examples/ai-elements-attachments-list/main.ts",
+                  target: "src/examples/ai-elements-attachments-list.ts",
+                },
+              ],
+            }),
+          ],
+        })
+      );
+
       await Promise.all(
         [
           "registry/foldkit/examples/button-basic",
           "registry/base-ui/examples/base-ui-button-basic",
-          "registry/shadcn/examples/shadcn-button-basic",
+          "registry/shadcn/button/examples/basic",
           "registry/ai-elements/examples/ai-elements-attachments-list",
         ].map(async (directory) => {
           await mkdir(path.join(rootDir, directory), { recursive: true });
@@ -70,7 +130,7 @@ describe("generate Openstory stories", () => {
           "../../../registry/ai-elements/examples/ai-elements-attachments-list/main",
           "../../../registry/base-ui/examples/base-ui-button-basic/main",
           "../../../registry/foldkit/examples/button-basic/main",
-          "../../../registry/shadcn/examples/shadcn-button-basic/main",
+          "../../../registry/shadcn/button/examples/basic/main",
         ]
       );
     } finally {
@@ -146,13 +206,20 @@ describe("generate Openstory stories", () => {
     expect(group?.stories[0]?.name).toBe("List");
   });
 
-  test("generates imports to lane example paths", () => {
-    const catalog = catalogFor(["button-basic", "shadcn-button-basic"]);
+  test("generates imports to metadata-backed example paths", () => {
+    const catalog = catalogFor([
+      "button-basic",
+      {
+        modulePath: "../../../registry/shadcn/button/examples/basic/main",
+        slug: "shadcn-button-basic",
+        sourceLane: "shadcn",
+      },
+    ]);
     const source = [...renderGeneratedFiles(catalog).values()].join("\n");
 
     expect(source).toContain("../../../registry/foldkit/examples/button-basic/main");
     expect(source).toContain(
-      "../../../registry/shadcn/examples/shadcn-button-basic/main"
+      "../../../registry/shadcn/button/examples/basic/main"
     );
   });
 
@@ -251,9 +318,15 @@ describe("generate Openstory stories", () => {
     expect(menuSource).not.toContain("referenceData");
   });
 
-  test("uses filesystem examples as the inventory during metadata drift", () => {
+  test("uses registry metadata examples as the inventory during filesystem drift", () => {
     const catalog = catalogFor(
-      ["base-ui-checkbox-form"],
+      [
+        {
+          modulePath: "../../../registry/base-ui/examples/base-ui-checkbox-missing/main",
+          slug: "base-ui-checkbox-missing",
+          sourceLane: "base-ui",
+        },
+      ],
       [
         item({
           name: "base-ui-checkbox-missing",
@@ -267,12 +340,9 @@ describe("generate Openstory stories", () => {
 
     expect(catalog).toHaveLength(1);
     expect(catalog[0]?.stories.map((story) => story.slug)).toEqual([
-      "base-ui-checkbox-form",
+      "base-ui-checkbox-missing",
     ]);
     expect([...files.values()].join("\n")).toContain(
-      "registry/base-ui/examples/base-ui-checkbox-form/main"
-    );
-    expect([...files.values()].join("\n")).not.toContain(
       "base-ui-checkbox-missing/main"
     );
   });

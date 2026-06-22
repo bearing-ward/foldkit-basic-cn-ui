@@ -47,7 +47,6 @@ const generatedRegistryNames = new Set(
 const registryItemsByName = new Map(
   registryItems.map((item) => [item.name, item])
 );
-const mainSource = readFileSync("src/main.ts", "utf-8");
 
 const gaps = foldkitUiExports.flatMap((primitiveName) => {
   const slug = primitiveSlugs.get(primitiveName);
@@ -63,9 +62,6 @@ const gaps = foldkitUiExports.flatMap((primitiveName) => {
     generatedRegistryNames.has(slug)
       ? undefined
       : `${primitiveName}: missing generated registry JSON ${slug}.json`,
-    mainSource.includes(`${primitiveName}DocsRoute`)
-      ? undefined
-      : `${primitiveName}: missing docs route`,
     (registryItemsByName.get(slug)?.files ?? []).some((file) =>
       existsSync(file.path)
     )

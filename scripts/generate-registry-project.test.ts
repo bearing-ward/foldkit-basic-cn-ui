@@ -87,7 +87,7 @@ describe("generate registry project CLI", () => {
         path.join(rootDir, "apps/docs/public/example-card.json")
       );
       const view = await readFile(
-        path.join(rootDir, "registry/foldkit/ui/example-card/view.ts"),
+        path.join(rootDir, "registry/foldkit/example-card/ui/view.ts"),
         "utf-8"
       );
       const readme = await readFile(path.join(rootDir, "README.md"), "utf-8");

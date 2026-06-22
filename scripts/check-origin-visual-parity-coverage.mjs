@@ -74,9 +74,12 @@ for (const item of originBackedUiItems) {
     );
   }
 
-  if (fixture.localPath !== `/docs/components/${item.name}`) {
+  if (
+    typeof fixture.localPath !== "string" ||
+    !fixture.localPath.startsWith(`/__story/${item.name}--`)
+  ) {
     failures.push(
-      `${item.name} localPath mismatch: expected /docs/components/${item.name}, got ${fixture.localPath}`
+      `${item.name} localPath mismatch: expected OpenStory story path for ${item.name}, got ${fixture.localPath}`
     );
   }
 

@@ -2,9 +2,6 @@
 import type { Meta, StoryObj } from "openstory/foldkit"
 
 import * as CheckboxBasicExample from "../../../registry/base-ui/examples/base-ui-checkbox-basic/main"
-import * as CheckboxFormExample from "../../../registry/base-ui/examples/base-ui-checkbox-form/main"
-import * as CheckboxLabelingExample from "../../../registry/base-ui/examples/base-ui-checkbox-labeling/main"
-import * as CheckboxNativeButtonExample from "../../../registry/base-ui/examples/base-ui-checkbox-native-button/main"
 
 const meta = {
   title: "base-ui/Checkbox",
@@ -17,19 +14,4 @@ type Story = StoryObj<typeof meta>
 export const Basic: Story = {
   name: "Basic",
   render: () => CheckboxBasicExample,
-}
-
-export const Form: Story = {
-  name: "Form",
-  render: () => CheckboxFormExample,
-}
-
-export const Labeling: Story = {
-  name: "Labeling",
-  render: () => CheckboxLabelingExample,
-}
-
-export const NativeButton: Story = {
-  name: "Native Button",
-  render: () => CheckboxNativeButtonExample,
 }

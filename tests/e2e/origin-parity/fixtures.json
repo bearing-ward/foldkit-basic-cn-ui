@@ -5,11 +5,11 @@
       "itemName": "badge",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/badge",
-      "localPath": "/docs/components/badge",
+      "localPath": "/__story/badge--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-badge-basic",
+          "localTestId": "badge--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -27,11 +27,11 @@
       "itemName": "base-ui-accordion",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/accordion",
-      "localPath": "/docs/components/base-ui-accordion",
+      "localPath": "/__story/base-ui-accordion--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-accordion-basic",
+          "localTestId": "base-ui-accordion--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -49,11 +49,11 @@
       "itemName": "base-ui-alert-dialog",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/alert-dialog",
-      "localPath": "/docs/components/base-ui-alert-dialog",
+      "localPath": "/__story/base-ui-alert-dialog--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-alert-dialog-basic",
+          "localTestId": "base-ui-alert-dialog--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -71,11 +71,11 @@
       "itemName": "base-ui-autocomplete",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/autocomplete",
-      "localPath": "/docs/components/base-ui-autocomplete",
+      "localPath": "/__story/base-ui-autocomplete--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-autocomplete-basic",
+          "localTestId": "base-ui-autocomplete--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -93,11 +93,11 @@
       "itemName": "base-ui-avatar",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/avatar",
-      "localPath": "/docs/components/base-ui-avatar",
+      "localPath": "/__story/base-ui-avatar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-avatar-basic",
+          "localTestId": "base-ui-avatar--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -115,11 +115,11 @@
       "itemName": "base-ui-button",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/button",
-      "localPath": "/docs/components/base-ui-button",
+      "localPath": "/__story/base-ui-button--basic",
       "examples": [
         {
           "exampleName": "basic",
-          "localTestId": "docs-example-block-base-ui-button-basic",
+          "localTestId": "base-ui-button--basic",
           "originSelector": "main .DemoPlaygroundInner button",
           "localSelector": "button",
           "compare": {
@@ -164,11 +164,11 @@
       "itemName": "base-ui-checkbox",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/checkbox",
-      "localPath": "/docs/components/base-ui-checkbox",
+      "localPath": "/__story/base-ui-checkbox--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-checkbox-basic",
+          "localTestId": "base-ui-checkbox--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -186,11 +186,11 @@
       "itemName": "base-ui-checkbox-group",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/checkbox-group",
-      "localPath": "/docs/components/base-ui-checkbox-group",
+      "localPath": "/__story/base-ui-checkbox-group--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-checkbox-group-basic",
+          "localTestId": "base-ui-checkbox-group--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -208,11 +208,11 @@
       "itemName": "base-ui-collapsible",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/collapsible",
-      "localPath": "/docs/components/base-ui-collapsible",
+      "localPath": "/__story/base-ui-collapsible--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-collapsible-basic",
+          "localTestId": "base-ui-collapsible--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -230,11 +230,11 @@
       "itemName": "base-ui-combobox",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/combobox",
-      "localPath": "/docs/components/base-ui-combobox",
+      "localPath": "/__story/base-ui-combobox--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-combobox-basic",
+          "localTestId": "base-ui-combobox--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -252,11 +252,11 @@
       "itemName": "base-ui-context-menu",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/context-menu",
-      "localPath": "/docs/components/base-ui-context-menu",
+      "localPath": "/__story/base-ui-context-menu--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-context-menu-basic",
+          "localTestId": "base-ui-context-menu--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -274,11 +274,11 @@
       "itemName": "base-ui-dialog",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/dialog",
-      "localPath": "/docs/components/base-ui-dialog",
+      "localPath": "/__story/base-ui-dialog--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-dialog-basic",
+          "localTestId": "base-ui-dialog--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -296,11 +296,11 @@
       "itemName": "base-ui-drawer",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/drawer",
-      "localPath": "/docs/components/base-ui-drawer",
+      "localPath": "/__story/base-ui-drawer--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-drawer-basic",
+          "localTestId": "base-ui-drawer--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -318,11 +318,11 @@
       "itemName": "base-ui-field",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/field",
-      "localPath": "/docs/components/base-ui-field",
+      "localPath": "/__story/base-ui-field--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-field-basic",
+          "localTestId": "base-ui-field--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -340,11 +340,11 @@
       "itemName": "base-ui-fieldset",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/fieldset",
-      "localPath": "/docs/components/base-ui-fieldset",
+      "localPath": "/__story/base-ui-fieldset--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-fieldset-basic",
+          "localTestId": "base-ui-fieldset--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -362,11 +362,11 @@
       "itemName": "base-ui-form",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/form",
-      "localPath": "/docs/components/base-ui-form",
+      "localPath": "/__story/base-ui-form--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-form-basic",
+          "localTestId": "base-ui-form--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -384,11 +384,11 @@
       "itemName": "base-ui-input",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/input",
-      "localPath": "/docs/components/base-ui-input",
+      "localPath": "/__story/base-ui-input--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-input-basic",
+          "localTestId": "base-ui-input--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -406,11 +406,11 @@
       "itemName": "base-ui-menu",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/menu",
-      "localPath": "/docs/components/base-ui-menu",
+      "localPath": "/__story/base-ui-menu--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-menu-basic",
+          "localTestId": "base-ui-menu--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -428,11 +428,11 @@
       "itemName": "base-ui-menubar",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/menubar",
-      "localPath": "/docs/components/base-ui-menubar",
+      "localPath": "/__story/base-ui-menubar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-menubar-basic",
+          "localTestId": "base-ui-menubar--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -450,11 +450,11 @@
       "itemName": "base-ui-meter",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/meter",
-      "localPath": "/docs/components/base-ui-meter",
+      "localPath": "/__story/base-ui-meter--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-meter-basic",
+          "localTestId": "base-ui-meter--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -472,11 +472,11 @@
       "itemName": "base-ui-navigation-menu",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/navigation-menu",
-      "localPath": "/docs/components/base-ui-navigation-menu",
+      "localPath": "/__story/base-ui-navigation-menu--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-navigation-menu-basic",
+          "localTestId": "base-ui-navigation-menu--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -494,11 +494,11 @@
       "itemName": "base-ui-number-field",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/number-field",
-      "localPath": "/docs/components/base-ui-number-field",
+      "localPath": "/__story/base-ui-number-field--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-number-field-basic",
+          "localTestId": "base-ui-number-field--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -516,11 +516,11 @@
       "itemName": "base-ui-otp-field",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/otp-field",
-      "localPath": "/docs/components/base-ui-otp-field",
+      "localPath": "/__story/base-ui-otp-field--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-otp-field-basic",
+          "localTestId": "base-ui-otp-field--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -538,11 +538,11 @@
       "itemName": "base-ui-popover",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/popover",
-      "localPath": "/docs/components/base-ui-popover",
+      "localPath": "/__story/base-ui-popover--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-popover-basic",
+          "localTestId": "base-ui-popover--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -560,11 +560,11 @@
       "itemName": "base-ui-preview-card",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/preview-card",
-      "localPath": "/docs/components/base-ui-preview-card",
+      "localPath": "/__story/base-ui-preview-card--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-preview-card-basic",
+          "localTestId": "base-ui-preview-card--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -582,11 +582,11 @@
       "itemName": "base-ui-progress",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/progress",
-      "localPath": "/docs/components/base-ui-progress",
+      "localPath": "/__story/base-ui-progress--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-progress-basic",
+          "localTestId": "base-ui-progress--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -604,11 +604,11 @@
       "itemName": "base-ui-radio",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/radio",
-      "localPath": "/docs/components/base-ui-radio",
+      "localPath": "/__story/base-ui-radio--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-radio-basic",
+          "localTestId": "base-ui-radio--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -626,11 +626,11 @@
       "itemName": "base-ui-scroll-area",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/scroll-area",
-      "localPath": "/docs/components/base-ui-scroll-area",
+      "localPath": "/__story/base-ui-scroll-area--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-scroll-area-basic",
+          "localTestId": "base-ui-scroll-area--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -648,11 +648,11 @@
       "itemName": "base-ui-select",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/select",
-      "localPath": "/docs/components/base-ui-select",
+      "localPath": "/__story/base-ui-select--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-select-basic",
+          "localTestId": "base-ui-select--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -670,11 +670,11 @@
       "itemName": "base-ui-separator",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/separator",
-      "localPath": "/docs/components/base-ui-separator",
+      "localPath": "/__story/base-ui-separator--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-separator-basic",
+          "localTestId": "base-ui-separator--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -692,11 +692,11 @@
       "itemName": "base-ui-slider",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/slider",
-      "localPath": "/docs/components/base-ui-slider",
+      "localPath": "/__story/base-ui-slider--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-slider-basic",
+          "localTestId": "base-ui-slider--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -714,11 +714,11 @@
       "itemName": "base-ui-switch",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/switch",
-      "localPath": "/docs/components/base-ui-switch",
+      "localPath": "/__story/base-ui-switch--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-switch-basic",
+          "localTestId": "base-ui-switch--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -736,11 +736,11 @@
       "itemName": "base-ui-tabs",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/tabs",
-      "localPath": "/docs/components/base-ui-tabs",
+      "localPath": "/__story/base-ui-tabs--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-tabs-basic",
+          "localTestId": "base-ui-tabs--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -758,11 +758,11 @@
       "itemName": "base-ui-toast",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/toast",
-      "localPath": "/docs/components/base-ui-toast",
+      "localPath": "/__story/base-ui-toast--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-toast-basic",
+          "localTestId": "base-ui-toast--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -780,11 +780,11 @@
       "itemName": "base-ui-toggle",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/toggle",
-      "localPath": "/docs/components/base-ui-toggle",
+      "localPath": "/__story/base-ui-toggle--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-toggle-basic",
+          "localTestId": "base-ui-toggle--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -802,11 +802,11 @@
       "itemName": "base-ui-toggle-group",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/toggle-group",
-      "localPath": "/docs/components/base-ui-toggle-group",
+      "localPath": "/__story/base-ui-toggle-group--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-toggle-group-basic",
+          "localTestId": "base-ui-toggle-group--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -824,11 +824,11 @@
       "itemName": "base-ui-toolbar",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/toolbar",
-      "localPath": "/docs/components/base-ui-toolbar",
+      "localPath": "/__story/base-ui-toolbar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-toolbar-basic",
+          "localTestId": "base-ui-toolbar--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -846,11 +846,11 @@
       "itemName": "base-ui-tooltip",
       "lane": "base-ui",
       "originUrl": "https://base-ui.com/react/components/tooltip",
-      "localPath": "/docs/components/base-ui-tooltip",
+      "localPath": "/__story/base-ui-tooltip--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-base-ui-tooltip-basic",
+          "localTestId": "base-ui-tooltip--inventory",
           "originSelector": "main .DemoPlaygroundInner *",
           "compare": {
             "dom": false,
@@ -868,11 +868,11 @@
       "itemName": "chart",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/chart",
-      "localPath": "/docs/components/chart",
+      "localPath": "/__story/chart--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-chart-basic",
+          "localTestId": "chart--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -890,11 +890,11 @@
       "itemName": "command",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/command",
-      "localPath": "/docs/components/command",
+      "localPath": "/__story/command--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-command-basic",
+          "localTestId": "command--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -912,11 +912,11 @@
       "itemName": "data-table",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/data-table",
-      "localPath": "/docs/components/data-table",
+      "localPath": "/__story/data-table--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-data-table-basic",
+          "localTestId": "data-table--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -934,11 +934,11 @@
       "itemName": "direction",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/direction",
-      "localPath": "/docs/components/direction",
+      "localPath": "/__story/direction--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-direction-basic",
+          "localTestId": "direction--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -956,11 +956,11 @@
       "itemName": "dropdown-menu",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/dropdown-menu",
-      "localPath": "/docs/components/dropdown-menu",
+      "localPath": "/__story/dropdown-menu--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-dropdown-menu-basic",
+          "localTestId": "dropdown-menu--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -978,11 +978,11 @@
       "itemName": "empty",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/empty",
-      "localPath": "/docs/components/empty",
+      "localPath": "/__story/empty--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-empty-basic",
+          "localTestId": "empty--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1000,11 +1000,11 @@
       "itemName": "hover-card",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/hover-card",
-      "localPath": "/docs/components/hover-card",
+      "localPath": "/__story/hover-card--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-hover-card-basic",
+          "localTestId": "hover-card--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1022,11 +1022,11 @@
       "itemName": "input-group",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/input-group",
-      "localPath": "/docs/components/input-group",
+      "localPath": "/__story/input-group--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-input-group-basic",
+          "localTestId": "input-group--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1044,11 +1044,11 @@
       "itemName": "input-otp",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/input-otp",
-      "localPath": "/docs/components/input-otp",
+      "localPath": "/__story/input-otp--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-input-otp-basic",
+          "localTestId": "input-otp--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1066,11 +1066,11 @@
       "itemName": "item",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/item",
-      "localPath": "/docs/components/item",
+      "localPath": "/__story/item--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-item-basic",
+          "localTestId": "item--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1088,11 +1088,11 @@
       "itemName": "kbd",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/kbd",
-      "localPath": "/docs/components/kbd",
+      "localPath": "/__story/kbd--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-kbd-basic",
+          "localTestId": "kbd--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1110,11 +1110,11 @@
       "itemName": "label",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/label",
-      "localPath": "/docs/components/label",
+      "localPath": "/__story/label--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-label-basic",
+          "localTestId": "label--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1132,11 +1132,11 @@
       "itemName": "native-select",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/native-select",
-      "localPath": "/docs/components/native-select",
+      "localPath": "/__story/native-select--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-native-select-basic",
+          "localTestId": "native-select--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1154,11 +1154,11 @@
       "itemName": "pagination",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/pagination",
-      "localPath": "/docs/components/pagination",
+      "localPath": "/__story/pagination--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-pagination-basic",
+          "localTestId": "pagination--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1176,11 +1176,11 @@
       "itemName": "resizable",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/resizable",
-      "localPath": "/docs/components/resizable",
+      "localPath": "/__story/resizable--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-resizable-basic",
+          "localTestId": "resizable--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1198,11 +1198,11 @@
       "itemName": "shadcn-accordion",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/accordion",
-      "localPath": "/docs/components/shadcn-accordion",
+      "localPath": "/__story/shadcn-accordion--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-accordion-basic",
+          "localTestId": "shadcn-accordion--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1220,11 +1220,11 @@
       "itemName": "shadcn-alert",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/alert",
-      "localPath": "/docs/components/shadcn-alert",
+      "localPath": "/__story/shadcn-alert--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-alert-basic",
+          "localTestId": "shadcn-alert--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1242,11 +1242,11 @@
       "itemName": "shadcn-alert-dialog",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/alert-dialog",
-      "localPath": "/docs/components/shadcn-alert-dialog",
+      "localPath": "/__story/shadcn-alert-dialog--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-alert-dialog-basic",
+          "localTestId": "shadcn-alert-dialog--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1264,11 +1264,11 @@
       "itemName": "shadcn-aspect-ratio",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/aspect-ratio",
-      "localPath": "/docs/components/shadcn-aspect-ratio",
+      "localPath": "/__story/shadcn-aspect-ratio--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-aspect-ratio-basic",
+          "localTestId": "shadcn-aspect-ratio--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1286,11 +1286,11 @@
       "itemName": "shadcn-avatar",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/avatar",
-      "localPath": "/docs/components/shadcn-avatar",
+      "localPath": "/__story/shadcn-avatar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-avatar-basic",
+          "localTestId": "shadcn-avatar--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1308,11 +1308,11 @@
       "itemName": "shadcn-base-accordion",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/base/accordion",
-      "localPath": "/docs/components/shadcn-base-accordion",
+      "localPath": "/__story/shadcn-base-accordion--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-base-accordion-basic",
+          "localTestId": "shadcn-base-accordion--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1330,11 +1330,11 @@
       "itemName": "shadcn-breadcrumb",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/breadcrumb",
-      "localPath": "/docs/components/shadcn-breadcrumb",
+      "localPath": "/__story/shadcn-breadcrumb--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-breadcrumb-basic",
+          "localTestId": "shadcn-breadcrumb--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1352,11 +1352,11 @@
       "itemName": "shadcn-button",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/button",
-      "localPath": "/docs/components/shadcn-button",
+      "localPath": "/__story/shadcn-button--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-button-basic",
+          "localTestId": "shadcn-button--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1374,11 +1374,11 @@
       "itemName": "shadcn-button-group",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/button-group",
-      "localPath": "/docs/components/shadcn-button-group",
+      "localPath": "/__story/shadcn-button-group--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-button-group-basic",
+          "localTestId": "shadcn-button-group--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1396,11 +1396,11 @@
       "itemName": "shadcn-calendar",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/calendar",
-      "localPath": "/docs/components/shadcn-calendar",
+      "localPath": "/__story/shadcn-calendar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-calendar-basic",
+          "localTestId": "shadcn-calendar--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1418,11 +1418,11 @@
       "itemName": "shadcn-card",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/card",
-      "localPath": "/docs/components/shadcn-card",
+      "localPath": "/__story/shadcn-card--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-card-basic",
+          "localTestId": "shadcn-card--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1440,11 +1440,11 @@
       "itemName": "shadcn-carousel",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/carousel",
-      "localPath": "/docs/components/shadcn-carousel",
+      "localPath": "/__story/shadcn-carousel--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-carousel-basic",
+          "localTestId": "shadcn-carousel--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1462,11 +1462,11 @@
       "itemName": "shadcn-checkbox",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/checkbox",
-      "localPath": "/docs/components/shadcn-checkbox",
+      "localPath": "/__story/shadcn-checkbox--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-checkbox-basic",
+          "localTestId": "shadcn-checkbox--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1484,11 +1484,11 @@
       "itemName": "shadcn-collapsible",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/collapsible",
-      "localPath": "/docs/components/shadcn-collapsible",
+      "localPath": "/__story/shadcn-collapsible--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-collapsible-basic",
+          "localTestId": "shadcn-collapsible--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1506,11 +1506,11 @@
       "itemName": "shadcn-combobox",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/combobox",
-      "localPath": "/docs/components/shadcn-combobox",
+      "localPath": "/__story/shadcn-combobox--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-combobox-basic",
+          "localTestId": "shadcn-combobox--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1528,11 +1528,11 @@
       "itemName": "shadcn-context-menu",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/context-menu",
-      "localPath": "/docs/components/shadcn-context-menu",
+      "localPath": "/__story/shadcn-context-menu--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-context-menu-basic",
+          "localTestId": "shadcn-context-menu--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1550,11 +1550,11 @@
       "itemName": "shadcn-date-picker",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/date-picker",
-      "localPath": "/docs/components/shadcn-date-picker",
+      "localPath": "/__story/shadcn-date-picker--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-date-picker-basic",
+          "localTestId": "shadcn-date-picker--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1572,11 +1572,11 @@
       "itemName": "shadcn-dialog",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/dialog",
-      "localPath": "/docs/components/shadcn-dialog",
+      "localPath": "/__story/shadcn-dialog--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-dialog-basic",
+          "localTestId": "shadcn-dialog--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1594,11 +1594,11 @@
       "itemName": "shadcn-drawer",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/drawer",
-      "localPath": "/docs/components/shadcn-drawer",
+      "localPath": "/__story/shadcn-drawer--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-drawer-basic",
+          "localTestId": "shadcn-drawer--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1616,11 +1616,11 @@
       "itemName": "shadcn-field",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/field",
-      "localPath": "/docs/components/shadcn-field",
+      "localPath": "/__story/shadcn-field--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-field-basic",
+          "localTestId": "shadcn-field--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1638,11 +1638,11 @@
       "itemName": "shadcn-input",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/input",
-      "localPath": "/docs/components/shadcn-input",
+      "localPath": "/__story/shadcn-input--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-input-basic",
+          "localTestId": "shadcn-input--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1660,11 +1660,11 @@
       "itemName": "shadcn-menubar",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/menubar",
-      "localPath": "/docs/components/shadcn-menubar",
+      "localPath": "/__story/shadcn-menubar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-menubar-basic",
+          "localTestId": "shadcn-menubar--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1682,11 +1682,11 @@
       "itemName": "shadcn-navigation-menu",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/navigation-menu",
-      "localPath": "/docs/components/shadcn-navigation-menu",
+      "localPath": "/__story/shadcn-navigation-menu--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-navigation-menu-basic",
+          "localTestId": "shadcn-navigation-menu--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1704,11 +1704,11 @@
       "itemName": "shadcn-popover",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/popover",
-      "localPath": "/docs/components/shadcn-popover",
+      "localPath": "/__story/shadcn-popover--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-popover-basic",
+          "localTestId": "shadcn-popover--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1726,11 +1726,11 @@
       "itemName": "shadcn-progress",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/progress",
-      "localPath": "/docs/components/shadcn-progress",
+      "localPath": "/__story/shadcn-progress--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-progress-basic",
+          "localTestId": "shadcn-progress--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1748,11 +1748,11 @@
       "itemName": "shadcn-radio-group",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/radio-group",
-      "localPath": "/docs/components/shadcn-radio-group",
+      "localPath": "/__story/shadcn-radio-group--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-radio-group-basic",
+          "localTestId": "shadcn-radio-group--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1770,11 +1770,11 @@
       "itemName": "shadcn-scroll-area",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/scroll-area",
-      "localPath": "/docs/components/shadcn-scroll-area",
+      "localPath": "/__story/shadcn-scroll-area--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-scroll-area-basic",
+          "localTestId": "shadcn-scroll-area--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1792,11 +1792,11 @@
       "itemName": "shadcn-select",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/select",
-      "localPath": "/docs/components/shadcn-select",
+      "localPath": "/__story/shadcn-select--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-select-basic",
+          "localTestId": "shadcn-select--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1814,11 +1814,11 @@
       "itemName": "shadcn-separator",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/separator",
-      "localPath": "/docs/components/shadcn-separator",
+      "localPath": "/__story/shadcn-separator--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-separator-basic",
+          "localTestId": "shadcn-separator--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1836,11 +1836,11 @@
       "itemName": "shadcn-slider",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/slider",
-      "localPath": "/docs/components/shadcn-slider",
+      "localPath": "/__story/shadcn-slider--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-slider-basic",
+          "localTestId": "shadcn-slider--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1858,11 +1858,11 @@
       "itemName": "shadcn-switch",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/switch",
-      "localPath": "/docs/components/shadcn-switch",
+      "localPath": "/__story/shadcn-switch--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-switch-basic",
+          "localTestId": "shadcn-switch--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1880,11 +1880,11 @@
       "itemName": "shadcn-tabs",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/tabs",
-      "localPath": "/docs/components/shadcn-tabs",
+      "localPath": "/__story/shadcn-tabs--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-tabs-basic",
+          "localTestId": "shadcn-tabs--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1902,11 +1902,11 @@
       "itemName": "shadcn-textarea",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/textarea",
-      "localPath": "/docs/components/shadcn-textarea",
+      "localPath": "/__story/shadcn-textarea--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-textarea-basic",
+          "localTestId": "shadcn-textarea--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1924,11 +1924,11 @@
       "itemName": "shadcn-toast",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/toast",
-      "localPath": "/docs/components/shadcn-toast",
+      "localPath": "/__story/shadcn-toast--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-toast-basic",
+          "localTestId": "shadcn-toast--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1946,11 +1946,11 @@
       "itemName": "shadcn-toggle",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/toggle",
-      "localPath": "/docs/components/shadcn-toggle",
+      "localPath": "/__story/shadcn-toggle--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-toggle-basic",
+          "localTestId": "shadcn-toggle--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1968,11 +1968,11 @@
       "itemName": "shadcn-toggle-group",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/toggle-group",
-      "localPath": "/docs/components/shadcn-toggle-group",
+      "localPath": "/__story/shadcn-toggle-group--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-toggle-group-basic",
+          "localTestId": "shadcn-toggle-group--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -1990,11 +1990,11 @@
       "itemName": "shadcn-tooltip",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/tooltip",
-      "localPath": "/docs/components/shadcn-tooltip",
+      "localPath": "/__story/shadcn-tooltip--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-shadcn-tooltip-basic",
+          "localTestId": "shadcn-tooltip--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2012,11 +2012,11 @@
       "itemName": "sheet",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/sheet",
-      "localPath": "/docs/components/sheet",
+      "localPath": "/__story/sheet--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-sheet-basic",
+          "localTestId": "sheet--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2034,11 +2034,11 @@
       "itemName": "sidebar",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/sidebar",
-      "localPath": "/docs/components/sidebar",
+      "localPath": "/__story/sidebar--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-sidebar-basic",
+          "localTestId": "sidebar--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2056,11 +2056,11 @@
       "itemName": "skeleton",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/skeleton",
-      "localPath": "/docs/components/skeleton",
+      "localPath": "/__story/skeleton--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-skeleton-basic",
+          "localTestId": "skeleton--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2078,11 +2078,11 @@
       "itemName": "sonner",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/sonner",
-      "localPath": "/docs/components/sonner",
+      "localPath": "/__story/sonner--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-sonner-basic",
+          "localTestId": "sonner--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2100,11 +2100,11 @@
       "itemName": "spinner",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/spinner",
-      "localPath": "/docs/components/spinner",
+      "localPath": "/__story/spinner--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-spinner-basic",
+          "localTestId": "spinner--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2122,11 +2122,11 @@
       "itemName": "table",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/table",
-      "localPath": "/docs/components/table",
+      "localPath": "/__story/table--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-table-basic",
+          "localTestId": "table--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,
@@ -2144,11 +2144,11 @@
       "itemName": "typography",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/typography",
-      "localPath": "/docs/components/typography",
+      "localPath": "/__story/typography--inventory",
       "examples": [
         {
           "exampleName": "inventory",
-          "localTestId": "docs-example-block-typography-basic",
+          "localTestId": "typography--inventory",
           "originSelector": "main [data-slot]",
           "compare": {
             "dom": false,

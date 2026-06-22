@@ -12,13 +12,13 @@ describe("new component authoring", () => {
         Scene.role("heading", { name: "New component interface" })
       ).toExist(),
       Scene.expect(
-        Scene.text("registry/foldkit/ui/example-panel/index.ts")
+        Scene.text("registry/foldkit/example-panel/ui/index.ts")
       ).toExist(),
       Scene.change(
         Scene.role("textbox", { name: "Component name" }),
         "Command Menu"
       ),
-      Scene.expect(Scene.text("registry/foldkit/ui/command-menu/index.ts")).toExist(),
+      Scene.expect(Scene.text("registry/foldkit/command-menu/ui/index.ts")).toExist(),
       Scene.change(Scene.role("combobox", { name: "Origin" }), "shadcn"),
       Scene.expect(Scene.role("combobox", { name: "Origin" })).toHaveValue(
         "shadcn"

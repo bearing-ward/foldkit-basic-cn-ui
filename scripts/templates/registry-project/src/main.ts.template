@@ -38,7 +38,7 @@ export const view = Submodel.defineView<Model, Message>((_model): Html => {
           "Example component",
         ]),
         h.p([h.Class("mt-2 text-sm text-slate-600")], [
-          "Edit registry/foldkit/ui/example-card, then run bun run build:registry.",
+          "Edit registry/foldkit/example-card/ui, then run bun run build:registry.",
         ]),
       ]),
     ]

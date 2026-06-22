@@ -1,9 +1,6 @@
-import { readFileSync } from "node:fs";
-
 import { readSourceRegistryItems } from "./registry-manifest.mjs";
 
 const registryItems = await readSourceRegistryItems();
-const docsViewSource = readFileSync("src/docsView.ts", "utf-8");
 
 const originPrefixes = {
   "ai-elements": "ai-elements",
@@ -106,44 +103,6 @@ const publicUiItems = uiItems.filter(
   (item) => item.meta?.foldkit?.public !== false
 );
 
-const routeTagFromComponentName = (name) =>
-  `${name
-    .split("-")
-    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
-    .join("")}Docs`;
-
-const extractDocsNavRouteTags = (library) => {
-  const libraryPattern =
-    library === "shadcn"
-      ? /\]\.includes\(navItem\.routeTag\)\s*\?\s*"shadcn"/u
-      : library === "AI Elements"
-        ? /\]\.includes\(navItem\.routeTag\)\s*\?\s*"AI Elements"/u
-        : /\]\.includes\(navItem\.routeTag\)\s*\?\s*"Base UI"/u;
-  const libraryMatch = libraryPattern.exec(docsViewSource);
-
-  if (libraryMatch === null) {
-    failures.push(`docsNavItemLibrary: missing ${library} route list`);
-    return new Set();
-  }
-
-  const listEnd = libraryMatch.index;
-  const listStart = docsViewSource.lastIndexOf("[", listEnd);
-
-  if (listStart === -1) {
-    failures.push(`docsNavItemLibrary: cannot parse ${library} route list`);
-    return new Set();
-  }
-
-  const listSource = docsViewSource.slice(listStart, listEnd + 1);
-  return new Set(
-    [...listSource.matchAll(/"([^"]+Docs)"/gu)].map((match) => match[1])
-  );
-};
-
-const shadcnDocsRouteTags = extractDocsNavRouteTags("shadcn");
-const baseUiDocsRouteTags = extractDocsNavRouteTags("Base UI");
-const aiElementsDocsRouteTags = extractDocsNavRouteTags("AI Elements");
-
 for (const item of uiItems) {
   const foldkitMeta = item.meta?.foldkit;
   const origin = foldkitMeta?.origin;
@@ -209,41 +168,6 @@ for (const item of uiItems) {
         `${item.name}: meta.foldkit.publicAliasOf points to missing item ${publicAliasOf}`
       );
     }
-  }
-}
-
-for (const item of publicUiItems) {
-  const origin = item.meta?.foldkit?.origin;
-  const originLane = originLaneFromUrl(origin);
-  const routeTag = routeTagFromComponentName(item.name);
-
-  if (originLane === "base-ui" && !baseUiDocsRouteTags.has(routeTag)) {
-    failures.push(
-      `${item.name}: ${routeTag} must be listed in docsNavItemLibrary Base UI routes`
-    );
-  }
-
-  if (originLane === "shadcn" && !shadcnDocsRouteTags.has(routeTag)) {
-    failures.push(
-      `${item.name}: ${routeTag} must be listed in docsNavItemLibrary shadcn routes`
-    );
-  }
-
-  if (originLane === "ai-elements" && !aiElementsDocsRouteTags.has(routeTag)) {
-    failures.push(
-      `${item.name}: ${routeTag} must be listed in docsNavItemLibrary AI Elements routes`
-    );
-  }
-
-  if (
-    originLane === "foldkit" &&
-    (baseUiDocsRouteTags.has(routeTag) ||
-      shadcnDocsRouteTags.has(routeTag) ||
-      aiElementsDocsRouteTags.has(routeTag))
-  ) {
-    failures.push(
-      `${item.name}: ${routeTag} is foldkit origin but is listed in a non-Foldkit docs group`
-    );
   }
 }
 
