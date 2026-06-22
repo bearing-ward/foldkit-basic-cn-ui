@@ -39,11 +39,8 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex flex-col items-start gap-2")],
     [
       Button.view<Message>({
-        toView: (attributes) =>
-          h.button(
-            [...attributes.button, h.Class(Button.shadcnGhostButtonClasses)],
-            ["Ghost"]
-          ),
+        variant: "ghost",
+        children: ["Ghost"],
       }),
     ]
   );

@@ -28,6 +28,9 @@ starting, honor its STOP conditions, and update your row when done.
 | 018  | Remove component className APIs and migrate styling to cn | P1 | L      | 017                          | DONE   |
 | 019  | Restore upstream-compatible className interfaces | P1       | L      | 018                          | DONE   |
 | 020  | Define project invariants and progress scorecard | P1       | M      | 019                          | DONE   |
+| 021  | Pilot component-owned hierarchy with OpenStory-only examples | P1 | L | 020 | DONE |
+| 022  | Codify component-local configuration and prove it with Button | P1 | M | 020, 021 | DONE |
+| 023  | Add OpenStory shadcn theme and mode selectors | P1 | M | 022 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -135,6 +138,39 @@ REJECTED (with one-line rationale).
   into a single progress rubric for maintainers and future plans, including a
   required structural `check:invariants` guard and future-plan invariant-impact
   requirements.
+- 021 depends on 020 because the hierarchy refactor touches multiple project
+  invariants: source ownership, origin identity, example parity, OpenStory
+  reference coverage, generated artifact sync, and progress governance. It
+  should prove a compatibility layer and one `shadcn-button` pilot before any
+  bulk move, because the current codebase has many path-based checks and docs
+  imports tied to `registry/{lane}/ui/**` and `registry/{lane}/examples/**`.
+  A 2026-06-22 execute attempt stopped before legacy docs removal because
+  required Button documentation evidence still exists only in `src/docsView.ts`.
+  The resolved migration boundary is to stop serving/testing the legacy docs app
+  now, keep `src/docsView.ts` only as a temporary reference artifact during
+  extraction, and delete it in a later cleanup after OpenStory references cover
+  any content worth preserving. Execution completed in isolated worktree
+  `/Volumes/Sync/Development/Bearing-Ward/projects/repos/foldkit-basic-cn-ui-021-pilot-component-owned-registry-hierarchy`
+  on branch `codex/021-pilot-component-owned-registry-hierarchy` with commits
+  `0ee64076` and `588a5759`; reviewer verification passed after one revision
+  round restored OpenStory-based interaction coverage.
+- 022 depends on 020 and 021 because it turns the component-owned hierarchy into
+  a configuration-ownership rule: component-specific recipes, examples, tests,
+  audits, and metadata should live under the component slice, while generated
+  docs/OpenStory/public registry files remain projections. It adds the
+  `P13_COMPONENT_LOCAL_CONFIG` invariant and proves the shape with shadcn
+  Button before any registry-wide rollout. The POC keeps Button recipes in
+  `registry/shadcn/button/ui/config.ts`, projects that file into public installs
+  as `src/ui/shadcn-button/config.ts`, removes public deprecated Button class
+  constants, and passed focused Button tests, typecheck, OpenStory generation,
+  registry generation/checks, invariant checks, and whitespace checks on
+  2026-06-22.
+- 023 depends on 022 because the OpenStory selector needs the component-local
+  configuration fallback rule established by the Button POC. It should split the
+  existing combined shadcn OpenStory global into a theme selector and a
+  light/dark/system selector, keep token theming global, and let components with
+  local recipes opt into the selected style with component-owned fallback
+  mapping.
 
 ## Findings considered and rejected
 

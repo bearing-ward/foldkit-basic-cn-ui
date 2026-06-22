@@ -16,6 +16,7 @@ const requiredIds = [
   "P10_ORIGIN_API_PARITY",
   "P11_PROGRESS_LEDGER",
   "P12_INVARIANT_GOVERNANCE",
+  "P13_COMPONENT_LOCAL_CONFIG",
 ];
 
 const catalogHeader = [

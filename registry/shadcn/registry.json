@@ -909,6 +909,7 @@
       "title": "Button",
       "description": "shadcn style-lane button wrapper backed by the Foldkit Ui.Button component.",
       "dependencies": [
+        "class-variance-authority",
         "clsx",
         "effect",
         "foldkit",
@@ -924,6 +925,11 @@
         {
           "path": "registry/shadcn/button/ui/index.ts",
           "target": "src/ui/shadcn-button/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/shadcn/button/ui/config.ts",
+          "target": "src/ui/shadcn-button/config.ts",
           "type": "registry:ui"
         },
         {

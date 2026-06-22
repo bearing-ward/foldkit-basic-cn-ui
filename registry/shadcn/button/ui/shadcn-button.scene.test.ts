@@ -32,11 +32,7 @@ const view = (model: Model): Html => {
     [
       Button.view<Message>({
         onClick: ClickedButton(),
-        toView: (attributes) =>
-          h.button(
-            [...attributes.button, h.Class(Button.shadcnButtonClasses)],
-            ["Save changes"],
-          ),
+        children: ["Save changes"],
       }),
       h.p([], [`Clicked ${model.count} times`]),
     ],
@@ -72,21 +68,52 @@ describe("shadcn Button registry view", () => {
     expect(className.split(" ")).not.toContain("h-9");
   });
 
-  test("keeps legacy constants derived from buttonVariants", () => {
-    expect(Button.shadcnButtonClasses).toBe(Button.buttonVariants());
-    expect(Button.shadcnDestructiveButtonClasses).toBe(
-      Button.buttonVariants({ variant: "destructive" }),
+  test("keeps component-local recipes addressable by style", () => {
+    expect(Button.defaultButtonStyle).toBe("new-york-v4");
+    expect(Button.resolveButtonStyle(undefined)).toBe("new-york-v4");
+    expect(Button.resolveButtonStyle("nova")).toBe("base-nova");
+    expect(Button.resolveButtonStyle("vega")).toBe(Button.defaultButtonStyle);
+    expect(Button.buttonRecipeByStyle["new-york-v4"].variants.variant.default)
+      .toContain("bg-primary");
+    expect(Button.buttonVariants({ style: "base-nova" })).toContain(
+      "group/button",
     );
-    expect(Button.shadcnIconButtonClasses).toBe(
-      Button.buttonVariants({ size: "icon" }),
-    );
+    expect(Button.buttonVariants({ style: "nova" })).toContain("group/button");
   });
 
   test("reuses the Foldkit Button functional contract", () => {
     expect(Button.view).toBeTypeOf("function");
-    expect(Button.shadcnButtonClasses).toContain("rounded");
-    expect(Button.shadcnDestructiveButtonClasses).toContain(
+    expect(Button.buttonVariants()).toContain("rounded");
+    expect(Button.buttonVariants({ variant: "destructive" })).toContain(
       "bg-destructive",
+    );
+  });
+
+  test("renders shadcn variant props through the Button view", () => {
+    const propsView = (): Html =>
+      Button.view<Message>({
+        variant: "secondary",
+        size: "lg",
+        style: "base-nova",
+        className: "rounded-full",
+        children: ["Styled action"],
+      });
+
+    Scene.scene(
+      { update, view: propsView },
+      Scene.with(initialModel),
+      Scene.expect(Scene.role("button", { name: "Styled action" })).toHaveAttr(
+        "data-variant",
+        "secondary",
+      ),
+      Scene.expect(Scene.role("button", { name: "Styled action" })).toHaveAttr(
+        "data-size",
+        "lg",
+      ),
+      Scene.expect(Scene.role("button", { name: "Styled action" })).toHaveAttr(
+        "data-style",
+        "base-nova",
+      ),
     );
   });
 

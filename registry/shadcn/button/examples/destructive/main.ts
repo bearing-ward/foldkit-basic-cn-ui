@@ -4,6 +4,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
+import type { ShadcnOpenStoryThemeInput } from "../../../../../src/openstory/shadcnTheme";
 import * as Button from "../../ui";
 
 // MODEL
@@ -32,22 +33,20 @@ export const update = (
 
 // VIEW
 
-export const view = Submodel.defineView<Model, Message>((): Html => {
-  const h = html<Message>();
+export const view = Submodel.defineView<Model, Message>(
+  (_model, viewInputs?: ShadcnOpenStoryThemeInput): Html => {
+    const h = html<Message>();
+    const style = viewInputs?.shadcnTheme.style;
 
-  return h.div(
-    [h.Class("flex flex-col items-start gap-2")],
-    [
-      Button.view<Message>({
-        toView: (attributes) =>
-          h.button(
-            [
-              ...attributes.button,
-              h.Class(Button.shadcnDestructiveButtonClasses),
-            ],
-            ["Destructive"]
-          ),
-      }),
-    ]
-  );
-});
+    return h.div(
+      [h.Class("flex flex-col items-start gap-2")],
+      [
+        Button.view<Message>({
+          style,
+          variant: "destructive",
+          children: ["Destructive"],
+        }),
+      ]
+    );
+  }
+);

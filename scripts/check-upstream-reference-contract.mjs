@@ -133,22 +133,29 @@ if (
 
 if (exists("src/preview.ts")) {
   const previewSource = readText("src/preview.ts");
-  const shadcnThemeContract = exists("registry/upstream/derived/shadcn-theme.json")
-    ? readJson("registry/upstream/derived/shadcn-theme.json")
-    : { themes: [] };
-  const expectedThemeValues = (shadcnThemeContract.themes ?? [])
-    .map((theme) => theme.name)
-    .sort();
-  const previewThemeValues = [
-    ...previewSource.matchAll(/value:\s*["']([^"']+)["']/gu),
-  ]
-    .map((match) => match[1])
-    .filter((value) => value.includes("-"))
-    .sort();
+  const hasDerivedShadcnPreviewImport =
+    /import\s*\{[\s\S]*\binitialShadcnThemeGlobals\b[\s\S]*\bshadcnThemeGlobalTypes\b[\s\S]*\}\s*from\s*["']\.\/openstory\/shadcnTheme["']/u.test(
+      previewSource
+    ) ||
+    /import\s*\{[\s\S]*\bshadcnThemeGlobalTypes\b[\s\S]*\binitialShadcnThemeGlobals\b[\s\S]*\}\s*from\s*["']\.\/openstory\/shadcnTheme["']/u.test(
+      previewSource
+    );
 
-  if (JSON.stringify(previewThemeValues) !== JSON.stringify(expectedThemeValues)) {
+  if (!hasDerivedShadcnPreviewImport) {
     failures.push(
-      "src/preview.ts shadcn toolbar values must match the derived shadcn theme contract"
+      "src/preview.ts must import shadcnThemeGlobalTypes and initialShadcnThemeGlobals from ./openstory/shadcnTheme"
+    );
+  }
+
+  if (!/\bglobalTypes\s*:\s*shadcnThemeGlobalTypes\b/u.test(previewSource)) {
+    failures.push(
+      "src/preview.ts must assign globalTypes: shadcnThemeGlobalTypes"
+    );
+  }
+
+  if (!/\binitialGlobals\s*:\s*initialShadcnThemeGlobals\b/u.test(previewSource)) {
+    failures.push(
+      "src/preview.ts must assign initialGlobals: initialShadcnThemeGlobals"
     );
   }
 

@@ -39,21 +39,14 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex flex-col items-start gap-2")],
     [
       Button.view<Message>({
-        toView: (attributes) =>
-          h.button(
-            [
-              ...attributes.button,
-              h.AriaLabel("New Branch"),
-              h.Class(Button.shadcnButtonClasses),
-            ],
-            [
-              h.span(
-                [h.DataAttribute("icon", "inline-start"), h.AriaHidden(true)],
-                ["+"]
-              ),
-              "New Branch",
-            ]
+        attributes: [h.AriaLabel("New Branch")],
+        children: [
+          h.span(
+            [h.DataAttribute("icon", "inline-start"), h.AriaHidden(true)],
+            ["+"]
           ),
+          "New Branch",
+        ],
       }),
     ]
   );

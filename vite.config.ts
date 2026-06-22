@@ -6,6 +6,12 @@ import { defineConfig } from "vite"
 
 import { optimizedSourceAliases } from "./vite.aliases"
 
+const activeSourceScanEntries = [
+  "src/**/*.ts",
+  "!src/docsView.ts",
+  "registry/{foldkit,base-ui,shadcn,ai-elements}/**/*.ts",
+]
+
 const registryExampleChunkName = (id: string): string | undefined => {
   const match = id.match(
     /registry\/(?:foldkit|base-ui|shadcn|ai-elements)\/examples\/([^/]+)\//u
@@ -134,6 +140,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
+    entries: activeSourceScanEntries,
     include: Object.keys(optimizedSourceAliases),
   },
 })

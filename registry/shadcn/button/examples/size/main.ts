@@ -4,6 +4,7 @@ import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
+import type { ShadcnOpenStoryThemeInput } from "../../../../../src/openstory/shadcnTheme";
 import * as Button from "../../ui";
 
 // MODEL
@@ -32,60 +33,39 @@ export const update = (
 
 // VIEW
 
-export const view = Submodel.defineView<Model, Message>((): Html => {
-  const h = html<Message>();
+export const view = Submodel.defineView<Model, Message>(
+  (_model, viewInputs?: ShadcnOpenStoryThemeInput): Html => {
+    const h = html<Message>();
+    const style = viewInputs?.shadcnTheme.style;
 
-  return h.div(
-    [h.Class("flex flex-col items-start gap-2")],
-    [
-      h.div(
-        [h.Class("flex flex-wrap items-center gap-2")],
-        [
-          Button.view<Message>({
-            toView: (attributes) =>
-              h.button(
-                [
-                  ...attributes.button,
-                  h.Class(
-                    `${Button.shadcnButtonBaseClasses} ${Button.shadcnButtonVariantClasses} ${Button.shadcnButtonExtraSmallSizeClasses}`
-                  ),
-                ],
-                ["Extra Small"]
-              ),
-          }),
-          Button.view<Message>({
-            toView: (attributes) =>
-              h.button(
-                [
-                  ...attributes.button,
-                  h.Class(
-                    `${Button.shadcnButtonBaseClasses} ${Button.shadcnButtonVariantClasses} ${Button.shadcnButtonSmallSizeClasses}`
-                  ),
-                ],
-                ["Small"]
-              ),
-          }),
-          Button.view<Message>({
-            toView: (attributes) =>
-              h.button(
-                [...attributes.button, h.Class(Button.shadcnButtonClasses)],
-                ["Default"]
-              ),
-          }),
-          Button.view<Message>({
-            toView: (attributes) =>
-              h.button(
-                [
-                  ...attributes.button,
-                  h.Class(
-                    `${Button.shadcnButtonBaseClasses} ${Button.shadcnButtonVariantClasses} ${Button.shadcnButtonLargeSizeClasses}`
-                  ),
-                ],
-                ["Large"]
-              ),
-          }),
-        ]
-      ),
-    ]
-  );
-});
+    return h.div(
+      [h.Class("flex flex-col items-start gap-2")],
+      [
+        h.div(
+          [h.Class("flex flex-wrap items-center gap-2")],
+          [
+            Button.view<Message>({
+              style,
+              size: "xs",
+              children: ["Extra Small"],
+            }),
+            Button.view<Message>({
+              style,
+              size: "sm",
+              children: ["Small"],
+            }),
+            Button.view<Message>({
+              style,
+              children: ["Default"],
+            }),
+            Button.view<Message>({
+              style,
+              size: "lg",
+              children: ["Large"],
+            }),
+          ]
+        ),
+      ]
+    );
+  }
+);

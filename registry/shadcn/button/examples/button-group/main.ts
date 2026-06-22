@@ -2,7 +2,6 @@ import { Schema as S } from "effect";
 import type { Command } from "foldkit";
 import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
-import { html } from "foldkit/html";
 
 import * as ButtonGroup from "../../../ui/button-group";
 import * as Button from "../../ui";
@@ -33,14 +32,14 @@ export const update = (
 
 // VIEW
 
-const shadcnButton = (label: string, className: string): Html => {
-  const h = html<Message>();
-
-  return Button.view<Message>({
-    toView: (attributes) =>
-      h.button([...attributes.button, h.Class(className)], [label]),
+const shadcnButton = (
+  label: string,
+  variant?: Button.ButtonVariantProps["variant"]
+): Html =>
+  Button.view<Message>({
+    variant,
+    children: [label],
   });
-};
 
 export const view = Submodel.defineView<Model, Message>(
   (): Html =>
@@ -48,14 +47,10 @@ export const view = Submodel.defineView<Model, Message>(
       ariaLabel: "Report actions",
       children: [
         ButtonGroup.itemView<Message>({
-          children: [
-            shadcnButton("Archive Report", Button.shadcnButtonClasses),
-          ],
+          children: [shadcnButton("Archive Report")],
         }),
         ButtonGroup.itemView<Message>({
-          children: [
-            shadcnButton("Snooze", Button.shadcnSecondaryButtonClasses),
-          ],
+          children: [shadcnButton("Snooze", "secondary")],
         }),
       ],
     })

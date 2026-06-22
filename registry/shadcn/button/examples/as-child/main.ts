@@ -38,7 +38,16 @@ export const view = Submodel.defineView<Model, Message>((_model): Html => {
   return h.div(
     [h.Class("flex flex-col items-start gap-2")],
     [
-      h.a([h.Href("/login"), h.Class(Button.shadcnButtonClasses)], ["Login"]),
+      h.a(
+        [
+          h.Href("/login"),
+          h.DataAttribute("slot", "button"),
+          h.DataAttribute("variant", "default"),
+          h.DataAttribute("size", "default"),
+          h.Class(Button.buttonVariants()),
+        ],
+        ["Login"]
+      ),
       h.span(
         [h.Class("text-sm text-gray-600")],
         ["Rendered as an anchor with the shadcn button class."]

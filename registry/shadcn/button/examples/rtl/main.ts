@@ -39,15 +39,9 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
     [h.Class("flex flex-col items-start gap-2"), h.Attribute("dir", "rtl")],
     [
       Button.view<Message>({
-        toView: (attributes) =>
-          h.button(
-            [
-              ...attributes.button,
-              h.Class(Button.shadcnDestructiveButtonClasses),
-              h.Attribute("dir", "rtl"),
-            ],
-            ["زر حذف"]
-          ),
+        attributes: [h.Attribute("dir", "rtl")],
+        variant: "destructive",
+        children: ["زر حذف"],
       }),
     ]
   );

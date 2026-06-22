@@ -1,30 +1,22 @@
-export { view } from "../../../foldkit/ui/button";
-export type { ButtonAttributes, ViewConfig } from "../../../foldkit/ui/button";
+export type {
+  ButtonAttributes,
+  ViewConfig as ButtonPrimitiveViewConfig,
+} from "../../../foldkit/ui/button";
 
 export {
+  buttonRecipeByStyle,
   buttonVariants,
-  shadcnButtonBaseClasses,
-  shadcnButtonClasses,
-  shadcnButtonDefaultSizeClasses,
-  shadcnButtonExtraSmallSizeClasses,
-  shadcnButtonIconSizeClasses,
-  shadcnButtonLargeSizeClasses,
-  shadcnButtonSmallSizeClasses,
-  shadcnButtonVariantClasses,
-  shadcnDestructiveButtonClasses,
-  shadcnDestructiveButtonVariantClasses,
-  shadcnGhostButtonClasses,
-  shadcnGhostButtonVariantClasses,
-  shadcnIconButtonClasses,
-  shadcnLinkButtonClasses,
-  shadcnLinkButtonVariantClasses,
-  shadcnOutlineButtonClasses,
-  shadcnOutlineButtonVariantClasses,
-  shadcnSecondaryButtonClasses,
-  shadcnSecondaryButtonVariantClasses,
-} from "./view";
+  buttonVariantsByStyle,
+  defaultButtonStyle,
+  resolveButtonStyle,
+} from "./config";
 export type {
+  ButtonStyleName,
   ButtonVariantConfig,
-  ShadcnButtonSize,
-  ShadcnButtonVariant,
+  ButtonVariantProps,
+} from "./config";
+export { view } from "./view";
+export type {
+  ButtonViewConfig,
+  ButtonViewConfig as ViewConfig,
 } from "./view";
