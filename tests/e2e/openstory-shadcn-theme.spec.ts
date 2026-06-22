@@ -1,85 +1,84 @@
-import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
-import { test, expect, type APIRequestContext } from "@playwright/test";
+import { expect, test, type APIRequestContext } from "@playwright/test";
 
-const openstoryPort = 6173;
-const openstoryBaseUrl = `http://127.0.0.1:${openstoryPort}`;
+type OpenStoryManifest = Readonly<{
+  globalTypes: Record<string, unknown>;
+  initialGlobals: Record<string, unknown>;
+  stories: ReadonlyArray<Readonly<{ id: string; name: string; title: string }>>;
+}>;
 
-let openstoryProcess: ChildProcessWithoutNullStreams | undefined;
-
-const waitForOpenStory = async (request: APIRequestContext): Promise<void> => {
-  const deadline = Date.now() + 30_000;
-  let lastError: unknown;
-  while (Date.now() < deadline) {
-    try {
-      const response = await request.get(`${openstoryBaseUrl}/__openstory/manifest.json`);
-      if (response.ok()) {
-        return;
-      }
-      lastError = `${response.status()} ${response.statusText()}`;
-    } catch (error) {
-      lastError = error;
-    }
-    await new Promise((resolve) => setTimeout(resolve, 500));
-  }
-  throw new Error(`OpenStory dev server did not become ready: ${String(lastError)}`);
+const getManifest = async (request: APIRequestContext): Promise<OpenStoryManifest> => {
+  const response = await request.get("/__openstory/manifest.json");
+  expect(response.ok()).toBe(true);
+  return (await response.json()) as OpenStoryManifest;
 };
-
-test.beforeAll(async ({ request }) => {
-  openstoryProcess = spawn(
-    "bun",
-    ["run", "openstory", "--", "--host", "127.0.0.1", "--port", String(openstoryPort)],
-    {
-      cwd: process.cwd(),
-      env: process.env,
-    },
-  );
-  await waitForOpenStory(request);
-});
-
-test.afterAll(() => {
-  openstoryProcess?.kill();
-});
 
 const storyIdForTitle = async (
   request: APIRequestContext,
   title: string,
-  name: string,
+  name: string
 ): Promise<string> => {
-  const response = await request.get(`${openstoryBaseUrl}/__openstory/manifest.json`);
-  expect(response.ok()).toBe(true);
-  const manifest = (await response.json()) as {
-    stories: Array<{ id: string; title: string; name: string }>;
-  };
+  const manifest = await getManifest(request);
   const story = manifest.stories.find(
-    (entry) => entry.title === title && entry.name === name,
+    (entry) => entry.title === title && entry.name === name
   );
   expect(story).toBeDefined();
   return story?.id ?? "";
 };
 
-test("top-bar shadcn theme selection changes iframe theme tokens", async ({
+test("OpenStory manifest exposes shadcn theme and mode globals", async ({
+  request,
+}) => {
+  const manifest = await getManifest(request);
+
+  expect(Object.keys(manifest.globalTypes).sort()).toContain("shadcnMode");
+  expect(Object.keys(manifest.globalTypes).sort()).toContain("shadcnTheme");
+  expect(manifest.initialGlobals).toMatchObject({
+    shadcnMode: "light",
+    shadcnTheme: "rhea-neutral",
+  });
+});
+
+test("top-bar shadcn theme and mode selection changes iframe theme tokens", async ({
   page,
   request,
 }) => {
   const storyId = await storyIdForTitle(request, "shadcn/Button", "Default");
 
-  await page.goto(`${openstoryBaseUrl}/?id=${encodeURIComponent(storyId)}`);
+  await page.goto(`/?id=${encodeURIComponent(storyId)}`);
+
+  await expect(page.getByLabel("shadcn")).toBeVisible();
+  await expect(page.getByLabel("mode")).toBeVisible();
 
   const frame = page.frameLocator(`iframe[title="${storyId}"]`);
   const wrapper = frame.getByTestId("shadcn-theme-wrapper");
   await expect(wrapper).toHaveAttribute("data-shadcn-theme", "rhea-neutral-light");
+  await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "light");
   const initialPrimary = await wrapper.evaluate((element) =>
-    getComputedStyle(element).getPropertyValue("--primary").trim(),
+    getComputedStyle(element).getPropertyValue("--primary").trim()
   );
 
-  await page.getByLabel("shadcn").click();
-  await page.getByRole("option", { name: "Rhea Neutral Dark" }).click();
+  await page.getByLabel("mode").click();
+  await page.getByRole("option", { name: "Dark" }).click();
 
   await expect(wrapper).toHaveAttribute("data-shadcn-theme", "rhea-neutral-dark");
-  const nextPrimary = await wrapper.evaluate((element) =>
-    getComputedStyle(element).getPropertyValue("--primary").trim(),
+  await expect(wrapper).toHaveAttribute("data-shadcn-mode", "dark");
+  await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "dark");
+  const darkPrimary = await wrapper.evaluate((element) =>
+    getComputedStyle(element).getPropertyValue("--primary").trim()
   );
-  expect(nextPrimary).not.toBe(initialPrimary);
+  expect(darkPrimary).not.toBe(initialPrimary);
+
+  await page.getByLabel("shadcn").click();
+  await page.getByRole("option", { name: "Nova Zinc" }).click();
+
+  await expect(wrapper).toHaveAttribute("data-shadcn-theme", "nova-zinc-light");
+  await expect(wrapper).toHaveAttribute("data-shadcn-theme-key", "nova-zinc");
+  await expect(wrapper).toHaveAttribute("data-shadcn-mode", "dark");
+  await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "light");
+  await expect(frame.getByRole("button", { name: "Button" })).toHaveAttribute(
+    "data-style",
+    "base-nova"
+  );
 });
 
 test("Base UI stories do not receive the shadcn wrapper by default", async ({
@@ -88,7 +87,7 @@ test("Base UI stories do not receive the shadcn wrapper by default", async ({
 }) => {
   const storyId = await storyIdForTitle(request, "base-ui/Button", "Basic");
 
-  await page.goto(`${openstoryBaseUrl}/?id=${encodeURIComponent(storyId)}`);
+  await page.goto(`/?id=${encodeURIComponent(storyId)}`);
 
   const frame = page.frameLocator(`iframe[title="${storyId}"]`);
   await expect(frame.getByTestId("shadcn-theme-wrapper")).toHaveCount(0);

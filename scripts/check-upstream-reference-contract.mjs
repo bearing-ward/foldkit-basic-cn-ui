@@ -133,29 +133,43 @@ if (
 
 if (exists("src/preview.ts")) {
   const previewSource = readText("src/preview.ts");
-  const hasDerivedShadcnPreviewImport =
-    /import\s*\{[\s\S]*\binitialShadcnThemeGlobals\b[\s\S]*\bshadcnThemeGlobalTypes\b[\s\S]*\}\s*from\s*["']\.\/openstory\/shadcnTheme["']/u.test(
-      previewSource
-    ) ||
-    /import\s*\{[\s\S]*\bshadcnThemeGlobalTypes\b[\s\S]*\binitialShadcnThemeGlobals\b[\s\S]*\}\s*from\s*["']\.\/openstory\/shadcnTheme["']/u.test(
-      previewSource
-    );
+  const shadcnThemeContract = exists("registry/upstream/derived/shadcn-theme.json")
+    ? readJson("registry/upstream/derived/shadcn-theme.json")
+    : { themes: [], defaultStyle: "rhea", defaultBaseColor: "neutral", defaultMode: "light" };
+  const expectedThemeValues = [
+    ...new Set(
+      (shadcnThemeContract.themes ?? []).map(
+        (theme) => `${theme.style}-${theme.baseColor}`
+      )
+    ),
+  ].sort();
+  const previewThemeValues = [
+    ...previewSource.matchAll(/\{\s*value:\s*["']([^"']+-[^"']+)["'],\s*title:/gu),
+  ]
+    .map((match) => match[1])
+    .sort();
+  const previewModeValues = [
+    ...previewSource.matchAll(/\{\s*value:\s*["'](light|dark|system)["'],\s*title:/gu),
+  ]
+    .map((match) => match[1])
+    .sort();
+  const expectedInitialGlobals = `initialGlobals: { shadcnTheme: "${shadcnThemeContract.defaultStyle}-${shadcnThemeContract.defaultBaseColor}", shadcnMode: "${shadcnThemeContract.defaultMode}" }`;
 
-  if (!hasDerivedShadcnPreviewImport) {
+  if (JSON.stringify(previewThemeValues) !== JSON.stringify(expectedThemeValues)) {
     failures.push(
-      "src/preview.ts must import shadcnThemeGlobalTypes and initialShadcnThemeGlobals from ./openstory/shadcnTheme"
+      "src/preview.ts shadcn theme toolbar values must match derived style/base-color pairs"
     );
   }
 
-  if (!/\bglobalTypes\s*:\s*shadcnThemeGlobalTypes\b/u.test(previewSource)) {
+  if (JSON.stringify(previewModeValues) !== JSON.stringify(["dark", "light", "system"])) {
     failures.push(
-      "src/preview.ts must assign globalTypes: shadcnThemeGlobalTypes"
+      "src/preview.ts shadcn mode toolbar values must be light, dark, and system"
     );
   }
 
-  if (!/\binitialGlobals\s*:\s*initialShadcnThemeGlobals\b/u.test(previewSource)) {
+  if (!previewSource.includes(expectedInitialGlobals)) {
     failures.push(
-      "src/preview.ts must assign initialGlobals: initialShadcnThemeGlobals"
+      "src/preview.ts initial shadcn globals must match the derived default style, base color, and mode"
     );
   }
 
