@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 
+import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 import {
   baseColorOptionsForStyle,
   init,
@@ -16,17 +17,34 @@ import {
 } from "./themeStudio";
 
 describe("Theme Studio program", () => {
-  test("defaults to the generated shadcn theme catalog", () => {
+  test("defaults to the source shadcn theme contract", () => {
     const [model, commands] = init();
+    const sourceDefaultStyle = themeContract.styleNames.includes(
+      themeContract.defaultStyle
+    )
+      ? themeContract.defaultStyle
+      : themeStudioCatalog.styleOptions[0]?.value;
+    const sourceDefaultBaseColor = baseColorOptionsForStyle(
+      sourceDefaultStyle ?? ""
+    ).some((option) => option.value === themeContract.defaultBaseColor)
+      ? themeContract.defaultBaseColor
+      : baseColorOptionsForStyle(sourceDefaultStyle ?? "")[0]?.value;
+    const sourceDefaultMode = ["light", "dark", "system"].includes(
+      themeContract.defaultMode
+    )
+      ? themeContract.defaultMode
+      : "light";
 
     expect(commands).toEqual([]);
     expect(model).toMatchObject({
-      selectedStyle: "rhea",
-      selectedBaseColor: "neutral",
-      selectedMode: "light",
+      selectedStyle: sourceDefaultStyle,
+      selectedBaseColor: sourceDefaultBaseColor,
+      selectedMode: sourceDefaultMode,
       selectedPreviewBlockId: themeStudioCatalog.previewBlocks[0]?.id,
     });
-    expect(selectedThemeDownloadHref(model)).toBe("/foldkit-theme-rhea-neutral.json");
+    expect(selectedThemeDownloadHref(model)).toBe(
+      `/foldkit-theme-${sourceDefaultStyle}-${sourceDefaultBaseColor}.json`
+    );
     expect(selectedPreviewBlockDownloadHref(model)).toMatch(/^\/.+\.json$/u);
   });
 
@@ -81,6 +99,25 @@ describe("Theme Studio program", () => {
       ])
     );
     expect(themeStudioCatalog.previewCoverage.length).toBeGreaterThanOrEqual(21);
+  });
+
+  test("keeps CSS variable option statuses source-driven", () => {
+    expect(themeStudioCatalog.cssVariablesOptions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          value: true,
+          title: "CSS variables",
+          status: "active",
+          download: true,
+        }),
+        expect.objectContaining({
+          value: false,
+          title: "Utility classes",
+          status: "deferred",
+          download: false,
+        }),
+      ])
+    );
   });
 
   test("resolves preview block switching and theme CSS variables", () => {

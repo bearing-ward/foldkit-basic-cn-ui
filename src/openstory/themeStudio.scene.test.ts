@@ -1,6 +1,7 @@
 import { Scene } from "foldkit";
 import { describe, test } from "vitest";
 
+import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 import {
   baseColorOptionsForStyle,
   init,
@@ -23,21 +24,41 @@ describe("Theme Studio scene", () => {
       Scene.expect(Scene.role("combobox", { name: "Base color" })).toHaveValue(
         model.selectedBaseColor
       ),
-      Scene.expect(Scene.role("combobox", { name: "Mode" })).toHaveValue("light"),
+      Scene.expect(Scene.role("combobox", { name: "Mode" })).toHaveValue(
+        themeContract.defaultMode
+      ),
       Scene.expect(Scene.role("combobox", { name: "Preview block" })).toHaveValue(
         model.selectedPreviewBlockId
       ),
       Scene.expect(Scene.testId("theme-studio-theme-download")).toHaveAttr(
         "href",
-        "/foldkit-theme-rhea-neutral.json"
+        `/foldkit-theme-${themeContract.defaultStyle}-${themeContract.defaultBaseColor}.json`
       ),
       Scene.expect(Scene.testId("theme-studio-block-download")).toHaveAttr(
         "href",
         themeStudioCatalog.previewBlocks[0]?.downloadHref ?? ""
       ),
       Scene.expect(Scene.testId("theme-studio-state")).toContainText(
-        "rhea/neutral/light"
+        `${themeContract.defaultStyle}/${themeContract.defaultBaseColor}/${themeContract.defaultMode}`
       )
+    );
+  });
+
+  test("renders CSS variable option statuses without selectable downloads", () => {
+    const [model] = init();
+
+    Scene.scene(
+      { update, view },
+      Scene.with(model),
+      Scene.expect(Scene.testId("theme-studio-css-variable-options")).toExist(),
+      Scene.expect(Scene.text("CSS variable mode")).toExist(),
+      Scene.expect(Scene.text("CSS variables")).toExist(),
+      Scene.expect(Scene.text("Active")).toExist(),
+      Scene.expect(Scene.text("Utility classes")).toExist(),
+      Scene.expect(Scene.text("Deferred")).toExist(),
+      Scene.expect(
+        Scene.text("source-owned style recipes", { exact: false })
+      ).toExist()
     );
   });
 

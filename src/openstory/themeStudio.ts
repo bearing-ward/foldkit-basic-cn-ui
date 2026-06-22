@@ -70,11 +70,12 @@ export const themeStudioCatalog = {
     { value: "system", title: "System" },
   ],
   cssVariablesOptions: [
-    { value: true, title: "CSS variables", status: "active" },
+    { value: true, title: "CSS variables", status: "active", download: true },
     {
       value: false,
       title: "Utility classes",
       status: "deferred",
+      download: false,
       reason:
         "The no-CSS-variables path is deferred until source-owned style recipes can be generated honestly.",
     },
@@ -199,21 +200,6 @@ const firstPreviewBlock = (): PreviewBlock => {
   return block;
 };
 
-export const init = (): readonly [Model, readonly Command.Command<Message>[]] => [
-  {
-    selectedStyle: firstStyle().value,
-    selectedBaseColor: firstBaseColorForStyle(firstStyle().value).value,
-    selectedMode: "light",
-    selectedPreviewBlockId: firstPreviewBlock().id,
-  },
-  [],
-];
-
-// UPDATE
-
-type UpdateReturn = readonly [Model, readonly Command.Command<Message>[]];
-const withUpdateReturn = M.withReturnType<UpdateReturn>();
-
 const isStyle = (value: string): boolean =>
   themeStudioCatalog.styleOptions.some((option) => option.value === value);
 
@@ -227,6 +213,35 @@ const isBaseColorForStyle = (style: string, value: string): boolean =>
 
 const isMode = (value: string): value is ColorMode =>
   value === "light" || value === "dark" || value === "system";
+
+const defaultStyle = (): string =>
+  isStyle(themeContract.defaultStyle) ? themeContract.defaultStyle : firstStyle().value;
+
+const defaultBaseColor = (style: string): string =>
+  isBaseColorForStyle(style, themeContract.defaultBaseColor)
+    ? themeContract.defaultBaseColor
+    : firstBaseColorForStyle(style).value;
+
+const defaultMode = (): ColorMode =>
+  isMode(themeContract.defaultMode) ? themeContract.defaultMode : "light";
+
+export const init = (): readonly [Model, readonly Command.Command<Message>[]] => [
+  (() => {
+    const selectedStyle = defaultStyle();
+    return {
+      selectedStyle,
+      selectedBaseColor: defaultBaseColor(selectedStyle),
+      selectedMode: defaultMode(),
+      selectedPreviewBlockId: firstPreviewBlock().id,
+    };
+  })(),
+  [],
+];
+
+// UPDATE
+
+type UpdateReturn = readonly [Model, readonly Command.Command<Message>[]];
+const withUpdateReturn = M.withReturnType<UpdateReturn>();
 
 const isPreviewBlock = (value: string): boolean =>
   themeStudioCatalog.previewBlocks.some((block) => block.id === value);
@@ -306,6 +321,57 @@ const previewBlockChoices = (): ReadonlyArray<Choice<string>> =>
     value: block.id,
     label: block.title,
   }));
+
+const cssVariableOptionsView = (): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.DataAttribute("testid", "theme-studio-css-variable-options"),
+      h.Class("grid gap-2"),
+    ],
+    [
+      h.div([h.Class(labelClasses)], ["CSS variable mode"]),
+      h.div(
+        [h.Class("grid gap-2")],
+        themeStudioCatalog.cssVariablesOptions.map((option) =>
+          h.div(
+            [
+              h.DataAttribute("theme-studio-css-variable-option", String(option.value)),
+              h.DataAttribute("status", option.status),
+              h.DataAttribute("downloadable", option.download ? "true" : "false"),
+              h.Class("rounded-md border border-border bg-background p-2"),
+            ],
+            [
+              h.div([h.Class("flex items-center justify-between gap-2")], [
+                h.span([h.Class("text-sm font-medium text-foreground")], [option.title]),
+                h.span(
+                  [
+                    h.Class(
+                      clsx(
+                        "rounded px-1.5 py-0.5 text-xs font-medium",
+                        option.status === "active" &&
+                          "bg-primary text-primary-foreground",
+                        option.status === "deferred" &&
+                          "bg-secondary text-secondary-foreground"
+                      )
+                    ),
+                  ],
+                  [toTitle(option.status)]
+                ),
+              ]),
+              option.reason === undefined
+                ? h.span([h.Class("sr-only")], ["Registry theme download"])
+                : h.p([h.Class("mt-1 text-xs leading-5 text-muted-foreground")], [
+                    option.reason,
+                  ]),
+            ]
+          )
+        )
+      ),
+    ]
+  );
+};
 
 export const selectedPreviewBlock = (model: Model): PreviewBlock =>
   themeStudioCatalog.previewBlocks.find(
@@ -538,6 +604,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               choices: previewBlockChoices(),
               onChange: (value) => SelectedThemeStudioPreviewBlock({ value }),
             }),
+            cssVariableOptionsView(),
             h.div([h.Class("grid gap-2")], [
               h.a(
                 [

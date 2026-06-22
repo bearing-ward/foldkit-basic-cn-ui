@@ -7,6 +7,14 @@ type ThemeStudioCatalog = Readonly<{
     ReadonlyArray<Readonly<{ value: string; title: string }>>
   >;
   modeOptions: ReadonlyArray<Readonly<{ value: string; title: string }>>;
+  cssVariablesOptions: ReadonlyArray<
+    Readonly<{
+      value: boolean;
+      title: string;
+      status: "active" | "deferred";
+      download: boolean;
+    }>
+  >;
   previewBlocks: ReadonlyArray<
     Readonly<{
       id: string;
@@ -70,6 +78,7 @@ test("renders dynamic catalog controls in the story iframe", async ({
   await expect(frame.getByLabel("Base color")).toBeVisible();
   await expect(frame.getByLabel("Mode")).toBeVisible();
   await expect(frame.getByLabel("Preview block")).toBeVisible();
+  await expect(frame.getByText("CSS variable mode")).toBeVisible();
 
   await expect(frame.locator("#theme-studio-style option")).toHaveCount(
     catalog.styleOptions.length
@@ -80,6 +89,19 @@ test("renders dynamic catalog controls in the story iframe", async ({
   await expect(frame.locator("#theme-studio-preview-block option")).toHaveCount(
     catalog.previewBlocks.length
   );
+  await expect(
+    frame.locator("[data-theme-studio-css-variable-option]")
+  ).toHaveCount(catalog.cssVariablesOptions.length);
+  for (const option of catalog.cssVariablesOptions) {
+    const optionRow = frame.locator(
+      `[data-theme-studio-css-variable-option="${option.value}"]`
+    );
+    await expect(optionRow).toHaveAttribute("data-status", option.status);
+    await expect(optionRow).toHaveAttribute(
+      "data-downloadable",
+      String(option.download)
+    );
+  }
 
   const currentStyle = catalog.styleOptions[0]?.value ?? "rhea";
   await expect(frame.locator("#theme-studio-base-color option")).toHaveCount(

@@ -265,6 +265,7 @@ export const createThemeStudioCatalog = ({
         value: true,
         title: "CSS variables",
         status: "active",
+        download: true,
         tailwind: {
           cssVariables: true,
         },
@@ -273,6 +274,7 @@ export const createThemeStudioCatalog = ({
         value: false,
         title: "Utility classes",
         status: "deferred",
+        download: false,
         reason:
           "The no-CSS-variables path is deferred until style-level component recipes can be generated without overstating parity.",
         tailwind: {
