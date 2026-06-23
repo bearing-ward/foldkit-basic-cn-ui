@@ -284,7 +284,7 @@ describe("Theme Studio scene", () => {
         .map((row) =>
           Scene.expect(
             Scene.selector(`[data-theme-studio-theme-card-row="${row.id}"]`)
-          ).toContainText(row.reason ?? "")
+          ).toContainText("reason" in row ? String(row.reason) : "")
         ),
       Scene.expect(
         Scene.selector('[data-theme-studio-component-inventory-row="card"]')

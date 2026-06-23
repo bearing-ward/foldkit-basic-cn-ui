@@ -281,6 +281,56 @@ test("matches the origin create customizer card geometry and dark styling", asyn
   expect(metrics.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
 });
 
+test("theme customizer card controls update visible preview state", async ({
+  page,
+}) => {
+  await page.goto(`/?id=${storyId}`);
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  const customizer = frame.getByTestId("theme-studio-origin-theme-card");
+  const preview = frame.getByTestId("theme-studio-preview");
+
+  await expect(customizer).toBeVisible();
+
+  for (const label of [
+    "Style",
+    "Base Color",
+    "Theme",
+    "Chart Color",
+    "Heading",
+    "Font",
+    "Icon Library",
+    "Radius",
+    "Menu",
+    "Menu Accent",
+  ]) {
+    await expect(customizer.getByLabel(label, { exact: true })).toBeVisible();
+  }
+
+  await customizer.getByLabel("Chart Color", { exact: true }).selectOption("amber");
+  await expect(preview).toHaveAttribute("data-selected-chart-color", "amber");
+
+  await customizer.getByLabel("Radius", { exact: true }).selectOption("xl");
+  await expect(preview).toHaveAttribute("data-selected-radius", "xl");
+  await expect
+    .poll(() =>
+      preview.evaluate((element) =>
+        getComputedStyle(element).getPropertyValue("--radius").trim()
+      )
+    )
+    .toBe("0.875rem");
+
+  await customizer.getByRole("button", { name: "Open Preset" }).click();
+  await expect(preview).toHaveAttribute("data-selected-chart-color", "neutral");
+  await expect(preview).toHaveAttribute("data-selected-radius", "md");
+
+  const presetState = await frame.getByTestId("theme-studio-state").textContent();
+  await customizer.getByRole("button", { name: "Shuffle" }).click();
+  await expect
+    .poll(() => frame.getByTestId("theme-studio-state").textContent())
+    .not.toBe(presetState);
+});
+
 test("initializes Theme Studio from URL globals", async ({ page }) => {
   await page.goto(
     `/?id=${storyId}&globals=shadcnTheme%3Arhea-neutral%3BshadcnMode%3Alight`

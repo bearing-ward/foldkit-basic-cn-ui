@@ -127,19 +127,33 @@ describe("Theme Studio catalog", () => {
       catalog.themeCardOptions
         .filter((row) => row.status === "active")
         .map((row) => row.id)
-    ).toEqual(["style", "base-color", "theme"]);
+    ).toEqual([
+      "style",
+      "base-color",
+      "theme",
+      "chart-color",
+      "heading",
+      "font",
+      "icon-library",
+      "radius",
+      "menu",
+      "menu-accent",
+    ]);
     expect(catalog.themeCardOptions.find((row) => row.id === "chart-color")).toEqual(
       expect.objectContaining({
-        status: "deferred",
-        options: [],
-        reason: expect.stringMatching(/chart palette binding/u),
+        status: "active",
+        options: expect.arrayContaining([
+          expect.objectContaining({ value: "amber" }),
+        ]),
       })
     );
     expect(catalog.themeCardOptions.find((row) => row.id === "radius")).toEqual(
       expect.objectContaining({
-        status: "deferred",
-        options: [],
-        reason: expect.stringMatching(/model field and token override path/u),
+        status: "active",
+        selectedValue: "md",
+        options: expect.arrayContaining([
+          expect.objectContaining({ value: "xl", title: "Xl" }),
+        ]),
       })
     );
   });

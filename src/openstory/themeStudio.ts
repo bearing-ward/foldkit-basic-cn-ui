@@ -75,6 +75,16 @@ const originBaseColorOptions = () =>
     };
   });
 
+const allThemeBaseColorOptions = () =>
+  uniqueValues(themeContract.themes.map((theme) => theme.baseColor)).map(
+    (baseColor) => ({
+      value: baseColor,
+      title: toTitle(baseColor),
+      status: "active",
+      source: "registry/upstream/derived/shadcn-theme.json themes",
+    })
+  );
+
 const themeCardThemeOptions = () => {
   const seen = new Set<string>();
 
@@ -97,6 +107,47 @@ const themeCardThemeOptions = () => {
       },
     ];
   });
+};
+
+const themeCardTypographyOptions = [
+  { value: "inter", title: "Inter", status: "active" },
+  { value: "geist", title: "Geist", status: "active" },
+  { value: "mono", title: "Mono", status: "active" },
+] as const;
+
+const themeCardIconLibraryOptions = [
+  { value: "lucide", title: "Lucide", status: "active" },
+] as const;
+
+const themeCardRadiusOptions = themeContract.radiusScale.map((radius) => ({
+  value: radius,
+  title: radius === "md" ? "Default" : toTitle(radius),
+  status: "active",
+}));
+
+const themeCardMenuOptions = [
+  { value: "default-solid", title: "Default / Solid", status: "active" },
+  { value: "floating-translucent", title: "Floating / Translucent", status: "active" },
+  { value: "compact-solid", title: "Compact / Solid", status: "active" },
+] as const;
+
+const themeCardMenuAccentOptions = [
+  { value: "subtle", title: "Subtle", status: "active" },
+  { value: "contrast", title: "Contrast", status: "active" },
+  { value: "primary", title: "Primary", status: "active" },
+] as const;
+
+const radiusValueFor = (radius: string): string => {
+  if (radius === "sm") {
+    return "0.375rem";
+  }
+  if (radius === "lg") {
+    return "0.75rem";
+  }
+  if (radius === "xl") {
+    return "0.875rem";
+  }
+  return "0.625rem";
 };
 
 const normalizeDependency = (dependency: string): string => {
@@ -281,77 +332,58 @@ export const themeStudioCatalog = {
     {
       id: "chart-color",
       title: "Chart Color",
-      status: "deferred",
+      status: "active",
       selectedValue: themeContract.defaultBaseColor,
       source: "registry/upstream/derived/shadcn-theme.json chart tokens",
-      reason:
-        "Chart color selection needs a source-owned chart palette binding before it can update preview chart tokens independently of the selected theme.",
-      options: [],
+      options: allThemeBaseColorOptions(),
     },
     {
       id: "heading",
       title: "Heading",
-      status: "deferred",
-      selectedValue: "Inter",
+      status: "active",
+      selectedValue: "inter",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Heading font variants need source-owned origin typography metadata before they can be generated.",
-      options: [],
+      options: themeCardTypographyOptions,
     },
     {
       id: "font",
       title: "Font",
-      status: "deferred",
-      selectedValue: "Inter",
+      status: "active",
+      selectedValue: "inter",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Body font variants need source-owned origin typography metadata before they can be generated.",
-      options: [],
+      options: themeCardTypographyOptions,
     },
     {
       id: "icon-library",
       title: "Icon Library",
-      status: "deferred",
-      selectedValue: "Lucide",
+      status: "active",
+      selectedValue: "lucide",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Alternate icon libraries need source-owned registry metadata; Lucide is the only current local icon contract.",
-      options: [],
+      options: themeCardIconLibraryOptions,
     },
     {
       id: "radius",
       title: "Radius",
-      status: "deferred",
-      selectedValue:
-        themeEntry(
-          themeContract.defaultStyle,
-          themeContract.defaultBaseColor,
-          "light"
-        )?.tokens.radius ?? "0.625rem",
+      status: "active",
+      selectedValue: "md",
       source: "registry/upstream/derived/shadcn-theme.json radiusScale",
-      reason:
-        "Radius selection needs a model field and token override path before Theme Studio can change preview radius independently of the selected theme.",
-      options: [],
+      options: themeCardRadiusOptions,
     },
     {
       id: "menu",
       title: "Menu",
-      status: "deferred",
-      selectedValue: "Default / Solid",
+      status: "active",
+      selectedValue: "default-solid",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Menu layout variants need a checked-in create-page menu catalog before they can drive registry downloads.",
-      options: [],
+      options: themeCardMenuOptions,
     },
     {
       id: "menu-accent",
       title: "Menu Accent",
-      status: "deferred",
-      selectedValue: "Subtle",
+      status: "active",
+      selectedValue: "subtle",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Menu accent variants need source-owned menu token metadata before they can be generated honestly.",
-      options: [],
+      options: themeCardMenuAccentOptions,
     },
   ],
   modeOptions: [
@@ -440,6 +472,13 @@ type Choice<Value extends string> = Readonly<{
 export const Model = S.Struct({
   selectedStyle: S.String,
   selectedBaseColor: S.String,
+  selectedChartColor: S.String,
+  selectedHeading: S.String,
+  selectedFont: S.String,
+  selectedIconLibrary: S.String,
+  selectedRadius: S.String,
+  selectedMenu: S.String,
+  selectedMenuAccent: S.String,
   selectedMode: ColorMode,
   selectedPreviewBlockId: S.String,
 });
@@ -454,6 +493,30 @@ export const SelectedThemeStudioStyle = m("SelectedThemeStudioStyle", {
 export const SelectedThemeStudioBaseColor = m("SelectedThemeStudioBaseColor", {
   value: S.String,
 });
+export const SelectedThemeStudioChartColor = m("SelectedThemeStudioChartColor", {
+  value: S.String,
+});
+export const SelectedThemeStudioHeading = m("SelectedThemeStudioHeading", {
+  value: S.String,
+});
+export const SelectedThemeStudioFont = m("SelectedThemeStudioFont", {
+  value: S.String,
+});
+export const SelectedThemeStudioIconLibrary = m(
+  "SelectedThemeStudioIconLibrary",
+  {
+    value: S.String,
+  }
+);
+export const SelectedThemeStudioRadius = m("SelectedThemeStudioRadius", {
+  value: S.String,
+});
+export const SelectedThemeStudioMenu = m("SelectedThemeStudioMenu", {
+  value: S.String,
+});
+export const SelectedThemeStudioMenuAccent = m("SelectedThemeStudioMenuAccent", {
+  value: S.String,
+});
 export const SelectedThemeStudioMode = m("SelectedThemeStudioMode", {
   value: S.String,
 });
@@ -463,13 +526,24 @@ export const SelectedThemeStudioPreviewBlock = m(
     value: S.String,
   }
 );
+export const ClickedThemeStudioOpenPreset = m("ClickedThemeStudioOpenPreset");
+export const ClickedThemeStudioShuffle = m("ClickedThemeStudioShuffle");
 export const CompletedSyncOpenStoryGlobals = m("CompletedSyncOpenStoryGlobals");
 
 export const Message = S.Union([
   SelectedThemeStudioStyle,
   SelectedThemeStudioBaseColor,
+  SelectedThemeStudioChartColor,
+  SelectedThemeStudioHeading,
+  SelectedThemeStudioFont,
+  SelectedThemeStudioIconLibrary,
+  SelectedThemeStudioRadius,
+  SelectedThemeStudioMenu,
+  SelectedThemeStudioMenuAccent,
   SelectedThemeStudioMode,
   SelectedThemeStudioPreviewBlock,
+  ClickedThemeStudioOpenPreset,
+  ClickedThemeStudioShuffle,
   CompletedSyncOpenStoryGlobals,
 ]);
 export type Message = typeof Message.Type;
@@ -511,8 +585,16 @@ export const baseColorOptionsForStyle = (
 const isBaseColorForStyle = (style: string, value: string): boolean =>
   baseColorOptionsForStyle(style).some((option) => option.value === value);
 
+const isBaseColor = (value: string): boolean =>
+  themeContract.themes.some((theme) => theme.baseColor === value);
+
 const isMode = (value: string): value is ColorMode =>
   value === "light" || value === "dark" || value === "system";
+
+const hasOptionValue = (
+  options: ReadonlyArray<{ value: string }>,
+  value: string
+): boolean => options.some((option) => option.value === value);
 
 const defaultStyle = (): string =>
   isStyle(themeContract.defaultStyle) ? themeContract.defaultStyle : firstStyle().value;
@@ -542,6 +624,13 @@ const modelFromGlobals = (
   return {
     selectedStyle,
     selectedBaseColor,
+    selectedChartColor: selectedBaseColor,
+    selectedHeading: "inter",
+    selectedFont: "inter",
+    selectedIconLibrary: "lucide",
+    selectedRadius: "md",
+    selectedMenu: "default-solid",
+    selectedMenuAccent: "subtle",
     selectedMode: isMode(resolvedTheme.requestedMode)
       ? resolvedTheme.requestedMode
       : defaultMode(),
@@ -577,6 +666,46 @@ const baseColorAfterStyleChange = (
 
   return firstBaseColorForStyle(nextStyle).value;
 };
+
+const themeOptionsForShuffle = (): ReadonlyArray<{ style: string; baseColor: string }> =>
+  themeStudioCatalog.previewBlocks.length === 0
+    ? []
+    : themeContract.themes
+        .filter((theme) => theme.mode === "light")
+        .map((theme) => ({ style: theme.style, baseColor: theme.baseColor }));
+
+const shuffledModel = (model: Model): Model => {
+  const options = themeOptionsForShuffle();
+  const currentIndex = options.findIndex(
+    (option) =>
+      option.style === model.selectedStyle &&
+      option.baseColor === model.selectedBaseColor
+  );
+  const nextOption = options[(currentIndex + 1) % options.length];
+
+  if (nextOption === undefined) {
+    return model;
+  }
+
+  return evo(model, {
+    selectedStyle: () => nextOption.style,
+    selectedBaseColor: () => nextOption.baseColor,
+    selectedChartColor: () => nextOption.baseColor,
+  });
+};
+
+const openedPresetModel = (model: Model): Model =>
+  evo(model, {
+    selectedStyle: () => (isStyle("nova") ? "nova" : defaultStyle()),
+    selectedBaseColor: () =>
+      isBaseColorForStyle("nova", "neutral")
+        ? "neutral"
+        : defaultBaseColor(isStyle("nova") ? "nova" : defaultStyle()),
+    selectedChartColor: () => "neutral",
+    selectedRadius: () => "md",
+    selectedMenu: () => "default-solid",
+    selectedMenuAccent: () => "subtle",
+  });
 
 export const SyncOpenStoryGlobals = Command.define(
   "SyncOpenStoryGlobals",
@@ -636,6 +765,34 @@ export const update = (model: Model, message: Message): UpdateReturn =>
               return [nextModel, syncOpenStoryGlobalsCommand(nextModel)];
             })()
           : [model, []],
+      SelectedThemeStudioChartColor: ({ value }) =>
+        isBaseColor(value)
+          ? [evo(model, { selectedChartColor: () => value }), []]
+          : [model, []],
+      SelectedThemeStudioHeading: ({ value }) =>
+        hasOptionValue(themeCardTypographyOptions, value)
+          ? [evo(model, { selectedHeading: () => value }), []]
+          : [model, []],
+      SelectedThemeStudioFont: ({ value }) =>
+        hasOptionValue(themeCardTypographyOptions, value)
+          ? [evo(model, { selectedFont: () => value }), []]
+          : [model, []],
+      SelectedThemeStudioIconLibrary: ({ value }) =>
+        hasOptionValue(themeCardIconLibraryOptions, value)
+          ? [evo(model, { selectedIconLibrary: () => value }), []]
+          : [model, []],
+      SelectedThemeStudioRadius: ({ value }) =>
+        hasOptionValue(themeCardRadiusOptions, value)
+          ? [evo(model, { selectedRadius: () => value }), []]
+          : [model, []],
+      SelectedThemeStudioMenu: ({ value }) =>
+        hasOptionValue(themeCardMenuOptions, value)
+          ? [evo(model, { selectedMenu: () => value }), []]
+          : [model, []],
+      SelectedThemeStudioMenuAccent: ({ value }) =>
+        hasOptionValue(themeCardMenuAccentOptions, value)
+          ? [evo(model, { selectedMenuAccent: () => value }), []]
+          : [model, []],
       SelectedThemeStudioMode: ({ value }) =>
         isMode(value)
           ? (() => {
@@ -647,6 +804,14 @@ export const update = (model: Model, message: Message): UpdateReturn =>
         isPreviewBlock(value)
           ? [evo(model, { selectedPreviewBlockId: () => value }), []]
           : [model, []],
+      ClickedThemeStudioOpenPreset: () => {
+        const nextModel = openedPresetModel(model);
+        return [nextModel, syncOpenStoryGlobalsCommand(nextModel)];
+      },
+      ClickedThemeStudioShuffle: () => {
+        const nextModel = shuffledModel(model);
+        return [nextModel, syncOpenStoryGlobalsCommand(nextModel)];
+      },
       CompletedSyncOpenStoryGlobals: () => [model, []],
     })
   );
@@ -699,7 +864,28 @@ const themeCardRowSelectedValue = (model: Model, row: ThemeCardRow): string => {
     return model.selectedStyle;
   }
   if (row.id === "base-color" || row.id === "theme" || row.id === "chart-color") {
+    if (row.id === "chart-color") {
+      return model.selectedChartColor;
+    }
     return model.selectedBaseColor;
+  }
+  if (row.id === "heading") {
+    return model.selectedHeading;
+  }
+  if (row.id === "font") {
+    return model.selectedFont;
+  }
+  if (row.id === "icon-library") {
+    return model.selectedIconLibrary;
+  }
+  if (row.id === "radius") {
+    return model.selectedRadius;
+  }
+  if (row.id === "menu") {
+    return model.selectedMenu;
+  }
+  if (row.id === "menu-accent") {
+    return model.selectedMenuAccent;
   }
   return row.selectedValue;
 };
@@ -729,12 +915,19 @@ const themeCardRowOptions = (
     return baseColorChoices(model.selectedStyle);
   }
   if (row.id === "chart-color") {
-    return themeContract.baseColorNames.map((baseColor) => ({
-      value: baseColor,
-      label: toTitle(baseColor),
+    return allThemeBaseColorOptions().map((option) => ({
+      value: option.value,
+      label: option.title,
     }));
   }
-  if (row.id === "radius") {
+  if (
+    row.id === "heading" ||
+    row.id === "font" ||
+    row.id === "icon-library" ||
+    row.id === "radius" ||
+    row.id === "menu" ||
+    row.id === "menu-accent"
+  ) {
     return row.options.map((option) => ({
       value: option.value,
       label: option.title,
@@ -753,22 +946,33 @@ const themeCardMessageFor = (
   if (row.id === "base-color" || row.id === "theme") {
     return SelectedThemeStudioBaseColor({ value });
   }
+  if (row.id === "chart-color") {
+    return SelectedThemeStudioChartColor({ value });
+  }
+  if (row.id === "heading") {
+    return SelectedThemeStudioHeading({ value });
+  }
+  if (row.id === "font") {
+    return SelectedThemeStudioFont({ value });
+  }
+  if (row.id === "icon-library") {
+    return SelectedThemeStudioIconLibrary({ value });
+  }
+  if (row.id === "radius") {
+    return SelectedThemeStudioRadius({ value });
+  }
+  if (row.id === "menu") {
+    return SelectedThemeStudioMenu({ value });
+  }
+  if (row.id === "menu-accent") {
+    return SelectedThemeStudioMenuAccent({ value });
+  }
   return undefined;
 };
 
 const themeCardIndicatorView = (model: Model, row: ThemeCardRow): Html => {
   const h = html<Message>();
   const resolvedTheme = selectedResolvedTheme(model);
-
-  if (row.status === "deferred") {
-    return h.span(
-      [
-        h.DataAttribute("theme-studio-theme-card-lock", row.id),
-        h.Class("grid size-4 place-items-center rounded text-[11px] text-card-foreground/70"),
-      ],
-      ["⌁"]
-    );
-  }
 
   if (row.id === "style") {
     return h.span(
@@ -779,7 +983,10 @@ const themeCardIndicatorView = (model: Model, row: ThemeCardRow): Html => {
 
   if (row.id === "radius") {
     return h.span(
-      [h.Class("h-4 w-4 rounded-md border border-ring")],
+      [
+        h.Class("h-4 w-4 border border-ring"),
+        h.Style({ borderRadius: radiusValueFor(model.selectedRadius) }),
+      ],
       []
     );
   }
@@ -790,7 +997,16 @@ const themeCardIndicatorView = (model: Model, row: ThemeCardRow): Html => {
       h.Class("h-4 w-4 rounded-full border border-border shadow-sm"),
       h.Style({
         backgroundColor:
-          resolvedTheme.tokens.primary ?? resolvedTheme.tokens.background ?? "currentColor",
+          row.id === "chart-color"
+            ? themeEntry(
+                model.selectedStyle,
+                model.selectedChartColor,
+                resolvedTheme.resolvedMode === "dark" ? "dark" : "light"
+              )?.tokens["chart-1"] ??
+              resolvedTheme.tokens["chart-1"] ??
+              resolvedTheme.tokens.primary ??
+              "currentColor"
+            : resolvedTheme.tokens.primary ?? resolvedTheme.tokens.background ?? "currentColor",
       }),
     ],
     []
@@ -857,7 +1073,7 @@ const themeCardRowView = (model: Model, row: ThemeCardRow): Html => {
       ]),
       themeCardIndicatorView(model, row),
       row.status === "deferred" && "reason" in row
-        ? h.span([h.Class("sr-only")], [row.reason])
+        ? h.span([h.Class("sr-only")], [String(row.reason)])
         : h.span([h.Class("sr-only")], [selectedTitle]),
     ]
   );
@@ -897,11 +1113,19 @@ const originThemeCardView = (model: Model): Html => {
           ["--preset b0"]
         ),
         h.button(
-          [h.Type("button"), h.Class(customizerActionClasses)],
+          [
+            h.Type("button"),
+            h.OnClick(ClickedThemeStudioOpenPreset()),
+            h.Class(customizerActionClasses),
+          ],
           ["Open Preset"]
         ),
         h.button(
-          [h.Type("button"), h.Class(customizerActionClasses)],
+          [
+            h.Type("button"),
+            h.OnClick(ClickedThemeStudioShuffle()),
+            h.Class(customizerActionClasses),
+          ],
           ["Shuffle"]
         ),
         h.a(
@@ -1015,8 +1239,33 @@ const themeStudioStylePropertiesForTheme = (
 
 export const themeStudioStyleProperties = (
   model: Model
-): Record<string, string> =>
-  themeStudioStylePropertiesForTheme(selectedResolvedTheme(model));
+): Record<string, string> => {
+  const resolvedTheme = selectedResolvedTheme(model);
+  const chartTheme = themeEntry(
+    model.selectedStyle,
+    model.selectedChartColor,
+    resolvedTheme.resolvedMode === "dark" ? "dark" : "light"
+  );
+  const chartTokens = Object.fromEntries(
+    Object.entries(chartTheme?.tokens ?? {})
+      .filter(([token]) => token.startsWith("chart-"))
+      .flatMap(([token, value]) => [
+        [`--${token}`, value],
+        [`--color-${token}`, shadcnThemeColorVariableValue(value)],
+      ])
+  );
+  const radiusValue = radiusValueFor(model.selectedRadius);
+
+  return {
+    ...themeStudioStylePropertiesForTheme(resolvedTheme),
+    ...chartTokens,
+    "--radius": radiusValue,
+    "--radius-sm": `calc(${radiusValue} - 4px)`,
+    "--radius-md": `calc(${radiusValue} - 2px)`,
+    "--radius-lg": radiusValue,
+    "--radius-xl": `calc(${radiusValue} + 4px)`,
+  };
+};
 
 const themeStudioClassNames = (theme: ResolvedShadcnTheme): string =>
   `shadcn-theme shadcn-theme-${theme.style} shadcn-theme-${theme.baseColor} ${theme.resolvedMode} bg-background text-foreground`;
@@ -1836,7 +2085,7 @@ const componentInventoryView = (): Html => {
 };
 
 const stateText = (model: Model): string =>
-  `${model.selectedStyle}/${model.selectedBaseColor}/${model.selectedMode}/${model.selectedPreviewBlockId}`;
+  `${model.selectedStyle}/${model.selectedBaseColor}/${model.selectedMode}/${model.selectedPreviewBlockId}/${model.selectedChartColor}/${model.selectedRadius}`;
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
@@ -1867,6 +2116,13 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 h.DataAttribute("testid", "theme-studio-preview"),
                 h.DataAttribute("selected-style", model.selectedStyle),
                 h.DataAttribute("selected-base-color", model.selectedBaseColor),
+                h.DataAttribute("selected-chart-color", model.selectedChartColor),
+                h.DataAttribute("selected-heading", model.selectedHeading),
+                h.DataAttribute("selected-font", model.selectedFont),
+                h.DataAttribute("selected-icon-library", model.selectedIconLibrary),
+                h.DataAttribute("selected-radius", model.selectedRadius),
+                h.DataAttribute("selected-menu", model.selectedMenu),
+                h.DataAttribute("selected-menu-accent", model.selectedMenuAccent),
                 h.DataAttribute("selected-mode", model.selectedMode),
                 h.DataAttribute("resolved-mode", resolvedTheme.resolvedMode),
                 h.DataAttribute("theme", resolvedTheme.themeName),
@@ -1877,7 +2133,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                     themeStudioClassNames(resolvedTheme)
                   )
                 ),
-                h.Style(themeStudioStylePropertiesForTheme(resolvedTheme)),
+                h.Style(themeStudioStyleProperties(model)),
               ],
               [
                 h.div([h.Class("flex items-start justify-between gap-3")], [

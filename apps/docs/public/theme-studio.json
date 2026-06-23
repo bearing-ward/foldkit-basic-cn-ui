@@ -545,65 +545,294 @@
     {
       "id": "chart-color",
       "title": "Chart Color",
-      "status": "deferred",
+      "status": "active",
       "selectedValue": "neutral",
       "source": "registry/upstream/derived/shadcn-theme.json chart tokens",
-      "reason": "Chart color selection needs a source-owned chart palette binding before it can update preview chart tokens independently of the selected theme.",
-      "options": []
+      "options": [
+        {
+          "value": "neutral",
+          "title": "Neutral",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "stone",
+          "title": "Stone",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "zinc",
+          "title": "Zinc",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "mauve",
+          "title": "Mauve",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "olive",
+          "title": "Olive",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "mist",
+          "title": "Mist",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "taupe",
+          "title": "Taupe",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "amber",
+          "title": "Amber",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "blue",
+          "title": "Blue",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "cyan",
+          "title": "Cyan",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "emerald",
+          "title": "Emerald",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "fuchsia",
+          "title": "Fuchsia",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "green",
+          "title": "Green",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "indigo",
+          "title": "Indigo",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "lime",
+          "title": "Lime",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "orange",
+          "title": "Orange",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "pink",
+          "title": "Pink",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "purple",
+          "title": "Purple",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "red",
+          "title": "Red",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rose",
+          "title": "Rose",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "sky",
+          "title": "Sky",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "teal",
+          "title": "Teal",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "violet",
+          "title": "Violet",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "yellow",
+          "title": "Yellow",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        }
+      ]
     },
     {
       "id": "heading",
       "title": "Heading",
-      "status": "deferred",
-      "selectedValue": "Inter",
+      "status": "active",
+      "selectedValue": "inter",
       "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
-      "reason": "Heading font variants need source-owned origin typography metadata before they can be generated.",
-      "options": []
+      "options": [
+        {
+          "value": "inter",
+          "title": "Inter",
+          "status": "active"
+        },
+        {
+          "value": "geist",
+          "title": "Geist",
+          "status": "active"
+        },
+        {
+          "value": "mono",
+          "title": "Mono",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "font",
       "title": "Font",
-      "status": "deferred",
-      "selectedValue": "Inter",
+      "status": "active",
+      "selectedValue": "inter",
       "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
-      "reason": "Body font variants need source-owned origin typography metadata before they can be generated.",
-      "options": []
+      "options": [
+        {
+          "value": "inter",
+          "title": "Inter",
+          "status": "active"
+        },
+        {
+          "value": "geist",
+          "title": "Geist",
+          "status": "active"
+        },
+        {
+          "value": "mono",
+          "title": "Mono",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "icon-library",
       "title": "Icon Library",
-      "status": "deferred",
-      "selectedValue": "Lucide",
+      "status": "active",
+      "selectedValue": "lucide",
       "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
-      "reason": "Alternate icon libraries need source-owned registry metadata; Lucide is the only current local icon contract.",
-      "options": []
+      "options": [
+        {
+          "value": "lucide",
+          "title": "Lucide",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "radius",
       "title": "Radius",
-      "status": "deferred",
-      "selectedValue": "0.625rem",
+      "status": "active",
+      "selectedValue": "md",
       "source": "registry/upstream/derived/shadcn-theme.json radiusScale",
-      "reason": "Radius selection needs a model field and token override path before Theme Studio can change preview radius independently of the selected theme.",
-      "options": []
+      "options": [
+        {
+          "value": "sm",
+          "title": "Sm",
+          "status": "active"
+        },
+        {
+          "value": "md",
+          "title": "Default",
+          "status": "active"
+        },
+        {
+          "value": "lg",
+          "title": "Lg",
+          "status": "active"
+        },
+        {
+          "value": "xl",
+          "title": "Xl",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "menu",
       "title": "Menu",
-      "status": "deferred",
-      "selectedValue": "Deferred",
+      "status": "active",
+      "selectedValue": "default-solid",
       "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
-      "reason": "Menu layout variants need a checked-in create-page menu catalog before they can drive registry downloads.",
-      "options": []
+      "options": [
+        {
+          "value": "default-solid",
+          "title": "Default / Solid",
+          "status": "active"
+        },
+        {
+          "value": "floating-translucent",
+          "title": "Floating / Translucent",
+          "status": "active"
+        },
+        {
+          "value": "compact-solid",
+          "title": "Compact / Solid",
+          "status": "active"
+        }
+      ]
     },
     {
       "id": "menu-accent",
       "title": "Menu Accent",
-      "status": "deferred",
-      "selectedValue": "Deferred",
+      "status": "active",
+      "selectedValue": "subtle",
       "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
-      "reason": "Menu accent variants need source-owned menu token metadata before they can be generated honestly.",
-      "options": []
+      "options": [
+        {
+          "value": "subtle",
+          "title": "Subtle",
+          "status": "active"
+        },
+        {
+          "value": "contrast",
+          "title": "Contrast",
+          "status": "active"
+        },
+        {
+          "value": "primary",
+          "title": "Primary",
+          "status": "active"
+        }
+      ]
     }
   ],
   "modeOptions": [

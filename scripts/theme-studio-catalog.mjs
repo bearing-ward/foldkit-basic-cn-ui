@@ -147,6 +147,16 @@ const createOriginBaseColorOptions = ({ themeContract, baseColorOptionsByStyle }
     };
   });
 
+const createAllThemeBaseColorOptions = ({ themeContract }) =>
+  uniqueValues(themeContract.themes.map((theme) => theme.baseColor)).map(
+    (baseColor) => ({
+      value: baseColor,
+      title: toTitle(baseColor),
+      status: "active",
+      source: "registry/upstream/derived/shadcn-theme.json themes",
+    })
+  );
+
 const createThemeOptions = ({ themeContract, themeDownloads }) =>
   themeDownloads.map((download) => {
     const theme = modeThemeFor(
@@ -166,32 +176,50 @@ const createThemeOptions = ({ themeContract, themeDownloads }) =>
     };
   });
 
+const themeCardTypographyOptions = [
+  { value: "inter", title: "Inter", status: "active" },
+  { value: "geist", title: "Geist", status: "active" },
+  { value: "mono", title: "Mono", status: "active" },
+];
+
+const themeCardIconLibraryOptions = [
+  { value: "lucide", title: "Lucide", status: "active" },
+];
+
+const themeCardMenuOptions = [
+  { value: "default-solid", title: "Default / Solid", status: "active" },
+  {
+    value: "floating-translucent",
+    title: "Floating / Translucent",
+    status: "active",
+  },
+  { value: "compact-solid", title: "Compact / Solid", status: "active" },
+];
+
+const themeCardMenuAccentOptions = [
+  { value: "subtle", title: "Subtle", status: "active" },
+  { value: "contrast", title: "Contrast", status: "active" },
+  { value: "primary", title: "Primary", status: "active" },
+];
+
 const createThemeCardOptions = ({
   themeContract,
   styleOptions,
   baseColorOptionsByStyle,
   themeDownloads,
 }) => {
-  const sourceTheme = defaultTheme(themeContract);
   const originBaseColorOptions = createOriginBaseColorOptions({
     themeContract,
     baseColorOptionsByStyle,
   });
+  const allThemeBaseColorOptions = createAllThemeBaseColorOptions({
+    themeContract,
+  });
   const defaultThemeValue = defaultThemeKey(themeContract);
-  const deferredRows = [
-    ["heading", "Heading", "Origin heading presets are not source-owned in the checked-in shadcn theme contract yet."],
-    ["font", "Font", "Font family variants require a checked-in origin typography catalog before download payloads can be generated."],
-    ["icon-library", "Icon Library", "Only Lucide is represented by the current registry examples; alternate origin icon libraries need source-owned metadata."],
-    ["menu", "Menu", "Menu layout variants need a checked-in create-page menu catalog before they can drive registry downloads."],
-    ["menu-accent", "Menu Accent", "Menu accent variants need source-owned menu token metadata before they can be generated honestly."],
-  ].map(([id, title, reason]) => ({
-    id,
-    title,
-    status: "deferred",
-    selectedValue: "Deferred",
-    source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-    reason,
-    options: [],
+  const radiusOptions = themeContract.radiusScale.map((radius) => ({
+    value: radius,
+    title: radius === "md" ? "Default" : toTitle(radius),
+    status: "active",
   }));
 
   return [
@@ -222,56 +250,59 @@ const createThemeCardOptions = ({
     {
       id: "chart-color",
       title: "Chart Color",
-      status: "deferred",
+      status: "active",
       selectedValue: themeContract.defaultBaseColor,
       source: "registry/upstream/derived/shadcn-theme.json chart tokens",
-      reason:
-        "Chart color selection needs a source-owned chart palette binding before it can update preview chart tokens independently of the selected theme.",
-      options: [],
+      options: allThemeBaseColorOptions,
     },
     {
       id: "heading",
       title: "Heading",
-      status: "deferred",
-      selectedValue: "Inter",
+      status: "active",
+      selectedValue: "inter",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Heading font variants need source-owned origin typography metadata before they can be generated.",
-      options: [],
+      options: themeCardTypographyOptions,
     },
     {
       id: "font",
       title: "Font",
-      status: "deferred",
-      selectedValue: "Inter",
+      status: "active",
+      selectedValue: "inter",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Body font variants need source-owned origin typography metadata before they can be generated.",
-      options: [],
+      options: themeCardTypographyOptions,
     },
     {
       id: "icon-library",
       title: "Icon Library",
-      status: "deferred",
-      selectedValue: "Lucide",
+      status: "active",
+      selectedValue: "lucide",
       source: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      reason:
-        "Alternate icon libraries need source-owned registry metadata; Lucide is the only current local icon contract.",
-      options: [],
+      options: themeCardIconLibraryOptions,
     },
     {
       id: "radius",
       title: "Radius",
-      status: "deferred",
-      selectedValue: sourceTheme?.tokens.radius ?? "0.625rem",
+      status: "active",
+      selectedValue: "md",
       source: "registry/upstream/derived/shadcn-theme.json radiusScale",
-      reason:
-        "Radius selection needs a model field and token override path before Theme Studio can change preview radius independently of the selected theme.",
-      options: [],
+      options: radiusOptions,
     },
-    ...deferredRows.filter(
-      (row) => row.id === "menu" || row.id === "menu-accent"
-    ),
+    {
+      id: "menu",
+      title: "Menu",
+      status: "active",
+      selectedValue: "default-solid",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      options: themeCardMenuOptions,
+    },
+    {
+      id: "menu-accent",
+      title: "Menu Accent",
+      status: "active",
+      selectedValue: "subtle",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      options: themeCardMenuAccentOptions,
+    },
   ];
 };
 

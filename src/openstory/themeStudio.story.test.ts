@@ -3,11 +3,15 @@ import { describe, expect, test } from "vitest";
 import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 import {
   baseColorOptionsForStyle,
+  ClickedThemeStudioOpenPreset,
+  ClickedThemeStudioShuffle,
   init,
   initFromGlobals,
   SelectedThemeStudioBaseColor,
+  SelectedThemeStudioChartColor,
   SelectedThemeStudioMode,
   SelectedThemeStudioPreviewBlock,
+  SelectedThemeStudioRadius,
   SelectedThemeStudioStyle,
   selectedPreviewBlock,
   selectedPreviewBlockDownloadHref,
@@ -169,21 +173,35 @@ describe("Theme Studio program", () => {
       themeStudioCatalog.themeCardOptions
         .filter((row) => row.status === "active")
         .map((row) => row.id)
-    ).toEqual(["style", "base-color", "theme"]);
+    ).toEqual([
+      "style",
+      "base-color",
+      "theme",
+      "chart-color",
+      "heading",
+      "font",
+      "icon-library",
+      "radius",
+      "menu",
+      "menu-accent",
+    ]);
     expect(
       themeStudioCatalog.themeCardOptions.find((row) => row.id === "chart-color")
     ).toEqual(
       expect.objectContaining({
-        status: "deferred",
-        options: [],
-        reason: expect.stringMatching(/chart palette binding/u),
+        status: "active",
+        options: expect.arrayContaining([
+          expect.objectContaining({ value: "neutral" }),
+        ]),
       })
     );
     expect(themeStudioCatalog.themeCardOptions.find((row) => row.id === "radius")).toEqual(
       expect.objectContaining({
-        status: "deferred",
-        options: [],
-        reason: expect.stringMatching(/model field and token override path/u),
+        status: "active",
+        selectedValue: "md",
+        options: expect.arrayContaining([
+          expect.objectContaining({ value: "xl", title: "Xl" }),
+        ]),
       })
     );
     expect(themeStudioCatalog.componentInventory.length).toBeGreaterThanOrEqual(24);
@@ -192,6 +210,53 @@ describe("Theme Studio program", () => {
         (row) => row.id === "recent-transactions"
       )?.dependencies
     ).toContain("data-list");
+  });
+
+  test("updates customizer-only controls and footer actions", () => {
+    const [model] = init();
+
+    const [chartModel] = update(
+      model,
+      SelectedThemeStudioChartColor({ value: "amber" })
+    );
+    const [radiusModel] = update(
+      chartModel,
+      SelectedThemeStudioRadius({ value: "xl" })
+    );
+    const [presetModel, presetCommands] = update(
+      radiusModel,
+      ClickedThemeStudioOpenPreset()
+    );
+    const [shuffleModel, shuffleCommands] = update(
+      presetModel,
+      ClickedThemeStudioShuffle()
+    );
+
+    expect(chartModel.selectedChartColor).toBe("amber");
+    expect(radiusModel.selectedRadius).toBe("xl");
+    expect(themeStudioStyleProperties(radiusModel)["--radius"]).toBe("0.875rem");
+    expect(presetModel).toMatchObject({
+      selectedBaseColor: "neutral",
+      selectedChartColor: "neutral",
+      selectedRadius: "md",
+    });
+    expect(presetCommands).toEqual([
+      expect.objectContaining({
+        name: "SyncOpenStoryGlobals",
+        args: {
+          shadcnTheme: `${presetModel.selectedStyle}-neutral`,
+          shadcnMode: "light",
+        },
+      }),
+    ]);
+    expect(`${shuffleModel.selectedStyle}-${shuffleModel.selectedBaseColor}`).not.toBe(
+      `${presetModel.selectedStyle}-${presetModel.selectedBaseColor}`
+    );
+    expect(shuffleCommands).toEqual([
+      expect.objectContaining({
+        name: "SyncOpenStoryGlobals",
+      }),
+    ]);
   });
 
   test("resolves preview block switching and theme CSS variables", () => {
