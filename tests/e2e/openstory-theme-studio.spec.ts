@@ -235,6 +235,52 @@ test("renders origin theme-card rows, block inventory, and component checklist",
   ).toBeVisible();
 });
 
+test("matches the origin create customizer card geometry and dark styling", async ({
+  page,
+}) => {
+  await page.goto(`/?id=${storyId}`);
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  const customizer = frame.getByTestId("theme-studio-origin-theme-card");
+
+  await expect(customizer).toBeVisible();
+  await expect(customizer.getByRole("button", { name: "Menu ≡" })).toBeVisible();
+  await expect(customizer.getByText("--preset b0")).toBeVisible();
+  await expect(customizer.getByText("Open Preset")).toBeVisible();
+  await expect(customizer.getByText("Shuffle")).toBeVisible();
+  await expect(customizer.getByText("Get Code")).toBeVisible();
+
+  const metrics = await customizer.evaluate((element) => {
+    const style = getComputedStyle(element);
+    const firstOption = element.querySelector(
+      "[data-theme-studio-theme-card-row]"
+    );
+    const action = Array.from(element.querySelectorAll("*")).find(
+      (node) => node.textContent?.trim() === "Open Preset"
+    );
+    const rect = element.getBoundingClientRect();
+    const optionRect = firstOption?.getBoundingClientRect();
+    const actionRect = action?.getBoundingClientRect();
+
+    return {
+      actionHeight: actionRect?.height ?? 0,
+      backgroundColor: style.backgroundColor,
+      borderRadius: style.borderRadius,
+      optionHeight: optionRect?.height ?? 0,
+      width: rect.width,
+    };
+  });
+
+  expect(metrics.width).toBeGreaterThanOrEqual(184);
+  expect(metrics.width).toBeLessThanOrEqual(204);
+  expect(metrics.borderRadius).toBe("18px");
+  expect(metrics.optionHeight).toBeGreaterThanOrEqual(50);
+  expect(metrics.optionHeight).toBeLessThanOrEqual(54);
+  expect(metrics.actionHeight).toBeGreaterThanOrEqual(30);
+  expect(metrics.actionHeight).toBeLessThanOrEqual(34);
+  expect(metrics.backgroundColor).not.toBe("rgba(0, 0, 0, 0)");
+});
+
 test("initializes Theme Studio from URL globals", async ({ page }) => {
   await page.goto(
     `/?id=${storyId}&globals=shadcnTheme%3Arhea-neutral%3BshadcnMode%3Alight`

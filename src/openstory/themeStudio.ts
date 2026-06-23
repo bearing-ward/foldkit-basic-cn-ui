@@ -644,6 +644,12 @@ const selectClasses =
 const mutedTextClasses = "text-sm leading-6 text-muted-foreground";
 const actionClasses =
   "inline-flex h-9 items-center justify-center rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground";
+const customizerCardClasses =
+  "dark isolate grid w-full gap-3 overflow-hidden rounded-[18px] bg-card/90 px-3 pb-3 pt-3 text-sm text-card-foreground shadow-2xl ring-1 ring-foreground/10 backdrop-blur-xl";
+const customizerRowClasses =
+  "grid h-[52px] w-full grid-cols-[minmax(0,1fr)_1rem] items-center gap-2 rounded-[10px] border border-foreground/10 bg-transparent px-2.5 py-2 text-left text-card-foreground";
+const customizerActionClasses =
+  "inline-flex h-8 w-full items-center justify-center rounded-[10px] border border-foreground/15 bg-transparent px-2 text-sm font-medium text-card-foreground";
 
 const toChoice = <Value extends string>(
   option: Readonly<{ value: Value; title: string }>
@@ -741,14 +747,17 @@ const themeCardIndicatorView = (model: Model, row: ThemeCardRow): Html => {
     return h.span(
       [
         h.DataAttribute("theme-studio-theme-card-lock", row.id),
-        h.Class("text-xs text-muted-foreground"),
+        h.Class("grid size-4 place-items-center rounded text-[11px] text-card-foreground/70"),
       ],
-      ["lock"]
+      ["⌁"]
     );
   }
 
   if (row.id === "style") {
-    return h.span([h.Class("text-sm text-muted-foreground")], ["Aa"]);
+    return h.span(
+      [h.Class("grid size-4 place-items-center rounded border border-card-foreground/80 text-[10px] leading-none text-card-foreground/90")],
+      []
+    );
   }
 
   if (row.id === "radius") {
@@ -784,45 +793,54 @@ const themeCardRowView = (model: Model, row: ThemeCardRow): Html => {
       h.DataAttribute("theme-studio-theme-card-row", row.id),
       h.DataAttribute("status", row.status),
       h.DataAttribute("source", row.source),
-      h.Class("grid gap-1 rounded-md border border-border bg-background p-3"),
+      h.Class(customizerRowClasses),
     ],
     [
-      h.div([h.Class("flex items-center justify-between gap-3")], [
-        h.label([h.For(id), h.Class("text-xs font-medium text-muted-foreground")], [
+      h.div([h.Class("grid min-w-0 gap-0.5")], [
+        h.label([h.For(id), h.Class("truncate text-xs font-medium text-card-foreground/45")], [
           row.title,
         ]),
-        themeCardIndicatorView(model, row),
-      ]),
-      row.status === "active" && choices.length > 0 && maybeMessage(choices[0]?.value ?? "") !== undefined
-        ? Ui.Select.view<Message>({
-            id,
-            value:
-              row.id === "theme"
-                ? model.selectedBaseColor
-                : themeCardRowSelectedValue(model, row),
-            onChange: (value) => maybeMessage(value) ?? CompletedSyncOpenStoryGlobals(),
-            toView: (attributes) =>
-              h.select(
-                [...attributes.select, h.Class("w-full bg-transparent text-sm font-semibold text-foreground outline-none")],
-                choices.map((choice) =>
-                  h.option(
-                    [
-                      h.Value(choice.value),
-                      h.Selected(
-                        choice.value ===
-                          (row.id === "theme"
-                            ? model.selectedBaseColor
-                            : themeCardRowSelectedValue(model, row))
-                      ),
-                    ],
-                    [choice.label]
+        row.status === "active" &&
+        choices.length > 0 &&
+        maybeMessage(choices[0]?.value ?? "") !== undefined
+          ? Ui.Select.view<Message>({
+              id,
+              value:
+                row.id === "theme"
+                  ? model.selectedBaseColor
+                  : themeCardRowSelectedValue(model, row),
+              onChange: (value) => maybeMessage(value) ?? CompletedSyncOpenStoryGlobals(),
+              toView: (attributes) =>
+                h.select(
+                  [
+                    ...attributes.select,
+                    h.Class(
+                      "w-full appearance-none bg-transparent p-0 text-sm font-semibold leading-5 text-card-foreground outline-none"
+                    ),
+                  ],
+                  choices.map((choice) =>
+                    h.option(
+                      [
+                        h.Value(choice.value),
+                        h.Selected(
+                          choice.value ===
+                            (row.id === "theme"
+                              ? model.selectedBaseColor
+                              : themeCardRowSelectedValue(model, row))
+                        ),
+                      ],
+                      [choice.label]
+                    )
                   )
-                )
-              ),
-          })
-        : h.div([h.Class("text-sm font-semibold text-foreground")], [selectedTitle]),
+                ),
+            })
+          : h.div([h.Class("truncate text-sm font-semibold leading-5 text-card-foreground")], [
+              selectedTitle,
+            ]),
+      ]),
+      themeCardIndicatorView(model, row),
       row.status === "deferred" && "reason" in row
-        ? h.div([h.Class("text-xs leading-5 text-muted-foreground")], [row.reason])
+        ? h.span([h.Class("sr-only")], [row.reason])
         : h.span([h.Class("sr-only")], [selectedTitle]),
     ]
   );
@@ -834,32 +852,47 @@ const originThemeCardView = (model: Model): Html => {
   return h.div(
     [
       h.DataAttribute("testid", "theme-studio-origin-theme-card"),
-      h.Class(`${panelClasses} grid content-start gap-3`),
+      h.Class(customizerCardClasses),
     ],
     [
+      h.button(
+        [
+          h.Type("button"),
+          h.Class(
+            "flex h-9 w-full items-center justify-between rounded-[10px] border border-foreground/10 bg-transparent px-2.5 py-2 text-sm font-medium text-card-foreground"
+          ),
+        ],
+        [
+          h.span([], ["Menu"]),
+          h.span([h.Class("text-xl leading-none text-card-foreground/75")], ["≡"]),
+        ]
+      ),
+      h.div([h.Class("h-px bg-foreground/10")], []),
       ...themeStudioCatalog.themeCardOptions.map((row) =>
         themeCardRowView(model, row)
       ),
-      h.div([h.Class("grid gap-2 border-t border-border pt-3")], [
+      h.div([h.Class("grid gap-2 border-t border-foreground/10 pt-3")], [
         h.div(
           [
             h.DataAttribute("theme-studio-preset-code", "true"),
-            h.Class("rounded-md border border-border bg-muted px-3 py-2 text-center text-sm font-semibold"),
+            h.Class(customizerActionClasses),
           ],
-          ["--preset b27IKSEC"]
+          ["--preset b0"]
         ),
         h.button(
-          [h.Type("button"), h.Class("h-9 rounded-md border border-input text-sm font-medium")],
+          [h.Type("button"), h.Class(customizerActionClasses)],
           ["Open Preset"]
         ),
         h.button(
-          [h.Type("button"), h.Class("h-9 rounded-md border border-input text-sm font-medium")],
+          [h.Type("button"), h.Class(customizerActionClasses)],
           ["Shuffle"]
         ),
         h.a(
           [
             h.Href(selectedThemeDownloadHref(model)),
-            h.Class("inline-flex h-9 items-center justify-center rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground"),
+            h.Class(
+              "mt-2 inline-flex h-8 w-full items-center justify-center rounded-[10px] bg-card-foreground px-2.5 text-sm font-semibold text-card"
+            ),
           ],
           ["Get Code"]
         ),
@@ -1806,44 +1839,10 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ]),
       ]),
       h.section(
-        [h.Class("grid min-h-[calc(100vh-8rem)] gap-4 lg:grid-cols-[320px_minmax(0,1fr)]")],
+        [h.Class("grid min-h-[calc(100vh-8rem)] gap-4 md:grid-cols-[192px_minmax(0,1fr)]")],
         [
-          h.div([h.Class("grid content-start gap-4")], [
+          h.div([h.Class("grid w-full content-start gap-4")], [
             originThemeCardView(model),
-            selectView({
-              id: "theme-studio-mode",
-              label: "Mode",
-              value: model.selectedMode,
-              choices: modeChoices(),
-              onChange: (value) => SelectedThemeStudioMode({ value }),
-            }),
-            selectView({
-              id: "theme-studio-preview-block",
-              label: "Preview block",
-              value: model.selectedPreviewBlockId,
-              choices: previewBlockChoices(),
-              onChange: (value) => SelectedThemeStudioPreviewBlock({ value }),
-            }),
-            previewBlockOptionsView(model),
-            cssVariableOptionsView(),
-            h.div([h.Class("grid gap-2")], [
-              h.a(
-                [
-                  h.DataAttribute("testid", "theme-studio-theme-download"),
-                  h.Href(selectedThemeDownloadHref(model)),
-                  h.Class(actionClasses),
-                ],
-                ["Download theme"]
-              ),
-              h.a(
-                [
-                  h.DataAttribute("testid", "theme-studio-block-download"),
-                  h.Href(selectedPreviewBlockDownloadHref(model)),
-                  h.Class("text-sm font-medium text-primary underline"),
-                ],
-                ["Download preview block"]
-              ),
-            ]),
           ]),
           h.div([h.Class("grid min-h-0 gap-4 xl:grid-cols-[minmax(0,1fr)_360px]")], [
             h.div(
@@ -1888,7 +1887,45 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
                 previewBlockView(model),
               ]
             ),
-            componentInventoryView(),
+            h.div([h.Class("grid content-start gap-4")], [
+              componentInventoryView(),
+              previewBlockOptionsView(model),
+              h.div([h.Class(`${panelClasses} grid gap-4`)], [
+                selectView({
+                  id: "theme-studio-mode",
+                  label: "Mode",
+                  value: model.selectedMode,
+                  choices: modeChoices(),
+                  onChange: (value) => SelectedThemeStudioMode({ value }),
+                }),
+                selectView({
+                  id: "theme-studio-preview-block",
+                  label: "Preview block",
+                  value: model.selectedPreviewBlockId,
+                  choices: previewBlockChoices(),
+                  onChange: (value) => SelectedThemeStudioPreviewBlock({ value }),
+                }),
+                cssVariableOptionsView(),
+                h.div([h.Class("grid gap-2")], [
+                  h.a(
+                    [
+                      h.DataAttribute("testid", "theme-studio-theme-download"),
+                      h.Href(selectedThemeDownloadHref(model)),
+                      h.Class(actionClasses),
+                    ],
+                    ["Download theme"]
+                  ),
+                  h.a(
+                    [
+                      h.DataAttribute("testid", "theme-studio-block-download"),
+                      h.Href(selectedPreviewBlockDownloadHref(model)),
+                      h.Class("text-sm font-medium text-primary underline"),
+                    ],
+                    ["Download preview block"]
+                  ),
+                ]),
+              ]),
+            ]),
           ]),
         ]
       ),
