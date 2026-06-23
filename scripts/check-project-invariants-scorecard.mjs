@@ -17,6 +17,7 @@ const requiredIds = [
   "P11_PROGRESS_LEDGER",
   "P12_INVARIANT_GOVERNANCE",
   "P13_COMPONENT_LOCAL_CONFIG",
+  "P14_DYNAMIC_OPTION_DISTRIBUTION",
 ];
 
 const catalogHeader = [

@@ -1,0 +1,342 @@
+{
+  "name": "shadcn-create-preview-inventory",
+  "sourceReferences": [
+    "https://ui.shadcn.com/docs/theming",
+    "https://ui.shadcn.com/create?preset=b27GcrRo",
+    "https://ui.shadcn.com/preview/radix/preview-02"
+  ],
+  "coverageStatuses": ["rendered", "covered-by-existing-example", "deferred"],
+  "rows": [
+    {
+      "id": "dashboard-cards",
+      "title": "Dashboard cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["card", "button", "progress"],
+      "followUp": "Expand the rendered block into the full preview-02 dashboard card grid when dashboard composition parity is graded."
+    },
+    {
+      "id": "sidebar-navigation",
+      "title": "Sidebar/navigation",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-navigation-menu-basic",
+      "downloadHref": "/shadcn-navigation-menu-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["navigation-menu", "sidebar", "button", "icon/lucide"],
+      "followUp": "Expand the Theme Studio shell after sidebar layout parity is graded against preview-02."
+    },
+    {
+      "id": "contribution-activity-chart",
+      "title": "Contribution/activity chart",
+      "originSurface": "create-02",
+      "status": "deferred",
+      "dependencies": ["chart", "card", "theme-token"],
+      "reason": "The create page uses a source-specific contribution bar chart that is not yet represented as a downloadable registry example.",
+      "followUp": "Add an activity chart example with source-backed visual parity."
+    },
+    {
+      "id": "payout-threshold",
+      "title": "Payout threshold",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
+      "dependencies": ["card", "slider", "select", "textarea", "button"],
+      "reason": "Existing slider/select/input examples cover the primitive dependencies, but the full payout settings card is not a source-owned block yet.",
+      "followUp": "Compose a payout threshold block after select, textarea, and slider visual parity are reviewed together."
+    },
+    {
+      "id": "savings-targets",
+      "title": "Savings targets",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-progress-basic",
+      "downloadHref": "/shadcn-progress-basic.json",
+      "dependencies": ["card", "progress", "button", "badge"],
+      "reason": "Progress primitives are downloadable, but the savings target card stack needs a source-owned composed example.",
+      "followUp": "Add a savings targets block when card/progress composition parity is graded."
+    },
+    {
+      "id": "buy-investment",
+      "title": "Buy investment",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "dependencies": ["card", "input", "select", "button", "table"],
+      "reason": "Input and select examples are downloadable, but the investment order card is not a source-owned block.",
+      "followUp": "Add the buy investment block after form and list-row visual parity are reconciled."
+    },
+    {
+      "id": "distribute-track-upload-empty-state",
+      "title": "Distribute track/upload empty state",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
+      "dependencies": ["card", "upload", "input-file", "button", "icon/lucide"],
+      "reason": "File input is downloadable, but the empty release/distribution card is not a source-owned composed block.",
+      "followUp": "Add a release upload empty-state block after upload-zone styling is source-owned."
+    },
+    {
+      "id": "claimable-balance",
+      "title": "Claimable balance",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "dependencies": ["card", "badge", "separator", "button"],
+      "reason": "Card and badge primitives are downloadable, but the claimable balance summary is not yet a source-owned block.",
+      "followUp": "Add the claimable balance block when summary-card visual parity is reviewed."
+    },
+    {
+      "id": "qr-device-connection-card",
+      "title": "QR/device connection card",
+      "originSurface": "create-02",
+      "status": "deferred",
+      "dependencies": ["qr-code", "image-placeholder", "card", "button"],
+      "reason": "No source-owned QR/device connection registry payload exists yet.",
+      "followUp": "Add a QR/device connection block after QR rendering is source-owned."
+    },
+    {
+      "id": "recent-transactions",
+      "title": "Recent transactions",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "data-table-basic",
+      "downloadHref": "/data-table-basic.json",
+      "dependencies": ["card", "table", "data-list", "badge", "button", "icon/lucide"],
+      "reason": "Data table/list primitives are downloadable, but the exact recent transactions card is not source-owned yet.",
+      "followUp": "Add transaction list composition after list-row and table visual parity are reviewed."
+    },
+    {
+      "id": "sidebar-theme-card",
+      "title": "Sidebar/theme card",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["theme-card", "card", "button", "icon/lucide", "theme-token"],
+      "followUp": "Promote origin theme-card controls as source-backed variants land."
+    },
+    {
+      "id": "preset-actions",
+      "title": "Preset/actions",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "registryItemName": "button-basic",
+      "downloadHref": "/button-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["button", "input", "theme-token"],
+      "followUp": "Wire preset import/export once source-owned preset payload metadata exists."
+    },
+    {
+      "id": "preview-switcher-01",
+      "title": "Preview switcher 01",
+      "originSurface": "create-shell",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "dependencies": ["tabs", "button"],
+      "reason": "Tabs primitives are downloadable, but create preview variant 01 is not a separate source-owned page block yet.",
+      "followUp": "Add create preview 01 as a page-level block when its source inventory is checked in."
+    },
+    {
+      "id": "preview-switcher-02",
+      "title": "Preview switcher 02",
+      "originSurface": "create-shell",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "dependencies": ["tabs", "button"],
+      "reason": "Tabs primitives are downloadable, but create preview variant 02 is represented by this initial block inventory rather than a separate page-level registry item.",
+      "followUp": "Split preview 02 into a source-owned page block after plan 026 visual parity work."
+    },
+    {
+      "id": "progress-cards",
+      "title": "Progress cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-progress-basic",
+      "downloadHref": "/shadcn-progress-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["progress", "card", "badge"],
+      "followUp": "Broaden card-level progress layouts when preview-02 card composition parity is available."
+    },
+    {
+      "id": "transaction-investment-lists",
+      "title": "Transaction/investment lists",
+      "originSurface": "preview-02",
+      "status": "deferred",
+      "dependencies": ["data-list", "table", "badge", "button"],
+      "reason": "The registry has tables and cards, but not the preview-02 transaction/investment list block as a downloadable example.",
+      "followUp": "Add list-block examples once list visual parity is reviewed."
+    },
+    {
+      "id": "preference-forms",
+      "title": "Preference forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["input", "select", "textarea", "button", "card"],
+      "followUp": "Fold in the complete preview-02 preferences form when field grouping parity is complete."
+    },
+    {
+      "id": "switches",
+      "title": "Switches",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-switch-basic",
+      "downloadHref": "/shadcn-switch-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["switch", "card"],
+      "followUp": "Expand the settings block once switch grouping parity is reviewed against preview-02."
+    },
+    {
+      "id": "selects-comboboxes",
+      "title": "Selects/comboboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-select-basic",
+      "downloadHref": "/shadcn-select-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["select", "combobox", "input", "card"],
+      "followUp": "Add combobox-specific source-owned payloads when that slice is available."
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["tabs", "card", "button"],
+      "followUp": "Expand to the preview-02 dashboard tab layout when block composition parity exists."
+    },
+    {
+      "id": "accordions",
+      "title": "Accordions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-accordion-basic",
+      "downloadHref": "/shadcn-accordion-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["accordion", "card"],
+      "followUp": "Promote more accordion variants as preview-02 details are reconciled."
+    },
+    {
+      "id": "dropdown-menu-actions",
+      "title": "Dropdown/menu actions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "dropdown-menu-basic",
+      "downloadHref": "/dropdown-menu-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["dropdown-menu", "button", "card", "icon/lucide"],
+      "followUp": "Add interactive menu state when composed menu parity is source-owned."
+    },
+    {
+      "id": "calendar-date-controls",
+      "title": "Calendar/date controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-calendar-basic",
+      "downloadHref": "/shadcn-calendar-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["calendar", "date-picker", "button", "card"],
+      "followUp": "Broaden to date-picker range controls when source-owned grouping is complete."
+    },
+    {
+      "id": "radio-groups",
+      "title": "Radio groups",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-radio-group-basic",
+      "downloadHref": "/shadcn-radio-group-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["radio-group", "card", "badge"],
+      "followUp": "Replace the static radio-card surface once payment-card grouping parity is source-owned."
+    },
+    {
+      "id": "checkboxes",
+      "title": "Checkboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-checkbox-basic",
+      "downloadHref": "/shadcn-checkbox-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["checkbox", "card"],
+      "followUp": "Broaden checklist grouping when preview-02 permissions composition is represented as a registry example."
+    },
+    {
+      "id": "sliders",
+      "title": "Sliders",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["slider", "switch", "card"],
+      "followUp": "Pair with switch controls when the smart-home card registry payload is source-owned."
+    },
+    {
+      "id": "upload-controls",
+      "title": "Upload controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["upload", "input-file", "card", "button"],
+      "followUp": "Replace the static upload-zone preview once upload-zone styling is represented by a source-owned block."
+    },
+    {
+      "id": "payment-method-controls",
+      "title": "Payment method controls",
+      "originSurface": "preview-02",
+      "status": "deferred",
+      "dependencies": ["radio-group", "checkbox", "card", "input"],
+      "reason": "Payment method card composition is not yet a source-owned registry payload.",
+      "followUp": "Add payment method controls after radio-card and form grouping parity are complete."
+    },
+    {
+      "id": "profile-security-forms",
+      "title": "Profile/security forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["input", "button", "card", "badge"],
+      "followUp": "Split profile and security examples if future registry payloads become source-owned."
+    },
+    {
+      "id": "smart-home-controls",
+      "title": "Smart-home controls",
+      "originSurface": "preview-02",
+      "status": "deferred",
+      "dependencies": ["switch", "slider", "card"],
+      "reason": "No source-owned smart-home card registry payload exists yet.",
+      "followUp": "Add a smart-home controls block after switch, slider, and card composition parity are reviewed together."
+    },
+    {
+      "id": "modal-drawer-surfaces",
+      "title": "Modal/drawer-like surfaces",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-dialog-basic",
+      "downloadHref": "/shadcn-dialog-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["dialog", "drawer", "sheet", "button", "card"],
+      "followUp": "Add interactive modal or drawer state after preview-02 modal/drawer composition is source-owned."
+    }
+  ]
+}

@@ -1,0 +1,4972 @@
+{
+  "name": "theme-studio",
+  "sourceReferences": [
+    "https://ui.shadcn.com/docs/theming",
+    "https://ui.shadcn.com/create?preset=b27GcrRo",
+    "https://ui.shadcn.com/preview/radix/preview-02"
+  ],
+  "styleOptions": [
+    {
+      "value": "rhea",
+      "title": "Rhea",
+      "tailwind": {
+        "cssVariables": true
+      }
+    }
+  ],
+  "baseColorOptionsByStyle": {
+    "rhea": [
+      {
+        "value": "neutral",
+        "title": "Neutral",
+        "tailwind": {
+          "baseColor": "neutral",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-neutral",
+        "downloadHref": "/foldkit-theme-rhea-neutral.json"
+      },
+      {
+        "value": "stone",
+        "title": "Stone",
+        "tailwind": {
+          "baseColor": "stone",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-stone",
+        "downloadHref": "/foldkit-theme-rhea-stone.json"
+      },
+      {
+        "value": "zinc",
+        "title": "Zinc",
+        "tailwind": {
+          "baseColor": "zinc",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-zinc",
+        "downloadHref": "/foldkit-theme-rhea-zinc.json"
+      },
+      {
+        "value": "mauve",
+        "title": "Mauve",
+        "tailwind": {
+          "baseColor": "mauve",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-mauve",
+        "downloadHref": "/foldkit-theme-rhea-mauve.json"
+      },
+      {
+        "value": "olive",
+        "title": "Olive",
+        "tailwind": {
+          "baseColor": "olive",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-olive",
+        "downloadHref": "/foldkit-theme-rhea-olive.json"
+      },
+      {
+        "value": "mist",
+        "title": "Mist",
+        "tailwind": {
+          "baseColor": "mist",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-mist",
+        "downloadHref": "/foldkit-theme-rhea-mist.json"
+      },
+      {
+        "value": "taupe",
+        "title": "Taupe",
+        "tailwind": {
+          "baseColor": "taupe",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-taupe",
+        "downloadHref": "/foldkit-theme-rhea-taupe.json"
+      },
+      {
+        "value": "amber",
+        "title": "Amber",
+        "tailwind": {
+          "baseColor": "amber",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-amber",
+        "downloadHref": "/foldkit-theme-rhea-amber.json"
+      },
+      {
+        "value": "blue",
+        "title": "Blue",
+        "tailwind": {
+          "baseColor": "blue",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-blue",
+        "downloadHref": "/foldkit-theme-rhea-blue.json"
+      },
+      {
+        "value": "cyan",
+        "title": "Cyan",
+        "tailwind": {
+          "baseColor": "cyan",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-cyan",
+        "downloadHref": "/foldkit-theme-rhea-cyan.json"
+      },
+      {
+        "value": "emerald",
+        "title": "Emerald",
+        "tailwind": {
+          "baseColor": "emerald",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-emerald",
+        "downloadHref": "/foldkit-theme-rhea-emerald.json"
+      },
+      {
+        "value": "fuchsia",
+        "title": "Fuchsia",
+        "tailwind": {
+          "baseColor": "fuchsia",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-fuchsia",
+        "downloadHref": "/foldkit-theme-rhea-fuchsia.json"
+      },
+      {
+        "value": "green",
+        "title": "Green",
+        "tailwind": {
+          "baseColor": "green",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-green",
+        "downloadHref": "/foldkit-theme-rhea-green.json"
+      },
+      {
+        "value": "indigo",
+        "title": "Indigo",
+        "tailwind": {
+          "baseColor": "indigo",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-indigo",
+        "downloadHref": "/foldkit-theme-rhea-indigo.json"
+      },
+      {
+        "value": "lime",
+        "title": "Lime",
+        "tailwind": {
+          "baseColor": "lime",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-lime",
+        "downloadHref": "/foldkit-theme-rhea-lime.json"
+      },
+      {
+        "value": "orange",
+        "title": "Orange",
+        "tailwind": {
+          "baseColor": "orange",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-orange",
+        "downloadHref": "/foldkit-theme-rhea-orange.json"
+      },
+      {
+        "value": "pink",
+        "title": "Pink",
+        "tailwind": {
+          "baseColor": "pink",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-pink",
+        "downloadHref": "/foldkit-theme-rhea-pink.json"
+      },
+      {
+        "value": "purple",
+        "title": "Purple",
+        "tailwind": {
+          "baseColor": "purple",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-purple",
+        "downloadHref": "/foldkit-theme-rhea-purple.json"
+      },
+      {
+        "value": "red",
+        "title": "Red",
+        "tailwind": {
+          "baseColor": "red",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-red",
+        "downloadHref": "/foldkit-theme-rhea-red.json"
+      },
+      {
+        "value": "rose",
+        "title": "Rose",
+        "tailwind": {
+          "baseColor": "rose",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-rose",
+        "downloadHref": "/foldkit-theme-rhea-rose.json"
+      },
+      {
+        "value": "sky",
+        "title": "Sky",
+        "tailwind": {
+          "baseColor": "sky",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-sky",
+        "downloadHref": "/foldkit-theme-rhea-sky.json"
+      },
+      {
+        "value": "teal",
+        "title": "Teal",
+        "tailwind": {
+          "baseColor": "teal",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-teal",
+        "downloadHref": "/foldkit-theme-rhea-teal.json"
+      },
+      {
+        "value": "violet",
+        "title": "Violet",
+        "tailwind": {
+          "baseColor": "violet",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-violet",
+        "downloadHref": "/foldkit-theme-rhea-violet.json"
+      },
+      {
+        "value": "yellow",
+        "title": "Yellow",
+        "tailwind": {
+          "baseColor": "yellow",
+          "cssVariables": true
+        },
+        "downloadName": "foldkit-theme-rhea-yellow",
+        "downloadHref": "/foldkit-theme-rhea-yellow.json"
+      }
+    ]
+  },
+  "themeCardOptions": [
+    {
+      "id": "style",
+      "title": "Style",
+      "status": "active",
+      "selectedValue": "rhea",
+      "source": "registry/upstream/derived/shadcn-theme.json styleNames",
+      "options": [
+        {
+          "value": "rhea",
+          "title": "Rhea",
+          "tailwind": {
+            "cssVariables": true
+          },
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "base-color",
+      "title": "Base Color",
+      "status": "active",
+      "selectedValue": "neutral",
+      "source": "registry/upstream/derived/shadcn-theme.json baseColorNames",
+      "options": [
+        {
+          "value": "neutral",
+          "title": "Neutral",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "stone",
+          "title": "Stone",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "zinc",
+          "title": "Zinc",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "gray",
+          "title": "Gray",
+          "status": "absent-by-source",
+          "supportedStyles": [],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "mauve",
+          "title": "Mauve",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "olive",
+          "title": "Olive",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "mist",
+          "title": "Mist",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "taupe",
+          "title": "Taupe",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "title": "Theme",
+      "status": "active",
+      "selectedValue": "rhea-neutral",
+      "source": "registry/upstream/derived/shadcn-theme.json themes",
+      "options": [
+        {
+          "value": "rhea-neutral",
+          "title": "Rhea Neutral",
+          "status": "active",
+          "indicator": "oklch(0.205 0 0)",
+          "downloadHref": "/foldkit-theme-rhea-neutral.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-stone",
+          "title": "Rhea Stone",
+          "status": "active",
+          "indicator": "oklch(0.216 0.006 56.043)",
+          "downloadHref": "/foldkit-theme-rhea-stone.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-zinc",
+          "title": "Rhea Zinc",
+          "status": "active",
+          "indicator": "oklch(0.21 0.006 285.885)",
+          "downloadHref": "/foldkit-theme-rhea-zinc.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-mauve",
+          "title": "Rhea Mauve",
+          "status": "active",
+          "indicator": "oklch(0.212 0.019 322.12)",
+          "downloadHref": "/foldkit-theme-rhea-mauve.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-olive",
+          "title": "Rhea Olive",
+          "status": "active",
+          "indicator": "oklch(0.228 0.013 107.4)",
+          "downloadHref": "/foldkit-theme-rhea-olive.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-mist",
+          "title": "Rhea Mist",
+          "status": "active",
+          "indicator": "oklch(0.218 0.008 223.9)",
+          "downloadHref": "/foldkit-theme-rhea-mist.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-taupe",
+          "title": "Rhea Taupe",
+          "status": "active",
+          "indicator": "oklch(0.214 0.009 43.1)",
+          "downloadHref": "/foldkit-theme-rhea-taupe.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-amber",
+          "title": "Rhea Amber",
+          "status": "active",
+          "indicator": "oklch(0.555 0.163 48.998)",
+          "downloadHref": "/foldkit-theme-rhea-amber.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-blue",
+          "title": "Rhea Blue",
+          "status": "active",
+          "indicator": "oklch(0.488 0.243 264.376)",
+          "downloadHref": "/foldkit-theme-rhea-blue.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-cyan",
+          "title": "Rhea Cyan",
+          "status": "active",
+          "indicator": "oklch(0.52 0.105 223.128)",
+          "downloadHref": "/foldkit-theme-rhea-cyan.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-emerald",
+          "title": "Rhea Emerald",
+          "status": "active",
+          "indicator": "oklch(0.508 0.118 165.612)",
+          "downloadHref": "/foldkit-theme-rhea-emerald.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-fuchsia",
+          "title": "Rhea Fuchsia",
+          "status": "active",
+          "indicator": "oklch(0.518 0.253 323.949)",
+          "downloadHref": "/foldkit-theme-rhea-fuchsia.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-green",
+          "title": "Rhea Green",
+          "status": "active",
+          "indicator": "oklch(0.527 0.154 150.069)",
+          "downloadHref": "/foldkit-theme-rhea-green.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-indigo",
+          "title": "Rhea Indigo",
+          "status": "active",
+          "indicator": "oklch(0.457 0.24 277.023)",
+          "downloadHref": "/foldkit-theme-rhea-indigo.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-lime",
+          "title": "Rhea Lime",
+          "status": "active",
+          "indicator": "oklch(0.841 0.238 128.85)",
+          "downloadHref": "/foldkit-theme-rhea-lime.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-orange",
+          "title": "Rhea Orange",
+          "status": "active",
+          "indicator": "oklch(0.553 0.195 38.402)",
+          "downloadHref": "/foldkit-theme-rhea-orange.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-pink",
+          "title": "Rhea Pink",
+          "status": "active",
+          "indicator": "oklch(0.525 0.223 3.958)",
+          "downloadHref": "/foldkit-theme-rhea-pink.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-purple",
+          "title": "Rhea Purple",
+          "status": "active",
+          "indicator": "oklch(0.496 0.265 301.924)",
+          "downloadHref": "/foldkit-theme-rhea-purple.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-red",
+          "title": "Rhea Red",
+          "status": "active",
+          "indicator": "oklch(0.505 0.213 27.518)",
+          "downloadHref": "/foldkit-theme-rhea-red.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-rose",
+          "title": "Rhea Rose",
+          "status": "active",
+          "indicator": "oklch(0.514 0.222 16.935)",
+          "downloadHref": "/foldkit-theme-rhea-rose.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-sky",
+          "title": "Rhea Sky",
+          "status": "active",
+          "indicator": "oklch(0.5 0.134 242.749)",
+          "downloadHref": "/foldkit-theme-rhea-sky.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-teal",
+          "title": "Rhea Teal",
+          "status": "active",
+          "indicator": "oklch(0.511 0.096 186.391)",
+          "downloadHref": "/foldkit-theme-rhea-teal.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-violet",
+          "title": "Rhea Violet",
+          "status": "active",
+          "indicator": "oklch(0.491 0.27 292.581)",
+          "downloadHref": "/foldkit-theme-rhea-violet.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-yellow",
+          "title": "Rhea Yellow",
+          "status": "active",
+          "indicator": "oklch(0.852 0.199 91.936)",
+          "downloadHref": "/foldkit-theme-rhea-yellow.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        }
+      ]
+    },
+    {
+      "id": "chart-color",
+      "title": "Chart Color",
+      "status": "active",
+      "selectedValue": "neutral",
+      "source": "registry/upstream/derived/shadcn-theme.json chart tokens",
+      "options": [
+        {
+          "value": "neutral",
+          "title": "Neutral",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "stone",
+          "title": "Stone",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "zinc",
+          "title": "Zinc",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "mauve",
+          "title": "Mauve",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "olive",
+          "title": "Olive",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "mist",
+          "title": "Mist",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "taupe",
+          "title": "Taupe",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "amber",
+          "title": "Amber",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "blue",
+          "title": "Blue",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "cyan",
+          "title": "Cyan",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "emerald",
+          "title": "Emerald",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "fuchsia",
+          "title": "Fuchsia",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "green",
+          "title": "Green",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "indigo",
+          "title": "Indigo",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "lime",
+          "title": "Lime",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "orange",
+          "title": "Orange",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "pink",
+          "title": "Pink",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "purple",
+          "title": "Purple",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "red",
+          "title": "Red",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rose",
+          "title": "Rose",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "sky",
+          "title": "Sky",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "teal",
+          "title": "Teal",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "violet",
+          "title": "Violet",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "yellow",
+          "title": "Yellow",
+          "status": "active",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        }
+      ]
+    },
+    {
+      "id": "heading",
+      "title": "Heading",
+      "status": "active",
+      "selectedValue": "inter",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "options": [
+        {
+          "value": "inter",
+          "title": "Inter",
+          "status": "active"
+        },
+        {
+          "value": "geist",
+          "title": "Geist",
+          "status": "active"
+        },
+        {
+          "value": "mono",
+          "title": "Mono",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "font",
+      "title": "Font",
+      "status": "active",
+      "selectedValue": "inter",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "options": [
+        {
+          "value": "inter",
+          "title": "Inter",
+          "status": "active"
+        },
+        {
+          "value": "geist",
+          "title": "Geist",
+          "status": "active"
+        },
+        {
+          "value": "mono",
+          "title": "Mono",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "icon-library",
+      "title": "Icon Library",
+      "status": "active",
+      "selectedValue": "lucide",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "options": [
+        {
+          "value": "lucide",
+          "title": "Lucide",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "radius",
+      "title": "Radius",
+      "status": "active",
+      "selectedValue": "md",
+      "source": "registry/upstream/derived/shadcn-theme.json radiusScale",
+      "options": [
+        {
+          "value": "sm",
+          "title": "Sm",
+          "status": "active"
+        },
+        {
+          "value": "md",
+          "title": "Default",
+          "status": "active"
+        },
+        {
+          "value": "lg",
+          "title": "Lg",
+          "status": "active"
+        },
+        {
+          "value": "xl",
+          "title": "Xl",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "title": "Menu",
+      "status": "active",
+      "selectedValue": "default-solid",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "options": [
+        {
+          "value": "default-solid",
+          "title": "Default / Solid",
+          "status": "active"
+        },
+        {
+          "value": "floating-translucent",
+          "title": "Floating / Translucent",
+          "status": "active"
+        },
+        {
+          "value": "compact-solid",
+          "title": "Compact / Solid",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "menu-accent",
+      "title": "Menu Accent",
+      "status": "active",
+      "selectedValue": "subtle",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "options": [
+        {
+          "value": "subtle",
+          "title": "Subtle",
+          "status": "active"
+        },
+        {
+          "value": "contrast",
+          "title": "Contrast",
+          "status": "active"
+        },
+        {
+          "value": "primary",
+          "title": "Primary",
+          "status": "active"
+        }
+      ]
+    }
+  ],
+  "modeOptions": [
+    {
+      "value": "light",
+      "title": "Light",
+      "downloadMode": true
+    },
+    {
+      "value": "dark",
+      "title": "Dark",
+      "downloadMode": true
+    },
+    {
+      "value": "system",
+      "title": "System",
+      "downloadMode": false
+    }
+  ],
+  "cssVariablesOptions": [
+    {
+      "value": true,
+      "title": "CSS variables",
+      "status": "active",
+      "download": true,
+      "tailwind": {
+        "cssVariables": true
+      }
+    },
+    {
+      "value": false,
+      "title": "Utility classes",
+      "status": "deferred",
+      "download": false,
+      "reason": "The no-CSS-variables path is deferred until style-level component recipes can be generated without overstating parity.",
+      "tailwind": {
+        "cssVariables": false
+      }
+    }
+  ],
+  "themingOptions": [
+    {
+      "id": "style",
+      "title": "Style",
+      "status": "active",
+      "source": "components.json style"
+    },
+    {
+      "id": "tailwind.baseColor",
+      "title": "Base color",
+      "status": "active",
+      "source": "components.json tailwind.baseColor"
+    },
+    {
+      "id": "tailwind.cssVariables.true",
+      "title": "CSS variables",
+      "status": "active",
+      "source": "components.json tailwind.cssVariables"
+    },
+    {
+      "id": "tailwind.cssVariables.false",
+      "title": "No CSS variables",
+      "status": "deferred",
+      "reason": "Utility-class recipes need component-level parity before a registry:style payload can be honest.",
+      "source": "components.json tailwind.cssVariables"
+    },
+    {
+      "id": "mode",
+      "title": "Light, dark, and system mode",
+      "status": "active",
+      "source": "https://ui.shadcn.com/docs/theming"
+    },
+    {
+      "id": "semanticTokens",
+      "title": "Semantic tokens",
+      "status": "active",
+      "source": "registry/upstream/derived/shadcn-theme.json tokenNames",
+      "tokens": [
+        "background",
+        "foreground",
+        "card",
+        "card-foreground",
+        "popover",
+        "popover-foreground",
+        "primary",
+        "primary-foreground",
+        "secondary",
+        "secondary-foreground",
+        "muted",
+        "muted-foreground",
+        "accent",
+        "accent-foreground",
+        "destructive",
+        "border",
+        "input",
+        "ring",
+        "chart-1",
+        "chart-2",
+        "chart-3",
+        "chart-4",
+        "chart-5",
+        "sidebar",
+        "sidebar-foreground",
+        "sidebar-primary",
+        "sidebar-primary-foreground",
+        "sidebar-accent",
+        "sidebar-accent-foreground",
+        "sidebar-border",
+        "sidebar-ring"
+      ]
+    },
+    {
+      "id": "radiusScale",
+      "title": "Radius scale",
+      "status": "active",
+      "source": "registry/upstream/derived/shadcn-theme.json radiusScale",
+      "values": ["sm", "md", "lg", "xl"]
+    },
+    {
+      "id": "defaultThemeCss",
+      "title": "Default theme CSS",
+      "status": "active",
+      "source": "registry/upstream/derived/shadcn-theme.json default theme tokens",
+      "defaultStyle": "rhea",
+      "defaultBaseColor": "neutral",
+      "defaultMode": "light"
+    }
+  ],
+  "previewCoverage": [
+    {
+      "id": "dashboard-cards",
+      "title": "Dashboard cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["card", "button", "progress"],
+      "followUp": "Expand the rendered block into the full preview-02 dashboard card grid when dashboard composition parity is graded."
+    },
+    {
+      "id": "sidebar-navigation",
+      "title": "Sidebar/navigation",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-navigation-menu-basic",
+      "downloadHref": "/shadcn-navigation-menu-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": [
+        "navigation-menu",
+        "sidebar",
+        "button",
+        "icon/lucide"
+      ],
+      "followUp": "Expand the Theme Studio shell after sidebar layout parity is graded against preview-02."
+    },
+    {
+      "id": "contribution-activity-chart",
+      "title": "Contribution/activity chart",
+      "originSurface": "create-02",
+      "status": "deferred",
+      "dependencies": ["chart", "card", "theme-token"],
+      "reason": "The create page uses a source-specific contribution bar chart that is not yet represented as a downloadable registry example.",
+      "followUp": "Add an activity chart example with source-backed visual parity."
+    },
+    {
+      "id": "payout-threshold",
+      "title": "Payout threshold",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
+      "dependencies": [
+        "card",
+        "slider",
+        "select",
+        "textarea",
+        "button"
+      ],
+      "reason": "Existing slider/select/input examples cover the primitive dependencies, but the full payout settings card is not a source-owned block yet.",
+      "followUp": "Compose a payout threshold block after select, textarea, and slider visual parity are reviewed together."
+    },
+    {
+      "id": "savings-targets",
+      "title": "Savings targets",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-progress-basic",
+      "downloadHref": "/shadcn-progress-basic.json",
+      "dependencies": ["card", "progress", "button", "badge"],
+      "reason": "Progress primitives are downloadable, but the savings target card stack needs a source-owned composed example.",
+      "followUp": "Add a savings targets block when card/progress composition parity is graded."
+    },
+    {
+      "id": "buy-investment",
+      "title": "Buy investment",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "dependencies": ["card", "input", "select", "button", "table"],
+      "reason": "Input and select examples are downloadable, but the investment order card is not a source-owned block.",
+      "followUp": "Add the buy investment block after form and list-row visual parity are reconciled."
+    },
+    {
+      "id": "distribute-track-upload-empty-state",
+      "title": "Distribute track/upload empty state",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
+      "dependencies": [
+        "card",
+        "upload",
+        "input-file",
+        "button",
+        "icon/lucide"
+      ],
+      "reason": "File input is downloadable, but the empty release/distribution card is not a source-owned composed block.",
+      "followUp": "Add a release upload empty-state block after upload-zone styling is source-owned."
+    },
+    {
+      "id": "claimable-balance",
+      "title": "Claimable balance",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "dependencies": ["card", "badge", "separator", "button"],
+      "reason": "Card and badge primitives are downloadable, but the claimable balance summary is not yet a source-owned block.",
+      "followUp": "Add the claimable balance block when summary-card visual parity is reviewed."
+    },
+    {
+      "id": "qr-device-connection-card",
+      "title": "QR/device connection card",
+      "originSurface": "create-02",
+      "status": "deferred",
+      "dependencies": [
+        "qr-code",
+        "image-placeholder",
+        "card",
+        "button"
+      ],
+      "reason": "No source-owned QR/device connection registry payload exists yet.",
+      "followUp": "Add a QR/device connection block after QR rendering is source-owned."
+    },
+    {
+      "id": "recent-transactions",
+      "title": "Recent transactions",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "data-table-basic",
+      "downloadHref": "/data-table-basic.json",
+      "dependencies": [
+        "card",
+        "table",
+        "data-list",
+        "badge",
+        "button",
+        "icon/lucide"
+      ],
+      "reason": "Data table/list primitives are downloadable, but the exact recent transactions card is not source-owned yet.",
+      "followUp": "Add transaction list composition after list-row and table visual parity are reviewed."
+    },
+    {
+      "id": "sidebar-theme-card",
+      "title": "Sidebar/theme card",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": [
+        "theme-card",
+        "card",
+        "button",
+        "icon/lucide",
+        "theme-token"
+      ],
+      "followUp": "Promote origin theme-card controls as source-backed variants land."
+    },
+    {
+      "id": "preset-actions",
+      "title": "Preset/actions",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "registryItemName": "button-basic",
+      "downloadHref": "/button-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["button", "input", "theme-token"],
+      "followUp": "Wire preset import/export once source-owned preset payload metadata exists."
+    },
+    {
+      "id": "preview-switcher-01",
+      "title": "Preview switcher 01",
+      "originSurface": "create-shell",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "dependencies": ["tabs", "button"],
+      "reason": "Tabs primitives are downloadable, but create preview variant 01 is not a separate source-owned page block yet.",
+      "followUp": "Add create preview 01 as a page-level block when its source inventory is checked in."
+    },
+    {
+      "id": "preview-switcher-02",
+      "title": "Preview switcher 02",
+      "originSurface": "create-shell",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "dependencies": ["tabs", "button"],
+      "reason": "Tabs primitives are downloadable, but create preview variant 02 is represented by this initial block inventory rather than a separate page-level registry item.",
+      "followUp": "Split preview 02 into a source-owned page block after plan 026 visual parity work."
+    },
+    {
+      "id": "progress-cards",
+      "title": "Progress cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-progress-basic",
+      "downloadHref": "/shadcn-progress-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["progress", "card", "badge"],
+      "followUp": "Broaden card-level progress layouts when preview-02 card composition parity is available."
+    },
+    {
+      "id": "transaction-investment-lists",
+      "title": "Transaction/investment lists",
+      "originSurface": "preview-02",
+      "status": "deferred",
+      "dependencies": ["data-list", "table", "badge", "button"],
+      "reason": "The registry has tables and cards, but not the preview-02 transaction/investment list block as a downloadable example.",
+      "followUp": "Add list-block examples once list visual parity is reviewed."
+    },
+    {
+      "id": "preference-forms",
+      "title": "Preference forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["input", "select", "textarea", "button", "card"],
+      "followUp": "Fold in the complete preview-02 preferences form when field grouping parity is complete."
+    },
+    {
+      "id": "switches",
+      "title": "Switches",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-switch-basic",
+      "downloadHref": "/shadcn-switch-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["switch", "card"],
+      "followUp": "Expand the settings block once switch grouping parity is reviewed against preview-02."
+    },
+    {
+      "id": "selects-comboboxes",
+      "title": "Selects/comboboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-select-basic",
+      "downloadHref": "/shadcn-select-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["select", "combobox", "input", "card"],
+      "followUp": "Add combobox-specific source-owned payloads when that slice is available."
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["tabs", "card", "button"],
+      "followUp": "Expand to the preview-02 dashboard tab layout when block composition parity exists."
+    },
+    {
+      "id": "accordions",
+      "title": "Accordions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-accordion-basic",
+      "downloadHref": "/shadcn-accordion-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["accordion", "card"],
+      "followUp": "Promote more accordion variants as preview-02 details are reconciled."
+    },
+    {
+      "id": "dropdown-menu-actions",
+      "title": "Dropdown/menu actions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "dropdown-menu-basic",
+      "downloadHref": "/dropdown-menu-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": [
+        "dropdown-menu",
+        "button",
+        "card",
+        "icon/lucide"
+      ],
+      "followUp": "Add interactive menu state when composed menu parity is source-owned."
+    },
+    {
+      "id": "calendar-date-controls",
+      "title": "Calendar/date controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-calendar-basic",
+      "downloadHref": "/shadcn-calendar-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["calendar", "date-picker", "button", "card"],
+      "followUp": "Broaden to date-picker range controls when source-owned grouping is complete."
+    },
+    {
+      "id": "radio-groups",
+      "title": "Radio groups",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-radio-group-basic",
+      "downloadHref": "/shadcn-radio-group-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["radio-group", "card", "badge"],
+      "followUp": "Replace the static radio-card surface once payment-card grouping parity is source-owned."
+    },
+    {
+      "id": "checkboxes",
+      "title": "Checkboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-checkbox-basic",
+      "downloadHref": "/shadcn-checkbox-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["checkbox", "card"],
+      "followUp": "Broaden checklist grouping when preview-02 permissions composition is represented as a registry example."
+    },
+    {
+      "id": "sliders",
+      "title": "Sliders",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["slider", "switch", "card"],
+      "followUp": "Pair with switch controls when the smart-home card registry payload is source-owned."
+    },
+    {
+      "id": "upload-controls",
+      "title": "Upload controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["upload", "input-file", "card", "button"],
+      "followUp": "Replace the static upload-zone preview once upload-zone styling is represented by a source-owned block."
+    },
+    {
+      "id": "payment-method-controls",
+      "title": "Payment method controls",
+      "originSurface": "preview-02",
+      "status": "deferred",
+      "dependencies": ["radio-group", "checkbox", "card", "input"],
+      "reason": "Payment method card composition is not yet a source-owned registry payload.",
+      "followUp": "Add payment method controls after radio-card and form grouping parity are complete."
+    },
+    {
+      "id": "profile-security-forms",
+      "title": "Profile/security forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["input", "button", "card", "badge"],
+      "followUp": "Split profile and security examples if future registry payloads become source-owned."
+    },
+    {
+      "id": "smart-home-controls",
+      "title": "Smart-home controls",
+      "originSurface": "preview-02",
+      "status": "deferred",
+      "dependencies": ["switch", "slider", "card"],
+      "reason": "No source-owned smart-home card registry payload exists yet.",
+      "followUp": "Add a smart-home controls block after switch, slider, and card composition parity are reviewed together."
+    },
+    {
+      "id": "modal-drawer-surfaces",
+      "title": "Modal/drawer-like surfaces",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-dialog-basic",
+      "downloadHref": "/shadcn-dialog-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["dialog", "drawer", "sheet", "button", "card"],
+      "followUp": "Add interactive modal or drawer state after preview-02 modal/drawer composition is source-owned."
+    }
+  ],
+  "previewBlocks": [
+    {
+      "id": "dashboard-cards",
+      "title": "Dashboard cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["card", "button", "progress"],
+      "dependency": "card",
+      "registryItemName": "card-basic",
+      "downloadName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "sidebar-navigation",
+      "title": "Sidebar/navigation",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": [
+        "navigation-menu",
+        "sidebar",
+        "button",
+        "icon/lucide"
+      ],
+      "dependency": "navigation-menu",
+      "registryItemName": "shadcn-navigation-menu-basic",
+      "downloadName": "shadcn-navigation-menu-basic",
+      "downloadHref": "/shadcn-navigation-menu-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "sidebar-theme-card",
+      "title": "Sidebar/theme card",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "dependencies": [
+        "theme-card",
+        "card",
+        "button",
+        "icon/lucide",
+        "theme-token"
+      ],
+      "dependency": "theme-card",
+      "registryItemName": "card-basic",
+      "downloadName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "preset-actions",
+      "title": "Preset/actions",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "dependencies": ["button", "input", "theme-token"],
+      "dependency": "button",
+      "registryItemName": "button-basic",
+      "downloadName": "button-basic",
+      "downloadHref": "/button-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "progress-cards",
+      "title": "Progress cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["progress", "card", "badge"],
+      "dependency": "progress",
+      "registryItemName": "shadcn-progress-basic",
+      "downloadName": "shadcn-progress-basic",
+      "downloadHref": "/shadcn-progress-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "preference-forms",
+      "title": "Preference forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["input", "select", "textarea", "button", "card"],
+      "dependency": "input",
+      "registryItemName": "shadcn-input-form",
+      "downloadName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "switches",
+      "title": "Switches",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["switch", "card"],
+      "dependency": "switch",
+      "registryItemName": "shadcn-switch-basic",
+      "downloadName": "shadcn-switch-basic",
+      "downloadHref": "/shadcn-switch-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "selects-comboboxes",
+      "title": "Selects/comboboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["select", "combobox", "input", "card"],
+      "dependency": "select",
+      "registryItemName": "shadcn-select-basic",
+      "downloadName": "shadcn-select-basic",
+      "downloadHref": "/shadcn-select-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["tabs", "card", "button"],
+      "dependency": "tabs",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "accordions",
+      "title": "Accordions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["accordion", "card"],
+      "dependency": "accordion",
+      "registryItemName": "shadcn-accordion-basic",
+      "downloadName": "shadcn-accordion-basic",
+      "downloadHref": "/shadcn-accordion-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "dropdown-menu-actions",
+      "title": "Dropdown/menu actions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": [
+        "dropdown-menu",
+        "button",
+        "card",
+        "icon/lucide"
+      ],
+      "dependency": "dropdown-menu",
+      "registryItemName": "dropdown-menu-basic",
+      "downloadName": "dropdown-menu-basic",
+      "downloadHref": "/dropdown-menu-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "calendar-date-controls",
+      "title": "Calendar/date controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["calendar", "date-picker", "button", "card"],
+      "dependency": "calendar",
+      "registryItemName": "shadcn-calendar-basic",
+      "downloadName": "shadcn-calendar-basic",
+      "downloadHref": "/shadcn-calendar-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "radio-groups",
+      "title": "Radio groups",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["radio-group", "card", "badge"],
+      "dependency": "radio-group",
+      "registryItemName": "shadcn-radio-group-basic",
+      "downloadName": "shadcn-radio-group-basic",
+      "downloadHref": "/shadcn-radio-group-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "checkboxes",
+      "title": "Checkboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["checkbox", "card"],
+      "dependency": "checkbox",
+      "registryItemName": "shadcn-checkbox-basic",
+      "downloadName": "shadcn-checkbox-basic",
+      "downloadHref": "/shadcn-checkbox-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "sliders",
+      "title": "Sliders",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["slider", "switch", "card"],
+      "dependency": "slider",
+      "registryItemName": "shadcn-slider-basic",
+      "downloadName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "upload-controls",
+      "title": "Upload controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["upload", "input-file", "card", "button"],
+      "dependency": "upload",
+      "registryItemName": "shadcn-input-file",
+      "downloadName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "profile-security-forms",
+      "title": "Profile/security forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["input", "button", "card", "badge"],
+      "dependency": "input",
+      "registryItemName": "shadcn-input-form",
+      "downloadName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "modal-drawer-surfaces",
+      "title": "Modal/drawer-like surfaces",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["dialog", "drawer", "sheet", "button", "card"],
+      "dependency": "dialog",
+      "registryItemName": "shadcn-dialog-basic",
+      "downloadName": "shadcn-dialog-basic",
+      "downloadHref": "/shadcn-dialog-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    }
+  ],
+  "componentInventory": [
+    {
+      "component": "card",
+      "originBlocks": [
+        {
+          "id": "dashboard-cards",
+          "title": "Dashboard cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "contribution-activity-chart",
+          "title": "Contribution/activity chart",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "qr-device-connection-card",
+          "title": "QR/device connection card",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "progress-cards",
+          "title": "Progress cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "switches",
+          "title": "Switches",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "selects-comboboxes",
+          "title": "Selects/comboboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "tabs",
+          "title": "Tabs",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "accordions",
+          "title": "Accordions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "calendar-date-controls",
+          "title": "Calendar/date controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "radio-groups",
+          "title": "Radio groups",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "checkboxes",
+          "title": "Checkboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "sliders",
+          "title": "Sliders",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "upload-controls",
+          "title": "Upload controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "smart-home-controls",
+          "title": "Smart-home controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "modal-drawer-surfaces",
+          "title": "Modal/drawer-like surfaces",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "card-basic",
+        "shadcn-slider-basic",
+        "shadcn-progress-basic",
+        "shadcn-input-form",
+        "shadcn-input-file",
+        "data-table-basic",
+        "shadcn-switch-basic",
+        "shadcn-select-basic",
+        "shadcn-tabs-basic",
+        "shadcn-accordion-basic",
+        "dropdown-menu-basic",
+        "shadcn-calendar-basic",
+        "shadcn-radio-group-basic",
+        "shadcn-checkbox-basic",
+        "shadcn-dialog-basic"
+      ],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "button",
+      "originBlocks": [
+        {
+          "id": "dashboard-cards",
+          "title": "Dashboard cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "sidebar-navigation",
+          "title": "Sidebar/navigation",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "qr-device-connection-card",
+          "title": "QR/device connection card",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preset-actions",
+          "title": "Preset/actions",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preview-switcher-01",
+          "title": "Preview switcher 01",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preview-switcher-02",
+          "title": "Preview switcher 02",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "transaction-investment-lists",
+          "title": "Transaction/investment lists",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "tabs",
+          "title": "Tabs",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "calendar-date-controls",
+          "title": "Calendar/date controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "upload-controls",
+          "title": "Upload controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "modal-drawer-surfaces",
+          "title": "Modal/drawer-like surfaces",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "card-basic",
+        "shadcn-navigation-menu-basic",
+        "shadcn-slider-basic",
+        "shadcn-progress-basic",
+        "shadcn-input-form",
+        "shadcn-input-file",
+        "data-table-basic",
+        "button-basic",
+        "shadcn-tabs-basic",
+        "dropdown-menu-basic",
+        "shadcn-calendar-basic",
+        "shadcn-dialog-basic"
+      ],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "progress",
+      "originBlocks": [
+        {
+          "id": "dashboard-cards",
+          "title": "Dashboard cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "progress-cards",
+          "title": "Progress cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["card-basic", "shadcn-progress-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "input",
+      "originBlocks": [
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preset-actions",
+          "title": "Preset/actions",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "selects-comboboxes",
+          "title": "Selects/comboboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-input-form",
+        "button-basic",
+        "shadcn-select-basic"
+      ],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "textarea",
+      "originBlocks": [
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-slider-basic", "shadcn-input-form"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "select/combobox",
+      "originBlocks": [
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "selects-comboboxes",
+          "title": "Selects/comboboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-slider-basic",
+        "shadcn-input-form",
+        "shadcn-select-basic"
+      ],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "switch",
+      "originBlocks": [
+        {
+          "id": "switches",
+          "title": "Switches",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "sliders",
+          "title": "Sliders",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "smart-home-controls",
+          "title": "Smart-home controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-switch-basic", "shadcn-slider-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "tabs",
+      "originBlocks": [
+        {
+          "id": "preview-switcher-01",
+          "title": "Preview switcher 01",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preview-switcher-02",
+          "title": "Preview switcher 02",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "tabs",
+          "title": "Tabs",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-tabs-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "accordion",
+      "originBlocks": [
+        {
+          "id": "accordions",
+          "title": "Accordions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-accordion-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "dropdown/menu",
+      "originBlocks": [
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["dropdown-menu-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "calendar/date-controls",
+      "originBlocks": [
+        {
+          "id": "calendar-date-controls",
+          "title": "Calendar/date controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-calendar-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "radio-group",
+      "originBlocks": [
+        {
+          "id": "radio-groups",
+          "title": "Radio groups",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-radio-group-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "checkbox",
+      "originBlocks": [
+        {
+          "id": "checkboxes",
+          "title": "Checkboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-checkbox-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "slider",
+      "originBlocks": [
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sliders",
+          "title": "Sliders",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "smart-home-controls",
+          "title": "Smart-home controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-slider-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "badge",
+      "originBlocks": [
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "progress-cards",
+          "title": "Progress cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "transaction-investment-lists",
+          "title": "Transaction/investment lists",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "radio-groups",
+          "title": "Radio groups",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-progress-basic",
+        "card-basic",
+        "data-table-basic",
+        "shadcn-radio-group-basic",
+        "shadcn-input-form"
+      ],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "separator",
+      "originBlocks": [
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        }
+      ],
+      "localRegistryItemNames": ["card-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "table/list-rows",
+      "originBlocks": [
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "transaction-investment-lists",
+          "title": "Transaction/investment lists",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-input-form", "data-table-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "navigation/sidebar/menu",
+      "originBlocks": [
+        {
+          "id": "sidebar-navigation",
+          "title": "Sidebar/navigation",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-navigation-menu-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "dialog/drawer/sheet",
+      "originBlocks": [
+        {
+          "id": "modal-drawer-surfaces",
+          "title": "Modal/drawer-like surfaces",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-dialog-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "chart",
+      "originBlocks": [
+        {
+          "id": "contribution-activity-chart",
+          "title": "Contribution/activity chart",
+          "originSurface": "create-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": [],
+      "status": "deferred",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "qr-code/image-placeholder",
+      "originBlocks": [
+        {
+          "id": "qr-device-connection-card",
+          "title": "QR/device connection card",
+          "originSurface": "create-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": [],
+      "status": "deferred",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "upload/file-input",
+      "originBlocks": [
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "upload-controls",
+          "title": "Upload controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-input-file"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "typography",
+      "originBlocks": [],
+      "localRegistryItemNames": [],
+      "status": "needs-origin-spec",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "icon/lucide",
+      "originBlocks": [
+        {
+          "id": "sidebar-navigation",
+          "title": "Sidebar/navigation",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-navigation-menu-basic",
+        "shadcn-input-file",
+        "data-table-basic",
+        "card-basic",
+        "dropdown-menu-basic"
+      ],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "theme-token/radius/font/menu-configuration",
+      "originBlocks": [
+        {
+          "id": "contribution-activity-chart",
+          "title": "Contribution/activity chart",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preset-actions",
+          "title": "Preset/actions",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["card-basic", "button-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    }
+  ],
+  "downloads": {
+    "themes": [
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-neutral",
+        "style": "rhea",
+        "baseColor": "neutral",
+        "title": "Rhea Neutral Theme",
+        "href": "/foldkit-theme-rhea-neutral.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "neutral",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-stone",
+        "style": "rhea",
+        "baseColor": "stone",
+        "title": "Rhea Stone Theme",
+        "href": "/foldkit-theme-rhea-stone.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "stone",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-zinc",
+        "style": "rhea",
+        "baseColor": "zinc",
+        "title": "Rhea Zinc Theme",
+        "href": "/foldkit-theme-rhea-zinc.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "zinc",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-mauve",
+        "style": "rhea",
+        "baseColor": "mauve",
+        "title": "Rhea Mauve Theme",
+        "href": "/foldkit-theme-rhea-mauve.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "mauve",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-olive",
+        "style": "rhea",
+        "baseColor": "olive",
+        "title": "Rhea Olive Theme",
+        "href": "/foldkit-theme-rhea-olive.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "olive",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-mist",
+        "style": "rhea",
+        "baseColor": "mist",
+        "title": "Rhea Mist Theme",
+        "href": "/foldkit-theme-rhea-mist.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "mist",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-taupe",
+        "style": "rhea",
+        "baseColor": "taupe",
+        "title": "Rhea Taupe Theme",
+        "href": "/foldkit-theme-rhea-taupe.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "taupe",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-amber",
+        "style": "rhea",
+        "baseColor": "amber",
+        "title": "Rhea Amber Theme",
+        "href": "/foldkit-theme-rhea-amber.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "amber",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-blue",
+        "style": "rhea",
+        "baseColor": "blue",
+        "title": "Rhea Blue Theme",
+        "href": "/foldkit-theme-rhea-blue.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "blue",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-cyan",
+        "style": "rhea",
+        "baseColor": "cyan",
+        "title": "Rhea Cyan Theme",
+        "href": "/foldkit-theme-rhea-cyan.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "cyan",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-emerald",
+        "style": "rhea",
+        "baseColor": "emerald",
+        "title": "Rhea Emerald Theme",
+        "href": "/foldkit-theme-rhea-emerald.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "emerald",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-fuchsia",
+        "style": "rhea",
+        "baseColor": "fuchsia",
+        "title": "Rhea Fuchsia Theme",
+        "href": "/foldkit-theme-rhea-fuchsia.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "fuchsia",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-green",
+        "style": "rhea",
+        "baseColor": "green",
+        "title": "Rhea Green Theme",
+        "href": "/foldkit-theme-rhea-green.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "green",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-indigo",
+        "style": "rhea",
+        "baseColor": "indigo",
+        "title": "Rhea Indigo Theme",
+        "href": "/foldkit-theme-rhea-indigo.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "indigo",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-lime",
+        "style": "rhea",
+        "baseColor": "lime",
+        "title": "Rhea Lime Theme",
+        "href": "/foldkit-theme-rhea-lime.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "lime",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-orange",
+        "style": "rhea",
+        "baseColor": "orange",
+        "title": "Rhea Orange Theme",
+        "href": "/foldkit-theme-rhea-orange.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "orange",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-pink",
+        "style": "rhea",
+        "baseColor": "pink",
+        "title": "Rhea Pink Theme",
+        "href": "/foldkit-theme-rhea-pink.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "pink",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-purple",
+        "style": "rhea",
+        "baseColor": "purple",
+        "title": "Rhea Purple Theme",
+        "href": "/foldkit-theme-rhea-purple.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "purple",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-red",
+        "style": "rhea",
+        "baseColor": "red",
+        "title": "Rhea Red Theme",
+        "href": "/foldkit-theme-rhea-red.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "red",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-rose",
+        "style": "rhea",
+        "baseColor": "rose",
+        "title": "Rhea Rose Theme",
+        "href": "/foldkit-theme-rhea-rose.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "rose",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-sky",
+        "style": "rhea",
+        "baseColor": "sky",
+        "title": "Rhea Sky Theme",
+        "href": "/foldkit-theme-rhea-sky.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "sky",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-teal",
+        "style": "rhea",
+        "baseColor": "teal",
+        "title": "Rhea Teal Theme",
+        "href": "/foldkit-theme-rhea-teal.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "teal",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-violet",
+        "style": "rhea",
+        "baseColor": "violet",
+        "title": "Rhea Violet Theme",
+        "href": "/foldkit-theme-rhea-violet.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "violet",
+          "cssVariables": true
+        }
+      },
+      {
+        "kind": "theme",
+        "name": "foldkit-theme-rhea-yellow",
+        "style": "rhea",
+        "baseColor": "yellow",
+        "title": "Rhea Yellow Theme",
+        "href": "/foldkit-theme-rhea-yellow.json",
+        "registryType": "registry:theme",
+        "tailwind": {
+          "baseColor": "yellow",
+          "cssVariables": true
+        }
+      }
+    ],
+    "styles": [
+      {
+        "kind": "style",
+        "name": "foldkit-style-rhea",
+        "style": "rhea",
+        "title": "Rhea Style",
+        "status": "deferred",
+        "reason": "Style-level registry payloads are deferred until Foldkit CN can honestly encode utility-class component recipes for this style.",
+        "tailwind": {
+          "cssVariables": false
+        }
+      }
+    ]
+  },
+  "generatedRegistryItems": [
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-neutral",
+      "type": "registry:theme",
+      "title": "Rhea Neutral Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Neutral.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.205 0 0)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.97 0 0)",
+          "secondary-foreground": "oklch(0.205 0 0)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.87 0 0)",
+          "chart-2": "oklch(0.556 0 0)",
+          "chart-3": "oklch(0.439 0 0)",
+          "chart-4": "oklch(0.371 0 0)",
+          "chart-5": "oklch(0.269 0 0)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.205 0 0)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.922 0 0)",
+          "primary-foreground": "oklch(0.205 0 0)",
+          "secondary": "oklch(0.269 0 0)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.87 0 0)",
+          "chart-2": "oklch(0.556 0 0)",
+          "chart-3": "oklch(0.439 0 0)",
+          "chart-4": "oklch(0.371 0 0)",
+          "chart-5": "oklch(0.269 0 0)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "neutral"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-stone",
+      "type": "registry:theme",
+      "title": "Rhea Stone Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Stone.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.147 0.004 49.25)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.147 0.004 49.25)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.147 0.004 49.25)",
+          "primary": "oklch(0.216 0.006 56.043)",
+          "primary-foreground": "oklch(0.985 0.001 106.423)",
+          "secondary": "oklch(0.97 0.001 106.424)",
+          "secondary-foreground": "oklch(0.216 0.006 56.043)",
+          "muted": "oklch(0.97 0.001 106.424)",
+          "muted-foreground": "oklch(0.553 0.013 58.071)",
+          "accent": "oklch(0.97 0.001 106.424)",
+          "accent-foreground": "oklch(0.216 0.006 56.043)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.923 0.003 48.717)",
+          "input": "oklch(0.923 0.003 48.717)",
+          "ring": "oklch(0.709 0.01 56.259)",
+          "chart-1": "oklch(0.869 0.005 56.366)",
+          "chart-2": "oklch(0.553 0.013 58.071)",
+          "chart-3": "oklch(0.444 0.011 73.639)",
+          "chart-4": "oklch(0.374 0.01 67.558)",
+          "chart-5": "oklch(0.268 0.007 34.298)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0.001 106.423)",
+          "sidebar-foreground": "oklch(0.147 0.004 49.25)",
+          "sidebar-primary": "oklch(0.216 0.006 56.043)",
+          "sidebar-primary-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-accent": "oklch(0.97 0.001 106.424)",
+          "sidebar-accent-foreground": "oklch(0.216 0.006 56.043)",
+          "sidebar-border": "oklch(0.923 0.003 48.717)",
+          "sidebar-ring": "oklch(0.709 0.01 56.259)"
+        },
+        "dark": {
+          "background": "oklch(0.147 0.004 49.25)",
+          "foreground": "oklch(0.985 0.001 106.423)",
+          "card": "oklch(0.216 0.006 56.043)",
+          "card-foreground": "oklch(0.985 0.001 106.423)",
+          "popover": "oklch(0.216 0.006 56.043)",
+          "popover-foreground": "oklch(0.985 0.001 106.423)",
+          "primary": "oklch(0.923 0.003 48.717)",
+          "primary-foreground": "oklch(0.216 0.006 56.043)",
+          "secondary": "oklch(0.268 0.007 34.298)",
+          "secondary-foreground": "oklch(0.985 0.001 106.423)",
+          "muted": "oklch(0.268 0.007 34.298)",
+          "muted-foreground": "oklch(0.709 0.01 56.259)",
+          "accent": "oklch(0.268 0.007 34.298)",
+          "accent-foreground": "oklch(0.985 0.001 106.423)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.553 0.013 58.071)",
+          "chart-1": "oklch(0.869 0.005 56.366)",
+          "chart-2": "oklch(0.553 0.013 58.071)",
+          "chart-3": "oklch(0.444 0.011 73.639)",
+          "chart-4": "oklch(0.374 0.01 67.558)",
+          "chart-5": "oklch(0.268 0.007 34.298)",
+          "sidebar": "oklch(0.216 0.006 56.043)",
+          "sidebar-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-accent": "oklch(0.268 0.007 34.298)",
+          "sidebar-accent-foreground": "oklch(0.985 0.001 106.423)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.553 0.013 58.071)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "stone"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-zinc",
+      "type": "registry:theme",
+      "title": "Rhea Zinc Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Zinc.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.141 0.005 285.823)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.141 0.005 285.823)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.141 0.005 285.823)",
+          "primary": "oklch(0.21 0.006 285.885)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.967 0.001 286.375)",
+          "muted-foreground": "oklch(0.552 0.016 285.938)",
+          "accent": "oklch(0.967 0.001 286.375)",
+          "accent-foreground": "oklch(0.21 0.006 285.885)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.92 0.004 286.32)",
+          "input": "oklch(0.92 0.004 286.32)",
+          "ring": "oklch(0.705 0.015 286.067)",
+          "chart-1": "oklch(0.871 0.006 286.286)",
+          "chart-2": "oklch(0.552 0.016 285.938)",
+          "chart-3": "oklch(0.442 0.017 285.786)",
+          "chart-4": "oklch(0.37 0.013 285.805)",
+          "chart-5": "oklch(0.274 0.006 286.033)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.141 0.005 285.823)",
+          "sidebar-primary": "oklch(0.21 0.006 285.885)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.967 0.001 286.375)",
+          "sidebar-accent-foreground": "oklch(0.21 0.006 285.885)",
+          "sidebar-border": "oklch(0.92 0.004 286.32)",
+          "sidebar-ring": "oklch(0.705 0.015 286.067)"
+        },
+        "dark": {
+          "background": "oklch(0.141 0.005 285.823)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.21 0.006 285.885)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.21 0.006 285.885)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.92 0.004 286.32)",
+          "primary-foreground": "oklch(0.21 0.006 285.885)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.274 0.006 286.033)",
+          "muted-foreground": "oklch(0.705 0.015 286.067)",
+          "accent": "oklch(0.274 0.006 286.033)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.552 0.016 285.938)",
+          "chart-1": "oklch(0.871 0.006 286.286)",
+          "chart-2": "oklch(0.552 0.016 285.938)",
+          "chart-3": "oklch(0.442 0.017 285.786)",
+          "chart-4": "oklch(0.37 0.013 285.805)",
+          "chart-5": "oklch(0.274 0.006 286.033)",
+          "sidebar": "oklch(0.21 0.006 285.885)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.274 0.006 286.033)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.552 0.016 285.938)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "zinc"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-mauve",
+      "type": "registry:theme",
+      "title": "Rhea Mauve Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Mauve.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0.008 326)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0.008 326)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0.008 326)",
+          "primary": "oklch(0.212 0.019 322.12)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.96 0.003 325.6)",
+          "secondary-foreground": "oklch(0.212 0.019 322.12)",
+          "muted": "oklch(0.96 0.003 325.6)",
+          "muted-foreground": "oklch(0.542 0.034 322.5)",
+          "accent": "oklch(0.96 0.003 325.6)",
+          "accent-foreground": "oklch(0.212 0.019 322.12)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0.005 325.62)",
+          "input": "oklch(0.922 0.005 325.62)",
+          "ring": "oklch(0.711 0.019 323.02)",
+          "chart-1": "oklch(0.865 0.012 325.68)",
+          "chart-2": "oklch(0.542 0.034 322.5)",
+          "chart-3": "oklch(0.435 0.029 321.78)",
+          "chart-4": "oklch(0.364 0.029 323.89)",
+          "chart-5": "oklch(0.263 0.024 320.12)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0.008 326)",
+          "sidebar-primary": "oklch(0.212 0.019 322.12)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.96 0.003 325.6)",
+          "sidebar-accent-foreground": "oklch(0.212 0.019 322.12)",
+          "sidebar-border": "oklch(0.922 0.005 325.62)",
+          "sidebar-ring": "oklch(0.711 0.019 323.02)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0.008 326)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.212 0.019 322.12)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.212 0.019 322.12)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.922 0.005 325.62)",
+          "primary-foreground": "oklch(0.212 0.019 322.12)",
+          "secondary": "oklch(0.263 0.024 320.12)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.263 0.024 320.12)",
+          "muted-foreground": "oklch(0.711 0.019 323.02)",
+          "accent": "oklch(0.263 0.024 320.12)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.542 0.034 322.5)",
+          "chart-1": "oklch(0.865 0.012 325.68)",
+          "chart-2": "oklch(0.542 0.034 322.5)",
+          "chart-3": "oklch(0.435 0.029 321.78)",
+          "chart-4": "oklch(0.364 0.029 323.89)",
+          "chart-5": "oklch(0.263 0.024 320.12)",
+          "sidebar": "oklch(0.212 0.019 322.12)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.985 0 0)",
+          "sidebar-accent": "oklch(0.263 0.024 320.12)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.542 0.034 322.5)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "mauve"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-olive",
+      "type": "registry:theme",
+      "title": "Rhea Olive Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Olive.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.153 0.006 107.1)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.153 0.006 107.1)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.153 0.006 107.1)",
+          "primary": "oklch(0.228 0.013 107.4)",
+          "primary-foreground": "oklch(0.988 0.003 106.5)",
+          "secondary": "oklch(0.966 0.005 106.5)",
+          "secondary-foreground": "oklch(0.228 0.013 107.4)",
+          "muted": "oklch(0.966 0.005 106.5)",
+          "muted-foreground": "oklch(0.58 0.031 107.3)",
+          "accent": "oklch(0.966 0.005 106.5)",
+          "accent-foreground": "oklch(0.228 0.013 107.4)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.93 0.007 106.5)",
+          "input": "oklch(0.93 0.007 106.5)",
+          "ring": "oklch(0.737 0.021 106.9)",
+          "chart-1": "oklch(0.88 0.011 106.6)",
+          "chart-2": "oklch(0.58 0.031 107.3)",
+          "chart-3": "oklch(0.466 0.025 107.3)",
+          "chart-4": "oklch(0.394 0.023 107.4)",
+          "chart-5": "oklch(0.286 0.016 107.4)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.988 0.003 106.5)",
+          "sidebar-foreground": "oklch(0.153 0.006 107.1)",
+          "sidebar-primary": "oklch(0.228 0.013 107.4)",
+          "sidebar-primary-foreground": "oklch(0.988 0.003 106.5)",
+          "sidebar-accent": "oklch(0.966 0.005 106.5)",
+          "sidebar-accent-foreground": "oklch(0.228 0.013 107.4)",
+          "sidebar-border": "oklch(0.93 0.007 106.5)",
+          "sidebar-ring": "oklch(0.737 0.021 106.9)"
+        },
+        "dark": {
+          "background": "oklch(0.153 0.006 107.1)",
+          "foreground": "oklch(0.988 0.003 106.5)",
+          "card": "oklch(0.228 0.013 107.4)",
+          "card-foreground": "oklch(0.988 0.003 106.5)",
+          "popover": "oklch(0.228 0.013 107.4)",
+          "popover-foreground": "oklch(0.988 0.003 106.5)",
+          "primary": "oklch(0.93 0.007 106.5)",
+          "primary-foreground": "oklch(0.228 0.013 107.4)",
+          "secondary": "oklch(0.286 0.016 107.4)",
+          "secondary-foreground": "oklch(0.988 0.003 106.5)",
+          "muted": "oklch(0.286 0.016 107.4)",
+          "muted-foreground": "oklch(0.737 0.021 106.9)",
+          "accent": "oklch(0.286 0.016 107.4)",
+          "accent-foreground": "oklch(0.988 0.003 106.5)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.58 0.031 107.3)",
+          "chart-1": "oklch(0.88 0.011 106.6)",
+          "chart-2": "oklch(0.58 0.031 107.3)",
+          "chart-3": "oklch(0.466 0.025 107.3)",
+          "chart-4": "oklch(0.394 0.023 107.4)",
+          "chart-5": "oklch(0.286 0.016 107.4)",
+          "sidebar": "oklch(0.228 0.013 107.4)",
+          "sidebar-foreground": "oklch(0.988 0.003 106.5)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.988 0.003 106.5)",
+          "sidebar-accent": "oklch(0.286 0.016 107.4)",
+          "sidebar-accent-foreground": "oklch(0.988 0.003 106.5)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.58 0.031 107.3)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "olive"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-mist",
+      "type": "registry:theme",
+      "title": "Rhea Mist Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Mist.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.148 0.004 228.8)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.148 0.004 228.8)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.148 0.004 228.8)",
+          "primary": "oklch(0.218 0.008 223.9)",
+          "primary-foreground": "oklch(0.987 0.002 197.1)",
+          "secondary": "oklch(0.963 0.002 197.1)",
+          "secondary-foreground": "oklch(0.218 0.008 223.9)",
+          "muted": "oklch(0.963 0.002 197.1)",
+          "muted-foreground": "oklch(0.56 0.021 213.5)",
+          "accent": "oklch(0.963 0.002 197.1)",
+          "accent-foreground": "oklch(0.218 0.008 223.9)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.925 0.005 214.3)",
+          "input": "oklch(0.925 0.005 214.3)",
+          "ring": "oklch(0.723 0.014 214.4)",
+          "chart-1": "oklch(0.872 0.007 219.6)",
+          "chart-2": "oklch(0.56 0.021 213.5)",
+          "chart-3": "oklch(0.45 0.017 213.2)",
+          "chart-4": "oklch(0.378 0.015 216)",
+          "chart-5": "oklch(0.275 0.011 216.9)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.987 0.002 197.1)",
+          "sidebar-foreground": "oklch(0.148 0.004 228.8)",
+          "sidebar-primary": "oklch(0.218 0.008 223.9)",
+          "sidebar-primary-foreground": "oklch(0.987 0.002 197.1)",
+          "sidebar-accent": "oklch(0.963 0.002 197.1)",
+          "sidebar-accent-foreground": "oklch(0.218 0.008 223.9)",
+          "sidebar-border": "oklch(0.925 0.005 214.3)",
+          "sidebar-ring": "oklch(0.723 0.014 214.4)"
+        },
+        "dark": {
+          "background": "oklch(0.148 0.004 228.8)",
+          "foreground": "oklch(0.987 0.002 197.1)",
+          "card": "oklch(0.218 0.008 223.9)",
+          "card-foreground": "oklch(0.987 0.002 197.1)",
+          "popover": "oklch(0.218 0.008 223.9)",
+          "popover-foreground": "oklch(0.987 0.002 197.1)",
+          "primary": "oklch(0.925 0.005 214.3)",
+          "primary-foreground": "oklch(0.218 0.008 223.9)",
+          "secondary": "oklch(0.275 0.011 216.9)",
+          "secondary-foreground": "oklch(0.987 0.002 197.1)",
+          "muted": "oklch(0.275 0.011 216.9)",
+          "muted-foreground": "oklch(0.723 0.014 214.4)",
+          "accent": "oklch(0.275 0.011 216.9)",
+          "accent-foreground": "oklch(0.987 0.002 197.1)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.56 0.021 213.5)",
+          "chart-1": "oklch(0.872 0.007 219.6)",
+          "chart-2": "oklch(0.56 0.021 213.5)",
+          "chart-3": "oklch(0.45 0.017 213.2)",
+          "chart-4": "oklch(0.378 0.015 216)",
+          "chart-5": "oklch(0.275 0.011 216.9)",
+          "sidebar": "oklch(0.218 0.008 223.9)",
+          "sidebar-foreground": "oklch(0.987 0.002 197.1)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.987 0.002 197.1)",
+          "sidebar-accent": "oklch(0.275 0.011 216.9)",
+          "sidebar-accent-foreground": "oklch(0.987 0.002 197.1)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.56 0.021 213.5)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "mist"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-taupe",
+      "type": "registry:theme",
+      "title": "Rhea Taupe Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Taupe.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.147 0.004 49.3)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.147 0.004 49.3)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.147 0.004 49.3)",
+          "primary": "oklch(0.214 0.009 43.1)",
+          "primary-foreground": "oklch(0.986 0.002 67.8)",
+          "secondary": "oklch(0.96 0.002 17.2)",
+          "secondary-foreground": "oklch(0.214 0.009 43.1)",
+          "muted": "oklch(0.96 0.002 17.2)",
+          "muted-foreground": "oklch(0.547 0.021 43.1)",
+          "accent": "oklch(0.96 0.002 17.2)",
+          "accent-foreground": "oklch(0.214 0.009 43.1)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0.005 34.3)",
+          "input": "oklch(0.922 0.005 34.3)",
+          "ring": "oklch(0.714 0.014 41.2)",
+          "chart-1": "oklch(0.868 0.007 39.5)",
+          "chart-2": "oklch(0.547 0.021 43.1)",
+          "chart-3": "oklch(0.438 0.017 39.3)",
+          "chart-4": "oklch(0.367 0.016 35.7)",
+          "chart-5": "oklch(0.268 0.011 36.5)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.986 0.002 67.8)",
+          "sidebar-foreground": "oklch(0.147 0.004 49.3)",
+          "sidebar-primary": "oklch(0.214 0.009 43.1)",
+          "sidebar-primary-foreground": "oklch(0.986 0.002 67.8)",
+          "sidebar-accent": "oklch(0.96 0.002 17.2)",
+          "sidebar-accent-foreground": "oklch(0.214 0.009 43.1)",
+          "sidebar-border": "oklch(0.922 0.005 34.3)",
+          "sidebar-ring": "oklch(0.714 0.014 41.2)"
+        },
+        "dark": {
+          "background": "oklch(0.147 0.004 49.3)",
+          "foreground": "oklch(0.986 0.002 67.8)",
+          "card": "oklch(0.214 0.009 43.1)",
+          "card-foreground": "oklch(0.986 0.002 67.8)",
+          "popover": "oklch(0.214 0.009 43.1)",
+          "popover-foreground": "oklch(0.986 0.002 67.8)",
+          "primary": "oklch(0.922 0.005 34.3)",
+          "primary-foreground": "oklch(0.214 0.009 43.1)",
+          "secondary": "oklch(0.268 0.011 36.5)",
+          "secondary-foreground": "oklch(0.986 0.002 67.8)",
+          "muted": "oklch(0.268 0.011 36.5)",
+          "muted-foreground": "oklch(0.714 0.014 41.2)",
+          "accent": "oklch(0.268 0.011 36.5)",
+          "accent-foreground": "oklch(0.986 0.002 67.8)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.547 0.021 43.1)",
+          "chart-1": "oklch(0.868 0.007 39.5)",
+          "chart-2": "oklch(0.547 0.021 43.1)",
+          "chart-3": "oklch(0.438 0.017 39.3)",
+          "chart-4": "oklch(0.367 0.016 35.7)",
+          "chart-5": "oklch(0.268 0.011 36.5)",
+          "sidebar": "oklch(0.214 0.009 43.1)",
+          "sidebar-foreground": "oklch(0.986 0.002 67.8)",
+          "sidebar-primary": "oklch(0.488 0.243 264.376)",
+          "sidebar-primary-foreground": "oklch(0.986 0.002 67.8)",
+          "sidebar-accent": "oklch(0.268 0.011 36.5)",
+          "sidebar-accent-foreground": "oklch(0.986 0.002 67.8)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.547 0.021 43.1)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "taupe"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-amber",
+      "type": "registry:theme",
+      "title": "Rhea Amber Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Amber.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.555 0.163 48.998)",
+          "primary-foreground": "oklch(0.987 0.022 95.277)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.879 0.169 91.605)",
+          "chart-2": "oklch(0.769 0.188 70.08)",
+          "chart-3": "oklch(0.666 0.179 58.318)",
+          "chart-4": "oklch(0.555 0.163 48.998)",
+          "chart-5": "oklch(0.473 0.137 46.201)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.666 0.179 58.318)",
+          "sidebar-primary-foreground": "oklch(0.987 0.022 95.277)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.473 0.137 46.201)",
+          "primary-foreground": "oklch(0.987 0.022 95.277)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.879 0.169 91.605)",
+          "chart-2": "oklch(0.769 0.188 70.08)",
+          "chart-3": "oklch(0.666 0.179 58.318)",
+          "chart-4": "oklch(0.555 0.163 48.998)",
+          "chart-5": "oklch(0.473 0.137 46.201)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.769 0.188 70.08)",
+          "sidebar-primary-foreground": "oklch(0.279 0.077 45.635)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "amber"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-blue",
+      "type": "registry:theme",
+      "title": "Rhea Blue Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Blue.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.488 0.243 264.376)",
+          "primary-foreground": "oklch(0.97 0.014 254.604)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.809 0.105 251.813)",
+          "chart-2": "oklch(0.623 0.214 259.815)",
+          "chart-3": "oklch(0.546 0.245 262.881)",
+          "chart-4": "oklch(0.488 0.243 264.376)",
+          "chart-5": "oklch(0.424 0.199 265.638)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.546 0.245 262.881)",
+          "sidebar-primary-foreground": "oklch(0.97 0.014 254.604)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.424 0.199 265.638)",
+          "primary-foreground": "oklch(0.97 0.014 254.604)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.809 0.105 251.813)",
+          "chart-2": "oklch(0.623 0.214 259.815)",
+          "chart-3": "oklch(0.546 0.245 262.881)",
+          "chart-4": "oklch(0.488 0.243 264.376)",
+          "chart-5": "oklch(0.424 0.199 265.638)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.623 0.214 259.815)",
+          "sidebar-primary-foreground": "oklch(0.97 0.014 254.604)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "blue"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-cyan",
+      "type": "registry:theme",
+      "title": "Rhea Cyan Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Cyan.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.52 0.105 223.128)",
+          "primary-foreground": "oklch(0.984 0.019 200.873)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.865 0.127 207.078)",
+          "chart-2": "oklch(0.715 0.143 215.221)",
+          "chart-3": "oklch(0.609 0.126 221.723)",
+          "chart-4": "oklch(0.52 0.105 223.128)",
+          "chart-5": "oklch(0.45 0.085 224.283)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.609 0.126 221.723)",
+          "sidebar-primary-foreground": "oklch(0.984 0.019 200.873)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.45 0.085 224.283)",
+          "primary-foreground": "oklch(0.984 0.019 200.873)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.865 0.127 207.078)",
+          "chart-2": "oklch(0.715 0.143 215.221)",
+          "chart-3": "oklch(0.609 0.126 221.723)",
+          "chart-4": "oklch(0.52 0.105 223.128)",
+          "chart-5": "oklch(0.45 0.085 224.283)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.715 0.143 215.221)",
+          "sidebar-primary-foreground": "oklch(0.302 0.056 229.695)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "cyan"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-emerald",
+      "type": "registry:theme",
+      "title": "Rhea Emerald Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Emerald.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.508 0.118 165.612)",
+          "primary-foreground": "oklch(0.979 0.021 166.113)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.845 0.143 164.978)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.596 0.145 163.225)",
+          "chart-4": "oklch(0.508 0.118 165.612)",
+          "chart-5": "oklch(0.432 0.095 166.913)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.596 0.145 163.225)",
+          "sidebar-primary-foreground": "oklch(0.979 0.021 166.113)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.432 0.095 166.913)",
+          "primary-foreground": "oklch(0.979 0.021 166.113)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.845 0.143 164.978)",
+          "chart-2": "oklch(0.696 0.17 162.48)",
+          "chart-3": "oklch(0.596 0.145 163.225)",
+          "chart-4": "oklch(0.508 0.118 165.612)",
+          "chart-5": "oklch(0.432 0.095 166.913)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.696 0.17 162.48)",
+          "sidebar-primary-foreground": "oklch(0.262 0.051 172.552)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "emerald"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-fuchsia",
+      "type": "registry:theme",
+      "title": "Rhea Fuchsia Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Fuchsia.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.518 0.253 323.949)",
+          "primary-foreground": "oklch(0.977 0.017 320.058)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.833 0.145 321.434)",
+          "chart-2": "oklch(0.667 0.295 322.15)",
+          "chart-3": "oklch(0.591 0.293 322.896)",
+          "chart-4": "oklch(0.518 0.253 323.949)",
+          "chart-5": "oklch(0.452 0.211 324.591)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.591 0.293 322.896)",
+          "sidebar-primary-foreground": "oklch(0.977 0.017 320.058)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.452 0.211 324.591)",
+          "primary-foreground": "oklch(0.977 0.017 320.058)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.833 0.145 321.434)",
+          "chart-2": "oklch(0.667 0.295 322.15)",
+          "chart-3": "oklch(0.591 0.293 322.896)",
+          "chart-4": "oklch(0.518 0.253 323.949)",
+          "chart-5": "oklch(0.452 0.211 324.591)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.667 0.295 322.15)",
+          "sidebar-primary-foreground": "oklch(0.977 0.017 320.058)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "fuchsia"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-green",
+      "type": "registry:theme",
+      "title": "Rhea Green Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Green.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.527 0.154 150.069)",
+          "primary-foreground": "oklch(0.982 0.018 155.826)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.871 0.15 154.449)",
+          "chart-2": "oklch(0.723 0.219 149.579)",
+          "chart-3": "oklch(0.627 0.194 149.214)",
+          "chart-4": "oklch(0.527 0.154 150.069)",
+          "chart-5": "oklch(0.448 0.119 151.328)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.627 0.194 149.214)",
+          "sidebar-primary-foreground": "oklch(0.982 0.018 155.826)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.448 0.119 151.328)",
+          "primary-foreground": "oklch(0.982 0.018 155.826)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.871 0.15 154.449)",
+          "chart-2": "oklch(0.723 0.219 149.579)",
+          "chart-3": "oklch(0.627 0.194 149.214)",
+          "chart-4": "oklch(0.527 0.154 150.069)",
+          "chart-5": "oklch(0.448 0.119 151.328)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.723 0.219 149.579)",
+          "sidebar-primary-foreground": "oklch(0.982 0.018 155.826)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "green"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-indigo",
+      "type": "registry:theme",
+      "title": "Rhea Indigo Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Indigo.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.457 0.24 277.023)",
+          "primary-foreground": "oklch(0.962 0.018 272.314)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.785 0.115 274.713)",
+          "chart-2": "oklch(0.585 0.233 277.117)",
+          "chart-3": "oklch(0.511 0.262 276.966)",
+          "chart-4": "oklch(0.457 0.24 277.023)",
+          "chart-5": "oklch(0.398 0.195 277.366)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.511 0.262 276.966)",
+          "sidebar-primary-foreground": "oklch(0.962 0.018 272.314)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.398 0.195 277.366)",
+          "primary-foreground": "oklch(0.962 0.018 272.314)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.785 0.115 274.713)",
+          "chart-2": "oklch(0.585 0.233 277.117)",
+          "chart-3": "oklch(0.511 0.262 276.966)",
+          "chart-4": "oklch(0.457 0.24 277.023)",
+          "chart-5": "oklch(0.398 0.195 277.366)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.585 0.233 277.117)",
+          "sidebar-primary-foreground": "oklch(0.962 0.018 272.314)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "indigo"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-lime",
+      "type": "registry:theme",
+      "title": "Rhea Lime Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Lime.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.841 0.238 128.85)",
+          "primary-foreground": "oklch(0.405 0.101 131.063)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.897 0.196 126.665)",
+          "chart-2": "oklch(0.768 0.233 130.85)",
+          "chart-3": "oklch(0.648 0.2 131.684)",
+          "chart-4": "oklch(0.532 0.157 131.589)",
+          "chart-5": "oklch(0.453 0.124 130.933)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.648 0.2 131.684)",
+          "sidebar-primary-foreground": "oklch(0.986 0.031 120.757)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.768 0.233 130.85)",
+          "primary-foreground": "oklch(0.405 0.101 131.063)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.897 0.196 126.665)",
+          "chart-2": "oklch(0.768 0.233 130.85)",
+          "chart-3": "oklch(0.648 0.2 131.684)",
+          "chart-4": "oklch(0.532 0.157 131.589)",
+          "chart-5": "oklch(0.453 0.124 130.933)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.768 0.233 130.85)",
+          "sidebar-primary-foreground": "oklch(0.274 0.072 132.109)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "lime"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-orange",
+      "type": "registry:theme",
+      "title": "Rhea Orange Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Orange.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.553 0.195 38.402)",
+          "primary-foreground": "oklch(0.98 0.016 73.684)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.837 0.128 66.29)",
+          "chart-2": "oklch(0.705 0.213 47.604)",
+          "chart-3": "oklch(0.646 0.222 41.116)",
+          "chart-4": "oklch(0.553 0.195 38.402)",
+          "chart-5": "oklch(0.47 0.157 37.304)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.646 0.222 41.116)",
+          "sidebar-primary-foreground": "oklch(0.98 0.016 73.684)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.47 0.157 37.304)",
+          "primary-foreground": "oklch(0.98 0.016 73.684)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.837 0.128 66.29)",
+          "chart-2": "oklch(0.705 0.213 47.604)",
+          "chart-3": "oklch(0.646 0.222 41.116)",
+          "chart-4": "oklch(0.553 0.195 38.402)",
+          "chart-5": "oklch(0.47 0.157 37.304)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.705 0.213 47.604)",
+          "sidebar-primary-foreground": "oklch(0.98 0.016 73.684)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "orange"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-pink",
+      "type": "registry:theme",
+      "title": "Rhea Pink Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Pink.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.525 0.223 3.958)",
+          "primary-foreground": "oklch(0.971 0.014 343.198)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.823 0.12 346.018)",
+          "chart-2": "oklch(0.656 0.241 354.308)",
+          "chart-3": "oklch(0.592 0.249 0.584)",
+          "chart-4": "oklch(0.525 0.223 3.958)",
+          "chart-5": "oklch(0.459 0.187 3.815)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.592 0.249 0.584)",
+          "sidebar-primary-foreground": "oklch(0.971 0.014 343.198)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.459 0.187 3.815)",
+          "primary-foreground": "oklch(0.971 0.014 343.198)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.823 0.12 346.018)",
+          "chart-2": "oklch(0.656 0.241 354.308)",
+          "chart-3": "oklch(0.592 0.249 0.584)",
+          "chart-4": "oklch(0.525 0.223 3.958)",
+          "chart-5": "oklch(0.459 0.187 3.815)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.656 0.241 354.308)",
+          "sidebar-primary-foreground": "oklch(0.971 0.014 343.198)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "pink"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-purple",
+      "type": "registry:theme",
+      "title": "Rhea Purple Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Purple.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.496 0.265 301.924)",
+          "primary-foreground": "oklch(0.977 0.014 308.299)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.827 0.119 306.383)",
+          "chart-2": "oklch(0.627 0.265 303.9)",
+          "chart-3": "oklch(0.558 0.288 302.321)",
+          "chart-4": "oklch(0.496 0.265 301.924)",
+          "chart-5": "oklch(0.438 0.218 303.724)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.558 0.288 302.321)",
+          "sidebar-primary-foreground": "oklch(0.977 0.014 308.299)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.438 0.218 303.724)",
+          "primary-foreground": "oklch(0.977 0.014 308.299)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.827 0.119 306.383)",
+          "chart-2": "oklch(0.627 0.265 303.9)",
+          "chart-3": "oklch(0.558 0.288 302.321)",
+          "chart-4": "oklch(0.496 0.265 301.924)",
+          "chart-5": "oklch(0.438 0.218 303.724)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.627 0.265 303.9)",
+          "sidebar-primary-foreground": "oklch(0.977 0.014 308.299)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "purple"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-red",
+      "type": "registry:theme",
+      "title": "Rhea Red Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Red.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.505 0.213 27.518)",
+          "primary-foreground": "oklch(0.971 0.013 17.38)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.808 0.114 19.571)",
+          "chart-2": "oklch(0.637 0.237 25.331)",
+          "chart-3": "oklch(0.577 0.245 27.325)",
+          "chart-4": "oklch(0.505 0.213 27.518)",
+          "chart-5": "oklch(0.444 0.177 26.899)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.577 0.245 27.325)",
+          "sidebar-primary-foreground": "oklch(0.971 0.013 17.38)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.444 0.177 26.899)",
+          "primary-foreground": "oklch(0.971 0.013 17.38)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.808 0.114 19.571)",
+          "chart-2": "oklch(0.637 0.237 25.331)",
+          "chart-3": "oklch(0.577 0.245 27.325)",
+          "chart-4": "oklch(0.505 0.213 27.518)",
+          "chart-5": "oklch(0.444 0.177 26.899)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.637 0.237 25.331)",
+          "sidebar-primary-foreground": "oklch(0.971 0.013 17.38)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "red"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-rose",
+      "type": "registry:theme",
+      "title": "Rhea Rose Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Rose.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.514 0.222 16.935)",
+          "primary-foreground": "oklch(0.969 0.015 12.422)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.81 0.117 11.638)",
+          "chart-2": "oklch(0.645 0.246 16.439)",
+          "chart-3": "oklch(0.586 0.253 17.585)",
+          "chart-4": "oklch(0.514 0.222 16.935)",
+          "chart-5": "oklch(0.455 0.188 13.697)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.586 0.253 17.585)",
+          "sidebar-primary-foreground": "oklch(0.969 0.015 12.422)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.455 0.188 13.697)",
+          "primary-foreground": "oklch(0.969 0.015 12.422)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.81 0.117 11.638)",
+          "chart-2": "oklch(0.645 0.246 16.439)",
+          "chart-3": "oklch(0.586 0.253 17.585)",
+          "chart-4": "oklch(0.514 0.222 16.935)",
+          "chart-5": "oklch(0.455 0.188 13.697)",
+          "sidebar": "oklch(0.21 0.006 285.885)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.645 0.246 16.439)",
+          "sidebar-primary-foreground": "oklch(0.969 0.015 12.422)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "rose"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-sky",
+      "type": "registry:theme",
+      "title": "Rhea Sky Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Sky.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.5 0.134 242.749)",
+          "primary-foreground": "oklch(0.977 0.013 236.62)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.828 0.111 230.318)",
+          "chart-2": "oklch(0.685 0.169 237.323)",
+          "chart-3": "oklch(0.588 0.158 241.966)",
+          "chart-4": "oklch(0.5 0.134 242.749)",
+          "chart-5": "oklch(0.443 0.11 240.79)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.588 0.158 241.966)",
+          "sidebar-primary-foreground": "oklch(0.977 0.013 236.62)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.443 0.11 240.79)",
+          "primary-foreground": "oklch(0.977 0.013 236.62)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.828 0.111 230.318)",
+          "chart-2": "oklch(0.685 0.169 237.323)",
+          "chart-3": "oklch(0.588 0.158 241.966)",
+          "chart-4": "oklch(0.5 0.134 242.749)",
+          "chart-5": "oklch(0.443 0.11 240.79)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.685 0.169 237.323)",
+          "sidebar-primary-foreground": "oklch(0.293 0.066 243.157)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "sky"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-teal",
+      "type": "registry:theme",
+      "title": "Rhea Teal Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Teal.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.511 0.096 186.391)",
+          "primary-foreground": "oklch(0.984 0.014 180.72)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.855 0.138 181.071)",
+          "chart-2": "oklch(0.704 0.14 182.503)",
+          "chart-3": "oklch(0.6 0.118 184.704)",
+          "chart-4": "oklch(0.511 0.096 186.391)",
+          "chart-5": "oklch(0.437 0.078 188.216)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.6 0.118 184.704)",
+          "sidebar-primary-foreground": "oklch(0.984 0.014 180.72)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.437 0.078 188.216)",
+          "primary-foreground": "oklch(0.984 0.014 180.72)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.855 0.138 181.071)",
+          "chart-2": "oklch(0.704 0.14 182.503)",
+          "chart-3": "oklch(0.6 0.118 184.704)",
+          "chart-4": "oklch(0.511 0.096 186.391)",
+          "chart-5": "oklch(0.437 0.078 188.216)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.704 0.14 182.503)",
+          "sidebar-primary-foreground": "oklch(0.277 0.046 192.524)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "teal"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-violet",
+      "type": "registry:theme",
+      "title": "Rhea Violet Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Violet.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.491 0.27 292.581)",
+          "primary-foreground": "oklch(0.969 0.016 293.756)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.811 0.111 293.571)",
+          "chart-2": "oklch(0.606 0.25 292.717)",
+          "chart-3": "oklch(0.541 0.281 293.009)",
+          "chart-4": "oklch(0.491 0.27 292.581)",
+          "chart-5": "oklch(0.432 0.232 292.759)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.541 0.281 293.009)",
+          "sidebar-primary-foreground": "oklch(0.969 0.016 293.756)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.432 0.232 292.759)",
+          "primary-foreground": "oklch(0.969 0.016 293.756)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.811 0.111 293.571)",
+          "chart-2": "oklch(0.606 0.25 292.717)",
+          "chart-3": "oklch(0.541 0.281 293.009)",
+          "chart-4": "oklch(0.491 0.27 292.581)",
+          "chart-5": "oklch(0.432 0.232 292.759)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.606 0.25 292.717)",
+          "sidebar-primary-foreground": "oklch(0.969 0.016 293.756)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "violet"
+        }
+      }
+    },
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "foldkit-theme-rhea-yellow",
+      "type": "registry:theme",
+      "title": "Rhea Yellow Theme",
+      "description": "Foldkit CN shadcn theme tokens for Rhea Yellow.",
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0.145 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0.145 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0.145 0 0)",
+          "primary": "oklch(0.852 0.199 91.936)",
+          "primary-foreground": "oklch(0.421 0.095 57.708)",
+          "secondary": "oklch(0.967 0.001 286.375)",
+          "secondary-foreground": "oklch(0.21 0.006 285.885)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)",
+          "chart-1": "oklch(0.905 0.182 98.111)",
+          "chart-2": "oklch(0.795 0.184 86.047)",
+          "chart-3": "oklch(0.681 0.162 75.834)",
+          "chart-4": "oklch(0.554 0.135 66.442)",
+          "chart-5": "oklch(0.476 0.114 61.907)",
+          "radius": "0.625rem",
+          "sidebar": "oklch(0.985 0 0)",
+          "sidebar-foreground": "oklch(0.145 0 0)",
+          "sidebar-primary": "oklch(0.681 0.162 75.834)",
+          "sidebar-primary-foreground": "oklch(0.987 0.026 102.212)",
+          "sidebar-accent": "oklch(0.97 0 0)",
+          "sidebar-accent-foreground": "oklch(0.205 0 0)",
+          "sidebar-border": "oklch(0.922 0 0)",
+          "sidebar-ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.795 0.184 86.047)",
+          "primary-foreground": "oklch(0.421 0.095 57.708)",
+          "secondary": "oklch(0.274 0.006 286.033)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.269 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)",
+          "chart-1": "oklch(0.905 0.182 98.111)",
+          "chart-2": "oklch(0.795 0.184 86.047)",
+          "chart-3": "oklch(0.681 0.162 75.834)",
+          "chart-4": "oklch(0.554 0.135 66.442)",
+          "chart-5": "oklch(0.476 0.114 61.907)",
+          "sidebar": "oklch(0.205 0 0)",
+          "sidebar-foreground": "oklch(0.985 0 0)",
+          "sidebar-primary": "oklch(0.795 0.184 86.047)",
+          "sidebar-primary-foreground": "oklch(0.987 0.026 102.212)",
+          "sidebar-accent": "oklch(0.269 0 0)",
+          "sidebar-accent-foreground": "oklch(0.985 0 0)",
+          "sidebar-border": "oklch(1 0 0 / 10%)",
+          "sidebar-ring": "oklch(0.556 0 0)",
+          "radius": "0.625rem"
+        }
+      },
+      "files": [],
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "meta": {
+        "foldkit": {
+          "origin": "https://ui.shadcn.com/docs/theming",
+          "artifact": "theme",
+          "themeStudio": true,
+          "style": "rhea",
+          "baseColor": "yellow"
+        }
+      }
+    }
+  ]
+}

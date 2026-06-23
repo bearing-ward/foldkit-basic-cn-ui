@@ -605,6 +605,18 @@ Required:
 - Component labels should indicate library origin through grouped navigation and
   concise badges where useful.
 
+### Theme Studio
+
+Theme Studio is an OpenStory browsing surface, not a retired Vite docs route.
+Style and theme options must come from
+`registry/upstream/derived/shadcn-theme.json` or a generated derivative of that
+checked-in contract.
+
+Preview block options must come from source catalog data or registry metadata,
+not from hard-coded view-only switch statements. Download links must resolve to
+shadcn-compatible registry JSON served from the same public site root as
+`/registry.json`.
+
 ## Completion Checklist
 
 A component entry is complete only when all applicable items are true:

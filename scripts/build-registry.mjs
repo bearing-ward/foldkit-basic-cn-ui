@@ -7,6 +7,16 @@ import {
   readSourceRegistryItems,
   sourceRegistryPath,
 } from "./registry-manifest.mjs";
+import themeContract from "../registry/upstream/derived/shadcn-theme.json" with {
+  type: "json",
+};
+import previewInventory from "../registry/upstream/derived/shadcn-preview-02.json" with {
+  type: "json",
+};
+import {
+  createThemeStudioCatalog,
+  themeStudioManifestName,
+} from "./theme-studio-catalog.mjs";
 
 const rootDir = path.resolve(import.meta.dirname, "..");
 const configPath = path.join(rootDir, "registry/config.json");
@@ -195,7 +205,15 @@ const sourceItems = await readSourceRegistryItems({
 });
 const qualifyRegistryDependency = createRegistryDependencyQualifier(sourceItems);
 const registryConfig = await readJson(configPath);
-const items = await Promise.all(sourceItems.map(expandItem));
+const themeStudioCatalog = createThemeStudioCatalog({
+  themeContract,
+  previewInventory,
+  registryItems: sourceItems,
+});
+const items = [
+  ...(await Promise.all(sourceItems.map(expandItem))),
+  ...themeStudioCatalog.generatedRegistryItems,
+];
 const isPublicRegistryItem = (item) => item.meta?.foldkit?.public !== false;
 const index = {
   $schema: registrySchemaUrl,
@@ -224,6 +242,10 @@ await writeOrCheck(
     "{{registryBaseUrl}}",
     registryConfig.registryBaseUrl
   )
+);
+await writeOrCheck(
+  path.join(publicDir, themeStudioManifestName),
+  stableJson(themeStudioCatalog)
 );
 
 for (const item of items) {
