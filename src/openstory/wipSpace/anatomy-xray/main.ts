@@ -28,7 +28,7 @@ export const avatarXrayConfig: XrayConfig = {
     return h.div(
       [
         h.Class(
-          "flex min-h-40 w-full items-center justify-center rounded-[8px] border border-slate-200 bg-white p-8"
+          "flex min-h-40 w-full items-center justify-center p-8"
         ),
       ],
       [

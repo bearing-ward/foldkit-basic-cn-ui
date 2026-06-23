@@ -110,7 +110,7 @@ const codeButtonBaseClasses =
 const previewHighlightClasses =
   "ring-2 ring-amber-300 ring-offset-2 ring-offset-white outline outline-1 outline-amber-400";
 const overlayBoxClasses =
-  "pointer-events-auto max-h-28 overflow-auto rounded-[6px] border border-slate-200 bg-white/95 px-3 py-2 font-mono text-[11px] leading-5 text-slate-700 shadow-sm";
+  "pointer-events-auto rounded-[6px] bg-white/90 px-3 py-2 font-mono text-[11px] leading-5 text-slate-700";
 const overlayEmptyClasses = "text-slate-400";
 
 const findPartById = (
@@ -313,12 +313,11 @@ const renderOverlayAttributes = (part: XrayPart): Html => {
   return h.div(
     [
       h.DataAttribute("testid", "anatomy-xray-overlay-attributes"),
-      h.Class(`${overlayBoxClasses} max-h-24`),
+      h.Class(overlayBoxClasses),
     ],
     [
       Array.match(part.attributes.map(formatAttribute), {
-        onEmpty: () =>
-          h.div([h.Class(overlayEmptyClasses)], ["No attributes"]),
+        onEmpty: () => h.div([h.Class(overlayEmptyClasses)], ["No attributes"]),
         onNonEmpty: (items) =>
           h.div(
             [h.Class("grid gap-0.5")],
@@ -345,9 +344,10 @@ const renderSelectedPartOverlay = (
             ),
           ],
           [
-            h.div([h.Class(overlayBoxClasses)], [
-              h.div([h.Class(overlayEmptyClasses)], ["No anatomy parts"]),
-            ]),
+            h.div(
+              [h.Class(overlayBoxClasses)],
+              [h.div([h.Class(overlayEmptyClasses)], ["No anatomy parts"])]
+            ),
           ]
         ),
       onSome: (part) =>
@@ -358,27 +358,15 @@ const renderSelectedPartOverlay = (
           ],
           [
             h.div(
-              [
-                h.Class(
-                  "absolute top-0 left-0 max-w-[min(16rem,48%)] sm:max-w-xs"
-                ),
-              ],
+              [h.Class("absolute top-0 left-0")],
               [renderOverlayIdentity(part)]
             ),
             h.div(
-              [
-                h.Class(
-                  "absolute top-0 right-0 max-w-[min(14rem,48%)] sm:max-w-xs"
-                ),
-              ],
+              [h.Class("absolute top-0 right-0")],
               [renderOverlayStyles(part)]
             ),
             h.div(
-              [
-                h.Class(
-                  "absolute right-0 bottom-0 left-0 max-w-full sm:left-1/2 sm:-translate-x-1/2"
-                ),
-              ],
+              [h.Class("absolute right-0 bottom-0 left-0")],
               [renderOverlayAttributes(part)]
             ),
           ]
@@ -414,68 +402,40 @@ export const view =
               ]
             ),
             h.div(
-              [
-                h.Class(
-                  "grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-                ),
-              ],
+              [h.Class(panelClasses)],
               [
                 h.div(
-                  [h.Class(panelClasses)],
-                  [
-                    h.div(
-                      [h.Class(panelHeaderClasses)],
-                      [
-                        h.h2(
-                          [h.Class(panelTitleClasses)],
-                          ["Rendered HTML map"]
-                        ),
-                      ]
-                    ),
-                    h.div(
-                      [h.Class(`${panelBodyClasses} space-y-1`)],
-                      renderCodeRows(maybeActivePart, config.parts)
-                    ),
-                  ]
+                  [h.Class(panelHeaderClasses)],
+                  [h.h2([h.Class(panelTitleClasses)], ["X-ray"])]
                 ),
                 h.div(
-                  [h.Class(panelClasses)],
+                  [h.Class(`${panelBodyClasses} space-y-1`)],
+                  renderCodeRows(maybeActivePart, config.parts)
+                ),
+                h.div(
+                  [
+                    h.DataAttribute("testid", "anatomy-xray-preview"),
+                    h.Class(
+                      `${panelBodyClasses} relative min-h-[24rem] overflow-hidden border-t border-slate-200 bg-white`
+                    ),
+                  ],
                   [
                     h.div(
-                      [h.Class(panelHeaderClasses)],
                       [
-                        h.h2(
-                          [h.Class(panelTitleClasses)],
-                          ["Preview map"]
-                        ),
-                      ]
-                    ),
-                    h.div(
-                      [
-                        h.DataAttribute("testid", "anatomy-xray-preview"),
                         h.Class(
-                          `${panelBodyClasses} relative min-h-[24rem] overflow-hidden bg-slate-50`
+                          "flex min-h-[20rem] items-center justify-center pt-28 pb-24 sm:pt-24 sm:pb-20"
                         ),
                       ],
                       [
-                        h.div(
-                          [
-                            h.Class(
-                              "flex min-h-[20rem] items-center justify-center pt-28 pb-24 sm:pt-24 sm:pb-20"
-                            ),
-                          ],
-                          [
-                            config.preview({
-                              model,
-                              activePart: maybeActivePart,
-                              partAttributes:
-                                previewPartAttributes(maybeActivePart),
-                            }),
-                          ]
-                        ),
-                        renderSelectedPartOverlay(maybeActivePart),
+                        config.preview({
+                          model,
+                          activePart: maybeActivePart,
+                          partAttributes:
+                            previewPartAttributes(maybeActivePart),
+                        }),
                       ]
                     ),
+                    renderSelectedPartOverlay(maybeActivePart),
                   ]
                 ),
               ]

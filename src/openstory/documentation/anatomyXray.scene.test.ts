@@ -19,6 +19,9 @@ describe("Anatomy x-ray scene", () => {
       Scene.expect(
         Scene.role("button", { name: "Inspect Avatar root span" })
       ).toExist(),
+      Scene.expect(Scene.role("heading", { name: "X-ray" })).toExist(),
+      Scene.expect(Scene.text("Rendered HTML map")).not.toExist(),
+      Scene.expect(Scene.text("Preview map")).not.toExist(),
       Scene.expect(Scene.testId("anatomy-xray-preview")).toExist(),
       Scene.expect(Scene.testId("anatomy-xray-overlay")).toExist(),
       Scene.expect(

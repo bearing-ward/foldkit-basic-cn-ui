@@ -161,7 +161,7 @@ const group = Avatar.groupView<Message>([
       return h.div(
         [
           h.Class(
-            "flex min-h-40 w-full items-center justify-center rounded-[8px] border border-slate-200 bg-white p-8"
+            "flex min-h-40 w-full items-center justify-center p-8"
           ),
         ],
         [
@@ -1058,7 +1058,7 @@ export const update = (model: Model, message: Message): UpdateReturn =>
       return h.div(
         [
           h.Class(
-            "relative h-80 w-full max-w-lg overflow-hidden rounded-[8px] border border-slate-200 bg-white p-6"
+            "relative h-80 w-full max-w-lg overflow-hidden p-6"
           ),
         ],
         [
