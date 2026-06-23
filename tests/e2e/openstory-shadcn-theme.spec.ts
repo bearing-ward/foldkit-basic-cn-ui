@@ -148,6 +148,30 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
   await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "light");
 });
 
+test("top-bar Toggle theme resolves system light before toggling to dark", async ({
+  page,
+  request,
+}) => {
+  await page.emulateMedia({ colorScheme: "light" });
+  const storyId = await storyIdForTitle(request, "shadcn/Button", "Default");
+
+  await page.goto(
+    `/?id=${encodeURIComponent(storyId)}&globals=shadcnTheme%3Arhea-neutral%3BshadcnMode%3Asystem`
+  );
+
+  await expect(page.getByLabel("Toggle theme")).toBeVisible();
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  const wrapper = frame.getByTestId("shadcn-theme-wrapper");
+  await expect(wrapper).toHaveAttribute("data-shadcn-mode", "system");
+  await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "light");
+
+  await page.getByLabel("Toggle theme").click();
+
+  await expect(wrapper).toHaveAttribute("data-shadcn-mode", "dark");
+  await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "dark");
+});
+
 test("legacy nova-zinc globals still select the Nova Button recipe", async ({
   page,
   request,
