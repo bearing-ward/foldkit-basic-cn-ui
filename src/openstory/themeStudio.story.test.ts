@@ -10,6 +10,7 @@ import {
   SelectedThemeStudioStyle,
   selectedPreviewBlock,
   selectedPreviewBlockDownloadHref,
+  selectedResolvedTheme,
   selectedThemeDownloadHref,
   themeStudioCatalog,
   themeStudioStyleProperties,
@@ -99,6 +100,7 @@ describe("Theme Studio program", () => {
       ])
     );
     expect(themeStudioCatalog.previewCoverage.length).toBeGreaterThanOrEqual(21);
+    expect(themeStudioCatalog.previewBlocks.length).toBeGreaterThanOrEqual(12);
   });
 
   test("keeps CSS variable option statuses source-driven", () => {
@@ -136,6 +138,21 @@ describe("Theme Studio program", () => {
     expect(themeStudioStyleProperties(model)["--primary"]).toMatch(/^oklch\(/u);
     expect(themeStudioStyleProperties(model)["--radius-md"]).toBe(
       "calc(0.625rem - 2px)"
+    );
+  });
+
+  test("uses one resolved theme for selected classes and tokens", () => {
+    const [model] = init();
+    const [darkModel] = update(model, SelectedThemeStudioMode({ value: "dark" }));
+
+    expect(selectedResolvedTheme(darkModel)).toMatchObject({
+      style: darkModel.selectedStyle,
+      baseColor: darkModel.selectedBaseColor,
+      requestedMode: "dark",
+      resolvedMode: "dark",
+    });
+    expect(themeStudioStyleProperties(darkModel)["--background"]).toMatch(
+      /^oklch\(/u
     );
   });
 });

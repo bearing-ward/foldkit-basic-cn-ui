@@ -1,4 +1,4 @@
-import { expect, test, type APIRequestContext } from "@playwright/test";
+import { expect, test, type APIRequestContext, type Locator } from "@playwright/test";
 
 type ThemeStudioCatalog = Readonly<{
   styleOptions: ReadonlyArray<Readonly<{ value: string; title: string }>>;
@@ -20,6 +20,15 @@ type ThemeStudioCatalog = Readonly<{
       id: string;
       title: string;
       downloadHref: string;
+    }>
+  >;
+  previewCoverage: ReadonlyArray<
+    Readonly<{
+      id: string;
+      title: string;
+      status: "rendered" | "covered-by-existing-example" | "deferred";
+      dependency?: string;
+      reason?: string;
     }>
   >;
 }>;
@@ -44,6 +53,22 @@ const getCatalog = async (
   return (await response.json()) as ThemeStudioCatalog;
 };
 
+type VisibleStyles = Readonly<{
+  backgroundColor: string;
+  borderColor: string;
+  color: string;
+}>;
+
+const visibleStyles = async (locator: Locator): Promise<VisibleStyles> =>
+  locator.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return {
+      backgroundColor: style.backgroundColor,
+      borderColor: style.borderColor,
+      color: style.color,
+    };
+  });
+
 test("manifest exposes Theme Studio and generated catalog downloads", async ({
   request,
 }) => {
@@ -60,6 +85,7 @@ test("manifest exposes Theme Studio and generated catalog downloads", async ({
     ])
   );
   expect(catalog.styleOptions.map((option) => option.value)).toContain("rhea");
+  expect(catalog.previewBlocks.length).toBeGreaterThanOrEqual(12);
   for (const block of catalog.previewBlocks) {
     expect(block.downloadHref).toMatch(/^\/.+\.json$/u);
   }
@@ -79,6 +105,7 @@ test("renders dynamic catalog controls in the story iframe", async ({
   await expect(frame.getByLabel("Mode")).toBeVisible();
   await expect(frame.getByLabel("Preview block")).toBeVisible();
   await expect(frame.getByText("CSS variable mode")).toBeVisible();
+  await expect(frame.getByTestId("theme-studio-block-options")).toBeVisible();
 
   await expect(frame.locator("#theme-studio-style option")).toHaveCount(
     catalog.styleOptions.length
@@ -88,6 +115,9 @@ test("renders dynamic catalog controls in the story iframe", async ({
   );
   await expect(frame.locator("#theme-studio-preview-block option")).toHaveCount(
     catalog.previewBlocks.length
+  );
+  await expect(frame.locator("[data-theme-studio-block-option]")).toHaveCount(
+    catalog.previewCoverage.length
   );
   await expect(
     frame.locator("[data-theme-studio-css-variable-option]")
@@ -119,14 +149,24 @@ test("renders dynamic catalog controls in the story iframe", async ({
   }
 });
 
-test("updates preview data attributes and CSS tokens", async ({ page }) => {
+test("updates preview data attributes, CSS tokens, and visible surfaces", async ({
+  page,
+}) => {
   await page.goto(`/?id=${storyId}`);
 
   const frame = page.frameLocator(`iframe[title="${storyId}"]`);
   const preview = frame.getByTestId("theme-studio-preview");
+  const primarySurface = frame.getByTestId("theme-studio-primary-surface");
+  const accentSurface = frame.getByTestId("theme-studio-accent-surface");
+  const borderSurface = frame.getByTestId("theme-studio-border-surface");
+
+  await frame.getByLabel("Base color").selectOption("neutral");
   const initialPrimary = await preview.evaluate((element) =>
     getComputedStyle(element).getPropertyValue("--primary").trim()
   );
+  const initialPrimaryStyles = await visibleStyles(primarySurface);
+  const initialAccentStyles = await visibleStyles(accentSurface);
+  const initialBorderStyles = await visibleStyles(borderSurface);
 
   await frame.getByLabel("Base color").selectOption("amber");
 
@@ -135,7 +175,71 @@ test("updates preview data attributes and CSS tokens", async ({ page }) => {
   const amberPrimary = await preview.evaluate((element) =>
     getComputedStyle(element).getPropertyValue("--primary").trim()
   );
+  const amberPrimaryStyles = await visibleStyles(primarySurface);
+  const amberAccentStyles = await visibleStyles(accentSurface);
+  const amberBorderStyles = await visibleStyles(borderSurface);
+
   expect(amberPrimary).not.toBe(initialPrimary);
+  expect([
+    amberPrimaryStyles.backgroundColor !== initialPrimaryStyles.backgroundColor,
+    amberPrimaryStyles.color !== initialPrimaryStyles.color,
+  ]).toContain(true);
+  expect(amberAccentStyles.backgroundColor).toBeTruthy();
+  expect(amberBorderStyles.borderColor).toBeTruthy();
+  expect(initialAccentStyles.backgroundColor).toBeTruthy();
+  expect(initialBorderStyles.borderColor).toBeTruthy();
+});
+
+test("updates visible preview colors when dark mode is selected", async ({ page }) => {
+  await page.goto(`/?id=${storyId}`);
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  const preview = frame.getByTestId("theme-studio-preview");
+
+  await frame.getByLabel("Mode").selectOption("light");
+  const lightStyles = await visibleStyles(preview);
+
+  await frame.getByLabel("Mode").selectOption("dark");
+  await expect(preview).toHaveAttribute("data-selected-mode", "dark");
+  await expect(preview).toHaveAttribute("data-resolved-mode", "dark");
+  const darkStyles = await visibleStyles(preview);
+
+  expect([
+    darkStyles.backgroundColor !== lightStyles.backgroundColor,
+    darkStyles.color !== lightStyles.color,
+  ]).toContain(true);
+});
+
+test("clicking a block option syncs the selector and preview content", async ({
+  page,
+  request,
+}) => {
+  const catalog = await getCatalog(request);
+  const target =
+    catalog.previewBlocks.find((block) => block.id === "sidebar-navigation") ??
+    catalog.previewBlocks[1];
+
+  await page.goto(`/?id=${storyId}`);
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  const preview = frame.getByTestId("theme-studio-preview");
+  const nativeSelect = frame.getByLabel("Preview block");
+  const option = frame.locator(
+    `[data-theme-studio-block-option="${target?.id ?? ""}"]`
+  );
+
+  await expect(option).toBeVisible();
+  await option.click();
+
+  await expect(preview).toHaveAttribute(
+    "data-selected-preview-block",
+    target?.id ?? ""
+  );
+  await expect(nativeSelect).toHaveValue(target?.id ?? "");
+  await expect(frame.getByTestId("theme-studio-preview-title")).toContainText(
+    target?.title ?? ""
+  );
+  await expect(frame.getByText("Dashboard shell")).toBeVisible();
 });
 
 test("theme and block download links resolve to registry JSON", async ({

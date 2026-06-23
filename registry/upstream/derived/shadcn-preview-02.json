@@ -18,10 +18,11 @@
     {
       "id": "sidebar-navigation",
       "title": "Sidebar/navigation",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-navigation-menu-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "navigation-menu",
-      "followUp": "Promote to a rendered Theme Studio block when sidebar layout parity is implemented."
+      "followUp": "Expand the Theme Studio shell after sidebar layout parity is graded against preview-02."
     },
     {
       "id": "contribution-activity-chart",
@@ -68,18 +69,20 @@
     {
       "id": "switches",
       "title": "Switches",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-switch-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "switch",
-      "followUp": "Render inside Theme Studio when a combined settings block is source-owned."
+      "followUp": "Expand the settings block once switch grouping parity is reviewed against preview-02."
     },
     {
       "id": "selects-comboboxes",
       "title": "Selects/comboboxes",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-select-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "select",
-      "followUp": "Render with preview-02 field context when select and combobox parity are grouped."
+      "followUp": "Add combobox-specific source-owned payloads when that slice is available."
     },
     {
       "id": "tabs",
@@ -102,50 +105,56 @@
     {
       "id": "dropdown-menu-actions",
       "title": "Dropdown/menu actions",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "dropdown-menu-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "dropdown-menu",
-      "followUp": "Render action menus inside preview blocks when composed menu parity is source-owned."
+      "followUp": "Add interactive menu state when composed menu parity is source-owned."
     },
     {
       "id": "calendar-date-controls",
       "title": "Calendar/date controls",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-calendar-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "calendar",
-      "followUp": "Render preview-02 date controls when date-picker grouping is complete."
+      "followUp": "Broaden to date-picker range controls when source-owned grouping is complete."
     },
     {
       "id": "radio-groups",
       "title": "Radio groups",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-radio-group-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "radio-group",
-      "followUp": "Promote payment-like radio cards into Theme Studio after source parity is checked."
+      "followUp": "Replace the static radio-card surface once payment-card grouping parity is source-owned."
     },
     {
       "id": "checkboxes",
       "title": "Checkboxes",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-checkbox-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "checkbox",
-      "followUp": "Render checklist blocks when preview-02 grouping is represented as a registry example."
+      "followUp": "Broaden checklist grouping when preview-02 permissions composition is represented as a registry example."
     },
     {
       "id": "sliders",
       "title": "Sliders",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-slider-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "slider",
-      "followUp": "Render slider controls once the smart-home/preferences block is source-owned."
+      "followUp": "Pair with switch controls when the smart-home card registry payload is source-owned."
     },
     {
       "id": "upload-controls",
       "title": "Upload controls",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-input-file",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "input-file",
-      "followUp": "Promote to rendered when upload-zone styling is represented by a source-owned block."
+      "followUp": "Replace the static upload-zone preview once upload-zone styling is represented by a source-owned block."
     },
     {
       "id": "payment-method-controls",
@@ -158,10 +167,11 @@
     {
       "id": "profile-security-forms",
       "title": "Profile/security forms",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-input-form",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "form",
-      "followUp": "Render as a named preview block when profile/security composition parity exists."
+      "followUp": "Split profile and security examples if future registry payloads become source-owned."
     },
     {
       "id": "smart-home-controls",
@@ -174,10 +184,11 @@
     {
       "id": "modal-drawer-surfaces",
       "title": "Modal/drawer-like surfaces",
-      "status": "covered-by-existing-example",
+      "status": "rendered",
       "registryItemName": "shadcn-dialog-basic",
+      "storyId": "shadcn-theme-studio--studio",
       "dependency": "dialog",
-      "followUp": "Promote to rendered when preview-02 modal/drawer composition is source-owned."
+      "followUp": "Add interactive modal or drawer state after preview-02 modal/drawer composition is source-owned."
     }
   ]
 }

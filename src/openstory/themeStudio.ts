@@ -10,9 +10,11 @@ import { evo } from "foldkit/struct";
 import previewInventory from "../../registry/upstream/derived/shadcn-preview-02.json";
 import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 import {
+  resolveShadcnTheme,
   shadcnModeGlobalKey,
+  shadcnThemeColorVariableValue,
   shadcnThemeGlobalKey,
-  shadcnThemeStyleProperties,
+  type ResolvedShadcnTheme,
   type ShadcnColorMode,
 } from "./shadcnTheme";
 
@@ -94,6 +96,8 @@ export const themeStudioCatalog = {
     .map((row) => ({
       id: row.id,
       title: row.title,
+      dependency: row.dependency,
+      status: row.status,
       registryItemName: row.registryItemName,
       downloadName: row.registryItemName,
       downloadHref: `/${row.registryItemName}.json`,
@@ -126,6 +130,7 @@ type StyleOption = ThemeStudioCatalog["styleOptions"][number];
 type BaseColorOption =
   ThemeStudioCatalog["baseColorOptionsByStyle"]["rhea"][number];
 type PreviewBlock = ThemeStudioCatalog["previewBlocks"][number];
+type PreviewCoverageRow = ThemeStudioCatalog["previewCoverage"][number];
 type ModeOption = ThemeStudioCatalog["modeOptions"][number];
 type BaseColorOptionsByStyle = Record<string, ReadonlyArray<BaseColorOption>>;
 
@@ -388,13 +393,42 @@ export const selectedThemeDownloadHref = (model: Model): string =>
 export const selectedPreviewBlockDownloadHref = (model: Model): string =>
   selectedPreviewBlock(model).downloadHref;
 
+const themeStudioGlobals = (model: Model): Record<string, unknown> => ({
+  [shadcnThemeGlobalKey]: `${model.selectedStyle}-${model.selectedBaseColor}`,
+  [shadcnModeGlobalKey]: model.selectedMode satisfies ShadcnColorMode,
+});
+
+export const selectedResolvedTheme = (model: Model): ResolvedShadcnTheme =>
+  resolveShadcnTheme(themeStudioGlobals(model));
+
+const themeStudioStylePropertiesForTheme = (
+  theme: ResolvedShadcnTheme
+): Record<string, string> =>
+  Object.fromEntries(
+    Object.entries(theme.tokens).flatMap(([token, value]) => {
+      if (token === "radius") {
+        return [
+          ["--radius", value],
+          ["--radius-sm", `calc(${value} - 4px)`],
+          ["--radius-md", `calc(${value} - 2px)`],
+          ["--radius-lg", value],
+          ["--radius-xl", `calc(${value} + 4px)`],
+        ];
+      }
+      return [
+        [`--${token}`, value],
+        [`--color-${token}`, shadcnThemeColorVariableValue(value)],
+      ];
+    })
+  );
+
 export const themeStudioStyleProperties = (
   model: Model
 ): Record<string, string> =>
-  shadcnThemeStyleProperties({
-    [shadcnThemeGlobalKey]: `${model.selectedStyle}-${model.selectedBaseColor}`,
-    [shadcnModeGlobalKey]: model.selectedMode satisfies ShadcnColorMode,
-  });
+  themeStudioStylePropertiesForTheme(selectedResolvedTheme(model));
+
+const themeStudioClassNames = (theme: ResolvedShadcnTheme): string =>
+  `shadcn-theme shadcn-theme-${theme.style} shadcn-theme-${theme.baseColor} ${theme.resolvedMode} bg-background text-foreground`;
 
 const selectView = <Value extends string>(config: {
   id: string;
@@ -425,14 +459,67 @@ const selectView = <Value extends string>(config: {
   );
 };
 
-const metricView = (label: string, value: string): Html => {
+const themeStudioExampleFrameMaxHeight = "720px";
+
+const themeTokenProbeView = (): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("rounded-md border border-border bg-background p-3")],
+    [h.Class("grid gap-2 sm:grid-cols-3")],
+    [
+      h.div(
+        [
+          h.DataAttribute("testid", "theme-studio-primary-surface"),
+          h.Class("rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground"),
+        ],
+        ["Primary action"]
+      ),
+      h.div(
+        [
+          h.DataAttribute("testid", "theme-studio-accent-surface"),
+          h.Class("rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-foreground"),
+        ],
+        ["Accent surface"]
+      ),
+      h.div(
+        [
+          h.DataAttribute("testid", "theme-studio-border-surface"),
+          h.Class("rounded-md border border-ring bg-background px-3 py-2 text-sm font-medium text-foreground shadow-sm"),
+        ],
+        ["Ring border"]
+      ),
+    ]
+  );
+};
+
+const themeStudioExampleFrame = (children: ReadonlyArray<Html>): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.DataAttribute("testid", "theme-studio-example-frame"),
+      h.DataAttribute("max-height", themeStudioExampleFrameMaxHeight),
+      h.Class(
+        "h-full min-h-[560px] overflow-auto rounded-md border border-border bg-background p-4"
+      ),
+      h.Style({ maxHeight: themeStudioExampleFrameMaxHeight }),
+    ],
+    [themeTokenProbeView(), ...children]
+  );
+};
+
+const metricView = (label: string, value: string, detail: string): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [h.Class("rounded-md border border-border bg-card p-3 text-card-foreground")],
     [
       h.div([h.Class("text-xs font-medium text-muted-foreground")], [label]),
       h.div([h.Class("mt-1 text-2xl font-semibold text-foreground")], [value]),
+      h.div([h.Class("mt-2 h-1.5 overflow-hidden rounded-full bg-secondary")], [
+        h.div([h.Class("h-full w-2/3 rounded-full bg-primary")], []),
+      ]),
+      h.p([h.Class("mt-2 text-xs text-muted-foreground")], [detail]),
     ]
   );
 };
@@ -440,12 +527,25 @@ const metricView = (label: string, value: string): Html => {
 const dashboardCardsView = (): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class("grid gap-3 md:grid-cols-3")],
+  return themeStudioExampleFrame(
     [
-      metricView("Revenue", "$12,450"),
-      metricView("Active users", "2,403"),
-      metricView("Conversion", "8.4%"),
+      h.div(
+        [h.Class("grid gap-3 md:grid-cols-3")],
+        [
+          metricView("Revenue", "$12,450", "+18.2% from last cycle"),
+          metricView("Active users", "2,403", "412 users currently live"),
+          metricView("Conversion", "8.4%", "2.1 points above target"),
+        ]
+      ),
+      h.div([h.Class("rounded-md border border-input bg-muted p-3")], [
+        h.div([h.Class("flex items-center justify-between gap-3")], [
+          h.div([], [
+            h.h3([h.Class("font-semibold")], ["Campaign health"]),
+            h.p([h.Class(mutedTextClasses)], ["All visible surfaces use the selected semantic tokens."]),
+          ]),
+          h.button([h.Type("button"), h.Class(actionClasses)], ["Review"]),
+        ]),
+      ]),
     ]
   );
 };
@@ -453,17 +553,25 @@ const dashboardCardsView = (): Html => {
 const progressCardsView = (): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class(`${panelClasses} grid gap-3`)],
+  return themeStudioExampleFrame(
     [
-      h.div([h.Class("flex items-center justify-between")], [
-        h.h3([h.Class("font-semibold")], ["Project progress"]),
-        h.span([h.Class("text-sm text-muted-foreground")], ["72%"]),
-      ]),
-      h.div([h.Class("h-2 overflow-hidden rounded-full bg-secondary")], [
-        h.div([h.Class("h-full rounded-full bg-primary"), h.Style({ width: "72%" })], []),
-      ]),
-      h.p([h.Class(mutedTextClasses)], ["Three milestones are ready for review."]),
+      h.div(
+        [h.Class(`${panelClasses} grid gap-3`)],
+        [
+          h.div([h.Class("flex items-center justify-between")], [
+            h.h3([h.Class("font-semibold")], ["Project progress"]),
+            h.span([h.Class("rounded bg-primary px-2 py-1 text-xs font-medium text-primary-foreground")], ["72%"]),
+          ]),
+          h.div([h.Class("h-2 overflow-hidden rounded-full bg-secondary")], [
+            h.div([h.Class("h-full rounded-full bg-primary"), h.Style({ width: "72%" })], []),
+          ]),
+          h.div([h.Class("grid gap-2 sm:grid-cols-3")], [
+            metricView("Design", "Done", "Token review accepted"),
+            metricView("Build", "Live", "Preview blocks rendering"),
+            metricView("QA", "Next", "Visual probes active"),
+          ]),
+        ]
+      ),
     ]
   );
 };
@@ -471,25 +579,38 @@ const progressCardsView = (): Html => {
 const preferenceFormsView = (): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class(`${panelClasses} grid gap-3`)],
+  return themeStudioExampleFrame(
     [
-      h.h3([h.Class("font-semibold")], ["Preferences"]),
-      h.label([h.Class("grid gap-1 text-sm")], [
-        "Email",
-        h.input([
-          h.Type("email"),
-          h.Value("team@example.com"),
-          h.Class(selectClasses),
-        ]),
-      ]),
-      h.label([h.Class("grid gap-1 text-sm")], [
-        "Region",
-        h.select([h.Class(selectClasses)], [
-          h.option([h.Value("na")], ["North America"]),
-          h.option([h.Value("eu")], ["Europe"]),
-        ]),
-      ]),
+      h.div(
+        [h.Class(`${panelClasses} grid gap-4`)],
+        [
+          h.div([h.Class("flex items-center justify-between gap-3")], [
+            h.div([], [
+              h.h3([h.Class("font-semibold")], ["Preferences"]),
+              h.p([h.Class(mutedTextClasses)], ["Profile settings with source-derived shadcn tokens."]),
+            ]),
+            h.span([h.Class("rounded-md bg-accent px-2 py-1 text-xs text-accent-foreground")], ["Team"]),
+          ]),
+          h.div([h.Class("grid gap-3 sm:grid-cols-2")], [
+            h.label([h.Class("grid gap-1 text-sm")], [
+              "Email",
+              h.input([
+                h.Type("email"),
+                h.Value("team@example.com"),
+                h.Class(selectClasses),
+              ]),
+            ]),
+            h.label([h.Class("grid gap-1 text-sm")], [
+              "Region",
+              h.select([h.Class(selectClasses)], [
+                h.option([h.Value("na")], ["North America"]),
+                h.option([h.Value("eu")], ["Europe"]),
+              ]),
+            ]),
+          ]),
+          h.button([h.Type("button"), h.Class(actionClasses)], ["Save preferences"]),
+        ]
+      ),
     ]
   );
 };
@@ -497,25 +618,47 @@ const preferenceFormsView = (): Html => {
 const tabsView = (): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class(`${panelClasses} grid gap-3`)],
+  return themeStudioExampleFrame(
     [
-      h.div([h.Role("tablist"), h.Class("flex gap-2")], [
-        h.button(
-          [h.Type("button"), h.Role("tab"), h.AriaSelected(true), h.Class(actionClasses)],
-          ["Overview"]
-        ),
-        h.button(
-          [
-            h.Type("button"),
-            h.Role("tab"),
-            h.AriaSelected(false),
-            h.Class("h-9 rounded-md border border-border px-3 text-sm"),
-          ],
-          ["Activity"]
-        ),
-      ]),
-      h.p([h.Class(mutedTextClasses)], ["Overview metrics are ready for export."]),
+      h.div(
+        [h.Class(`${panelClasses} grid gap-3`)],
+        [
+          h.div([h.Role("tablist"), h.Class("flex flex-wrap gap-2")], [
+            h.button(
+              [h.Type("button"), h.Role("tab"), h.AriaSelected(true), h.Class(actionClasses)],
+              ["Overview"]
+            ),
+            h.button(
+              [
+                h.Type("button"),
+                h.Role("tab"),
+                h.AriaSelected(false),
+                h.Class("h-9 rounded-md border border-border bg-background px-3 text-sm"),
+              ],
+              ["Activity"]
+            ),
+            h.button(
+              [
+                h.Type("button"),
+                h.Role("tab"),
+                h.AriaSelected(false),
+                h.Class("h-9 rounded-md border border-border bg-background px-3 text-sm"),
+              ],
+              ["Reports"]
+            ),
+          ]),
+          h.div([h.Class("grid gap-3 md:grid-cols-[1.2fr_0.8fr]")], [
+            h.div([h.Class("rounded-md border border-input bg-muted p-4")], [
+              h.h3([h.Class("font-semibold")], ["Overview metrics"]),
+              h.p([h.Class(mutedTextClasses)], ["Export-ready activity and trend details." ]),
+            ]),
+            h.div([h.Class("rounded-md bg-primary p-4 text-primary-foreground")], [
+              h.div([h.Class("text-sm font-medium")], ["Ready"]),
+              h.div([h.Class("text-3xl font-semibold")], ["12"]),
+            ]),
+          ]),
+        ]
+      ),
     ]
   );
 };
@@ -523,16 +666,409 @@ const tabsView = (): Html => {
 const accordionsView = (): Html => {
   const h = html<Message>();
 
-  return h.div(
-    [h.Class(`${panelClasses} divide-y divide-border`)],
+  return themeStudioExampleFrame(
     [
-      h.details([h.Attribute("open", "")], [
-        h.summary([h.Class("cursor-pointer py-2 font-medium")], ["Notifications"]),
-        h.p([h.Class(`${mutedTextClasses} pb-3`)], ["Digest emails are enabled."]),
+      h.div(
+        [h.Class(`${panelClasses} divide-y divide-border`)],
+        [
+          h.details([h.Attribute("open", "")], [
+            h.summary([h.Class("cursor-pointer py-2 font-medium")], ["Notifications"]),
+            h.p([h.Class(`${mutedTextClasses} pb-3`)], ["Digest emails are enabled."]),
+          ]),
+          h.details([h.Attribute("open", "")], [
+            h.summary([h.Class("cursor-pointer py-2 font-medium")], ["Security"]),
+            h.p([h.Class(`${mutedTextClasses} pb-3`)], ["Two-factor prompts are active."]),
+          ]),
+          h.details([], [
+            h.summary([h.Class("cursor-pointer py-2 font-medium")], ["Billing"]),
+            h.p([h.Class(`${mutedTextClasses} pb-3`)], ["Invoices are grouped by workspace."]),
+          ]),
+        ]
+      ),
+    ]
+  );
+};
+
+const sidebarNavigationView = (): Html => {
+  const h = html<Message>();
+  const navItems = ["Dashboard", "Inbox", "Reports", "Settings"];
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class("grid min-h-[420px] overflow-hidden rounded-md border border-border bg-card text-card-foreground md:grid-cols-[220px_minmax(0,1fr)]")], [
+        h.aside([h.Class("grid content-start gap-1 border-b border-border bg-muted p-3 md:border-b-0 md:border-r")], [
+          h.div([h.Class("mb-2 text-sm font-semibold text-foreground")], ["Acme Finance"]),
+          ...navItems.map((item) =>
+            h.button(
+              [
+                h.Type("button"),
+                h.Class(
+                  clsx(
+                    "h-9 rounded-md px-3 text-left text-sm",
+                    item === "Dashboard"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                  )
+                ),
+              ],
+              [item]
+            )
+          ),
+          h.div([h.Class("mt-4 rounded-md border border-input bg-background p-3")], [
+            h.div([h.Class("text-xs font-medium text-muted-foreground")], ["Workspace"]),
+            h.div([h.Class("text-sm font-semibold")], ["Preview-02"]),
+          ]),
+        ]),
+        h.main([h.Class("grid content-start gap-3 p-4")], [
+          h.div([h.Class("flex items-center justify-between gap-3")], [
+            h.div([], [
+              h.h3([h.Class("font-semibold")], ["Dashboard shell"]),
+              h.p([h.Class(mutedTextClasses)], ["A sidebar, active nav, and content area in one preview frame."]),
+            ]),
+            h.button([h.Type("button"), h.Class(actionClasses)], ["New report"]),
+          ]),
+          h.div([h.Class("grid gap-3 sm:grid-cols-2")], [
+            metricView("Pipeline", "$82k", "North star target"),
+            metricView("Tickets", "18", "6 need review"),
+          ]),
+        ]),
       ]),
-      h.details([], [
-        h.summary([h.Class("cursor-pointer py-2 font-medium")], ["Security"]),
-        h.p([h.Class(`${mutedTextClasses} pb-3`)], ["Two-factor prompts are active."]),
+    ]
+  );
+};
+
+const switchesView = (): Html => {
+  const h = html<Message>();
+  const rows = [
+    ["Email digests", "Weekly account summaries", true],
+    ["Desktop alerts", "Notify on deployment failures", true],
+    ["Beta controls", "Show experimental panels", false],
+  ] as const;
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class(`${panelClasses} grid gap-3`)], [
+        h.div([h.Class("flex items-center justify-between gap-3")], [
+          h.div([], [
+            h.h3([h.Class("font-semibold")], ["Notification settings"]),
+            h.p([h.Class(mutedTextClasses)], ["Switch rows grouped like the preview-02 settings surfaces."]),
+          ]),
+          h.span([h.Class("rounded-md bg-accent px-2 py-1 text-xs text-accent-foreground")], ["Live"]),
+        ]),
+        ...rows.map(([title, detail, enabled]) =>
+          h.div([h.Class("flex items-center justify-between gap-4 rounded-md border border-border bg-background p-3")], [
+            h.div([], [
+              h.div([h.Class("text-sm font-medium")], [title]),
+              h.div([h.Class("text-xs text-muted-foreground")], [detail]),
+            ]),
+            h.button(
+              [
+                h.Type("button"),
+                h.Role("switch"),
+                h.AriaChecked(enabled),
+                h.Class(
+                  clsx(
+                    "relative h-6 w-11 rounded-full border border-input",
+                    enabled ? "bg-primary" : "bg-muted"
+                  )
+                ),
+              ],
+              [
+                h.span([
+                  h.Class(
+                    clsx(
+                      "block h-5 w-5 rounded-full bg-background shadow-sm",
+                      enabled && "translate-x-5"
+                    )
+                  ),
+                ], []),
+              ]
+            ),
+          ])
+        ),
+      ]),
+    ]
+  );
+};
+
+const selectsComboboxesView = (): Html => {
+  const h = html<Message>();
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class(`${panelClasses} grid gap-4`)], [
+        h.div([], [
+          h.h3([h.Class("font-semibold")], ["Deployment filters"]),
+          h.p([h.Class(mutedTextClasses)], ["Select, search, and segmented filter controls grouped together."]),
+        ]),
+        h.div([h.Class("grid gap-3 md:grid-cols-3")], [
+          h.label([h.Class("grid gap-1 text-sm")], [
+            "Environment",
+            h.select([h.Class(selectClasses)], [
+              h.option([h.Value("production")], ["Production"]),
+              h.option([h.Value("staging")], ["Staging"]),
+            ]),
+          ]),
+          h.label([h.Class("grid gap-1 text-sm")], [
+            "Owner",
+            h.input([h.Value("Design systems"), h.Class(selectClasses)]),
+          ]),
+          h.label([h.Class("grid gap-1 text-sm")], [
+            "Status",
+            h.select([h.Class(selectClasses)], [
+              h.option([h.Value("active")], ["Active"]),
+              h.option([h.Value("paused")], ["Paused"]),
+            ]),
+          ]),
+        ]),
+        h.div([h.Class("rounded-md border border-ring bg-accent p-3 text-accent-foreground")], [
+          "Showing 24 matched records across selected controls.",
+        ]),
+      ]),
+    ]
+  );
+};
+
+const dropdownMenuActionsView = (): Html => {
+  const h = html<Message>();
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class("grid gap-3 md:grid-cols-[1fr_260px]")], [
+        h.div([h.Class(`${panelClasses} grid gap-3`)], [
+          h.div([h.Class("flex items-center justify-between gap-3")], [
+            h.div([], [
+              h.h3([h.Class("font-semibold")], ["Team actions"]),
+              h.p([h.Class(mutedTextClasses)], ["A static menu surface with action, destructive, and shortcut rows."]),
+            ]),
+            h.button([h.Type("button"), h.Class(actionClasses)], ["Invite"]),
+          ]),
+          h.div([h.Class("grid gap-2")], [
+            h.div([h.Class("rounded-md border border-border bg-background p-3")], ["Maya Chen"]),
+            h.div([h.Class("rounded-md border border-border bg-background p-3")], ["Noah Patel"]),
+          ]),
+        ]),
+        h.div([h.Class("rounded-md border border-ring bg-popover p-2 text-popover-foreground shadow-sm")], [
+          h.div([h.Class("rounded-sm bg-accent px-2 py-1.5 text-sm text-accent-foreground")], ["View profile"]),
+          h.div([h.Class("px-2 py-1.5 text-sm")], ["Copy email"]),
+          h.div([h.Class("px-2 py-1.5 text-sm text-muted-foreground")], ["Archive user"]),
+          h.div([h.Class("mt-1 border-t border-border px-2 py-1.5 text-sm text-destructive")], ["Remove access"]),
+        ]),
+      ]),
+    ]
+  );
+};
+
+const calendarDateControlsView = (): Html => {
+  const h = html<Message>();
+  const days = ["18", "19", "20", "21", "22", "23", "24"];
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class("grid gap-3 md:grid-cols-[280px_minmax(0,1fr)]")], [
+        h.div([h.Class(`${panelClasses} grid gap-3`)], [
+          h.div([h.Class("flex items-center justify-between")], [
+            h.button([h.Type("button"), h.Class("rounded-md border border-input px-2 py-1 text-sm")], ["Prev"]),
+            h.div([h.Class("font-semibold")], ["April 2026"]),
+            h.button([h.Type("button"), h.Class("rounded-md border border-input px-2 py-1 text-sm")], ["Next"]),
+          ]),
+          h.div([h.Class("grid grid-cols-7 gap-1 text-center text-sm")], [
+            ...days.map((day) =>
+              h.button(
+                [
+                  h.Type("button"),
+                  h.Class(
+                    clsx(
+                      "h-9 rounded-md border border-transparent",
+                      day === "21" ? "bg-primary text-primary-foreground" : "hover:bg-accent"
+                    )
+                  ),
+                ],
+                [day]
+              )
+            ),
+          ]),
+        ]),
+        h.div([h.Class(`${panelClasses} grid content-start gap-3`)], [
+          h.h3([h.Class("font-semibold")], ["Selected range"]),
+          h.div([h.Class("rounded-md border border-ring bg-muted p-3")], ["Apr 20 - Apr 24"]),
+          h.button([h.Type("button"), h.Class(actionClasses)], ["Apply dates"]),
+        ]),
+      ]),
+    ]
+  );
+};
+
+const radioGroupsView = (): Html => {
+  const h = html<Message>();
+  const options = [
+    ["Starter", "$19", false],
+    ["Pro", "$49", true],
+    ["Enterprise", "Custom", false],
+  ] as const;
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class(`${panelClasses} grid gap-3`)], [
+        h.h3([h.Class("font-semibold")], ["Payment plan"]),
+        h.div([h.Class("grid gap-2 md:grid-cols-3")], [
+          ...options.map(([title, price, selected]) =>
+            h.div(
+              [
+                h.Class(
+                  clsx(
+                    "rounded-md border bg-background p-3",
+                    selected ? "border-ring ring-2 ring-ring" : "border-border"
+                  )
+                ),
+              ],
+              [
+                h.div([h.Class("flex items-center gap-2")], [
+                  h.span([
+                    h.Role("radio"),
+                    h.AriaChecked(selected),
+                    h.Class(
+                      clsx(
+                        "h-4 w-4 rounded-full border",
+                        selected ? "border-primary bg-primary" : "border-input"
+                      )
+                    ),
+                  ], []),
+                  h.span([h.Class("font-medium")], [title]),
+                ]),
+                h.div([h.Class("mt-3 text-2xl font-semibold")], [price]),
+              ]
+            )
+          ),
+        ]),
+      ]),
+    ]
+  );
+};
+
+const checkboxesView = (): Html => {
+  const h = html<Message>();
+  const rows = ["Financial reports", "Audit exports", "Billing alerts"];
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class(`${panelClasses} grid gap-3`)], [
+        h.h3([h.Class("font-semibold")], ["Workspace permissions"]),
+        ...rows.map((row, index) =>
+          h.label([h.Class("flex items-center gap-3 rounded-md border border-border bg-background p-3 text-sm")], [
+            h.input([h.Type("checkbox"), h.Checked(index !== 2), h.Class("h-4 w-4 accent-primary")]),
+            h.span([h.Class("font-medium")], [row]),
+          ])
+        ),
+        h.div([h.Class("rounded-md bg-muted p-3 text-sm text-muted-foreground")], [
+          "Permission changes inherit the active base color and mode.",
+        ]),
+      ]),
+    ]
+  );
+};
+
+const slidersView = (): Html => {
+  const h = html<Message>();
+  const sliderRows = [
+    ["Lighting", "82%"],
+    ["Temperature", "68%"],
+    ["Energy limit", "46%"],
+  ] as const satisfies ReadonlyArray<readonly [string, string]>;
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class(`${panelClasses} grid gap-4`)], [
+        h.div([h.Class("flex items-center justify-between gap-3")], [
+          h.div([], [
+            h.h3([h.Class("font-semibold")], ["Smart controls"]),
+            h.p([h.Class(mutedTextClasses)], ["Slider-like bars paired with muted status panels."]),
+          ]),
+          h.span([h.Class("rounded-md bg-primary px-2 py-1 text-xs text-primary-foreground")], ["Auto"]),
+        ]),
+        ...sliderRows.map(([label, value]) =>
+          h.div([h.Class("grid gap-2")], [
+            h.div([h.Class("flex justify-between text-sm")], [
+              h.span([h.Class("font-medium")], [label]),
+              h.span([h.Class("text-muted-foreground")], [value]),
+            ]),
+            h.div([h.Class("h-2 rounded-full bg-secondary")], [
+              h.div([h.Class("h-full rounded-full bg-primary"), h.Style({ width: value })], []),
+            ]),
+          ])
+        ),
+      ]),
+    ]
+  );
+};
+
+const uploadControlsView = (): Html => {
+  const h = html<Message>();
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class(`${panelClasses} grid gap-3`)], [
+        h.h3([h.Class("font-semibold")], ["Upload controls"]),
+        h.div([h.Class("grid place-items-center gap-3 rounded-md border border-dashed border-ring bg-muted p-8 text-center")], [
+          h.div([h.Class("rounded-full bg-primary px-3 py-2 text-sm font-medium text-primary-foreground")], ["Upload"]),
+          h.div([], [
+            h.div([h.Class("font-medium")], ["Drop files here"]),
+            h.p([h.Class(mutedTextClasses)], ["CSV, JSON, or image assets up to 25 MB."]),
+          ]),
+        ]),
+        h.div([h.Class("rounded-md border border-border bg-background p-3 text-sm")], [
+          "theme-studio-export.json",
+        ]),
+      ]),
+    ]
+  );
+};
+
+const profileSecurityFormsView = (): Html => {
+  const h = html<Message>();
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class("grid gap-3 md:grid-cols-2")], [
+        h.div([h.Class(`${panelClasses} grid gap-3`)], [
+          h.h3([h.Class("font-semibold")], ["Profile"]),
+          h.label([h.Class("grid gap-1 text-sm")], ["Name", h.input([h.Value("Ada Lovelace"), h.Class(selectClasses)])]),
+          h.label([h.Class("grid gap-1 text-sm")], ["Handle", h.input([h.Value("@ada"), h.Class(selectClasses)])]),
+        ]),
+        h.div([h.Class(`${panelClasses} grid gap-3`)], [
+          h.h3([h.Class("font-semibold")], ["Security"]),
+          h.div([h.Class("rounded-md border border-ring bg-muted p-3")], ["Two-factor authentication is enabled."]),
+          h.button([h.Type("button"), h.Class(actionClasses)], ["Rotate token"]),
+        ]),
+      ]),
+    ]
+  );
+};
+
+const modalDrawerSurfacesView = (): Html => {
+  const h = html<Message>();
+
+  return themeStudioExampleFrame(
+    [
+      h.div([h.Class("grid gap-3 md:grid-cols-[1fr_320px]")], [
+        h.div([h.Class(`${panelClasses} grid content-start gap-3`)], [
+          h.h3([h.Class("font-semibold")], ["Modal and drawer surfaces"]),
+          h.p([h.Class(mutedTextClasses)], ["A static open surface for previewing dialog tokens without extra story state."]),
+          h.button([h.Type("button"), h.Class(actionClasses)], ["Open settings"]),
+        ]),
+        h.div([h.Class("rounded-md border border-ring bg-popover p-4 text-popover-foreground shadow-lg")], [
+          h.div([h.Class("flex items-start justify-between gap-3")], [
+            h.div([], [
+              h.h3([h.Class("font-semibold")], ["Edit workspace"]),
+              h.p([h.Class(mutedTextClasses)], ["Dialog content uses popover, border, and primary tokens."]),
+            ]),
+            h.button([h.Type("button"), h.Class("rounded-md border border-input px-2 py-1 text-sm")], ["Close"]),
+          ]),
+          h.div([h.Class("mt-4 grid gap-2")], [
+            h.input([h.Value("Design Systems"), h.Class(selectClasses)]),
+            h.button([h.Type("button"), h.Class(actionClasses)], ["Save changes"]),
+          ]),
+        ]),
       ]),
     ]
   );
@@ -540,10 +1076,21 @@ const accordionsView = (): Html => {
 
 const previewBlockViews: Record<string, () => Html> = {
   "dashboard-cards": dashboardCardsView,
+  "sidebar-navigation": sidebarNavigationView,
   "progress-cards": progressCardsView,
   "preference-forms": preferenceFormsView,
+  switches: switchesView,
+  "selects-comboboxes": selectsComboboxesView,
   tabs: tabsView,
   accordions: accordionsView,
+  "dropdown-menu-actions": dropdownMenuActionsView,
+  "calendar-date-controls": calendarDateControlsView,
+  "radio-groups": radioGroupsView,
+  checkboxes: checkboxesView,
+  sliders: slidersView,
+  "upload-controls": uploadControlsView,
+  "profile-security-forms": profileSecurityFormsView,
+  "modal-drawer-surfaces": modalDrawerSurfacesView,
 };
 
 const previewBlockView = (model: Model): Html => {
@@ -553,17 +1100,97 @@ const previewBlockView = (model: Model): Html => {
   return render();
 };
 
+const previewCoverageDownloadHref = (row: PreviewCoverageRow): string =>
+  "registryItemName" in row && typeof row.registryItemName === "string"
+    ? `/${row.registryItemName}.json`
+    : "";
+
+const previewBlockOptionView = (
+  model: Model,
+  row: PreviewCoverageRow
+): Html => {
+  const h = html<Message>();
+  const isRendered = row.status === "rendered";
+  const isSelected = row.id === model.selectedPreviewBlockId;
+  const dependency = "dependency" in row ? row.dependency : "preview";
+  const downloadHref = previewCoverageDownloadHref(row);
+
+  return h.button(
+    [
+      h.Type("button"),
+      h.DataAttribute("theme-studio-block-option", row.id),
+      h.DataAttribute("status", row.status),
+      h.DataAttribute("dependency", dependency),
+      h.DataAttribute("download-href", downloadHref),
+      h.AriaPressed(isSelected ? "true" : "false"),
+      ...(isRendered
+        ? [h.OnClick(SelectedThemeStudioPreviewBlock({ value: row.id }))]
+        : [h.Disabled(true), h.AriaDisabled(true)]),
+      h.Class(
+        clsx(
+          "grid gap-2 rounded-md border p-3 text-left text-sm",
+          isSelected
+            ? "border-ring bg-accent text-accent-foreground ring-2 ring-ring"
+            : "border-border bg-background text-foreground",
+          !isRendered && "cursor-not-allowed opacity-70"
+        )
+      ),
+    ],
+    [
+      h.div([h.Class("flex items-start justify-between gap-2")], [
+        h.span([h.Class("font-medium")], [row.title]),
+        h.span([h.Class("h-3 w-3 shrink-0 rounded-full bg-primary ring-2 ring-ring")], []),
+      ]),
+      h.div([h.Class("text-xs text-muted-foreground")], [dependency]),
+      h.div([h.Class("flex flex-wrap gap-1")], [
+        h.span(
+          [
+            h.Class(
+              clsx(
+                "rounded px-1.5 py-0.5 text-xs font-medium",
+                row.status === "rendered" && "bg-primary text-primary-foreground",
+                row.status === "covered-by-existing-example" &&
+                  "bg-secondary text-secondary-foreground",
+                row.status === "deferred" && "bg-muted text-muted-foreground"
+              )
+            ),
+          ],
+          [toTitle(row.status)]
+        ),
+      ]),
+      "reason" in row && typeof row.reason === "string"
+        ? h.p([h.Class("text-xs leading-5 text-muted-foreground")], [row.reason])
+        : h.span([h.Class("sr-only")], [downloadHref]),
+    ]
+  );
+};
+
+const previewBlockOptionsView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.DataAttribute("testid", "theme-studio-block-options"),
+      h.Class("grid max-h-96 gap-2 overflow-auto pr-1"),
+    ],
+    themeStudioCatalog.previewCoverage.map((row) =>
+      previewBlockOptionView(model, row)
+    )
+  );
+};
+
 const stateText = (model: Model): string =>
   `${model.selectedStyle}/${model.selectedBaseColor}/${model.selectedMode}/${model.selectedPreviewBlockId}`;
 
 export const view = Submodel.defineView<Model, Message>((model): Html => {
   const h = html<Message>();
   const block = selectedPreviewBlock(model);
+  const resolvedTheme = selectedResolvedTheme(model);
 
   return h.div(
     [
       h.DataAttribute("testid", "theme-studio-root"),
-      h.Class("mx-auto grid max-w-6xl gap-5 p-4 text-foreground"),
+      h.Class("mx-auto grid min-h-screen max-w-7xl gap-5 p-4 text-foreground"),
     ],
     [
       h.header([h.Class("grid gap-2")], [
@@ -573,7 +1200,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
         ]),
       ]),
       h.section(
-        [h.Class("grid gap-4 lg:grid-cols-[280px_minmax(0,1fr)]")],
+        [h.Class("grid min-h-[calc(100vh-8rem)] gap-4 lg:grid-cols-[320px_minmax(0,1fr)]")],
         [
           h.div([h.Class(`${panelClasses} grid content-start gap-4`)], [
             selectView({
@@ -604,6 +1231,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               choices: previewBlockChoices(),
               onChange: (value) => SelectedThemeStudioPreviewBlock({ value }),
             }),
+            previewBlockOptionsView(model),
             cssVariableOptionsView(),
             h.div([h.Class("grid gap-2")], [
               h.a(
@@ -630,21 +1258,27 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               h.DataAttribute("selected-style", model.selectedStyle),
               h.DataAttribute("selected-base-color", model.selectedBaseColor),
               h.DataAttribute("selected-mode", model.selectedMode),
+              h.DataAttribute("resolved-mode", resolvedTheme.resolvedMode),
+              h.DataAttribute("theme", resolvedTheme.themeName),
               h.DataAttribute("selected-preview-block", block.id),
               h.Class(
                 clsx(
-                  "shadcn-theme grid min-h-96 gap-4 rounded-md border border-border bg-background p-4 text-foreground",
-                  `shadcn-theme-${model.selectedStyle}`,
-                  `shadcn-theme-${model.selectedBaseColor}`,
-                  model.selectedMode === "dark" && "dark"
+                  "grid h-full min-h-[calc(100vh-8rem)] content-start gap-4 rounded-md border border-border p-4",
+                  themeStudioClassNames(resolvedTheme)
                 )
               ),
-              h.Style(themeStudioStyleProperties(model)),
+              h.Style(themeStudioStylePropertiesForTheme(resolvedTheme)),
             ],
             [
               h.div([h.Class("flex items-start justify-between gap-3")], [
                 h.div([], [
-                  h.h2([h.Class("text-xl font-semibold")], [block.title]),
+                  h.h2(
+                    [
+                      h.DataAttribute("testid", "theme-studio-preview-title"),
+                      h.Class("text-xl font-semibold"),
+                    ],
+                    [block.title]
+                  ),
                   h.p([h.Class(mutedTextClasses)], [block.registryItemName]),
                 ]),
                 h.span(

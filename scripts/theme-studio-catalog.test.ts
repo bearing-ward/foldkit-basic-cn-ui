@@ -90,7 +90,7 @@ describe("Theme Studio catalog", () => {
   test("gives every rendered preview block a download href", async () => {
     const catalog = await catalogForTest();
 
-    expect(catalog.previewBlocks.length).toBeGreaterThan(0);
+    expect(catalog.previewBlocks.length).toBeGreaterThanOrEqual(12);
     for (const block of catalog.previewBlocks) {
       expect(block.downloadHref).toMatch(/^\/.+\.json$/u);
     }
