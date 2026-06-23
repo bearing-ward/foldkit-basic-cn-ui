@@ -12,7 +12,7 @@
       "path": "registry/foldkit/ui/textarea/index.ts",
       "target": "src/ui/textarea/index.ts",
       "type": "registry:ui",
-      "content": "import { Ui } from \"foldkit\";\n\nexport const { descriptionId } = Ui.Textarea;\nexport const { view } = Ui.Textarea;\n\nexport type TextareaAttributes<ParentMessage> =\n  Ui.Textarea.TextareaAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Textarea.ViewConfig<ParentMessage>;\n\nexport {\n  descriptionClasses,\n  fieldClasses,\n  labelClasses,\n  textareaClasses,\n} from \"./view\";\n"
+      "content": "import * as Ui from \"@foldkit/ui\";\n\nexport const { descriptionId } = Ui.Textarea;\nexport const { view } = Ui.Textarea;\n\nexport type TextareaAttributes<ParentMessage> =\n  Ui.Textarea.TextareaAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Textarea.ViewConfig<ParentMessage>;\n\nexport {\n  descriptionClasses,\n  fieldClasses,\n  labelClasses,\n  textareaClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/foldkit/ui/textarea/view.ts",

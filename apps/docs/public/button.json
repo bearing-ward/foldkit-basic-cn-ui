@@ -12,7 +12,7 @@
       "path": "registry/foldkit/ui/button/index.ts",
       "target": "src/ui/button/index.ts",
       "type": "registry:ui",
-      "content": "import { Ui } from \"foldkit\";\n\nexport const { view } = Ui.Button;\n\nexport type ButtonAttributes<ParentMessage> =\n  Ui.Button.ButtonAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Button.ViewConfig<ParentMessage>;\n\nexport {\n  buttonClasses,\n  destructiveButtonClasses,\n  secondaryButtonClasses,\n} from \"./view\";\n"
+      "content": "import * as Ui from \"@foldkit/ui\";\n\nexport const { view } = Ui.Button;\n\nexport type ButtonAttributes<ParentMessage> =\n  Ui.Button.ButtonAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Button.ViewConfig<ParentMessage>;\n\nexport {\n  buttonClasses,\n  destructiveButtonClasses,\n  secondaryButtonClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/foldkit/ui/button/view.ts",

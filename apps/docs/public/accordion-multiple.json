@@ -18,7 +18,7 @@
       "path": "registry/base-ui/examples/accordion-multiple/entry.ts",
       "target": "src/examples/accordion-multiple/entry.ts",
       "type": "registry:example",
-      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeProgram({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Accordion Multiple\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
+      "content": "import { Runtime } from \"foldkit\";\n\nimport { Model, init, update, view } from \"./main\";\n\nconst program = Runtime.makeApplication({\n  Model,\n  init,\n  update,\n  view: (model) => ({\n    title: \"Accordion Multiple\",\n    body: view(model),\n  }),\n  container: document.querySelector(\"#root\"),\n});\n\nRuntime.run(program);\n"
     },
     {
       "path": "registry/base-ui/examples/accordion-multiple/index.html",

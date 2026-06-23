@@ -31,7 +31,7 @@ const primitiveSlugs = new Map([
 
 const primitiveExportPattern = /export \* as (\w+) from/gu;
 const foldkitUiExports = [
-  ...readFileSync("node_modules/foldkit/dist/ui/index.d.ts", "utf-8").matchAll(
+  ...readFileSync("node_modules/@foldkit/ui/dist/index.d.ts", "utf-8").matchAll(
     primitiveExportPattern
   ),
 ].map((match) => match[1]);

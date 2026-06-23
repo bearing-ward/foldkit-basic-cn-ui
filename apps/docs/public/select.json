@@ -12,7 +12,7 @@
       "path": "registry/foldkit/ui/select/index.ts",
       "target": "src/ui/select/index.ts",
       "type": "registry:ui",
-      "content": "import { Ui } from \"foldkit\";\n\nexport const { descriptionId } = Ui.Select;\nexport const { view } = Ui.Select;\n\nexport type SelectAttributes<ParentMessage> =\n  Ui.Select.SelectAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Select.ViewConfig<ParentMessage>;\n\nexport {\n  chevronClasses,\n  descriptionClasses,\n  labelClasses,\n  selectClasses,\n  selectWrapperClasses,\n} from \"./view\";\n"
+      "content": "import * as Ui from \"@foldkit/ui\";\n\nexport const { descriptionId } = Ui.Select;\nexport const { view } = Ui.Select;\n\nexport type SelectAttributes<ParentMessage> =\n  Ui.Select.SelectAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Select.ViewConfig<ParentMessage>;\n\nexport {\n  chevronClasses,\n  descriptionClasses,\n  labelClasses,\n  selectClasses,\n  selectWrapperClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/foldkit/ui/select/view.ts",

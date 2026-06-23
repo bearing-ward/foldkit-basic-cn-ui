@@ -11,7 +11,8 @@ const readJson = (relativePath) =>
 const readText = (relativePath) =>
   fs.readFileSync(path.join(rootDir, relativePath), "utf-8");
 
-const exists = (relativePath) => fs.existsSync(path.join(rootDir, relativePath));
+const exists = (relativePath) =>
+  fs.existsSync(path.join(rootDir, relativePath));
 
 const failures = [];
 const packageJson = readJson("package.json");
@@ -74,9 +75,7 @@ const shadcnButtonSource = sources.get("shadcn-button");
 
 if (
   typeof shadcnButtonSource?.url !== "string" ||
-  !shadcnButtonSource.url.includes(
-    "apps/v4/registry/new-york-v4/ui/button.tsx"
-  )
+  !shadcnButtonSource.url.includes("apps/v4/registry/new-york-v4/ui/button.tsx")
 ) {
   failures.push("shadcn Button source must include the upstream Button URL");
 }
@@ -88,7 +87,9 @@ if (
   baseUiPackageSource?.packageName !== "@base-ui/react" ||
   baseUiButtonTypesSource?.packageName !== "@base-ui/react"
 ) {
-  failures.push("Base UI source references must include @base-ui/react metadata");
+  failures.push(
+    "Base UI source references must include @base-ui/react metadata"
+  );
 }
 
 for (const source of manifest.sources ?? []) {
@@ -106,7 +107,9 @@ for (const source of manifest.sources ?? []) {
     continue;
   }
 
-  const contract = readJson(path.join("registry/upstream", source.derivedContractPath));
+  const contract = readJson(
+    path.join("registry/upstream", source.derivedContractPath)
+  );
 
   if (
     typeof contract.upstreamSnapshotDigest !== "string" ||
@@ -124,7 +127,9 @@ const shadcnThemeSource = exists("src/openstory/shadcnTheme.ts")
 
 if (
   shadcnThemeSource.length > 0 &&
-  !shadcnThemeSource.includes("../../registry/upstream/derived/shadcn-theme.json")
+  !shadcnThemeSource.includes(
+    "../../registry/upstream/derived/shadcn-theme.json"
+  )
 ) {
   failures.push(
     "OpenStory shadcn theme catalog must load registry/upstream/derived/shadcn-theme.json"
@@ -133,37 +138,60 @@ if (
 
 if (exists("src/preview.ts")) {
   const previewSource = readText("src/preview.ts");
-  const shadcnThemeContract = exists("registry/upstream/derived/shadcn-theme.json")
+  const shadcnThemeContract = exists(
+    "registry/upstream/derived/shadcn-theme.json"
+  )
     ? readJson("registry/upstream/derived/shadcn-theme.json")
-    : { themes: [], defaultStyle: "rhea", defaultBaseColor: "neutral", defaultMode: "light" };
+    : {
+        themes: [],
+        defaultStyle: "rhea",
+        defaultBaseColor: "neutral",
+        defaultMode: "light",
+      };
   const expectedThemeValues = [
     ...new Set(
       (shadcnThemeContract.themes ?? []).map(
         (theme) => `${theme.style}-${theme.baseColor}`
       )
     ),
-  ].sort();
+  ].toSorted();
   const previewThemeValues = [
-    ...previewSource.matchAll(/\{\s*value:\s*["']([^"']+-[^"']+)["'],\s*title:/gu),
+    ...previewSource.matchAll(
+      /\{\s*value:\s*["']([^"']+-[^"']+)["'],\s*title:/gu
+    ),
   ]
     .map((match) => match[1])
-    .sort();
+    .toSorted();
   const previewModeValues = [
-    ...previewSource.matchAll(/\{\s*value:\s*["'](light|dark|system)["'],\s*title:/gu),
+    ...previewSource.matchAll(
+      /\{\s*value:\s*["'](light|dark|system)["'],\s*title:/gu
+    ),
   ]
     .map((match) => match[1])
-    .sort();
+    .toSorted();
   const expectedInitialGlobals = `initialGlobals: { shadcnTheme: "${shadcnThemeContract.defaultStyle}-${shadcnThemeContract.defaultBaseColor}", shadcnMode: "${shadcnThemeContract.defaultMode}" }`;
 
-  if (JSON.stringify(previewThemeValues) !== JSON.stringify(expectedThemeValues)) {
+  if (
+    JSON.stringify(previewThemeValues) !== JSON.stringify(expectedThemeValues)
+  ) {
     failures.push(
       "src/preview.ts shadcn theme toolbar values must match derived style/base-color pairs"
     );
   }
 
-  if (JSON.stringify(previewModeValues) !== JSON.stringify(["dark", "light", "system"])) {
+  if (JSON.stringify(previewModeValues) !== JSON.stringify(["dark", "light"])) {
     failures.push(
-      "src/preview.ts shadcn mode toolbar values must be light, dark, and system"
+      "src/preview.ts shadcn mode toolbar values must be light and dark"
+    );
+  }
+
+  if (
+    !previewSource.includes('title: "Toggle theme"') ||
+    !previewSource.includes('action: "toggle"') ||
+    !previewSource.includes('toggleValues: ["light", "dark"]')
+  ) {
+    failures.push(
+      "src/preview.ts shadcn mode toolbar must expose a Toggle theme action"
     );
   }
 

@@ -8,14 +8,12 @@ import {
   defaultShadcnThemeName,
   initialShadcnThemeGlobals,
   isShadcnStoryContext,
-  nextShadcnModeForToggle,
   resolveShadcnTheme,
   resolveShadcnThemeName,
   shadcnThemeCatalog,
   shadcnThemeClassesForGlobals,
   shadcnThemeColorVariableValue,
   shadcnModeGlobalKey,
-  shadcnThemeToggleScript,
   shadcnThemeGlobalKey,
   shadcnThemeGlobalTypes,
   shadcnThemeStyleProperties,
@@ -46,15 +44,20 @@ describe("shadcn OpenStory theme support", () => {
       [shadcnThemeGlobalKey]: "rhea-neutral",
       [shadcnModeGlobalKey]: "light",
     });
-    expect(resolveShadcnThemeName(initialShadcnThemeGlobals)).toBe(defaultShadcnThemeName);
+    expect(resolveShadcnThemeName(initialShadcnThemeGlobals)).toBe(
+      defaultShadcnThemeName
+    );
   });
 
   test("maps toolbar items to de-duplicated theme keys and color modes", () => {
     const themeKeys = new Set(
-      shadcnThemeCatalog.themes.map((theme) => `${theme.style}-${theme.baseColor}`),
+      shadcnThemeCatalog.themes.map(
+        (theme) => `${theme.style}-${theme.baseColor}`
+      )
     );
     const { items } = shadcnThemeGlobalTypes[shadcnThemeGlobalKey].toolbar;
-    const { items: modes } = shadcnThemeGlobalTypes[shadcnModeGlobalKey].toolbar;
+    const modeToolbar = shadcnThemeGlobalTypes[shadcnModeGlobalKey].toolbar;
+    const { items: modes } = modeToolbar;
     const itemValues = items.map((item) => item.value);
 
     expect(items.length).toBe(themeKeys.size);
@@ -70,7 +73,10 @@ describe("shadcn OpenStory theme support", () => {
     ]) {
       expect(itemValues).toContain(value);
     }
-    expect(modes.map((item) => item.value)).toEqual(["light", "dark", "system"]);
+    expect(modeToolbar.title).toBe("Toggle theme");
+    expect(modeToolbar.action).toBe("toggle");
+    expect(modeToolbar.toggleValues).toEqual(["light", "dark"]);
+    expect(modes.map((item) => item.value)).toEqual(["light", "dark"]);
   });
 
   test("resolves selected theme and mode globals", () => {
@@ -78,7 +84,7 @@ describe("shadcn OpenStory theme support", () => {
       resolveShadcnTheme({
         [shadcnThemeGlobalKey]: "rhea-amber",
         [shadcnModeGlobalKey]: "dark",
-      }),
+      })
     ).toMatchObject({
       themeName: "rhea-amber-dark",
       themeKey: "rhea-amber",
@@ -90,7 +96,7 @@ describe("shadcn OpenStory theme support", () => {
       resolveShadcnTheme({
         [shadcnThemeGlobalKey]: "nova-zinc",
         [shadcnModeGlobalKey]: "dark",
-      }),
+      })
     ).toMatchObject({
       themeName: "nova-zinc-light",
       themeKey: "nova-zinc",
@@ -104,8 +110,8 @@ describe("shadcn OpenStory theme support", () => {
           [shadcnThemeGlobalKey]: "rhea-neutral",
           [shadcnModeGlobalKey]: "system",
         },
-        "dark",
-      ),
+        "dark"
+      )
     ).toMatchObject({
       themeName: "rhea-neutral-dark",
       themeKey: "rhea-neutral",
@@ -115,10 +121,12 @@ describe("shadcn OpenStory theme support", () => {
   });
 
   test("keeps old combined theme-name globals compatible", () => {
-    expect(resolveShadcnThemeName({ [shadcnThemeGlobalKey]: "rhea-neutral-dark" })).toBe(
-      "rhea-neutral-dark",
-    );
-    expect(resolveShadcnTheme({ [shadcnThemeGlobalKey]: "nova-zinc-light" })).toMatchObject({
+    expect(
+      resolveShadcnThemeName({ [shadcnThemeGlobalKey]: "rhea-neutral-dark" })
+    ).toBe("rhea-neutral-dark");
+    expect(
+      resolveShadcnTheme({ [shadcnThemeGlobalKey]: "nova-zinc-light" })
+    ).toMatchObject({
       themeName: "nova-zinc-light",
       themeKey: "nova-zinc",
       style: "nova",
@@ -133,20 +141,26 @@ describe("shadcn OpenStory theme support", () => {
       [shadcnModeGlobalKey]: "dark",
     };
 
-    expect(shadcnThemeClassesForGlobals(globals)).toContain("shadcn-theme-rhea");
+    expect(shadcnThemeClassesForGlobals(globals)).toContain(
+      "shadcn-theme-rhea"
+    );
     expect(shadcnThemeClassesForGlobals(globals)).toContain("dark");
     expect(shadcnThemeClassesForGlobals(globals)).toContain("bg-background");
     expect(shadcnThemeClassesForGlobals(globals)).toContain("text-foreground");
-    expect(shadcnThemeStyleProperties(globals)["--primary"]).toMatch(/^oklch\(/u);
-    expect(shadcnThemeStyleProperties(globals)["--color-primary"]).toBe(
-      shadcnThemeStyleProperties(globals)["--primary"],
+    expect(shadcnThemeStyleProperties(globals)["--primary"]).toMatch(
+      /^oklch\(/u
     );
-    expect(shadcnThemeColorVariableValue("210 40% 98%")).toBe("hsl(210 40% 98%)");
+    expect(shadcnThemeStyleProperties(globals)["--color-primary"]).toBe(
+      shadcnThemeStyleProperties(globals)["--primary"]
+    );
+    expect(shadcnThemeColorVariableValue("210 40% 98%")).toBe(
+      "hsl(210 40% 98%)"
+    );
     expect(shadcnThemeColorVariableValue("oklch(0.922 0 0)")).toBe(
-      "oklch(0.922 0 0)",
+      "oklch(0.922 0 0)"
     );
     expect(shadcnThemeStyleProperties(globals)["--radius-md"]).toBe(
-      "calc(0.625rem - 2px)",
+      "calc(0.625rem - 2px)"
     );
   });
 
@@ -164,7 +178,7 @@ describe("shadcn OpenStory theme support", () => {
       context("shadcn/Button", {
         [shadcnThemeGlobalKey]: "rhea-neutral",
         [shadcnModeGlobalKey]: "dark",
-      }),
+      })
     );
 
     expect(decorated).not.toBe(ButtonDefaultExample);
@@ -182,7 +196,7 @@ describe("shadcn OpenStory theme support", () => {
       context("shadcn/Button", {
         [shadcnThemeGlobalKey]: "rhea-neutral",
         [shadcnModeGlobalKey]: "dark",
-      }),
+      })
     ) as typeof ButtonDefaultExample;
 
     Scene.scene(
@@ -190,36 +204,21 @@ describe("shadcn OpenStory theme support", () => {
       Scene.with({}),
       Scene.expect(Scene.testId("shadcn-theme-wrapper")).toHaveAttr(
         "data-shadcn-theme",
-        "rhea-neutral-dark",
+        "rhea-neutral-dark"
       ),
       Scene.expect(Scene.testId("shadcn-theme-wrapper")).toHaveAttr(
         "data-shadcn-theme-key",
-        "rhea-neutral",
+        "rhea-neutral"
       ),
       Scene.expect(Scene.testId("shadcn-theme-wrapper")).toHaveAttr(
         "data-shadcn-mode",
-        "dark",
+        "dark"
       ),
       Scene.expect(Scene.testId("shadcn-theme-wrapper")).toHaveAttr(
         "data-shadcn-resolved-mode",
-        "dark",
-      ),
-      Scene.expect(Scene.testId("shadcn-theme-toggle")).toHaveAttr(
-        "data-shadcn-next-mode",
-        "light",
-      ),
-      Scene.expect(Scene.role("button", { name: "Toggle shadcn mode" })).toHaveAttr(
-        "aria-pressed",
-        "true",
-      ),
+        "dark"
+      )
     );
-  });
-
-  test("builds a mode-toggle globals message for the OpenStory shell", () => {
-    expect(nextShadcnModeForToggle({ resolvedMode: "light" })).toBe("dark");
-    expect(nextShadcnModeForToggle({ resolvedMode: "dark" })).toBe("light");
-    expect(shadcnThemeToggleScript("dark")).toContain('type:"globals-changed"');
-    expect(shadcnThemeToggleScript("dark")).toContain('globals:{"shadcnMode":"dark"}');
   });
 
   test("passes resolved shadcn theme through view inputs", () => {
@@ -231,7 +230,9 @@ describe("shadcn OpenStory theme support", () => {
       view: (_model: unknown, viewInputs?: unknown) => {
         const h = html<never>();
         const shadcnTheme =
-          typeof viewInputs === "object" && viewInputs !== null && "shadcnTheme" in viewInputs
+          typeof viewInputs === "object" &&
+          viewInputs !== null &&
+          "shadcnTheme" in viewInputs
             ? viewInputs.shadcnTheme
             : undefined;
 
@@ -245,10 +246,10 @@ describe("shadcn OpenStory theme support", () => {
                 "style" in shadcnTheme &&
                 typeof shadcnTheme.style === "string"
                 ? shadcnTheme.style
-                : "missing",
+                : "missing"
             ),
           ],
-          ["Captured"],
+          ["Captured"]
         );
       },
     };
@@ -257,7 +258,7 @@ describe("shadcn OpenStory theme support", () => {
       context("shadcn/Button", {
         [shadcnThemeGlobalKey]: "nova-zinc",
         [shadcnModeGlobalKey]: "dark",
-      }),
+      })
     ) as typeof capturedView;
 
     Scene.scene(
@@ -265,12 +266,12 @@ describe("shadcn OpenStory theme support", () => {
       Scene.with({}),
       Scene.expect(Scene.testId("captured-theme")).toHaveAttr(
         "data-captured-style",
-        "nova",
+        "nova"
       ),
       Scene.expect(Scene.testId("shadcn-theme-wrapper")).toHaveAttr(
         "data-shadcn-resolved-mode",
-        "light",
-      ),
+        "light"
+      )
     );
   });
 
@@ -280,7 +281,7 @@ describe("shadcn OpenStory theme support", () => {
       context("shadcn/Button", {
         [shadcnThemeGlobalKey]: "nova-zinc",
         [shadcnModeGlobalKey]: "light",
-      }),
+      })
     ) as typeof ButtonDefaultExample;
 
     Scene.scene(
@@ -288,8 +289,8 @@ describe("shadcn OpenStory theme support", () => {
       Scene.with({}),
       Scene.expect(Scene.role("button", { name: "Button" })).toHaveAttr(
         "data-style",
-        "base-nova",
-      ),
+        "base-nova"
+      )
     );
   });
 });

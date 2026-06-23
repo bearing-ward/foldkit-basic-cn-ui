@@ -1,12 +1,15 @@
-import { expect, test, type APIRequestContext } from "@playwright/test";
+import { expect, test } from "@playwright/test";
+import type { APIRequestContext } from "@playwright/test";
 
 type OpenStoryManifest = Readonly<{
   globalTypes: Record<string, unknown>;
   initialGlobals: Record<string, unknown>;
-  stories: ReadonlyArray<Readonly<{ id: string; name: string; title: string }>>;
+  stories: readonly Readonly<{ id: string; name: string; title: string }>[];
 }>;
 
-const getManifest = async (request: APIRequestContext): Promise<OpenStoryManifest> => {
+const getManifest = async (
+  request: APIRequestContext
+): Promise<OpenStoryManifest> => {
   const response = await request.get("/__openstory/manifest.json");
   expect(response.ok()).toBe(true);
   return (await response.json()) as OpenStoryManifest;
@@ -30,12 +33,25 @@ test("OpenStory manifest exposes shadcn theme and mode globals", async ({
 }) => {
   const manifest = await getManifest(request);
   const shadcnThemeGlobal = manifest.globalTypes.shadcnTheme as {
-    toolbar: { items: ReadonlyArray<{ value: string }> };
+    toolbar: { items: readonly { value: string }[] };
   };
-  const shadcnThemeValues = shadcnThemeGlobal.toolbar.items.map((item) => item.value);
+  const shadcnModeGlobal = manifest.globalTypes.shadcnMode as {
+    toolbar: {
+      title: string;
+      action: string;
+      toggleValues: readonly string[];
+      items: readonly { value: string }[];
+    };
+  };
+  const shadcnThemeValues = shadcnThemeGlobal.toolbar.items.map(
+    (item) => item.value
+  );
+  const shadcnModeValues = shadcnModeGlobal.toolbar.items.map(
+    (item) => item.value
+  );
 
-  expect(Object.keys(manifest.globalTypes).sort()).toContain("shadcnMode");
-  expect(Object.keys(manifest.globalTypes).sort()).toContain("shadcnTheme");
+  expect(Object.keys(manifest.globalTypes).toSorted()).toContain("shadcnMode");
+  expect(Object.keys(manifest.globalTypes).toSorted()).toContain("shadcnTheme");
   expect(manifest.initialGlobals).toMatchObject({
     shadcnMode: "light",
     shadcnTheme: "rhea-neutral",
@@ -49,6 +65,12 @@ test("OpenStory manifest exposes shadcn theme and mode globals", async ({
   ]) {
     expect(shadcnThemeValues).toContain(value);
   }
+  expect(shadcnModeGlobal.toolbar).toMatchObject({
+    title: "Toggle theme",
+    action: "toggle",
+    toggleValues: ["light", "dark"],
+  });
+  expect(shadcnModeValues).toEqual(["light", "dark"]);
 });
 
 test("top-bar shadcn theme and mode selection changes iframe theme tokens", async ({
@@ -60,16 +82,19 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
   await page.goto(`/?id=${encodeURIComponent(storyId)}`);
 
   await expect(page.getByLabel("shadcn")).toBeVisible();
-  await expect(page.getByLabel("mode")).toBeVisible();
+  await expect(page.getByLabel("Toggle theme")).toBeVisible();
 
   const frame = page.frameLocator(`iframe[title="${storyId}"]`);
   const wrapper = frame.getByTestId("shadcn-theme-wrapper");
-  await expect(wrapper).toHaveAttribute("data-shadcn-theme", "rhea-neutral-light");
+  await expect(wrapper).toHaveAttribute(
+    "data-shadcn-theme",
+    "rhea-neutral-light"
+  );
   await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "light");
   await expect(wrapper).toHaveClass(/bg-background/u);
   await expect(wrapper).toHaveClass(/text-foreground/u);
-  const initialWrapperBackground = await wrapper.evaluate((element) =>
-    getComputedStyle(element).backgroundColor
+  const initialWrapperBackground = await wrapper.evaluate(
+    (element) => getComputedStyle(element).backgroundColor
   );
   const initialPrimary = await wrapper.evaluate((element) =>
     getComputedStyle(element).getPropertyValue("--primary").trim()
@@ -81,7 +106,10 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
   await page.getByLabel("shadcn").click();
   await page.getByRole("option", { name: "Rhea Amber" }).click();
 
-  await expect(wrapper).toHaveAttribute("data-shadcn-theme", "rhea-amber-light");
+  await expect(wrapper).toHaveAttribute(
+    "data-shadcn-theme",
+    "rhea-amber-light"
+  );
   await expect(wrapper).toHaveAttribute("data-shadcn-theme-key", "rhea-amber");
   const amberPrimary = await wrapper.evaluate((element) =>
     getComputedStyle(element).getPropertyValue("--primary").trim()
@@ -92,8 +120,7 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   expect(amberButtonBackground).not.toBe(initialButtonBackground);
 
-  await page.getByLabel("mode").click();
-  await page.getByRole("option", { name: "Dark" }).click();
+  await page.getByLabel("Toggle theme").click();
 
   await expect(wrapper).toHaveAttribute("data-shadcn-theme", "rhea-amber-dark");
   await expect(wrapper).toHaveAttribute("data-shadcn-mode", "dark");
@@ -102,14 +129,23 @@ test("top-bar shadcn theme and mode selection changes iframe theme tokens", asyn
     getComputedStyle(element).getPropertyValue("--primary").trim()
   );
   expect(darkPrimary).not.toBe(amberPrimary);
-  const darkWrapperBackground = await wrapper.evaluate((element) =>
-    getComputedStyle(element).backgroundColor
+  const darkWrapperBackground = await wrapper.evaluate(
+    (element) => getComputedStyle(element).backgroundColor
   );
   expect(darkWrapperBackground).not.toBe(initialWrapperBackground);
   const darkButtonBackground = await frame
     .getByRole("button", { name: "Button" })
     .evaluate((element) => getComputedStyle(element).backgroundColor);
   expect(darkButtonBackground).not.toBe(initialButtonBackground);
+
+  await page.getByLabel("Toggle theme").click();
+
+  await expect(wrapper).toHaveAttribute(
+    "data-shadcn-theme",
+    "rhea-amber-light"
+  );
+  await expect(wrapper).toHaveAttribute("data-shadcn-mode", "light");
+  await expect(wrapper).toHaveAttribute("data-shadcn-resolved-mode", "light");
 });
 
 test("legacy nova-zinc globals still select the Nova Button recipe", async ({

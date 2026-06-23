@@ -12,7 +12,7 @@
       "path": "registry/foldkit/ui/fieldset/index.ts",
       "target": "src/ui/fieldset/index.ts",
       "type": "registry:ui",
-      "content": "import { Ui } from \"foldkit\";\n\nexport const { view, legendId, descriptionId } = Ui.Fieldset;\n\nexport type FieldsetAttributes<ParentMessage> =\n  Ui.Fieldset.FieldsetAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Fieldset.ViewConfig<ParentMessage>;\n\nexport {\n  descriptionClasses,\n  fieldClasses,\n  fieldsClasses,\n  fieldsetClasses,\n  inputClasses,\n  labelClasses,\n  legendClasses,\n  textareaClasses,\n} from \"./view\";\n"
+      "content": "import * as Ui from \"@foldkit/ui\";\n\nexport const { view, legendId, descriptionId } = Ui.Fieldset;\n\nexport type FieldsetAttributes<ParentMessage> =\n  Ui.Fieldset.FieldsetAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Fieldset.ViewConfig<ParentMessage>;\n\nexport {\n  descriptionClasses,\n  fieldClasses,\n  fieldsClasses,\n  fieldsetClasses,\n  inputClasses,\n  labelClasses,\n  legendClasses,\n  textareaClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/foldkit/ui/fieldset/view.ts",

@@ -12,7 +12,7 @@
       "path": "registry/foldkit/ui/input/index.ts",
       "target": "src/ui/input/index.ts",
       "type": "registry:ui",
-      "content": "import { Ui } from \"foldkit\";\n\nexport const { descriptionId } = Ui.Input;\nexport const { view } = Ui.Input;\n\nexport type InputAttributes<ParentMessage> =\n  Ui.Input.InputAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Input.ViewConfig<ParentMessage>;\n\nexport {\n  descriptionClasses,\n  fieldClasses,\n  inputClasses,\n  labelClasses,\n} from \"./view\";\n"
+      "content": "import * as Ui from \"@foldkit/ui\";\n\nexport const { descriptionId } = Ui.Input;\nexport const { view } = Ui.Input;\n\nexport type InputAttributes<ParentMessage> =\n  Ui.Input.InputAttributes<ParentMessage>;\nexport type ViewConfig<ParentMessage> = Ui.Input.ViewConfig<ParentMessage>;\n\nexport {\n  descriptionClasses,\n  fieldClasses,\n  inputClasses,\n  labelClasses,\n} from \"./view\";\n"
     },
     {
       "path": "registry/foldkit/ui/input/view.ts",

@@ -1,5 +1,5 @@
-import type { Decorator, Preview, StoryContext } from "openstory/foldkit";
 import { html } from "foldkit/html";
+import type { Decorator, Preview, StoryContext } from "openstory/foldkit";
 
 import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 
@@ -9,12 +9,17 @@ type ShadcnThemeEntry = ShadcnThemeContract["themes"][number];
 type FoldkitProgramConfig = Readonly<{
   Model: unknown;
   init: (...args: readonly unknown[]) => readonly [unknown, readonly unknown[]];
-  update: (model: unknown, message: unknown) => readonly [unknown, readonly unknown[]];
+  update: (
+    model: unknown,
+    message: unknown
+  ) => readonly [unknown, readonly unknown[]];
   view: (model: unknown, viewInputs?: unknown) => unknown;
 }>;
 
 type FoldkitProgramContainer = Readonly<{
-  program: FoldkitProgramConfig | ((args: unknown, context: unknown) => unknown);
+  program:
+    | FoldkitProgramConfig
+    | ((args: unknown, context: unknown) => unknown);
 }>;
 
 type HtmlChild = Parameters<ReturnType<typeof html<never>>["div"]>[1][number];
@@ -46,18 +51,25 @@ const colorModes = [
   "system",
 ] as const satisfies readonly ShadcnColorMode[];
 
+const toolbarColorModes = [
+  "light",
+  "dark",
+] as const satisfies readonly ShadcnColorMode[];
+
 const toTitle = (value: string): string =>
   value
     .split("-")
     .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
     .join(" ");
 
-const themeKey = (theme: Pick<ShadcnThemeEntry, "style" | "baseColor">): string =>
-  `${theme.style}-${theme.baseColor}`;
+const themeKey = (
+  theme: Pick<ShadcnThemeEntry, "style" | "baseColor">
+): string => `${theme.style}-${theme.baseColor}`;
 
 const uniqueThemeEntriesByKey = themeContract.themes.filter(
   (theme, index, themes) =>
-    themes.findIndex((candidate) => themeKey(candidate) === themeKey(theme)) === index,
+    themes.findIndex((candidate) => themeKey(candidate) === themeKey(theme)) ===
+    index
 );
 
 export const shadcnThemeNames = uniqueThemeEntriesByKey.map(themeKey);
@@ -65,10 +77,10 @@ export const shadcnThemeNames = uniqueThemeEntriesByKey.map(themeKey);
 const themeIndicatorColor = (theme: ShadcnThemeEntry): string => {
   const key = themeKey(theme);
   const lightTheme = themeContract.themes.find(
-    (candidate) => themeKey(candidate) === key && candidate.mode === "light",
+    (candidate) => themeKey(candidate) === key && candidate.mode === "light"
   );
   const firstMatchingTheme = themeContract.themes.find(
-    (candidate) => themeKey(candidate) === key,
+    (candidate) => themeKey(candidate) === key
   );
 
   return (
@@ -86,11 +98,9 @@ const modeIndicators = {
   system: { icon: "monitor", color: "oklch(0.556 0 0)" },
 } satisfies Record<ShadcnColorMode, { icon: string; color: string }>;
 
-export const defaultShadcnThemeName =
-  `${themeContract.defaultStyle}-${themeContract.defaultBaseColor}-${themeContract.defaultMode}`;
+export const defaultShadcnThemeName = `${themeContract.defaultStyle}-${themeContract.defaultBaseColor}-${themeContract.defaultMode}`;
 
-export const defaultShadcnThemeKey =
-  `${themeContract.defaultStyle}-${themeContract.defaultBaseColor}`;
+export const defaultShadcnThemeKey = `${themeContract.defaultStyle}-${themeContract.defaultBaseColor}`;
 
 export const shadcnThemeGlobalTypes = {
   [shadcnThemeGlobalKey]: {
@@ -114,10 +124,11 @@ export const shadcnThemeGlobalTypes = {
     description: "Source-derived shadcn color mode.",
     defaultValue: themeContract.defaultMode,
     toolbar: {
-      title: "mode",
+      title: "Toggle theme",
       icon: "circle",
-      dynamicTitle: true,
-      items: colorModes.map((mode) => ({
+      action: "toggle",
+      toggleValues: ["light", "dark"],
+      items: toolbarColorModes.map((mode) => ({
         value: mode,
         title: toTitle(mode),
         icon: modeIndicators[mode].icon,
@@ -164,10 +175,10 @@ const themeByName = (themeName: unknown): ShadcnThemeEntry | undefined =>
 
 const themeByKeyAndMode = (
   selectedThemeKey: string,
-  mode: "light" | "dark",
+  mode: "light" | "dark"
 ): ShadcnThemeEntry | undefined =>
   themeContract.themes.find(
-    (theme) => themeKey(theme) === selectedThemeKey && theme.mode === mode,
+    (theme) => themeKey(theme) === selectedThemeKey && theme.mode === mode
   );
 
 const selectedThemeKey = (themeKeyValue: unknown): string =>
@@ -176,7 +187,7 @@ const selectedThemeKey = (themeKeyValue: unknown): string =>
     : defaultShadcnThemeKey;
 
 const legacyNovaZincTheme = (
-  requestedMode: ShadcnColorMode,
+  requestedMode: ShadcnColorMode
 ): ResolvedShadcnTheme => {
   const zincTheme =
     themeByKeyAndMode("rhea-zinc", "light") ??
@@ -195,7 +206,7 @@ const legacyNovaZincTheme = (
 };
 
 const resolveSystemMode = (
-  systemMode: "light" | "dark" | undefined,
+  systemMode: "light" | "dark" | undefined
 ): "light" | "dark" => {
   if (systemMode !== undefined) {
     return systemMode;
@@ -211,7 +222,7 @@ const resolveSystemMode = (
 
 export const resolveShadcnMode = (
   globals: Record<string, unknown> | undefined,
-  systemMode?: "light" | "dark",
+  systemMode?: "light" | "dark"
 ): ShadcnColorMode => {
   const requestedMode = globals?.[shadcnModeGlobalKey];
   if (isShadcnColorMode(requestedMode)) {
@@ -225,13 +236,13 @@ export const resolveShadcnMode = (
 
 const resolvedModeFor = (
   requestedMode: ShadcnColorMode,
-  systemMode: "light" | "dark" | undefined,
+  systemMode: "light" | "dark" | undefined
 ): "light" | "dark" =>
   requestedMode === "system" ? resolveSystemMode(systemMode) : requestedMode;
 
 export const resolveShadcnTheme = (
   globals: Record<string, unknown> | undefined,
-  systemMode?: "light" | "dark",
+  systemMode?: "light" | "dark"
 ): ResolvedShadcnTheme => {
   const requestedTheme = globals?.[shadcnThemeGlobalKey];
   const oldCombinedTheme = themeByName(globals?.[shadcnThemeGlobalKey]);
@@ -283,12 +294,12 @@ export const resolveShadcnTheme = (
 
 export const resolveShadcnThemeName = (
   globals: Record<string, unknown> | undefined,
-  systemMode?: "light" | "dark",
+  systemMode?: "light" | "dark"
 ): string => resolveShadcnTheme(globals, systemMode).themeName;
 
 export const shadcnThemeClassesForGlobals = (
   globals: Record<string, unknown> | undefined,
-  systemMode?: "light" | "dark",
+  systemMode?: "light" | "dark"
 ): string => {
   const theme = resolveShadcnTheme(globals, systemMode);
   return `shadcn-theme shadcn-theme-${theme.style} shadcn-theme-${theme.baseColor} ${theme.resolvedMode} bg-background text-foreground`;
@@ -303,7 +314,7 @@ export const shadcnThemeColorVariableValue = (value: string): string => {
 
 export const shadcnThemeStyleProperties = (
   globals: Record<string, unknown> | undefined,
-  systemMode?: "light" | "dark",
+  systemMode?: "light" | "dark"
 ): Record<string, string> => {
   const theme = resolveShadcnTheme(globals, systemMode);
   return Object.fromEntries(
@@ -321,44 +332,12 @@ export const shadcnThemeStyleProperties = (
         [`--${token}`, value],
         [`--color-${token}`, shadcnThemeColorVariableValue(value)],
       ];
-    }),
-  );
-};
-
-export const nextShadcnModeForToggle = (
-  theme: Pick<ResolvedShadcnTheme, "resolvedMode">,
-): "light" | "dark" => (theme.resolvedMode === "dark" ? "light" : "dark");
-
-export const shadcnThemeToggleScript = (nextMode: "light" | "dark"): string =>
-  `window.parent&&window.parent.postMessage({source:"openstory",type:"globals-changed",globals:{${JSON.stringify(
-    shadcnModeGlobalKey,
-  )}:${JSON.stringify(nextMode)}}},window.location.origin)`;
-
-const shadcnThemeToggleButton = (
-  h: ReturnType<typeof html<never>>,
-  resolvedTheme: ResolvedShadcnTheme,
-): HtmlChild => {
-  const nextMode = nextShadcnModeForToggle(resolvedTheme);
-  const label = nextMode === "dark" ? "Dark" : "Light";
-
-  return h.button(
-    [
-      h.Type("button"),
-      h.Attribute("onclick", shadcnThemeToggleScript(nextMode)),
-      h.AriaLabel("Toggle shadcn mode"),
-      h.AriaPressed(resolvedTheme.resolvedMode === "dark" ? "true" : "false"),
-      h.DataAttribute("testid", "shadcn-theme-toggle"),
-      h.DataAttribute("shadcn-next-mode", nextMode),
-      h.Class(
-        "fixed right-3 top-3 z-50 inline-flex h-8 items-center justify-center rounded-md border border-border bg-background px-3 text-xs font-medium text-foreground shadow-sm transition hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-      ),
-    ],
-    [label],
+    })
   );
 };
 
 export const isShadcnStoryContext = (
-  context: Pick<StoryContext<unknown>, "title" | "parameters">,
+  context: Pick<StoryContext<unknown>, "title" | "parameters">
 ): boolean => {
   if (context.title.startsWith("shadcn/")) {
     return true;
@@ -368,7 +347,7 @@ export const isShadcnStoryContext = (
 
 const wrapProgramConfig = (
   config: FoldkitProgramConfig,
-  globals: Record<string, unknown> | undefined,
+  globals: Record<string, unknown> | undefined
 ): FoldkitProgramConfig => ({
   ...config,
   view: (model, viewInputs) => {
@@ -378,7 +357,7 @@ const wrapProgramConfig = (
       model,
       isObject(viewInputs)
         ? { ...viewInputs, shadcnTheme: resolvedTheme }
-        : { shadcnTheme: resolvedTheme },
+        : { shadcnTheme: resolvedTheme }
     ) as HtmlChild;
     return h.div(
       [
@@ -390,14 +369,14 @@ const wrapProgramConfig = (
         h.DataAttribute("testid", "shadcn-theme-wrapper"),
         h.Style(shadcnThemeStyleProperties(globals)),
       ],
-      [shadcnThemeToggleButton(h, resolvedTheme), storyView],
+      [storyView]
     );
   },
 });
 
 const wrapProgram = (
   value: unknown,
-  globals: Record<string, unknown> | undefined,
+  globals: Record<string, unknown> | undefined
 ): unknown => {
   if (hasProgramFields(value)) {
     return wrapProgramConfig(value, globals);
