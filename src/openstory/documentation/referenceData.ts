@@ -1,4 +1,17 @@
 import {
+  alertDialogActionsClasses,
+  alertDialogBackdropClasses,
+  alertDialogCancelClasses,
+  alertDialogConfirmClasses,
+  alertDialogDescriptionClasses,
+  alertDialogPopupClasses,
+  alertDialogPortalClasses,
+  alertDialogRootClasses,
+  alertDialogTitleClasses,
+  alertDialogTriggerClasses,
+  alertDialogViewportClasses,
+} from "../../../registry/base-ui/ui/base-ui-alert-dialog/view";
+import {
   avatarBadgeClasses,
   avatarBaseClasses,
   avatarFallbackClasses,
@@ -7,8 +20,9 @@ import {
   avatarImageClasses,
   avatarSizeClassesBySize,
 } from "../../../registry/base-ui/ui/base-ui-avatar/view";
-import type { ApiReferenceConfig } from "./apiReference";
 import type { XrayConfig } from "./anatomyXray";
+import type { ApiReferenceConfig } from "./apiReference";
+import referenceManifest from "./referenceManifest.json";
 
 export type DocumentationSection =
   | "Description/Overview"
@@ -27,6 +41,17 @@ export type DocumentationCoverageRow = Readonly<{
   purpose: string;
 }>;
 
+export type DocumentationSourceArtifact = Readonly<{
+  label: string;
+  path: string;
+  href?: string | undefined;
+}>;
+
+export type DocumentationPreviewStory = Readonly<{
+  label: string;
+  storyId: string;
+}>;
+
 export type DocumentationReference = Readonly<{
   title: string;
   laneLabel: string;
@@ -40,6 +65,8 @@ export type DocumentationReference = Readonly<{
   usageSnippet: string;
   foldkitIntegrationSnippet: string;
   foldkitIntegrationNotes: readonly string[];
+  previewStories: readonly DocumentationPreviewStory[];
+  sourceArtifacts: readonly DocumentationSourceArtifact[];
   anatomyXray: XrayConfig;
   stylingNotes: readonly string[];
   keyboardInteractionNotes: readonly string[];
@@ -98,6 +125,27 @@ const group = Avatar.groupView<Message>([
   foldkitIntegrationNotes: [
     "The basic usage renders static helpers from a parent Foldkit view; there is no child update loop and no child commands are expected.",
     "When Avatar is used inside a larger component, keep identity data in the parent model and render Avatar helpers from that single source of truth.",
+  ],
+  previewStories: [
+    {
+      label: "Generated OpenStory basic example",
+      storyId: "base-ui-avatar--basic-2",
+    },
+  ],
+  sourceArtifacts: [
+    {
+      label: "Generated source snapshot",
+      path: "/sources/base-ui-avatar-basic.txt",
+      href: "/sources/base-ui-avatar-basic.txt",
+    },
+    {
+      label: "Component source",
+      path: "registry/base-ui/ui/base-ui-avatar/index.ts",
+    },
+    {
+      label: "Class hooks",
+      path: "registry/base-ui/ui/base-ui-avatar/view.ts",
+    },
   ],
   anatomyXray: {
     title: "Base UI Avatar Anatomy",
@@ -231,7 +279,8 @@ const group = Avatar.groupView<Message>([
             name: "imageView",
             category: "Rendering",
             typeLabel: "helper",
-            signature: "imageView<ParentMessage>(config: ImageViewConfig): Html",
+            signature:
+              "imageView<ParentMessage>(config: ImageViewConfig): Html",
             description:
               "Renders the image slot with required src and alt text plus optional classes and style.",
             badges: [
@@ -287,7 +336,8 @@ const group = Avatar.groupView<Message>([
             name: "badgeView",
             category: "ARIA",
             typeLabel: "helper",
-            signature: "badgeView<ParentMessage>(config: BadgeViewConfig): Html",
+            signature:
+              "badgeView<ParentMessage>(config: BadgeViewConfig): Html",
             description:
               "Renders a status badge; without a label it is aria-hidden, with a label it is announced.",
             badges: [
@@ -328,9 +378,9 @@ const group = Avatar.groupView<Message>([
             typeLabel: "helper",
             signature: "countView<ParentMessage>(config: CountConfig): Html",
             description:
-              "Renders a +N overflow marker with role=\"img\" and a descriptive aria-label.",
+              'Renders a +N overflow marker with role="img" and a descriptive aria-label.',
             badges: [
-              { label: "role=\"img\"", tone: "a11y" },
+              { label: 'role="img"', tone: "a11y" },
               { label: "aria-label", tone: "a11y" },
               { label: "source-owned", tone: "source" },
             ],
@@ -471,7 +521,7 @@ const group = Avatar.groupView<Message>([
             name: "AvatarSize",
             category: "Styling",
             typeLabel: "type",
-            signature: "\"Small\" | \"Default\" | \"Large\"",
+            signature: '"Small" | "Default" | "Large"',
             description:
               "Named size scale used by the root helper and size class mapper.",
             badges: [
@@ -652,7 +702,7 @@ const group = Avatar.groupView<Message>([
             name: "badge aria-label",
             category: "ARIA",
             typeLabel: "attribute",
-            signature: "badgeView({ label: \"Online\" })",
+            signature: 'badgeView({ label: "Online" })',
             description:
               "Meaningful status badges expose their state through aria-label.",
             badges: [
@@ -686,14 +736,14 @@ const group = Avatar.groupView<Message>([
           },
           {
             id: "count-role-img",
-            name: "count role=\"img\"",
+            name: 'count role="img"',
             category: "ARIA",
             typeLabel: "attribute",
             signature: "countView({ count })",
             description:
-              "The overflow marker uses role=\"img\" so +N is announced as one image-like affordance.",
+              'The overflow marker uses role="img" so +N is announced as one image-like affordance.',
             badges: [
-              { label: "role=\"img\"", tone: "a11y" },
+              { label: 'role="img"', tone: "a11y" },
               { label: "emitted", tone: "source" },
             ],
             source: "registry/base-ui/ui/base-ui-avatar/index.ts",
@@ -734,14 +784,16 @@ const group = Avatar.groupView<Message>([
             name: "registry/base-ui/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
             category: "Tests",
             typeLabel: "scene",
-            signature: "bunx vitest run registry/base-ui/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
+            signature:
+              "bunx vitest run registry/base-ui/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
             description:
               "Verifies the registry helper renders image, fallback, badge, group, and count affordances.",
             badges: [
               { label: "scene", tone: "neutral" },
               { label: "source", tone: "source" },
             ],
-            source: "registry/base-ui/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
+            source:
+              "registry/base-ui/ui/base-ui-avatar/base-ui-avatar.scene.test.ts",
             details: [
               "Covers the source-owned helper output.",
               "Includes image, fallback, badge, group, and count assertions.",
@@ -787,7 +839,8 @@ const group = Avatar.groupView<Message>([
             name: "scripts/smoke-public-site.mjs",
             category: "Tests",
             typeLabel: "script",
-            signature: "PUBLIC_BASE_URL=http://127.0.0.1:4173 bun run smoke:public-site",
+            signature:
+              "PUBLIC_BASE_URL=http://127.0.0.1:4173 bun run smoke:public-site",
             description:
               "Guards public OpenStory manifest and story iframe route availability.",
             badges: [{ label: "script", tone: "source" }],
@@ -805,7 +858,7 @@ const group = Avatar.groupView<Message>([
     "Pass meaningful `alt` text for profile images so the rendered img communicates the represented person.",
     "Fallback text should identify the same person or account when no image source is available.",
     "Set a badge `aria-label` such as Online when the badge conveys status; decorative badges remain aria-hidden.",
-    "The count helper renders `role=\"img\"` so the overflow marker is exposed as one concise image-like affordance.",
+    'The count helper renders `role="img"` so the overflow marker is exposed as one concise image-like affordance.',
     "Use the count `aria-label` to describe the hidden people, for example `3 more people`.",
   ],
   coverageRows: [
@@ -832,10 +885,595 @@ const group = Avatar.groupView<Message>([
   ],
 };
 
+export const baseUiAlertDialogDocumentation: DocumentationReference = {
+  title: "Alert Dialog",
+  laneLabel: "Base UI",
+  sourcePath: "registry/base-ui/ui/base-ui-alert-dialog",
+  registryItemName: "base-ui-alert-dialog",
+  originUrl: "https://base-ui.com/react/components/alert-dialog",
+  artifact: "component",
+  primitive: "Alert Dialog view helpers",
+  overview: [
+    "Alert Dialog renders a modal confirmation flow for actions that need explicit acknowledgement. The local helpers expose trigger, portal, backdrop, viewport, popup, title, description, actions, and close-button parts.",
+    "The Base UI lane implementation keeps open state and confirmation outcomes in the parent Foldkit model. Helpers render the local anatomy and ARIA wiring while parent messages describe what happened.",
+  ],
+  installCommands: [
+    "bunx shadcn@latest add @foldkit-cn/base-ui-alert-dialog",
+    "bunx shadcn@latest add https://bearing-ward.github.io/foldkit-basic-cn-ui/base-ui-alert-dialog-basic.json",
+  ],
+  usageSnippet: `import * as AlertDialog from "@/ui/base-ui-alert-dialog"
+
+AlertDialog.rootView<Message>({
+  children: [
+    AlertDialog.triggerView<Message>({
+      onClick: ClickedDiscardDraft(),
+      children: [h.span([], ["Discard draft"])],
+    }),
+    AlertDialog.portalView<Message>({
+      open: model.open,
+      children: [
+        AlertDialog.backdropView<Message>({ children: [] }),
+        AlertDialog.viewportView<Message>({
+          children: [
+            AlertDialog.popupView<Message>({
+              titleId: "discard-draft-title",
+              descriptionId: "discard-draft-description",
+              children: dialogChildren,
+            }),
+          ],
+        }),
+      ],
+    }),
+  ],
+})`,
+  foldkitIntegrationSnippet: `export const Model = S.Struct({
+  open: S.Boolean,
+  discarded: S.Boolean,
+})
+
+export const ClickedDiscardDraft = m("ClickedDiscardDraft")
+export const ClickedCancelDiscard = m("ClickedCancelDiscard")
+export const ClickedConfirmDiscard = m("ClickedConfirmDiscard")
+
+export const update = (model: Model, message: Message): UpdateReturn =>
+  M.value(message).pipe(
+    M.tagsExhaustive({
+      ClickedDiscardDraft: () => [evo(model, { open: () => true }), []],
+      ClickedCancelDiscard: () => [evo(model, { open: () => false }), []],
+      ClickedConfirmDiscard: () => [
+        evo(model, { open: () => false, discarded: () => true }),
+        [],
+      ],
+    })
+  )`,
+  foldkitIntegrationNotes: [
+    "Open and confirmation state stay in the parent model; the Alert Dialog helper does not own hidden mutable state.",
+    "Trigger, cancel, and confirm buttons emit parent messages that describe user actions.",
+    "The popup helper emits role, modal, labelledby, and describedby attributes from caller-supplied IDs.",
+  ],
+  previewStories: [
+    {
+      label: "Generated OpenStory basic example",
+      storyId: "base-ui-alert-dialog--basic-2",
+    },
+  ],
+  sourceArtifacts: [
+    {
+      label: "Generated source snapshot",
+      path: "/sources/base-ui-alert-dialog-basic.txt",
+      href: "/sources/base-ui-alert-dialog-basic.txt",
+    },
+    {
+      label: "Component source",
+      path: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+    },
+    {
+      label: "Class hooks",
+      path: "registry/base-ui/ui/base-ui-alert-dialog/view.ts",
+    },
+    {
+      label: "Basic example source",
+      path: "registry/base-ui/examples/base-ui-alert-dialog-basic/main.ts",
+    },
+  ],
+  anatomyXray: {
+    title: "Base UI Alert Dialog Anatomy",
+    summary:
+      "Inspect the explicit parts, classes, attributes, and style hooks used to construct the trigger, portal, modal popup, copy, and actions.",
+    parts: [
+      {
+        id: "alert-dialog-root",
+        label: "Alert Dialog root",
+        tag: "div",
+        description:
+          "The root helper is a composition wrapper for the trigger and optional portal.",
+        classes: classes(alertDialogRootClasses),
+        attributes: [],
+        styles: [],
+        children: [
+          {
+            id: "alert-dialog-trigger",
+            label: "Trigger",
+            tag: "button",
+            description:
+              "The trigger button emits the parent onClick message that opens the dialog.",
+            classes: classes(alertDialogTriggerClasses),
+            attributes: [
+              { name: "type", value: "button" },
+              { name: "onClick", value: "parent message" },
+            ],
+            styles: [],
+            children: [],
+          },
+          {
+            id: "alert-dialog-portal",
+            label: "Portal",
+            tag: "div",
+            description:
+              "The portal occupies the viewport when open and is hidden when the parent model says closed.",
+            classes: classes(alertDialogPortalClasses),
+            attributes: [],
+            styles: [],
+            children: [
+              {
+                id: "alert-dialog-backdrop",
+                label: "Backdrop",
+                tag: "div",
+                description:
+                  "The backdrop covers the viewport behind the modal content.",
+                classes: classes(alertDialogBackdropClasses),
+                attributes: [],
+                styles: [],
+                children: [],
+              },
+              {
+                id: "alert-dialog-viewport",
+                label: "Viewport",
+                tag: "div",
+                description:
+                  "The viewport centers the modal popup and provides responsive padding.",
+                classes: classes(alertDialogViewportClasses),
+                attributes: [],
+                styles: [],
+                children: [
+                  {
+                    id: "alert-dialog-popup",
+                    label: "Popup",
+                    tag: "div",
+                    description:
+                      "The popup carries the alertdialog role and modal labeling relationships.",
+                    classes: classes(alertDialogPopupClasses),
+                    attributes: [
+                      { name: "role", value: "alertdialog" },
+                      { name: "aria-modal", value: "true" },
+                      {
+                        name: "aria-labelledby",
+                        value: "discard-draft-title",
+                      },
+                      {
+                        name: "aria-describedby",
+                        value: "discard-draft-description",
+                      },
+                    ],
+                    styles: [],
+                    children: [
+                      {
+                        id: "alert-dialog-title",
+                        label: "Title",
+                        tag: "h2",
+                        description:
+                          "The title provides the accessible name referenced by aria-labelledby.",
+                        classes: classes(alertDialogTitleClasses),
+                        attributes: [
+                          { name: "id", value: "discard-draft-title" },
+                        ],
+                        styles: [],
+                        children: [],
+                      },
+                      {
+                        id: "alert-dialog-description",
+                        label: "Description",
+                        tag: "p",
+                        description:
+                          "The description provides supporting copy referenced by aria-describedby.",
+                        classes: classes(alertDialogDescriptionClasses),
+                        attributes: [
+                          {
+                            name: "id",
+                            value: "discard-draft-description",
+                          },
+                        ],
+                        styles: [],
+                        children: [],
+                      },
+                      {
+                        id: "alert-dialog-actions",
+                        label: "Actions",
+                        tag: "div",
+                        description:
+                          "The action row groups cancel and confirm controls at the end of the popup.",
+                        classes: classes(alertDialogActionsClasses),
+                        attributes: [],
+                        styles: [],
+                        children: [
+                          {
+                            id: "alert-dialog-cancel",
+                            label: "Cancel button",
+                            tag: "button",
+                            description:
+                              "The cancel close helper emits a parent message and uses the neutral button classes.",
+                            classes: classes(alertDialogCancelClasses),
+                            attributes: [{ name: "type", value: "button" }],
+                            styles: [],
+                            children: [],
+                          },
+                          {
+                            id: "alert-dialog-confirm",
+                            label: "Confirm button",
+                            tag: "button",
+                            description:
+                              "The confirm close helper emits a parent message and uses the destructive action classes.",
+                            classes: classes(alertDialogConfirmClasses),
+                            attributes: [{ name: "type", value: "button" }],
+                            styles: [],
+                            children: [],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  stylingNotes: [
+    "`alertDialogTriggerClasses` styles the primary trigger button.",
+    "`alertDialogPortalClasses`, `alertDialogBackdropClasses`, and `alertDialogViewportClasses` establish the fixed modal layer.",
+    "`alertDialogPopupClasses` defines the centered white dialog panel.",
+    "`alertDialogTitleClasses` and `alertDialogDescriptionClasses` style the accessible copy slots.",
+    "`alertDialogActionsClasses` arranges cancel and confirm controls.",
+    "`alertDialogCancelClasses` and `alertDialogConfirmClasses` separate neutral and destructive close affordances.",
+  ],
+  keyboardInteractionNotes: [
+    "Trigger, cancel, and confirm controls are native buttons, so Enter and Space activate them.",
+    "Focus trapping and Escape-to-close behavior are not encoded in the current helper source; add component-source work before claiming that parity.",
+  ],
+  apiReference: {
+    title: "Alert Dialog API reference",
+    summary:
+      "Search the Base UI Alert Dialog helpers, config types, class hooks, ARIA contracts, and coverage paths without leaving the documentation story.",
+    groups: [
+      {
+        id: "view-helpers",
+        label: "View helpers",
+        summary:
+          "Foldkit-native render helpers that return Html and keep modal state in the parent program.",
+        rows: [
+          {
+            id: "root-view",
+            name: "rootView",
+            category: "Composition",
+            typeLabel: "helper",
+            signature: "rootView<ParentMessage>(config: RootViewConfig): Html",
+            description:
+              "Renders the root composition wrapper around trigger, portal, or caller-owned children.",
+            badges: [
+              { label: "Html", tone: "neutral" },
+              { label: "source-owned", tone: "source" },
+            ],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "Uses alertDialogRootClasses.",
+              "Accepts caller-owned children and optional className/style hooks.",
+            ],
+          },
+          {
+            id: "trigger-view",
+            name: "triggerView",
+            category: "Interaction",
+            typeLabel: "helper",
+            signature:
+              "triggerView<ParentMessage>(config: TriggerViewConfig<ParentMessage>): Html",
+            description:
+              "Renders the opening button and wires its click to a parent message.",
+            badges: [
+              { label: "button", tone: "neutral" },
+              { label: "parent message", tone: "source" },
+            ],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "Emits type=button.",
+              "Uses the caller-provided onClick message.",
+            ],
+          },
+          {
+            id: "portal-view",
+            name: "portalView",
+            category: "Rendering",
+            typeLabel: "helper",
+            signature:
+              "portalView<ParentMessage>(config: PortalViewConfig): Html",
+            description:
+              "Renders the modal layer only when the parent model passes open=true.",
+            badges: [
+              { label: "open required", tone: "required" },
+              { label: "source-owned", tone: "source" },
+            ],
+            defaultValue: "closed renders hidden empty div",
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "Open state is parent-owned.",
+              "Closed state emits a hidden empty div rather than mutating DOM imperatively.",
+            ],
+          },
+          {
+            id: "popup-view",
+            name: "popupView",
+            category: "ARIA",
+            typeLabel: "helper",
+            signature:
+              "popupView<ParentMessage>(config: PopupViewConfig): Html",
+            description:
+              "Renders the alertdialog surface with modal and accessible labeling attributes.",
+            badges: [
+              { label: "role=alertdialog", tone: "a11y" },
+              { label: "aria-modal", tone: "a11y" },
+            ],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "Requires titleId and descriptionId.",
+              "Emits aria-labelledby and aria-describedby from those IDs.",
+            ],
+          },
+          {
+            id: "close-view",
+            name: "closeView",
+            category: "Interaction",
+            typeLabel: "helper",
+            signature:
+              "closeView<ParentMessage>(config: CloseViewConfig<ParentMessage>): Html",
+            description:
+              "Renders cancel or confirm action buttons that emit parent messages.",
+            badges: [
+              { label: "Cancel default", tone: "optional" },
+              { label: "Confirm variant", tone: "neutral" },
+            ],
+            defaultValue: "variant: Cancel",
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "Cancel uses alertDialogCancelClasses.",
+              "Confirm uses alertDialogConfirmClasses.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "config-types",
+        label: "Config types",
+        summary:
+          "Typed inputs accepted by the Alert Dialog helpers, including message, ID, class, and style hooks.",
+        rows: [
+          {
+            id: "trigger-view-config",
+            name: "TriggerViewConfig",
+            category: "Interaction",
+            typeLabel: "type",
+            signature:
+              "Readonly<{ onClick: ParentMessage; children: readonly Html[]; className?: string; style?: AlertDialogStyle }>",
+            description:
+              "Configures the trigger button with a parent message and caller-owned children.",
+            badges: [
+              { label: "onClick required", tone: "required" },
+              { label: "children required", tone: "required" },
+            ],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "onClick should be a fact message such as ClickedDiscardDraft.",
+              "className appends to alertDialogTriggerClasses.",
+            ],
+          },
+          {
+            id: "popup-view-config",
+            name: "PopupViewConfig",
+            category: "ARIA",
+            typeLabel: "type",
+            signature:
+              "Readonly<{ titleId: string; descriptionId: string; children: readonly Html[]; className?: string; style?: AlertDialogStyle }>",
+            description:
+              "Configures the modal popup and its accessible name and description relationships.",
+            badges: [
+              { label: "titleId required", tone: "required" },
+              { label: "descriptionId required", tone: "required" },
+            ],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "titleId must match the rendered title part id.",
+              "descriptionId must match the rendered description part id.",
+            ],
+          },
+          {
+            id: "close-view-config",
+            name: "CloseViewConfig",
+            category: "Interaction",
+            typeLabel: "type",
+            signature:
+              'Readonly<{ onClick: ParentMessage; children: readonly Html[]; variant?: "Cancel" | "Confirm"; className?: string; style?: AlertDialogStyle }>',
+            description:
+              "Configures cancel and confirm buttons with parent messages and variant styling.",
+            badges: [
+              { label: "onClick required", tone: "required" },
+              { label: "variant optional", tone: "optional" },
+            ],
+            defaultValue: "variant: Cancel",
+            source: "registry/base-ui/ui/base-ui-alert-dialog/index.ts",
+            details: [
+              "Use Confirm for destructive or final actions.",
+              "Use Cancel for neutral dismissal.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "class-hooks",
+        label: "Class hooks",
+        summary:
+          "Exported class constants that let examples and consumers style the same Alert Dialog anatomy.",
+        rows: [
+          {
+            id: "alert-dialog-popup-classes",
+            name: "alertDialogPopupClasses",
+            category: "Styling",
+            typeLabel: "class",
+            signature: "const alertDialogPopupClasses: string",
+            description:
+              "Classes for the centered modal surface, width, spacing, radius, background, padding, and shadow.",
+            badges: [{ label: "source-owned", tone: "source" }],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/view.ts",
+            details: classes(alertDialogPopupClasses),
+          },
+          {
+            id: "alert-dialog-trigger-classes",
+            name: "alertDialogTriggerClasses",
+            category: "Styling",
+            typeLabel: "class",
+            signature: "const alertDialogTriggerClasses: string",
+            description: "Classes for the opening trigger button.",
+            badges: [{ label: "source-owned", tone: "source" }],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/view.ts",
+            details: classes(alertDialogTriggerClasses),
+          },
+          {
+            id: "alert-dialog-actions-classes",
+            name: "alertDialogActionsClasses",
+            category: "Styling",
+            typeLabel: "class",
+            signature: "const alertDialogActionsClasses: string",
+            description: "Classes for the action row inside the popup.",
+            badges: [{ label: "source-owned", tone: "source" }],
+            source: "registry/base-ui/ui/base-ui-alert-dialog/view.ts",
+            details: classes(alertDialogActionsClasses),
+          },
+        ],
+      },
+      {
+        id: "coverage",
+        label: "Coverage",
+        summary:
+          "Existing tests and scripts that guard Alert Dialog behavior, OpenStory story generation, and source snapshots.",
+        rows: [
+          {
+            id: "registry-alert-dialog-scene",
+            name: "registry/base-ui/ui/base-ui-alert-dialog/base-ui-alert-dialog.scene.test.ts",
+            category: "Tests",
+            typeLabel: "scene",
+            signature:
+              "bunx vitest run registry/base-ui/ui/base-ui-alert-dialog/base-ui-alert-dialog.scene.test.ts",
+            description:
+              "Verifies the registry helper emits trigger, portal, popup, ARIA, and action behavior.",
+            badges: [
+              { label: "scene", tone: "neutral" },
+              { label: "source", tone: "source" },
+            ],
+            source:
+              "registry/base-ui/ui/base-ui-alert-dialog/base-ui-alert-dialog.scene.test.ts",
+            details: [
+              "Covers the source-owned helper output.",
+              "Includes open and closed portal assertions.",
+            ],
+          },
+          {
+            id: "example-alert-dialog-scene",
+            name: "registry/base-ui/examples/base-ui-alert-dialog-basic/base-ui-alert-dialog-basic.scene.test.ts",
+            category: "Tests",
+            typeLabel: "scene",
+            signature:
+              "bunx vitest run registry/base-ui/examples/base-ui-alert-dialog-basic/base-ui-alert-dialog-basic.scene.test.ts",
+            description:
+              "Verifies the installable basic example opens, cancels, confirms, and updates parent model state.",
+            badges: [
+              { label: "example", tone: "neutral" },
+              { label: "source", tone: "source" },
+            ],
+            source:
+              "registry/base-ui/examples/base-ui-alert-dialog-basic/base-ui-alert-dialog-basic.scene.test.ts",
+            details: [
+              "Guards the published usage story.",
+              "Checks parent-owned state transitions through user actions.",
+            ],
+          },
+          {
+            id: "generated-openstory-story",
+            name: "src/openstory/generated/base-ui-alert-dialog.stories.ts",
+            category: "Generated",
+            typeLabel: "story",
+            signature: "bun run openstory:generate",
+            description:
+              "Generated story file that places Documentation ahead of runnable examples.",
+            badges: [{ label: "generated", tone: "source" }],
+            source: "src/openstory/generated/base-ui-alert-dialog.stories.ts",
+            details: [
+              "Regenerated from source data.",
+              "Checked by bun run openstory:check.",
+            ],
+          },
+          {
+            id: "registry-metadata",
+            name: "registry/base-ui/registry.json",
+            category: "Registry",
+            typeLabel: "metadata",
+            signature: "bun run check:registry",
+            description:
+              "Declares the Base UI Alert Dialog component and local example relationships.",
+            badges: [{ label: "registry", tone: "source" }],
+            source: "registry/base-ui/registry.json",
+            details: [
+              "Includes the registry:ui item.",
+              "Includes examples that depend on base-ui-alert-dialog.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  accessibilityNotes: [
+    '`popupView` emits `role="alertdialog"`, `aria-modal="true"`, `aria-labelledby`, and `aria-describedby`.',
+    "Title and description IDs are caller supplied and must match the rendered title and description parts.",
+    "Trigger, cancel, and confirm controls render as native buttons.",
+    "The current local source does not claim focus trap or Escape parity; those require separate component-source work.",
+  ],
+  coverageRows: [
+    {
+      path: "registry/base-ui/ui/base-ui-alert-dialog/base-ui-alert-dialog.scene.test.ts",
+      purpose:
+        "Verifies the registry helper emits trigger, portal, popup, ARIA, and action behavior.",
+    },
+    {
+      path: "registry/base-ui/examples/base-ui-alert-dialog-basic/base-ui-alert-dialog-basic.scene.test.ts",
+      purpose:
+        "Verifies the installable basic example opens, cancels, confirms, and updates parent model state.",
+    },
+    {
+      path: "src/openstory/generated/base-ui-alert-dialog.stories.ts",
+      purpose:
+        "Generated story file that places Documentation ahead of runnable examples.",
+    },
+    {
+      path: "registry/base-ui/registry.json",
+      purpose:
+        "Declares the Base UI Alert Dialog component and local example relationships.",
+    },
+  ],
+};
+
 export const documentationByItemName = {
   "base-ui-avatar": baseUiAvatarDocumentation,
+  "base-ui-alert-dialog": baseUiAlertDialogDocumentation,
 } as const satisfies Readonly<Record<string, DocumentationReference>>;
 
 export const documentationItemNames = new Set(
-  Object.keys(documentationByItemName)
+  referenceManifest.items.map((item) => item.registryItemName)
 );

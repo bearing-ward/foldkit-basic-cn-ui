@@ -422,6 +422,7 @@ Required sections:
 | Installation         | always                                         | Component install first, then example installs in registry item order.      |
 | Usage                | always                                         | Minimal consumer import and direct use.                                     |
 | Foldkit integration  | stateful or parent-integrated components       | Model, Message, init, update, submodel, command mapping as needed.          |
+| Preview and source   | always                                         | Generated OpenStory preview links and generated source snapshot links.      |
 | Anatomy              | always                                         | X-ray style rendered HTML map with part names, classes, styles, attributes. |
 | Styling              | always                                         | Class hooks, style hooks, data attributes, state attributes, and variants.  |
 | Keyboard interaction | only when interactive keyboard behavior exists | Key map and focus behavior from Base UI/Foldkit contract.                   |
@@ -434,6 +435,13 @@ markup: hovering a code element highlights the corresponding preview element
 and displays the relevant part name, classes, data attributes, ARIA attributes,
 and style hooks. Static anatomy text is acceptable only for tiny single-element
 components.
+
+Documentation Reference stories use the shared OpenStory documentation display
+template in `src/openstory/documentation/displayTemplate.ts`. That template is
+the local Foldkit-native equivalent of shadcn's docs display vocabulary:
+headings, prose, callouts, code blocks, accordions, preview links, source
+links, and coverage tables must resolve to this repository's local registry
+components, generated OpenStory stories, and generated source snapshots.
 
 Documentation must not:
 

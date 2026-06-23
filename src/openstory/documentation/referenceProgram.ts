@@ -7,6 +7,7 @@ import { evo } from "foldkit/struct";
 
 import * as AnatomyXray from "./anatomyXray";
 import * as ApiReference from "./apiReference";
+import * as DisplayTemplate from "./displayTemplate";
 import type {
   DocumentationCoverageRow,
   DocumentationReference,
@@ -17,6 +18,7 @@ import type {
 export const Model = S.Struct({
   anatomyXray: AnatomyXray.Model,
   apiReference: ApiReference.Model,
+  templateOpenPanelIds: S.Array(S.String),
 });
 export type Model = typeof Model.Type;
 
@@ -28,8 +30,15 @@ export const GotAnatomyXrayMessage = m("GotAnatomyXrayMessage", {
 export const GotApiReferenceMessage = m("GotApiReferenceMessage", {
   message: ApiReference.Message,
 });
+export const ClickedTemplatePanel = m("ClickedTemplatePanel", {
+  panelId: S.String,
+});
 
-export const Message = S.Union([GotAnatomyXrayMessage, GotApiReferenceMessage]);
+export const Message = S.Union([
+  GotAnatomyXrayMessage,
+  GotApiReferenceMessage,
+  ClickedTemplatePanel,
+]);
 export type Message = typeof Message.Type;
 
 // INIT
@@ -43,7 +52,7 @@ const initForReference = (reference: DocumentationReference): UpdateReturn => {
   const [apiReference, apiCommands] = ApiReference.init(reference.apiReference);
 
   return [
-    { anatomyXray, apiReference },
+    { anatomyXray, apiReference, templateOpenPanelIds: ["preview"] },
     [
       ...Command.mapMessages(anatomyCommands, (message) =>
         GotAnatomyXrayMessage({ message })
@@ -87,132 +96,39 @@ export const update = (model: Model, message: Message): UpdateReturn =>
           ),
         ];
       },
+      ClickedTemplatePanel: ({ panelId }) => {
+        const panelIsOpen = model.templateOpenPanelIds.includes(panelId);
+
+        return [
+          evo(model, {
+            templateOpenPanelIds: () =>
+              panelIsOpen
+                ? model.templateOpenPanelIds.filter(
+                    (value) => value !== panelId
+                  )
+                : [...model.templateOpenPanelIds, panelId],
+          }),
+          [],
+        ];
+      },
     })
   );
 
 // VIEW
 
-const shellClasses = "min-h-screen bg-white px-4 py-6 text-slate-950 sm:px-6";
-const containerClasses = "mx-auto flex w-full max-w-6xl flex-col gap-6";
-const panelClasses =
-  "rounded-[8px] border border-slate-200 bg-white p-4 shadow-sm";
-const eyebrowClasses =
-  "font-mono text-xs font-medium uppercase text-slate-500";
-const sectionHeadingClasses = "text-xl font-semibold text-slate-950";
-const proseClasses = "text-sm leading-6 text-slate-600";
-const codeClasses =
-  "overflow-x-auto rounded-[6px] border border-slate-200 bg-slate-950 p-4 font-mono text-xs leading-5 text-slate-50";
-
-const renderMetadata = (
-  label: string,
-  value: string,
-  href?: string
-): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("grid gap-1")],
-    [
-      h.dt([h.Class("text-xs font-semibold uppercase text-slate-500")], [
-        label,
-      ]),
-      h.dd([h.Class("min-w-0 text-sm text-slate-800")], [
-        href === undefined
-          ? h.code([h.Class("break-words font-mono text-xs")], [value])
-          : h.a(
-              [
-                h.Href(href),
-                h.Class("break-words text-sky-700 underline-offset-4 hover:underline"),
-              ],
-              [value]
-            ),
-      ]),
-    ]
-  );
-};
-
 const renderSection = (heading: string, children: readonly Html[]): Html => {
-  const h = html<Message>();
-
-  return h.section(
-    [h.Class(`${panelClasses} space-y-4`)],
-    [h.h2([h.Class(sectionHeadingClasses)], [heading]), ...children]
-  );
-};
-
-const renderParagraphs = (paragraphs: readonly string[]): readonly Html[] => {
-  const h = html<Message>();
-
-  return paragraphs.map((paragraph) =>
-    h.p([h.Class(proseClasses)], [paragraph])
-  );
-};
-
-const renderList = (items: readonly string[]): Html => {
-  const h = html<Message>();
-
-  return h.ul(
-    [h.Class("list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600")],
-    items.map((item) => h.li([], [item]))
-  );
-};
-
-const renderCode = (source: string): Html => {
-  const h = html<Message>();
-
-  return h.pre([h.Class(codeClasses)], [h.code([], [source])]);
-};
-
-const renderInstallCommands = (commands: readonly string[]): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("grid gap-2")],
-    commands.map((command) =>
-      h.pre(
-        [h.Class("overflow-x-auto rounded-[6px] bg-slate-100 p-3")],
-        [h.code([h.Class("font-mono text-xs text-slate-800")], [command])]
-      )
-    )
-  );
+  return DisplayTemplate.section<Message>(heading, children);
 };
 
 const renderCoverageTable = (
   rows: readonly DocumentationCoverageRow[]
 ): Html => {
-  const h = html<Message>();
-
-  return h.div(
-    [h.Class("overflow-x-auto")],
+  return DisplayTemplate.table<Message, DocumentationCoverageRow>(
     [
-      h.table(
-        [h.Class("w-full border-collapse text-left text-sm")],
-        [
-          h.thead([], [
-            h.tr(
-              [h.Class("border-b border-slate-200 text-slate-500")],
-              [
-                h.th([h.Class("py-2 pr-4 font-semibold")], ["Path"]),
-                h.th([h.Class("py-2 font-semibold")], ["Purpose"]),
-              ]
-            ),
-          ]),
-          h.tbody(
-            [],
-            rows.map((row) =>
-              h.tr([h.Class("border-b border-slate-100 align-top")], [
-                h.td([h.Class("py-3 pr-4")], [
-                  h.code([h.Class("font-mono text-xs text-slate-950")], [
-                    row.path,
-                  ]),
-                ]),
-                h.td([h.Class("py-3 text-slate-600")], [row.purpose]),
-              ])
-            )
-          ),
-        ]
-      ),
-    ]
+      { header: "Path", cell: (row) => row.path, code: true },
+      { header: "Purpose", cell: (row) => row.purpose },
+    ],
+    rows
   );
 };
 
@@ -224,18 +140,74 @@ const renderKeyboardSection = (
   return Array.match(keyboardInteractionNotes, {
     onEmpty: () => h.empty,
     onNonEmpty: (notes) =>
-      renderSection("Keyboard interaction", [renderList(notes)]),
+      renderSection("Keyboard interaction", [DisplayTemplate.list(notes)]),
   });
 };
 
+const renderPreviewAndSourceSection = (
+  reference: DocumentationReference,
+  model: Model
+): Html => {
+  const h = html<Message>();
+
+  return renderSection("Preview and source", [
+    DisplayTemplate.callout<Message>(
+      "Local source only",
+      "Preview and source affordances resolve to generated OpenStory stories and generated source snapshots in this repository."
+    ),
+    DisplayTemplate.accordion<Message>(
+      model.templateOpenPanelIds,
+      [
+        {
+          value: "preview",
+          title: "Preview",
+          onValueChange: ClickedTemplatePanel({ panelId: "preview" }),
+          children: [
+            h.ul(
+              [h.Class("grid gap-2 text-sm text-slate-600")],
+              reference.previewStories.map((story) =>
+                h.li(
+                  [h.Class("grid gap-1 rounded-[6px] bg-slate-50 p-3")],
+                  [
+                    h.span(
+                      [h.Class("font-medium text-slate-950")],
+                      [story.label]
+                    ),
+                    h.a(
+                      [
+                        h.Href(`/__story/${story.storyId}`),
+                        h.Class(
+                          "text-sky-700 underline-offset-4 hover:underline"
+                        ),
+                      ],
+                      [`/__story/${story.storyId}`]
+                    ),
+                  ]
+                )
+              )
+            ),
+          ],
+        },
+        {
+          value: "source",
+          title: "Source",
+          onValueChange: ClickedTemplatePanel({ panelId: "source" }),
+          children: [DisplayTemplate.sourceList(reference.sourceArtifacts)],
+        },
+      ],
+      `${reference.registryItemName}-template`
+    ),
+  ]);
+};
+
 const anatomyXraySubmodelView = (reference: DocumentationReference) =>
-  Submodel.defineView<AnatomyXray.Model, AnatomyXray.Message>((model): Html =>
-    AnatomyXray.view(reference.anatomyXray)(model)
+  Submodel.defineView<AnatomyXray.Model, AnatomyXray.Message>(
+    (model): Html => AnatomyXray.view(reference.anatomyXray)(model)
   );
 
 const apiReferenceSubmodelView = (reference: DocumentationReference) =>
-  Submodel.defineView<ApiReference.Model, ApiReference.Message>((model): Html =>
-    ApiReference.view(reference.apiReference)(model)
+  Submodel.defineView<ApiReference.Model, ApiReference.Message>(
+    (model): Html => ApiReference.view(reference.apiReference)(model)
   );
 
 const referenceView = (reference: DocumentationReference) => {
@@ -245,75 +217,69 @@ const referenceView = (reference: DocumentationReference) => {
   return (model: Model): Html => {
     const h = html<Message>();
 
-    return h.main(
-      [h.Class(shellClasses)],
-      [
-        h.div(
-          [h.Class(containerClasses)],
-          [
-            h.header([h.Class(`${panelClasses} space-y-4`)], [
-              h.div([h.Class("space-y-2")], [
-                h.p([h.Class(eyebrowClasses)], [reference.laneLabel]),
-                h.h1([h.Class("text-4xl font-semibold text-slate-950")], [
-                  reference.title,
-                ]),
-              ]),
-              h.dl(
-                [h.Class("grid gap-4 md:grid-cols-2 lg:grid-cols-3")],
-                [
-                  renderMetadata("Source", reference.sourcePath),
-                  renderMetadata("Registry item", reference.registryItemName),
-                  renderMetadata(
-                    "Origin",
-                    reference.originUrl,
-                    reference.originUrl
-                  ),
-                  renderMetadata("Artifact", reference.artifact),
-                  renderMetadata("Primitive", reference.primitive),
-                ]
-              ),
-            ]),
-            renderSection("Description/Overview", [
-              ...renderParagraphs(reference.overview),
-            ]),
-            renderSection("Installation", [
-              renderInstallCommands(reference.installCommands),
-            ]),
-            renderSection("Usage", [renderCode(reference.usageSnippet)]),
-            renderSection("Foldkit integration", [
-              renderCode(reference.foldkitIntegrationSnippet),
-              renderList(reference.foldkitIntegrationNotes),
-            ]),
-            renderSection("Anatomy", [
-              h.submodel({
-                slotId: `${reference.registryItemName}-anatomy-xray`,
-                model: model.anatomyXray,
-                view: anatomyView,
-                toParentMessage: (message) =>
-                  GotAnatomyXrayMessage({ message }),
-              }),
-            ]),
-            renderSection("Styling", [renderList(reference.stylingNotes)]),
-            renderKeyboardSection(reference.keyboardInteractionNotes),
-            renderSection("API", [
-              h.submodel({
-                slotId: `${reference.registryItemName}-api-reference`,
-                model: model.apiReference,
-                view: apiReferenceView,
-                toParentMessage: (message) =>
-                  GotApiReferenceMessage({ message }),
-              }),
-            ]),
-            renderSection("Accessibility", [
-              renderList(reference.accessibilityNotes),
-            ]),
-            renderSection("Existing coverage", [
-              renderCoverageTable(reference.coverageRows),
-            ]),
-          ]
-        ),
-      ]
-    );
+    return DisplayTemplate.pageShell<Message>([
+      h.header(
+        [h.Class(`${DisplayTemplate.panelClasses} space-y-4`)],
+        [
+          h.div(
+            [h.Class("space-y-2")],
+            [
+              DisplayTemplate.eyebrow<Message>(reference.laneLabel),
+              DisplayTemplate.heading<Message>(1, reference.title),
+            ]
+          ),
+          DisplayTemplate.metadataGrid<Message>([
+            { label: "Source", value: reference.sourcePath },
+            { label: "Registry item", value: reference.registryItemName },
+            {
+              label: "Origin",
+              value: reference.originUrl,
+              href: reference.originUrl,
+            },
+            { label: "Artifact", value: reference.artifact },
+            { label: "Primitive", value: reference.primitive },
+          ]),
+        ]
+      ),
+      renderSection("Description/Overview", [
+        ...DisplayTemplate.paragraphs(reference.overview),
+      ]),
+      renderSection("Installation", [
+        DisplayTemplate.commandBlocks(reference.installCommands),
+      ]),
+      renderSection("Usage", [
+        DisplayTemplate.codeBlock(reference.usageSnippet),
+      ]),
+      renderSection("Foldkit integration", [
+        DisplayTemplate.codeBlock(reference.foldkitIntegrationSnippet),
+        DisplayTemplate.list(reference.foldkitIntegrationNotes),
+      ]),
+      renderPreviewAndSourceSection(reference, model),
+      renderSection("Anatomy", [
+        h.submodel({
+          slotId: `${reference.registryItemName}-anatomy-xray`,
+          model: model.anatomyXray,
+          view: anatomyView,
+          toParentMessage: (message) => GotAnatomyXrayMessage({ message }),
+        }),
+      ]),
+      renderSection("Styling", [DisplayTemplate.list(reference.stylingNotes)]),
+      renderKeyboardSection(reference.keyboardInteractionNotes),
+      renderSection("API", [
+        h.submodel({
+          slotId: `${reference.registryItemName}-api-reference`,
+          model: model.apiReference,
+          view: apiReferenceView,
+          toParentMessage: (message) => GotApiReferenceMessage({ message }),
+        }),
+      ]),
+      renderSection("Accessibility", [
+        DisplayTemplate.list(reference.accessibilityNotes),
+      ]),
+      renderSection("Existing coverage", [
+        renderCoverageTable(reference.coverageRows),
+      ]),
+    ]);
   };
 };
 

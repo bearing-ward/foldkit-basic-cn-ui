@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "registryItemName": "base-ui-avatar",
+      "dataExportName": "baseUiAvatarDocumentation"
+    },
+    {
+      "registryItemName": "base-ui-alert-dialog",
+      "dataExportName": "baseUiAlertDialogDocumentation"
+    }
+  ]
+}

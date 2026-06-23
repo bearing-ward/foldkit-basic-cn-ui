@@ -47,6 +47,7 @@ Required sections:
 | Installation         | Shows component install first, then example installs in registry order.      |
 | Usage                | Shows minimal consumer import and direct use.                               |
 | Foldkit integration  | Shows parent model, message, update, and submodel wiring when applicable.    |
+| Preview and source   | Links to generated OpenStory examples and generated `/sources/*.txt` files. |
 | Anatomy              | Shows an x-ray of rendered HTML, classes, styles, attributes, and parts.     |
 | Styling              | Names class hooks, data attributes, variants, and state styling hooks.       |
 | Keyboard interaction | Appears only when interactive keyboard behavior exists.                     |
@@ -57,6 +58,11 @@ Required sections:
 The Anatomy section should support hovering a code element to highlight the
 corresponding preview element and display relevant part metadata when the
 component has meaningful nested markup.
+
+The shared documentation display template marks its root with
+`data-openstory-documentation-template`. Browser tests may use that selector to
+prove they are targeting the OpenStory documentation route, not the retired
+legacy docs app.
 
 ## Retired Legacy Docs App
 

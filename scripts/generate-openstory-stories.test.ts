@@ -53,7 +53,9 @@ const catalogFor = (
 
 describe("generate Openstory stories", () => {
   test("discovers examples from registry metadata across both source layouts", async () => {
-    const rootDir = await mkdtemp(path.join(os.tmpdir(), "foldkit-cn-stories-"));
+    const rootDir = await mkdtemp(
+      path.join(os.tmpdir(), "foldkit-cn-stories-")
+    );
 
     try {
       await mkdir(path.join(rootDir, "registry"), { recursive: true });
@@ -125,14 +127,14 @@ describe("generate Openstory stories", () => {
         })
       );
 
-      expect(discoverExamples(rootDir).map((example) => example.modulePath)).toEqual(
-        [
-          "../../../registry/ai-elements/examples/ai-elements-attachments-list/main",
-          "../../../registry/base-ui/examples/base-ui-button-basic/main",
-          "../../../registry/foldkit/examples/button-basic/main",
-          "../../../registry/shadcn/button/examples/basic/main",
-        ]
-      );
+      expect(
+        discoverExamples(rootDir).map((example) => example.modulePath)
+      ).toEqual([
+        "../../../registry/ai-elements/examples/ai-elements-attachments-list/main",
+        "../../../registry/base-ui/examples/base-ui-button-basic/main",
+        "../../../registry/foldkit/examples/button-basic/main",
+        "../../../registry/shadcn/button/examples/basic/main",
+      ]);
     } finally {
       await rm(rootDir, { recursive: true, force: true });
     }
@@ -217,13 +219,15 @@ describe("generate Openstory stories", () => {
     ]);
     const source = [...renderGeneratedFiles(catalog).values()].join("\n");
 
-    expect(source).toContain("../../../registry/foldkit/examples/button-basic/main");
+    expect(source).toContain(
+      "../../../registry/foldkit/examples/button-basic/main"
+    );
     expect(source).toContain(
       "../../../registry/shadcn/button/examples/basic/main"
     );
   });
 
-  test("prepends a documented component reference story", () => {
+  test("prepends documented component reference stories from the documentation manifest", () => {
     const [group] = catalogFor(
       [
         {
@@ -249,6 +253,18 @@ describe("generate Openstory stories", () => {
         }),
       ]
     );
+    const [alertDialogGroup] = catalogFor(
+      ["base-ui-alert-dialog-basic"],
+      [
+        item({
+          name: "base-ui-alert-dialog-basic",
+          title: "Base UI Alert Dialog Basic",
+          component: "Alert Dialog",
+          example: "basic",
+          registryDependencies: ["@foldkit-cn/base-ui-alert-dialog"],
+        }),
+      ]
+    );
 
     expect(group?.title).toBe("base-ui/Avatar");
     expect(group?.stories.map((story) => story.name)).toEqual([
@@ -265,14 +281,25 @@ describe("generate Openstory stories", () => {
       "base-ui-avatar--basic",
       "base-ui-avatar--basic-2",
     ]);
+    expect(alertDialogGroup?.title).toBe("base-ui/Alert Dialog");
+    expect(alertDialogGroup?.stories.map((story) => story.name)).toEqual([
+      "Documentation",
+      "Basic",
+    ]);
+    expect(alertDialogGroup?.stories[0]).toMatchObject({
+      dataImportName: "baseUiAlertDialogDocumentation",
+      registryItemName: "base-ui-alert-dialog",
+    });
   });
 
   test("generates documentation imports only for documented groups", () => {
     const catalog = catalogFor(
       [
         "base-ui-avatar-basic",
+        "base-ui-alert-dialog-basic",
         {
-          modulePath: "../../../registry/base-ui/examples/base-ui-menu-basic/main",
+          modulePath:
+            "../../../registry/base-ui/examples/base-ui-menu-basic/main",
           slug: "base-ui-menu-basic",
           sourceLane: "base-ui",
         },
@@ -286,6 +313,13 @@ describe("generate Openstory stories", () => {
           registryDependencies: ["base-ui-avatar"],
         }),
         item({
+          name: "base-ui-alert-dialog-basic",
+          title: "Base UI Alert Dialog Basic",
+          component: "Alert Dialog",
+          example: "basic",
+          registryDependencies: ["base-ui-alert-dialog"],
+        }),
+        item({
           name: "base-ui-menu-basic",
           title: "Base UI Menu Basic",
           component: "Menu",
@@ -296,6 +330,9 @@ describe("generate Openstory stories", () => {
     const files = renderGeneratedFiles(catalog);
     const avatarSource =
       files.get("src/openstory/generated/base-ui-avatar.stories.ts") ?? "";
+    const alertDialogSource =
+      files.get("src/openstory/generated/base-ui-alert-dialog.stories.ts") ??
+      "";
     const menuSource =
       files.get("src/openstory/generated/base-ui-menu.stories.ts") ?? "";
 
@@ -314,6 +351,15 @@ describe("generate Openstory stories", () => {
     expect(avatarSource).toContain(
       "render: () => createDocumentationReferenceProgram(baseUiAvatarDocumentation)"
     );
+    expect(alertDialogSource).toContain(
+      'import { baseUiAlertDialogDocumentation } from "../documentation/referenceData"'
+    );
+    expect(
+      alertDialogSource.indexOf("export const Documentation")
+    ).toBeLessThan(alertDialogSource.indexOf("export const Basic"));
+    expect(alertDialogSource).toContain(
+      "render: () => createDocumentationReferenceProgram(baseUiAlertDialogDocumentation)"
+    );
     expect(menuSource).not.toContain("createDocumentationReferenceProgram");
     expect(menuSource).not.toContain("referenceData");
   });
@@ -322,7 +368,8 @@ describe("generate Openstory stories", () => {
     const catalog = catalogFor(
       [
         {
-          modulePath: "../../../registry/base-ui/examples/base-ui-checkbox-missing/main",
+          modulePath:
+            "../../../registry/base-ui/examples/base-ui-checkbox-missing/main",
           slug: "base-ui-checkbox-missing",
           sourceLane: "base-ui",
         },
