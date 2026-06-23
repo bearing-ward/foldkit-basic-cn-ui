@@ -10,7 +10,7 @@ import {
   alertDialogTitleClasses,
   alertDialogTriggerClasses,
   alertDialogViewportClasses,
-} from "../../../registry/base-ui/ui/base-ui-alert-dialog/view";
+} from "../../../registry/base-ui/ui/base-ui-alert-dialog/view"
 import {
   avatarBadgeClasses,
   avatarBaseClasses,
@@ -19,12 +19,12 @@ import {
   avatarGroupCountClasses,
   avatarImageClasses,
   avatarSizeClassesBySize,
-} from "../../../registry/base-ui/ui/base-ui-avatar/view";
-import { html } from "foldkit/html";
+} from "../../../registry/base-ui/ui/base-ui-avatar/view"
+import { html } from "foldkit/html"
 
-import type { Message, XrayConfig } from "./anatomyXray";
-import type { ApiReferenceConfig } from "./apiReference";
-import referenceManifest from "./referenceManifest.json";
+import type { Message, XrayConfig } from "./anatomyXray"
+import type { ApiReferenceConfig } from "./apiReference"
+import referenceManifest from "./referenceManifest.json"
 
 export type DocumentationSection =
   | "Description/Overview"
@@ -36,50 +36,50 @@ export type DocumentationSection =
   | "Keyboard interaction"
   | "API"
   | "Accessibility"
-  | "Existing coverage";
+  | "Existing coverage"
 
 export type DocumentationCoverageRow = Readonly<{
-  path: string;
-  purpose: string;
-}>;
+  path: string
+  purpose: string
+}>
 
 export type DocumentationSourceArtifact = Readonly<{
-  label: string;
-  path: string;
-  href?: string | undefined;
-}>;
+  label: string
+  path: string
+  href?: string | undefined
+}>
 
 export type DocumentationPreviewStory = Readonly<{
-  label: string;
-  storyId: string;
-}>;
+  label: string
+  storyId: string
+}>
 
 export type DocumentationReference = Readonly<{
-  title: string;
-  laneLabel: string;
-  sourcePath: string;
-  registryItemName: string;
-  originUrl: string;
-  artifact: string;
-  primitive: string;
-  overview: readonly string[];
-  installCommands: readonly string[];
-  usageSnippet: string;
-  foldkitIntegrationSnippet: string;
-  foldkitIntegrationNotes: readonly string[];
-  previewStories: readonly DocumentationPreviewStory[];
-  sourceArtifacts: readonly DocumentationSourceArtifact[];
-  anatomyXray: XrayConfig;
-  stylingNotes: readonly string[];
-  keyboardInteractionNotes: readonly string[];
-  apiReference: ApiReferenceConfig;
-  accessibilityNotes: readonly string[];
-  coverageRows: readonly DocumentationCoverageRow[];
-}>;
+  title: string
+  laneLabel: string
+  sourcePath: string
+  registryItemName: string
+  originUrl: string
+  artifact: string
+  primitive: string
+  overview: readonly string[]
+  installCommands: readonly string[]
+  usageSnippet: string
+  foldkitIntegrationSnippet: string
+  foldkitIntegrationNotes: readonly string[]
+  previewStories: readonly DocumentationPreviewStory[]
+  sourceArtifacts: readonly DocumentationSourceArtifact[]
+  anatomyXray: XrayConfig
+  stylingNotes: readonly string[]
+  keyboardInteractionNotes: readonly string[]
+  apiReference: ApiReferenceConfig
+  accessibilityNotes: readonly string[]
+  coverageRows: readonly DocumentationCoverageRow[]
+}>
 
-const classes = (classes: string): readonly string[] => classes.split(" ");
+const classes = (classes: string): readonly string[] => classes.split(" ")
 const avatarImageSrc =
-  "data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%230f766e'/%3E%3C/svg%3E";
+  "data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%230f766e'/%3E%3C/svg%3E"
 
 export const baseUiAvatarDocumentation: DocumentationReference = {
   title: "Avatar",
@@ -156,12 +156,12 @@ const group = Avatar.groupView<Message>([
     summary:
       "Inspect the explicit parts, classes, attributes, and style hooks used to construct the Avatar, Avatar group, status badge, and overflow count.",
     preview: ({ partAttributes }) => {
-      const h = html<Message>();
+      const h = html<Message>()
 
       return h.div(
         [
           h.Class(
-            "flex min-h-40 w-full items-center justify-center p-8"
+            "flex  w-full items-center justify-center p-8"
           ),
         ],
         [
@@ -222,7 +222,7 @@ const group = Avatar.groupView<Message>([
             ]
           ),
         ]
-      );
+      )
     },
     parts: [
       {
@@ -955,7 +955,7 @@ const group = Avatar.groupView<Message>([
         "Guards public OpenStory manifest and story iframe route availability.",
     },
   ],
-};
+}
 
 export const baseUiAlertDialogDocumentation: DocumentationReference = {
   title: "Alert Dialog",
@@ -1053,7 +1053,7 @@ export const update = (model: Model, message: Message): UpdateReturn =>
     summary:
       "Inspect the explicit parts, classes, attributes, and style hooks used to construct the trigger, portal, modal popup, copy, and actions.",
     preview: ({ partAttributes }) => {
-      const h = html<Message>();
+      const h = html<Message>()
 
       return h.div(
         [
@@ -1176,7 +1176,7 @@ export const update = (model: Model, message: Message): UpdateReturn =>
             ]
           ),
         ]
-      );
+      )
     },
     parts: [
       {
@@ -1665,13 +1665,13 @@ export const update = (model: Model, message: Message): UpdateReturn =>
         "Declares the Base UI Alert Dialog component and local example relationships.",
     },
   ],
-};
+}
 
 export const documentationByItemName = {
   "base-ui-avatar": baseUiAvatarDocumentation,
   "base-ui-alert-dialog": baseUiAlertDialogDocumentation,
-} as const satisfies Readonly<Record<string, DocumentationReference>>;
+} as const satisfies Readonly<Record<string, DocumentationReference>>
 
 export const documentationItemNames = new Set(
   referenceManifest.items.map((item) => item.registryItemName)
-);
+)

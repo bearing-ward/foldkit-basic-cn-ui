@@ -1,16 +1,16 @@
-import { Array, Match as M } from "effect";
-import type { Html } from "foldkit/html";
-import { html } from "foldkit/html";
+import { Array, Match as M } from "effect"
+import type { Html } from "foldkit/html"
+import { html } from "foldkit/html"
 
-import * as Accordion from "../../../registry/base-ui/ui/base-ui-accordion";
-import * as Alert from "../../../registry/shadcn/ui/alert";
-import * as Kbd from "../../../registry/shadcn/ui/kbd";
+import * as Accordion from "../../../registry/base-ui/ui/base-ui-accordion"
+import * as Alert from "../../../registry/shadcn/ui/alert"
+import * as Kbd from "../../../registry/shadcn/ui/kbd"
 
 export type DisplayPrimitiveMapping = Readonly<{
-  shadcnConcept: string;
-  localSource: string;
-  fallback: string;
-}>;
+  shadcnConcept: string
+  localSource: string
+  fallback: string
+}>
 
 export const displayPrimitiveMappings = [
   {
@@ -68,51 +68,51 @@ export const displayPrimitiveMappings = [
     localSource: "registry/registry.json",
     fallback: "Local registry metadata and generated OpenStory group index",
   },
-] as const satisfies readonly DisplayPrimitiveMapping[];
+] as const satisfies readonly DisplayPrimitiveMapping[]
 
 export type MetadataItem = Readonly<{
-  label: string;
-  value: string;
-  href?: string | undefined;
-}>;
+  label: string
+  value: string
+  href?: string | undefined
+}>
 
 export type TableColumn<Row> = Readonly<{
-  header: string;
-  cell: (row: Row) => Html | string;
-  code?: boolean | undefined;
-}>;
+  header: string
+  cell: (row: Row) => Html | string
+  code?: boolean | undefined
+}>
 
 export type AccordionItem<ParentMessage> = Readonly<{
-  value: string;
-  title: string;
-  children: readonly Html[];
-  onValueChange: ParentMessage;
-}>;
+  value: string
+  title: string
+  children: readonly Html[]
+  onValueChange: ParentMessage
+}>
 
 export const shellClasses =
-  "min-h-screen bg-white px-4 py-6 text-slate-950 sm:px-6";
-export const containerClasses = "mx-auto flex w-full max-w-6xl flex-col gap-6";
+  "min-h-screen bg-white px-4 py-6 text-slate-950 sm:px-6"
+export const containerClasses = "mx-auto flex w-full max-w-6xl flex-col gap-6"
 export const panelClasses =
-  "rounded-[8px] border border-slate-200 bg-white p-4 shadow-sm";
-export const proseClasses = "text-sm leading-6 text-slate-600";
-export const sectionHeadingClasses = "text-xl font-semibold text-slate-950";
+  "rounded-[8px] border border-slate-200 bg-white p-4 shadow-sm"
+export const proseClasses = "text-sm leading-6 text-slate-600"
+export const sectionHeadingClasses = "text-xl font-semibold text-slate-950"
 export const codeClasses =
-  "overflow-x-auto rounded-[6px] border border-slate-200 bg-slate-950 p-4 font-mono text-xs leading-5 text-slate-50";
+  "overflow-x-auto rounded-[6px] border border-slate-200 bg-slate-950 p-4 font-mono text-xs leading-5 text-slate-50"
 
 export const slugifyHeading = (value: string): string =>
   value
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9]+/gu, "-")
-    .replace(/^-|-$/gu, "");
+    .replace(/^-|-$/gu, "")
 
 const inlineCodeClasses =
-  "rounded-[4px] bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-800";
+  "rounded-[4px] bg-slate-100 px-1.5 py-0.5 font-mono text-xs text-slate-800"
 
-const linkClasses = "text-sky-700 underline-offset-4 hover:underline";
+const linkClasses = "text-sky-700 underline-offset-4 hover:underline"
 
 export const pageShell = <ParentMessage>(children: readonly Html[]): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.main(
     [
@@ -120,28 +120,28 @@ export const pageShell = <ParentMessage>(children: readonly Html[]): Html => {
       h.Class(shellClasses),
     ],
     [h.div([h.Class(containerClasses)], children)]
-  );
-};
+  )
+}
 
 export const heading = <ParentMessage>(
   level: 1 | 2 | 3,
   label: string,
   className?: string
 ): Html => {
-  const h = html<ParentMessage>();
-  const slug = slugifyHeading(label);
+  const h = html<ParentMessage>()
+  const slug = slugifyHeading(label)
   const attributes = [
     h.Id(slug),
     h.Class(
       className ??
-        M.value(level).pipe(
-          M.when(1, () => "text-4xl font-semibold text-slate-950"),
-          M.when(2, () => sectionHeadingClasses),
-          M.when(3, () => "text-base font-semibold text-slate-950"),
-          M.exhaustive
-        )
+      M.value(level).pipe(
+        M.when(1, () => "text-4xl font-semibold text-slate-950"),
+        M.when(2, () => sectionHeadingClasses),
+        M.when(3, () => "text-base font-semibold text-slate-950"),
+        M.exhaustive
+      )
     ),
-  ];
+  ]
   const children = [
     h.span([], [label]),
     h.a(
@@ -152,29 +152,29 @@ export const heading = <ParentMessage>(
       ],
       []
     ),
-  ];
+  ]
 
   return M.value(level).pipe(
     M.when(1, () => h.h1(attributes, children)),
     M.when(2, () => h.h2(attributes, children)),
     M.when(3, () => h.h3(attributes, children)),
     M.exhaustive
-  );
-};
+  )
+}
 
 export const eyebrow = <ParentMessage>(label: string): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.p(
     [h.Class("font-mono text-xs font-medium uppercase text-slate-500")],
     [label]
-  );
-};
+  )
+}
 
 export const metadataGrid = <ParentMessage>(
   items: readonly MetadataItem[]
 ): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.dl(
     [h.Class("grid gap-4 md:grid-cols-2 lg:grid-cols-3")],
@@ -191,60 +191,60 @@ export const metadataGrid = <ParentMessage>(
             [
               item.href === undefined
                 ? h.code(
-                    [h.Class("break-words font-mono text-xs")],
-                    [item.value]
-                  )
+                  [h.Class("break-words font-mono text-xs")],
+                  [item.value]
+                )
                 : h.a(
-                    [h.Href(item.href), h.Class(`break-words ${linkClasses}`)],
-                    [item.value]
-                  ),
+                  [h.Href(item.href), h.Class(`break-words ${linkClasses}`)],
+                  [item.value]
+                ),
             ]
           ),
         ]
       )
     )
-  );
-};
+  )
+}
 
 export const section = <ParentMessage>(
   label: string,
   children: readonly Html[]
 ): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.section(
     [h.Class(`${panelClasses} space-y-4`)],
     [heading<ParentMessage>(2, label), ...children]
-  );
-};
+  )
+}
 
 export const paragraphs = <ParentMessage>(
   values: readonly string[]
 ): readonly Html[] => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
-  return values.map((value) => h.p([h.Class(proseClasses)], [value]));
-};
+  return values.map((value) => h.p([h.Class(proseClasses)], [value]))
+}
 
 export const list = <ParentMessage>(items: readonly string[]): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.ul(
     [h.Class("list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600")],
     items.map((item) => h.li([], [item]))
-  );
-};
+  )
+}
 
 export const codeBlock = <ParentMessage>(source: string): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
-  return h.pre([h.Class(codeClasses)], [h.code([], [source])]);
-};
+  return h.pre([h.Class(codeClasses)], [h.code([], [source])])
+}
 
 export const commandBlocks = <ParentMessage>(
   commands: readonly string[]
 ): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.div(
     [h.Class("grid gap-2")],
@@ -254,14 +254,14 @@ export const commandBlocks = <ParentMessage>(
         [h.code([h.Class("font-mono text-xs text-slate-800")], [command])]
       )
     )
-  );
-};
+  )
+}
 
 export const table = <ParentMessage, Row>(
   columns: readonly TableColumn<Row>[],
   rows: readonly Row[]
 ): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return h.div(
     [h.Class("overflow-x-auto")],
@@ -292,9 +292,9 @@ export const table = <ParentMessage, Row>(
                       [
                         column.code === true
                           ? h.code(
-                              [h.Class("font-mono text-xs text-slate-950")],
-                              [column.cell(row)]
-                            )
+                            [h.Class("font-mono text-xs text-slate-950")],
+                            [column.cell(row)]
+                          )
                           : column.cell(row),
                       ]
                     )
@@ -306,8 +306,8 @@ export const table = <ParentMessage, Row>(
         ]
       ),
     ]
-  );
-};
+  )
+}
 
 export const callout = <ParentMessage>(
   title: string,
@@ -318,10 +318,10 @@ export const callout = <ParentMessage>(
     description,
     variant: "Default",
     className: "border-amber-200 bg-amber-50",
-  });
+  })
 
 export const kbd = <ParentMessage>(label: string): Html =>
-  Kbd.view<ParentMessage>({ label, size: "Small" });
+  Kbd.view<ParentMessage>({ label, size: "Small" })
 
 export const accordion = <ParentMessage>(
   openValues: readonly string[],
@@ -341,16 +341,16 @@ export const accordion = <ParentMessage>(
         children: item.children,
       })
     ),
-  });
+  })
 
 export const sourceList = <ParentMessage>(
   rows: readonly Readonly<{
-    label: string;
-    path: string;
-    href?: string | undefined;
+    label: string
+    path: string
+    href?: string | undefined
   }>[]
 ): Html => {
-  const h = html<ParentMessage>();
+  const h = html<ParentMessage>()
 
   return Array.match(rows, {
     onEmpty: () => h.empty,
@@ -369,5 +369,5 @@ export const sourceList = <ParentMessage>(
           )
         )
       ),
-  });
-};
+  })
+}
