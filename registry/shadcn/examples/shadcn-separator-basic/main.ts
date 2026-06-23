@@ -45,7 +45,12 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("space-y-8")],
+    [
+      h.Style({
+        "--border": "lab(90.952 0 -0.0000119209)",
+      }),
+      h.Class("space-y-8"),
+    ],
     [
       h.div(
         [h.Class("space-y-1")],
@@ -71,9 +76,15 @@ export const view = Submodel.defineView<Model, Message>((): Html => {
         [h.Class("flex h-5 items-center space-x-4 text-sm")],
         [
           h.div([], ["Blog"]),
-          Separator.view<Message>({ orientation: "vertical" }),
+          Separator.view<Message>({
+            orientation: "vertical",
+            style: { height: "100%", width: "1px" },
+          }),
           h.div([], ["Docs"]),
-          Separator.view<Message>({ orientation: "vertical" }),
+          Separator.view<Message>({
+            orientation: "vertical",
+            style: { height: "100%", width: "1px" },
+          }),
           h.div([], ["Source"]),
         ]
       ),

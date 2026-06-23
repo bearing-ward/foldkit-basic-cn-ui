@@ -12,19 +12,19 @@
       "path": "registry/shadcn/ui/shadcn-separator/index.ts",
       "target": "src/ui/shadcn-separator/index.ts",
       "type": "registry:ui",
-      "content": "export { view } from \"../../../base-ui/ui/separator\";\nexport type {\n  SeparatorOrientation,\n  SeparatorStyle,\n  ViewConfig,\n} from \"../../../base-ui/ui/separator\";\n\nexport {\n  shadcnHorizontalSeparatorClasses,\n  shadcnSeparatorBaseClasses,\n  shadcnSeparatorClassesByOrientation,\n  shadcnVerticalSeparatorClasses,\n} from \"./view\";\n"
+      "content": "import type { Html } from \"foldkit/html\";\nimport { html } from \"foldkit/html\";\n\nimport { shadcnSeparatorClassesByOrientation } from \"./view\";\nimport type { SeparatorOrientation } from \"./view\";\n\nexport {\n  shadcnHorizontalSeparatorClasses,\n  shadcnSeparatorBaseClasses,\n  shadcnSeparatorClassesByOrientation,\n  shadcnVerticalSeparatorClasses,\n} from \"./view\";\n\nexport type { SeparatorOrientation };\n\nexport type SeparatorStyle = Readonly<Record<string, string>>;\n\nexport type ViewConfig = Readonly<{\n  orientation?: SeparatorOrientation;\n  className?: string | undefined;\n  style?: SeparatorStyle | undefined;\n  decorative?: boolean | undefined;\n}>;\n\nexport const view = <ParentMessage>({\n  className,\n  decorative = true,\n  orientation = \"horizontal\",\n  style,\n}: ViewConfig = {}): Html => {\n  const h = html<ParentMessage>();\n  const cn = [shadcnSeparatorClassesByOrientation(orientation), className]\n    .filter((value): value is string => value !== undefined && value !== \"\")\n    .join(\" \");\n\n  return h.div(\n    [\n      decorative\n        ? h.Attribute(\"role\", \"none\")\n        : h.Attribute(\"role\", \"separator\"),\n      ...(decorative ? [] : [h.Attribute(\"aria-orientation\", orientation)]),\n      h.DataAttribute(\"slot\", \"separator\"),\n      h.DataAttribute(\"orientation\", orientation),\n      ...(style === undefined ? [] : [h.Style(style)]),\n      h.Class(cn),\n    ],\n    []\n  );\n};\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-separator/view.ts",
       "target": "src/ui/shadcn-separator/view.ts",
       "type": "registry:ui",
-      "content": "export {\n  horizontalSeparatorClasses as shadcnHorizontalSeparatorClasses,\n  separatorBaseClasses as shadcnSeparatorBaseClasses,\n  separatorClassesByOrientation as shadcnSeparatorClassesByOrientation,\n  verticalSeparatorClasses as shadcnVerticalSeparatorClasses,\n} from \"../../../base-ui/ui/separator/view\";\n"
+      "content": "export type SeparatorOrientation = \"horizontal\" | \"vertical\";\n\nexport const shadcnSeparatorBaseClasses =\n  \"shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch\";\n\nexport const shadcnHorizontalSeparatorClasses = shadcnSeparatorBaseClasses;\n\nexport const shadcnVerticalSeparatorClasses = shadcnSeparatorBaseClasses;\n\nexport const shadcnSeparatorClassesByOrientation = (\n  _orientation: SeparatorOrientation = \"horizontal\"\n): string => shadcnSeparatorBaseClasses;\n"
     },
     {
       "path": "registry/shadcn/ui/shadcn-separator/shadcn-separator.scene.test.ts",
       "target": "src/ui/shadcn-separator/shadcn-separator.scene.test.ts",
       "type": "registry:ui",
-      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Separator from \"./index\";\n\ndescribe(\"shadcn Separator registry view\", () => {\n  test(\"reuses the Foldkit Separator view contract\", () => {\n    expect(Separator.view).toBeTypeOf(\"function\");\n    expect(\n      Separator.shadcnSeparatorClassesByOrientation(\"vertical\")\n    ).toContain(\"w-px\");\n    expect(Separator.shadcnSeparatorBaseClasses).toContain(\"shrink-0\");\n  });\n});\n"
+      "content": "import { describe, expect, test } from \"vitest\";\n\nimport * as Separator from \"./index\";\n\ndescribe(\"shadcn Separator registry view\", () => {\n  test(\"matches the current shadcn separator class contract\", () => {\n    expect(Separator.view).toBeTypeOf(\"function\");\n    expect(\n      Separator.shadcnSeparatorClassesByOrientation(\"vertical\")\n    ).toBe(Separator.shadcnSeparatorBaseClasses);\n    expect(Separator.shadcnSeparatorBaseClasses).toContain(\"bg-border\");\n    expect(Separator.shadcnSeparatorBaseClasses).toContain(\n      \"data-vertical:self-stretch\"\n    );\n  });\n});\n"
     }
   ],
   "meta": {

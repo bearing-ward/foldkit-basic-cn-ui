@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "capturedAt": "2026-06-23T08:26:30.299Z",
+    "gitSha": "cbadbade9b9091e6f1acdf368a919ec076f2d254",
+    "originUrl": "https://ui.shadcn.com/docs/components/radix/separator",
+    "selector": "main [data-slot=component-preview] [data-slot=preview] .flex.h-5 [data-slot=separator][data-orientation=vertical]",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/148.0.7778.96 Safari/537.36",
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "dom": {
+    "tagName": "div",
+    "text": "",
+    "attributes": {
+      "data-orientation": "vertical",
+      "role": "none"
+    }
+  },
+  "classTokens": [
+    "bg-border",
+    "data-horizontal:h-px",
+    "data-horizontal:w-full",
+    "data-vertical:self-stretch",
+    "data-vertical:w-px",
+    "shrink-0"
+  ],
+  "computedStyle": {
+    "box-sizing": "border-box",
+    "width": "1px",
+    "height": "20px",
+    "background-color": "lab(90.952 0 -0.0000119209)",
+    "display": "block"
+  },
+  "geometry": {
+    "width": 1,
+    "height": 20
+  }
+}

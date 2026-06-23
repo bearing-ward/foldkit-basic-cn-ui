@@ -17,8 +17,10 @@ type ExampleFixture = Readonly<{
   localTestId: string;
   originSelector: string;
   localSelector?: string;
+  ignoredDomAttributes?: readonly string[];
   compare: CompareConfig;
   tolerances?: {
+    computedColorChannelDelta?: number;
     computedPx?: number;
     heightPx?: number;
     maxDiffPixelRatio?: number;
@@ -142,6 +144,112 @@ const pxNumber = (value: string): number | undefined => {
   return match === null ? undefined : Number(match[1]);
 };
 
+type Rgb = Readonly<{ r: number; g: number; b: number }>;
+
+const clampByte = (value: number): number =>
+  Math.max(0, Math.min(255, Math.round(value)));
+
+const linearToSrgb = (value: number): number => {
+  const clamped = Math.max(0, Math.min(1, value));
+
+  return clamped <= 0.0031308
+    ? clamped * 12.92
+    : 1.055 * clamped ** (1 / 2.4) - 0.055;
+};
+
+const labToRgb = (lightness: number, a: number, b: number): Rgb => {
+  const fy = (lightness + 16) / 116;
+  const fx = fy + a / 500;
+  const fz = fy - b / 200;
+  const epsilon = 216 / 24389;
+  const kappa = 24389 / 27;
+  const toXyz = (value: number) => {
+    const cubed = value ** 3;
+
+    return cubed > epsilon ? cubed : (116 * value - 16) / kappa;
+  };
+  const x = toXyz(fx) * 0.96422;
+  const y = toXyz(fy);
+  const z = toXyz(fz) * 0.82521;
+  const linearR = 3.1338561 * x - 1.6168667 * y - 0.4906146 * z;
+  const linearG = -0.9787684 * x + 1.9161415 * y + 0.033454 * z;
+  const linearB = 0.0719453 * x - 0.2289914 * y + 1.4052427 * z;
+
+  return {
+    r: clampByte(linearToSrgb(linearR) * 255),
+    g: clampByte(linearToSrgb(linearG) * 255),
+    b: clampByte(linearToSrgb(linearB) * 255),
+  };
+};
+
+const oklchToRgb = (lightness: number, chroma: number, hue: number): Rgb => {
+  const hueRadians = (hue * Math.PI) / 180;
+  const a = chroma * Math.cos(hueRadians);
+  const b = chroma * Math.sin(hueRadians);
+  const l = lightness + 0.3963377774 * a + 0.2158037573 * b;
+  const m = lightness - 0.1055613458 * a - 0.0638541728 * b;
+  const s = lightness - 0.0894841775 * a - 1.291485548 * b;
+  const l3 = l ** 3;
+  const m3 = m ** 3;
+  const s3 = s ** 3;
+  const linearR = 4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
+  const linearG = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
+  const linearB = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.707614701 * s3;
+
+  return {
+    r: clampByte(linearToSrgb(linearR) * 255),
+    g: clampByte(linearToSrgb(linearG) * 255),
+    b: clampByte(linearToSrgb(linearB) * 255),
+  };
+};
+
+const parseColor = (value: string): Rgb | undefined => {
+  const rgbMatch = value
+    .trim()
+    .match(/^rgba?\((\d+(?:\.\d+)?),\s*(\d+(?:\.\d+)?),\s*(\d+(?:\.\d+)?)/u);
+
+  if (rgbMatch !== null) {
+    return {
+      r: clampByte(Number(rgbMatch[1])),
+      g: clampByte(Number(rgbMatch[2])),
+      b: clampByte(Number(rgbMatch[3])),
+    };
+  }
+
+  const labMatch = value
+    .trim()
+    .match(/^lab\((-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)/u);
+
+  if (labMatch !== null) {
+    return labToRgb(
+      Number(labMatch[1]),
+      Number(labMatch[2]),
+      Number(labMatch[3])
+    );
+  }
+
+  const oklchMatch = value
+    .trim()
+    .match(/^oklch\((-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)/u);
+
+  if (oklchMatch !== null) {
+    return oklchToRgb(
+      Number(oklchMatch[1]),
+      Number(oklchMatch[2]),
+      Number(oklchMatch[3])
+    );
+  }
+
+  return undefined;
+};
+
+const maxColorChannelDelta = (actual: Rgb, expected: Rgb): number =>
+  Math.max(
+    Math.abs(actual.r - expected.r),
+    Math.abs(actual.g - expected.g),
+    Math.abs(actual.b - expected.b)
+  );
+
 const expectComputedStyle = (
   actual: Record<string, string>,
   expected: Record<string, string>,
@@ -167,11 +275,34 @@ const expectComputedStyle = (
       continue;
     }
 
+    const actualColor = parseColor(actualValue);
+    const expectedColor = parseColor(expectedValue);
+
+    if (actualColor !== undefined && expectedColor !== undefined) {
+      expect(
+        maxColorChannelDelta(actualColor, expectedColor),
+        `${example.exampleName} ${propertyName}`
+      ).toBeLessThanOrEqual(example.tolerances?.computedColorChannelDelta ?? 3);
+      continue;
+    }
+
     expect(actualValue, `${example.exampleName} ${propertyName}`).toBe(
       expectedValue
     );
   }
 };
+
+const withoutIgnoredAttributes = (
+  dom: Reference["dom"],
+  ignoredAttributes: readonly string[] = []
+): Reference["dom"] => ({
+  ...dom,
+  attributes: Object.fromEntries(
+    Object.entries(dom.attributes).filter(
+      ([attributeName]) => !ignoredAttributes.includes(attributeName)
+    )
+  ),
+});
 
 const compareScreenshots = async ({
   actual,
@@ -304,7 +435,9 @@ for (const { fixture, example } of enabledFixtures) {
     );
 
     if (example.compare.dom) {
-      expect(actual.dom).toEqual(reference.dom);
+      expect(withoutIgnoredAttributes(actual.dom, example.ignoredDomAttributes)).toEqual(
+        withoutIgnoredAttributes(reference.dom, example.ignoredDomAttributes)
+      );
     }
 
     if (example.compare.classTokens) {

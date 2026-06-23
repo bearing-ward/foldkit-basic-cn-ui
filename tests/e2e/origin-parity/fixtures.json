@@ -1352,21 +1352,63 @@
       "itemName": "shadcn-button",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/button",
-      "localPath": "/__story/shadcn-button--inventory",
+      "localPath": "/__story/shadcn-button--rounded",
       "examples": [
         {
-          "exampleName": "inventory",
-          "localTestId": "shadcn-button--inventory",
-          "originSelector": "main [data-slot]",
+          "exampleName": "rounded",
+          "localTestId": "shadcn-button--rounded",
+          "originSelector": "main [data-slot=button][data-variant=outline][data-size=icon].rounded-full",
+          "localSelector": "button[data-slot=button][data-variant=outline][data-size=icon].rounded-full",
+          "ignoredDomAttributes": [
+            "type"
+          ],
           "compare": {
-            "dom": false,
-            "classTokens": false,
-            "computedStyle": [],
-            "geometry": false,
-            "screenshot": false
+            "dom": true,
+            "classTokens": true,
+            "computedStyle": [
+              "box-sizing",
+              "width",
+              "height",
+              "padding-left",
+              "padding-right",
+              "padding-top",
+              "padding-bottom",
+              "border-top-width",
+              "border-right-width",
+              "border-bottom-width",
+              "border-left-width",
+              "border-top-style",
+              "border-right-style",
+              "border-bottom-style",
+              "border-left-style",
+              "border-top-color",
+              "border-right-color",
+              "border-bottom-color",
+              "border-left-color",
+              "border-radius",
+              "background-color",
+              "color",
+              "display",
+              "align-items",
+              "justify-content",
+              "font-size",
+              "font-weight",
+              "line-height",
+              "gap",
+              "white-space"
+            ],
+            "geometry": true,
+            "screenshot": true
           },
-          "tolerances": {},
-          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+          "tolerances": {
+            "computedColorChannelDelta": 4,
+            "computedPx": 0.5,
+            "heightPx": 1,
+            "maxDiffPixelRatio": 0.18,
+            "pixelChannelDelta": 12,
+            "widthPx": 1
+          },
+          "notes": "Exact shadcn Button Rounded fixture. Source evidence: registry/upstream/snapshots/shadcn/button.tsx and registry/upstream/derived/shadcn-button.json record the new-york-v4 recipe where size.icon is size-9; registry/shadcn/button/ui/config.ts records the current Base Nova recipe where size.icon is size-8; the live new-york-v4 example source from https://ui.shadcn.com/r/styles/new-york-v4/button-rounded.json supplies variant=\"outline\", size=\"icon\", className=\"rounded-full\", and ArrowUpIcon. Rendered origin evidence on 2026-06-22 for selector main [data-slot=button][data-variant=outline][data-size=icon].rounded-full reported final classes including size-8 rounded-full, width 32, height 32, zero padding, 1px borders, icon-only empty text, and a 16px rendered lucide arrow-up SVG. DOM comparison ignores only type because Foldkit Ui.Button emits type=\"button\" for safe inert buttons while the current origin button omits the attribute."
         }
       ]
     },
@@ -1814,21 +1856,34 @@
       "itemName": "shadcn-separator",
       "lane": "shadcn",
       "originUrl": "https://ui.shadcn.com/docs/components/radix/separator",
-      "localPath": "/__story/shadcn-separator--inventory",
+      "localPath": "/__story/shadcn-separator--basic",
       "examples": [
         {
-          "exampleName": "inventory",
-          "localTestId": "shadcn-separator--inventory",
-          "originSelector": "main [data-slot]",
+          "exampleName": "basic",
+          "localTestId": "shadcn-separator--basic",
+          "originSelector": "main [data-slot=component-preview] [data-slot=preview] .flex.h-5 [data-slot=separator][data-orientation=vertical]",
+          "localSelector": "[data-slot=separator][data-orientation=vertical]",
           "compare": {
-            "dom": false,
-            "classTokens": false,
-            "computedStyle": [],
-            "geometry": false,
-            "screenshot": false
+            "dom": true,
+            "classTokens": true,
+            "computedStyle": [
+              "box-sizing",
+              "width",
+              "height",
+              "background-color",
+              "display"
+            ],
+            "geometry": true,
+            "screenshot": true
           },
-          "tolerances": {},
-          "notes": "Inventory-only placeholder; enable comparisons after selecting a stable origin example and local preview root."
+          "tolerances": {
+            "computedPx": 1,
+            "heightPx": 1,
+            "maxDiffPixelRatio": 0.06,
+            "pixelChannelDelta": 12,
+            "widthPx": 1
+          },
+          "notes": "Small shadcn static batch beyond Button. Source evidence: https://ui.shadcn.com/r/styles/new-york-v4/separator.json records the upstream Separator slot and orientation API, while the live origin preview on 2026-06-22 rendered the current decorative separator vocabulary as role=\"none\", data-slot=\"separator\", data-orientation=\"vertical\", classes shrink-0 bg-border data-horizontal:h-px data-horizontal:w-full data-vertical:w-px data-vertical:self-stretch, width 1, height 20."
         }
       ]
     },

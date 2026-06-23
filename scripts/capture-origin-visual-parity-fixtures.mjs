@@ -58,7 +58,13 @@ const parseArgs = () => {
     return { itemName: args[1] };
   }
 
-  throw new Error("Usage: bun run origin:parity:capture -- --item <name> | --all");
+  if (args.length === 4 && args[0] === "--item" && args[2] === "--example") {
+    return { exampleName: args[3], itemName: args[1] };
+  }
+
+  throw new Error(
+    "Usage: bun run origin:parity:capture -- --item <name> [--example <name>] | --all"
+  );
 };
 
 const validateFixturesAgainstRegistry = ({ fixtures, registryItems }) => {
@@ -236,7 +242,13 @@ let skippedCount = 0;
 
 try {
   for (const fixture of requestedFixtures) {
-    const enabledExamples = fixture.examples.filter(isEnabledExample);
+    const enabledExamples = fixture.examples
+      .filter(isEnabledExample)
+      .filter(
+        (example) =>
+          args.exampleName === undefined ||
+          example.exampleName === args.exampleName
+      );
 
     if (enabledExamples.length === 0) {
       skippedCount += fixture.examples.length;
