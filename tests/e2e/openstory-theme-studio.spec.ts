@@ -27,8 +27,24 @@ type ThemeStudioCatalog = Readonly<{
       id: string;
       title: string;
       status: "rendered" | "covered-by-existing-example" | "deferred";
-      dependency?: string;
+      originSurface: string;
+      dependencies: ReadonlyArray<string>;
       reason?: string;
+    }>
+  >;
+  themeCardOptions: ReadonlyArray<
+    Readonly<{
+      id: string;
+      title: string;
+      status: "active" | "deferred";
+      options: ReadonlyArray<unknown>;
+      reason?: string;
+    }>
+  >;
+  componentInventory: ReadonlyArray<
+    Readonly<{
+      component: string;
+      status: "needs-origin-spec" | "in-progress" | "matched" | "deferred";
     }>
   >;
 }>;
@@ -69,6 +85,9 @@ const visibleStyles = async (locator: Locator): Promise<VisibleStyles> =>
     };
   });
 
+const decodedGlobals = (url: string): string =>
+  new URL(url).searchParams.get("globals") ?? "";
+
 test("manifest exposes Theme Studio and generated catalog downloads", async ({
   request,
 }) => {
@@ -101,7 +120,7 @@ test("renders dynamic catalog controls in the story iframe", async ({
 
   const frame = page.frameLocator(`iframe[title="${storyId}"]`);
   await expect(frame.getByLabel("Style")).toBeVisible();
-  await expect(frame.getByLabel("Base color")).toBeVisible();
+  await expect(frame.getByLabel("Base Color")).toBeVisible();
   await expect(frame.getByLabel("Mode")).toBeVisible();
   await expect(frame.getByLabel("Preview block")).toBeVisible();
   await expect(frame.getByText("CSS variable mode")).toBeVisible();
@@ -149,6 +168,129 @@ test("renders dynamic catalog controls in the story iframe", async ({
   }
 });
 
+test("fills the story iframe instead of using the centered layout", async ({
+  page,
+}) => {
+  await page.goto(`/?id=${storyId}`);
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+
+  await expect(frame.locator("body")).toHaveClass(
+    /openstory-layout-fullscreen/u
+  );
+  await expect(frame.getByTestId("theme-studio-root")).toBeVisible();
+
+  const widths = await frame
+    .getByTestId("theme-studio-root")
+    .evaluate((element) => {
+      const rootRect = element.getBoundingClientRect();
+      const bodyRect = document.body.getBoundingClientRect();
+
+      return {
+        bodyWidth: bodyRect.width,
+        rootWidth: rootRect.width,
+      };
+    });
+
+  expect(widths.rootWidth).toBeGreaterThan(widths.bodyWidth * 0.95);
+});
+
+test("renders origin theme-card rows, block inventory, and component checklist", async ({
+  page,
+  request,
+}) => {
+  const catalog = await getCatalog(request);
+
+  await page.goto(`/?id=${storyId}`);
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  await expect(frame.getByTestId("theme-studio-origin-theme-card")).toBeVisible();
+  await expect(frame.getByTestId("theme-studio-origin-block-list")).toBeVisible();
+  await expect(frame.getByTestId("theme-studio-component-inventory")).toBeVisible();
+
+  for (const row of catalog.themeCardOptions) {
+    const rowLocator = frame.locator(
+      `[data-theme-studio-theme-card-row="${row.id}"]`
+    );
+    await expect(rowLocator).toBeVisible();
+    await expect(rowLocator).toHaveAttribute("data-status", row.status);
+    if (row.status === "active") {
+      expect(row.options.length).toBeGreaterThan(0);
+      await expect(rowLocator.locator("select")).toHaveCount(1);
+    } else {
+      expect(row.reason).toBeTruthy();
+      await expect(rowLocator.locator("select")).toHaveCount(0);
+      await expect(rowLocator).toContainText(row.reason ?? "");
+    }
+  }
+
+  await expect(frame.locator("[data-theme-studio-block-option]")).toHaveCount(
+    catalog.previewCoverage.length
+  );
+  await expect(
+    frame.locator("[data-theme-studio-component-inventory-row]")
+  ).toHaveCount(catalog.componentInventory.length);
+  await expect(
+    frame.locator('[data-theme-studio-component-inventory-row="card"]')
+  ).toBeVisible();
+});
+
+test("initializes Theme Studio from URL globals", async ({ page }) => {
+  await page.goto(
+    `/?id=${storyId}&globals=shadcnTheme%3Arhea-neutral%3BshadcnMode%3Alight`
+  );
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+
+  await expect(frame.getByLabel("Style")).toHaveValue("rhea");
+  await expect(frame.getByLabel("Base Color")).toHaveValue("neutral");
+  await expect(frame.getByLabel("Mode")).toHaveValue("light");
+  await expect(frame.getByTestId("theme-studio-preview")).toHaveAttribute(
+    "data-selected-base-color",
+    "neutral"
+  );
+});
+
+test("synchronizes Theme Studio card and OpenStory toolbar globals", async ({
+  page,
+}) => {
+  await page.goto(
+    `/?id=${storyId}&globals=shadcnTheme%3Arhea-neutral%3BshadcnMode%3Alight`
+  );
+
+  const frame = page.frameLocator(`iframe[title="${storyId}"]`);
+  await expect(frame.getByLabel("Base Color")).toHaveValue("neutral");
+  await expect(frame.getByLabel("Mode")).toHaveValue("light");
+
+  await page.getByLabel("shadcn").click();
+  await page.getByRole("option", { name: "Rhea Amber" }).click();
+  await expect(frame.getByLabel("Base Color")).toHaveValue("amber");
+  await expect(frame.getByTestId("theme-studio-preview")).toHaveAttribute(
+    "data-selected-base-color",
+    "amber"
+  );
+
+  await page.getByLabel("mode").click();
+  await page.getByRole("option", { name: "Dark" }).click();
+  await expect(frame.getByLabel("Mode")).toHaveValue("dark");
+  await expect(frame.getByTestId("theme-studio-preview")).toHaveAttribute(
+    "data-resolved-mode",
+    "dark"
+  );
+
+  await frame.getByLabel("Theme").selectOption("cyan");
+  await expect(page.getByLabel("shadcn")).toContainText("Rhea Cyan");
+  await expect
+    .poll(() => decodedGlobals(page.url()))
+    .toContain("shadcnTheme:rhea-cyan");
+
+  await frame.getByLabel("Mode").selectOption("system");
+  await expect(page.getByLabel("mode")).toContainText("System");
+  await expect
+    .poll(() => decodedGlobals(page.url()))
+    .toContain("shadcnMode:system");
+});
+
 test("updates preview data attributes, CSS tokens, and visible surfaces", async ({
   page,
 }) => {
@@ -160,7 +302,7 @@ test("updates preview data attributes, CSS tokens, and visible surfaces", async 
   const accentSurface = frame.getByTestId("theme-studio-accent-surface");
   const borderSurface = frame.getByTestId("theme-studio-border-surface");
 
-  await frame.getByLabel("Base color").selectOption("neutral");
+  await frame.getByLabel("Base Color").selectOption("neutral");
   const initialPrimary = await preview.evaluate((element) =>
     getComputedStyle(element).getPropertyValue("--primary").trim()
   );
@@ -168,7 +310,7 @@ test("updates preview data attributes, CSS tokens, and visible surfaces", async 
   const initialAccentStyles = await visibleStyles(accentSurface);
   const initialBorderStyles = await visibleStyles(borderSurface);
 
-  await frame.getByLabel("Base color").selectOption("amber");
+  await frame.getByLabel("Base Color").selectOption("amber");
 
   await expect(preview).toHaveAttribute("data-selected-style", "rhea");
   await expect(preview).toHaveAttribute("data-selected-base-color", "amber");

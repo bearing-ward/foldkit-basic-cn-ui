@@ -4,8 +4,10 @@ import { describe, test } from "vitest";
 import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 import {
   baseColorOptionsForStyle,
+  CompletedSyncOpenStoryGlobals,
   init,
   SelectedThemeStudioPreviewBlock,
+  SyncOpenStoryGlobals,
   themeStudioCatalog,
   update,
   view,
@@ -19,10 +21,13 @@ describe("Theme Studio scene", () => {
       { update, view },
       Scene.with(model),
       Scene.expect(Scene.testId("theme-studio-root")).toExist(),
+      Scene.expect(Scene.testId("theme-studio-origin-theme-card")).toExist(),
+      Scene.expect(Scene.testId("theme-studio-origin-block-list")).toExist(),
+      Scene.expect(Scene.testId("theme-studio-component-inventory")).toExist(),
       Scene.expect(Scene.role("combobox", { name: "Style" })).toHaveValue(
         model.selectedStyle
       ),
-      Scene.expect(Scene.role("combobox", { name: "Base color" })).toHaveValue(
+      Scene.expect(Scene.role("combobox", { name: "Base Color" })).toHaveValue(
         model.selectedBaseColor
       ),
       Scene.expect(Scene.role("combobox", { name: "Mode" })).toHaveValue(
@@ -77,8 +82,34 @@ describe("Theme Studio scene", () => {
     Scene.scene(
       { update, view },
       Scene.with(model),
-      Scene.change(Scene.role("combobox", { name: "Base color" }), nextBaseColor),
+      Scene.change(Scene.role("combobox", { name: "Base Color" }), nextBaseColor),
+      Scene.Command.expectExact(
+        SyncOpenStoryGlobals({
+          shadcnTheme: `rhea-${nextBaseColor}`,
+          shadcnMode: "light",
+        })
+      ),
+      Scene.Command.resolve(
+        SyncOpenStoryGlobals({
+          shadcnTheme: `rhea-${nextBaseColor}`,
+          shadcnMode: "light",
+        }),
+        CompletedSyncOpenStoryGlobals()
+      ),
       Scene.change(Scene.role("combobox", { name: "Mode" }), "dark"),
+      Scene.Command.expectExact(
+        SyncOpenStoryGlobals({
+          shadcnTheme: `rhea-${nextBaseColor}`,
+          shadcnMode: "dark",
+        })
+      ),
+      Scene.Command.resolve(
+        SyncOpenStoryGlobals({
+          shadcnTheme: `rhea-${nextBaseColor}`,
+          shadcnMode: "dark",
+        }),
+        CompletedSyncOpenStoryGlobals()
+      ),
       Scene.change(Scene.role("combobox", { name: "Preview block" }), nextBlock?.id ?? ""),
       Scene.expect(Scene.testId("theme-studio-preview")).toHaveAttr(
         "data-selected-base-color",
@@ -213,7 +244,7 @@ describe("Theme Studio scene", () => {
       Scene.expect(Scene.testId("theme-studio-block-options")).toExist(),
       Scene.expect(
         Scene.selector(`[data-theme-studio-block-option="${coverageRow?.id ?? ""}"]`)
-      ).toHaveAttr("data-dependency", coverageRow?.dependency ?? ""),
+      ).toHaveAttr("data-dependency", coverageRow?.dependencies.join(", ") ?? ""),
       Scene.click(
         Scene.selector(`[data-theme-studio-block-option="${target?.id ?? ""}"]`)
       ),
@@ -227,6 +258,42 @@ describe("Theme Studio scene", () => {
       Scene.expect(Scene.testId("theme-studio-preview-title")).toContainText(
         target?.title ?? ""
       )
+    );
+  });
+
+  test("renders origin theme-card rows and component inventory from catalog data", () => {
+    const [model] = init();
+
+    Scene.scene(
+      { update, view },
+      Scene.with(model),
+      ...themeStudioCatalog.themeCardOptions.map((row) =>
+        Scene.expect(
+          Scene.selector(`[data-theme-studio-theme-card-row="${row.id}"]`)
+        ).toHaveAttr("data-status", row.status)
+      ),
+      ...themeStudioCatalog.themeCardOptions
+        .filter((row) => row.status === "active")
+        .map((row) =>
+          Scene.expect(
+            Scene.selector(`[data-theme-studio-theme-card-row="${row.id}"] select`)
+          ).toExist()
+        ),
+      ...themeStudioCatalog.themeCardOptions
+        .filter((row) => row.status === "deferred")
+        .map((row) =>
+          Scene.expect(
+            Scene.selector(`[data-theme-studio-theme-card-row="${row.id}"]`)
+          ).toContainText(row.reason ?? "")
+        ),
+      Scene.expect(
+        Scene.selector('[data-theme-studio-component-inventory-row="card"]')
+      ).toHaveAttr("data-status", "matched"),
+      Scene.expect(
+        Scene.selector(
+          '[data-theme-studio-component-inventory-row="qr-code/image-placeholder"]'
+        )
+      ).toHaveAttr("data-status", "deferred")
     );
   });
 });

@@ -2,6 +2,7 @@
   "name": "theme-studio",
   "sourceReferences": [
     "https://ui.shadcn.com/docs/theming",
+    "https://ui.shadcn.com/create?preset=b27GcrRo",
     "https://ui.shadcn.com/preview/radix/preview-02"
   ],
   "styleOptions": [
@@ -257,6 +258,354 @@
       }
     ]
   },
+  "themeCardOptions": [
+    {
+      "id": "style",
+      "title": "Style",
+      "status": "active",
+      "selectedValue": "rhea",
+      "source": "registry/upstream/derived/shadcn-theme.json styleNames",
+      "options": [
+        {
+          "value": "rhea",
+          "title": "Rhea",
+          "tailwind": {
+            "cssVariables": true
+          },
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "base-color",
+      "title": "Base Color",
+      "status": "active",
+      "selectedValue": "neutral",
+      "source": "registry/upstream/derived/shadcn-theme.json baseColorNames",
+      "options": [
+        {
+          "value": "neutral",
+          "title": "Neutral",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "stone",
+          "title": "Stone",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "zinc",
+          "title": "Zinc",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "gray",
+          "title": "Gray",
+          "status": "absent-by-source",
+          "supportedStyles": [],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "mauve",
+          "title": "Mauve",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "olive",
+          "title": "Olive",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "mist",
+          "title": "Mist",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        },
+        {
+          "value": "taupe",
+          "title": "Taupe",
+          "status": "active",
+          "supportedStyles": ["rhea"],
+          "source": "registry/upstream/derived/shadcn-theme.json baseColorNames"
+        }
+      ]
+    },
+    {
+      "id": "theme",
+      "title": "Theme",
+      "status": "active",
+      "selectedValue": "rhea-neutral",
+      "source": "registry/upstream/derived/shadcn-theme.json themes",
+      "options": [
+        {
+          "value": "rhea-neutral",
+          "title": "Rhea Neutral",
+          "status": "active",
+          "indicator": "oklch(0.205 0 0)",
+          "downloadHref": "/foldkit-theme-rhea-neutral.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-stone",
+          "title": "Rhea Stone",
+          "status": "active",
+          "indicator": "oklch(0.216 0.006 56.043)",
+          "downloadHref": "/foldkit-theme-rhea-stone.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-zinc",
+          "title": "Rhea Zinc",
+          "status": "active",
+          "indicator": "oklch(0.21 0.006 285.885)",
+          "downloadHref": "/foldkit-theme-rhea-zinc.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-mauve",
+          "title": "Rhea Mauve",
+          "status": "active",
+          "indicator": "oklch(0.212 0.019 322.12)",
+          "downloadHref": "/foldkit-theme-rhea-mauve.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-olive",
+          "title": "Rhea Olive",
+          "status": "active",
+          "indicator": "oklch(0.228 0.013 107.4)",
+          "downloadHref": "/foldkit-theme-rhea-olive.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-mist",
+          "title": "Rhea Mist",
+          "status": "active",
+          "indicator": "oklch(0.218 0.008 223.9)",
+          "downloadHref": "/foldkit-theme-rhea-mist.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-taupe",
+          "title": "Rhea Taupe",
+          "status": "active",
+          "indicator": "oklch(0.214 0.009 43.1)",
+          "downloadHref": "/foldkit-theme-rhea-taupe.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-amber",
+          "title": "Rhea Amber",
+          "status": "active",
+          "indicator": "oklch(0.555 0.163 48.998)",
+          "downloadHref": "/foldkit-theme-rhea-amber.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-blue",
+          "title": "Rhea Blue",
+          "status": "active",
+          "indicator": "oklch(0.488 0.243 264.376)",
+          "downloadHref": "/foldkit-theme-rhea-blue.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-cyan",
+          "title": "Rhea Cyan",
+          "status": "active",
+          "indicator": "oklch(0.52 0.105 223.128)",
+          "downloadHref": "/foldkit-theme-rhea-cyan.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-emerald",
+          "title": "Rhea Emerald",
+          "status": "active",
+          "indicator": "oklch(0.508 0.118 165.612)",
+          "downloadHref": "/foldkit-theme-rhea-emerald.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-fuchsia",
+          "title": "Rhea Fuchsia",
+          "status": "active",
+          "indicator": "oklch(0.518 0.253 323.949)",
+          "downloadHref": "/foldkit-theme-rhea-fuchsia.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-green",
+          "title": "Rhea Green",
+          "status": "active",
+          "indicator": "oklch(0.527 0.154 150.069)",
+          "downloadHref": "/foldkit-theme-rhea-green.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-indigo",
+          "title": "Rhea Indigo",
+          "status": "active",
+          "indicator": "oklch(0.457 0.24 277.023)",
+          "downloadHref": "/foldkit-theme-rhea-indigo.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-lime",
+          "title": "Rhea Lime",
+          "status": "active",
+          "indicator": "oklch(0.841 0.238 128.85)",
+          "downloadHref": "/foldkit-theme-rhea-lime.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-orange",
+          "title": "Rhea Orange",
+          "status": "active",
+          "indicator": "oklch(0.553 0.195 38.402)",
+          "downloadHref": "/foldkit-theme-rhea-orange.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-pink",
+          "title": "Rhea Pink",
+          "status": "active",
+          "indicator": "oklch(0.525 0.223 3.958)",
+          "downloadHref": "/foldkit-theme-rhea-pink.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-purple",
+          "title": "Rhea Purple",
+          "status": "active",
+          "indicator": "oklch(0.496 0.265 301.924)",
+          "downloadHref": "/foldkit-theme-rhea-purple.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-red",
+          "title": "Rhea Red",
+          "status": "active",
+          "indicator": "oklch(0.505 0.213 27.518)",
+          "downloadHref": "/foldkit-theme-rhea-red.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-rose",
+          "title": "Rhea Rose",
+          "status": "active",
+          "indicator": "oklch(0.514 0.222 16.935)",
+          "downloadHref": "/foldkit-theme-rhea-rose.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-sky",
+          "title": "Rhea Sky",
+          "status": "active",
+          "indicator": "oklch(0.5 0.134 242.749)",
+          "downloadHref": "/foldkit-theme-rhea-sky.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-teal",
+          "title": "Rhea Teal",
+          "status": "active",
+          "indicator": "oklch(0.511 0.096 186.391)",
+          "downloadHref": "/foldkit-theme-rhea-teal.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-violet",
+          "title": "Rhea Violet",
+          "status": "active",
+          "indicator": "oklch(0.491 0.27 292.581)",
+          "downloadHref": "/foldkit-theme-rhea-violet.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        },
+        {
+          "value": "rhea-yellow",
+          "title": "Rhea Yellow",
+          "status": "active",
+          "indicator": "oklch(0.852 0.199 91.936)",
+          "downloadHref": "/foldkit-theme-rhea-yellow.json",
+          "source": "registry/upstream/derived/shadcn-theme.json themes"
+        }
+      ]
+    },
+    {
+      "id": "chart-color",
+      "title": "Chart Color",
+      "status": "deferred",
+      "selectedValue": "neutral",
+      "source": "registry/upstream/derived/shadcn-theme.json chart tokens",
+      "reason": "Chart color selection needs a source-owned chart palette binding before it can update preview chart tokens independently of the selected theme.",
+      "options": []
+    },
+    {
+      "id": "heading",
+      "title": "Heading",
+      "status": "deferred",
+      "selectedValue": "Inter",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "reason": "Heading font variants need source-owned origin typography metadata before they can be generated.",
+      "options": []
+    },
+    {
+      "id": "font",
+      "title": "Font",
+      "status": "deferred",
+      "selectedValue": "Inter",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "reason": "Body font variants need source-owned origin typography metadata before they can be generated.",
+      "options": []
+    },
+    {
+      "id": "icon-library",
+      "title": "Icon Library",
+      "status": "deferred",
+      "selectedValue": "Lucide",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "reason": "Alternate icon libraries need source-owned registry metadata; Lucide is the only current local icon contract.",
+      "options": []
+    },
+    {
+      "id": "radius",
+      "title": "Radius",
+      "status": "deferred",
+      "selectedValue": "0.625rem",
+      "source": "registry/upstream/derived/shadcn-theme.json radiusScale",
+      "reason": "Radius selection needs a model field and token override path before Theme Studio can change preview radius independently of the selected theme.",
+      "options": []
+    },
+    {
+      "id": "menu",
+      "title": "Menu",
+      "status": "deferred",
+      "selectedValue": "Deferred",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "reason": "Menu layout variants need a checked-in create-page menu catalog before they can drive registry downloads.",
+      "options": []
+    },
+    {
+      "id": "menu-accent",
+      "title": "Menu Accent",
+      "status": "deferred",
+      "selectedValue": "Deferred",
+      "source": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "reason": "Menu accent variants need source-owned menu token metadata before they can be generated honestly.",
+      "options": []
+    }
+  ],
   "modeOptions": [
     {
       "value": "light",
@@ -387,185 +736,372 @@
     {
       "id": "dashboard-cards",
       "title": "Dashboard cards",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "card",
+      "dependencies": ["card", "button", "progress"],
       "followUp": "Expand the rendered block into the full preview-02 dashboard card grid when dashboard composition parity is graded."
     },
     {
       "id": "sidebar-navigation",
       "title": "Sidebar/navigation",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-navigation-menu-basic",
+      "downloadHref": "/shadcn-navigation-menu-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "navigation-menu",
+      "dependencies": [
+        "navigation-menu",
+        "sidebar",
+        "button",
+        "icon/lucide"
+      ],
       "followUp": "Expand the Theme Studio shell after sidebar layout parity is graded against preview-02."
     },
     {
       "id": "contribution-activity-chart",
       "title": "Contribution/activity chart",
+      "originSurface": "create-02",
       "status": "deferred",
-      "dependency": "chart",
-      "reason": "Preview-02 uses a source-specific activity chart composition that is not yet represented as a downloadable registry example.",
+      "dependencies": ["chart", "card", "theme-token"],
+      "reason": "The create page uses a source-specific contribution bar chart that is not yet represented as a downloadable registry example.",
       "followUp": "Add an activity chart example with source-backed visual parity."
     },
     {
-      "id": "progress-cards",
-      "title": "Progress cards",
-      "status": "rendered",
+      "id": "payout-threshold",
+      "title": "Payout threshold",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
+      "dependencies": [
+        "card",
+        "slider",
+        "select",
+        "textarea",
+        "button"
+      ],
+      "reason": "Existing slider/select/input examples cover the primitive dependencies, but the full payout settings card is not a source-owned block yet.",
+      "followUp": "Compose a payout threshold block after select, textarea, and slider visual parity are reviewed together."
+    },
+    {
+      "id": "savings-targets",
+      "title": "Savings targets",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
       "registryItemName": "shadcn-progress-basic",
-      "storyId": "shadcn-theme-studio--studio",
-      "dependency": "progress",
-      "followUp": "Broaden card-level progress layouts when preview-02 card composition parity is available."
+      "downloadHref": "/shadcn-progress-basic.json",
+      "dependencies": ["card", "progress", "button", "badge"],
+      "reason": "Progress primitives are downloadable, but the savings target card stack needs a source-owned composed example.",
+      "followUp": "Add a savings targets block when card/progress composition parity is graded."
+    },
+    {
+      "id": "buy-investment",
+      "title": "Buy investment",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
+      "dependencies": ["card", "input", "select", "button", "table"],
+      "reason": "Input and select examples are downloadable, but the investment order card is not a source-owned block.",
+      "followUp": "Add the buy investment block after form and list-row visual parity are reconciled."
+    },
+    {
+      "id": "distribute-track-upload-empty-state",
+      "title": "Distribute track/upload empty state",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
+      "dependencies": [
+        "card",
+        "upload",
+        "input-file",
+        "button",
+        "icon/lucide"
+      ],
+      "reason": "File input is downloadable, but the empty release/distribution card is not a source-owned composed block.",
+      "followUp": "Add a release upload empty-state block after upload-zone styling is source-owned."
+    },
+    {
+      "id": "claimable-balance",
+      "title": "Claimable balance",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "dependencies": ["card", "badge", "separator", "button"],
+      "reason": "Card and badge primitives are downloadable, but the claimable balance summary is not yet a source-owned block.",
+      "followUp": "Add the claimable balance block when summary-card visual parity is reviewed."
     },
     {
       "id": "qr-device-connection-card",
       "title": "QR/device connection card",
+      "originSurface": "create-02",
       "status": "deferred",
-      "dependency": "qr-code",
+      "dependencies": [
+        "qr-code",
+        "image-placeholder",
+        "card",
+        "button"
+      ],
       "reason": "No source-owned QR/device connection registry payload exists yet.",
       "followUp": "Add a QR/device connection block after QR rendering is source-owned."
     },
     {
+      "id": "recent-transactions",
+      "title": "Recent transactions",
+      "originSurface": "create-02",
+      "status": "covered-by-existing-example",
+      "registryItemName": "data-table-basic",
+      "downloadHref": "/data-table-basic.json",
+      "dependencies": [
+        "card",
+        "table",
+        "data-list",
+        "badge",
+        "button",
+        "icon/lucide"
+      ],
+      "reason": "Data table/list primitives are downloadable, but the exact recent transactions card is not source-owned yet.",
+      "followUp": "Add transaction list composition after list-row and table visual parity are reviewed."
+    },
+    {
+      "id": "sidebar-theme-card",
+      "title": "Sidebar/theme card",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "registryItemName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": [
+        "theme-card",
+        "card",
+        "button",
+        "icon/lucide",
+        "theme-token"
+      ],
+      "followUp": "Promote origin theme-card controls as source-backed variants land."
+    },
+    {
+      "id": "preset-actions",
+      "title": "Preset/actions",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "registryItemName": "button-basic",
+      "downloadHref": "/button-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["button", "input", "theme-token"],
+      "followUp": "Wire preset import/export once source-owned preset payload metadata exists."
+    },
+    {
+      "id": "preview-switcher-01",
+      "title": "Preview switcher 01",
+      "originSurface": "create-shell",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "dependencies": ["tabs", "button"],
+      "reason": "Tabs primitives are downloadable, but create preview variant 01 is not a separate source-owned page block yet.",
+      "followUp": "Add create preview 01 as a page-level block when its source inventory is checked in."
+    },
+    {
+      "id": "preview-switcher-02",
+      "title": "Preview switcher 02",
+      "originSurface": "create-shell",
+      "status": "covered-by-existing-example",
+      "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
+      "dependencies": ["tabs", "button"],
+      "reason": "Tabs primitives are downloadable, but create preview variant 02 is represented by this initial block inventory rather than a separate page-level registry item.",
+      "followUp": "Split preview 02 into a source-owned page block after plan 026 visual parity work."
+    },
+    {
+      "id": "progress-cards",
+      "title": "Progress cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "registryItemName": "shadcn-progress-basic",
+      "downloadHref": "/shadcn-progress-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "dependencies": ["progress", "card", "badge"],
+      "followUp": "Broaden card-level progress layouts when preview-02 card composition parity is available."
+    },
+    {
       "id": "transaction-investment-lists",
       "title": "Transaction/investment lists",
+      "originSurface": "preview-02",
       "status": "deferred",
-      "dependency": "data-list",
+      "dependencies": ["data-list", "table", "badge", "button"],
       "reason": "The registry has tables and cards, but not the preview-02 transaction/investment list block as a downloadable example.",
       "followUp": "Add list-block examples once list visual parity is reviewed."
     },
     {
       "id": "preference-forms",
       "title": "Preference forms",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "form",
+      "dependencies": ["input", "select", "textarea", "button", "card"],
       "followUp": "Fold in the complete preview-02 preferences form when field grouping parity is complete."
     },
     {
       "id": "switches",
       "title": "Switches",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-switch-basic",
+      "downloadHref": "/shadcn-switch-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "switch",
+      "dependencies": ["switch", "card"],
       "followUp": "Expand the settings block once switch grouping parity is reviewed against preview-02."
     },
     {
       "id": "selects-comboboxes",
       "title": "Selects/comboboxes",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-select-basic",
+      "downloadHref": "/shadcn-select-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "select",
+      "dependencies": ["select", "combobox", "input", "card"],
       "followUp": "Add combobox-specific source-owned payloads when that slice is available."
     },
     {
       "id": "tabs",
       "title": "Tabs",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-tabs-basic",
+      "downloadHref": "/shadcn-tabs-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "tabs",
+      "dependencies": ["tabs", "card", "button"],
       "followUp": "Expand to the preview-02 dashboard tab layout when block composition parity exists."
     },
     {
       "id": "accordions",
       "title": "Accordions",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-accordion-basic",
+      "downloadHref": "/shadcn-accordion-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "accordion",
+      "dependencies": ["accordion", "card"],
       "followUp": "Promote more accordion variants as preview-02 details are reconciled."
     },
     {
       "id": "dropdown-menu-actions",
       "title": "Dropdown/menu actions",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "dropdown-menu-basic",
+      "downloadHref": "/dropdown-menu-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "dropdown-menu",
+      "dependencies": [
+        "dropdown-menu",
+        "button",
+        "card",
+        "icon/lucide"
+      ],
       "followUp": "Add interactive menu state when composed menu parity is source-owned."
     },
     {
       "id": "calendar-date-controls",
       "title": "Calendar/date controls",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-calendar-basic",
+      "downloadHref": "/shadcn-calendar-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "calendar",
+      "dependencies": ["calendar", "date-picker", "button", "card"],
       "followUp": "Broaden to date-picker range controls when source-owned grouping is complete."
     },
     {
       "id": "radio-groups",
       "title": "Radio groups",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-radio-group-basic",
+      "downloadHref": "/shadcn-radio-group-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "radio-group",
+      "dependencies": ["radio-group", "card", "badge"],
       "followUp": "Replace the static radio-card surface once payment-card grouping parity is source-owned."
     },
     {
       "id": "checkboxes",
       "title": "Checkboxes",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-checkbox-basic",
+      "downloadHref": "/shadcn-checkbox-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "checkbox",
+      "dependencies": ["checkbox", "card"],
       "followUp": "Broaden checklist grouping when preview-02 permissions composition is represented as a registry example."
     },
     {
       "id": "sliders",
       "title": "Sliders",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-slider-basic",
+      "downloadHref": "/shadcn-slider-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "slider",
+      "dependencies": ["slider", "switch", "card"],
       "followUp": "Pair with switch controls when the smart-home card registry payload is source-owned."
     },
     {
       "id": "upload-controls",
       "title": "Upload controls",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-input-file",
+      "downloadHref": "/shadcn-input-file.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "input-file",
+      "dependencies": ["upload", "input-file", "card", "button"],
       "followUp": "Replace the static upload-zone preview once upload-zone styling is represented by a source-owned block."
     },
     {
       "id": "payment-method-controls",
       "title": "Payment method controls",
+      "originSurface": "preview-02",
       "status": "deferred",
-      "dependency": "payment-method",
+      "dependencies": ["radio-group", "checkbox", "card", "input"],
       "reason": "Payment method card composition is not yet a source-owned registry payload.",
       "followUp": "Add payment method controls after radio-card and form grouping parity are complete."
     },
     {
       "id": "profile-security-forms",
       "title": "Profile/security forms",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-input-form",
+      "downloadHref": "/shadcn-input-form.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "form",
+      "dependencies": ["input", "button", "card", "badge"],
       "followUp": "Split profile and security examples if future registry payloads become source-owned."
     },
     {
       "id": "smart-home-controls",
       "title": "Smart-home controls",
+      "originSurface": "preview-02",
       "status": "deferred",
-      "dependency": "smart-home-card",
+      "dependencies": ["switch", "slider", "card"],
       "reason": "No source-owned smart-home card registry payload exists yet.",
       "followUp": "Add a smart-home controls block after switch, slider, and card composition parity are reviewed together."
     },
     {
       "id": "modal-drawer-surfaces",
       "title": "Modal/drawer-like surfaces",
+      "originSurface": "preview-02",
       "status": "rendered",
       "registryItemName": "shadcn-dialog-basic",
+      "downloadHref": "/shadcn-dialog-basic.json",
       "storyId": "shadcn-theme-studio--studio",
-      "dependency": "dialog",
+      "dependencies": ["dialog", "drawer", "sheet", "button", "card"],
       "followUp": "Add interactive modal or drawer state after preview-02 modal/drawer composition is source-owned."
     }
   ],
@@ -573,6 +1109,10 @@
     {
       "id": "dashboard-cards",
       "title": "Dashboard cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["card", "button", "progress"],
+      "dependency": "card",
       "registryItemName": "card-basic",
       "downloadName": "card-basic",
       "downloadHref": "/card-basic.json",
@@ -582,6 +1122,15 @@
     {
       "id": "sidebar-navigation",
       "title": "Sidebar/navigation",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": [
+        "navigation-menu",
+        "sidebar",
+        "button",
+        "icon/lucide"
+      ],
+      "dependency": "navigation-menu",
       "registryItemName": "shadcn-navigation-menu-basic",
       "downloadName": "shadcn-navigation-menu-basic",
       "downloadHref": "/shadcn-navigation-menu-basic.json",
@@ -589,8 +1138,44 @@
       "registryType": "registry:example"
     },
     {
+      "id": "sidebar-theme-card",
+      "title": "Sidebar/theme card",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "dependencies": [
+        "theme-card",
+        "card",
+        "button",
+        "icon/lucide",
+        "theme-token"
+      ],
+      "dependency": "theme-card",
+      "registryItemName": "card-basic",
+      "downloadName": "card-basic",
+      "downloadHref": "/card-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
+      "id": "preset-actions",
+      "title": "Preset/actions",
+      "originSurface": "create-shell",
+      "status": "rendered",
+      "dependencies": ["button", "input", "theme-token"],
+      "dependency": "button",
+      "registryItemName": "button-basic",
+      "downloadName": "button-basic",
+      "downloadHref": "/button-basic.json",
+      "storyId": "shadcn-theme-studio--studio",
+      "registryType": "registry:example"
+    },
+    {
       "id": "progress-cards",
       "title": "Progress cards",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["progress", "card", "badge"],
+      "dependency": "progress",
       "registryItemName": "shadcn-progress-basic",
       "downloadName": "shadcn-progress-basic",
       "downloadHref": "/shadcn-progress-basic.json",
@@ -600,6 +1185,10 @@
     {
       "id": "preference-forms",
       "title": "Preference forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["input", "select", "textarea", "button", "card"],
+      "dependency": "input",
       "registryItemName": "shadcn-input-form",
       "downloadName": "shadcn-input-form",
       "downloadHref": "/shadcn-input-form.json",
@@ -609,6 +1198,10 @@
     {
       "id": "switches",
       "title": "Switches",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["switch", "card"],
+      "dependency": "switch",
       "registryItemName": "shadcn-switch-basic",
       "downloadName": "shadcn-switch-basic",
       "downloadHref": "/shadcn-switch-basic.json",
@@ -618,6 +1211,10 @@
     {
       "id": "selects-comboboxes",
       "title": "Selects/comboboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["select", "combobox", "input", "card"],
+      "dependency": "select",
       "registryItemName": "shadcn-select-basic",
       "downloadName": "shadcn-select-basic",
       "downloadHref": "/shadcn-select-basic.json",
@@ -627,6 +1224,10 @@
     {
       "id": "tabs",
       "title": "Tabs",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["tabs", "card", "button"],
+      "dependency": "tabs",
       "registryItemName": "shadcn-tabs-basic",
       "downloadName": "shadcn-tabs-basic",
       "downloadHref": "/shadcn-tabs-basic.json",
@@ -636,6 +1237,10 @@
     {
       "id": "accordions",
       "title": "Accordions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["accordion", "card"],
+      "dependency": "accordion",
       "registryItemName": "shadcn-accordion-basic",
       "downloadName": "shadcn-accordion-basic",
       "downloadHref": "/shadcn-accordion-basic.json",
@@ -645,6 +1250,15 @@
     {
       "id": "dropdown-menu-actions",
       "title": "Dropdown/menu actions",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": [
+        "dropdown-menu",
+        "button",
+        "card",
+        "icon/lucide"
+      ],
+      "dependency": "dropdown-menu",
       "registryItemName": "dropdown-menu-basic",
       "downloadName": "dropdown-menu-basic",
       "downloadHref": "/dropdown-menu-basic.json",
@@ -654,6 +1268,10 @@
     {
       "id": "calendar-date-controls",
       "title": "Calendar/date controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["calendar", "date-picker", "button", "card"],
+      "dependency": "calendar",
       "registryItemName": "shadcn-calendar-basic",
       "downloadName": "shadcn-calendar-basic",
       "downloadHref": "/shadcn-calendar-basic.json",
@@ -663,6 +1281,10 @@
     {
       "id": "radio-groups",
       "title": "Radio groups",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["radio-group", "card", "badge"],
+      "dependency": "radio-group",
       "registryItemName": "shadcn-radio-group-basic",
       "downloadName": "shadcn-radio-group-basic",
       "downloadHref": "/shadcn-radio-group-basic.json",
@@ -672,6 +1294,10 @@
     {
       "id": "checkboxes",
       "title": "Checkboxes",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["checkbox", "card"],
+      "dependency": "checkbox",
       "registryItemName": "shadcn-checkbox-basic",
       "downloadName": "shadcn-checkbox-basic",
       "downloadHref": "/shadcn-checkbox-basic.json",
@@ -681,6 +1307,10 @@
     {
       "id": "sliders",
       "title": "Sliders",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["slider", "switch", "card"],
+      "dependency": "slider",
       "registryItemName": "shadcn-slider-basic",
       "downloadName": "shadcn-slider-basic",
       "downloadHref": "/shadcn-slider-basic.json",
@@ -690,6 +1320,10 @@
     {
       "id": "upload-controls",
       "title": "Upload controls",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["upload", "input-file", "card", "button"],
+      "dependency": "upload",
       "registryItemName": "shadcn-input-file",
       "downloadName": "shadcn-input-file",
       "downloadHref": "/shadcn-input-file.json",
@@ -699,6 +1333,10 @@
     {
       "id": "profile-security-forms",
       "title": "Profile/security forms",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["input", "button", "card", "badge"],
+      "dependency": "input",
       "registryItemName": "shadcn-input-form",
       "downloadName": "shadcn-input-form",
       "downloadHref": "/shadcn-input-form.json",
@@ -708,11 +1346,902 @@
     {
       "id": "modal-drawer-surfaces",
       "title": "Modal/drawer-like surfaces",
+      "originSurface": "preview-02",
+      "status": "rendered",
+      "dependencies": ["dialog", "drawer", "sheet", "button", "card"],
+      "dependency": "dialog",
       "registryItemName": "shadcn-dialog-basic",
       "downloadName": "shadcn-dialog-basic",
       "downloadHref": "/shadcn-dialog-basic.json",
       "storyId": "shadcn-theme-studio--studio",
       "registryType": "registry:example"
+    }
+  ],
+  "componentInventory": [
+    {
+      "component": "card",
+      "originBlocks": [
+        {
+          "id": "dashboard-cards",
+          "title": "Dashboard cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "contribution-activity-chart",
+          "title": "Contribution/activity chart",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "qr-device-connection-card",
+          "title": "QR/device connection card",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "progress-cards",
+          "title": "Progress cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "switches",
+          "title": "Switches",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "selects-comboboxes",
+          "title": "Selects/comboboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "tabs",
+          "title": "Tabs",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "accordions",
+          "title": "Accordions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "calendar-date-controls",
+          "title": "Calendar/date controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "radio-groups",
+          "title": "Radio groups",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "checkboxes",
+          "title": "Checkboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "sliders",
+          "title": "Sliders",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "upload-controls",
+          "title": "Upload controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "smart-home-controls",
+          "title": "Smart-home controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "modal-drawer-surfaces",
+          "title": "Modal/drawer-like surfaces",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "card-basic",
+        "shadcn-slider-basic",
+        "shadcn-progress-basic",
+        "shadcn-input-form",
+        "shadcn-input-file",
+        "data-table-basic",
+        "shadcn-switch-basic",
+        "shadcn-select-basic",
+        "shadcn-tabs-basic",
+        "shadcn-accordion-basic",
+        "dropdown-menu-basic",
+        "shadcn-calendar-basic",
+        "shadcn-radio-group-basic",
+        "shadcn-checkbox-basic",
+        "shadcn-dialog-basic"
+      ],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "button",
+      "originBlocks": [
+        {
+          "id": "dashboard-cards",
+          "title": "Dashboard cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "sidebar-navigation",
+          "title": "Sidebar/navigation",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "qr-device-connection-card",
+          "title": "QR/device connection card",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preset-actions",
+          "title": "Preset/actions",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preview-switcher-01",
+          "title": "Preview switcher 01",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preview-switcher-02",
+          "title": "Preview switcher 02",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "transaction-investment-lists",
+          "title": "Transaction/investment lists",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "tabs",
+          "title": "Tabs",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "calendar-date-controls",
+          "title": "Calendar/date controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "upload-controls",
+          "title": "Upload controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "modal-drawer-surfaces",
+          "title": "Modal/drawer-like surfaces",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "card-basic",
+        "shadcn-navigation-menu-basic",
+        "shadcn-slider-basic",
+        "shadcn-progress-basic",
+        "shadcn-input-form",
+        "shadcn-input-file",
+        "data-table-basic",
+        "button-basic",
+        "shadcn-tabs-basic",
+        "dropdown-menu-basic",
+        "shadcn-calendar-basic",
+        "shadcn-dialog-basic"
+      ],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "progress",
+      "originBlocks": [
+        {
+          "id": "dashboard-cards",
+          "title": "Dashboard cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "progress-cards",
+          "title": "Progress cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["card-basic", "shadcn-progress-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "input",
+      "originBlocks": [
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preset-actions",
+          "title": "Preset/actions",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "selects-comboboxes",
+          "title": "Selects/comboboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-input-form",
+        "button-basic",
+        "shadcn-select-basic"
+      ],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "textarea",
+      "originBlocks": [
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-slider-basic", "shadcn-input-form"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "select/combobox",
+      "originBlocks": [
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preference-forms",
+          "title": "Preference forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "selects-comboboxes",
+          "title": "Selects/comboboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-slider-basic",
+        "shadcn-input-form",
+        "shadcn-select-basic"
+      ],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "switch",
+      "originBlocks": [
+        {
+          "id": "switches",
+          "title": "Switches",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "sliders",
+          "title": "Sliders",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "smart-home-controls",
+          "title": "Smart-home controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-switch-basic", "shadcn-slider-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "tabs",
+      "originBlocks": [
+        {
+          "id": "preview-switcher-01",
+          "title": "Preview switcher 01",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "preview-switcher-02",
+          "title": "Preview switcher 02",
+          "originSurface": "create-shell",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "tabs",
+          "title": "Tabs",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-tabs-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "accordion",
+      "originBlocks": [
+        {
+          "id": "accordions",
+          "title": "Accordions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-accordion-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "dropdown/menu",
+      "originBlocks": [
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["dropdown-menu-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "calendar/date-controls",
+      "originBlocks": [
+        {
+          "id": "calendar-date-controls",
+          "title": "Calendar/date controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-calendar-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "radio-group",
+      "originBlocks": [
+        {
+          "id": "radio-groups",
+          "title": "Radio groups",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-radio-group-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "checkbox",
+      "originBlocks": [
+        {
+          "id": "checkboxes",
+          "title": "Checkboxes",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "payment-method-controls",
+          "title": "Payment method controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-checkbox-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "slider",
+      "originBlocks": [
+        {
+          "id": "payout-threshold",
+          "title": "Payout threshold",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sliders",
+          "title": "Sliders",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "smart-home-controls",
+          "title": "Smart-home controls",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-slider-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "badge",
+      "originBlocks": [
+        {
+          "id": "savings-targets",
+          "title": "Savings targets",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "progress-cards",
+          "title": "Progress cards",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "transaction-investment-lists",
+          "title": "Transaction/investment lists",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        },
+        {
+          "id": "radio-groups",
+          "title": "Radio groups",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "profile-security-forms",
+          "title": "Profile/security forms",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-progress-basic",
+        "card-basic",
+        "data-table-basic",
+        "shadcn-radio-group-basic",
+        "shadcn-input-form"
+      ],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "separator",
+      "originBlocks": [
+        {
+          "id": "claimable-balance",
+          "title": "Claimable balance",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        }
+      ],
+      "localRegistryItemNames": ["card-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "table/list-rows",
+      "originBlocks": [
+        {
+          "id": "buy-investment",
+          "title": "Buy investment",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "transaction-investment-lists",
+          "title": "Transaction/investment lists",
+          "originSurface": "preview-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-input-form", "data-table-basic"],
+      "status": "in-progress",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "navigation/sidebar/menu",
+      "originBlocks": [
+        {
+          "id": "sidebar-navigation",
+          "title": "Sidebar/navigation",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-navigation-menu-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "dialog/drawer/sheet",
+      "originBlocks": [
+        {
+          "id": "modal-drawer-surfaces",
+          "title": "Modal/drawer-like surfaces",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-dialog-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "chart",
+      "originBlocks": [
+        {
+          "id": "contribution-activity-chart",
+          "title": "Contribution/activity chart",
+          "originSurface": "create-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": [],
+      "status": "deferred",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "qr-code/image-placeholder",
+      "originBlocks": [
+        {
+          "id": "qr-device-connection-card",
+          "title": "QR/device connection card",
+          "originSurface": "create-02",
+          "status": "deferred"
+        }
+      ],
+      "localRegistryItemNames": [],
+      "status": "deferred",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "upload/file-input",
+      "originBlocks": [
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "upload-controls",
+          "title": "Upload controls",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["shadcn-input-file"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "typography",
+      "originBlocks": [],
+      "localRegistryItemNames": [],
+      "status": "needs-origin-spec",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo"
+    },
+    {
+      "component": "icon/lucide",
+      "originBlocks": [
+        {
+          "id": "sidebar-navigation",
+          "title": "Sidebar/navigation",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        },
+        {
+          "id": "distribute-track-upload-empty-state",
+          "title": "Distribute track/upload empty state",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "recent-transactions",
+          "title": "Recent transactions",
+          "originSurface": "create-02",
+          "status": "covered-by-existing-example"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "dropdown-menu-actions",
+          "title": "Dropdown/menu actions",
+          "originSurface": "preview-02",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": [
+        "shadcn-navigation-menu-basic",
+        "shadcn-input-file",
+        "data-table-basic",
+        "card-basic",
+        "dropdown-menu-basic"
+      ],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
+    },
+    {
+      "component": "theme-token/radius/font/menu-configuration",
+      "originBlocks": [
+        {
+          "id": "contribution-activity-chart",
+          "title": "Contribution/activity chart",
+          "originSurface": "create-02",
+          "status": "deferred"
+        },
+        {
+          "id": "sidebar-theme-card",
+          "title": "Sidebar/theme card",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        },
+        {
+          "id": "preset-actions",
+          "title": "Preset/actions",
+          "originSurface": "create-shell",
+          "status": "rendered"
+        }
+      ],
+      "localRegistryItemNames": ["card-basic", "button-basic"],
+      "status": "matched",
+      "sourceReferenceUrl": "https://ui.shadcn.com/create?preset=b27GcrRo",
+      "suggestedFollowUpPlan": "026"
     }
   ],
   "downloads": {

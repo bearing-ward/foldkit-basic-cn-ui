@@ -95,4 +95,116 @@ describe("Theme Studio catalog", () => {
       expect(block.downloadHref).toMatch(/^\/.+\.json$/u);
     }
   });
+
+  test("inventories origin theme-card rows with blockers for deferred rows", async () => {
+    const catalog = await catalogForTest();
+    const rowIds = catalog.themeCardOptions.map((row) => row.id);
+
+    expect(rowIds).toEqual([
+      "style",
+      "base-color",
+      "theme",
+      "chart-color",
+      "heading",
+      "font",
+      "icon-library",
+      "radius",
+      "menu",
+      "menu-accent",
+    ]);
+
+    for (const row of catalog.themeCardOptions) {
+      expect(row.title).toBeTruthy();
+      expect(row.source).toBeTruthy();
+      if (row.status === "active") {
+        expect(row.options.length).toBeGreaterThan(0);
+      } else {
+        expect(row.reason).toMatch(/\w/u);
+      }
+    }
+
+    expect(
+      catalog.themeCardOptions
+        .filter((row) => row.status === "active")
+        .map((row) => row.id)
+    ).toEqual(["style", "base-color", "theme"]);
+    expect(catalog.themeCardOptions.find((row) => row.id === "chart-color")).toEqual(
+      expect.objectContaining({
+        status: "deferred",
+        options: [],
+        reason: expect.stringMatching(/chart palette binding/u),
+      })
+    );
+    expect(catalog.themeCardOptions.find((row) => row.id === "radius")).toEqual(
+      expect.objectContaining({
+        status: "deferred",
+        options: [],
+        reason: expect.stringMatching(/model field and token override path/u),
+      })
+    );
+  });
+
+  test("inventories origin create blocks and component dependencies", async () => {
+    const catalog = await catalogForTest();
+    const rowIds = catalog.previewCoverage.map((row) => row.id);
+
+    expect(rowIds).toEqual(
+      expect.arrayContaining([
+        "contribution-activity-chart",
+        "payout-threshold",
+        "savings-targets",
+        "buy-investment",
+        "distribute-track-upload-empty-state",
+        "claimable-balance",
+        "qr-device-connection-card",
+        "recent-transactions",
+        "sidebar-theme-card",
+        "preset-actions",
+        "preview-switcher-01",
+        "preview-switcher-02",
+      ])
+    );
+
+    for (const row of catalog.previewCoverage) {
+      expect(row.originSurface).toBeTruthy();
+      expect(row.dependencies.length).toBeGreaterThan(0);
+      if (row.status === "rendered") {
+        expect(row.downloadHref).toMatch(/^\/.+\.json$/u);
+      }
+      if (row.status === "deferred") {
+        expect(row.reason).toMatch(/\w/u);
+        expect(row.followUp).toMatch(/\w/u);
+      }
+    }
+
+    expect(catalog.componentInventory.map((row) => row.component)).toEqual(
+      expect.arrayContaining([
+        "card",
+        "button",
+        "progress",
+        "input",
+        "textarea",
+        "select/combobox",
+        "switch",
+        "tabs",
+        "accordion",
+        "dropdown/menu",
+        "calendar/date-controls",
+        "radio-group",
+        "checkbox",
+        "slider",
+        "badge",
+        "separator",
+        "table/list-rows",
+        "navigation/sidebar/menu",
+        "dialog/drawer/sheet",
+        "chart",
+        "qr-code/image-placeholder",
+        "upload/file-input",
+        "typography",
+        "icon/lucide",
+        "theme-token/radius/font/menu-configuration",
+      ])
+    );
+  });
 });

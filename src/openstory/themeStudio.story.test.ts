@@ -4,6 +4,7 @@ import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
 import {
   baseColorOptionsForStyle,
   init,
+  initFromGlobals,
   SelectedThemeStudioBaseColor,
   SelectedThemeStudioMode,
   SelectedThemeStudioPreviewBlock,
@@ -120,6 +121,77 @@ describe("Theme Studio program", () => {
         }),
       ])
     );
+  });
+
+  test("initializes from OpenStory globals and emits sync commands on card changes", () => {
+    const [model] = initFromGlobals({
+      shadcnTheme: "rhea-amber",
+      shadcnMode: "dark",
+    });
+
+    expect(model).toMatchObject({
+      selectedStyle: "rhea",
+      selectedBaseColor: "amber",
+      selectedMode: "dark",
+    });
+
+    const [updated, commands] = update(
+      model,
+      SelectedThemeStudioBaseColor({ value: "cyan" })
+    );
+
+    expect(updated.selectedBaseColor).toBe("cyan");
+    expect(commands).toEqual([
+      expect.objectContaining({
+        name: "SyncOpenStoryGlobals",
+        args: {
+          shadcnTheme: "rhea-cyan",
+          shadcnMode: "dark",
+        },
+      }),
+    ]);
+  });
+
+  test("exposes origin card rows and component inventory from catalog data", () => {
+    expect(themeStudioCatalog.themeCardOptions.map((row) => row.title)).toEqual([
+      "Style",
+      "Base Color",
+      "Theme",
+      "Chart Color",
+      "Heading",
+      "Font",
+      "Icon Library",
+      "Radius",
+      "Menu",
+      "Menu Accent",
+    ]);
+    expect(
+      themeStudioCatalog.themeCardOptions
+        .filter((row) => row.status === "active")
+        .map((row) => row.id)
+    ).toEqual(["style", "base-color", "theme"]);
+    expect(
+      themeStudioCatalog.themeCardOptions.find((row) => row.id === "chart-color")
+    ).toEqual(
+      expect.objectContaining({
+        status: "deferred",
+        options: [],
+        reason: expect.stringMatching(/chart palette binding/u),
+      })
+    );
+    expect(themeStudioCatalog.themeCardOptions.find((row) => row.id === "radius")).toEqual(
+      expect.objectContaining({
+        status: "deferred",
+        options: [],
+        reason: expect.stringMatching(/model field and token override path/u),
+      })
+    );
+    expect(themeStudioCatalog.componentInventory.length).toBeGreaterThanOrEqual(24);
+    expect(
+      themeStudioCatalog.previewCoverage.find(
+        (row) => row.id === "recent-transactions"
+      )?.dependencies
+    ).toContain("data-list");
   });
 
   test("resolves preview block switching and theme CSS variables", () => {

@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import { Match as M, Schema as S } from "effect";
-import type { Command } from "foldkit";
-import { Submodel, Ui } from "foldkit";
+import { Effect, Match as M, Schema as S } from "effect";
+import { Command, Submodel, Ui } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
+import type { StoryContext } from "openstory/foldkit";
 
 import previewInventory from "../../registry/upstream/derived/shadcn-preview-02.json";
 import themeContract from "../../registry/upstream/derived/shadcn-theme.json";
@@ -42,6 +42,167 @@ const stylesWithEntries = new Set(
   themeContract.themes.map((theme) => theme.style)
 );
 
+const themeKey = (style: string, baseColor: string): string =>
+  `${style}-${baseColor}`;
+
+const themeEntry = (
+  style: string,
+  baseColor: string,
+  mode: "light" | "dark"
+): (typeof themeContract.themes)[number] | undefined =>
+  themeContract.themes.find(
+    (theme) =>
+      theme.style === style && theme.baseColor === baseColor && theme.mode === mode
+  );
+
+const supportedStylesForBaseColor = (baseColor: string): ReadonlyArray<string> =>
+  uniqueValues(
+    themeContract.themes
+      .filter((theme) => theme.baseColor === baseColor)
+      .map((theme) => theme.style)
+  );
+
+const originBaseColorOptions = () =>
+  themeContract.baseColorNames.map((baseColor) => {
+    const supportedStyles = supportedStylesForBaseColor(baseColor);
+
+    return {
+      value: baseColor,
+      title: toTitle(baseColor),
+      status: supportedStyles.length > 0 ? "active" : "absent-by-source",
+      supportedStyles,
+      source: "registry/upstream/derived/shadcn-theme.json baseColorNames",
+    };
+  });
+
+const themeCardThemeOptions = () => {
+  const seen = new Set<string>();
+
+  return themeContract.themes.flatMap((theme) => {
+    const value = themeKey(theme.style, theme.baseColor);
+    if (seen.has(value)) {
+      return [];
+    }
+    seen.add(value);
+    const lightTheme = themeEntry(theme.style, theme.baseColor, "light");
+
+    return [
+      {
+        value,
+        title: `${toTitle(theme.style)} ${toTitle(theme.baseColor)}`,
+        status: "active",
+        indicator: lightTheme?.tokens.primary ?? lightTheme?.tokens.background,
+        downloadHref: `/${themeDownloadNameFor(theme.style, theme.baseColor)}.json`,
+        source: "registry/upstream/derived/shadcn-theme.json themes",
+      },
+    ];
+  });
+};
+
+const normalizeDependency = (dependency: string): string => {
+  if (dependency === "select" || dependency === "combobox") {
+    return "select/combobox";
+  }
+  if (dependency === "dropdown-menu" || dependency === "menu") {
+    return "dropdown/menu";
+  }
+  if (dependency === "calendar" || dependency === "date-picker") {
+    return "calendar/date-controls";
+  }
+  if (dependency === "data-list" || dependency === "table") {
+    return "table/list-rows";
+  }
+  if (dependency === "navigation-menu" || dependency === "sidebar") {
+    return "navigation/sidebar/menu";
+  }
+  if (dependency === "dialog" || dependency === "drawer" || dependency === "sheet") {
+    return "dialog/drawer/sheet";
+  }
+  if (dependency === "qr-code" || dependency === "image-placeholder") {
+    return "qr-code/image-placeholder";
+  }
+  if (dependency === "input-file" || dependency === "upload") {
+    return "upload/file-input";
+  }
+  if (dependency === "theme-card" || dependency === "theme-token") {
+    return "theme-token/radius/font/menu-configuration";
+  }
+  return dependency;
+};
+
+const expectedComponentDependencies = [
+  "card",
+  "button",
+  "progress",
+  "input",
+  "textarea",
+  "select/combobox",
+  "switch",
+  "tabs",
+  "accordion",
+  "dropdown/menu",
+  "calendar/date-controls",
+  "radio-group",
+  "checkbox",
+  "slider",
+  "badge",
+  "separator",
+  "table/list-rows",
+  "navigation/sidebar/menu",
+  "dialog/drawer/sheet",
+  "chart",
+  "qr-code/image-placeholder",
+  "upload/file-input",
+  "typography",
+  "icon/lucide",
+  "theme-token/radius/font/menu-configuration",
+] as const;
+
+const componentStatus = (
+  rows: ReadonlyArray<(typeof previewInventory.rows)[number]>
+): "needs-origin-spec" | "in-progress" | "matched" | "deferred" => {
+  if (rows.some((row) => row.status === "rendered")) {
+    return "matched";
+  }
+  if (rows.some((row) => row.status === "covered-by-existing-example")) {
+    return "in-progress";
+  }
+  if (rows.length > 0) {
+    return "deferred";
+  }
+  return "needs-origin-spec";
+};
+
+const componentInventory = () =>
+  expectedComponentDependencies.map((component) => {
+    const rows = previewInventory.rows.filter((row) =>
+      row.dependencies.map(normalizeDependency).includes(component)
+    );
+    const localRegistryItemNames = uniqueValues(
+      rows.flatMap((row) =>
+        "registryItemName" in row && typeof row.registryItemName === "string"
+          ? [row.registryItemName]
+          : []
+      )
+    );
+
+    return {
+      component,
+      originBlocks: rows.map((row) => ({
+        id: row.id,
+        title: row.title,
+        originSurface: row.originSurface,
+        status: row.status,
+      })),
+      localRegistryItemNames,
+      status: componentStatus(rows),
+      sourceReferenceUrl: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      suggestedFollowUpPlan: rows.every((row) => row.status === "rendered")
+        ? undefined
+        : "026",
+    };
+  });
+
 export const themeStudioCatalog = {
   styleOptions: themeContract.styleNames
     .filter((style) => stylesWithEntries.has(style))
@@ -66,6 +227,116 @@ export const themeStudioCatalog = {
         })),
       ])
   ),
+  themeCardOptions: [
+    {
+      id: "style",
+      title: "Style",
+      status: "active",
+      selectedValue: themeContract.defaultStyle,
+      source: "registry/upstream/derived/shadcn-theme.json styleNames",
+      options: themeContract.styleNames
+        .filter((style) => stylesWithEntries.has(style))
+        .map((style) => ({
+          value: style,
+          title: toTitle(style),
+          status: "active",
+        })),
+    },
+    {
+      id: "base-color",
+      title: "Base Color",
+      status: "active",
+      selectedValue: themeContract.defaultBaseColor,
+      source: "registry/upstream/derived/shadcn-theme.json baseColorNames",
+      options: originBaseColorOptions(),
+    },
+    {
+      id: "theme",
+      title: "Theme",
+      status: "active",
+      selectedValue: themeKey(
+        themeContract.defaultStyle,
+        themeContract.defaultBaseColor
+      ),
+      source: "registry/upstream/derived/shadcn-theme.json themes",
+      options: themeCardThemeOptions(),
+    },
+    {
+      id: "chart-color",
+      title: "Chart Color",
+      status: "deferred",
+      selectedValue: themeContract.defaultBaseColor,
+      source: "registry/upstream/derived/shadcn-theme.json chart tokens",
+      reason:
+        "Chart color selection needs a source-owned chart palette binding before it can update preview chart tokens independently of the selected theme.",
+      options: [],
+    },
+    {
+      id: "heading",
+      title: "Heading",
+      status: "deferred",
+      selectedValue: "Inter",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      reason:
+        "Heading font variants need source-owned origin typography metadata before they can be generated.",
+      options: [],
+    },
+    {
+      id: "font",
+      title: "Font",
+      status: "deferred",
+      selectedValue: "Inter",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      reason:
+        "Body font variants need source-owned origin typography metadata before they can be generated.",
+      options: [],
+    },
+    {
+      id: "icon-library",
+      title: "Icon Library",
+      status: "deferred",
+      selectedValue: "Lucide",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      reason:
+        "Alternate icon libraries need source-owned registry metadata; Lucide is the only current local icon contract.",
+      options: [],
+    },
+    {
+      id: "radius",
+      title: "Radius",
+      status: "deferred",
+      selectedValue:
+        themeEntry(
+          themeContract.defaultStyle,
+          themeContract.defaultBaseColor,
+          "light"
+        )?.tokens.radius ?? "0.625rem",
+      source: "registry/upstream/derived/shadcn-theme.json radiusScale",
+      reason:
+        "Radius selection needs a model field and token override path before Theme Studio can change preview radius independently of the selected theme.",
+      options: [],
+    },
+    {
+      id: "menu",
+      title: "Menu",
+      status: "deferred",
+      selectedValue: "Default / Solid",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      reason:
+        "Menu layout variants need a checked-in create-page menu catalog before they can drive registry downloads.",
+      options: [],
+    },
+    {
+      id: "menu-accent",
+      title: "Menu Accent",
+      status: "deferred",
+      selectedValue: "Subtle",
+      source: "https://ui.shadcn.com/create?preset=b27GcrRo",
+      reason:
+        "Menu accent variants need source-owned menu token metadata before they can be generated honestly.",
+      options: [],
+    },
+  ],
   modeOptions: [
     { value: "light", title: "Light" },
     { value: "dark", title: "Dark" },
@@ -96,13 +367,16 @@ export const themeStudioCatalog = {
     .map((row) => ({
       id: row.id,
       title: row.title,
-      dependency: row.dependency,
+      originSurface: row.originSurface,
+      dependencies: row.dependencies,
+      dependency: row.dependencies[0] ?? "preview",
       status: row.status,
       registryItemName: row.registryItemName,
       downloadName: row.registryItemName,
-      downloadHref: `/${row.registryItemName}.json`,
+      downloadHref: row.downloadHref,
       storyId: row.storyId,
     })),
+  componentInventory: componentInventory(),
   downloads: {
     themes: themeContract.themes.flatMap((theme, index, themes) => {
       const firstIndex = themes.findIndex(
@@ -131,6 +405,8 @@ type BaseColorOption =
   ThemeStudioCatalog["baseColorOptionsByStyle"]["rhea"][number];
 type PreviewBlock = ThemeStudioCatalog["previewBlocks"][number];
 type PreviewCoverageRow = ThemeStudioCatalog["previewCoverage"][number];
+type ThemeCardRow = ThemeStudioCatalog["themeCardOptions"][number];
+type ComponentInventoryRow = ThemeStudioCatalog["componentInventory"][number];
 type ModeOption = ThemeStudioCatalog["modeOptions"][number];
 type BaseColorOptionsByStyle = Record<string, ReadonlyArray<BaseColorOption>>;
 
@@ -170,12 +446,14 @@ export const SelectedThemeStudioPreviewBlock = m(
     value: S.String,
   }
 );
+export const CompletedSyncOpenStoryGlobals = m("CompletedSyncOpenStoryGlobals");
 
 export const Message = S.Union([
   SelectedThemeStudioStyle,
   SelectedThemeStudioBaseColor,
   SelectedThemeStudioMode,
   SelectedThemeStudioPreviewBlock,
+  CompletedSyncOpenStoryGlobals,
 ]);
 export type Message = typeof Message.Type;
 
@@ -230,18 +508,39 @@ const defaultBaseColor = (style: string): string =>
 const defaultMode = (): ColorMode =>
   isMode(themeContract.defaultMode) ? themeContract.defaultMode : "light";
 
-export const init = (): readonly [Model, readonly Command.Command<Message>[]] => [
-  (() => {
-    const selectedStyle = defaultStyle();
-    return {
-      selectedStyle,
-      selectedBaseColor: defaultBaseColor(selectedStyle),
-      selectedMode: defaultMode(),
-      selectedPreviewBlockId: firstPreviewBlock().id,
-    };
-  })(),
+const modelFromGlobals = (
+  globals: Record<string, unknown> | undefined
+): Model => {
+  const resolvedTheme = resolveShadcnTheme(globals);
+  const selectedStyle = isStyle(resolvedTheme.style)
+    ? resolvedTheme.style
+    : defaultStyle();
+  const selectedBaseColor = isBaseColorForStyle(
+    selectedStyle,
+    resolvedTheme.baseColor
+  )
+    ? resolvedTheme.baseColor
+    : defaultBaseColor(selectedStyle);
+
+  return {
+    selectedStyle,
+    selectedBaseColor,
+    selectedMode: isMode(resolvedTheme.requestedMode)
+      ? resolvedTheme.requestedMode
+      : defaultMode(),
+    selectedPreviewBlockId: firstPreviewBlock().id,
+  };
+};
+
+export const initFromGlobals = (
+  globals: Record<string, unknown> | undefined
+): readonly [Model, readonly Command.Command<Message>[]] => [
+  modelFromGlobals(globals),
   [],
 ];
+
+export const init = (): readonly [Model, readonly Command.Command<Message>[]] =>
+  initFromGlobals(undefined);
 
 // UPDATE
 
@@ -262,31 +561,76 @@ const baseColorAfterStyleChange = (
   return firstBaseColorForStyle(nextStyle).value;
 };
 
+export const SyncOpenStoryGlobals = Command.define(
+  "SyncOpenStoryGlobals",
+  {
+    shadcnTheme: S.String,
+    shadcnMode: ColorMode,
+  },
+  CompletedSyncOpenStoryGlobals
+)((globals) =>
+  Effect.sync(() => {
+    if (typeof window === "undefined" || window.parent === undefined) {
+      return;
+    }
+    try {
+      window.parent.postMessage(
+        {
+          source: "openstory",
+          type: "globals-changed",
+          globals,
+        },
+        window.location.origin
+      );
+    } catch {
+      return;
+    }
+  }).pipe(Effect.as(CompletedSyncOpenStoryGlobals()))
+);
+
+const syncOpenStoryGlobalsCommand = (
+  model: Model
+): readonly Command.Command<Message>[] => [
+  SyncOpenStoryGlobals({
+    shadcnTheme: themeKey(model.selectedStyle, model.selectedBaseColor),
+    shadcnMode: model.selectedMode,
+  }),
+];
+
 export const update = (model: Model, message: Message): UpdateReturn =>
   M.value(message).pipe(
     withUpdateReturn,
     M.tagsExhaustive({
       SelectedThemeStudioStyle: ({ value }) =>
         isStyle(value)
-          ? [
-              evo(model, {
+          ? (() => {
+              const nextModel = evo(model, {
                 selectedStyle: () => value,
                 selectedBaseColor: (currentBaseColor) =>
                   baseColorAfterStyleChange(currentBaseColor, value),
-              }),
-              [],
-            ]
+              });
+              return [nextModel, syncOpenStoryGlobalsCommand(nextModel)];
+            })()
           : [model, []],
       SelectedThemeStudioBaseColor: ({ value }) =>
         isBaseColorForStyle(model.selectedStyle, value)
-          ? [evo(model, { selectedBaseColor: () => value }), []]
+          ? (() => {
+              const nextModel = evo(model, { selectedBaseColor: () => value });
+              return [nextModel, syncOpenStoryGlobalsCommand(nextModel)];
+            })()
           : [model, []],
       SelectedThemeStudioMode: ({ value }) =>
-        isMode(value) ? [evo(model, { selectedMode: () => value }), []] : [model, []],
+        isMode(value)
+          ? (() => {
+              const nextModel = evo(model, { selectedMode: () => value });
+              return [nextModel, syncOpenStoryGlobalsCommand(nextModel)];
+            })()
+          : [model, []],
       SelectedThemeStudioPreviewBlock: ({ value }) =>
         isPreviewBlock(value)
           ? [evo(model, { selectedPreviewBlockId: () => value }), []]
           : [model, []],
+      CompletedSyncOpenStoryGlobals: () => [model, []],
     })
   );
 
@@ -326,6 +670,203 @@ const previewBlockChoices = (): ReadonlyArray<Choice<string>> =>
     value: block.id,
     label: block.title,
   }));
+
+const themeCardRowSelectedValue = (model: Model, row: ThemeCardRow): string => {
+  if (row.id === "style") {
+    return model.selectedStyle;
+  }
+  if (row.id === "base-color" || row.id === "theme" || row.id === "chart-color") {
+    return model.selectedBaseColor;
+  }
+  return row.selectedValue;
+};
+
+const themeCardRowSelectedTitle = (model: Model, row: ThemeCardRow): string => {
+  const value = themeCardRowSelectedValue(model, row);
+  if (row.id === "theme") {
+    const themeOption = row.options.find(
+      (option) => option.value === themeKey(model.selectedStyle, model.selectedBaseColor)
+    );
+    return themeOption?.title ?? toTitle(value);
+  }
+  return row.options.find((option) => option.value === value)?.title ?? value;
+};
+
+const themeCardRowOptions = (
+  model: Model,
+  row: ThemeCardRow
+): ReadonlyArray<Choice<string>> => {
+  if (row.id === "style") {
+    return styleChoices();
+  }
+  if (row.id === "base-color") {
+    return baseColorChoices(model.selectedStyle);
+  }
+  if (row.id === "theme") {
+    return baseColorChoices(model.selectedStyle);
+  }
+  if (row.id === "chart-color") {
+    return themeContract.baseColorNames.map((baseColor) => ({
+      value: baseColor,
+      label: toTitle(baseColor),
+    }));
+  }
+  if (row.id === "radius") {
+    return row.options.map((option) => ({
+      value: option.value,
+      label: option.title,
+    }));
+  }
+  return [];
+};
+
+const themeCardMessageFor = (
+  row: ThemeCardRow,
+  value: string
+): Message | undefined => {
+  if (row.id === "style") {
+    return SelectedThemeStudioStyle({ value });
+  }
+  if (row.id === "base-color" || row.id === "theme") {
+    return SelectedThemeStudioBaseColor({ value });
+  }
+  return undefined;
+};
+
+const themeCardIndicatorView = (model: Model, row: ThemeCardRow): Html => {
+  const h = html<Message>();
+  const resolvedTheme = selectedResolvedTheme(model);
+
+  if (row.status === "deferred") {
+    return h.span(
+      [
+        h.DataAttribute("theme-studio-theme-card-lock", row.id),
+        h.Class("text-xs text-muted-foreground"),
+      ],
+      ["lock"]
+    );
+  }
+
+  if (row.id === "style") {
+    return h.span([h.Class("text-sm text-muted-foreground")], ["Aa"]);
+  }
+
+  if (row.id === "radius") {
+    return h.span(
+      [h.Class("h-4 w-4 rounded-md border border-ring")],
+      []
+    );
+  }
+
+  return h.span(
+    [
+      h.DataAttribute("theme-studio-theme-card-swatch", row.id),
+      h.Class("h-4 w-4 rounded-full border border-border shadow-sm"),
+      h.Style({
+        backgroundColor:
+          resolvedTheme.tokens.primary ?? resolvedTheme.tokens.background ?? "currentColor",
+      }),
+    ],
+    []
+  );
+};
+
+const themeCardRowView = (model: Model, row: ThemeCardRow): Html => {
+  const h = html<Message>();
+  const id = `theme-studio-${row.id}`;
+  const selectedTitle = themeCardRowSelectedTitle(model, row);
+  const choices = themeCardRowOptions(model, row);
+  const maybeMessage = (value: string): Message | undefined =>
+    themeCardMessageFor(row, value);
+
+  return h.div(
+    [
+      h.DataAttribute("theme-studio-theme-card-row", row.id),
+      h.DataAttribute("status", row.status),
+      h.DataAttribute("source", row.source),
+      h.Class("grid gap-1 rounded-md border border-border bg-background p-3"),
+    ],
+    [
+      h.div([h.Class("flex items-center justify-between gap-3")], [
+        h.label([h.For(id), h.Class("text-xs font-medium text-muted-foreground")], [
+          row.title,
+        ]),
+        themeCardIndicatorView(model, row),
+      ]),
+      row.status === "active" && choices.length > 0 && maybeMessage(choices[0]?.value ?? "") !== undefined
+        ? Ui.Select.view<Message>({
+            id,
+            value:
+              row.id === "theme"
+                ? model.selectedBaseColor
+                : themeCardRowSelectedValue(model, row),
+            onChange: (value) => maybeMessage(value) ?? CompletedSyncOpenStoryGlobals(),
+            toView: (attributes) =>
+              h.select(
+                [...attributes.select, h.Class("w-full bg-transparent text-sm font-semibold text-foreground outline-none")],
+                choices.map((choice) =>
+                  h.option(
+                    [
+                      h.Value(choice.value),
+                      h.Selected(
+                        choice.value ===
+                          (row.id === "theme"
+                            ? model.selectedBaseColor
+                            : themeCardRowSelectedValue(model, row))
+                      ),
+                    ],
+                    [choice.label]
+                  )
+                )
+              ),
+          })
+        : h.div([h.Class("text-sm font-semibold text-foreground")], [selectedTitle]),
+      row.status === "deferred" && "reason" in row
+        ? h.div([h.Class("text-xs leading-5 text-muted-foreground")], [row.reason])
+        : h.span([h.Class("sr-only")], [selectedTitle]),
+    ]
+  );
+};
+
+const originThemeCardView = (model: Model): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.DataAttribute("testid", "theme-studio-origin-theme-card"),
+      h.Class(`${panelClasses} grid content-start gap-3`),
+    ],
+    [
+      ...themeStudioCatalog.themeCardOptions.map((row) =>
+        themeCardRowView(model, row)
+      ),
+      h.div([h.Class("grid gap-2 border-t border-border pt-3")], [
+        h.div(
+          [
+            h.DataAttribute("theme-studio-preset-code", "true"),
+            h.Class("rounded-md border border-border bg-muted px-3 py-2 text-center text-sm font-semibold"),
+          ],
+          ["--preset b27IKSEC"]
+        ),
+        h.button(
+          [h.Type("button"), h.Class("h-9 rounded-md border border-input text-sm font-medium")],
+          ["Open Preset"]
+        ),
+        h.button(
+          [h.Type("button"), h.Class("h-9 rounded-md border border-input text-sm font-medium")],
+          ["Shuffle"]
+        ),
+        h.a(
+          [
+            h.Href(selectedThemeDownloadHref(model)),
+            h.Class("inline-flex h-9 items-center justify-center rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground"),
+          ],
+          ["Get Code"]
+        ),
+      ]),
+    ]
+  );
+};
 
 const cssVariableOptionsView = (): Html => {
   const h = html<Message>();
@@ -451,7 +992,10 @@ const selectView = <Value extends string>(config: {
           h.select(
             [...attributes.select, h.Class(selectClasses)],
             config.choices.map((choice) =>
-              h.option([h.Value(choice.value)], [choice.label])
+              h.option(
+                [h.Value(choice.value), h.Selected(choice.value === config.value)],
+                [choice.label]
+              )
             )
           ),
       }),
@@ -1094,10 +1638,17 @@ const previewBlockViews: Record<string, () => Html> = {
 };
 
 const previewBlockView = (model: Model): Html => {
+  const h = html<Message>();
   const block = selectedPreviewBlock(model);
   const render = previewBlockViews[block.id] ?? dashboardCardsView;
 
-  return render();
+  return h.div(
+    [
+      h.DataAttribute("origin-surface", block.originSurface),
+      h.Class("contents"),
+    ],
+    [render()]
+  );
 };
 
 const previewCoverageDownloadHref = (row: PreviewCoverageRow): string =>
@@ -1112,7 +1663,7 @@ const previewBlockOptionView = (
   const h = html<Message>();
   const isRendered = row.status === "rendered";
   const isSelected = row.id === model.selectedPreviewBlockId;
-  const dependency = "dependency" in row ? row.dependency : "preview";
+  const dependency = row.dependencies.join(", ");
   const downloadHref = previewCoverageDownloadHref(row);
 
   return h.button(
@@ -1121,6 +1672,7 @@ const previewBlockOptionView = (
       h.DataAttribute("theme-studio-block-option", row.id),
       h.DataAttribute("status", row.status),
       h.DataAttribute("dependency", dependency),
+      h.DataAttribute("origin-surface", row.originSurface),
       h.DataAttribute("download-href", downloadHref),
       h.AriaPressed(isSelected ? "true" : "false"),
       ...(isRendered
@@ -1170,12 +1722,66 @@ const previewBlockOptionsView = (model: Model): Html => {
 
   return h.div(
     [
-      h.DataAttribute("testid", "theme-studio-block-options"),
-      h.Class("grid max-h-96 gap-2 overflow-auto pr-1"),
+      h.DataAttribute("testid", "theme-studio-origin-block-list"),
+      h.Class("grid gap-2"),
     ],
-    themeStudioCatalog.previewCoverage.map((row) =>
-      previewBlockOptionView(model, row)
-    )
+    [
+      h.div(
+        [
+          h.DataAttribute("testid", "theme-studio-block-options"),
+          h.Class("grid max-h-96 gap-2 overflow-auto pr-1"),
+        ],
+        themeStudioCatalog.previewCoverage.map((row) =>
+          previewBlockOptionView(model, row)
+        )
+      ),
+    ]
+  );
+};
+
+const componentInventoryView = (): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.DataAttribute("testid", "theme-studio-component-inventory"),
+      h.Class(`${panelClasses} grid gap-3`),
+    ],
+    [
+      h.div([h.Class("flex items-center justify-between gap-3")], [
+        h.h2([h.Class("text-sm font-semibold")], ["Component inventory"]),
+        h.span([h.Class("rounded-md bg-primary px-2 py-1 text-xs text-primary-foreground")], [
+          String(themeStudioCatalog.componentInventory.length),
+        ]),
+      ]),
+      h.div([h.Class("grid max-h-96 gap-2 overflow-auto pr-1")], [
+        ...themeStudioCatalog.componentInventory.map((row: ComponentInventoryRow) =>
+          h.div(
+            [
+              h.DataAttribute("theme-studio-component-inventory-row", row.component),
+              h.DataAttribute("status", row.status),
+              h.Class("grid gap-1 rounded-md border border-border bg-background p-2 text-sm"),
+            ],
+            [
+              h.div([h.Class("flex items-center justify-between gap-2")], [
+                h.span([h.Class("font-medium")], [row.component]),
+                h.span([h.Class("rounded bg-secondary px-1.5 py-0.5 text-xs text-secondary-foreground")], [
+                  toTitle(row.status),
+                ]),
+              ]),
+              h.div([h.Class("text-xs text-muted-foreground")], [
+                row.originBlocks.map((block) => block.title).join(", ") || "Needs origin spec",
+              ]),
+              h.div([h.Class("text-xs text-muted-foreground")], [
+                row.localRegistryItemNames.join(", ") ||
+                  row.suggestedFollowUpPlan ||
+                  "",
+              ]),
+            ]
+          )
+        ),
+      ]),
+    ]
   );
 };
 
@@ -1190,7 +1796,7 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
   return h.div(
     [
       h.DataAttribute("testid", "theme-studio-root"),
-      h.Class("mx-auto grid min-h-screen max-w-7xl gap-5 p-4 text-foreground"),
+      h.Class("grid min-h-screen w-full gap-5 p-4 text-foreground"),
     ],
     [
       h.header([h.Class("grid gap-2")], [
@@ -1202,21 +1808,8 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
       h.section(
         [h.Class("grid min-h-[calc(100vh-8rem)] gap-4 lg:grid-cols-[320px_minmax(0,1fr)]")],
         [
-          h.div([h.Class(`${panelClasses} grid content-start gap-4`)], [
-            selectView({
-              id: "theme-studio-style",
-              label: "Style",
-              value: model.selectedStyle,
-              choices: styleChoices(),
-              onChange: (value) => SelectedThemeStudioStyle({ value }),
-            }),
-            selectView({
-              id: "theme-studio-base-color",
-              label: "Base color",
-              value: model.selectedBaseColor,
-              choices: baseColorChoices(model.selectedStyle),
-              onChange: (value) => SelectedThemeStudioBaseColor({ value }),
-            }),
+          h.div([h.Class("grid content-start gap-4")], [
+            originThemeCardView(model),
             selectView({
               id: "theme-studio-mode",
               label: "Mode",
@@ -1252,50 +1845,69 @@ export const view = Submodel.defineView<Model, Message>((model): Html => {
               ),
             ]),
           ]),
-          h.div(
-            [
-              h.DataAttribute("testid", "theme-studio-preview"),
-              h.DataAttribute("selected-style", model.selectedStyle),
-              h.DataAttribute("selected-base-color", model.selectedBaseColor),
-              h.DataAttribute("selected-mode", model.selectedMode),
-              h.DataAttribute("resolved-mode", resolvedTheme.resolvedMode),
-              h.DataAttribute("theme", resolvedTheme.themeName),
-              h.DataAttribute("selected-preview-block", block.id),
-              h.Class(
-                clsx(
-                  "grid h-full min-h-[calc(100vh-8rem)] content-start gap-4 rounded-md border border-border p-4",
-                  themeStudioClassNames(resolvedTheme)
-                )
-              ),
-              h.Style(themeStudioStylePropertiesForTheme(resolvedTheme)),
-            ],
-            [
-              h.div([h.Class("flex items-start justify-between gap-3")], [
-                h.div([], [
-                  h.h2(
-                    [
-                      h.DataAttribute("testid", "theme-studio-preview-title"),
-                      h.Class("text-xl font-semibold"),
-                    ],
-                    [block.title]
-                  ),
-                  h.p([h.Class(mutedTextClasses)], [block.registryItemName]),
-                ]),
-                h.span(
-                  [
-                    h.DataAttribute("testid", "theme-studio-state"),
-                    h.Class(
-                      "rounded-md border border-border bg-card px-2 py-1 text-xs text-card-foreground"
-                    ),
-                  ],
-                  [stateText(model)]
+          h.div([h.Class("grid min-h-0 gap-4 xl:grid-cols-[minmax(0,1fr)_360px]")], [
+            h.div(
+              [
+                h.DataAttribute("testid", "theme-studio-preview"),
+                h.DataAttribute("selected-style", model.selectedStyle),
+                h.DataAttribute("selected-base-color", model.selectedBaseColor),
+                h.DataAttribute("selected-mode", model.selectedMode),
+                h.DataAttribute("resolved-mode", resolvedTheme.resolvedMode),
+                h.DataAttribute("theme", resolvedTheme.themeName),
+                h.DataAttribute("selected-preview-block", block.id),
+                h.Class(
+                  clsx(
+                    "grid h-full min-h-[calc(100vh-8rem)] content-start gap-4 rounded-md border border-border p-4",
+                    themeStudioClassNames(resolvedTheme)
+                  )
                 ),
-              ]),
-              previewBlockView(model),
-            ]
-          ),
+                h.Style(themeStudioStylePropertiesForTheme(resolvedTheme)),
+              ],
+              [
+                h.div([h.Class("flex items-start justify-between gap-3")], [
+                  h.div([], [
+                    h.h2(
+                      [
+                        h.DataAttribute("testid", "theme-studio-preview-title"),
+                        h.Class("text-xl font-semibold"),
+                      ],
+                      [block.title]
+                    ),
+                    h.p([h.Class(mutedTextClasses)], [block.registryItemName]),
+                  ]),
+                  h.span(
+                    [
+                      h.DataAttribute("testid", "theme-studio-state"),
+                      h.Class(
+                        "rounded-md border border-border bg-card px-2 py-1 text-xs text-card-foreground"
+                      ),
+                    ],
+                    [stateText(model)]
+                  ),
+                ]),
+                previewBlockView(model),
+              ]
+            ),
+            componentInventoryView(),
+          ]),
         ]
       ),
     ]
   );
 });
+
+export const programForGlobals = (
+  globals: StoryContext<unknown>["globals"] | undefined
+) => ({
+  Model,
+  init: () => initFromGlobals(globals),
+  update,
+  view,
+});
+
+export const program = {
+  Model,
+  init,
+  update,
+  view,
+};
