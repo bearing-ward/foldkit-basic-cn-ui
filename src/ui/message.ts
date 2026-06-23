@@ -1,5 +1,5 @@
 import { Schema as S } from "effect";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import { m } from "foldkit/message";
 
 import { Toast } from "./toast";

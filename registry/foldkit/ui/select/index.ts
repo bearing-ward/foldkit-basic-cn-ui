@@ -1,4 +1,4 @@
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const { descriptionId } = Ui.Select;
 export const { view } = Ui.Select;

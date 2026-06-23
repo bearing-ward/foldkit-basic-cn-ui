@@ -1,6 +1,6 @@
 import type { Option } from "effect";
 import type { Command } from "foldkit";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const { Model } = Ui.DragAndDrop;
 export type Model = Ui.DragAndDrop.Model;

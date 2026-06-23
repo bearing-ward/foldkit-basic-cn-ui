@@ -1,5 +1,5 @@
 import { Match as M } from "effect";
-import type { Ui } from "foldkit";
+import type * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 

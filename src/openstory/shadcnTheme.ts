@@ -8,8 +8,8 @@ type ShadcnThemeEntry = ShadcnThemeContract["themes"][number];
 
 type FoldkitProgramConfig = Readonly<{
   Model: unknown;
-  init: (...args: ReadonlyArray<unknown>) => readonly [unknown, ReadonlyArray<unknown>];
-  update: (model: unknown, message: unknown) => readonly [unknown, ReadonlyArray<unknown>];
+  init: (...args: readonly unknown[]) => readonly [unknown, readonly unknown[]];
+  update: (model: unknown, message: unknown) => readonly [unknown, readonly unknown[]];
   view: (model: unknown, viewInputs?: unknown) => unknown;
 }>;
 
@@ -44,7 +44,7 @@ const colorModes = [
   "light",
   "dark",
   "system",
-] as const satisfies ReadonlyArray<ShadcnColorMode>;
+] as const satisfies readonly ShadcnColorMode[];
 
 const toTitle = (value: string): string =>
   value
@@ -146,7 +146,7 @@ const hasProgramProperty = (value: unknown): value is FoldkitProgramContainer =>
   isObject(value) && "program" in value;
 
 const defaultTheme = (): ShadcnThemeEntry => {
-  const theme = themeContract.themes[0];
+  const [theme] = themeContract.themes;
   if (theme === undefined) {
     throw new Error("shadcn theme contract must contain at least one theme");
   }
@@ -325,6 +325,38 @@ export const shadcnThemeStyleProperties = (
   );
 };
 
+export const nextShadcnModeForToggle = (
+  theme: Pick<ResolvedShadcnTheme, "resolvedMode">,
+): "light" | "dark" => (theme.resolvedMode === "dark" ? "light" : "dark");
+
+export const shadcnThemeToggleScript = (nextMode: "light" | "dark"): string =>
+  `window.parent&&window.parent.postMessage({source:"openstory",type:"globals-changed",globals:{${JSON.stringify(
+    shadcnModeGlobalKey,
+  )}:${JSON.stringify(nextMode)}}},window.location.origin)`;
+
+const shadcnThemeToggleButton = (
+  h: ReturnType<typeof html<never>>,
+  resolvedTheme: ResolvedShadcnTheme,
+): HtmlChild => {
+  const nextMode = nextShadcnModeForToggle(resolvedTheme);
+  const label = nextMode === "dark" ? "Dark" : "Light";
+
+  return h.button(
+    [
+      h.Type("button"),
+      h.Attribute("onclick", shadcnThemeToggleScript(nextMode)),
+      h.AriaLabel("Toggle shadcn mode"),
+      h.AriaPressed(resolvedTheme.resolvedMode === "dark" ? "true" : "false"),
+      h.DataAttribute("testid", "shadcn-theme-toggle"),
+      h.DataAttribute("shadcn-next-mode", nextMode),
+      h.Class(
+        "fixed right-3 top-3 z-50 inline-flex h-8 items-center justify-center rounded-md border border-border bg-background px-3 text-xs font-medium text-foreground shadow-sm transition hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+      ),
+    ],
+    [label],
+  );
+};
+
 export const isShadcnStoryContext = (
   context: Pick<StoryContext<unknown>, "title" | "parameters">,
 ): boolean => {
@@ -358,7 +390,7 @@ const wrapProgramConfig = (
         h.DataAttribute("testid", "shadcn-theme-wrapper"),
         h.Style(shadcnThemeStyleProperties(globals)),
       ],
-      [storyView],
+      [shadcnThemeToggleButton(h, resolvedTheme), storyView],
     );
   },
 });

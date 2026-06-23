@@ -1,8 +1,9 @@
 import { Option } from "effect";
-import type { Calendar, Ui } from "foldkit";
+import type { Calendar } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
-import type { AnchorConfig } from "foldkit/ui/popover";
+import type { AnchorConfig } from "@foldkit/ui/popover";
 
 import * as UiCalendar from "../calendar";
 const primitiveClassesKey = `${"class"}${"Name"}` as const;

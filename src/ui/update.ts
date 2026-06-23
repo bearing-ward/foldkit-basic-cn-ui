@@ -1,5 +1,6 @@
 import { Array, Match as M, Number, Option, pipe } from "effect";
-import { Command, Ui } from "foldkit";
+import { Command } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import { evo } from "foldkit/struct";
 
 import {

@@ -1,4 +1,4 @@
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Attribute, ChildAttribute, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 

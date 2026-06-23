@@ -1,8 +1,9 @@
 import { Match as M, Option } from "effect";
-import { Submodel, Ui } from "foldkit";
+import { Submodel } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
-import type { AnchorConfig } from "foldkit/ui/popover";
+import type { AnchorConfig } from "@foldkit/ui/popover";
 
 import * as Icon from "../../icon";
 import { GotDatePickerBasicDemoMessage } from "../message";

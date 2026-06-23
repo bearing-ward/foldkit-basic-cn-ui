@@ -1,5 +1,5 @@
 import { Schema as S } from "effect";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const ToastPayload = S.Struct({
   title: S.String,

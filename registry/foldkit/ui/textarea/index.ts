@@ -1,4 +1,4 @@
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const { descriptionId } = Ui.Textarea;
 export const { view } = Ui.Textarea;

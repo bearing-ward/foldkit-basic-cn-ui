@@ -1,5 +1,6 @@
 import { Match as M } from "effect";
-import { Submodel, Ui } from "foldkit";
+import { Submodel } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 

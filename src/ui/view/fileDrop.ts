@@ -1,5 +1,6 @@
 import { Array, Match as M, Number } from "effect";
-import { File, Submodel, Ui } from "foldkit";
+import { File, Submodel } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 
@@ -81,31 +82,39 @@ export const view = Submodel.defineView<UiModel, UiMessage>((model): Html => {
           ...Array.match(model.fileDropBasicDemoFiles, {
             onEmpty: () => [],
             onNonEmpty: (files) =>
-              files.map((file, fileIndex) =>
-                h.keyed("div")(
-                  fileKey(file),
-                  [h.Class(fileRowClassName)],
-                  [
-                    h.div(
-                      [h.Class("flex flex-col min-w-0")],
-                      [
-                        h.span([h.Class(fileNameClassName)], [File.name(file)]),
-                        h.span(
-                          [h.Class(fileSizeClassName)],
-                          [formatFileSize(File.size(file))]
-                        ),
-                      ]
-                    ),
-                    h.button(
-                      [
-                        h.Type("button"),
-                        h.OnClick(ClickedRemoveFileDropDemoFile({ fileIndex })),
-                        h.Class(removeButtonClassName),
-                      ],
-                      ["Remove"]
-                    ),
-                  ]
-                )
+              files.flatMap((file, fileIndex) =>
+                file instanceof globalThis.File
+                  ? [
+                      h.keyed("div")(
+                        fileKey(file),
+                        [h.Class(fileRowClassName)],
+                        [
+                          h.div(
+                            [h.Class("flex flex-col min-w-0")],
+                            [
+                              h.span([h.Class(fileNameClassName)], [
+                                File.name(file),
+                              ]),
+                              h.span(
+                                [h.Class(fileSizeClassName)],
+                                [formatFileSize(File.size(file))]
+                              ),
+                            ]
+                          ),
+                          h.button(
+                            [
+                              h.Type("button"),
+                              h.OnClick(
+                                ClickedRemoveFileDropDemoFile({ fileIndex })
+                              ),
+                              h.Class(removeButtonClassName),
+                            ],
+                            ["Remove"]
+                          ),
+                        ]
+                      ),
+                    ]
+                  : []
               ),
           }),
         ]

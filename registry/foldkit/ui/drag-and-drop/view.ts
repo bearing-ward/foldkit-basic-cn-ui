@@ -1,5 +1,5 @@
 import { Array, Option, pipe } from "effect";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 

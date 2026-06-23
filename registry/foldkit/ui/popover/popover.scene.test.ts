@@ -1,4 +1,5 @@
-import { Scene, Ui } from "foldkit";
+import { Scene } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { describe, test } from "vitest";

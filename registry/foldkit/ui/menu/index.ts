@@ -1,5 +1,5 @@
 import type { Command } from "foldkit";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const { Model } = Ui.Menu;
 export type Model = Ui.Menu.Model;

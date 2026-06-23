@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Array } from "effect";
-import { Submodel, Ui } from "foldkit";
+import { Submodel } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { childAttributes, html } from "foldkit/html";
 
@@ -185,7 +186,7 @@ export const view = Submodel.defineView<UiModel, UiMessage>((model): Html => {
               ],
               onNonEmpty: (selectedItems) =>
                 selectedItems.map((item) =>
-                  h.span([h.Class(tagClassName)], [item])
+                  h.span([h.Class(tagClassName)], [String(item)])
                 ),
             })
           ),

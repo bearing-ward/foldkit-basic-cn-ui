@@ -19,7 +19,7 @@ import {
   Tabs,
   Tooltip,
   VirtualList,
-} from "foldkit/ui";
+} from "@foldkit/ui";
 
 import { Toast } from "./toast";
 

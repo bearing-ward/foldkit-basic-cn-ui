@@ -1,5 +1,6 @@
 import { Array, Option } from "effect";
-import { Submodel, Ui } from "foldkit";
+import { Submodel } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { childAttributes, html } from "foldkit/html";
 
@@ -118,7 +119,7 @@ export const view = Submodel.defineView<UiModel, UiMessage>((model): Html => {
             viewInputs: {
               anchor: LISTBOX_ANCHOR,
               items: LISTBOX_ITEMS,
-              itemToConfig: (item) => ({
+              itemToConfig: (item: ListboxItem) => ({
                 className: itemClassName,
                 content: h.div(
                   [h.Class("flex items-center gap-2")],
@@ -158,7 +159,7 @@ export const view = Submodel.defineView<UiModel, UiMessage>((model): Html => {
             viewInputs: {
               anchor: LISTBOX_ANCHOR,
               items: LISTBOX_ITEMS,
-              itemToConfig: (item) => ({
+              itemToConfig: (item: ListboxItem) => ({
                 className: itemClassName,
                 content: h.div(
                   [h.Class("flex items-center gap-2")],
@@ -200,15 +201,15 @@ export const view = Submodel.defineView<UiModel, UiMessage>((model): Html => {
               anchor: LISTBOX_ANCHOR,
               items: GROUPED_CHARACTERS,
               itemToValue: characterName,
-              itemGroupKey: (character) => character.lastName,
-              groupToHeading: (lastName) => ({
+              itemGroupKey: (character: Character) => character.lastName,
+              groupToHeading: (lastName: string) => ({
                 content: h.span([], [`${lastName}s`]),
                 className: groupHeadingClassName,
               }),
               separatorAttributes: childAttributes([
                 h.Class(separatorClassName),
               ]),
-              itemToConfig: (character) => ({
+              itemToConfig: (character: Character) => ({
                 className: itemClassName,
                 content: h.div(
                   [h.Class("flex items-center gap-2")],

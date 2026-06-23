@@ -13,7 +13,7 @@ import * as DocsPreviewsNZ from "docs-example-previews-nz";
 import * as DocsPreviewsShadcnMissing from "docs-example-previews-shadcn-missing";
 import * as DocsRoutes from "docs-example-routes";
 import { Match as M } from "effect";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Submodel } from "foldkit";
 import type { Document, Html } from "foldkit/html";
 import { html } from "foldkit/html";

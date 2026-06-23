@@ -1,4 +1,5 @@
-import { Subscription, Ui } from "foldkit";
+import { Subscription } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 import {
   GotDragAndDropDemoMessage,

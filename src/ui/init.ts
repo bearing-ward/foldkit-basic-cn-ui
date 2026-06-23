@@ -1,5 +1,6 @@
 import type { Command } from "foldkit";
-import { Calendar, Ui } from "foldkit";
+import { Calendar } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 import type { UiMessage } from "./message";
 import type { UiModel } from "./model";

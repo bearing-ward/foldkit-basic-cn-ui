@@ -2,7 +2,23 @@ import { defineConfig } from "oxlint";
 import core from "ultracite/oxlint/core";
 
 export default defineConfig({
-  extends: [core],
+  extends: [
+    core,
+    {
+      jsPlugins: [
+        { name: "foldkit", specifier: "@foldkit/oxlint-plugin" },
+      ],
+      rules: {
+        "foldkit/command-binding-matches-name": "error",
+        "foldkit/got-prefix-requires-submodel-payload": "error",
+        "foldkit/got-submodel-message-name": "error",
+        "foldkit/message-binding-matches-tag": "error",
+        "foldkit/no-empty-object-tagged-call": "error",
+        "foldkit/no-noop-message": "error",
+        "foldkit/prefer-callable-message-constructor": "error",
+      },
+    },
+  ],
   ignorePatterns: [...core.ignorePatterns, "repos/**", "**/repos/**"],
   rules: {
     "no-empty-function": "off",

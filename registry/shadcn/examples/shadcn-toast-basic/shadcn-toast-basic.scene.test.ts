@@ -1,4 +1,5 @@
-import { Scene, Ui } from "foldkit";
+import { Scene } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import { describe, test } from "vitest";
 
 import * as Toast from "../../../foldkit/ui/toast";

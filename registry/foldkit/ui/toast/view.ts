@@ -1,7 +1,7 @@
 import { Match as M, Option } from "effect";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
-import type { EntryHandlers, Variant } from "foldkit/ui/toast";
+import type { EntryHandlers, Variant } from "@foldkit/ui/toast";
 
 import type { Entry } from "./index";
 

@@ -8,12 +8,14 @@ import {
   defaultShadcnThemeName,
   initialShadcnThemeGlobals,
   isShadcnStoryContext,
+  nextShadcnModeForToggle,
   resolveShadcnTheme,
   resolveShadcnThemeName,
   shadcnThemeCatalog,
   shadcnThemeClassesForGlobals,
   shadcnThemeColorVariableValue,
   shadcnModeGlobalKey,
+  shadcnThemeToggleScript,
   shadcnThemeGlobalKey,
   shadcnThemeGlobalTypes,
   shadcnThemeStyleProperties,
@@ -51,13 +53,13 @@ describe("shadcn OpenStory theme support", () => {
     const themeKeys = new Set(
       shadcnThemeCatalog.themes.map((theme) => `${theme.style}-${theme.baseColor}`),
     );
-    const items = shadcnThemeGlobalTypes[shadcnThemeGlobalKey].toolbar.items;
-    const modes = shadcnThemeGlobalTypes[shadcnModeGlobalKey].toolbar.items;
+    const { items } = shadcnThemeGlobalTypes[shadcnThemeGlobalKey].toolbar;
+    const { items: modes } = shadcnThemeGlobalTypes[shadcnModeGlobalKey].toolbar;
     const itemValues = items.map((item) => item.value);
 
     expect(items.length).toBe(themeKeys.size);
-    for (const item of items) {
-      expect(themeKeys.has(String(item.value))).toBe(true);
+    for (const { value } of items) {
+      expect(themeKeys.has(String(value))).toBe(true);
     }
     for (const value of [
       "rhea-neutral",
@@ -202,11 +204,26 @@ describe("shadcn OpenStory theme support", () => {
         "data-shadcn-resolved-mode",
         "dark",
       ),
+      Scene.expect(Scene.testId("shadcn-theme-toggle")).toHaveAttr(
+        "data-shadcn-next-mode",
+        "light",
+      ),
+      Scene.expect(Scene.role("button", { name: "Toggle shadcn mode" })).toHaveAttr(
+        "aria-pressed",
+        "true",
+      ),
     );
   });
 
+  test("builds a mode-toggle globals message for the OpenStory shell", () => {
+    expect(nextShadcnModeForToggle({ resolvedMode: "light" })).toBe("dark");
+    expect(nextShadcnModeForToggle({ resolvedMode: "dark" })).toBe("light");
+    expect(shadcnThemeToggleScript("dark")).toContain('type:"globals-changed"');
+    expect(shadcnThemeToggleScript("dark")).toContain('globals:{"shadcnMode":"dark"}');
+  });
+
   test("passes resolved shadcn theme through view inputs", () => {
-    const Model = ButtonDefaultExample.Model;
+    const { Model } = ButtonDefaultExample;
     const capturedView = {
       Model,
       init: ButtonDefaultExample.init,

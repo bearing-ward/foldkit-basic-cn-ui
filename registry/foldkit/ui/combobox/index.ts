@@ -1,5 +1,5 @@
 import type { Command } from "foldkit";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const { Model } = Ui.Combobox;
 export type Model = Ui.Combobox.Model;

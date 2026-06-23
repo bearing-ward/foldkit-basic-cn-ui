@@ -2,7 +2,7 @@ import { Match as M, Option } from "effect";
 import { Submodel } from "foldkit";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
-import type { EntryHandlers, Variant } from "foldkit/ui/toast";
+import type { EntryHandlers, Variant } from "@foldkit/ui/toast";
 
 import * as Icon from "../../icon";
 import {

@@ -1,5 +1,5 @@
 import { Schema as S } from "effect";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 /** Payload shape for the showcase's toast stack. Consumer decides what goes
  *  in each entry; the Toast component owns only lifecycle and a11y. */

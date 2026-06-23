@@ -1,6 +1,6 @@
 import type { Option } from "effect";
 import type { Command } from "foldkit";
-import { Ui } from "foldkit";
+import * as Ui from "@foldkit/ui";
 
 export const { Model, TransitionState } = Ui.Animation;
 export type Model = Ui.Animation.Model;

@@ -1,6 +1,6 @@
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
-import type { AnchorConfig } from "foldkit/ui/tooltip";
+import type { AnchorConfig } from "@foldkit/ui/tooltip";
 
 import type { RenderInfo } from "./index";
 

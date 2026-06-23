@@ -133,7 +133,7 @@ const skeletonFiles = (
     },
     {
       path: `${exampleDir}/entry.ts`,
-      content: `import { Effect } from "effect";\nimport { Runtime } from "foldkit";\n\nimport * as Main from "./main";\n\nconst program = Runtime.makeProgram({ init: Main.init, update: Main.update, view: Main.view });\n\nRuntime.run(program, {\n  flags: Effect.succeed({}),\n  rootId: "app",\n});\n`,
+      content: `import { Runtime } from "foldkit";\n\nimport * as Main from "./main";\n\nconst program = Runtime.makeElement({\n  Model: Main.Model,\n  init: Main.init,\n  update: Main.update,\n  view: Main.view,\n  container: document.querySelector("#app"),\n});\n\nRuntime.run(program);\n`,
     },
     {
       path: `${exampleDir}/index.html`,

@@ -1,15 +1,13 @@
-import { Effect } from "effect";
 import { Runtime } from "foldkit";
 
 import * as Main from "./main";
 
-const program = Runtime.makeProgram({
+const program = Runtime.makeElement({
+  Model: Main.Model,
   init: Main.init,
   update: Main.update,
   view: Main.view,
+  container: document.querySelector("#app"),
 });
 
-Runtime.run(program, {
-  flags: Effect.succeed({}),
-  rootId: "app",
-});
+Runtime.run(program);
