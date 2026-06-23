@@ -39,6 +39,8 @@ starting, honor its STOP conditions, and update your row when done.
 | 029  | Promote shadcn create preview blocks to component-level parity | P1 | L | 026, 028 | TODO |
 | 030  | Refresh Foldkit tooling, fix the mode toggle, and print the component worklist | P1 | L | 023, 024, 026, 027 | DONE |
 | 031  | Adapt shadcn's docs display template to all OpenStory component docs | P1 | L | 013, 014, 015, 021, 022, 026 | DONE |
+| 032  | Add Base UI and shadcn Blocks dropdowns to OpenStory | P1 | M | 012, 021, 022, 028, 031 | TODO |
+| 033  | Render anatomy x-ray previews with inline metadata overlays | P1 | M | 013, 031 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -295,6 +297,23 @@ REJECTED (with one-line rationale).
   Foldkit runtime/module-instance blocker in the docs-template scene path; Tabs
   remains represented in the display mapping until that lower-level issue is
   addressed separately.
+- 032 depends on 012 because the public browser is the generated OpenStory site,
+  on 021 and 022 because future block examples should fit the component-owned
+  registry hierarchy/configuration model, on 028 because Theme Studio already
+  exposes preview block inventory that must not be confused with source-owned
+  block stories, and on 031 because the OpenStory docs/template surface is now
+  the canonical browsing context. It should add visible `Blocks` navigation
+  groups under both `base-ui` and `shadcn`, preferably via a generic OpenStory
+  navigation-path manifest field, while keeping existing component story titles
+  and IDs stable. It must not implement real block examples or mark shadcn
+  preview-02 rows as matched; plan 029 remains the owner for block parity.
+- 033 depends on 013 because it revises the existing interactive Anatomy X-Ray
+  surface, and on 031 because that x-ray now appears inside the shared OpenStory
+  documentation display template. It should replace the synthetic preview-map
+  boxes and separate selected-part card with a rendered example preview, selected
+  part highlighting, and inline tag/classes/styles/attributes overlays that
+  update from the existing hover/focus/click message flow. It must not change
+  installable registry component APIs or the API reference widget.
 
 ## Findings considered and rejected
 
