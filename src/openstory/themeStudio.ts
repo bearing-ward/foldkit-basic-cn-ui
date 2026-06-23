@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Effect, Match as M, Schema as S } from "effect";
-import { Command, Submodel, Ui } from "foldkit";
+import { Command, Submodel } from "foldkit";
+import * as Ui from "@foldkit/ui";
 import type { Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
