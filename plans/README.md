@@ -38,7 +38,7 @@ starting, honor its STOP conditions, and update your row when done.
 | 028  | Add dynamic Theme Studio and downloadable options | P1 | L | 024, 027 | DONE |
 | 029  | Promote shadcn create preview blocks to component-level parity | P1 | L | 026, 028 | TODO |
 | 030  | Refresh Foldkit tooling, fix the mode toggle, and print the component worklist | P1 | L | 023, 024, 026, 027 | DONE |
-| 031  | Adapt shadcn's docs display template to all OpenStory component docs | P1 | L | 013, 014, 015, 021, 022, 026 | TODO |
+| 031  | Adapt shadcn's docs display template to all OpenStory component docs | P1 | L | 013, 014, 015, 021, 022, 026 | DONE |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -283,7 +283,18 @@ REJECTED (with one-line rationale).
   source data. Base UI Alert Dialog is only the first verification slice because
   it matches the referenced page and has local coverage; the template must not
   become Alert Dialog-specific. It must not import React, Next.js, MDX, or
-  upstream `@/registry/new-york-v4/**` runtime code.
+  upstream `@/registry/new-york-v4/**` runtime code. Execution completed in
+  commit `398adca2`: it added the shared OpenStory documentation display
+  template, source-driven documentation manifest, Base UI Alert Dialog
+  documentation story, focused scene/e2e coverage, and contract updates.
+  Reviewer verification passed typecheck, focused Vitest docs/generator/Alert
+  Dialog tests, `bun run openstory:check`, `bun run check:registry`, focused
+  OpenStory Playwright, `bun run build`, whitespace checks, and a prohibited
+  import scan. A requested follow-up attempt to make Tabs an executable display
+  helper was accepted as a documented deviation after it exposed a concrete
+  Foldkit runtime/module-instance blocker in the docs-template scene path; Tabs
+  remains represented in the display mapping until that lower-level issue is
+  addressed separately.
 
 ## Findings considered and rejected
 

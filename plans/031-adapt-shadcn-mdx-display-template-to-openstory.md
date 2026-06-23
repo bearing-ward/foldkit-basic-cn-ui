@@ -8,7 +8,7 @@
 > the index.
 >
 > **Drift check (run first)**:
-> `git diff --stat 8b8ad6a7..HEAD -- src/openstory/documentation scripts/generate-openstory-stories.mjs scripts/generate-openstory-stories.test.ts registry/base-ui/ui/base-ui-alert-dialog registry/base-ui/examples/base-ui-alert-dialog-basic docs/product/component-entry-contract.md docs/product/docs-surface-guardrails.md plans/README.md`
+> `git diff --stat 6dca8399..HEAD -- src/openstory/documentation scripts/generate-openstory-stories.mjs scripts/generate-openstory-stories.test.ts registry/base-ui/ui/base-ui-alert-dialog registry/base-ui/examples/base-ui-alert-dialog-basic docs/product/component-entry-contract.md docs/product/docs-surface-guardrails.md plans/README.md`
 > If any in-scope file changed since this plan was written, compare the
 > "Current state" excerpts against the live code before proceeding. On a
 > mismatch, treat it as a STOP condition.
@@ -20,7 +20,7 @@
 - **Risk**: MED
 - **Depends on**: plans/013-build-openstory-anatomy-xray.md, plans/014-add-openstory-documentation-reference-stories.md, plans/015-build-quasar-like-api-reference-widget.md, plans/021-pilot-component-owned-registry-hierarchy.md, plans/022-codify-component-local-configuration-poc.md, plans/026-activate-exact-origin-visual-parity.md
 - **Category**: docs, openstory, architecture, parity
-- **Planned at**: commit `8b8ad6a7`, 2026-06-23
+- **Planned at**: commit `6dca8399`, refreshed 2026-06-23
 
 ## Why this matters
 
@@ -221,6 +221,12 @@ surface.
 
 Do not add new work to `/docs/components/**`.
 ```
+
+The current component contract also records Theme Studio as an OpenStory
+browsing surface with source-derived option data. Treat that as adjacent
+context only: this plan may reuse the same source-derived discipline for
+component docs preview/source affordances, but it must not alter Theme Studio or
+turn this documentation template pass into preview-block parity work.
 
 The Alert Dialog verification slice has local source, examples, metadata, and
 tests already available:
