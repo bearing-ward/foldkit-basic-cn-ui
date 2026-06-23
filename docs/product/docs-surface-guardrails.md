@@ -48,7 +48,7 @@ Required sections:
 | Usage                | Shows minimal consumer import and direct use.                               |
 | Foldkit integration  | Shows parent model, message, update, and submodel wiring when applicable.    |
 | Preview and source   | Links to generated OpenStory examples and generated `/sources/*.txt` files. |
-| Anatomy              | Shows an x-ray of rendered HTML, classes, styles, attributes, and parts.     |
+| Anatomy              | Shows an x-ray rendered preview with classes, styles, attributes, and parts. |
 | Styling              | Names class hooks, data attributes, variants, and state styling hooks.       |
 | Keyboard interaction | Appears only when interactive keyboard behavior exists.                     |
 | API                  | Lists props, callbacks, render hooks, types, and intentional omissions.      |
@@ -56,8 +56,9 @@ Required sections:
 | Existing coverage    | Maps claims to scene tests, story checks, registry checks, and smokes.       |
 
 The Anatomy section should support hovering a code element to highlight the
-corresponding preview element and display relevant part metadata when the
-component has meaningful nested markup.
+corresponding rendered preview element and display relevant tag, classes,
+styles, and attributes as overlays when the component has meaningful nested
+markup.
 
 The shared documentation display template marks its root with
 `data-openstory-documentation-template`. Browser tests may use that selector to

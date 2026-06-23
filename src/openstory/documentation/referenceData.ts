@@ -20,7 +20,9 @@ import {
   avatarImageClasses,
   avatarSizeClassesBySize,
 } from "../../../registry/base-ui/ui/base-ui-avatar/view";
-import type { XrayConfig } from "./anatomyXray";
+import { html } from "foldkit/html";
+
+import type { Message, XrayConfig } from "./anatomyXray";
 import type { ApiReferenceConfig } from "./apiReference";
 import referenceManifest from "./referenceManifest.json";
 
@@ -76,6 +78,8 @@ export type DocumentationReference = Readonly<{
 }>;
 
 const classes = (classes: string): readonly string[] => classes.split(" ");
+const avatarImageSrc =
+  "data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%230f766e'/%3E%3C/svg%3E";
 
 export const baseUiAvatarDocumentation: DocumentationReference = {
   title: "Avatar",
@@ -151,6 +155,75 @@ const group = Avatar.groupView<Message>([
     title: "Base UI Avatar Anatomy",
     summary:
       "Inspect the explicit parts, classes, attributes, and style hooks used to construct the Avatar, Avatar group, status badge, and overflow count.",
+    preview: ({ partAttributes }) => {
+      const h = html<Message>();
+
+      return h.div(
+        [
+          h.Class(
+            "flex min-h-40 w-full items-center justify-center rounded-[8px] border border-slate-200 bg-white p-8"
+          ),
+        ],
+        [
+          h.div(
+            [...partAttributes("avatar-group", avatarGroupClasses)],
+            [
+              h.span(
+                [
+                  ...partAttributes(
+                    "avatar-root",
+                    `${avatarBaseClasses} ${avatarSizeClassesBySize("Default")}`
+                  ),
+                ],
+                [
+                  h.img([
+                    ...partAttributes("avatar-image", avatarImageClasses),
+                    h.Src(avatarImageSrc),
+                    h.Alt("Lena Taylor"),
+                  ]),
+                  h.span(
+                    [
+                      ...partAttributes(
+                        "avatar-badge",
+                        avatarBadgeClasses
+                      ),
+                      h.AriaLabel("Online"),
+                    ],
+                    []
+                  ),
+                ]
+              ),
+              h.span(
+                [
+                  h.Class(
+                    `${avatarBaseClasses} ${avatarSizeClassesBySize("Default")}`
+                  ),
+                ],
+                [
+                  h.span(
+                    [
+                      ...partAttributes(
+                        "avatar-fallback",
+                        avatarFallbackClasses
+                      ),
+                    ],
+                    ["LT"]
+                  ),
+                ]
+              ),
+              h.span(
+                [
+                  ...partAttributes("avatar-count", avatarGroupCountClasses),
+                  h.Attribute("role", "img"),
+                  h.AriaLabel("3 more people"),
+                ],
+                ["+3"]
+              ),
+            ]
+          ),
+        ]
+      );
+    },
     parts: [
       {
         id: "avatar-group",
@@ -184,8 +257,7 @@ const group = Avatar.groupView<Message>([
                 attributes: [
                   {
                     name: "src",
-                    value:
-                      "data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%230f766e'/%3E%3C/svg%3E",
+                    value: avatarImageSrc,
                   },
                   { name: "alt", value: "Lena Taylor" },
                 ],
@@ -980,6 +1052,132 @@ export const update = (model: Model, message: Message): UpdateReturn =>
     title: "Base UI Alert Dialog Anatomy",
     summary:
       "Inspect the explicit parts, classes, attributes, and style hooks used to construct the trigger, portal, modal popup, copy, and actions.",
+    preview: ({ partAttributes }) => {
+      const h = html<Message>();
+
+      return h.div(
+        [
+          h.Class(
+            "relative h-80 w-full max-w-lg overflow-hidden rounded-[8px] border border-slate-200 bg-white p-6"
+          ),
+        ],
+        [
+          h.div(
+            [...partAttributes("alert-dialog-root", alertDialogRootClasses)],
+            [
+              h.button(
+                [
+                  ...partAttributes(
+                    "alert-dialog-trigger",
+                    alertDialogTriggerClasses
+                  ),
+                  h.Type("button"),
+                ],
+                ["Discard draft"]
+              ),
+              h.div(
+                [
+                  ...partAttributes(
+                    "alert-dialog-portal",
+                    alertDialogPortalClasses
+                  ),
+                  h.Style({ position: "absolute" }),
+                ],
+                [
+                  h.div(
+                    [
+                      ...partAttributes(
+                        "alert-dialog-backdrop",
+                        alertDialogBackdropClasses
+                      ),
+                      h.Style({ position: "absolute" }),
+                    ],
+                    []
+                  ),
+                  h.div(
+                    [
+                      ...partAttributes(
+                        "alert-dialog-viewport",
+                        alertDialogViewportClasses
+                      ),
+                      h.Style({ position: "absolute" }),
+                    ],
+                    [
+                      h.div(
+                        [
+                          ...partAttributes(
+                            "alert-dialog-popup",
+                            alertDialogPopupClasses
+                          ),
+                          h.Attribute("role", "alertdialog"),
+                          h.AriaModal(true),
+                          h.AriaLabelledBy("discard-draft-title"),
+                          h.AriaDescribedBy("discard-draft-description"),
+                        ],
+                        [
+                          h.h2(
+                            [
+                              ...partAttributes(
+                                "alert-dialog-title",
+                                alertDialogTitleClasses
+                              ),
+                              h.Id("discard-draft-title"),
+                            ],
+                            ["Discard draft?"]
+                          ),
+                          h.p(
+                            [
+                              ...partAttributes(
+                                "alert-dialog-description",
+                                alertDialogDescriptionClasses
+                              ),
+                              h.Id("discard-draft-description"),
+                            ],
+                            [
+                              "This action cannot be undone from the documentation preview.",
+                            ]
+                          ),
+                          h.div(
+                            [
+                              ...partAttributes(
+                                "alert-dialog-actions",
+                                alertDialogActionsClasses
+                              ),
+                            ],
+                            [
+                              h.button(
+                                [
+                                  ...partAttributes(
+                                    "alert-dialog-cancel",
+                                    alertDialogCancelClasses
+                                  ),
+                                  h.Type("button"),
+                                ],
+                                ["Cancel"]
+                              ),
+                              h.button(
+                                [
+                                  ...partAttributes(
+                                    "alert-dialog-confirm",
+                                    alertDialogConfirmClasses
+                                  ),
+                                  h.Type("button"),
+                                ],
+                                ["Discard"]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+            ]
+          ),
+        ]
+      );
+    },
     parts: [
       {
         id: "alert-dialog-root",

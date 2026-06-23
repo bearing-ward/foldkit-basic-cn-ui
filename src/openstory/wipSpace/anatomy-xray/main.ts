@@ -7,15 +7,87 @@ import {
   avatarImageClasses,
   avatarSizeClassesBySize,
 } from "../../../../registry/base-ui/ui/base-ui-avatar";
+import { html } from "foldkit/html";
 import { defineProgram } from "../../documentation/anatomyXray";
-import type { XrayConfig } from "../../documentation/anatomyXray";
+import type {
+  Message as XrayMessage,
+  XrayConfig,
+} from "../../documentation/anatomyXray";
 
 const classes = (classes: string): readonly string[] => classes.split(" ");
+const avatarImageSrc =
+  "data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%230f766e'/%3E%3C/svg%3E";
 
 export const avatarXrayConfig: XrayConfig = {
   title: "Base UI Avatar Anatomy",
   summary:
     "Inspect the explicit parts, classes, attributes, and style hooks used to construct the Avatar, Avatar group, status badge, and overflow count.",
+  preview: ({ partAttributes }) => {
+    const h = html<XrayMessage>();
+
+    return h.div(
+      [
+        h.Class(
+          "flex min-h-40 w-full items-center justify-center rounded-[8px] border border-slate-200 bg-white p-8"
+        ),
+      ],
+      [
+        h.div(
+          [...partAttributes("avatar-group", avatarGroupClasses)],
+          [
+            h.span(
+              [
+                ...partAttributes(
+                  "avatar-root",
+                  `${avatarBaseClasses} ${avatarSizeClassesBySize("Default")}`
+                ),
+              ],
+              [
+                h.img([
+                  ...partAttributes("avatar-image", avatarImageClasses),
+                  h.Src(avatarImageSrc),
+                  h.Alt("Lena Taylor"),
+                ]),
+                h.span(
+                  [
+                    ...partAttributes("avatar-badge", avatarBadgeClasses),
+                    h.AriaLabel("Online"),
+                  ],
+                  []
+                ),
+              ]
+            ),
+            h.span(
+              [
+                h.Class(
+                  `${avatarBaseClasses} ${avatarSizeClassesBySize("Default")}`
+                ),
+              ],
+              [
+                h.span(
+                  [
+                    ...partAttributes(
+                      "avatar-fallback",
+                      avatarFallbackClasses
+                    ),
+                  ],
+                  ["LT"]
+                ),
+              ]
+            ),
+            h.span(
+              [
+                ...partAttributes("avatar-count", avatarGroupCountClasses),
+                h.Attribute("role", "img"),
+                h.AriaLabel("3 more people"),
+              ],
+              ["+3"]
+            ),
+          ]
+        ),
+      ]
+    );
+  },
   parts: [
     {
       id: "avatar-group",
@@ -49,8 +121,7 @@ export const avatarXrayConfig: XrayConfig = {
               attributes: [
                 {
                   name: "src",
-                  value:
-                    "data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%230f766e'/%3E%3C/svg%3E",
+                  value: avatarImageSrc,
                 },
                 { name: "alt", value: "Lena Taylor" },
               ],

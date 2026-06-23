@@ -1,6 +1,6 @@
 import { Array, Match as M, Option, Schema as S } from "effect";
 import type { Command } from "foldkit";
-import type { Html } from "foldkit/html";
+import type { Attribute, Html } from "foldkit/html";
 import { html } from "foldkit/html";
 import { m } from "foldkit/message";
 import { evo } from "foldkit/struct";
@@ -28,10 +28,20 @@ export type XrayPart = Readonly<{
   children: readonly XrayPart[];
 }>;
 
+export type XrayPreviewContext = Readonly<{
+  model: Model;
+  activePart: Option.Option<XrayPart>;
+  partAttributes: (
+    partId: string,
+    classes?: string
+  ) => ReadonlyArray<Attribute<Message>>;
+}>;
+
 export type XrayConfig = Readonly<{
   title: string;
   summary: string;
   parts: readonly XrayPart[];
+  preview: (context: XrayPreviewContext) => Html;
 }>;
 
 export const Model = S.Struct({
@@ -97,10 +107,11 @@ const panelTitleClasses = "text-sm font-semibold text-slate-950";
 const panelBodyClasses = "p-4";
 const codeButtonBaseClasses =
   "group grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-[6px] border px-3 py-2 text-left font-mono text-[12px] leading-5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500";
-const previewBoxBaseClasses =
-  "flex min-h-12 flex-col gap-2 rounded-[7px] border border-slate-200 bg-slate-50 p-3 transition";
-const activeClasses =
-  "border-amber-400 bg-amber-50 ring-2 ring-amber-300 ring-offset-2 ring-offset-white";
+const previewHighlightClasses =
+  "ring-2 ring-amber-300 ring-offset-2 ring-offset-white outline outline-1 outline-amber-400";
+const overlayBoxClasses =
+  "pointer-events-auto max-h-28 overflow-auto rounded-[6px] border border-slate-200 bg-white/95 px-3 py-2 font-mono text-[11px] leading-5 text-slate-700 shadow-sm";
+const overlayEmptyClasses = "text-slate-400";
 
 const findPartById = (
   parts: readonly XrayPart[],
@@ -127,13 +138,53 @@ const activePart = (
     Option.orElse(() => firstPart(config.parts))
   );
 
-const isActivePart = (model: Model, part: XrayPart): boolean =>
-  model.maybeActivePartId.pipe(
+const isDisplayedPart = (
+  maybePart: Option.Option<XrayPart>,
+  part: XrayPart
+): boolean =>
+  maybePart.pipe(
     Option.match({
       onNone: () => false,
-      onSome: (partId) => partId === part.id,
+      onSome: (active) => active.id === part.id,
     })
   );
+
+const isDisplayedPartId = (
+  maybePart: Option.Option<XrayPart>,
+  partId: string
+): boolean =>
+  maybePart.pipe(
+    Option.match({
+      onNone: () => false,
+      onSome: (active) => active.id === partId,
+    })
+  );
+
+const previewPartAttributes =
+  (maybeActivePart: Option.Option<XrayPart>) =>
+  (partId: string, classes = ""): ReadonlyArray<Attribute<Message>> => {
+    const h = html<Message>();
+    const active = isDisplayedPartId(maybeActivePart, partId);
+    const className = [classes, active ? previewHighlightClasses : ""]
+      .filter((value) => value !== "")
+      .join(" ");
+    const attributes: ReadonlyArray<Attribute<Message>> = [
+      h.DataAttribute("xray-preview-part", partId),
+      h.DataAttribute("xray-preview-active", active ? "true" : "false"),
+      h.Tabindex(0),
+      h.OnMouseEnter(HoveredPart({ partId })),
+      h.OnMouseLeave(ClearedPart()),
+      h.OnFocus(FocusedPart({ partId })),
+      h.OnBlur(ClearedPart()),
+      h.OnClick(SelectedPart({ partId })),
+    ];
+
+    if (className === "") {
+      return attributes;
+    }
+
+    return [...attributes, h.Class(className)];
+  };
 
 const classSummary = (part: XrayPart): string =>
   Array.match(part.classes, {
@@ -156,9 +207,13 @@ const formatAttribute = (attribute: XrayAttribute): string =>
 const formatStyle = (style: XrayStyle): string =>
   `${style.name}: ${style.value}`;
 
-const renderCodeRow = (model: Model, part: XrayPart, depth: number): Html => {
+const renderCodeRow = (
+  maybeActivePart: Option.Option<XrayPart>,
+  part: XrayPart,
+  depth: number
+): Html => {
   const h = html<Message>();
-  const active = isActivePart(model, part);
+  const active = isDisplayedPart(maybeActivePart, part);
   const branchMarker = Array.match(part.children, {
     onEmpty: () => "/",
     onNonEmpty: () => "...",
@@ -200,139 +255,131 @@ const renderCodeRow = (model: Model, part: XrayPart, depth: number): Html => {
 };
 
 const renderCodeRows = (
-  model: Model,
+  maybeActivePart: Option.Option<XrayPart>,
   parts: readonly XrayPart[],
   depth = 0
 ): readonly Html[] =>
   Array.flatMap(parts, (part) => [
-    renderCodeRow(model, part, depth),
-    ...renderCodeRows(model, part.children, depth + 1),
+    renderCodeRow(maybeActivePart, part, depth),
+    ...renderCodeRows(maybeActivePart, part.children, depth + 1),
   ]);
 
-const renderPreviewPart = (model: Model, part: XrayPart): Html => {
+const renderOverlayIdentity = (part: XrayPart): Html => {
   const h = html<Message>();
-  const active = isActivePart(model, part);
 
   return h.div(
     [
-      h.DataAttribute("xray-part", part.id),
-      h.Class(
-        `${previewBoxBaseClasses} ${active ? activeClasses : "hover:border-slate-300"}`
-      ),
+      h.DataAttribute("testid", "anatomy-xray-overlay-identity"),
+      h.Class(overlayBoxClasses),
     ],
     [
-      h.div(
-        [h.Class("flex items-center justify-between gap-3")],
-        [
-          h.span(
-            [h.Class("text-sm font-semibold text-slate-900")],
-            [part.label]
-          ),
-          h.span([h.Class("font-mono text-xs text-slate-500")], [part.tag]),
-        ]
-      ),
-      h.div(
-        [h.Class("flex flex-wrap gap-1.5")],
-        part.classes
-          .slice(0, 4)
-          .map((classes) =>
-            h.span(
-              [
-                h.Class(
-                  "rounded-[4px] border border-slate-200 bg-white px-1.5 py-0.5 font-mono text-[11px] text-slate-600"
-                ),
-              ],
-              [classes]
-            )
-          )
-      ),
-      ...Array.match(part.children, {
-        onEmpty: () => [],
-        onNonEmpty: (children) => [
+      h.div([h.Class("font-semibold text-slate-950")], [part.tag]),
+      Array.match(part.classes, {
+        onEmpty: () => h.div([h.Class(overlayEmptyClasses)], ["No classes"]),
+        onNonEmpty: (classes) =>
           h.div(
-            [h.Class("grid gap-2 pl-3 sm:grid-cols-2")],
-            children.map((child) => renderPreviewPart(model, child))
+            [h.Class("mt-1 grid gap-0.5")],
+            classes.map((className) => h.div([], [`.${className}`]))
           ),
-        ],
       }),
     ]
   );
 };
 
-const renderMetadataList = (label: string, values: readonly string[]): Html => {
+const renderOverlayStyles = (part: XrayPart): Html => {
   const h = html<Message>();
 
   return h.div(
-    [h.Class("space-y-2")],
     [
-      h.h3(
-        [h.Class("text-xs font-semibold uppercase text-slate-500")],
-        [label]
-      ),
-      Array.match(values, {
-        onEmpty: () =>
-          h.p([h.Class("text-sm text-slate-500")], ["No values declared"]),
+      h.DataAttribute("testid", "anatomy-xray-overlay-styles"),
+      h.Class(`${overlayBoxClasses} text-right`),
+    ],
+    [
+      Array.match(part.styles.map(formatStyle), {
+        onEmpty: () => h.div([h.Class(overlayEmptyClasses)], ["No styles"]),
         onNonEmpty: (items) =>
           h.div(
-            [h.Class("flex flex-wrap gap-1.5")],
-            items.map((item) =>
-              h.code(
-                [
-                  h.Class(
-                    "rounded-[4px] border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[12px] text-slate-700"
-                  ),
-                ],
-                [item]
-              )
-            )
+            [h.Class("grid gap-0.5")],
+            items.map((item) => h.div([], [item]))
           ),
       }),
     ]
   );
 };
 
-const renderDetails = (maybePart: Option.Option<XrayPart>): Html => {
+const renderOverlayAttributes = (part: XrayPart): Html => {
+  const h = html<Message>();
+
+  return h.div(
+    [
+      h.DataAttribute("testid", "anatomy-xray-overlay-attributes"),
+      h.Class(`${overlayBoxClasses} max-h-24`),
+    ],
+    [
+      Array.match(part.attributes.map(formatAttribute), {
+        onEmpty: () =>
+          h.div([h.Class(overlayEmptyClasses)], ["No attributes"]),
+        onNonEmpty: (items) =>
+          h.div(
+            [h.Class("grid gap-0.5")],
+            items.map((item) => h.div([], [item]))
+          ),
+      }),
+    ]
+  );
+};
+
+const renderSelectedPartOverlay = (
+  maybePart: Option.Option<XrayPart>
+): Html => {
   const h = html<Message>();
 
   return maybePart.pipe(
     Option.match({
       onNone: () =>
         h.div(
-          [h.Class(`${panelClasses} p-4 text-sm text-slate-500`)],
-          ["No anatomy parts are available."]
+          [
+            h.DataAttribute("testid", "anatomy-xray-overlay"),
+            h.Class(
+              "pointer-events-none absolute inset-3 z-10 flex items-start justify-between gap-3"
+            ),
+          ],
+          [
+            h.div([h.Class(overlayBoxClasses)], [
+              h.div([h.Class(overlayEmptyClasses)], ["No anatomy parts"]),
+            ]),
+          ]
         ),
       onSome: (part) =>
-        h.aside(
+        h.div(
           [
-            h.Class(`${panelClasses} lg:sticky lg:top-6`),
-            h.AriaLabel("Selected anatomy details"),
+            h.DataAttribute("testid", "anatomy-xray-overlay"),
+            h.Class("pointer-events-none absolute inset-3 z-10"),
           ],
           [
             h.div(
-              [h.Class(panelHeaderClasses)],
               [
-                h.p([h.Class(eyebrowClasses)], ["Selected part"]),
-                h.h2(
-                  [h.Class("mt-1 text-lg font-semibold text-slate-950")],
-                  [part.label]
+                h.Class(
+                  "absolute top-0 left-0 max-w-[min(16rem,48%)] sm:max-w-xs"
                 ),
-              ]
+              ],
+              [renderOverlayIdentity(part)]
             ),
             h.div(
-              [h.Class(`${panelBodyClasses} space-y-4`)],
               [
-                h.p(
-                  [h.Class("text-sm leading-6 text-slate-600")],
-                  [part.description]
+                h.Class(
+                  "absolute top-0 right-0 max-w-[min(14rem,48%)] sm:max-w-xs"
                 ),
-                renderMetadataList("Tag", [part.tag]),
-                renderMetadataList("Classes", part.classes),
-                renderMetadataList(
-                  "Attributes",
-                  part.attributes.map(formatAttribute)
+              ],
+              [renderOverlayStyles(part)]
+            ),
+            h.div(
+              [
+                h.Class(
+                  "absolute right-0 bottom-0 left-0 max-w-full sm:left-1/2 sm:-translate-x-1/2"
                 ),
-                renderMetadataList("Styles", part.styles.map(formatStyle)),
-              ]
+              ],
+              [renderOverlayAttributes(part)]
             ),
           ]
         ),
@@ -369,54 +416,68 @@ export const view =
             h.div(
               [
                 h.Class(
-                  "grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]"
+                  "grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
                 ),
               ],
               [
-                h.section(
-                  [h.Class("grid gap-4 xl:grid-cols-2")],
+                h.div(
+                  [h.Class(panelClasses)],
                   [
                     h.div(
-                      [h.Class(panelClasses)],
+                      [h.Class(panelHeaderClasses)],
                       [
-                        h.div(
-                          [h.Class(panelHeaderClasses)],
-                          [
-                            h.h2(
-                              [h.Class(panelTitleClasses)],
-                              ["Rendered HTML map"]
-                            ),
-                          ]
-                        ),
-                        h.div(
-                          [h.Class(`${panelBodyClasses} space-y-1`)],
-                          renderCodeRows(model, config.parts)
+                        h.h2(
+                          [h.Class(panelTitleClasses)],
+                          ["Rendered HTML map"]
                         ),
                       ]
                     ),
                     h.div(
-                      [h.Class(panelClasses)],
+                      [h.Class(`${panelBodyClasses} space-y-1`)],
+                      renderCodeRows(maybeActivePart, config.parts)
+                    ),
+                  ]
+                ),
+                h.div(
+                  [h.Class(panelClasses)],
+                  [
+                    h.div(
+                      [h.Class(panelHeaderClasses)],
+                      [
+                        h.h2(
+                          [h.Class(panelTitleClasses)],
+                          ["Preview map"]
+                        ),
+                      ]
+                    ),
+                    h.div(
+                      [
+                        h.DataAttribute("testid", "anatomy-xray-preview"),
+                        h.Class(
+                          `${panelBodyClasses} relative min-h-[24rem] overflow-hidden bg-slate-50`
+                        ),
+                      ],
                       [
                         h.div(
-                          [h.Class(panelHeaderClasses)],
                           [
-                            h.h2(
-                              [h.Class(panelTitleClasses)],
-                              ["Preview map"]
+                            h.Class(
+                              "flex min-h-[20rem] items-center justify-center pt-28 pb-24 sm:pt-24 sm:pb-20"
                             ),
+                          ],
+                          [
+                            config.preview({
+                              model,
+                              activePart: maybeActivePart,
+                              partAttributes:
+                                previewPartAttributes(maybeActivePart),
+                            }),
                           ]
                         ),
-                        h.div(
-                          [h.Class(`${panelBodyClasses} space-y-3`)],
-                          config.parts.map((part) =>
-                            renderPreviewPart(model, part)
-                          )
-                        ),
+                        renderSelectedPartOverlay(maybeActivePart),
                       ]
                     ),
                   ]
                 ),
-                renderDetails(maybeActivePart),
               ]
             ),
           ]

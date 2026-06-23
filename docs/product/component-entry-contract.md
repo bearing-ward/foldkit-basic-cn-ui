@@ -358,6 +358,8 @@ The Anatomy section must:
 
 - Show part composition using Foldkit-native helpers.
 - Use the same part names as the API table.
+- Render the component or example itself when meaningful markup exists, with
+  selected-part metadata shown as overlays on the preview.
 - Avoid React terms unless explicitly explaining the Foldkit-native equivalent.
 - Show consumer-owned slots/view callbacks when they are part of the API.
 
@@ -423,7 +425,7 @@ Required sections:
 | Usage                | always                                         | Minimal consumer import and direct use.                                     |
 | Foldkit integration  | stateful or parent-integrated components       | Model, Message, init, update, submodel, command mapping as needed.          |
 | Preview and source   | always                                         | Generated OpenStory preview links and generated source snapshot links.      |
-| Anatomy              | always                                         | X-ray style rendered HTML map with part names, classes, styles, attributes. |
+| Anatomy              | always                                         | X-ray rendered component/example preview with part names, classes, styles, attributes. |
 | Styling              | always                                         | Class hooks, style hooks, data attributes, state attributes, and variants.  |
 | Keyboard interaction | only when interactive keyboard behavior exists | Key map and focus behavior from Base UI/Foldkit contract.                   |
 | API reference        | always                                         | Props, callbacks, slots/render hooks, types, and deliberate omissions.      |
@@ -431,10 +433,10 @@ Required sections:
 | Existing coverage    | always                                         | Claims mapped to scene tests, story tests, registry checks, and smokes.     |
 
 The Anatomy section should be interactive when the component has meaningful
-markup: hovering a code element highlights the corresponding preview element
-and displays the relevant part name, classes, data attributes, ARIA attributes,
-and style hooks. Static anatomy text is acceptable only for tiny single-element
-components.
+markup: hovering a code element highlights the corresponding rendered preview
+element and displays selected-part tag, classes, data attributes, ARIA
+attributes, and style hooks as overlays on that preview. Static anatomy text is
+acceptable only for tiny single-element components.
 
 Documentation Reference stories use the shared OpenStory documentation display
 template in `src/openstory/documentation/displayTemplate.ts`. That template is
