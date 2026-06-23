@@ -288,7 +288,7 @@ describe("Theme Studio scene", () => {
         ),
       Scene.expect(
         Scene.selector('[data-theme-studio-component-inventory-row="card"]')
-      ).toHaveAttr("data-status", "matched"),
+      ).toHaveAttr("data-status", "in-progress"),
       Scene.expect(
         Scene.selector(
           '[data-theme-studio-component-inventory-row="qr-code/image-placeholder"]'

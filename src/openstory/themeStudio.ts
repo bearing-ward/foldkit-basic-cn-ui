@@ -161,10 +161,22 @@ const expectedComponentDependencies = [
 const componentStatus = (
   rows: ReadonlyArray<(typeof previewInventory.rows)[number]>
 ): "needs-origin-spec" | "in-progress" | "matched" | "deferred" => {
-  if (rows.some((row) => row.status === "rendered")) {
+  if (
+    rows.some(
+      (row) =>
+        "componentParity" in row &&
+        row.componentParity === "matched" &&
+        row.status === "rendered"
+    )
+  ) {
     return "matched";
   }
-  if (rows.some((row) => row.status === "covered-by-existing-example")) {
+  if (
+    rows.some(
+      (row) =>
+        row.status === "rendered" || row.status === "covered-by-existing-example"
+    )
+  ) {
     return "in-progress";
   }
   if (rows.length > 0) {
@@ -197,7 +209,12 @@ const componentInventory = () =>
       localRegistryItemNames,
       status: componentStatus(rows),
       sourceReferenceUrl: "https://ui.shadcn.com/create?preset=b27GcrRo",
-      suggestedFollowUpPlan: rows.every((row) => row.status === "rendered")
+      suggestedFollowUpPlan: rows.every(
+        (row) =>
+          row.status === "rendered" &&
+          "componentParity" in row &&
+          row.componentParity === "matched"
+      )
         ? undefined
         : "026",
     };
@@ -1399,7 +1416,7 @@ const selectsComboboxesView = (): Html => {
           ]),
         ]),
         h.div([h.Class("rounded-md border border-ring bg-accent p-3 text-accent-foreground")], [
-          "Showing 24 matched records across selected controls.",
+          "Showing 24 tracked records across selected controls.",
         ]),
       ]),
     ]

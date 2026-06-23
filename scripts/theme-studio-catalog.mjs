@@ -451,10 +451,19 @@ const normalizeDependency = (dependency) => {
 };
 
 const componentStatus = (rows) => {
-  if (rows.some((row) => row.status === "rendered")) {
+  if (
+    rows.some(
+      (row) => row.status === "rendered" && row.componentParity === "matched"
+    )
+  ) {
     return "matched";
   }
-  if (rows.some((row) => row.status === "covered-by-existing-example")) {
+  if (
+    rows.some(
+      (row) =>
+        row.status === "rendered" || row.status === "covered-by-existing-example"
+    )
+  ) {
     return "in-progress";
   }
   if (rows.length > 0) {
@@ -487,7 +496,9 @@ const createComponentInventory = ({ previewInventory }) =>
       sourceReferenceUrl:
         rows[0]?.sourceReferenceUrl ??
         "https://ui.shadcn.com/create?preset=b27GcrRo",
-      ...(rows.every((row) => row.status === "rendered")
+      ...(rows.every(
+        (row) => row.status === "rendered" && row.componentParity === "matched"
+      )
         ? {}
         : { suggestedFollowUpPlan: "026" }),
     };

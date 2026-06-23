@@ -206,5 +206,16 @@ describe("Theme Studio catalog", () => {
         "theme-token/radius/font/menu-configuration",
       ])
     );
+    expect(
+      catalog.componentInventory.find((row) => row.component === "card")
+    ).toEqual(
+      expect.objectContaining({
+        status: "in-progress",
+        suggestedFollowUpPlan: "026",
+      })
+    );
+    expect(
+      catalog.componentInventory.filter((row) => row.status === "matched")
+    ).toEqual([]);
   });
 });
