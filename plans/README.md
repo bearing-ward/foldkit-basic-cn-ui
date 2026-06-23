@@ -33,8 +33,12 @@ starting, honor its STOP conditions, and update your row when done.
 | 023  | Add OpenStory shadcn theme and mode selectors | P1 | M | 022 | DONE |
 | 024  | Expand OpenStory shadcn theme catalog and background theming | P1 | M | 023 | DONE |
 | 025  | Add a toggleable OpenStory UI dev HUD | P1 | L | 024 | TODO |
-| 026  | Activate exact origin visual parity across origin-backed components | P1 | L | 016 | TODO |
+| 026  | Activate exact origin visual parity across origin-backed components | P1 | L | 016 | DONE |
 | 027  | Add OpenStory toolbar indicators | P1 | M | 023, 024 | DONE |
+| 028  | Add dynamic Theme Studio and downloadable options | P1 | L | 024, 027 | DONE |
+| 029  | Promote shadcn create preview blocks to component-level parity | P1 | L | 026, 028 | TODO |
+| 030  | Refresh Foldkit tooling, fix the mode toggle, and print the component worklist | P1 | L | 023, 024, 026, 027 | DONE |
+| 031  | Adapt shadcn's docs display template to all OpenStory component docs | P1 | L | 013, 014, 015, 021, 022, 026 | TODO |
 
 Status values: TODO | IN PROGRESS | DONE | BLOCKED (with one-line reason) |
 REJECTED (with one-line rationale).
@@ -204,6 +208,82 @@ REJECTED (with one-line rationale).
   was invoked from this repo's Bun root; the refreshed plan runs pnpm from the
   OpenStory workspace root instead. HUD toolbar controls were removed from this
   branch on 2026-06-22 and remain out of scope for plan 027.
+- 028 depends on 024 and 027 because it turns the source-derived shadcn theme
+  catalog and OpenStory indicator-ready theme controls into a user-facing Theme
+  Studio. It should add a new invariant for dynamic option distribution, treat
+  `https://ui.shadcn.com/docs/theming` as the option contract, treat
+  `https://ui.shadcn.com/preview/radix/preview-02` as the first rich preview
+  target, render all active style/theme/mode/preview-block options from source
+  data, and generate downloadable shadcn-compatible theme JSON from the same
+  catalog. Any theming-page or preview-02 option that cannot be honestly
+  generated yet must be recorded as deferred with a blocker in the catalog or
+  coverage ledger. It must keep OpenStory as the supported browsing surface and
+  avoid reviving the retired `/docs/theme-playground` route. Execution completed
+  in isolated worktree
+  `/Volumes/Sync/Development/Bearing-Ward/projects/repos/foldkit-basic-cn-ui-028-theme-studio-downloads`
+  through commit `47849344`, then was reopened for origin shadcn/create parity:
+  match the origin theme-card row inventory, link Theme Studio card selections
+  to the OpenStory toolbar globals, inventory origin preview blocks, and generate
+  the first component refinement checklist from those blocks. The reopened scope
+  completed in Foldkit worktree commit `0fd689d6` and required OpenStory
+  dependency commit `6a9c4b0` for the generic `globals-changed` story-to-shell
+  bridge.
+  on branch `codex/028-theme-studio-downloads` with commits `a6134c5a` and
+  `8e98f856`; reviewer verification passed after one revision round made Theme
+  Studio use source defaults and visibly represent CSS-variable option status.
+  A live UX review after that approval found that theme color changes are not
+  visually obvious, the preview block selector is too weak, only 5 preview-02
+  rows are rendered, and the example container does not yet define a shared
+  fill/max-height contract. The post-execution addendum completed in the same
+  isolated worktree with commit `4784934`, expanding Theme Studio to 16 rendered
+  preview-02 rows, adding visible token color probes, adding a source-driven
+  block option grid, and centralizing the shared example frame/max-height
+  contract. Reviewer verification passed the full addendum gate set.
+- 029 depends on 026 and 028 because Theme Studio now exposes the shadcn create
+  surface, but exactness must come from component/block parity rather than
+  Theme Studio-only preview shims. It should promote each visible preview-02
+  block into source-owned registry hierarchy slices, add component-level tests,
+  generated JSON/download evidence, OpenStory surfaces, and origin visual parity
+  fixtures, then let Theme Studio consume those source-owned blocks. A preview
+  block is not `matched` until that component-level evidence exists.
+- 030 depends on 023, 024, and 027 because it changes the same OpenStory
+  shadcn theme/mode global and toolbar surface, and on 026 because it prints the
+  active origin visual parity worklist from the fixture ledger introduced by the
+  exactness ratchet. It should update Foldkit and Foldkit tooling to current
+  latest versions, add the documented `@foldkit/oxlint-plugin`, replace the
+  current light/dark/system mode dropdown with a simple shadcn-style
+  `Toggle theme` button, and add a read-only command that prints the components
+  still needing visual parity work. It must not implement the component parity
+  fixes themselves. A 2026-06-23 execute attempt in isolated worktree
+  `/Volumes/Sync/Development/Bearing-Ward/projects/repos/foldkit-basic-cn-ui-030-foldkit-tooling-theme-toggle-worklist`
+  first stopped during dependency upgrade after `foldkit@0.115.0`,
+  `@foldkit/vite-plugin@0.9.1`, `@foldkit/devtools-mcp@0.12.0`,
+  `@foldkit/oxlint-plugin@0.1.0`, and peer Effect beta packages were installed.
+  The revision incorporated the missing `@foldkit/ui@0.115.0` package split,
+  migrated `Runtime.makeProgram` call sites to the current runtime APIs, added
+  OpenStory host toolbar toggle-action support in sibling OpenStory commits
+  `d4da7eb` and `26be4fc`, and completed target commits `9483bc0b`, `b6514742`,
+  and `3621a845`. Reviewer verification passed `bun run typecheck`,
+  `bun run test -- src/openstory/shadcnTheme.story.test.ts`, focused OpenStory
+  Playwright with 8 tests, `bun run origin:parity:worklist` reporting
+  `components_needing_visual_parity_work=94`, `bun run origin:parity:coverage`,
+  `bun run check:registry`, `bun run build`, changed-file `oxlint`, target
+  whitespace checks, OpenStory `pnpm run typecheck`, OpenStory shell build, and
+  OpenStory whitespace checks. Full `bun run lint` remains red on the repo-wide
+  Ultracite baseline and was not fixed as part of this plan.
+- 031 depends on 013, 014, and 015 because it builds on the existing OpenStory
+  Documentation Reference story, Anatomy X-Ray, and API Reference widgets. It
+  depends on 021 and 022 because the documentation template must use
+  component-owned local registry source rather than a separate legacy docs
+  surface, and on 026 because source/preview claims should stay tied to the
+  current parity evidence model. It should translate shadcn's
+  `apps/v4/mdx-components.tsx` display foundation into a Foldkit-native
+  OpenStory documentation template for all component documentation stories,
+  using this repo's local Base UI, local shadcn, and local Foldkit component
+  source data. Base UI Alert Dialog is only the first verification slice because
+  it matches the referenced page and has local coverage; the template must not
+  become Alert Dialog-specific. It must not import React, Next.js, MDX, or
+  upstream `@/registry/new-york-v4/**` runtime code.
 
 ## Findings considered and rejected
 
