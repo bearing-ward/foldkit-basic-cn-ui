@@ -1,3 +1,6 @@
+# Archiving!
+Archiving in favor of https://github.com/elianiva/foldcn great work happening over there!
+
 # Foldkit CN
 
 Foldkit CN is an early shadcn-style registry for Foldkit applications. It
